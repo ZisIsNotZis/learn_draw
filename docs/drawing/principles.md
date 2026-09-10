@@ -49,3 +49,7 @@ Learned: portrait-face v4 seam fix.
 ## P12 — Feature marks are tiny but positional (T1, portrait-face)
 A nose can be a 5px vertical tick and a mouth a 15px horizontal dash — swappable without a zoom crop. Locate small marks programmatically (dark-component scan within a region) before assigning identity; verify with a zoom.
 Learned: portrait-face nose/mouth were initially swapped until 4.5x crop.
+
+## P13 — Outlines are free: stroke the shape you already own (user insight, portrait-face)
+When REF shows an outline the draft lacks, first ask "do I already have this shape, unstroked?" Face/neck/collar outlines were missing not because shapes were missing but because I never stroked them. 描边 = reusing the existing path with a stroke — measure only the stroke color/width (near-black #101018, ~5px here).
+Learned: portrait-face v8/v9.
