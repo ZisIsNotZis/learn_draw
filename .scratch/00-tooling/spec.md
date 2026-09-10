@@ -1,6 +1,6 @@
 # 00 — tooling: compare/diff/ref toolkit + smoke test
 
-Status: done (phase 0 of drawing curriculum)
+Status: done
 
 ## Deliverables
 - `scripts/draw.py` + `scripts/draw` wrapper: subcommands `render`, `compare`, `diff`, `ref`, `log`
