@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- v7: filled assembly. bg -> brim underside -> face group (transformed, hat-corner stripped)
+       -> curtain fill -> hat. -->
+  <rect id="bg-sky" width="1024" height="1024" fill="#c9dadb"/>
+  <path id="brim-underside" d="M 462 28 C 500 45, 540 80, 580 130 C 610 175, 640 220, 668 252 C 690 285, 705 315, 715 345 C 740 260, 690 180, 660 120 C 640 78, 620 45, 600 35 C 555 27, 505 27, 462 28 Z" fill="#559eae"/>
+  <path id="pocket-ext" d="M 620 152 L 684 150 C 684 134, 674 126, 660 128 C 642 127, 626 138, 620 152 Z" fill="#d7b1c7"/>
+  <g id="face-group" transform="translate(580,150) scale(0.5)" stroke-linecap="round" stroke-linejoin="round">
+<g xmlns="http://www.w3.org/2000/svg" id="face">
+    <path id="skin" d="M 60 160 C 72 220, 72 320, 80 370 C 95 430, 150 475, 225 485 C 265 488, 300 470, 322 440 C 345 405, 352 360, 350 320 C 348 260, 340 200, 330 160 Z" fill="#f2e8d5" stroke="#101018" stroke-width="5" />
+    <path id="skin-shadow-cheek" d="M 330 300 C 350 320, 355 380, 340 430 C 335 445, 326 450, 322 445 C 332 400, 330 350, 320 310 Z" fill="#d7b1c7" />
+    <path id="nose" d="M 158 331 C 160 335, 160 338, 158 341" fill="none" stroke="#5a533e" stroke-width="3" stroke-linecap="round" />
+    <path id="mouth" d="M 197 406 C 202 407, 208 407, 212 405" fill="none" stroke="#5a533e" stroke-width="3.5" stroke-linecap="round" />
+  </g>
+  
+<g xmlns="http://www.w3.org/2000/svg" id="eye-left">
+    <path id="eyeL-sclera" d="M 88 248 C 94 228, 116 214, 142 218 C 152 221, 156 232, 155 246 C 154 262, 146 278, 130 286 C 114 293, 98 288, 91 276 C 86 266, 85 258, 88 248 Z" fill="#faefff" />
+    <path id="eyeL-lid-band" d="M 92 244 C 100 226, 122 216, 142 220 C 148 223, 150 230, 148 237 C 130 228, 108 232, 96 246 Z" fill="#4171ba" />
+    <path id="eyeL-iris" d="M 97 260 C 96 242, 110 231, 125 233 C 139 236, 146 249, 144 264 C 142 281, 128 290, 113 286 C 101 283, 98 272, 97 260 Z" fill="#ee92a5" />
+    <ellipse id="eyeL-green" cx="101" cy="250" rx="8" ry="9" transform="rotate(15 101 250)" fill="#467a2e" />
+    <ellipse id="eyeL-glint" cx="90" cy="228" rx="6" ry="8" fill="#dff0f7" />
+    <circle id="eyeL-dot1" cx="105" cy="270" r="3.5" fill="#ffffff" />
+    <circle id="eyeL-dot2" cx="97" cy="277" r="2.5" fill="#ffffff" />
+    <path id="eyeL-outline" d="M 88 248 C 94 228, 116 214, 142 218 C 152 221, 156 232, 155 246 C 154 262, 146 278, 130 286 C 114 293, 98 288, 91 276 C 86 266, 85 258, 88 248 Z" fill="none" stroke="#26262e" stroke-width="3.5" />
+    <path id="eyeL-lash-top" d="M 86 246 C 94 224, 122 212, 148 219" fill="none" stroke="#26262e" stroke-width="6.5" stroke-linecap="round" />
+    <g id="eyeL-lower-ticks" stroke="#26262e" stroke-width="2.5" stroke-linecap="round">
+      <path d="M 96 296 L 102 295" /><path d="M 92 300 L 97 299" />
+    </g>
+  </g>
+  
+<g xmlns="http://www.w3.org/2000/svg" id="eye-right">
+    <path id="eyeR-sclera" d="M 264 232 C 272 212, 320 202, 348 212 C 360 218, 362 240, 358 258 C 353 280, 338 294, 315 297 C 294 299, 276 290, 268 274 C 262 260, 261 244, 264 232 Z" fill="#faefff" />
+    <path id="eyeR-lid-band" d="M 268 234 C 278 214, 318 206, 346 214 C 352 217, 353 226, 350 231 C 322 220, 292 224, 274 240 Z" fill="#4171ba" />
+    <path id="eyeR-iris" d="M 279 262 C 277 242, 294 229, 313 230 C 334 232, 347 247, 345 265 C 343 283, 326 294, 306 292 C 289 290, 280 278, 279 262 Z" fill="#ee92a5" />
+    <ellipse id="eyeR-green" cx="294" cy="253" rx="9" ry="8" transform="rotate(-10 294 253)" fill="#467a2e" />
+    <ellipse id="eyeR-glint" cx="281" cy="236" rx="6" ry="9" transform="rotate(10 281 236)" fill="#dff0f7" />
+    <circle id="eyeR-dot1" cx="301" cy="275" r="3" fill="#ffffff" />
+    <path id="eyeR-outline" d="M 264 232 C 272 212, 320 202, 348 212 C 360 218, 362 240, 358 258 C 353 280, 338 294, 315 297 C 294 299, 276 290, 268 274 C 262 260, 261 244, 264 232 Z" fill="none" stroke="#26262e" stroke-width="3.5" />
+    <path id="eyeR-lash-top" d="M 262 236 C 274 210, 322 200, 354 214" fill="none" stroke="#26262e" stroke-width="7" stroke-linecap="round" />
+    <g id="eyeR-lash-spikes" stroke="#26262e" stroke-width="5" stroke-linecap="round">
+      <path d="M 280 212 L 287 203" /><path d="M 336 208 L 345 201" /><path d="M 352 214 L 360 210" />
+    </g>
+    <g id="eyeR-lower-ticks" stroke="#26262e" stroke-width="2.5" stroke-linecap="round">
+      <path d="M 358 292 L 366 290" /><path d="M 354 298 L 361 297" />
+    </g>
+    <path id="brow-left" d="M 88 205 C 105 199, 125 199, 142 203" fill="none" stroke="#55627a" stroke-width="3" />
+    <path id="brow-right" d="M 268 190 C 288 182, 312 182, 330 188" fill="none" stroke="#55627a" stroke-width="3" />
+  </g>
+    
+<g xmlns="http://www.w3.org/2000/svg" id="hair" stroke="#26354a" stroke-width="3">
+    
+    <path id="pink-pocket-1" d="M 78 92 L 175 92 C 188 128, 192 165, 186 200 C 176 216, 155 219, 138 215 C 118 224, 98 224, 88 213 C 80 190, 77 130, 78 92 Z" fill="#d7b1c7" stroke="none" />
+    <path id="pink-pocket-2" d="M 286 128 L 348 125 L 350 175 C 335 190, 310 194, 292 190 C 287 170, 285 148, 286 128 Z" fill="#d7b1c7" stroke="none" />
+    
+    <path id="hair-top" d="M 0 0 L 500 0 L 500 60 L 352 55 L 352 128              C 349 136, 346 143, 344 150              C 341 168, 337 188, 333 204              C 329 188, 325 164, 323 150              C 318 150, 313 149, 309 148              C 306 158, 304 167, 303 176              C 299 164, 295 152, 292 142              C 288 144, 285 146, 282 147              C 277 165, 274 185, 272 203              C 250 198, 225 188, 205 178              C 192 171, 180 160, 173 152              C 170 158, 168 170, 167 179              C 158 170, 143 157, 130 146              C 124 128, 118 105, 114 93              C 104 89, 92 89, 84 92              C 80 130, 78 190, 77 232              C 76 252, 73 264, 66 272              C 50 276, 34 273, 20 266              C 12 261, 4 270, 0 279 Z" fill="#3974ab" />
+    
+    <g id="hair-thin-lines" fill="none" stroke="#26354a" stroke-width="2.5">
+      <path d="M 105 92 C 108 130, 116 165, 130 195" />
+      <path d="M 125 92 C 128 120, 136 150, 148 172" />
+    </g>
+    
+    <path id="hair-eye-strand" d="M 80 190 C 96 202, 110 226, 116 254 C 117 261, 110 263, 104 258 C 92 248, 82 226, 80 205 Z" fill="#3974ab" />
+    
+    
+    <path id="hair-right" d="M 352 55 L 500 215 L 500 540 L 434 540              C 420 520, 406 500, 402 478              C 398 458, 394 440, 390 420              C 386 400, 380 380, 382 350              C 384 320, 378 260, 372 210              C 366 170, 358 110, 352 55 Z" fill="#3974ab" stroke="none" />
+    
+    <path id="hair-right-edge" d="M 352 55 C 360 110, 366 170, 372 210 C 378 260, 384 320, 382 350 C 380 380, 386 400, 390 420 C 394 440, 398 458, 402 478 C 406 500, 420 520, 434 540" fill="none" stroke="#26354a" stroke-width="3" />
+    
+    <path id="hair-curl" d="M 390 313              C 355 325, 330 342, 319 362              C 311 378, 310 390, 316 398              C 321 405, 330 407, 338 404              C 328 415, 315 425, 305 436              C 295 447, 290 458, 293 466              C 296 473, 304 477, 312 475              C 320 472, 327 463, 332 452              C 337 441, 344 429, 352 421              C 362 413, 371 404, 377 393              C 373 381, 367 364, 371 348              C 375 334, 380 320, 390 313 Z" fill="#3974ab" />
+    
+    <g id="hair-lines" fill="none" stroke="#2c4a6e" stroke-width="2.5">
+      <path d="M 380 60 C 390 110, 396 160, 394 210" />
+      <path d="M 440 40 C 446 120, 448 220, 444 320" />
+    </g>
+    
+    </g>
+  </g>
+  <path id="curtain" d="M 836 284
+             C 880 268, 938 282, 952 308
+             C 970 300, 1000 282, 1024 268
+             C 1018 330, 1012 380, 1008 420
+             C 1000 480, 985 540, 968 590
+             C 950 640, 938 690, 931 733
+             C 922 700, 914 655, 910 590
+             C 908 550, 906 500, 904 468
+             C 899 510, 895 570, 892 636
+             C 884 590, 876 520, 872 476
+             C 868 530, 858 610, 842 676
+             C 832 630, 824 560, 819 505
+             C 814 530, 810 548, 806 560
+             C 800 520, 796 470, 795 430
+             C 793 468, 795 420, 801 374
+             C 807 333, 818 288, 836 284 Z" fill="#3d73a7" stroke="#26354a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="wing-strand" d="M 574 240 C 545 242, 510 256, 486 282 C 479 291, 484 299, 498 300 C 526 302, 551 290, 565 270 C 573 258, 577 246, 574 240 L 486 282" fill="#3d73a7" stroke="#26354a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <g id="curtain-flow" fill="none" stroke="#2c4a6e" stroke-width="2.5">
+    <path d="M 862 300 C 856 390, 850 480, 846 620"/>
+    <path d="M 892 300 C 886 390, 884 480, 889 600"/>
+    <path d="M 922 305 C 920 390, 918 470, 924 640"/>
+    <path d="M 830 330 C 826 410, 824 470, 828 530"/>
+  </g>
+  <path id="brim-upper-sliver" d="M 460 34 C 505 28, 550 30, 585 45 L 575 55 C 545 42, 500 38, 462 42 Z" fill="#32405b"/>
+  <path id="hat-dome" d="M 655 62 C 668 40, 700 28, 740 27 C 800 24, 860 50, 900 95 C 915 112, 922 130, 920 148 C 890 168, 820 180, 760 178 C 715 176, 680 160, 662 130 C 652 108, 650 82, 655 62 Z" fill="#32405b" stroke="#1e2a3f" stroke-width="2"/>
+  <path id="brim-right-band" d="M 862 64 C 905 62, 945 105, 985 170 C 1002 198, 1015 225, 1024 245 L 1024 262 C 1010 235, 985 195, 955 150 C 925 105, 890 75, 862 64 Z" fill="#32405b"/>
+  <path id="pom-1" d="M 618 62 C 610 42, 626 28, 646 30 C 654 18, 676 18, 684 30 C 700 28, 710 44, 700 58 C 688 72, 630 74, 618 62 Z" fill="#df9199" stroke="#c97b88" stroke-width="2"/>
+  <path id="pom-2" d="M 898 220 C 888 192, 904 168, 930 168 C 938 154, 962 154, 970 168 C 986 166, 996 184, 988 200 C 992 216, 978 234, 958 234 C 938 238, 904 236, 898 220 Z" fill="#df9199" stroke="#c97b88" stroke-width="2"/>
+  <g id="brim-edges" fill="none" stroke="#1e2a3f" stroke-width="3" stroke-linecap="round">
+    <path d="M 462 28 C 500 45, 540 80, 580 130 C 610 175, 640 220, 668 252 C 690 285, 705 315, 715 345"/>
+    <path d="M 985 170 C 1002 198, 1015 225, 1024 245"/>
+  </g>
+</svg>

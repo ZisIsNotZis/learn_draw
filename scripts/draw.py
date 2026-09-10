@@ -246,6 +246,20 @@ def cmd_measure(a):
     print("nothing to do: use --hough, --point x,y or --scan row:y:x0:x1")
 
 
+def smooth_path(pts, closed=True):
+    """Points [(x,y)...] -> smooth SVG path (quadratic through midpoints)."""
+    pts = [tuple(map(float, p)) for p in pts]
+    if closed and pts[0] != pts[-1]:
+        pts = pts + [pts[0]]
+    d = f"M {pts[0][0]:.0f} {pts[0][1]:.0f} "
+    for i in range(1, len(pts) - 1):
+        mx = (pts[i][0] + pts[i + 1][0]) / 2
+        my = (pts[i][1] + pts[i + 1][1]) / 2
+        d += f"Q {pts[i][0]:.0f} {pts[i][1]:.0f} {mx:.0f} {my:.0f} "
+    d += "Z" if closed else f"L {pts[-1][0]:.0f} {pts[-1][1]:.0f}"
+    return d
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -284,3 +298,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
