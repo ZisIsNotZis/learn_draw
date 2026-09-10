@@ -29,3 +29,23 @@ Learned: v2→v3 metric drop despite clear visual improvement.
 ## P7 — Fresh-eyes critic: trust silhouette reads, discount impossible spatial claims (warmup-duck)
 A no-context reviewer catches character-level truths my staring misses ("chubby chick, not classic rubber duck"). But it can also make spatial claims that are geometrically impossible ("larger and shifted right" at identical canvas scale) — verify every critic claim against measurements before acting.
 Learned: warmup-duck close-out review; 3 of ~9 findings actionable, rest perceptual/minor.
+
+## P8 — Model silhouettes, not assemblies of parts (T2, portrait-face)
+A hair mass with strand tips is ONE silhouette whose bottom edge zigzags (tips down, notches up); the "pockets" of shadow between strands are the underlying skin showing through notches — not shapes to draw separately. v2 drew base+strands+pockets as separate outlined shapes and produced boxy artifacts; v3's single zigzag path fixed it in one step.
+Learned: portrait-face v2→v3.
+
+## P9 — Trace boundaries, don't guess coordinates (T1/T2, portrait-face)
+For complex regions, scanline-trace the actual boundary from the reference (color-classify pixels per column/row, find edge points) and build the path from measured points; verify ambiguous areas with a coarse color-class grid map. Eyeball estimates were off by 20-60px repeatedly (right mass edge x375-390 not 350; left mass ends y270 not 330; hat is a large triangle).
+Learned: portrait-face boundary tracer; three structural errors caught before v3.
+
+## P10 — Line refs fail on layered interiors; zoom + observe (T1, portrait-face)
+XDoG line extraction turns anime eyes into noise — unusable. Interior-layered structures (eyes: sclera→lid-band→iris→glints→outline) must be read from direct zoomed observation (`measure --point` grid + 3.5x crops), not derived from line refs. Line refs stay useful for coarse outer boundaries.
+Learned: portrait-face eye study.
+
+## P11 — Shared edges: fill-only + separate edge stroke (T2, portrait-face)
+Two adjacent filled shapes both carrying their outline stroke produce a double-line seam through solid fill (hair-top vs right mass at x352). Give one side fill-only, then draw the visible edge as its own stroke path — only where a real boundary exists.
+Learned: portrait-face v4 seam fix.
+
+## P12 — Feature marks are tiny but positional (T1, portrait-face)
+A nose can be a 5px vertical tick and a mouth a 15px horizontal dash — swappable without a zoom crop. Locate small marks programmatically (dark-component scan within a region) before assigning identity; verify with a zoom.
+Learned: portrait-face nose/mouth were initially swapped until 4.5x crop.

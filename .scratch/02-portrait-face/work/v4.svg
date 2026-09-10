@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 540">
+  <!-- v2: hair rebuilt (broad strands, pink pockets, slim S-curl hugging jaw, broad left mass);
+       eyes reshaped to stronger almond tilt, bigger lid bands + iris. -->
+  <g id="scene">
+    <rect id="bg-white-left" x="0" y="0" width="95" height="125" fill="#e8f2f5"/>
+    <rect id="bg-white-strip" x="0" y="0" width="20" height="540" fill="#e8f2f5"/>
+    <rect id="bg-mint" x="0" y="310" width="215" height="230" fill="#6fc8c5"/>
+    <rect id="bg-teal-right" x="470" y="55" width="30" height="100" fill="#5a9bac"/>
+    <path id="neck" d="M 215 430 L 320 430 L 325 540 L 210 540 Z" fill="#d7aec2"/>
+    <path id="collar" d="M 280 540 L 335 492 L 500 478 L 500 540 Z" fill="#99c6d6"/>
+  </g>
+  <g id="face">
+    <path id="skin" d="M 60 160 C 72 220, 72 320, 80 370 C 95 430, 150 475, 225 485 C 265 488, 300 470, 322 440 C 345 405, 352 360, 350 320 C 348 260, 340 200, 330 160 Z" fill="#f2e8d5"/>
+    <path id="skin-shadow-cheek" d="M 330 300 C 350 320, 355 380, 340 430 C 335 445, 326 450, 322 445 C 332 400, 330 350, 320 310 Z" fill="#d7b1c7"/>
+    <path id="nose" d="M 158 331 C 160 335, 160 338, 158 341" fill="none" stroke="#5a533e" stroke-width="3" stroke-linecap="round"/>
+    <path id="mouth" d="M 197 406 C 202 407, 208 407, 212 405" fill="none" stroke="#5a533e" stroke-width="3.5" stroke-linecap="round"/>
+  </g>
+  <g id="eye-left">
+    <path id="eyeL-sclera" d="M 88 248 C 94 228, 116 214, 142 218 C 152 221, 156 232, 155 246 C 154 262, 146 278, 130 286 C 114 293, 98 288, 91 276 C 86 266, 85 258, 88 248 Z" fill="#faefff"/>
+    <path id="eyeL-lid-band" d="M 92 244 C 100 226, 122 216, 142 220 C 148 223, 150 230, 148 237 C 130 228, 108 232, 96 246 Z" fill="#4171ba"/>
+    <path id="eyeL-iris" d="M 97 260 C 96 242, 110 231, 125 233 C 139 236, 146 249, 144 264 C 142 281, 128 290, 113 286 C 101 283, 98 272, 97 260 Z" fill="#ee92a5"/>
+    <ellipse id="eyeL-green" cx="101" cy="250" rx="8" ry="9" transform="rotate(15 101 250)" fill="#467a2e"/>
+    <ellipse id="eyeL-glint" cx="90" cy="228" rx="6" ry="8" fill="#dff0f7"/>
+    <circle id="eyeL-dot1" cx="105" cy="270" r="3.5" fill="#ffffff"/>
+    <circle id="eyeL-dot2" cx="97" cy="277" r="2.5" fill="#ffffff"/>
+    <path id="eyeL-outline" d="M 88 248 C 94 228, 116 214, 142 218 C 152 221, 156 232, 155 246 C 154 262, 146 278, 130 286 C 114 293, 98 288, 91 276 C 86 266, 85 258, 88 248 Z" fill="none" stroke="#26262e" stroke-width="3.5"/>
+    <path id="eyeL-lash-top" d="M 86 246 C 94 224, 122 212, 148 219" fill="none" stroke="#26262e" stroke-width="6.5" stroke-linecap="round"/>
+    <g id="eyeL-lower-ticks" stroke="#26262e" stroke-width="2.5" stroke-linecap="round">
+      <path d="M 96 296 L 102 295"/><path d="M 92 300 L 97 299"/>
+    </g>
+  </g>
+  <g id="eye-right">
+    <path id="eyeR-sclera" d="M 264 232 C 272 212, 320 202, 348 212 C 360 218, 362 240, 358 258 C 353 280, 338 294, 315 297 C 294 299, 276 290, 268 274 C 262 260, 261 244, 264 232 Z" fill="#faefff"/>
+    <path id="eyeR-lid-band" d="M 268 234 C 278 214, 318 206, 346 214 C 352 217, 353 226, 350 231 C 322 220, 292 224, 274 240 Z" fill="#4171ba"/>
+    <path id="eyeR-iris" d="M 279 262 C 277 242, 294 229, 313 230 C 334 232, 347 247, 345 265 C 343 283, 326 294, 306 292 C 289 290, 280 278, 279 262 Z" fill="#ee92a5"/>
+    <ellipse id="eyeR-green" cx="294" cy="253" rx="9" ry="8" transform="rotate(-10 294 253)" fill="#467a2e"/>
+    <ellipse id="eyeR-glint" cx="281" cy="236" rx="6" ry="9" transform="rotate(10 281 236)" fill="#dff0f7"/>
+    <circle id="eyeR-dot1" cx="301" cy="275" r="3" fill="#ffffff"/>
+    <path id="eyeR-outline" d="M 264 232 C 272 212, 320 202, 348 212 C 360 218, 362 240, 358 258 C 353 280, 338 294, 315 297 C 294 299, 276 290, 268 274 C 262 260, 261 244, 264 232 Z" fill="none" stroke="#26262e" stroke-width="3.5"/>
+    <path id="eyeR-lash-top" d="M 262 236 C 274 210, 322 200, 354 214" fill="none" stroke="#26262e" stroke-width="7" stroke-linecap="round"/>
+    <g id="eyeR-lash-spikes" stroke="#26262e" stroke-width="5" stroke-linecap="round">
+      <path d="M 280 212 L 287 203"/><path d="M 336 208 L 345 201"/><path d="M 352 214 L 360 210"/>
+    </g>
+    <g id="eyeR-lower-ticks" stroke="#26262e" stroke-width="2.5" stroke-linecap="round">
+      <path d="M 358 292 L 366 290"/><path d="M 354 298 L 361 297"/>
+    </g>
+    <path id="brow-left" d="M 88 205 C 105 199, 125 199, 142 203" fill="none" stroke="#55627a" stroke-width="3"/>
+    <path id="brow-right" d="M 268 190 C 288 182, 312 182, 330 188" fill="none" stroke="#55627a" stroke-width="3"/>
+  </g>
+    <g id="hair" stroke="#26354a" stroke-width="3">
+    <!-- pink pockets: shadowed skin showing through hair notches (under hair silhouette) -->
+    <path id="pink-pocket-1" d="M 78 92 L 175 92 C 188 128, 192 165, 186 200 C 176 216, 155 219, 138 215 C 118 224, 98 224, 88 213 C 80 190, 77 130, 78 92 Z" fill="#d7b1c7" stroke="none"/>
+    <path id="pink-pocket-2" d="M 286 128 L 348 125 L 350 175 C 335 190, 310 194, 292 190 C 287 170, 285 148, 286 128 Z" fill="#d7b1c7" stroke="none"/>
+    <!-- hair-top: ONE silhouette, zigzag bottom edge (traced) -->
+    <path id="hair-top" d="M 0 0 L 352 0 L 352 128
+             C 349 136, 346 143, 344 150
+             C 341 168, 337 188, 333 204
+             C 329 188, 325 164, 323 150
+             C 318 150, 313 149, 309 148
+             C 306 158, 304 167, 303 176
+             C 299 164, 295 152, 292 142
+             C 288 144, 285 146, 282 147
+             C 277 165, 274 185, 272 203
+             C 250 198, 225 188, 205 178
+             C 192 171, 180 160, 173 152
+             C 170 158, 168 170, 167 179
+             C 158 170, 143 157, 130 146
+             C 124 128, 118 105, 114 93
+             C 104 89, 92 89, 84 92
+             C 80 130, 78 190, 77 232
+             C 76 252, 73 264, 66 272
+             C 50 276, 34 273, 20 266
+             C 12 261, 4 270, 0 279 Z" fill="#3974ab"/>
+    <!-- thin strands crossing pocket-1 -->
+    <g id="hair-thin-lines" fill="none" stroke="#26354a" stroke-width="2.5">
+      <path d="M 105 92 C 108 130, 116 165, 130 195"/>
+      <path d="M 125 92 C 128 120, 136 150, 148 172"/>
+    </g>
+    <!-- strand from left mass crossing left eye corner -->
+    <path id="hair-eye-strand" d="M 80 190 C 96 202, 110 226, 116 254 C 117 261, 110 263, 104 258 C 92 248, 82 226, 80 205 Z" fill="#3974ab"/>
+    <!-- right mass: curvy left edge per trace -->
+    <!-- right mass: fill only (shared edge with hair-top must not show a seam) -->
+    <path id="hair-right" d="M 350 0 L 500 0 L 500 540 L 434 540
+             C 420 520, 406 500, 402 478
+             C 398 458, 394 440, 390 420
+             C 386 400, 380 380, 382 350
+             C 384 320, 378 260, 372 210
+             C 366 170, 356 120, 350 0 Z" fill="#3974ab" stroke="none"/>
+    <!-- right mass visible edge line (only where it borders pink/skin) -->
+    <path id="hair-right-edge" d="M 352 128 C 366 165, 372 195, 372 210 C 378 260, 384 320, 382 350 C 380 380, 386 400, 390 420 C 394 440, 398 458, 402 478 C 406 500, 420 520, 434 540" fill="none" stroke="#26354a" stroke-width="3"/>
+    <!-- S-curl band, widened per trace -->
+    <path id="hair-curl" d="M 390 315
+             C 358 326, 332 342, 320 360
+             C 310 376, 306 388, 310 396
+             C 314 404, 324 407, 334 406
+             C 324 416, 312 424, 302 434
+             C 292 444, 288 455, 290 462
+             C 293 470, 300 476, 309 477
+             C 317 470, 325 460, 331 450
+             C 337 440, 344 428, 350 420
+             C 360 412, 370 404, 376 394
+             C 372 382, 366 366, 370 350
+             C 374 336, 380 322, 390 315 Z" fill="#3974ab"/>
+    <!-- internal strand lines -->
+    <g id="hair-lines" fill="none" stroke="#2c4a6e" stroke-width="2.5">
+      <path d="M 380 60 C 390 110, 396 160, 394 210"/>
+      <path d="M 440 40 C 446 120, 448 220, 444 320"/>
+    </g>
+    <!-- hat corner over hair -->
+    <path id="hat-corner" d="M 420 0 L 500 0 L 500 85 C 480 70, 455 50, 440 28 C 432 17, 425 8, 420 0 Z" fill="#333e5a"/>
+  </g>
+</svg>

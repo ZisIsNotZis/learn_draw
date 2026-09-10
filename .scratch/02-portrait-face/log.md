@@ -1,0 +1,9 @@
+# iteration log
+
+| iter | edge-F1 | color-dist | note |
+|---|---|---|---|
+| 1 | 0.261 | 79.6 | v1: face structure down, eyes close (layering correct). Hair wrong: forehead pink band too large (ref: small pockets BETWEEN strands); strand tips too skinny (ref: broad 20-45px strands); S-curl too fat/misplaced (should hug jaw x330-430, slim ~25px); left mass narrow (ref broad, curled foot); eyes slightly too round - need stronger almond tilt; lid bands too thin; iris too small. |
+| 2 | 0.271 | 69.6 | v2: eyes now good (almond tilt + bigger bands/iris). Hair still wrong - root cause identified: modeled bangs as base+strands+pockets with separate outlines; ref is ONE silhouette with zigzag bottom edge, pink = shadowed skin through notches. Built boundary tracer: left mass ends y~270 (no curl foot), strand crosses eye from mass edge, right mass edge x~375-390 (not 350), S-curl is a slim band (312-390) with tail to (300,475), pink pockets at x78-190 + x286-348. |
+| 3 | 0.304 | 60.4 | v3: hair rebuilt as ONE zigzag silhouette from boundary tracer - bangs now structurally right. v4: seam fix (right mass fill-only + separate edge line), brows lowered to measured y, mint under jaw, neck widened. v5: curl smoothed, neck behind curl. Metric noise: earlier f1 0.285 penalized by bg misfills, not face structure. |
+| 5 | 0.287 | 56.9 | v6: right mass top edge is DIAGONAL (352,55)->(500,215) - teal triangle between hat and hair discovered by re-reading ref; hair-top extended to x420. Face region structurally complete; residual hair-detail diffs deferred to hair exercise. |
+| 7 | 0.285 | 54.3 | v7: hat = large navy triangle (500,195)->(415,0), hair-top fills full top strip, teal triangle between hat edge and hair diagonal. Face region CLOSED - residual hair-strand detail belongs to the hair exercise. |
