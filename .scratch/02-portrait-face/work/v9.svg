@@ -10,7 +10,7 @@
     <path id="collar" d="M 148 540 L 153 526 C 185 502, 220 486, 248 479 C 300 468, 340 482, 380 492 C 430 500, 470 485, 500 468 L 500 540 Z" fill="#99c6d6" stroke="#101018" stroke-width="5"/>
   </g>
   <g id="face">
-    <path id="skin" d="M 60 160 C 72 220, 72 320, 80 370 C 95 430, 150 475, 225 485 C 265 488, 300 470, 322 440 C 345 405, 352 360, 350 320 C 348 260, 340 200, 330 160 Z" fill="#f2e8d5" stroke="#101018" stroke-width="5"/>
+    <path id="skin" d="M 60 160 C 72 220, 72 320, 80 370 C 95 430, 150 475, 225 485 C 265 488, 300 470, 322 440 C 358 408, 380 360, 388 318 C 393 262, 388 205, 372 160 Z" fill="#f2e8d5" stroke="#101018" stroke-width="5"/>
     <path id="skin-shadow-cheek" d="M 330 300 C 350 320, 355 380, 340 430 C 335 445, 326 450, 322 445 C 332 400, 330 350, 320 310 Z" fill="#d7b1c7"/>
     <path id="nose" d="M 158 331 C 160 335, 160 338, 158 341" fill="none" stroke="#5a533e" stroke-width="3" stroke-linecap="round"/>
     <path id="mouth" d="M 197 406 C 202 407, 208 407, 212 405" fill="none" stroke="#5a533e" stroke-width="3.5" stroke-linecap="round"/>
@@ -87,7 +87,7 @@
              C 384 320, 378 260, 372 210
              C 366 170, 358 110, 352 55 Z" fill="#3974ab" stroke="none"/>
     <!-- right mass visible edge line (only where it borders pink/skin) -->
-    <path id="hair-right-edge" d="M 352 55 C 360 110, 366 170, 372 210 C 378 260, 384 320, 382 350 C 380 380, 386 400, 390 420 C 394 440, 398 458, 402 478 C 406 500, 420 520, 434 540" fill="none" stroke="#26354a" stroke-width="3"/>
+    <path id="hair-right-edge" d="M 372 55 C 378 110, 390 170, 396 210 C 378 260, 384 320, 382 350 C 380 380, 386 400, 390 420 C 394 440, 398 458, 402 478 C 406 500, 420 520, 434 540" fill="none" stroke="#26354a" stroke-width="3"/>
     <!-- S-curl band, widened per trace -->
     <path id="hair-curl" d="M 390 313
              C 355 325, 330 342, 319 362
