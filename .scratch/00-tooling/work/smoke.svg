@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- intent: warmup smoke test — circle + line -->
+  <circle id="ring" cx="200" cy="200" r="150" fill="none" stroke="teal" stroke-width="6"/>
+  <line id="chord" x1="80" y1="300" x2="320" y2="120" stroke="tomato" stroke-width="4"/>
+</svg>

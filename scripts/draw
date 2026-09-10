@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# draw — wrapper running scripts/draw.py in the project venv
+exec "$(dirname "$0")/../.venv/bin/python" "$(dirname "$0")/draw.py" "$@"

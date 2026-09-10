@@ -1,0 +1,252 @@
+#!/usr/bin/env python3
+"""draw.py — toolkit for learning to draw via programmatic art (SVG/CSS).
+
+Subcommands: render | compare | diff | ref | log
+Renderer: chrome-headless-shell (playwright cache) — renders SVG and HTML/CSS alike.
+"""
+import argparse, os, re, subprocess, sys, datetime
+import numpy as np
+import cv2
+
+CHROME = os.path.expanduser(
+    "~/.cache/ms-playwright/chromium_headless_shell-1234/"
+    "chrome-headless-shell-linux64/chrome-headless-shell")
+
+
+def render(src: str, out: str, size: tuple[int, int] | None = None) -> tuple[int, int]:
+    """Rasterize .svg or .html to PNG via headless chromium."""
+    src = os.path.abspath(src)
+    out = os.path.abspath(out)
+    if not os.path.exists(CHROME):
+        sys.exit(f"renderer not found: {CHROME}")
+    if src.endswith(".svg"):
+        svg = open(src).read()
+        if size is None:
+            m = re.search(r'viewBox="([\d.\- ,]+)"', svg)
+            if m and len(m.group(1).split()) == 4:
+                size = (int(float(m.group(1).split()[2])), int(float(m.group(1).split()[3])))
+            else:
+                m = re.search(r'<svg[^>]*\bwidth="([\d.]+)"[^>]*\bheight="([\d.]+)"', svg)
+                if not m:
+                    sys.exit("cannot infer SVG size; pass --size WxH")
+                size = (int(float(m.group(1))), int(float(m.group(2))))
+        html = f'<html><body style="margin:0;overflow:hidden">{svg}</body></html>'
+        tmp = out + ".wrap.html"
+        open(tmp, "w").write(html)
+        target = tmp
+    else:
+        target = src
+    subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-sandbox",
+                    f"--screenshot={out}", f"--window-size={size[0]},{size[1]}",
+                    "file://" + target], check=True, capture_output=True, timeout=60)
+    if src.endswith(".svg"):
+        os.remove(tmp)
+    return size
+
+
+def imwrite(path: str, img: np.ndarray):
+    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+    cv2.imwrite(path, img)
+
+
+def imread(path: str, size: tuple[int, int] | None = None) -> np.ndarray:
+    img = cv2.imread(path, cv2.IMREAD_COLOR)
+    if img is None:
+        sys.exit(f"cannot read image: {path}")
+    if size is not None and (img.shape[1], img.shape[0]) != size:
+        img = cv2.resize(img, size, interpolation=cv2.INTER_AREA)
+    return img
+
+
+def edge_map(img: np.ndarray) -> np.ndarray:
+    """Binary edge map via auto-canny on blurred grayscale."""
+    g = cv2.GaussianBlur(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), (3, 3), 0)
+    v = np.median(g)
+    lo, hi = int(max(0, 0.66 * v)), int(min(255, 1.33 * v))
+    return cv2.Canny(g, lo, hi)
+
+
+def hint_boxes(mask: np.ndarray, n: int, min_area: int = 60):
+    """Top-n connected components of mask as (x, y, w, h, area), largest first."""
+    num, _, stats, _ = cv2.connectedComponentsWithStats(mask, connectivity=8)
+    cands = [tuple(s) for s in stats[1:] if s[4] >= min_area]
+    cands.sort(key=lambda s: -s[4])
+    return cands[:n]
+
+
+def draw_boxes(img: np.ndarray, boxes, color=(0, 215, 255)):
+    for i, (x, y, w, h, _) in enumerate(boxes, 1):
+        cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
+        cv2.putText(img, str(i), (x + 3, y + 22), cv2.FONT_HERSHEY_SIMPLEX,
+                    0.7, (0, 0, 0), 4, cv2.LINE_AA)
+        cv2.putText(img, str(i), (x + 3, y + 22), cv2.FONT_HERSHEY_SIMPLEX,
+                    0.7, color, 2, cv2.LINE_AA)
+    return img
+
+
+def label(img: np.ndarray, text: str):
+    h, w = img.shape[:2]
+    bar = np.full((28, w, 3), 30, np.uint8)
+    cv2.putText(bar, text, (8, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.6,
+                (255, 255, 255), 1, cv2.LINE_AA)
+    return np.vstack([bar, img])
+
+
+def side_by_side(a: np.ndarray, b: np.ndarray, la: str, lb: str) -> np.ndarray:
+    a, b = label(a, la), label(b, lb)
+    sep = np.zeros((a.shape[0], 4, 3), np.uint8)
+    return np.hstack([a, sep, b])
+
+
+def metrics(ref: np.ndarray, draft: np.ndarray) -> dict:
+    """edge-F1 (tolerant) + mean color distance. Signal only, never a target."""
+    re_, de = edge_map(ref) > 0, edge_map(draft) > 0
+    k = np.ones((5, 5), np.uint8)
+    rd, dd = cv2.dilate(re_.astype(np.uint8), k) > 0, cv2.dilate(de.astype(np.uint8), k) > 0
+    p = (de & rd).sum() / max(de.sum(), 1)   # draft edges covered by ref
+    r = (re_ & dd).sum() / max(re_.sum(), 1) # ref edges covered by draft
+    f1 = 2 * p * r / max(p + r, 1e-9)
+    cd = float(np.linalg.norm(ref.astype(np.int16) - draft.astype(np.int16), axis=2).mean())
+    return {"precision": round(float(p), 3), "recall": round(float(r), 3),
+            "edge_f1": round(float(f1), 3), "color_dist": round(cd, 1)}
+
+
+# ---------------------------------------------------------------- subcommands
+
+def cmd_compare(a):
+    size = render(a.src, a.out) if a.src.endswith((".svg", ".html")) else None
+    draft = imread(a.src, size) if not a.src.endswith((".svg", ".html")) else imread(a.out)
+    ref = imread(a.ref, (draft.shape[1], draft.shape[0]))
+    la, lb = "REF", "DRAFT"
+    if a.region:
+        x, y, w, h = a.region
+        ref, draft = ref[y:y + h, x:x + w], draft[y:y + h, x:x + w]
+        la += f" region=({x},{y},{w},{h})"
+    if a.zoom != 1:
+        it = cv2.INTER_NEAREST if a.zoom > 1 else cv2.INTER_AREA
+        ref = cv2.resize(ref, None, fx=a.zoom, fy=a.zoom, interpolation=it)
+        draft = cv2.resize(draft, None, fx=a.zoom, fy=a.zoom, interpolation=it)
+    out = side_by_side(ref, draft, la, lb)
+    imwrite(a.out, out)
+    print(a.out, f"{out.shape[1]}x{out.shape[0]}")
+
+
+def cmd_diff(a):
+    size = render(a.src, a.out) if a.src.endswith((".svg", ".html")) else None
+    draft = imread(a.src, size) if not a.src.endswith((".svg", ".html")) else imread(a.out)
+    ref = imread(a.ref, (draft.shape[1], draft.shape[0]))
+    m = metrics(ref, draft)
+    print("metrics:", m)
+    if a.mode == "line":
+        re_, de = edge_map(ref) > 0, edge_map(draft) > 0
+        dd = cv2.dilate(de.astype(np.uint8), np.ones((5, 5), np.uint8)) > 0
+        rd = cv2.dilate(re_.astype(np.uint8), np.ones((5, 5), np.uint8)) > 0
+        ov = np.full((*re_.shape, 3), 25, np.uint8)          # dark bg
+        ov[re_ & ~dd] = (255, 255, 0)                        # cyan: ref-only (missed)
+        ov[de & ~rd] = (255, 0, 255)                         # magenta: mine-only (invented)
+        ov[re_ & de] = (255, 255, 255)                       # white: match
+        boxes = hint_boxes((re_ & ~dd).astype(np.uint8), a.hints)
+        ov = draw_boxes(ov, boxes)
+        print(f"hints: {[b[:4] for b in boxes]}")
+    else:
+        d = np.linalg.norm(ref.astype(np.int16) - draft.astype(np.int16), axis=2)
+        dn = (np.clip(d, 0, 128) / 128 * 255).astype(np.uint8)
+        ov = cv2.applyColorMap(cv2.GaussianBlur(dn, (0, 0), 2), cv2.COLORMAP_TURBO)
+        boxes = hint_boxes((dn > 100).astype(np.uint8), a.hints, min_area=400)
+        ov = draw_boxes(ov, boxes)
+        print(f"hints: {[b[:4] for b in boxes]}")
+    imwrite(a.out, side_by_side(ref, ov, "REF", f"DIFF-{a.mode}"))
+    print(a.out)
+
+
+def xdog(img: np.ndarray, sigma=1.0, k=1.6, p=25, eps=0.005, phi=10) -> np.ndarray:
+    g = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY).astype(np.float64) / 255.0
+    g1 = cv2.GaussianBlur(g, (0, 0), sigma)
+    g2 = cv2.GaussianBlur(g, (0, 0), sigma * k)
+    d = (1 + p) * g1 - p * g2
+    d /= max(d.max(), 1e-9)
+    u = np.where(d >= eps, 1.0, 1.0 + np.tanh(phi * (d - eps)))
+    return (u * 255).astype(np.uint8)
+
+
+def cmd_ref(a):
+    img = imread(a.image)
+    if a.kind == "lineart":
+        out = 255 - xdog(img, **a.params)  # black lines on white
+        if a.color:  # keep faint color underlay for orientation
+            out = cv2.addWeighted(img, 0.25, cv2.cvtColor(out, cv2.COLOR_GRAY2BGR), 0.75, 0)
+    else:  # palette
+        Z = img.reshape(-1, 3).astype(np.float32)
+        Z = Z[np.random.choice(len(Z), min(20000, len(Z)), replace=False)]
+        crit = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 20, 1.0)
+        _, labels, centers = cv2.kmeans(Z, a.k, None, crit, 3, cv2.KMEANS_PP_CENTERS)
+        counts = np.bincount(labels.flatten(), minlength=a.k)
+        order = np.argsort(-counts)
+        sw, hexes = [], []
+        for i in order:
+            c = centers[i].astype(int)
+            hexes.append("#%02x%02x%02x" % (c[2], c[1], c[0]))
+            row = np.full((60, 60, 3), c, np.uint8)
+            cv2.putText(row, hexes[-1][1:], (3, 52), cv2.FONT_HERSHEY_SIMPLEX,
+                        0.38, (255, 255, 255) if sum(c) < 360 else (0, 0, 0), 1, cv2.LINE_AA)
+            sw.append(row)
+        cols = 8
+        rows = [np.hstack(sw[i:i + cols] + [np.full((60, 60, 3), 255, np.uint8)] * (cols - len(sw[i:i + cols])))
+                for i in range(0, len(sw), cols)]
+        out = np.vstack(rows)
+        print(" ".join(hexes))
+    imwrite(a.out, out)
+    print(a.out)
+
+
+def cmd_log(a):
+    path = os.path.join(a.exdir, "log.md")
+    row = f"| {a.iter} |"
+    if a.src and a.ref:
+        size = render(a.src, "/tmp/_log.png") if a.src.endswith((".svg", ".html")) else None
+        draft = imread(a.src, size) if not a.src.endswith((".svg", ".html")) else imread("/tmp/_log.png")
+        ref = imread(a.ref, (draft.shape[1], draft.shape[0]))
+        m = metrics(ref, draft)
+        row += f" {m['edge_f1']} | {m['color_dist']} |"
+    else:
+        row += " - | - |"
+    line = f"{row} {a.note} |\n"
+    if not os.path.exists(path):
+        open(path, "w").write("# iteration log\n\n| iter | edge-F1 | color-dist | note |\n|---|---|---|---|\n")
+    open(path, "a").write(line)
+    print("logged:", line.strip())
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    sub = ap.add_subparsers(dest="cmd", required=True)
+
+    p = sub.add_parser("render"); p.add_argument("src"); p.add_argument("-o", "--out", default="/tmp/_render.png"); p.add_argument("--size")
+    p.set_defaults(fn=lambda a: print(a.out, render(a.src, a.out, tuple(map(int, a.size.split("x"))) if a.size else None)))
+
+    p = sub.add_parser("compare"); p.add_argument("ref"); p.add_argument("src")
+    p.add_argument("--region"); p.add_argument("--zoom", type=float, default=1)
+    p.add_argument("-o", "--out", default="/tmp/_compare.png")
+    p.set_defaults(fn=lambda a: setattr(a, "region", [int(v) for v in a.region.split(",")] if a.region else None) or cmd_compare(a))
+
+    p = sub.add_parser("diff"); p.add_argument("ref"); p.add_argument("src")
+    p.add_argument("--mode", choices=["line", "color"], default="line")
+    p.add_argument("--hints", type=int, default=5)
+    p.add_argument("-o", "--out", default="/tmp/_diff.png")
+    p.set_defaults(fn=cmd_diff)
+
+    p = sub.add_parser("ref"); p.add_argument("image"); p.add_argument("kind", choices=["lineart", "palette"])
+    p.add_argument("--k", type=int, default=12); p.add_argument("--color", action="store_true")
+    p.add_argument("-o", "--out", default="/tmp/_ref.png")
+    p.set_defaults(fn=lambda a: setattr(a, "params", {}) or cmd_ref(a))
+
+    p = sub.add_parser("log"); p.add_argument("exdir"); p.add_argument("--iter", type=int)
+    p.add_argument("--ref"); p.add_argument("--src"); p.add_argument("--note", default="")
+    p.set_defaults(fn=cmd_log)
+
+    a = ap.parse_args()
+    a.fn(a)
+
+
+if __name__ == "__main__":
+    main()
