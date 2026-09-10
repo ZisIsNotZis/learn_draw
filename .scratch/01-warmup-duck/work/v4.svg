@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <!-- v4: LINE ART refined. Water decoded: fill #a9d3ee, edge stroke #7fb5dc, dark ripples
+       #7fb5dc, white foam dashes. Shadow under hull = T3 (no outline). Body hugs head
+       (thin notch), bottom deepened to y~620. -->
+  <g id="scene">
+    <!-- waterline edge stroke: thin, darker than fill, behind duck -->
+    <g id="waterline" fill="none" stroke="#7fb5dc" stroke-width="4" stroke-linecap="round">
+      <path d="M 0 567 C 60 559, 110 558, 170 563 C 230 570, 270 575, 314 578"/>
+      <path d="M 590 571 C 640 573, 680 577, 720 576 C 750 575, 780 572, 800 569"/>
+    </g>
+    <!-- dark ripples: gentle arch curves -->
+    <g id="ripples" fill="none" stroke="#7fb5dc" stroke-width="5" stroke-linecap="round">
+      <path d="M 150 650 C 175 640, 215 640, 240 649"/>
+      <path d="M 597 668 C 617 657, 645 657, 663 666"/>
+      <path d="M 286 600 C 300 593, 318 593, 330 598"/>
+    </g>
+    <!-- white foam dashes -->
+    <g id="foam" fill="none" stroke="#f4fafd" stroke-width="6" stroke-linecap="round">
+      <path d="M 97 610 C 110 606, 124 606, 136 609"/>
+      <path d="M 690 597 C 702 593, 716 593, 727 596"/>
+      <path d="M 318 701 C 330 697, 344 697, 355 700"/>
+      <path d="M 362 592 C 380 587, 400 587, 416 590"/>
+    </g>
+  </g>
+  <g id="duck" fill="none" stroke="#6a4e17" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- body: left edge hugs head (thin sky notch), deep flat bottom, right shoulder -->
+    <path id="body" d="M 348 392
+             C 330 415, 318 460, 313 508
+             C 314 555, 336 598, 385 615
+             C 428 628, 505 626, 552 606
+             C 588 590, 610 552, 613 508
+             C 615 470, 608 440, 592 420
+             C 580 404, 565 400, 550 410
+             C 535 418, 520 412, 500 407
+             C 480 402, 465 395, 452 388
+             C 450 387, 449 387, 448 387"/>
+    <!-- head: arc interrupted where beak covers rim -->
+    <path id="head" d="M 274 285 A 112 112 0 1 1 293 363"/>
+    <!-- tail petal -->
+    <path id="tail" d="M 546 416 C 548 403, 560 396, 574 398 C 588 400, 596 410, 592 419 C 588 428, 568 431, 556 426 C 549 423, 545 420, 546 416 Z"/>
+    <!-- wing -->
+    <ellipse id="wing" cx="510" cy="500" rx="62" ry="42" transform="rotate(-12 510 500)"/>
+    <!-- feathers -->
+    <g id="feathers" stroke-width="5">
+      <path d="M 557 492 C 530 498, 495 495, 472 479"/>
+      <path d="M 554 512 C 528 517, 494 513, 468 498"/>
+      <path d="M 543 529 C 520 533, 494 529, 472 517"/>
+    </g>
+    <!-- upper beak -->
+    <path id="beak-upper" d="M 297 295 C 265 289, 230 293, 212 302 C 202 308, 202 318, 212 324 C 232 334, 268 336, 290 334 C 295 333, 298 328, 298 318 C 298 308, 298 299, 297 295 Z"/>
+    <!-- lower beak -->
+    <path id="beak-lower" d="M 289 338 C 262 340, 235 344, 223 352 C 214 358, 214 366, 224 371 C 240 378, 265 379, 280 374 C 287 371, 290 366, 290 360 C 290 352, 290 344, 289 338 Z"/>
+    <!-- eye stack -->
+    <circle id="eye-white" cx="372" cy="252" r="29"/>
+    <circle id="pupil" cx="366" cy="258" r="14" stroke-width="5"/>
+    <circle id="eye-highlight" cx="368" cy="251" r="5" stroke-width="4"/>
+    <!-- sheen -->
+    <g id="head-sheen" stroke-width="5">
+      <path d="M 317 218 C 336 208, 356 201, 373 196"/>
+      <path d="M 306 229 C 316 221, 326 215, 335 211"/>
+    </g>
+    <!-- nostril -->
+    <circle id="nostril" cx="255" cy="315" r="4.5" stroke-width="4"/>
+  </g>
+</svg>

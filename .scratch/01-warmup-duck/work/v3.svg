@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <!-- v3: LINE ART, measured geometry.
+       Head circle measured (385,299) r112; arc endpoints computed on the circle.
+       Beak overlaps head (rounded right ends over head fill); head arc interrupted y285-363.
+       Tail = closed petal drawn over sagging body top edge. -->
+  <g id="scene">
+    <!-- waterline: soft light boundary, two segments behind duck -->
+    <g id="waterline" fill="none" stroke="#9a9783" stroke-width="4" stroke-linecap="round">
+      <path d="M 0 564 C 60 558, 150 560, 200 567 C 240 572, 280 576, 314 578"/>
+      <path d="M 590 570 C 640 572, 670 576, 700 576 C 740 575, 775 571, 800 570"/>
+    </g>
+    <!-- ripples -->
+    <g id="ripples" fill="none" stroke="#9a9783" stroke-width="4" stroke-linecap="round">
+      <path d="M 95 606 C 110 601, 126 601, 139 605"/>
+      <path d="M 162 641 C 182 634, 212 634, 232 641"/>
+      <path d="M 288 600 C 300 596, 314 596, 325 599"/>
+      <path d="M 556 611 C 576 605, 610 605, 632 610"/>
+      <path d="M 592 661 C 614 654, 646 654, 666 660"/>
+      <path d="M 322 700 C 336 696, 352 696, 364 699"/>
+    </g>
+  </g>
+  <g id="duck" fill="none" stroke="#6a4e17" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- body: open path, ends tuck inside head circle (385,299,112); top sags between neck and tail -->
+    <path id="body" d="M 332 390
+             C 318 425, 312 468, 313 508
+             C 314 552, 338 592, 385 609
+             C 428 623, 505 621, 552 601
+             C 588 585, 610 550, 613 508
+             C 615 470, 608 440, 592 420
+             C 580 404, 565 400, 550 410
+             C 535 418, 520 412, 500 407
+             C 480 402, 465 395, 452 388
+             C 449 387, 447 386, 445 386"/>
+    <!-- head: arc interrupted where beak covers rim (y285 to y363) -->
+    <path id="head" d="M 274 285 A 112 112 0 1 1 293 363"/>
+    <!-- tail: closed petal over body top edge -->
+    <path id="tail" d="M 546 416 C 548 403, 560 396, 574 398 C 588 400, 596 410, 592 419 C 588 428, 568 431, 556 426 C 549 423, 545 420, 546 416 Z"/>
+    <!-- wing: measured (510,500) rx62 ry42 -->
+    <ellipse id="wing" cx="510" cy="500" rx="62" ry="42" transform="rotate(-12 510 500)"/>
+    <!-- feathers: sagging curves, right end higher -->
+    <g id="feathers" stroke-width="5">
+      <path d="M 553 490 C 528 496, 495 494, 472 479"/>
+      <path d="M 550 510 C 526 515, 494 512, 468 498"/>
+      <path d="M 540 527 C 519 531, 494 528, 472 517"/>
+    </g>
+    <!-- upper beak: rounded tip left, rounded right end overlapping head -->
+    <path id="beak-upper" d="M 297 295 C 265 289, 230 293, 212 302 C 202 308, 202 318, 212 324 C 232 334, 268 336, 290 334 C 295 333, 298 328, 298 318 C 298 308, 298 299, 297 295 Z"/>
+    <!-- lower beak: angled down, mouth open to tip -->
+    <path id="beak-lower" d="M 289 338 C 262 340, 235 344, 223 352 C 214 358, 214 366, 224 371 C 240 378, 265 379, 280 374 C 287 371, 290 366, 290 360 C 290 352, 290 344, 289 338 Z"/>
+    <!-- eye stack -->
+    <circle id="eye-white" cx="372" cy="252" r="29"/>
+    <circle id="pupil" cx="366" cy="258" r="14" stroke-width="5"/>
+    <circle id="eye-highlight" cx="368" cy="251" r="5" stroke-width="4"/>
+    <!-- sheen: two arcs hugging rim -->
+    <g id="head-sheen" stroke-width="5">
+      <path d="M 317 218 C 336 208, 356 201, 373 196"/>
+      <path d="M 306 229 C 316 221, 326 215, 335 211"/>
+    </g>
+    <!-- nostril -->
+    <circle id="nostril" cx="255" cy="315" r="4.5" stroke-width="4"/>
+  </g>
+</svg>

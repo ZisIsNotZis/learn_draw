@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <!-- v2: LINE ART. Occlusion semantics fixed: waterline light + split behind duck;
+       head outline breaks at beak; body ends meet head; tail integrated as bump;
+       no outlines for blush/belly (color regions). -->
+  <g id="scene">
+    <!-- waterline: light soft boundary, split into two segments, BEHIND duck -->
+    <g id="waterline" fill="none" stroke="#9a9783" stroke-width="5" stroke-linecap="round">
+      <path d="M 0 572 C 110 562, 220 570, 318 560"/>
+      <path d="M 622 566 C 680 574, 740 570, 800 576"/>
+    </g>
+    <!-- ripples: light curves on water -->
+    <g id="ripples" fill="none" stroke="#9a9783" stroke-width="4" stroke-linecap="round">
+      <path d="M 95 606 C 110 601, 126 601, 139 605"/>
+      <path d="M 162 641 C 182 634, 212 634, 232 641"/>
+      <path d="M 288 600 C 300 596, 314 596, 325 599"/>
+      <path d="M 556 611 C 576 605, 610 605, 632 610"/>
+      <path d="M 592 661 C 614 654, 646 654, 666 660"/>
+      <path d="M 322 700 C 336 696, 352 696, 364 699"/>
+    </g>
+  </g>
+  <g id="duck" fill="none" stroke="#6a4e17" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- body: open path, both ends tuck behind head; tail bump integrated on right shoulder -->
+    <path id="body" d="M 455 384
+             C 490 382, 520 382, 545 390
+             C 556 384, 568 379, 578 383
+             C 590 388, 590 402, 580 412
+             C 588 425, 602 440, 610 462
+             C 620 500, 616 550, 588 582
+             C 560 610, 515 620, 468 618
+             C 415 616, 355 600, 332 540
+             C 318 498, 322 448, 348 396" />
+    <!-- head: arc interrupted by beak on left -->
+    <path id="head" d="M 294 286 A 107 107 0 1 1 291 352"/>
+    <!-- wing -->
+    <ellipse id="wing" cx="505" cy="488" rx="68" ry="46" transform="rotate(-18 505 488)"/>
+    <!-- feathers: sweep left from wing right end, gentle downward bow -->
+    <g id="feathers" stroke-width="5">
+      <path d="M 556 462 C 520 457, 490 461, 470 472"/>
+      <path d="M 562 485 C 524 481, 494 486, 474 497"/>
+      <path d="M 552 507 C 522 506, 498 511, 482 519"/>
+    </g>
+    <!-- upper beak: chunky wedge over head edge -->
+    <path id="beak-upper" d="M 297 289 C 255 283, 218 291, 208 305 C 200 316, 208 328, 230 335 C 255 343, 280 343, 296 343 L 297 289 Z"/>
+    <!-- lower beak: smaller, angled down, mouth open -->
+    <path id="beak-lower" d="M 296 350 C 265 349, 235 353, 224 361 C 216 367, 220 375, 235 379 C 256 384, 280 381, 293 376 C 297 368, 298 356, 296 350 Z"/>
+    <!-- mouth line -->
+    <path id="mouth" d="M 296 346 C 272 347, 250 347, 234 346" stroke-width="5"/>
+    <!-- eye: white circle, pupil down-left, highlight up-left -->
+    <circle id="eye-white" cx="367" cy="251" r="29"/>
+    <circle id="pupil" cx="361" cy="259" r="17" stroke-width="5"/>
+    <circle id="eye-highlight" cx="349" cy="244" r="6" stroke-width="4"/>
+    <!-- head sheen: arcs hugging top-left rim -->
+    <g id="head-sheen" stroke-width="5">
+      <path d="M 312 226 C 324 216, 336 210, 348 206"/>
+      <path d="M 299 243 C 304 238, 310 234, 316 231"/>
+    </g>
+    <!-- nostril -->
+    <circle id="nostril" cx="253" cy="316" r="4.5" stroke-width="4"/>
+  </g>
+</svg>

@@ -217,6 +217,35 @@ def cmd_log(a):
     print("logged:", line.strip())
 
 
+def cmd_measure(a):
+    img = imread(a.image)
+    if a.hough:
+        g = cv2.GaussianBlur(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), (5, 5), 1)
+        minR, maxR = (a.rmin, a.rmax) if a.rmin else (14, 130)
+        circ = cv2.HoughCircles(g, cv2.HOUGH_GRADIENT, 1.2, 40,
+                                param1=120, param2=30, minRadius=minR, maxRadius=maxR)
+        if circ is not None:
+            for c in circ[0][:10]:
+                print("circle: x=%.0f y=%.0f r=%.0f" % tuple(c))
+        return
+    if a.point:
+        x, y = a.point
+        print("#%02x%02x%02x" % tuple(img[y, x][::-1])); return
+    if a.scan:  # "row:y:x0:x1" or "col:x:y0:y1" - print color transitions
+        kind, v, lo, hi = a.scan.split(":"); v, lo, hi = int(v), int(lo), int(hi)
+        line = img[v, lo:hi] if kind == "row" else img[lo:hi, v]
+        prev = None
+        for i, p in enumerate(line):
+            hexc = "#%02x%02x%02x" % tuple(p[::-1])
+            key = hexc[:4]
+            if key != prev:
+                pos = lo + i
+                print(("x" if kind == "row" else "y") + str(pos), hexc)
+                prev = key
+        return
+    print("nothing to do: use --hough, --point x,y or --scan row:y:x0:x1")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -243,6 +272,11 @@ def main():
     p = sub.add_parser("log"); p.add_argument("exdir"); p.add_argument("--iter", type=int)
     p.add_argument("--ref"); p.add_argument("--src"); p.add_argument("--note", default="")
     p.set_defaults(fn=cmd_log)
+
+    p = sub.add_parser("measure"); p.add_argument("image")
+    p.add_argument("--hough", action="store_true"); p.add_argument("--rmin", type=int); p.add_argument("--rmax", type=int)
+    p.add_argument("--point"); p.add_argument("--scan")
+    p.set_defaults(fn=lambda a: setattr(a, "point", [int(v) for v in a.point.split(",")] if a.point else None) or cmd_measure(a))
 
     a = ap.parse_args()
     a.fn(a)

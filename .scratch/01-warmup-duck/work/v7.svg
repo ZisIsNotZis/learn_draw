@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <!-- v5: T2 FLAT COLOR on measured line art.
+       Palette (sampled): sky #d7ecfa, water #a9d3ee, waterline/ripples #7fb5dc, shadow #9bcae8,
+       body #ffd84d, shade-band #f8c940, wing #f6c93f, gold stroke #785a19, outline #6b4e16,
+       beak #f49b33, pupil #3a2e14, sheen #fff3ca, blush #fbbb7e, foam #f4fafd.
+       Body top-right corrected: shoulder peak ~x510, slope descends under tail petal; petal lifts off at right. -->
+  <defs>
+    <clipPath id="body-clip">
+      <path d="M 350 394 C 332 418, 318 462, 313 508 C 314 555, 336 598, 385 615 C 428 628, 505 626, 552 606 C 588 590, 610 552, 613 508 C 615 470, 608 440, 590 445 C 572 433, 547 419, 522 412 C 500 409, 482 404, 466 396 C 460 393, 453 390, 449 389 Z"/>
+    </clipPath>
+  </defs>
+  <g id="scene">
+    <rect id="sky" width="800" height="800" fill="#d7ecfa"/>
+    <!-- water: wavy top edge (hidden mid-section straight, duck covers it) -->
+    <path id="water" d="M 0 567 C 60 559, 110 558, 170 563 C 230 570, 270 575, 314 578 L 590 571 C 640 573, 680 577, 720 576 C 750 575, 780 572, 800 569 L 800 800 L 0 800 Z" fill="#a9d3ee"/>
+    <!-- soft shadow under hull (T3 will blur) -->
+    <ellipse id="water-shadow" cx="462" cy="608" rx="182" ry="27" fill="#93c1e5"/>
+    <!-- waterline edge stroke -->
+    <g id="waterline" fill="none" stroke="#7fb5dc" stroke-width="4" stroke-linecap="round">
+      <path d="M 0 567 C 60 559, 110 558, 170 563 C 230 570, 270 575, 314 578"/>
+      <path d="M 590 571 C 640 573, 680 577, 720 576 C 750 575, 780 572, 800 569"/>
+    </g>
+    <!-- dark ripples -->
+    <g id="ripples" fill="none" stroke="#7fb5dc" stroke-width="5" stroke-linecap="round">
+      <path d="M 150 650 C 175 640, 215 640, 240 649"/>
+      <path d="M 597 668 C 617 657, 645 657, 663 666"/>
+      <path d="M 286 600 C 300 593, 318 593, 330 598"/>
+    </g>
+    <!-- white foam dashes -->
+    <g id="foam" fill="none" stroke="#f4fafd" stroke-width="6" stroke-linecap="round">
+      <path d="M 97 610 C 110 606, 124 606, 136 609"/>
+      <path d="M 690 597 C 702 593, 716 593, 727 596"/>
+      <path d="M 318 701 C 330 697, 344 697, 355 700"/>
+      <path d="M 362 592 C 380 587, 400 587, 416 590"/>
+    </g>
+  </g>
+  <g id="duck" stroke-linecap="round" stroke-linejoin="round">
+    <!-- body fill -->
+    <path id="body" d="M 350 394
+             C 332 418, 318 462, 313 508
+             C 314 555, 336 598, 385 615
+             C 428 628, 505 626, 552 606
+             C 588 590, 610 552, 613 508
+             C 615 470, 608 440, 590 445
+             C 572 433, 547 419, 522 412
+             C 500 409, 482 404, 466 396
+             C 460 393, 453 390, 449 389"
+          fill="#ffd84d" stroke="none"/>
+    <!-- belly shade band: darker lens across lower body, no outline; bright rim stays below it -->
+    <ellipse id="belly-shade" cx="455" cy="553" rx="108" ry="27" fill="#f8c940" clip-path="url(#body-clip)"/>
+    <!-- outlines over fills -->
+    <path id="body-outline" d="M 350 394 C 332 418, 318 462, 313 508 C 314 555, 336 598, 385 615 C 428 628, 505 626, 552 606 C 588 590, 610 552, 613 508 C 615 470, 608 440, 590 445 C 572 433, 547 419, 522 412 C 500 409, 482 404, 466 396 C 460 393, 453 390, 449 389" fill="none" stroke="#6b4e16" stroke-width="7"/>
+    <!-- tail petal: lifts off body at right end -->
+    <path id="tail" d="M 545 417 C 547 402, 560 394, 575 396 C 590 398, 599 409, 595 419 C 591 429, 569 433, 556 428 C 548 425, 544 421, 545 417 Z" fill="#ffd84d" stroke="#6b4e16" stroke-width="7"/>
+    <!-- head -->
+    <path id="head" d="M 274 285 A 112 112 0 1 1 293 363" fill="#ffd84d" stroke="#6b4e16" stroke-width="7"/>
+    <!-- sheen -->
+    <g id="head-sheen" fill="none" stroke="#fff3ca" stroke-width="6">
+      <path d="M 317 218 C 336 208, 356 201, 373 196"/>
+      <path d="M 306 229 C 316 221, 326 215, 335 211"/>
+    </g>
+    <!-- wing: darker gold fill, gold outline -->
+    <ellipse id="wing" cx="510" cy="500" rx="62" ry="42" transform="rotate(-12 510 500)" fill="#f7cd44" stroke="#785a19" stroke-width="6"/>
+    <g id="feathers" fill="none" stroke="#785a19" stroke-width="5">
+      <path d="M 557 492 C 530 498, 495 495, 472 479"/>
+      <path d="M 554 512 C 528 517, 494 513, 468 498"/>
+      <path d="M 543 529 C 520 533, 494 529, 472 517"/>
+    </g>
+    <!-- beak -->
+    <path id="beak-upper" d="M 297 295 C 265 289, 228 294, 210 303 C 200 309, 201 319, 212 325 C 232 334, 268 336, 290 334 C 295 333, 298 328, 298 318 C 298 308, 298 299, 297 295 Z" fill="#f49b33" stroke="#6b4e16" stroke-width="7"/>
+    <path id="beak-lower" d="M 289 338 C 264 340, 238 343, 227 350 C 219 356, 220 363, 229 368 C 244 374, 266 375, 279 371 C 286 368, 289 363, 289 358 C 289 351, 289 344, 289 338 Z" fill="#f49b33" stroke="#6b4e16" stroke-width="7"/>
+    <!-- eye stack -->
+    <circle id="eye-white" cx="372" cy="252" r="29" fill="#ffffff" stroke="#6b4e16" stroke-width="7"/>
+    <circle id="pupil" cx="366" cy="258" r="15.5" fill="#3a2e14" stroke="none"/>
+    <circle id="eye-highlight" cx="368" cy="251" r="5" fill="#ffffff" stroke="none"/>
+    <!-- blush: pure color region, no outline -->
+    <ellipse id="blush" cx="403" cy="330" rx="33" ry="18" transform="rotate(-8 403 330)" fill="#fbbb7e"/>
+    <!-- nostril -->
+    <circle id="nostril" cx="255" cy="315" r="4.5" fill="#6b4e16" stroke="none"/>
+  </g>
+</svg>

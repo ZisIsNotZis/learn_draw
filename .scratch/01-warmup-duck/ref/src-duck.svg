@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <!-- Picture-book rubber duck, flat vector style. Duck floats on calm water, facing left. -->
+
+  <!-- Pale blue sky/air background fills the whole canvas -->
+  <rect id="sky" x="0" y="0" width="800" height="800" fill="#D7ECFA"/>
+
+  <!-- Water body: wavy top edge, filled pale blue, sits behind the duck -->
+  <path id="water" d="M 0 570
+    C 70 558, 130 558, 200 570
+    C 270 582, 330 582, 400 570
+    C 470 558, 530 558, 600 570
+    C 670 582, 730 582, 800 570
+    L 800 800 L 0 800 Z" fill="#A9D3EE"/>
+
+  <!-- Waterline: stroked crest of the water so the surface reads clearly -->
+  <path id="waterline" d="M 0 570
+    C 70 558, 130 558, 200 570
+    C 270 582, 330 582, 400 570
+    C 470 558, 530 558, 600 570
+    C 670 582, 730 582, 800 570"
+    fill="none" stroke="#7FB5DC" stroke-width="5"/>
+
+  <!-- Soft shadow ellipse under the duck anchors it to the water surface -->
+  <ellipse id="duck-shadow" cx="470" cy="612" rx="175" ry="18" fill="#93C4E4" opacity="0.6"/>
+
+  <g id="duck" stroke="#6B4E16" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Tail curl: little upturned flick at the rear, drawn first so body overlaps its base -->
+    <path id="tail-curl" d="M 538 438
+      C 556 402, 588 394, 600 414
+      C 606 426, 598 436, 584 434
+      C 568 432, 552 434, 538 438 Z" fill="#FFD84D" stroke-width="5"/>
+
+    <!-- Body: rounded teardrop hull, wider at the floating rear -->
+    <path id="body" d="M 350 440
+      C 395 408, 470 400, 530 415
+      C 585 428, 615 465, 612 505
+      C 610 545, 575 585, 505 600
+      C 435 615, 360 605, 330 565
+      C 305 532, 310 480, 350 440 Z" fill="#FFD84D" stroke-width="6"/>
+
+    <!-- Subtle belly shade: darker yellow band along the waterline for gentle volume -->
+    <ellipse id="belly-shade" cx="455" cy="552" rx="112" ry="30" fill="#F2BE36" opacity="0.55" stroke="none"/>
+
+    <!-- Back highlight: thin lighter arc on the upper back, picture-book shine -->
+    <path id="back-highlight" d="M 402 424
+      C 442 410, 490 408, 524 418"
+      fill="none" stroke="#FFE58A" stroke-width="6" opacity="0.85"/>
+
+    <!-- Wing: folded wing shape on the flank, slightly darker yellow -->
+    <path id="wing" d="M 470 470
+      C 520 452, 570 462, 585 495
+      C 592 512, 580 530, 552 538
+      C 512 549, 468 540, 452 515
+      C 443 500, 450 478, 470 470 Z" fill="#F6C93F" stroke-width="5"/>
+
+    <!-- Feather line 1: topmost separation inside the wing -->
+    <path id="feather-1" d="M 472 480 C 506 472, 536 476, 556 492" fill="none" stroke-width="4"/>
+    <!-- Feather line 2: middle separation inside the wing -->
+    <path id="feather-2" d="M 468 500 C 500 494, 528 498, 548 510" fill="none" stroke-width="4"/>
+    <!-- Feather line 3: lowest separation inside the wing -->
+    <path id="feather-3" d="M 472 518 C 496 514, 518 517, 534 526" fill="none" stroke-width="4"/>
+
+    <!-- Head: big round head overlapping the chest, facing left -->
+    <circle id="head" cx="385" cy="300" r="115" fill="#FFD84D" stroke-width="6"/>
+
+    <!-- Head shine: small white arc on the crown, subtle gloss -->
+    <path id="head-shine" d="M 322 216
+      C 336 203, 356 197, 374 198"
+      fill="none" stroke="#FFFFFF" stroke-width="6" opacity="0.7"/>
+
+    <!-- Upper beak: orange top bill curving out to a rounded tip -->
+    <path id="beak-upper" d="M 292 306
+      C 262 292, 228 296, 210 316
+      C 204 323, 205 331, 214 334
+      C 240 342, 270 340, 292 332 Z" fill="#F49B33" stroke-width="5"/>
+
+    <!-- Lower beak: slightly darker smaller bill tucked under the top one -->
+    <path id="beak-lower" d="M 288 344
+      C 262 350, 236 352, 222 358
+      C 214 362, 216 372, 226 374
+      C 248 377, 272 372, 288 362 Z" fill="#E8871E" stroke-width="5"/>
+
+    <!-- Nostril: tiny dark dot on the top bill -->
+    <ellipse id="nostril" cx="256" cy="316" rx="4.5" ry="3.5" fill="#6B4E16" stroke="none"/>
+
+    <!-- Eye white: round sclera placed in the head's upper third -->
+    <circle id="eye" cx="372" cy="255" r="27" fill="#FFFFFF" stroke-width="5"/>
+    <!-- Pupil: dark iris looking slightly forward-left -->
+    <circle id="pupil" cx="366" cy="259" r="13" fill="#3A2E14" stroke="none"/>
+    <!-- Eye highlight: small white glint upper-right of the pupil -->
+    <circle id="eye-highlight" cx="371" cy="252" r="5" fill="#FFFFFF" stroke="none"/>
+
+    <!-- Cheek blush: soft pink oval below the eye -->
+    <ellipse id="cheek-blush" cx="404" cy="330" rx="32" ry="18" fill="#F9A8A0" opacity="0.6" stroke="none"/>
+  </g>
+
+  <!-- Ripples touching the hull left: small arc in front of the body sells the float -->
+  <path id="ripple-touch-left" d="M 285 598 C 315 588, 350 588, 380 598" fill="none" stroke="#7FB5DC" stroke-width="5" stroke-linecap="round"/>
+  <!-- Ripples touching the hull right: matching arc on the rear of the hull -->
+  <path id="ripple-touch-right" d="M 545 612 C 575 602, 610 602, 640 612" fill="none" stroke="#7FB5DC" stroke-width="5" stroke-linecap="round"/>
+  <!-- Distant ripple left -->
+  <path id="ripple-left" d="M 150 640 C 180 630, 215 630, 245 640" fill="none" stroke="#7FB5DC" stroke-width="5" stroke-linecap="round"/>
+  <!-- Distant ripple right -->
+  <path id="ripple-right" d="M 590 668 C 620 658, 655 658, 685 668" fill="none" stroke="#7FB5DC" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Water sparkle 1: light glint stroke on the surface, far left -->
+  <path id="sparkle-1" d="M 96 606 C 108 604, 120 604, 132 606" fill="none" stroke="#EAF7FF" stroke-width="4" stroke-linecap="round"/>
+  <!-- Water sparkle 2: light glint stroke, right of the duck -->
+  <path id="sparkle-2" d="M 688 596 C 700 594, 712 594, 724 596" fill="none" stroke="#EAF7FF" stroke-width="4" stroke-linecap="round"/>
+  <!-- Water sparkle 3: light glint stroke, lower left -->
+  <path id="sparkle-3" d="M 320 700 C 334 698, 348 698, 362 700" fill="none" stroke="#EAF7FF" stroke-width="4" stroke-linecap="round"/>
+</svg>
