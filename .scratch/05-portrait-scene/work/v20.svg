@@ -193,13 +193,17 @@
              C 1018 330, 1012 380, 1008 420
              C 1000 480, 985 540, 968 590
              C 950 640, 938 690, 931 733
-             C 918 690, 895 560, 874 468
-             C 868 540, 858 610, 842 676
-             C 830 610, 820 530, 812 470
-             C 807 500, 804 530, 800 556
-             C 796 512, 793 470, 792 430
-             C 793 468, 795 420, 801 374
-             C 805 335, 812 292, 824 288 Z" fill="#3d73a7" stroke="#26354a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+             C 920 688, 900 570, 888 470
+             C 878 520, 870 560, 874 592
+             C 862 588, 844 590, 826 594
+             C 806 600, 788 610, 776 624
+             C 782 652, 810 668, 842 676
+             C 800 660, 778 640, 776 624
+             C 790 610, 830 602, 858 598
+             C 876 592, 884 578, 886 566
+             C 878 536, 868 500, 856 470
+             C 840 442, 820 436, 812 430
+             C 800 380, 810 330, 824 288 Z" fill="#3d73a7" stroke="#26354a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
   <path id="wing-strand" d="M 562 168 C 549 205, 538 245, 542 272 C 549 295, 556 315, 568 330 C 574 336, 583 335, 586 327 C 589 318, 585 310, 577 308 C 582 285, 584 255, 585 225 C 586 203, 588 183, 592 168" fill="#3d73a7" stroke="#26354a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M 942 330 C 936 430, 934 530, 940 620" stroke="#d7b1c7" stroke-width="5" opacity="0.7" fill="none" stroke-linecap="round"/>
   <g id="curtain-flow" fill="none" stroke="#2c4a6e" stroke-width="2.5">
