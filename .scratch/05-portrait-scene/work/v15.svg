@@ -1,0 +1,239 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c3d7da"/><stop offset="0.55" stop-color="#c9dadb"/><stop offset="1" stop-color="#bcd6d2"/>
+    </linearGradient>
+    <linearGradient id="ribbonGrad" x1="0.7" y1="0.2" x2="0.2" y2="1">
+      <stop offset="0" stop-color="#a5dcc0"/><stop offset="0.55" stop-color="#78cbc3"/><stop offset="1" stop-color="#4ba7b1"/>
+    </linearGradient>
+    <linearGradient id="tailGrad" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#e0a8b8"/><stop offset="0.5" stop-color="#b878a8"/><stop offset="1" stop-color="#8a5a88"/>
+    </linearGradient>
+    <linearGradient id="greenOvGrad" x1="0.8" y1="0.1" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#a8d8b8"/><stop offset="1" stop-color="#4ba781"/>
+    </linearGradient>
+    <linearGradient id="pinkOvGrad" x1="0.3" y1="0" x2="0.7" y2="1">
+      <stop offset="0" stop-color="#f0b8c8"/><stop offset="1" stop-color="#e888a8"/>
+    </linearGradient>
+  </defs>
+  <rect id="bg-sky" width="1024" height="1024" fill="url(#bgGrad)"/>
+  <path id="ribbon-body" d="M 0 395
+             C 60 400, 150 388, 240 390
+             C 330 382, 420 378, 565 380
+             C 560 450, 545 520, 520 570
+             C 480 640, 432 722, 392 772
+             C 330 754, 255 740, 180 726
+             C 115 714, 50 700, 0 690 Z" fill="url(#ribbonGrad)"/>
+  <g id="ribbon-tail">
+      <path d="M 12 480 C 38 432, 95 420, 132 455 C 158 480, 156 522, 128 545 C 102 566, 66 558, 54 528" fill="none" stroke="#a86a9a" stroke-width="24" stroke-linecap="round"/>
+      <path d="M 20 480 C 55 440, 105 440, 132 475" fill="none" stroke="#e0a8b8" stroke-width="10" stroke-linecap="round" opacity="0.85"/>
+      <path d="M 0 545 C 20 552, 38 560, 50 572" fill="none" stroke="#b878a8" stroke-width="10" stroke-linecap="round"/>
+    </g>
+  <g id="ribbon-white" fill="#eef4f2" opacity="0.9" stroke="#c8d8d4" stroke-width="2">
+    <path d="M 310 688 L 385 672 L 452 682 L 508 700 L 558 718 L 545 738 L 470 728 L 408 732 L 350 712 L 310 688 Z"/>
+    <path d="M 150 792 L 255 812 L 340 862 L 300 880 L 195 830 Z"/>
+    <path d="M 62 764 L 160 782 L 250 838 L 210 856 L 120 800 Z"/>
+  </g>
+  <path id="ribbon-tealband" d="M 0 730 C 70 738, 150 758, 205 788 L 195 808 C 140 780, 65 760, 0 752 Z" fill="#4ba7b1" opacity="0.85"/>
+  <g id="torso" stroke-linecap="round" stroke-linejoin="round">
+    <!-- skirt: navy, blown left, wavy hem -->
+    <path id="skirt-underlayer" d="M 445 760 C 430 720, 445 690, 480 678 C 520 664, 560 660, 600 662 L 645 664 C 612 702, 572 762, 542 822 C 522 860, 505 892, 498 912 C 470 880, 450 825, 445 760 Z" fill="#112e4b"/>
+    <!-- flower petals: translucent, behind the white skirt -->
+    <g id="petals" fill="#cfe0ea" opacity="0.75">
+      <path d="M 640 775 C 668 748, 710 742, 738 764 C 762 783, 766 815, 746 840 C 720 870, 672 874, 644 850 C 622 830, 620 796, 640 775 Z"/>
+      <path d="M 700 800 C 730 780, 768 782, 788 806 C 806 828, 800 858, 776 872 C 748 888, 714 880, 700 854 C 690 834, 688 814, 700 800 Z"/>
+    </g>
+    <!-- white skirt body, flowing down-left; hem trim follows -->
+    <path id="skirt-white" d="M 640 662
+             C 700 654, 765 656, 818 668
+             C 848 676, 862 694, 860 716
+             C 856 762, 846 812, 826 858
+             C 810 893, 788 920, 760 938
+             C 715 964, 650 970, 592 958
+             C 540 946, 498 918, 476 880
+             C 458 848, 452 812, 462 782
+             C 476 742, 508 706, 548 684
+             C 578 668, 610 662, 640 662 Z" fill="#dfe7da" stroke="#2b3b55" stroke-width="5"/>
+    <path id="skirt-hem-trim" d="M 852 700 C 858 752, 848 812, 824 860 C 806 894, 782 920, 752 936 C 700 960, 620 964, 560 948 C 522 936, 494 912, 480 882" fill="none" stroke="#1a3350" stroke-width="10" stroke-linecap="round"/>
+    <path id="overskirt" d="M 445 760 Z" fill="none"/>
+    <g id="skirt-folds" fill="none" stroke="#b8c4c0" stroke-width="2.5">
+      <path d="M 700 700 C 690 760, 670 830, 640 890"/>
+      <path d="M 770 700 C 775 770, 760 850, 720 915"/>
+    </g>
+    <!-- blouse -->
+    <path id="blouse" d="M 640 442
+             C 700 428, 770 430, 826 458
+             C 850 480, 860 520, 856 565
+             C 852 610, 846 640, 840 662
+             C 770 676, 690 676, 630 662
+             C 622 620, 618 570, 622 535
+             C 625 498, 630 466, 640 442 Z" fill="#e1e7dc" stroke="#3a3d4d" stroke-width="3"/>
+    <!-- blouse wrinkles -->
+    <g id="blouse-wrinkles" fill="none" stroke="#b8c4c0" stroke-width="2.5">
+      <path d="M 760 540 C 775 560, 785 590, 788 625"/>
+      <path d="M 650 560 C 645 590, 645 620, 650 648"/>
+    </g>
+    <!-- jabot: ruffled cravat -->
+    <path id="jabot" d="M 658 542
+             C 650 570, 650 600, 658 628 C 654 640, 656 652, 662 660
+             C 668 650, 670 638, 668 626 C 674 614, 674 600, 670 588 C 676 576, 676 562, 672 550
+             L 686 546 C 684 560, 686 574, 692 586 C 688 598, 690 612, 696 624 C 694 636, 696 648, 702 658
+             C 708 650, 710 638, 708 626 C 712 614, 710 600, 704 588 C 710 576, 710 562, 706 548
+             L 722 544 C 726 568, 726 596, 720 624 C 722 638, 718 652, 710 662
+             C 694 668, 676 668, 662 660 Z" fill="#e7ecdf" stroke="#3a3d4d" stroke-width="2.5"/>
+    <path id="jabot-stripe" d="M 646 608 C 642 632, 642 658, 648 680 L 672 680 C 674 656, 672 630, 668 608 Z" fill="#2b3b55"/>
+    <!-- sleeves -->
+    <path id="sleeve-left" d="M 640 452 C 610 460, 585 490, 572 530 C 565 552, 566 570, 574 580 C 600 588, 630 585, 648 572 C 652 530, 650 485, 640 452 Z" fill="#e1e7dc" stroke="#3a3d4d" stroke-width="3"/>
+    <path id="sleeve-right" d="M 826 458 C 856 470, 878 505, 888 545 C 893 565, 892 580, 885 590 C 858 596, 830 590, 812 575 C 808 535, 812 490, 826 458 Z" fill="#e1e7dc" stroke="#3a3d4d" stroke-width="3"/>
+    <g id="sleeve-gathers" fill="none" stroke="#b8c4c0" stroke-width="2.5">
+      <path d="M 822 545 C 838 552, 858 555, 878 552"/>
+      <path d="M 818 520 C 836 528, 858 532, 880 528"/>
+    </g>
+    <!-- collar flaps with navy trim -->
+    <path id="collar-ext" d="M 630 435 C 660 425, 700 423, 740 428 C 775 432, 800 442, 812 455 C 795 472, 770 478, 748 470 C 730 464, 712 462, 698 462 C 678 468, 656 472, 640 466 C 630 458, 626 446, 630 435 Z" fill="#e7ecdf" stroke="#2b3b55" stroke-width="4"/>
+    <path id="collar-trim" d="M 636 446 C 668 436, 706 434, 742 438 C 770 442, 792 450, 804 458" fill="none" stroke="#2b3b55" stroke-width="4"/>
+    <!-- bow -->
+    <g id="bow" stroke="#a92f5c" stroke-width="3">
+      <path id="bow-tail" d="M 676 526 C 668 548, 654 568, 634 584 C 616 598, 596 608, 578 610 C 566 611, 562 603, 568 594 C 578 580, 590 568, 599 554 C 607 542, 614 530, 622 520 C 638 512, 658 515, 676 526 Z" fill="#d44f81"/>
+      <path id="bow-tail-fold" d="M 640 560 C 630 572, 618 582, 604 590" fill="none" stroke="#a92f5c" stroke-width="2.5"/>
+      <path id="bow-wing-l" d="M 676 470 C 650 452, 612 452, 596 470 C 584 484, 588 508, 602 522 C 624 540, 658 540, 676 528 Z" fill="#d44f81"/>
+      <path id="bow-wing-r" d="M 720 468 C 744 450, 780 452, 794 470 C 804 484, 800 508, 786 522 C 764 540, 732 538, 720 526 Z" fill="#d44f81"/>
+      <path id="bow-knot" d="M 676 468 C 672 490, 672 512, 678 530 C 690 536, 706 536, 718 530 C 724 510, 724 488, 720 468 C 706 460, 690 460, 676 468 Z" fill="#de5a8c"/>
+    </g>
+  </g>
+  <path id="brim-underside" d="M 462 28 Q 500 45 520 62 Q 540 80 560 105 Q 580 130 595 152 Q 610 175 625 198 Q 640 220 654 236 Q 668 252 679 268 Q 690 285 698 300 Q 705 315 710 330 Q 715 345 728 302 Q 740 260 715 220 Q 690 180 675 150 Q 660 120 650 99 Q 640 78 630 62 Q 620 45 610 40 Q 600 35 578 31 Q 555 27 530 27 Q 505 27 484 28 Z" fill="#559eae"/>
+  <path id="pocket-ext" d="M 620 152 L 684 150 C 684 134, 674 126, 660 128 C 642 127, 626 138, 620 152 Z" fill="#d7b1c7"/>
+  <path id="green-overlay" d="M 917 600 Q 917 712 870 768 Q 824 825 832 844 Q 841 862 836 870 Q 830 879 854 920 Q 877 961 850 960 Q 823 958 814 966 Q 805 975 820 972 Q 835 968 838 976 Q 842 985 842 974 Q 843 964 867 965 Q 891 966 898 976 Q 905 985 930 984 Q 955 983 952 996 Q 948 1009 960 1009 Q 971 1009 972 996 Q 972 982 998 951 Q 1023 920 1023 860 Q 1023 801 998 784 Q 974 767 949 731 Q 924 695 932 688 Q 939 680 972 708 Q 1005 737 990 684 Q 974 631 946 616 Z" fill="url(#greenOvGrad)" opacity="0.75"/>
+  <path id="arm-shadow-tint" d="M 760 600 L 880 600 L 872 760 L 768 780 Z" fill="#5a9a7a" opacity="0.28"/>
+  <g id="pink-flower" opacity="0.9">
+    <ellipse cx="856" cy="726" rx="20" ry="30" fill="#f2b8c4" transform="rotate(-24 856 726)"/>
+    <ellipse cx="902" cy="722" rx="20" ry="30" fill="#f2b8c4" transform="rotate(22 902 722)"/>
+    <ellipse cx="879" cy="700" rx="26" ry="18" fill="#f2b8c4"/>
+    <circle cx="879" cy="736" r="17" fill="#e8919e"/>
+  </g>
+  <path id="pink-ring" d="M 815 940 C 812 918, 830 902, 850 906 C 868 910, 878 928, 872 946 C 867 961, 850 968, 836 961 C 846 972, 862 974, 874 964 C 890 951, 890 926, 874 913 C 858 900, 834 906, 826 924 C 820 938, 824 952, 836 960" fill="none" stroke="#d878a0" stroke-width="9" opacity="0.75" stroke-linecap="round"/>
+  <path id="pink-overlay" d="M 264 745 Q 297 786 262 788 Q 228 791 232 810 Q 237 830 222 863 Q 208 896 248 918 Q 288 939 305 981 Q 322 1023 337 1023 Q 352 1023 372 1006 Q 392 989 414 1002 Q 435 1014 436 995 Q 437 976 450 961 Q 463 946 441 952 Q 419 957 418 924 Q 417 892 377 900 Q 337 909 340 878 Q 344 848 328 849 Q 311 850 311 832 Q 311 814 326 792 Q 340 771 302 758 Z" fill="url(#pinkOvGrad)" opacity="0.6"/>
+  <path id="yellow-overlay" d="M 428 940 L 520 902 L 558 960 L 540 1024 L 430 1024 Z" fill="#e6cc90" opacity="0.55"/>
+  <g id="face-group" transform="translate(580,150) scale(0.5)" stroke-linecap="round" stroke-linejoin="round">
+<path xmlns="http://www.w3.org/2000/svg" id="neck" d="M 276 445 L 392 428 L 400 540 L 276 540 Z" fill="#d7aec2" stroke="#101018" stroke-width="5" />
+    
+<path xmlns="http://www.w3.org/2000/svg" id="collar" d="M 148 540 L 153 526 C 185 502, 220 486, 248 479 C 300 468, 340 482, 380 492 C 430 500, 470 485, 500 468 L 500 540 Z" fill="#99c6d6" stroke="#101018" stroke-width="5" />
+  
+<g xmlns="http://www.w3.org/2000/svg" id="face">
+    <path id="skin" d="M 60 160 C 72 220, 72 320, 80 370 C 95 430, 150 475, 225 485 C 265 488, 300 470, 322 440 C 358 408, 380 360, 388 318 C 393 262, 388 205, 372 160 Z" fill="#f2e8d5" stroke="#101018" stroke-width="5" />
+    <path id="skin-shadow-cheek" d="M 330 300 C 350 320, 355 380, 340 430 C 335 445, 326 450, 322 445 C 332 400, 330 350, 320 310 Z" fill="#d7b1c7" />
+    <path id="nose" d="M 158 331 C 160 335, 160 338, 158 341" fill="none" stroke="#5a533e" stroke-width="3" stroke-linecap="round" />
+    <path id="mouth" d="M 197 406 C 202 407, 208 407, 212 405" fill="none" stroke="#5a533e" stroke-width="3.5" stroke-linecap="round" />
+  </g>
+  
+<g xmlns="http://www.w3.org/2000/svg" id="eye-left">
+    <path id="eyeL-sclera" d="M 88 248 C 94 228, 116 214, 142 218 C 152 221, 156 232, 155 246 C 154 262, 146 278, 130 286 C 114 293, 98 288, 91 276 C 86 266, 85 258, 88 248 Z" fill="#faefff" />
+    <path id="eyeL-lid-band" d="M 92 244 C 100 226, 122 216, 142 220 C 148 223, 150 230, 148 237 C 130 228, 108 232, 96 246 Z" fill="#4171ba" />
+    <path id="eyeL-iris" d="M 97 260 C 96 242, 110 231, 125 233 C 139 236, 146 249, 144 264 C 142 281, 128 290, 113 286 C 101 283, 98 272, 97 260 Z" fill="#ee92a5" />
+    <ellipse id="eyeL-green" cx="101" cy="250" rx="8" ry="9" transform="rotate(15 101 250)" fill="#467a2e" />
+    <ellipse id="eyeL-glint" cx="90" cy="228" rx="6" ry="8" fill="#dff0f7" />
+    <circle id="eyeL-dot1" cx="105" cy="270" r="3.5" fill="#ffffff" />
+    <circle id="eyeL-dot2" cx="97" cy="277" r="2.5" fill="#ffffff" />
+    <path id="eyeL-outline" d="M 88 248 C 94 228, 116 214, 142 218 C 152 221, 156 232, 155 246 C 154 262, 146 278, 130 286 C 114 293, 98 288, 91 276 C 86 266, 85 258, 88 248 Z" fill="none" stroke="#26262e" stroke-width="3.5" />
+    <path id="eyeL-lash-top" d="M 86 246 C 94 224, 122 212, 148 219" fill="none" stroke="#26262e" stroke-width="6.5" stroke-linecap="round" />
+    <g id="eyeL-lower-ticks" stroke="#26262e" stroke-width="2.5" stroke-linecap="round">
+      <path d="M 96 296 L 102 295" /><path d="M 92 300 L 97 299" />
+    </g>
+  </g>
+  
+<g xmlns="http://www.w3.org/2000/svg" id="eye-right">
+    <path id="eyeR-sclera" d="M 264 232 C 272 212, 320 202, 348 212 C 360 218, 362 240, 358 258 C 353 280, 338 294, 315 297 C 294 299, 276 290, 268 274 C 262 260, 261 244, 264 232 Z" fill="#faefff" />
+    <path id="eyeR-lid-band" d="M 268 234 C 278 214, 318 206, 346 214 C 352 217, 353 226, 350 231 C 322 220, 292 224, 274 240 Z" fill="#4171ba" />
+    <path id="eyeR-iris" d="M 279 262 C 277 242, 294 229, 313 230 C 334 232, 347 247, 345 265 C 343 283, 326 294, 306 292 C 289 290, 280 278, 279 262 Z" fill="#ee92a5" />
+    <ellipse id="eyeR-green" cx="294" cy="253" rx="9" ry="8" transform="rotate(-10 294 253)" fill="#467a2e" />
+    <ellipse id="eyeR-glint" cx="281" cy="236" rx="6" ry="9" transform="rotate(10 281 236)" fill="#dff0f7" />
+    <circle id="eyeR-dot1" cx="301" cy="275" r="3" fill="#ffffff" />
+    <path id="eyeR-outline" d="M 264 232 C 272 212, 320 202, 348 212 C 360 218, 362 240, 358 258 C 353 280, 338 294, 315 297 C 294 299, 276 290, 268 274 C 262 260, 261 244, 264 232 Z" fill="none" stroke="#26262e" stroke-width="3.5" />
+    <path id="eyeR-lash-top" d="M 262 236 C 274 210, 322 200, 354 214" fill="none" stroke="#26262e" stroke-width="7" stroke-linecap="round" />
+    <g id="eyeR-lash-spikes" stroke="#26262e" stroke-width="5" stroke-linecap="round">
+      <path d="M 280 212 L 287 203" /><path d="M 336 208 L 345 201" /><path d="M 352 214 L 360 210" />
+    </g>
+    <g id="eyeR-lower-ticks" stroke="#26262e" stroke-width="2.5" stroke-linecap="round">
+      <path d="M 358 292 L 366 290" /><path d="M 354 298 L 361 297" />
+    </g>
+    <path id="brow-left" d="M 88 205 C 105 199, 125 199, 142 203" fill="none" stroke="#55627a" stroke-width="3" />
+    <path id="brow-right" d="M 268 190 C 288 182, 312 182, 330 188" fill="none" stroke="#55627a" stroke-width="3" />
+  </g>
+    
+<g xmlns="http://www.w3.org/2000/svg" id="hair" stroke="#26354a" stroke-width="3">
+    
+    <path id="pink-pocket-1" d="M 78 92 L 175 92 C 188 128, 192 165, 186 200 C 176 216, 155 219, 138 215 C 118 224, 98 224, 88 213 C 80 190, 77 130, 78 92 Z" fill="#d7b1c7" stroke="none" />
+    <path id="pink-pocket-2" d="M 286 128 L 348 125 L 350 175 C 335 190, 310 194, 292 190 C 287 170, 285 148, 286 128 Z" fill="#d7b1c7" stroke="none" />
+    
+    <path id="hair-top" d="M 0 0 L 500 0 L 500 60 L 352 55 L 352 128              C 349 136, 346 143, 344 150              C 341 168, 337 188, 333 204              C 329 188, 325 164, 323 150              C 318 150, 313 149, 309 148              C 306 158, 304 167, 303 176              C 299 164, 295 152, 292 142              C 288 144, 285 146, 282 147              C 277 165, 274 185, 272 203              C 250 198, 225 188, 205 178              C 192 171, 180 160, 173 152              C 170 158, 168 170, 167 179              C 158 170, 143 157, 130 146              C 124 128, 118 105, 114 93              C 104 89, 92 89, 84 92              C 80 130, 78 190, 77 232              C 76 252, 73 264, 66 272              C 50 276, 34 273, 20 266              C 12 261, 4 270, 0 279 Z" fill="#3974ab" />
+    
+    <g id="hair-thin-lines" fill="none" stroke="#26354a" stroke-width="2.5">
+      <path d="M 105 92 C 108 130, 116 165, 130 195" />
+      <path d="M 125 92 C 128 120, 136 150, 148 172" />
+    </g>
+    
+    <path id="hair-eye-strand" d="M 80 190 C 96 202, 110 226, 116 254 C 117 261, 110 263, 104 258 C 92 248, 82 226, 80 205 Z" fill="#3974ab" />
+    
+    
+    <path id="hair-right" d="M 352 55 L 500 215 L 500 540 L 434 540              C 420 520, 406 500, 402 478              C 398 458, 394 440, 390 420              C 386 400, 380 380, 382 350              C 384 320, 378 260, 372 210              C 366 170, 358 110, 352 55 Z" fill="#3974ab" stroke="none" />
+    
+    <path id="hair-right-edge" d="M 372 55 C 378 110, 390 170, 396 210 C 378 260, 384 320, 382 350 C 380 380, 386 400, 390 420 C 394 440, 398 458, 402 478 C 406 500, 420 520, 434 540" fill="none" stroke="#26354a" stroke-width="3" />
+    
+    <path id="hair-curl" d="M 390 313              C 355 325, 330 342, 319 362              C 311 378, 310 390, 316 398              C 321 405, 330 407, 338 404              C 328 415, 315 425, 305 436              C 295 447, 290 458, 293 466              C 296 473, 304 477, 312 475              C 320 472, 327 463, 332 452              C 337 441, 344 429, 352 421              C 362 413, 371 404, 377 393              C 373 381, 367 364, 371 348              C 375 334, 380 320, 390 313 Z" fill="#3974ab" />
+    
+    <g id="hair-lines" fill="none" stroke="#2c4a6e" stroke-width="2.5">
+      <path d="M 380 60 C 390 110, 396 160, 394 210" />
+      <path d="M 440 40 C 446 120, 448 220, 444 320" />
+    </g>
+    
+    </g>
+  </g>
+<path id="neck-patch" d="M 714 394 C 716 406, 720 418, 726 428 L 786 428 C 782 414, 780 400, 781 390 C 758 386, 734 389, 714 394 Z" fill="#d7aec2"/>
+  <path id="bangs-top-filler" d="M 580 152 L 611 130 L 653 96 C 680 90, 700 108, 718 132 C 760 142, 800 146, 830 150 Z" fill="#3d73a7"/>
+  <path id="curtain-filler" d="M 824 288 C 840 250, 862 228, 884 210 L 927 250 C 900 265, 872 276, 852 293 C 844 300, 833 297, 824 288 Z" fill="#3d73a7"/>
+  <g id="right-wall-strands" fill="none" stroke-linecap="round">
+    <path d="M 792 158 C 802 260, 806 360, 800 445" stroke="#d7b1c7" stroke-width="7" opacity="0.85"/>
+    <path d="M 828 165 C 838 270, 842 370, 836 452" stroke="#26354a" stroke-width="3"/>
+    <path d="M 848 250 C 856 340, 858 420, 852 478" stroke="#d7b1c7" stroke-width="5" opacity="0.7"/>
+  </g>
+  <path id="curtain" d="M 824 288
+             C 880 268, 938 282, 952 308
+             C 970 300, 1000 282, 1024 268
+             C 1018 330, 1012 380, 1008 420
+             C 1000 480, 985 540, 968 590
+             C 950 640, 938 690, 931 733
+             C 918 690, 895 560, 874 468
+             C 868 540, 858 610, 842 676
+             C 830 610, 820 530, 812 470
+             C 807 500, 804 530, 800 556
+             C 796 512, 793 470, 792 430
+             C 793 468, 795 420, 801 374
+             C 805 335, 812 292, 824 288 Z" fill="#3d73a7" stroke="#26354a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path id="wing-strand" d="M 562 168 C 549 205, 538 245, 542 272 C 549 295, 556 315, 568 330 C 574 336, 583 335, 586 327 C 589 318, 585 310, 577 308 C 582 285, 584 255, 585 225 C 586 203, 588 183, 592 168" fill="#3d73a7" stroke="#26354a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M 942 330 C 936 430, 934 530, 940 620" stroke="#d7b1c7" stroke-width="5" opacity="0.7" fill="none" stroke-linecap="round"/>
+  <g id="curtain-flow" fill="none" stroke="#2c4a6e" stroke-width="2.5">
+    <path d="M 862 300 C 856 390, 850 480, 846 620"/>
+    <path d="M 892 300 C 886 390, 884 480, 889 600"/>
+    <path d="M 922 305 C 920 390, 918 470, 924 640"/>
+    <path d="M 830 330 C 826 410, 824 470, 828 530"/>
+  </g>
+  <g id="arms" stroke-linecap="round" stroke-linejoin="round">
+    <path id="cuff-left" d="M 560 560 C 580 572, 598 588, 608 610 L 586 618 C 574 598, 562 580, 550 570 Z" fill="#2c3a55"/>
+    <path id="arm-left" d="M 586 618 C 590 640, 592 662, 590 682 L 612 684 C 614 662, 612 640, 608 610 Z" fill="#dcdccb" stroke="#8a8272" stroke-width="3"/>
+    <path id="cuff-right" d="M 826 588 C 850 596, 872 614, 888 638 L 862 648 C 848 628, 834 610, 818 600 Z" fill="#2c3a55"/>
+    <path id="arm-right" d="M 860 650 C 868 668, 870 690, 862 710 C 855 728, 842 742, 828 748 C 820 751, 812 749, 809 743 C 806 737, 809 730, 816 727 C 828 722, 838 712, 844 698 C 849 684, 848 666, 843 652 Z" fill="#dcdccb" stroke="#8a8272" stroke-width="3"/>
+    <path id="hand" d="M 818 726 C 808 730, 800 738, 798 748 C 797 756, 802 761, 809 760 C 805 754, 807 748, 813 744 C 809 750, 809 756, 815 759 C 821 762, 827 759, 829 753 C 831 746, 828 738, 823 732 Z" fill="#dcdccb" stroke="#8a8272" stroke-width="2.5"/>
+    <g id="fingers" fill="none" stroke="#8a8272" stroke-width="2.5">
+      <path d="M 812 744 C 817 748, 822 749, 827 747"/>
+      <path d="M 809 752 C 815 756, 821 757, 826 754"/>
+    </g>
+  </g>
+  <path id="hat-dome-band" d="M 680 78 C 700 58, 740 48, 780 48 C 830 48, 868 73, 884 113 C 888 133, 886 158, 878 186 C 862 208, 850 220, 840 228 C 800 208, 760 193, 718 150 C 700 126, 688 102, 680 78 Z" fill="#32405b" stroke="#1e2a3f" stroke-width="2"/>
+  <path id="brim-teal-rim" d="M 865 240 L 890 250 L 935 290 L 972 330 L 1002 370 L 1024 395 L 1024 408 L 980 360 L 945 322 L 905 282 L 868 246 Z" fill="#559eae"/>
+  <path id="pom-1" d="M 618 62 C 610 42, 626 28, 646 30 C 654 18, 676 18, 684 30 C 700 28, 710 44, 700 58 C 688 72, 630 74, 618 62 Z" fill="#df9199" stroke="#c97b88" stroke-width="2"/>
+  <path id="pom-2" d="M 898 220 C 888 192, 904 168, 930 168 C 938 154, 962 154, 970 168 C 986 166, 996 184, 988 200 C 992 216, 978 234, 958 234 C 938 238, 904 236, 898 220 Z" fill="#df9199" stroke="#c97b88" stroke-width="2"/>
+  <g id="brim-edges" fill="none" stroke="#1e2a3f" stroke-width="3" stroke-linecap="round">
+    <path d="M 452 33 L 430 62 L 452 145 L 501 211 L 555 254"/>
+    <path d="M 881 210 C 895 225, 910 240, 927 250 C 945 265, 960 278, 973 290 C 988 304, 1000 318, 1012 330 C 1016 335, 1020 340, 1024 342"/>
+  </g>
+</svg>

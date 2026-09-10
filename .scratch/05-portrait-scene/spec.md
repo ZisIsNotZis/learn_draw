@@ -22,3 +22,13 @@ bg gradient, giant green ribbon body, purple tail curl, white ribbon strips, tra
 
 ## Comments
 - 2026-09-10 agent(pi): 6 iterations; face/hair/torso/scene regions integrated.
+
+## Critique (fresh-eyes delegate, v14, 2026-09-10)
+Full critique verified in task artifacts (de2a05464fa9a578ee385e0b2f24e9699). Themes:
+1. Detail density (hair walls, ribbon body, dress = empty flat fields) — most damaging
+2. Translucency: overlays opaque with hard borders → need feathered edges (blur) + alpha gradients
+3. Ribbon: needs tapered ends + wave; water band has hard top edge (should be atmospheric)
+4. Shading: no light-direction modeling anywhere; bg flat
+5. Smaller: bow crisper, brim sweep, face slightly wide, neck junction
+Applied already in v15: pink flower, arm shadow tint, neck (v9), dome down (v4).
+Backlog: soft-edge pass, density pass, ribbon taper/wave, water atmospheric, bow/brim nudges.
