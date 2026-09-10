@@ -23,6 +23,7 @@
 - Residual: detail density + shading (critic backlog), overall color_dist 62.6 (v17: 74)
 
 ## Shading pass (orchestrator round)
+
 - torso zone diff-grid located the delta: curtain left boundary covered the blouse's right shoulder (ref: hair edge at x 856-888 for y 470-590, with a shoulder step at y~600 down to 772-786)
 - curtain rewritten as a SIMPLE polygon with the shoulder bay (no self-intersection; verified by ray-cast winding test + pixel probes)
 - torso zone: 98.5 -> 86.3. Probe points: (830,470) now blouse-white, (795,600) mint-ish
