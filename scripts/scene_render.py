@@ -1,0 +1,349 @@
+#!/usr/bin/env python3
+"""scene_render.py — compile a scene.yaml (object-level drawing nodes) to SVG, render to PNG.
+
+Spec: docs/drawing/scene-format.md
+"""
+import argparse, os, re, subprocess, sys
+import yaml
+try:
+    import cv2
+except ImportError as e:
+    raise SystemExit(f"scene_render needs cv2 in the active interpreter: {e}; use .venv/bin/python")
+import numpy as np
+
+CHROME = os.path.expanduser(
+    "~/.cache/ms-playwright/chromium_headless_shell-1234/"
+    "chrome-headless-shell-linux64/chrome-headless-shell")
+
+# per-type allowed keys; first key listed is the id-bearing type key
+SCHEMA = {
+    "layers": {"layers"},
+    "rect":   {"rect", "at", "w", "h", "full", "fill", "z", "op", "rot"},
+    "ellipse":{"ellipse", "at", "rx", "ry", "rot", "fill", "stroke", "sw", "z", "op", "blur"},
+    "stroke": {"stroke", "spine", "w", "profile", "taper", "ink", "cap", "z", "op", "blur"},
+    "blob":   {"blob", "poly", "spine", "w", "fill", "stroke", "sw", "z", "op", "blur", "rot"},
+    "petal":  {"petal", "at", "n", "len", "wid", "curl", "spread", "angle0", "fill", "stroke", "sw", "z", "op", "blur"},
+    "ribbon": {"ribbon", "spine", "w", "grad", "fill", "op", "z", "blur"},
+    "region": {"region", "seed", "tol", "on", "fill", "grow", "z", "op"},
+    "trace":  {"trace", "from", "class", "fit", "region", "z", "op", "fill"},
+    "grad":   {"grad", "dir", "at", "r", "stops", "z"},
+    "blur":   {"blur", "std"},
+}
+TYPE_KEY = {"layers": "layers", "grad": "grad", "blur": "blur",
+            "rect": "rect", "ellipse": "ellipse", "stroke": "stroke", "blob": "blob",
+            "petal": "petal", "ribbon": "ribbon", "region": "region", "trace": "trace"}
+
+
+def smooth_path(pts, closed=True):
+    pts = [tuple(map(float, p)) for p in pts]
+    if closed and pts[0] != pts[-1]:
+        pts = pts + [pts[0]]
+    d = f"M {pts[0][0]:.0f} {pts[0][1]:.0f} "
+    for i in range(1, len(pts) - 1):
+        mx = (pts[i][0] + pts[i + 1][0]) / 2
+        my = (pts[i][1] + pts[i + 1][1]) / 2
+        d += f"Q {pts[i][0]:.0f} {pts[i][1]:.0f} {mx:.0f} {my:.0f} "
+    return d + ("Z" if closed else f"L {pts[-1][0]:.0f} {pts[-1][1]:.0f}")
+
+
+def resample(spine, n=24):
+    """Resample a polyline to n points evenly by arc length."""
+    pts = [np.array(p, float) for p in spine]
+    if len(pts) < 2:
+        return [pts[0]] * n
+    pts_arr = np.array(pts)
+    seg = np.linalg.norm(np.diff(pts_arr, axis=0), axis=1)
+    total = float(seg.sum()) or 1.0
+    ts = np.linspace(0.0, total, n)
+    cum = np.concatenate([[0.0], np.cumsum(seg)])
+    out = []
+    for t in ts:
+        j = int(np.searchsorted(cum, t, side="right") - 1)
+        j = min(max(j, 0), len(seg) - 1)
+        u = 0.0 if seg[j] == 0 else (t - cum[j]) / seg[j]
+        out.append(pts_arr[j] + (pts_arr[j+1] - pts_arr[j]) * u)
+    return out
+
+
+def taper_outline(spine, width_at):
+    """Closed outline polygon around spine with per-point width (taper)."""
+    pts = [np.array(p, float) for p in resample(spine, max(12, len(spine)*2))]
+    n = len(pts)
+    left, right = [], []
+    for i, p in enumerate(pts):
+        if i == 0:
+            t = pts[1] - pts[0]
+        elif i == n - 1:
+            t = pts[-1] - pts[-2]
+        else:
+            t = pts[i+1] - pts[i-1]
+        t = t / (np.linalg.norm(t) or 1.0)
+        nrm = np.array([-t[1], t[0]])
+        w = width_at(i / (n - 1)) / 2
+        left.append(tuple(p + nrm * w))
+        right.append(tuple(p - nrm * w))
+    return smooth_path(left + right[::-1], closed=True)
+
+
+def petal_path(at, angle, length, width, curl):
+    """One petal: spine from `at` outward, bending by curl, elliptical width profile."""
+    ax, ay = at
+    a = np.deg2rad(angle)
+    tip = np.array([ax + np.cos(a)*length, ay + np.sin(a)*length])
+    mid = np.array([ax + np.cos(a)*length*0.5, ay + np.sin(a)*length*0.5])
+    nrm = np.array([-np.sin(a), np.cos(a)])
+    mid = mid + nrm * curl * length * 0.35
+    spine = [np.array([ax, ay]), mid, tip]
+    pts = [np.array(p, float) for p in resample(spine, 14)]
+    n = len(pts)
+    left, right = [], []
+    for i, p in enumerate(pts):
+        if i == 0: t = pts[1] - pts[0]
+        elif i == n-1: t = pts[-1] - pts[-2]
+        else: t = pts[i+1] - pts[i-1]
+        t = t / (np.linalg.norm(t) or 1.0)
+        nrm2 = np.array([-t[1], t[0]])
+        prof = max(0.0, np.sin(np.pi * i / (n - 1))) ** 0.8 * width / 2   # elliptical width profile
+        left.append(tuple(p + nrm2 * prof))
+        right.append(tuple(p - nrm2 * prof))
+    return smooth_path(left + right[::-1], closed=True)
+
+
+def flood_region(ref_bgr, seed, tol):
+    """Paint-bucket on the reference raster from seed with tolerance; returns outer contour pts."""
+    h, w = ref_bgr.shape[:2]
+    sx, sy = int(seed[0]), int(seed[1])
+    if not (0 <= sx < w and 0 <= sy < h):
+        raise ValueError(f"region seed {seed} outside image")
+    m = np.zeros((h+2, w+2), np.uint8)
+    lo, hi = int(tol), int(tol)
+    cv2.floodFill(ref_bgr.copy(), m, (sx, sy), 0, (lo,)*3, (hi,)*3,
+                  cv2.FLOODFILL_MASK_ONLY | (255 << 8))
+    mask = m[1:-1, 1:-1]
+    cnts, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    if not cnts:
+        raise ValueError(f"region seed {seed}: empty mask")
+    c = max(cnts, key=cv2.contourArea)
+    return cv2.approxPolyDP(c, 6, True).reshape(-1, 2).tolist()
+
+
+def compile_scene(nodes, size, ref_path=None):
+    W, H = size
+    # line numbers: yaml.safe_load loses them; re-walk source for id->line mapping
+    defs, body = [], []
+    layers = ["default"]
+    blur_filters = {}
+    grads = {}
+    errors = []
+    ref = cv2.imread(ref_path) if ref_path else None
+
+    # first pass: schema validation + gather
+    for idx, node in enumerate(nodes):
+        if not isinstance(node, dict) or len(node) < 1:
+            errors.append(f"node#{idx}: not a dict"); continue
+        tkey = next(iter(node))
+        if tkey not in SCHEMA:
+            errors.append(f"node#{idx}: unknown node type '{tkey}'"); continue
+        allowed = SCHEMA[tkey]
+        extra = set(node) - allowed
+        if extra:
+            errors.append(f"node#{idx} ({tkey}): unknown keys {sorted(extra)}")
+    if errors:
+        raise SystemExit("scene errors:\n" + "\n".join(errors))
+
+    # find layers node
+    for node in nodes:
+        if "layers" in node and isinstance(node["layers"], list):
+            layers = [str(x) for x in node["layers"]] + ["default"]
+            break
+
+    def zindex(n):
+        z = str(n.get("z", "default"))
+        return layers.index(z) if z in layers else len(layers)
+
+    ordered = sorted([n for n in nodes if "layers" not in n or n is nodes[0]],
+                     key=lambda n: (zindex(n),))
+    # stable doc order within layer: python sort is stable, iterate doc order
+    ordered = [n for n in nodes if "layers" in n and isinstance(n.get("layers"), list)]
+    ordered += sorted([n for n in nodes if not ("layers" in n and isinstance(n.get("layers"), list))],
+                      key=zindex)
+
+    # collect grads
+    for node in nodes:
+        if node.get("grad") and "stops" in node:
+            grads[node["grad"]] = node
+
+    svg_defs = []
+    for name, g in grads.items():
+        stops = g["stops"]
+        if g.get("dir") == "radial":
+            svg_defs.append(f'<radialGradient id="{name}">' +
+                            "".join(f'<stop offset="{o}" stop-color="{c}"/>' for o, c in stops) +
+                            "</radialGradient>")
+        else:
+            x1, y1, x2, y2 = g.get("dir", [0, 0, 0, 1])
+            svg_defs.append(f'<linearGradient id="{name}" x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}">' +
+                            "".join(f'<stop offset="{o}" stop-color="{c}"/>' for o, c in stops) +
+                            "</linearGradient>")
+    for bid, std in blur_filters.items():
+        svg_defs.append(f'<filter id="blur-{bid}" x="-30%" y="-30%" width="160%" height="160%">'
+                        f'<feGaussianBlur stdDeviation="{std}"/></filter>')
+
+    used_blurs = {}
+    for node in ordered:
+        tkey = next(iter(node))
+        nid = node.get(tkey, f"{tkey}-{len(body)}")
+        z = str(node.get("z", "default"))
+        op = node.get("op", 1)
+        common = f'id="{nid}"'
+        if op != 1:
+            common += f' opacity="{op}"'
+        s = ""
+        if tkey == "rect":
+            if node.get("full"):
+                at, w, h = [0, 0], W, H
+            else:
+                at, w, h = node.get("at", [0, 0]), node.get("w", W), node.get("h", H)
+            fill = node.get("fill", "#000")
+            fill = f"url(#{fill.split(':')[1]})" if str(fill).startswith("grad:") else fill
+            s = f'<rect {common} x="{at[0]}" y="{at[1]}" width="{w}" height="{h}" fill="{fill}"/>'
+        elif tkey == "ellipse":
+            fill = node.get("fill", "#000")
+            fill = f"url(#{fill.split(':')[1]})" if str(fill).startswith("grad:") else fill
+            rot = node.get("rot", 0)
+            tr = f' transform="rotate({rot} {node["at"][0]} {node["at"][1]})"' if rot else ""
+            st = f' stroke="{node["stroke"]}" stroke-width="{node.get("sw",3)}"' if node.get("stroke") else ""
+            s = f'<ellipse {common} cx="{node["at"][0]}" cy="{node["at"][1]}" rx="{node["rx"]}" ry="{node["ry"]}"{tr} fill="{fill}"{st}/>'
+        elif tkey == "stroke":
+            ink = node.get("ink", "#000")
+            if node.get("profile") or node.get("taper", "none") != "none":
+                wid = node.get("w", 6)
+                if node.get("profile"):
+                    prof = dict((t, w) for t, w in node["profile"])
+                    wfun = lambda t: np.interp(t, list(prof), list(prof.values()))
+                else:
+                    mode = node["taper"]
+                    wfun = (lambda t: wid * (1 - t)) if mode == "start" else \
+                           (lambda t: wid * t) if mode == "end" else \
+                           (lambda t: wid * (1 - abs(2*t - 1)))
+                d = taper_outline(node["spine"], wfun)
+                s = f'<path {common} d="{d}" fill="{ink}"/>'
+            else:
+                d = smooth_path(node["spine"], closed=False)
+                cap = node.get("cap", "round")
+                s = f'<path {common} d="{d}" fill="none" stroke="{ink}" stroke-width="{node.get("w",6)}" stroke-linecap="{cap}"/>'
+        elif tkey in ("blob", "ribbon"):
+            fill = node.get("fill")
+            if str(fill).startswith("grad:"):
+                fill = f"url(#{fill.split(':')[1]})"
+            elif node.get("grad"):
+                fill = f"url(#{node['grad']})"
+            if fill is None:
+                fill = "#888"
+            stroke = f' stroke="{node["stroke"]}" stroke-width="{node.get("sw",3)}"' if node.get("stroke") else ""
+            if "poly" in node:
+                d = smooth_path(node["poly"], closed=True)
+            else:
+                w = node.get("w", 40)
+                d = taper_outline(node["spine"], lambda t: w)
+            s = f'<path {common} d="{d}" fill="{fill}"{stroke}/>'
+        elif tkey == "petal":
+            paths = []
+            n = int(node.get("n", 5))
+            spread = float(node.get("spread", 180))
+            a0 = float(node.get("angle0", -90))
+            step = spread / max(n - 1, 1)
+            for k in range(n):
+                ang = a0 + k * step
+                paths.append(petal_path(node["at"], ang, node.get("len", 80), node.get("wid", 40), float(node.get("curl", 0.3))))
+            fill = node.get("fill", "#f2b8c4")
+            if str(fill).startswith("grad:"):
+                fill = f"url(#{fill.split(':')[1]})"
+            st = f' stroke="{node["stroke"]}" stroke-width="{node.get("sw",2)}"' if node.get("stroke") else ""
+            s = f'<g {common}>{"".join(f"<path d={chr(34)}{p}{chr(34)} fill={chr(34)}{fill}{chr(34)}{st}/>" for p in paths)}</g>'
+        elif tkey == "region":
+            if ref is None:
+                raise SystemExit(f"node {nid}: region needs --ref")
+            pts = flood_region(ref, node["seed"], node.get("tol", 30))
+            d = smooth_path(pts, closed=True)
+            s = f'<path {common} d="{d}" fill="{node.get("fill","#888")}"/>'
+        elif tkey == "trace":
+            if ref is None:
+                raise SystemExit(f"node {nid}: trace needs --ref")
+            b, g, r = ref[:,:,0].astype(int), ref[:,:,1].astype(int), ref[:,:,2].astype(int)
+            classes = {
+                "hair": (b>r+30)&(b>120)&(r<120),
+                "navy": (r<95)&(g<110)&(b<135),
+                "pale": (r>195)&(g>200)&(b>170),
+                "green": (g>r+15)&(g>130)&(b>g-45),
+                "pink": (r>200)&(g>120)&(g<200)&(b>140),
+            }
+            cls = node.get("class", "hair")
+            mask = classes[cls].astype(np.uint8)
+            reg = node.get("region")
+            if reg:
+                x0,y0,x1,y1 = reg
+                mm = np.zeros_like(mask); mm[y0:y1, x0:x1] = 1
+                mask = mask * mm
+            mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((15,15),np.uint8))
+            cnts,_ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            c = max(cnts, key=cv2.contourArea)
+            d = smooth_path(cv2.approxPolyDP(c, 10, True).reshape(-1,2))
+            s = f'<path {common} d="{d}" fill="{node.get("fill","#888")}"/>'
+        elif tkey == "blur":
+            ids = node["blur"]
+            std = float(node.get("std", 6))
+            if isinstance(ids, str): ids = [ids]
+            for i in ids:
+                used_blurs[i] = std
+            continue  # applied as attribute injection below
+        body.append(s)
+
+    # inject blur filters into targeted nodes
+    if used_blurs:
+        for i, s in enumerate(body):
+            m = re.search(r'id="([^"]+)"', s)
+            if m and m.group(1) in used_blurs:
+                std = used_blurs[m.group(1)]
+                s2 = re.sub(r'^<(\w+) ', rf'<\1 filter="url(#blur-{std})" ', s)
+                if f'blur-{std}' not in svg_defs and f'blur-{std}' not in "".join(svg_defs):
+                    svg_defs.append(f'<filter id="blur-{std}" x="-30%" y="-30%" width="160%" height="160%">'
+                                    f'<feGaussianBlur stdDeviation="{std}"/></filter>')
+                body[i] = s2
+
+    svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">'
+           f'<defs>{"".join(svg_defs)}</defs>{"".join(body)}</svg>')
+    return svg
+
+
+def chrome(svg_path, png_path, size):
+    subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-sandbox",
+                    f"--screenshot={os.path.abspath(png_path)}",
+                    f"--window-size={size[0]},{size[1]}",
+                    "file://" + os.path.abspath(svg_path)],
+                   check=True, capture_output=True, timeout=60)
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("scene")
+    ap.add_argument("-o", "--out", required=True)
+    ap.add_argument("--svg", default=None)
+    ap.add_argument("--ref", default=None)
+    ap.add_argument("--size", default=None)
+    a = ap.parse_args()
+    nodes = yaml.safe_load(open(a.scene))
+    if not isinstance(nodes, list):
+        raise SystemExit("scene file top level must be a YAML list")
+    size = tuple(map(int, a.size.split("x"))) if a.size else (1024, 1024)
+    svg = compile_scene(nodes, size, a.ref)
+    svg_path = a.svg or (a.out + ".svg")
+    os.makedirs(os.path.dirname(os.path.abspath(svg_path)), exist_ok=True)
+    open(svg_path, "w").write(svg)
+    os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
+    chrome(svg_path, a.out, size)
+    print(a.out)
+
+
+if __name__ == "__main__":
+    main()
