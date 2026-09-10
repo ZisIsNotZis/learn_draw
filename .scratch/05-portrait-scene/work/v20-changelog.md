@@ -14,3 +14,9 @@
 - r12: white hem up-right; petals deleted (misread - ref shows GREEN behind girl); green-behind wedge added
 - r13-14 (v13/v14 earlier): ribbon rebuilt from grid anchors
 - Final: all 7 success criteria pass programmatically; class agreement 69% overall
+
+## Orchestrator verification round (v21)
+- Independent probes: skirt navy 32.9k vs REF 32.0k (same zone) PASS; brim 6.5k vs REF 5.8k PASS
+- Original 50k/8k targets were miscalibrated (ref itself measures 32k/5.8k) — corrected
+- Root causes fixed: dome/band self-intersecting polygon split into two clean paths; old light-layer stack (celadon/white/zigzag) deleted; pink overlay clamped out of skirt zone
+- Residual: detail density + shading (critic backlog), overall color_dist 62.6 (v17: 74)
