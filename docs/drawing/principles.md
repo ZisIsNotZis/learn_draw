@@ -53,3 +53,9 @@ Learned: portrait-face nose/mouth were initially swapped until 4.5x crop.
 ## P13 — Outlines are free: stroke the shape you already own (user insight, portrait-face)
 When REF shows an outline the draft lacks, first ask "do I already have this shape, unstroked?" Face/neck/collar outlines were missing not because shapes were missing but because I never stroked them. 描边 = reusing the existing path with a stroke — measure only the stroke color/width (near-black #101018, ~5px here).
 Learned: portrait-face v8/v9.
+
+## P14 — Draw the object, not the pixels (user insight, 05-portrait-scene reframe)
+The goal is a proper drawing in a similar style, not pixel/edge correspondence with one reference photo. Holistic semantic shapes (a whole ribbon, a whole hair mass with parameterized strands) beat fragmented point-matching patches; being a *coherent artwork* outranks being *close* to the reference. Overlay-based zone-distance compare is a calibration aid, never the objective; judge by looking at the drawing as a whole. Learned: user reframe after scene-format migration — "you don't need to match its location... it should be a proper drawing first, not necessarily as close as possible."
+
+## P15 — Physics-ish generation over hand-drawn geometry (user insight, scene-format design)
+Regular, structured things (ribbons, curtains, hair strands, water ripples) should be GENERATED from few parameters (a spine, gravity direction, wave length, taper) rather than hand-placed point-by-point. Hand coordinates only for genuinely irregular anchors. This is what makes the drawing read as "drawn as the whole thing" instead of assembled fragments. Learned: user proposing gravity/wave ribbon generation in the scene-format discussion.
