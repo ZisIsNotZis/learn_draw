@@ -22,7 +22,9 @@
 # ---- dress-black + dress-white: separate skirt layers (defect #4) ----
 - {blob: dress-black-core, poly: [[470,790],[455,810],[442,840],[435,875],[545,850],[540,810],[545,790],[545,780],[505,780]], fill: "#112e4b", z: dress-black}
 - {blob: dress-white-body, poly: [[630,660],[612,700],[598,745],[578,795],[552,855],[505,915],[448,962],[500,990],[570,1008],[640,1012],[720,1016],[790,1008],[838,988],[856,930],[862,850],[856,780],[852,730],[845,690],[834,660]], fill: "#d2e2d6", z: dress-white}
-- {blob: dress-black-left, poly: [[470,788],[400,795],[300,812],[215,838],[185,880],[178,930],[195,975],[250,998],[330,1006],[448,1010],[506,1004],[509,948],[508,878],[504,798]], fill: "#112e4b", z: dress-black}
+# left skirt band: ref teal x~73-210 widening downward; pink ribbon panel x~215-420 stays open
+- {blob: dress-black-left, poly: [[470,788],[300,800],[210,812],[160,838],[120,880],[95,930],[100,975],[140,998],[230,1008],[330,1010],[430,1008],[470,1000],[490,940],[480,860],[470,798]], fill: "#112e4b", z: dress-black}
+- {blob: dress-black-left-right, poly: [[345,838],[420,832],[470,798],[490,940],[470,1000],[430,1008],[396,990],[370,930],[352,880]], fill: "#112e4b", z: dress-black}
 - {blob: dress-black-hem, poly: [[470,1012],[480,970],[500,935],[528,908],[870,902],[872,1012]], fill: "#112e4b", z: dress-black}
 - {blob: dress-black-bottom, poly: [[195,975],[260,1000],[350,1012],[448,1010],[462,975],[490,940],[528,905],[872,900],[870,942],[862,982],[850,1012],[700,1016],[500,1016]], fill: "#112e4b", z: dress-black}
 - {blob: dress-black-right, poly: [[752,792],[785,790],[812,792],[830,794],[832,902],[808,900],[780,899],[756,900]], fill: "#112e4b", z: dress-black}
@@ -49,8 +51,15 @@
 # The cyan/green masses are long hair with a cool inner surface, BEHIND the body (defect #5).
 - {blob: green-behind, poly: [[560,430],[600,440],[640,470],[668,520],[700,580],[710,650],[700,720],[692,780],[680,830],[668,870],[820,870],[810,780],[818,690],[824,600],[760,560],[690,500],[640,450]], fill: "grad:greenOvGrad", op: 0.75, z: hair-behind}
 - {blob: green-overlay, poly: [[917,600],[917,712],[870,768],[824,825],[832,844],[841,862],[836,870],[830,879],[854,920],[877,961],[850,960],[823,958],[814,966],[805,975],[820,972],[835,968],[838,976],[842,985],[842,974],[843,964],[867,965],[891,966],[898,976],[905,985],[930,984],[955,983],[952,996],[948,1009],[960,1009],[971,1009],[972,996],[972,982],[998,951],[1023,920],[1023,860],[1023,801],[998,784],[974,767],[949,731],[924,695],[932,688],[939,680],[972,708],[1005,737],[990,684],[974,631],[946,616]], fill: "grad:greenOvGrad", op: 0.82, z: hair-behind}
-# Pink field is the rear ribbon glow; yellow field is the front arc glow.
+# rear ribbon glow (pink field over the ring back arc)
 - {blob: pink-overlay, poly: [[200,700],[260,690],[330,700],[380,730],[412,760],[418,830],[400,900],[388,960],[372,1010],[360,1022],[205,1022],[195,910],[192,790]], fill: "grad:pinkOvGrad", op: 0.55, z: ribbon-back}
+
+# ---- ribbon ring (defect #6): continuous hue-walking band w/ zigzag edge, z-plane split ----
+# geometry fitted from ribbon.png plate (center 595,883; rx 347 ry 103; rot 7; width ~90-115)
+# front arc = bottom sweep (in front of skirt); back arc = left rise + behind-body stretch
+# hue walk measured from ref: east cyan(170) -> south green/yellow -> west pink(350)
+- {ring: ribbon-ring-back, at: [595,883], rx: 347, ry: 103, rot: 7, w: 95, a0: 180, a1: 360, zig: 0.2, zn: 30, zq: 0.25, seed: 37, hue: [350, 520], sat: 0.4, val: 0.92, nseg: 30, z: ribbon-back}
+- {ring: ribbon-ring-front, at: [595,883], rx: 347, ry: 103, rot: 7, w: 95, a0: 0, a1: 180, zig: 0.2, zn: 30, zq: 0.25, seed: 37, hue: [170, 350], sat: 0.4, val: 0.92, nseg: 30, z: ribbon-front}
 - {blob: yellow-overlay, poly: [[480,900],[585,872],[615,950],[590,1024],[470,1024]], fill: "#e6cc90", op: 0.42, z: ribbon-front}
 - {blur: [green-behind, green-overlay, pink-overlay, yellow-overlay], std: 6}
 

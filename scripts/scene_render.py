@@ -3,7 +3,7 @@
 
 Spec: docs/drawing/scene-format.md
 """
-import argparse, os, re, subprocess, sys
+import argparse, math, os, re, subprocess, sys
 import yaml
 try:
     import cv2
@@ -30,11 +30,13 @@ SCHEMA = {
     "blur":   {"blur", "std"},
     "wave":   {"wave", "spine", "w", "amp", "len", "sag", "taper", "fill", "grad", "op", "z", "blur"},
     "strands": {"strands", "region", "n", "dir", "spread", "w", "wj", "ink", "op", "len", "z", "seed"},
+    "ring":   {"ring", "at", "r", "w", "a0", "a1", "zig", "zn", "zq", "d0", "seed",
+                "hue", "sat", "val", "nseg", "z", "op", "blur", "rx", "ry", "rot"},
 }
 TYPE_KEY = {"layers": "layers", "grad": "grad", "blur": "blur",
             "rect": "rect", "ellipse": "ellipse", "stroke": "stroke", "blob": "blob",
             "petal": "petal", "ribbon": "ribbon", "region": "region", "trace": "trace",
-            "wave": "wave", "strands": "strands"}
+            "wave": "wave", "strands": "strands", "ring": "ring"}
 
 
 def smooth_path(pts, closed=True):
@@ -184,6 +186,79 @@ def strand_paths(node):
         ink = inks[i % len(inks)]
         out.append((f'M {sx:.0f} {sy:.0f} Q {mx:.0f} {my:.0f} {ex:.0f} {ey:.0f}', ink, f'{wi:.1f}'))
     return out
+
+
+def hsv_to_hex(h, s, v):
+    """h in [0,360), s/v in [0,1] -> '#rrggbb'."""
+    import colorsys
+    r, g, b = colorsys.hsv_to_rgb((h % 360.0) / 360.0, max(0.0, min(1.0, s)), max(0.0, min(1.0, v)))
+    return "#%02x%02x%02x" % (int(r*255), int(g*255), int(b*255))
+
+
+def tri_zigzag(phi):
+    """Triangle wave in [-1,1], period 1, sharp peaks at integer phi (zig-zag)."""
+    p = phi - math.floor(phi)
+    return 2.0 * abs(2.0 * p - 1.0) - 1.0
+
+
+def ring_segments(node):
+    """Compile a ring node to a list of (path_d, hex_color) segments.
+
+    Continuous color-changing annulus arc with a zig-zag outer edge. Hue walks
+    hue[0]->hue[1] along the arc; the arc is sliced into nseg filled segments so
+    the colour change reads as a rainbow band, not a flat fill.
+
+    Zig-zag phase is purely angular (tooth index = floor(a*zn/2pi)), so two ring
+    nodes sharing geometry/seed but complementary a0..a1 (back + front halves,
+    different z values) produce teeth that line up exactly at the seam — a
+    z-plane split, not a manual path split. Jitter is per-angular-tooth from seed,
+    so both halves agree everywhere.
+    """
+    cx, cy = node["at"]
+    r = float(node.get("r", 300))
+    rx = float(node.get("rx", r))   # elliptical support: rx/ry default to circular r
+    ry = float(node.get("ry", r))
+    rot = math.radians(float(node.get("rot", 0)))
+    w = float(node.get("w", 60))
+    a0 = math.radians(float(node.get("a0", 0)))
+    a1 = math.radians(float(node.get("a1", 360)))
+    zig = float(node.get("zig", 0.15))       # zigzag depth as fraction of w
+    zn = int(node.get("zn", 24))             # teeth per full revolution
+    zq = float(node.get("zq", 0.0))          # 0..1 random depth jitter (seeded)
+    seed = int(node.get("seed", 7))
+    hue0, hue1 = map(float, node.get("hue", [0.0, 300.0]))
+    sat = float(node.get("sat", 0.75)); val = float(node.get("val", 0.9))
+    nseg = int(node.get("nseg", 24))
+    if a1 < a0:
+        a1 += 2 * math.pi
+    span = a1 - a0
+    rng = np.random.default_rng(seed)
+    jit = rng.uniform(1 - zq, 1 + zq, zn) if zq > 0 else np.ones(zn)
+
+    segs = []
+    N = 8  # samples per segment edge (outer + inner) for smooth curving
+    cos_r, sin_r = math.cos(rot), math.sin(rot)
+    for s in range(nseg):
+        t0 = a0 + span * s / nseg
+        t1 = a0 + span * (s + 1) / nseg
+        tm = (t0 + t1) / 2
+        h = hue0 + (hue1 - hue0) * ((tm - a0) / span)
+        outer, inner = [], []
+        for k in range(0, N + 1):
+            a = t0 + (t1 - t0) * k / N
+            tooth = int(math.floor(a * zn / (2 * math.pi))) % zn  # absolute-angle index
+            amp = zig * w * jit[tooth] * tri_zigzag(a * zn / (2 * math.pi))
+            # param point on ellipse, then rotate+translate; amp scales band half-width
+            # along the radial direction (approx: scale the ellipse radii)
+            ux, uy = math.cos(a), math.sin(a)
+            def pt(kk):
+                ex, ey = (rx + kk) * ux, (ry + kk) * uy
+                return (cx + ex * cos_r - ey * sin_r, cy + ex * sin_r + ey * cos_r)
+            outer.append(pt(w / 2 + amp))
+            inner.append(pt(-w / 2))
+        pts = outer + inner[::-1]
+        segs.append((smooth_path(pts, closed=True), hsv_to_hex(h, sat, val)))
+    return segs
 
 
 def compile_scene(nodes, size, ref_path=None):
@@ -365,6 +440,12 @@ def compile_scene(nodes, size, ref_path=None):
             # note: op already embedded in `common`; do NOT emit it twice (duplicate attr = invalid XML)
             paths = "".join(f'<path d="{p}" fill="none" stroke="{ink}" stroke-width="{wi}" stroke-linecap="round"/>'
                             for p, ink, wi in strand_paths(node))
+            s = f'<g {common}>{paths}</g>'
+        elif tkey == "ring":
+            # Each angular slice owns a flat colour; together they read as a continuous hue walk.
+            # A back/front scene split is two complementary ring nodes sharing at/r/w/seed.
+            paths = "".join(f'<path d="{d}" fill="{color}"/>'
+                            for d, color in ring_segments(node))
             s = f'<g {common}>{paths}</g>'
         elif tkey == "blur":
             ids = node["blur"]

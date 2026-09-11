@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Smoke tests for scene_render.py — run with .venv/bin/python."""
-import os, sys, subprocess, tempfile
+import os, sys, subprocess, tempfile, re
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # scripts/
 import scene_render as sr
 import cv2, numpy as np
@@ -123,4 +123,23 @@ try:
     check("h: strands op -> valid XML", 'opacity="0.5 opacity' not in svg_h and svg_h.count('opacity="0.5"') == 1)
 except ET.ParseError as e:
     check("h: strands op -> valid XML", False)
+    print("   parse error:", e)
+
+# (i) ring generator: zig-zag annulus, hue walk, deterministic; back/front halves seam-share geometry
+ring_base = {"at": [512,512], "r": 260, "w": 55, "zig": 0.18, "zn": 24,
+             "zq": 0.2, "seed": 37, "hue": [170,350], "sat": 0.7, "val": 0.9, "nseg": 24}
+back = {"ring": "rb", **ring_base, "a0": 180, "a1": 360, "z": "back"}
+front = {"ring": "rf", **ring_base, "a0": 0, "a1": 180, "z": "front"}
+svg_i = sr.compile_scene([{"layers": ["back","body","front"]}, back,
+                          {"ellipse": "body", "at": [512,512], "rx": 170, "ry": 270,
+                           "fill": "#cccccc", "z": "body"}, front], SIZE)
+try:
+    ET.fromstring(svg_i)
+    colors = set(re.findall(r'fill="(#[0-9a-f]{6})"', svg_i))
+    seg_a = sr.ring_segments(back)
+    seg_b = sr.ring_segments(back)
+    check("i: ring -> valid XML + hue walk + deterministic",
+          len(colors) >= 20 and seg_a == seg_b and svg_i.index('id="rb"') < svg_i.index('id="body"') < svg_i.index('id="rf"'))
+except ET.ParseError as e:
+    check("i: ring -> valid XML + hue walk + deterministic", False)
     print("   parse error:", e)
