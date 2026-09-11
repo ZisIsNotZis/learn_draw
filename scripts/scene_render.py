@@ -198,6 +198,9 @@ def compile_scene(nodes, size, ref_path=None):
         common = f'id="{nid}"'
         if op != 1:
             common += f' opacity="{op}"'
+        bv = node.get("blur")
+        if bv is not None and tkey != "blur" and isinstance(bv, (int, float)):
+            used_blurs[nid] = float(bv)  # per-node feathering (shadows etc.)
         s = ""
         if tkey == "rect":
             if node.get("full"):
@@ -239,7 +242,7 @@ def compile_scene(nodes, size, ref_path=None):
             elif node.get("grad"):
                 fill = f"url(#{node['grad']})"
             if fill is None:
-                fill = "#888"
+                fill = "none" if node.get("stroke") else "#888"  # stroke-only blob = outline
             stroke = f' stroke="{node["stroke"]}" stroke-width="{node.get("sw",3)}"' if node.get("stroke") else ""
             if "poly" in node:
                 d = smooth_path(node["poly"], closed=True)

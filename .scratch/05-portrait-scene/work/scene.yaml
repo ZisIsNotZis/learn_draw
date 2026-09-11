@@ -5,10 +5,10 @@
 - {rect: bg-sky, full: true, fill: grad:bgGrad, z: bg}
 
 # ---- ribbon (behind everything) ----
-- {blob: ribbon-body, poly: [[0,395],[60,400],[150,388],[240,390],[330,382],[420,378],[565,380],[560,450],[545,520],[520,570],[478,640],[424,714],[380,758],[330,754],[255,740],[180,726],[115,714],[50,700],[0,690]], fill: "grad:ribbonGrad", z: ribbon}
-- {stroke: ribbon-tail-arc, spine: [[12,480],[38,432],[95,420],[132,455],[158,480],[156,522],[128,545],[102,566],[66,558],[54,528]], w: 24, ink: "#a86a9a", cap: round, z: ribbon}
+- {blob: ribbon-body, poly: [[0,395],[60,400],[150,388],[240,390],[330,382],[420,378],[548,381],[552,440],[540,510],[520,566],[478,630],[424,700],[380,758],[330,754],[255,740],[180,726],[115,714],[50,700],[0,690]], fill: "grad:ribbonGrad", z: ribbon}
+- {stroke: ribbon-tail-arc, spine: [[12,480],[38,432],[95,420],[132,455],[158,480],[156,522],[128,545],[102,566],[66,558],[54,528]], w: 24, ink: "#a86a9a", taper: both, cap: round, z: ribbon}
 - {stroke: ribbon-tail-hi, spine: [[20,480],[55,440],[105,440],[132,475]], w: 10, ink: "#e0a8b8", op: 0.85, z: ribbon}
-- {stroke: ribbon-tail-end, spine: [[0,545],[20,552],[38,560],[50,572]], w: 10, ink: "#b878a8", z: ribbon}
+- {stroke: ribbon-tail-end, spine: [[0,545],[20,552],[38,560],[50,572]], w: 10, ink: "#b878a8", taper: end, z: ribbon}
 - {blob: ribbon-white-wedge, poly: [[310,688],[385,672],[452,682],[508,700],[558,718],[545,738],[470,728],[408,732],[350,712],[310,688]], fill: "#eef4f2", op: 0.9, z: ribbon}
 - {blob: ribbon-white-strip2, poly: [[150,792],[255,812],[340,862],[300,880],[195,830]], fill: "#eef4f2", op: 0.9, z: ribbon}
 - {blob: ribbon-white-strip3, poly: [[62,764],[160,782],[250,838],[210,856],[120,800]], fill: "#eef4f2", op: 0.9, z: ribbon}
@@ -131,6 +131,40 @@
 - {stroke: brim-edge-1, spine: [[452,33],[430,62],[452,145],[501,211],[555,254]], w: 3, ink: "#1e2a3f", z: hat}
 - {stroke: brim-edge-2, spine: [[881,210],[895,225],[910,240],[927,250],[945,265],[960,278],[973,290],[988,304],[1000,318],[1012,330],[1016,335],[1020,340],[1024,342]], w: 3, ink: "#1e2a3f", z: hat}
 
+
+# ---- shading pass: light from upper-left; soft shadows on lower/right of forms ----
+- {stroke: shadow-dome-on-forehead, spine: [[614,238],[650,234],[700,232],[740,234],[768,242]], w: 14, ink: "#c9a0b4", op: 0.4, blur: 8, z: body}
+- {stroke: shadow-brim-on-right-cheek, spine: [[750,296],[756,318],[756,344],[750,364]], w: 12, ink: "#d8b8c8", op: 0.35, blur: 10, z: body}
+- {stroke: shadow-collar-on-neck, spine: [[722,408],[750,412],[776,408]], w: 10, ink: "#b888a4", op: 0.5, blur: 6, z: body}
+- {stroke: shadow-sleeve-r-gather, spine: [[812,560],[830,568],[852,572],[876,568]], w: 6, ink: "#c2ccc4", op: 0.5, blur: 5, z: body}
+- {stroke: shadow-sleeve-l-fold, spine: [[576,548],[592,556],[610,560],[632,556]], w: 5, ink: "#c2ccc4", op: 0.5, blur: 5, z: body}
+- {stroke: shadow-blouse-right, spine: [[846,480],[856,520],[854,580],[848,630],[840,660]], w: 10, ink: "#c8d0c4", op: 0.5, blur: 8, z: body}
+- {stroke: skirt-fold-shadow-1, spine: [[540,760],[532,820],[530,880],[538,930]], w: 12, ink: "#16324e", op: 0.5, blur: 7, z: skirt}
+- {stroke: skirt-fold-shadow-2, spine: [[700,700],[708,760],[712,820],[718,880]], w: 10, ink: "#16324e", op: 0.45, blur: 7, z: skirt}
+- {stroke: skirt-fold-shadow-3, spine: [[748,720],[756,780],[760,840],[764,890]], w: 8, ink: "#1a3a56", op: 0.4, blur: 6, z: skirt}
+- {stroke: skirt-fold-shadow-4, spine: [[826,720],[830,780],[832,830],[834,880]], w: 8, ink: "#1a3a56", op: 0.35, blur: 6, z: skirt}
+- {stroke: shadow-ribbon-on-skirt, spine: [[700,660],[696,720],[692,790],[690,840]], w: 14, ink: "#3f8a92", op: 0.3, blur: 10, z: skirt}
+- {stroke: shadow-hem-on-water, spine: [[470,1000],[600,1006],[740,1000],[856,984]], w: 14, ink: "#9dbcc2", op: 0.5, blur: 10, z: ribbon}
+- {stroke: shadow-dome-on-bangs, spine: [[600,152],[660,148],[720,148],[790,152],[830,160]], w: 12, ink: "#2f567e", op: 0.5, blur: 8, z: hair}
+- {stroke: shadow-brim-on-right-hair, spine: [[800,215],[810,250],[818,290]], w: 16, ink: "#2f567e", op: 0.45, blur: 10, z: hair}
+- {blob: shadow-dome-right-side, poly: [[813,68],[862,82],[894,143],[891,191],[884,205],[866,210],[852,208],[858,150],[848,100],[826,72]], fill: "#2a3852", op: 0.6, blur: 6, z: hat}
+- {stroke: hat-dome-highlight, spine: [[500,50],[560,60],[620,80]], w: 8, ink: "#46566e", op: 0.6, blur: 6, z: hat}
+- {stroke: shadow-ribbon-under-edge, spine: [[30,690],[120,706],[220,724],[320,748],[420,760],[500,700],[545,600]], w: 12, ink: "#3f96a2", op: 0.5, blur: 8, z: ribbon}
+
+# ---- density pass: strands and creases following flow ----
+- {stroke: hair-strand-r1, spine: [[770,230],[774,280],[776,330],[778,380],[784,420]], w: 3, ink: "#2c4a6e", op: 0.6, z: hair}
+- {stroke: hair-strand-r2, spine: [[760,250],[762,300],[764,350],[766,400]], w: 2.5, ink: "#2c4a6e", op: 0.5, z: hair}
+- {stroke: hair-strand-r3, spine: [[800,200],[806,260],[810,320],[812,380]], w: 3, ink: "#2c4a6e", op: 0.55, z: hair}
+- {stroke: hair-strand-r4, spine: [[818,220],[824,280],[828,340]], w: 2.5, ink: "#2c4a6e", op: 0.5, z: hair}
+- {stroke: wing-highlight-1, spine: [[556,200],[548,240],[546,280],[552,310]], w: 2.5, ink: "#6f9ecb", op: 0.5, z: hair}
+- {stroke: wing-highlight-2, spine: [[570,210],[562,250],[560,295]], w: 2, ink: "#6f9ecb", op: 0.45, z: hair}
+- {stroke: curtain-shade-1, spine: [[908,310],[900,420],[894,520],[892,600]], w: 6, ink: "#315d8a", op: 0.5, blur: 6, z: hair}
+- {stroke: curtain-shade-2, spine: [[952,320],[948,420],[940,540],[928,660]], w: 6, ink: "#315d8a", op: 0.45, blur: 6, z: hair}
+- {stroke: curtain-highlight-1, spine: [[878,320],[872,420],[868,520],[866,590]], w: 2.5, ink: "#6f9ecb", op: 0.5, z: hair}
+- {stroke: skirt-crease-1, spine: [[590,720],[570,780],[550,850],[530,910]], w: 2.5, ink: "#b0c8bc", op: 0.7, z: skirt}
+- {stroke: skirt-crease-2, spine: [[660,700],[650,770],[640,840],[632,900]], w: 2.5, ink: "#b0c8bc", op: 0.7, z: skirt}
+
+# ---- ribbon taper: free ends narrow (ref: green height falls 338->64 rows x80->x480) ----
 # ---- gradients ----
 - {grad: bgGrad, dir: [0,0,0,1], stops: [[0,"#c3d7da"],[0.55,"#c9dadb"],[1,"#bcd6d2"]]}
 - {grad: ribbonGrad, dir: [0.7,0.2,0.2,1], stops: [[0,"#a5dcc0"],[0.55,"#78cbc3"],[1,"#4ba7b1"]]}

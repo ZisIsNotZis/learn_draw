@@ -30,6 +30,7 @@ zone-diff-grid (32px cells, ranked) → gridded-observation crop → anchor read
 - briefs: REBUILD-BRIEF.md, FIX-BRIEF-v21.md, SHADING-BRIEF-v22.md (reusable protocol)
 
 ## UPDATE (scene format migration, same day)
+
 - docs/drawing/scene-format.md: spec for object-level scene DSL (inline-YAML list)
 - scripts/scene_render.py: renderer (spine/taper/petal/blob/region/trace/grad/blur, z-sort, schema validation) + 11 smoke tests all green
 - Portrait migrated: .scratch/05-portrait-scene/work/scene-traced.yaml — 77 nodes vs ~150 SVG paths, overall parity with v20 (61.5 vs 61.5), 2 zones improved
