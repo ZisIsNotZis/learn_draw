@@ -95,3 +95,22 @@ except SystemExit as e:
     check("g: unknown key raises", "bogus" in str(e))
 
 print(f"\n{PASS}/7 smoke tests passed")
+
+# --- wave + strands generator tests ---
+import hashlib, subprocess as sp
+scene = '''- {rect: bg, at: [0,0], w: 1024, h: 1024, fill: "#ffffff"}
+- {wave: r, spine: [[100,300],[500,280],[900,320]], w: 60, amp: 25, len: 300, sag: 0.2, taper: end, fill: "#4ba7b1"}
+- {strands: h, region: [100,600,400,800], n: 10, dir: 100, spread: 15, w: 3, len: 80, ink: ["#3d73a7","#3974ab"], seed: 42}
+'''
+open('/tmp/tg.yaml','w').write(scene)
+sp.run([sys.executable, 'scripts/scene_render.py', '/tmp/tg.yaml', '-o', '/tmp/tg.png'], check=True, capture_output=True)
+img = cv2.imread('/tmp/tg.png')
+mid = img[300, 500]  # teal ribbon body (BGR: 177,167,75)
+assert abs(int(mid[0])-177) < 30 and int(mid[1]) > 120, f"wave ribbon not at spine: {mid}"
+blue = ((np.abs(img[560:840, 60:440].astype(int) - np.array([167,115,103])).sum(axis=2) < 60).sum())
+assert blue > 300, f"strands not rendered: {blue} blue px"
+sp.run([sys.executable, 'scripts/scene_render.py', '/tmp/tg.yaml', '-o', '/tmp/tg2.png'], check=True, capture_output=True)
+assert hashlib.md5(open('/tmp/tg.png','rb').read()).hexdigest() == hashlib.md5(open('/tmp/tg2.png','rb').read()).hexdigest(), "wave/strands nondeterministic"
+print("PASS wave: ribbon body at spine with sag")
+print("PASS strands: n strands rendered in region")
+print("PASS wave/strands: deterministic")

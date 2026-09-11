@@ -28,10 +28,13 @@ SCHEMA = {
     "trace":  {"trace", "from", "class", "fit", "region", "z", "op", "fill"},
     "grad":   {"grad", "dir", "at", "r", "stops", "z"},
     "blur":   {"blur", "std"},
+    "wave":   {"wave", "spine", "w", "amp", "len", "sag", "taper", "fill", "grad", "op", "z", "blur"},
+    "strands": {"strands", "region", "n", "dir", "spread", "w", "wj", "ink", "op", "len", "z", "seed"},
 }
 TYPE_KEY = {"layers": "layers", "grad": "grad", "blur": "blur",
             "rect": "rect", "ellipse": "ellipse", "stroke": "stroke", "blob": "blob",
-            "petal": "petal", "ribbon": "ribbon", "region": "region", "trace": "trace"}
+            "petal": "petal", "ribbon": "ribbon", "region": "region", "trace": "trace",
+            "wave": "wave", "strands": "strands"}
 
 
 def smooth_path(pts, closed=True):
@@ -125,6 +128,62 @@ def flood_region(ref_bgr, seed, tol):
         raise ValueError(f"region seed {seed}: empty mask")
     c = max(cnts, key=cv2.contourArea)
     return cv2.approxPolyDP(c, 6, True).reshape(-1, 2).tolist()
+
+
+def wave_spine(spine, amp, wl, sag, n=40):
+    """Resample spine, displace perpendicular by amp*sin, droop by sag along x-progress (gravity +y)."""
+    pts = resample(spine, n)
+    P = np.array(pts)
+    seg = np.linalg.norm(np.diff(P, axis=0), axis=1)
+    s = np.concatenate([[0], np.cumsum(seg)])
+    s = s / (s[-1] or 1.0)
+    x0, x1 = P[0][0], P[-1][0]
+    out = []
+    for i, p in enumerate(P):
+        t = P[min(i+1, len(P)-1)] - P[max(i-1, 0)]
+        t = t / (np.linalg.norm(t) or 1.0)
+        nrm = np.array([-t[1], t[0]])
+        disp = amp * np.sin(2*np.pi * s[i] * (np.linalg.norm(np.array(spine[-1])-np.array(spine[0])) / max(wl,1)))
+        droop = sag * (p[0] - x0) / max(x1 - x0, 1) * 100
+        out.append(p + nrm*disp + [0, droop])
+    return [list(map(float, q)) for q in out]
+
+
+def wave_node(node):
+    """Compile a wave node to a closed ribbon path."""
+    spine = wave_spine(node["spine"], float(node.get("amp", 10)),
+                       float(node.get("len", 200)), float(node.get("sag", 0)))
+    w = float(node.get("w", 40))
+    taper = node.get("taper", "none")
+    wfun = (lambda t: w * (1 - t)) if taper == "end" else \
+           (lambda t: w * (1 - abs(2*t - 1))) if taper == "both" else (lambda t: w)
+    return taper_outline(spine, wfun)
+
+
+def strand_paths(node):
+    """Generate n deterministic strands inside region flowing along dir."""
+    x0, y0, x1, y1 = node["region"]
+    n = int(node.get("n", 8))
+    base_dir = float(node.get("dir", 90))
+    spread = float(node.get("spread", 20))
+    w = float(node.get("w", 3))
+    wj = float(node.get("wj", 0.4))
+    ln = float(node.get("len", 60))
+    rng = np.random.default_rng(int(node.get("seed", 7)))
+    inks = node.get("ink", "#000")
+    if isinstance(inks, str): inks = [inks]
+    out = []
+    for i in range(n):
+        sx = rng.uniform(x0, x1); sy = rng.uniform(y0, y1)
+        ang = np.radians(base_dir + rng.uniform(-spread, spread))
+        L = ln * rng.uniform(0.8, 1.2)
+        ex, ey = sx + L*np.cos(ang), sy + L*np.sin(ang)
+        bow = rng.uniform(-0.12, 0.12) * L
+        mx, my = (sx+ex)/2 - np.sin(ang)*bow, (sy+ey)/2 + np.cos(ang)*bow
+        wi = w * rng.uniform(1-wj, 1+wj)
+        ink = inks[i % len(inks)]
+        out.append((f'M {sx:.0f} {sy:.0f} Q {mx:.0f} {my:.0f} {ex:.0f} {ey:.0f}', ink, f'{wi:.1f}'))
+    return out
 
 
 def compile_scene(nodes, size, ref_path=None):
@@ -293,6 +352,20 @@ def compile_scene(nodes, size, ref_path=None):
             c = max(cnts, key=cv2.contourArea)
             d = smooth_path(cv2.approxPolyDP(c, 10, True).reshape(-1,2))
             s = f'<path {common} d="{d}" fill="{node.get("fill","#888")}"/>'
+        elif tkey == "wave":
+            fill = node.get("fill")
+            if str(fill).startswith("grad:"):
+                fill = f"url(#{fill.split(':')[1]})"
+            elif node.get("grad"):
+                fill = f"url(#{node['grad']})"
+            fill = fill or "#888"
+            d = wave_node(node)
+            s = f'<path {common} d="{d}" fill="{fill}"/>'
+        elif tkey == "strands":
+            op_a = f' opacity="{op}"' if op != 1 else ""
+            paths = "".join(f'<path d="{p}" fill="none" stroke="{ink}" stroke-width="{wi}" stroke-linecap="round"/>'
+                            for p, ink, wi in strand_paths(node))
+            s = f'<g {common}{op_a}>{paths}</g>'
         elif tkey == "blur":
             ids = node["blur"]
             std = float(node.get("std", 6))
