@@ -362,10 +362,10 @@ def compile_scene(nodes, size, ref_path=None):
             d = wave_node(node)
             s = f'<path {common} d="{d}" fill="{fill}"/>'
         elif tkey == "strands":
-            op_a = f' opacity="{op}"' if op != 1 else ""
+            # note: op already embedded in `common`; do NOT emit it twice (duplicate attr = invalid XML)
             paths = "".join(f'<path d="{p}" fill="none" stroke="{ink}" stroke-width="{wi}" stroke-linecap="round"/>'
                             for p, ink, wi in strand_paths(node))
-            s = f'<g {common}{op_a}>{paths}</g>'
+            s = f'<g {common}>{paths}</g>'
         elif tkey == "blur":
             ids = node["blur"]
             std = float(node.get("std", 6))

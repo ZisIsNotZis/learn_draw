@@ -114,3 +114,13 @@ assert hashlib.md5(open('/tmp/tg.png','rb').read()).hexdigest() == hashlib.md5(o
 print("PASS wave: ribbon body at spine with sag")
 print("PASS strands: n strands rendered in region")
 print("PASS wave/strands: deterministic")
+
+# (h) regression: strands with op: must not emit duplicate opacity attribute (invalid XML)
+svg_h = sr.compile_scene([{"strands": "s", "region": [0,0,100,100], "n": 3, "op": 0.5, "seed": 1}], SIZE)
+import xml.etree.ElementTree as ET
+try:
+    ET.fromstring(svg_h)
+    check("h: strands op -> valid XML", 'opacity="0.5 opacity' not in svg_h and svg_h.count('opacity="0.5"') == 1)
+except ET.ParseError as e:
+    check("h: strands op -> valid XML", False)
+    print("   parse error:", e)
