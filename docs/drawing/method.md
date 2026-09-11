@@ -38,3 +38,6 @@ Loop: **observe → plan → draw → compare → reflect → revise**, cycled. 
 - Metrics are progress signal only (invariant 4 in repo AGENTS.md).
 - Max ~3 focused fix attempts per problem; still failing → reformulate at design level (e.g. wrong occlusion order), propose once-and-for-all structure fix.
 - Fresh-eyes critic (subagent given only REF vs DRAFT images, open question "what is wrong here?") at exercise end — catches blind spots from staring at my own draft.
+
+## Judging (P14 reframe)
+Primary criterion: the drawing looks like a proper artwork in the reference's style — judged by looking at the full render and by fresh-eyes critic review. Zone-distance/edge metrics are weak regression signals only (catch accidental breakage), never objectives to tune against. Holistic semantic shapes outrank pixel correspondence; a fragmented but "closer" draft is worse than a coherent drawing.
