@@ -39,6 +39,7 @@ zone-diff-grid (32px cells, ranked) → gridded-observation crop → anchor read
 - Remaining: same visual-fidelity backlog as before (arrangement, density, shading) — now attackable at parameter level
 
 ## Phase A+B complete (2026-09-11)
+
 - Generators live: `wave` (amp/wavelength/sag/taper), `strands` (seeded, deterministic) — 15/15 tests green
 - Phase B landed (133 nodes): ribbon = 2 waves, hair/curtain/skirt = 4 strand generators; ribbon top edge within ~25px of ref
 - Worker-profile bug found twice: `worker` agent allowlist lacks read/bash — use Agent tool general-purpose profile instead
@@ -76,6 +77,7 @@ Authoritative work order: REBUILD-v2-BRIEF.md (user's 7 defects + plan). Done so
 Then Phase 4: whole-frame judgment per P14 (fresh-eyes critic loop on visible wrongness).
 
 ## Session-ops (confirmed again this session)
+
 - Image attachments return EMPTY late in long sessions (3 retries at decreasing sizes all failed).
   Fallback that works: pixel probes + ASCII hue-class grid maps (see log.md iter 15). Never claim to have seen.
 - `scripts/draw` wrapper needs bash; direct call `.venv/bin/python scripts/draw.py diff ...` works.
