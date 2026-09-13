@@ -1,6 +1,8 @@
-# Scene format & renderer — high-level drawing DSL
+# Scene format & renderer — compiled node format (back end)
 
-Purpose: authoring drawings at *object* level (semantic nodes with parameters) instead of hand-written SVG coordinates. The renderer compiles a scene file to SVG (rendered via the existing chrome pipeline, so all compare/probe tooling works unchanged). This kills the three biggest pain points from the portrait project: manual occlusion surgery, fragmented shape soup, and coordinate-level iteration.
+Purpose: the node format a drawing compiles *down* to — semantic nodes with parameters that compile to SVG (rendered via the existing chrome pipeline, so all compare/probe tooling works unchanged).
+
+**Authoring happens one level above this.** You do not hand-write coordinates in this format; you describe the drawing in relations (`docs/drawing/abstraction.md`) and the resolver emits these nodes with absolute geometry. Read that first. This format's job is z-ordered painting with occlusion as the renderer's problem, not the author's.
 
 ## File format
 

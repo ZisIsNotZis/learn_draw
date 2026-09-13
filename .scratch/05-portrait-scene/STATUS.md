@@ -1,5 +1,9 @@
 # Portrait step-1 status (2026-09-10, post rebuild)
 
+> FROZEN 2026-09-14 — historical record. The exercise is superseded; see `spec.md` banner,
+> `evidence/diagnosis/` for why, and `.scratch/06-relational-geometry/` + the L1–L6 ladder for what replaced it.
+> Nothing below should be resumed.
+
 ## Achieved
 
 - Full-figure assembly, all anatomy present (neck, hands, hat brim 帽檐, dark skirt, colorful translucent ribbons)

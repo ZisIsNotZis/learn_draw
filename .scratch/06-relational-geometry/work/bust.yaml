@@ -1,0 +1,55 @@
+# 06-relational-geometry — proof spec: a head wearing a sun hat.
+#
+# NO ABSOLUTE COORDINATES ANYWHERE. Every number is either a fraction of the frame or a
+# relation to an already-declared shape. This file is the answer to "how do we stop writing
+# coordinates": you describe the drawing the way you would to a person.
+
+frame: {w: 1024, h: 1024}
+layers: [bg, body, hair, hat, hat-front]
+
+# named intermediate scalars: the drawing's own vocabulary. Say it once, relative to the frame.
+vars:
+  head_half: frame.w*0.098
+  head_deep: head_half*1.28
+
+draw:
+  - {rect: bg, full: true, fill: "#dde7e9", desc: "flat backdrop — the frame, not part of the figure"}
+
+  # head is declared FIRST because it is the ruler: every other size is a multiple of it.
+  - {ellipse: head, at: [frame.w*0.60, frame.h*0.34], rx: head_half, ry: head_half*1.28,
+     fill: "#f2e6d8", stroke: "#2a2f3a", sw: 3, z: body,
+     desc: "head: ellipse 1.28x taller than wide, centred slightly right of frame middle"}
+
+  # hair mass: ONE silhouette whose spine falls down-left, width in units of head width.
+  - {blob: hair-left, spine: [[head.left - head.w*0.30, head.cy - head.h*0.10],
+                              [head.left - head.w*0.42, head.cy + head.h*0.55],
+                              [head.left - head.w*0.30, head.cy + head.h*1.30]],
+     w: head.w*0.85, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "hair: one mass hanging down the left of the head, ~0.85 head-widths thick"}
+  - {blob: hair-cap, spine: [[head.cx - head.w*0.46, head.cy - head.h*0.55],
+                             [head.cx, head.cy - head.h*0.78],
+                             [head.cx + head.w*0.46, head.cy - head.h*0.54]],
+     w: head.h*0.50, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "hair over the skull — the dome the hat sits on"}
+
+  # shoulders: a wide shallow arc, its width a multiple of the head.
+  - {blob: shoulders, spine: [[head.cx - head.w*1.30, frame.h*0.90],
+                              [head.cx, frame.h*0.85],
+                              [head.cx + head.w*1.30, frame.h*0.90]],
+     w: head.h*0.80, fill: "#e1e7dc", stroke: "#3a3d4d", sw: 3, z: body,
+     desc: "shoulders: shallow arc, 2.6 head-widths across"}
+
+  # THE HAT. Six parameters, no geometry: brim width, tilt, crown width, poms.
+  # The engine supplies the structure every sun hat has (squashed brim ellipse, dome on the
+  # brim normal, near edge painted over the crown, poms on the brim outline).
+  - {sunhat: hat, host: head, brim: 2.70*head.w, crown: 0.78*head.w, tilt: -14,
+     lift: 0.52, drop: 0.60, crown-h: 0.88, front: [0.04, 0.46], pom: 2,
+     crown-fill: "#32405b", crown-stroke: "#1e2a3f", crown-sw: 2,
+     brim-fill: "#3b7f92", rim-fill: "#4d94a6", pom-fill: "#df9199",
+     z: hat, z-front: hat-front,
+     desc: "wide-brim sun hat, brim 2.7 head-widths, tilted 14deg down to the right"}
+
+# occlusion intent, in words — the engine checks it against the layer stack
+relations:
+  - {front: hat, behind: hair-left, desc: "hat sits on top of the hair"}
+  - {front: hair-left, behind: shoulders, desc: "hair falls in front of the shoulders"}

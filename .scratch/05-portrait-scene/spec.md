@@ -1,6 +1,12 @@
 # 05 — portrait-scene: ribbons/background T3 + full assembly
 
-Status: done (structure) — polish backlog open
+Status: FROZEN 2026-09-14 — superseded. Kept for evidence only; do not continue this exercise.
+
+Why frozen: this exercise was one ticket doing several things at once (learn T3 soft fields *and*
+assemble the whole figure *and* rebuild *and* introduce a layer stack), which is why it accumulated
+8 briefs, 29 work files, and never closed. Diagnosis + the computed-geometry comparison live in
+`evidence/diagnosis/`. Replaced by `.scratch/06-relational-geometry/` (the authoring language) and
+the L1–L6 ladder (08-bust → 13-assembly), per `docs/drawing/abstraction.md` and principles P18–P21.
 
 ## Scope
 

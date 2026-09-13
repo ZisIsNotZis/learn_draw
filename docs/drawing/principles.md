@@ -84,3 +84,35 @@ Learned: dress.png/cloth.png are redraws (style refs); hat/ribbon/head_hat are p
 
 Elements that wrap AROUND the figure (ribbon circling the body, hair behind vs in front, hands tucked behind) are modeled as ONE continuous shape split by z-plane, never pre-split paths: two node instances sharing geometry (+seed), complementary arc/angle ranges, different `z`. For the ring generator the zigzag phase is purely angular, so complementary arcs re-join seamlessly. Occlusion stays the renderer's job (scene-format rule).
 Learned: ribbon ring back/front halves; green hair mass moved from front overlay to hair-behind layer.
+
+## P18 — The engine must not need the target (user constraint, 06-relational-geometry)
+
+A reference image is a *teacher*, never the engine. Tracing can seed values for a drawing spec,
+but if the solver needs the target to produce geometry, it is worthless for the end goal (drawing
+without a reference). So the test for every abstraction is: *does this still work with the image
+deleted?* Learned: user, on accepting the computed-geometry reframe.
+
+## P19 — Geometry by computation, semantics by eye (05-portrait-scene diagnosis)
+
+A VLM is strong at naming/grouping/z-order/judging and weak at coordinate regression. Any shape
+needing more than ~4 hand-typed coordinates must come from a computed source (trace, region,
+generator, or a relation), never from the model's head. The portrait's 824 hand-typed vertices
+produced mush; 119 computed contours produced the character in 2.4s.
+Learned: `evidence/diagnosis/` comparison.
+
+## P20 — Two orders, kept separate (06-relational-geometry)
+
+*Resolution* order (a node may use any shape declared before it) and *paint* order (`layers` + z)
+are different orders and must never be conflated. Separating them is what removed the portrait's
+occlusion surgery: a shape is declared where it is convenient to reason about it, and placed in
+the stack where it belongs visually.
+Learned: `sunhat` needs the head declared first but painted after the hair.
+
+## P21 — The engine reports in words (06-relational-geometry)
+
+A model has no numeric sense of a 1024² canvas, so the resolver must hand back derived facts as
+sentences: OFF-CANVAS / CLIPPED / SUB-PIXEL shapes, and CONTRADICTION when a declared
+`front/behind` relation disagrees with the layer stack. In the first bust render this caught two
+defects (my own wrong layer order, and shoulders clipped 68px past the frame edge) before the
+image was ever looked at.
+Learned: `relate.py` diagnostics on bust v1.
