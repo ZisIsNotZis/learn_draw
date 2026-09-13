@@ -1,0 +1,18 @@
+art:    .scratch/05-portrait-scene/evidence/current.png
+bundle: /home/z/vibe/learn_draw/.scratch/05-portrait-scene/evidence/check
+
+images (feed these, and nothing else):
+  /home/z/vibe/learn_draw/.scratch/05-portrait-scene/evidence/check/side-by-side.png  -- whole frame, ref beside draft
+  /home/z/vibe/learn_draw/.scratch/05-portrait-scene/evidence/check/region-1.png  -- worst-region #1 at (768,896,64,64) mean-dist 229, 2.0x
+  /home/z/vibe/learn_draw/.scratch/05-portrait-scene/evidence/check/region-2.png  -- worst-region #2 at (384,768,64,64) mean-dist 187, 2.0x
+  /home/z/vibe/learn_draw/.scratch/05-portrait-scene/evidence/check/region-3.png  -- worst-region #3 at (576,960,64,64) mean-dist 181, 2.0x
+
+metrics (breakage alarm only, never a target): {'precision': 0.322, 'recall': 0.207, 'edge_f1': 0.252, 'color_dist': 62.8}
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.

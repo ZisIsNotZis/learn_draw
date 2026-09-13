@@ -1,8 +1,0 @@
-{
-  "$schema": "https://raw.githubusercontent.com/apmantza/pi-lens/master/docs/schema/pi-lens-config-v1.json",
-  "rules": {
-    "unchecked-throwing-call-python": {
-      "disable": ["unchecked-throwing-call-python", "ast-grep:unchecked-throwing-call-python"]
-    }
-  }
-}

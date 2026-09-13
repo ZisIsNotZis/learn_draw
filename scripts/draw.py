@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """draw.py — toolkit for learning to draw via programmatic art (SVG/CSS).
 
-Subcommands: render | compare | diff | ref | log
+Subcommands: render | compare | diff | ref | log | measure | check
 Renderer: chrome-headless-shell (playwright cache) — renders SVG and HTML/CSS alike.
 """
 import argparse, os, re, subprocess, sys, datetime
@@ -13,39 +13,107 @@ CHROME = os.path.expanduser(
     "chrome-headless-shell-linux64/chrome-headless-shell")
 
 
+class ToolError(SystemExit):
+    """A tool-level failure, reported in words rather than as a traceback."""
+
+
+def num(value: object, what: str = "value") -> float:
+    try:
+        return float(value)  # type: ignore[arg-type]
+    except (TypeError, ValueError) as exc:
+        raise ToolError(f"draw: {what} is not a number: {value!r}") from exc
+
+
+def whole(value: object, what: str = "value") -> int:
+    try:
+        return int(value)  # type: ignore[arg-type]
+    except (TypeError, ValueError) as exc:
+        raise ToolError(f"draw: {what} is not an integer: {value!r}") from exc
+
+
+def read_text(path: str) -> str:
+    try:
+        return open(path).read()
+    except OSError as exc:
+        raise ToolError(f"draw: cannot read {path}: {exc}") from exc
+
+
+def write_text(path: str, text: str) -> None:
+    try:
+        with open(path, "w") as fh:
+            fh.write(text)
+    except OSError as exc:
+        raise ToolError(f"draw: cannot write {path}: {exc}") from exc
+
+
+def append_text(path: str, text: str) -> None:
+    try:
+        with open(path, "a") as fh:
+            fh.write(text)
+    except OSError as exc:
+        raise ToolError(f"draw: cannot append to {path}: {exc}") from exc
+
+
+def remove_file(path: str) -> None:
+    try:
+        os.remove(path)
+    except OSError as exc:
+        raise ToolError(f"draw: cannot remove {path}: {exc}") from exc
+
+
+def ensure_dir(path: str) -> None:
+    try:
+        os.makedirs(path, exist_ok=True)
+    except OSError as exc:
+        raise ToolError(f"draw: cannot create {path}: {exc}") from exc
+
+
+def size_arg(text: str | None) -> tuple[int, int] | None:
+    """Parse a WxH argument, or None when absent."""
+    if not text:
+        return None
+    parts = text.split("x")
+    if len(parts) != 2:
+        raise ToolError(f"draw: --size must be WxH, got {text!r}")
+    return (whole(parts[0], "--size width"), whole(parts[1], "--size height"))
+
+
 def render(src: str, out: str, size: tuple[int, int] | None = None) -> tuple[int, int]:
     """Rasterize .svg or .html to PNG via headless chromium."""
     src = os.path.abspath(src)
     out = os.path.abspath(out)
     if not os.path.exists(CHROME):
         sys.exit(f"renderer not found: {CHROME}")
+    tmp: str | None = None
     if src.endswith(".svg"):
-        svg = open(src).read()
+        svg = read_text(src)
         if size is None:
             m = re.search(r'viewBox="([\d.\- ,]+)"', svg)
             if m and len(m.group(1).split()) == 4:
-                size = (int(float(m.group(1).split()[2])), int(float(m.group(1).split()[3])))
+                size = (whole(num(m.group(1).split()[2])), whole(num(m.group(1).split()[3])))
             else:
                 m = re.search(r'<svg[^>]*\bwidth="([\d.]+)"[^>]*\bheight="([\d.]+)"', svg)
                 if not m:
                     sys.exit("cannot infer SVG size; pass --size WxH")
-                size = (int(float(m.group(1))), int(float(m.group(2))))
+                size = (whole(num(m.group(1))), whole(num(m.group(2))))
         html = f'<html><body style="margin:0;overflow:hidden">{svg}</body></html>'
         tmp = out + ".wrap.html"
-        open(tmp, "w").write(html)
+        write_text(tmp, html)
         target = tmp
     else:
         target = src
+    if size is None:
+        raise ToolError("draw: cannot infer a size for this source; pass --size WxH")
     subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-sandbox",
                     f"--screenshot={out}", f"--window-size={size[0]},{size[1]}",
                     "file://" + target], check=True, capture_output=True, timeout=60)
-    if src.endswith(".svg"):
-        os.remove(tmp)
+    if tmp is not None:
+        remove_file(tmp)
     return size
 
 
 def imwrite(path: str, img: np.ndarray):
-    os.makedirs(os.path.dirname(os.path.abspath(path)), exist_ok=True)
+    ensure_dir(os.path.dirname(os.path.abspath(path)))
     cv2.imwrite(path, img)
 
 
@@ -62,7 +130,7 @@ def edge_map(img: np.ndarray) -> np.ndarray:
     """Binary edge map via auto-canny on blurred grayscale."""
     g = cv2.GaussianBlur(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), (3, 3), 0)
     v = np.median(g)
-    lo, hi = int(max(0, 0.66 * v)), int(min(255, 1.33 * v))
+    lo, hi = whole(max(0, 0.66 * v)), whole(min(255, 1.33 * v))
     return cv2.Canny(g, lo, hi)
 
 
@@ -106,9 +174,9 @@ def metrics(ref: np.ndarray, draft: np.ndarray) -> dict:
     p = (de & rd).sum() / max(de.sum(), 1)   # draft edges covered by ref
     r = (re_ & dd).sum() / max(re_.sum(), 1) # ref edges covered by draft
     f1 = 2 * p * r / max(p + r, 1e-9)
-    cd = float(np.linalg.norm(ref.astype(np.int16) - draft.astype(np.int16), axis=2).mean())
-    return {"precision": round(float(p), 3), "recall": round(float(r), 3),
-            "edge_f1": round(float(f1), 3), "color_dist": round(cd, 1)}
+    cd = np.linalg.norm(ref.astype(np.int16) - draft.astype(np.int16), axis=2).mean()
+    return {"precision": round(num(p), 3), "recall": round(num(r), 3),
+            "edge_f1": round(num(f1), 3), "color_dist": round(num(cd), 1)}
 
 
 # ---------------------------------------------------------------- subcommands
@@ -159,6 +227,155 @@ def cmd_diff(a):
     print(a.out)
 
 
+def worst_cells(dist: np.ndarray, n: int, cell: int = 64, sep: int = 2):
+    """Top-n worst cells of a distance map, kept spatially apart.
+
+    Connected components are useless here: when a draft differs globally the threshold mask
+    merges into one canvas-sized blob, which is not a "worst region". Ranking a coarse grid
+    always yields n localized, comparable areas.
+    """
+    gh, gw = dist.shape[0] // cell, dist.shape[1] // cell
+    if gh < 1 or gw < 1:
+        return []
+    grid = dist[:gh * cell, :gw * cell].reshape(gh, cell, gw, cell).mean(axis=(1, 3))
+    picked: list[tuple[int, int]] = []
+    for flat in np.argsort(-grid.ravel()):
+        gy, gx = divmod(whole(flat), gw)
+        if all(max(abs(gy - py), abs(gx - px)) >= sep for py, px in picked):
+            picked.append((gy, gx))
+        if len(picked) >= n:
+            break
+    return [(gx * cell, gy * cell, cell, cell, num(grid[gy, gx])) for gy, gx in picked]
+
+
+def _fit(img: np.ndarray, max_w: int) -> np.ndarray:
+    """Downscale so width <= max_w, preserving aspect (no upscaling)."""
+    if img.shape[1] <= max_w:
+        return img
+    scale = max_w / img.shape[1]
+    return cv2.resize(img, (max_w, max(1, round(img.shape[0] * scale))), interpolation=cv2.INTER_AREA)
+
+
+def _check_dir(art: str) -> str:
+    """Evidence dir for a drawing: <exercise>/evidence/check for .scratch arts, else <dir>/check."""
+    ap_ = os.path.abspath(art)
+    parts = ap_.split(os.sep)
+    if ".scratch" in parts:
+        i = parts.index(".scratch")
+        if i + 1 < len(parts):
+            return os.path.join(os.sep.join(parts[:i + 1]), parts[i + 1], "evidence", "check")
+    return os.path.join(os.path.dirname(ap_) or ".", "check")
+
+
+def _rasterize(art: str, outdir: str, ref: str | None) -> str:
+    """Turn a drawing (svg/html/png/jpg/scene.yaml/relational spec) into a draft PNG."""
+    ext = os.path.splitext(art)[1].lower()
+    if ext in (".png", ".jpg", ".jpeg", ".webp"):
+        return art
+    here = os.path.dirname(os.path.abspath(__file__))
+    if ext in (".svg", ".html"):
+        dst = os.path.join(outdir, "draft.png")
+        render(art, dst)
+        return dst
+    if ext in (".yaml", ".yml"):
+        import yaml
+        try:
+            spec = yaml.safe_load(read_text(art))
+        except yaml.YAMLError as exc:
+            sys.exit(f"cannot read {art}: {exc}")
+        dst = os.path.join(outdir, "draft.png")
+        if isinstance(spec, dict) and {"frame", "draw"} <= set(spec):
+            resolver = _find_relate(art)
+            if resolver is None:
+                sys.exit(f"{art} is a relational spec but relate.py was not found; "
+                         "run the resolver yourself and check its .svg")
+            subprocess.run([sys.executable, resolver, art, "-o", dst], check=True, timeout=120)
+        else:
+            cmd = [sys.executable, os.path.join(here, "scene_render.py"), art, "-o", dst]
+            if ref:
+                cmd += ["--ref", ref]
+            subprocess.run(cmd, check=True, timeout=120)
+        return dst
+    sys.exit(f"draw check: unsupported drawing type {ext or art!r}")
+
+
+def _find_relate(art: str) -> str | None:
+    """Locate the relational resolver: beside the spec, or in any .scratch/*/work/."""
+    import glob
+    beside = os.path.join(os.path.dirname(os.path.abspath(art)), "relate.py")
+    if os.path.exists(beside):
+        return beside
+    hits = sorted(glob.glob(os.path.join(
+        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+        ".scratch", "*", "work", "relate.py")))
+    return hits[-1] if hits else None
+
+
+def cmd_check(a):
+    """Emit the visual feedback bundle: images + numbers, and never a verdict."""
+    outdir = a.outdir or _check_dir(a.art)
+    ensure_dir(outdir)
+    draft = imread(_rasterize(a.art, outdir, a.ref))
+    written: list[tuple[str, str]] = []
+    lines: list[str] = []
+
+    if a.ref:
+        ref = imread(a.ref, (draft.shape[1], draft.shape[0]))
+        m = metrics(ref, draft)
+        p = os.path.join(outdir, "side-by-side.png")
+        imwrite(p, side_by_side(_fit(ref, a.pane), _fit(draft, a.pane), "REF", "DRAFT"))
+        written.append((p, "whole frame, ref beside draft"))
+        lines.append(f"metrics (breakage alarm only, never a target): {m}")
+
+        dist = np.linalg.norm(ref.astype(np.int16) - draft.astype(np.int16), axis=2)
+        boxes = worst_cells(dist, a.regions)
+        for i, (x, y, w, h, badness) in enumerate(boxes, 1):
+            side = whole(max(96, min(256, max(w, h) * 2)))
+            cx, cy = x + w // 2, y + h // 2
+            x0 = max(0, min(ref.shape[1] - side, cx - side // 2))
+            y0 = max(0, min(ref.shape[0] - side, cy - side // 2))
+            zoom = max(1.0, min(a.zoom_max, a.pane / side))
+            crop = lambda im: _fit(cv2.resize(im[y0:y0 + side, x0:x0 + side], None,  # noqa: E731
+                                              fx=zoom, fy=zoom, interpolation=cv2.INTER_NEAREST), a.pane)
+            rp = os.path.join(outdir, f"region-{i}.png")
+            imwrite(rp, side_by_side(crop(ref), crop(draft),
+                                     f"REF x{zoom:.1f}", f"DRAFT x{zoom:.1f}"))
+            written.append((rp, f"worst-region #{i} at ({x},{y},{w},{h}) "
+                                f"mean-dist {badness:.0f}, {zoom:.1f}x"))
+    else:
+        p = os.path.join(outdir, "draft.png")
+        if os.path.abspath(p) != os.path.abspath(_rasterize(a.art, outdir, None)):
+            imwrite(p, _fit(draft, a.pane))
+        written.append((p, "the drawing"))
+        lines.append("no --ref given: nothing to compare against (reference-free stage)")
+
+    report = os.path.join(outdir, "report.txt")
+    lines_out = [
+        f"art:    {a.art}",
+        f"bundle: {outdir}",
+        "",
+        "images (feed these, and nothing else):",
+    ]
+    lines_out += [f"  {path}  -- {what}" for path, what in written]
+    lines_out += [""] + lines
+    lines_out += [
+        "",
+        "reviewer protocol - do not skip:",
+        "  Give ONLY the images above to a FRESH-context reviewer with no other context.",
+        "  Ask the open question: 'what is wrong here?'",
+        "  Never leak your intent, your history, or a suspected verdict.",
+        "  Verify every claim against a measurement before acting on it (P7).",
+        "",
+        "This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.",
+    ]
+    write_text(report, "\n".join(lines_out) + "\n")
+
+    print(f"bundle: {outdir}")
+    for path, what in written:
+        print(f"  {what:52s} {path}")
+    print(f"  {'report + reviewer protocol':52s} {report}")
+
+
 def xdog(img: np.ndarray, sigma=1.0, k=1.6, p=25, eps=0.005, phi=10) -> np.ndarray:
     g = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY).astype(np.float64) / 255.0
     g1 = cv2.GaussianBlur(g, (0, 0), sigma)
@@ -179,7 +396,7 @@ def cmd_ref(a):
         Z = img.reshape(-1, 3).astype(np.float32)
         Z = Z[np.random.choice(len(Z), min(20000, len(Z)), replace=False)]
         crit = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 20, 1.0)
-        _, labels, centers = cv2.kmeans(Z, a.k, None, crit, 3, cv2.KMEANS_PP_CENTERS)
+        _, labels, centers = cv2.kmeans(Z, a.k, None, crit, 3, cv2.KMEANS_PP_CENTERS)  # type: ignore[arg-type]
         counts = np.bincount(labels.flatten(), minlength=a.k)
         order = np.argsort(-counts)
         sw, hexes = [], []
@@ -212,8 +429,8 @@ def cmd_log(a):
         row += " - | - |"
     line = f"{row} {a.note} |\n"
     if not os.path.exists(path):
-        open(path, "w").write("# iteration log\n\n| iter | edge-F1 | color-dist | note |\n|---|---|---|---|\n")
-    open(path, "a").write(line)
+        write_text(path, "# iteration log\n\n| iter | edge-F1 | color-dist | note |\n|---|---|---|---|\n")
+    append_text(path, line)
     print("logged:", line.strip())
 
 
@@ -232,7 +449,7 @@ def cmd_measure(a):
         x, y = a.point
         print("#%02x%02x%02x" % tuple(img[y, x][::-1])); return
     if a.scan:  # "row:y:x0:x1" or "col:x:y0:y1" - print color transitions
-        kind, v, lo, hi = a.scan.split(":"); v, lo, hi = int(v), int(lo), int(hi)
+        kind, v, lo, hi = a.scan.split(":"); v, lo, hi = whole(v), whole(lo), whole(hi)
         line = img[v, lo:hi] if kind == "row" else img[lo:hi, v]
         prev = None
         for i, p in enumerate(line):
@@ -265,12 +482,12 @@ def main():
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     p = sub.add_parser("render"); p.add_argument("src"); p.add_argument("-o", "--out", default="/tmp/_render.png"); p.add_argument("--size")
-    p.set_defaults(fn=lambda a: print(a.out, render(a.src, a.out, tuple(map(int, a.size.split("x"))) if a.size else None)))
+    p.set_defaults(fn=lambda a: print(a.out, render(a.src, a.out, size_arg(a.size))))
 
     p = sub.add_parser("compare"); p.add_argument("ref"); p.add_argument("src")
     p.add_argument("--region"); p.add_argument("--zoom", type=float, default=1)
     p.add_argument("-o", "--out", default="/tmp/_compare.png")
-    p.set_defaults(fn=lambda a: setattr(a, "region", [int(v) for v in a.region.split(",")] if a.region else None) or cmd_compare(a))
+    p.set_defaults(fn=lambda a: setattr(a, "region", [whole(v) for v in a.region.split(",")] if a.region else None) or cmd_compare(a))
 
     p = sub.add_parser("diff"); p.add_argument("ref"); p.add_argument("src")
     p.add_argument("--mode", choices=["line", "color"], default="line")
@@ -283,6 +500,14 @@ def main():
     p.add_argument("-o", "--out", default="/tmp/_ref.png")
     p.set_defaults(fn=lambda a: setattr(a, "params", {}) or cmd_ref(a))
 
+    p = sub.add_parser("check"); p.add_argument("art", help="svg/html/png or a spec .yaml to render")
+    p.add_argument("--ref", default=None, help="reference image; omit for the reference-free stage")
+    p.add_argument("--outdir", default=None, help="default: <exercise>/evidence/check")
+    p.add_argument("--regions", type=int, default=3, help="worst regions to crop (default 3)")
+    p.add_argument("--pane", type=int, default=256, help="max px per pane (default 256)")
+    p.add_argument("--zoom-max", type=float, default=3.0, dest="zoom_max")
+    p.set_defaults(fn=cmd_check)
+
     p = sub.add_parser("log"); p.add_argument("exdir"); p.add_argument("--iter", type=int)
     p.add_argument("--ref"); p.add_argument("--src"); p.add_argument("--note", default="")
     p.set_defaults(fn=cmd_log)
@@ -290,7 +515,7 @@ def main():
     p = sub.add_parser("measure"); p.add_argument("image")
     p.add_argument("--hough", action="store_true"); p.add_argument("--rmin", type=int); p.add_argument("--rmax", type=int)
     p.add_argument("--point"); p.add_argument("--scan")
-    p.set_defaults(fn=lambda a: setattr(a, "point", [int(v) for v in a.point.split(",")] if a.point else None) or cmd_measure(a))
+    p.set_defaults(fn=lambda a: setattr(a, "point", [whole(v) for v in a.point.split(",")] if a.point else None) or cmd_measure(a))
 
     a = ap.parse_args()
     a.fn(a)
