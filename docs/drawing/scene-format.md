@@ -34,12 +34,19 @@ Rules: top level = YAML list; nodes are flat dicts (inline flow style preferred;
 | `blob` | poly (list) OR spine+w, fill, stroke?, sw?, blur? | closed `<path>`, smooth_path |
 | `petal` | at, n, len, wid, curl (0-1), spread (deg), angle0, fill, stroke? | n rotated blob instances around `at` |
 | `ribbon` | spine, w, grad | fill, op | stroke with width, gradient along bbox |
+| `wave` | spine, w, amp, len (wavelength), sag, taper?, fill | grad? | spine displaced by sin wave + gravity droop, compiled to closed ribbon path |
+| `strands` | region [x0,y0,x1,y1], n, dir (deg), spread, w, wj (width jitter), len, ink (color or list), seed | n seeded flowing hair/fold strokes inside region; deterministic per seed |
+| `ring` | at, r OR rx/ry, rot?, w, a0/a1 (deg, arc range; default full circle), zig (depth as fraction of w), zn (teeth/revolution), zq (jitter 0-1), seed, hue [h0,h1] (deg walk along arc), sat, val, nseg | color-walking annulus arc with zigzag outer edge; slices into nseg filled segments. Back/front scene split = two complementary ring nodes sharing geometry+seed (teeth line up at seam — z-plane split, not path split) |
 | `region` | seed, tol, on (ref | layers-below), fill, grow? | paint-bucket on the rasterized `on` target; contour→smooth path |
 | `trace` | from (image path), class (anchor colors), fit (outline | spine+width), z | contour extract (existing method) → blob/stroke |
 | `grad` | dir or at/r (linear | radial), stops [[off,color]...] | named `<linearGradient>`; referenced as `grad:name` in fills |
 | `blur` | ids or layer, std | wraps targets in `<g filter>` |
 
 Defaults: `z: default`, `op: 1`, `cap: round`, `taper: none`. Unknown key = hard error (renderer validates schema; no silent ignores).
+
+## Generators (`wave`, `strands`, `ring`)
+
+Generated nodes replace hand-placed stroke fragments (P15: generate from parameters). All are seeded and deterministic — same scene → same pixels, byte-identical. Tuning knobs are per-node parameters; never hand-edit generated output. Regression tests in `scripts/tests/test_scene.py` cover placement, determinism, and schema of each generator.
 
 ## Renderer contract
 

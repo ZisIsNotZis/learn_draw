@@ -43,3 +43,40 @@ zone-diff-grid (32px cells, ranked) → gridded-observation crop → anchor read
 - Phase B landed (133 nodes): ribbon = 2 waves, hair/curtain/skirt = 4 strand generators; ribbon top edge within ~25px of ref
 - Worker-profile bug found twice: `worker` agent allowlist lacks read/bash — use Agent tool general-purpose profile instead
 - Judging per P14: coherent drawing > pixel match; next = Phase D (fresh-eyes critic loop on visible wrongness)
+
+## REBUILD v2 — Phases 0-2 complete (2026-09-11, handoff state)
+
+Authoritative work order: REBUILD-v2-BRIEF.md (user's 7 defects + plan). Done so far:
+
+- **Phase 0 (component intake)** — plates extracted to `work/components/{name}-plate|mask.png`
+  (1024-space) via `work/extract-components.py`; alignment in `work/components/REGISTRY.md`.
+  Key facts: hat/ribbon/head_hat = position-true 1:1; head = illustrative; dress.png = dark
+  pleated SKIRT plate (= dress-black), cloth.png = white BLOUSE plate; both redrawn (style-only).
+- **Phase 1 (layer stack)** — scene.yaml layers now bg → hair-behind → ribbon-back →
+  dress-black → dress-white → body → hair-front → hat → ribbon-front (user mandate #7).
+  Green masses → hair-behind (#5 z fix); pink field → ribbon-back; yellow → ribbon-front.
+- **Phase 2 (ring generator)** — new `ring` node (zigzag annulus, elliptical via rx/ry/rot,
+  hue walk, seeded jitter, nseg slices). Ribbon placed from plate fit: ellipse (595,883)
+  rx347 ry103 rot7 w95; back arc a0=180-360 (z ribbon-back), front arc 0-180 (z ribbon-front),
+  hue 170→350 east→west. Dress-black split into left+right bands to open the ref's pink
+  ribbon panel (x215-420). Pixel-probe verified: pink front arc over skirt at ref location.
+
+- Tests 16/16 green (`python scripts/tests/test_scene.py`). color_dist 60.8→62.8 (signal only, P14).
+- Commits: 0d96361 (P0) 7cfb695 (P1) 599a745 (P2) b017892 (log). Docs: scene-format.md updated
+  with wave/strands/ring generator section; principles.md P16 (plate alignment), P17 (z-plane split).
+
+## REBUILD v2 — remaining work (Phase 3, user priority order)
+
+1. dress-black plate detail (#4) — pleats + teal ruffle trim from dress.png plate (style ref)
+2. ribbon ring fine-tune (#6) — band edges ~20-30px off ref panel at y870 west/y950 south; tunable via at/rx/ry/w
+3. hair-behind mass (#1+#5) — blown-left hair (x0-344, y562-810) still absent; strands generator on hair-behind layer
+4. hands (#3) — enlarge, tuck behind body silhouette, depth shadow at tuck line (killer z-plane use)
+5. cloth folds (#2) — fold shadows/highlights on blouse via strands along tension lines (cloth.png = style ref)
+6. hat refinement — against hat.png plate (position-true)
+Then Phase 4: whole-frame judgment per P14 (fresh-eyes critic loop on visible wrongness).
+
+## Session-ops (confirmed again this session)
+- Image attachments return EMPTY late in long sessions (3 retries at decreasing sizes all failed).
+  Fallback that works: pixel probes + ASCII hue-class grid maps (see log.md iter 15). Never claim to have seen.
+- `scripts/draw` wrapper needs bash; direct call `.venv/bin/python scripts/draw.py diff ...` works.
+- Renderer CLI: `.venv/bin/python scripts/scene_render.py <scene.yaml> -o out.png --ref image.jpg`
