@@ -28,6 +28,24 @@ Loop: **observe → plan → draw → compare → reflect → revise**, cycled. 
 - **T3 soft fields** — gradients, blurred blobs inside clipped silhouettes, opacity, `mix-blend-mode`. Core idiom: *hard silhouette clip + blurred color blobs inside it* (painter's clipping-mask workflow — every layer stays nameable). Needed for image.jpg background/ribbons.
 - **T4 photo realism** — stacked blurred-blob decomposition, feathered silhouettes, texture. Research tier; needs field-decomposition tooling (gradient direction/extent hints). Not scheduled.
 
+## Curriculum (the ladder rungs)
+
+`.scratch/08..13` — one rung teaches one thing; each closes with a `draw check` + fresh-eyes verdict,
+clean resolver diagnostics, and no shape over 4 hand-typed coordinates.
+
+| rung | teaches | vocabulary it is allowed to demand |
+| --- | --- | --- |
+| L1 bust (08) | line-art discipline, relational basics, the hardest small part: the face | `eye`, `brow/nose/mouth` marks, `hair-mass` |
+| L2 torso (09) | occlusion as *declared relations*, cloth around the body | `sleeve`, `bow`, `collar`, `hand` |
+| L3 cloth (10) | regular structure from generators, folds as flow | `pleats`, fold `flow` |
+| L4 ribbon (11) | generated band + wrap-around z-split | `ribbon` refinements |
+| L5 fields (12) | the soft tier, and why it comes **last** | blur discipline, clip+blob idiom |
+| L6 assembly (13) | the composition itself as relations | none — proves the level holds |
+
+Then the withdrawal that makes the end goal real: (a) redraw the assembled figure from its own
+spec with the image closed (canon extraction already happened during the ladder); (b) draw a *new*
+subject from intent alone. Starry-Night-class complexity is the stress test after that, not before.
+
 ## SVG/CSS style guide (explainability contract)
 
 Applies to what the resolver *emits*; the authoring language is `abstraction.md`.

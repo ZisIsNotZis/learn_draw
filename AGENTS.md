@@ -20,7 +20,7 @@ Compiled node format (back end): `docs/drawing/scene-format.md`.
 
 ## Layout
 
-- `docs/drawing/` — method, authoring language, principles, node format (design truth)
+- `docs/drawing/` — method, authoring language, vocabulary/canons, principles, node format (design truth)
 - `scripts/draw` — CLI: `check`, `compare`, `diff`, `ref`, `log`, `render`, `measure` (see `--help`)
 - `scripts/scene_render.py` — compiles node-format scenes to SVG → chrome
 - `.scratch/06-relational-geometry/work/relate.py` — relational resolver (promote to `scripts/` when a drawing needs it)

@@ -3,11 +3,23 @@
 How a drawing gets described at object level instead of coordinate level. Resolver:
 `.scratch/06-relational-geometry/work/relate.py` (promote to `scripts/` when a drawing needs it),
 proof spec `work/bust.yaml` in the same directory. This is the *authoring* layer;
-`scene-format.md` documents the compiled node format behind it.
+`scene-format.md` documents the compiled node format behind it, `vocabulary.md` catalogs the object
+families and their canons.
 
 The loop this serves: write/adjust a spec → resolver emits absolute geometry + diagnostics →
 `draw check` renders the bundle → a fresh-context reviewer judges it. Coordinates are never typed;
 they are what the resolver prints when it is done.
+
+## North star (user directive, 2026-09-14)
+
+**Humans never talk or think in coordinates.** "The brim is about twice the head wide, tilted a bit
+down to the right, sitting on the hair" is a complete drawing instruction for a person — so it must be
+a complete instruction here. Two consequences:
+
+- **Litmus test for every addition:** if expressing an idea needs coordinates, the *abstraction* has
+  failed — add the relation or the vocabulary, never the numbers.
+- **Human-phraseable is the completeness bar.** Anything a drawing teacher would say in words and this
+  language cannot say is a missing feature, and the wording of the missing feature is the feature spec.
 
 ## Why this exists
 
@@ -49,6 +61,27 @@ These are different orders on purpose. The head is declared first (everything is
 it) but painted *under* the hair. Keeping them apart is what removes the manual occlusion surgery
 that dominated the portrait: occlusion is the renderer's job, never encoded in a path.
 
+## Relation taxonomy
+
+Implemented vs needed. The needed rows are not speculation — each names the drawing that demands it.
+
+| relation | status | meaning |
+| --- | --- | --- |
+| arithmetic over anchors (`1.8*head.rx`) | ✅ | sizes and positions in units of other things |
+| `{at: SHAPE}` | ✅ | a shape's centre |
+| `{along: SHAPE, t, out?}` | ✅ | point on an outline at parameter t, optional outward push |
+| `{between: [A, B, t]}` | ✅ | interpolation / extrapolation along a segment |
+| `{off: P, angle, d}` | ✅ | polar offset |
+| `vars:` | ✅ | named intermediate scalars |
+| `mirror` | 🔨 face (SA2) | reflect across an axis or a shape's centre line — eyes, poms |
+| `inside` / containment | 🔨 face (SA2) | iris inside sclera at a fraction, glints inside iris |
+| `align` | 📋 face, 09 | two shapes share an edge line or axis (eye line, mouth centre) |
+| `distribute` / jitter-grid | 📋 10, SA3 | n instances along a curve with seeded spacing jitter (pleats, village) |
+| `junction` | 📋 08 | where two outlines cross — P4 says these carry the character |
+| `contact` / tangent | 📋 09 | a strand touches the jaw here; hand rests on hip |
+| `flow` | 📋 SA3 | a spine following a direction field (hair, water, swirls) |
+| `negative-space` | 📋 later | describe the gap, not the shape (P4) |
+
 ## Forms
 
 Values are numbers, arithmetic, or a relation dict. Strings may reference anchors: `"1.8*head.rx + 4"`.
@@ -63,10 +96,9 @@ Values are numbers, arithmetic, or a relation dict. Strings may reference anchor
 | `{off: P, angle: 90, d: 40}` | point at angle/distance from P (0° = right, 90° = down) |
 | `vars:` | named intermediate scalars, evaluated once, referenced by bare name |
 
-Vocabulary nodes so far: `sunhat` (brim, crown, tilt, lift, drop, front arc, optional poms).
-`eyeball`, `strand-mass`, `sleeve`, `fold-set` are **not written yet** — each is added only when a
-rung of the ladder fails without it (08-bust is expected to demand `eyeball`-type structure for the
-face; 10-cloth the pleat/fold family). See "How it grows".
+Vocabulary nodes and their canons are cataloged in **`vocabulary.md`** (family table, canon fractions
+with provenance, rules for adding one). So far: `sunhat` ✅; `eye` 🔨; the rest 📋 with the rung that
+demands them. A family is added only when a drawing fails without it.
 
 **YAML caveat:** `on`, `off`, `yes`, `no` parse as booleans, so this language uses `along` for
 outline points and `host` for an object family's attachment. `relate.py` rejects boolean keys by
