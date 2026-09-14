@@ -30,11 +30,14 @@ Loop: **observe → plan → draw → compare → reflect → revise**, cycled. 
 
 ## SVG/CSS style guide (explainability contract)
 
+Applies to what the resolver *emits*; the authoring language is `abstraction.md`.
+
 - viewBox matches reference pixel size; coordinates in reference space.
 - `<g id="...">` per semantic part, painter order top-to-bottom in document.
 - Every shape: `id` + adjacent comment stating intent ("hair pull-point convergence curve"), not appearance trivia.
 - Forward-compatible names (`hairStrand3`, not `path_17`); no magic numbers where a formula reads better.
 - CSS allowed for soft fields (layered gradients, blur, blend modes); SVG for structure. One source file per iteration — either `.svg` or `.html` wrapper.
+- Blur never touches structure (silhouettes, outlines, face features). If a soft field cannot state why it is soft in one line, it is deleted (12-fields rule).
 
 ## Tool usage
 

@@ -1,6 +1,11 @@
 # Drawing principles — transferable lessons
 
-Append-only. One lesson per entry: the principle, where it was learned, and the observation that taught it. These are the bridge to drawing without a reference.
+Append-only. One lesson per entry: the principle, where it was learned, and the observation that taught it.
+
+These are the bridge to drawing without a reference — with one distinction that everything after P17
+turns on: a *principle* is knowledge the model carries, so it survives the reference being closed; a
+*tool* that needs the target does not. P18 is the test that separates them. Rules distilled from these
+entries live as numbered invariants in `AGENTS.md`; this file is why those rules exist.
 
 ## P1 — Occlusion is drawn, not implied (T1, warmup-duck)
 

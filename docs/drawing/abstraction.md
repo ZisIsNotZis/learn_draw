@@ -1,8 +1,13 @@
 # Drawing language — relational front end
 
-How a drawing gets described at object level instead of coordinate level. Prototype:
-`.scratch/06-relational-geometry/work/relate.py`, proof spec `work/bust.yaml`.
-This is the *authoring* layer; `scene-format.md` documents the compiled node format behind it.
+How a drawing gets described at object level instead of coordinate level. Resolver:
+`.scratch/06-relational-geometry/work/relate.py` (promote to `scripts/` when a drawing needs it),
+proof spec `work/bust.yaml` in the same directory. This is the *authoring* layer;
+`scene-format.md` documents the compiled node format behind it.
+
+The loop this serves: write/adjust a spec → resolver emits absolute geometry + diagnostics →
+`draw check` renders the bundle → a fresh-context reviewer judges it. Coordinates are never typed;
+they are what the resolver prints when it is done.
 
 ## Why this exists
 
@@ -59,8 +64,9 @@ Values are numbers, arithmetic, or a relation dict. Strings may reference anchor
 | `vars:` | named intermediate scalars, evaluated once, referenced by bare name |
 
 Vocabulary nodes so far: `sunhat` (brim, crown, tilt, lift, drop, front arc, optional poms).
-`eyeball`, `strand-mass`, `sleeve`, `fold-set` are expected but **not written yet** — each is added
-only when a drawing fails without it (see "How it grows").
+`eyeball`, `strand-mass`, `sleeve`, `fold-set` are **not written yet** — each is added only when a
+rung of the ladder fails without it (08-bust is expected to demand `eyeball`-type structure for the
+face; 10-cloth the pleat/fold family). See "How it grows".
 
 **YAML caveat:** `on`, `off`, `yes`, `no` parse as booleans, so this language uses `along` for
 outline points and `host` for an object family's attachment. `relate.py` rejects boolean keys by
@@ -89,7 +95,8 @@ A reference is used in exactly two supported ways, both removable:
 
 Tracing is never the engine. The curriculum depends on this: reproduce with the reference, then
 reproduce the *same* subject from its own spec with the image closed, then a new subject from intent
-alone.
+alone. The ladder runs this withdrawal explicitly — rungs 08–13 draw with the reference available,
+and the follow-on after 13 redraws the assembled figure from its own spec with the image closed.
 
 ## How it grows
 
