@@ -59,13 +59,15 @@ draw:
   - {village: town,
      curve: [[frame.w*0.05, frame.h*0.82], [frame.w*0.40, frame.h*0.77],
              [frame.w*0.70, frame.h*0.75], [frame.w*0.95, frame.h*0.78]],
-     count: 13, seed: 9, size: frame.w*0.028, church: 0.52, z: village,
+     count: 13, seed: 9, size: frame.w*0.036, church: 0.52, z: village,
+     body-fill: "#33486b", roof-fill: "#52729e", win-chance: 0.7,
      desc: "thirteen houses along a gentle ground curve, one church with a steeple"}
 
   # --- the cypress: a dark flame rising from the lower left into the sky ---------
   - {flame: cypress, base: [cy_bx, cy_by],
      tip: {"off": [cy_bx, cy_by], angle: 272, d: frame.h*0.62},
-     w: frame.w*0.062, lobes: 3, bend: 0.06, color: "#0d2230", wisps: 2, seed: 5,
+     w: frame.w*0.078, lobes: 4, bend: 0.08, color: "#143a52", stroke: "#4f7ba6", sw: 2,
+     scal: 0.24, wisps: 3, seed: 5,
      z: cypress, desc: "flame-tree, 62% of frame height, slight rightward lean"}
 
 # occlusion intent, in words — the engine checks the layer stack agrees

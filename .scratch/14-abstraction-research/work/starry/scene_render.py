@@ -37,7 +37,7 @@ SCHEMA = {
     "ring":   {"ring", "at", "r", "w", "a0", "a1", "zig", "zn", "zq", "d0", "seed",
                 "hue", "sat", "val", "nseg", "z", "op", "blur", "rx", "ry", "rot"} | _DESC,
     "swirl":  {"swirl", "at", "rx", "ry", "rot", "a0", "sweep", "bands", "w", "gap",
-                "n", "wob", "hue", "sat", "val", "ink", "seed", "z", "op"} | _DESC,
+                "n", "wob", "cap", "hue", "sat", "val", "ink", "seed", "z", "op"} | _DESC,
     "burst":  {"burst", "at", "rays", "len", "w0", "w1", "a0", "spread", "ink", "seed", "z", "op"} | _DESC,
     "hill":   {"hill", "y0", "bands", "amp", "wl", "colors", "seed", "z", "op"} | _DESC,
 }
@@ -300,6 +300,16 @@ def swirl_paths(node):
     rmax = bands * (w + gap)                      # outer edge of the outermost band
     cos_r, sin_r = math.cos(rot), math.sin(rot)
     out = []
+    # centre cap: the first coil cannot itself reach radius 0, so without a cap the sky
+    # shows through as a dark dot (the v1 render read as three giant "eyes"). Fill it.
+    cap_f = float(node.get("cap", 0.62))
+    if cap_f > 0:
+        cap = [smooth_path([(cx + (cap_f * w / rmax) * rx * math.cos(2 * math.pi * i / 40),
+                             cy + (cap_f * w / rmax) * ry * math.sin(2 * math.pi * i / 40))
+                            for i in range(41)], closed=True),
+               hsv_to_hex(hue0, sat, val)]
+    else:
+        cap = None
     for b in range(bands - 1, -1, -1):            # outermost first -> innermost paints on top
         s_in, s_out = b * (w + gap), b * (w + gap) + w
         ph1 = rng.uniform(0, 2 * math.pi)
@@ -317,6 +327,8 @@ def swirl_paths(node):
         t = b / max(bands - 1, 1)
         color = ink or hsv_to_hex(hue0 + (hue1 - hue0) * t, sat, val)
         out.append((taper_outline(spine, lambda _t, _w=w: _w), color))
+    if cap is not None:
+        out.insert(0, cap)                          # cap behind every band
     return out
 
 

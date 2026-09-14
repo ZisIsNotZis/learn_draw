@@ -342,11 +342,13 @@ class Ctx:
         raise SpecError(f"relate: unknown relation keys {sorted(value)}")
 
 
-def taper_band(spine: list[tuple[float, float]],
-               widths: list[float]) -> list[tuple[float, float]]:
+def taper_band(spine: list[tuple[float, float]], widths: list[float],
+               side: str = "both") -> list[tuple[float, float]]:
     """Closed polygon around an open spine with a per-point width (a tapered ribbon).
 
     `ribbon` above gives one constant width; lashes, brows and strands want a profile.
+    side="both" straddles the spine; side="left"/"right" grows the band to one side only,
+    leaving the spine itself as one edge — a lash must sit ON the lid line, not through it.
     """
     pts = [np.array(p, float) for p in spine]
     left: list[list[float]] = []
@@ -359,9 +361,17 @@ def taper_band(spine: list[tuple[float, float]],
         else:
             tangent = pts[i + 1] - pts[i - 1]
         tangent = tangent / (np.linalg.norm(tangent) or 1.0)
-        normal = np.array([-tangent[1], tangent[0]]) * (widths[i] / 2)
-        left.append((p + normal).tolist())
-        right.append((p - normal).tolist())
+        normal = np.array([-tangent[1], tangent[0]])
+        if side == "left":
+            left.append((p + normal * widths[i]).tolist())
+            right.append(p.tolist())
+        elif side == "right":
+            left.append(p.tolist())
+            right.append((p - normal * widths[i]).tolist())
+        else:
+            normal = normal * (widths[i] / 2)
+            left.append((p + normal).tolist())
+            right.append((p - normal).tolist())
     return [tuple(num(v) for v in p) for p in left + right[::-1]]
 
 
@@ -479,9 +489,15 @@ def expand_eye(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
                  "desc": f"{sid} sclera: the almond aperture, pale"})
 
     # ---- iris: two-tone (dark top under the lid, light bottom), sits low ----
-    irx = w * float(style.get("iris-w", 0.32))
-    iry = h * float(style.get("iris-h", 0.40))
-    icx, icy = place(a * 0.02, h * 0.05)
+    # the iris must stay inside the aperture: clamp its ry to the bottom lid at the
+    # iris's own horizontal extent (the lid rises toward the corners)
+    irx = w * float(style.get("iris-w", 0.30))
+    iry = h * float(style.get("iris-h", 0.36))
+    iu, iv = a * 0.02, h * 0.03
+    icx, icy = place(iu, iv)
+    # height of the bottom lid at the iris's own x-extent (the lid rises toward the corners)
+    lid_edge = min(bot_pts, key=lambda p: abs(abs(p[0]) - irx))[1]
+    iry = min(iry, max(iry * 0.4, lid_edge - iv - h * 0.03))
     emit.append({"ellipse": f"{sid}-iris-lo", "at": [icx, icy], "rx": irx, "ry": iry,
                  "fill": style.get("iris-bot-fill", "#ef92ae"), "z": z,
                  "desc": f"{sid} iris lower tone"})
@@ -513,25 +529,27 @@ def expand_eye(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
                      "fill": style.get("glint-fill", "#ffffff"), "z": z,
                      "desc": f"{sid} small glint, outer lower"})
 
-    # ---- upper lash: a tapered band along the top lid, thin at the inner corner,
-    #      thick through the middle, plus a wing flicking past the outer corner ----
-    lw = h * float(style.get("lash-w", 0.17))
-    wing1, wing2 = (a + 0.16 * a, -0.08 * h), (a + 0.34 * a, -0.20 * h)
-    lash_spine = [place(u, v - lw * 0.18) for (u, v) in top_pts] + [place(*wing1), place(*wing2)]
+    # ---- upper lash: a band anchored ON the top lid line, growing outward (up),
+    #      thin at the inner corner, thick through the middle, wing past the outer corner.
+    #      Growing one-sided keeps black out of the eye interior. ----
+    lw = h * float(style.get("lash-w", 0.14))
+    wing1, wing2 = (a + 0.16 * a, -0.06 * h), (a + 0.34 * a, -0.17 * h)
+    lash_spine = [place(u, v) for (u, v) in top_pts] + [place(*wing1), place(*wing2)]
     n_main = len(top_pts)
-    widths = [lw * (0.12 + 0.88 * min(1.0, (i / (n_main - 1)) * 2.2)) for i in range(n_main)]
-    widths += [lw * 0.55, lw * 0.22]
-    emit.append({"blob": f"{sid}-lash", "poly": taper_band(lash_spine, widths),
+    widths = [lw * (0.10 + 0.90 * min(1.0, (i / (n_main - 1)) * 2.4)) for i in range(n_main)]
+    widths += [lw * 0.60, lw * 0.24]
+    lash_poly = taper_band(lash_spine, widths, side="right" if f >= 0 else "left")
+    emit.append({"blob": f"{sid}-lash", "poly": lash_poly,
                  "fill": style.get("lash-fill", "#0a0e18"), "z": z,
-                 "desc": f"{sid} upper lash: tapered band + outer wing"})
+                 "desc": f"{sid} upper lash: one-sided tapered band + outer wing"})
 
-    # ---- lower lash line + a sealing outline ----
-    line_w = max(2.0, h * float(style.get("line-w", 0.055)))
+    # ---- lower lash line + a sealing outline (thin, so the top stays the lash's job) ----
+    line_w = max(2.0, h * float(style.get("line-w", 0.05)))
     emit.append({"stroke": f"{sid}-lower", "spine": [place(u, v) for (u, v) in bot_pts[1:]],
                  "w": line_w, "ink": style.get("lash-fill", "#0a0e18"), "z": z,
                  "desc": f"{sid} lower lash line"})
     emit.append({"stroke": f"{sid}-outline", "spine": almond_pts,
-                 "w": line_w * 0.8, "ink": style.get("lash-fill", "#0a0e18"), "z": z,
+                 "w": line_w * 0.55, "ink": style.get("lash-fill", "#0a0e18"), "z": z,
                  "desc": f"{sid} aperture outline"})
 
     # ---- anchors other shapes can hang off ----

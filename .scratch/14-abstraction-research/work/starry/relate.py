@@ -474,7 +474,7 @@ def expand_swirl(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     d = _passthrough(node, ctx, point_keys=("at",),
                      scalar_keys=("rx", "ry", "rot", "a0", "sweep", "w", "gap", "wob"),
                      int_keys=("bands", "n", "seed"), list_keys=("hue",),
-                     keep=("sat", "val", "ink", "z", "op"))
+                     keep=("sat", "val", "ink", "cap", "z", "op"))
     d = {"swirl": sid, **d}
     d.update({"z": node.get("z", "default"),
               "desc": node.get("desc", "")})
@@ -528,7 +528,7 @@ def expand_glow(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     return ctx.add(ellipse_anchor(sid, at[0], at[1], halo * r, halo * r))
 
 
-def _flame_poly(base, ctrl, tip, w, lobes, phase, n=48):
+def _flame_poly(base, ctrl, tip, w, lobes, phase, n=48, scal=0.14):
     """One flame lobe column: quadratic spine, envelope width (bulge low, sharp tip),
     scalloped edges via sin(2*pi*lobes*t + phase). Returns a closed polygon."""
     import numpy as _np
@@ -541,8 +541,8 @@ def _flame_poly(base, ctrl, tip, w, lobes, phase, n=48):
         ln = _np.linalg.norm(d1) or 1.0
         nrm = _np.array([-d1[1], d1[0]]) / ln
         env = (0.32 + 0.68 * math.sin(math.pi * min(1.0, t * 1.12)) ** 0.85) * (1 - t ** 3)
-        scal = 1 + 0.14 * math.sin(2 * math.pi * lobes * t + phase)
-        half = w * env * scal / 2
+        scal_t = 1 + scal * math.sin(2 * math.pi * lobes * t + phase)
+        half = w * env * scal_t / 2
         left.append(tuple(p + nrm * half))
         right.append(tuple(p - nrm * half))
     return [(float(x), float(y)) for x, y in left + right[::-1]]
@@ -567,9 +567,11 @@ def expand_flame(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     dx, dy = tx - bx, ty - by
     h = math.hypot(dx, dy) or 1.0
     ctrl = (mx - dy / h * bend * h, my + dx / h * bend * h)
-    poly = _flame_poly(base, ctrl, tip, w, lobes, rng.uniform(0, 2 * math.pi))
+    poly = _flame_poly(base, ctrl, tip, w, lobes, rng.uniform(0, 2 * math.pi),
+                       scal=ctx.scalar(node.get("scal", 0.14)))
     ctx.add(bbox_anchor(sid, poly))
-    emit.append({"blob": sid, "poly": poly, "fill": color, "z": z,
+    emit.append({"blob": sid, "poly": poly, "fill": color,
+                 "stroke": node.get("stroke"), "sw": node.get("sw", 3), "z": z,
                  "desc": f"{sid}: flame-tree, w {w:.0f}, lobes {lobes:.0f}, "
                          f"bend {bend:+.2f} — scalloped tapered silhouette, sharp tip"})
     # wisps: detached small flames on alternating sides, leaning outward like the trunk
@@ -578,11 +580,12 @@ def expand_flame(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
         bxp = (1 - t) ** 2 * bx + 2 * (1 - t) * t * ctrl[0] + t ** 2 * tx
         byp = (1 - t) ** 2 * by + 2 * (1 - t) * t * ctrl[1] + t ** 2 * ty
         side = 1 if i % 2 == 0 else -1
-        wtip = (bxp + side * w * (0.55 + 0.12 * i), byp - h * (0.10 + 0.04 * i))
+        wtip = (bxp + side * w * (0.70 + 0.14 * i), byp - h * (0.14 + 0.05 * i))
         wbase = (bxp + side * w * 0.12, byp + h * 0.02)
         wpoly = _flame_poly(wbase, ((wbase[0] + wtip[0]) / 2 + side * w * 0.10,
                                     (wbase[1] + wtip[1]) / 2), wtip,
-                            w * (0.30 - 0.06 * i), 2, rng.uniform(0, 2 * math.pi), n=32)
+                            w * (0.42 - 0.08 * i), 2, rng.uniform(0, 2 * math.pi),
+                            n=32, scal=0.22)
         emit.append({"blob": f"{sid}-wisp{i + 1}", "poly": wpoly, "fill": color, "z": z,
                      "desc": f"{sid}: side wisp {i + 1}, detached flame leaning with the trunk"})
     return ctx.anchors[sid]
@@ -645,13 +648,13 @@ def expand_village(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
         is_church = abs(t - church_t) < 0.5 / count
         w = size * rng.uniform(1 - sizej, 1 + sizej) * (1.35 if is_church else 1.0)
         h = w * rng.uniform(0.72, 1.0) * (church_h if is_church else 1.0)
-        roof_h = w * (0.62 if is_church else rng.uniform(0.45, 0.62))
+        roof_h = w * (0.78 if is_church else rng.uniform(0.60, 0.80))
         jx, jy = rng.uniform(-3, 3), rng.uniform(-2, 2)
         bx0, by0 = gx - tx * w / 2 + ux * 2 + jx, gy - ty * w / 2 + uy * 2 + jy
         bx1, by1 = gx + tx * w / 2 + ux * 2 + jx, gy + ty * w / 2 + uy * 2 + jy
         body = [(bx0, by0 - h), (bx1, by1 - h), (bx1, by1), (bx0, by0)]
-        roof = [(bx0 - tx * w * 0.10, by0 - h - uy * 0),
-                (bx1 + tx * w * 0.10, by1 - h - uy * 0),
+        roof = [(bx0 - tx * w * 0.16, by0 - h - uy * 0),
+                (bx1 + tx * w * 0.16, by1 - h - uy * 0),
                 ((bx0 + bx1) / 2 + tx * 2, (by0 + by1) / 2 - h - roof_h)]
         hid = f"{sid}-h{i + 1}"
         emit.append({"poly": hid, "pts": [(round(x, 1), round(y, 1)) for x, y in body],
