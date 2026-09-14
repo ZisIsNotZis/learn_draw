@@ -11,8 +11,8 @@ frame: {w: 1024, h: 1024}
 layers: [bg, hair, face, eyes, features]
 
 vars:
-  face_half: frame.w*0.072     # head rx — the face's half width
-  face_deep: face_half*0.92    # head ry — half height (near circle, anime face)
+  face_half: frame.w*0.078     # head rx — anime face is wider than tall at the temples
+  face_deep: face_half*0.92    # head ry — half height
 
 draw:
   - {rect: bg, full: true, fill: "#a8d8ce", desc: "flat backdrop"}
@@ -24,43 +24,43 @@ draw:
      desc: "head/skin ellipse — the face ruler (host)"}
 
   # hair: a dome over the skull + two short cheek locks, every spine in head units.
-  - {blob: hair-cap, spine: [[head.cx - head.w*0.62, head.cy - head.h*0.42],
-                             [head.cx, head.cy - head.h*0.98],
-                             [head.cx + head.w*0.62, head.cy - head.h*0.42]],
-     w: head.h*0.42, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
-     desc: "hair dome over the skull, behind the face"}
-  - {blob: lockL, spine: [[head.cx - head.w*0.46, head.cy - head.h*0.30],
-                          [head.cx - head.w*0.62, head.cy + head.h*0.10],
-                          [head.cx - head.w*0.50, head.cy + head.h*0.55]],
-     w: head.w*0.30, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
-     desc: "left cheek lock"}
-  - {blob: lockR, spine: [[head.cx + head.w*0.46, head.cy - head.h*0.30],
-                          [head.cx + head.w*0.62, head.cy + head.h*0.10],
-                          [head.cx + head.w*0.50, head.cy + head.h*0.55]],
-     w: head.w*0.30, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
-     desc: "right cheek lock"}
+  - {blob: hair-cap, spine: [[head.cx - head.w*0.42, head.cy - head.h*0.50],
+                             [head.cx, head.cy - head.h*0.72],
+                             [head.cx + head.w*0.42, head.cy - head.h*0.50]],
+     w: head.h*0.30, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "hair dome hugging the skull, behind the face"}
+  - {blob: lockL, spine: [[head.cx - head.w*0.55, head.cy - head.h*0.40],
+                          [head.cx - head.w*0.60, head.cy + head.h*0.05],
+                          [head.cx - head.w*0.55, head.cy + head.h*0.48]],
+     w: head.w*0.24, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "left temple-to-cheek lock (covers the eye corner like the ref)"}
+  - {blob: lockR, spine: [[head.cx + head.w*0.55, head.cy - head.h*0.40],
+                          [head.cx + head.w*0.60, head.cy + head.h*0.05],
+                          [head.cx + head.w*0.55, head.cy + head.h*0.48]],
+     w: head.w*0.24, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "right temple-to-cheek lock"}
 
   # LEFT eye: authored once with the full parameter set, placed by relation, sized in head units.
   - {eye: eyeL, host: head,
-     at: [head.cx - 0.73*head.rx, head.cy - 0.65*head.ry],
-     w: 0.55*head.w, h: 0.35*head.h, tilt: -5, almond: 0.62,
+     at: [head.cx - 0.73*head.rx, head.cy - 0.58*head.ry],
+     w: 0.55*head.w, h: 0.33*head.h, tilt: 5, almond: 0.62,
      sclera-fill: "#fdf2f9", iris-top-fill: "#4470b3", iris-bot-fill: "#ef92ae",
-     pupil-fill: "#241a2c", lash-fill: "#0a0e18", glints: 2,
+     pupil-fill: "#241a2c", lash-fill: "#0a0e18", refl-fill: "#62c7a8", glints: 2,
      z: eyes, desc: "left eye"}
 
   # RIGHT eye: a mirror RELATION — same params, centre reflected across the head axis,
   # tilt and inner/outer flipped. No coordinates, no hand-copied points.
   - {eye: eyeR, host: head, mirror-of: eyeL, z: eyes, desc: "right eye = eyeL mirrored"}
 
-  # brows: short outer slashes hung off each eye's own anchors (outer high, inner low).
+  # brows: short slashes above the lash, slanting DOWN toward the nose like the lash does.
   - {stroke: browL, spine: [
-        [eyeL.outerx, eyeL.outery - 0.55*eyeL.h],
-        [eyeL.innerx + 0.42*eyeL.w, eyeL.innery - 0.40*eyeL.h]],
-     w: 0.055*eyeL.h, ink: "#241d26", z: features, desc: "left brow: outer half of the eye"}
+        [eyeL.outerx + 0.04*eyeL.w, eyeL.topy - 0.22*eyeL.h],
+        [eyeL.outerx + 0.52*eyeL.w, eyeL.topy - 0.06*eyeL.h]],
+     w: 0.06*eyeL.h, ink: "#241d26", z: features, desc: "left brow, above the lash"}
   - {stroke: browR, spine: [
-        [eyeR.outerx, eyeR.outery - 0.55*eyeR.h],
-        [eyeR.innerx - 0.42*eyeR.w, eyeR.innery - 0.40*eyeR.h]],
-     w: 0.055*eyeR.h, ink: "#241d26", z: features, desc: "right brow: outer half of the eye"}
+        [eyeR.outerx - 0.04*eyeR.w, eyeR.topy - 0.22*eyeR.h],
+        [eyeR.outerx - 0.52*eyeR.w, eyeR.topy - 0.06*eyeR.h]],
+     w: 0.06*eyeR.h, ink: "#241d26", z: features, desc: "right brow, above the lash"}
 
   # nose: a tiny tick — anime noses are a slanted 2-3px dash, not a nose.
   - {stroke: nose, spine: [
@@ -70,6 +70,6 @@ draw:
 
   # mouth: a soft short dash, gently slanted
   - {stroke: mouth, spine: [
-        [head.cx - 0.06*head.rx, head.cy + 0.49*head.ry],
-        [head.cx + 0.08*head.rx, head.cy + 0.53*head.ry]],
-     w: 3.0, ink: "#a08a74", z: features, desc: "soft mouth dash"}
+        [head.cx - 0.07*head.rx, head.cy + 0.49*head.ry],
+        [head.cx + 0.10*head.rx, head.cy + 0.53*head.ry]],
+     w: 3.2, ink: "#a08a74", z: features, desc: "soft mouth dash"}

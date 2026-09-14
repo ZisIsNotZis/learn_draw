@@ -476,12 +476,12 @@ def expand_eye(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     # ---- the aperture: one generated almond curve (two lid arcs sharing the corners) ----
     sharp = 0.35 + 0.65 * almond            # almond=1 -> controls hug corners -> pointed
     rise = h * (0.50 + 0.14 * almond)       # top-lid arch height
-    drop = h * (0.46 - 0.10 * almond)       # bottom-lid drop
+    drop = h * (0.46 - 0.04 * almond)       # bottom-lid drop
     reach_in = a * 0.55 * sharp
     reach_out = a * 0.50 * sharp
     inner, outer = (-a, 0.0), (a, 0.0)
     top_pts = bez3(inner, (-a + reach_in, -rise * 0.55), (a - reach_out, -rise * 0.88), outer)
-    bot_pts = bez3(outer, (a - reach_out * 0.9, drop * 0.82), (-a + reach_in * 0.9, drop * 0.90), inner)
+    bot_pts = bez3(outer, (a - reach_out * 0.9, drop * 0.88), (-a + reach_in * 0.9, drop * 0.94), inner)
     almond_pts = [place(u, v) for (u, v) in top_pts + bot_pts[1:]]
 
     emit.append({"blob": f"{sid}-sclera", "poly": almond_pts,
@@ -491,9 +491,9 @@ def expand_eye(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     # ---- iris: two-tone (dark top under the lid, light bottom), sits low ----
     # the iris must stay inside the aperture: clamp its ry so the bottom lid never shows
     # a gaping white band under it (the lid rises toward the corners)
-    irx = w * float(style.get("iris-w", 0.30))
-    iry = h * float(style.get("iris-h", 0.38))
-    iu, iv = 0.0, h * 0.08
+    irx = w * float(style.get("iris-w", 0.40))
+    iry = h * float(style.get("iris-h", 0.46))
+    iu, iv = 0.0, -h * 0.02
     icx, icy = place(iu, iv)
     lid_edge = min(bot_pts, key=lambda p: abs(abs(p[0]) - irx))[1]
     iry = min(iry, max(iry * 0.55, lid_edge - iv + h * 0.02))
@@ -502,7 +502,7 @@ def expand_eye(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
                  "fill": style.get("iris-bot-fill", "#ef92ae"), "z": z,
                  "desc": f"{sid} iris lower tone"})
     # top cap: upper half of the iris + a chord, so the boundary is a curve not a line
-    cf = 0.12
+    cf = 0.02
     cap = [(icx + irx * math.cos(th), icy + iry * math.sin(th))
            for th in (math.pi + math.pi * i / 20 for i in range(21))]
     cap += [(icx + irx, icy + cf * iry), (icx - irx, icy + cf * iry)]
@@ -510,20 +510,28 @@ def expand_eye(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
                  "fill": style.get("iris-top-fill", "#4470b3"), "z": z,
                  "desc": f"{sid} iris upper tone (under the lid shadow)"})
 
-    # ---- pupil: under the iris top ----
-    emit.append({"ellipse": f"{sid}-pupil", "at": [icx, icy + iry * 0.14],
-                 "rx": irx * 0.42, "ry": iry * 0.50,
-                 "fill": style.get("pupil-fill", "#241a2c"), "z": z,
-                 "desc": f"{sid} pupil"})
-
-    # ---- glints: main one on the nose side (flips with facing), small one outer-low ----
-    g1x, g1y = place(-f * a * 0.32, -h * 0.26)
-    r1 = w * 0.10
+    # ---- pupil + reflection + glints: positions computed first, painted bottom to top.
+    # The glint tracks the LIGHT (a world side, `glint-side`), not the eye's inner/outer:
+    # both eyes of a face catch the same lamp. ----
+    gs = float(style.get("glint-side", -1))          # -1: light from screen-left
+    g1u = f * gs * a * 0.24
+    g1x, g1y = place(g1u, -h * 0.30)
+    g2x, g2y = place(f * a * 0.30, h * 0.14)
+    emit.append({"ellipse": f"{sid}-pupil", "at": [icx, icy + iry * 0.12],
+                 "rx": irx * 0.22, "ry": iry * 0.30,
+                 "fill": style.get("pupil-fill", "#2b2233"), "z": z,
+                 "desc": f"{sid} small dark pupil (cel eyes barely show one)"})
+    if style.get("refl-fill"):
+        emit.append({"ellipse": f"{sid}-refl",
+                     "at": [g1x, g1y + iry * 0.95],
+                     "rx": irx * 0.18, "ry": iry * 0.18,
+                     "fill": style["refl-fill"], "z": z,
+                     "desc": f"{sid} coloured reflection just below the glint"})
+    r1 = w * 0.075
     emit.append({"ellipse": f"{sid}-glint1", "at": [g1x, g1y], "rx": r1, "ry": r1 * 1.3,
                  "fill": style.get("glint-fill", "#ffffff"), "z": z,
                  "desc": f"{sid} main glint, nose-side upper"})
     if whole(style.get("glints", 2), f"{sid}.glints") >= 2:
-        g2x, g2y = place(f * a * 0.30, h * 0.14)
         r2 = w * 0.055
         emit.append({"ellipse": f"{sid}-glint2", "at": [g2x, g2y], "rx": r2, "ry": r2 * 1.2,
                      "fill": style.get("glint-fill", "#ffffff"), "z": z,
@@ -532,12 +540,12 @@ def expand_eye(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     # ---- upper lash: a band anchored ON the top lid line, growing outward (up),
     #      thin at the inner corner, thick through the middle, wing past the outer corner.
     #      Growing one-sided keeps black out of the eye interior. ----
-    lw = h * float(style.get("lash-w", 0.14))
-    wing1, wing2 = (a + 0.16 * a, -0.06 * h), (a + 0.34 * a, -0.17 * h)
+    lw = h * float(style.get("lash-w", 0.16))
+    wing1, wing2 = (a + 0.12 * a, -0.05 * h), (a + 0.26 * a, -0.13 * h)
     lash_spine = [place(u, v) for (u, v) in top_pts] + [place(*wing1), place(*wing2)]
     n_main = len(top_pts)
-    widths = [lw * (0.10 + 0.90 * min(1.0, (i / (n_main - 1)) * 2.4)) for i in range(n_main)]
-    widths += [lw * 0.60, lw * 0.24]
+    widths = [lw * (0.40 + 0.60 * min(1.0, (i / (n_main - 1)) * 2.6)) for i in range(n_main)]
+    widths += [lw * 0.75, lw * 0.55]
     lash_poly = taper_band(lash_spine, widths, side="right" if f >= 0 else "left")
     emit.append({"blob": f"{sid}-lash", "poly": lash_poly,
                  "fill": style.get("lash-fill", "#0a0e18"), "z": z,
