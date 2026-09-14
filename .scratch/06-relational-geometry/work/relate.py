@@ -26,7 +26,7 @@ Relation forms (value of any positional or size key):
     {at: SHAPE}                  a shape's own centre
     {along: SHAPE, t: 0.35}     point on SHAPE's outline at parameter t (wraps)
     {along: SHAPE, t: 0.1, out: D}  same, pushed D outward along the outline normal
-    {off: P, angle: 90, d: 40}  point at angle/distance from P (0=right, 90=down, degrees)
+    {polar: P, angle: 90, d: 40}  point at angle/distance from P (0=right, 90=down, degrees)
 
 Note: `on`, `off`, `yes`, `no` are YAML 1.1 booleans, so this language uses `along` for points
 on an outline and `host` for the shape an object family attaches to.
@@ -350,8 +350,8 @@ class Ctx:
                 nx, ny = sh.normal(t)
                 return (px + nx * d, py + ny * d)
             return (px, py)
-        if "off" in value:
-            px, py = self.point(value["off"])
+        if "polar" in value:
+            px, py = self.point(value["polar"])
             ang = math.radians(self.scalar(value.get("angle", 0.0)))
             d = self.scalar(value["d"])
             return (px + math.cos(ang) * d, py + math.sin(ang) * d)

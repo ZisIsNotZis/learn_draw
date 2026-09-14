@@ -81,7 +81,7 @@ Implemented vs needed. The needed rows are not speculation — each names the dr
 | `{at: SHAPE}` | ✅ | a shape's centre |
 | `{along: SHAPE, t, out?}` | ✅ | point on an outline at parameter t, optional outward push |
 | `{between: [A, B, t]}` | ✅ | interpolation / extrapolation along a segment |
-| `{off: P, angle, d}` | ✅ | polar offset |
+| `{polar: P, angle, d}` | ✅ | polar offset (`off` is a YAML boolean word — SA3 finding 6) |
 | `vars:` | ✅ | named intermediate scalars |
 | `mirror` | 🔨 face (SA2) | reflect across an axis or a shape's centre line — eyes, poms |
 | `inside` / containment | 🔨 face (SA2) | iris inside sclera at a fraction, glints inside iris |
@@ -103,7 +103,7 @@ Values are numbers, arithmetic, or a relation dict. Strings may reference anchor
 | `{along: SHAPE, t: 0.35}` | point on SHAPE's outline at `t` (wraps; works on rotated ellipses) |
 | `{along: SHAPE, t: 0.1, out: D}` | same, pushed `D` outward along the outline normal |
 | `{between: [A, B, t]}` | point `t` of the way from A to B; `t` outside 0..1 extrapolates |
-| `{off: P, angle: 90, d: 40}` | point at angle/distance from P (0° = right, 90° = down) |
+| `{polar: P, angle: 90, d: 40}` | point at angle/distance from P (0° = right, 90° = down) |
 | `vars:` | named intermediate scalars, evaluated once, referenced by bare name |
 
 Vocabulary nodes and their canons are cataloged in **`vocabulary.md`** (family table, canon fractions

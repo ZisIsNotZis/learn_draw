@@ -57,3 +57,35 @@ DECISIONS (leader, this session):
   Scheduled: 14's resolver work.
 - D10 PENDING worker completion: SA2 eye family + face canons → fold into resolver + vocabulary.md;
   SA3 starry findings → record needed-family list, BUILD NOTHING (demand date = post-16 stress test).
+
+## 2026-09-14 — SA3 (starry probe) landed: VERDICT = the abstraction SCALES
+
+SA3 report: .scratch/14-abstraction-research/work/starry/report.md; renders evidence/starry/v1..v9
+(9 iterations, every one looked at); check bundle evidence/starry/check/.
+
+Verdict (quoted): "Yes — it scales, with one structural addition." v9 = credible Starry Night
+evocation from ~10 hand numbers + 115 parameterized nodes, no reference anywhere. Tier-3 vocabulary
+carried the scene (star = halo/rays/core, cypress = scalloped taper + wisps, house = body/roof/
+window on a tangent frame, hill = stacked far-light bands).
+
+Families it built (probes, in its own copies — NOT promoted): swirl, flow, burst, glow, flame,
+village, hill, stars; plus a sharp `poly` node (un-smoothed corners for roofs/steeples).
+
+DECISIONS:
+- D11 off → polar rename done NOW (SA3 finding 6; confirmed the YAML trap empirically: {off:…} parses
+  key False; every use errored loudly; polar verified working; docs + resolver updated).
+- D12 structural addition CONFIRMED = the generator bridge: spec-level node declaring "compile as
+  back-end generator X with resolved params + report true bounds". This IS the declarative-family
+  mechanism (D3); passthrough boilerplate disappears when families are declarative YAML.
+- D13 relations to promote (with demand dates): flow → 10-cloth (folds as flow) / 17-starry;
+  distribute-along → 10-cloth (pleats) / 17; jitter-grid → 12-fields / 17.
+- D14 17-starry-stress ticket created (blocked by 16) — the demand-date home for the SA3 set
+  (swirl/flow/burst/glow/flame/village/hill/stars). Probes stay in 14 as evidence; build NOTHING now.
+- D15 single renderer pipeline confirmed (kill relate.py's duplicate emitter; compile-down only) —
+  part of consolidation (D6).
+- D16 "looking is the loop" empirically confirmed by SA3: 8/9 fixes from looking, diagnostics clean
+  after v1; the two real generator bugs were only visible in the raster. Evidence for P22 and for
+  the check-first discipline in every rung.
+- SA3 honest limits recorded: village legible-not-beautiful (boxes, flat roofs); swirls read as
+  coils not brush-commas (closer flow field would fix; 9 iterations were the budget).
+- SA2 (face) still running (v8 in flight); integrate on completion.

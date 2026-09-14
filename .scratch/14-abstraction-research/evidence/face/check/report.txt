@@ -1,0 +1,18 @@
+art:    .scratch/14-abstraction-research/evidence/face/v10.png
+bundle: .scratch/14-abstraction-research/evidence/face/check
+
+images (feed these, and nothing else):
+  .scratch/14-abstraction-research/evidence/face/check/side-by-side.png  -- whole frame, ref beside draft
+  .scratch/14-abstraction-research/evidence/face/check/region-1.png  -- worst-region #1 at (704,64,64,64) mean-dist 226, 2.0x
+  .scratch/14-abstraction-research/evidence/face/check/region-2.png  -- worst-region #2 at (128,832,64,64) mean-dist 205, 2.0x
+  .scratch/14-abstraction-research/evidence/face/check/region-3.png  -- worst-region #3 at (768,896,64,64) mean-dist 202, 2.0x
+
+metrics (breakage alarm only, never a target): {'precision': 0.388, 'recall': 0.045, 'edge_f1': 0.08, 'color_dist': 82.8}
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.
