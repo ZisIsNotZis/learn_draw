@@ -1,7 +1,18 @@
 # 08 — L1 bust: head, hair, hat, shoulders (ladder rung 1)
 
 Status: ready-for-agent (blocked)
-Blocked by: 06-relational-geometry
+Blocked by: 06-relational-geometry, 14-abstraction-research (face-set relations + declarative families)
+
+## Prerequisite clarification (SA1 finding 3, 2026-09-14)
+
+The face is **not drawable with the language as shipped in 06**: no `mirror`/`pair`, no `inside`,
+no `align`, no `arc` (a partial outline of a host shape), no taper in the front end, no rotated
+blobs/strokes. Under strict demand-first this rung would burn its whole budget re-deriving those.
+So the blocker ticket 14 must land, before this rung starts: (1) face-set relations —
+`mirror`/`pair`, `inside`, `align`, `arc`, taper; (2) declarative family support so `eye` is authored
+as a YAML family, not imperative Python; (3) sunhat near-edge occlusion fixed (P17 near/far split).
+If those are not landed, scope this rung DOWN to "bust without facial features" and move the face
+to its own ticket after 14.
 
 ## Issue
 

@@ -101,7 +101,7 @@ deleted?* Learned: user, on accepting the computed-geometry reframe.
 
 A VLM is strong at naming/grouping/z-order/judging and weak at coordinate regression. Any shape
 needing more than ~4 hand-typed coordinates must come from a computed source (trace, region,
-generator, or a relation), never from the model's head. The portrait's 825 hand-typed vertices
+generator, or a relation), never from the model's head. The portrait's 824 hand-typed vertices
 produced mush; 119 computed contours produced the character in 2.4s.
 Learned: `evidence/diagnosis/` comparison.
 
@@ -121,3 +121,15 @@ sentences: OFF-CANVAS / CLIPPED / SUB-PIXEL shapes, and CONTRADICTION when a dec
 defects (my own wrong layer order, and shoulders clipped 68px past the frame edge) before the
 image was ever looked at.
 Learned: `relate.py` diagnostics on bust v1.
+
+## P22 — A proof must pass the gates it exists to enforce (06, SA1 re-assessment)
+
+The relational language's proof render was declared readable with "diagnostics clean" — but the
+project's own acceptance (`draw check` + fresh-context reviewer, invariant 7) was never run on it.
+The render was in fact not readable: the hat's occlusion was inside-out, the face was buried under
+hair, and the shoulders were detached — every defect invisible to the four shipped diagnostics.
+Diagnostics are a *subset* of the evidence, never a substitute for the gate. Rule: **a mechanism's
+own demo runs the same acceptance as real work** — build the check bundle, ask the fresh reviewer,
+and only then claim "readable". "Clean" means "no rule fired", which is not "correct".
+Learned: SA1 found it; I had written invariant 7 and then skipped it on the one artifact the whole
+language rests on.

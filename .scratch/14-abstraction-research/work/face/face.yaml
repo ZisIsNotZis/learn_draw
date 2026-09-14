@@ -8,7 +8,7 @@
 #   nose    = head.cy + 0.05*head.ry   mouth = head.cy + 0.52*head.ry
 
 frame: {w: 1024, h: 1024}
-layers: [bg, hair, face, eyes, features]
+layers: [bg, hair, face, fringe, eyes, features]
 
 vars:
   face_half: frame.w*0.078     # head rx — anime face is wider than tall at the temples
@@ -39,6 +39,24 @@ draw:
                           [head.cx + head.w*0.55, head.cy + head.h*0.48]],
      w: head.w*0.24, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
      desc: "right temple-to-cheek lock"}
+
+  # fringe: strands hanging from the dome edge over the forehead, ABOVE the skin but
+  # BELOW the eyes (the ref's bangs cross the brow zone, not the eyes).
+  - {blob: bangL, spine: [[head.cx - head.w*0.34, head.cy - head.h*0.50],
+                          [head.cx - head.w*0.30, head.cy - head.h*0.34],
+                          [head.cx - head.w*0.34, head.cy - head.h*0.24]],
+     w: head.w*0.11, fill: "#3974ab", stroke: "#26354a", sw: 2, z: fringe,
+     desc: "fringe strand over the left brow"}
+  - {blob: bangC, spine: [[head.cx + head.w*0.02, head.cy - head.h*0.52],
+                          [head.cx - head.w*0.02, head.cy - head.h*0.36],
+                          [head.cx + head.w*0.04, head.cy - head.h*0.26]],
+     w: head.w*0.12, fill: "#3974ab", stroke: "#26354a", sw: 2, z: fringe,
+     desc: "fringe strand between the brows"}
+  - {blob: bangR, spine: [[head.cx + head.w*0.36, head.cy - head.h*0.50],
+                          [head.cx + head.w*0.32, head.cy - head.h*0.34],
+                          [head.cx + head.w*0.36, head.cy - head.h*0.24]],
+     w: head.w*0.11, fill: "#3974ab", stroke: "#26354a", sw: 2, z: fringe,
+     desc: "fringe strand over the right brow"}
 
   # LEFT eye: authored once with the full parameter set, placed by relation, sized in head units.
   - {eye: eyeL, host: head,

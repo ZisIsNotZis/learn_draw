@@ -24,8 +24,8 @@ SCHEMA = {
     "blob":   {"blob", "poly", "spine", "w", "fill", "stroke", "sw", "z", "op", "blur", "rot"},
     "petal":  {"petal", "at", "n", "len", "wid", "curl", "spread", "angle0", "fill", "stroke", "sw", "z", "op", "blur"},
     "ribbon": {"ribbon", "spine", "w", "grad", "fill", "op", "z", "blur"},
-    "region": {"region", "seed", "tol", "on", "fill", "grow", "z", "op"},
-    "trace":  {"trace", "from", "class", "fit", "region", "z", "op", "fill"},
+    "region": {"region", "seed", "tol", "fill", "grow", "z", "op"},
+    "trace":  {"trace", "from", "class", "region", "z", "op", "fill"},
     "grad":   {"grad", "dir", "at", "r", "stops", "z"},
     "blur":   {"blur", "std"},
     "wave":   {"wave", "spine", "w", "amp", "len", "sag", "taper", "fill", "grad", "op", "z", "blur"},
@@ -275,6 +275,10 @@ def compile_scene(nodes, size, ref_path=None):
     for idx, node in enumerate(nodes):
         if not isinstance(node, dict) or len(node) < 1:
             errors.append(f"node#{idx}: not a dict"); continue
+        bool_keys = [k for k in node if isinstance(k, bool)]
+        if bool_keys:
+            errors.append(f"node#{idx}: key {bool_keys[0]!r} parsed as a YAML boolean — "
+                          "`on`/`off`/`yes`/`no` are reserved words; rename the key (e.g. `source:`)")
         tkey = next(iter(node))
         if tkey not in SCHEMA:
             errors.append(f"node#{idx}: unknown node type '{tkey}'"); continue

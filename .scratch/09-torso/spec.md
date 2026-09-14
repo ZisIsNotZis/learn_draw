@@ -21,7 +21,7 @@ path question — declare the relation, let the renderer occlude).
 - [ ] occlusion stated, not hand-solved: `relations:` declares arms-over-curtain and hands-behind-body,
       and the engine raises CONTRADICTION if the layer stack disagrees
 - [ ] fresh-eyes review: body reads as a body; no floating or detached limbs
-- [ ] ≥1 vocabulary node added here (e.g. `sleeve`, `eyeball`-style family for the bow) *justified by a
+- [ ] ≥1 vocabulary node added here (e.g. `sleeve`, `eye`-style family for the bow) *justified by a
       failure without it* — recorded in the ticket Comments
 - [ ] iteration log + evidence composite
 

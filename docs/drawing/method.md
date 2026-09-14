@@ -25,7 +25,7 @@ Loop: **observe → plan → draw → compare → reflect → revise**, cycled. 
   Structure comes from region decomposition and traced boundaries; a stroke is then drawn on the
   boundary that matters. See `05-portrait-scene/evidence/diagnosis/`.
 - **T2 flat color** — SVG fills. Reference: k-means palette.
-- **T3 soft fields** — gradients, blurred blobs inside clipped silhouettes, opacity, `mix-blend-mode`. Core idiom: *hard silhouette clip + blurred color blobs inside it* (painter's clipping-mask workflow — every layer stays nameable). Needed for image.jpg background/ribbons.
+- **T3 soft fields** — gradients, blurred blobs, opacity. Core idiom available *today*: **layered flat blobs under a shared silhouette, painted bottom-up** (every layer stays nameable). The painter's clipping-mask idiom (hard silhouette clip + blurred blobs inside, `mix-blend-mode`) is documented aspirationally but the back end has no clipPath/blend support yet — do not write a spec that needs them until 12-fields lands the capability. Soft fields come **last** (rung 12), never before line structure.
 - **T4 photo realism** — stacked blurred-blob decomposition, feathered silhouettes, texture. Research tier; needs field-decomposition tooling (gradient direction/extent hints). Not scheduled.
 
 ## Curriculum (the ladder rungs)

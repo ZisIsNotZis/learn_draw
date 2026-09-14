@@ -50,8 +50,8 @@ Status: ✅ implemented · 🔨 in progress · 📋 needed (with the rung that d
 
 | family | status | params (beyond placement) | anchors exposed | carries |
 | --- | --- | --- | --- | --- |
-| `sunhat` | ✅ | brim, crown, tilt, lift, drop, flat, front arc, pom count/at/r | brim.left/right/top/bottom, brim@t, dome.* | brim-as-squashed-ellipse, dome on brim normal, near edge over crown |
-| `eye` | 🔨 SA2 | size, tilt/almond, lid, iris fraction, glints, lash | outer/inner corner, top, bottom, centre, iris centre | sclera→lid→iris→pupil→glint→lash layer order |
+| `sunhat` | ✅ (occlusion bug — see note) | brim, crown, tilt, lift, drop, flat, front arc, pom count/at/r | `hat-brim.left/right/top/bottom`, `hat-brim@t`, `hat-dome.*`, `hat.*` (family id = brim footprint) | brim-as-squashed-ellipse, dome on brim normal, near edge over crown. **Defect (SA1):** dome paints over the near brim half (same `z`, rim strip too thin to occlude) — the flagship occlusion mechanism does not work yet; fixed in the declarative rewrite |
+| `eye` | 🔨 SA2 (14) | size, tilt/almond, lid, iris fraction, glints, lash | outer/inner corner, top, bottom, centre, iris centre | sclera→lid→iris→pupil→glint→lash layer order |
 | `brow`, `nose`, `mouth` | 📋 08 | length, angle, weight | ends, centre | mark-not-shape (P12) |
 | `hair-mass` | 📋 08 | silhouette spine, width, tip zigzag, strand count | hairline, tips@t | one silhouette with zigzag bottom (P8), pink pockets as skin-through-notch |
 | `sleeve`, `bow`, `collar` | 📋 09 | puff, gather count, knot size | knot, tails@t | cloth fold direction |
@@ -98,7 +98,14 @@ taxonomy (abstraction.md): a proposed relation should first be asked "is this re
 Should it be a parameter instead?" — `inside`, for instance, mostly disappears once a family owns
 its parts; `mirror` survives because faces pair two *instances* of a family.
 
-## Design directions (noted, not built — demand first)
+## Design directions (adopted or noted — demand first)
+
+- **Declarative families (ADOPTED — SA1 finding 10).** A family should be a YAML block — parameters
+  plus sub-shapes whose relations may only use the family's own anchors — so the *model* can author a
+  family without writing Python. Generator families (swirl, glow, …) delegate to scene_render.
+  Canon rows become loadable data with provenance. `sunhat` is the migration example. This is the
+  highest-leverage change in the design; it also makes "learning is the repo" literally true
+  (knowledge becomes readable spec, not Python).
 
 - **Style as a preset layer.** Anime-cel = hard outlines + flat fills + defined stroke weight; a
   future "impasto" style would change stroke/blur/palette defaults globally. Direction: a `style:`

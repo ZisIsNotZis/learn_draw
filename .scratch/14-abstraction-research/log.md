@@ -22,3 +22,38 @@
 - committed: 552a1c6 (design decisions 1/night), 14 log follows in next commit
 - 3 subagents running (SA1 critique / SA2 face / SA3 starry) — integrate on completion
 - next: 08-bust after integration; eye family from SA2; canons from this log
+
+## 2026-09-14 — SA1 critique integrated (decisions recorded; see evidence/sa1/critique-summarized.md)
+
+Accepted in full. Finding 1 owned: I violated invariant 7 on the language's own proof render
+(bust-v2 declared "readable" with no check/fresh-eyes; hat inside-out, face buried, shoulders
+detached). P22 records the meta-lesson; 06's spec carries a public retraction + re-assessment.
+
+DECISIONS (leader, this session):
+- D1 critique accepted; fixes split now-vs-consolidation.
+- D2 code-truth NOW (done): 06 docstring YAML-trap example fixed; family id registers as anchor;
+  `between` accepts anchor strings (rejects size scalars); scene_render drops dead `on`/`fit` keys
+  and names YAML-boolean errors (16/16 tests pass); draw check captures resolver diagnostics+anchors
+  into report.txt and records resolver path; _find_relate deterministic (beside spec → scripts/, no
+  more last-hit-wins).
+- D3 DECLARATIVE FAMILIES ADOPTED as the tier-3 direction (finding 10): a family = YAML block,
+  params + sub-shapes over own anchors only, so the model authors families without Python. sunhat =
+  migration example. Canon rows become loadable data with provenance.
+- D4 face-set relations land in 14 BEFORE 08 opens (finding 3 deadlock): mirror/pair, inside, align,
+  arc (partial outline), taper; plus sunhat near-edge occlusion fix (P17 near/far split). 08's
+  blockers updated; fallback scope-down documented there.
+- D5 withdrawal rungs created: 15 (L7 recall, image closed) + 16 (L8 intent-only), blocked by 13.
+  Composition anchors (thirds/horizon/focal) enter the taxonomy at 16 (demand date).
+- D6 resolver consolidation PENDING worker completion: promote ONE resolver to scripts/, delete
+  forks, fix desc-key compat with scene_render.SCHEMA.
+- D7 literal classes adopted (finding 6): proportion/style constants in vars: WITH provenance;
+  placement numbers must derive from other anchors; resolver placement-warning pending.
+- D8 doc-truth NOW (done): 824 pinned; eyeball→eye; scene-format region example fixed (on: was a
+  YAML boolean trap AND a dead key); line-numbered claim corrected to node-indexed; method T3 idiom
+  rewritten to what the back end supports (clip/blend = pending, due at 12); vocabulary sunhat row
+  now shows real anchor ids + the occlusion defect; P22 added.
+- D9 diagnostics PENDING (06 promised, never built): invisible-behind, unintended-gap; plus vocab
+  sub-shapes must be anchored so P21 diagnostics apply to them (finding 8); literal-placement warning.
+  Scheduled: 14's resolver work.
+- D10 PENDING worker completion: SA2 eye family + face canons → fold into resolver + vocabulary.md;
+  SA3 starry findings → record needed-family list, BUILD NOTHING (demand date = post-16 stress test).

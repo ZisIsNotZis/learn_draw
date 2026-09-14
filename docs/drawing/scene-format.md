@@ -8,7 +8,7 @@ Purpose: the node format a drawing compiles *down* to — semantic nodes with pa
 
 A scene file is a YAML list of nodes, one per line, inline flow style — **but these are the resolver's
 *output*, not something you write** (invariant 5). Hand-authoring this format is the failure mode that
-produced 825 hand-typed vertices in the frozen portrait. Author in `abstraction.md` terms instead;
+produced 824 hand-typed vertices in the frozen portrait. Author in `abstraction.md` terms instead;
 read this format to understand what the engine does and to debug what it emitted.
 
 ```yaml
@@ -19,8 +19,8 @@ read this format to understand what the engine does and to debug what it emitted
 - {stroke: hair-s3, spine: [[612,248],[648,231],[676,238]], w: 5, taper: both, ink: "#26354a", z: hair}
 - {blob: ribbon-main, spine: [[20,390],[560,380],[520,570],[392,772]], w: 120, grad: ribbonGrad, z: ribbon}
 - {petal: flower-1, at: [880,740], n: 5, len: 90, wid: 40, curl: 0.4, spread: 180, fill: "#f2b8c4", z: scene}
-- {region: hem-light, seed: [560,930], tol: 28, fill: "#cbdfd3", on: ref, z: skirt}   # computed, not typed
-- {trace: hair-mass, from: image.jpg, class: hair, fit: outline, z: hair}             # computed, not typed
+- {region: hem-light, seed: [560,930], tol: 28, fill: "#cbdfd3", z: skirt}   # always floods the reference raster
+- {trace: hair-mass, from: image.jpg, class: hair, z: hair}             # contour extract, computed
 - {blur: [pink-overlay, yellow-overlay], std: 6}
 ```
 
@@ -51,8 +51,8 @@ reference-free drawing. Everything else resolves from relations alone.
 | `wave` | spine, w, amp, len (wavelength), sag, taper?, fill | grad? | spine displaced by sin wave + gravity droop, compiled to closed ribbon path |
 | `strands` | region [x0,y0,x1,y1], n, dir (deg), spread, w, wj (width jitter), len, ink (color or list), seed | n seeded flowing hair/fold strokes inside region; deterministic per seed |
 | `ring` | at, r OR rx/ry, rot?, w, a0/a1 (deg, arc range; default full circle), zig (depth as fraction of w), zn (teeth/revolution), zq (jitter 0-1), seed, hue [h0,h1] (deg walk along arc), sat, val, nseg | color-walking annulus arc with zigzag outer edge; slices into nseg filled segments. Back/front scene split = two complementary ring nodes sharing geometry+seed (teeth line up at seam — z-plane split, not path split) |
-| `region` | seed, tol, on (ref | layers-below), fill, grow? | **computed** paint-bucket on the rasterized `on` target; contour→smooth path |
-| `trace` | from (image path), class (anchor colors), fit (outline | spine+width), z | **computed** contour extract (existing method) → blob/stroke; teacher only, never in a reference-free scene |
+| `region` | seed, tol, fill, grow? | **computed** paint-bucket on the *reference raster* (there is no layers-below source yet); contour→smooth path |
+| `trace` | from (image path), class (anchor colors), region?, z | **computed** colour-class contour (outline only; no spine+width fit) → blob/stroke; teacher only, never in a reference-free scene |
 | `grad` | dir or at/r (linear | radial), stops [[off,color]...] | named `<linearGradient>`; referenced as `grad:name` in fills |
 | `blur` | ids or layer, std | wraps targets in `<g filter>` |
 
@@ -74,7 +74,7 @@ determinism, and schema of each generator.
 - `region`/`trace` need the reference raster: `--ref image.jpg`. Their presence makes a scene
   teacher-dependent — see the computed rows above.
 - Determinism: same input → same output bytes (no randomness unless a `jitter` key seeds explicitly).
-- Errors: line-numbered (YAML source line), unknown keys/types fail loudly.
+- Errors: node-indexed (`node#idx: …`) with unknown keys/types failing loudly (YAML source-line numbers are pending; `relate.py` SpecError messages do not include them yet).
 
 ## Explainability contract
 

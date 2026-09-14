@@ -6,7 +6,7 @@ literals are needed anywhere in a spec: every position is expressed relative to 
 frame or to another already-declared shape.
 
     - {ellipse: head, at: [frame.w*0.60, frame.h*0.34], rx: frame.w*0.098, ry: frame.w*0.128}
-    - {sunhat: hat, on: head, brim: 2.6*head.w, tilt: -14, crown: head.w*0.78, pom: 2}
+    - {sunhat: hat, host: head, brim: 2.6*head.w, tilt: -14, crown: head.w*0.78, pom: 2}
 
 The resolver does NOT look at any reference image. Tracing a reference is only ever a way to
 seed *values* for a spec like this (the teacher role); the engine itself stays target-free.
@@ -17,7 +17,7 @@ Two orders, kept separate on purpose:
 
 Anchors a shape exposes (usable by any later node):
     at  cx cy  left right top bottom  w h  w2 h2 (half extents)  rx ry  rot
-    <shape>@<t>  via {on: shape, t: 0.35} — point on the outline, wraps, optional `out: D`
+    <shape>@<t>  via {along: shape, t: 0.35} — point on the outline, wraps, optional `out: D`
 
 Relation forms (value of any positional or size key):
     number                      relative or absolute scalar
@@ -303,13 +303,39 @@ class Ctx:
             return (self.scalar(value[0]), self.scalar(value[1]))
         raise SpecError(f"relate: not a point: {value!r}")
 
+    def endpoint(self, value: object) -> tuple[float, float]:
+        """A between() endpoint: point forms, or a bare shape/handle string.
+
+        `{between: [head.left, head.right, 0.5]}` reads naturally, so handle strings
+        coerce to extent points (left/right at cy, top/bottom at cx); size scalars
+        are rejected — they are not points.
+        """
+        if isinstance(value, str):
+            sid, _, handle = value.partition(".")
+            shape = self.anchors.get(sid)
+            if shape is not None:
+                cx, cy = shape.env[f"{sid}.cx"], shape.env[f"{sid}.cy"]
+                if not handle or handle in ("cx", "cy", "at", "center", "centre"):
+                    return (cx, cy)
+                if handle == "left":
+                    return (shape.env[f"{sid}.left"], cy)
+                if handle == "right":
+                    return (shape.env[f"{sid}.right"], cy)
+                if handle == "top":
+                    return (cx, shape.env[f"{sid}.top"])
+                if handle == "bottom":
+                    return (cx, shape.env[f"{sid}.bottom"])
+                raise SpecError(f"relate: {value!r} is a size scalar ({handle}), not a point")
+            raise SpecError(f"relate: {value!r} is not a point or a known shape")
+        return self.point(value)
+
     def _relation(self, value: dict) -> tuple[float, float]:
         if "between" in value:
             spec = list(value["between"])
             if len(spec) < 3:
                 raise SpecError("relate: between needs [A, B, t]")
-            pa = self.point(spec[0])
-            pb = self.point(spec[1])
+            pa = self.endpoint(spec[0])
+            pb = self.endpoint(spec[1])
             t = self.scalar(spec[2])
             return (pa[0] + (pb[0] - pa[0]) * t, pa[1] + (pb[1] - pa[1]) * t)
         if "at" in value:
@@ -421,6 +447,10 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
         emit.append({"ellipse": f"{sid}-pom{i + 1}", "at": [px, py], "rx": r, "ry": r * 0.86,
                      "fill": node.get("pom-fill", "#df9199"), "z": z,
                      "desc": f"pom at t={t:.2f} along the brim outline, r={r:.0f}"})
+
+    # the family id itself is an anchor: "the hat" = its brim footprint, so `{along: hat, t}` works
+    ctx.add(Anchor(sid, {k.split(".", 1)[1]: v for k, v in brim.env.items()},
+                   outline=brim._outline))
     return brim
 
 

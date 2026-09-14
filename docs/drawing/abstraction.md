@@ -21,10 +21,20 @@ a complete instruction here. Two consequences:
 - **Human-phraseable is the completeness bar.** Anything a drawing teacher would say in words and this
   language cannot say is a missing feature, and the wording of the missing feature is the feature spec.
 
+Two classes of literal, with different rules (SA1 finding 6):
+
+- **Proportion / style constants** — `2.70`, `tilt: -14`, `0.30` — are allowed, but live in `vars:`
+  with a one-line provenance comment (where the number came from: measured, a canon, or a taste
+  choice). Unprovenanced magic numbers are the old failure in a fraction costume.
+- **Placement numbers** — anything that positions a shape — must be *derived from other anchors*.
+  Raw `frame.w*0.60` placement is an eyeballed absolute in disguise; the human phrase is "slightly
+  right of centre, upper third", and the resolver should warn when placement does not reference
+  another shape (pending).
+
 ## Why this exists
 
 The portrait failed because the only available way to place geometry was absolute coordinates:
-825 hand-typed vertices across 58 polygons, and **zero** uses of the computed `trace` node. A VLM
+824 hand-typed vertices across 58 polygons, and **zero** uses of the computed `trace` node. A VLM
 is strong at naming, grouping, ordering and judging, and weak at coordinate regression — so the
 authoring channel was asking for the one thing the author cannot do, at a scale (1024²) where its
 own errors are invisible to it.
@@ -43,7 +53,7 @@ state what overlaps what. The engine resolves everything numeric.
 
 | tier | what it carries | example |
 | --- | --- | --- |
-| 1. anchors | the canvas frame, and every shape's handles | `frame.w`, `head.rx`, `brim.left`, `head@0.25` |
+| 1. anchors | the canvas frame, and every shape's handles | `frame.w`, `head.rx`, `brim.left`, `{along: head, t: 0.25}` |
 | 2. relations | positions and sizes expressed *relative to other things* | `{along: brim, t: 0.62}`, `2.70*head.w`, `{between: [A, B, 0.35]}` |
 | 3. vocabulary | parametric object families with drawing-sane structure | `{sunhat: hat, host: head, brim: 2.70*head.w, tilt: -14, pom: 2}` |
 

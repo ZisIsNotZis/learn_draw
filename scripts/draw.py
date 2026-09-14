@@ -267,16 +267,20 @@ def _check_dir(art: str) -> str:
     return os.path.join(os.path.dirname(ap_) or ".", "check")
 
 
-def _rasterize(art: str, outdir: str, ref: str | None) -> str:
-    """Turn a drawing (svg/html/png/jpg/scene.yaml/relational spec) into a draft PNG."""
+def _rasterize(art: str, outdir: str, ref: str | None, resolver_override: str | None = None):
+    """Turn a drawing (svg/html/png/jpg/scene.yaml/relational spec) into a draft PNG.
+
+    Returns (dst, meta) where meta holds the resolver path (if any) and its captured stdout,
+    so the caller can put the resolver's diagnostics and anchors into the review bundle.
+    """
     ext = os.path.splitext(art)[1].lower()
     if ext in (".png", ".jpg", ".jpeg", ".webp"):
-        return art
+        return art, {"resolver": None, "stdout": ""}
     here = os.path.dirname(os.path.abspath(__file__))
     if ext in (".svg", ".html"):
         dst = os.path.join(outdir, "draft.png")
         render(art, dst)
-        return dst
+        return dst, {"resolver": None, "stdout": ""}
     if ext in (".yaml", ".yml"):
         import yaml
         try:
@@ -285,39 +289,52 @@ def _rasterize(art: str, outdir: str, ref: str | None) -> str:
             sys.exit(f"cannot read {art}: {exc}")
         dst = os.path.join(outdir, "draft.png")
         if isinstance(spec, dict) and {"frame", "draw"} <= set(spec):
-            resolver = _find_relate(art)
+            resolver = resolver_override or _find_relate(art)
             if resolver is None:
-                sys.exit(f"{art} is a relational spec but relate.py was not found; "
-                         "run the resolver yourself and check its .svg")
-            subprocess.run([sys.executable, resolver, art, "-o", dst], check=True, timeout=120)
+                sys.exit(f"{art} is a relational spec but no relate.py was found; "
+                         "pass --resolver PATH or run the resolver yourself")
+            run = subprocess.run([sys.executable, resolver, art, "-o", dst, "--anchors"],
+                                 capture_output=True, text=True, timeout=120)
+            if run.returncode != 0:
+                sys.exit(f"resolver failed ({resolver}):\n{run.stderr}")
+            return dst, {"resolver": resolver, "stdout": run.stdout}
         else:
             cmd = [sys.executable, os.path.join(here, "scene_render.py"), art, "-o", dst]
             if ref:
                 cmd += ["--ref", ref]
-            subprocess.run(cmd, check=True, timeout=120)
-        return dst
+            run = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+            if run.returncode != 0:
+                sys.exit(f"scene render failed:\n{run.stderr}")
+            return dst, {"resolver": "scene_render.py", "stdout": run.stdout}
     sys.exit(f"draw check: unsupported drawing type {ext or art!r}")
 
 
 def _find_relate(art: str) -> str | None:
-    """Locate the relational resolver: beside the spec, or in any .scratch/*/work/."""
-    import glob
+    """Locate the relational resolver: beside the spec, or the canonical one in scripts/.
+
+    Deterministic on purpose (the old last-hit-wins silently depended on directory names):
+    a resolver beside the spec wins; otherwise the canonical scripts/relate.py if it exists;
+    otherwise error. Forks outside scripts/ are never picked implicitly.
+    """
     beside = os.path.join(os.path.dirname(os.path.abspath(art)), "relate.py")
     if os.path.exists(beside):
         return beside
-    hits = sorted(glob.glob(os.path.join(
-        os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
-        ".scratch", "*", "work", "relate.py")))
-    return hits[-1] if hits else None
+    canonical = os.path.join(os.path.dirname(os.path.abspath(__file__)), "relate.py")
+    if os.path.exists(canonical):
+        return canonical
+    return None
 
 
 def cmd_check(a):
     """Emit the visual feedback bundle: images + numbers, and never a verdict."""
     outdir = a.outdir or _check_dir(a.art)
     ensure_dir(outdir)
-    draft = imread(_rasterize(a.art, outdir, a.ref))
+    draft_path, meta = _rasterize(a.art, outdir, a.ref, a.resolver)
+    draft = imread(draft_path)
     written: list[tuple[str, str]] = []
     lines: list[str] = []
+    if meta["resolver"]:
+        lines.append(f"resolver: {meta['resolver']}")
 
     if a.ref:
         ref = imread(a.ref, (draft.shape[1], draft.shape[0]))
@@ -344,7 +361,7 @@ def cmd_check(a):
                                 f"mean-dist {badness:.0f}, {zoom:.1f}x"))
     else:
         p = os.path.join(outdir, "draft.png")
-        if os.path.abspath(p) != os.path.abspath(_rasterize(a.art, outdir, None)):
+        if os.path.abspath(p) != os.path.abspath(draft_path):
             imwrite(p, _fit(draft, a.pane))
         written.append((p, "the drawing"))
         lines.append("no --ref given: nothing to compare against (reference-free stage)")
@@ -358,6 +375,9 @@ def cmd_check(a):
     ]
     lines_out += [f"  {path}  -- {what}" for path, what in written]
     lines_out += [""] + lines
+    if meta.get("stdout", "").strip():
+        lines_out += ["", "resolver output (anchors + diagnostics — part of the evidence):",
+                      "```", meta["stdout"].rstrip(), "```"]
     lines_out += [
         "",
         "reviewer protocol - do not skip:",
@@ -503,6 +523,7 @@ def main():
     p = sub.add_parser("check"); p.add_argument("art", help="svg/html/png or a spec .yaml to render")
     p.add_argument("--ref", default=None, help="reference image; omit for the reference-free stage")
     p.add_argument("--outdir", default=None, help="default: <exercise>/evidence/check")
+    p.add_argument("--resolver", default=None, help="explicit relate.py path; default: beside the spec, then scripts/relate.py")
     p.add_argument("--regions", type=int, default=3, help="worst regions to crop (default 3)")
     p.add_argument("--pane", type=int, default=256, help="max px per pane (default 256)")
     p.add_argument("--zoom-max", type=float, default=3.0, dest="zoom_max")
