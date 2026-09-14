@@ -144,3 +144,41 @@ with masses, marks strengthened). diagnostics clean throughout; every render LOO
 Evidence: evidence/final/v1..v3.png + check/ bundle (vs image.jpg, metrics = breakage alarm only).
 Residuals recorded: round ellipse chin (face-family gap), stylized-not-likeness (P14 intent),
 mouth/nose faint by design (anime). Fresh-eyes verdict: pending subagent -> appended on arrival.
+
+## 2026-09-14 — fresh-eyes verdict on the final image: PARTLY (verified, P7 applied)
+
+Reviewer (fresh explore, no intent leaked): (1) ruinous: no body below the collar line — true;
+(2) ruinous: face unfinished, "two thin eye slits", no nose/mouth/iris detail; (3) ruinous: hat is
+a "flat ellipse with a ball on it", no tilt; (4) hair stiff, flat tips; (5) environment dropped.
+Verdict: partly — hints at the character, does not fully read as the same subject.
+
+VERIFIED against measurements + my own look at the full-res render (P7: observations vs locations):
+
+- **"No body" — TRUE, and by design.** The final image is a BUST (L1 scope: head+hair+hat+shoulders);
+  the body is rungs 09/10. The reviewer, told nothing, correctly reports the draft ≠ the REF's
+  seated figure. Scope truth, recorded as the largest remaining gap toward "reads as the REF".
+- **"Face unfinished" — SCALE ARTIFACT, verified.** At full resolution v3 has: two-tone irises,
+  2 glints/eye + green reflection, tapered one-sided lash, brows, nose tick (2.6px), mouth (3.6px).
+  The bundle's whole-frame pane is ≤600px (downscale 0.59×): glints → ~2px, nose → ~1.5px, mouth →
+  ~2px — sub-perceptible. The reviewer judged the face from the only image it had of it. NOT a
+  drawing defect; a REVIEW-LOOP defect (see below). Marks may still want +50% weight at this canvas.
+- **"Hat flat, no tilt" — partly scale, partly real.** tilt −14° exists but is subtle at 600px; the
+  brim's slice edges are straight, so the brim reads flatter than the REF's curved sweep; the dome
+  at 600px reads as "a ball on a plate". Real fix for 08: crown silhouette should read through
+  (taller crown or visible crown band); brim curvature.
+- **"Hair stiff/flat tips" — TRUE.** Masses are constant-width ribbons with flat rounded ends.
+  Needs taper + slight S-curvature; recorded as an 08 requirement (taper-first-class relation).
+- **"Environment dropped" — accepted for L1** (flat field is intentional for the bust rung).
+
+TOOL FINDING for 07 (the loop's first real design flaw): the bundle's region ranking by colour
+distance surfaces GLOBAL-MISMATCH areas (missing body), so the 2x crops were all in the bottom
+band — the FACE never got a crop, and the whole-frame pane at ≤600px destroys exactly the details
+a reviewer needs to judge (glints, lash taper, marks, hat tilt). Fix: `draw check` should always
+include the full-res draft as one artifact + a subject-centre 2x crop; when the spec has a `head`
+host anchor, add a face-region crop automatically. Recorded in 07's comments; queued in HANDOFF.
+
+WHAT THE VERDICT MEANS for the night: the assembled bust reads as a girl-with-hat-at-full-res (my
+own look, verified features present) and does NOT yet read as the REF subject at review scale —
+the two largest levers are the missing body (ladder, by design) and the review-loop scale flaw
+(tool, now recorded). Both have dates. The mechanism the verdict DOES vindicate: every claim about
+what IS present (hat occlusion, layered eyes, canon-placed marks) survived independent verification.

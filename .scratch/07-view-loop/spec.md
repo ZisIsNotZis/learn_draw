@@ -57,3 +57,14 @@ quoted above (8 findings, verdict "partly").
   to children, so it fails as a lane infrastructure error. Recorded so future sessions do not retry it.
   `explore` reviewers describe what they see reliably and mislabel **where** they saw it (region-1 at
   (768,896) was called "left chest"); the bundle's coordinates are what makes that separable.
+
+## Comments (added after the final-image review, 2026-09-14)
+
+- **Design flaw found in use:** region ranking by colour distance surfaces global-mismatch areas
+  (missing body), so the final bust's 2x crops were all in the bottom band — the face never got a
+  crop, and the ≤600px whole-frame pane destroys sub-perceptual details the reviewer must judge
+  (glints → ~2px, nose tick → ~1.5px at 0.59× downscale). Consequence: the fresh-eyes verdict
+  "face unfinished / no nose/mouth" was a scale artifact, verified against the full-res render.
+- **Fix (queued):** bundle should always include (a) the full-res draft, (b) a subject-centre 2x
+  crop; when the spec exposes a `head` host anchor, add an automatic face-region crop. Region
+  ranking stays for "where is it most different", never the only crop source.
