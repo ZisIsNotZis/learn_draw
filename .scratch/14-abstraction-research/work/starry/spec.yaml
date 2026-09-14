@@ -7,7 +7,7 @@
 # Deterministic seeds everywhere; same spec -> same pixels.
 
 frame: {w: 1024, h: 1024}
-layers: [sky, stars, swirls, moon, hills, village, cypress]
+layers: [sky, stars, flow, swirls, moon, hills, village, cypress]
 
 vars:
   horizon: frame.h*0.62
@@ -32,6 +32,18 @@ draw:
      color: "#ffe9a8", z: stars, seed: 4, desc: "bright star, left"}
   - {glow: star-d, at: [frame.w*0.63, frame.h*0.52], r: 11, rays: 6, len: frame.w*0.045,
      color: "#fff0bb", z: stars, seed: 5, desc: "bright star, low among the swirls"}
+
+  # --- sky flow strokes between the swirls: the wind the swirls ride on ----------
+  # `flow` (not `strands`): broad curved ribbons following a direction field — the
+  # new relation this scene demanded; strands' straight jittered lines read as scratches.
+  - {flow: flow-top, region: [frame.w*0.02, frame.h*0.03, frame.w*0.98, frame.h*0.26],
+     n: 12, dir: 2, spread: 9, w: 9, wj: 0.45, len: frame.w*0.34, curv: 0.55, waves: 2.2,
+     op: 0.8, seed: 21, ink: ["#3d5a9e", "#5a7cc0", "#2a4a86"], z: flow,
+     desc: "broad curved wind strokes filling the upper sky"}
+  - {flow: flow-low, region: [frame.w*0.02, frame.h*0.42, frame.w*0.98, frame.h*0.59],
+     n: 10, dir: 0, spread: 7, w: 8, wj: 0.45, len: frame.w*0.30, curv: 0.5, waves: 2.0,
+     op: 0.75, seed: 22, ink: ["#3d5a9e", "#5a7cc0", "#2a4a86"], z: flow,
+     desc: "lower wind strokes above the horizon"}
 
   # --- the sky flow: three coiled swirls --------------------------------------
   - {swirl: swirl-big, at: [frame.w*0.55, frame.h*0.34], rx: frame.w*0.30, ry: frame.h*0.20,

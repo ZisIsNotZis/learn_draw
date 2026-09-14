@@ -38,6 +38,8 @@ SCHEMA = {
                 "hue", "sat", "val", "nseg", "z", "op", "blur", "rx", "ry", "rot"} | _DESC,
     "swirl":  {"swirl", "at", "rx", "ry", "rot", "a0", "sweep", "bands", "w", "gap",
                 "n", "wob", "cap", "hue", "sat", "val", "ink", "seed", "z", "op"} | _DESC,
+    "flow":   {"flow", "region", "n", "dir", "spread", "w", "wj", "len", "curv", "waves",
+                "ink", "op", "seed", "z"} | _DESC,
     "burst":  {"burst", "at", "rays", "len", "w0", "w1", "a0", "spread", "ink", "seed", "z", "op"} | _DESC,
     "hill":   {"hill", "y0", "bands", "amp", "wl", "colors", "seed", "z", "op"} | _DESC,
 }
@@ -45,7 +47,7 @@ TYPE_KEY = {"layers": "layers", "grad": "grad", "blur": "blur",
             "rect": "rect", "ellipse": "ellipse", "stroke": "stroke", "blob": "blob",
             "poly": "poly", "petal": "petal", "ribbon": "ribbon", "region": "region", "trace": "trace",
             "wave": "wave", "strands": "strands", "ring": "ring",
-            "swirl": "swirl", "burst": "burst", "hill": "hill"}
+            "swirl": "swirl", "flow": "flow", "burst": "burst", "hill": "hill"}
 
 
 def smooth_path(pts, closed=True):
@@ -332,6 +334,50 @@ def swirl_paths(node):
     return out
 
 
+def flow_paths(node):
+    """Broad painterly strokes FOLLOWING A DIRECTION FIELD — the `flow` relation made
+    concrete (the gap `strands` left: those are straight jittered lines, these curve).
+
+    Each stroke is a seeded walk: start uniformly in the region, step along a direction
+    that relaxes toward the field direction `dir` while meandering (sin waves + jitter,
+    curvature `curv`), for arc length `len`. Rendered as a filled ribbon of width `w`
+    (tapering at both ends), not a hairline — they must read as brush strokes.
+    """
+    x0, y0, x1, y1 = map(float, node["region"])
+    n = int(node.get("n", 8))
+    base_dir = math.radians(float(node.get("dir", 0)))
+    spread = math.radians(float(node.get("spread", 12)))
+    w = float(node.get("w", 8))
+    wj = float(node.get("wj", 0.35))
+    ln = float(node.get("len", 240))
+    curv = float(node.get("curv", 0.5))      # how far heading may wander from the field
+    waves = float(node.get("waves", 2.5))     # meander periods per stroke
+    rng = np.random.default_rng(int(node.get("seed", 7)))
+    inks = node.get("ink", "#000")
+    if isinstance(inks, str):
+        inks = [inks]
+    out = []
+    steps = 26
+    for i in range(n):
+        sx = rng.uniform(x0, x1); sy = rng.uniform(y0, y1)
+        bias = rng.uniform(-spread, spread)          # one-time per-stroke bias off the field
+        phase = rng.uniform(0, 2 * math.pi)
+        amp = curv * rng.uniform(0.6, 1.0)
+        step = ln / steps
+        spine = [(sx, sy)]
+        for k in range(1, steps + 1):
+            t = k / steps
+            # heading = field direction + per-stroke bias + a travelling meander
+            heading = base_dir + bias * 0.5 + amp * math.sin(2 * math.pi * waves * t + phase)
+            sx += math.cos(heading) * step
+            sy += math.sin(heading) * step
+            spine.append((sx, sy))
+        wi = w * rng.uniform(1 - wj, 1 + wj)
+        out.append((taper_outline(spine, lambda t, _w=wi: _w * (0.30 + 0.70 * math.sin(math.pi * t) ** 0.7)),
+                    inks[i % len(inks)]))
+    return out
+
+
 def burst_paths(node):
     """Radial rays around `at`, tapering w0 (core) -> w1 (tip), seeded length/angle jitter."""
     ax, ay = float(node["at"][0]), float(node["at"][1])
@@ -579,6 +625,9 @@ def compile_scene(nodes, size, ref_path=None):
             s = f'<path {common} d="{d}" fill="{fill}"{st}/>'
         elif tkey == "swirl":
             paths = "".join(f'<path d="{d}" fill="{color}"/>' for d, color in swirl_paths(node))
+            s = f'<g {common}>{paths}</g>'
+        elif tkey == "flow":
+            paths = "".join(f'<path d="{d}" fill="{color}"/>' for d, color in flow_paths(node))
             s = f'<g {common}>{paths}</g>'
         elif tkey == "burst":
             paths = "".join(f'<path d="{d}" fill="{node.get("ink", "#ffd75e")}"/>'

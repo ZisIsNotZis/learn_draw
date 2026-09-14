@@ -683,6 +683,42 @@ def expand_village(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     return ctx.anchors[sid]
 
 
+def expand_strands(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """Thin bridge to the back-end `strands` generator (flowing wind/water strokes).
+    Finding: tier-2.5 geometric generators live in scene_render with no relation-level
+    access — the spec cannot reference them unless the resolver exposes a passthrough."""
+    sid = str(node["strands"])
+    region = [ctx.scalar(v) for v in node["region"]]
+    d = {"strands": sid, "region": region,
+         "n": whole(ctx.scalar(node.get("n", 8)), f"{sid}.n"),
+         "dir": ctx.scalar(node.get("dir", 90)), "spread": ctx.scalar(node.get("spread", 20)),
+         "w": ctx.scalar(node.get("w", 3)), "wj": ctx.scalar(node.get("wj", 0.4)),
+         "len": ctx.scalar(node.get("len", 60)), "seed": whole(ctx.scalar(node.get("seed", 7)), f"{sid}.seed"),
+         "ink": node.get("ink"), "z": node.get("z", "default"),
+         "op": node.get("op", 1), "desc": node.get("desc", "")}
+    emit.append(d)
+    return ctx.add(bbox_anchor(sid, [(region[0], region[1]), (region[2], region[3])]))
+
+
+def expand_flow(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """The `flow` relation, made concrete: broad curved strokes following a direction
+    field. This is what `strands` is not — strands are straight jittered lines; flow
+    meanders and reads as brush work (sky wind, water, hair)."""
+    sid = str(node["flow"])
+    region = [ctx.scalar(v) for v in node["region"]]
+    d = {"flow": sid, "region": region,
+         "n": whole(ctx.scalar(node.get("n", 8)), f"{sid}.n"),
+         "dir": ctx.scalar(node.get("dir", 0)), "spread": ctx.scalar(node.get("spread", 12)),
+         "w": ctx.scalar(node.get("w", 8)), "wj": ctx.scalar(node.get("wj", 0.35)),
+         "len": ctx.scalar(node.get("len", 240)), "curv": ctx.scalar(node.get("curv", 0.5)),
+         "waves": ctx.scalar(node.get("waves", 2.5)),
+         "seed": whole(ctx.scalar(node.get("seed", 7)), f"{sid}.seed"),
+         "ink": node.get("ink"), "z": node.get("z", "default"),
+         "op": node.get("op", 1), "desc": node.get("desc", "")}
+    emit.append(d)
+    return ctx.add(bbox_anchor(sid, [(region[0], region[1]), (region[2], region[3])]))
+
+
 def expand_stars(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     """A star field: n seeded dots scattered in a region (jitter-grid relation made concrete)."""
     sid = str(node["stars"])
@@ -708,7 +744,7 @@ def expand_stars(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
 
 VOCAB = {"sunhat": expand_sunhat, "swirl": expand_swirl, "hill": expand_hill,
          "glow": expand_glow, "flame": expand_flame, "village": expand_village,
-         "stars": expand_stars}
+         "stars": expand_stars, "strands": expand_strands, "flow": expand_flow}
 SHAPES = ("ellipse", "blob", "stroke", "rect")
 
 
