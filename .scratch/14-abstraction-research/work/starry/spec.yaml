@@ -12,7 +12,7 @@ layers: [sky, stars, flow, swirls, moon, hills, village, cypress]
 vars:
   horizon: frame.h*0.62
   cy_bx: frame.w*0.16      # cypress base x
-  cy_by: frame.h*0.88      # cypress base y
+  cy_by: frame.h*0.95      # cypress base y (rooted in the near foreground band)
 
 draw:
   # --- the night itself -------------------------------------------------------
@@ -32,6 +32,8 @@ draw:
      color: "#ffe9a8", z: stars, seed: 4, desc: "bright star, left"}
   - {glow: star-d, at: [frame.w*0.63, frame.h*0.52], r: 11, rays: 6, len: frame.w*0.045,
      color: "#fff0bb", z: stars, seed: 5, desc: "bright star, low among the swirls"}
+  - {glow: star-e, at: [frame.w*0.68, frame.h*0.10], r: 12, rays: 6, len: frame.w*0.05,
+     color: "#ffe9a8", z: stars, seed: 23, desc: "bright star filling the gap between moon and swirl"}
 
   # --- sky flow strokes between the swirls: the wind the swirls ride on ----------
   # `flow` (not `strands`): broad curved ribbons following a direction field — the
@@ -68,19 +70,25 @@ draw:
      desc: "five stacked hill bands from the horizon down"}
 
   # --- the sleeping village along its ground curve ------------------------------
+  # a soft warm halo sits behind the houses: the town's own light pooling in the valley
+  - {grad: town-glow, dir: radial,
+     stops: [[0, "rgba(255,196,110,0.34)"], [0.6, "rgba(255,196,110,0.12)"], [1, "rgba(255,196,110,0)"]],
+     desc: "warm light pooling behind the village"}
+  - {ellipse: town-glow, at: [frame.w*0.50, frame.h*0.78], rx: frame.w*0.40, ry: frame.h*0.09,
+     fill: "grad:town-glow", z: village, desc: "warm halo over the rooftops"}
   - {village: town,
      curve: [[frame.w*0.05, frame.h*0.82], [frame.w*0.40, frame.h*0.77],
              [frame.w*0.70, frame.h*0.75], [frame.w*0.95, frame.h*0.78]],
      count: 13, seed: 9, size: frame.w*0.036, church: 0.52, z: village,
-     body-fill: "#33486b", roof-fill: "#52729e", win-chance: 0.7,
+     body-fill: "#33486b", roof-fill: "#52729e", win-chance: 0.85,
      desc: "thirteen houses along a gentle ground curve, one church with a steeple"}
 
   # --- the cypress: a dark flame rising from the lower left into the sky ---------
   - {flame: cypress, base: [cy_bx, cy_by],
-     tip: {"off": [cy_bx, cy_by], angle: 272, d: frame.h*0.62},
+     tip: {"off": [cy_bx, cy_by], angle: 272, d: frame.h*0.65},
      w: frame.w*0.078, lobes: 4, bend: 0.08, color: "#143a52", stroke: "#4f7ba6", sw: 2,
-     scal: 0.24, wisps: 3, seed: 5,
-     z: cypress, desc: "flame-tree, 62% of frame height, slight rightward lean"}
+     scal: 0.24, wisps: 2, seed: 5,
+     z: cypress, desc: "flame-tree, 65% of frame height, rooted in the foreground, slight rightward lean"}
 
 # occlusion intent, in words — the engine checks the layer stack agrees
 relations:
