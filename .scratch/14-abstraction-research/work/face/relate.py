@@ -46,7 +46,7 @@ import yaml
 
 import sys
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "scripts"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "scripts"))
 from scene_render import chrome, smooth_path  # noqa: E402
 
 # --------------------------------------------------------------------------------------
@@ -274,6 +274,7 @@ class Ctx:
             "frame.cx": num(frame["w"], "frame.w") / 2, "frame.cy": num(frame["h"], "frame.h") / 2,
         }
         self.anchors: dict[str, Anchor] = {}
+        self.meta: dict[str, dict] = {}
 
     def add(self, anchor: Anchor) -> Anchor:
         self.env.update(anchor.env)
@@ -329,7 +330,50 @@ class Ctx:
             ang = math.radians(self.scalar(value.get("angle", 0.0)))
             d = self.scalar(value["d"])
             return (px + math.cos(ang) * d, py + math.sin(ang) * d)
+        if "mirror" in value:
+            p = self.point(value["mirror"])
+            ax = value.get("across")
+            if isinstance(ax, str):
+                sh = self.shape(ax)
+                axis = sh.env[f"{sh.id}.cx"]
+            else:
+                axis = self.scalar(ax)
+            return (2 * axis - p[0], p[1])
         raise SpecError(f"relate: unknown relation keys {sorted(value)}")
+
+
+def taper_band(spine: list[tuple[float, float]],
+               widths: list[float]) -> list[tuple[float, float]]:
+    """Closed polygon around an open spine with a per-point width (a tapered ribbon).
+
+    `ribbon` above gives one constant width; lashes, brows and strands want a profile.
+    """
+    pts = [np.array(p, float) for p in spine]
+    left: list[list[float]] = []
+    right: list[list[float]] = []
+    for i, p in enumerate(pts):
+        if i == 0:
+            tangent = pts[1] - pts[0]
+        elif i == len(pts) - 1:
+            tangent = pts[-1] - pts[-2]
+        else:
+            tangent = pts[i + 1] - pts[i - 1]
+        tangent = tangent / (np.linalg.norm(tangent) or 1.0)
+        normal = np.array([-tangent[1], tangent[0]]) * (widths[i] / 2)
+        left.append((p + normal).tolist())
+        right.append((p - normal).tolist())
+    return [tuple(num(v) for v in p) for p in left + right[::-1]]
+
+
+def bez3(p0, p1, p2, p3, n=20) -> list[tuple[float, float]]:
+    """Cubic bezier sampled at n+1 points."""
+    out = []
+    for i in range(n + 1):
+        t = i / n
+        s = 1 - t
+        out.append((s**3 * p0[0] + 3 * s * s * t * p1[0] + 3 * s * t * t * p2[0] + t**3 * p3[0],
+                    s**3 * p0[1] + 3 * s * s * t * p1[1] + 3 * s * t * t * p2[1] + t**3 * p3[1]))
+    return out
 
 
 def ribbon(spine: list[tuple[float, float]], width: float) -> list[tuple[float, float]]:
@@ -354,6 +398,157 @@ def ribbon(spine: list[tuple[float, float]], width: float) -> list[tuple[float, 
 # --------------------------------------------------------------------------------------
 # vocabulary (tier 3): parametric object families — drawing knowledge lives here
 # --------------------------------------------------------------------------------------
+def expand_eye(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """A layered anime eye — the drawing knowledge is IN the engine.
+
+    Structure a model should not re-derive: an eye is an almond aperture (sclera), a
+    two-tone iris that sits low and is partly capped by the lid, a pupil under the iris
+    top, a highlight on the nose side, a tapered upper lash with an outer wing, and a
+    thin lower lash line. The whole aperture is one generated curve (corners, lid arcs).
+
+    Placement/size are relations in host units; an eye has zero authored coordinates.
+    `mirror-of` builds the matching eye: same every param, centre reflected across the
+    host axis, tilt and outer/inner sides flipped.
+
+    Exposed anchors (usable by later nodes): cx cy left right top bottom w h w2 h2
+    (aperture bbox) plus outerx/outery, innerx/innery (corners), irisx/irisy,
+    topx/topy, botx/boty; the aperture outline is usable with {along: eye, t: ...}.
+    """
+    sid = str(node["eye"])
+    host_id = str(node["host"])
+    host = ctx.shape(host_id)
+    axis_x = host.env[f"{host_id}.cx"]
+    z = str(node.get("z", "default"))
+
+    style_keys = ("sclera-fill", "iris-top-fill", "iris-bot-fill", "pupil-fill",
+                  "lash-fill", "glint-fill", "iris-w", "iris-h", "lash-w",
+                  "line-w", "glints", "almond", "w", "h", "tilt")
+
+    if "mirror-of" in node:
+        other = str(node["mirror-of"])
+        m = ctx.meta.get(f"eye:{other}")
+        if m is None:
+            raise SpecError(f"relate: {sid}.mirror-of names {other!r}, but that eye has no stored "
+                            f"params — declare it first")
+        P = dict(m["P"])
+        P["cx"] = 2 * axis_x - m["P"]["cx"]
+        P["facing"] = -m["P"]["facing"]
+        P["tilt"] = -m["P"]["tilt"]
+        style = dict(m["style"])
+        for k in style_keys:          # explicit overrides beat the mirror
+            if k in node:
+                style[k] = node[k]
+    else:
+        at = ctx.point(node["at"])
+        w = ctx.scalar(node["w"])
+        P = {"cx": at[0], "cy": at[1],
+             "w": w,
+             "h": ctx.scalar(node["h"]) if "h" in node else w * 0.62,
+             "tilt": ctx.scalar(node.get("tilt", 0)),
+             "almond": ctx.scalar(node.get("almond", 0.55))}
+        P["facing"] = 1.0 if at[0] <= axis_x else -1.0   # +1: outer corner on screen-left
+        style = {k: node[k] for k in node if k not in P and k not in
+                 ("eye", "host", "at", "mirror-of", "z", "desc", "h")}
+
+    cx, cy = P["cx"], P["cy"]
+    w, h = P["w"], P["h"]
+    a = w / 2
+    f = P["facing"]
+    almond = P["almond"]
+    tilt = P["tilt"]
+
+    def place(u: float, v: float) -> tuple[float, float]:
+        """Eye-local (u: inner(-a)..outer(+a), v: screen-down) -> screen, rotated by tilt."""
+        t = math.radians(tilt)
+        x0, y0 = f * u, v
+        return (cx + x0 * math.cos(t) - y0 * math.sin(t), cy + x0 * math.sin(t) + y0 * math.cos(t))
+
+    # ---- the aperture: one generated almond curve (two lid arcs sharing the corners) ----
+    sharp = 0.35 + 0.65 * almond            # almond=1 -> controls hug corners -> pointed
+    rise = h * (0.50 + 0.14 * almond)       # top-lid arch height
+    drop = h * (0.46 - 0.10 * almond)       # bottom-lid drop
+    reach_in = a * 0.55 * sharp
+    reach_out = a * 0.50 * sharp
+    inner, outer = (-a, 0.0), (a, 0.0)
+    top_pts = bez3(inner, (-a + reach_in, -rise * 0.55), (a - reach_out, -rise * 0.88), outer)
+    bot_pts = bez3(outer, (a - reach_out * 0.9, drop * 0.70), (-a + reach_in * 0.9, drop * 0.88), inner)
+    almond_pts = [place(u, v) for (u, v) in top_pts + bot_pts[1:]]
+
+    emit.append({"blob": f"{sid}-sclera", "poly": almond_pts,
+                 "fill": style.get("sclera-fill", "#fdf2f9"), "z": z,
+                 "desc": f"{sid} sclera: the almond aperture, pale"})
+
+    # ---- iris: two-tone (dark top under the lid, light bottom), sits low ----
+    irx = w * float(style.get("iris-w", 0.32))
+    iry = h * float(style.get("iris-h", 0.40))
+    icx, icy = place(a * 0.02, h * 0.05)
+    emit.append({"ellipse": f"{sid}-iris-lo", "at": [icx, icy], "rx": irx, "ry": iry,
+                 "fill": style.get("iris-bot-fill", "#ef92ae"), "z": z,
+                 "desc": f"{sid} iris lower tone"})
+    # top cap: upper half of the iris + a chord, so the boundary is a curve not a line
+    cf = 0.12
+    cap = [(icx + irx * math.cos(th), icy + iry * math.sin(th))
+           for th in (math.pi + math.pi * i / 20 for i in range(21))]
+    cap += [(icx + irx, icy + cf * iry), (icx - irx, icy + cf * iry)]
+    emit.append({"blob": f"{sid}-iris-hi", "poly": cap,
+                 "fill": style.get("iris-top-fill", "#4470b3"), "z": z,
+                 "desc": f"{sid} iris upper tone (under the lid shadow)"})
+
+    # ---- pupil: under the iris top ----
+    emit.append({"ellipse": f"{sid}-pupil", "at": [icx, icy + iry * 0.14],
+                 "rx": irx * 0.42, "ry": iry * 0.50,
+                 "fill": style.get("pupil-fill", "#241a2c"), "z": z,
+                 "desc": f"{sid} pupil"})
+
+    # ---- glints: main one on the nose side, optional small one near the outer edge ----
+    g1x, g1y = place(-a * 0.32, -h * 0.26)
+    r1 = w * 0.11
+    emit.append({"ellipse": f"{sid}-glint1", "at": [g1x, g1y], "rx": r1, "ry": r1 * 1.3,
+                 "fill": style.get("glint-fill", "#ffffff"), "z": z,
+                 "desc": f"{sid} main glint, nose-side upper"})
+    if whole(style.get("glints", 2), f"{sid}.glints") >= 2:
+        g2x, g2y = place(a * 0.30, h * 0.12)
+        r2 = w * 0.055
+        emit.append({"ellipse": f"{sid}-glint2", "at": [g2x, g2y], "rx": r2, "ry": r2 * 1.2,
+                     "fill": style.get("glint-fill", "#ffffff"), "z": z,
+                     "desc": f"{sid} small glint, outer lower"})
+
+    # ---- upper lash: a tapered band along the top lid, thin at the inner corner,
+    #      thick through the middle, plus a wing flicking past the outer corner ----
+    lw = h * float(style.get("lash-w", 0.17))
+    wing1, wing2 = (a + 0.16 * a, -0.08 * h), (a + 0.34 * a, -0.20 * h)
+    lash_spine = [place(u, v - lw * 0.18) for (u, v) in top_pts] + [place(*wing1), place(*wing2)]
+    n_main = len(top_pts)
+    widths = [lw * (0.12 + 0.88 * min(1.0, (i / (n_main - 1)) * 2.2)) for i in range(n_main)]
+    widths += [lw * 0.55, lw * 0.22]
+    emit.append({"blob": f"{sid}-lash", "poly": taper_band(lash_spine, widths),
+                 "fill": style.get("lash-fill", "#0a0e18"), "z": z,
+                 "desc": f"{sid} upper lash: tapered band + outer wing"})
+
+    # ---- lower lash line + a sealing outline ----
+    line_w = max(2.0, h * float(style.get("line-w", 0.055)))
+    emit.append({"stroke": f"{sid}-lower", "spine": [place(u, v) for (u, v) in bot_pts[1:]],
+                 "w": line_w, "ink": style.get("lash-fill", "#0a0e18"), "z": z,
+                 "desc": f"{sid} lower lash line"})
+    emit.append({"stroke": f"{sid}-outline", "spine": almond_pts,
+                 "w": line_w * 0.8, "ink": style.get("lash-fill", "#0a0e18"), "z": z,
+                 "desc": f"{sid} aperture outline"})
+
+    # ---- anchors other shapes can hang off ----
+    anchor = bbox_anchor(sid, almond_pts)
+    ox, oy = place(a, 0.0)
+    nx, ny = place(-a, 0.0)
+    tx, ty = place(0.0, -rise)
+    bx, by = place(0.0, drop)
+    for name, val in {"outerx": ox, "outery": oy, "innerx": nx, "innery": ny,
+                      "irisx": icx, "irisy": icy, "topx": tx, "topy": ty,
+                      "botx": bx, "boty": by, "facing": f}.items():
+        anchor.env[f"{sid}.{name}"] = num(val, f"{sid}.{name}")
+    ctx.add(anchor)
+    ctx.meta[f"eye:{sid}"] = {"P": P, "style": style}
+    return anchor
+
+
 def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     """A wide-brim hat from ~6 parameters.
 
@@ -424,9 +619,8 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     return brim
 
 
-VOCAB = {"sunhat": expand_sunhat}
+VOCAB = {"sunhat": expand_sunhat, "eye": expand_eye}
 SHAPES = ("ellipse", "blob", "stroke", "rect")
-
 
 # --------------------------------------------------------------------------------------
 # resolve

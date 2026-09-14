@@ -16,27 +16,36 @@ CHROME = os.path.expanduser(
     "chrome-headless-shell-linux64/chrome-headless-shell")
 
 # per-type allowed keys; first key listed is the id-bearing type key
+# SA3 starry probe copy: +desc on every type (resolver vocabulary carries intent comments),
+# +poly (sharp, un-smoothed polygon — roofs), +swirl/+burst/+hill generators.
+_DESC = {"desc"}
 SCHEMA = {
     "layers": {"layers"},
-    "rect":   {"rect", "at", "w", "h", "full", "fill", "z", "op", "rot"},
-    "ellipse":{"ellipse", "at", "rx", "ry", "rot", "fill", "stroke", "sw", "z", "op", "blur"},
-    "stroke": {"stroke", "spine", "w", "profile", "taper", "ink", "cap", "z", "op", "blur"},
-    "blob":   {"blob", "poly", "spine", "w", "fill", "stroke", "sw", "z", "op", "blur", "rot"},
-    "petal":  {"petal", "at", "n", "len", "wid", "curl", "spread", "angle0", "fill", "stroke", "sw", "z", "op", "blur"},
-    "ribbon": {"ribbon", "spine", "w", "grad", "fill", "op", "z", "blur"},
-    "region": {"region", "seed", "tol", "on", "fill", "grow", "z", "op"},
-    "trace":  {"trace", "from", "class", "fit", "region", "z", "op", "fill"},
-    "grad":   {"grad", "dir", "at", "r", "stops", "z"},
+    "rect":   {"rect", "at", "w", "h", "full", "fill", "z", "op", "rot"} | _DESC,
+    "ellipse":{"ellipse", "at", "rx", "ry", "rot", "fill", "stroke", "sw", "z", "op", "blur"} | _DESC,
+    "stroke": {"stroke", "spine", "w", "profile", "taper", "ink", "cap", "z", "op", "blur"} | _DESC,
+    "blob":   {"blob", "poly", "spine", "w", "fill", "stroke", "sw", "z", "op", "blur", "rot"} | _DESC,
+    "poly":   {"poly", "pts", "fill", "stroke", "sw", "z", "op"} | _DESC,
+    "petal":  {"petal", "at", "n", "len", "wid", "curl", "spread", "angle0", "fill", "stroke", "sw", "z", "op", "blur"} | _DESC,
+    "ribbon": {"ribbon", "spine", "w", "grad", "fill", "op", "z", "blur"} | _DESC,
+    "region": {"region", "seed", "tol", "on", "fill", "grow", "z", "op"} | _DESC,
+    "trace":  {"trace", "from", "class", "fit", "region", "z", "op", "fill"} | _DESC,
+    "grad":   {"grad", "dir", "at", "r", "stops", "z"} | _DESC,
     "blur":   {"blur", "std"},
-    "wave":   {"wave", "spine", "w", "amp", "len", "sag", "taper", "fill", "grad", "op", "z", "blur"},
-    "strands": {"strands", "region", "n", "dir", "spread", "w", "wj", "ink", "op", "len", "z", "seed"},
+    "wave":   {"wave", "spine", "w", "amp", "len", "sag", "taper", "fill", "grad", "op", "z", "blur"} | _DESC,
+    "strands": {"strands", "region", "n", "dir", "spread", "w", "wj", "ink", "op", "len", "z", "seed"} | _DESC,
     "ring":   {"ring", "at", "r", "w", "a0", "a1", "zig", "zn", "zq", "d0", "seed",
-                "hue", "sat", "val", "nseg", "z", "op", "blur", "rx", "ry", "rot"},
+                "hue", "sat", "val", "nseg", "z", "op", "blur", "rx", "ry", "rot"} | _DESC,
+    "swirl":  {"swirl", "at", "rx", "ry", "rot", "a0", "sweep", "bands", "w", "gap",
+                "n", "wob", "hue", "sat", "val", "ink", "seed", "z", "op"} | _DESC,
+    "burst":  {"burst", "at", "rays", "len", "w0", "w1", "a0", "spread", "ink", "seed", "z", "op"} | _DESC,
+    "hill":   {"hill", "y0", "bands", "amp", "wl", "colors", "seed", "z", "op"} | _DESC,
 }
 TYPE_KEY = {"layers": "layers", "grad": "grad", "blur": "blur",
             "rect": "rect", "ellipse": "ellipse", "stroke": "stroke", "blob": "blob",
-            "petal": "petal", "ribbon": "ribbon", "region": "region", "trace": "trace",
-            "wave": "wave", "strands": "strands", "ring": "ring"}
+            "poly": "poly", "petal": "petal", "ribbon": "ribbon", "region": "region", "trace": "trace",
+            "wave": "wave", "strands": "strands", "ring": "ring",
+            "swirl": "swirl", "burst": "burst", "hill": "hill"}
 
 
 def smooth_path(pts, closed=True):
@@ -261,6 +270,108 @@ def ring_segments(node):
     return segs
 
 
+# --------------------------------------------------------------------------------------
+# SA3 starry probe generators: swirl / burst / hill — engine, not teacher (no reference)
+# --------------------------------------------------------------------------------------
+
+def swirl_paths(node):
+    """Nested spiral ribbon bands around an elliptical centre — the sky's flow, coiled.
+
+    Each band is one Archimedean spiral stroke: radius grows from the band's inner edge to
+    its outer edge across `sweep` degrees, on an ellipse of half-extents (rx, ry) rotated
+    by `rot`. Bands nest outside-in; hue walks hue[0] (innermost, brightest) to hue[1]
+    (outermost). `wob` wobbles the radius per sample from `seed` so coils read as brush
+    strokes, not compass arcs. Constant width per band; sky shows through `gap`.
+    """
+    cx, cy = float(node["at"][0]), float(node["at"][1])
+    rx = float(node.get("rx", 300)); ry = float(node.get("ry", rx))
+    rot = math.radians(float(node.get("rot", 0)))
+    a0 = math.radians(float(node.get("a0", 0)))
+    sweep = math.radians(float(node.get("sweep", 560)))
+    bands = int(node.get("bands", 4))
+    w = float(node.get("w", 26))
+    gap = float(node.get("gap", 18))
+    n = int(node.get("n", 72))
+    wob = float(node.get("wob", 0.05))
+    hue0, hue1 = map(float, node.get("hue", [195, 235]))
+    sat = float(node.get("sat", 0.5)); val = float(node.get("val", 0.85))
+    ink = node.get("ink")
+    rng = np.random.default_rng(int(node.get("seed", 7)))
+    rmax = bands * (w + gap)                      # outer edge of the outermost band
+    cos_r, sin_r = math.cos(rot), math.sin(rot)
+    out = []
+    for b in range(bands - 1, -1, -1):            # outermost first -> innermost paints on top
+        s_in, s_out = b * (w + gap), b * (w + gap) + w
+        ph1 = rng.uniform(0, 2 * math.pi)
+        ph2 = rng.uniform(0, 2 * math.pi)
+        drift = rng.uniform(-1, 1, 2) * wob * 40  # gentle per-band centre drift (organic)
+        spine = []
+        for k in range(n + 1):
+            u = k / n
+            th = a0 + sweep * u
+            s = s_in + (s_out - s_in) * (u ** 1.1)
+            wobble = 1 + wob * (0.6 * math.sin(3 * th + ph1) + 0.4 * math.sin(7 * th + ph2))
+            ex = (s / rmax) * rx * math.cos(th) * wobble + drift[0] * u
+            ey = (s / rmax) * ry * math.sin(th) * wobble + drift[1] * u
+            spine.append((cx + ex * cos_r - ey * sin_r, cy + ex * sin_r + ey * cos_r))
+        t = b / max(bands - 1, 1)
+        color = ink or hsv_to_hex(hue0 + (hue1 - hue0) * t, sat, val)
+        out.append((taper_outline(spine, lambda _t, _w=w: _w), color))
+    return out
+
+
+def burst_paths(node):
+    """Radial rays around `at`, tapering w0 (core) -> w1 (tip), seeded length/angle jitter."""
+    ax, ay = float(node["at"][0]), float(node["at"][1])
+    rays = int(node.get("rays", 8))
+    ln = float(node.get("len", 80))
+    w0 = float(node.get("w0", 9)); w1 = float(node.get("w1", 1))
+    a0 = math.radians(float(node.get("a0", 0)))
+    spread = math.radians(float(node.get("spread", 360)))
+    rng = np.random.default_rng(int(node.get("seed", 7)))
+    out = []
+    for i in range(rays):
+        ang = a0 + spread * (i + 0.5 + rng.uniform(-0.25, 0.25)) / rays
+        L = ln * rng.uniform(0.82, 1.18)
+        spine = [(ax, ay), (ax + math.cos(ang) * L, ay + math.sin(ang) * L)]
+        out.append(taper_outline(spine, lambda t, a=w0, b=w1: a + (b - a) * t))
+    return out
+
+
+def hill_paths(node, W, H):
+    """Stacked rolling bands below a horizon line, far (light, painted first) to near (dark).
+
+    Band i's top edge is a two-harmonic sine around baseline y0 + i*band_h; the band fills
+    down to the frame bottom, so nearer bands overlap farther ones (occlusion is the
+    renderer's job). Amplitude and wavelength grow slightly toward the viewer; phases are
+    seeded so the same spec -> same hills.
+    """
+    y0 = float(node.get("y0", 0.62 * H))
+    bands = int(node.get("bands", 4))
+    amp = float(node.get("amp", 40))
+    wl = float(node.get("wl", 380))
+    colors = node.get("colors") or [hsv_to_hex(205 + 18 * i, 0.45, 0.62 - 0.09 * i)
+                                    for i in range(bands)]
+    rng = np.random.default_rng(int(node.get("seed", 7)))
+    band_h = (H - y0) / bands
+    xs = np.linspace(-4, W + 4, 160)
+    out = []
+    for i in range(bands):
+        base = y0 + i * band_h
+        a1 = amp * (0.35 + 0.65 * i / max(bands - 1, 1))
+        a2 = a1 * rng.uniform(0.25, 0.5)
+        l1 = wl * rng.uniform(0.85, 1.15)
+        l2 = l1 * rng.uniform(0.4, 0.6)
+        ph1 = rng.uniform(0, 2 * math.pi)
+        ph2 = rng.uniform(0, 2 * math.pi)
+        top = [float(base + a1 * math.sin(2 * math.pi * x / l1 + ph1)
+                     + a2 * math.sin(2 * math.pi * x / l2 + ph2)) for x in xs]
+        pts = [(float(x), y) for x, y in zip(xs, top)]
+        pts += [(float(W + 4), float(H + 4)), (-4.0, float(H + 4))]
+        out.append((smooth_path(pts, closed=True), colors[i % len(colors)]))
+    return out
+
+
 def compile_scene(nodes, size, ref_path=None):
     W, H = size
     # line numbers: yaml.safe_load loses them; re-walk source for id->line mapping
@@ -446,6 +557,23 @@ def compile_scene(nodes, size, ref_path=None):
             # A back/front scene split is two complementary ring nodes sharing at/r/w/seed.
             paths = "".join(f'<path d="{d}" fill="{color}"/>'
                             for d, color in ring_segments(node))
+            s = f'<g {common}>{paths}</g>'
+        elif tkey == "poly":
+            # sharp (un-smoothed) polygon — roofs, steeples, anything with deliberate corners
+            pts = node["pts"]
+            d = "M " + " L ".join(f'{float(x):.1f} {float(y):.1f}' for x, y in pts) + " Z"
+            fill = node.get("fill", "#888")
+            st = f' stroke="{node["stroke"]}" stroke-width="{node.get("sw",3)}"' if node.get("stroke") else ""
+            s = f'<path {common} d="{d}" fill="{fill}"{st}/>'
+        elif tkey == "swirl":
+            paths = "".join(f'<path d="{d}" fill="{color}"/>' for d, color in swirl_paths(node))
+            s = f'<g {common}>{paths}</g>'
+        elif tkey == "burst":
+            paths = "".join(f'<path d="{d}" fill="{node.get("ink", "#ffd75e")}"/>'
+                            for d in burst_paths(node))
+            s = f'<g {common}>{paths}</g>'
+        elif tkey == "hill":
+            paths = "".join(f'<path d="{d}" fill="{color}"/>' for d, color in hill_paths(node, W, H))
             s = f'<g {common}>{paths}</g>'
         elif tkey == "blur":
             ids = node["blur"]

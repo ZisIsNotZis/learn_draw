@@ -1,0 +1,59 @@
+# 14-abstraction-research — face proof: two layered anime eyes on a head, mirrored.
+#
+# NO ABSOLUTE COORDINATES. Every size is a fraction of the head host; every position is a
+# relation to it or to an eye anchor. Canons seeded from image.jpg (closed afterwards):
+#   eye.h   = 0.35 * head.h          eye.w   = 0.55 * head.w
+#   eye.cy  = head.cy - 0.65*head.ry (eyes sit high, small forehead under the fringe)
+#   eye.cx  = head.cx +/- 0.73*head.rx (inner-corner gap ~ 0.5 of one eye width)
+#   nose    = head.cy + 0.05*head.ry   mouth = head.cy + 0.52*head.ry
+
+frame: {w: 1024, h: 1024}
+layers: [bg, face, eyes, features]
+
+vars:
+  face_half: frame.w*0.072     # head rx  — the face's half width
+  face_deep: face_half*0.92    # head ry  — half height (near circle, anime face)
+
+draw:
+  - {rect: bg, full: true, fill: "#a8d8ce", desc: "flat backdrop"}
+
+  # the skin patch IS the host and the ruler: every feature below is a fraction of it.
+  - {ellipse: head, at: [frame.w*0.68, frame.h*0.31], rx: face_half, ry: face_deep,
+     fill: "#f4e9d6", stroke: "#2a2530", sw: 3, z: face,
+     desc: "head/skin ellipse — the face ruler (host)"}
+
+  # LEFT eye: authored once with the full parameter set, placed by relation, sized in head units.
+  - {eye: eyeL, host: head,
+     at: [head.cx - 0.73*head.rx, head.cy - 0.65*head.ry],
+     w: 0.55*head.w, h: 0.35*head.h, tilt: -5, almond: 0.62,
+     sclera-fill: "#fdf2f9", iris-top-fill: "#4470b3", iris-bot-fill: "#ef92ae",
+     pupil-fill: "#241a2c", lash-fill: "#0a0e18", glints: 2,
+     z: eyes, desc: "left eye"}
+
+  # RIGHT eye: a mirror RELATION — same params, centre reflected across the head axis,
+  # tilt and inner/outer flipped. No coordinates, no hand-copied points.
+  - {eye: eyeR, host: head, mirror-of: eyeL, z: eyes, desc: "right eye = eyeL mirrored"}
+
+  # brows: slanted strokes hung off eye anchors (outer end high, inner end low toward nose)
+  - {stroke: browL, spine: [
+        [eyeL.outerx - 0.02*eyeL.w, eyeL.outery - 0.62*eyeL.h],
+        [eyeL.topx, eyeL.topy - 0.30*eyeL.h],
+        [eyeL.innerx + 0.06*eyeL.w, eyeL.innery - 0.48*eyeL.h]],
+     w: 0.07*eyeL.h, ink: "#241d26", z: features, desc: "left brow"}
+  - {stroke: browR, spine: [
+        {mirror: [eyeL.outerx - 0.02*eyeL.w, eyeL.outery - 0.62*eyeL.h], across: head},
+        {mirror: [eyeL.topx, eyeL.topy - 0.30*eyeL.h], across: head},
+        {mirror: [eyeL.innerx + 0.06*eyeL.w, eyeL.innery - 0.48*eyeL.h], across: head}],
+     w: 0.07*eyeL.h, ink: "#241d26", z: features, desc: "right brow (mirrored spine)"}
+
+  # nose: a tiny tick — anime noses are a 2-3px slanted dash, not a nose
+  - {stroke: nose, spine: [
+        [head.cx - 0.20*head.rx, head.cy + 0.02*head.ry],
+        [head.cx - 0.28*head.rx, head.cy + 0.10*head.ry]],
+     w: 2.2, ink: "#8a6a58", z: features, desc: "tiny nose tick"}
+
+  # mouth: a soft short dash, gently slanted
+  - {stroke: mouth, spine: [
+        [head.cx - 0.09*head.rx, head.cy + 0.50*head.ry],
+        [head.cx + 0.04*head.rx, head.cy + 0.54*head.ry]],
+     w: 3.0, ink: "#a08a74", z: features, desc: "soft mouth dash"}

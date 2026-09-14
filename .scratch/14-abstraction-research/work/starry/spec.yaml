@@ -1,0 +1,75 @@
+# 14-abstraction-research / SA3 — starry probe.
+# A swirling night sky, glowing stars and moon, a flame-shaped cypress, a sleeping
+# village, rolling hills — from pure intent. NO reference image anywhere in the loop.
+#
+# Coordinate budget (P19): every position is a frame fraction or a relation; the only
+# multi-point hand geometry is the village ground curve (4 points, one shape).
+# Deterministic seeds everywhere; same spec -> same pixels.
+
+frame: {w: 1024, h: 1024}
+layers: [sky, stars, swirls, moon, hills, village, cypress]
+
+vars:
+  horizon: frame.h*0.62
+  cy_bx: frame.w*0.16      # cypress base x
+  cy_by: frame.h*0.88      # cypress base y
+
+draw:
+  # --- the night itself -------------------------------------------------------
+  - {rect: sky, full: true, fill: "grad:sky", z: sky,
+     desc: "night sky: dark zenith fading to a lighter blue at the horizon"}
+  - {grad: sky, dir: [0, 0, 0, 1], stops: [[0, "#070f2a"], [0.55, "#10235a"], [1, "#1c3f6e"]]}
+
+  # --- stars: a scattered field + a few bright ones with halos and rays --------
+  - {stars: field, region: [frame.w*0.02, frame.h*0.03, frame.w*0.98, frame.h*0.60],
+     n: 42, r: 3.0, rj: 0.8, seed: 11, z: stars,
+     desc: "star field, jittered across the upper 60% of the frame"}
+  - {glow: star-a, at: [frame.w*0.28, frame.h*0.13], r: 17, rays: 6, len: frame.w*0.075,
+     color: "#ffd35c", z: stars, seed: 2, desc: "bright star, upper left"}
+  - {glow: star-b, at: [frame.w*0.46, frame.h*0.09], r: 13, rays: 5, len: frame.w*0.055,
+     color: "#ffdf7e", z: stars, seed: 3, desc: "bright star, top centre"}
+  - {glow: star-c, at: [frame.w*0.14, frame.h*0.38], r: 12, rays: 6, len: frame.w*0.05,
+     color: "#ffe9a8", z: stars, seed: 4, desc: "bright star, left"}
+  - {glow: star-d, at: [frame.w*0.63, frame.h*0.52], r: 11, rays: 6, len: frame.w*0.045,
+     color: "#fff0bb", z: stars, seed: 5, desc: "bright star, low among the swirls"}
+
+  # --- the sky flow: three coiled swirls --------------------------------------
+  - {swirl: swirl-big, at: [frame.w*0.55, frame.h*0.34], rx: frame.w*0.30, ry: frame.h*0.20,
+     rot: -16, sweep: 560, bands: 5, w: 24, gap: 16, wob: 0.05, seed: 7,
+     hue: [188, 232], sat: 0.48, val: 0.86, z: swirls,
+     desc: "the main sky flow, coiling centre-right"}
+  - {swirl: swirl-left, at: [frame.w*0.20, frame.h*0.25], rx: frame.w*0.19, ry: frame.h*0.13,
+     rot: -6, sweep: 520, bands: 4, w: 22, gap: 15, wob: 0.05, seed: 8,
+     hue: [188, 232], sat: 0.48, val: 0.82, z: swirls, desc: "secondary swirl, upper left"}
+  - {swirl: swirl-moon, at: [frame.w*0.79, frame.h*0.42], rx: frame.w*0.13, ry: frame.h*0.09,
+     rot: 12, sweep: 500, bands: 3, w: 20, gap: 14, wob: 0.05, seed: 9,
+     hue: [188, 232], sat: 0.48, val: 0.80, z: swirls, desc: "small swirl under the moon"}
+
+  # --- the moon ----------------------------------------------------------------
+  - {glow: moon, at: [frame.w*0.80, frame.h*0.18], r: frame.w*0.052, rays: 7,
+     len: frame.w*0.13, color: "#f6e8a0", core: "#fffbe8", halo: 2.6, z: moon, seed: 6,
+     desc: "bright moon, top right"}
+
+  # --- rolling hills, far (light) to near (dark) --------------------------------
+  - {hill: hills, y0: horizon, bands: 5, amp: frame.h*0.045, wl: frame.w*0.38, seed: 7,
+     colors: ["#6e9db8", "#47708f", "#2c4f6e", "#1a3652", "#0f2438"], z: hills,
+     desc: "five stacked hill bands from the horizon down"}
+
+  # --- the sleeping village along its ground curve ------------------------------
+  - {village: town,
+     curve: [[frame.w*0.05, frame.h*0.82], [frame.w*0.40, frame.h*0.77],
+             [frame.w*0.70, frame.h*0.75], [frame.w*0.95, frame.h*0.78]],
+     count: 13, seed: 9, size: frame.w*0.028, church: 0.52, z: village,
+     desc: "thirteen houses along a gentle ground curve, one church with a steeple"}
+
+  # --- the cypress: a dark flame rising from the lower left into the sky ---------
+  - {flame: cypress, base: [cy_bx, cy_by],
+     tip: {"off": [cy_bx, cy_by], angle: 272, d: frame.h*0.62},
+     w: frame.w*0.062, lobes: 3, bend: 0.06, color: "#0d2230", wisps: 2, seed: 5,
+     z: cypress, desc: "flame-tree, 62% of frame height, slight rightward lean"}
+
+# occlusion intent, in words — the engine checks the layer stack agrees
+relations:
+  - {front: cypress, behind: town, desc: "the cypress stands in front of the village"}
+  - {front: town, behind: hills, desc: "the village sits on the hills"}
+  - {front: moon, behind: swirl-big, desc: "the moon shines over the sky flow"}
