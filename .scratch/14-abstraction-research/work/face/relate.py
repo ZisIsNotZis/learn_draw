@@ -493,7 +493,10 @@ def expand_eye(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     # a gaping white band under it (the lid rises toward the corners)
     irx = w * float(style.get("iris-w", 0.44))
     iry = h * float(style.get("iris-h", 0.46))
-    iu, iv = a * 0.06, -h * 0.02
+    # gaze is a WORLD side (like the light): both eyes look the same screen way.
+    # local u: +a is the outer corner, so screen-right is f*a, screen-left is -f*a.
+    gaze = float(style.get("gaze", -1))                 # -1: looks screen-left (like the ref)
+    iu, iv = gaze * f * a * 0.10, -h * 0.02
     icx, icy = place(iu, iv)
     lid_edge = min(bot_pts, key=lambda p: abs(abs(p[0]) - irx))[1]
     iry = min(iry, max(iry * 0.55, lid_edge - iv + h * 0.02))
