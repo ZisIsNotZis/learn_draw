@@ -491,9 +491,9 @@ def expand_eye(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     # ---- iris: two-tone (dark top under the lid, light bottom), sits low ----
     # the iris must stay inside the aperture: clamp its ry so the bottom lid never shows
     # a gaping white band under it (the lid rises toward the corners)
-    irx = w * float(style.get("iris-w", 0.40))
+    irx = w * float(style.get("iris-w", 0.44))
     iry = h * float(style.get("iris-h", 0.46))
-    iu, iv = 0.0, -h * 0.02
+    iu, iv = a * 0.06, -h * 0.02
     icx, icy = place(iu, iv)
     lid_edge = min(bot_pts, key=lambda p: abs(abs(p[0]) - irx))[1]
     iry = min(iry, max(iry * 0.55, lid_edge - iv + h * 0.02))
