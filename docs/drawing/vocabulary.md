@@ -2,7 +2,7 @@
 
 Where drawing knowledge lives. `abstraction.md` defines the language (anchors / relations /
 vocabulary); this file catalogs the families, the proportion knowledge (**canons**) they carry, and
-the rules for adding one. The resolver `.scratch/06-relational-geometry/work/relate.py` implements
+the rules for adding one. The resolver `scripts/relate.py` implements
 them; `scene-format.md` is what they compile to.
 
 ## Why vocabulary is the important tier
@@ -25,20 +25,39 @@ what the solo phase needs.
 
 ### Anime face canons (measured, image.jpg)
 
-Provenance: skull top / hairline / chin from pixel scan at face centre (x=690: hair → skin at y≈243,
-skin → collar at y≈377, skull top ≈150); eye geometry from the boundary-traced face exercise
-(`02-portrait-face`, itself scan-verified). Head = skull top → chin, H≈228; face width at eye line
-W≈190. This is a 3/4 view — left/right eyes differ; canons below are the *view-neutral* core.
+Canons are stated **relative to the host shape's anchors** — the units a spec actually uses
+(`head.cx`, `head.ry`, …). Two provenance sets; the second is the one the resolver consumes.
+
+**Set A — art-canonical (head bbox: skull top → chin, H≈228; eye-line width W≈190).** Sources:
+face-centre pixel scan x=690 (hair→skin y≈243, skin→collar y≈377, skull top ≈150) +
+`02-portrait-face` traced geometry.
 
 | canon | value | note |
 | --- | --- | --- |
 | eye-centre height | 0.54 · head H | the classic "eyes halfway down" holds in anime too |
-| eye width | 0.18–0.26 · head W | near eye reads wider than far eye in 3/4 |
 | eye spacing (centre→centre) | ≈ 0.50 · head W | ≈ 2–2.7 eye widths — wider-set than realistic |
 | nose y | 0.73 · head H | anime noses sit high and are a tick, not a shape |
 | mouth y | 0.85–0.89 · head H | a short dash |
 | hairline | 0.41 · head H | bangs cover the forehead; hairline ≠ skull top |
 | head H : W | ≈ 1.2 | taller than wide |
+
+**Set B — host-relative (what a spec writes).** Source: SA2 face probe, 10 iterations, image closed
+afterwards (`14-abstraction-research/work/face/report.md`). Near/far asymmetry is the 3/4 view —
+the far eye is 0.6× the near eye.
+
+| canon | value (host = head ellipse) |
+| --- | --- |
+| eye centre x | head.cx ± 0.73 · head.rx |
+| eye centre y | head.cy − 0.58 · head.ry |
+| eye width | 0.55 · head.w (near), 0.33 (far) |
+| eye height | 0.33 · head.h |
+| iris | 0.44 · eye width; darker top ~50%; fills aperture |
+| inner-corner gap | 0.44 · one eye width |
+| brow | ≈ 0.2 · eye height above the lash, slants down toward nose |
+| nose tick | head.cy + 0.05 · head.ry (slanted 2–3px dash) |
+| mouth | head.cy + 0.52 · head.ry (soft 10px dash) |
+| lash | 0.16–0.19 · eye height, thickest at outer half, wing past corner |
+| glints | track the WORLD side of the light, not the eye's inner side |
 
 Ladder rule: each vocabulary family's canon values get **measured from the reference first** (that is
 the teacher phase), then live here as fractions. Generic art canons (Loomis-style) are a fallback
@@ -50,8 +69,9 @@ Status: ✅ implemented · 🔨 in progress · 📋 needed (with the rung that d
 
 | family | status | params (beyond placement) | anchors exposed | carries |
 | --- | --- | --- | --- | --- |
-| `sunhat` | ✅ (occlusion bug — see note) | brim, crown, tilt, lift, drop, flat, front arc, pom count/at/r | `hat-brim.left/right/top/bottom`, `hat-brim@t`, `hat-dome.*`, `hat.*` (family id = brim footprint) | brim-as-squashed-ellipse, dome on brim normal, near edge over crown. **Defect (SA1):** dome paints over the near brim half (same `z`, rim strip too thin to occlude) — the flagship occlusion mechanism does not work yet; fixed in the declarative rewrite |
-| `eye` | 🔨 SA2 (14) | size, tilt/almond, lid, iris fraction, glints, lash | outer/inner corner, top, bottom, centre, iris centre | sclera→lid→iris→pupil→glint→lash layer order |
+| `sunhat` | ✅ (occlusion fixed 2026-09-14) | brim, crown, tilt, lift, drop, flat, front arc, pom count/at/r | `hat-brim.left/right/top/bottom`, `hat-brim@t`, `hat-dome.*`, `hat.*` (family id = brim footprint) | brim-as-squashed-ellipse, dome on brim normal, near edge over crown. **Fixed 2026-09-14:** P17 z-split — brim is now ONE shape as two complementary slices (far → dome → near), so the dome sits behind the near brim; the old full-ellipse + thin rim strip is gone |
+| `eye` | ✅ (SA2, 10 iters) | host, at (any relation), w, h, tilt, almond, mirror-of, glints, iris-w/h (auto-clamped to aperture), lash-w, line-w, glint-side (world light!), gaze, refl-fill, *-fill, z | aperture bbox, outerx/outery, innerx/innery, irisx/irisy, topx/topy, botx/boty, facing, `{along: eye, t}` | generated almond aperture (two lid arcs), two-tone iris, pupil, glints + green reflection, ONE-SIDED tapered lash anchored on the lid line with outer wing, sealing outline; `mirror-of` = whole second eye as one relation |
+| `mirror` relation | ✅ (SA2) | `{mirror: P, across: SHAPE}` reflects a point across a shape's vertical axis; `mirror-of` is the family-level mirror | | |
 | `brow`, `nose`, `mouth` | 📋 08 | length, angle, weight | ends, centre | mark-not-shape (P12) |
 | `hair-mass` | 📋 08 | silhouette spine, width, tip zigzag, strand count | hairline, tips@t | one silhouette with zigzag bottom (P8), pink pockets as skin-through-notch |
 | `sleeve`, `bow`, `collar` | 📋 09 | puff, gather count, knot size | knot, tails@t | cloth fold direction |

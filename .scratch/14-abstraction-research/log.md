@@ -89,3 +89,45 @@ DECISIONS:
 - SA3 honest limits recorded: village legible-not-beautiful (boxes, flat roofs); swirls read as
   coils not brush-commas (closer flow field would fix; 9 iterations were the budget).
 - SA2 (face) still running (v8 in flight); integrate on completion.
+
+## 2026-09-14 — SA2 (face) landed + CONSOLIDATION DONE (D6)
+
+SA2 report: work/face/report.md; renders evidence/face/v1..v10 (10 iterations).
+Verdict: it reads as a face — layered anime eyes (sclera/two-tone iris/pupil/glints/green
+reflection/tapered one-sided lash with wing), brows, nose tick, mouth, all from measured canons.
+Eye family params: w/h/tilt/almond/mirror-of/glints/iris-w/lash-w/glint-side/gaze/refl-fill/*-fill;
+anchors: aperture bbox + corners + iris + lid apex + facing. Two biggest engine wins = containment
+rule (iris clamped inside the almond) and one-sided lash (black never intrudes). Honest gaps:
+ellipse host → round chin (needs a `face` family); no grouping ("whole eye" = convention only);
+taper built ad hoc; mouth/brow are bare strokes; no turn knob for 3/4 asymmetry; no alpha for blush.
+Measured canons folded into vocabulary.md set B (host-relative; reconciled with set A — one table).
+
+DECISIONS:
+- D17 eye family promoted to scripts/relate.py as the second vocabulary family (Python for now;
+  declarative rewrite queued with sunhat per D3).
+- D18 CONSOLIDATION COMPLETE: scripts/relate.py is the ONE resolver. Verified byte-identical
+  reproduction of BOTH probes (bust = 06 output, face = SA2 v10). Post-critique fixes re-applied to
+  the promoted file (host/along/polar docstrings, family-id anchor, between endpoint coercion).
+  Forks deleted: 06/work/relate.py, 14/work/face/relate.py, 14/work/starry/relate.py. Starry's
+  scene_render.py copy KEPT as probe evidence (report.md depends on it; quarantine, not delete).
+- D19 docs paths updated: AGENTS.md (layout + cheat sheet), abstraction.md, vocabulary.md; 06 spec
+  promotion note pending below. draw.py's deterministic resolver selection now resolves
+  scripts/relate.py.
+- D20 remaining 08 blockers: face-set GENERAL relations arc/align + taper-as-first-class (mirror
+  landed), sunhat near-edge occlusion fix, and the declarative interpreter (D3) — these are the
+  queue for the next work block.
+
+## 2026-09-14 — D21 sunhat occlusion FIXED (SA1 finding 1a closed)
+
+expand_sunhat rewritten: brim is ONE shape split into two complementary pie slices meeting at the
+brim centre (P17 z-split, not a path split). Paint order far slice → dome → near slice; `front`
+[t0,t1] picks the near arc, the far slice is its complement. Old full-ellipse + thin rim strip
+deleted. Verified by LOOKING (P22): the dome now sits behind the near brim slice and in front of
+the far slice — the flagship occlusion mechanism is true. Renders: /tmp/sunhat-fix.png (pre-commit
+artifact; 06 evidence bust-v3.png committed). Spec-level defects (hair burying face, no neck,
+detached shoulders) remain deferred to 08 per the 06 re-assessment.
+
+Night summary (final): see log head + this file. The ladder now starts 08 with: consolidated
+resolver (scripts/relate.py: sunhat fixed + eye family), SA2 canons in vocabulary.md set B,
+SA3 starry set dated at 17, withdrawal rungs 15/16, declarative-families proposal, P22.
+Remaining 08-openers: arc/align/taper-first-class relations + declarative interpreter (D3/D4/D20).

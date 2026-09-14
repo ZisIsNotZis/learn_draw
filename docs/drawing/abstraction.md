@@ -1,7 +1,7 @@
 # Drawing language — relational front end
 
 How a drawing gets described at object level instead of coordinate level. Resolver:
-`.scratch/06-relational-geometry/work/relate.py` (promote to `scripts/` when a drawing needs it),
+`scripts/relate.py` (the single canonical resolver — promoted 2026-09-14; forks deleted),
 proof spec `work/bust.yaml` in the same directory. This is the *authoring* layer;
 `scene-format.md` documents the compiled node format behind it, `vocabulary.md` catalogs the object
 families and their canons.

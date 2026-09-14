@@ -4,7 +4,7 @@ Goal: learn to draw (SVG/CSS programmatic art, never diffusion/pixel) — first 
 
 Method, style guide, and loop: `docs/drawing/method.md` — read before any drawing session.
 Authoring language (how a drawing is described): `docs/drawing/abstraction.md` — relations and object
-vocabulary, resolved by `.scratch/06-relational-geometry/work/relate.py`.
+vocabulary, resolved by `scripts/relate.py`.
 Transferable lessons log: `docs/drawing/principles.md` (append-only).
 Compiled node format (back end): `docs/drawing/scene-format.md`.
 
@@ -23,7 +23,7 @@ Compiled node format (back end): `docs/drawing/scene-format.md`.
 - `docs/drawing/` — method, authoring language, vocabulary/canons, principles, node format (design truth)
 - `scripts/draw` — CLI: `check`, `compare`, `diff`, `ref`, `log`, `render`, `measure` (see `--help`)
 - `scripts/scene_render.py` — compiles node-format scenes to SVG → chrome
-- `.scratch/06-relational-geometry/work/relate.py` — relational resolver (promote to `scripts/` when a drawing needs it)
+- `scripts/relate.py` — the single relational resolver (promoted 2026-09-14; forks deleted)
 - `.scratch/NN-slug/` — one dir per exercise: `spec.md`, `work/`, `evidence/`, `ref/`, `log.md`
 - `.venv/` — python env (uv). Run tools via `scripts/draw` wrapper.
 
@@ -40,7 +40,7 @@ scripts/draw diff image.jpg <ex>/work/art.svg [--mode color]   # line: cyan=ref-
 scripts/draw measure <ex>/ref/ref.png --point 470,480 | --hough | --scan col:420:540:625
 
 # authoring + rendering a relational spec (no coordinates; see docs/drawing/abstraction.md)
-.venv/bin/python .scratch/06-relational-geometry/work/relate.py <ex>/work/spec.yaml -o <ex>/work/art.png --anchors
+.venv/bin/python scripts/relate.py <ex>/work/spec.yaml -o <ex>/work/art.png --anchors
 ```
 
 Note: `ref lineart` (XDoG) is **not** useful for this reference — it has no uniform black line art

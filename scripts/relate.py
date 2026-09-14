@@ -6,7 +6,7 @@ literals are needed anywhere in a spec: every position is expressed relative to 
 frame or to another already-declared shape.
 
     - {ellipse: head, at: [frame.w*0.60, frame.h*0.34], rx: frame.w*0.098, ry: frame.w*0.128}
-    - {sunhat: hat, on: head, brim: 2.6*head.w, tilt: -14, crown: head.w*0.78, pom: 2}
+    - {sunhat: hat, host: head, brim: 2.6*head.w, tilt: -14, crown: head.w*0.78, pom: 2}
 
 The resolver does NOT look at any reference image. Tracing a reference is only ever a way to
 seed *values* for a spec like this (the teacher role); the engine itself stays target-free.
@@ -17,7 +17,7 @@ Two orders, kept separate on purpose:
 
 Anchors a shape exposes (usable by any later node):
     at  cx cy  left right top bottom  w h  w2 h2 (half extents)  rx ry  rot
-    <shape>@<t>  via {on: shape, t: 0.35} — point on the outline, wraps, optional `out: D`
+    <shape>@<t>  via {along: shape, t: 0.35} — point on the outline, wraps, optional `out: D`
 
 Relation forms (value of any positional or size key):
     number                      relative or absolute scalar
@@ -26,7 +26,7 @@ Relation forms (value of any positional or size key):
     {at: SHAPE}                  a shape's own centre
     {along: SHAPE, t: 0.35}     point on SHAPE's outline at parameter t (wraps)
     {along: SHAPE, t: 0.1, out: D}  same, pushed D outward along the outline normal
-    {off: P, angle: 90, d: 40}  point at angle/distance from P (0=right, 90=down, degrees)
+    {polar: P, angle: 90, d: 40}  point at angle/distance from P (0=right, 90=down, degrees)
 
 Note: `on`, `off`, `yes`, `no` are YAML 1.1 booleans, so this language uses `along` for points
 on an outline and `host` for the shape an object family attaches to.
@@ -46,6 +46,9 @@ import yaml
 
 import sys
 
+# same directory as scene_render.py when installed in scripts/; the path insert covers the
+# .scratch prototype locations this file historically lived in.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "scripts"))
 from scene_render import chrome, smooth_path  # noqa: E402
 
@@ -304,13 +307,39 @@ class Ctx:
             return (self.scalar(value[0]), self.scalar(value[1]))
         raise SpecError(f"relate: not a point: {value!r}")
 
+    def endpoint(self, value: object) -> tuple[float, float]:
+        """A between() endpoint: point forms, or a bare shape/handle string.
+
+        `{between: [head.left, head.right, 0.5]}` reads naturally, so handle strings
+        coerce to extent points (left/right at cy, top/bottom at cx); size scalars
+        are rejected — they are not points.
+        """
+        if isinstance(value, str):
+            sid, _, handle = value.partition(".")
+            shape = self.anchors.get(sid)
+            if shape is not None:
+                cx, cy = shape.env[f"{sid}.cx"], shape.env[f"{sid}.cy"]
+                if not handle or handle in ("cx", "cy", "at", "center", "centre"):
+                    return (cx, cy)
+                if handle == "left":
+                    return (shape.env[f"{sid}.left"], cy)
+                if handle == "right":
+                    return (shape.env[f"{sid}.right"], cy)
+                if handle == "top":
+                    return (cx, shape.env[f"{sid}.top"])
+                if handle == "bottom":
+                    return (cx, shape.env[f"{sid}.bottom"])
+                raise SpecError(f"relate: {value!r} is a size scalar ({handle}), not a point")
+            raise SpecError(f"relate: {value!r} is not a point or a known shape")
+        return self.point(value)
+
     def _relation(self, value: dict) -> tuple[float, float]:
         if "between" in value:
             spec = list(value["between"])
             if len(spec) < 3:
                 raise SpecError("relate: between needs [A, B, t]")
-            pa = self.point(spec[0])
-            pb = self.point(spec[1])
+            pa = self.endpoint(spec[0])
+            pb = self.endpoint(spec[1])
             t = self.scalar(spec[2])
             return (pa[0] + (pb[0] - pa[0]) * t, pa[1] + (pb[1] - pa[1]) * t)
         if "at" in value:
@@ -325,8 +354,8 @@ class Ctx:
                 nx, ny = sh.normal(t)
                 return (px + nx * d, py + ny * d)
             return (px, py)
-        if "off" in value:
-            px, py = self.point(value["off"])
+        if "polar" in value:
+            px, py = self.point(value["polar"])
             ang = math.radians(self.scalar(value.get("angle", 0.0)))
             d = self.scalar(value["d"])
             return (px + math.cos(ang) * d, py + math.sin(ang) * d)
@@ -582,8 +611,11 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     """A wide-brim hat from ~6 parameters.
 
     The structure knowledge the model should not have to re-derive: a wide brim seen at an
-    angle is a squashed ellipse; the crown is a dome sitting up the brim's own normal; the
-    near edge of the brim is drawn OVER the crown (a z-plane split, not a path split).
+    angle is a squashed ellipse; the crown is a dome sitting up the brim's own normal; and the
+    brim is ONE shape split into two complementary slices around the dome (P17 z-plane split,
+    not a path split): the far slice paints first, the dome over it, the near slice over the
+    dome's base. That near slice is what makes it read as a hat (fixed 2026-09-14, SA1 finding
+    1a: the old full-ellipse + thin rim strip let the dome paint over the near brim).
     """
     sid = str(node["sunhat"])
     host_id = str(node["host"])
@@ -612,28 +644,36 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     dome = ctx.add(ellipse_anchor(f"{sid}-dome", bx + dist * math.sin(a), by - dist * math.cos(a),
                                   crown_rx, crown_ry, tilt))
 
-    emit += [
-        {"ellipse": f"{sid}-brim", "at": [bx, by], "rx": brim_rx, "ry": brim_ry, "rot": tilt,
-         "fill": node.get("brim-fill", "#3b7f92"), "z": z,
-         "desc": f"brim: a flat disc seen at {tilt:+.0f}deg -> ellipse {brim_w:.0f} wide, "
-                 f"{2 * brim_ry:.0f} deep"},
-        {"ellipse": f"{sid}-dome", "at": [dome.env[f'{sid}-dome.cx'], dome.env[f'{sid}-dome.cy']],
-         "rx": crown_rx, "ry": crown_ry, "rot": tilt,
-         "fill": node.get("crown-fill", "#32405b"), "stroke": node.get("crown-stroke"),
-         "sw": node.get("crown-sw"),
-         "z": z, "desc": f"crown: dome {drop:.2f} crown-radii up the brim normal"},
-    ]
-
-    # near edge of the brim, painted over the dome — this is what makes it read as a hat
+    # P17 z-split: ONE brim, two complementary slices meeting at the brim centre.
+    # `front` [t0, t1] picks the near arc; the far slice is its complement (t1 -> t0+1).
+    # Paint order below: far slice -> dome -> near slice, so the dome sits behind the
+    # near brim and in front of the far brim, with no seam (same ellipse, same anchor).
     front = node.get("front", [0.05, 0.45])
     if not isinstance(front, (list, tuple)) or len(front) != 2:
         raise SpecError(f"relate: {sid}.front must be [t0, t1], got {front!r}")
     t0, t1 = ctx.scalar(front[0]), ctx.scalar(front[1])
-    arc = [brim.on(t0 + (t1 - t0) * i / 40) for i in range(41)]
-    emit.append({"blob": f"{sid}-front-rim", "spine": arc,
-                 "w": ctx.scalar(node.get("rim-w", 0.05)) * brim_rx,
-                 "fill": node.get("rim-fill", "#4d94a6"), "z": z_front,
-                 "desc": "near brim edge, over the dome (near edge occludes the crown)"})
+    if not (0.0 <= t0 < t1 <= 1.0):
+        raise SpecError(f"relate: {sid}.front must satisfy 0 <= t0 < t1 <= 1, got [{t0}, {t1}]")
+
+    def slice_pts(a: float, b: float) -> list[tuple[float, float]]:
+        return ([(bx, by)] + [brim.on(a + (b - a) * i / 48) for i in range(49)] + [(bx, by)])
+
+    emit.append(
+        {"blob": f"{sid}-brim-far", "poly": slice_pts(t1, t0 + 1.0),
+         "fill": node.get("brim-fill", "#3b7f92"), "z": z,
+         "desc": f"brim (far slice): a flat disc seen at {tilt:+.0f}deg -> ellipse "
+                 f"{brim_w:.0f} wide, {2 * brim_ry:.0f} deep; painted under the crown"})
+    emit.append(
+        {"ellipse": f"{sid}-dome", "at": [dome.env[f"{sid}-dome.cx"], dome.env[f"{sid}-dome.cy"]],
+         "rx": crown_rx, "ry": crown_ry, "rot": tilt,
+         "fill": node.get("crown-fill", "#32405b"), "stroke": node.get("crown-stroke"),
+         "sw": node.get("crown-sw"),
+         "z": z, "desc": f"crown: dome {drop:.2f} crown-radii up the brim normal, "
+                         "between the brim's far and near slices"})
+    emit.append(
+        {"blob": f"{sid}-brim-near", "poly": slice_pts(t0, t1),
+         "fill": node.get("rim-fill", "#4d94a6"), "z": z_front,
+         "desc": "brim (near slice): over the crown's base - the near edge occludes the crown"})
 
     for i in range(whole(node.get("pom", 0), f"{sid}.pom")):
         poms = node.get("pom-at", [0.62, 0.88])
@@ -645,6 +685,10 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
         emit.append({"ellipse": f"{sid}-pom{i + 1}", "at": [px, py], "rx": r, "ry": r * 0.86,
                      "fill": node.get("pom-fill", "#df9199"), "z": z,
                      "desc": f"pom at t={t:.2f} along the brim outline, r={r:.0f}"})
+
+    # the family id itself is an anchor: "the hat" = its brim footprint, so `{along: hat, t}` works
+    ctx.add(Anchor(sid, {k.split(".", 1)[1]: v for k, v in brim.env.items()},
+                   outline=brim._outline))
     return brim
 
 
