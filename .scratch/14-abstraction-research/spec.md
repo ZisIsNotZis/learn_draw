@@ -43,12 +43,19 @@ Blocked by: —
 
 ## Acceptance
 
-- [ ] docs updated and committed FIRST at each decision point (abstraction.md, new vocabulary/curriculum
-      content, AGENTS.md pointers if invariants change)
-- [ ] face family proven or failed-with-reasons; starry-night probe result recorded
-- [ ] canon extraction numbers in docs or ticket
-- [ ] handoff doc: what was decided, what's next, open questions — so tomorrow resumes cleanly
-- [ ] every subagent deliverable committed in this ticket's `work/` + `evidence/`
+- [x] docs updated and committed FIRST at each decision point: abstraction.md (north star, taxonomy,
+      literal classes, polar), vocabulary.md (canons, family rules, encapsulation, declarative
+      direction), method.md (curriculum, T3 idiom corrected), principles P22; AGENTS.md pointer
+- [x] SA1 critique received, recorded verbatim-summary, accepted in full, code-truth fixes applied
+      (06 re-assessment, scene_render dead keys, draw check captures resolver output, between/anchor
+      fixes) — commit 75eaed0
+- [x] SA3 (starry) landed: VERDICT abstraction scales; families + relations documented; 17-starry-stress
+      ticket created as demand-date home — commit 54cdea8
+- [x] handoff doc: this log + declarative-families.md proposal + SA1/SA3 evidence — survives compaction
+- [ ] SA2 (face) — in progress (v8); fold eye family + measured canons into resolver + vocabulary.md
+- [ ] resolver consolidation (D6): ONE resolver in scripts/, forks deleted, desc-key compat
+- [ ] face-set relations + declarative interpreter (D3/D4) — the consolidation's content
+- [ ] canon extraction numbers referenced in vocabulary.md (face canons row)
 
 ## Comments
 

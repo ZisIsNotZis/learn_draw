@@ -111,8 +111,8 @@ with provenance, rules for adding one). So far: `sunhat` ✅; `eye` 🔨; the re
 demands them. A family is added only when a drawing fails without it.
 
 **YAML caveat:** `on`, `off`, `yes`, `no` parse as booleans, so this language uses `along` for
-outline points and `host` for an object family's attachment. `relate.py` rejects boolean keys by
-name rather than failing cryptically.
+outline points, `host` for an object family's attachment, and `polar` for angle/distance offsets.
+`relate.py` rejects boolean keys by name rather than failing cryptically.
 
 ## Diagnostics — the engine is the model's numeric sense
 
