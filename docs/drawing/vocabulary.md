@@ -75,3 +75,36 @@ Status: ✅ implemented · 🔨 in progress · 📋 needed (with the rung that d
 5. **Deterministic and seeded.** Same spec → same pixels, byte-identical.
 6. **The family gets an entry here the same session it lands**, with its parameter list — docs first,
    per SSOT.
+
+## Encapsulation boundary: families vs relations (architectural principle)
+
+Intra-family layout — iris inside sclera, glint inside iris, dome on brim normal — is **arithmetic on
+the family's own anchors**, encapsulated so the spec never sees it. Relations are for **cross-object
+composition**: placement, spacing, alignment, junctions, occlusion intent. Consequence for the
+taxonomy (abstraction.md): a proposed relation should first be asked "is this really intra-family?
+Should it be a parameter instead?" — `inside`, for instance, mostly disappears once a family owns
+its parts; `mirror` survives because faces pair two *instances* of a family.
+
+## Design directions (noted, not built — demand first)
+
+- **Style as a preset layer.** Anime-cel = hard outlines + flat fills + defined stroke weight; a
+  future "impasto" style would change stroke/blur/palette defaults globally. Direction: a `style:`
+  header that adjusts engine defaults, so the model picks a look instead of restating it per node.
+- **`pair` wrapper.** Mirror an instance (eyes, poms) with per-side tweaks for 3/4 view — the
+  relation survives, the wrapper makes it ergonomic.
+- **The `head` family follows Loomis ball-and-plane construction** (validated pattern from art
+  pedagogy, 2026-09-14 web check): head = sphere + jaw block; a **cross** (mid-line + eye line)
+  encodes pose; features attach to the cross by canon fractions. Mapping onto this system: the
+  cross lines become exported anchors (`head.mid-line`, `head.eye-line`, `head.brow-line`,
+  `head.chin-plane`), pose = rotating/offsetting the cross, features = `{along: head.eye-line, t}`
+  + canon fractions. This is the model for how a family *constructs* rather than outlines.
+- **Teacher vocabulary maps to artist vocabulary**: gesture ≈ `flow` relation, massing ≈ mass
+  blobs before details, negative space ≈ P4 junctions, sight-size ≈ our `measure` step. When a
+  human teaching term has no mechanical equivalent yet, that is a missing relation or family.
+
+## Learning is the repo (framing)
+
+The model's drawing knowledge is **this file + principles.md + measured canons**, all committed. Each
+rung of the ladder appends a family entry, a canon row with provenance, and a principle. Nothing
+needs to survive in model memory or weights — the repository is the learned drawing knowledge, which
+is why docs-first is a hard rule and not a nicety.
