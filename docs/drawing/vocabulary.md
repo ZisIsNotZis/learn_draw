@@ -46,7 +46,7 @@ when no reference exists — not the primary source.
 
 ## Family catalog
 
-Status: ✅ implemented · 🔨 in progress · 📋 needed (with the rung that demands it).
+Status: ✅ implemented · 🔨 in progress · 📋 needed (with the rung that demands it) · 🔬 proven in a probe copy, awaiting promotion
 
 | family | status | params (beyond placement) | anchors exposed | carries |
 | --- | --- | --- | --- | --- |
@@ -57,10 +57,23 @@ Status: ✅ implemented · 🔨 in progress · 📋 needed (with the rung that d
 | `sleeve`, `bow`, `collar` | 📋 09 | puff, gather count, knot size | knot, tails@t | cloth fold direction |
 | `hand` | 📋 09 | pose preset, finger spread | knuckles@t, fingertips | z-plane tuck behind body (P17) |
 | `pleats` | 📋 10 | count, depth, taper, seed | hem@t | fan from waist, alternating dark/light |
-| `swirl` | 📋 SA3 | centre, radii, turns, width, taper | start, end, @t | flow-field ribbon (Starry-Night sky) |
-| `glow` | 📋 SA3 | core r, halo r, rays, hue | centre, ray tips@t | radial gradient + rays |
-| `flame-tree` | 📋 SA3 | height, sway, lobe count | trunk base, tip | stacked flame lobes |
-| `village`, `hill` | 📋 SA3 | count, spacing curve, jitter seed | row@t | repetition with jitter |
+| `swirl` | 🔬 SA3 probe | centre, radii, turns, width, taper | start, end, @t | flow-field ribbon (Starry-Night sky) |
+| `glow` | 🔬 SA3 probe | core r, halo r, rays, hue | centre, ray tips@t | radial gradient + rays |
+| `flame-tree` | 🔬 SA3 probe | height, sway, lobe count | trunk base, tip | stacked flame lobes |
+| `village`, `hill` | 🔬 SA3 probe | count, spacing curve, jitter seed | row@t | repetition with jitter |
+| `flow` | 🔬 SA3 probe | region, dir, curv, waves, width | region bbox | broad ribbons following a direction field (sky wind, water, hair) |
+| `stars` | 🔬 SA3 probe | region, n, size jitter, seed | region bbox | seeded scatter — jitter-grid made concrete |
+
+(🔬 = proven in the SA3 starry-night probe copies at
+`.scratch/14-abstraction-research/work/starry/`, not yet promoted to `scripts/`.)
+
+SA3 probe note (starry-night, `.scratch/14-abstraction-research/work/starry/`): the five
+scene families above were proven reference-free from a parameter-only spec (9 iterations,
+byte-deterministic). Two structural findings recorded in `work/starry/report.md`:
+(1) back-end generators need a spec-level **generator bridge** — today each needs a
+hand-written passthrough family in the resolver; (2) the three relations under the
+families — `flow`, `distribute-along`, `jitter-grid` — should be promoted to first-class
+relation forms so they are reusable beyond one family each.
 
 ## Rules for adding a family
 

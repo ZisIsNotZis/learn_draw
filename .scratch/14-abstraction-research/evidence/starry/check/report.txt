@@ -1,0 +1,15 @@
+art:    .scratch/14-abstraction-research/evidence/starry/v9.png
+bundle: .scratch/14-abstraction-research/evidence/starry/check
+
+images (feed these, and nothing else):
+  .scratch/14-abstraction-research/evidence/starry/check/draft.png  -- the drawing
+
+no --ref given: nothing to compare against (reference-free stage)
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.
