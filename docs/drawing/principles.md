@@ -96,7 +96,7 @@ deleted?* Learned: user, on accepting the computed-geometry reframe.
 
 A VLM is strong at naming/grouping/z-order/judging and weak at coordinate regression. Any shape
 needing more than ~4 hand-typed coordinates must come from a computed source (trace, region,
-generator, or a relation), never from the model's head. The portrait's 824 hand-typed vertices
+generator, or a relation), never from the model's head. The portrait's 825 hand-typed vertices
 produced mush; 119 computed contours produced the character in 2.4s.
 Learned: `evidence/diagnosis/` comparison.
 

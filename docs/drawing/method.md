@@ -6,7 +6,10 @@ Loop: **observe → plan → draw → compare → reflect → revise**, cycled. 
 
 1. **Observe**: describe the target semantically in words first — subject, pose, composition, palette, what each region *is*. Never start by writing paths.
 2. **Plan**: shape inventory + draw order (painter's algorithm: background → body → clothes → hair → hat → face → details). The SVG layer structure mirrors this plan; that is what makes it explainable.
-3. **Draw**: line art stage = strokes only, no fill, against `ref lineart` output. Big silhouette → medium structures → small details. Coloring stage = fills against `ref palette` swatches. Soft-field stage = gradients, blurred blobs, opacity, blend modes (see Tier ladder).
+3. **Draw**: line art stage = strokes on region boundaries and compact dark regions, no fill (this
+   reference has no uniform black line art — see T1 correction). Big silhouette → medium structures →
+   small details. Coloring stage = fills against `ref palette` swatches. Soft-field stage = gradients,
+   blurred blobs, opacity, blend modes (see Tier ladder) — *last* (12-fields), never before structure.
 4. **Compare**: `check ART --ref image.jpg` — one command, whole bundle. Then read `report.txt` and
    hand its image list to a fresh-context reviewer (see Guardrails). For a targeted question, fall back
    to `compare --region x,y,w,h --zoom 2` / `diff`.
@@ -44,7 +47,8 @@ Loop: **observe → plan → draw → compare → reflect → revise**, cycled. 
 - `compare REF SRC [--region x,y,w,h --zoom N]` — ad-hoc side-by-side, one attention pass. Detail
   comparison happens per region, never on the full frame.
 - `diff` line mode: overlay of edge maps — **cyan = reference-only (missed line), magenta = mine-only (invented line), white = match**; numbered hint boxes on worst missing regions. Color mode: amplified color-distance heatmap + worst-region boxes; prints edge-F1 + mean color distance.
-- `ref lineart` / `ref palette` — preprocessing; generate once per exercise, draw against these.
+- `ref palette` — preprocessing; generate once per exercise, draw against these. (`ref lineart`/XDoG
+  is available but **not** useful for this reference — see T1.)
 - `log` — appends iteration row (metrics + note) to the exercise's `log.md`.
 
 ## Guardrails
@@ -61,4 +65,5 @@ Loop: **observe → plan → draw → compare → reflect → revise**, cycled. 
   can be told apart.
 
 ## Judging (P14 reframe)
+
 Primary criterion: the drawing looks like a proper artwork in the reference's style — judged by looking at the full render and by fresh-eyes critic review. Zone-distance/edge metrics are weak regression signals only (catch accidental breakage), never objectives to tune against. Holistic semantic shapes outrank pixel correspondence; a fragmented but "closer" draft is worse than a coherent drawing.
