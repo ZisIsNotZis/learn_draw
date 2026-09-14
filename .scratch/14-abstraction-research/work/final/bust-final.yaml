@@ -1,0 +1,120 @@
+# 14-abstraction-research — FINAL: the bust assembled, face on, from relations only.
+#
+# Merges the two night probes: 06's relational bust (head/hair/hat/shoulders) + SA2's face
+# (eye family + canons). Zero absolute coordinates: every size is a fraction of the head
+# host, every position a relation to an anchor. The image seeded the canons, then closed.
+#
+# Known-defect fixes over 06's bust-v3 (all spec-level, per its SA1 re-assessment):
+#   hair no longer buries the face (locks frame it instead), neck added, shoulders raised
+#   to meet the chin, hat lifted to brow line so the face is visible.
+
+frame: {w: 1024, h: 1024}
+layers: [bg, neck, body, hair, face, eyes, features, hat, hat-front]
+
+vars:
+  head_half: frame.w*0.098
+  head_deep: head_half*1.28
+
+draw:
+  - {rect: bg, full: true, fill: "#dde7e9", desc: "flat backdrop"}
+
+  # ---- head: the ruler (declared before everything that measures it) ----
+  - {ellipse: head, at: [frame.w*0.60, frame.h*0.34], rx: head_half, ry: head_deep,
+     fill: "#f2e6d8", stroke: "#2a2f3a", sw: 3, z: face,
+     desc: "head/skin ellipse — the face ruler (host)"}
+
+
+  # ---- hair: frames the face instead of burying it (one mass per side + skull dome) ----
+  # (painted under the face via z, despite being declared first)
+  - {blob: hair-left, spine: [[head.cx - head.w*0.58, head.cy - head.h*0.38],
+                              [head.cx - head.w*1.02, head.cy + head.h*0.30],
+                              [head.cx - head.w*0.86, head.cy + head.h*1.35]],
+     w: head.w*0.48, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "left hair mass: starts on the skull, falls past the jaw"}
+  - {blob: hair-right, spine: [[head.cx + head.w*0.56, head.cy - head.h*0.40],
+                               [head.cx + head.w*1.02, head.cy + head.h*0.35],
+                               [head.cx + head.w*0.88, head.cy + head.h*1.60]],
+     w: head.w*0.54, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "right hair mass: starts on the skull, the ref's longer curtain side"}
+  - {blob: hair-cap, spine: [[head.cx - head.w*0.46, head.cy - head.h*0.52],
+                             [head.cx, head.cy - head.h*0.72],
+                             [head.cx + head.w*0.46, head.cy - head.h*0.52]],
+     w: head.h*0.42, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "skull dome under the hat"}
+
+  - {blob: lockL, spine: [[head.cx - head.w*0.58, head.cy - head.h*0.36],
+                          [head.cx - head.w*0.66, head.cy - head.h*0.02],
+                          [head.cx - head.w*0.58, head.cy + head.h*0.26]],
+     w: head.w*0.26, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "left temple lock: covers the eye corner like the ref"}
+  - {blob: lockR, spine: [[head.cx + head.w*0.58, head.cy - head.h*0.38],
+                          [head.cx + head.w*0.66, head.cy - head.h*0.03],
+                          [head.cx + head.w*0.58, head.cy + head.h*0.28]],
+     w: head.w*0.26, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "right temple lock"}
+  - {blob: bangL, spine: [[head.cx - head.w*0.34, head.cy - head.h*0.40],
+                          [head.cx - head.w*0.38, head.cy - head.h*0.32],
+                          [head.cx - head.w*0.33, head.cy - head.h*0.24]],
+     w: head.w*0.11, fill: "#3974ab", stroke: "#26354a", sw: 2, z: features,
+     desc: "fringe strand from under the brim, left of centre"}
+  - {blob: bangC, spine: [[head.cx + head.w*0.08, head.cy - head.h*0.41],
+                          [head.cx + head.w*0.04, head.cy - head.h*0.33],
+                          [head.cx + head.w*0.10, head.cy - head.h*0.25]],
+     w: head.w*0.10, fill: "#3974ab", stroke: "#26354a", sw: 2, z: features,
+     desc: "fringe strand, centre"}
+  - {blob: bangR, spine: [[head.cx + head.w*0.38, head.cy - head.h*0.40],
+                          [head.cx + head.w*0.34, head.cy - head.h*0.32],
+                          [head.cx + head.w*0.39, head.cy - head.h*0.24]],
+     w: head.w*0.11, fill: "#3974ab", stroke: "#26354a", sw: 2, z: features,
+     desc: "fringe strand, right of centre"}
+
+  # ---- neck + shoulders: meet the chin (v3 had a 290px void here) ----
+  - {blob: neck, spine: [[head.cx - head.w*0.03, head.cy + head.h*0.44],
+                         [head.cx + head.w*0.03, head.cy + head.h*0.70]],
+     w: head.w*0.30, fill: "#e8d7bd", stroke: "#8a8272", sw: 3, z: neck,
+     desc: "neck from under the jaw into the collar"}
+  - {blob: shoulders, spine: [[head.cx - head.w*1.45, frame.h*0.74],
+                              [head.cx - head.w*0.10, frame.h*0.60],
+                              [head.cx + head.w*1.25, frame.h*0.74]],
+     w: head.h*0.72, fill: "#e1e7dc", stroke: "#3a3d4d", sw: 3, z: body,
+     desc: "shoulder line rising to the collar"}
+
+  # ---- face: SA2's eye family + measured canons (host-relative set B) ----
+  - {eye: eyeL, host: head,
+     at: [head.cx - 0.68*head.rx, head.cy - 0.58*head.ry],
+     w: 0.42*head.w, tilt: 5, almond: 0.62,
+     sclera-fill: "#fdf2f9", iris-top-fill: "#4470b3", iris-bot-fill: "#ef92ae",
+     pupil-fill: "#241a2c", lash-fill: "#0a0e18", refl-fill: "#62c7a8", glints: 2,
+     z: eyes, desc: "left eye — layered almond, irises clamped to the aperture"}
+  - {eye: eyeR, host: head, mirror-of: eyeL, z: eyes, desc: "right eye = one mirror relation"}
+
+  - {stroke: browL, spine: [
+        [eyeL.outerx + 0.04*eyeL.w, eyeL.topy - 0.30*eyeL.h],
+        [eyeL.outerx + 0.60*eyeL.w, eyeL.topy - 0.10*eyeL.h]],
+     w: 0.07*eyeL.h, ink: "#241d26", z: features, desc: "left brow off eye anchors"}
+  - {stroke: browR, spine: [
+        [eyeR.outerx - 0.04*eyeR.w, eyeR.topy - 0.30*eyeR.h],
+        [eyeR.outerx - 0.60*eyeR.w, eyeR.topy - 0.10*eyeR.h]],
+     w: 0.07*eyeR.h, ink: "#241d26", z: features, desc: "right brow = mirrored"}
+  - {stroke: nose, spine: [
+        [head.cx - 0.12*head.rx, head.cy + 0.02*head.ry],
+        [head.cx - 0.24*head.rx, head.cy + 0.12*head.ry]],
+     w: 2.6, ink: "#6e5a48", z: features, desc: "tiny nose tick (canon: cy+0.05ry)"}
+  - {stroke: mouth, spine: [
+        [head.cx - 0.07*head.rx, head.cy + 0.49*head.ry],
+        [head.cx + 0.10*head.rx, head.cy + 0.53*head.ry]],
+     w: 3.6, ink: "#8a7460", z: features, desc: "soft mouth dash (canon: cy+0.52ry)"}
+
+  # ---- the hat: lifted to the brow line so the face shows (v3 buried it) ----
+  - {sunhat: hat, host: head, brim: 2.70*head.w, crown: 0.78*head.w, tilt: -14,
+     lift: 1.42, drop: 0.60, crown-h: 0.88, front: [0.04, 0.46], pom: 2,
+     crown-fill: "#32405b", crown-stroke: "#1e2a3f", crown-sw: 2,
+     brim-fill: "#3b7f92", rim-fill: "#4d94a6", pom-fill: "#df9199",
+     z: hat, z-front: hat-front,
+     desc: "wide-brim sun hat worn high — near edge at brow line"}
+
+# occlusion intent, in words
+relations:
+  - {front: hat, behind: hair-cap, desc: "hat sits on top of the hair"}
+  - {front: hair-left, behind: shoulders, desc: "hair falls in front of the shoulders"}
+  - {front: head, behind: hair-left, desc: "locks frame the face"}

@@ -131,3 +131,16 @@ Night summary (final): see log head + this file. The ladder now starts 08 with: 
 resolver (scripts/relate.py: sunhat fixed + eye family), SA2 canons in vocabulary.md set B,
 SA3 starry set dated at 17, withdrawal rungs 15/16, declarative-families proposal, P22.
 Remaining 08-openers: arc/align/taper-first-class relations + declarative interpreter (D3/D4/D20).
+
+## 2026-09-14 — FINAL IMAGE: the bust assembled (08 opener, done as the night's close)
+
+User challenge: "research must end with a final image." Merged the two night probes into one
+relational spec — work/final/bust-final.yaml (36 nodes, 9 layers, zero absolute coordinates):
+head (ruler) + hair masses anchored to the skull + temple locks + fringe under the brim + neck +
+shoulders + SA2's eye family (mirror-of) + brows/nose/mouth on measured canons + the slice-fixed
+sunhat worn high. Three iterations: v1 (hair detached bars, hat floating, eyes poking past face,
+neck void) -> v2 (hair anchored, eyes tucked, fringe) -> v3 (three fringe strands, locks merged
+with masses, marks strengthened). diagnostics clean throughout; every render LOOKED at (P22).
+Evidence: evidence/final/v1..v3.png + check/ bundle (vs image.jpg, metrics = breakage alarm only).
+Residuals recorded: round ellipse chin (face-family gap), stylized-not-likeness (P14 intent),
+mouth/nose faint by design (anime). Fresh-eyes verdict: pending subagent -> appended on arrival.
