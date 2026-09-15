@@ -164,3 +164,72 @@ and 18% too tall; the far eye is partly occluded by a cheek lock.
 
 `evidence/m2-*.png` renders · `evidence/check-m2/` gate bundle · head-crop A/B crops were handed to
 the reviewers with neutral names (`A` = baseline, `B` = M2) and no context.
+
+## 2026-09-15 — M2 attempt 2: the brim split was the cause. Better, still not passed.
+
+**The defect was real and is fixed.** A writer subagent found the actual root cause, which was not
+what I had guessed. `sunhat` split the brim with a **straight chord across the disc** (perpendicular to
+the brim's long axis), so the two fills met only at the two tips — and the tips plus the chord are
+exactly where the hair and crown sit. Hence "detached teal lozenge". The fix replaces the chord with
+the brim's **far edge folding over**: the far slice is now the rim band hugging the far outline, the
+near slice is the top surface it borders, and a new optional `rim` parameter (default 0.45) sets how
+far the fold comes in. The two fills still share every seam vertex in opposite directions and tile the
+ellipse exactly. **I had proposed stroking the brim outline as one shape; the subagent evaluated that
+and rejected it, correctly** — it connects the brim but draws a hard line across exposed skin where
+this drawing's brim edge crosses the face. Good call, and it is the kind of pushback I want.
+
+Also fixed: `lift` 1.22 → 1.05 (the crown mass was floating above the skull — crown at y58 vs the
+reference's y92), and `pom-at` corrected so both poms land on the reference's measured pom centroids.
+
+| | whole-frame edge_f1 | coverage | color_dist | head-crop colour-mass dist (64px) |
+| --- | --- | --- | --- | --- |
+| baseline | **0.252** | 0.514 | **62.8** | **22.4** |
+| M2 attempt 1 | 0.106 | 0.519 | 66.4 | 40.7 |
+| **M2 attempt 2** | 0.108 | **0.529** | 65.6 | 36.2 |
+
+Every alarm moved the right way vs attempt 1. **The gate is still not passed**, and the reason is
+now precise and measured, not a matter of taste:
+
+```
+head-region edge_f1     baseline 0.422   M2 0.173
+head-region coverage    baseline 0.702   M2 0.585
+```
+
+### The strategic finding (this is the important output of attempt 2)
+
+The baseline wins the head region **because it was hand-fitted to the reference.** Its 133 nodes were
+traced and fitted against `image.jpg`, so of course its edges sit near the reference's edges and its
+colours near the reference's colours. M2 is a from-scratch relational rebuild, so it is *more
+coherent* (reviewers said so) and *less accurate* (the metrics say so). Both are true.
+
+That exposes an error in how M1/M2 were done: **I threw away reference-accurate seeded values and
+re-derived them coarsely from colour components.** `abstraction.md` explicitly supports using the
+reference to *seed values* ("measuring the reference to fill in the numbers in a spec, then closing
+the image") — and a `trace`/`region` node is the documented, sanctioned way to do it. The 824-coordinate
+failure was about **hand-typing** coordinates, not about using traced ones. So the assembly re-invented,
+badly, values that were already measured accurately and were sitting in the repo.
+
+Corrected strategy for M2 attempt 3 / M3 (recorded as `STATUS.md` D15): keep the relational structure
+and the vocabulary, and **seed the geometry from the reference where the relational approximation is
+measurably far off** — the values are the teacher's, the structure is ours. This is not a retreat from
+the reframe; it is what the reframe said to do and I did not do it.
+
+### Gate-scoping defect, third occurrence (D14)
+
+G2b ("detail floor") was written as a whole-frame `edge_f1` floor applying "from M2 onward" — but M2
+owns only the head, so a whole-frame floor fails it for work it was never asked to do. This is the
+**third** time the same defect has appeared (D7 for M1, D7's G2b for M2, now again). The general rule,
+now recorded: **every comparison gate is evaluated on the region the milestone owns; the whole-frame
+alarm (G2) always applies as well.** A gate whose measurement window is wider than the milestone's
+scope is a defect in the gate, not a failure of the work.
+
+### Kept / not kept
+
+Kept: the `sunhat` fold fix (`rim`), the `lift`/`pom` corrections, all of attempt 1's face/eye/fringe
+work. Not fixed: the brim is still much shallower than the reference's crescent droop (a flat ellipse
+cannot express it — stated honestly by the worker rather than force-fitted); the fringe covers the
+mid-brim; the crown reads as a small bump.
+
+Worker notes worth recording: it also had to **reinstall the playwright/chrome-headless-shell cache**,
+which had been deleted mid-session (a chrome coredump was present) — renders were impossible until it
+did. Environment repair, no repo files involved.

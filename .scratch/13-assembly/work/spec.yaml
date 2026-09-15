@@ -172,16 +172,23 @@ draw:
 
   # ---------------------------------------------------------------- the hat (family; brim slices do the occlusion)
   - {sunhat: hat, host: head, brim: 2.905*head.w, crown: 1.105*head.w, tilt: 17,
-     lift: 1.22, drop: 0.62, crown-h: 0.63, flat: 0.257, front: [0.28, 0.72], pom: 2,
-     pom-at: [0.732, 0.102], pom-r: 0.16,
+     lift: 1.05, drop: 0.62, crown-h: 0.63, flat: 0.257, front: [0.11, 0.57], rim: 0.55, pom: 2,
+     pom-at: [0.715, 0.90], pom-r: 0.16,
      crown-fill: "#32405b", crown-stroke: "#22304a", crown-sw: 2,
      brim-fill: "#333f64", rim-fill: "#579eaf", pom-fill: "#df9199",
      z: hat, z-front: hat-front,
      desc: "wide-brim sun hat worn high. M2: crown grown to the measured 210x~95 dome (crown-navy
-            above y200 is x[428,893] centre (753,109), top y20), and the brim slices are now
-            SEGMENTS: the old sectors met at the brim centre, so the two-tone seam came to a point
-            inside the brim and read as a wedge. `front` covers the LEFT half (t=0 right, clockwise;
-            teal measured at x440-620, navy from x680)"}
+            above y200 is x[428,893] centre (753,109), top y20); the hat sat 19px too high — the
+            reference's crown mass centres at y~92 and its brim at y~131, mine at y58/y109 — so
+            lift came down 1.22 -> 1.05. The brim's two fills are its two SURFACES, not two
+            halves: measured from image.jpg the brim shows a navy band along its far edge that is
+            zero-width at the left tip (x455) and widens rightward (y46 at x540, y81 at x620,
+            ~y194 at x860), with the teal top surface filling everything below it down to the
+            near outline. So `front` picks the near arc (through the left tip and the bottom) and
+            `rim` folds the far band in toward the centre -- one continuous brim outline with a
+            single navy rim running round its far edge. Both poms moved to the reference's measured
+            pom centroids (655,51) and (908,188): at lift 1.05 the old t=0.732 top pom sat on the
+            crown's right and hid the brim's far rim at x620-700"}
 
 # occlusion intent, in words — the engine raises CONTRADICTION when this disagrees with `layers`
 relations:

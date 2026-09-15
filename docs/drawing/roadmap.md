@@ -58,8 +58,8 @@ things at once" failure that got 05 frozen). Renegotiated 2026-09-15; see `STATU
 | --- | --- | --- | --- |
 | G1 | render + bundle | `scripts/draw check <assembly-render> --ref image.jpg` | bundle written; `draft-fullres.png` is in the reviewer image list |
 | G2 | **alarm** — nothing deleted, nothing broken | the `vs recorded best:` line in `report.txt` | `coverage` ≥ best − 0.01 (deletion floor) and `color_dist` ≤ best + 15 (breakage). Applies at **every** milestone |
-| G2b | **detail floor** | as above | `edge_f1` ≥ best − 0.01 — applies **from M2 onward**, when detail becomes the job. Reported but not gating in M1 |
-| G3 | placement check | per-element mass measurement (centroid + area% of the reference's main colour masses) against the reference | each mass present, and its centroid within ~0.05 of the reference's. This is the composition instrument; it is what caught reviewer error in M1 |
+| G2b | **detail floor** | as above, **restricted to the region the milestone owns** | `edge_f1` (and coverage) measured on that region ≥ the baseline's, within 0.01 — applies **from M2 onward**. D14: a whole-frame window for a region-scoped milestone is a gate defect, and this mistake has now been made three times (M1, M2 attempt 1, M2 attempt 2) |
+| G3 | placement check | per-element mass measurement (centroid + area% of the reference's main colour masses) against the reference, plus the region-scoped colour-mass distance | each mass present, and its centroid within ~0.05 of the reference's. This is the composition instrument; it is what caught reviewer error in M1 |
 | G4 | diagnostics | resolver output in `report.txt` | clean, or each firing is stated and justified |
 | G5 | authoring budget | inspect the spec | no shape carries > 4 hand-typed coordinates **per outline**; a mass may carry ≤ 4 spine points + a width (the sanctioned gesture form, `scene-format.md`); every node has an intent `desc:` |
 | G6 | determinism | re-render, compare `sha256` | byte-identical |
@@ -132,20 +132,28 @@ Entry: M1 gate passed. **Status: in progress — attempt 1 failed its gate (2026
 head-crop comparison.
 
 Exit AC:
-- A1 a 2x crop of the head is preferred, or tied, against the same crop of the baseline **by blind
-  reviewers AND by the head-region colour-mass distance** — and where those disagree, the measurement
-  decides (attempt 1 is the worked example: reviewers split 1–1, the measurement said baseline, so
-  the baseline won);
+- A1 the head **region** is preferred, or tied, against the same region of the baseline **by blind
+  reviewers AND by region-scoped measurement** (`edge_f1`, coverage, colour-mass distance) — and where
+  those disagree, the measurement decides (attempt 1 is the worked example: reviewers split 1–1, the
+  measurement said baseline, so the baseline won);
 - A2 a reviewer confirms, at 2x: non-circular jaw/chin, layered eyes with iris/pupil/glints, tapered
   one-sided lash, mouth/nose marks present, hair tapered (no constant-width tubes);
 - A3 the hat reads as a hat — crown volume plus tilt, and **one continuous brim**, not "a disc with a
   ball" and not two detached lobes;
-- A4 G1, G2, G2b (detail floor now applies), G3, G4, G5, G6.
+- A4 G1, G2, **G2b on the head region**, G3, G4, G5, G6.
 
-Provisional work items: `face` host family ✅ (attempt 1, jaw/chin verified against the reference's
-row profile); two eyes placed independently rather than `mirror-of` ✅ (this is a 3/4 view); fringe
-+ cheek locks ✅ (the reference's visible face is 151×153 only because hair covers it);
-**one continuous brim silhouette ← the blocking defect**; taper-first-class for hair.
+Provisional work items: `face` host family ✅ (attempt 1); two eyes placed independently rather than
+`mirror-of` ✅; fringe + cheek locks ✅; **`sunhat` fold-over rim band ✅ (attempt 2 — the chord split
+was the real cause of the detached brim)**; **seed the head's geometry from the reference instead of
+re-deriving it coarsely (D15) ← next**; a brim shape that can droop like the reference's crescent;
+a fringe that does not cover the mid-brim; taper-first-class for hair.
+
+**What attempt 2 learned that matters more than the milestone.** The baseline's head wins on
+measurement because it was *hand-fitted to the reference*; the from-scratch relational head is more
+coherent but less accurate. The lesson is not "try harder" — it is that the assembly should **seed
+values from the reference** (measure → fill the spec → close the image, which `abstraction.md`
+sanctions) while the *structure* stays relational. M1/M2 re-derived badly what was already measured
+accurately. See `STATUS.md` D15.
 
 ### M3 — Beat the baseline on body and cloth
 

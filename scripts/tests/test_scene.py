@@ -129,6 +129,36 @@ check("i: face keeps the head-box anchor (ruler unchanged)", _fenv["head.rx"] ==
 check("i: jaw chin extends below the cranium", _jaw_bottom > _cran_bottom + 40)
 check("i: cheek line matches the jaw param", abs(_fenv["head.cheek-y"] - (400 + 0.37 * 120)) < 1)
 
+# (j) sunhat brim: the two fills must share the fold border and tile the ellipse exactly. The split
+# used to be a straight CHORD across the disc, so the fills met only at the two tips — and the tips
+# and chord are exactly where the hair and crown sit, so the brim read as a detached lozenge
+# (M2 attempt 2, STATUS D16). The fix makes the far slice the rim band along the far edge, folding
+# over (`rim`), sharing every border vertex with the near slice.
+_sspec = {"frame": {"w": 1000, "h": 1000},
+          "draw": [{"ellipse": "head", "at": [500, 400], "rx": 90, "ry": 100, "fill": "#eee"},
+                   {"sunhat": "hat", "host": "head", "brim": 500, "crown": 170, "rim": 0.5,
+                    "fill": "#333"}]}
+_semit, _senv, _sn, _sl = rl.resolve(_sspec)
+_far = next(n for n in _semit if n.get("blob") == "hat-brim-far")["poly"]
+_near = next(n for n in _semit if n.get("blob") == "hat-brim-near")["poly"]
+_far_border = [tuple(p) for p in _far[49:]]
+_near_border = [tuple(p) for p in _near[49:]]
+check("j: brim fills share the fold border", len(_far_border) == len(_near_border)
+      and all(abs(a[0] - b[0]) < 1e-6 and abs(a[1] - b[1]) < 1e-6
+              for a, b in zip(_far_border, reversed(_near_border))))
+_brim = next(n for n in _semit if n.get("ellipse") == "hat-dome")
+_xs = [p[0] for p in _far] + [p[0] for p in _near]
+_ys = [p[1] for p in _far] + [p[1] for p in _near]
+check("j: brim fills keep the brim's full width",
+      abs((max(_xs) - min(_xs)) - 500) < 6)
+try:
+    rl.resolve({"frame": {"w": 100, "h": 100}, "draw": [
+        {"ellipse": "h", "at": [50, 50], "rx": 10, "ry": 10}, {"sunhat": "s", "host": "h",
+         "brim": 40, "crown": 10, "rim": 0.0}]})
+    check("j: rim must be in (0,1)", False)
+except SystemExit as e:
+    check("j: rim must be in (0,1)", "rim" in str(e))
+
 print(f"\n{PASS}/{TOTAL} smoke tests passed")
 
 # --- wave + strands generator tests ---

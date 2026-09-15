@@ -35,16 +35,20 @@ It is a **floor and an alarm**, never a target (roadmap R6).
 | --- | --- | --- |
 | **M0** baseline recorded | make regression visible | ✅ done 2026-09-15 |
 | **M1** recover the baseline's composition | the whole figure, coarsely, flat fills | ✅ **exit criteria met 2026-09-15 — baseline not promoted.** Coverage 0.528 vs 0.514 (nothing deleted); the baseline is still the better drawing (two blind reviewers, and the grid measurement agrees). Artifact: `.scratch/13-assembly/evidence/m1-final.png`; gates + rollbacks in `13-assembly/log.md` |
-| **M2** beat the baseline on the head | jaw/eyes/lash/hat crown/hair taper | 🔄 **in progress — gate NOT passed.** `face` family (jaw+chin, verified against the reference's row profile), two independently placed eyes, fringe + cheek locks, brows/nose/mouth. But head-region distance is 40.7 vs the baseline's 22.4 and reviewers split 1–1, so the measurement decides against. **Next step: the brim does not read as one piece** (`13-assembly/log.md` → M2) |
+| **M2** beat the baseline on the head | jaw/eyes/lash/hat crown/hair taper | 🔄 **in progress — attempt 2 still not passed.** Attempt 2 found and fixed the brim's real cause (a straight chord split across the disc, now a fold-over rim band — engine gain, kept) and improved every alarm vs attempt 1 (`coverage` 0.529, `color_dist` 65.6). But head-region measurement still favours the baseline (edge_f1 0.422 vs 0.173) because the baseline was **hand-fitted to the reference** while the assembly re-derived values coarsely. **Next: seed the geometry from the reference (D15)** |
 | **M3** beat the baseline on body & cloth | collar, bow, sleeves, arms, hands, pleats | ⬜ blocked by M2 |
 | **M4** beat the baseline on the fields | soft tier last (invariant 2) | ⬜ blocked by M3; the whole-figure promotion belongs here |
 | **M5** withdrawal + stress | 15 → 16 → 17, reference-free | ⬜ blocked by M4 |
 
 ## In flight
 
-**M2 — the head: in progress, gate not passed.** The slice home is `.scratch/08-bust/spec.md`, the
-iteration record is `.scratch/13-assembly/log.md` → M2, and the single blocking defect is named there:
-**the brim does not read as one piece** (the teal near-slice detaches from the navy far-slice).
+**M2 — the head: attempts 1 and 2 both failed the gate; attempt 3 changes the approach.**
+The brim's real defect is fixed (D16). The blocking reason M2 cannot beat the baseline's head is
+now understood and is *strategic*, not artistic: the baseline was hand-fitted to the reference, and
+the assembly threw those reference-accurate values away to re-derive them coarsely (D15).
+**Next slice: seed the assembly's head geometry from the reference — measure → fill the spec → close
+the image — keeping the relational structure.** Slice home `.scratch/08-bust/spec.md`; iteration
+record `.scratch/13-assembly/log.md`.
 
 Nothing else is in flight. The 2026-09-14/15 unsupervised research session is **stopped** (P0).
 
@@ -61,16 +65,16 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
 
 ## Open defects and questions
 
-1. **The brim does not read as one piece** — the single blocking defect for M2. The `sunhat` near
-   slice (teal) and far slice (navy) share the same ellipse but no continuous silhouette line, and at
-   this hat's tilt (+17°) and lift the teal piece visually detaches. Both M2 reviewers reported it
-   independently. Candidate fix: stroke the brim outline once as a whole shape, rather than relying
-   on fill adjacency across two slices.
-2. **The fringe reads as a cap/band, not strands** to both reviewers, even after splitting it into a
-   shaped fringe plus two strands.
-3. **The face is 9% too wide and 18% too tall** (164×180 against the reference's visible 151×153).
-4. **The missing cream mass is an occlusion problem, not a size problem** — enlarging it made the
-   drawing worse (M1 v4, rolled back). It is hidden *behind* the bow and hair, so it belongs to M3.
+1. **The assembly under-uses the reference as a teacher** (D15, strategic, blocking M2): values the
+   reference could *seed* are re-derived coarsely from colour components, so the assembly is coherent
+   but measurably less accurate than the hand-fitted baseline it replaced. Fix: seed geometry from the
+   reference where the approximation is far off — legitimate per `abstraction.md`, and different from
+   the banned 824-hand-typed-coordinate failure.
+2. **The brim is much shallower than the reference's crescent droop** — a flat ellipse cannot express
+   it (least-squares conic fits go degenerate). Needs a shape that can droop, or seeded traced points.
+3. **The fringe covers the mid-brim** and squashes the navy/teal areas — the direct cause of the
+   `x660`/`x740` silhouette gaps and most of the navy area deficit.
+4. **The face is 9% too wide and 18% too tall** (164×180 against the reference's visible 151×153).
 5. **`check` has no test of its own** — the bundle logic (bundle paths, crop ranking, baseline delta,
    `coverage`) is verified only by manual runs. `measure-composition.py` is likewise untested.
 6. **Line-mode `diff` stays weak for this reference** (no uniform black line art; 12.6 % of pixels
@@ -151,6 +155,41 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
   cy 310.5, ry 67.5 → `310.5 − 0.58·67.5 = 271`). So set B was measured against a different host
   shape than the one the assembly uses. Corrected in `vocabulary.md`; the assembly's own values are
   measured directly from the reference instead.
+- **2026-09-15 · D14 — a comparison gate must be evaluated on the region the milestone owns**
+  (third occurrence of the same defect: D7 fixed it for M1, D7's G2b reintroduced it for M2, and M2
+  attempt 2 hit it again). G2b was a *whole-frame* `edge_f1` floor applying "from M2 onward", but M2
+  owns only the head — so the floor failed it for work it was never asked to do, and passing it would
+  have meant smuggling M3's cloth detail into M2. General rule now: **every comparison gate (G2b, G3)
+  is measured on the region the milestone owns; the whole-frame alarm G2 always applies too.** A gate
+  whose measurement window is wider than the milestone's scope is a defect in the gate, not a failure
+  of the work. Applied to M2: head-region `edge_f1`/coverage/colour-mass distance.
+- **2026-09-15 · D15 — the assembly must SEED from the reference, not re-derive what is already
+  measured.** Strategic finding from M2 attempt 2. The baseline wins the head region on measurement
+  (`edge_f1` 0.422 vs 0.173, coverage 0.702 vs 0.585) largely *because it was hand-fitted to
+  `image.jpg`*, while the from-scratch relational assembly is more coherent but less accurate. That is
+  not a mystery to be ground away at — it points at a mistake in how M1/M2 were done: **reference-
+  accurate seeded values were thrown away and re-derived coarsely from colour components.**
+  `abstraction.md` explicitly sanctions using the reference to *seed* values (measure → fill the
+  spec's numbers → close the image), and `trace`/`region` are the documented nodes for it; the
+  824-coordinate failure was about **hand-typing** coordinates, not about using traced ones. Corrected
+  approach: keep the relational structure and the vocabulary, and seed the geometry from the reference
+  where the relational approximation is measurably far off. The values are the teacher's; the
+  structure is ours. This is what the reframe said to do and M1/M2 did not do it.
+- **2026-09-15 · D16 — M2 attempt 2: better, gate still not passed.** The brim's real cause was found
+  and fixed (see below), `lift`/`pom` corrected, and every alarm improved against attempt 1
+  (`coverage` 0.519 → **0.529**, `color_dist` 66.4 → 65.6, head colour-mass distance 40.7 → 36.2).
+  But the baseline's head still wins on measurement, so nothing is promoted. The brim fix itself is a
+  genuine engine gain worth keeping: `sunhat` used to split the brim with a **straight chord across the
+  disc**, so the two fills met only at the two tips — and the tips and chord are exactly where the
+  hair and crown sit, which is why two reviewers saw a "detached teal lozenge". The far slice is now
+  the rim band along the brim's far edge folding over (`rim`, default 0.45), the near slice is the top
+  surface it borders, and the two still tile the ellipse exactly.
+- **2026-09-15 · D17 — the orchestrator model cannot see images; only reviewer subagents can.**
+  Every `read` of a render in this session returned "model does not support images". Earlier summaries
+  described renders as if they had been looked at; that was wrong and is corrected here. Consequence
+  for the method: for this orchestrator, *all* visual judgment must come from a fresh-context subagent
+  (which demonstrably can see — reviewers quote colours, positions and malformations) plus measurement.
+  "Never judge your own render" is not just a rule here; it is the only physically available option.
 
 ## Where things live
 

@@ -616,6 +616,14 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     not a path split): the far slice paints first, the dome over it, the near slice over the
     dome's base. That near slice is what makes it read as a hat (fixed 2026-09-14, SA1 finding
     1a: the old full-ellipse + thin rim strip let the dome paint over the near brim).
+
+    The two fills are the brim's own two surfaces, and the split between them is the brim's FAR
+    EDGE curling over — NOT a chord across the disc (fixed 2026-09-15, M2 attempt 2): a disc cut
+    by a straight chord gives two pointed half-lobes that only touch at the tips, so once hair or
+    the crown covers the chord the top surface reads as a detached lozenge (both M2 reviewers saw
+    exactly that). The far slice is instead the rim band that hugs the brim's far outline, and the
+    near slice is the top surface it borders: `front` picks the near arc and `rim` how far the top
+    surface is inset from the far edge, so the two fills still tile the ellipse exactly.
     """
     sid = str(node["sunhat"])
     host_id = str(node["host"])
@@ -644,40 +652,60 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     dome = ctx.add(ellipse_anchor(f"{sid}-dome", bx + dist * math.sin(a), by - dist * math.cos(a),
                                   crown_rx, crown_ry, tilt))
 
-    # P17 z-split: ONE brim, two complementary slices meeting at the brim centre.
-    # `front` [t0, t1] picks the near arc; the far slice is its complement (t1 -> t0+1).
-    # Paint order below: far slice -> dome -> near slice, so the dome sits behind the
-    # near brim and in front of the far brim, with no seam (same ellipse, same anchor).
+    # P17 z-split: ONE brim, two complementary slices tiling the ellipse exactly.
+    # `front` [t0, t1] picks the near (top-surface) arc; the far slice is its complement
+    # (t1 -> t0+1), the rim band along the brim's far edge.
+    # Paint order below: far rim -> dome -> near top surface, so the dome sits behind the
+    # near brim and in front of the far rim, with no seam (same ellipse, same anchor).
     front = node.get("front", [0.05, 0.45])
     if not isinstance(front, (list, tuple)) or len(front) != 2:
         raise SpecError(f"relate: {sid}.front must be [t0, t1], got {front!r}")
     t0, t1 = ctx.scalar(front[0]), ctx.scalar(front[1])
     if not (0.0 <= t0 < t1 <= 1.0):
         raise SpecError(f"relate: {sid}.front must satisfy 0 <= t0 < t1 <= 1, got [{t0}, {t1}]")
+    # `rim` = how far the brim's far edge folds over, as a fraction of the way from that edge to
+    # the brim centre. It must be > 0 (0 would lay the seam along the outline itself and collapse
+    # the far band); the default folds a visible band in, so the near surface keeps the brim's own
+    # near edge all the way round.
+    rim = ctx.scalar(node.get("rim", 0.45))
+    if not (0.0 < rim < 1.0):
+        raise SpecError(f"relate: {sid}.rim must satisfy 0 < rim < 1, got {rim}")
 
-    def slice_pts(a: float, b: float) -> list[tuple[float, float]]:
-        # A SEGMENT (arc + closing chord), not a SECTOR (two radii + arc). Sectors meet at the brim
-        # centre, so the two opposite slices paint a "V" whose point sits inside the brim and the
-        # seam reads as a wedge, not as a hat. A chord gives the straight edge a brim actually has.
-        # Segment + complementary segment still tile the ellipse exactly, so occlusion is unchanged.
-        return [brim.on(a + (b - a) * i / 48) for i in range(49)]
+    def outer_arc(a: float, b: float, n: int = 48) -> list[tuple[float, float]]:
+        return [brim.on(a + (b - a) * i / n) for i in range(n + 1)]
 
+    def seam(a: float, b: float, n: int = 48) -> list[tuple[float, float]]:
+        # The border between the brim's two surfaces: the outer arc of the far edge pulled toward
+        # the brim centre, so it follows the outline instead of cutting across the disc. It meets
+        # the outline at both ends (the fold dies out there), so the far band tapers to nothing
+        # at the fold's ends and the two slices still share every seam point exactly.
+        span = (a + 1.0) - b
+        out: list[tuple[float, float]] = []
+        for i in range(n + 1):
+            px, py = brim.on(b + span * i / n)
+            f = rim * math.sin(math.pi * i / n)
+            out.append((px + f * (bx - px), py + f * (by - py)))
+        return out
+
+    border = seam(t0, t1)
     emit.append(
-        {"blob": f"{sid}-brim-far", "poly": slice_pts(t1, t0 + 1.0),
+        {"blob": f"{sid}-brim-far", "poly": outer_arc(t1, t0 + 1.0) + border[-2:0:-1],
          "fill": node.get("brim-fill", "#3b7f92"), "z": z,
-         "desc": f"brim (far slice): a flat disc seen at {tilt:+.0f}deg -> ellipse "
-                 f"{brim_w:.0f} wide, {2 * brim_ry:.0f} deep; painted under the crown"})
+         "desc": f"brim far edge (the surface folding away from the viewer): a flat disc seen at "
+                 f"{tilt:+.0f}deg -> ellipse {brim_w:.0f} wide, {2 * brim_ry:.0f} deep, folded in "
+                 f"{rim:.2f} of the way to the centre; painted under the crown"})
     emit.append(
         {"ellipse": f"{sid}-dome", "at": [dome.env[f"{sid}-dome.cx"], dome.env[f"{sid}-dome.cy"]],
          "rx": crown_rx, "ry": crown_ry, "rot": tilt,
          "fill": node.get("crown-fill", "#32405b"), "stroke": node.get("crown-stroke"),
          "sw": node.get("crown-sw"),
          "z": z, "desc": f"crown: dome {drop:.2f} crown-radii up the brim normal, "
-                         "between the brim's far and near slices"})
+                         "between the brim's far edge and its top surface"})
     emit.append(
-        {"blob": f"{sid}-brim-near", "poly": slice_pts(t0, t1),
+        {"blob": f"{sid}-brim-near", "poly": outer_arc(t0, t1) + border[1:-1],
          "fill": node.get("rim-fill", "#4d94a6"), "z": z_front,
-         "desc": "brim (near slice): over the crown's base - the near edge occludes the crown"})
+         "desc": "brim top surface: shares the brim's near outline, borders the far edge along "
+                 "the fold, and covers the crown's base so the crown does not float"})
 
     for i in range(whole(node.get("pom", 0), f"{sid}.pom")):
         poms = node.get("pom-at", [0.62, 0.88])
