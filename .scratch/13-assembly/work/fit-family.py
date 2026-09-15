@@ -107,9 +107,9 @@ HAIR_GROUPS = {"mass": {"targets": ["hair-mass"],
 # frozen teacher masks (the fold shadows split the navy band into components); their union is the
 # collar footprint the family must match.
 COLLAR_PARAMS = ["cx", "cy", "w", "h", "neck", "v", "trim", "turn", "tilt"]
-COLLAR_BOUNDS = {"cx": (600.0, 900.0), "cy": (370.0, 500.0), "w": (120.0, 340.0),
-                 "h": (50.0, 160.0), "neck": (0.10, 0.80), "v": (0.20, 1.00),
-                 "trim": (0.05, 0.60), "turn": (-1.0, 0.60), "tilt": (-30.0, 30.0)}
+COLLAR_BOUNDS = {"cx": (680.0, 820.0), "cy": (395.0, 460.0), "w": (150.0, 270.0),
+                 "h": (55.0, 125.0), "neck": (0.10, 0.70), "v": (0.05, 0.45),
+                 "trim": (0.10, 0.50), "turn": (-0.80, 0.20), "tilt": (-15.0, 15.0)}
 COLLAR_STEPS = {"cx": 8.0, "cy": 8.0, "w": 16.0, "h": 10.0, "neck": 0.06, "v": 0.08,
                 "trim": 0.05, "turn": 0.10, "tilt": 5.0}
 COLLAR_GROUPS = {"collar": {"targets": ["collar-pale", "collar-trim", "collar-trim-left"],
@@ -130,8 +130,8 @@ BOW_STEPS = {"cx": 8.0, "cy": 8.0, "w": 20.0, "h": 16.0, "spread": 8.0, "tilt": 
              "loop-len": 0.10, "loop-w": 0.10, "knot-w": 0.04, "knot-h": 0.10,
              "tail-angle": 10.0, "tail-len": 20.0, "tail-w": 15.0, "tail2-angle": 10.0,
              "tail2-len": 15.0, "tail2-w": 8.0}
-BOW_GROUPS = {"magenta": {"targets": ["bow-magenta"],
-                          "shapes": ["-loop1", "-loop2", "-knot", "-tail1"]},
+BOW_GROUPS = {"loops": {"targets": ["bow-loops"], "shapes": ["-loop1", "-loop2", "-knot"]},
+              "tail": {"targets": ["bow-tail"], "shapes": ["-tail1"]},
               "navy": {"targets": ["bowtail-navy"], "shapes": ["-tail2"]}}
 
 # `arm` emits a limb, a puff sleeve and a cuff, all on one spine. Three groups, one per sub-shape —
@@ -164,7 +164,7 @@ REGISTRY = {
 }
 
 # family parameter defaults, used when the spec node omits an optional key (must match relate.py)
-COLLAR_DEFAULTS = {"neck": 0.46, "v": 0.66, "trim": 0.20, "turn": 0.0, "tilt": 0.0}
+COLLAR_DEFAULTS = {"neck": 0.40, "v": 0.30, "trim": 0.25, "turn": 0.0, "tilt": 0.0}
 BOW_DEFAULTS = {"spread": 128.0, "tilt": -90.0, "loop-len": 0.95, "loop-w": 0.95,
                 "knot-w": 0.20, "knot-h": 0.85, "tail-angle": 122.0, "tail-len": 60.0,
                 "tail-w": 55.0, "tail2-angle": 90.0, "tail2-len": 0.0, "tail2-w": 22.0}
@@ -757,6 +757,14 @@ def main(argv: list[str] | None = None) -> int:
             keys = ["spine", "w", "side", "zig", "tips", "strands"]
         elif a.family == "face":
             keys = ["at", "rx", "ry", "cheek", "jaw", "chin-w", "turn"]
+        elif a.family == "collar":
+            keys = ["at", "w", "h", "neck", "v", "trim", "turn", "tilt"]
+        elif a.family == "bow":
+            keys = ["at", "w", "h", "spread", "tilt", "loop-len", "loop-w", "knot-w",
+                    "knot-h", "tail-angle", "tail-len", "tail-w", "tail2-angle", "tail2-len",
+                    "tail2-w"]
+        elif a.family == "arm":
+            keys = ["spine", "w", "sleeve", "puff", "cuff-at", "cuff-h", "cuff-pad"]
         else:
             keys = ["brim", "crown", "tilt", "lift", "drop", "crown-h", "flat",
                     "front", "rim", "droop"]

@@ -1023,9 +1023,9 @@ def expand_collar(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     cx, cy = ctx.point(node["at"])
     w = ctx.scalar(node["w"])
     h = ctx.scalar(node["h"])
-    neck = ctx.scalar(node.get("neck", 0.46))
-    v = ctx.scalar(node.get("v", 0.66))
-    trim = ctx.scalar(node.get("trim", 0.20))
+    neck = ctx.scalar(node.get("neck", 0.40))
+    v = ctx.scalar(node.get("v", 0.30))
+    trim = ctx.scalar(node.get("trim", 0.25))
     turn = ctx.scalar(node.get("turn", 0.0))
     tilt = ctx.scalar(node.get("tilt", 0))
     fill = node.get("fill", "#96c3d6")
@@ -1037,12 +1037,12 @@ def expand_collar(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     ca, sa = math.cos(math.radians(tilt)), math.sin(math.radians(tilt))
 
     def place(u: float, vv: float) -> tuple[float, float]:
-        x, y = u * hw, vv * h
+        x, y = u * hw, (vv - 0.5) * h
         return (cx + x * ca - y * sa, cy + x * sa + y * ca)
 
     def bottom_u(u: float) -> float:
         du = abs(u - turn)
-        return 0.40 + 0.60 * math.cos(math.pi / 2 * min(1.0, du / 1.05))
+        return 0.60 + 0.40 * math.cos(math.pi / 2 * min(1.0, du / 1.05))
 
     n = 28
     us = [-1.0 + 2.0 * i / n for i in range(n + 1)]
@@ -1108,15 +1108,6 @@ def expand_bow(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
                    tuple(knot + d * (reach * 0.42) - p * half_w), tuple(knot))
         return [tuple(q) for q in top + bot[1:]]
 
-    for name, ang in (("loop1", tilt - spread / 2), ("loop2", tilt + spread / 2)):
-        emit.append({"blob": f"{sid}-{name}", "poly": loop_poly(ang), "fill": loop_fill,
-                     "stroke": stroke, "sw": sw, "z": z,
-                     "desc": f"bow loop at {ang:+.0f}deg from the knot — pinched at the knot, "
-                             f"not a floating ellipse"})
-    emit.append({"ellipse": f"{sid}-knot", "at": [cx, cy], "rx": knot_w / 2, "ry": knot_h / 2,
-                 "rot": tilt, "fill": knot_fill, "z": z,
-                 "desc": "bow knot: the wrap where both loops and the tails meet"})
-
     def tail(name: str, ang: float, length: float, width: float, fill) -> None:
         a = math.radians(ang)
         d = np.array([math.cos(a), math.sin(a)])
@@ -1129,14 +1120,25 @@ def expand_bow(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
                      "sw": sw, "z": z,
                      "desc": f"bow tail at {ang:+.0f}deg — a ribbon end leaving the knot"})
 
-    tail("tail1", ctx.scalar(node.get("tail-angle", 122)),
-         ctx.scalar(node.get("tail-len", 0.6 * h)),
-         ctx.scalar(node.get("tail-w", 0.42 * h)), node.get("tail-fill", loop_fill))
+    # tails paint FIRST so the knot and the loops wrap over where they leave it: a ribbon end is
+    # seen emerging from under the knot, not lying on top of it.
     if ctx.scalar(node.get("tail2-len", 0.0)) > 0:
         tail("tail2", ctx.scalar(node.get("tail2-angle", 90)),
              ctx.scalar(node.get("tail2-len", 0.0)),
              ctx.scalar(node.get("tail2-w", 0.2 * h)),
              node.get("tail2-fill", "#2f3c58"))
+    tail("tail1", ctx.scalar(node.get("tail-angle", 122)),
+         ctx.scalar(node.get("tail-len", 0.6 * h)),
+         ctx.scalar(node.get("tail-w", 0.42 * h)), node.get("tail-fill", loop_fill))
+
+    for name, ang in (("loop1", tilt - spread / 2), ("loop2", tilt + spread / 2)):
+        emit.append({"blob": f"{sid}-{name}", "poly": loop_poly(ang), "fill": loop_fill,
+                     "stroke": stroke, "sw": sw, "z": z,
+                     "desc": f"bow loop at {ang:+.0f}deg from the knot — pinched at the knot, "
+                             f"not a floating ellipse"})
+    emit.append({"ellipse": f"{sid}-knot", "at": [cx, cy], "rx": knot_w / 2, "ry": knot_h / 2,
+                 "rot": tilt, "fill": knot_fill, "stroke": stroke, "sw": sw, "z": z,
+                 "desc": "bow knot: the wrap where both loops and the tails meet"})
 
     pts = loop_poly(tilt - spread / 2) + loop_poly(tilt + spread / 2)
     anchor = bbox_anchor(sid, pts)
@@ -1213,7 +1215,7 @@ def expand_arm(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
                               tuple(p + perp * hw2 + tan * (cuff_h / 2)),
                               tuple(p - perp * hw2 + tan * (cuff_h / 2)),
                               tuple(p - perp * hw2 - tan * (cuff_h / 2))],
-                     "fill": cuff_fill, "z": z_cuff,
+                     "fill": cuff_fill, "stroke": stroke, "sw": sw, "z": z_cuff,
                      "desc": f"cuff band {cuff_h:.0f}px tall across the limb at t={cuff_at:.2f}"})
     anchor = bbox_anchor(sid, limb)
     anchor.env.update({f"{sid}.shoulderx": spine[0][0], f"{sid}.shouldery": spine[0][1],

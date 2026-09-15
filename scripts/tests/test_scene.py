@@ -479,6 +479,86 @@ _hgroups = _hair_fit.render(_hair_fit.start)
 check("y: hair fitter matches the union of all instances to the one teacher mask",
       "mass" in _hgroups and "hair-left" in _hair_fit.last_occluders)
 
+# (z) M3a families: collar, bow, arm, hand — the upper body this milestone draws.
+# collar: a flap with a neck V opening and a trim band that SHARES the outer U edge (the two fills
+# must tile, exactly like the sunhat's two brim surfaces — a separate band would drift).
+_cspec = {"frame": {"w": 1000, "h": 1000},
+          "draw": [{"collar": "c", "at": [500, 400], "w": 200, "h": 100, "neck": 0.4,
+                    "v": 0.6, "trim": 0.25, "fill": "#96c3d6"}]}
+_ce, _cenv, _cn, _cl = rl.resolve(_cspec)
+_cbody = next(n for n in _ce if n.get("blob") == "c-body")
+_ctrim = next(n for n in _ce if n.get("blob") == "c-trim")
+check("z: collar emits a flap + a trim band", bool(_cbody) and bool(_ctrim))
+check("z: collar trim shares the flap's outer U edge (fills tile)",
+      _ctrim["poly"][0] == _cbody["poly"][2])
+check("z: collar has a neck V below the top edge",
+      _cenv["c.fronty"] > _cenv["c.top"] + 0.3 * 100 and "c.frontx" in _cenv)
+
+# bow: two loops that PINCH at the knot (a loop is not an ellipse floating beside a box), a knot,
+# and tails. `spread` is the angle between the loop axes, so a 3/4 view is stated directly.
+_bspec = {"frame": {"w": 1000, "h": 1000},
+          "draw": [{"bow": "b", "at": [500, 400], "w": 200, "h": 120, "spread": 129,
+                    "tilt": -94, "tail-len": 80, "tail-w": 40, "tail2-len": 60,
+                    "tail2-w": 18, "fill": "#d35081"}]}
+_be, _benv, _bn, _bl = rl.resolve(_bspec)
+check("z: bow emits two loops + knot + two tails",
+      all(any(n.get("blob") == f"b-{k}" or n.get("ellipse") == f"b-{k}" for n in _be)
+          for k in ("loop1", "loop2", "knot", "tail1", "tail2")))
+_bl1 = next(n for n in _be if n.get("blob") == "b-loop1")["poly"]
+_bl2 = next(n for n in _be if n.get("blob") == "b-loop2")["poly"]
+check("z: bow loops pinch at the knot (both ends meet there)",
+      all(abs(p[0] - 500) < 1e-6 and abs(p[1] - 400) < 1e-6 for p in (_bl1[0], _bl1[-1], _bl2[0])))
+check("z: bow loops point two different ways (spread)",
+      (max(_bl1, key=lambda p: (p[0] - 500) ** 2 + (p[1] - 400) ** 2)[0] - 500)
+      * (max(_bl2, key=lambda p: (p[0] - 500) ** 2 + (p[1] - 400) ** 2)[0] - 500) < 0)
+
+# arm: one gesture spine (shoulder -> elbow -> wrist) carrying the limb, a puff sleeve and a cuff,
+# so the three cannot drift apart. The spine is the sanctioned 2-3 point gesture form.
+_aspec = {"frame": {"w": 1000, "h": 1000},
+          "draw": [{"arm": "a", "spine": [[500, 300], [560, 500], [520, 700]],
+                    "w": [70, 60, 50], "sleeve": 0.4, "puff": 0.6, "cuff-h": 40,
+                    "cuff-pad": 4, "fill": "#d7decc"}]}
+_ae, _aenv, _an, _al = rl.resolve(_aspec)
+check("z: arm emits limb + sleeve + cuff from one spine",
+      all(any(n.get("blob") == f"a-{k}" for n in _ae) for k in ("limb", "sleeve", "cuff")))
+check("z: arm exposes shoulder/elbow/wrist/cuff anchors",
+      all(k in _aenv for k in ("a.shoulderx", "a.elbowx", "a.wristx", "a.cuffx")))
+_a_sleeve = next(n for n in _ae if n.get("blob") == "a-sleeve")["poly"]
+_a_limb = next(n for n in _ae if n.get("blob") == "a-limb")["poly"]
+_sleeve_w = max(p[0] for p in _a_sleeve) - min(p[0] for p in _a_sleeve)
+check("z: arm puff is wider than the limb it covers", _sleeve_w > 70 + 30)
+try:
+    rl.resolve({"frame": {"w": 100, "h": 100},
+                "draw": [{"arm": "a", "spine": [[1, 1], [2, 2], [3, 3], [4, 4]], "w": 5}]})
+    check("z: arm rejects a 4-point spine", False)
+except SystemExit as _e:
+    check("z: arm rejects a 4-point spine", "2-3" in str(_e))
+
+# hand: a palm + finger lobes + a thumb — one blob would read as a mitten. Low confidence in the
+# reference, but the family is deterministic and exposes a tip anchor.
+_hspec = {"frame": {"w": 1000, "h": 1000},
+          "draw": [{"hand": "h", "at": [500, 400], "w": 60, "h": 80, "tilt": 90,
+                    "fingers": 3, "thumb": 1, "fill": "#e8d7bd"}]}
+_hhe, _hhenv, _hhn, _hhl = rl.resolve(_hspec)
+check("z: hand emits palm + 3 fingers + thumb",
+      all(any(n.get("ellipse") == f"h-{k}" for n in _hhe)
+          for k in ("palm", "finger1", "finger2", "finger3", "thumb")))
+check("z: hand exposes a tip anchor", "h.tipx" in _hhenv and "h.tipy" in _hhenv)
+
+# fitter registration: collar/bow/arm have parameter vectors and occluder groups that the search
+# builds from the spec itself (the M3a fit uses these).
+_cf = _ff.FamilyFit(_asm, _work, "collar", "collar")
+check("z: collar fitter exposes its parameter vector",
+      _cf.params == ["cx", "cy", "w", "h", "neck", "v", "trim", "turn", "tilt"])
+_bf = _ff.FamilyFit(_asm, _work, "bow", "bow")
+check("z: bow fitter maps at/spread/tail params",
+      "cx" in _bf.params and "spread" in _bf.params and "tail2-len" in _bf.params)
+_af = _ff.FamilyFit(_asm, _work, "arm", "armR")
+check("z: arm fitter builds a spine + width + sleeve vector",
+      len(_af.params) == 6 + 3 + 5 and _ff.params_for_node("arm", _af.nodes[0])[:6]
+      == ["sx0", "sy0", "sx1", "sy1", "sx2", "sy2"])
+check("z: arm groups split sleeve/cuff/limb", set(_af.groups) == {"sleeve", "cuff", "limb"})
+
 print(f"\n{PASS}/{TOTAL} smoke tests passed")
 
 # --- wave + strands generator tests ---
