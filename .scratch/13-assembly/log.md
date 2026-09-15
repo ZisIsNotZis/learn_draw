@@ -576,7 +576,7 @@ boundary** — the fringe/hairline corner. A tapered band is convex along its sp
 
 ### G7 is now met: traced share = 0.000
 
-```
+```text
 traced   0 px  (0.000 of drawn)
 G0: 0 TEACHER diagnostics with image.jpg moved away
 ```
@@ -590,7 +590,7 @@ is the coupling the fitter predicted.
 Head `edge_f1` **0.340** against a bar of **0.412**. That is not a shortfall to grind at — it is a
 contradiction, and the writer proved it with a controlled experiment that I then reproduced myself:
 
-```
+```text
 simplify the ACTUAL hair trace and put it back, changing nothing else:
   eps  5 ->  78 verts, IoU 0.957     ->  head edge_f1 0.413   (just at the bar)
   eps  8 ->  62 verts, IoU 0.917     ->  head edge_f1 0.378
@@ -675,7 +675,7 @@ Two useful by-products of the review: reviewer 2 flagged that the **side-by-side
 with the 1:1 draft, which it did use. And E was scored *against absence rather than error*: most of the
 target's overlaps have no counterpart yet, so E should be re-read once a body exists.
 
-## 2026-09-16 — M3a: the upper body is drawn. Rubric gate pending.
+## 2026-09-16 — M3a: the upper body is drawn. Rubric gate pending
 
 Delegated; every claim re-verified by me. The test-free debt from the accidental `f88f394` commit is
 paid (**79/79**, +16).
