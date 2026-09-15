@@ -249,6 +249,28 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
   nothing. So 81% of the head carries no transferable learning — and that is exactly the 81% M5 would
   have to re-invent, which is what failed at attempts 1 and 2. **The gate as written is met but cannot
   distinguish a drawing from a copy, so M2 is not closed and the baseline is not promoted.**
+- **2026-09-15 · D30 — the rubric replaces the pixel metrics as the PRIMARY gate.** The user's
+  correction, and it matches this project's own P14 ("judged by looking… zone-distance/edge metrics are
+  weak regression signals only") — which the gates contradicted. `edge_f1`/`color_dist`/`coverage` are
+  *pixel* measures: they compare edge coincidence and colour distance against a reference, so a traced
+  copy scores well and a good drawing of a slightly different subject scores badly. That is how the
+  last day spiralled into "the bar can't be cleared without tracing": **the gate was measuring the wrong
+  thing and I kept trusting it.** New instrument: `docs/drawing/rubric.md` — six axes (subject identity,
+  human figure, silhouette coherence, feature legibility, occlusion correctness, style+composition)
+  scored 0–5 against explicit anchors by an **independent, sight-proven** reviewer (two of them;
+  contested axes recorded, never averaged). Each review also returns *biggest single defect* and *the
+  one change that would most improve it* — the field the next iteration works from. Roadmap: **G8 is
+  the primary gate**; G2 stays an alarm (deletion/breakage); **G3b is demoted from a floor to a
+  diagnostic** — as a floor it was false, since clearing it provably required near-contour accuracy
+  (D26). Milestone exit = the milestone's named axis reaching target **plus** the alarms.
+- **2026-09-15 · D31 — the standing stop conditions, and full permission to run to one.** The user
+  defined when the work should stop and granted autonomous run permission; recorded in the roadmap as
+  S1–S3: **S1 abstraction failure** (describing what to draw starts needing a flood of numbers — the
+  coordinate reached-for is the signal, repeatedly is the stop), **S2 comprehension failure** (you can
+  no longer say what change would move the drawing toward the reference — you are guessing),
+  **S3 perception failure** (the review pipeline cannot report, or cannot distinguish two drafts).
+  On any stop: park with status / next step / blocker, leave the round's artefacts and numbers
+  committed, and report — do not keep iterating to look busy.
 - **2026-09-15 · D28 — the ratchet floor is now PARAMETRIC; the hand-fitted render becomes the fidelity
   reference and teacher.** Approved by direction ("actually draw a proper person", not trace it) after
   D26/D27 proved the old floor could only be cleared by tracing. Two registers now:

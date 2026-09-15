@@ -976,8 +976,308 @@ def expand_hair_mass(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     return ctx.add(anchor)
 
 
+def _spine_at(spine: list[tuple[float, float]], t: float):
+    """Point + unit tangent at progress t in [0,1] along an open polyline.
+
+    The sanctioned gesture form for a limb (scene-format.md): a 2-4 point spine whose bend IS the
+    joint, rather than a hand-laid corner in a path. Shared by `arm` (elbow/wrist) and its sleeve.
+    """
+    pts = [np.array(p, float) for p in spine]
+    segs = [pts[i + 1] - pts[i] for i in range(len(pts) - 1)]
+    lens = [float(np.linalg.norm(s)) for s in segs]
+    total = sum(lens) or 1.0
+    d = max(0.0, min(1.0, t)) * total
+    acc = 0.0
+    for i, L in enumerate(lens):
+        if d <= acc + L or i == len(lens) - 1:
+            f = (d - acc) / (L or 1.0)
+            return pts[i] + segs[i] * f, segs[i] / (L or 1.0)
+        acc += L
+    return pts[-1], np.array([1.0, 0.0])
+
+
+def _spine_width(widths: list[float], t: float) -> float:
+    """Linear interpolation of a per-point width profile at progress t in [0,1]."""
+    n = len(widths)
+    if n == 1:
+        return float(widths[0])
+    u = max(0.0, min(1.0, t)) * (n - 1)
+    i = min(int(u), n - 2)
+    f = u - i
+    return float(widths[i] * (1 - f) + widths[i + 1] * f)
+
+
+def expand_collar(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """A sailor collar: a flap with a neck U/V opening and a trim band along its outer edge.
+
+    Structure the model should not re-derive: a sailor collar is a flat flap over the shoulders
+    whose outer edge is a shallow U and whose neck opening is a V notch; the navy trim is a band
+    hugging that U edge. `turn` shifts the V sideways — a 3/4 view does not put the opening at the
+    centre. The flap and the trim share the U edge exactly, so the two fills tile without a seam.
+
+    params: at, w, h · neck (V half-width / w) · v (V depth / h) · trim (band width / h) ·
+            turn (V centre offset in u) · tilt · fill/trim-fill
+    Exposes the bbox handles plus `frontx/fronty` (the V bottom) and `neckx/necky`.
+    """
+    sid = str(node["collar"])
+    cx, cy = ctx.point(node["at"])
+    w = ctx.scalar(node["w"])
+    h = ctx.scalar(node["h"])
+    neck = ctx.scalar(node.get("neck", 0.46))
+    v = ctx.scalar(node.get("v", 0.66))
+    trim = ctx.scalar(node.get("trim", 0.20))
+    turn = ctx.scalar(node.get("turn", 0.0))
+    tilt = ctx.scalar(node.get("tilt", 0))
+    fill = node.get("fill", "#96c3d6")
+    trim_fill = node.get("trim-fill", "#374b68")
+    stroke, sw = node.get("stroke"), node.get("sw")
+    z = str(node.get("z", "default"))
+    z_trim = str(node.get("z-trim", z))
+    hw = w / 2
+    ca, sa = math.cos(math.radians(tilt)), math.sin(math.radians(tilt))
+
+    def place(u: float, vv: float) -> tuple[float, float]:
+        x, y = u * hw, vv * h
+        return (cx + x * ca - y * sa, cy + x * sa + y * ca)
+
+    def bottom_u(u: float) -> float:
+        du = abs(u - turn)
+        return 0.40 + 0.60 * math.cos(math.pi / 2 * min(1.0, du / 1.05))
+
+    n = 28
+    us = [-1.0 + 2.0 * i / n for i in range(n + 1)]
+    bottom = [(u, bottom_u(u)) for u in us]
+    body = [place(turn - neck, 0.0), place(-1.0, 0.0), place(-1.0, bottom_u(-1.0))]
+    body += [place(u, vv) for u, vv in bottom]
+    body += [place(1.0, 0.0), place(turn + neck, 0.0), place(turn, v)]
+    trim_poly = [place(u, vv) for u, vv in bottom]
+    trim_poly += [place(u, max(0.0, vv - trim)) for u, vv in reversed(bottom)]
+
+    emit.append({"blob": f"{sid}-body", "poly": body, "fill": fill, "stroke": stroke,
+                 "sw": sw, "z": z,
+                 "desc": f"collar flap: {w:.0f}px shoulder span with a neck V ({neck:.2f} wide, "
+                         f"{v:.2f} deep) shifted {turn:+.2f} for the 3/4 view"})
+    emit.append({"blob": f"{sid}-trim", "poly": trim_poly, "fill": trim_fill, "z": z_trim,
+                 "desc": "collar trim: the navy band along the flap's outer U edge"})
+    anchor = bbox_anchor(sid, body)
+    fx, fy = place(turn, v)
+    anchor.env.update({f"{sid}.frontx": fx, f"{sid}.fronty": fy,
+                       f"{sid}.neckx": cx - neck * hw * ca, f"{sid}.necky": cy - neck * hw * sa})
+    return ctx.add(anchor)
+
+
+def expand_bow(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """A ribbon bow: two pinched loops, a knot, and tails.
+
+    Structure: a bow's loops meet AT the knot and pinch there (a loop is not an ellipse floating
+    beside a box); the knot wraps the middle; the ribbon ends leave the knot as tapered tails.
+    Loop angles are screen degrees from the knot (0 = right, 90 = down), so a 3/4 view is stated
+    directly — the reference's loops are ~129deg apart about an up axis, not a symmetric 180.
+
+    params: at, w, h · spread (deg between the loop axes) · tilt · loop-len (reach / (w/2)) ·
+            loop-w (half-width / (h/2)) · knot-w, knot-h · tail-angle/len/w · tail2-* ·
+            loop-fill/knot-fill/tail-fill
+    Exposes bbox + `knot.*` + `tail-tipx/tipy`.
+    """
+    sid = str(node["bow"])
+    cx, cy = ctx.point(node["at"])
+    w = ctx.scalar(node["w"])
+    h = ctx.scalar(node["h"])
+    spread = ctx.scalar(node.get("spread", 128))
+    tilt = ctx.scalar(node.get("tilt", -90))
+    loop_len = ctx.scalar(node.get("loop-len", 0.95))
+    loop_w = ctx.scalar(node.get("loop-w", 0.95))
+    knot_w = ctx.scalar(node.get("knot-w", 0.20)) * w
+    knot_h = ctx.scalar(node.get("knot-h", 0.85)) * h
+    loop_fill = node.get("loop-fill", node.get("fill", "#d35081"))
+    knot_fill = node.get("knot-fill", "#c04a78")
+    stroke, sw = node.get("stroke"), node.get("sw")
+    z = str(node.get("z", "default"))
+    reach = loop_len * (w / 2)
+    half_w = loop_w * (h / 2)
+    knot = np.array([cx, cy])
+
+    def loop_poly(ang_deg: float) -> list[tuple[float, float]]:
+        a = math.radians(ang_deg)
+        d = np.array([math.cos(a), math.sin(a)])
+        p = np.array([-d[1], d[0]])
+        tip = knot + d * reach
+        top = bez3(tuple(knot), tuple(knot + d * (reach * 0.42) + p * half_w),
+                   tuple(tip + p * half_w * 0.5), tuple(tip))
+        bot = bez3(tuple(tip), tuple(tip - p * half_w * 0.5),
+                   tuple(knot + d * (reach * 0.42) - p * half_w), tuple(knot))
+        return [tuple(q) for q in top + bot[1:]]
+
+    for name, ang in (("loop1", tilt - spread / 2), ("loop2", tilt + spread / 2)):
+        emit.append({"blob": f"{sid}-{name}", "poly": loop_poly(ang), "fill": loop_fill,
+                     "stroke": stroke, "sw": sw, "z": z,
+                     "desc": f"bow loop at {ang:+.0f}deg from the knot — pinched at the knot, "
+                             f"not a floating ellipse"})
+    emit.append({"ellipse": f"{sid}-knot", "at": [cx, cy], "rx": knot_w / 2, "ry": knot_h / 2,
+                 "rot": tilt, "fill": knot_fill, "z": z,
+                 "desc": "bow knot: the wrap where both loops and the tails meet"})
+
+    def tail(name: str, ang: float, length: float, width: float, fill) -> None:
+        a = math.radians(ang)
+        d = np.array([math.cos(a), math.sin(a)])
+        p = np.array([-d[1], d[0]])
+        mid = knot + d * (length * 0.5) + p * (width * 0.20)
+        tip = knot + d * length + p * (width * 0.06)
+        poly = taper_band([tuple(knot + d * (knot_w * 0.2)), tuple(mid), tuple(tip)],
+                          [width * 0.55, width, width * 0.42], "both")
+        emit.append({"blob": f"{sid}-{name}", "poly": poly, "fill": fill, "stroke": stroke,
+                     "sw": sw, "z": z,
+                     "desc": f"bow tail at {ang:+.0f}deg — a ribbon end leaving the knot"})
+
+    tail("tail1", ctx.scalar(node.get("tail-angle", 122)),
+         ctx.scalar(node.get("tail-len", 0.6 * h)),
+         ctx.scalar(node.get("tail-w", 0.42 * h)), node.get("tail-fill", loop_fill))
+    if ctx.scalar(node.get("tail2-len", 0.0)) > 0:
+        tail("tail2", ctx.scalar(node.get("tail2-angle", 90)),
+             ctx.scalar(node.get("tail2-len", 0.0)),
+             ctx.scalar(node.get("tail2-w", 0.2 * h)),
+             node.get("tail2-fill", "#2f3c58"))
+
+    pts = loop_poly(tilt - spread / 2) + loop_poly(tilt + spread / 2)
+    anchor = bbox_anchor(sid, pts)
+    return ctx.add(anchor)
+
+
+def expand_arm(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """An arm: a bent limb (shoulder -> elbow -> wrist) carrying a puff sleeve and a cuff.
+
+    Structure: the limb is a tapered band along a 2-3 point gesture spine (the elbow is a spine
+    point, not a corner in a path); the sleeve is a puff over the shoulder end of the same spine,
+    widest at the shoulder and gathered where the cuff wraps; the cuff is a band across the spine
+    at the sleeve's end. All three share the spine, so an arm, its sleeve and its cuff cannot
+    drift apart. The three are emitted as `-limb`, `-sleeve` and `-cuff` sub-shapes.
+
+    params: spine (2-3 points) · w (per-point width) · side · sleeve (fraction under the sleeve) ·
+            puff (extra half-width at the shoulder) · cuff-h, cuff-at, cuff-pad ·
+            fill/sleeve-fill/cuff-fill
+    Exposes bbox + shoulder/elbow/wrist/cuff handles.
+    """
+    sid = str(node["arm"])
+    spine = [ctx.point(p) for p in node["spine"]]
+    n = len(spine)
+    if not 2 <= n <= 3:
+        raise SpecError(f"relate: {sid}.spine needs 2-3 points (shoulder, elbow, wrist), got {n}")
+    raw_w = node.get("w")
+    if raw_w is None:
+        raise SpecError(f"relate: arm {sid!r} needs `w` (a width or per-point profile)")
+    if isinstance(raw_w, (list, tuple)):
+        widths = [ctx.scalar(q) for q in raw_w]
+        if len(widths) != n:
+            raise SpecError(f"relate: {sid}.w has {len(widths)} entries but the spine has {n} points")
+    else:
+        widths = [ctx.scalar(raw_w)] * n
+    side = str(node.get("side", "both"))
+    if side not in ("both", "left", "right"):
+        raise SpecError(f"relate: {sid}.side must be both/left/right, got {side!r}")
+    sleeve = ctx.scalar(node.get("sleeve", 0.0))
+    puff = ctx.scalar(node.get("puff", 0.6))
+    cuff_h = ctx.scalar(node.get("cuff-h", 0.0))
+    cuff_at = ctx.scalar(node.get("cuff-at", sleeve))
+    cuff_pad = ctx.scalar(node.get("cuff-pad", 0.0))
+    skin_fill = node.get("fill", "#d7decc")
+    sleeve_fill = node.get("sleeve-fill", "#e1e7dc")
+    cuff_fill = node.get("cuff-fill", "#2d3b58")
+    stroke, sw = node.get("stroke"), node.get("sw")
+    z = str(node.get("z", "default"))
+    z_sleeve = str(node.get("z-sleeve", z))
+    z_cuff = str(node.get("z-cuff", z))
+
+    limb = taper_band(spine, widths, side)
+    emit.append({"blob": f"{sid}-limb", "poly": limb, "fill": skin_fill, "stroke": stroke,
+                 "sw": sw, "z": z,
+                 "desc": f"arm limb: {n}-point gesture spine, width profile "
+                         f"{'/'.join(f'{x:.0f}' for x in widths)}"})
+    if sleeve > 0:
+        k = 14
+        sub, swid = [], []
+        for i in range(k + 1):
+            t = sleeve * i / k
+            p, _tan = _spine_at(spine, t)
+            sub.append(tuple(p))
+            swid.append(_spine_width(widths, t) * (1 + puff * (1 - i / k)))
+        emit.append({"blob": f"{sid}-sleeve", "poly": taper_band(sub, swid, "both"),
+                     "fill": sleeve_fill, "stroke": stroke, "sw": sw, "z": z_sleeve,
+                     "desc": f"puff sleeve over the first {sleeve:.2f} of the limb, "
+                             f"{puff:.2f} wider than the arm at the shoulder"})
+    if cuff_h > 0:
+        p, tan = _spine_at(spine, cuff_at)
+        perp = np.array([-tan[1], tan[0]])
+        hw2 = _spine_width(widths, cuff_at) / 2 + cuff_pad
+        emit.append({"blob": f"{sid}-cuff",
+                     "poly": [tuple(p + perp * hw2 - tan * (cuff_h / 2)),
+                              tuple(p + perp * hw2 + tan * (cuff_h / 2)),
+                              tuple(p - perp * hw2 + tan * (cuff_h / 2)),
+                              tuple(p - perp * hw2 - tan * (cuff_h / 2))],
+                     "fill": cuff_fill, "z": z_cuff,
+                     "desc": f"cuff band {cuff_h:.0f}px tall across the limb at t={cuff_at:.2f}"})
+    anchor = bbox_anchor(sid, limb)
+    anchor.env.update({f"{sid}.shoulderx": spine[0][0], f"{sid}.shouldery": spine[0][1],
+                       f"{sid}.wristx": spine[-1][0], f"{sid}.wristy": spine[-1][1]})
+    if n >= 3:
+        anchor.env[f"{sid}.elbowx"] = spine[1][0]
+        anchor.env[f"{sid}.elbowy"] = spine[1][1]
+    cp, _ = _spine_at(spine, cuff_at)
+    anchor.env[f"{sid}.cuffx"] = num(cp[0])
+    anchor.env[f"{sid}.cuffy"] = num(cp[1])
+    return ctx.add(anchor)
+
+
+def expand_hand(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """A simple readable hand: a palm mass with finger lobes and a thumb.
+
+    Structure: a hand reads as a palm with separated fingers — one blob reads as a mitten. The
+    family draws the palm and `fingers` lobes along the finger direction plus a thumb on the
+    `thumb` side, all flat cel shapes. `at` is the palm centre, `tilt` the finger direction.
+
+    params: at, w, h · tilt · fingers (2-4) · spread (deg) · thumb (0/1) · fill
+    Exposes bbox + `tipx/tipy`.
+    """
+    sid = str(node["hand"])
+    cx, cy = ctx.point(node["at"])
+    w = ctx.scalar(node["w"])
+    h = ctx.scalar(node["h"])
+    tilt = ctx.scalar(node.get("tilt", 90))
+    fingers = whole(node.get("fingers", 3), f"{sid}.fingers")
+    spread = ctx.scalar(node.get("spread", 24))
+    thumb = whole(node.get("thumb", 1), f"{sid}.thumb")
+    fill = node.get("fill", "#e8d7bd")
+    stroke, sw = node.get("stroke"), node.get("sw")
+    z = str(node.get("z", "default"))
+    a = math.radians(tilt)
+    d = np.array([math.cos(a), math.sin(a)])
+    parts: list[tuple[str, np.ndarray, float, float, float]] = [
+        ("palm", np.array([cx, cy]), 0.34 * w, 0.40 * h, tilt)]
+    for i in range(max(0, min(4, fingers))):
+        fa = tilt + (i - (fingers - 1) / 2) * spread
+        fd = np.array([math.cos(math.radians(fa)), math.sin(math.radians(fa))])
+        c = np.array([cx, cy]) + d * (h * 0.36) + fd * (h * 0.14)
+        parts.append((f"finger{i + 1}", c, 0.11 * w, 0.22 * h, fa))
+    if thumb:
+        ta = tilt - 80
+        td = np.array([math.cos(math.radians(ta)), math.sin(math.radians(ta))])
+        c = np.array([cx, cy]) + td * (w * 0.36)
+        parts.append(("thumb", c, 0.12 * w, 0.24 * h, ta))
+    for name, c, rx, ry, rot in parts:
+        emit.append({"ellipse": f"{sid}-{name}", "at": [float(c[0]), float(c[1])],
+                     "rx": float(rx), "ry": float(ry), "rot": float(rot), "fill": fill,
+                     "stroke": stroke, "sw": sw, "z": z,
+                     "desc": f"hand {name} lobe"})
+    xs = [cx - w / 2, cx + w / 2]
+    ys = [cy - h / 2, cy + h / 2]
+    anchor = bbox_anchor(sid, [(x, y) for x in xs for y in ys])
+    tip = np.array([cx, cy]) + d * (h * 0.55)
+    anchor.env.update({f"{sid}.tipx": num(tip[0]), f"{sid}.tipy": num(tip[1])})
+    return ctx.add(anchor)
+
+
 VOCAB = {"sunhat": expand_sunhat, "eye": expand_eye, "face": expand_face,
-         "hair-mass": expand_hair_mass}
+         "hair-mass": expand_hair_mass, "collar": expand_collar, "bow": expand_bow,
+         "arm": expand_arm, "hand": expand_hand}
 SHAPES = ("ellipse", "blob", "stroke", "rect")
 # `region` is a computed shape: its outline is flooded from the reference raster at resolve time,
 # so it is a TEACHER node and needs `--ref`. It is listed apart from the primitives because it

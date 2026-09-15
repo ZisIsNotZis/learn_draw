@@ -1,0 +1,50 @@
+{
+ "version": 1,
+ "node": "cuff-R",
+ "kind": "region",
+ "spec": ".scratch/13-assembly/work/teacher-body.yaml",
+ "image": "../../../image.jpg",
+ "image_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+ "date": "2026-09-15",
+ "seed": [
+  878.0,
+  614.0
+ ],
+ "tol": 18.0,
+ "fixed": true,
+ "eps": 3.0,
+ "box": [
+  800.0,
+  550.0,
+  960.0,
+  700.0
+ ],
+ "method": "scripts/relate.py:resolve(kind=region) -> scripts/scene_render.py:flood_region(fixed-range) -> cv2.approxPolyDP",
+ "vertex_count": 6,
+ "vertices": [
+  [
+   886.0,
+   591.0
+  ],
+  [
+   838.0,
+   612.0
+  ],
+  [
+   849.0,
+   648.0
+  ],
+  [
+   865.0,
+   632.0
+  ],
+  [
+   868.0,
+   635.0
+  ],
+  [
+   896.0,
+   623.0
+  ]
+ ]
+}

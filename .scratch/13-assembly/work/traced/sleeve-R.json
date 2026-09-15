@@ -1,0 +1,78 @@
+{
+ "version": 1,
+ "node": "sleeve-R",
+ "kind": "region",
+ "spec": ".scratch/13-assembly/work/teacher-body.yaml",
+ "image": "../../../image.jpg",
+ "image_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+ "date": "2026-09-15",
+ "seed": [
+  830.0,
+  540.0
+ ],
+ "tol": 14.0,
+ "fixed": true,
+ "eps": 3.0,
+ "box": [
+  798.0,
+  455.0,
+  910.0,
+  592.0
+ ],
+ "method": "scripts/relate.py:resolve(kind=region) -> scripts/scene_render.py:flood_region(fixed-range) -> cv2.approxPolyDP",
+ "vertex_count": 13,
+ "vertices": [
+  [
+   805.0,
+   455.0
+  ],
+  [
+   798.0,
+   460.0
+  ],
+  [
+   798.0,
+   491.0
+  ],
+  [
+   813.0,
+   475.0
+  ],
+  [
+   798.0,
+   517.0
+  ],
+  [
+   798.0,
+   591.0
+  ],
+  [
+   852.0,
+   591.0
+  ],
+  [
+   864.0,
+   563.0
+  ],
+  [
+   873.0,
+   553.0
+  ],
+  [
+   853.0,
+   458.0
+  ],
+  [
+   826.0,
+   455.0
+  ],
+  [
+   813.0,
+   470.0
+  ],
+  [
+   823.0,
+   455.0
+  ]
+ ]
+}

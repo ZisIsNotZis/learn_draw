@@ -1,0 +1,70 @@
+{
+ "version": 1,
+ "node": "arm-R",
+ "kind": "region",
+ "spec": ".scratch/13-assembly/work/teacher-body.yaml",
+ "image": "../../../image.jpg",
+ "image_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+ "date": "2026-09-15",
+ "seed": [
+  840.0,
+  780.0
+ ],
+ "tol": 14.0,
+ "fixed": true,
+ "eps": 3.0,
+ "box": [
+  780.0,
+  635.0,
+  960.0,
+  930.0
+ ],
+ "method": "scripts/relate.py:resolve(kind=region) -> scripts/scene_render.py:flood_region(fixed-range) -> cv2.approxPolyDP",
+ "vertex_count": 11,
+ "vertices": [
+  [
+   908.0,
+   656.0
+  ],
+  [
+   880.0,
+   666.0
+  ],
+  [
+   880.0,
+   675.0
+  ],
+  [
+   823.0,
+   757.0
+  ],
+  [
+   789.0,
+   827.0
+  ],
+  [
+   850.0,
+   905.0
+  ],
+  [
+   843.0,
+   865.0
+  ],
+  [
+   823.0,
+   842.0
+  ],
+  [
+   856.0,
+   780.0
+  ],
+  [
+   901.0,
+   729.0
+  ],
+  [
+   925.0,
+   694.0
+  ]
+ ]
+}

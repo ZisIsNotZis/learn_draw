@@ -29,8 +29,8 @@
 
 frame: {w: 1024, h: 1024}
 
-layers: [bg, field, ribbon, hair-back, skirt-dark, skirt-pale, blouse, neck, bow,
-         hat, hat-front, head, features, hair-front]
+layers: [bg, field, ribbon, hair-back, skirt-dark, skirt-pale, blouse, collar, arm, sleeve, cuff,
+         hand, neck, bow, hat, hat-front, head, features, hair-front]
 
 vars:
   # ---- measured frame anchors: the "setting the frame" use of a reference (abstraction.md)
@@ -181,15 +181,49 @@ draw:
      w: frame.w*0.047, fill: "#e8d7bd", z: neck,
      desc: "neck from under the jaw into the collar — measured x[656,703] y[417,457]"}
 
-  # ---------------------------------------------------------------- bow (the strongest colour in the figure)
-  # Two loops and a knot, not one bar: a single 233px bar reads as a box. Flat fills; the fold
-  # shading and the tails are M3. Measured magenta x[538,771] y[455,603], centred (671,522).
-  - {ellipse: bow-loop-left, at: [frame.w*0.59, frame.h*0.51], rx: frame.w*0.061, ry: frame.h*0.070,
-     fill: "#d35081", z: bow, desc: "left bow loop"}
-  - {ellipse: bow-loop-right, at: [frame.w*0.72, frame.h*0.51], rx: frame.w*0.061, ry: frame.h*0.070,
-     fill: "#d35081", z: bow, desc: "right bow loop"}
-  - {ellipse: bow-knot, at: [frame.w*0.655, frame.h*0.51], rx: frame.w*0.028, ry: frame.h*0.038,
-     fill: "#c04a78", z: bow, desc: "bow knot"}
+  # ---------------------------------------------------------------- sailor collar (M3a)
+  # A collar is a flap with a neck U/V opening and a navy trim band along its outer edge, not a
+  # blob. Fitted to the reference's frozen collar masks (traced/collar-pale + collar-trim*) with the
+  # occluders derived from this spec's own `layers:` order, then the traces discarded (D24). The
+  # 3/4 view is carried by `turn` (the neck V sits left of the collar centre, under the bow).
+  - {collar: collar, at: [748, 432], w: 200, h: 90, neck: 0.45, v: 0.60, trim: 0.22, turn: -0.30,
+     fill: "#96c3d6", trim-fill: "#374b68", z: collar,
+     desc: "sailor collar — flap + neck V opening + navy trim band along the outer U edge; the V is
+            shifted left for the 3/4 view and the bow covers its left flap"}
+
+  # ---------------------------------------------------------------- right upper limb (M3a)
+  # The arm is ONE gesture spine (shoulder -> elbow -> wrist) carrying a puff sleeve over its upper
+  # part and a cuff band at the sleeve's end; the three share the spine, so they cannot drift. Only
+  # the VIEWER-RIGHT arm is drawn: the left arm and left sleeve are fully occluded by the bow
+  # (measured: ~55 cream px survive, no usable bbox — measure-body.md).
+  - {arm: armR, spine: [[828, 478], [884, 625], [800, 880]], w: [84, 74, 60],
+     sleeve: 0.44, puff: 0.62, cuff-h: 58, cuff-at: 0.44, cuff-pad: 5,
+     fill: "#d7decc", sleeve-fill: "#e1e7dc", cuff-fill: "#2d3b58",
+     z: arm, z-sleeve: sleeve, z-cuff: cuff,
+     desc: "right arm — bent arm spine (shoulder, elbow, wrist) with a puff sleeve over the upper
+            44% and the navy cuff band at the sleeve's end; the cuff is the elbow-side seam"}
+  # The hand: measured only WEAKLY (mauve x~845-870 y~878-928, but its colour merges with the
+  # translucent petal overlay — measure-body.md gap 4), so this is the least certain node here. It
+  # is drawn small and tucked at the wrist so the arm ends in a hand rather than a cut tube.
+  - {hand: handR, at: [armR.wristx, armR.wristy], w: 62, h: 86, tilt: 116, fingers: 3, spread: 22,
+     fill: "#e8d7bd", z: hand,
+     desc: "right hand — a palm + three finger lobes + thumb, tucked at the wrist. LOW CONFIDENCE:
+            the reference's mauve hand shape is partly under a translucent petal and cannot be
+            separated by colour, so its size/pose is a readable default, not a measurement"}
+
+  # ---------------------------------------------------------------- bow (M3a: a real structure)
+  # Replaces the three flat ellipses. A bow is two pinched loops + a knot + tails; the loops meet AT
+  # the knot (the reference's are ~129deg apart about an up axis, not a symmetric 180). Fitted to
+  # the frozen magenta + navy-tail masks (traced/bow-magenta, bowtail-navy) by mask IoU, traces
+  # discarded. The navy `tail2` is the separate ribbon end hanging from the knot.
+  - {bow: bow, at: [667, 528], w: 230, h: 132, spread: 128, tilt: -90,
+     loop-len: 0.95, loop-w: 0.95, knot-w: 0.19, knot-h: 0.95,
+     tail-angle: 122, tail-len: 120, tail-w: 55,
+     tail2-angle: 95, tail2-len: 80, tail2-w: 22, tail2-fill: "#2f3c58",
+     loop-fill: "#d35081", knot-fill: "#c04a78", tail-fill: "#d35081", z: bow,
+     desc: "bow as a real structure — two loops pinched at the knot, the knot wrap, and two tails
+            (magenta sweeping left-down, navy hanging below); no placket is drawn because the
+            measurement found none (measure-body.md)"}
 
   # ---------------------------------------------------------------- skirt / dress (bottom mass)
   - {blob: skirt-dark,

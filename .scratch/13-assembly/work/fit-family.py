@@ -103,6 +103,51 @@ HAIR_STEPS = {"x": 20.0, "y": 20.0, "w": 15.0}
 HAIR_GROUPS = {"mass": {"targets": ["hair-mass"],
                         "shapes": ["hair-main", "hair-fringe", "hair-lock"]}}
 
+# `collar` emits a flap + a trim band. The pale body, the right trim and the left trim are three
+# frozen teacher masks (the fold shadows split the navy band into components); their union is the
+# collar footprint the family must match.
+COLLAR_PARAMS = ["cx", "cy", "w", "h", "neck", "v", "trim", "turn", "tilt"]
+COLLAR_BOUNDS = {"cx": (600.0, 900.0), "cy": (370.0, 500.0), "w": (120.0, 340.0),
+                 "h": (50.0, 160.0), "neck": (0.10, 0.80), "v": (0.20, 1.00),
+                 "trim": (0.05, 0.60), "turn": (-1.0, 0.60), "tilt": (-30.0, 30.0)}
+COLLAR_STEPS = {"cx": 8.0, "cy": 8.0, "w": 16.0, "h": 10.0, "neck": 0.06, "v": 0.08,
+                "trim": 0.05, "turn": 0.10, "tilt": 5.0}
+COLLAR_GROUPS = {"collar": {"targets": ["collar-pale", "collar-trim", "collar-trim-left"],
+                            "shapes": ["-body", "-trim"]}}
+
+# `bow` emits two loops, a knot, a magenta tail and a navy tail. The magenta mask is one connected
+# mass (loops + knot + tail); the navy tail is its own teacher mask, so it is a second group.
+BOW_PARAMS = ["cx", "cy", "w", "h", "spread", "tilt", "loop-len", "loop-w",
+              "knot-w", "knot-h", "tail-angle", "tail-len", "tail-w",
+              "tail2-angle", "tail2-len", "tail2-w"]
+BOW_BOUNDS = {"cx": (480.0, 840.0), "cy": (430.0, 660.0), "w": (120.0, 380.0),
+              "h": (80.0, 250.0), "spread": (60.0, 180.0), "tilt": (-170.0, 20.0),
+              "loop-len": (0.40, 1.60), "loop-w": (0.40, 1.80), "knot-w": (0.05, 0.50),
+              "knot-h": (0.30, 1.60), "tail-angle": (40.0, 220.0), "tail-len": (0.0, 260.0),
+              "tail-w": (0.0, 160.0), "tail2-angle": (40.0, 160.0), "tail2-len": (0.0, 180.0),
+              "tail2-w": (0.0, 80.0)}
+BOW_STEPS = {"cx": 8.0, "cy": 8.0, "w": 20.0, "h": 16.0, "spread": 8.0, "tilt": 8.0,
+             "loop-len": 0.10, "loop-w": 0.10, "knot-w": 0.04, "knot-h": 0.10,
+             "tail-angle": 10.0, "tail-len": 20.0, "tail-w": 15.0, "tail2-angle": 10.0,
+             "tail2-len": 15.0, "tail2-w": 8.0}
+BOW_GROUPS = {"magenta": {"targets": ["bow-magenta"],
+                          "shapes": ["-loop1", "-loop2", "-knot", "-tail1"]},
+              "navy": {"targets": ["bowtail-navy"], "shapes": ["-tail2"]}}
+
+# `arm` emits a limb, a puff sleeve and a cuff, all on one spine. Three groups, one per sub-shape —
+# the limb matches the forearm cream + the pink elbow patch, the sleeve its (approximate) mask, and
+# the cuff the high-confidence navy band.
+ARM_EXTRA_PARAMS = ["sleeve", "puff", "cuff-at", "cuff-h", "cuff-pad"]
+ARM_AXIS_BOUNDS = {"x": (400.0, 1030.0), "y": (380.0, 960.0), "w": (20.0, 240.0)}
+ARM_AXIS_STEPS = {"x": 16.0, "y": 16.0, "w": 10.0}
+ARM_EXTRA_BOUNDS = {"sleeve": (0.0, 0.90), "puff": (0.0, 1.60), "cuff-at": (0.0, 0.90),
+                    "cuff-h": (10.0, 130.0), "cuff-pad": (0.0, 40.0)}
+ARM_EXTRA_STEPS = {"sleeve": 0.06, "puff": 0.12, "cuff-at": 0.06, "cuff-h": 8.0,
+                   "cuff-pad": 4.0}
+ARM_GROUPS = {"sleeve": {"targets": ["sleeve-R"], "shapes": ["-sleeve"]},
+              "cuff": {"targets": ["cuff-R"], "shapes": ["-cuff"]},
+              "limb": {"targets": ["arm-R", "armskin-R"], "shapes": ["-limb"]}}
+
 REGISTRY = {
     "sunhat": {"params": SUNHAT_PARAMS, "bounds": SUNHAT_BOUNDS, "steps": SUNHAT_STEPS,
                "groups": SUNHAT_GROUPS},
@@ -110,14 +155,31 @@ REGISTRY = {
              "groups": FACE_GROUPS},
     "hair-mass": {"params": [], "bounds": HAIR_BOUNDS, "steps": HAIR_STEPS,
                   "groups": HAIR_GROUPS},
+    "collar": {"params": COLLAR_PARAMS, "bounds": COLLAR_BOUNDS, "steps": COLLAR_STEPS,
+               "groups": COLLAR_GROUPS},
+    "bow": {"params": BOW_PARAMS, "bounds": BOW_BOUNDS, "steps": BOW_STEPS,
+            "groups": BOW_GROUPS},
+    "arm": {"params": [], "bounds": {**ARM_AXIS_BOUNDS, **ARM_EXTRA_BOUNDS},
+            "steps": {**ARM_AXIS_STEPS, **ARM_EXTRA_STEPS}, "groups": ARM_GROUPS},
 }
+
+# family parameter defaults, used when the spec node omits an optional key (must match relate.py)
+COLLAR_DEFAULTS = {"neck": 0.46, "v": 0.66, "trim": 0.20, "turn": 0.0, "tilt": 0.0}
+BOW_DEFAULTS = {"spread": 128.0, "tilt": -90.0, "loop-len": 0.95, "loop-w": 0.95,
+                "knot-w": 0.20, "knot-h": 0.85, "tail-angle": 122.0, "tail-len": 60.0,
+                "tail-w": 55.0, "tail2-angle": 90.0, "tail2-len": 0.0, "tail2-w": 22.0}
+ARM_DEFAULTS = {"sleeve": 0.0, "puff": 0.6, "cuff-at": 0.0, "cuff-h": 0.0, "cuff-pad": 0.0}
 
 
 def params_for_node(kind: str, node: dict) -> list[str]:
-    """The fitted parameter names for one family instance (hair nodes vary in spine length)."""
+    """The fitted parameter names for one family instance (hair/arm spines vary in length)."""
     if kind == "hair-mass":
         n = len(node["spine"])
         return [f"{ax}{j}" for j in range(n) for ax in ("sx", "sy")] + [f"w{j}" for j in range(n)]
+    if kind == "arm":
+        n = len(node["spine"])
+        return ([f"{ax}{j}" for j in range(n) for ax in ("sx", "sy")] + [f"w{j}" for j in range(n)]
+                + list(ARM_EXTRA_PARAMS))
     return list(REGISTRY[kind]["params"])
 
 
@@ -261,6 +323,15 @@ class FamilyFit:
                     axis = "x" if base == "sx" else "y" if base == "sy" else "w"
                     self.bounds[q] = HAIR_BOUNDS[axis]
                     self.steps[q] = HAIR_STEPS[axis]
+                elif kind == "arm":
+                    base = p.rstrip("0123456789")
+                    if base in ("sx", "sy", "w") and base != p:
+                        axis = "x" if base == "sx" else "y" if base == "sy" else "w"
+                        self.bounds[q] = ARM_AXIS_BOUNDS[axis]
+                        self.steps[q] = ARM_AXIS_STEPS[axis]
+                    else:
+                        self.bounds[q] = ARM_EXTRA_BOUNDS[p]
+                        self.steps[q] = ARM_EXTRA_STEPS[p]
                 else:
                     self.bounds[q] = reg["bounds"][p]
                     self.steps[q] = reg["steps"][p]
@@ -307,6 +378,24 @@ class FamilyFit:
             w = node["w"]
             j = int(param[1:])
             return self._expr(w[j] if isinstance(w, (list, tuple)) else w, env)
+        if self.kind == "arm":
+            if param[:2] == "sx":
+                return self._expr(node["spine"][int(param[2:])][0], env)
+            if param[:2] == "sy":
+                return self._expr(node["spine"][int(param[2:])][1], env)
+            if param[0] == "w":
+                return self._expr(node["w"][int(param[1:])], env)
+            return self._expr(node.get(param, ARM_DEFAULTS[param]), env)
+        if self.kind in ("collar", "bow"):
+            at = node.get("at", [0.0, 0.0])
+            if param == "cx":
+                return self._expr(at[0], env)
+            if param == "cy":
+                return self._expr(at[1], env)
+            defaults = COLLAR_DEFAULTS if self.kind == "collar" else BOW_DEFAULTS
+            if param in node:
+                return self._expr(node[param], env)
+            return self._expr(defaults[param], env)
         if self.kind == "face":
             at = node.get("at", [0.0, 0.0])
             if param == "cx":
@@ -335,6 +424,21 @@ class FamilyFit:
             node["spine"] = [[float(x[f"{pre}sx{j}"]), float(x[f"{pre}sy{j}"])]
                               for j in range(npt)]
             node["w"] = [float(x[f"{pre}w{j}"]) for j in range(npt)]
+            return node
+        if self.kind == "arm":
+            npt = len(node["spine"])
+            node["spine"] = [[float(x[f"{pre}sx{j}"]), float(x[f"{pre}sy{j}"])]
+                              for j in range(npt)]
+            node["w"] = [float(x[f"{pre}w{j}"]) for j in range(npt)]
+            for p in ARM_EXTRA_PARAMS:
+                node[p] = float(x[f"{pre}{p}"])
+            return node
+        if self.kind in ("collar", "bow"):
+            node["at"] = [float(x[f"{pre}cx"]), float(x[f"{pre}cy"])]
+            for p in params_for_node(self.kind, node):
+                if p in ("cx", "cy"):
+                    continue
+                node[p] = float(x[f"{pre}{p}"])
             return node
         if self.kind == "face":
             node["at"] = [float(x[f"{pre}cx"]), float(x[f"{pre}cy"])]

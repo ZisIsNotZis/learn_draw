@@ -54,12 +54,21 @@ M1 is defined as flat masses, so gating it on `edge_f1` would have failed it for
 it is for — and would have pressured M1 into smuggling in M2/M3 work (the "one ticket doing several
 things at once" failure that got 05 frozen). Renegotiated 2026-09-15; see `STATUS.md` D7.
 
+**THE PRIMARY GATE IS THE RUBRIC, NOT THE METRICS (added 2026-09-15, D30).** The pixel metrics are
+*pixel* measures: they compare edge coincidence and colour distance against a reference, so a traced
+copy scores well and a good drawing of a slightly different subject scores badly. This file's own P14
+said the primary criterion is *looking*; `docs/drawing/rubric.md` now makes that specific, actionable
+and comparable, and it is what decides whether a drawing is good. The metrics stay as **alarms** on G2
+(catch deletion and breakage) and as **diagnostics** on G3 (tell you *where* to work). Tuning a
+drawing to a metric — or to a rubric number — is invariant 4's regression (P25).
+
 | # | gate | command / method | passes when |
 | --- | --- | --- | --- |
+| **G8** | **the rubric (PRIMARY)** | `draw check` bundle → an independent, sight-proven reviewer scores the six axes in `docs/drawing/rubric.md`, two reviewers, contested axes recorded | the milestone's **named axis** reaches its target, and no axis fell by ≥2 where it had been ≥3. The vector is the verdict, never a total |
 | **G0** | **admissibility (check this FIRST)** | render the judged artifact **without** `--ref` | it renders. An artifact that needs the reference raster is **teacher-dependent** and any comparison result on it is **void** — not a pass and not a failure of the drawing, but a failure of its admissibility (`STATUS.md` D21). Use the reference to **materialize** geometry into the spec (trace once, freeze the vertices, close the image — D20), never to compute geometry at render time |
 | G1 | render + bundle | `scripts/draw check <assembly-render> --ref image.jpg` | bundle written; `draft-fullres.png` is in the reviewer image list |
-| G2 | **alarm** — nothing deleted, nothing broken | the `vs recorded best:` line in `report.txt` | `coverage` ≥ best − 0.01 (deletion floor) and `color_dist` ≤ best + 15 (breakage). Applies at **every** milestone |
-| G2b | **detail floor** | as above, **restricted to the region the milestone owns** | `edge_f1` (and coverage) measured on that region ≥ the baseline's, within 0.01 — applies **from M2 onward**. D14: a whole-frame window for a region-scoped milestone is a gate defect, and this mistake has now been made three times (M1, M2 attempt 1, M2 attempt 2) |
+| G2 | **alarm** — nothing deleted, nothing broken | the `vs recorded floor:` line in `report.txt` | `coverage` ≥ floor − 0.01 (deletion floor) and `color_dist` ≤ floor + 15 (breakage). Applies at **every** milestone. **Not a quality measure** — see G8 |
+| G2b | **detail diagnostic** | as above, **restricted to the region the milestone owns** | `edge_f1` reported, and its movement explained. **Demoted 2026-09-15 (D30): as a *floor* it was false** — it was calibrated on a hand-fitted artifact, so clearing it needed near-contour accuracy (proved: D26), which is tracing. It tells you where the drawing is thin; it does not decide whether the drawing is good |
 | G3 | placement check | per-element mass measurement (centroid + area% of the reference's main colour masses) against the reference, plus the region-scoped colour-mass distance | each mass present, and its centroid within ~0.05 of the reference's. This is the composition instrument; it is what caught reviewer error in M1 |
 | **G7** | **transferable share** | `.venv/bin/python .scratch/13-assembly/work/measure-trace-debt.py` | at a **milestone exit**, the traced share of the artifact's painted pixels is **0** — every shape comes from a family or a relation. A `traced` node may exist *during* work (it is the teacher's measurement) but may not be in the artifact a milestone exits on. **Added 2026-09-15 (D24, approved):** M2 was passing this gate set while 81% of its head was a frozen copy of the reference. A gate that cannot tell a drawing from a copy is not a gate, and a frozen contour is not a **canon** — `vocabulary.md` defines a canon as proportion knowledge that *transfers to a new subject*, and a traced outline transfers to nothing |
 | G4 | diagnostics | resolver output in `report.txt` | clean, or each firing is stated and justified |
@@ -88,6 +97,27 @@ images", and the orchestrator has no vision at all. Ask the reviewer first for o
 agent could state, checkable against a measurement already in the repo. An unsighted verdict is
 **void, not negative**, and the record must say the visual half was not run. A fabricated visual
 verdict is the worst possible outcome.
+
+## When to stop — the standing stop conditions (D31)
+
+A run continues autonomously **until one of these fires**, and then stops and reports rather than
+grinding. They are not failure states; they are the method reporting its own limit, and each one is a
+finding worth more than another iteration.
+
+- **S1 · Abstraction failure.** Describing what to draw starts to need a flood of numbers instead of
+  high-level terms. The litmus is already in `abstraction.md`: *if expressing an idea needs
+  coordinates, the abstraction has failed — add the relation or the vocabulary, never the numbers.*
+  Reaching for a coordinate is the signal; reaching for it repeatedly is the stop.
+- **S2 · Comprehension failure.** You can no longer say what change would move the drawing closer to
+  the reference — you are guessing at edits rather than understanding the difference. Guessing is the
+  stop; **name what you cannot understand**, because that is a missing vocabulary item or a missing
+  measurement.
+- **S3 · Perception failure.** The review pipeline cannot report, or cannot distinguish two drafts:
+  no sighted reviewer available (D18), or two reviewers' verdicts land on the same score for visibly
+  different work. Without perception the loop is open, and continuing is writing without looking.
+
+On a stop: park with **status, next step, blocker** (R-SES.2), leave the round's artefacts and numbers
+committed, and report — do not keep iterating to look busy.
 
 ## Milestones
 

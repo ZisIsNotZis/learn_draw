@@ -1,0 +1,58 @@
+{
+ "version": 1,
+ "node": "collar-trim-left",
+ "kind": "region",
+ "spec": ".scratch/13-assembly/work/teacher-body.yaml",
+ "image": "../../../image.jpg",
+ "image_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+ "date": "2026-09-15",
+ "seed": [
+  660.0,
+  450.0
+ ],
+ "tol": 20.0,
+ "fixed": true,
+ "eps": 3.0,
+ "box": [
+  600.0,
+  370.0,
+  880.0,
+  500.0
+ ],
+ "method": "scripts/relate.py:resolve(kind=region) -> scripts/scene_render.py:flood_region(fixed-range) -> cv2.approxPolyDP",
+ "vertex_count": 8,
+ "vertices": [
+  [
+   657.0,
+   410.0
+  ],
+  [
+   650.0,
+   419.0
+  ],
+  [
+   650.0,
+   441.0
+  ],
+  [
+   662.0,
+   455.0
+  ],
+  [
+   669.0,
+   456.0
+  ],
+  [
+   654.0,
+   438.0
+  ],
+  [
+   654.0,
+   420.0
+  ],
+  [
+   660.0,
+   411.0
+  ]
+ ]
+}

@@ -1,0 +1,33 @@
+# teacher-body.yaml — the M3a teacher step (roadmap abstraction.md "Materializing a teacher
+# measurement", STATUS D20/D24). NOT the artifact: this file exists only so `draw freeze` can flood
+# each upper-body part out of image.jpg once and write a provenance-carrying sidecar under
+# work/traced/. The family parameters are then FITTED to those masks (work/fit-family.py) and the
+# traces discarded — only the fitted family instances survive in spec.yaml. Every probe below is
+# region-restricted and colour-matched; the seed/tol/box provenance is repeated in each sidecar.
+#
+# The sleeve is included even though it is NOT colour-separable from the blouse (both #e1e7dc-ish):
+# its flood is box-clipped at the armhole seam (x≈798) and the cuff line (y≈592), so it is an
+# approximate teacher mask, and the fit is reported with that caveat. The hand is NOT traced at all:
+# its mauve merges with the translucent petal overlay (measured, measure-body.md gap 4), so there is
+# no honest hand measurement to fit to.
+frame: {w: 1024, h: 1024}
+layers: []
+draw:
+  - {region: collar-pale, seed: [750, 430], tol: 30, fixed: true, box: [600, 370, 880, 500], eps: 3,
+     fill: "#96c3d6", desc: "collar pale body — #96c3d6 probe, region x[600,880] y[370,500]"}
+  - {region: collar-trim, seed: [790, 450], tol: 24, fixed: true, box: [600, 370, 880, 500], eps: 3,
+     fill: "#374b68", desc: "collar navy trim, right half — #374b68 probe"}
+  - {region: collar-trim-left, seed: [660, 450], tol: 20, fixed: true, box: [600, 370, 880, 500], eps: 3,
+     fill: "#374b68", desc: "collar navy trim, left flap (separate component; folds split the band)"}
+  - {region: sleeve-R, seed: [830, 540], tol: 14, fixed: true, box: [798, 455, 910, 592], eps: 3,
+     fill: "#e1e7dc", desc: "right puff sleeve — SAME cream as the blouse, so this is a box-clipped approximation ending at the armhole seam x~798 and the cuff line y~592 (low confidence)"}
+  - {region: cuff-R, seed: [878, 614], tol: 18, fixed: true, box: [800, 550, 960, 700], eps: 3,
+     fill: "#2d3b58", desc: "right navy cuff — #2d3b58 probe, high confidence"}
+  - {region: arm-R, seed: [840, 780], tol: 14, fixed: true, box: [780, 635, 960, 930], eps: 3,
+     fill: "#ccded7", desc: "right forearm cream — #ccded7 probe"}
+  - {region: armskin-R, seed: [895, 643], tol: 26, fixed: true, box: [840, 600, 940, 740], eps: 3,
+     fill: "#c9aabb", desc: "right forearm skin patch below the cuff — #c9aabb probe"}
+  - {region: bow-magenta, seed: [726, 501], tol: 35, fixed: true, box: [480, 430, 820, 720], eps: 3,
+     fill: "#d35081", desc: "bow magenta (loops + knot + tail) — #d35081 probe, high confidence"}
+  - {region: bowtail-navy, seed: [656, 638], tol: 16, fixed: true, box: [600, 560, 720, 720], eps: 3,
+     fill: "#2f3c58", desc: "navy ribbon tail below the knot — #2f3c58 probe, high confidence"}

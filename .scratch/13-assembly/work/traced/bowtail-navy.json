@@ -1,0 +1,46 @@
+{
+ "version": 1,
+ "node": "bowtail-navy",
+ "kind": "region",
+ "spec": ".scratch/13-assembly/work/teacher-body.yaml",
+ "image": "../../../image.jpg",
+ "image_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+ "date": "2026-09-15",
+ "seed": [
+  656.0,
+  638.0
+ ],
+ "tol": 16.0,
+ "fixed": true,
+ "eps": 3.0,
+ "box": [
+  600.0,
+  560.0,
+  720.0,
+  720.0
+ ],
+ "method": "scripts/relate.py:resolve(kind=region) -> scripts/scene_render.py:flood_region(fixed-range) -> cv2.approxPolyDP",
+ "vertex_count": 5,
+ "vertices": [
+  [
+   667.0,
+   603.0
+  ],
+  [
+   655.0,
+   603.0
+  ],
+  [
+   648.0,
+   641.0
+  ],
+  [
+   647.0,
+   669.0
+  ],
+  [
+   659.0,
+   677.0
+  ]
+ ]
+}
