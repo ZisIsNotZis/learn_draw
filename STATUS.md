@@ -48,6 +48,16 @@ abstraction / comprehension / perception failure). Whoever picks this up: the lo
 *dispatch a writer → verify its claims myself → run the gates → commit → rubric-review → next slice*,
 and the writer's report is always a **claim** until re-verified.
 
+**Next after M3a — the connected figure (the reviewers' verdict, and the S1 test).** Both rubric
+reviewers independently asked for *"one continuous silhouette — head → neck → shoulders → torso →
+skirt → legs — then re-cut the fills inside it."* The design question is whether that can be said
+**without a coordinate flood** (stop condition S1), and it can: the dismemberment is not "no silhouette
+node", it is that the masses **do not connect** — a detached head over a dress blob over a skirt island,
+with background showing between. So the fix is connecting **structure**, expressed in families and
+relations: a neck that reaches from the jaw into the collar, shoulders that carry the arms, a blouse that
+overlaps the skirt, an arm attached at the shoulder rather than floating. That is sayable in one
+sentence with no numbers, so **S1 does not fire and the run continues**.
+
 Current: **M3a (upper body)** — collar, bow structure, arms, hands, sleeve/cuff — plus a **rubric
 pipeline validation** running on the frozen parametric floor (`evidence/m2-final.png`) by two
 independent reviewers, to (a) check the reviewers can actually see and (b) record a baseline rubric
