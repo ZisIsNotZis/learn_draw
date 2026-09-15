@@ -292,6 +292,62 @@ _qx = [p[0] for p in _qnode["poly"]]
 check("q: frozen sidecar renders as traced with no --ref",
       _qnode["poly"] and 25 <= min(_qx) <= 35 and 85 <= max(_qx) <= 95)
 
+# (r) sunhat `droop`: a sag of the near edge along the brim's own normal. Default 0 must be
+# identical to the old flat ellipse (every historical spec unchanged), and a nonzero droop must
+# move the near edge while leaving the far edge and the two tips alone.
+_flat = rl.ellipse_outline(0, 0, 100, 40, 0)
+check("r: droop 0 == flat ellipse (backward compatible)",
+      rl.droop_outline(0, 0, 100, 40, 0, 0.0) == _flat)
+_droop = np.array(rl.droop_outline(0, 0, 100, 40, 0, 0.5))
+_flat_a = np.array(_flat)
+_near_i = int(np.argmax(_flat_a[:, 1]))          # most positive v = near edge
+_far_i = int(np.argmin(_flat_a[:, 1]))           # most negative v = far edge
+_tip_i = int(np.argmax(_flat_a[:, 0]))
+check("r: droop sags the near edge, leaves the far edge and tips",
+      _droop[_near_i, 1] > _flat_a[_near_i, 1] + 10
+      and abs(_droop[_far_i, 1] - _flat_a[_far_i, 1]) < 1e-9
+      and abs(_droop[_tip_i, 0] - _flat_a[_tip_i, 0]) < 1e-9)
+_sun = {"ellipse": "head", "at": [500, 400], "rx": 90, "ry": 100, "fill": "#eee"}
+_hat = {"sunhat": "hat", "host": "head", "brim": 500, "crown": 170,
+        "flat": 0.3, "rim": 0.5, "front": [0.1, 0.6]}
+_e0, _, _, _ = rl.resolve({"frame": {"w": 1000, "h": 1000}, "draw": [_sun, _hat]})
+_e1, _, _, _ = rl.resolve({"frame": {"w": 1000, "h": 1000},
+                           "draw": [_sun, {**_hat, "droop": 0.6}]})
+_e0b, _, _, _ = rl.resolve({"frame": {"w": 1000, "h": 1000},
+                            "draw": [_sun, {**_hat, "droop": 0.0}]})
+check("r: sunhat accepts droop and it reshapes the brim",
+      _e0 == _e0b and _e0 != _e1
+      and any(n.get("blob") == "hat-brim-near" for n in _e1))
+
+# (s) fit-family instrument core: the IoU, the mask rasterizer, the parameter clamp, the
+# deterministic low-discrepancy seeds, Nelder-Mead, and that the search actually improves.
+import importlib.util as _ilu
+_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_ffspec = _ilu.spec_from_file_location(
+    "fit_family", os.path.join(_ROOT, ".scratch/13-assembly/work/fit-family.py"))
+_ff = _ilu.module_from_spec(_ffspec)
+_ffspec.loader.exec_module(_ff)
+_a = np.zeros((10, 10), np.uint8); _a[0:5, :] = 1
+_b = np.zeros((10, 10), np.uint8); _b[0:5, 0:5] = 1
+check("s: iou is intersection-over-union", _ff.iou(_a, _b) == 25 / 50)
+check("s: iou of disjoint masks is 0", _ff.iou(_a, np.roll(_b, 5, axis=0)) == 0.0)
+_rmask = _ff.rasterize({"blob": "x", "poly": [[1, 1], [8, 1], [8, 8], [1, 8]]}, (10, 10))
+check("s: rasterize fills a poly", _rmask[4, 4] == 1 and _rmask[0, 0] == 0)
+_cl = _ff._clamp({"front0": 0.8, "front1": 0.2}, {"front0": (0, 1), "front1": (0, 1)})
+check("s: clamp keeps front0 < front1",
+      _cl["front0"] == 0.8 and abs(_cl["front1"] - 0.85) < 1e-9)
+check("s: halton seeds are deterministic and in bounds",
+      _ff.halton_seeds(["a", "b"], {"a": (0, 1), "b": (0, 1)}, 4)
+      == _ff.halton_seeds(["a", "b"], {"a": (0, 1), "b": (0, 1)}, 4))
+_nm = _ff.nelder_mead(lambda x: (-((x["a"] - 2.0) ** 2 + (x["b"] + 1.0) ** 2), {}),
+                      {"a": 0.0, "b": 0.0}, {"a": (-5, 5), "b": (-5, 5)},
+                      {"a": 0.5, "b": 0.5})
+check("s: nelder-mead minimises a quadratic", abs(_nm[0]["a"] - 2) < 0.1 and abs(_nm[0]["b"] + 1) < 0.1)
+_qeval = lambda x: (-((x["a"] - 2.0) ** 2 + (x["b"] + 1.0) ** 2), {})
+_qfit = _ff.fit(_qeval, {"a": 0.0, "b": 0.0}, {"a": (-5, 5), "b": (-5, 5)},
+                {"a": 1.0, "b": 1.0}, ["a", "b"], explore=8, refine=2)
+check("s: the search improves on its start", _qfit[1] > -1.0)
+
 print(f"\n{PASS}/{TOTAL} smoke tests passed")
 
 # --- wave + strands generator tests ---

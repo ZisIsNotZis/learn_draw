@@ -11,13 +11,18 @@
 # M2 attempt 3 seeded most of the head from the reference with live `region` nodes, which made
 # this spec reference-dependent. That is now materialized (roadmap D20): `scripts/draw freeze`
 # resolved the regions once with `--ref` and froze each computed outline to a sidecar data file
-# under `.scratch/13-assembly/work/traced/<node>.json`; the five `traced` nodes below read those
-# vertices and never open a raster. The spec is reference-free again: it renders with image.jpg
-# deleted. Each sidecar carries provenance (node id, seed/tol/eps, source image + sha256, date,
-# code path), and a `traced` node refuses loudly if the sidecar is missing, malformed, or stale
-# (its recorded image.jpg sha256 no longer matches the current raster). The traced geometry is the
-# teacher's, not drawn from intent — the traced-vs-invented area fraction in the milestone report
-# measures that debt for M5. Every other node keeps its M1 provenance and was already reference-free.
+# under `.scratch/13-assembly/work/traced/<node>.json`; the two remaining `traced` nodes below
+# (face skin, hair mass) read those vertices and never open a raster. The spec is reference-free:
+# it renders with image.jpg deleted. Each sidecar carries provenance (node id, seed/tol/eps,
+# source image + sha256, date, code path), and a `traced` node refuses loudly if the sidecar is
+# missing, malformed, or stale (its recorded image.jpg sha256 no longer matches the current
+# raster). The traced geometry is the teacher's, not drawn from intent — the traced-vs-invented
+# area fraction in the milestone report measures that debt for M5. Every other node keeps its M1
+# provenance and was already reference-free.
+#
+# The brim's three `traced` nodes are GONE (STATUS D24): they were fitted to the `sunhat` family
+# with `work/fit-family.py` and then discarded, so the hat is now a family instance carrying
+# measured proportions instead of a frozen contour (see the sunhat node's comment).
 #
 # Resolution order != paint order (P20): the head is declared FIRST because everything is sized in
 # units of it, and placed via `z` where it belongs visually.
@@ -25,7 +30,7 @@
 frame: {w: 1024, h: 1024}
 
 layers: [bg, field, ribbon, hair-back, skirt-dark, skirt-pale, blouse, neck, bow,
-         head, features, hat, hat-front, hair-front]
+         hat, hat-front, head, features, hair-front]
 
 vars:
   # ---- measured frame anchors: the "setting the frame" use of a reference (abstraction.md)
@@ -164,51 +169,38 @@ draw:
      spine: [[frame.w*0.25, frame.h*0.905], [frame.w*0.36, frame.h*0.93], [frame.w*0.52, frame.h*0.92]],
      w: frame.w*0.12, fill: "#e8b48c", z: skirt-dark, desc: "warm petal mass in the skirt"}
 
-  # ---------------------------------------------------------------- the hat (family; brim slices do the occlusion)
-  - {sunhat: hat, host: head, brim: 2.905*head.w, crown: 1.105*head.w, tilt: 17,
-     lift: 1.05, drop: 0.62, crown-h: 0.63, flat: 0.257, front: [0.11, 0.57], rim: 0.55, pom: 2,
-     pom-at: [0.715, 0.90], pom-r: 0.16,
-     crown-fill: none, brim-fill: none, rim-fill: none, pom-fill: "#df9199",
+  # ---------------------------------------------------------------- the hat (family; one drooping brim)
+  # FITTED to the teacher's frozen brim masks, then the traces discarded (STATUS D24). The three
+  # `traced` brim nodes that used to stand in for both brim surfaces are gone; their geometry is now
+  # a `sunhat` instance carrying measured proportions. `fit-family.py` maximised mask IoU between the
+  # family's own rendered masks and the frozen teacher masks — `hat-far-navy` is the crown AND far
+  # brim in one navy mass, so its target is `union(dome, brim-far)`; the two teal masks are the split
+  # top surface, matched by `brim-near`. It never looked at `edge_f1`/`color_dist` (invariant 4).
+  # Flat best was IoU 0.589; adding `droop` (a sag of the near edge along the brim's own normal, in
+  # half-brim-widths; 0 = the old flat ellipse, so every historical spec is unchanged) lifted it to
+  # 0.720 — still well under 0.85, because the reference's visible top surface is split into two
+  # pieces by the head (the brim is partly behind the head) and one family surface cannot reproduce
+  # that split. That failure is reported, not hidden; the fitted values below are the best honest fit.
+  - {sunhat: hat, host: head, brim: 4.42974*head.w, crown: 1.18063*head.w, tilt: 30.70,
+     lift: -0.2430, drop: 2.0203, crown-h: 0.7577, flat: 0.4360, front: [0.0, 0.5912], rim: 0.1580,
+     droop: -0.4762, pom: 2, pom-at: [0.694, 0.806], pom-r: 0.105,
+     crown-fill: "#333f64", brim-fill: "#333f64", rim-fill: "#579eaf", pom-fill: "#df9199",
      z: hat, z-front: hat-front, z-pom: hat-front,
-     desc: "wide-brim sun hat worn high. M2: crown grown to the measured 210x~95 dome (crown-navy
-            above y200 is x[428,893] centre (753,109), top y20); the hat sat 19px too high — the
-            reference's crown mass centres at y~92 and its brim at y~131, mine at y58/y109 — so
-            lift came down 1.22 -> 1.05. The brim's two fills are its two SURFACES, not two
-            halves: measured from image.jpg the brim shows a navy band along its far edge that is
-            zero-width at the left tip (x455) and widens rightward (y46 at x540, y81 at x620,
-            ~y194 at x860), with the teal top surface filling everything below it down to the
-            near outline. So `front` picks the near arc (through the left tip and the bottom) and
-            `rim` folds the far band in toward the centre -- one continuous brim outline with a
-            single navy rim running round its far edge. Both poms moved to the reference's measured
-            pom centroids (655,51) and (908,188): at lift 1.05 the old t=0.732 top pom sat on the
-            crown's right and hid the brim's far rim at x620-700. M2 attempt 3: the brim fills are
-            now `none` — the two reference-seeded `region` nodes below supply both brim surfaces, and
-            this family now contributes the crown/brim ANCHOR (the region seeds hang off `hat`), the
-            two poms, and the structural crown dome (also filled by the navy region). z-pom lifts
-            the poms above those regions."}
-
-  # ---- the brim's two surfaces, seeded from the reference (M2 attempt 3) ---------------------
-  # A flat brim ellipse cannot express the reference's crescent droop (open defect #2), and the
-  # teal/navy split re-derived from `front`/`rim` is measurably far off. Both surfaces were flooded
-  # with SEEDS that are points on the sunhat's own brim anchor, so the nodes carried no typed
-  # coordinates and the invented family supplied the seed; each outline is now FROZEN to a sidecar
-  # (D20) and read without a raster. Frozen seeds/params are in each sidecar's provenance.
-  - {traced: hat-far-navy, from: traced/hat-far-navy.json, fill: "#333f64", z: hat,
-     desc: "crown + far brim navy: the reference's navy area round the brim's far edge (crown and
-            far rim are one connected navy mass), frozen by `draw freeze` (seed {along: hat, t:
-            0.742}; tol 28; eps 3); reads vertices only"}
-  - {traced: hat-near-teal, from: traced/hat-near-teal.json, fill: "#579eaf", z: hat-front,
-     desc: "brim top surface teal, left: the reference's teal area near the brim's left, seed was
-            pushed 0.13 brim-widths inward from the outline at t=0.44, frozen by `draw freeze`
-            (tol 28; eps 3); reads vertices only"}
-  - {traced: hat-near-teal-right, from: traced/hat-near-teal-right.json, fill: "#579eaf", z: hat-front,
-     desc: "brim top surface teal, right: the same surface appears to the lower-right of the hair
-            (the head occludes its middle), frozen by `draw freeze` (seed 2.65 head-radii right and
-            0.84 down; tol 30; eps 3); reads vertices only"}
+     desc: "wide-brim sun hat, fitted from the reference's frozen brim measurement (fit-family.py,
+            mask IoU 0.720; flat-only 0.589): brim 4.43 head-widths, crown 1.18, tilt 31deg,
+            flat 0.44, fold rim 0.16, crown-h 0.76, lift -0.24, drop 2.02, and droop -0.48 — the
+            near edge curls up along the brim normal (positive droop would sag it; the reference's
+            stiff brim wants a slight curl-up at this tilt). The two fills are the brim's two
+            SURFACES: crown + far band navy (#333f64, one connected mass) under the teal top
+            surface (#579eaf). Both poms stay at the measured centroids (656,52) and (908,189): the
+            larger brim moved the old `pom-at` t-values off them, so they were re-placed on the new
+            outline (t 0.694/0.806) and `pom-r` scaled 0.16 -> 0.105 to keep their measured ~44px
+            radius. z-pom keeps them above the brim fills. The family now owns both surfaces, so the
+            spec carries no reference-derived brim geometry at all."}
 
 # occlusion intent, in words — the engine raises CONTRADICTION when this disagrees with `layers`
 relations:
-  - {front: hat, behind: head, desc: "the hat sits on top of the head"}
+  - {front: head, behind: hat, desc: "the head and hair occlude the brim's middle: the hat is worn high and its brim passes behind the skull, while the crown and the brim's left and right lobes stay visible above and beside it (measured: the reference's visible teal surface is TWO pieces, x430-653 and x897-1023, split by head+hair — no single ellipse-half can match it, which is why the hat must paint under the head)"}
   - {front: hair-front, behind: blouse, desc: "front hair falls over the blouse"}
   - {front: skirt-pale, behind: skirt-dark, desc: "the pale panel lies over the dark skirt"}
   - {front: blouse, behind: ribbon-sweep, desc: "the ribbon passes behind the figure"}

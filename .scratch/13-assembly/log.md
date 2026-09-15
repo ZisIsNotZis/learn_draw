@@ -141,7 +141,7 @@ cranium's round bottom *was* the silhouette and the jaw was invisible. Both revi
 reported "round blob, no chin" — and both were right. Fixed: the cranium now stops just past the
 cheek line, so the jaw below it is the silhouette. Verified against the reference's own row profile:
 
-```
+```text
 target  y318:108  y330:100  y342:98  y354:97  y366:57  y378:0
 M2      y316:117  y328:105  y340:97  y352:91  y364:59  y376:0
 ```
@@ -165,7 +165,7 @@ and 18% too tall; the far eye is partly occluded by a cheek lock.
 `evidence/m2-*.png` renders · `evidence/check-m2/` gate bundle · head-crop A/B crops were handed to
 the reviewers with neutral names (`A` = baseline, `B` = M2) and no context.
 
-## 2026-09-15 — M2 attempt 2: the brim split was the cause. Better, still not passed.
+## 2026-09-15 — M2 attempt 2: the brim split was the cause. Better, still not passed
 
 **The defect was real and is fixed.** A writer subagent found the actual root cause, which was not
 what I had guessed. `sunhat` split the brim with a **straight chord across the disc** (perpendicular to
@@ -190,7 +190,7 @@ reference's y92), and `pom-at` corrected so both poms land on the reference's me
 Every alarm moved the right way vs attempt 1. **The gate is still not passed**, and the reason is
 now precise and measured, not a matter of taste:
 
-```
+```text
 head-region edge_f1     baseline 0.422   M2 0.173
 head-region coverage    baseline 0.702   M2 0.585
 ```
@@ -305,7 +305,7 @@ assembly leads the baseline on whole-frame edge correspondence.
 **And it must not be accepted, because of how it was achieved.** Five spec nodes are `region` floods of
 `image.jpg`, and:
 
-```
+```text
 $ .venv/bin/python scripts/relate.py .scratch/13-assembly/work/spec.yaml -o /tmp/noref.png
 relate: region 'face-skin' needs the reference raster (--ref);
         region is teacher-only and may not appear in a reference-free spec
@@ -331,6 +331,7 @@ reference to fill in the numbers in a spec, then close the image." A live `regio
 way that is not removable, and it is the one that must not be used in the artifact.
 
 So the teacher step becomes a **materialization**:
+
 1. resolve once with `--ref` (the tracer computes the geometry);
 2. **freeze** the computed vertices into a sidecar data file with provenance (source, date, method,
    digest);
@@ -363,7 +364,7 @@ that stands up with the image deleted.
 
 The freeze slice worked exactly as designed. Verified by me, not taken on report:
 
-```
+```text
 $ mv image.jpg /tmp/hidden.jpg
 $ .venv/bin/python scripts/relate.py .scratch/13-assembly/work/spec.yaml -o /tmp/noref.png
 resolved 48 nodes across 14 layer(s)      # diagnostics: only the two honest SUB-PIXELs, no TEACHER
@@ -425,3 +426,62 @@ teacher's evidence (not as the drawing), and M5 has something that can actually 
 distinction that keeps this honest: **fit to the teacher's measurement, never to the evaluation
 metric** — fitting the sunhat to the traced outline is parameter extraction; tuning `brim` until
 `edge_f1` rises is the optimizer regression invariant 4 forbids.
+
+## 2026-09-15 — M2 attempt 4: the brim becomes a family, and the real bug was Z-ORDER
+
+Option A (fit the families to the traces, then discard the traces) sliced brim-first, since the brim
+was the structurally hardest. Delegated; everything below re-verified by me.
+
+### What the fit proved
+
+New instrument `work/fit-family.py`: given a family and its frozen `traced` targets, it searches the
+family's parameters to maximise **IoU against the teacher's mask** — deterministic (Halton exploration
+→ axis-wise coordinate descent → dependency-free Nelder-Mead), and it never reads `edge_f1`. It also
+handles the union explicitly: `hat-far-navy` is **crown + far brim in one navy mass**, so `far` is
+fitted as `union(hat-dome, hat-brim-far)`.
+
+| | mean IoU | far | near |
+| --- | --- | --- | --- |
+| starting params (flat ellipse, as shipped) | 0.393 | 0.407 | 0.380 |
+| best possible FLAT ellipse | 0.589 | 0.646 | 0.532 |
+| after adding `droop` | **0.720** | **0.846** | 0.594 |
+
+**`sunhat` could NOT express this brim.** 0.589 is the ceiling for the family's structural model, and it
+is far from the ≥0.85 that would mean "this family can draw this hat". I independently confirmed the
+outline is not an ellipse either: the best ellipse leaves points **48% off** it. So the family gained a
+**`droop`** parameter (signed; the fitted value is −0.476, a slight *curl-up*, because this hat is worn
+tilted back so the brim's near edge rises in the middle) — **default 0 = the old flat ellipse**, so it is
+backward compatible. This is R5 demand-first working as intended: the drawing failed without it.
+
+### The near group's ceiling was a Z-ORDER bug, not a shape bug
+
+The near surface capped at 0.594 and the fitter's report explained why: the reference's visible teal
+surface is **two disjoint pieces** (x430–653 and x897–1023) split by the head and hair, and the family
+paints one continuous near surface — because **the hat was painting ABOVE the head**, so the brim's near
+surface had to cover the face gap. I tested that directly by moving `hat`/`hat-front` **below** `head` in
+the layer list:
+
+| | head `edge_f1` | head coverage | whole-frame `edge_f1` |
+| --- | --- | --- | --- |
+| baseline | 0.422 | 0.702 | 0.252 |
+| hat above head (fitted) | 0.381 | 0.731 | 0.185 |
+| **hat BELOW head** | **0.479** | **0.744** | 0.219 |
+
+Zero hard diagnostics. The reference is the same fact seen from the other side: the hat is worn high and
+**its brim passes behind the skull**, while the crown and the brim's left/right lobes stay visible above
+and beside it. The declared relation was corrected from `front: hat` to `front: head` with that reasoning
+in its `desc` — otherwise the engine's own CONTRADICTION diagnostic fires, which is exactly its job.
+
+### Where M2 stands
+
+- Head region: **`edge_f1` 0.479 ≥ bar 0.412 and ≥ baseline 0.422**; coverage 0.744 ≥ 0.692. **Passes.**
+- Traced share of the drawn head: **0.810 → 0.391** (the two remaining traces are `face-skin`,
+  `hair-mass`).
+- Tests 44/44 (10 new for the fitter and `droop`); deterministic ×3 with no `--ref`; G0 holds;
+  historical specs unaffected.
+
+**Not yet M2's exit, for two measured reasons:** G7 requires the traced share to reach **0**, so the face
+and hair must be fitted too; and the `sunhat` parameters were fitted under the *old* z-order, when the
+hat was above the head and the only occluder was `hair-mass`. Now that the head occludes the brim as
+well, the fit must be redone with `head` and `hair-mass` as occluders — the near group should improve
+beyond 0.594, and until it does the fitted values are known-stale.

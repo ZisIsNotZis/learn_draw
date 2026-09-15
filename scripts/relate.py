@@ -260,6 +260,40 @@ def ellipse_anchor(sid, cx, cy, rx, ry, rot=0.0) -> Anchor:
     }, outline=ellipse_outline(cx, cy, rx, ry, rot))
 
 
+def droop_outline(cx, cy, rx, ry, rot_deg=0.0, droop=0.0, n=72) -> list[tuple[float, float]]:
+    """A flat brim ellipse whose near edge sags along the brim's own normal.
+
+    A real floppy wide brim is not a flat disc, so its silhouette is not an ellipse: the near edge
+    droops. `droop` (0 = flat, so every existing spec is unchanged) is the sag at the near edge in
+    half-brim-widths; the far edge and the two tips stay put, so the bend dies out smoothly and the
+    brim still reads as one closed curve. The sag is applied along the brim's local +v axis, i.e.
+    its own normal, so rotating the brim rotates the droop with it.
+    """
+    if not droop:
+        return ellipse_outline(cx, cy, rx, ry, rot_deg, n)
+    a = math.radians(rot_deg)
+    ca, sa = math.cos(a), math.sin(a)
+    pts: list[tuple[float, float]] = []
+    for i in range(n + 1):
+        th = 2 * math.pi * i / n
+        u = rx * math.cos(th)
+        v = ry * math.sin(th) + droop * rx * max(0.0, math.sin(th))
+        pts.append((cx + u * ca - v * sa, cy + u * sa + v * ca))
+    return pts
+
+
+def droop_anchor(sid, cx, cy, rx, ry, rot=0.0, droop=0.0) -> Anchor:
+    """`ellipse_anchor` with an optional drooping outline; the handles stay the ellipse's.
+
+    Keeping the handles from the flat ellipse means `hat.left/right/top/bottom` and the poms do not
+    silently move when `droop` changes: droop reshapes the silhouette, it is not a re-fit.
+    """
+    base = ellipse_anchor(sid, cx, cy, rx, ry, rot)
+    if droop:
+        base._outline = droop_outline(cx, cy, rx, ry, rot, droop)
+    return base
+
+
 def bbox_anchor(sid, pts: list[tuple[float, float]]) -> Anchor:
     xs = [p[0] for p in pts]
     ys = [p[1] for p in pts]
@@ -631,6 +665,11 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     exactly that). The far slice is instead the rim band that hugs the brim's far outline, and the
     near slice is the top surface it borders: `front` picks the near arc and `rim` how far the top
     surface is inset from the far edge, so the two fills still tile the ellipse exactly.
+
+    `droop` (default 0 = the flat ellipse, backward compatible) is a family change demanded by the
+    13-assembly brim: a real floppy wide brim is not a flat disc, so its silhouette is not an
+    ellipse. It sags the near edge along the brim's own normal (see `droop_outline`); the fit of
+    `sunhat` to the reference's frozen brim masks is what asked for it.
     """
     sid = str(node["sunhat"])
     host_id = str(node["host"])
@@ -640,6 +679,7 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     tilt = ctx.scalar(node.get("tilt", 0))
     crown_w = ctx.scalar(node["crown"])
     flat = ctx.scalar(node.get("flat", 0.30))
+    droop = ctx.scalar(node.get("droop", 0.0))
     drop = ctx.scalar(node.get("drop", 0.62))
     lift = ctx.scalar(node.get("lift", 0.42))
     z = str(node.get("z", "hat"))
@@ -653,7 +693,7 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     brim_ry = brim_rx * flat
     bx = host.env[f"{host_id}.cx"]
     by = host.env[f"{host_id}.cy"] - host.env[f"{host_id}.h2"] * lift
-    brim = ctx.add(ellipse_anchor(f"{sid}-brim", bx, by, brim_rx, brim_ry, tilt))
+    brim = ctx.add(droop_anchor(f"{sid}-brim", bx, by, brim_rx, brim_ry, tilt, droop))
 
     crown_rx = crown_w / 2
     crown_ry = ctx.scalar(node.get("crown-h", 0.62)) * crown_rx
