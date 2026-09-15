@@ -809,3 +809,27 @@ The two reviewers disagree on whether the hat "reads as crown and brim": reviewe
 says yes. It is a genuine borderline, recorded as ±1 rather than contested — the rubric's anchors put
 that judgement between 3 and 4, and both landed inside the band. Worth watching: if the hat reading
 stays borderline after M3b's hat work, the D anchors need sharpening.
+
+### Third independent review — corroboration, and one new specific
+
+A third reviewer scored the same M3a bundle: **A4 · B3 · C2 · D3 · E2 · F4**.
+
+| axis | rev 1 | rev 2 | rev 3 | spread |
+| --- | --- | --- | --- | --- |
+| A | 4 | 4 | 4 | 0 |
+| **B** | **3** | **3** | **3** | **0** |
+| C | 3 | 3 | 2 | 1 |
+| D | 3 | 4 | 3 | 1 |
+| E | 2 | 3 | 2 | 1 |
+| F | 3 | 3 | 4 | 1 |
+
+**B = 3 in all three reviews.** M3's exit target (B ≥ 4) is not met, and that is now a three-way
+agreement rather than a two-way one. Every axis spread stays ≤ 1, so nothing is contested.
+
+It named the same biggest defect and the same fix (carry the dress hem down into the seated lap mass and
+connect them at the hip), and added one specific defect the others had not: **the hair band is drawn
+over the hat crown — the wrong thing in front.** With the hat painting *below* the head and hair (the
+M2 z-order fix), `hair-mass` can cover the crown; in the reference the crown is a visible navy dome above
+the brim with the hair below it. Candidate fix: the crown needs to paint *above* the hair while the
+brim stays below it — i.e. the hat's two parts belong on different sides of the hair, which is the same
+P17 z-split logic the brim already uses. Recorded for the hat work.
