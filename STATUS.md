@@ -84,6 +84,17 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
    must not appear in M5's reference-free specs.
 9. **Proportion-vs-placement literal lint** (SA1 finding 6): proportion constants in `vars:` with
    provenance are convention-only; the resolver does not yet warn on raw `frame.*` placement.
+10. **`region` is an overloaded name (found 2026-09-15).** It is both a **raster-flood node type**
+   (`{region: <id>, seed: ..., tol: ...}`) and a **bbox parameter** of the `strands`, `stars` and
+   `flow` families (`{strands: x, region: [x0,y0,x1,y1], ...}`). Grepping for `region:` therefore
+   reports the baseline and the starry probe as teacher-dependent when they are not — it made me
+   conclude the ratchet floor failed G0, which is false (both render without `--ref`). Not renamed
+   yet (it would touch many files for a clarity win); **any admissibility audit must match
+   `{region: <id>, seed:`, not `region:`**.
+11. **Admissibility inventory (2026-09-15):** the *only* teacher-dependent artifact in the repo is the
+   live assembly `.scratch/13-assembly/work/spec.yaml` (5 raster nodes) — the thing the freeze slice
+   is fixing. `06/work/bust.yaml`, `14/work/final/*.yaml` and the baseline `05/…/scene.yaml` all render
+   with the image deleted.
 
 ## Decisions log (append-only)
 
