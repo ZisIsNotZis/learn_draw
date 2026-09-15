@@ -126,11 +126,47 @@ Everything else is a vocabulary node or a relation. Each takes `z:`, `desc:`, `f
 | `stroke` | `spine`, `w`, `ink` | an open stroke along a spine |
 | `rect` | `full: true` or `at`, `w`, `h` | a rectangle / the backdrop |
 | `blob` | **either** `poly` (closed polygon, fill-only) **or** `spine` (+ `w`, a tapered ribbon) | a closed filled shape |
+| `region` | `seed`, `tol`, `box?`, `fixed?`, `eps?` | **teacher-only**: floods the reference raster *at render time*. Refuses to resolve without `--ref`. Use it to produce `traced` data, never as the artifact |
+| `traced` | `from` (a path to frozen vertices), `fill`, `z` | a closed shape whose vertices were **computed once** by a `region` and frozen to disk. Opens no raster |
 
 `blob`'s two forms are both first-class: a closed silhouette (blouse, skirt panel, brim slice) has no
 spine, and a ribbon (hair mass, cloth fold) has no polygon. They compile to the same node type
 (`scene-format.md`), so authoring in the wrong one silently looks like a dialect error — say which
 you mean.
+
+## Materializing a teacher measurement (the only way to use the raster)
+
+Invariant 6 / P18: **the engine never sees the target.** A live `region` node breaks that — the spec
+would not render with `image.jpg` deleted. So the teacher step is a **materialization**, in four steps:
+
+```bash
+scripts/draw freeze <spec>.yaml --ref image.jpg   # 1. resolve once with the reference open
+# 2. the computed outlines land in <spec-dir>/traced/<node>.json WITH provenance
+#    (image path + sha256, seed, tol, eps, method, vertex_count)
+# 3. the spec's `region` nodes are rewritten as `traced` nodes pointing at that data
+# 4. the spec now renders with the image deleted — and the original region form survives in the
+#    sidecar's seed/tol/eps, so it can be re-frozen when the reference changes
+```
+
+Staleness is loud: if `image.jpg`'s sha256 no longer matches what the sidecar recorded, resolution
+raises `SpecError` rather than silently using stale geometry.
+
+Why a sidecar and not inline vertices: the authoring file must stay a *description* a human can read.
+A `poly` of two thousand coordinates inline would look like the 824-hand-typed-coordinate failure even
+though it is machine output; a named `traced` node keeps the generated data clearly marked as
+**computed** (invariant 5 is about what a human types).
+
+**And a warning that matters more than the mechanics.** A frozen contour is **not a canon.**
+`vocabulary.md` defines a canon as proportion knowledge as a fraction of a host measure — knowledge
+that *transfers to a new subject*. A traced outline transfers to nothing: it is one specific shape and
+says nothing about how to draw the next head. So a spec made mostly of `traced` nodes is admissible
+and reproducible, yet carries little transferable learning, and it is exactly that share which the
+withdrawal phase must re-invent. **Use the trace as ground truth to FIT the families to** (brim
+outline → `sunhat` parameters, hair silhouette → `hair-mass`, skin → `face`), then discard the trace:
+that is the teacher loop this file describes. Honesty hinge — **fit to the teacher's measurement,
+never to the evaluation metric**: fitting `sunhat` to a traced outline is parameter extraction;
+nudging `brim` until `edge_f1` rises is the optimizer regression invariant 4 forbids. The debt
+instrument is `work/measure-trace-debt.py`.
 
 ## Diagnostics — the engine is the model's numeric sense
 
