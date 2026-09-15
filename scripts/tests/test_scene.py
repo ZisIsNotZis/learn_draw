@@ -8,6 +8,7 @@ import cv2, numpy as np
 SIZE = (200, 200)
 OUT = tempfile.mkdtemp()
 PASS = 0
+TOTAL = 0
 
 
 def render(nodes, name):
@@ -22,8 +23,9 @@ def render(nodes, name):
 
 
 def check(name, cond):
-    global PASS
+    global PASS, TOTAL
     print(("PASS " if cond else "FAIL ") + name)
+    TOTAL += 1
     assert cond, name
     PASS += 1
 
@@ -94,7 +96,25 @@ try:
 except SystemExit as e:
     check("g: unknown key raises", "bogus" in str(e))
 
-print(f"\n{PASS}/7 smoke tests passed")
+# (h) front end (relate.py): both blob forms resolve, and neither-key fails loudly
+import relate as rl   # noqa: E402  (needs scripts/ on sys.path, done at the top)
+
+_spec = {"frame": {"w": 200, "h": 200},
+         "layers": ["default"],
+         "draw": [
+             {"blob": "quad", "poly": [[20, 20], [180, 20], [180, 120]], "fill": "#ff0000"},
+             {"blob": "rib", "spine": [[20, 160], [180, 160]], "w": 20, "fill": "#0000ff"},
+         ]}
+_emit, _env, _notes, _layers = rl.resolve(_spec)
+check("h: front-end blob accepts poly", any(n.get("blob") == "quad" for n in _emit))
+check("h: front-end blob still accepts spine+w", any(n.get("blob") == "rib" for n in _emit))
+try:
+    rl.resolve({"frame": {"w": 200, "h": 200}, "draw": [{"blob": "bad", "fill": "#fff"}]})
+    check("h: blob without poly/spine fails loudly", False)
+except SystemExit as e:
+    check("h: blob without poly/spine fails loudly", "poly" in str(e) and "spine" in str(e))
+
+print(f"\n{PASS}/{TOTAL} smoke tests passed")
 
 # --- wave + strands generator tests ---
 import hashlib, subprocess as sp

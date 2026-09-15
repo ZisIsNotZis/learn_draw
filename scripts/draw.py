@@ -1,16 +1,23 @@
 #!/usr/bin/env python3
 """draw.py — toolkit for learning to draw via programmatic art (SVG/CSS).
 
-Subcommands: render | compare | diff | ref | log | measure | check
+Subcommands: render | compare | diff | ref | log | measure | check | baseline
 Renderer: chrome-headless-shell (playwright cache) — renders SVG and HTML/CSS alike.
+The ratchet: `baseline` records the best artifact so far; `check` reports the delta against it,
+so a drawing that regresses is visible as a regression instead of being called progress.
 """
-import argparse, os, re, subprocess, sys, datetime
+import argparse, hashlib, json, os, re, subprocess, sys, datetime
 import numpy as np
 import cv2
 
 CHROME = os.path.expanduser(
     "~/.cache/ms-playwright/chromium_headless_shell-1234/"
     "chrome-headless-shell-linux64/chrome-headless-shell")
+
+# The recorded best artifact — the floor every new render is measured against (see roadmap M-gates).
+BASELINE_DIR = ".scratch/00-tooling/baseline"
+BASELINE_PNG = os.path.join(BASELINE_DIR, "best.png")
+BASELINE_JSON = os.path.join(BASELINE_DIR, "best.json")
 
 
 class ToolError(SystemExit):
@@ -166,8 +173,46 @@ def side_by_side(a: np.ndarray, b: np.ndarray, la: str, lb: str) -> np.ndarray:
     return np.hstack([a, sep, b])
 
 
+def subject_mask(ref: np.ndarray, bg_tol: int = 45) -> np.ndarray:
+    """Boolean mask of the reference's non-background content.
+
+    Background = median colour of the 12px border band, which is what "the flat backdrop" means for
+    a reference like this one. Everything that departs from it is content the drawing owes us:
+    the figure, the field shapes, the ribbon sweep.
+    """
+    return np.linalg.norm(ref.astype(np.int16) - ref_background(ref), axis=2) > bg_tol
+
+
+def ref_background(ref: np.ndarray) -> np.ndarray:
+    """The reference's backdrop colour: median of the 12px border band."""
+    b = 12
+    band = np.concatenate([ref[:b].reshape(-1, 3), ref[-b:].reshape(-1, 3),
+                           ref[:, :b].reshape(-1, 3), ref[:, -b:].reshape(-1, 3)])
+    return np.median(band, axis=0)
+
+
+def drawn_mask(ref: np.ndarray, draft: np.ndarray, bg_tol: int = 45) -> np.ndarray:
+    """Where the draft actually painted something (it departs from the reference's backdrop)."""
+    return np.linalg.norm(draft.astype(np.int16) - ref_background(ref), axis=2) > bg_tol
+
+
+def subject_coverage(ref: np.ndarray, draft: np.ndarray, match_tol: int = 60) -> float:
+    """Fraction of the reference's content the draft actually accounts for.
+
+    The omission alarm. `color_dist` cannot answer "how much did you leave out?" because it mixes
+    wrong pixels with absent ones, so a bust and a badly-coloured full figure score alike — which is
+    exactly how a fragment gets committed as a "final image". This number answers the omission
+    question directly. Alarm and regression floor only, never an optimisation target (invariant 4).
+    """
+    subj = subject_mask(ref)
+    if not subj.any():
+        return 0.0
+    d = np.linalg.norm(ref.astype(np.int16) - draft.astype(np.int16), axis=2)
+    return num((d[subj] <= match_tol).mean())
+
+
 def metrics(ref: np.ndarray, draft: np.ndarray) -> dict:
-    """edge-F1 (tolerant) + mean color distance. Signal only, never a target."""
+    """edge-F1 (tolerant) + mean color distance + subject coverage. Signal only, never a target."""
     re_, de = edge_map(ref) > 0, edge_map(draft) > 0
     k = np.ones((5, 5), np.uint8)
     rd, dd = cv2.dilate(re_.astype(np.uint8), k) > 0, cv2.dilate(de.astype(np.uint8), k) > 0
@@ -176,7 +221,8 @@ def metrics(ref: np.ndarray, draft: np.ndarray) -> dict:
     f1 = 2 * p * r / max(p + r, 1e-9)
     cd = np.linalg.norm(ref.astype(np.int16) - draft.astype(np.int16), axis=2).mean()
     return {"precision": round(num(p), 3), "recall": round(num(r), 3),
-            "edge_f1": round(num(f1), 3), "color_dist": round(num(cd), 1)}
+            "edge_f1": round(num(f1), 3), "color_dist": round(num(cd), 1),
+            "coverage": round(subject_coverage(ref, draft), 3)}
 
 
 # ---------------------------------------------------------------- subcommands
@@ -344,9 +390,29 @@ def cmd_check(a):
         written.append((p, "whole frame, ref beside draft"))
         lines.append(f"metrics (breakage alarm only, never a target): {m}")
 
+        # The whole-frame pane downscales to <=pane px and destroys exactly the detail a reviewer
+        # must judge (glints, lash taper, marks, hat tilt). Always ship the 1:1 draft too.
+        fp = os.path.join(outdir, "draft-fullres.png")
+        imwrite(fp, draft)
+        written.append((fp, "DRAFT at full resolution (1:1, no downscale)"))
+
+        best = load_baseline()
+        if best and best.get("metrics"):
+            lines.append(f"vs recorded best: {delta(best['metrics'], m)}"
+                         f"   [best recorded {best.get('recorded', '?')}: {best.get('source', '?')}]")
+
         dist = np.linalg.norm(ref.astype(np.int16) - draft.astype(np.int16), axis=2)
-        boxes = worst_cells(dist, a.regions)
-        for i, (x, y, w, h, badness) in enumerate(boxes, 1):
+        # Raw worst-distance always picks the largest MISSING mass; the small detail the drawing did
+        # produce (the face) then never gets a crop, and the reviewer judges it from a <=600px pane
+        # (07's finding). So: keep the biggest-error crops, and force one crop to be the worst error
+        # *where the draft actually drew something* — the place a reviewer must look closely.
+        boxes = [(x, y, w, h, b, "worst-region") for x, y, w, h, b in worst_cells(dist, a.regions - 1)]
+        detail = worst_cells(dist * drawn_mask(ref, draft), a.regions)
+        for x, y, w, h, b in detail:
+            if all(max(abs(x - px), abs(y - py)) >= 64 for px, py, _, _, _, _ in boxes):
+                boxes.append((x, y, w, h, b, "worst-on-drawn"))
+                break
+        for i, (x, y, w, h, badness, kind) in enumerate(boxes, 1):
             side = whole(max(96, min(256, max(w, h) * 2)))
             cx, cy = x + w // 2, y + h // 2
             x0 = max(0, min(ref.shape[1] - side, cx - side // 2))
@@ -357,7 +423,7 @@ def cmd_check(a):
             rp = os.path.join(outdir, f"region-{i}.png")
             imwrite(rp, side_by_side(crop(ref), crop(draft),
                                      f"REF x{zoom:.1f}", f"DRAFT x{zoom:.1f}"))
-            written.append((rp, f"worst-region #{i} at ({x},{y},{w},{h}) "
+            written.append((rp, f"{kind} #{i} at ({x},{y},{w},{h}) "
                                 f"mean-dist {badness:.0f}, {zoom:.1f}x"))
     else:
         p = os.path.join(outdir, "draft.png")
@@ -394,6 +460,60 @@ def cmd_check(a):
     for path, what in written:
         print(f"  {what:52s} {path}")
     print(f"  {'report + reviewer protocol':52s} {report}")
+
+
+def _sha256(path: str) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def load_baseline() -> dict | None:
+    """The recorded best artifact's metadata, or None when nothing has been recorded yet."""
+    if not os.path.exists(BASELINE_JSON):
+        return None
+    try:
+        with open(BASELINE_JSON) as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return None
+
+
+def delta(before: dict, after: dict) -> str:
+    """before -> after per metric, so a regression reads as a regression."""
+    parts = []
+    for key in ("edge_f1", "coverage", "precision", "recall", "color_dist"):
+        if key in before and key in after:
+            parts.append(f"{key} {before[key]} -> {after[key]} ({after[key] - before[key]:+.3f})")
+    return " | ".join(parts)
+
+
+def cmd_baseline(a):
+    """Record ART as the project's best artifact — the floor every later render is measured against."""
+    if not os.path.exists(a.art):
+        raise ToolError(f"baseline: no such artifact: {a.art}")
+    draft = imread(a.art)
+    entry = {
+        "recorded": datetime.date.today().isoformat(),
+        "source": os.path.abspath(a.art),
+        "artifact": os.path.abspath(BASELINE_PNG),
+        "sha256": _sha256(a.art),
+        "note": a.note,
+    }
+    if a.ref:
+        ref = imread(a.ref, (draft.shape[1], draft.shape[0]))
+        entry["ref"] = os.path.abspath(a.ref)
+        entry["metrics"] = metrics(ref, draft)
+    ensure_dir(BASELINE_DIR)
+    imwrite(BASELINE_PNG, draft)
+    write_text(BASELINE_JSON, json.dumps(entry, indent=2) + "\n")
+    print(f"recorded best: {BASELINE_PNG}")
+    print(f"  from      : {a.art}")
+    if entry.get("metrics"):
+        print(f"  metrics   : {entry['metrics']}")
+    print(f"  provenance: {BASELINE_JSON}")
 
 
 def xdog(img: np.ndarray, sigma=1.0, k=1.6, p=25, eps=0.005, phi=10) -> np.ndarray:
@@ -532,6 +652,10 @@ def main():
     p = sub.add_parser("log"); p.add_argument("exdir"); p.add_argument("--iter", type=int)
     p.add_argument("--ref"); p.add_argument("--src"); p.add_argument("--note", default="")
     p.set_defaults(fn=cmd_log)
+
+    p = sub.add_parser("baseline", help="record ART as the project's best artifact (ratchet floor)")
+    p.add_argument("art"); p.add_argument("--ref", default=None); p.add_argument("--note", default="")
+    p.set_defaults(fn=cmd_baseline)
 
     p = sub.add_parser("measure"); p.add_argument("image")
     p.add_argument("--hough", action="store_true"); p.add_argument("--rmin", type=int); p.add_argument("--rmax", type=int)

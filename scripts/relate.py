@@ -738,9 +738,19 @@ def resolve(spec: dict) -> tuple[list[dict], dict[str, float], list[str], list[s
                          "fill": raw.get("fill"), "stroke": raw.get("stroke"), "sw": raw.get("sw"),
                          "z": raw.get("z", "default"), "desc": raw.get("desc", "")})
         elif kind == "blob":
-            spine = [ctx.point(p) for p in raw["spine"]]
-            width = ctx.scalar(raw.get("w", 0))
-            poly = ribbon(spine, width) if width else spine
+            # Two legitimate blob forms, matching scene-format.md: a closed `poly`, or an open
+            # `spine` (+ `w`) ribbon. A closed shape (blouse, skirt panel, brim slice) has no
+            # spine, and demanding one made those shapes unexpressible in the front end while the
+            # back end accepted them — the dialect mismatch that crashed the full-figure spec.
+            if "poly" in raw:
+                poly = [ctx.point(p) for p in raw["poly"]]
+            elif "spine" in raw:
+                spine = [ctx.point(p) for p in raw["spine"]]
+                width = ctx.scalar(raw.get("w", 0))
+                poly = ribbon(spine, width) if width else spine
+            else:
+                raise SpecError(f"relate: blob {sid!r} needs `poly` (closed polygon) "
+                                f"or `spine` (+ `w`)")
             ctx.add(bbox_anchor(sid, poly))
             emit.append({"blob": sid, "poly": poly, "fill": raw.get("fill"),
                          "stroke": raw.get("stroke"), "sw": raw.get("sw"),
