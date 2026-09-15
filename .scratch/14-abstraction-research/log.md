@@ -182,3 +182,22 @@ own look, verified features present) and does NOT yet read as the REF subject at
 the two largest levers are the missing body (ladder, by design) and the review-loop scale flaw
 (tool, now recorded). Both have dates. The mechanism the verdict DOES vindicate: every claim about
 what IS present (hat occlusion, layered eyes, canon-placed marks) survived independent verification.
+
+## 2026-09-14 — CORRECTION: the final image is the FULL FIGURE, not the bust (user pushback)
+
+User: "v3.png is the final? Seriously? You reverted progress? What about the dress/skirt?"
+Honest answers recorded: (a) nothing was deleted — 05's full figure is intact and frozen
+(work/scene.yaml + evidence/current.png); (b) the bust-only "final" was my ladder framing and
+was wrong for what a final image of this subject means. Rebuild done:
+
+- work/final/final-full.yaml: night's working top (slice-fixed sunhat, eye family, canons,
+  hair/fringe) + head-relative BODY (blouse trapezoid, dark A-line skirt flaring left per the
+  ref, pale overskirt to the hem, hem edge) — 45 nodes, 10 layers, zero coordinate literals,
+  colours from frozen 05 (blouse #e1e7dc, skirt #112e4b, overskirt #d2e2d6).
+- Head shrunk to full-figure proportions (head_half 0.070 frame.w); because everything is
+  head-relative, the whole figure rescaled in one var change.
+- full-v1 (skirt reads; overskirt floated as a triangle) -> full-v2 (overskirt to the hem).
+  Both diagnostics clean; both looked at (P22).
+- Evidence: evidence/final/full-v1.png, full-v2.png; check bundle check-full/ WITH the
+  full-res draft included (the 07 scale-flaw workaround, applied manually this time).
+- Fresh-eyes verdict on the full figure: pending -> appended on arrival.

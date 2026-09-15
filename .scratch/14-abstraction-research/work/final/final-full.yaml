@@ -1,0 +1,143 @@
+# 14-abstraction-research — FINAL, full figure: the girl with hat, face, and dress.
+#
+# The user rightly pushed back: a "final image" of this subject must include the body/clothing,
+# which 05 had and the night's bust dropped. This spec merges the night's working top (fixed
+# sunhat, eye family, canons) with a head-relative body (blouse, dark pleated skirt, pale
+# overskirt) — colours taken from the frozen 05 scene.yaml, proportions from the reference.
+# Zero absolute coordinates: every size is a fraction of the head host, every position a
+# relation to an anchor. Head-relative = the whole figure rescales if the head changes.
+
+frame: {w: 1024, h: 1024}
+layers: [bg, neck, body, skirt, hair, face, eyes, features, hat, hat-front]
+
+vars:
+  head_half: frame.w*0.070      # full-figure head is smaller than the bust's (provenance: ref, seated figure)
+  head_deep: head_half*1.28
+
+draw:
+  - {rect: bg, full: true, fill: "#dde7e9", desc: "flat backdrop"}
+
+  # ---- head: the ruler; declared first, painted late via z ----
+  - {ellipse: head, at: [frame.w*0.60, frame.h*0.24], rx: head_half, ry: head_deep,
+     fill: "#f2e6d8", stroke: "#2a2f3a", sw: 3, z: face,
+     desc: "head/skin ellipse — the face ruler (host)"}
+
+  # ---- neck + shoulders (head-relative; the bust's, rescaled) ----
+  - {blob: neck, spine: [[head.cx - head.w*0.03, head.cy + head.h*0.44],
+                         [head.cx + head.w*0.03, head.cy + head.h*0.70]],
+     w: head.w*0.30, fill: "#e8d7bd", stroke: "#8a8272", sw: 3, z: neck,
+     desc: "neck from under the jaw into the collar"}
+  - {blob: shoulders, spine: [[head.cx - head.w*1.40, head.cy + head.h*1.05],
+                              [head.cx - head.w*0.10, head.cy + head.h*0.72],
+                              [head.cx + head.w*1.25, head.cy + head.h*1.02]],
+     w: head.h*0.62, fill: "#e1e7dc", stroke: "#3a3d4d", sw: 3, z: body,
+     desc: "shoulder line rising to the collar"}
+
+  # ---- BODY: blouse + skirt + overskirt (the parts the bust dropped) ----
+  - {blob: blouse, spine: [[head.cx - head.w*1.02, head.cy + head.h*0.82],
+                          [head.cx - head.w*0.50, head.cy + head.h*1.55],
+                          [head.cx + head.w*0.50, head.cy + head.h*1.55],
+                          [head.cx + head.w*1.02, head.cy + head.h*0.82]],
+     fill: "#e1e7dc", stroke: "#3a3d4d", sw: 3, z: body,
+     desc: "blouse: trapezoid from the shoulders to the waist (05 colour)"}
+  - {blob: skirt-dark, spine: [[head.cx - head.w*0.50, head.cy + head.h*1.55],
+                              [head.cx - head.w*1.38, head.cy + head.h*2.85],
+                              [head.cx + head.w*1.12, head.cy + head.h*2.90],
+                              [head.cx + head.w*0.50, head.cy + head.h*1.55]],
+     fill: "#112e4b", stroke: "#0b1f33", sw: 3, z: skirt,
+     desc: "dark pleated skirt: A-line flare from the waist (05 colour, ref proportions)"}
+  - {blob: overskirt, spine: [[head.cx - head.w*0.26, head.cy + head.h*1.58],
+                             [head.cx - head.w*0.62, head.cy + head.h*2.84],
+                             [head.cx + head.w*0.48, head.cy + head.h*2.86],
+                             [head.cx + head.w*0.26, head.cy + head.h*1.58]],
+     fill: "#d2e2d6", stroke: "#9fb8a8", sw: 2.5, z: skirt,
+     desc: "pale overskirt panel over the dark skirt (05 colour)"}
+  - {stroke: hem-rule, spine: [[head.cx - head.w*1.30, head.cy + head.h*2.86],
+                               [head.cx + head.w*1.05, head.cy + head.h*2.90]],
+     w: head.h*0.05, ink: "#e9d8b0", z: skirt,
+     desc: "light hem edge where the skirt meets the ground field"}
+
+  # ---- hair: anchored to the skull, falling over the chest (05 curtain side kept long) ----
+  - {blob: hair-left, spine: [[head.cx - head.w*0.58, head.cy - head.h*0.38],
+                              [head.cx - head.w*1.00, head.cy + head.h*0.30],
+                              [head.cx - head.w*0.80, head.cy + head.h*1.30]],
+     w: head.w*0.48, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "left hair mass: starts on the skull, falls past the jaw"}
+  - {blob: hair-right, spine: [[head.cx + head.w*0.56, head.cy - head.h*0.40],
+                               [head.cx + head.w*1.00, head.cy + head.h*0.35],
+                               [head.cx + head.w*0.80, head.cy + head.h*1.75]],
+     w: head.w*0.54, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "right hair mass: the longer curtain side, over the chest"}
+  - {blob: hair-cap, spine: [[head.cx - head.w*0.46, head.cy - head.h*0.52],
+                             [head.cx, head.cy - head.h*0.72],
+                             [head.cx + head.w*0.46, head.cy - head.h*0.52]],
+     w: head.h*0.42, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "skull dome under the hat"}
+
+  - {blob: lockL, spine: [[head.cx - head.w*0.58, head.cy - head.h*0.36],
+                          [head.cx - head.w*0.66, head.cy - head.h*0.02],
+                          [head.cx - head.w*0.56, head.cy + head.h*0.26]],
+     w: head.w*0.26, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "left temple lock"}
+  - {blob: lockR, spine: [[head.cx + head.w*0.58, head.cy - head.h*0.38],
+                          [head.cx + head.w*0.66, head.cy - head.h*0.03],
+                          [head.cx + head.w*0.56, head.cy + head.h*0.28]],
+     w: head.w*0.26, fill: "#3974ab", stroke: "#26354a", sw: 3, z: hair,
+     desc: "right temple lock"}
+
+  - {blob: bangL, spine: [[head.cx - head.w*0.34, head.cy - head.h*0.40],
+                          [head.cx - head.w*0.38, head.cy - head.h*0.32],
+                          [head.cx - head.w*0.33, head.cy - head.h*0.24]],
+     w: head.w*0.11, fill: "#3974ab", stroke: "#26354a", sw: 2, z: features,
+     desc: "fringe strand from under the brim, left"}
+  - {blob: bangC, spine: [[head.cx + head.w*0.08, head.cy - head.h*0.41],
+                          [head.cx + head.w*0.04, head.cy - head.h*0.33],
+                          [head.cx + head.w*0.10, head.cy - head.h*0.25]],
+     w: head.w*0.10, fill: "#3974ab", stroke: "#26354a", sw: 2, z: features,
+     desc: "fringe strand, centre"}
+  - {blob: bangR, spine: [[head.cx + head.w*0.38, head.cy - head.h*0.40],
+                          [head.cx + head.w*0.34, head.cy - head.h*0.32],
+                          [head.cx + head.w*0.39, head.cy - head.h*0.24]],
+     w: head.w*0.11, fill: "#3974ab", stroke: "#26354a", sw: 2, z: features,
+     desc: "fringe strand, right"}
+
+  # ---- face: SA2's eye family + measured canons (host-relative set B) ----
+  - {eye: eyeL, host: head,
+     at: [head.cx - 0.68*head.rx, head.cy - 0.58*head.ry],
+     w: 0.42*head.w, tilt: 5, almond: 0.62,
+     sclera-fill: "#fdf2f9", iris-top-fill: "#4470b3", iris-bot-fill: "#ef92ae",
+     pupil-fill: "#241a2c", lash-fill: "#0a0e18", refl-fill: "#62c7a8", glints: 2,
+     z: eyes, desc: "left eye — layered almond, irises clamped to the aperture"}
+  - {eye: eyeR, host: head, mirror-of: eyeL, z: eyes, desc: "right eye = one mirror relation"}
+
+  - {stroke: browL, spine: [
+        [eyeL.outerx + 0.04*eyeL.w, eyeL.topy - 0.30*eyeL.h],
+        [eyeL.outerx + 0.60*eyeL.w, eyeL.topy - 0.10*eyeL.h]],
+     w: 0.07*eyeL.h, ink: "#241d26", z: features, desc: "left brow off eye anchors"}
+  - {stroke: browR, spine: [
+        [eyeR.outerx - 0.04*eyeR.w, eyeR.topy - 0.30*eyeR.h],
+        [eyeR.outerx - 0.60*eyeR.w, eyeR.topy - 0.10*eyeR.h]],
+     w: 0.07*eyeR.h, ink: "#241d26", z: features, desc: "right brow = mirrored"}
+  - {stroke: nose, spine: [
+        [head.cx - 0.12*head.rx, head.cy + 0.02*head.ry],
+        [head.cx - 0.24*head.rx, head.cy + 0.12*head.ry]],
+     w: 2.6, ink: "#6e5a48", z: features, desc: "tiny nose tick (canon: cy+0.05ry)"}
+  - {stroke: mouth, spine: [
+        [head.cx - 0.07*head.rx, head.cy + 0.49*head.ry],
+        [head.cx + 0.10*head.rx, head.cy + 0.53*head.ry]],
+     w: 3.6, ink: "#8a7460", z: features, desc: "soft mouth dash (canon: cy+0.52ry)"}
+
+  # ---- the hat: lifted to the brow line, worn high (the slice-fixed family) ----
+  - {sunhat: hat, host: head, brim: 2.70*head.w, crown: 0.78*head.w, tilt: -14,
+     lift: 1.42, drop: 0.60, crown-h: 0.88, front: [0.04, 0.46], pom: 2,
+     crown-fill: "#32405b", crown-stroke: "#1e2a3f", crown-sw: 2,
+     brim-fill: "#3b7f92", rim-fill: "#4d94a6", pom-fill: "#df9199",
+     z: hat, z-front: hat-front,
+     desc: "wide-brim sun hat worn high — near edge at brow line"}
+
+# occlusion intent, in words
+relations:
+  - {front: hat, behind: hair-cap, desc: "hat sits on top of the hair"}
+  - {front: hair-left, behind: blouse, desc: "hair falls over the blouse"}
+  - {front: overskirt, behind: skirt-dark, desc: "pale panel over the dark skirt"}
+  - {front: head, behind: hair-left, desc: "locks frame the face"}
