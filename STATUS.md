@@ -205,11 +205,34 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
 - **2026-09-15 · D19 — M2 attempt 2: measurement decides against, visual half untested.** The
   reviewer's refusal to fabricate a verdict is the correct behaviour and is recorded as such. Attempt 2
   fails on the measured half of A1 (region `edge_f1` 0.173 vs 0.422; region coverage 0.585 vs 0.702)
-  and is **neither passed nor failed visually**. Its source-level review produced two findings that
-  outlive the attempt: the baseline's brim is four independent fills plus two disjoint strokes (so
-  "the brim is not one piece" was never fixable by fill-tuning), and the baseline's brim is clipped by
-  the canvas at x=1024 where the reference ends at x982 — a ~42px trespass, i.e. the current best
-  artifact is itself wrong at the frame edge.
+  and is **neither passed nor failed visually**.
+- **2026-09-15 · D20 — the teacher step must MATERIALIZE, not depend.** M2 attempt 3 followed D15 and
+  beat the head bar decisively (`edge_f1` **0.619** vs 0.422, coverage **0.778** vs 0.702) — by giving
+  the spec five `region` nodes that flood-fill `image.jpg` **at render time**. The spec then cannot
+  render with the image deleted:
+  `relate: region 'face-skin' needs the reference raster (--ref); region is teacher-only and may not
+  appear in a reference-free spec`. That violates P18 / invariant 6 outright, and it breaks the test
+  `abstraction.md` states for every addition. `abstraction.md` names two supported teacher uses and
+  both are *removable* ("measure the reference to fill in the numbers in a spec, then close the
+  image"); a live `region` node is a third way that is **not** removable and must not appear in the
+  artifact. So the teacher step becomes a materialization: resolve once with `--ref`, **freeze** the
+  computed vertices into a sidecar data file with provenance, reference that data by name from the
+  spec, and the spec then renders with `image.jpg` gone. Invariant 5 is still satisfied — the vertices
+  were *computed by the tracer*, not typed by a human — and the gate finally measures a drawing.
+- **2026-09-15 · D21 — a comparison gate must judge an artifact that renders WITHOUT the reference.**
+  The M2 gate compared the assembly to the baseline on fidelity to `image.jpg`, and the baseline was
+  itself hand-fitted to `image.jpg` — so "beat the baseline" reduced to "trace the reference more
+  accurately", which any tracer wins trivially and which teaches nothing about drawing. **The gate was
+  measuring copying.** Rule now: if the judged artifact needs `--ref`, the gate result is **void** — it
+  is not a pass and not a failure of the drawing, but a failure of the artifact's admissibility. The
+  baseline stays unpromoted (attempt 3's whole-frame `edge_f1` 0.271 > 0.252 is a tracing win, not a
+  drawing win).
+- **2026-09-15 · D22 — attempt 3's real value is the instrument, not the artifact.** Kept: the
+  `region` front-end node and `--ref` plumbing (the materialization step needs them), the improved
+  `flood_region(fixed, box, eps)`, `z-pom`, 27/27 tests, and above all the **`TEACHER` diagnostic**
+  (5 firings) with its loud `SpecError` when `--ref` is absent — the mechanism that made this finding
+  catchable, and what will keep M5 honest. The writer's own assessment was correct and is quoted in the
+  log: the head is traced detail while the body is flat, so it should not promote the ratchet.
 
 ## Where things live
 

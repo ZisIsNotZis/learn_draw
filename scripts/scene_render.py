@@ -24,7 +24,7 @@ SCHEMA = {
     "blob":   {"blob", "poly", "spine", "w", "fill", "stroke", "sw", "z", "op", "blur", "rot"},
     "petal":  {"petal", "at", "n", "len", "wid", "curl", "spread", "angle0", "fill", "stroke", "sw", "z", "op", "blur"},
     "ribbon": {"ribbon", "spine", "w", "grad", "fill", "op", "z", "blur"},
-    "region": {"region", "seed", "tol", "fill", "grow", "box", "fixed", "z", "op"},
+    "region": {"region", "seed", "tol", "fill", "grow", "box", "fixed", "eps", "z", "op"},
     "trace":  {"trace", "from", "class", "region", "z", "op", "fill"},
     "grad":   {"grad", "dir", "at", "r", "stops", "z"},
     "blur":   {"blur", "std"},
@@ -114,7 +114,7 @@ def petal_path(at, angle, length, width, curl):
     return smooth_path(left + right[::-1], closed=True)
 
 
-def flood_region(ref_bgr, seed, tol, fixed=False, box=None):
+def flood_region(ref_bgr, seed, tol, fixed=False, box=None, eps=6):
     """Paint-bucket on the reference raster from seed with tolerance; returns outer contour pts.
 
     `fixed=False` (default, historical) compares each new pixel to its *neighbour*, so a smooth
@@ -126,6 +126,11 @@ def flood_region(ref_bgr, seed, tol, fixed=False, box=None):
     `box` = [x0, y0, x1, y1] clips the result, so a colour region can be separated from the same
     colour elsewhere in the frame. The flood itself is not constrained, only its contour is cut
     to the box — pass a box that lies outside the intended mass so nothing real is clipped.
+
+    `eps` = contour simplification tolerance in px. The historical 6 (kept as default) leaves a
+    large silhouette with only ~70 vertices, which the renderer's curve-smoothing then rounds
+    further: traced DRAWING silhouettes need the boundary, so specs that mean a silhouette pass
+    a smaller eps (the assembly's seeded head uses 3).
     """
     h, w = ref_bgr.shape[:2]
     sx, sy = int(seed[0]), int(seed[1])
@@ -147,7 +152,7 @@ def flood_region(ref_bgr, seed, tol, fixed=False, box=None):
     if not cnts:
         raise ValueError(f"region seed {seed}: empty mask")
     c = max(cnts, key=cv2.contourArea)
-    return cv2.approxPolyDP(c, 6, True).reshape(-1, 2).tolist()
+    return cv2.approxPolyDP(c, eps, True).reshape(-1, 2).tolist()
 
 
 def wave_spine(spine, amp, wl, sag, n=40):
@@ -424,7 +429,8 @@ def compile_scene(nodes, size, ref_path=None):
             if ref is None:
                 raise SystemExit(f"node {nid}: region needs --ref")
             pts = flood_region(ref, node["seed"], node.get("tol", 30),
-                               fixed=bool(node.get("fixed", False)), box=node.get("box"))
+                               fixed=bool(node.get("fixed", False)), box=node.get("box"),
+                               eps=float(node.get("eps", 6)))
             d = smooth_path(pts, closed=True)
             s = f'<path {common} d="{d}" fill="{node.get("fill","#888")}"/>'
         elif tkey == "trace":

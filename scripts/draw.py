@@ -339,7 +339,8 @@ def _rasterize(art: str, outdir: str, ref: str | None, resolver_override: str | 
             if resolver is None:
                 sys.exit(f"{art} is a relational spec but no relate.py was found; "
                          "pass --resolver PATH or run the resolver yourself")
-            run = subprocess.run([sys.executable, resolver, art, "-o", dst, "--anchors"],
+            run = subprocess.run([sys.executable, resolver, art, "-o", dst, "--anchors"]
+                                 + (["--ref", ref] if ref else []),
                                  capture_output=True, text=True, timeout=120)
             if run.returncode != 0:
                 sys.exit(f"resolver failed ({resolver}):\n{run.stderr}")

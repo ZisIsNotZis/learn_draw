@@ -186,3 +186,24 @@ four independent fills plus two disjoint strokes, and that its brim is clipped b
 the reference's is not. A missing verdict with an honest reason is worth more than a confident one
 without perception.
 Learned: M2 attempt 2 reviewer round.
+
+## P27 — A gate that can be passed by copying the answer measures copying (13-assembly, M2 attempt 3)
+
+M2's gate compared the assembly to the baseline on fidelity to the reference. The baseline was itself
+hand-fitted to the reference. So "beat the baseline" reduced to "trace the reference more accurately",
+and a spec that flood-filled five regions of `image.jpg` at render time won easily — head `edge_f1`
+0.619 against the baseline's 0.422. The number was real and the progress was not: the artifact could
+no longer be rendered with the image deleted, so the engine now *needed* the target, which is the one
+thing the reframe forbade.
+
+Two rules. First: **check admissibility before fidelity** — render the judged artifact without the
+reference, and if it cannot, every comparison on it is void. Second: **when a gate can be won by
+copying, the gate is wrong, not the copy.** Fix the gate's window (which region) *and* its
+precondition (does the artifact stand up), or the ratchet will happily promote a traced image.
+
+The constructive half, and the part worth keeping: the reference is a legitimate teacher, and the way
+to use it is to **materialize** — trace once, freeze the computed vertices into the spec with
+provenance, close the image. The geometry is still *computed* (invariant 5: not the model's bad
+coordinate regression), the reference is still the source of the values (P18's teacher role), and the
+artifact stands alone. A live raster read is the one form of teaching that cannot be withdrawn.
+Learned: M2 attempt 3.

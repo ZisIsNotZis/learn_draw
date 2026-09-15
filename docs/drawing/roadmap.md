@@ -56,6 +56,7 @@ things at once" failure that got 05 frozen). Renegotiated 2026-09-15; see `STATU
 
 | # | gate | command / method | passes when |
 | --- | --- | --- | --- |
+| **G0** | **admissibility (check this FIRST)** | render the judged artifact **without** `--ref` | it renders. An artifact that needs the reference raster is **teacher-dependent** and any comparison result on it is **void** — not a pass and not a failure of the drawing, but a failure of its admissibility (`STATUS.md` D21). Use the reference to **materialize** geometry into the spec (trace once, freeze the vertices, close the image — D20), never to compute geometry at render time |
 | G1 | render + bundle | `scripts/draw check <assembly-render> --ref image.jpg` | bundle written; `draft-fullres.png` is in the reviewer image list |
 | G2 | **alarm** — nothing deleted, nothing broken | the `vs recorded best:` line in `report.txt` | `coverage` ≥ best − 0.01 (deletion floor) and `color_dist` ≤ best + 15 (breakage). Applies at **every** milestone |
 | G2b | **detail floor** | as above, **restricted to the region the milestone owns** | `edge_f1` (and coverage) measured on that region ≥ the baseline's, within 0.01 — applies **from M2 onward**. D14: a whole-frame window for a region-scoped milestone is a gate defect, and this mistake has now been made three times (M1, M2 attempt 1, M2 attempt 2) |
@@ -64,7 +65,8 @@ things at once" failure that got 05 frozen). Renegotiated 2026-09-15; see `STATU
 | G5 | authoring budget | inspect the spec | no shape carries > 4 hand-typed coordinates **per outline**; a mass may carry ≤ 4 spine points + a width (the sanctioned gesture form, `scene-format.md`); every node has an intent `desc:` |
 | G6 | determinism | re-render, compare `sha256` | byte-identical |
 
-**Promotion is a separate act, not a milestone exit, and it takes the WHOLE artifact.** The baseline
+**Promotion is a separate act, not a milestone exit, and it takes the WHOLE artifact, which must be
+admissible (G0).** The baseline
 moves **only** on a blind A/B preference over the whole drawing: hand a fresh-context reviewer the
 target plus the two renders under neutral names in randomized order, asking "which is the better
 drawing of this target, and what is wrong with each?" Never promote on metrics; never promote because
@@ -78,6 +80,13 @@ can fail the milestone and it tells you where to work, but it cannot promote. `s
 If two reviewers disagree, do not pick a verdict — measure (P7: observations are reliable, locations
 are not). The coarse-grid colour-mass distance and the per-element table are the tie-breakers; that
 is how M1's split verdict was resolved.
+
+**A reviewer must prove it can see before its verdict counts (D18).** Vision is not stable across
+subagent instances in this environment — some are sighted, some return "model does not support
+images", and the orchestrator has no vision at all. Ask the reviewer first for one fact only a sighted
+agent could state, checkable against a measurement already in the repo. An unsighted verdict is
+**void, not negative**, and the record must say the visual half was not run. A fabricated visual
+verdict is the worst possible outcome.
 
 ## Milestones
 

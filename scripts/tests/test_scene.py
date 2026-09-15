@@ -159,6 +159,68 @@ try:
 except SystemExit as e:
     check("j: rim must be in (0,1)", "rim" in str(e))
 
+# (k) flood_region fixed-range: on a smooth gradient the historical neighbour-range flood crawls
+# the whole ramp, while `fixed` stops at a colour distance from the seed. This is the difference
+# between the teacher being usable and the flood covering the frame.
+gm = np.zeros((200, 200, 3), np.uint8)
+for _x in range(200):
+    gm[:, _x] = _x
+_rel = sr.flood_region(gm, (10, 100), 20, fixed=False, eps=1)
+_fix = sr.flood_region(gm, (10, 100), 20, fixed=True, eps=1)
+_relw = max(p[0] for p in _rel) - min(p[0] for p in _rel)
+_fixw = max(p[0] for p in _fix) - min(p[0] for p in _fix)
+check("k: region fixed range stops on a gradient, relative crawls", _fixw < 40 and _relw > 150)
+
+# (l) flood_region box: clip a flood to a window (separates same-colour masses elsewhere)
+_uni = np.full((200, 200, 3), 128, np.uint8)
+_boxed = sr.flood_region(_uni, (100, 100), 10, fixed=True, box=[0, 0, 120, 120], eps=1)
+_bw = max(p[0] for p in _boxed) - min(p[0] for p in _boxed)
+check("l: region box clips the computed contour", _bw <= 121)
+
+# (m) flood_region eps: finer simplification keeps more contour detail (drawing silhouettes need it)
+_mask = np.zeros((200, 200), np.uint8)
+_angs = np.linspace(0, 2 * np.pi, 41)[:-1]
+_poly = np.array([[100 + 60 * np.cos(a), 100 + 60 * np.sin(a)] for a in _angs], np.int32)
+cv2.fillPoly(_mask, [_poly], 255)
+_img = np.zeros((200, 200, 3), np.uint8)
+_img[_mask > 0] = (200, 200, 200)
+_coarse = sr.flood_region(_img, (100, 100), 10, fixed=True, eps=6)
+_fine = sr.flood_region(_img, (100, 100), 10, fixed=True, eps=1.5)
+check("m: region eps keeps more contour detail when smaller", len(_fine) > len(_coarse))
+
+# (n) relate front end: a `region` node takes a RELATIONAL seed and returns the reference contour,
+# and refuses to resolve without the reference (teacher-only, P18 — it must never appear in M5 spec).
+_rsyn = np.full((200, 200, 3), 255, np.uint8)
+cv2.circle(_rsyn, (100, 100), 40, (0, 200, 0), -1)
+_rpath = os.path.join(OUT, "region-syn.png")
+cv2.imwrite(_rpath, _rsyn)
+_rspec = {"frame": {"w": 200, "h": 200},
+          "draw": [{"region": "blob", "seed": [100, 100], "tol": 30,
+                    "fill": "#ff00ff", "fixed": True, "eps": 3}]}
+_re, _renv, _rn, _rl2 = rl.resolve(_rspec, ref=cv2.imread(_rpath))
+_rnode = next(n for n in _re if n.get("region") == "blob")
+_rxs = [p[0] for p in _rnode["poly"]]
+check("n: front-end region resolves a relational seed to the reference contour",
+      55 < min(_rxs) < 65 and 135 < max(_rxs) < 145 and "blob.cx" in _renv)
+try:
+    rl.resolve(_rspec)
+    check("n: region refuses to resolve without the reference", False)
+except SystemExit as _e:
+    check("n: region refuses to resolve without the reference", "reference" in str(_e).lower())
+
+# (o) sunhat z-pom: poms stay at the family z by default (historical specs unchanged) and can be
+# lifted above a reference-seeded brim region that paints over the brim.
+_zbase = {"ellipse": "head", "at": [500, 400], "rx": 90, "ry": 100, "fill": "#eee"}
+_zh = {"sunhat": "hat", "host": "head", "brim": 500, "crown": 170, "pom": 2,
+       "pom-at": [0.7, 0.9], "z": "hat", "z-front": "hf"}
+_ze, _, _, _ = rl.resolve({"frame": {"w": 1000, "h": 1000}, "draw": [_zbase, _zh]})
+_zpoms = [n for n in _ze if str(n.get("ellipse", "")).startswith("hat-pom")]
+check("o: sunhat poms default to the family z", all(n["z"] == "hat" for n in _zpoms))
+_ze2, _, _, _ = rl.resolve({"frame": {"w": 1000, "h": 1000},
+                            "draw": [_zbase, {**_zh, "z-pom": "top"}]})
+_zpoms2 = [n for n in _ze2 if str(n.get("ellipse", "")).startswith("hat-pom")]
+check("o: sunhat z-pom lifts the poms", all(n["z"] == "top" for n in _zpoms2))
+
 print(f"\n{PASS}/{TOTAL} smoke tests passed")
 
 # --- wave + strands generator tests ---

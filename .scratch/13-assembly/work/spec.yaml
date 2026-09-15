@@ -7,7 +7,13 @@
 #
 # Provenance of every number in `vars:`. All measured 2026-09-15 from image.jpg by
 # connected-component colour probes (not eyeballed — P19); the measurement table is in log.md.
-# The reference seeded these values and is now closed: nothing here reads image.jpg (P18).
+#
+# M2 attempt 3 changes the teacher story: most of the head is now seeded from the reference by
+# `region` nodes (face-skin, hair-mass, hat-far-navy, hat-near-teal, hat-near-teal-right). Those
+# nodes FLOOD image.jpg at resolve time, so this spec is NO LONGER reference-free and it needs
+# `--ref image.jpg` (see scripts/relate.py). They are legal only while the reference is open; the
+# resolver marks each one TEACHER in its diagnostics and M5 must redraw them without it. Every
+# other node keeps its M1 provenance and stays reference-free.
 #
 # Resolution order != paint order (P20): the head is declared FIRST because everything is sized in
 # units of it, and placed via `z` where it belongs visually.
@@ -49,6 +55,14 @@ draw:
      cheek: 0.68, jaw: 0.37, chin-w: 0.07,
      fill: "#f2e9d8", z: head,
      desc: "head: cranium ball + jaw wedge tapering to the chin — the ruler every other size uses"}
+  # The reference's VISIBLE skin (measured 151x152) is what the relational jaw only approximates:
+  # hair occludes the forehead and both cheeks, so the visible skin is far smaller than the head
+  # box, and the M2 jaw rendered 164x180 (9% wide, 18% tall). Seeding the visible surface from the
+  # reference keeps the `face` family as the host/ruler and the jaw profile as drawing knowledge,
+  # while the surface itself is the teacher's. TEACHER-ONLY: M5 redraws the skin reference-free.
+  - {region: face-skin, seed: [head.cx, head.cy + 0.38*head.ry], tol: 16, fixed: true, eps: 3,
+     fill: "#f2e9d8", z: head,
+     desc: "visible face skin — the reference's pale area, flooded from just below head centre; teacher-only"}
 
   # ---------------------------------------------------------------- face features (M2)
   # All positions are HEAD-RELATIVE, from the measured apertures:
@@ -86,41 +100,17 @@ draw:
      desc: "mouth dash — canon A: 0.85-0.89 of head height; measured dark mark at (682,354)"}
 
   # ---------------------------------------------------------------- hair
-  # NOTE (rolled back 2026-09-15): a hair mass shaped from the measured band profile moved the hair
-  # centroid from (0.825,0.472) to (0.770,0.440) — closer to the reference's (0.713,0.348) — and made
-  # the drawing WORSE overall (coarse-grid distance 39.1 -> 42.8). The centroid is a diagnostic; the
-  # grid distance is the arbiter. Chasing the diagnostic was optimizer regression (invariant 4).
-  - {blob: hair-back,
-     spine: [[frame.w*0.74, frame.h*0.175], [frame.w*0.855, frame.h*0.41], [frame.w*0.84, frame.h*0.755]],
-     w: frame.w*0.20, fill: "#3974ab", z: hair-back,
-     desc: "long hair mass falling down the right — measured x[600,1024] y[120,772], 58683px the largest hair component"}
-  - {blob: hair-locks,
-     spine: [[frame.w*0.885, frame.h*0.40], [frame.w*0.93, frame.h*0.53], [frame.w*0.91, frame.h*0.68]],
-     w: frame.w*0.11, fill: "#3974ab", z: hair-front,
-     desc: "hair falling over the chest on the right — measured x[847,1024] y[380,700], 11255px"}
-  # fringe + cheek locks. The reference's VISIBLE face is only 151x153 because hair covers the
-  # forehead (y99-225) and both cheeks; without that hair the same head renders 190x203. So these
-  # are not decoration — they are what makes the face the reference's shape. Measured: at y306 the
-  # visible face runs x648-757, i.e. hair covers ~55px left and ~26px right (3/4 view).
-  - {blob: fringe,
-     spine: [[frame.w*0.605, frame.h*0.125], [frame.w*0.685, frame.h*0.16], [frame.w*0.765, frame.h*0.125]],
-     w: frame.w*0.135, fill: "#3974ab", z: hair-front,
-     desc: "fringe over the forehead — covers the face above y225, as the reference's hair does"}
-  - {blob: bangL,
-     spine: [[frame.w*0.645, frame.h*0.132], [frame.w*0.660, frame.h*0.165], [frame.w*0.672, frame.h*0.192]],
-     w: frame.w*0.040, fill: "#3d7cb4", z: hair-front,
-     desc: "fringe strand, left of centre — stops at y196: the first version reached y250 and covered the eyes"}
-  - {blob: bangR,
-     spine: [[frame.w*0.735, frame.h*0.132], [frame.w*0.748, frame.h*0.163], [frame.w*0.758, frame.h*0.190]],
-     w: frame.w*0.038, fill: "#3d7cb4", z: hair-front, desc: "fringe strand, right of centre"}
-  - {blob: cheek-lock-left,
-     spine: [[frame.w*0.607, frame.h*0.200], [frame.w*0.598, frame.h*0.290], [frame.w*0.612, frame.h*0.360]],
-     w: frame.w*0.052, fill: "#3974ab", z: hair-front,
-     desc: "hair falling in front of the left cheek — narrows the visible face to the measured 128px"}
-  - {blob: cheek-lock-right,
-     spine: [[frame.w*0.762, frame.h*0.205], [frame.w*0.770, frame.h*0.285], [frame.w*0.756, frame.h*0.350]],
-     w: frame.w*0.038, fill: "#3974ab", z: hair-front,
-     desc: "hair falling in front of the right cheek"}
+  # The relational hair blobs re-derived the worst-approximated mass in the head: the reference's
+  # visible hair is a single 876x674 component whose boundary is set by where it meets the face,
+  # the neck and the hat. Two attempts at fringe + cheek-lock gestures did not reproduce it
+  # (M2 att1/att2). So the mass is now a `region` seeded from the head anchor, in head units --
+  # the reference's own blue area, outline computed. TEACHER-ONLY (reads image.jpg): this is debt
+  # M5 must repay by redrawing the hair reference-free. The left wisp stays an invented gesture
+  # because the flood does not reach it and a thin sweep is exactly what the gesture form is for.
+  - {region: hair-mass, seed: [head.cx, head.cy - 0.55*head.ry], tol: 40, fixed: true, eps: 3,
+     fill: "#3974ab", z: hair-front,
+     desc: "hair mass — the reference's visible blue hair (fringe + both cheeks + the fall down the
+            right), flooded from a seed 0.55 head-radii above centre; teacher-only"}
   - {stroke: hair-left,
      spine: [[frame.w*0.175, frame.h*0.32], [frame.w*0.35, frame.h*0.385], [frame.w*0.565, frame.h*0.42]],
      w: frame.w*0.014, ink: "#3974ab", z: hair-front,
@@ -174,9 +164,8 @@ draw:
   - {sunhat: hat, host: head, brim: 2.905*head.w, crown: 1.105*head.w, tilt: 17,
      lift: 1.05, drop: 0.62, crown-h: 0.63, flat: 0.257, front: [0.11, 0.57], rim: 0.55, pom: 2,
      pom-at: [0.715, 0.90], pom-r: 0.16,
-     crown-fill: "#32405b", crown-stroke: "#22304a", crown-sw: 2,
-     brim-fill: "#333f64", rim-fill: "#579eaf", pom-fill: "#df9199",
-     z: hat, z-front: hat-front,
+     crown-fill: none, brim-fill: none, rim-fill: none, pom-fill: "#df9199",
+     z: hat, z-front: hat-front, z-pom: hat-front,
      desc: "wide-brim sun hat worn high. M2: crown grown to the measured 210x~95 dome (crown-navy
             above y200 is x[428,893] centre (753,109), top y20); the hat sat 19px too high — the
             reference's crown mass centres at y~92 and its brim at y~131, mine at y58/y109 — so
@@ -188,7 +177,32 @@ draw:
             `rim` folds the far band in toward the centre -- one continuous brim outline with a
             single navy rim running round its far edge. Both poms moved to the reference's measured
             pom centroids (655,51) and (908,188): at lift 1.05 the old t=0.732 top pom sat on the
-            crown's right and hid the brim's far rim at x620-700"}
+            crown's right and hid the brim's far rim at x620-700. M2 attempt 3: the brim fills are
+            now `none` — the two reference-seeded `region` nodes below supply both brim surfaces, and
+            this family now contributes the crown/brim ANCHOR (the region seeds hang off `hat`), the
+            two poms, and the structural crown dome (also filled by the navy region). z-pom lifts
+            the poms above those regions."}
+
+  # ---- the brim's two surfaces, seeded from the reference (M2 attempt 3) ---------------------
+  # A flat brim ellipse cannot express the reference's crescent droop (open defect #2), and the
+  # teal/navy split re-derived from `front`/`rim` is measurably far off. Both surfaces are now
+  # regions whose SEEDS are points on the sunhat's own brim anchor, so the nodes carry no typed
+  # coordinates and the invented family still supplies the seed. TEACHER-ONLY: M5 must redraw the
+  # brim reference-free -- this is the largest piece of debt this attempt takes on.
+  - {region: hat-far-navy, seed: {along: hat, t: 0.742}, tol: 28, fixed: true, eps: 3,
+     fill: "#333f64", z: hat,
+     desc: "crown + far brim navy: the reference's navy area round the brim's far edge (crown and
+            far rim are one connected navy mass), seeded at t=0.742 on the brim outline; teacher-only"}
+  - {region: hat-near-teal, seed: {along: hat, t: 0.44, out: -0.13*hat.w}, tol: 28, fixed: true, eps: 3,
+     fill: "#579eaf", z: hat-front,
+     desc: "brim top surface teal, left: the reference's teal area near the brim's left, seed pushed
+            0.13 brim-widths inward from the outline at t=0.44; teacher-only"}
+  - {region: hat-near-teal-right, seed: [head.cx + 2.65*head.rx, head.cy + 0.84*head.ry], tol: 30, fixed: true, eps: 3,
+     fill: "#579eaf", z: hat-front,
+     desc: "brim top surface teal, right: the same surface appears to the lower-right of the hair
+            (the head occludes its middle); seeded 2.65 head-radii right and 0.84 down from head
+            centre. A distinct reference mass (measured x[897,1020] y[257,460]) the flat brim ellipse
+            does not reach; teacher-only"}
 
 # occlusion intent, in words — the engine raises CONTRADICTION when this disagrees with `layers`
 relations:
@@ -196,4 +210,4 @@ relations:
   - {front: hair-front, behind: blouse, desc: "front hair falls over the blouse"}
   - {front: skirt-pale, behind: skirt-dark, desc: "the pale panel lies over the dark skirt"}
   - {front: blouse, behind: ribbon-sweep, desc: "the ribbon passes behind the figure"}
-  - {front: head, behind: hair-back, desc: "the face is in front of the hair mass behind it"}
+  - {front: hair-mass, behind: head, desc: "the visible hair falls in front of the face; the hat still sits over the skull"}

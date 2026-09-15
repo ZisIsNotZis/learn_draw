@@ -50,7 +50,7 @@ import sys
 # .scratch prototype locations this file historically lived in.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "scripts"))
-from scene_render import chrome, smooth_path  # noqa: E402
+from scene_render import chrome, smooth_path, flood_region  # noqa: E402
 
 # --------------------------------------------------------------------------------------
 # guarded conversions + file IO (the resolver's whole job is numeric, so it validates)
@@ -278,6 +278,9 @@ class Ctx:
         }
         self.anchors: dict[str, Anchor] = {}
         self.meta: dict[str, dict] = {}
+        # nodes whose geometry is computed FROM the reference raster — the teacher. They are
+        # legal while the reference is open, and forbidden in an M5 reference-free spec (P18).
+        self.teacher: list[str] = []
 
     def add(self, anchor: Anchor) -> Anchor:
         self.env.update(anchor.env)
@@ -637,6 +640,10 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     lift = ctx.scalar(node.get("lift", 0.42))
     z = str(node.get("z", "hat"))
     z_front = str(node.get("z-front", z))
+    # poms are the hat's topmost feature. When the brim surfaces are reference-seeded regions that
+    # paint over the family's own brim (M2 attempt 3), the poms must still sit above them; the
+    # default z keeps every historical spec rendering exactly as before.
+    z_pom = str(node.get("z-pom", z))
 
     brim_rx = brim_w / 2
     brim_ry = brim_rx * flat
@@ -715,7 +722,7 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
         px, py = brim.on(t)
         r = ctx.scalar(node.get("pom-r", 0.09)) * brim_rx
         emit.append({"ellipse": f"{sid}-pom{i + 1}", "at": [px, py], "rx": r, "ry": r * 0.86,
-                     "fill": node.get("pom-fill", "#df9199"), "z": z,
+                     "fill": node.get("pom-fill", "#df9199"), "z": z_pom,
                      "desc": f"pom at t={t:.2f} along the brim outline, r={r:.0f}"})
 
     # the family id itself is an anchor: "the hat" = its brim footprint, so `{along: hat, t}` works
@@ -800,11 +807,15 @@ def expand_face(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
 
 VOCAB = {"sunhat": expand_sunhat, "eye": expand_eye, "face": expand_face}
 SHAPES = ("ellipse", "blob", "stroke", "rect")
+# `region` is a computed shape: its outline is flooded from the reference raster at resolve time,
+# so it is a TEACHER node and needs `--ref`. It is listed apart from the primitives because it
+# has no authored geometry at all (only a seed, a tolerance and an optional clip box).
+COMPUTED = ("region",)
 
 # --------------------------------------------------------------------------------------
 # resolve
 # --------------------------------------------------------------------------------------
-def resolve(spec: dict) -> tuple[list[dict], dict[str, float], list[str], list[str]]:
+def resolve(spec: dict, ref=None) -> tuple[list[dict], dict[str, float], list[str], list[str]]:
     if not isinstance(spec, dict):
         raise SpecError("relate: spec must be a mapping with `frame` and `draw`")
     if "frame" not in spec or "draw" not in spec:
@@ -830,9 +841,37 @@ def resolve(spec: dict) -> tuple[list[dict], dict[str, float], list[str], list[s
         if kind in VOCAB:
             VOCAB[kind](raw, ctx, emit)
             continue
-        if kind not in SHAPES:
-            raise SpecError(f"relate: unknown node kind {kind!r}; known: {sorted(VOCAB) + list(SHAPES)}")
+        if kind not in SHAPES and kind not in COMPUTED:
+            raise SpecError(f"relate: unknown node kind {kind!r}; known: {sorted(VOCAB) + list(SHAPES) + list(COMPUTED)}")
         sid = str(raw[kind])
+
+        if kind == "region":
+            # "This shape is the reference's <colour> area around <seed>, clipped to <box>."
+            # The seed and box are ordinary relations, so the node carries ZERO typed
+            # coordinates; the reference supplies the outline. Teacher-only: without a raster
+            # there is nothing to flood, and an M5 reference-free spec must not contain it.
+            if ref is None:
+                raise SpecError(f"relate: region {sid!r} needs the reference raster (--ref); "
+                                f"region is teacher-only and may not appear in a reference-free spec")
+            seed = ctx.point(raw["seed"])
+            tol = ctx.scalar(raw.get("tol", 30))
+            box = raw.get("box")
+            if box is not None:
+                if not isinstance(box, (list, tuple)) or len(box) != 4:
+                    raise SpecError(f"relate: region {sid!r} box must be [x0, y0, x1, y1]")
+                box = [ctx.scalar(v) for v in box]
+            fixed = bool(raw.get("fixed", False))
+            eps = ctx.scalar(raw.get("eps", 6))
+            try:
+                poly = [tuple(p) for p in flood_region(ref, seed, tol, fixed=fixed, box=box,
+                                                        eps=eps)]
+            except ValueError as exc:
+                raise SpecError(f"relate: region {sid!r}: {exc}") from exc
+            ctx.add(bbox_anchor(sid, poly))
+            ctx.teacher.append(sid)
+            emit.append({"region": sid, "poly": poly, "fill": raw.get("fill"),
+                         "z": raw.get("z", "default"), "desc": raw.get("desc", "")})
+            continue
 
         if kind == "ellipse":
             at = ctx.point(raw["at"])
@@ -881,6 +920,9 @@ def resolve(spec: dict) -> tuple[list[dict], dict[str, float], list[str], list[s
 
     layers = [str(x) for x in spec.get("layers", [])]
     notes = check_intent(spec, layers) + diagnose(emit, layers, ctx)
+    for tid in ctx.teacher:
+        notes.append(f"TEACHER     {tid}: geometry computed from the reference raster — legal while "
+                     f"the reference is open, forbidden in a reference-free (M5) spec (P18)")
     return emit, ctx.env, notes, layers
 
 
@@ -978,6 +1020,9 @@ def emit_svg(emit: list[dict], layers: list[str], frame: dict[str, float]) -> st
         comment = f'<!-- {node.get("desc")} -->' if node.get("desc") else ""
         if "rect" in node and node.get("full"):
             body.append(f'{comment}<rect x="0" y="0" width="{width}" height="{height}" fill="{node.get("fill")}"/>')
+        elif "region" in node:
+            fill = node.get("fill") or "none"
+            body.append(f'{comment}<path d="{smooth_path(node["poly"], closed=True)}" fill="{fill}"/>')
         elif "ellipse" in node:
             at, rx, ry = node["at"], node["rx"], node["ry"]
             rot = node.get("rot", 0)
@@ -1008,12 +1053,20 @@ def main() -> None:
     parser.add_argument("spec")
     parser.add_argument("-o", "--out", required=True)
     parser.add_argument("--anchors", action="store_true", help="print the resolved anchor table")
+    parser.add_argument("--ref", default=None,
+                        help="reference raster for computed `region` nodes (teacher-only)")
     args = parser.parse_args()
 
     spec = load_yaml(Path(args.spec))
     if not isinstance(spec, dict):
         raise SpecError("relate: spec must be a mapping")
-    emit, env, notes, layers = resolve(spec)
+    ref = None
+    if args.ref:
+        import cv2
+        ref = cv2.imread(args.ref)
+        if ref is None:
+            raise SpecError(f"relate: cannot read reference raster {args.ref}")
+    emit, env, notes, layers = resolve(spec, ref=ref)
     frame = spec["frame"]
 
     svg = emit_svg(emit, layers, frame)

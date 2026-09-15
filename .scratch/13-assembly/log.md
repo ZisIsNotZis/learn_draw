@@ -282,3 +282,79 @@ that stands on its own:
 - The baseline's `skin` is one 15-point poly whose lowest run is ~75px wide at y392-394, against the
   reference's 7px chin at y377 — independent confirmation of the blunt-chin defect, by reading the
   spec rather than the pixels.
+
+## 2026-09-15 — M2 attempt 3: the gate was PASSED, and that is the problem
+
+The strategy correction (D15) worked, technically and completely. A writer subagent added a `region`
+front-end node to `relate.py` (flood-fill on the reference raster, `seed`/`tol`/`box`/`eps`, all
+relation-valued, zero hand-typed coordinates), forwarded `--ref` through `relate.py` and `draw.py`,
+and improved `scene_render.flood_region` (fixed-range flood, clip box, contour eps). Then it seeded
+the head's geometry from the reference.
+
+**It beat the bar decisively:**
+
+| head region (x400..1020, y0..420) | baseline | attempt 3 | bar |
+| --- | --- | --- | --- |
+| `edge_f1` | 0.422 | **0.619** | ≥ 0.412 |
+| coverage | 0.702 | **0.778** | ≥ 0.692 |
+| `color_dist` | 43.1 | **32.9** | — |
+
+Whole-frame too: coverage 0.580 ≥ 0.514, `edge_f1` 0.271 vs the baseline's 0.252 — the first time the
+assembly leads the baseline on whole-frame edge correspondence.
+
+**And it must not be accepted, because of how it was achieved.** Five spec nodes are `region` floods of
+`image.jpg`, and:
+
+```
+$ .venv/bin/python scripts/relate.py .scratch/13-assembly/work/spec.yaml -o /tmp/noref.png
+relate: region 'face-skin' needs the reference raster (--ref);
+        region is teacher-only and may not appear in a reference-free spec
+```
+
+The spec **does not render with the image deleted.** That is a direct violation of P18 / invariant 6
+("the engine must never depend on the target"), and it breaks the test `abstraction.md` states for
+every addition. The artifact is no longer a drawing that stands alone — it is a live copy of the
+reference in five regions, with the invented families hidden underneath it.
+
+### Why the gate did not catch this, and what that means
+
+The gate compared the assembly to the baseline **on fidelity to the reference**, and the baseline was
+itself hand-fitted to the reference. So "beat the baseline" reduced to "trace the reference more
+accurately" — which any tracer wins trivially, and which teaches the model nothing about drawing. The
+gate was measuring **copying**, not drawing. A gate that can be passed by copying the answer is not a
+gate.
+
+### The correction (D20/D21) — materialize, don't depend
+
+`abstraction.md` already names the supported teacher uses, and both are *removable*: "measure the
+reference to fill in the numbers in a spec, then close the image." A live `region` node is a **third**
+way that is not removable, and it is the one that must not be used in the artifact.
+
+So the teacher step becomes a **materialization**:
+1. resolve once with `--ref` (the tracer computes the geometry);
+2. **freeze** the computed vertices into a sidecar data file with provenance (source, date, method,
+   digest);
+3. the spec references the frozen data by name;
+4. **the spec now renders with `image.jpg` deleted** — invariant 5 is satisfied (the vertices were
+   *computed* by the tracer, not typed by a human), P18 is satisfied (no live raster dependency), and
+   the gate finally measures a drawing.
+
+New gate rule (D21): **the artifact a comparison gate judges must render without the reference.** If
+it needs `--ref`, the gate result is void — reporting it is not a pass, and it is not a failure of the
+drawing either; it is a failure of the artifact's admissibility.
+
+### Kept from attempt 3 (real work, and it is a lot)
+
+- The `region` front-end node and `--ref` plumbing — genuinely useful, and it is the tool the
+  materialization step needs to exist at all.
+- **The `TEACHER` diagnostic** (5 firings above) and the loud `SpecError` without `--ref`. This is the
+  single most valuable thing attempt 3 produced: it is the mechanism that made this finding catchable
+  at all, and it is what will keep M5 honest.
+- `scene_render.flood_region(fixed, box, eps)`; `sunhat z-pom`; 27/27 tests; byte-identical
+  determinism; the three historical specs still resolve **and render byte-identically**.
+- The writer's own honest assessment, which was right: *"the drawing is now unbalanced — the head is
+  traced detail while the body remains M1 flat masses… it may pass M2's region gate but should not
+  promote the ratchet."* Correct, and it is why the ratchet did not move.
+
+**Baseline NOT promoted.** Next slice: implement the freeze step and re-run M2's gate on an artifact
+that stands up with the image deleted.
