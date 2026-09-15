@@ -726,3 +726,40 @@ No placket (**measured: it does not exist**). No left arm or sleeve (fully occlu
 **Milestone exit is the rubric (G8), not these metrics** — M3's named axes are B · human figure ≥ 4 and
 E · occlusion ≥ 4. Two independent sighted reviewers are scoring the render now; the metrics above are
 alarms and diagnostics only.
+
+## 2026-09-16 — M3a rubric verdict: B 1.5 → 3, E 1.5 → 2. M3 does NOT exit yet.
+
+One genuine independent review (a second came back byte-identical — a harness replay, not a second
+opinion, so it does **not** count; a fresh reviewer is being run to satisfy the two-reviewer rule).
+
+| axis | M2 (floor) | M3a | M3 target |
+| --- | --- | --- | --- |
+| A · subject identity | 3 \| 4 | **4** | — |
+| **B · human figure** | 1 \| 2 | **3** | **≥ 4** |
+| C · silhouette coherence | 1 \| 2 | **3** | — |
+| D · feature legibility | 3 \| 3 | 3 | — |
+| **E · occlusion correctness** | 1 \| 2 | **2** | **≥ 4** |
+| F · style + composition | 3 \| 3 | 3 | — |
+
+So the body work moved the structural axes from ~1.5 to 3 — **real progress the pixel metrics could only
+hint at** (body `edge_f1` 0.102 → 0.152). It does not reach M3's exit. Two independent reviewers are
+owed; the second is re-running.
+
+### The reviewer's diagnosis, which is precise and verified
+
+- **Biggest defect: there is no seated lower body.** "The skirt/seat/legs are collapsed into one navy
+  capsule with a pink and an orange rounded rectangle floating inside it… the drawing reads as a bust on
+  a beanbag." I confirmed the mechanism in the spec: `petal-pink` and `petal-warm` carry `z: skirt-dark`,
+  so they paint **inside** the skirt mass — which is exactly why they read as windows/holes rather than
+  as cloth in front of it. An **occlusion** bug, not a colour bug.
+- **The `ribbon-sweep` reads as a detached bar** floating at mid-left (the measured band x[102,470]
+  y[302,444] drawn as a flat blob with no visible source or edge).
+- **The hat still does not read as a hat** — "three disjoint primitives, no crown/brim relationship"
+  (D would be 2 under a stricter reading).
+- **One change that moves B, C and E together:** rebuild the lower half as a seated figure — a wavy
+  skirt hem with the navy trim band, the pink/orange/pale-mint shapes drawn as panels *overlapping the
+  front of* the skirt so their outlines cross the navy edge, and one bent leg/knee emerging below the
+  hem.
+
+That is the M3b brief, and it came from a sighted reviewer rather than from me guessing. Note it is
+sayable in one sentence with **no coordinates** — S1 does not fire.
