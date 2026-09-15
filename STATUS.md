@@ -261,6 +261,15 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
   nothing. So 81% of the head carries no transferable learning — and that is exactly the 81% M5 would
   have to re-invent, which is what failed at attempts 1 and 2. **The gate as written is met but cannot
   distinguish a drawing from a copy, so M2 is not closed and the baseline is not promoted.**
+- **2026-09-15 · D33 — PROCESS ERROR (mine): an in-flight writer's work was committed early.** The
+  D30/D31 commit used `git add -A` while the M3a writer was still running, so `f88f394` — whose message
+  is entirely about the rubric — also contains M3a's unfinished work: `relate.py` +302 (four new
+  families `collar`/`bow`/`arm`/`hand`), `spec.yaml`, `fit-family.py`, and nine `traced/*.json`. The
+  code is not broken (63/63 tests pass, G0 holds) but the commit **misdescribes its own contents**, and
+  "unfinished work never touches main" was violated. **Rule adopted: while any writer is in flight,
+  stage explicit paths, never `-A` — and check `git status` immediately before every commit.** Not
+  history-rewritten: `f88f394` is published, and rewriting published history needs the user's word;
+  a tidy-up is offered in the morning report instead.
 - **2026-09-15 · D30 — the rubric replaces the pixel metrics as the PRIMARY gate.** The user's
   correction, and it matches this project's own P14 ("judged by looking… zone-distance/edge metrics are
   weak regression signals only") — which the gates contradicted. `edge_f1`/`color_dist`/`coverage` are
