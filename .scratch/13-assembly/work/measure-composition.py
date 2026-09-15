@@ -42,6 +42,22 @@ PROBES = {
     "mint field":     ((193, 204, 125), 34, None),
     "petal pink":     ((150, 140, 235), 55, (0, 600, 600, 1024)),
     "ribbon blue":    ((165, 120, 70), 55, (0, 150, 470, 750)),
+
+    # ---- body & cloth (M3) --------------------------------------------------
+    # The dark navy repeats (hat crown, skirt, cuffs, bow tail) and the cream repeats
+    # (blouse, sleeve, skirt), so every probe here is region-restricted to the torso/cloth
+    # and the region is the measurement, not a fudge. Probes and bboxes: measure-body.md.
+    "collar pale":    ((214, 195, 150), 20, (620, 380, 860, 490)),
+    "collar trim navy": ((104, 75, 55), 24, (620, 380, 860, 490)),
+    "cuff navy R":    ((88, 59, 45), 18, (800, 555, 960, 700)),
+    "forearm skin R": ((187, 170, 200), 24, (840, 610, 940, 740)),
+    "arm R cream":    ((204, 222, 215), 14, (780, 635, 960, 930)),
+    "bow tail navy":  ((88, 60, 47), 16, (600, 560, 720, 720)),
+    "petal rose":     ((150, 144, 227), 20, (40, 600, 700, 1024)),
+    "petal peach":    ((218, 222, 242), 14, (40, 600, 700, 1024)),
+    "petal pale blue": ((204, 188, 138), 16, (40, 600, 700, 1024)),
+    "petal tan":      ((149, 199, 227), 18, (40, 600, 700, 1024)),
+    "petal pale green": ((169, 206, 154), 18, (40, 600, 700, 1024)),
 }
 
 
