@@ -727,7 +727,7 @@ No placket (**measured: it does not exist**). No left arm or sleeve (fully occlu
 E · occlusion ≥ 4. Two independent sighted reviewers are scoring the render now; the metrics above are
 alarms and diagnostics only.
 
-## 2026-09-16 — M3a rubric verdict: B 1.5 → 3, E 1.5 → 2. M3 does NOT exit yet.
+## 2026-09-16 — M3a rubric verdict: B 1.5 → 3, E 1.5 → 2. M3 does NOT exit yet
 
 One genuine independent review (a second came back byte-identical — a harness replay, not a second
 opinion, so it does **not** count; a fresh reviewer is being run to satisfy the two-reviewer rule).
