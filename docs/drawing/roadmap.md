@@ -61,6 +61,7 @@ things at once" failure that got 05 frozen). Renegotiated 2026-09-15; see `STATU
 | G2 | **alarm** — nothing deleted, nothing broken | the `vs recorded best:` line in `report.txt` | `coverage` ≥ best − 0.01 (deletion floor) and `color_dist` ≤ best + 15 (breakage). Applies at **every** milestone |
 | G2b | **detail floor** | as above, **restricted to the region the milestone owns** | `edge_f1` (and coverage) measured on that region ≥ the baseline's, within 0.01 — applies **from M2 onward**. D14: a whole-frame window for a region-scoped milestone is a gate defect, and this mistake has now been made three times (M1, M2 attempt 1, M2 attempt 2) |
 | G3 | placement check | per-element mass measurement (centroid + area% of the reference's main colour masses) against the reference, plus the region-scoped colour-mass distance | each mass present, and its centroid within ~0.05 of the reference's. This is the composition instrument; it is what caught reviewer error in M1 |
+| **G7** | **transferable share** | `.venv/bin/python .scratch/13-assembly/work/measure-trace-debt.py` | at a **milestone exit**, the traced share of the artifact's painted pixels is **0** — every shape comes from a family or a relation. A `traced` node may exist *during* work (it is the teacher's measurement) but may not be in the artifact a milestone exits on. **Added 2026-09-15 (D24, approved):** M2 was passing this gate set while 81% of its head was a frozen copy of the reference. A gate that cannot tell a drawing from a copy is not a gate, and a frozen contour is not a **canon** — `vocabulary.md` defines a canon as proportion knowledge that *transfers to a new subject*, and a traced outline transfers to nothing |
 | G4 | diagnostics | resolver output in `report.txt` | clean, or each firing is stated and justified |
 | G5 | authoring budget | inspect the spec | no shape carries > 4 hand-typed coordinates **per outline**; a mass may carry ≤ 4 spine points + a width (the sanctioned gesture form, `scene-format.md`); every node has an intent `desc:` |
 | G6 | determinism | re-render, compare `sha256` | byte-identical |
@@ -149,7 +150,11 @@ Exit AC:
   one-sided lash, mouth/nose marks present, hair tapered (no constant-width tubes);
 - A3 the hat reads as a hat — crown volume plus tilt, and **one continuous brim**, not "a disc with a
   ball" and not two detached lobes;
-- A4 G1, G2, **G2b on the head region**, G3, G4, G5, G6.
+- A4 G1, G2, **G2b on the head region**, G3, G4, G5, G6, **G7**.
+- A5 **the head's geometry is families, not traces** (G7): the brim is a `sunhat` instance whose
+  parameters were *extracted* from the reference, the face is a `face` instance, the hair a
+  `hair-mass` instance — with the extracted **canon values written into `vocabulary.md`**, because
+  those values are the transferable knowledge and the whole point of the exercise.
 
 Provisional work items: `face` host family ✅ (attempt 1); two eyes placed independently rather than
 `mirror-of` ✅; fringe + cheek locks ✅; **`sunhat` fold-over rim band ✅ (attempt 2 — the chord split
@@ -163,6 +168,16 @@ coherent but less accurate. The lesson is not "try harder" — it is that the as
 values from the reference** (measure → fill the spec → close the image, which `abstraction.md`
 sanctions) while the *structure* stays relational. M1/M2 re-derived badly what was already measured
 accurately. See `STATUS.md` D15.
+
+**What attempt 3 learned, and why G7 exists.** Seeding via live raster floods passed the bar and
+violated P18; materializing them into `traced` sidecars made it admissible — and measured, the head
+came out **81% copied**. So the ladder was drifting from *learn to draw* toward *learn to trace*: the
+gate could not distinguish a drawing from a copy. The fix, approved as D24, is the teacher loop
+`abstraction.md` actually describes — **use the trace as ground truth to fit the families to, then
+discard the trace**, so the artifact is family instances carrying measured canons and M5 has something
+that can transfer. Honesty hinge: **fit to the teacher's measurement, never to the evaluation
+metric** — fitting `sunhat` to a traced brim mask is parameter extraction; nudging `brim` until
+`edge_f1` rises is invariant 4's optimizer regression.
 
 ### M3 — Beat the baseline on body and cloth
 

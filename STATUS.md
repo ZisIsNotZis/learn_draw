@@ -249,6 +249,19 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
   nothing. So 81% of the head carries no transferable learning — and that is exactly the 81% M5 would
   have to re-invent, which is what failed at attempts 1 and 2. **The gate as written is met but cannot
   distinguish a drawing from a copy, so M2 is not closed and the baseline is not promoted.**
+- **2026-09-15 · D25 — Option A APPROVED: fit the families to the traces, then discard the traces.**
+  The 81% traced share was raised with the user as a method decision (it was, per D24); the user chose
+  fitting over accepting trace-backed artifacts. Consequence now in the roadmap: **gate G7** — at a
+  milestone exit the traced share of the artifact must be **0**, every shape a family or a relation.
+  A `traced` node may exist *during* work (it is the teacher's measurement) but not in the artifact the
+  milestone exits on. M2's AC gains A5: the head's geometry is families whose **canon values are
+  written into `vocabulary.md`**, because those values are the transferable knowledge. Work is sliced
+  brim → face → hair, brim first because it is the structurally hardest.
+  First measurement of that slice: the best ellipse fit to the traced brim outline leaves points **48%
+  off** it, and `hat-far-navy` is *crown and far brim in one navy mass* — so the fit instrument must be
+  **mask-based (IoU against the family's own render)**, not outline-based, and the family may prove
+  structurally unable to express this hat (a real floppy brim droops; its silhouette is not an ellipse).
+  A poor best-IoU, honestly reported, is a successful result.
 - **2026-09-15 · D24 — the teacher loop must extract parameters, not keep the measurement.** The fix to
   evaluate: use the trace as ground truth to **fit the families**, then discard it — traced brim
   outline → fit `sunhat` (`brim/flat/tilt/lift/crown/crown-h`); traced hair → fit `hair-mass`; traced
