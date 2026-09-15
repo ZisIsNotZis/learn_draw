@@ -1,16 +1,16 @@
 {
   "recorded": "2026-09-15",
-  "source": "/home/z/vibe/learn_draw/.scratch/05-portrait-scene/evidence/current.png",
+  "source": "/home/z/vibe/learn_draw/.scratch/13-assembly/evidence/m2-final.png",
   "artifact": "/home/z/vibe/learn_draw/.scratch/00-tooling/baseline/best.png",
-  "source_sha256": "1a7cae4fa400068725ebbbfce5a1401188aa21b3885fb376332089baec080c7c",
-  "artifact_sha256": "1a7cae4fa400068725ebbbfce5a1401188aa21b3885fb376332089baec080c7c",
-  "note": "REBUILD v2 full-figure assembly (Sep 11), the project's best drawing to date. Recorded 2026-09-15 as the ratchet floor after the night session's 'final images' measured 4.5-5.6x worse on coverage.",
+  "source_sha256": "b06e3dca0e35f35652a0964346d6a33f6dfaf4e11f2cd90be0d29e8fcf680900",
+  "artifact_sha256": "b06e3dca0e35f35652a0964346d6a33f6dfaf4e11f2cd90be0d29e8fcf680900",
+  "note": "PARAMETRIC FLOOR (STATUS D28): the best artifact made the way drawings are made here \u2014 fitted families, 0% traced geometry. It is well behind the hand-fitted fidelity reference on edge correspondence and that is expected: a hand-fit is a trace, and a ratchet is only meaningful against artifacts made the same way.",
   "ref": "/home/z/vibe/learn_draw/image.jpg",
   "metrics": {
-    "precision": 0.322,
-    "recall": 0.207,
-    "edge_f1": 0.252,
-    "color_dist": 62.8,
-    "coverage": 0.514
+    "precision": 0.335,
+    "recall": 0.108,
+    "edge_f1": 0.164,
+    "color_dist": 59.6,
+    "coverage": 0.571
   }
 }

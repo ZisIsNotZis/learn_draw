@@ -249,6 +249,26 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
   nothing. So 81% of the head carries no transferable learning — and that is exactly the 81% M5 would
   have to re-invent, which is what failed at attempts 1 and 2. **The gate as written is met but cannot
   distinguish a drawing from a copy, so M2 is not closed and the baseline is not promoted.**
+- **2026-09-15 · D28 — the ratchet floor is now PARAMETRIC; the hand-fitted render becomes the fidelity
+  reference and teacher.** Approved by direction ("actually draw a proper person", not trace it) after
+  D26/D27 proved the old floor could only be cleared by tracing. Two registers now:
+  - **the floor** (`baseline/best.png`, `best.json`) = the best artifact *made the way drawings are made
+    here* — the M2 assembly, fitted families, **0% traced**: whole-frame `edge_f1` 0.164, coverage 0.571,
+    `color_dist` 59.6. This is what a new render is compared against, so the ratchet compares like with
+    like and can actually move.
+  - **the fidelity reference** (`baseline/fidelity-reference.png` + `.json`) = the 2026-09-11
+    hand-fitted render, preserved as the **best match to the target** and as a **teacher**. It is
+    hand-fitted, so it is a trace, not a drawing; it is *not* the thing to beat.
+  Note the parametric floor already **beats the hand-fit on coverage (0.571 vs 0.514) and colour
+  (59.6 vs 62.8)** and trails only on edge correspondence — which is the trace-vs-drawing difference.
+- **2026-09-15 · D29 — the body was never drawn, and that is the real state of the artifact.** Measured
+  after the user looked at the render: the body region (below y420) has coverage **0.581** but
+  `edge_f1` **0.102** — the colour masses are roughly in place and there is almost no drawing inside
+  them. Every body node is a flat primitive (one blouse blob, one neck blob, three bow ellipses, two
+  skirt blobs, two petal blobs); **no arms, hands, collar, sleeves, cuffs or pleats**, and zero body
+  families. M2 spent four attempts on the head while M3 (the body) never started, and the milestone
+  reports said "the head passes its bar" without foregrounding that three quarters of the drawing is
+  untouched. That is a reporting failure as much as a drawing one. M3a (upper body) is dispatched.
 - **2026-09-15 · D26 — the fidelity floor and G7 are mutually exclusive for this subject (PROVEN, with
   a decision pending).** M2 attempt 4c reached **G7 (traced share 0.000)** with fitted families, and the
   head's `edge_f1` fell to **0.340** against a bar of 0.412. That is not a shortfall — it is a
