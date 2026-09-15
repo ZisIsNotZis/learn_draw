@@ -156,3 +156,14 @@ progress. Rule: **one drawing grows across the milestones** (`.scratch/13-assemb
 a probe is welcome, but it merges into that drawing or is discarded *in the same milestone*. If
 nothing merged, nothing was delivered.
 Learned: the night's three probes, and the assembly that still had to be seeded from a probe.
+
+## P25 — A per-element diagnostic is not an objective (13-assembly, M1)
+
+Reshaping the hair so its centroid moved from (0.825, 0.472) toward the reference's measured
+(0.713, 0.348) made the drawing **worse** — the aggregate coarse-grid colour-mass distance went
+39.1 → 42.8. The indicator improved while the artifact regressed: invariant 4's failure mode
+(optimizer regression) migrated one level up, from pixels to measured mass centroids. A per-element
+table **diagnoses** — it tells you which part to look at — but only the whole-image comparison (or a
+blind reviewer) **arbitrates**. Rule: never tune a shape to a number in the diagnostic table; change
+it for a stated drawing reason, then check the aggregate.
+Learned: M1 iterations it6/it7, both rolled back (`.scratch/13-assembly/log.md`).

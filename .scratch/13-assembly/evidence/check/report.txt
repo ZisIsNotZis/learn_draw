@@ -1,0 +1,20 @@
+art:    .scratch/13-assembly/evidence/m1-final.png
+bundle: .scratch/13-assembly/evidence/check
+
+images (feed these, and nothing else):
+  .scratch/13-assembly/evidence/check/side-by-side.png  -- whole frame, ref beside draft
+  .scratch/13-assembly/evidence/check/draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale)
+  .scratch/13-assembly/evidence/check/region-1.png  -- worst-region #1 at (896,64,64,64) mean-dist 203, 2.0x
+  .scratch/13-assembly/evidence/check/region-2.png  -- worst-region #2 at (256,768,64,64) mean-dist 191, 2.0x
+  .scratch/13-assembly/evidence/check/region-3.png  -- worst-on-drawn #3 at (512,768,64,64) mean-dist 180, 2.0x
+
+metrics (breakage alarm only, never a target): {'precision': 0.174, 'recall': 0.054, 'edge_f1': 0.082, 'color_dist': 68.8, 'coverage': 0.528}
+vs recorded best: edge_f1 0.252 -> 0.082 (-0.170) | coverage 0.514 -> 0.528 (+0.014) | precision 0.322 -> 0.174 (-0.148) | recall 0.207 -> 0.054 (-0.153) | color_dist 62.8 -> 68.8 (+6.000)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/05-portrait-scene/evidence/current.png]
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.

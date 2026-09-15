@@ -1,0 +1,26 @@
+reference composition — image.jpg (bbox is x0,y0-x1,y1 in 1024-space)
+  head/face skin   area  11000   628, 226 -  779, 378  centre ( 688, 311)  151x152
+  neck             (none)
+  hat crown navy   area  13480   461,  20 -  800, 182  centre ( 705,  91)  339x162
+  hat brim teal    area  26789   430,  33 -  654, 255  centre ( 526, 124)  224x222
+  hat brim navy    area  25244   461,  20 -  982, 300  centre ( 776, 129)  521x280
+  hair blue        area  70712   148,  98 - 1024, 772  centre ( 747, 336)  876x674
+                   area   3356   424, 531 -  555, 624  centre ( 479, 569)  131x93
+                   area   2018   543, 601 -  604, 683  centre ( 575, 639)  61x82
+  blouse pale      area  22088   691, 436 -  874, 688  centre ( 786, 563)  183x252
+                   area   2096   604, 676 -  751, 700  centre ( 666, 691)  147x24
+                   area   1907   669, 552 -  715, 637  centre ( 693, 592)  46x85
+  skirt pale       area  27234   520, 728 -  740, 900  centre ( 624, 823)  220x172
+                   area   9506   789, 656 -  926, 900  centre ( 854, 760)  137x244
+                   area   5966   580, 676 -  751, 735  centre ( 669, 705)  171x59
+  bow magenta      area  15251   538, 455 -  771, 603  centre ( 671, 522)  233x148
+  skirt dark       area  45722   335, 771 -  857,1024  centre ( 608, 916)  522x253
+                   area  26074    51, 791 -  324,1024  centre ( 197, 916)  273x233
+                   area   2490   837, 600 -  923, 656  centre ( 874, 620)  86x56
+  mint field       area 126296     5, 350 -  718, 702  centre ( 316, 505)  713x352
+                   area  11199   890, 697 - 1021, 953  centre ( 972, 821)  131x256
+                   area   6771   314, 771 -  472, 848  centre ( 387, 807)  158x77
+  petal pink       area  28033   207, 780 -  514,1024  centre ( 324, 908)  307x244
+  ribbon blue      area   5734   102, 302 -  470, 444  centre ( 254, 369)  368x142
+                   area   2930    12, 731 -  221, 750  centre ( 127, 742)  209x19
+                   area   1600   424, 555 -  470, 627  centre ( 453, 589)  46x72

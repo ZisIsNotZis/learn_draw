@@ -1,0 +1,128 @@
+# 13-assembly — the drawing. M1: composition and mass.
+#
+# This is the project's single drawing artifact (roadmap R1): every milestone patches this file.
+# M1's job is NOT detail. It is: put the subject where the reference puts it, at the reference's
+# scale, with the reference's masses present. Flat fills only — head quality is M2, cloth is M3,
+# the soft tier is M4 (invariant 2: soft fields last).
+#
+# Provenance of every number in `vars:`. All measured 2026-09-15 from image.jpg by
+# connected-component colour probes (not eyeballed — P19); the measurement table is in log.md.
+# The reference seeded these values and is now closed: nothing here reads image.jpg (P18).
+#
+# Resolution order != paint order (P20): the head is declared FIRST because everything is sized in
+# units of it, and placed via `z` where it belongs visually.
+
+frame: {w: 1024, h: 1024}
+
+layers: [bg, field, ribbon, hair-back, skirt-dark, skirt-pale, blouse, neck, bow,
+         head, hat, hat-front, hair-front]
+
+vars:
+  # ---- measured frame anchors: the "setting the frame" use of a reference (abstraction.md)
+  head_half:  frame.w*0.0928    # 95px  — face skin bbox 151px wide; skull/eye-line width ~190px
+  head_deep:  head_half*1.20    # 114px — skull top y150 -> chin y378
+  head_cx:    frame.w*0.672     # 688px — face skin centroid x
+  head_cy:    frame.h*0.258     # 264px — head vertical centre (150+378)/2
+
+draw:
+  # ---------------------------------------------------------------- backdrop
+  - {rect: bg, full: true, fill: "#c3d7dc",
+     desc: "flat backdrop — border median of the reference; the bottom-right drifts darker in the ref, deferred to M4"}
+
+  # ---------------------------------------------------------------- field (left mass)
+  - {ellipse: field, at: [frame.w*0.365, frame.h*0.530], rx: frame.w*0.330, ry: frame.h*0.175,
+     fill: "#7dccc1", z: field,
+     desc: "mint field mass — sized to the measured AREA (126296px), not its bbox: fitting the bbox
+            over-fills by 56% and puts mint where the reference has figure. Softening is M4"}
+
+  # ---------------------------------------------------------------- ribbon sweep (over the field, behind the figure)
+  - {blob: ribbon-sweep,
+     spine: [[frame.w*0.07, frame.h*0.265], [frame.w*0.25, frame.h*0.355], [frame.w*0.46, frame.h*0.43]],
+     w: frame.w*0.085, fill: "#6673b8", z: ribbon,
+     desc: "long ribbon sweeping the left of the frame — measured band x[102,470] y[302,444]"}
+
+  # ---------------------------------------------------------------- the ruler (declared first, painted late)
+  - {ellipse: head, at: [head_cx, head_cy], rx: head_half, ry: head_deep,
+     fill: "#f2e9d8", z: head,
+     desc: "head/skin ellipse — the ruler: every other size in this file is a fraction of it"}
+
+  # ---------------------------------------------------------------- hair
+  # NOTE (rolled back 2026-09-15): a hair mass shaped from the measured band profile moved the hair
+  # centroid from (0.825,0.472) to (0.770,0.440) — closer to the reference's (0.713,0.348) — and made
+  # the drawing WORSE overall (coarse-grid distance 39.1 -> 42.8). The centroid is a diagnostic; the
+  # grid distance is the arbiter. Chasing the diagnostic was optimizer regression (invariant 4).
+  - {blob: hair-back,
+     spine: [[frame.w*0.74, frame.h*0.175], [frame.w*0.855, frame.h*0.41], [frame.w*0.84, frame.h*0.755]],
+     w: frame.w*0.20, fill: "#3974ab", z: hair-back,
+     desc: "long hair mass falling down the right — measured x[600,1024] y[120,772], 58683px the largest hair component"}
+  - {blob: hair-locks,
+     spine: [[frame.w*0.885, frame.h*0.40], [frame.w*0.93, frame.h*0.53], [frame.w*0.91, frame.h*0.68]],
+     w: frame.w*0.11, fill: "#3974ab", z: hair-front,
+     desc: "hair falling over the chest on the right — measured x[847,1024] y[380,700], 11255px"}
+  - {stroke: hair-left,
+     spine: [[frame.w*0.175, frame.h*0.32], [frame.w*0.35, frame.h*0.385], [frame.w*0.565, frame.h*0.42]],
+     w: frame.w*0.014, ink: "#3974ab", z: hair-front,
+     desc: "hair sweeping left across the shoulder — measured x[148,600] y[305,443] but only 13.7% filled,
+            i.e. wisps not a mass: a thin stroke, not a 105px ribbon (which read as a slab)"}
+
+  # ---------------------------------------------------------------- body: blouse over the hair
+  # NOTE (rolled back 2026-09-15): enlarging the cream mass to close the measured deficit made the
+  # drawing WORSE (coverage 0.523 -> 0.502, grid distance 39.4 -> 43.2). The deficit is real but it
+  # is not fixable by adding pale where the reference is not pale — the missing cream is the parts
+  # hidden behind the bow and hair, i.e. an OCCLUSION problem for M3, not a size problem. Reverted.
+  - {blob: blouse,
+     spine: [[frame.w*0.745, frame.h*0.44], [frame.w*0.775, frame.h*0.55], [frame.w*0.715, frame.h*0.675]],
+     w: frame.w*0.185, fill: "#ddebdd", z: blouse,
+     desc: "blouse mass, chest to hip — measured pale x[691,874] y[436,688]"}
+
+  # ---------------------------------------------------------------- neck (chin into the collar)
+  - {blob: neck, spine: [[frame.w*0.658, frame.h*0.405], [frame.w*0.658, frame.h*0.445]],
+     w: frame.w*0.047, fill: "#e8d7bd", z: neck,
+     desc: "neck from under the jaw into the collar — measured x[656,703] y[417,457]"}
+
+  # ---------------------------------------------------------------- bow (the strongest colour in the figure)
+  # Two loops and a knot, not one bar: a single 233px bar reads as a box. Flat fills; the fold
+  # shading and the tails are M3. Measured magenta x[538,771] y[455,603], centred (671,522).
+  - {ellipse: bow-loop-left, at: [frame.w*0.59, frame.h*0.51], rx: frame.w*0.061, ry: frame.h*0.070,
+     fill: "#d35081", z: bow, desc: "left bow loop"}
+  - {ellipse: bow-loop-right, at: [frame.w*0.72, frame.h*0.51], rx: frame.w*0.061, ry: frame.h*0.070,
+     fill: "#d35081", z: bow, desc: "right bow loop"}
+  - {ellipse: bow-knot, at: [frame.w*0.655, frame.h*0.51], rx: frame.w*0.028, ry: frame.h*0.038,
+     fill: "#c04a78", z: bow, desc: "bow knot"}
+
+  # ---------------------------------------------------------------- skirt / dress (bottom mass)
+  - {blob: skirt-dark,
+     spine: [[frame.w*0.13, frame.h*0.855], [frame.w*0.45, frame.h*0.885], [frame.w*0.82, frame.h*0.85]],
+     w: frame.w*0.225, fill: "#2d4e67", z: skirt-dark,
+     desc: "dark skirt mass across the bottom — measured x[51,857] y[771,1024], 71796px in two components"}
+  - {blob: skirt-pale,
+     spine: [[frame.w*0.625, frame.h*0.75], [frame.w*0.68, frame.h*0.845]],
+     w: frame.w*0.18, fill: "#d2e2d8", z: skirt-pale,
+     desc: "pale panel over the dark skirt — measured x[520,740] y[728,900]"}
+  # the rainbow petals inside the skirt: the reference's most saturated area (measured pink
+  # 28033px centred (324,908) + warm 33145px centred (370,935)). Flat masses in M1.
+  - {blob: petal-pink,
+     spine: [[frame.w*0.24, frame.h*0.87], [frame.w*0.33, frame.h*0.90], [frame.w*0.46, frame.h*0.90]],
+     w: frame.w*0.13, fill: "#e2869c", z: skirt-dark, desc: "pink petal mass in the skirt"}
+  - {blob: petal-warm,
+     spine: [[frame.w*0.25, frame.h*0.905], [frame.w*0.36, frame.h*0.93], [frame.w*0.52, frame.h*0.92]],
+     w: frame.w*0.12, fill: "#e8b48c", z: skirt-dark, desc: "warm petal mass in the skirt"}
+
+  # ---------------------------------------------------------------- the hat (family; brim slices do the occlusion)
+  - {sunhat: hat, host: head, brim: 2.905*head.w, crown: 0.92*head.w, tilt: -10,
+     lift: 0.91, drop: 0.62, crown-h: 0.77, flat: 0.44, front: [0.28, 0.72], pom: 2,
+     pom-at: [0.732, 0.102], pom-r: 0.16,
+     crown-fill: "#32405b", crown-stroke: "#22304a", crown-sw: 2,
+     brim-fill: "#333f64", rim-fill: "#579eaf", pom-fill: "#df9199",
+     z: hat, z-front: hat-front,
+     desc: "wide-brim sun hat worn high — measured brim 552x280 centred (706,160). `front` [0.28,0.72]
+            is the LEFT half (t=0 is right, t=0.25 bottom, going clockwise): the reference's teal side.
+            pom-at from the measured pom centres (656,52) and (908,189) inverted through on(t)"}
+
+# occlusion intent, in words — the engine raises CONTRADICTION when this disagrees with `layers`
+relations:
+  - {front: hat, behind: head, desc: "the hat sits on top of the head"}
+  - {front: hair-front, behind: blouse, desc: "front hair falls over the blouse"}
+  - {front: skirt-pale, behind: skirt-dark, desc: "the pale panel lies over the dark skirt"}
+  - {front: blouse, behind: ribbon-sweep, desc: "the ribbon passes behind the figure"}
+  - {front: head, behind: hair-back, desc: "the face is in front of the hair mass behind it"}

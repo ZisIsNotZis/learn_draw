@@ -47,17 +47,33 @@ complexity. Never diffusion or pixel generation.
 
 Run **all six**; each produces evidence, and the milestone report cites them.
 
+**Two different things are being measured here, and conflating them caused a bad gate:** an
+*alarm* catches deletion and breakage and applies at every milestone; a *detail floor* tests
+correspondence of line and colour, which only makes sense once the milestone's job includes detail.
+M1 is defined as flat masses, so gating it on `edge_f1` would have failed it for doing exactly what
+it is for — and would have pressured M1 into smuggling in M2/M3 work (the "one ticket doing several
+things at once" failure that got 05 frozen). Renegotiated 2026-09-15; see `STATUS.md` D7.
+
 | # | gate | command / method | passes when |
 | --- | --- | --- | --- |
 | G1 | render + bundle | `scripts/draw check <assembly-render> --ref image.jpg` | bundle written; `draft-fullres.png` is in the reviewer image list |
-| G2 | no regression | the `vs recorded best:` line in `report.txt` | `coverage` ≥ best − 0.01 and `edge_f1` ≥ best − 0.01; `color_dist` may not jump > 10 |
-| G3 | fresh eyes (blind A/B) | hand a fresh-context reviewer **only** the two images (new render, best render) + the target, in randomized order; ask "which reads more like the target, and what is wrong with each?" | the new render is preferred or judged a tie; no reviewer-reported defect is left unclassified |
+| G2 | **alarm** — nothing deleted, nothing broken | the `vs recorded best:` line in `report.txt` | `coverage` ≥ best − 0.01 (deletion floor) and `color_dist` ≤ best + 15 (breakage). Applies at **every** milestone |
+| G2b | **detail floor** | as above | `edge_f1` ≥ best − 0.01 — applies **from M2 onward**, when detail becomes the job. Reported but not gating in M1 |
+| G3 | placement check | per-element mass measurement (centroid + area% of the reference's main colour masses) against the reference | each mass present, and its centroid within ~0.05 of the reference's. This is the composition instrument; it is what caught reviewer error in M1 |
 | G4 | diagnostics | resolver output in `report.txt` | clean, or each firing is stated and justified |
-| G5 | authoring budget | inspect the spec | no shape carries > 4 hand-typed coordinates; every node has an intent `desc:` |
+| G5 | authoring budget | inspect the spec | no shape carries > 4 hand-typed coordinates **per outline**; a mass may carry ≤ 4 spine points + a width (the sanctioned gesture form, `scene-format.md`); every node has an intent `desc:` |
 | G6 | determinism | re-render, compare `sha256` | byte-identical |
 
-On pass, if the new render is better, promote it: `scripts/draw baseline <render> --ref image.jpg
+**Promotion is a separate act, not a milestone exit.** The baseline moves **only** on a blind A/B
+preference: hand a fresh-context reviewer the target plus the two renders under neutral names in
+randomized order, asking "which is the better drawing of this target, and what is wrong with each?"
+(For a single region, e.g. the head in M2, the same question over the crop.) Never promote on
+metrics; never promote on "my milestone passed". `scripts/draw baseline <render> --ref image.jpg
 --note "…"`. **The baseline only ever moves up.**
+
+If two reviewers disagree, do not pick a verdict — measure (P7: observations are reliable, locations
+are not). The coarse-grid colour-mass distance and the per-element table are the tie-breakers; that
+is how M1's split verdict was resolved.
 
 ## Milestones
 
@@ -69,19 +85,26 @@ Exit: a recorded best artifact with provenance, and `check` reporting a delta ag
 Done: `.scratch/00-tooling/baseline/` (best.png + best.json) holds the 2026-09-11 full-figure
 assembly — coverage 0.514, edge_f1 0.252, color_dist 62.8; byte-identical reproduction verified.
 
-### M1 — Beat the baseline on composition (the whole figure, coarsely)
+### M1 — Recover the baseline's composition (the whole figure, coarsely)
 
-Intent: stop being *below* the project's own bar. The measured deficit is coverage (0.514 → 0.091),
-i.e. missing subject mass, not wrong detail. This milestone is **placement and mass**, drawn flat.
+Intent: stop being *below* the project's own bar again, and give every later milestone a frame that
+is measured-correct. The measured deficit that opened M1 was coverage (0.514 → 0.091), i.e. missing
+subject mass — so this milestone is **placement and mass**, drawn flat.
 
-Entry: M0.
+Entry: M0. **Status: exit criteria met 2026-09-15** (see `STATUS.md` D8); baseline *not* promoted.
 
 Exit AC:
-- A1 the subject sits where the reference's sits, and fills the frame the way the reference does
-  (reviewer states this in words; that is the acceptance, not a number);
+- A1 the subject sits where the reference's sits and fills the frame the way the reference does —
+  verified by G3's per-element measurement, plus a reviewer statement;
 - A2 the masses the reference has are present *as flat shapes*: figure, hat, hair sweep, blouse,
   bow, dark skirt mass, pale overskirt, and the left background field + ribbon sweep;
-- A3 G1–G6 all pass.
+- A3 coverage ≥ the recorded best (nothing deleted);
+- A4 G1, G2, G3, G4, G5, G6 pass.
+
+**Not an M1 exit: beating the baseline as a drawing.** With flat masses and no line work, M1 loses
+G2b and loses any blind A/B on finish — by construction, not by failure. Requiring it here would
+have made the milestone unreachable. That bar belongs to M4, whose job is the finished figure
+(M2 promotes on the *head crop* alone).
 
 *Not in M1:* face detail, folds, shading, gradients. Flat fills only.
 
@@ -89,11 +112,11 @@ Note on invariant 2 (soft fields last): M1 draws the field's **silhouette** flat
 counts its presence. Its *soft treatment* (gradients, blur, translucency) is M4 and stays deferred.
 
 Provisional work items:
-1. Seed `.scratch/13-assembly/work/spec.yaml` from `14/work/final/final-full.yaml` (it already has
-   the relational head/hat/hair + body skeleton). Promote, then delete 14's copy as a source of truth.
-2. Fix the figure's position and scale against the reference's own framing (head var, canvas anchor).
-3. Re-author the skirt/dress mass where the reference has it (lower-left, not centred).
-4. Add the background field + ribbon sweep as two flat relational shapes.
+1. Seed `.scratch/13-assembly/work/spec.yaml` from `14/work/final/final-full.yaml`.
+2. Measure the reference's composition (colour-component bboxes/centroids) and put the numbers in
+   `vars:` with provenance — never eyeball placement (P19).
+3. Fix the figure's position, scale and mass placement against those measurements.
+4. Add the field + ribbon sweep as flat relational shapes.
 5. Record the milestone in `13-assembly/log.md` with the gate evidence.
 
 ### M2 — Beat the baseline on the head
