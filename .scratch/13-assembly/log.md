@@ -358,3 +358,70 @@ drawing either; it is a failure of the artifact's admissibility.
 
 **Baseline NOT promoted.** Next slice: implement the freeze step and re-run M2's gate on an artifact
 that stands up with the image deleted.
+
+## 2026-09-15 — M2 attempt 3 materialized: the artifact is ADMISSIBLE, and 81% copied
+
+The freeze slice worked exactly as designed. Verified by me, not taken on report:
+
+```
+$ mv image.jpg /tmp/hidden.jpg
+$ .venv/bin/python scripts/relate.py .scratch/13-assembly/work/spec.yaml -o /tmp/noref.png
+resolved 48 nodes across 14 layer(s)      # diagnostics: only the two honest SUB-PIXELs, no TEACHER
+$ scripts/draw check …/spec.yaml --outdir …            # exit 0
+$ mv /tmp/hidden.jpg image.jpg                          # restored, sha256 intact
+```
+
+**G0 now passes.** `draw freeze <spec> --ref image.jpg` writes each raster node's computed outline to
+`.scratch/13-assembly/work/traced/<node>.json` with full provenance (`image_sha256`, seed, tol, eps,
+method, vertex_count) and a new `traced` front-end node loads it with **no raster opened**. Staleness
+is loud: a changed `image.jpg` sha256, a missing file or a malformed file all raise `SpecError`.
+`region` and its `TEACHER` diagnostic are untouched.
+
+Quality is unchanged: the no-`--ref` render is **byte-identical** to attempt 3's live-region render
+(`785a597d…`). Head bar met (`edge_f1` 0.619 vs the baseline's 0.422; coverage 0.778 vs 0.702);
+whole-frame `edge_f1` 0.271 vs 0.252. Deterministic across three no-ref resolutions. Tests 34/34.
+
+### The number that matters: 81% of the head is copied, not drawn
+
+Attempt 3 gave M2 a measurable pass by flood-filling the reference. The freeze made that **legal**
+(admissible, provenance-carrying, reproducible) — and measured it:
+
+| measure | value |
+| --- | --- |
+| traced share of the head crop's **painted** pixels | **81.0%** (120 749 of 149 052) |
+| traced polygons as a share of the whole head crop | 47% (123 055 of 260 400 px) |
+| my independent cross-check | 123 055 traced px ≈ their 120 749 painted — **consistent** |
+
+Instrument: `work/measure-trace-debt.py` (kept; it should become a gate instrument).
+
+### Why this is a problem, stated precisely
+
+A **frozen contour is not a learned canon.** `vocabulary.md` defines a canon as proportion knowledge
+as a fraction of a host measure ("brim ≈ 2.9 head-widths", "eyes at half head height") — knowledge that
+**transfers to a new subject**. A traced outline transfers to nothing: it is one specific shape, and it
+says nothing about how to draw the next head. So 81% traced means 81% of the head carries **no
+transferable learning**, and it is precisely the 81% that M5's withdrawal would have to re-invent from
+scratch — the thing that failed at attempts 1 and 2.
+
+The teacher loop `abstraction.md` describes is: **measure → extract canon parameters → close the
+image → re-instantiate from parameters.** Freezing a contour skips the "extract parameters" step and
+keeps the measurement as the drawing. That is the drift: the ladder heading from *learn to draw*
+toward *learn to trace*.
+
+**Therefore M2 is NOT closed.** Its gate as written is met on measurement, but the gate has no
+transferability criterion, so it cannot tell a drawing from a copy. Baseline not promoted.
+
+### The fix to evaluate (proposal, needs a decision)
+
+Use the trace as the teacher's **ground truth to fit the families to**, then throw the trace away:
+
+- traced brim outline → **fit `sunhat`** (`brim`, `flat`, `tilt`, `lift`, `crown`, `crown-h`) → the brim
+  becomes a family instance with measured canon values, and the values are the transferable knowledge;
+- traced hair silhouette → fit the `hair-mass` family (spine, width profile, tip zigzag);
+- traced face skin → fit `face` (`cheek`, `jaw`, `chin-w`).
+
+Then the artifact is **100% family instances with measured canons**, the traces are kept as the
+teacher's evidence (not as the drawing), and M5 has something that can actually transfer. The
+distinction that keeps this honest: **fit to the teacher's measurement, never to the evaluation
+metric** — fitting the sunhat to the traced outline is parameter extraction; tuning `brim` until
+`edge_f1` rises is the optimizer regression invariant 4 forbids.

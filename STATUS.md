@@ -238,6 +238,25 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
   is not a pass and not a failure of the drawing, but a failure of the artifact's admissibility. The
   baseline stays unpromoted (attempt 3's whole-frame `edge_f1` 0.271 > 0.252 is a tracing win, not a
   drawing win).
+- **2026-09-15 · D23 — G0 now passes, and the artifact is 81% copied: M2 stays OPEN.** The freeze
+  slice materialized the raster nodes into provenance-carrying sidecars (`draw freeze` → `traced`
+  nodes), verified by me with `image.jpg` moved away: the spec renders, `draw check` exits 0, the
+  no-`--ref` render is **byte-identical** to attempt 3's (`785a597d…`), and quality did not move
+  (head `edge_f1` 0.619 vs 0.422). So the artifact is **admissible** — and measured:
+  **81.0% of the head's painted pixels are reference-derived** (47% of the whole crop; my independent
+  polygon-area check agrees). A frozen contour is **not a learned canon**: `vocabulary.md` defines a
+  canon as proportion knowledge that transfers to a new subject, and a traced outline transfers to
+  nothing. So 81% of the head carries no transferable learning — and that is exactly the 81% M5 would
+  have to re-invent, which is what failed at attempts 1 and 2. **The gate as written is met but cannot
+  distinguish a drawing from a copy, so M2 is not closed and the baseline is not promoted.**
+- **2026-09-15 · D24 — the teacher loop must extract parameters, not keep the measurement.** The fix to
+  evaluate: use the trace as ground truth to **fit the families**, then discard it — traced brim
+  outline → fit `sunhat` (`brim/flat/tilt/lift/crown/crown-h`); traced hair → fit `hair-mass`; traced
+  skin → fit `face` (`cheek/jaw/chin-w`). The artifact then becomes family instances carrying measured
+  canon values, and M5 has knowledge that can actually transfer. Honesty hinge: **fit to the teacher's
+  measurement, never to the evaluation metric** — fitting `sunhat` to the traced outline is parameter
+  extraction; nudging `brim` until `edge_f1` rises is invariant 4's optimizer regression. This is a
+  method decision and is being raised with the user rather than assumed.
 - **2026-09-15 · D22 — attempt 3's real value is the instrument, not the artifact.** Kept: the
   `region` front-end node and `--ref` plumbing (the materialization step needs them), the improved
   `flood_region(fixed, box, eps)`, `z-pom`, 27/27 tests, and above all the **`TEACHER` diagnostic**

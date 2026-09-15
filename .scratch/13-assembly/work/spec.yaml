@@ -8,12 +8,16 @@
 # Provenance of every number in `vars:`. All measured 2026-09-15 from image.jpg by
 # connected-component colour probes (not eyeballed — P19); the measurement table is in log.md.
 #
-# M2 attempt 3 changes the teacher story: most of the head is now seeded from the reference by
-# `region` nodes (face-skin, hair-mass, hat-far-navy, hat-near-teal, hat-near-teal-right). Those
-# nodes FLOOD image.jpg at resolve time, so this spec is NO LONGER reference-free and it needs
-# `--ref image.jpg` (see scripts/relate.py). They are legal only while the reference is open; the
-# resolver marks each one TEACHER in its diagnostics and M5 must redraw them without it. Every
-# other node keeps its M1 provenance and stays reference-free.
+# M2 attempt 3 seeded most of the head from the reference with live `region` nodes, which made
+# this spec reference-dependent. That is now materialized (roadmap D20): `scripts/draw freeze`
+# resolved the regions once with `--ref` and froze each computed outline to a sidecar data file
+# under `.scratch/13-assembly/work/traced/<node>.json`; the five `traced` nodes below read those
+# vertices and never open a raster. The spec is reference-free again: it renders with image.jpg
+# deleted. Each sidecar carries provenance (node id, seed/tol/eps, source image + sha256, date,
+# code path), and a `traced` node refuses loudly if the sidecar is missing, malformed, or stale
+# (its recorded image.jpg sha256 no longer matches the current raster). The traced geometry is the
+# teacher's, not drawn from intent — the traced-vs-invented area fraction in the milestone report
+# measures that debt for M5. Every other node keeps its M1 provenance and was already reference-free.
 #
 # Resolution order != paint order (P20): the head is declared FIRST because everything is sized in
 # units of it, and placed via `z` where it belongs visually.
@@ -57,12 +61,13 @@ draw:
      desc: "head: cranium ball + jaw wedge tapering to the chin — the ruler every other size uses"}
   # The reference's VISIBLE skin (measured 151x152) is what the relational jaw only approximates:
   # hair occludes the forehead and both cheeks, so the visible skin is far smaller than the head
-  # box, and the M2 jaw rendered 164x180 (9% wide, 18% tall). Seeding the visible surface from the
-  # reference keeps the `face` family as the host/ruler and the jaw profile as drawing knowledge,
-  # while the surface itself is the teacher's. TEACHER-ONLY: M5 redraws the skin reference-free.
-  - {region: face-skin, seed: [head.cx, head.cy + 0.38*head.ry], tol: 16, fixed: true, eps: 3,
-     fill: "#f2e9d8", z: head,
-     desc: "visible face skin — the reference's pale area, flooded from just below head centre; teacher-only"}
+  # box, and the M2 jaw rendered 164x180 (9% wide, 18% tall). The surface was seeded from the
+  # reference by a `region` flood and FROZEN to a sidecar (roadmap D20): the vertices are the
+  # teacher's, computed once, and the spec reads them without opening a raster (P18).
+  # Frozen from: region seed [head.cx, head.cy + 0.38*head.ry], tol 16, fixed, eps 3.
+  - {traced: face-skin, from: traced/face-skin.json, fill: "#f2e9d8", z: head,
+     desc: "visible face skin — the reference's pale area, frozen by `draw freeze` (seed 688,308;
+            tol 16; eps 3); provenance + image sha256 in the sidecar. Reads vertices only"}
 
   # ---------------------------------------------------------------- face features (M2)
   # All positions are HEAD-RELATIVE, from the measured apertures:
@@ -103,14 +108,13 @@ draw:
   # The relational hair blobs re-derived the worst-approximated mass in the head: the reference's
   # visible hair is a single 876x674 component whose boundary is set by where it meets the face,
   # the neck and the hat. Two attempts at fringe + cheek-lock gestures did not reproduce it
-  # (M2 att1/att2). So the mass is now a `region` seeded from the head anchor, in head units --
-  # the reference's own blue area, outline computed. TEACHER-ONLY (reads image.jpg): this is debt
-  # M5 must repay by redrawing the hair reference-free. The left wisp stays an invented gesture
-  # because the flood does not reach it and a thin sweep is exactly what the gesture form is for.
-  - {region: hair-mass, seed: [head.cx, head.cy - 0.55*head.ry], tol: 40, fixed: true, eps: 3,
-     fill: "#3974ab", z: hair-front,
+  # (M2 att1/att2). The mass was flooded from the head anchor and FROZEN to a sidecar (D20); it is
+  # the reference's own blue area, outline computed, stored as data. The left wisp stays an invented
+  # gesture because the flood does not reach it and a thin sweep is exactly what the gesture form
+  # is for. Frozen from: region seed [head.cx, head.cy - 0.55*head.ry], tol 40, fixed, eps 3.
+  - {traced: hair-mass, from: traced/hair-mass.json, fill: "#3974ab", z: hair-front,
      desc: "hair mass — the reference's visible blue hair (fringe + both cheeks + the fall down the
-            right), flooded from a seed 0.55 head-radii above centre; teacher-only"}
+            right), frozen by `draw freeze` (seed 688,202; tol 40; eps 3); reads vertices only"}
   - {stroke: hair-left,
      spine: [[frame.w*0.175, frame.h*0.32], [frame.w*0.35, frame.h*0.385], [frame.w*0.565, frame.h*0.42]],
      w: frame.w*0.014, ink: "#3974ab", z: hair-front,
@@ -185,24 +189,22 @@ draw:
 
   # ---- the brim's two surfaces, seeded from the reference (M2 attempt 3) ---------------------
   # A flat brim ellipse cannot express the reference's crescent droop (open defect #2), and the
-  # teal/navy split re-derived from `front`/`rim` is measurably far off. Both surfaces are now
-  # regions whose SEEDS are points on the sunhat's own brim anchor, so the nodes carry no typed
-  # coordinates and the invented family still supplies the seed. TEACHER-ONLY: M5 must redraw the
-  # brim reference-free -- this is the largest piece of debt this attempt takes on.
-  - {region: hat-far-navy, seed: {along: hat, t: 0.742}, tol: 28, fixed: true, eps: 3,
-     fill: "#333f64", z: hat,
+  # teal/navy split re-derived from `front`/`rim` is measurably far off. Both surfaces were flooded
+  # with SEEDS that are points on the sunhat's own brim anchor, so the nodes carried no typed
+  # coordinates and the invented family supplied the seed; each outline is now FROZEN to a sidecar
+  # (D20) and read without a raster. Frozen seeds/params are in each sidecar's provenance.
+  - {traced: hat-far-navy, from: traced/hat-far-navy.json, fill: "#333f64", z: hat,
      desc: "crown + far brim navy: the reference's navy area round the brim's far edge (crown and
-            far rim are one connected navy mass), seeded at t=0.742 on the brim outline; teacher-only"}
-  - {region: hat-near-teal, seed: {along: hat, t: 0.44, out: -0.13*hat.w}, tol: 28, fixed: true, eps: 3,
-     fill: "#579eaf", z: hat-front,
-     desc: "brim top surface teal, left: the reference's teal area near the brim's left, seed pushed
-            0.13 brim-widths inward from the outline at t=0.44; teacher-only"}
-  - {region: hat-near-teal-right, seed: [head.cx + 2.65*head.rx, head.cy + 0.84*head.ry], tol: 30, fixed: true, eps: 3,
-     fill: "#579eaf", z: hat-front,
+            far rim are one connected navy mass), frozen by `draw freeze` (seed {along: hat, t:
+            0.742}; tol 28; eps 3); reads vertices only"}
+  - {traced: hat-near-teal, from: traced/hat-near-teal.json, fill: "#579eaf", z: hat-front,
+     desc: "brim top surface teal, left: the reference's teal area near the brim's left, seed was
+            pushed 0.13 brim-widths inward from the outline at t=0.44, frozen by `draw freeze`
+            (tol 28; eps 3); reads vertices only"}
+  - {traced: hat-near-teal-right, from: traced/hat-near-teal-right.json, fill: "#579eaf", z: hat-front,
      desc: "brim top surface teal, right: the same surface appears to the lower-right of the hair
-            (the head occludes its middle); seeded 2.65 head-radii right and 0.84 down from head
-            centre. A distinct reference mass (measured x[897,1020] y[257,460]) the flat brim ellipse
-            does not reach; teacher-only"}
+            (the head occludes its middle), frozen by `draw freeze` (seed 2.65 head-radii right and
+            0.84 down; tol 30; eps 3); reads vertices only"}
 
 # occlusion intent, in words — the engine raises CONTRADICTION when this disagrees with `layers`
 relations:

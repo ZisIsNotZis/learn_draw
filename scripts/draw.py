@@ -463,6 +463,29 @@ def cmd_check(a):
     print(f"  {'report + reviewer protocol':52s} {report}")
 
 
+def cmd_freeze(a):
+    """Materialize a spec's `region` nodes into `traced` sidecars (roadmap D20).
+
+    Runs the resolver once with the reference OPEN and writes each region's computed outline plus
+    provenance under <spec-dir>/traced/<node>.json. The spec can then swap each `region` for a
+    `traced` node and render with the image deleted. The teacher becomes removable instead of a
+    live raster dependency (P18 / invariant 6).
+    """
+    if not a.ref:
+        raise ToolError("freeze: --ref is required: there is nothing to materialize without the "
+                        "reference raster")
+    resolver = a.resolver or _find_relate(a.spec)
+    if resolver is None:
+        raise ToolError("freeze: no relate.py found; pass --resolver PATH")
+    cmd = [sys.executable, resolver, a.spec, "--freeze", "--ref", a.ref]
+    if a.outdir:
+        cmd += ["--outdir", a.outdir]
+    run = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+    print(run.stdout, end="")
+    if run.returncode != 0:
+        sys.exit(f"freeze failed ({resolver}):\n{run.stderr}")
+
+
 def _sha256(path: str) -> str:
     h = hashlib.sha256()
     with open(path, "rb") as f:
@@ -657,6 +680,13 @@ def main():
     p = sub.add_parser("baseline", help="record ART as the project's best artifact (ratchet floor)")
     p.add_argument("art"); p.add_argument("--ref", default=None); p.add_argument("--note", default="")
     p.set_defaults(fn=cmd_baseline)
+
+    p = sub.add_parser("freeze", help="materialize `region` nodes into frozen `traced` sidecars")
+    p.add_argument("spec")
+    p.add_argument("--ref", required=True, help="reference raster the regions are flooded from")
+    p.add_argument("--outdir", default=None, help="sidecar dir (default: <spec-dir>/traced)")
+    p.add_argument("--resolver", default=None, help="explicit relate.py path; default: beside the spec, then scripts/relate.py")
+    p.set_defaults(fn=cmd_freeze)
 
     p = sub.add_parser("measure"); p.add_argument("image")
     p.add_argument("--hough", action="store_true"); p.add_argument("--rmin", type=int); p.add_argument("--rmax", type=int)

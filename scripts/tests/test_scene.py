@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Smoke tests for scene_render.py — run with .venv/bin/python."""
-import os, sys, subprocess, tempfile, re
+import os, sys, subprocess, tempfile, re, json, hashlib, pathlib
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # scripts/
 import scene_render as sr
 import cv2, numpy as np
@@ -220,6 +220,77 @@ _ze2, _, _, _ = rl.resolve({"frame": {"w": 1000, "h": 1000},
                             "draw": [_zbase, {**_zh, "z-pom": "top"}]})
 _zpoms2 = [n for n in _ze2 if str(n.get("ellipse", "")).startswith("hat-pom")]
 check("o: sunhat z-pom lifts the poms", all(n["z"] == "top" for n in _zpoms2))
+
+# (p) traced node: the REMOVABLE form of a computed `region` (roadmap D20). It loads frozen
+# vertices from a sidecar written by `draw freeze`, emits the same closed poly, and is a normal
+# anchor — so a spec can swap every `region` for `traced` and render with the reference deleted.
+# A missing, malformed or STALE sidecar (recorded image sha256 no longer matches the raster) must
+# fail loudly: a silently stale trace is worse than no trace.
+_trdir = os.path.join(OUT, "traced"); os.makedirs(_trdir, exist_ok=True)
+_timg = os.path.join(OUT, "trace-src.png")
+cv2.imwrite(_timg, np.full((80, 80, 3), 200, np.uint8))
+_sha = hashlib.sha256(open(_timg, "rb").read()).hexdigest()
+_side = {"version": 1, "node": "t", "image": "trace-src.png", "image_sha256": _sha,
+         "vertices": [[10, 10], [70, 10], [70, 60], [10, 60]]}
+with open(os.path.join(_trdir, "t.json"), "w") as _fh:
+    _fh.write(json.dumps(_side))
+_tspec = {"frame": {"w": 100, "h": 100}, "draw": [
+    {"traced": "t", "from": "traced/t.json", "fill": "#123456"},
+    {"ellipse": "e", "at": [50, 50], "rx": 5, "ry": 5}]}
+_te, _tenv, _tn, _tl = rl.resolve(_tspec, base_dir=OUT)
+_tnode = next(n for n in _te if n.get("traced") == "t")
+check("p: traced loads frozen vertices and emits a poly",
+      _tnode["poly"] == [(10.0, 10.0), (70.0, 10.0), (70.0, 60.0), (10.0, 60.0)])
+check("p: traced is a normal anchor (later nodes resolve off it)",
+      _tenv["t.cx"] == 40 and any(n.get("ellipse") == "e" for n in _te))
+try:
+    rl.resolve({"frame": {"w": 100, "h": 100},
+                "draw": [{"traced": "gone", "from": "traced/nope.json"}]}, base_dir=OUT)
+    check("p: traced missing file errors loudly", False)
+except SystemExit as _e:
+    check("p: traced missing file errors loudly", "missing" in str(_e).lower())
+_bad = dict(_side); _bad["image_sha256"] = "0" * 64
+with open(os.path.join(_trdir, "stale.json"), "w") as _fh:
+    _fh.write(json.dumps(_bad))
+try:
+    rl.resolve({"frame": {"w": 100, "h": 100},
+                "draw": [{"traced": "stale", "from": "traced/stale.json"}]}, base_dir=OUT)
+    check("p: traced stale sha256 errors loudly", False)
+except SystemExit as _e:
+    check("p: traced stale sha256 errors loudly", "STALE" in str(_e))
+with open(os.path.join(_trdir, "malformed.json"), "w") as _fh:
+    _fh.write("{not json")
+try:
+    rl.resolve({"frame": {"w": 100, "h": 100},
+                "draw": [{"traced": "malformed", "from": "traced/malformed.json"}]}, base_dir=OUT)
+    check("p: traced malformed file errors loudly", False)
+except SystemExit as _e:
+    check("p: traced malformed file errors loudly", "malformed" in str(_e).lower())
+
+# (q) freeze round-trip: a `region` on a synthetic raster materializes to a sidecar with
+# provenance, and that sidecar resolves through `traced` with NO reference at all (D20).
+_qr = np.full((120, 120, 3), 255, np.uint8)
+cv2.rectangle(_qr, (30, 30), (90, 90), (0, 180, 0), -1)
+_qimg = os.path.join(OUT, "freeze-syn.png")
+cv2.imwrite(_qimg, _qr)
+_qspec = {"frame": {"w": 120, "h": 120},
+          "draw": [{"region": "blob", "seed": [60, 60], "tol": 40, "fixed": True, "eps": 3,
+                    "fill": "#ff00ff"}]}
+_qdir = os.path.join(OUT, "frozen")
+_written = rl.freeze(_qspec, spec_path=pathlib.Path(OUT) / "freeze-syn.yaml",
+                     ref_path=_qimg, ref_bgr=cv2.imread(_qimg), out_dir=_qdir)
+_qdata = json.loads(open(os.path.join(_qdir, "blob.json")).read())
+check("q: freeze writes a sidecar with provenance + vertices",
+      _written and _qdata["node"] == "blob" and _qdata["tol"] == 40
+      and _qdata["image_sha256"] == hashlib.sha256(open(_qimg, "rb").read()).hexdigest()
+      and len(_qdata["vertices"]) == _qdata["vertex_count"])
+_qe, _qenv, _qn, _ql = rl.resolve(
+    {"frame": {"w": 120, "h": 120},
+     "draw": [{"traced": "blob", "from": "frozen/blob.json", "fill": "#ff00ff"}]}, base_dir=OUT)
+_qnode = next(n for n in _qe if n.get("traced") == "blob")
+_qx = [p[0] for p in _qnode["poly"]]
+check("q: frozen sidecar renders as traced with no --ref",
+      _qnode["poly"] and 25 <= min(_qx) <= 35 and 85 <= max(_qx) <= 95)
 
 print(f"\n{PASS}/{TOTAL} smoke tests passed")
 

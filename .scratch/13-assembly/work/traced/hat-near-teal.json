@@ -1,0 +1,77 @@
+{
+ "version": 1,
+ "node": "hat-near-teal",
+ "kind": "region",
+ "spec": ".scratch/13-assembly/work/spec.yaml",
+ "image": "../../../image.jpg",
+ "image_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+ "date": "2026-09-15",
+ "seed": [
+  505.63685514065503,
+  108.46337059559063
+ ],
+ "tol": 28.0,
+ "fixed": true,
+ "eps": 3.0,
+ "box": null,
+ "method": "scripts/relate.py:resolve(kind=region) -> scripts/scene_render.py:flood_region(fixed-range) -> cv2.approxPolyDP",
+ "vertex_count": 14,
+ "vertices": [
+  [
+   452.0,
+   33.0
+  ],
+  [
+   441.0,
+   41.0
+  ],
+  [
+   430.0,
+   62.0
+  ],
+  [
+   431.0,
+   87.0
+  ],
+  [
+   445.0,
+   128.0
+  ],
+  [
+   465.0,
+   163.0
+  ],
+  [
+   508.0,
+   217.0
+  ],
+  [
+   555.0,
+   255.0
+  ],
+  [
+   573.0,
+   201.0
+  ],
+  [
+   610.0,
+   132.0
+  ],
+  [
+   625.0,
+   114.0
+  ],
+  [
+   653.0,
+   96.0
+  ],
+  [
+   539.0,
+   48.0
+  ],
+  [
+   490.0,
+   35.0
+  ]
+ ]
+}

@@ -38,7 +38,11 @@ from __future__ import annotations
 
 import argparse
 import ast
+import datetime
+import hashlib
+import json
 import math
+import os
 from pathlib import Path
 
 import numpy as np
@@ -811,11 +815,114 @@ SHAPES = ("ellipse", "blob", "stroke", "rect")
 # so it is a TEACHER node and needs `--ref`. It is listed apart from the primitives because it
 # has no authored geometry at all (only a seed, a tolerance and an optional clip box).
 COMPUTED = ("region",)
+# `traced` is the REMOVABLE form of a computed shape: its outline was computed once by the
+# teacher (a `region` flood) and frozen to a sidecar data file, so it never opens a raster.
+# A spec full of `traced` nodes is reference-free (P18 / invariant 6); it is a normal anchor,
+# so later nodes can hang off it exactly as they could off the `region` it replaces (roadmap D20).
+TRACED = ("traced",)
+
+
+def sha256_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as fh:
+        for chunk in iter(lambda: fh.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def load_traced(path: Path, rel: str, base_dir: Path) -> list[tuple[float, float]]:
+    """Load frozen vertices written by `draw freeze`; refuse a stale or malformed sidecar.
+
+    The frozen data is the teacher made removable. It records the sha256 of the raster it was
+    traced from, so a changed reference is caught loudly instead of silently rendering yesterday's
+    geometry (D20). A missing raster is the *reference-free* case and is fine — the frozen
+    vertices are self-contained, which is the whole point of materializing them.
+    """
+    try:
+        text = path.read_text()
+    except OSError as exc:
+        raise SpecError(
+            f"relate: traced node references {rel!r} but the frozen file is missing ({path}): "
+            f"{exc}. Run `scripts/draw freeze <spec> --ref <image>` to materialize it.") from exc
+    try:
+        data = json.loads(text)
+    except ValueError as exc:
+        raise SpecError(f"relate: traced file {path} is malformed JSON: {exc}") from exc
+    if not isinstance(data, dict) or not isinstance(data.get("vertices"), list) or not data["vertices"]:
+        raise SpecError(f"relate: traced file {path} is malformed: expected a non-empty `vertices` list")
+    img, recorded = data.get("image"), data.get("image_sha256")
+    if img and recorded:
+        img_path = Path(img)
+        if not img_path.is_absolute():
+            img_path = base_dir / img_path
+        if img_path.exists():
+            actual = sha256_file(img_path)
+            if actual != recorded:
+                raise SpecError(
+                    f"relate: traced file {path} is STALE: it was frozen from {img!r} at "
+                    f"{str(recorded)[:12]}…, but that raster is now {actual[:12]}… . The frozen "
+                    f"geometry no longer matches its source; re-run `scripts/draw freeze`. "
+                    f"(A silently stale trace is worse than no trace.)")
+    poly: list[tuple[float, float]] = []
+    for i, p in enumerate(data["vertices"]):
+        if not isinstance(p, (list, tuple)) or len(p) != 2:
+            raise SpecError(f"relate: traced file {path}: vertex {i} is not [x, y]: {p!r}")
+        poly.append((num(p[0], f"{path} vertex x"), num(p[1], f"{path} vertex y")))
+    return poly
+
+
+def freeze(spec: dict, *, spec_path: Path, ref_path: str, ref_bgr,
+           out_dir: str | None = None) -> list[tuple[str, Path, int]]:
+    """Materialize every `region` node's computed outline into a sidecar data file (D20).
+
+    Resolves the spec with the reference OPEN, then writes each region's vertices plus
+    provenance — node id, the seed/tol/eps used, source raster, its sha256, the date and the
+    code path that produced it — to <spec-dir>/traced/<node>.json. The spec can then swap each
+    `region` for a `traced` node that reads the sidecar and never opens a raster.
+    """
+    emit, _env, _notes, _layers = resolve(spec, ref=ref_bgr, base_dir=spec_path.parent)
+    image_sha = sha256_file(Path(ref_path))
+    base = os.path.abspath(spec_path.parent)
+    try:
+        image_rel = os.path.relpath(os.path.abspath(ref_path), base)
+    except ValueError:  # different drive on some platforms
+        image_rel = os.path.abspath(ref_path)
+    today = datetime.date.today().isoformat()
+    out = Path(out_dir) if out_dir else spec_path.parent / "traced"
+    written: list[tuple[str, Path, int]] = []
+    for node in emit:
+        if "region" not in node:
+            continue
+        sid = str(node["region"])
+        payload = {
+            "version": 1,
+            "node": sid,
+            "kind": "region",
+            "spec": str(spec_path),
+            "image": image_rel,
+            "image_sha256": image_sha,
+            "date": today,
+            "seed": [num(v) for v in node.get("seed", [])],
+            "tol": node.get("tol"),
+            "fixed": node.get("fixed"),
+            "eps": node.get("eps"),
+            "box": node.get("box"),
+            "method": "scripts/relate.py:resolve(kind=region) -> "
+                      "scripts/scene_render.py:flood_region(fixed-range) -> cv2.approxPolyDP",
+            "vertex_count": len(node["poly"]),
+            "vertices": [[num(p[0]), num(p[1])] for p in node["poly"]],
+        }
+        out.mkdir(parents=True, exist_ok=True)
+        dest = out / f"{sid}.json"
+        write_text(dest, json.dumps(payload, indent=1) + "\n")
+        written.append((sid, dest, len(node["poly"])))
+    return written
+
 
 # --------------------------------------------------------------------------------------
 # resolve
 # --------------------------------------------------------------------------------------
-def resolve(spec: dict, ref=None) -> tuple[list[dict], dict[str, float], list[str], list[str]]:
+def resolve(spec: dict, ref=None, base_dir=None) -> tuple[list[dict], dict[str, float], list[str], list[str]]:
     if not isinstance(spec, dict):
         raise SpecError("relate: spec must be a mapping with `frame` and `draw`")
     if "frame" not in spec or "draw" not in spec:
@@ -823,6 +930,7 @@ def resolve(spec: dict, ref=None) -> tuple[list[dict], dict[str, float], list[st
     frame = spec["frame"]
     if not isinstance(frame, dict) or "w" not in frame or "h" not in frame:
         raise SpecError("relate: `frame` needs w and h")
+    base = Path(base_dir) if base_dir else Path(".")
     ctx = Ctx({k: num(v, f"frame.{k}") for k, v in frame.items()})
     # named intermediate scalars — a drawing wants to say "head_half" once, not 0.098 frame widths
     raw_vars = spec.get("vars", {}) or {}
@@ -841,9 +949,27 @@ def resolve(spec: dict, ref=None) -> tuple[list[dict], dict[str, float], list[st
         if kind in VOCAB:
             VOCAB[kind](raw, ctx, emit)
             continue
-        if kind not in SHAPES and kind not in COMPUTED:
-            raise SpecError(f"relate: unknown node kind {kind!r}; known: {sorted(VOCAB) + list(SHAPES) + list(COMPUTED)}")
+        if kind not in SHAPES and kind not in COMPUTED and kind not in TRACED:
+            raise SpecError(f"relate: unknown node kind {kind!r}; known: "
+                            f"{sorted(VOCAB) + list(SHAPES) + list(COMPUTED) + list(TRACED)}")
         sid = str(raw[kind])
+
+        if kind == "traced":
+            # A region whose outline was computed once by the teacher and FROZEN to a sidecar data
+            # file (roadmap D20). It is a normal anchor, and it never opens a raster, so a spec
+            # full of `traced` nodes renders with the reference deleted (P18 / invariant 6).
+            if "from" not in raw:
+                raise SpecError(f"relate: traced {sid!r} needs `from:` (a frozen sidecar data file)")
+            rel = str(raw["from"])
+            path = Path(rel)
+            if not path.is_absolute():
+                path = base / path
+            poly = load_traced(path, rel, base)
+            ctx.add(bbox_anchor(sid, poly))
+            emit.append({"traced": sid, "poly": poly, "fill": raw.get("fill"),
+                         "stroke": raw.get("stroke"), "sw": raw.get("sw"),
+                         "z": raw.get("z", "default"), "desc": raw.get("desc", "")})
+            continue
 
         if kind == "region":
             # "This shape is the reference's <colour> area around <seed>, clipped to <box>."
@@ -870,7 +996,8 @@ def resolve(spec: dict, ref=None) -> tuple[list[dict], dict[str, float], list[st
             ctx.add(bbox_anchor(sid, poly))
             ctx.teacher.append(sid)
             emit.append({"region": sid, "poly": poly, "fill": raw.get("fill"),
-                         "z": raw.get("z", "default"), "desc": raw.get("desc", "")})
+                         "z": raw.get("z", "default"), "desc": raw.get("desc", ""),
+                         "seed": list(seed), "tol": tol, "fixed": fixed, "eps": eps, "box": box})
             continue
 
         if kind == "ellipse":
@@ -1020,7 +1147,7 @@ def emit_svg(emit: list[dict], layers: list[str], frame: dict[str, float]) -> st
         comment = f'<!-- {node.get("desc")} -->' if node.get("desc") else ""
         if "rect" in node and node.get("full"):
             body.append(f'{comment}<rect x="0" y="0" width="{width}" height="{height}" fill="{node.get("fill")}"/>')
-        elif "region" in node:
+        elif "region" in node or "traced" in node:
             fill = node.get("fill") or "none"
             body.append(f'{comment}<path d="{smooth_path(node["poly"], closed=True)}" fill="{fill}"/>')
         elif "ellipse" in node:
@@ -1051,10 +1178,14 @@ def emit_svg(emit: list[dict], layers: list[str], frame: dict[str, float]) -> st
 def main() -> None:
     parser = argparse.ArgumentParser(description="resolve a relational drawing spec to a render")
     parser.add_argument("spec")
-    parser.add_argument("-o", "--out", required=True)
+    parser.add_argument("-o", "--out", default=None)
     parser.add_argument("--anchors", action="store_true", help="print the resolved anchor table")
     parser.add_argument("--ref", default=None,
                         help="reference raster for computed `region` nodes (teacher-only)")
+    parser.add_argument("--freeze", action="store_true",
+                        help="materialize every `region` node into a `traced` sidecar (needs --ref)")
+    parser.add_argument("--outdir", default=None,
+                        help="freeze: sidecar directory (default: <spec-dir>/traced)")
     args = parser.parse_args()
 
     spec = load_yaml(Path(args.spec))
@@ -1066,7 +1197,22 @@ def main() -> None:
         ref = cv2.imread(args.ref)
         if ref is None:
             raise SpecError(f"relate: cannot read reference raster {args.ref}")
-    emit, env, notes, layers = resolve(spec, ref=ref)
+
+    if args.freeze:
+        if ref is None:
+            raise SpecError("relate: --freeze needs --ref: there is nothing to materialize "
+                            "without the reference raster")
+        written = freeze(spec, spec_path=Path(args.spec), ref_path=args.ref, ref_bgr=ref,
+                         out_dir=args.outdir)
+        if not written:
+            raise SpecError("relate: --freeze found no `region` nodes in the spec; nothing to freeze")
+        for sid, dest, n in written:
+            print(f"froze {sid:20s} {n:5d} vertices -> {dest}")
+        return
+
+    if not args.out:
+        raise SpecError("relate: -o/--out is required unless --freeze is given")
+    emit, env, notes, layers = resolve(spec, ref=ref, base_dir=Path(args.spec).parent)
     frame = spec["frame"]
 
     svg = emit_svg(emit, layers, frame)
