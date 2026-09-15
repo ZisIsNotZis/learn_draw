@@ -656,7 +656,11 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
         raise SpecError(f"relate: {sid}.front must satisfy 0 <= t0 < t1 <= 1, got [{t0}, {t1}]")
 
     def slice_pts(a: float, b: float) -> list[tuple[float, float]]:
-        return ([(bx, by)] + [brim.on(a + (b - a) * i / 48) for i in range(49)] + [(bx, by)])
+        # A SEGMENT (arc + closing chord), not a SECTOR (two radii + arc). Sectors meet at the brim
+        # centre, so the two opposite slices paint a "V" whose point sits inside the brim and the
+        # seam reads as a wedge, not as a hat. A chord gives the straight edge a brim actually has.
+        # Segment + complementary segment still tile the ellipse exactly, so occlusion is unchanged.
+        return [brim.on(a + (b - a) * i / 48) for i in range(49)]
 
     emit.append(
         {"blob": f"{sid}-brim-far", "poly": slice_pts(t1, t0 + 1.0),
@@ -692,7 +696,81 @@ def expand_sunhat(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     return brim
 
 
-VOCAB = {"sunhat": expand_sunhat, "eye": expand_eye}
+def expand_face(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """A head: cranium ball + jaw wedge (Loomis ball-and-plane, mechanically).
+
+    The ellipse host was the round-chin cause (SA2's honest gap: "ellipse host -> round chin").
+    A head is not an ellipse. Measured from image.jpg, the visible face is 128px wide at the cheek
+    line (y306) and tapers to a 7px chin at y377; an ellipse of the same bounding box gives a
+    ~60px round bottom instead.
+
+    The two shapes must be sized so the JAW IS OUTSIDE THE CRANIUM below the cheek line — the first
+    version drew a full-height cranium whose round bottom *was* the silhouette, so the jaw wedge sat
+    invisibly inside it and two independent reviewers both reported "round blob, no chin". The
+    cranium now stops just below the cheek line, and the jaw is wider than the cranium there.
+
+    params: rx, ry (head half-axes; the anchor box is unchanged) · cheek (jaw half-width at the
+    cheek line, as a fraction of rx) · jaw (the cheek line, as a fraction of ry below cy) ·
+    chin-w (chin half-width / rx) · turn (deg; rotates the jaw axis for 3/4 views)
+
+    Exposes the ellipse handles (so `head.rx`, `head.w`, ... keep working for every node that
+    measured itself against the old ellipse) plus `chin`, `cheek-y`, `jaw.left/right`.
+    """
+    sid = str(node["face"])
+    cx, cy = ctx.point(node["at"])
+    rx = ctx.scalar(node["rx"])
+    ry = ctx.scalar(node.get("ry", rx))
+    cheek = ctx.scalar(node.get("cheek", 0.68))
+    jaw = ctx.scalar(node.get("jaw", 0.37))
+    chin_w = ctx.scalar(node.get("chin-w", 0.035))
+    turn = math.radians(ctx.scalar(node.get("turn", 0)))
+    fill = node.get("fill")
+    stroke, sw = node.get("stroke"), node.get("sw")
+    z = node.get("z", "default")
+
+    ct, st = math.cos(turn), math.sin(turn)
+
+    def place(u: float, v: float) -> tuple[float, float]:
+        """u = fraction of rx (right positive), v = fraction of ry below cy; rotated by `turn`."""
+        x, y = u * rx, v * ry
+        return cx + x * ct - y * st, cy + x * st + y * ct
+
+    # The jaw silhouette: u as a fraction of `cheek` (or of rx at the top), v as a fraction of ry
+    # below cy, interpolated between the cheek line and the chin. This is drawing knowledge, not a
+    # per-node fudge — from the reference, the face is a broad column (half-width 64 -> 56 -> 49 ->
+    # 47) that ends in a small chin point (27 -> 3.5), which is exactly what an ellipse cannot do.
+    profile = ((0.00, 0.95, "rx"), (0.20, 0.80, "rx"),
+               (jaw, cheek, "cheek"),
+               (jaw + (1 - jaw) * 0.418, cheek * 0.766, "cheek"),
+               (jaw + (1 - jaw) * 0.695, cheek * 0.734, "cheek"),
+               (jaw + (1 - jaw) * 0.834, cheek * 0.421, "cheek"),
+               (jaw + (1 - jaw) * 0.972, chin_w, "rx"))
+    scaled = [(u, v) for v, u, _unit in profile]
+    left = [place(-u, v) for u, v in reversed(scaled)]
+    jaw_pts = left + [place(0.0, 1.0)] + [place(u, v) for u, v in scaled]
+
+    # the cranium stops just past the cheek line, so the jaw below it is the silhouette
+    cran_ry = ry * (1 + jaw + 0.12) / 2
+    cran_cy = cy - ry + cran_ry
+    emit.append({"ellipse": f"{sid}-cranium", "at": [cx, cran_cy], "rx": rx, "ry": cran_ry,
+                 "rot": 0, "fill": fill, "stroke": stroke, "sw": sw, "z": z,
+                 "desc": f"cranium ball — {2 * cran_ry:.0f}px tall, ending just below the cheek "
+                         f"line so the jaw below it is the visible silhouette"})
+    emit.append({"blob": f"{sid}-jaw", "poly": jaw_pts, "fill": fill, "stroke": stroke,
+                 "sw": sw, "z": z,
+                 "desc": f"jaw: from the cheek line (y=cy+{jaw:.2f}ry, half-width {cheek:.2f}rx) "
+                         f"tapering to a {chin_w:.3f}rx chin"})
+
+    anchor = ellipse_anchor(sid, cx, cy, rx, ry)
+    anchor.env.update({
+        f"{sid}.chinx": cx, f"{sid}.chiny": cy + ry,
+        f"{sid}.cheek-y": cy + jaw * ry, f"{sid}.jaw.left": cx - cheek * rx,
+        f"{sid}.jaw.right": cx + cheek * rx,
+    })
+    return ctx.add(anchor)
+
+
+VOCAB = {"sunhat": expand_sunhat, "eye": expand_eye, "face": expand_face}
 SHAPES = ("ellipse", "blob", "stroke", "rect")
 
 # --------------------------------------------------------------------------------------

@@ -1,7 +1,7 @@
 # 08 — the head: jaw, face, hair, hat (slice home for milestone M2)
 
-Status: ready-for-agent (blocked by M1 — the assembly must exist before the head can be patched into it)
-Blocked by: 13-assembly (M1 exit gate passed)
+Status: **in progress — attempt 1 failed its gate (2026-09-15)**
+Blocked by: the brim (see below)
 
 Re-scoped 2026-09-15: this is no longer "rung 1 of a ladder that starts from nothing". The project
 has a baseline (`STATUS.md`), and this ticket is the **M2 slice** that patches the head of the

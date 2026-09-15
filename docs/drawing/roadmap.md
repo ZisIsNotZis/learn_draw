@@ -64,12 +64,16 @@ things at once" failure that got 05 frozen). Renegotiated 2026-09-15; see `STATU
 | G5 | authoring budget | inspect the spec | no shape carries > 4 hand-typed coordinates **per outline**; a mass may carry ≤ 4 spine points + a width (the sanctioned gesture form, `scene-format.md`); every node has an intent `desc:` |
 | G6 | determinism | re-render, compare `sha256` | byte-identical |
 
-**Promotion is a separate act, not a milestone exit.** The baseline moves **only** on a blind A/B
-preference: hand a fresh-context reviewer the target plus the two renders under neutral names in
-randomized order, asking "which is the better drawing of this target, and what is wrong with each?"
-(For a single region, e.g. the head in M2, the same question over the crop.) Never promote on
-metrics; never promote on "my milestone passed". `scripts/draw baseline <render> --ref image.jpg
---note "…"`. **The baseline only ever moves up.**
+**Promotion is a separate act, not a milestone exit, and it takes the WHOLE artifact.** The baseline
+moves **only** on a blind A/B preference over the whole drawing: hand a fresh-context reviewer the
+target plus the two renders under neutral names in randomized order, asking "which is the better
+drawing of this target, and what is wrong with each?" Never promote on metrics; never promote because
+a milestone passed; and **never promote on a region** — a render whose head improved while its body
+stayed cruder would move the floor *down* in disguise (see `STATUS.md` D10).
+
+A **region-scoped** comparison (the head crop in M2, the blouse in M3) is milestone **evidence**: it
+can fail the milestone and it tells you where to work, but it cannot promote. `scripts/draw baseline
+<render> --ref image.jpg --note "…"`. **The baseline only ever moves up.**
 
 If two reviewers disagree, do not pick a verdict — measure (P7: observations are reliable, locations
 are not). The coarse-grid colour-mass distance and the per-element table are the tie-breakers; that
@@ -103,8 +107,7 @@ Exit AC:
 
 **Not an M1 exit: beating the baseline as a drawing.** With flat masses and no line work, M1 loses
 G2b and loses any blind A/B on finish — by construction, not by failure. Requiring it here would
-have made the milestone unreachable. That bar belongs to M4, whose job is the finished figure
-(M2 promotes on the *head crop* alone).
+have made the milestone unreachable. That bar belongs to M4, whose job is the finished figure.
 
 *Not in M1:* face detail, folds, shading, gradients. Flat fills only.
 
@@ -124,17 +127,25 @@ Provisional work items:
 Intent: the face is the hardest small part and the ladder's L1 discipline; the night session's eye
 family and canons are already built and finally get applied to a drawing that is not below the bar.
 
-Entry: M1 gate passed.
+Entry: M1 gate passed. **Status: in progress — attempt 1 failed its gate (2026-09-15).** See
+`.scratch/13-assembly/log.md` → M2 and `STATUS.md` D11. M2 cannot promote (D10), so its exit *is* the
+head-crop comparison.
 
 Exit AC:
-- A1 a 2x crop of the head is preferred (or tied) against the same crop of the baseline;
-- A2 reviewer confirms, at 2x: non-circular jaw/chin, layered eyes with iris/pupil/glints, tapered
+- A1 a 2x crop of the head is preferred, or tied, against the same crop of the baseline **by blind
+  reviewers AND by the head-region colour-mass distance** — and where those disagree, the measurement
+  decides (attempt 1 is the worked example: reviewers split 1–1, the measurement said baseline, so
+  the baseline won);
+- A2 a reviewer confirms, at 2x: non-circular jaw/chin, layered eyes with iris/pupil/glints, tapered
   one-sided lash, mouth/nose marks present, hair tapered (no constant-width tubes);
-- A3 hat reads as a hat — crown volume plus tilt, curved brim, not "a disc with a ball";
-- A4 G1–G6.
+- A3 the hat reads as a hat — crown volume plus tilt, and **one continuous brim**, not "a disc with a
+  ball" and not two detached lobes;
+- A4 G1, G2, G2b (detail floor now applies), G3, G4, G5, G6.
 
-Provisional work items: `face` host family (jaw block, Loomis cross anchors); taper-first-class;
-`hair-mass` family with tip zigzag and flow; hat crown silhouette + brim curvature.
+Provisional work items: `face` host family ✅ (attempt 1, jaw/chin verified against the reference's
+row profile); two eyes placed independently rather than `mirror-of` ✅ (this is a 3/4 view); fringe
++ cheek locks ✅ (the reference's visible face is 151×153 only because hair covers it);
+**one continuous brim silhouette ← the blocking defect**; taper-first-class for hair.
 
 ### M3 — Beat the baseline on body and cloth
 

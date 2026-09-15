@@ -114,6 +114,21 @@ try:
 except SystemExit as e:
     check("h: blob without poly/spine fails loudly", "poly" in str(e) and "spine" in str(e))
 
+# (i) face family: the jaw must extend BELOW the cranium. The first version drew a full-height
+# cranium with the jaw wedge inside it, so the round cranium bottom was the whole silhouette and no
+# chin rendered — two independent reviewers reported "round blob, no chin" (STATUS D12).
+_fspec = {"frame": {"w": 1000, "h": 1000},
+          "draw": [{"face": "head", "at": [500, 400], "rx": 100, "ry": 120,
+                    "cheek": 0.68, "jaw": 0.37, "chin-w": 0.035, "fill": "#eeeeee"}]}
+_femit, _fenv, _fn, _fl = rl.resolve(_fspec)
+_cran = next(n for n in _femit if n.get("ellipse") == "head-cranium")
+_jaw = next(n for n in _femit if n.get("blob") == "head-jaw")
+_cran_bottom = _cran["at"][1] + _cran["ry"]
+_jaw_bottom = max(pt[1] for pt in _jaw["poly"])
+check("i: face keeps the head-box anchor (ruler unchanged)", _fenv["head.rx"] == 100 and _fenv["head.chiny"] == 520)
+check("i: jaw chin extends below the cranium", _jaw_bottom > _cran_bottom + 40)
+check("i: cheek line matches the jaw param", abs(_fenv["head.cheek-y"] - (400 + 0.37 * 120)) < 1)
+
 print(f"\n{PASS}/{TOTAL} smoke tests passed")
 
 # --- wave + strands generator tests ---

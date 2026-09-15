@@ -1,9 +1,9 @@
 # STATUS — where this project is right now
 
-**One line:** the drawing language got real; the *drawing* regressed, and we only just made that
-visible. A full figure from 2026-09-11 is still the best picture the project has — M1 rebuilt the
-figure's composition on the relational layer and now covers more of the reference than the baseline
-does (0.528 vs 0.514), but as a *drawing* the baseline is still ahead, and it stays the bar.
+**One line:** M1 rebuilt the figure's composition on the relational layer and now covers more of the
+reference than the baseline does (0.528 vs 0.514); M2 gave the head a real face — jaw, chin, layered
+eyes, fringe — but **failed its gate**: measured against the reference, the baseline's head is still
+closer (head-region distance 22.4 vs 40.7). The baseline remains the bar and nothing is promoted.
 
 Last updated: 2026-09-15 · Direction lives in `docs/drawing/roadmap.md` · Milestones M0–M5
 
@@ -35,15 +35,16 @@ It is a **floor and an alarm**, never a target (roadmap R6).
 | --- | --- | --- |
 | **M0** baseline recorded | make regression visible | ✅ done 2026-09-15 |
 | **M1** recover the baseline's composition | the whole figure, coarsely, flat fills | ✅ **exit criteria met 2026-09-15 — baseline not promoted.** Coverage 0.528 vs 0.514 (nothing deleted); the baseline is still the better drawing (two blind reviewers, and the grid measurement agrees). Artifact: `.scratch/13-assembly/evidence/m1-final.png`; gates + rollbacks in `13-assembly/log.md` |
-| **M2** beat the baseline on the head | jaw/eyes/lash/hat crown/hair taper | ⬜ **next** — patches the assembly; promotes on the *head crop* alone |
+| **M2** beat the baseline on the head | jaw/eyes/lash/hat crown/hair taper | 🔄 **in progress — gate NOT passed.** `face` family (jaw+chin, verified against the reference's row profile), two independently placed eyes, fringe + cheek locks, brows/nose/mouth. But head-region distance is 40.7 vs the baseline's 22.4 and reviewers split 1–1, so the measurement decides against. **Next step: the brim does not read as one piece** (`13-assembly/log.md` → M2) |
 | **M3** beat the baseline on body & cloth | collar, bow, sleeves, arms, hands, pleats | ⬜ blocked by M2 |
 | **M4** beat the baseline on the fields | soft tier last (invariant 2) | ⬜ blocked by M3; the whole-figure promotion belongs here |
 | **M5** withdrawal + stress | 15 → 16 → 17, reference-free | ⬜ blocked by M4 |
 
 ## In flight
 
-**M2 — beat the baseline on the head.** Entry: M1's exit criteria are met. Work items and the
-`face`-family gap are in `.scratch/08-bust/spec.md`; promotion is on the head *crop* alone.
+**M2 — the head: in progress, gate not passed.** The slice home is `.scratch/08-bust/spec.md`, the
+iteration record is `.scratch/13-assembly/log.md` → M2, and the single blocking defect is named there:
+**the brim does not read as one piece** (the teal near-slice detaches from the navy far-slice).
 
 Nothing else is in flight. The 2026-09-14/15 unsupervised research session is **stopped** (P0).
 
@@ -60,21 +61,24 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
 
 ## Open defects and questions
 
-1. **The hat's brim meets in a straight seam** through the brim centre (the `sunhat` family's pie-slice
-   split) where the reference's teal/navy boundary is diagonal, and the crown barely separates from
-   the navy brim. Measured, unfixed — M2's ("hat reads as a hat").
-2. **`hair-left` is a straight thin stroke**; the reference's left sweep is a curved wisp. M2/M3.
-3. **The missing cream mass is an occlusion problem, not a size problem** — enlarging it made the
-   drawing worse (M1 v4, rolled back). The cream the reference shows around the bow is hidden
-   *behind* the bow and hair, so it belongs to M3.
-4. **`check` has no test of its own** — the bundle logic (bundle paths, crop ranking, baseline delta,
+1. **The brim does not read as one piece** — the single blocking defect for M2. The `sunhat` near
+   slice (teal) and far slice (navy) share the same ellipse but no continuous silhouette line, and at
+   this hat's tilt (+17°) and lift the teal piece visually detaches. Both M2 reviewers reported it
+   independently. Candidate fix: stroke the brim outline once as a whole shape, rather than relying
+   on fill adjacency across two slices.
+2. **The fringe reads as a cap/band, not strands** to both reviewers, even after splitting it into a
+   shaped fringe plus two strands.
+3. **The face is 9% too wide and 18% too tall** (164×180 against the reference's visible 151×153).
+4. **The missing cream mass is an occlusion problem, not a size problem** — enlarging it made the
+   drawing worse (M1 v4, rolled back). It is hidden *behind* the bow and hair, so it belongs to M3.
+5. **`check` has no test of its own** — the bundle logic (bundle paths, crop ranking, baseline delta,
    `coverage`) is verified only by manual runs. `measure-composition.py` is likewise untested.
-5. **Line-mode `diff` stays weak for this reference** (no uniform black line art; 12.6 % of pixels
+6. **Line-mode `diff` stays weak for this reference** (no uniform black line art; 12.6 % of pixels
    below gray 95). Region decomposition is the structural source — a known, accepted limitation.
-6. **No `style:` header** — deferred until two looks are needed in one project.
-7. **`region` / `trace` nodes are teacher-only** (they read the reference raster). By design; they
+7. **No `style:` header** — deferred until two looks are needed in one project.
+8. **`region` / `trace` nodes are teacher-only** (they read the reference raster). By design; they
    must not appear in M5's reference-free specs.
-8. **Proportion-vs-placement literal lint** (SA1 finding 6): proportion constants in `vars:` with
+9. **Proportion-vs-placement literal lint** (SA1 finding 6): proportion constants in `vars:` with
    provenance are convention-only; the resolver does not yet warn on raw `frame.*` placement.
 
 ## Decisions log (append-only)
@@ -119,6 +123,34 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
   the drawing worse (M1 v4: coverage 0.523 → 0.502). The cream the reference shows is *behind* the bow
   and hair, so it is M3's occlusion problem, not an M1 size problem. Recorded so M3 does not
   re-discover it.
+- **2026-09-15 · D10 — the ratchet is a WHOLE-artifact floor; region comparisons are evidence.**
+  The roadmap previously implied M2 could promote the baseline on the head *crop* alone. It cannot:
+  promoting a render whose head improved but whose body is cruder than the current best would move
+  the floor *down* in disguise. So a region-scoped comparison (the head crop in M2) is milestone
+  **evidence** and can gate the milestone, but the baseline moves only when the whole artifact is
+  preferred. M2–M3 contribute evidence; M4 is where the whole figure can win. Corrected in the
+  roadmap the same session it was found.
+- **2026-09-15 · D11 — M2 attempt 1: gate NOT passed, kept as evidence.** The head got a real face —
+  a new `face` family whose jaw/chin taper matches the reference's measured row profile, two eyes
+  placed independently (this is a 3/4 view, so `mirror-of` would have forced them equal), fringe,
+  cheek locks, brows/nose/mouth — and the totals moved the right way (`edge_f1` 0.082 → 0.106,
+  `color_dist` 68.8 → 66.4). But the head-region colour-mass distance says the **baseline is still
+  closer** (22.4 vs 40.7 at 64px cells), the baseline's visible face bbox is nearly exact (150×151
+  against the target's 151×153) while M2's is 164×180, and two reviewers **split 1–1**. Measurement
+  decided it. Milestone stays open; the single blocking defect is named (the brim does not read as
+  one piece).
+- **2026-09-15 · D12 — the gate caught a real bug in my own new code.** The first `face` family drew
+  a full-height cranium with the jaw wedge *inside* it, so the cranium's round bottom was the
+  silhouette and no chin rendered. Both reviewers independently said "round blob, no chin" and both
+  were right. This is the second time a fresh-eyes gate has caught a defect I could not see in my own
+  work (P22 was the first) — evidence that the gate, not the author, is what makes the claim safe.
+- **2026-09-15 · D13 — `vocabulary.md` set B canons have the wrong host, verified numerically.**
+  Set B is host-relative (`head.cy − 0.58·head.ry`). Applied to this project's head ellipse
+  (skull-top → chin, cy 264, ry 114) that puts the eye line at y198 — but the reference's eyes are at
+  y262–268. Set B's numbers only work if the host is the **face** ellipse (hairline y243 → chin y378:
+  cy 310.5, ry 67.5 → `310.5 − 0.58·67.5 = 271`). So set B was measured against a different host
+  shape than the one the assembly uses. Corrected in `vocabulary.md`; the assembly's own values are
+  measured directly from the reference instead.
 
 ## Where things live
 

@@ -97,3 +97,70 @@ figure is better placed.
 - `evidence/m1-composition-reference.txt` (G3 reference measurement)
 - `evidence/m1-placement-check.txt` (G3 placement table + grid distances)
 - `work/measure-composition.py` (the G3 instrument — reusable, deterministic, no verdict)
+
+## 2026-09-15 — M2 attempt 1: the head. NOT COMPLETE (parked with a precise next step)
+
+**Outcome: the gate was not passed.** The head region got real structure, but the measurement says it
+is still further from the reference than the baseline's head is. Both facts are recorded; nothing is
+promoted.
+
+| head-region colour-mass distance (lower = closer) | M2 | baseline |
+| --- | --- | --- |
+| 16px cells | 52.1 | **33.1** |
+| 32px cells | 48.4 | **28.6** |
+| 64px cells | 40.7 | **22.4** |
+
+| structural check | target | M2 | baseline |
+| --- | --- | --- | --- |
+| visible face skin bbox | 151×153 | 164×180 | **150×151** |
+| hair covering the eye band (x620-790, y240-300) | 17.6% | 31.3% | 33.7% |
+
+Two fresh-context reviewers **split** on the head crop (one preferred the head's hat/crown and called
+M2 the better drawing; one called the baseline structurally closer and M2's hair a "solid cap").
+Per the roadmap rule the split was settled by measurement — and the measurement sides with the
+baseline, decisively, at every grid scale. So: reviewers split, measurement against, **not promoted**.
+
+### What M2 landed and is kept
+
+- **`face` vocabulary family** (new, in `scripts/relate.py`): cranium ball + jaw wedge, with the jaw
+  profile taken from the measured taper. The anchor box is unchanged (`head.rx/ry/w/h` still work),
+  so every node M1 measured against the ellipse kept working.
+- **Two eyes placed independently**, not `mirror-of`: this is a 3/4 view, so the far eye is 0.75× the
+  near one. Using the mirror relation here would have forced them equal — a case where the language's
+  convenience would have produced a wrong drawing.
+- **Fringe + both cheek locks.** Not decoration: the reference's *visible* face is 151×153 only
+  because hair covers the forehead and both cheeks. The same head without that hair renders 190×203.
+- Brows, nose and mouth from the measured canons.
+- Totals moved: `edge_f1` 0.082 → 0.106, `color_dist` 68.8 → 66.4, coverage 0.519, diagnostics clean
+  except two honest SUB-PIXELs (the far eye's reflection dot; a 2.3px-tall mouth).
+
+### Bug the gate caught (this is why the gate exists)
+
+The first `face` implementation drew a **full-height cranium plus a jaw wedge inside it**, so the
+cranium's round bottom *was* the silhouette and the jaw was invisible. Both reviewers independently
+reported "round blob, no chin" — and both were right. Fixed: the cranium now stops just past the
+cheek line, so the jaw below it is the silhouette. Verified against the reference's own row profile:
+
+```
+target  y318:108  y330:100  y342:98  y354:97  y366:57  y378:0
+M2      y316:117  y328:105  y340:97  y352:91  y364:59  y376:0
+```
+
+### The biggest unfixed defect (next step)
+
+**The brim does not read as one piece.** The `sunhat` near-slice is painted teal and the far slice
+navy, and with this hat's tilt (+17°) and lift, the teal piece visually *detaches* — both reviewers
+saw "a teal wedge floating left of a navy blob", and one called it "no hat at all" in the baseline,
+"a detached lozenge" in M2. The chord-segment fix (M1) removed the converging-V seam but did not make
+the two slices read as one brim. Root cause to investigate next: the brim is one ellipse with two
+fills, but the *crown* merges into the navy slice while the teal slice has no shared edge with either,
+so there is no continuous silhouette line. Candidate fix: stroke the brim outline as one shape
+(one continuous edge over both slices) rather than relying on fill adjacency.
+
+Secondary, unfixed: the fringe still reads as a cap/band to both reviewers; the face is 9% too wide
+and 18% too tall; the far eye is partly occluded by a cheek lock.
+
+### Evidence
+
+`evidence/m2-*.png` renders · `evidence/check-m2/` gate bundle · head-crop A/B crops were handed to
+the reviewers with neutral names (`A` = baseline, `B` = M2) and no context.

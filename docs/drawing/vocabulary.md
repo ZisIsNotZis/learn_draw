@@ -45,6 +45,15 @@ face-centre pixel scan x=690 (hair→skin y≈243, skin→collar y≈377, skull 
 afterwards (`14-abstraction-research/work/face/report.md`). Near/far asymmetry is the 3/4 view —
 the far eye is 0.6× the near eye.
 
+> **Host corrected 2026-09-15 (see `STATUS.md` D13):** these fractions were measured against a **face
+> ellipse** (hairline y≈243 → chin y378; cy 310.5, ry 67.5), **not** the head ellipse (skull top y150 →
+> chin y378; cy 264, ry 114) that the assembly uses as its ruler. Applied to the skull→chin host,
+> `head.cy − 0.58·head.ry` puts the eye line at **y198**, but the reference's eyes are at **y262–268** —
+> 70px too high. Two different hosts, one set of numbers: the fractions are only portable if the host
+> is named with them. The assembly's own values are measured directly from the reference and recorded
+> in the spec's `vars:` with provenance; treat this table as the *shape* of the canons, not as
+> ready-to-use numbers for an arbitrary host.
+
 | canon | value (host = head ellipse) |
 | --- | --- |
 | eye centre x | head.cx ± 0.73 · head.rx |
@@ -69,10 +78,11 @@ Status: ✅ implemented · 🔨 in progress · 📋 needed (with the rung that d
 
 | family | status | params (beyond placement) | anchors exposed | carries |
 | --- | --- | --- | --- | --- |
+| `face` | ✅ (M2, 2026-09-15) | host, at, rx, ry, cheek (jaw half-width / rx at the cheek line), jaw (cheek line as a fraction of ry below cy), chin-w (chin half-width / rx), turn (deg) | all the ellipse handles (`cx/cy/rx/ry/w/h/left/right/top/bottom`) + `chinx/chiny`, `cheek-y`, `jaw.left/right` | cranium ball + jaw wedge; the jaw profile is taken from the measured taper (half-width 64 → 56 → 49 → 47 → 27 → 3.5 px) so the chin is a point, not an ellipse's round bottom. **The cranium stops just past the cheek line** — a full-height cranium hides the jaw inside it and renders a round blob (the bug the M2 gate caught) |
 | `sunhat` | ✅ (occlusion fixed 2026-09-14) | brim, crown, tilt, lift, drop, flat, front arc, pom count/at/r | `hat-brim.left/right/top/bottom`, `hat-brim@t`, `hat-dome.*`, `hat.*` (family id = brim footprint) | brim-as-squashed-ellipse, dome on brim normal, near edge over crown. **Fixed 2026-09-14:** P17 z-split — brim is now ONE shape as two complementary slices (far → dome → near), so the dome sits behind the near brim; the old full-ellipse + thin rim strip is gone |
 | `eye` | ✅ (SA2, 10 iters) | host, at (any relation), w, h, tilt, almond, mirror-of, glints, iris-w/h (auto-clamped to aperture), lash-w, line-w, glint-side (world light!), gaze, refl-fill, *-fill, z | aperture bbox, outerx/outery, innerx/innery, irisx/irisy, topx/topy, botx/boty, facing, `{along: eye, t}` | generated almond aperture (two lid arcs), two-tone iris, pupil, glints + green reflection, ONE-SIDED tapered lash anchored on the lid line with outer wing, sealing outline; `mirror-of` = whole second eye as one relation |
 | `mirror` relation | ✅ (SA2) | `{mirror: P, across: SHAPE}` reflects a point across a shape's vertical axis; `mirror-of` is the family-level mirror | | |
-| `brow`, `nose`, `mouth` | 📋 08 | length, angle, weight | ends, centre | mark-not-shape (P12) |
+| `brow`, `nose`, `mouth` | 📋 M2 (mine, as plain strokes) | length, angle, weight | ends, centre | mark-not-shape (P12) |
 | `hair-mass` | 📋 08 | silhouette spine, width, tip zigzag, strand count | hairline, tips@t | one silhouette with zigzag bottom (P8), pink pockets as skin-through-notch |
 | `sleeve`, `bow`, `collar` | 📋 09 | puff, gather count, knot size | knot, tails@t | cloth fold direction |
 | `hand` | 📋 09 | pose preset, finger spread | knuckles@t, fingertips | z-plane tuck behind body (P17) |

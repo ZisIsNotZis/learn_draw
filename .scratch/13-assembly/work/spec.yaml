@@ -15,7 +15,7 @@
 frame: {w: 1024, h: 1024}
 
 layers: [bg, field, ribbon, hair-back, skirt-dark, skirt-pale, blouse, neck, bow,
-         head, hat, hat-front, hair-front]
+         head, features, hat, hat-front, hair-front]
 
 vars:
   # ---- measured frame anchors: the "setting the frame" use of a reference (abstraction.md)
@@ -42,9 +42,48 @@ draw:
      desc: "long ribbon sweeping the left of the frame — measured band x[102,470] y[302,444]"}
 
   # ---------------------------------------------------------------- the ruler (declared first, painted late)
-  - {ellipse: head, at: [head_cx, head_cy], rx: head_half, ry: head_deep,
+  # M2: a `face`, not an ellipse. Measured from image.jpg, the visible face is 128px wide at the
+  # cheek line (y306) and tapers to a 7px chin at y377; an ellipse of the same bbox gives a ~60px
+  # round bottom. cheek/jaw/chin-w are that taper, in head units -- the family owns the structure.
+  - {face: head, at: [head_cx, head_cy], rx: head_half, ry: head_deep,
+     cheek: 0.68, jaw: 0.37, chin-w: 0.07,
      fill: "#f2e9d8", z: head,
-     desc: "head/skin ellipse — the ruler: every other size in this file is a fraction of it"}
+     desc: "head: cranium ball + jaw wedge tapering to the chin — the ruler every other size uses"}
+
+  # ---------------------------------------------------------------- face features (M2)
+  # All positions are HEAD-RELATIVE, from the measured apertures:
+  #   near eye (screen right) aperture x[725,782] y[244,292] -> centre (754,268), 58x42
+  #   far  eye (screen left)  aperture x[613,654] y[240,270] -> centre (634,262), 44x32
+  # This is a 3/4 view, so the far eye is 0.75x the near one and the two are placed separately
+  # -- NOT `mirror-of`, which would force them equal.
+  - {eye: eyeR, host: head, at: [head.cx + 0.695*head.rx, head.cy + 0.035*head.ry],
+     w: 0.305*head.w, h: 0.185*head.h, tilt: -4, almond: 0.55, iris-w: 0.52, glints: 2,
+     sclera-fill: "#fdf2f9", iris-top-fill: "#4470b3", iris-bot-fill: "#ef92ae",
+     pupil-fill: "#241a2c", lash-fill: "#0a0e18", refl-fill: "#62c7a8", glint-fill: "#ffffff",
+     z: features, desc: "near eye — layered almond, two-tone iris, tapered one-sided lash"}
+  - {eye: eyeL, host: head, at: [head.cx - 0.568*head.rx, head.cy - 0.018*head.ry],
+     w: 0.232*head.w, h: 0.140*head.h, tilt: -4, almond: 0.52, iris-w: 0.34, glints: 1,
+     sclera-fill: "#fdf2f9", iris-top-fill: "#4470b3", iris-bot-fill: "#ef92ae",
+     pupil-fill: "#241a2c", lash-fill: "#0a0e18", refl-fill: "#62c7a8", glint-fill: "#ffffff",
+     z: features, desc: "far eye — 0.75x the near one (3/4 view), placed independently"}
+  - {stroke: browR,
+     spine: [[eyeR.outerx + 0.05*eyeR.w, eyeR.topy - 0.34*eyeR.h],
+             [eyeR.innerx - 0.10*eyeR.w, eyeR.topy - 0.12*eyeR.h]],
+     w: 0.075*eyeR.h, ink: "#241d26", z: features, desc: "near brow, off the eye's own anchors"}
+  - {stroke: browL,
+     spine: [[eyeL.outerx + 0.05*eyeL.w, eyeL.topy - 0.30*eyeL.h],
+             [eyeL.innerx - 0.10*eyeL.w, eyeL.topy - 0.10*eyeL.h]],
+     w: 0.075*eyeL.h, ink: "#241d26", z: features, desc: "far brow — the far eye is not mirrored, so neither is it"}
+  - {stroke: nose,
+     spine: [[head.cx - 0.10*head.rx, head.cy + 0.42*head.ry],
+             [head.cx - 0.20*head.rx, head.cy + 0.50*head.ry]],
+     w: 2.8, ink: "#8a7460", z: features,
+     desc: "nose tick — canon A: nose at 0.73 of head height from the skull top"}
+  - {stroke: mouth,
+     spine: [[head.cx - 0.05*head.rx, head.cy + 0.755*head.ry],
+             [head.cx + 0.08*head.rx, head.cy + 0.775*head.ry]],
+     w: 3.4, ink: "#8a7460", z: features,
+     desc: "mouth dash — canon A: 0.85-0.89 of head height; measured dark mark at (682,354)"}
 
   # ---------------------------------------------------------------- hair
   # NOTE (rolled back 2026-09-15): a hair mass shaped from the measured band profile moved the hair
@@ -59,6 +98,29 @@ draw:
      spine: [[frame.w*0.885, frame.h*0.40], [frame.w*0.93, frame.h*0.53], [frame.w*0.91, frame.h*0.68]],
      w: frame.w*0.11, fill: "#3974ab", z: hair-front,
      desc: "hair falling over the chest on the right — measured x[847,1024] y[380,700], 11255px"}
+  # fringe + cheek locks. The reference's VISIBLE face is only 151x153 because hair covers the
+  # forehead (y99-225) and both cheeks; without that hair the same head renders 190x203. So these
+  # are not decoration — they are what makes the face the reference's shape. Measured: at y306 the
+  # visible face runs x648-757, i.e. hair covers ~55px left and ~26px right (3/4 view).
+  - {blob: fringe,
+     spine: [[frame.w*0.605, frame.h*0.125], [frame.w*0.685, frame.h*0.16], [frame.w*0.765, frame.h*0.125]],
+     w: frame.w*0.135, fill: "#3974ab", z: hair-front,
+     desc: "fringe over the forehead — covers the face above y225, as the reference's hair does"}
+  - {blob: bangL,
+     spine: [[frame.w*0.645, frame.h*0.132], [frame.w*0.660, frame.h*0.165], [frame.w*0.672, frame.h*0.192]],
+     w: frame.w*0.040, fill: "#3d7cb4", z: hair-front,
+     desc: "fringe strand, left of centre — stops at y196: the first version reached y250 and covered the eyes"}
+  - {blob: bangR,
+     spine: [[frame.w*0.735, frame.h*0.132], [frame.w*0.748, frame.h*0.163], [frame.w*0.758, frame.h*0.190]],
+     w: frame.w*0.038, fill: "#3d7cb4", z: hair-front, desc: "fringe strand, right of centre"}
+  - {blob: cheek-lock-left,
+     spine: [[frame.w*0.607, frame.h*0.200], [frame.w*0.598, frame.h*0.290], [frame.w*0.612, frame.h*0.360]],
+     w: frame.w*0.052, fill: "#3974ab", z: hair-front,
+     desc: "hair falling in front of the left cheek — narrows the visible face to the measured 128px"}
+  - {blob: cheek-lock-right,
+     spine: [[frame.w*0.762, frame.h*0.205], [frame.w*0.770, frame.h*0.285], [frame.w*0.756, frame.h*0.350]],
+     w: frame.w*0.038, fill: "#3974ab", z: hair-front,
+     desc: "hair falling in front of the right cheek"}
   - {stroke: hair-left,
      spine: [[frame.w*0.175, frame.h*0.32], [frame.w*0.35, frame.h*0.385], [frame.w*0.565, frame.h*0.42]],
      w: frame.w*0.014, ink: "#3974ab", z: hair-front,
@@ -109,15 +171,17 @@ draw:
      w: frame.w*0.12, fill: "#e8b48c", z: skirt-dark, desc: "warm petal mass in the skirt"}
 
   # ---------------------------------------------------------------- the hat (family; brim slices do the occlusion)
-  - {sunhat: hat, host: head, brim: 2.905*head.w, crown: 0.92*head.w, tilt: -10,
-     lift: 0.91, drop: 0.62, crown-h: 0.77, flat: 0.44, front: [0.28, 0.72], pom: 2,
+  - {sunhat: hat, host: head, brim: 2.905*head.w, crown: 1.105*head.w, tilt: 17,
+     lift: 1.22, drop: 0.62, crown-h: 0.63, flat: 0.257, front: [0.28, 0.72], pom: 2,
      pom-at: [0.732, 0.102], pom-r: 0.16,
      crown-fill: "#32405b", crown-stroke: "#22304a", crown-sw: 2,
      brim-fill: "#333f64", rim-fill: "#579eaf", pom-fill: "#df9199",
      z: hat, z-front: hat-front,
-     desc: "wide-brim sun hat worn high — measured brim 552x280 centred (706,160). `front` [0.28,0.72]
-            is the LEFT half (t=0 is right, t=0.25 bottom, going clockwise): the reference's teal side.
-            pom-at from the measured pom centres (656,52) and (908,189) inverted through on(t)"}
+     desc: "wide-brim sun hat worn high. M2: crown grown to the measured 210x~95 dome (crown-navy
+            above y200 is x[428,893] centre (753,109), top y20), and the brim slices are now
+            SEGMENTS: the old sectors met at the brim centre, so the two-tone seam came to a point
+            inside the brim and read as a wedge. `front` covers the LEFT half (t=0 right, clockwise;
+            teal measured at x440-620, navy from x680)"}
 
 # occlusion intent, in words — the engine raises CONTRADICTION when this disagrees with `layers`
 relations:
