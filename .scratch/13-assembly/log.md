@@ -674,3 +674,55 @@ Two useful by-products of the review: reviewer 2 flagged that the **side-by-side
 ~610px**, which the rubric itself warns destroys the detail under review — so future bundles must lead
 with the 1:1 draft, which it did use. And E was scored *against absence rather than error*: most of the
 target's overlaps have no counterpart yet, so E should be re-read once a body exists.
+
+## 2026-09-16 — M3a: the upper body is drawn. Rubric gate pending.
+
+Delegated; every claim re-verified by me. The test-free debt from the accidental `f88f394` commit is
+paid (**79/79**, +16).
+
+Four new families, each carrying structure rather than a contour: `collar` (flap with a neck V opening
+plus a navy trim band sharing the flap's outer U edge — the two fills tile, like `sunhat`'s brim
+surfaces), `bow` (loops **pinched at the knot**, not floating ellipses; tails painted *under* the knot
+so the ribbons emerge from behind it), `arm` (one gesture spine carrying limb + sleeve puff + cuff so
+they cannot drift), `hand` (palm + finger lobes + thumb).
+
+| measure | floor (M2) | M3a | fidelity reference |
+| --- | --- | --- | --- |
+| body region `edge_f1` | 0.102 | **0.152** | 0.190 |
+| whole frame `edge_f1` | 0.164 | **0.205** | 0.252 |
+| body coverage | 0.581 | 0.586 | 0.409 |
+| `color_dist` | 59.6 | **58.5** | 62.8 |
+
+Body `edge_f1` up **48%**; the parametric line is now within 0.038 of the hand-fitted reference on body
+edges while still ahead of it on coverage.
+
+### The honest fit table — where the families CANNOT express the part
+
+This is the more useful output than the bars, and the writer reported it without hedging:
+
+| part | best IoU | verdict |
+| --- | --- | --- |
+| `arm` | 0.734 | yes for the cuff (0.935) and sleeve (0.706); the limb caps at 0.561 (hair occludes it, plus a pink elbow patch) |
+| `collar` | 0.646 | partly — the union fit cannot score the internal trim edge; it shifted the collar right and tilted it |
+| `bow` | **0.353** | **no.** The unconstrained fit only reaches 0.543 by inflating `loop-w` to its 1.7 bound, i.e. an absurd bow. The shipped bow is therefore **measured structure**, not a fit |
+| `hand` | — | **not measurable**: the hand's mauve merges with the translucent petal overlay (a flood leaks into the petal). Drawn from a readable default at the wrist, flagged LOW CONFIDENCE |
+
+Two of four families cannot express their part. That is the *state of the vocabulary*, and it is the
+input the next slice works from — not something to paper over with a better fit.
+
+### Canon values extracted (host-relative; → `vocabulary.md`)
+
+collar **0.99 · head.w** wide × **0.36 · head.h** tall, trim band 0.11 · head.h, V depth 0.13 · head.h,
+top edge at the chin line; bow loop span **1.22 · head.w**, loop height 0.64 · head.h, knot
+0.22 × 0.31 · head.w; arm total **1.97 · head.h** (shoulder→elbow 0.94, elbow→wrist 1.03), limb width
+0.27–0.29 · head.w, cuff 0.28 · head.w × 0.15 · head.h. Pure style/pose constants: loop spread 129°,
+bow tilt −94°, collar `turn` −0.48, sleeve puff 1.098, cuff at t=0.380.
+
+### Not drawn, and why
+
+The blouse's folds and **the whole skirt** (M3b) — which is why the body `edge_f1` is still modest.
+No placket (**measured: it does not exist**). No left arm or sleeve (fully occluded by the bow).
+
+**Milestone exit is the rubric (G8), not these metrics** — M3's named axes are B · human figure ≥ 4 and
+E · occlusion ≥ 4. Two independent sighted reviewers are scoring the render now; the metrics above are
+alarms and diagnostics only.
