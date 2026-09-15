@@ -68,3 +68,24 @@ quoted above (8 findings, verdict "partly").
 - **Fix (queued):** bundle should always include (a) the full-res draft, (b) a subject-centre 2x
   crop; when the spec exposes a `head` host anchor, add an automatic face-region crop. Region
   ranking stays for "where is it most different", never the only crop source.
+
+## Fix landed (2026-09-15)
+
+Both queued items are closed in `scripts/draw.py`, and the fix is disclosed where it differs from
+what was proposed:
+
+- **(a) full-res draft — done as specified.** `check` writes `draft-fullres.png` (1:1, no downscale)
+  and **lists it first** in `report.txt`'s reviewer image list. The night session wrote that file by
+  hand but never listed it, so reviewers never received it — the artifact existed and the fix was
+  ineffective. Listed now, so the protocol is actually different.
+- **(b) a crop where detail exists — done differently and better.** A spec-aware "head anchor" crop
+  was the proposal; the implementation is spec-agnostic instead: `check` keeps `regions-1` crops ranked
+  by raw worst-distance and **forces the last crop onto the worst error where the draft actually drew
+  something** (`dist * drawn_mask`). Same effect on the failure that was observed, no dependence on
+  the author naming an anchor.
+- **A "subject boost" on the ranking was tried and rejected** — measured as a no-op on this reference
+  (identical ranking with and without it; the worst cells are already subject-dense). Deleted rather
+  than shipped and documented, per the no-unjustified-addition rule.
+
+Verified: on `14/evidence/final/full-v2.png` the third crop moved from `(768,896)` (flat background)
+to `(448,320)` — the drawn head. Related: `principles.md` P23, roadmap G1.

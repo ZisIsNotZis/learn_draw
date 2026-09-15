@@ -83,9 +83,9 @@ Implemented vs needed. The needed rows are not speculation — each names the dr
 | `{between: [A, B, t]}` | ✅ | interpolation / extrapolation along a segment |
 | `{polar: P, angle, d}` | ✅ | polar offset (`off` is a YAML boolean word — SA3 finding 6) |
 | `vars:` | ✅ | named intermediate scalars |
-| `mirror` | 🔨 face (SA2) | reflect across an axis or a shape's centre line — eyes, poms |
-| `inside` / containment | 🔨 face (SA2) | iris inside sclera at a fraction, glints inside iris |
-| `align` | 📋 face, 09 | two shapes share an edge line or axis (eye line, mouth centre) |
+| `mirror` | ✅ (SA2, promoted) | reflect across an axis or a shape's centre line — eyes, poms |
+| `inside` / containment | ❌ not needed | **resolved by encapsulation** (vocabulary.md): iris-in-sclera and glint-in-iris are intra-family arithmetic, not a cross-object relation |
+| `align` | 📋 M2 | two shapes share an edge line or axis (eye line, mouth centre) |
 | `distribute` / jitter-grid | 📋 10, SA3 | n instances along a curve with seeded spacing jitter (pleats, village) |
 | `junction` | 📋 08 | where two outlines cross — P4 says these carry the character |
 | `contact` / tangent | 📋 09 | a strand touches the jaw here; hand rests on hip |
@@ -107,12 +107,30 @@ Values are numbers, arithmetic, or a relation dict. Strings may reference anchor
 | `vars:` | named intermediate scalars, evaluated once, referenced by bare name |
 
 Vocabulary nodes and their canons are cataloged in **`vocabulary.md`** (family table, canon fractions
-with provenance, rules for adding one). So far: `sunhat` ✅; `eye` 🔨; the rest 📋 with the rung that
-demands them. A family is added only when a drawing fails without it.
+with provenance, rules for adding one). So far: `sunhat` ✅ (occlusion fixed 2026-09-14) and `eye` ✅
+(SA2) are implemented; the rest are 📋 with the milestone that demands them. Status here and in
+`vocabulary.md` must agree — that table is the catalog, this row a pointer. A family is added only when a drawing fails without it.
 
 **YAML caveat:** `on`, `off`, `yes`, `no` parse as booleans, so this language uses `along` for
 outline points, `host` for an object family's attachment, and `polar` for angle/distance offsets.
 `relate.py` rejects boolean keys by name rather than failing cryptically.
+
+## Shapes — the four primitives a spec may name
+
+Everything else is a vocabulary node or a relation. Each takes `z:`, `desc:`, `fill:`, `stroke:`,
+`sw:`.
+
+| shape | keys | is |
+| --- | --- | --- |
+| `ellipse` | `at`, `rx`, `ry`, `rot?` | an ellipse |
+| `stroke` | `spine`, `w`, `ink` | an open stroke along a spine |
+| `rect` | `full: true` or `at`, `w`, `h` | a rectangle / the backdrop |
+| `blob` | **either** `poly` (closed polygon, fill-only) **or** `spine` (+ `w`, a tapered ribbon) | a closed filled shape |
+
+`blob`'s two forms are both first-class: a closed silhouette (blouse, skirt panel, brim slice) has no
+spine, and a ribbon (hair mass, cloth fold) has no polygon. They compile to the same node type
+(`scene-format.md`), so authoring in the wrong one silently looks like a dialect error — say which
+you mean.
 
 ## Diagnostics — the engine is the model's numeric sense
 
@@ -146,6 +164,12 @@ One rule, learned the hard way: **a new relation or vocabulary node is added onl
 drawing failed without it.** No speculative generality. The renderer's `blur`/T3 machinery is
 evidence of what happens otherwise — it was built for soft-field realism, then pointed at flat cel
 art, and produced mush.
+
+Second rule, learned the harder way (see `14-abstraction-research/spec.md` → Verdict): **a language
+change is only progress if the artifact does not regress.** Compare the new render against the
+recorded best (`scripts/draw baseline`; `check` prints the delta), because a growing language and a
+shrinking drawing is exactly how a bust came to be committed as a final image. Direction and gates:
+`roadmap.md`.
 
 ## Open questions
 

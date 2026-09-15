@@ -2,6 +2,9 @@
 
 Goal: learn to draw (SVG/CSS programmatic art, never diffusion/pixel) — first by recreating reference images with explainable, readable vector graphics, later without a reference. Reference target: `image.jpg` (anime-style portrait).
 
+Where we are right now: `STATUS.md` (repo root) — current best artifact, milestone, blockers.
+Where we are going: `docs/drawing/roadmap.md` — milestones M0–M5 and the gate every one must pass.
+
 Method, style guide, and loop: `docs/drawing/method.md` — read before any drawing session.
 Authoring language (how a drawing is described): `docs/drawing/abstraction.md` — relations and object
 vocabulary, resolved by `scripts/relate.py`.
@@ -17,13 +20,17 @@ Compiled node format (back end): `docs/drawing/scene-format.md`.
 5. **Geometry is computed, never eyeballed** (P19). No shape carries more than ~4 hand-typed coordinates — anything larger comes from a relation, a vocabulary node, `trace`/`region`, or a generator. Author in `abstraction.md` terms; absolute coordinates are compiler *output*, never authoring input.
 6. **The engine never sees the target** (P18). A reference may seed the values in a spec, then gets closed. Tracing is a teacher, never the engine — test every addition with the image deleted.
 7. **Never judge your own render.** Run `draw check`, then give `report.txt`'s image list — and nothing else — to a fresh-context reviewer asking "what is wrong here?". Verify a reviewer's spatial claims against the bundle's region coordinates (P7: observations are reliable, locations are not).
+8. **Never regress the recorded best.** `check` prints `vs recorded best:`; a render below it is a regression, however much the language improved. "Final", "readable" and "done" are claims that require the gate (roadmap G1–G6) — a claim without it is false, however clean the diagnostics are (P22). Promote a new best only through `scripts/draw baseline` after a passed gate.
 
 ## Layout
 
-- `docs/drawing/` — method, authoring language, vocabulary/canons, principles, node format (design truth)
-- `scripts/draw` — CLI: `check`, `compare`, `diff`, `ref`, `log`, `render`, `measure` (see `--help`)
+- `STATUS.md` (root) — where the project is today (SSOT for state)
+- `docs/drawing/` — roadmap, method, authoring language, vocabulary/canons, principles, node format (design truth)
+- `scripts/draw` — CLI: `check`, `baseline`, `compare`, `diff`, `ref`, `log`, `render`, `measure` (see `--help`)
 - `scripts/scene_render.py` — compiles node-format scenes to SVG → chrome
 - `scripts/relate.py` — the single relational resolver (promoted 2026-09-14; forks deleted)
+- `.scratch/00-tooling/baseline/` — the recorded best artifact (the ratchet floor)
+- `.scratch/13-assembly/work/spec.yaml` — the assembly (seeded in M1): the one drawing every milestone patches
 - `.scratch/NN-slug/` — one dir per exercise: `spec.md`, `work/`, `evidence/`, `ref/`, `log.md`
 - `.venv/` — python env (uv). Run tools via `scripts/draw` wrapper.
 
@@ -33,6 +40,10 @@ Compiled node format (back end): `docs/drawing/scene-format.md`.
 # the drawing loop (one command, whole visual bundle — see method.md)
 scripts/draw check <ex>/work/spec.yaml --ref image.jpg   # or a .svg/.png; omit --ref when reference-free
 scripts/draw log <ex> --iter 3 --ref image.jpg --src <ex>/work/spec.yaml --note "..."
+
+# the ratchet: compare against the recorded best, then promote only on a passed gate
+scripts/draw check <render> --ref image.jpg        # prints "vs recorded best: ..."
+scripts/draw baseline <render> --ref image.jpg --note "M1 exit gate passed; reviewer preferred it"
 
 # targeted follow-ups
 scripts/draw compare image.jpg <ex>/work/art.svg --region 500,80,300,300 --zoom 2

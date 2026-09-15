@@ -1,18 +1,28 @@
-# 08 — L1 bust: head, hair, hat, shoulders (ladder rung 1)
+# 08 — the head: jaw, face, hair, hat (slice home for milestone M2)
 
-Status: ready-for-agent (blocked)
-Blocked by: 06-relational-geometry, 14-abstraction-research (face-set relations + declarative families)
+Status: ready-for-agent (blocked by M1 — the assembly must exist before the head can be patched into it)
+Blocked by: 13-assembly (M1 exit gate passed)
 
-## Prerequisite clarification (SA1 finding 3, 2026-09-14)
+Re-scoped 2026-09-15: this is no longer "rung 1 of a ladder that starts from nothing". The project
+has a baseline (`STATUS.md`), and this ticket is the **M2 slice** that patches the head of the
+assembly. Its work still happens here; its output merges into `13-assembly/work/spec.yaml`.
 
-The face is **not drawable with the language as shipped in 06**: no `mirror`/`pair`, no `inside`,
-no `align`, no `arc` (a partial outline of a host shape), no taper in the front end, no rotated
-blobs/strokes. Under strict demand-first this rung would burn its whole budget re-deriving those.
-So the blocker ticket 14 must land, before this rung starts: (1) face-set relations —
-`mirror`/`pair`, `inside`, `align`, `arc`, taper; (2) declarative family support so `eye` is authored
-as a YAML family, not imperative Python; (3) sunhat near-edge occlusion fixed (P17 near/far split).
-If those are not landed, scope this rung DOWN to "bust without facial features" and move the face
-to its own ticket after 14.
+## Entry state — corrected (2026-09-15)
+
+The previous status of this ticket said `blocked by 06, 14`. Most of that has landed: `mirror` and the
+`eye` family are in `scripts/relate.py`, canons are measured in `vocabulary.md` set B, and the sunhat
+near-edge occlusion is fixed (P17 slice split). Still missing for M2: `arc`, `align`,
+taper-as-first-class, and the `face` host family (the ellipse host is the round-chin cause).
+
+**The night session already drew this slice and it failed the gate.** `14/evidence/final/v3.png`
+(a bust, committed as "FINAL IMAGE") never faced a fresh reviewer with the bundle, and measures
+coverage 0.113 against the baseline's 0.514. Its face renders at review scale as "two thin eye
+slits" while the full-resolution render does carry two-tone irises, glints, a tapered lash, brows and
+nose/mouth marks — the marks are real, the *judging scale* was wrong. Both facts belong to this
+bust's re-assessment and to M2's acceptance (hence the 1:1 pane now shipped in every `check` bundle).
+
+**The bar is therefore not a blank canvas — it is the baseline's head.** M2's acceptance is
+"preferred over the baseline's head in a blind A/B", not "better than the night's bust".
 
 ## Issue
 
@@ -37,14 +47,21 @@ Head, hair (mass + bangs), hat, shoulders. Nothing below the shoulders. ~25–35
 
 ## Acceptance
 
+Milestone acceptance is owned by `docs/drawing/roadmap.md` — **M2 exit AC A1–A4 plus gates G1–G6**.
+Do not restate it here. Ticket-specific technical criteria:
+
 - [ ] renders from a relational spec; `relate.py` diagnostics clean (no OFF-CANVAS / CLIPPED / SUB-PIXEL / CONTRADICTION)
 - [ ] every major shape carries its edge stroke (hair mass, hat brim/crown, shoulders, face)
-- [ ] fresh-eyes subagent, given only REF vs DRAFT: identifies the subject unprompted and reports no
-      structural error ("hat is not a hat", "hair is detached", "face is unrecognizable")
+- [ ] a 2x head crop is preferred (or tied) against the same crop of the baseline — the M2 acceptance
+- [ ] non-circular jaw/chin (a `face` host family, not the ellipse host)
+- [ ] hair tapers (no constant-width tubes); hat reads as a hat (crown volume + tilt, curved brim)
 - [ ] no shape in the spec carries more than 4 hand-typed coordinates
-- [ ] iteration log in `log.md` via `scripts/draw log`; ≥1 evidence composite in `evidence/`
-- [ ] principles distilled (append to `docs/drawing/principles.md`)
+- [ ] output merged into `13-assembly/work/spec.yaml`; iteration log in `log.md` via `scripts/draw log`
+- [ ] `principles.md` appended **only** if something transferable was learned (P23/P24 already cover
+      the ratchet and probes-as-rungs lessons)
 
 ## Comments
 
 - 2026-09-14 agent(pi): created as rung 1 of the rebuilt ladder after freezing 05.
+- 2026-09-15 agent(pi): re-scoped as the M2 slice home; entry state corrected (the night's bust is
+  input and evidence, not progress); the bar is the baseline's head. Blocked by M1's exit gate.

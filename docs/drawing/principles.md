@@ -133,3 +133,26 @@ own demo runs the same acceptance as real work** — build the check bundle, ask
 and only then claim "readable". "Clean" means "no rule fired", which is not "correct".
 Learned: SA1 found it; I had written invariant 7 and then skipped it on the one artifact the whole
 language rests on.
+
+## P23 — A ratchet, or the drawing silently regresses (14, night-research verdict)
+
+A growing language and a shrinking drawing is a normal, invisible outcome. The night session
+committed two artifacts as "FINAL IMAGE" while sitting 4.5–5.6x below the best drawing the repo
+already contained — no step in the loop ever compared a new render against the previous best, so
+there was nothing to notice. Two missing instruments, both now built: a **stored baseline**
+(`scripts/draw baseline` records the best artifact; `check` prints `vs recorded best:`), and an
+**omission alarm** (`coverage` — how much of the reference's content the draft accounts for — because
+`color_dist` cannot tell "drawn wrong" from "not drawn", so a bust and a bad full figure score alike).
+Rule: **progress is measured against your own best render, never against your own design.** Metrics
+stay floors and alarms, never targets.
+Learned: two fresh reviewers, shown only the images, both preferred the older drawing.
+
+## P24 — A rung's deliverable is a patch to the assembly, never a standalone probe (14, night-research)
+
+Three parallel probes (a critique, a face study, a Starry-Night evocation) produced three directories
+and zero patches to any drawing. Each probe was individually sound and the session was therefore able
+to present each as the deliverable — which is how a language advance got mistaken for drawing
+progress. Rule: **one drawing grows across the milestones** (`.scratch/13-assembly/work/spec.yaml`);
+a probe is welcome, but it merges into that drawing or is discarded *in the same milestone*. If
+nothing merged, nothing was delivered.
+Learned: the night's three probes, and the assembly that still had to be seeded from a probe.

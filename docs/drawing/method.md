@@ -60,11 +60,15 @@ Applies to what the resolver *emits*; the authoring language is `abstraction.md`
 ## Tool usage
 
 - `check ART [--ref REF]` — **the whole visual feedback bundle in one command** (0.3s for a 1024² draft).
-  Emits into `<exercise>/evidence/check/`: a whole-frame side-by-side (panes ≤600px), the 3 worst
-  regions as 2x magnified REF|DRAFT crops (panes ≤256px, always exactly 3, grid-ranked and kept
-  spatially apart), `report.txt`, and the metrics line. **It carries no verdict by design** — it
-  refuses to tell you whether the drawing is good, because that judgment is the reviewer's.
+  Emits into `<exercise>/evidence/check/`: a whole-frame side-by-side (panes ≤600px), the **1:1 draft
+  at full resolution**, the worst regions as 2x magnified REF|DRAFT crops — including one crop on the
+  worst error *where the draft actually drew something*, so detail is judged where it exists rather
+  than only where mass is missing — `report.txt`, and the metrics line with the delta against the
+  recorded best. **It carries no verdict by design** — it refuses to tell you whether the drawing is
+  good, because that judgment is the reviewer's.
   Omit `--ref` for the reference-free stage (bundle is just the drawing + an adjusted protocol).
+- `baseline ART [--ref REF]` — record ART as the project's best artifact (the ratchet floor). Only
+  ever called after a passed gate; `check` compares every later render against it.
 - `compare REF SRC [--region x,y,w,h --zoom N]` — ad-hoc side-by-side, one attention pass. Detail
   comparison happens per region, never on the full frame.
 - `diff` line mode: overlay of edge maps — **cyan = reference-only (missed line), magenta = mine-only (invented line), white = match**; numbered hint boxes on worst missing regions. Color mode: amplified color-distance heatmap + worst-region boxes; prints edge-F1 + mean color distance.
@@ -74,8 +78,14 @@ Applies to what the resolver *emits*; the authoring language is `abstraction.md`
 
 ## Guardrails
 
+- **Measure against your own best, not against your own design.** The recorded best artifact lives in
+  `.scratch/00-tooling/baseline/` and `check` prints a `vs recorded best:` line. A render below it is a
+  **regression**, however much the language improved (roadmap R2). Promote only on a passed gate:
+  `scripts/draw baseline <render> --ref image.jpg`. The baseline only ever moves up.
 - Metrics are progress signal only (invariant 4 in repo AGENTS.md). `check` prints them as a
   **breakage alarm**: a jump means something broke, a good number never means the drawing is good.
+  `coverage` is additionally an **omission floor** — it answers "how much did you leave out?", the
+  question `color_dist` cannot answer. Floors and alarms, never targets.
 - Max ~3 focused fix attempts per problem; still failing → reformulate at design level (e.g. wrong occlusion order), propose once-and-for-all structure fix.
 - **Never judge your own render.** Run `check`, then give `report.txt`'s image list — and nothing
   else — to a FRESH-context reviewer with the open question "what is wrong here?". No leaked intent,
