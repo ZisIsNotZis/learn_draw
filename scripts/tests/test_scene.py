@@ -383,7 +383,7 @@ check("u: face fitter maps cx/cy to the node's at",
       _fn["at"] == [700.0, 260.0] and _fn["rx"] == 90.0)
 _face_fit.render(_face_fit.start)
 check("u: face occluders are the hair/features above, not its own parts or the target",
-      "hair-mass" in _face_fit.last_occluders
+      "hair-main" in _face_fit.last_occluders and "hair-lock" in _face_fit.last_occluders
       and "head-cranium" not in _face_fit.last_occluders
       and "face-skin" not in _face_fit.last_occluders)
 
@@ -392,8 +392,92 @@ check("u: face occluders are the hair/features above, not its own parts or the t
 _sun_fit = _ff.FamilyFit(_asm, _work, "sunhat", "hat")
 _sun_fit.render(_sun_fit.start)
 check("v: sunhat occluders include the head/hair/features painted above it",
-      "head-cranium" in _sun_fit.last_occluders and "hair-mass" in _sun_fit.last_occluders
+      "head-cranium" in _sun_fit.last_occluders and "hair-main" in _sun_fit.last_occluders
       and any(s.startswith("eyeR") for s in _sun_fit.last_occluders))
+
+# (w) hair-mass family (the last slice of M2): a gesture spine + width profile -> ONE tapered
+# silhouette, with the bbox/root/tip anchors later nodes hang off. This is the family that
+# replaced the last traced contour (G7): the spec states the gesture and the bulk, not 102 vertices.
+_hspec = {"frame": {"w": 1000, "h": 1000},
+          "draw": [{"hair-mass": "hair", "spine": [[600, 100], [800, 300], [950, 700]],
+                    "w": [80, 150, 10], "fill": "#3974ab"}]}
+_he, _henv, _hn, _hl = rl.resolve(_hspec)
+_hblob = next(n for n in _he if n.get("blob") == "hair")
+check("w: hair-mass emits one silhouette blob (2N outline points, not a vertex dump)",
+      len(_hblob["poly"]) == 6)
+check("w: hair-mass exposes bbox + root/tip anchors",
+      "hair.cx" in _henv and "hair.rootx" in _henv and "hair.tipx" in _henv
+      and abs(_henv["hair.rootx"] - 600) < 1e-6 and abs(_henv["hair.tipy"] - 700) < 1e-6)
+# the width profile tapers toward the tip: the tip cap must be narrower than the root cap
+_L, _R = _hblob["poly"][:3], list(reversed(_hblob["poly"][3:]))
+_root_cap = np.hypot(_L[0][0] - _R[0][0], _L[0][1] - _R[0][1])
+_tip_cap = np.hypot(_L[2][0] - _R[2][0], _L[2][1] - _R[2][1])
+check("w: the width profile tapers root -> tip (no constant-width tube)",
+      _tip_cap < _root_cap * 0.5)
+# a spine must be the gesture form: 2-4 points, not an arbitrary polyline
+try:
+    rl.resolve({"frame": {"w": 100, "h": 100},
+                "draw": [{"hair-mass": "h", "spine": [[10, 10]], "w": 5}]})
+    check("w: hair-mass rejects a 1-point spine", False)
+except SystemExit as _e:
+    check("w: hair-mass rejects a 1-point spine", "2-4" in str(_e))
+try:
+    rl.resolve({"frame": {"w": 100, "h": 100},
+                "draw": [{"hair-mass": "h", "spine": [[10, 10], [50, 50]], "w": [5, 5, 5]}]})
+    check("w: hair-mass rejects a width profile that does not match the spine", False)
+except SystemExit as _e:
+    check("w: hair-mass rejects a width profile that does not match the spine", "entries" in str(_e))
+
+# (x) hair-mass side / zig / tips / strands: the strand separation that keeps a mass reading as
+# hair rather than a slab, and the optional interior lines for tonal structure.
+_hspec2 = {"frame": {"w": 1000, "h": 1000},
+           "draw": [{"hair-mass": "h2", "spine": [[600, 100], [800, 300], [950, 700]],
+                     "w": 120, "zig": 0.5, "tips": 3, "strands": 2, "ink": "#123456",
+                     "fill": "#3974ab"}]}
+_he2, _, _, _ = rl.resolve(_hspec2)
+check("x: hair-mass strands emit interior strand lines",
+      any(n.get("stroke") == "h2-strand1" for n in _he2)
+      and any(n.get("stroke") == "h2-strand2" for n in _he2))
+_zig = next(n for n in _he2 if n.get("blob") == "h2")["poly"]
+_he3, _, _, _ = rl.resolve({"frame": {"w": 1000, "h": 1000},
+                            "draw": [{"hair-mass": "h2", "spine": [[600, 100], [800, 300],
+                                                                      [950, 700]],
+                                      "w": 120, "fill": "#3974ab"}]})
+_flat = next(n for n in _he3 if n.get("blob") == "h2")["poly"]
+check("x: zig reshapes the outer edge (strand separation)", _zig != _flat)
+# one-sided width: `side` keeps the spine as one edge (a lock against the face) — the band grows
+# away from the spine instead of straddling it.
+_hside, _hsenv, _, _ = rl.resolve({"frame": {"w": 1000, "h": 1000},
+                                   "draw": [{"hair-mass": "h3", "spine": [[600, 100], [600, 600]],
+                                             "w": 100, "side": "right", "fill": "#3974ab"}]})
+_h3 = next(n for n in _hside if n.get("blob") == "h3")["poly"]
+_xs = [p[0] for p in _h3]
+check("x: side=right grows the band one side only (spine stays one edge)",
+      abs(min(_xs) - 600) < 1e-6 and abs(max(_xs) - 700) < 1e-6)
+_hleft, _, _, _ = rl.resolve({"frame": {"w": 1000, "h": 1000},
+                              "draw": [{"hair-mass": "h3", "spine": [[600, 100], [600, 600]],
+                                        "w": 100, "side": "left", "fill": "#3974ab"}]})
+_lx = [p[0] for p in next(n for n in _hleft if n.get("blob") == "h3")["poly"]]
+check("x: side=left grows the other side of the same spine",
+      abs(max(_lx) - 600) < 1e-6 and abs(min(_lx) - 500) < 1e-6)
+
+# (y) the fitter's hair mode: several instances of the family are fitted jointly against the ONE
+# teacher mask, because the reference's visible hair reads as a fringe, a fall and a cheek lock.
+# This is what `fit-family.py --family hair-mass --nodes hair-main,hair-fringe,hair-lock` uses
+# (STATUS D24). The parameter vector is variable-length: it follows each node's own spine.
+_hair_fit = _ff.FamilyFit(_asm, _work, "hair-mass", ["hair-main", "hair-fringe", "hair-lock"])
+check("y: hair fitter builds the per-node spine/width parameter vector",
+      len(_hair_fit.params) == 24 and "0.sx0" in _hair_fit.params and "2.w1" in _hair_fit.params
+      and _ff.params_for_node("hair-mass", _hair_fit.nodes[1]) == ["sx0", "sy0", "sx1", "sy1",
+                                                                   "w0", "w1"])
+_hn0 = _hair_fit.node_from_params(_hair_fit.start, 0)
+_hn1 = _hair_fit.node_from_params(_hair_fit.start, 1)
+check("y: hair fitter maps the vector back onto all spine nodes",
+      len(_hn0["spine"]) == 4 and len(_hn1["spine"]) == 2 and len(_hn1["w"]) == 2
+      and len(_hair_fit.node_from_params(_hair_fit.start, 2)["spine"]) == 2)
+_hgroups = _hair_fit.render(_hair_fit.start)
+check("y: hair fitter matches the union of all instances to the one teacher mask",
+      "mass" in _hgroups and "hair-left" in _hair_fit.last_occluders)
 
 print(f"\n{PASS}/{TOTAL} smoke tests passed")
 

@@ -849,7 +849,135 @@ def expand_face(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     return ctx.add(anchor)
 
 
-VOCAB = {"sunhat": expand_sunhat, "eye": expand_eye, "face": expand_face}
+def _hair_outline(spine: list[tuple[float, float]], widths: list[float],
+                  side: str = "both", zig: float = 0.0, tips: int = 0) -> list[tuple[float, float]]:
+    """The silhouette of one hair mass: a per-point-width band around the gesture spine.
+
+    `side` decides which edge the width grows from: `both` straddles the spine (a centre-line
+    clump), `left`/`right` keep the spine as one edge and grow one side only. `zig`/`tips` add a
+    sawtooth to the OUTER edge (windowed from the root to the tip) — the strand separation that
+    keeps a mass reading as hair rather than a slab. With `zig=0` the outline is the plain tapered
+    band, which is what the fitter optimises; `zig` is the drawing-time detail.
+    """
+    pts = [np.array(p, float) for p in spine]
+    n = len(pts)
+    L: list[np.ndarray] = []
+    R: list[np.ndarray] = []
+    normals: list[np.ndarray] = []
+    for i, p in enumerate(pts):
+        if i == 0:
+            t = pts[1] - pts[0]
+        elif i == n - 1:
+            t = pts[-1] - pts[-2]
+        else:
+            t = pts[i + 1] - pts[i - 1]
+        t = t / (np.linalg.norm(t) or 1.0)
+        nrm = np.array([-t[1], t[0]])
+        normals.append(nrm)
+        w = float(widths[i])
+        if side == "left":
+            L.append(p + nrm * w)
+            R.append(p.copy())
+        elif side == "right":
+            L.append(p.copy())
+            R.append(p - nrm * w)
+        else:
+            L.append(p + nrm * (w / 2))
+            R.append(p - nrm * (w / 2))
+    if zig and n > 1 and side in ("both", "right"):
+        for i in range(n):
+            win = i / (n - 1)
+            R[i] = R[i] + normals[i] * (zig * win * (widths[i] / 2) * (1.0 if i % 2 else -1.0))
+    out = [tuple(num(v) for v in p) for p in L] + \
+          [tuple(num(v) for v in p) for p in reversed(R)]
+    return out
+
+
+def expand_hair_mass(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """A hair mass — one clump of hair as a tapered band along a gesture spine.
+
+    The structure knowledge the model should not re-derive: hair is drawn as *clumps*, and a clump
+    is a gesture (a spine of 2-4 points) whose cross-section has a width — thick at the root, often
+    tapering to a tip. It is one silhouette, not a contour of vertices. Vocabulary.md sketches the
+    family as "silhouette spine, width profile, tip zigzag, strand count":
+
+      spine    the gesture (2-4 relation-valued points; the sanctioned gesture form)
+      w        the width profile — one full width per spine point (or one scalar for a constant)
+      side     which edge the width grows from: both (centre-line), left, or right
+      tips/zig strand separation on the outer edge (a sawtooth windowed root -> tip)
+      strands  interior strand lines, for the tonal structure (default 0)
+
+    A big sweeping mass and a narrow cheek lock are two instances of this family, exactly as the
+    two eyes are two `eye` instances — the family carries the structure, the spec states intent.
+
+    Exposes the bbox handles (`cx/cy/left/right/top/bottom/w/h/w2/h2`) so later nodes can hang off
+    it, plus `rootx/rooty` (the gesture's first point) and `tipx/tipy` (its last), and the outline
+    itself, so `{along: hair, t}` works on the silhouette.
+    """
+    sid = str(node["hair-mass"])
+    if "spine" not in node:
+        raise SpecError(f"relate: hair-mass {sid!r} needs `spine` (2-4 points, the gesture)")
+    spine = [ctx.point(p) for p in node["spine"]]
+    n = len(spine)
+    if not 2 <= n <= 4:
+        raise SpecError(f"relate: {sid}.spine needs 2-4 points (the gesture form), got {n}")
+    raw_w = node.get("w", node.get("width"))
+    if raw_w is None:
+        raise SpecError(f"relate: hair-mass {sid!r} needs `w` (a width or a per-point profile)")
+    if isinstance(raw_w, (list, tuple)):
+        widths = [ctx.scalar(v) for v in raw_w]
+        if len(widths) != n:
+            raise SpecError(f"relate: {sid}.w has {len(widths)} entries but the spine has {n} points")
+    else:
+        widths = [ctx.scalar(raw_w)] * n
+    side = str(node.get("side", "both"))
+    if side not in ("both", "left", "right"):
+        raise SpecError(f"relate: {sid}.side must be both/left/right, got {side!r}")
+    zig = ctx.scalar(node.get("zig", 0.0))
+    tips = whole(node.get("tips", 0), f"{sid}.tips")
+    strands = whole(node.get("strands", 0), f"{sid}.strands")
+    fill = node.get("fill")
+    stroke, sw = node.get("stroke"), node.get("sw")
+    z = str(node.get("z", "default"))
+
+    poly = _hair_outline(spine, widths, side=side, zig=zig, tips=tips)
+    emit.append({"blob": sid, "poly": poly, "fill": fill, "stroke": stroke, "sw": sw, "z": z,
+                 "desc": f"hair mass: a {n}-point gesture spine with a width profile "
+                         f"({'/'.join(f'{w:.0f}' for w in widths)}), side {side}; one clump, not a "
+                         f"contour"})
+
+    # interior strand lines (tonal structure) — optional, drawn along the spine, offset laterally
+    if strands > 0 and side in ("both", "right"):
+        ink = node.get("ink", "#274f77")
+        sw2 = ctx.scalar(node.get("strand-w", 2))
+        for k in range(1, strands + 1):
+            f = (k / (strands + 1)) * 2 - 1          # -1..1 across the band
+            sp_sub = []
+            for i, p in enumerate(spine):
+                if i == 0:
+                    t = np.array(spine[1]) - np.array(spine[0])
+                elif i == n - 1:
+                    t = np.array(spine[-1]) - np.array(spine[-2])
+                else:
+                    t = np.array(spine[i + 1]) - np.array(spine[i - 1])
+                t = t / (np.linalg.norm(t) or 1.0)
+                nrm = np.array([-t[1], t[0]])
+                if side == "both":
+                    base = np.array(p) - nrm * (f * widths[i] / 2)
+                else:                                # right: spine is the left edge
+                    base = np.array(p) - nrm * ((f + 1) / 2 * widths[i])
+                sp_sub.append(tuple(num(v) for v in base))
+            emit.append({"stroke": f"{sid}-strand{k}", "spine": sp_sub, "w": sw2, "ink": ink,
+                         "z": z, "desc": f"interior strand line {k} of the hair mass"})
+
+    anchor = bbox_anchor(sid, poly)
+    anchor.env.update({f"{sid}.rootx": spine[0][0], f"{sid}.rooty": spine[0][1],
+                       f"{sid}.tipx": spine[-1][0], f"{sid}.tipy": spine[-1][1]})
+    return ctx.add(anchor)
+
+
+VOCAB = {"sunhat": expand_sunhat, "eye": expand_eye, "face": expand_face,
+         "hair-mass": expand_hair_mass}
 SHAPES = ("ellipse", "blob", "stroke", "rect")
 # `region` is a computed shape: its outline is flooded from the reference raster at resolve time,
 # so it is a TEACHER node and needs `--ref`. It is listed apart from the primitives because it

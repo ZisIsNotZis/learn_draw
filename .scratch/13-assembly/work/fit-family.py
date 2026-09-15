@@ -95,12 +95,30 @@ FACE_STEPS = {
 }
 FACE_GROUPS = {"face": {"targets": ["face-skin"], "shapes": ["-cranium", "-jaw"]}}
 
+# `hair-mass` emits one tapered band per instance; the assembly's hair is a big sweeping mass and a
+# narrow cheek lock, i.e. TWO instances matched to the one `hair-mass` teacher mask. The spine is
+# variable length (2-4 points), so the parameter names are built per node rather than fixed.
+HAIR_BOUNDS = {"x": (400.0, 1030.0), "y": (0.0, 820.0), "w": (2.0, 420.0)}
+HAIR_STEPS = {"x": 20.0, "y": 20.0, "w": 15.0}
+HAIR_GROUPS = {"mass": {"targets": ["hair-mass"],
+                        "shapes": ["hair-main", "hair-fringe", "hair-lock"]}}
+
 REGISTRY = {
     "sunhat": {"params": SUNHAT_PARAMS, "bounds": SUNHAT_BOUNDS, "steps": SUNHAT_STEPS,
                "groups": SUNHAT_GROUPS},
     "face": {"params": FACE_PARAMS, "bounds": FACE_BOUNDS, "steps": FACE_STEPS,
              "groups": FACE_GROUPS},
+    "hair-mass": {"params": [], "bounds": HAIR_BOUNDS, "steps": HAIR_STEPS,
+                  "groups": HAIR_GROUPS},
 }
+
+
+def params_for_node(kind: str, node: dict) -> list[str]:
+    """The fitted parameter names for one family instance (hair nodes vary in spine length)."""
+    if kind == "hair-mass":
+        n = len(node["spine"])
+        return [f"{ax}{j}" for j in range(n) for ax in ("sx", "sy")] + [f"w{j}" for j in range(n)]
+    return list(REGISTRY[kind]["params"])
 
 
 def family_kind_of(node: dict) -> str | None:
@@ -203,29 +221,49 @@ def iou(a: np.ndarray, b: np.ndarray) -> float:
 class FamilyFit:
     """Maximise mask IoU between a family instance and the teacher's traced masks."""
 
-    def __init__(self, spec: dict, base_dir: Path, kind: str, node_id: str,
+    def __init__(self, spec: dict, base_dir: Path, kind: str, node_id,
                  targets: dict[str, list[str]] | None = None,
                  occluders: list[str] | None = None):
         reg = REGISTRY[kind]
         self.kind = kind
-        self.node_id = node_id
-        self.params = reg["params"]
-        self.bounds = reg["bounds"]
-        self.steps = reg["steps"]
+        node_ids = [node_id] if isinstance(node_id, str) else list(node_id)
+        self.node_ids = node_ids
+        self.multi = len(node_ids) > 1
         self.spec = spec
         self.base_dir = Path(base_dir)
         self.frame = spec["frame"]
         self.shape = (int(self.frame["h"]), int(self.frame["w"]))
 
-        # locate the family node in the spec — the search swaps this one node each evaluation
-        self.family_index: int | None = None
-        for i, raw in enumerate(spec["draw"]):
-            if family_kind_of(raw) == kind and str(raw[kind]) == node_id:
-                self.family_index = i
-                break
-        if self.family_index is None:
-            raise SystemExit(f"fit-family: no {kind} node {node_id!r} in the spec")
-        self.family_node = copy.deepcopy(spec["draw"][self.family_index])
+        # locate every family instance in the spec — the search swaps them each evaluation
+        self.node_indices: list[int] = []
+        for nid in node_ids:
+            found = None
+            for i, raw in enumerate(spec["draw"]):
+                if family_kind_of(raw) == kind and str(raw[kind]) == nid:
+                    found = i
+                    break
+            if found is None:
+                raise SystemExit(f"fit-family: no {kind} node {nid!r} in the spec")
+            self.node_indices.append(found)
+        self.nodes = [copy.deepcopy(spec["draw"][i]) for i in self.node_indices]
+
+        # parameter space: per instance, prefixed with its index when there is more than one
+        self.params: list[str] = []
+        self.bounds: dict[str, tuple[float, float]] = {}
+        self.steps: dict[str, float] = {}
+        for i, node in enumerate(self.nodes):
+            pre = f"{i}." if self.multi else ""
+            for p in params_for_node(kind, node):
+                q = f"{pre}{p}"
+                self.params.append(q)
+                if kind == "hair-mass":
+                    base = p.rstrip("0123456789")
+                    axis = "x" if base == "sx" else "y" if base == "sy" else "w"
+                    self.bounds[q] = HAIR_BOUNDS[axis]
+                    self.steps[q] = HAIR_STEPS[axis]
+                else:
+                    self.bounds[q] = reg["bounds"][p]
+                    self.steps[q] = reg["steps"][p]
 
         # grouping: default from the registry, overridable per run
         self.groups = copy.deepcopy(reg["groups"])
@@ -250,13 +288,25 @@ class FamilyFit:
         # Parameters may be relational (`2.905*head.w`), so resolve the spec once and evaluate
         # each expression against the resulting anchor environment.
         _emit, env, _notes, _layers = rl.resolve(spec, base_dir=self.base_dir)
-        self.start = {p: self._param_from_node(p, self.family_node, env) for p in self.params}
+        self.start: dict[str, float] = {}
+        for i, node in enumerate(self.nodes):
+            pre = f"{i}." if self.multi else ""
+            for p in params_for_node(kind, node):
+                self.start[f"{pre}{p}"] = self._param_from_node(p, node, env)
 
     @staticmethod
     def _expr(value, env: dict) -> float:
         return rl.eval_expr(value, env) if isinstance(value, str) else float(value)
 
     def _param_from_node(self, param: str, node: dict, env: dict) -> float:
+        if self.kind == "hair-mass":
+            if param[:2] == "sx":
+                return self._expr(node["spine"][int(param[2:])][0], env)
+            if param[:2] == "sy":
+                return self._expr(node["spine"][int(param[2:])][1], env)
+            w = node["w"]
+            j = int(param[1:])
+            return self._expr(w[j] if isinstance(w, (list, tuple)) else w, env)
         if self.kind == "face":
             at = node.get("at", [0.0, 0.0])
             if param == "cx":
@@ -277,18 +327,25 @@ class FamilyFit:
             return self._expr(node.get("droop", 0.0), env)
         return self._expr(node[param], env)
 
-    def node_from_params(self, x: dict) -> dict:
-        node = copy.deepcopy(self.family_node)
-        if self.kind == "face":
-            node["at"] = [float(x["cx"]), float(x["cy"])]
-            for p in ("rx", "ry", "cheek", "jaw", "chin-w"):
-                node[p] = float(x[p])
-            node["turn"] = float(x.get("turn", 0.0))
+    def node_from_params(self, x: dict, i: int = 0) -> dict:
+        node = copy.deepcopy(self.nodes[i])
+        pre = f"{i}." if self.multi else ""
+        if self.kind == "hair-mass":
+            npt = len(node["spine"])
+            node["spine"] = [[float(x[f"{pre}sx{j}"]), float(x[f"{pre}sy{j}"])]
+                              for j in range(npt)]
+            node["w"] = [float(x[f"{pre}w{j}"]) for j in range(npt)]
             return node
-        for p in self.params:
+        if self.kind == "face":
+            node["at"] = [float(x[f"{pre}cx"]), float(x[f"{pre}cy"])]
+            for p in ("rx", "ry", "cheek", "jaw", "chin-w"):
+                node[p] = float(x[f"{pre}{p}"])
+            node["turn"] = float(x.get(f"{pre}turn", 0.0))
+            return node
+        for p in params_for_node(self.kind, node):
             if p not in ("front0", "front1"):
-                node[p] = float(x[p])
-        node["front"] = [float(x["front0"]), float(x["front1"])]
+                node[p] = float(x[f"{pre}{p}"])
+        node["front"] = [float(x[f"{pre}front0"]), float(x[f"{pre}front1"])]
         return node
 
     def render(self, x: dict) -> dict[str, np.ndarray]:
@@ -300,12 +357,26 @@ class FamilyFit:
         is then the family's own shapes with every later-painted non-target node subtracted.
         """
         spec = copy.deepcopy(self.spec)
-        spec["draw"][self.family_index] = self.node_from_params(x)
+        for i, idx in enumerate(self.node_indices):
+            spec["draw"][idx] = self.node_from_params(x, i)
         emit, _env, _notes, layers = rl.resolve(spec, base_dir=self.base_dir)
         order = paint_order(emit, layers)
+
+        # Work out which sids each group needs BEFORE rasterizing: the family's own shapes plus
+        # whatever the layer order paints above it. Rasterizing only those (instead of every node
+        # in the spec) is the difference between a minute and an hour for an 18-parameter hair fit.
+        per_group: dict[str, tuple[list[str], list[str]]] = {}
+        needed: set[str] = set(self.extra_occluders)
+        for gname, g in self.groups.items():
+            gs, occ = group_occluders(emit, layers, g["shapes"], self.target_names)
+            per_group[gname] = (gs, occ)
+            needed.update(gs)
+            needed.update(occ)
         by_sid: dict[str, np.ndarray] = {}
         for node in order:
             sid = rl._sid(node)
+            if sid not in needed:
+                continue
             m = rasterize(node, self.shape)
             by_sid[sid] = (by_sid[sid] | m) if sid in by_sid else m
 
@@ -318,7 +389,7 @@ class FamilyFit:
         out: dict[str, np.ndarray] = {}
         occ_names: set[str] = set(self.extra_occluders)
         for gname, g in self.groups.items():
-            group_sids, occ_sids = group_occluders(emit, layers, g["shapes"], self.target_names)
+            group_sids, occ_sids = per_group[gname]
             gm = np.zeros(self.shape, np.uint8)
             for sid in group_sids:
                 gm |= by_sid.get(sid, zero)
@@ -456,7 +527,7 @@ def _halton(index: int, base: int) -> float:
     return r
 
 
-_PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53]
+_PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71]
 
 
 def halton_seeds(params: list[str], bounds: dict, count: int, skip: int = 7) -> list[dict]:
@@ -520,7 +591,10 @@ def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--family", default="sunhat", choices=sorted(REGISTRY))
     ap.add_argument("--node", default=None,
-                    help="family node id (defaults: hat, head)")
+                    help="family node id (defaults: hat, head, hair-main,hair-lock)")
+    ap.add_argument("--nodes", default=None,
+                    help="comma-separated ids for a family fitted as several instances "
+                         "(e.g. hair-main,hair-lock); overrides --node")
     ap.add_argument("--spec", default=str(DEFAULT_SPEC))
     ap.add_argument("--targets", default=None,
                     help="comma list name:group (defaults to the family registry)")
@@ -534,7 +608,15 @@ def main(argv: list[str] | None = None) -> int:
                     help="how many promising seeds get the expensive local search")
     ap.add_argument("--out", default=None)
     a = ap.parse_args(argv)
-    node = a.node or ("head" if a.family == "face" else "hat")
+    node_text = a.nodes or a.node
+    if node_text:
+        node = [s.strip() for s in node_text.split(",") if s.strip()]
+    elif a.family == "face":
+        node = "head"
+    elif a.family == "hair-mass":
+        node = ["hair-main", "hair-lock"]
+    else:
+        node = "hat"
 
     spec_path = Path(a.spec).resolve()
     spec = rl.load_yaml(spec_path)
@@ -564,11 +646,17 @@ def main(argv: list[str] | None = None) -> int:
         print(f"    seed {row['start']:3d} raw {row['seed_score']:.4f} -> {row['score']:.4f}")
     print("  params  :")
     for k in fitter.params:
-        print(f"    {k:8s} {fitter.start[k]:10.5f} -> {x[k]:10.5f}")
-    out_node = fitter.node_from_params(x)
-    keys = fitter.params + (["front"] if a.family == "sunhat" else ["at"])
-    print("  node    :", {k: (round(v, 4) if isinstance(v, float) else v)
-                          for k, v in out_node.items() if k in keys})
+        print(f"    {k:10s} {fitter.start[k]:10.5f} -> {x[k]:10.5f}")
+    out_nodes = [fitter.node_from_params(x, i) for i in range(len(fitter.node_ids))]
+    for i, out_node in enumerate(out_nodes):
+        if a.family == "hair-mass":
+            keys = ["spine", "w", "side", "zig", "tips", "strands"]
+        elif a.family == "face":
+            keys = ["at", "rx", "ry", "cheek", "jaw", "chin-w", "turn"]
+        else:
+            keys = ["brim", "crown", "tilt", "lift", "drop", "crown-h", "flat",
+                    "front", "rim", "droop"]
+        print(f"  node[{i}] :", {k: out_node.get(k) for k in keys if k in out_node})
     if a.out:
         Path(a.out).write_text(json.dumps({
             "family": a.family, "node": node, "spec": str(spec_path),

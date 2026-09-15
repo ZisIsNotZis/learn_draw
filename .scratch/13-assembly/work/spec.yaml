@@ -9,22 +9,20 @@
 # connected-component colour probes (not eyeballed — P19); the measurement table is in log.md.
 #
 # M2 attempt 3 seeded most of the head from the reference with live `region` nodes, which made
-# this spec reference-dependent. That is now materialized (roadmap D20): `scripts/draw freeze`
+# this spec reference-dependent. That was materialized (roadmap D20): `scripts/draw freeze`
 # resolved the regions once with `--ref` and froze each computed outline to a sidecar data file
-# under `.scratch/13-assembly/work/traced/<node>.json`; the one remaining `traced` node below
-# (hair mass) reads those vertices and never opens a raster. The spec is reference-free:
-# it renders with image.jpg deleted. Each sidecar carries provenance (node id, seed/tol/eps,
-# source image + sha256, date, code path), and a `traced` node refuses loudly if the sidecar is
-# missing, malformed, or stale (its recorded image.jpg sha256 no longer matches the current
-# raster). The traced geometry is the teacher's, not drawn from intent — the traced-vs-invented
-# area fraction in the milestone report measures that debt for M5. Every other node keeps its M1
-# provenance and was already reference-free.
+# under `.scratch/13-assembly/work/traced/<node>.json`. Those sidecars are kept as the teacher's
+# evidence, but the spec no longer reads any of them: every traced contour (brim far/near, face
+# skin, hair mass) has been FITTED to a vocabulary family with `work/fit-family.py` and discarded
+# (roadmap D24/D25), so the spec is 100% family instances, relations and authored gestures, and it
+# renders with image.jpg deleted (invariant 6, P18). G7 — the traced share of the drawn head — is 0.
 #
 # The brim's three `traced` nodes are GONE (STATUS D24): they were fitted to the `sunhat` family
 # with `work/fit-family.py` and then discarded, so the hat is now a family instance carrying
 # measured proportions instead of a frozen contour. The `face-skin` trace is gone the same way:
-# fitted to the `face` family (jaw + a 3/4-view `turn`) and discarded. Only the hair mass is still
-# traced, and it is the next slice — until it is fitted, G7 is not met at a milestone exit.
+# fitted to the `face` family (jaw + a 3/4-view `turn`) and discarded. The `hair-mass` trace is the
+# last one removed: fitted to three instances of the `hair-mass` family (fringe, fall, cheek lock)
+# and discarded. Nothing in the drawing is reference-derived any more.
 #
 # Resolution order != paint order (P20): the head is declared FIRST because everything is sized in
 # units of it, and placed via `z` where it belongs visually.
@@ -77,12 +75,15 @@ draw:
   # near-symmetric while the visible skin is a 3/4 view. Reported, not hidden — the hair slice has
   # to improve before this can rise.
   - {face: head, at: [head_cx, head_cy], rx: head_half, ry: head_deep,
-     cheek: 0.54081, jaw: 0.73031, chin-w: 0.02073, turn: -12.2888,
+     cheek: 0.53456, jaw: 0.72640, chin-w: 0.02523, turn: -11.7888,
      fill: "#f2e9d8", z: head,
      desc: "head: cranium ball + jaw wedge tapering to the chin — the ruler every other size uses;
             jaw shape fitted to the reference's visible skin with hair occluding (face-skin trace
-            discarded): cheek 0.541, jaw 0.730, chin-w 0.021, turn -12.3deg — the turn is a real
-            3/4-view parameter, not decoration (it lifts the visible-skin IoU 0.538 -> 0.552)"}
+            discarded): cheek 0.535, jaw 0.731, chin-w 0.025, turn -11.8deg. Re-fitted after the
+            hair became a family: the new hair occludes the skin differently, and the fit rose
+            0.552 -> 0.575 (the old value was scored against the traced hair). The head box is
+            PINNED at the measured skull value (P28) — freeing at/rx/ry buys IoU by shrinking the
+            ruler and collapses the head gate"}
 
   # ---------------------------------------------------------------- face features (M2)
   # All positions are HEAD-RELATIVE, from the measured apertures:
@@ -120,16 +121,45 @@ draw:
      desc: "mouth dash — canon A: 0.85-0.89 of head height; measured dark mark at (682,354)"}
 
   # ---------------------------------------------------------------- hair
-  # The relational hair blobs re-derived the worst-approximated mass in the head: the reference's
-  # visible hair is a single 876x674 component whose boundary is set by where it meets the face,
-  # the neck and the hat. Two attempts at fringe + cheek-lock gestures did not reproduce it
-  # (M2 att1/att2). The mass was flooded from the head anchor and FROZEN to a sidecar (D20); it is
-  # the reference's own blue area, outline computed, stored as data. The left wisp stays an invented
-  # gesture because the flood does not reach it and a thin sweep is exactly what the gesture form
-  # is for. Frozen from: region seed [head.cx, head.cy - 0.55*head.ry], tol 40, fixed, eps 3.
-  - {traced: hair-mass, from: traced/hair-mass.json, fill: "#3974ab", z: hair-front,
-     desc: "hair mass — the reference's visible blue hair (fringe + both cheeks + the fall down the
-            right), frozen by `draw freeze` (seed 688,202; tol 40; eps 3); reads vertices only"}
+  # The hair is THREE instances of the `hair-mass` family — one silhouette each, as the vocabulary
+  # sketches it (a gesture spine + a width profile). The reference's visible hair is one connected
+  # mass, but it reads as three clumps: a fringe over the forehead, the long fall down the right,
+  # and a cheek lock down the left. A single 4-point ribbon fits IoU 0.670 and a two-instance
+  # (main + lock) decomposition 0.751; splitting the fringe out of the main raises it to 0.799
+  # because the fringe and the fall have different gestures and the fringe must NOT spill onto the
+  # face. All three were FITTED to the reference's frozen visible-hair mask (`traced/hair-mass.json`)
+  # with `work/fit-family.py`, occluders derived from this spec's own `layers:` order (`hair-left` is
+  # the only node painted above them), and the trace was then discarded (roadmap D24/D25). The fit
+  # maximises mask IoU against the teacher's measurement and never reads edge_f1/color_dist
+  # (invariant 4). The ceiling is the gesture form: the reference's fringe/hairline is a concave
+  # corner a tapered band cannot reproduce, so ~0.80 is this family's honest approximation.
+  - {hair-mass: hair-fringe, host: head,
+     spine: [[head.cx - 0.81112*head.rx, head.cy - 1.06258*head.ry],
+             [head.cx + 1.59920*head.rx, head.cy - 0.13827*head.ry]],
+     w: [0.67420*head.w, 0.37914*head.w],
+     side: both, fill: "#3974ab", z: hair-front,
+     desc: "hair fringe — the broad clump across the forehead, from the left temple to the right of
+            the crown (width 0.67 -> 0.38 head-widths); kept a separate instance from the fall so
+            its lower edge can sit on the hairline instead of spilling onto the face"}
+  - {hair-mass: hair-main, host: head,
+     spine: [[head.cx + 1.49194*head.rx, head.cy - 0.25083*head.ry],
+             [head.cx + 1.65501*head.rx, head.cy + 0.88037*head.ry],
+             [head.cx + 2.30679*head.rx, head.cy + 2.22967*head.ry],
+             [head.cx + 3.51211*head.rx, head.cy + 4.16439*head.ry]],
+     w: [0.59393*head.w, 0.74700*head.w, 0.06097*head.w, 0.09714*head.w],
+     side: both, fill: "#3974ab", z: hair-front,
+     desc: "hair main mass — the long fall down the right, fitted as a tapered clump (4-point
+            gesture spine, width 0.59 -> 0.75 -> 0.06 -> 0.10 head-widths): fullest at the
+            shoulder, tapering to the tip at the frame edge; the width profile is the drawing
+            statement"}
+  - {hair-mass: hair-lock, host: head,
+     spine: [[head.cx - 0.66672*head.rx, head.cy - 0.87132*head.ry],
+             [head.cx - 1.42125*head.rx, head.cy + 0.09877*head.ry]],
+     w: [0.32490*head.w, 0.05294*head.w],
+     side: both, fill: "#3974ab", z: hair-front,
+     desc: "hair cheek lock — the narrow strand falling down the left of the face, fitted as a
+            third tapered clump; its gap to the fringe is the pink face pocket (skin through the
+            notch), which is why the hair is several instances, not one silhouette"}
   - {stroke: hair-left,
      spine: [[frame.w*0.175, frame.h*0.32], [frame.w*0.35, frame.h*0.385], [frame.w*0.565, frame.h*0.42]],
      w: frame.w*0.014, ink: "#3974ab", z: hair-front,
@@ -220,4 +250,5 @@ relations:
   - {front: hair-front, behind: blouse, desc: "front hair falls over the blouse"}
   - {front: skirt-pale, behind: skirt-dark, desc: "the pale panel lies over the dark skirt"}
   - {front: blouse, behind: ribbon-sweep, desc: "the ribbon passes behind the figure"}
-  - {front: hair-mass, behind: head, desc: "the visible hair falls in front of the face; the hat still sits over the skull"}
+  - {front: hair-main, behind: head, desc: "the visible hair falls in front of the face; the hat still sits over the skull"}
+  - {front: hair-lock, behind: head, desc: "the cheek lock falls in front of the face too — the same relation as the main mass"}

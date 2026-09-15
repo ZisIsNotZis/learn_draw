@@ -249,6 +249,28 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
   nothing. So 81% of the head carries no transferable learning — and that is exactly the 81% M5 would
   have to re-invent, which is what failed at attempts 1 and 2. **The gate as written is met but cannot
   distinguish a drawing from a copy, so M2 is not closed and the baseline is not promoted.**
+- **2026-09-15 · D26 — the fidelity floor and G7 are mutually exclusive for this subject (PROVEN, with
+  a decision pending).** M2 attempt 4c reached **G7 (traced share 0.000)** with fitted families, and the
+  head's `edge_f1` fell to **0.340** against a bar of 0.412. That is not a shortfall — it is a
+  contradiction, proven by a controlled experiment the writer ran and I reproduced: simplifying the
+  *actual* hair trace and changing nothing else, `edge_f1` only reaches 0.413 at **78 vertices /
+  IoU 0.957**. So `edge_f1` ≥ 0.412 requires the hair silhouette within ~5px of the reference, i.e.
+  essentially the traced contour, while a genuine ≤4-point gesture family tops out at IoU 0.80.
+  **Reaching the bar requires tracing, and G7 forbids tracing.**
+  **Root cause:** the bar was set at `baseline − 0.01` and the baseline is **hand-fitted to
+  `image.jpg`**. A hand-fitted artifact compared against a parametric drawing on edge fidelity is a
+  *trace compared against a drawing*, and the trace wins by construction — D21's lesson one level
+  deeper (D21 fixed admissibility; this is calibration).
+- **2026-09-15 · D27 — the like-for-like picture, which the baseline framing hides.** Comparing the
+  parametric head with its own parametric past:
+  M1 0.166/0.544 → M2 att2 0.173/0.585 → **M2 att4c 0.340/0.747** (edge_f1 / coverage) with **zero
+  traced geometry**. The parametric head **doubled** its edge correspondence and now **beats the
+  hand-fitted baseline on coverage** (0.747 vs 0.702). Proposed resolution (needs the user — it changes
+  the spine): **the ratchet floor should be the best PARAMETRIC artifact**; the hand-fitted 2026-09-11
+  render becomes a **fidelity reference and teacher**, not the competitive floor. A ratchet is only
+  meaningful against artifacts made the same way, and today's floor can never be fairly cleared by a
+  drawing that does not trace. `hair-mass` also landed: 3 clumps, IoU 0.799, ceiling ≈0.80 because a
+  tapered band cannot make the fringe's concave inner corner; face re-fit improved 0.552 → 0.576.
 - **2026-09-15 · D25 — Option A APPROVED: fit the families to the traces, then discard the traces.**
   The 81% traced share was raised with the user as a method decision (it was, per D24); the user chose
   fitting over accepting trace-backed artifacts. Consequence now in the roadmap: **gate G7** — at a

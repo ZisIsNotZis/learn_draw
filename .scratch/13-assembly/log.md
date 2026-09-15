@@ -550,3 +550,81 @@ exists for: that the documented render reproduces it exactly. Fixed in `scripts/
 is now a **byte copy** (`shutil.copyfile`) with an assertion that it reproduces the source, and the two
 digests are recorded separately and named `source_sha256` / `artifact_sha256`. Re-recorded, verified
 equal, and the baseline is still self-consistent (`vs recorded best:` all `+0.000`).
+
+## 2026-09-15 — M2 attempt 4c: G7 reached, and the fidelity bar is proven unreachable without tracing
+
+Delegated; verified by me, including reproducing the decisive experiment.
+
+### The hair family
+
+`hair-mass` is now a real family in `relate.py`: a **tapered band around a gesture spine** (2–4
+relation-valued points), with `w` as a per-point width profile, `side` (both/left/right), `zig`+`tips`
+for strand separation, optional `strands`, and normal handles plus `rootx/rooty`, `tipx/tipy`. The
+spec says "hair, this big, sweeping here"; it carries the silhouette logic. 12 new tests, 63/63.
+
+Fitted to the hair trace with occluders applied (never to `edge_f1`):
+
+| decomposition | IoU vs the teacher mask |
+| --- | --- |
+| 1 ribbon | 0.670 |
+| 2 instances (fall + lock) | 0.751 |
+| **3 instances (fringe + fall + lock) — shipped** | **0.799** |
+
+**Ceiling ≈0.80 for this family form**, and the reason is specific: it captures the mass *extent*
+almost exactly (2.49×2.89 head-widths vs the teacher's 2.48×2.93) but cannot make the **concave inner
+boundary** — the fringe/hairline corner. A tapered band is convex along its spine.
+
+### G7 is now met: traced share = 0.000
+
+```
+traced   0 px  (0.000 of drawn)
+G0: 0 TEACHER diagnostics with image.jpg moved away
+```
+
+The artifact is a drawing again: every shape a family or a relation. The three teacher sidecars stay on
+disk as evidence. The `face` re-fit also improved once the hair was a family (IoU 0.552 → 0.576), which
+is the coupling the fitter predicted.
+
+### The finding: the detail floor and G7 are MUTUALLY EXCLUSIVE for this subject
+
+Head `edge_f1` **0.340** against a bar of **0.412**. That is not a shortfall to grind at — it is a
+contradiction, and the writer proved it with a controlled experiment that I then reproduced myself:
+
+```
+simplify the ACTUAL hair trace and put it back, changing nothing else:
+  eps  5 ->  78 verts, IoU 0.957     ->  head edge_f1 0.413   (just at the bar)
+  eps  8 ->  62 verts, IoU 0.917     ->  head edge_f1 0.378
+  eps 12 ->  51 verts, IoU 0.854     ->  head edge_f1 0.336
+```
+
+**Reaching `edge_f1` ≥ 0.412 requires the hair silhouette within ~5px of the reference — IoU ≈0.96,
+≈78 vertices — i.e. essentially the traced contour.** A genuine ≤4-point gesture family tops out at
+IoU 0.80. So the bar can only be met by tracing, and G7 forbids tracing. The gate set is
+self-contradictory for this subject.
+
+**Why the bar was wrong.** It was set at `baseline − 0.01`, and the baseline is **hand-fitted to
+`image.jpg`**. A hand-fitted artifact compared against a parametric drawing on edge fidelity is a
+**trace compared against a drawing**, and the trace wins by construction. This is D21's lesson one
+level deeper: D21 fixed *admissibility* (don't compare an artifact that reads the raster), and this is
+*calibration* (don't derive the threshold from a hand-fitted artifact either).
+
+### The honest like-for-like picture
+
+Compare the parametric head against its own parametric past, and the progress is large and real:
+
+| | head `edge_f1` | head coverage |
+| --- | --- | --- |
+| M1 (fully parametric) | 0.166 | 0.544 |
+| M2 attempt 2 (parametric) | 0.173 | 0.585 |
+| **M2 attempt 4c (parametric, fitted families)** | **0.340** | **0.747** |
+| baseline (hand-fitted — *not* the same kind of artifact) | 0.422 | 0.702 |
+
+The parametric head **doubled** its edge correspondence (0.173 → 0.340) and now **beats the hand-fitted
+baseline on coverage** (0.747 vs 0.702) — with **zero** traced geometry. That is the milestone's real
+result, and the "vs baseline" framing hides all of it.
+
+### Status
+
+M2 meets **G0, G4, G5, G6, G7** and the coverage floor, and fails **only** the fidelity floor that has
+now been *proven* to be tracing-only. So M2 is **blocked on a gate defect, not on the drawing** — and I
+am not inventing a number to close it. The fix is a spine change and is with the user (D26).
