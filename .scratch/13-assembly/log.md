@@ -763,3 +763,49 @@ owed; the second is re-running.
 
 That is the M3b brief, and it came from a sighted reviewer rather than from me guessing. Note it is
 sayable in one sentence with **no coordinates** — S1 does not fire.
+
+## 2026-09-16 — M3a rubric verdict, two independent reviews: M3 does NOT exit
+
+Second reviewer is genuine (a different method — it pixel-sampled RGB values rather than eyeballing).
+
+| axis | rev 1 | rev 2 | spread | M3 target |
+| --- | --- | --- | --- | --- |
+| A · subject identity | 4 | 4 | 0 | — |
+| **B · human figure** | **3** | **3** | 0 | **≥ 4 → NOT met** |
+| C · silhouette coherence | 3 | 3 | 0 | — |
+| D · feature legibility | 3 | 4 | 1 | — |
+| **E · occlusion correctness** | **2** | **3** | 1 | **≥ 4 → NOT met** |
+| F · style + composition | 3 | 3 | 1 | — |
+
+**No axis is contested** (every spread ≤ 1), so the verdict stands without a third opinion. M3 does not
+exit. The body work is real (B and C both 1.5 → 3 against the M2 floor) and it is not enough.
+
+### The second reviewer found the same defect, measured more precisely
+
+> *"The dress and the dark skirt mass are separated by a **70–85 px band of plain background** across
+> x≈200–700 (y≈700–785), so the lower half of the body floats as a detached blob instead of forming the
+> skirt the figure sits in."*
+> One change: *"Extend the dress hem down (or raise/enlarge the dark mass) until the two overlap with
+> **no** background between them, giving one continuous torso→hem→skirt silhouette."*
+
+That is the same class of defect reviewer 1 named (masses that do not connect), now with coordinates
+and a magnitude. It confirms M3b's primary task is the right one and that it is sayable in one sentence
+— **S1 does not fire**.
+
+### Three further defects it found that M3b's brief did not name
+
+1. **There is no neck.** At x=700, skin ends at y≈374 and the collar starts at y≈405 — a ~30px background
+   gap, so *"the head reads as hovering above the collar"*.
+2. **A hand fragment floats with no arm reaching it** (a mitten shape at the chest, x655–690/y255–290 in
+   the crop).
+3. **The bow renders as a six-lobed flower** (rounded petals + centre ellipse, x565–760 / y470–610) —
+   consistent with M3a's own fit verdict that `bow` **cannot** express this bow (IoU 0.353).
+
+These go to the next slice after M3b. Recording them here so they are not rediscovered.
+
+### Note on D (3 vs 4)
+
+The two reviewers disagree on whether the hat "reads as crown and brim": reviewer 1 says no, reviewer 2
+says yes. It is a genuine borderline, recorded as ±1 rather than contested — the rubric's anchors put
+that judgement between 3 and 4, and both landed inside the band. Worth watching: if the hat reading
+stays borderline after M3b's hat work, the D anchors need sharpening.
