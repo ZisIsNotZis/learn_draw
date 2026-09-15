@@ -6,7 +6,7 @@ Renderer: chrome-headless-shell (playwright cache) — renders SVG and HTML/CSS 
 The ratchet: `baseline` records the best artifact so far; `check` reports the delta against it,
 so a drawing that regresses is visible as a regression instead of being called progress.
 """
-import argparse, hashlib, json, os, re, subprocess, sys, datetime
+import argparse, hashlib, json, os, re, shutil, subprocess, sys, datetime
 import numpy as np
 import cv2
 
@@ -515,26 +515,37 @@ def delta(before: dict, after: dict) -> str:
 
 
 def cmd_baseline(a):
-    """Record ART as the project's best artifact — the floor every later render is measured against."""
+    """Record ART as the project's best artifact — the floor every later render is measured against.
+
+    The artifact is stored as a **byte copy**, not a re-encode: the baseline's whole value is that it
+    is *reproducible* — re-running the documented render must reproduce it exactly — and a re-encoded
+    PNG breaks that claim while looking fine (pixels identical, bytes not). The two hashes are
+    recorded separately and named, because conflating them is what let a wrong `sha256` sit in
+    `best.json` for a day: it held the *source*'s digest while claiming to be the artifact's.
+    """
     if not os.path.exists(a.art):
         raise ToolError(f"baseline: no such artifact: {a.art}")
     draft = imread(a.art)
+    ensure_dir(BASELINE_DIR)
+    shutil.copyfile(a.art, BASELINE_PNG)
     entry = {
         "recorded": datetime.date.today().isoformat(),
         "source": os.path.abspath(a.art),
         "artifact": os.path.abspath(BASELINE_PNG),
-        "sha256": _sha256(a.art),
+        "source_sha256": _sha256(a.art),
+        "artifact_sha256": _sha256(BASELINE_PNG),
         "note": a.note,
     }
     if a.ref:
         ref = imread(a.ref, (draft.shape[1], draft.shape[0]))
         entry["ref"] = os.path.abspath(a.ref)
         entry["metrics"] = metrics(ref, draft)
-    ensure_dir(BASELINE_DIR)
-    imwrite(BASELINE_PNG, draft)
     write_text(BASELINE_JSON, json.dumps(entry, indent=2) + "\n")
     print(f"recorded best: {BASELINE_PNG}")
     print(f"  from      : {a.art}")
+    assert entry["source_sha256"] == entry["artifact_sha256"], \
+        "baseline: byte copy did not reproduce the source — the artifact is not reproducible"
+    print(f"  sha256    : {entry['artifact_sha256'][:16]}…  (byte-identical to the source)")
     if entry.get("metrics"):
         print(f"  metrics   : {entry['metrics']}")
     print(f"  provenance: {BASELINE_JSON}")

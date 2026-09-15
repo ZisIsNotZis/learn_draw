@@ -207,3 +207,20 @@ provenance, close the image. The geometry is still *computed* (invariant 5: not 
 coordinate regression), the reference is still the source of the values (P18's teacher role), and the
 artifact stands alone. A live raster read is the one form of teaching that cannot be withdrawn.
 Learned: M2 attempt 3.
+
+## P28 — The ruler is the one thing a fit must not move (13-assembly, M2 attempt 4b)
+
+Fitting the `face` family's parameters to the reference's visible-skin mask had two traps. The first
+was named in advance: the trace is the *visible* skin, so the fit must be scored with the occluders
+applied or the bare shape overshoots. The second was not: **the `face` node is the ruler** — the hat,
+the eyes and the hair are all placed off `head.*`. Left free, the optimiser shrank the head
+(`rx` 95 → 52) to chase the hair-occluded skin, buying IoU 0.691 while **collapsing the head gate to
+`edge_f1` 0.328 / coverage 0.385**. Pinning the head box and fitting only `cheek/jaw/chin-w` (+`turn`)
+gives the honest answer: IoU 0.552, i.e. this family cannot express this skin.
+
+Rule: in a relational system where everything is placed off a host measure, **the host is not a free
+parameter** — fitting it moves the entire drawing, and the resulting IoU is not a measurement of the
+shape but of how far the ruler ran away. Pin the host to its measured canon, fit only what is
+host-relative, and report the fixed-ruler number even when a free fit looks better. A free fit that
+improves the fit metric while degrading the drawing is P25's lesson in a new costume.
+Learned: M2 attempt 4b (`.scratch/13-assembly/log.md`).

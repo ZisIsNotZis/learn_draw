@@ -485,3 +485,68 @@ and hair must be fitted too; and the `sunhat` parameters were fitted under the *
 hat was above the head and the only occluder was `hair-mass`. Now that the head occludes the brim as
 well, the fit must be redone with `head` and `hair-mass` as occluders — the near group should improve
 beyond 0.594, and until it does the fitted values are known-stale.
+
+## 2026-09-15 — M2 attempt 4b: sunhat re-fitted, face fitted, and the ruler must stay pinned
+
+Delegated; all numbers below re-verified by me. The `face-skin` trace is gone; only `hair-mass` remains.
+
+### The fitter's occluder logic was wrong, and that made the previous fit stale
+
+`fit-family.py` had a **hard-coded** occluder (`hair-mass`). Since the z-order fix (attempt 4) the
+`head`, `features` and hair all paint above the hat, so the brim's fit had been scored against an
+occlusion that no longer existed. It now derives occluders from the spec's own `layers:` order
+(`group_occluders` + a `paint_order` that replicates the renderer exactly, full-rects first, then a
+stable sort by layer index) and re-resolves the whole spec per candidate — so head-relative occluders
+move with a face being fitted. Changing `layers` changes the answer, and that is what the new test `t`
+asserts.
+
+| `sunhat` | mean IoU | far | near |
+| --- | --- | --- | --- |
+| shipped params, old occlusion (hair only) | 0.7199 | 0.8456 | **0.5943** |
+| shipped params, corrected layer-derived occlusion | 0.7284 | 0.7713 | **0.6856** |
+| **re-fit, corrected occlusion** | **0.7414** | 0.7801 | **0.7028** |
+
+The near group rose **0.594 → 0.686 → 0.703**. The far group *falls* 0.846 → 0.780, and that is
+correct: the old 0.846 was cheating — it never subtracted the head, features or hair that actually
+cover the navy, and it let the near surface cover the face gap.
+
+### `face`: fitted, and honestly reported as unable to express this head
+
+The brief named one ill-posedness (the `face-skin` trace is the **visible** skin, so the fit must be
+scored with occluders applied — it was). The writer found a **second one the brief did not name**:
+
+> the `face` node is the **ruler**; the hat, eyes and hair are all placed off `head.*`. If `at/rx/ry`
+> are free the optimiser moves the whole head to chase the hair-occluded skin.
+
+Measured, and this is the important table:
+
+| fit | IoU | head `edge_f1` | head coverage |
+| --- | --- | --- | --- |
+| head box pinned, `cheek/jaw/chin-w` only | 0.538 | 0.478 | 0.744 |
+| + `turn` (a real 3/4-view parameter, doesn't move the ruler) | **0.552** | 0.474 | **0.759** |
+| all of `at/rx/ry` free | 0.691 | **0.328** | **0.385** |
+
+So the free fit buys IoU 0.691 by shrinking the head (rx 95 → 52) and **collapses the head gate**. The
+spec uses the constrained fit; the ruler stays at the measured skull box. Verdict, stated plainly:
+**`face` cannot express this visible skin — best IoU 0.552 at a fixed ruler**, for two measured
+reasons: the `hair-mass` teacher is one coarse contour that misses the fringe strands (so skin shows
+through them and is penalised), and the family is near-symmetric against a 3/4 view even with `turn`.
+Filed as `principles.md` P28.
+
+### Where M2 stands
+
+- Head region: **`edge_f1` 0.474 ≥ bar 0.412 and ≥ baseline 0.422; coverage 0.759 ≥ 0.692.**
+- Traced share of the drawn head: **0.391 → 0.309**, and the remaining node is **`hair-mass` only**.
+- Tests 51/51 (+7 for the generalised occluders and the face registry); deterministic; G0 holds;
+  historical specs unaffected (`05/scene.yaml` still reproduces `1a7cae4f…`).
+- **Not M2's exit yet**: G7 needs the traced share at **0**, so the hair is the last slice.
+
+### A bug in MY tool, found by the writer
+
+`draw baseline` was recording `sha256` = the digest of the **source** file while storing a **re-encoded**
+copy as the artifact. So `best.json` claimed a hash the artifact did not have (`1a7cae4f…` vs the
+stored `6c550f…`), pixels identical, bytes not — which quietly breaks the one property the baseline
+exists for: that the documented render reproduces it exactly. Fixed in `scripts/draw.py`: the artifact
+is now a **byte copy** (`shutil.copyfile`) with an assertion that it reproduces the source, and the two
+digests are recorded separately and named `source_sha256` / `artifact_sha256`. Re-recorded, verified
+equal, and the baseline is still self-consistent (`vs recorded best:` all `+0.000`).

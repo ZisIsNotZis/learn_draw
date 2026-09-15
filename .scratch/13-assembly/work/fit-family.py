@@ -3,7 +3,7 @@
 
 The teacher loop (docs/drawing/abstraction.md, STATUS D24) is: measure a subject, use the
 measurement to FIT a family, then close the reference and keep only the fitted parameters. This
-instrument is the "fit" step. It takes a vocabulary family (currently `sunhat`), a starting
+instrument is the "fit" step. It takes a vocabulary family (`sunhat`, `face`), a starting
 parameter set, and one or more frozen `traced` masks, and searches the family's parameters to
 maximise the IoU between the family's own rendered masks and the teacher's masks.
 
@@ -13,12 +13,19 @@ evaluation metric rises is the optimizer regression the project forbids; fitting
 traced outline is parameter extraction. This tool therefore never looks at image.jpg at all: it
 opens the traced sidecars, which carry no raster.
 
+Occluders (generalised 2026-09-15). A family's teacher mask is the subject's VISIBLE pixels, so
+the family's rendered mask has to be clipped to what stays visible after everything painted above
+it. Which shapes those are is read from the spec's own `layers:` order — every node painted after
+the family's shapes occludes it — instead of a hard-coded list (the old one said only `hair-mass`,
+which was wrong the moment the hat moved under the head). The same pass renders the whole spec at
+each candidate, so the occluders that are themselves head-relative (eyes, hair) move with the
+family being fitted.
+
 Grouping. A family emits several sub-shapes, and one traced mask may be the union of more than one
 of them. For `sunhat` the teacher's `hat-far-navy` is the crown AND the far brim in one connected
 navy mass, so the fit target for it is `union(crown-dome, brim-far)`; the two teal masks are the
-split top surface, so their union is matched by `brim-near`. Occluders (shapes painted above the
-hat, e.g. the front hair) are subtracted from the family mask before the IoU, so the comparison is
-visible-to-visible.
+split top surface, so their union is matched by `brim-near`. `face` emits cranium + jaw, matched to
+the one `face-skin` mask.
 
 Search. Deterministic multi-start coordinate descent followed by a dependency-free Nelder-Mead
 polish. Same spec + same sidecars -> same fitted parameters, bit for bit.
@@ -28,7 +35,10 @@ Usage:
       --family sunhat --node hat \
       [--spec .scratch/13-assembly/work/spec.yaml] \
       [--targets hat-far-navy:far,hat-near-teal:near,hat-near-teal-right:near] \
-      [--occluders hair-mass] [--out /tmp/fit.json]
+      [--out /tmp/fit.json]
+
+  .venv/bin/python .scratch/13-assembly/work/fit-family.py \
+      --family face --node head --targets face-skin:face --out /tmp/face-fit.json
 """
 from __future__ import annotations
 
@@ -71,11 +81,25 @@ SUNHAT_GROUPS = {
     "far": {"targets": ["hat-far-navy"], "shapes": ["-dome", "-brim-far"]},
     "near": {"targets": ["hat-near-teal", "hat-near-teal-right"], "shapes": ["-brim-near"]},
 }
-SUNHAT_OCCLUDERS = ["hair-mass"]
+
+# `face` emits a cranium ellipse + a jaw blob; the teacher's one `face-skin` mask is their union.
+# `cx`/`cy` are the fitted centre (the node's `at`), so the search can move the head box.
+FACE_PARAMS = ["cx", "cy", "rx", "ry", "cheek", "jaw", "chin-w", "turn"]
+FACE_BOUNDS = {
+    "cx": (560.0, 840.0), "cy": (170.0, 360.0), "rx": (50.0, 140.0), "ry": (50.0, 170.0),
+    "cheek": (0.30, 1.05), "jaw": (0.05, 0.85), "chin-w": (0.005, 0.40), "turn": (-35.0, 35.0),
+}
+FACE_STEPS = {
+    "cx": 8.0, "cy": 8.0, "rx": 6.0, "ry": 6.0, "cheek": 0.05, "jaw": 0.05,
+    "chin-w": 0.03, "turn": 4.0,
+}
+FACE_GROUPS = {"face": {"targets": ["face-skin"], "shapes": ["-cranium", "-jaw"]}}
 
 REGISTRY = {
     "sunhat": {"params": SUNHAT_PARAMS, "bounds": SUNHAT_BOUNDS, "steps": SUNHAT_STEPS,
-               "groups": SUNHAT_GROUPS, "occluders": SUNHAT_OCCLUDERS},
+               "groups": SUNHAT_GROUPS},
+    "face": {"params": FACE_PARAMS, "bounds": FACE_BOUNDS, "steps": FACE_STEPS,
+             "groups": FACE_GROUPS},
 }
 
 
@@ -88,21 +112,72 @@ def family_kind_of(node: dict) -> str | None:
 
 
 # --------------------------------------------------------------------------------------
-# masks
+# masks and paint order
 # --------------------------------------------------------------------------------------
 def rasterize(node: dict, shape: tuple[int, int]) -> np.ndarray:
-    """A full-canvas uint8 mask of one emitted compiled node (poly or ellipse)."""
+    """A full-canvas uint8 mask of one emitted compiled node (poly / ellipse / stroke).
+
+    A full-frame background rect yields an all-zero mask: it is the ground, never an occluder.
+    """
     h, w = shape
     mask = np.zeros((h, w), np.uint8)
+    if node.get("full"):
+        return mask
     if "poly" in node:
         pts = np.round(np.asarray(node["poly"], float)).astype(np.int32)
-        cv2.fillPoly(mask, [pts], 1)
+        if len(pts) >= 3:
+            cv2.fillPoly(mask, [pts], 1)
     elif "ellipse" in node:
         cx, cy = node["at"]
-        axes = (int(round(node["rx"])), int(round(node["ry"])))
+        axes = (max(1, int(round(node["rx"]))), max(1, int(round(node["ry"]))))
         cv2.ellipse(mask, (int(round(cx)), int(round(cy))), axes,
                     float(node.get("rot", 0)), 0, 360, 1, -1)
+    elif "stroke" in node:
+        pts = np.round(np.asarray(node["spine"], float)).astype(np.int32)
+        th = max(1, int(round(node.get("w", 2))))
+        cv2.polylines(mask, [pts], False, 1, th)
+        for p in (pts[0], pts[-1]):  # round caps, matching the renderer
+            cv2.circle(mask, (int(p[0]), int(p[1])), th // 2, 1, -1)
     return mask
+
+
+def paint_order(emit: list[dict], layers: list[str]) -> list[dict]:
+    """Emitted nodes in the order `relate.emit_svg` actually paints them.
+
+    Full-frame rects first, then a STABLE sort by layer index — identical to the renderer, so
+    'painted above' has one meaning for the fitter and the drawing.
+    """
+    def zindex(node: dict) -> int:
+        z = str(node.get("z", "default"))
+        return layers.index(z) if z in layers else len(layers)
+
+    return [n for n in emit if n.get("full")] + \
+        sorted((n for n in emit if not n.get("full")), key=zindex)
+
+
+def group_occluders(emit: list[dict], layers: list[str], group_suffixes: list[str],
+                    target_names: set[str]) -> tuple[list[str], list[str]]:
+    """The generalised occluder rule, in one place.
+
+    Returns (group_sids, occluder_sids) for one family group:
+      * `group_sids` — every emitted shape whose id ends with one of `group_suffixes`;
+      * `occluder_sids` — every OTHER node painted after the group's last shape, in the spec's
+        own paint order, EXCLUDING the teacher targets themselves (the mask being fitted to is
+        not an occluder of the thing being fitted). Nothing is hard-coded: a node painted above
+        the family occludes it because `layers:` says so.
+    """
+    order = paint_order(emit, layers)
+    sids = [rl._sid(n) for n in order]
+    group = [s for s in sids if any(s.endswith(suf) for suf in group_suffixes)]
+    if not group:
+        return [], []
+    last = max(i for i, s in enumerate(sids) if s in set(group))
+    occ: list[str] = []
+    for s in sids[last + 1:]:
+        if s in target_names or s in group or s in occ:
+            continue
+        occ.append(s)
+    return group, occ
 
 
 def sidecar_mask(path: Path, shape: tuple[int, int]) -> np.ndarray:
@@ -142,25 +217,27 @@ class FamilyFit:
         self.frame = spec["frame"]
         self.shape = (int(self.frame["h"]), int(self.frame["w"]))
 
-        # the original family node + its host, copied so the search can rewrite parameters
-        raw_family = self._raw_family()
-        if raw_family is None:
+        # locate the family node in the spec — the search swaps this one node each evaluation
+        self.family_index: int | None = None
+        for i, raw in enumerate(spec["draw"]):
+            if family_kind_of(raw) == kind and str(raw[kind]) == node_id:
+                self.family_index = i
+                break
+        if self.family_index is None:
             raise SystemExit(f"fit-family: no {kind} node {node_id!r} in the spec")
-        self.family_node = copy.deepcopy(raw_family)
-        host_id = str(raw_family.get("host"))
-        self.host_node = None
-        for raw in spec["draw"]:
-            if str(next(iter(raw.values()))) == host_id:
-                self.host_node = copy.deepcopy(raw)
-        if self.host_node is None:
-            raise SystemExit(f"fit-family: family {node_id!r} host {host_id!r} not found in spec")
+        self.family_node = copy.deepcopy(spec["draw"][self.family_index])
 
         # grouping: default from the registry, overridable per run
         self.groups = copy.deepcopy(reg["groups"])
         if targets:
             for name, target_list in targets.items():
                 self.groups[name]["targets"] = target_list
-        self.occluders = reg["occluders"] if occluders is None else occluders
+        self.target_names: set[str] = set()
+        for g in self.groups.values():
+            self.target_names.update(g["targets"])
+        # an explicit extra occluder list, unioned with the derived set (mostly for experiments)
+        self.extra_occluders = list(occluders or [])
+        self.last_occluders: list[str] = []
 
         # teacher masks
         traced_dir = self.base_dir / "traced"
@@ -168,78 +245,95 @@ class FamilyFit:
         for gname, g in self.groups.items():
             self.target_masks[gname] = [sidecar_mask(traced_dir / f"{t}.json", self.shape)
                                         for t in g["targets"]]
-        occ = np.zeros(self.shape, np.uint8)
-        for name in self.occluders:
-            occ |= sidecar_mask(traced_dir / f"{name}.json", self.shape)
-        self.occluder = occ > 0
 
         # starting vector, read from the live spec so the search begins where the drawing is.
-        # Parameters may be relational (`2.905*head.w`), so resolve a host+family spec once and
-        # evaluate each expression against the resulting anchor environment.
-        probe = {"frame": self.frame, "vars": spec.get("vars", {}),
-                 "draw": [self.host_node, self.family_node]}
-        _emit, env, _notes, _layers = rl.resolve(probe, base_dir=self.base_dir)
+        # Parameters may be relational (`2.905*head.w`), so resolve the spec once and evaluate
+        # each expression against the resulting anchor environment.
+        _emit, env, _notes, _layers = rl.resolve(spec, base_dir=self.base_dir)
         self.start = {p: self._param_from_node(p, self.family_node, env) for p in self.params}
-
-    def _raw_family(self) -> dict | None:
-        """The family node from the ORIGINAL spec (used to find the host before copying)."""
-        for raw in self.spec["draw"]:
-            if family_kind_of(raw) == self.kind and str(raw[self.kind]) == self.node_id:
-                return raw
-        return None
 
     @staticmethod
     def _expr(value, env: dict) -> float:
         return rl.eval_expr(value, env) if isinstance(value, str) else float(value)
 
-    @classmethod
-    def _param_from_node(cls, param: str, node: dict, env: dict) -> float:
+    def _param_from_node(self, param: str, node: dict, env: dict) -> float:
+        if self.kind == "face":
+            at = node.get("at", [0.0, 0.0])
+            if param == "cx":
+                return self._expr(at[0], env)
+            if param == "cy":
+                return self._expr(at[1], env)
+            defaults = {"cheek": 0.68, "jaw": 0.37, "chin-w": 0.035, "turn": 0.0}
+            if param == "ry":
+                return self._expr(node.get("ry", node["rx"]), env)
+            return self._expr(node[param] if param == "rx" else node.get(param, defaults[param]),
+                              env)
         front = node.get("front", [0.05, 0.45])
         if param == "front0":
-            return cls._expr(front[0], env)
+            return self._expr(front[0], env)
         if param == "front1":
-            return cls._expr(front[1], env)
+            return self._expr(front[1], env)
         if param == "droop":
-            return cls._expr(node.get("droop", 0.0), env)
-        return cls._expr(node[param], env)
+            return self._expr(node.get("droop", 0.0), env)
+        return self._expr(node[param], env)
 
     def node_from_params(self, x: dict) -> dict:
         node = copy.deepcopy(self.family_node)
+        if self.kind == "face":
+            node["at"] = [float(x["cx"]), float(x["cy"])]
+            for p in ("rx", "ry", "cheek", "jaw", "chin-w"):
+                node[p] = float(x[p])
+            node["turn"] = float(x.get("turn", 0.0))
+            return node
         for p in self.params:
             if p not in ("front0", "front1"):
                 node[p] = float(x[p])
         node["front"] = [float(x["front0"]), float(x["front1"])]
         return node
 
-    def render(self, x: dict) -> tuple[np.ndarray, dict[str, np.ndarray]]:
-        """Resolve a minimal spec (host + family) and return the family's own visible masks.
+    def render(self, x: dict) -> dict[str, np.ndarray]:
+        """Resolve the WHOLE spec with the candidate family and return each group's visible mask.
 
-        Returns (all-shapes mask, {group: mask}) with the occluders already subtracted.
+        The whole spec (not a host+family fragment) is resolved because the occluders may be
+        head-relative — the eyes and hair move when the face is re-fitted — and because the
+        occluder rule is "whatever the spec's paint order puts above the family". The group mask
+        is then the family's own shapes with every later-painted non-target node subtracted.
         """
-        minimal = {
-            "frame": self.frame,
-            "vars": self.spec.get("vars", {}),
-            "draw": [self.host_node, self.node_from_params(x)],
-        }
-        emit, _env, _notes, _layers = rl.resolve(minimal, base_dir=self.base_dir)
-        allm = np.zeros(self.shape, np.uint8)
-        group_masks = {g: np.zeros(self.shape, np.uint8) for g in self.groups}
-        for node in emit:
-            sid = node.get("blob") or node.get("ellipse") or node.get("stroke") or ""
-            if "-pom" in sid or node.get("full"):
-                continue
+        spec = copy.deepcopy(self.spec)
+        spec["draw"][self.family_index] = self.node_from_params(x)
+        emit, _env, _notes, layers = rl.resolve(spec, base_dir=self.base_dir)
+        order = paint_order(emit, layers)
+        by_sid: dict[str, np.ndarray] = {}
+        for node in order:
+            sid = rl._sid(node)
             m = rasterize(node, self.shape)
-            allm |= m
-            for gname, g in self.groups.items():
-                if any(sid.endswith(suf) for suf in g["shapes"]):
-                    group_masks[gname] |= m
-        keep = ~self.occluder
-        return (allm > 0) & keep, {g: (m > 0) & keep for g, m in group_masks.items()}
+            by_sid[sid] = (by_sid[sid] | m) if sid in by_sid else m
+
+        # explicit extras are subtracted from every group, on top of the layer-derived set
+        extra = np.zeros(self.shape, np.uint8)
+        for name in self.extra_occluders:
+            extra |= by_sid.get(name, np.zeros(self.shape, np.uint8))
+        zero = np.zeros(self.shape, np.uint8)
+
+        out: dict[str, np.ndarray] = {}
+        occ_names: set[str] = set(self.extra_occluders)
+        for gname, g in self.groups.items():
+            group_sids, occ_sids = group_occluders(emit, layers, g["shapes"], self.target_names)
+            gm = np.zeros(self.shape, np.uint8)
+            for sid in group_sids:
+                gm |= by_sid.get(sid, zero)
+            occ = extra.copy()
+            for sid in occ_sids:
+                occ_names.add(sid)
+                occ |= by_sid.get(sid, zero)
+            out[gname] = (gm > 0) & (occ == 0)
+        self.last_occluders = sorted(occ_names)
+        return out
 
     def evaluate(self, x: dict) -> tuple[float, dict[str, float]]:
         """Mean group IoU (the fitness) and the per-group breakdown."""
         try:
-            _all, groups = self.render(x)
+            groups = self.render(x)
         except Exception:
             return -1.0, {g: 0.0 for g in self.groups}
         det: dict[str, float] = {}
@@ -251,8 +345,14 @@ class FamilyFit:
         return float(sum(det.values()) / max(len(det), 1)), det
 
     def silhouette_iou(self, x: dict) -> float:
-        """Extra report: whole visible hat vs the union of every traced hat mask."""
-        allm, _ = self.render(x)
+        """Extra report: the whole visible family vs the union of every teacher mask."""
+        try:
+            groups = self.render(x)
+        except Exception:
+            return 0.0
+        allm = np.zeros(self.shape, bool)
+        for gm in groups.values():
+            allm |= gm
         target = np.zeros(self.shape, bool)
         for tl in self.target_masks.values():
             for tm in tl:
@@ -419,12 +519,13 @@ def parse_targets(text: str) -> dict[str, list[str]]:
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--family", default="sunhat", choices=sorted(REGISTRY))
-    ap.add_argument("--node", default="hat")
+    ap.add_argument("--node", default=None,
+                    help="family node id (defaults: hat, head)")
     ap.add_argument("--spec", default=str(DEFAULT_SPEC))
     ap.add_argument("--targets", default=None,
                     help="comma list name:group (defaults to the family registry)")
     ap.add_argument("--occluders", default=None,
-                    help="comma list of traced nodes painted above the family")
+                    help="extra node ids to subtract, on top of the layer-derived occluders")
     ap.add_argument("--fixed", default=None,
                     help="pin parameters, e.g. droop=0 (for the flat-only comparison)")
     ap.add_argument("--starts", type=int, default=64,
@@ -433,10 +534,11 @@ def main(argv: list[str] | None = None) -> int:
                     help="how many promising seeds get the expensive local search")
     ap.add_argument("--out", default=None)
     a = ap.parse_args(argv)
+    node = a.node or ("head" if a.family == "face" else "hat")
 
     spec_path = Path(a.spec).resolve()
     spec = rl.load_yaml(spec_path)
-    fitter = FamilyFit(spec, spec_path.parent, a.family, a.node,
+    fitter = FamilyFit(spec, spec_path.parent, a.family, node,
                        targets=parse_targets(a.targets) if a.targets else None,
                        occluders=a.occluders.split(",") if a.occluders else None)
     if a.fixed:
@@ -446,33 +548,34 @@ def main(argv: list[str] | None = None) -> int:
                 raise SystemExit(f"fit-family: --fixed names unknown parameter {key!r}")
             fitter.bounds[key] = (float(val), float(val))
             fitter.start[key] = float(val)
-    print(f"fit-family: {a.family} node={a.node} spec={spec_path.relative_to(ROOT)}")
+    print(f"fit-family: {a.family} node={node} spec={spec_path.relative_to(ROOT)}")
     print("  groups:", {g: v["targets"] for g, v in fitter.groups.items()})
-    print("  occluders:", fitter.occluders)
     score0, det0 = fitter.evaluate(fitter.start)
     print(f"  start   : mean IoU {score0:.4f}  {det0}  sil {fitter.silhouette_iou(fitter.start):.4f}")
-
+    print("  occluders (derived from layers):", fitter.last_occluders)
     x, s, trace = fit(fitter.evaluate, fitter.start, fitter.bounds, fitter.steps,
                       fitter.params, explore=a.starts, refine=a.refine)
     _det, det = fitter.evaluate(x)
     sil = fitter.silhouette_iou(x)
     print(f"  fitted  : mean IoU {s:.4f}  {det}  sil {sil:.4f}")
+    print("  occluders (derived from layers):", fitter.last_occluders)
     print("  search  : Halton exploration -> multi-start coordinate descent -> Nelder-Mead")
     for row in trace:
         print(f"    seed {row['start']:3d} raw {row['seed_score']:.4f} -> {row['score']:.4f}")
     print("  params  :")
     for k in fitter.params:
         print(f"    {k:8s} {fitter.start[k]:10.5f} -> {x[k]:10.5f}")
-    node = fitter.node_from_params(x)
+    out_node = fitter.node_from_params(x)
+    keys = fitter.params + (["front"] if a.family == "sunhat" else ["at"])
     print("  node    :", {k: (round(v, 4) if isinstance(v, float) else v)
-                          for k, v in node.items() if k in fitter.params or k == "front"})
+                          for k, v in out_node.items() if k in keys})
     if a.out:
         Path(a.out).write_text(json.dumps({
-            "family": a.family, "node": a.node, "spec": str(spec_path),
+            "family": a.family, "node": node, "spec": str(spec_path),
             "start": fitter.start, "start_iou": score0, "start_groups": det0,
             "fitted": x, "fitted_iou": s, "fitted_groups": det, "silhouette_iou": sil,
             "groups": {g: v["targets"] for g, v in fitter.groups.items()},
-            "occluders": fitter.occluders,
+            "occluders": fitter.last_occluders,
             "search": "Halton exploration -> multi-start coordinate descent -> Nelder-Mead",
             "trace": trace,
         }, indent=1) + "\n")

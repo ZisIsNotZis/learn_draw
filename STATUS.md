@@ -14,7 +14,7 @@ Last updated: 2026-09-15 · Direction lives in `docs/drawing/roadmap.md` · Mile
 | render | `.scratch/00-tooling/baseline/best.png` |
 | origin | `.scratch/05-portrait-scene/evidence/current.png` (REBUILD v2, 2026-09-11) |
 | spec | `.scratch/05-portrait-scene/work/scene.yaml` (133 nodes) |
-| `sha256` | `1a7cae4fa400068725ebbbfce5a1401188aa21b3885fb376332089baec080c7c` |
+| `artifact_sha256` | `1a7cae4fa400068725ebbbfce5a1401188aa21b3885fb376332089baec080c7c` (byte-identical to the source render; `draw baseline` now stores a byte copy, and records the two digests separately — a renamed single `sha256` had held the *source*'s digest while claiming to be the artifact's) |
 | metrics | `coverage 0.514 · edge_f1 0.252 · recall 0.207 · color_dist 62.8` |
 | provenance | `.scratch/00-tooling/baseline/best.json` |
 

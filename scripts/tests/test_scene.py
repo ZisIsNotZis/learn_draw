@@ -348,6 +348,53 @@ _qfit = _ff.fit(_qeval, {"a": 0.0, "b": 0.0}, {"a": (-5, 5), "b": (-5, 5)},
                 {"a": 1.0, "b": 1.0}, ["a", "b"], explore=8, refine=2)
 check("s: the search improves on its start", _qfit[1] > -1.0)
 
+# (t) generalised occluders: which shapes occlude a family is read from the spec's own `layers:`
+# order, not a hard-coded list. Anything painted AFTER the family's shapes occludes it; a node
+# painted before does not; the teacher target mask is never an occluder of itself. This replaced
+# the old `occluders: ['hair-mass']` constant, which was wrong the moment the hat moved under the
+# head (STATUS D25 / M2 attempt 4).
+_oc_emit = [
+    {"rect": "bg", "full": True, "fill": "#fff"},
+    {"ellipse": "below", "at": [50, 50], "rx": 4, "ry": 4, "z": "below", "fill": "#111"},
+    {"ellipse": "fam-x", "at": [50, 50], "rx": 4, "ry": 4, "z": "fam", "fill": "#222"},
+    {"ellipse": "top", "at": [50, 50], "rx": 4, "ry": 4, "z": "above", "fill": "#333"},
+    {"ellipse": "target", "at": [50, 50], "rx": 4, "ry": 4, "z": "above", "fill": "#444"},
+]
+_oc_layers = ["below", "fam", "above"]
+_g, _o = _ff.group_occluders(_oc_emit, _oc_layers, ["-x"], {"target"})
+check("t: group_occluders finds the family shapes", _g == ["fam-x"])
+check("t: above-painted nodes occlude, below-painted do not, target excluded", _o == ["top"])
+# reordering the layers changes the answer -> the rule is the order, not a name list
+_g2, _o2 = _ff.group_occluders(_oc_emit, ["above", "fam", "below"], ["-x"], {"target"})
+check("t: changing layer order changes the occluder set", "top" not in _o2 and "below" in _o2)
+_pn = [rl._sid(n) for n in _ff.paint_order(_oc_emit, _oc_layers)]
+check("t: paint_order is full-first then layer order",
+      _pn[0] == "bg" and _pn.index("below") < _pn.index("fam-x") < _pn.index("top"))
+
+# (u) face in the fitter: cx/cy map onto the node's `at`, and on the real assembly the derived
+# occluders are the hair/features painted above the face — never the family's own parts and never
+# the teacher target it is being fitted to.
+_work = pathlib.Path(_ROOT) / ".scratch" / "13-assembly" / "work"
+_asm = rl.load_yaml(_work / "spec.yaml")
+_face_fit = _ff.FamilyFit(_asm, _work, "face", "head")
+_fn = _face_fit.node_from_params({"cx": 700.0, "cy": 260.0, "rx": 90.0, "ry": 110.0,
+                                  "cheek": 0.6, "jaw": 0.4, "chin-w": 0.05})
+check("u: face fitter maps cx/cy to the node's at",
+      _fn["at"] == [700.0, 260.0] and _fn["rx"] == 90.0)
+_face_fit.render(_face_fit.start)
+check("u: face occluders are the hair/features above, not its own parts or the target",
+      "hair-mass" in _face_fit.last_occluders
+      and "head-cranium" not in _face_fit.last_occluders
+      and "face-skin" not in _face_fit.last_occluders)
+
+# (v) the actual M2 fix: the sunhat's occluders are now derived from the spec order, so they
+# include the head and features painted above it, not only `hair-mass`.
+_sun_fit = _ff.FamilyFit(_asm, _work, "sunhat", "hat")
+_sun_fit.render(_sun_fit.start)
+check("v: sunhat occluders include the head/hair/features painted above it",
+      "head-cranium" in _sun_fit.last_occluders and "hair-mass" in _sun_fit.last_occluders
+      and any(s.startswith("eyeR") for s in _sun_fit.last_occluders))
+
 print(f"\n{PASS}/{TOTAL} smoke tests passed")
 
 # --- wave + strands generator tests ---
