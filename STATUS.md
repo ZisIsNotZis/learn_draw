@@ -42,6 +42,18 @@ It is a **floor and an alarm**, never a target (roadmap R6).
 
 ## In flight
 
+**Running with full autonomous permission, to a stop condition (D31).** The user granted permission
+to orchestrate `fork=false` subagents until one of the standing stop conditions fires (roadmap S1–S3:
+abstraction / comprehension / perception failure). Whoever picks this up: the loop is
+*dispatch a writer → verify its claims myself → run the gates → commit → rubric-review → next slice*,
+and the writer's report is always a **claim** until re-verified.
+
+Current: **M3a (upper body)** — collar, bow structure, arms, hands, sleeve/cuff — plus a **rubric
+pipeline validation** running on the frozen parametric floor (`evidence/m2-final.png`) by two
+independent reviewers, to (a) check the reviewers can actually see and (b) record a baseline rubric
+vector for the floor.
+
+
 **M2 — the head: attempts 1 and 2 both failed the gate; attempt 3 changes the approach.**
 The brim's real defect is fixed (D16). The blocking reason M2 cannot beat the baseline's head is
 now understood and is *strategic*, not artistic: the baseline was hand-fitted to the reference, and
