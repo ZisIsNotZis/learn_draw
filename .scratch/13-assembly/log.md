@@ -628,3 +628,49 @@ result, and the "vs baseline" framing hides all of it.
 M2 meets **G0, G4, G5, G6, G7** and the coverage floor, and fails **only** the fidelity floor that has
 now been *proven* to be tracing-only. So M2 is **blocked on a gate defect, not on the drawing** — and I
 am not inventing a number to close it. The fix is a spine change and is with the user (D26).
+
+## 2026-09-15 — rubric pipeline validated, and it caught what the metrics could not
+
+First run of `docs/drawing/rubric.md` (D30), on the frozen parametric floor
+(`evidence/m2-final.png`), by two independent sight-proven reviewers given only the target and the
+draft. This is the demonstration that the metric-first gating was wrong.
+
+| axis | reviewer 1 | reviewer 2 |
+| --- | --- | --- |
+| A · subject identity | 3 | 4 |
+| **B · human figure** | **1** | **2** |
+| C · silhouette coherence | 1 | 2 |
+| D · feature legibility | 3 | 3 |
+| E · occlusion correctness | 1 | 2 |
+| F · style + composition | 3 | 3 |
+
+No axis differs by ≥2, so **no axis is contested** — the rubric's agreement rule holds on its first
+use. Both reviewers independently proved sight by placing the mint field's right edge at ≈x700–720,
+matching the measured x718 in `work/measure-composition.py`.
+
+**The point of the exercise:** the pixel metrics said the body region had **coverage 0.581** — colours
+present, nothing missing — and that read as fine. The rubric says **B ≈1.5, C ≈1.5, E ≈1.5**. Both
+reviewers, unprompted, named the same biggest defect and the same fix:
+
+> *"The figure is dismembered — a detached head floats above a cream dress shape and a separate dark
+> skirt mass, so no body, neck, arms or hands exist at all."*
+> *"Trace **one continuous silhouette of the whole seated figure** — head → neck → shoulders → torso →
+> skirt → legs — as a single connected outline, then re-cut the existing fills inside it."*
+
+Coverage cannot see dismemberment; a sighted reviewer can. That is D30's justification, measured.
+
+### The method error this exposes (recorded as D32)
+
+`method.md` states the drawing order the project already believes: **"Big silhouette → medium
+structures → small details."** M1 skipped the first step. It placed independent blobs (a blouse blob, a
+skirt blob, a head) at measured positions and never built **one figure mass** — so by construction the
+result was a set of islands, and every later milestone inherited that. The reviewers' "one change" is
+the missing first step, and it is exactly P8 ("model the mass, not an assembly of parts").
+
+This is not an abstraction failure (S1) or a comprehension failure (S2): the fix is sayable in one
+sentence with no coordinates. **The run continues.**
+
+Two useful by-products of the review: reviewer 2 flagged that the **side-by-side panes are downscaled to
+~610px**, which the rubric itself warns destroys the detail under review — so future bundles must lead
+with the 1:1 draft, which it did use. And E was scored *against absence rather than error*: most of the
+target's overlaps have no counterpart yet, so E should be re-read once a body exists.
