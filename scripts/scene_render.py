@@ -24,7 +24,7 @@ SCHEMA = {
     "blob":   {"blob", "poly", "spine", "w", "fill", "stroke", "sw", "z", "op", "blur", "rot"},
     "petal":  {"petal", "at", "n", "len", "wid", "curl", "spread", "angle0", "fill", "stroke", "sw", "z", "op", "blur"},
     "ribbon": {"ribbon", "spine", "w", "grad", "fill", "op", "z", "blur"},
-    "region": {"region", "seed", "tol", "fill", "grow", "z", "op"},
+    "region": {"region", "seed", "tol", "fill", "grow", "box", "fixed", "z", "op"},
     "trace":  {"trace", "from", "class", "region", "z", "op", "fill"},
     "grad":   {"grad", "dir", "at", "r", "stops", "z"},
     "blur":   {"blur", "std"},
@@ -114,17 +114,35 @@ def petal_path(at, angle, length, width, curl):
     return smooth_path(left + right[::-1], closed=True)
 
 
-def flood_region(ref_bgr, seed, tol):
-    """Paint-bucket on the reference raster from seed with tolerance; returns outer contour pts."""
+def flood_region(ref_bgr, seed, tol, fixed=False, box=None):
+    """Paint-bucket on the reference raster from seed with tolerance; returns outer contour pts.
+
+    `fixed=False` (default, historical) compares each new pixel to its *neighbour*, so a smooth
+    gradient lets the flood crawl arbitrarily far — fine on a hard-edged synthetic test, useless
+    on a soft photographic reference. `fixed=True` adds FLOODFILL_FIXED_RANGE, comparing every
+    candidate to the *seed* instead: the flood stops at a colour distance, which is what a spec
+    meaning "the reference's <colour> area" actually needs.
+
+    `box` = [x0, y0, x1, y1] clips the result, so a colour region can be separated from the same
+    colour elsewhere in the frame. The flood itself is not constrained, only its contour is cut
+    to the box — pass a box that lies outside the intended mass so nothing real is clipped.
+    """
     h, w = ref_bgr.shape[:2]
     sx, sy = int(seed[0]), int(seed[1])
     if not (0 <= sx < w and 0 <= sy < h):
         raise ValueError(f"region seed {seed} outside image")
     m = np.zeros((h+2, w+2), np.uint8)
     lo, hi = int(tol), int(tol)
-    cv2.floodFill(ref_bgr.copy(), m, (sx, sy), 0, (lo,)*3, (hi,)*3,
-                  cv2.FLOODFILL_MASK_ONLY | (255 << 8))
+    flags = cv2.FLOODFILL_MASK_ONLY | (255 << 8)
+    if fixed:
+        flags |= cv2.FLOODFILL_FIXED_RANGE
+    cv2.floodFill(ref_bgr.copy(), m, (sx, sy), 0, (lo,)*3, (hi,)*3, flags)
     mask = m[1:-1, 1:-1]
+    if box is not None:
+        bx0, by0, bx1, by1 = (int(round(v)) for v in box)
+        keep = np.zeros_like(mask)
+        keep[max(0, by0):min(h, by1), max(0, bx0):min(w, bx1)] = 1
+        mask = mask * keep
     cnts, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     if not cnts:
         raise ValueError(f"region seed {seed}: empty mask")
@@ -405,7 +423,8 @@ def compile_scene(nodes, size, ref_path=None):
         elif tkey == "region":
             if ref is None:
                 raise SystemExit(f"node {nid}: region needs --ref")
-            pts = flood_region(ref, node["seed"], node.get("tol", 30))
+            pts = flood_region(ref, node["seed"], node.get("tol", 30),
+                               fixed=bool(node.get("fixed", False)), box=node.get("box"))
             d = smooth_path(pts, closed=True)
             s = f'<path {common} d="{d}" fill="{node.get("fill","#888")}"/>'
         elif tkey == "trace":

@@ -167,3 +167,22 @@ table **diagnoses** — it tells you which part to look at — but only the whol
 blind reviewer) **arbitrates**. Rule: never tune a shape to a number in the diagnostic table; change
 it for a stated drawing reason, then check the aggregate.
 Learned: M1 iterations it6/it7, both rolled back (`.scratch/13-assembly/log.md`).
+
+## P26 — Verify the instrument before trusting its reading (13-assembly, M2 attempt 2)
+
+Two fresh-eyes reviewers were dispatched to judge a head crop. Both returned "model does not support
+images" — while reviewers *earlier in the same session* had given detailed, position-referencing
+descriptions of the same kind of image. **Capability is not a property of the plan; it is a property of
+the instance that runs it.** A gate that silently degrades to a blind reviewer is worse than a gate
+that was never run, because it produces a verdict-shaped object with no perception behind it.
+
+Two rules came out of it. First: **a reviewer must prove it can see before its verdict counts** — ask
+for one fact only a sighted agent could state, checkable against a measurement already in the repo. An
+unsighted verdict is **void, not negative**: it neither passes nor fails the work, and the record must
+say the visual half was not run. Second: **refusing to answer is the correct behaviour.** Both
+reviewers reported the blocker rather than describing pixels they had not seen, and one turned the
+failure into real evidence by reading the two *specs* instead — which found that the baseline's brim is
+four independent fills plus two disjoint strokes, and that its brim is clipped by the canvas edge where
+the reference's is not. A missing verdict with an honest reason is worth more than a confident one
+without perception.
+Learned: M2 attempt 2 reviewer round.

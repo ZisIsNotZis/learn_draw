@@ -90,6 +90,17 @@ Applies to what the resolver *emits*; the authoring language is `abstraction.md`
 - **Never judge your own render.** Run `check`, then give `report.txt`'s image list — and nothing
   else — to a FRESH-context reviewer with the open question "what is wrong here?". No leaked intent,
   no history, no suspected verdict (a reviewer that knows what you were trying to do will confirm it).
+- **A reviewer must prove it can see before its verdict counts (added 2026-09-15).** Vision is not
+  stable across subagent instances in this environment — some are sighted, some return "model does not
+  support images", and the orchestrator has no vision at all. So the first thing a reviewer is asked
+  for is **one fact only a sighted agent could state**, checkable against a measurement already in the
+  repo: e.g. "the target has a large field shape left of centre — what colour is it, and roughly where
+  does its right edge stop?" (mint `#7dccc1`, right edge ≈ x718). A reviewer that cannot answer is not
+  sighted, and **its verdict is void — not negative**. Fall back to measurement plus source-level
+  structure, and record explicitly that the visual half of the gate was not run. A fabricated visual
+  verdict is worse than a missing one.
+- **Record the A/B mapping in the log the same session it is handed over**, and confirm it by pixel
+  comparison against the two source files — never from memory. A swapped pair inverts the verdict.
 - Critic findings are observations first and *locations* second: verify every spatial claim against a
   measurement or the crop's own coordinates before acting (P7). Reviewers reliably describe what they
   see and mislabel *where* they saw it; the `check` bundle names each region's coordinates so the two

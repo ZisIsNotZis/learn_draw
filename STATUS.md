@@ -190,6 +190,26 @@ Its work is kept selectively, per `14-abstraction-research/spec.md`:
   for the method: for this orchestrator, *all* visual judgment must come from a fresh-context subagent
   (which demonstrably can see — reviewers quote colours, positions and malformations) plus measurement.
   "Never judge your own render" is not just a rule here; it is the only physically available option.
+- **2026-09-15 · D18 — vision is not stable across subagent instances; a reviewer must prove it can
+  see.** Both reviewers dispatched for M2 attempt 2 returned "model does not support images", while
+  reviewers earlier in the same session gave detailed, position-referencing visual descriptions. The
+  harness routes subagents to different models and only some are sighted. Consequences, now in
+  `method.md`'s reviewer protocol:
+  (1) a reviewer is first asked for **one fact only a sighted agent could state**, checkable against a
+  measurement already in the repo, and an unsighted reviewer's verdict is **void, not negative**;
+  (2) when no sighted reviewer is available, the visual half of the gate **was not run** — that is
+  recorded explicitly, and measurement plus source-level structure carry the decision;
+  (3) **the A/B mapping is logged in the session it is handed over** and confirmed by pixel comparison,
+  because a swapped pair inverts the verdict. That gap was real: neither attempt-1 nor attempt-2 round
+  recorded it, and the attempt-2 reviewer caught it. Now recorded and verified for both rounds.
+- **2026-09-15 · D19 — M2 attempt 2: measurement decides against, visual half untested.** The
+  reviewer's refusal to fabricate a verdict is the correct behaviour and is recorded as such. Attempt 2
+  fails on the measured half of A1 (region `edge_f1` 0.173 vs 0.422; region coverage 0.585 vs 0.702)
+  and is **neither passed nor failed visually**. Its source-level review produced two findings that
+  outlive the attempt: the baseline's brim is four independent fills plus two disjoint strokes (so
+  "the brim is not one piece" was never fixable by fill-tuning), and the baseline's brim is clipped by
+  the canvas at x=1024 where the reference ends at x982 — a ~42px trespass, i.e. the current best
+  artifact is itself wrong at the frame edge.
 
 ## Where things live
 

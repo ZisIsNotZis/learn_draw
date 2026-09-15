@@ -1,0 +1,20 @@
+art:    /tmp/m2a2.png
+bundle: /tmp/m2a2-check
+
+images (feed these, and nothing else):
+  /tmp/m2a2-check/side-by-side.png  -- whole frame, ref beside draft
+  /tmp/m2a2-check/draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale)
+  /tmp/m2a2-check/region-1.png  -- worst-region #1 at (256,768,64,64) mean-dist 191, 2.0x
+  /tmp/m2a2-check/region-2.png  -- worst-region #2 at (960,320,64,64) mean-dist 184, 2.0x
+  /tmp/m2a2-check/region-3.png  -- worst-on-drawn #3 at (512,768,64,64) mean-dist 180, 2.0x
+
+metrics (breakage alarm only, never a target): {'precision': 0.216, 'recall': 0.072, 'edge_f1': 0.108, 'color_dist': 65.6, 'coverage': 0.529}
+vs recorded best: edge_f1 0.252 -> 0.108 (-0.144) | coverage 0.514 -> 0.529 (+0.015) | precision 0.322 -> 0.216 (-0.106) | recall 0.207 -> 0.072 (-0.135) | color_dist 62.8 -> 65.6 (+2.800)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/05-portrait-scene/evidence/current.png]
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.

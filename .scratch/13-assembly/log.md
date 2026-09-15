@@ -233,3 +233,52 @@ mid-brim; the crown reads as a small bump.
 Worker notes worth recording: it also had to **reinstall the playwright/chrome-headless-shell cache**,
 which had been deleted mid-session (a chrome coredump was present) — renders were impossible until it
 did. Environment repair, no repo files involved.
+
+## 2026-09-15 — M2 attempt 2: no visual verdict obtainable; measurement decides
+
+Both fresh-context reviewers dispatched for attempt 2 **could not see the images** — every render
+read returned "model does not support images". Earlier reviewers in this same session *did* give
+detailed visual descriptions (they quoted colours, positions, malformations), so **vision is not
+stable across subagent instances**: the harness routes subagents to different models and some are
+sighted, some are not. The orchestrator itself has no vision at all (D17).
+
+This is a first-class change to the method, recorded as D18. What matters here is narrower:
+
+- **No visual verdict exists for attempt 2, so G3 was not run.** The measurement decided instead, and
+  it says the baseline's head is still ahead (region `edge_f1` 0.422 vs 0.173, region coverage 0.702
+  vs 0.585). Attempt 2 therefore fails on the measured half of A1 and is untested on the visual half.
+  It is **not** recorded as a visual pass, and not recorded as a visual failure either.
+- The right response was exactly what the reviewer did: **refuse to invent a verdict**. Both reported
+  the blocker, labelled the rest as inherited-from-the-repo rather than observed, and asked for the
+  A/B identity to be confirmed before anything was acted on. That is the culture the project is for.
+
+### A/B provenance — a real gap the reviewer caught, now closed
+
+Neither round recorded which file was handed over as A and which as B. Fixed here, and the identity
+was verified by pixel comparison rather than from memory:
+
+| round | A | B | verified |
+| --- | --- | --- | --- |
+| M2 attempt 1 | baseline `best.png` | `evidence/m2-v7.png` | maxdiff 190 vs attempt 2 — confirmed distinct |
+| M2 attempt 2 | baseline `best.png` | `evidence/m2-att2.png` | pixel-identical to both sources (maxdiff 0) |
+
+Rule for the future: **the A/B mapping is recorded in the log in the same session it is handed over**,
+and confirmed by pixel comparison against the two source files, never from memory.
+
+### Source-level findings from the attempt-2 review (no sight required, still useful)
+
+The reviewer could not look, so it read the two specs instead and produced a structural comparison
+that stands on its own:
+
+- **The baseline's brim has no single outline.** `.scratch/05-portrait-scene/work/scene.yaml:141-148`
+  is four independent filled polys (`brim-underside`, `hat-dome`, `brim-band`, `brim-teal-rim`) plus
+  **two disjoint open strokes** `brim-edge-1`/`brim-edge-2`; only the dome carries a stroke. That is
+  a structural reason "the brim is not one piece" that no amount of fill-tuning in M2 would fix — and
+  it is now independent support for attempt 2's chord→fold fix in `sunhat`.
+- **The baseline's brim is clipped by the canvas** at `x=1024`, where the reference's brim mass ends
+  at x982 (`evidence/m1-composition-reference.txt`) — a ~42px frame-trespass the reference does not
+  have. Recorded as a baseline defect; it does not change the ratchet, but it is worth knowing that
+  the current best artifact is wrong at the frame edge.
+- The baseline's `skin` is one 15-point poly whose lowest run is ~75px wide at y392-394, against the
+  reference's 7px chin at y377 — independent confirmation of the blunt-chin defect, by reading the
+  spec rather than the pixels.
