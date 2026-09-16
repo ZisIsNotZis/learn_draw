@@ -559,6 +559,24 @@ check("z: arm fitter builds a spine + width + sleeve vector",
       == ["sx0", "sy0", "sx1", "sy1", "sx2", "sy2"])
 check("z: arm groups split sleeve/cuff/limb", set(_af.groups) == {"sleeve", "cuff", "limb"})
 
+# (k) contextual similarity (scripts/similarity.py): the CLIP alarm must separate the project's
+# own history (a real drawing > flat blobs > noise) — it is an ALARM, never a gate (rubric Part III).
+def _cos(a, b):
+    import scripts_similarity as S
+    return S.cosine(a, b)
+
+import importlib.util as _ilu, os as _os, sys as _sys
+_spec = _ilu.spec_from_file_location("scripts_similarity",
+                                     _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "similarity.py"))
+_S = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_S)
+_m, _pre = _S._load_model()
+_ref = _S.embed(_m, _pre, _S.D_read("image.jpg"))
+_m1 = _S.embed(_m, _pre, _S.D_read(os.path.join(".scratch/13-assembly/evidence/m1-final.png")))
+_rng = np.random.default_rng(0)
+_noise = _S.embed(_m, _pre, _rng.integers(0, 255, (1024, 1024, 3), np.uint8))
+check("k: similarity separates a drawing from noise", _S.cosine(_ref, _m1) > _S.cosine(_ref, _noise))
+check("k: similarity is bounded and sane", -1.0 <= _S.cosine(_ref, _m1) <= 1.0)
+
 print(f"\n{PASS}/{TOTAL} smoke tests passed")
 
 # --- wave + strands generator tests ---

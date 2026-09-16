@@ -26,6 +26,7 @@ Compiled node format (back end): `docs/drawing/scene-format.md`.
 
 - `STATUS.md` (root) — where the project is today (SSOT for state)
 - `docs/drawing/` — roadmap, method, authoring language, vocabulary/canons, principles, node format (design truth)
+- `scripts/similarity.py` — contextual (CLIP) similarity to the reference: a **secondary alarm**, never a gate
 - `scripts/draw` — CLI: `check`, `baseline`, `compare`, `diff`, `ref`, `log`, `render`, `measure` (see `--help`)
 - `scripts/scene_render.py` — compiles node-format scenes to SVG → chrome
 - `scripts/relate.py` — the single relational resolver (promoted 2026-09-14; forks deleted)
