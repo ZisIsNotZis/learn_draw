@@ -1277,9 +1277,282 @@ def expand_hand(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     return ctx.add(anchor)
 
 
+def expand_pleats(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """A pleated skirt: a flared cloth mass whose hem is a GENERATED wave, plus a trim band.
+
+    The structure knowledge the model should not re-derive: a skirt is a flared fan of cloth and
+    its pleats live at the hem. The hem is a periodic wave across the bottom edge — `count`
+    scallops whose amplitude `depth` grows from the waist to the hem according to `taper`
+    (0 = the folds run full height, 1 = they open only at the hem), with a deterministic `seed`
+    phase. Because the hem, the trim band and the crease lines are all sampled from that one
+    wave, changing `count` re-cuts all three together: one-value edit, no other side effects
+    (vocabulary.md `pleats`). The navy trim hugs the hem — its outer edge IS the hem and its inner
+    edge is the hem offset toward the waist by `trim` — so the two fills tile, exactly like the
+    sunhat's two brim surfaces.
+
+    params: at (waist centre) · waist (width at the waist) · drop (waist -> hem depth) ·
+            flare (hem width / waist width) · count (hem scallops / pleats) ·
+            depth (hem wave amplitude, px) · taper · seed (phase deg) · tilt ·
+            trim (band width / drop) · bulge (side-edge outward bow) ·
+            fold-w / fold-ink (interior crease lines)
+    Exposes the bbox plus `waistx/waisty`, `hemx/hemy`, `hemleft*`, `hemright*`.
+    """
+    sid = str(node["pleats"])
+    cx, cy = ctx.point(node["at"])
+    waist = ctx.scalar(node["waist"])
+    drop = ctx.scalar(node["drop"])
+    flare = ctx.scalar(node.get("flare", 2.2))
+    count = whole(node.get("count", 5), f"{sid}.count")
+    if count < 0:
+        raise SpecError(f"relate: {sid}.count must be >= 0, got {count}")
+    depth = ctx.scalar(node.get("depth", 0.0))
+    taper = ctx.scalar(node.get("taper", 1.0))
+    seed = ctx.scalar(node.get("seed", 0.0))
+    tilt = ctx.scalar(node.get("tilt", 0.0))
+    trim = ctx.scalar(node.get("trim", 0.12))
+    bulge = ctx.scalar(node.get("bulge", 0.0))
+    fold_w = ctx.scalar(node.get("fold-w", 0.0))
+    fold_ink = node.get("fold-ink", "#9db8ad")
+    fill = node.get("fill", "#d2e2d8")
+    trim_fill = node.get("trim-fill", "#2d4e67")
+    stroke, sw = node.get("stroke"), node.get("sw")
+    z = str(node.get("z", "skirt"))
+    z_trim = str(node.get("z-trim", z))
+
+    w2 = waist / 2.0
+    hem_half = w2 * flare
+    phase = math.radians(seed)
+    ca, sa = math.cos(math.radians(tilt)), math.sin(math.radians(tilt))
+
+    def tf(lx: float, ly: float) -> tuple[float, float]:
+        return (cx + lx * ca - ly * sa, cy + lx * sa + ly * ca)
+
+    def local(u: float, v: float) -> tuple[float, float]:
+        """u in [-1,1] across the (flared) half-width, v in [0,1] down the drop."""
+        half = w2 + (hem_half - w2) * v
+        grow = 1.0 - taper * (1.0 - v)
+        ly = v * drop + depth * grow * math.cos(count * math.pi * u + phase)
+        return (u * half, ly)
+
+    n = max(24, count * 8) if count else 24
+    hem_u = [1.0 - 2.0 * i / n for i in range(n + 1)]
+
+    def inward_normal(u: float) -> tuple[float, float]:
+        eps = 1e-3
+        p0 = local(max(-1.0, u - eps), 1.0)
+        p1 = local(min(1.0, u + eps), 1.0)
+        tx, ty = p1[0] - p0[0], p1[1] - p0[1]
+        L = math.hypot(tx, ty) or 1.0
+        nx, ny = -ty / L, tx / L
+        px, py = local(u, 1.0)
+        if nx * (0.0 - px) + ny * (0.0 - py) < 0:
+            nx, ny = -nx, -ny
+        return nx, ny
+
+    body_local = [local(-1.0, 0.0), local(1.0, 0.0)]
+    for v in (0.34, 0.67):
+        body_local.append(local(1.0 + bulge * math.sin(math.pi * v), v))
+    body_local += [local(u, 1.0) for u in hem_u]
+    for v in (0.67, 0.34):
+        body_local.append(local(-(1.0 + bulge * math.sin(math.pi * v)), v))
+    body = [tf(*p) for p in body_local]
+
+    trim_px = trim * drop
+    hem_pts = [local(u, 1.0) for u in hem_u]
+    inner_pts = []
+    for i, u in enumerate(hem_u):
+        nx, ny = inward_normal(u)
+        inner_pts.append((hem_pts[i][0] + nx * trim_px, hem_pts[i][1] + ny * trim_px))
+    trim_poly = [tf(*p) for p in hem_pts] + [tf(*p) for p in reversed(inner_pts)]
+
+    emit.append({"blob": f"{sid}-body", "poly": body, "fill": fill, "stroke": stroke,
+                 "sw": sw, "z": z,
+                 "desc": f"skirt cloth: waist {waist:.0f} -> hem {waist * flare:.0f} over "
+                         f"{drop:.0f}px; the hem is a {count}-fold wave of {depth:.0f}px "
+                         f"(taper {taper:.2f}, seed {seed:.0f}) — one generator, not laid shapes"})
+    if trim > 0:
+        emit.append({"blob": f"{sid}-trim", "poly": trim_poly, "fill": trim_fill,
+                     "z": z_trim,
+                     "desc": f"navy trim band ({trim * drop:.0f}px) hugging the generated hem — "
+                             f"its outer edge IS the hem, so `count` re-cuts it too"})
+    if count and fold_w > 0:
+        for k in range(count):
+            u = -1.0 + (2 * k + 1) / count
+            sp = [tf(*local(u, v)) for v in (0.0, 0.5, 1.0)]
+            emit.append({"stroke": f"{sid}-fold{k + 1}", "spine": sp, "w": fold_w,
+                         "ink": fold_ink, "z": z,
+                         "desc": f"pleat crease {k + 1} of the generated {count}-fold fan"})
+
+    hlx, hly = tf(*local(-1.0, 1.0))
+    hrx, hry = tf(*local(1.0, 1.0))
+    hex_, hey = tf(*local(0.0, 1.0))
+    anchor = bbox_anchor(sid, body)
+    anchor.env.update({f"{sid}.waistx": cx, f"{sid}.waisty": cy,
+                       f"{sid}.hemx": hex_, f"{sid}.hemy": hey,
+                       f"{sid}.hemleftx": hlx, f"{sid}.hemlefty": hly,
+                       f"{sid}.hemrightx": hrx, f"{sid}.hemrighty": hry})
+    return ctx.add(anchor)
+
+
+def expand_ribbon(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """A ribbon: a tapering band of cloth along a gesture spine, with a lit face.
+
+    A ribbon is not a bar. It is a band with two edges that TAPER, and it twists so part of its
+    surface faces the light. The family draws the band as one silhouette along a 2-4 point gesture
+    spine with a per-point width profile (`w`), and an optional `face` highlight stripe hugging one
+    edge — the second surface seen as the ribbon turns — which is what reads as "ribbon" rather
+    than "bar" (fixed 2026-09-16, M3b: the ribbon-sweep read as a flat detached beam).
+
+    params: spine (2-4 points) · w (scalar or per-point profile) · side · face (stripe width /
+            band width) · face-fill · fill · stroke/sw
+    Emits `<id>` and, when face > 0, `<id>-face`. Exposes bbox + root/tip.
+    """
+    sid = str(node["ribbon"])
+    if "spine" not in node:
+        raise SpecError(f"relate: ribbon {sid!r} needs `spine` (2-4 points, the gesture)")
+    spine = [ctx.point(p) for p in node["spine"]]
+    n = len(spine)
+    if not 2 <= n <= 4:
+        raise SpecError(f"relate: {sid}.spine needs 2-4 points (the gesture form), got {n}")
+    raw_w = node.get("w")
+    if raw_w is None:
+        raise SpecError(f"relate: ribbon {sid!r} needs `w` (a width or a per-point profile)")
+    if isinstance(raw_w, (list, tuple)):
+        widths = [ctx.scalar(v) for v in raw_w]
+        if len(widths) != n:
+            raise SpecError(f"relate: {sid}.w has {len(widths)} entries but the spine has {n} points")
+    else:
+        widths = [ctx.scalar(raw_w)] * n
+    side = str(node.get("side", "both"))
+    if side not in ("both", "left", "right"):
+        raise SpecError(f"relate: {sid}.side must be both/left/right, got {side!r}")
+    face = ctx.scalar(node.get("face", 0.0))
+    fill = node.get("fill")
+    stroke, sw = node.get("stroke"), node.get("sw")
+    z = str(node.get("z", "default"))
+
+    poly = _hair_outline(spine, widths, side=side)
+    emit.append({"blob": sid, "poly": poly, "fill": fill, "stroke": stroke, "sw": sw, "z": z,
+                 "desc": f"ribbon: a {n}-point gesture spine with a tapering width profile "
+                         f"({'/'.join(f'{w:.0f}' for w in widths)}), not a constant-width bar"})
+    if face > 0:
+        fw = [face * w for w in widths]
+        # hug one edge of the band: shift the spine half the leftover toward that edge
+        pts = [np.array(p, float) for p in spine]
+        off: list[tuple[float, float]] = []
+        for i, p in enumerate(pts):
+            if i == 0:
+                t = pts[1] - pts[0]
+            elif i == n - 1:
+                t = pts[-1] - pts[-2]
+            else:
+                t = pts[i + 1] - pts[i - 1]
+            t = t / (np.linalg.norm(t) or 1.0)
+            nrm = np.array([-t[1], t[0]])
+            shift = (widths[i] - fw[i]) / 2
+            q = p - nrm * shift if side in ("both", "right") else p + nrm * shift
+            off.append(tuple(num(v) for v in q))
+        emit.append({"stroke": f"{sid}-face", "spine": off, "w": face * sum(widths) / n,
+                     "ink": node.get("face-fill", "#9aa9d8"), "z": z,
+                     "desc": "ribbon face: the lit second surface along one edge (the twist)"})
+    anchor = bbox_anchor(sid, poly)
+    anchor.env.update({f"{sid}.rootx": spine[0][0], f"{sid}.rooty": spine[0][1],
+                       f"{sid}.tipx": spine[-1][0], f"{sid}.tipy": spine[-1][1]})
+    return ctx.add(anchor)
+
+
+def expand_petal(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """A petal: a leaf through a root point, bowed by `curl`, tapering to a point at the tip.
+
+    The reference's foreground is a cluster of broad flower petals, and the reviewer's occlusion
+    fix needs them as PANELS in front of the skirt, with tapered outlines that cross the navy edge
+    (fixed 2026-09-16, M3b). A petal is a gesture from root to tip with a width that is fullest at
+    the middle and points at the tip — not an ellipse (which reads as a pill, not a petal).
+
+    params: at (root) · angle (deg, tip direction) · len · wid / w · curl (0 = straight) ·
+            side · fill · stroke/sw
+    Exposes bbox + `tipx/tipy`.
+    """
+    sid = str(node["petal"])
+    root = ctx.point(node["at"])
+    angle = math.radians(ctx.scalar(node.get("angle", -90)))
+    length = ctx.scalar(node.get("len", node.get("h", 100)))
+    width = ctx.scalar(node.get("wid", node.get("w", 60)))
+    curl = ctx.scalar(node.get("curl", 0.0))
+    fill = node.get("fill")
+    stroke, sw = node.get("stroke"), node.get("sw")
+    z = str(node.get("z", "default"))
+    nx, ny = -math.sin(angle), math.cos(angle)
+    mid = (root[0] + math.cos(angle) * length * 0.5 + nx * curl * length * 0.35,
+           root[1] + math.sin(angle) * length * 0.5 + ny * curl * length * 0.35)
+    tip = (root[0] + math.cos(angle) * length, root[1] + math.sin(angle) * length)
+    spine = [root, mid, tip]
+    widths = [width * 0.16, width, width * 0.03]
+    poly = _hair_outline(spine, widths, side=str(node.get("side", "both")))
+    emit.append({"blob": sid, "poly": poly, "fill": fill, "stroke": stroke, "sw": sw, "z": z,
+                 "desc": f"petal: a bowed gesture {length:.0f}px long, {width:.0f}px wide at the "
+                         f"middle, tapering to a point at the tip"})
+    anchor = bbox_anchor(sid, poly)
+    anchor.env.update({f"{sid}.tipx": tip[0], f"{sid}.tipy": tip[1],
+                       f"{sid}.rootx": root[0], f"{sid}.rooty": root[1]})
+    return ctx.add(anchor)
+
+
+def expand_leg(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """A bent leg: a thigh -> knee -> shin gesture carrying one tapered limb.
+
+    The reviewer's seated-figure fix: "let one bent leg/knee emerge below the hem" (M3b), because
+    without it the figure reads as a bust on a beanbag. The bend IS a spine point, exactly as in
+    `arm`, so the leg cannot have a corner hand-laid into a path; the width profile is the "draw
+    the leg not the tube" statement. An optional `knee` highlight marks the joint.
+
+    params: spine (2-3 points: hip, knee, ankle) · w (per-point profile) · side ·
+            knee (0/1 highlight) · fill · stroke/sw
+    Exposes bbox + `kneex/kneey`, `anklex/ankley`.
+    """
+    sid = str(node["leg"])
+    spine = [ctx.point(p) for p in node["spine"]]
+    n = len(spine)
+    if not 2 <= n <= 3:
+        raise SpecError(f"relate: {sid}.spine needs 2-3 points (hip, knee, ankle), got {n}")
+    raw_w = node.get("w")
+    if raw_w is None:
+        raise SpecError(f"relate: leg {sid!r} needs `w` (a width or per-point profile)")
+    if isinstance(raw_w, (list, tuple)):
+        widths = [ctx.scalar(q) for q in raw_w]
+        if len(widths) != n:
+            raise SpecError(f"relate: {sid}.w has {len(widths)} entries but the spine has {n} points")
+    else:
+        widths = [ctx.scalar(raw_w)] * n
+    side = str(node.get("side", "both"))
+    if side not in ("both", "left", "right"):
+        raise SpecError(f"relate: {sid}.side must be both/left/right, got {side!r}")
+    fill = node.get("fill", "#e8d7bd")
+    stroke, sw = node.get("stroke"), node.get("sw")
+    z = str(node.get("z", "default"))
+    limb = taper_band(spine, widths, side)
+    emit.append({"blob": f"{sid}-limb", "poly": limb, "fill": fill, "stroke": stroke,
+                 "sw": sw, "z": z,
+                 "desc": f"leg limb: {n}-point gesture (hip/knee/ankle), width profile "
+                         f"{'/'.join(f'{x:.0f}' for x in widths)}"})
+    if whole(node.get("knee", 0), f"{sid}.knee"):
+        kp = spine[1] if n == 3 else spine[-1]
+        kr = widths[1] / 2 if n == 3 else widths[-1] / 2
+        emit.append({"ellipse": f"{sid}-knee", "at": [kp[0], kp[1]], "rx": kr * 0.72,
+                     "ry": kr * 0.5, "rot": 0, "fill": node.get("knee-fill", "#f3e6d2"),
+                     "z": z, "desc": "knee highlight at the bend"})
+    anchor = bbox_anchor(sid, limb)
+    kp = spine[1] if n == 3 else spine[-1]
+    anchor.env.update({f"{sid}.kneex": kp[0], f"{sid}.kneey": kp[1],
+                       f"{sid}.anklex": spine[-1][0], f"{sid}.ankley": spine[-1][1]})
+    return ctx.add(anchor)
+
+
 VOCAB = {"sunhat": expand_sunhat, "eye": expand_eye, "face": expand_face,
          "hair-mass": expand_hair_mass, "collar": expand_collar, "bow": expand_bow,
-         "arm": expand_arm, "hand": expand_hand}
+         "arm": expand_arm, "hand": expand_hand,
+         "pleats": expand_pleats, "ribbon": expand_ribbon, "petal": expand_petal,
+         "leg": expand_leg}
 SHAPES = ("ellipse", "blob", "stroke", "rect")
 # `region` is a computed shape: its outline is flooded from the reference raster at resolve time,
 # so it is a TEACHER node and needs `--ref`. It is listed apart from the primitives because it

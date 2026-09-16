@@ -1,0 +1,98 @@
+{
+ "version": 1,
+ "node": "petal-warm",
+ "kind": "region",
+ "spec": ".scratch/13-assembly/work/teacher-skirt.yaml",
+ "image": "../../../image.jpg",
+ "image_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+ "date": "2026-09-16",
+ "seed": [
+  490.0,
+  985.0
+ ],
+ "tol": 20.0,
+ "fixed": true,
+ "eps": 3.0,
+ "box": [
+  300.0,
+  900.0,
+  620.0,
+  1024.0
+ ],
+ "method": "scripts/relate.py:resolve(kind=region) -> scripts/scene_render.py:flood_region(fixed-range) -> cv2.approxPolyDP",
+ "vertex_count": 18,
+ "vertices": [
+  [
+   523.0,
+   932.0
+  ],
+  [
+   505.0,
+   930.0
+  ],
+  [
+   498.0,
+   932.0
+  ],
+  [
+   499.0,
+   937.0
+  ],
+  [
+   495.0,
+   932.0
+  ],
+  [
+   452.0,
+   948.0
+  ],
+  [
+   442.0,
+   960.0
+  ],
+  [
+   433.0,
+   958.0
+  ],
+  [
+   422.0,
+   990.0
+  ],
+  [
+   423.0,
+   1003.0
+  ],
+  [
+   441.0,
+   1023.0
+  ],
+  [
+   528.0,
+   1023.0
+  ],
+  [
+   532.0,
+   1019.0
+  ],
+  [
+   532.0,
+   1023.0
+  ],
+  [
+   563.0,
+   1023.0
+  ],
+  [
+   529.0,
+   952.0
+  ],
+  [
+   523.0,
+   950.0
+  ],
+  [
+   528.0,
+   949.0
+  ]
+ ]
+}

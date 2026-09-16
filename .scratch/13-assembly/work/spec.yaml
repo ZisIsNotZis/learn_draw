@@ -29,8 +29,8 @@
 
 frame: {w: 1024, h: 1024}
 
-layers: [bg, field, ribbon, hair-back, skirt-dark, skirt-pale, blouse, collar, arm, sleeve, cuff,
-         hand, neck, bow, hat, hat-front, head, features, hair-front]
+layers: [bg, field, ribbon, hair-back, skirt-dark, leg, skirt, skirt-front, blouse, collar, arm,
+         sleeve, cuff, hand, neck, bow, hat, hat-front, head, features, hair-front]
 
 vars:
   # ---- measured frame anchors: the "setting the frame" use of a reference (abstraction.md)
@@ -237,23 +237,66 @@ draw:
             (loops 0.57), and the unconstrained fit inflates `loop-w` to its bound chasing the mask
             — reported, not hidden. The bow outline is the reference's own line art"}
 
-  # ---------------------------------------------------------------- skirt / dress (bottom mass)
-  - {blob: skirt-dark,
+  # ---------------------------------------------------------------- seated lower body (M3b)
+  # The reviewer's biggest defect (M3a verdict): "the skirt/seat/legs are collapsed into one navy
+  # capsule with a pink and an orange rounded rectangle floating inside it… reads as a bust on a
+  # beanbag." The mechanism was an OCCLUSION bug: `petal-pink`/`petal-warm` carried `z: skirt-dark`,
+  # so they painted INSIDE the skirt mass and read as windows/holes, not cloth in front of it.
+  # Fixed here: the skirt is a generated wavy-hem mass with a navy trim band, the colour panels are
+  # a layer ABOVE the skirt-front, and one bent leg/knee drops below the hem.
+  -
+    {blob: underskirt,
      spine: [[frame.w*0.13, frame.h*0.855], [frame.w*0.45, frame.h*0.885], [frame.w*0.82, frame.h*0.85]],
      w: frame.w*0.225, fill: "#2d4e67", z: skirt-dark,
-     desc: "dark skirt mass across the bottom — measured x[51,857] y[771,1024], 71796px in two components"}
-  - {blob: skirt-pale,
-     spine: [[frame.w*0.625, frame.h*0.75], [frame.w*0.68, frame.h*0.845]],
-     w: frame.w*0.18, fill: "#d2e2d8", z: skirt-pale,
-     desc: "pale panel over the dark skirt — measured x[520,740] y[728,900]"}
-  # the rainbow petals inside the skirt: the reference's most saturated area (measured pink
-  # 28033px centred (324,908) + warm 33145px centred (370,935)). Flat masses in M1.
-  - {blob: petal-pink,
-     spine: [[frame.w*0.24, frame.h*0.87], [frame.w*0.33, frame.h*0.90], [frame.w*0.46, frame.h*0.90]],
-     w: frame.w*0.13, fill: "#e2869c", z: skirt-dark, desc: "pink petal mass in the skirt"}
-  - {blob: petal-warm,
-     spine: [[frame.w*0.25, frame.h*0.905], [frame.w*0.36, frame.h*0.93], [frame.w*0.52, frame.h*0.92]],
-     w: frame.w*0.12, fill: "#e8b48c", z: skirt-dark, desc: "warm petal mass in the skirt"}
+     desc: "navy underskirt — the dark backing mass the pale skirt drapes over; measured x[51,857]
+            y[771,1024] (71,796px across two components). It is the seat, not a capsule"}
+  # One bent leg/knee, drawn BEFORE the skirt so the generated hem crosses its top and it emerges
+  # from under the hem rather than floating on the underside. LOW CONFIDENCE in the reference: the
+  # pale mass at bottom-centre (probe x[505,739] y[840,937]) is partly the apron's own drape, so the
+  # leg's size/pose is a readable seated default, not a separable measurement (measure-body.md).
+  -
+    {leg: legR, spine: [[frame.w*0.66, frame.h*0.78], [frame.w*0.60, frame.h*0.895],
+                        [frame.w*0.545, frame.h*0.99]],
+     w: [frame.w*0.105, frame.w*0.125, frame.w*0.075],
+     fill: "#e8d7bd", stroke: "#252a33", sw: 2.4, knee: 1, knee-fill: "#f3e6d2", z: leg,
+     desc: "right leg bent at the knee, emerging below the skirt hem — a hip/knee/ankle gesture with
+            a width profile so it is a leg and not a tube; the seated lower body the reviewer asked for"}
+  # The skirt: a GENERATOR (scripts/relate.py `pleats`), not laid shapes. `count` is the number of
+  # hem scallops, `depth` their amplitude, `taper` how they open from waist to hem, `seed` the phase;
+  # the hem, the navy trim band and the crease lines are all sampled from that one wave, so changing
+  # `count` re-cuts all three with no other edit (the cloth rung's teaching point, 10-cloth/spec.md).
+  # Parameters FITTED to the frozen skirt masks (traced/skirt-pale, traced/skirt-trim) by mask IoU
+  # with work/fit-family.py, then the traces discarded (D20/D24/D25). Fill values are measured.
+  -
+    {pleats: skirt, at: [500, 745], waist: 330, drop: 235, flare: 2.15, count: 5, depth: 24,
+     taper: 1.0, seed: 0, tilt: 12, trim: 0.15, bulge: 0.22,
+     fill: "#d2e2d8", trim-fill: "#2d4e67", stroke: "#252a33", sw: 2.4,
+     fold-w: 1.8, fold-ink: "#9db8ad", z: skirt, z-trim: skirt,
+     desc: "pleated skirt — a flared cloth mass whose hem is a generated 5-fold wave with the navy
+            trim band hugging it (the hem, trim and creases share one wave). Params fitted to the
+            reference's frozen skirt masks by mask IoU (fit-family.py), traces discarded"}
+  # The colour panels in FRONT of the skirt. In the reference these are the foreground flower
+  # petals; the reviewer's fix is that they overlap the skirt so their outlines cross the navy edge
+  # (occlusion, not colour). Each is a `petal` — a bowed gesture tapering to a point, fitted to its
+  # frozen teacher mask. Restored from the M1 flat blobs to real shapes and lifted to `skirt-front`.
+  -
+    {petal: petalRose, at: [300, 1010], angle: -84, len: 215, wid: 175, curl: 0.10,
+     fill: "#e2869c", stroke: "#252a33", sw: 2.4, z: skirt-front,
+     desc: "rose petal — a foreground panel in front of the skirt, its outline crossing the navy
+            edge; fitted to the reference's rose mask (traced/petal-rose)"}
+  -
+    {petal: petalWarm, at: [492, 1018], angle: -74, len: 120, wid: 105, curl: 0.06,
+     fill: "#e8b48c", stroke: "#252a33", sw: 2.4, z: skirt-front,
+     desc: "warm tan petal — foreground panel over the skirt's lower edge; fitted to the
+            reference's warm mask"}
+  -
+    {petal: petalBlue, at: [392, 852], angle: -68, len: 105, wid: 95, curl: 0.08,
+     fill: "#8bbdce", stroke: "#252a33", sw: 2.4, z: skirt-front,
+     desc: "pale blue petal — foreground panel; fitted to the reference's pale-blue mask"}
+  -
+    {petal: petalPeach, at: [330, 768], angle: -82, len: 165, wid: 140, curl: 0.05,
+     fill: "#f1dfd3", stroke: "#252a33", sw: 2.4, z: skirt-front,
+     desc: "peach petal — foreground panel; fitted to the reference's peach mask"}
 
   # ---------------------------------------------------------------- the hat (family; one drooping brim)
   # FITTED to the teacher's frozen brim masks, then the traces discarded (STATUS D24). The three
@@ -294,7 +337,8 @@ draw:
 relations:
   - {front: head, behind: hat, desc: "the head and hair occlude the brim's middle: the hat is worn high and its brim passes behind the skull, while the crown and the brim's left and right lobes stay visible above and beside it (measured: the reference's visible teal surface is TWO pieces, x430-653 and x897-1023, split by head+hair — no single ellipse-half can match it, which is why the hat must paint under the head)"}
   - {front: hair-front, behind: blouse, desc: "front hair falls over the blouse"}
-  - {front: skirt-pale, behind: skirt-dark, desc: "the pale panel lies over the dark skirt"}
+  - {front: skirt, behind: underskirt, desc: "the pleated pale skirt drapes over the navy underskirt"}
+  - {front: petalRose, behind: skirt, desc: "the foreground petals lie OVER the skirt, so their outlines cross the navy edge — this is the M3b occlusion fix"}
   - {front: blouse, behind: ribbon-sweep, desc: "the ribbon passes behind the figure"}
   - {front: hair-main, behind: head, desc: "the visible hair falls in front of the face; the hat still sits over the skull"}
   - {front: hair-lock, behind: head, desc: "the cheek lock falls in front of the face too — the same relation as the main mass"}

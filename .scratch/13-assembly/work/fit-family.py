@@ -148,6 +148,35 @@ ARM_GROUPS = {"sleeve": {"targets": ["sleeve-R"], "shapes": ["-sleeve"]},
               "cuff": {"targets": ["cuff-R"], "shapes": ["-cuff"]},
               "limb": {"targets": ["arm-R", "armskin-R"], "shapes": ["-limb"]}}
 
+# `pleats` (M3b) emits a cloth body + a navy trim band; the teacher split them by colour, so two
+# groups. `count` is integral in the family (`whole()` floors it), so its step is 1.0 and the
+# search stays on integers. The hem wave is the family's structure; the fit is asking whether a
+# generated `count`-scallop hem can land on the reference's measured apron.
+PLEATS_PARAMS = ["cx", "cy", "waist", "drop", "flare", "count", "depth", "taper", "seed",
+                 "tilt", "trim", "bulge"]
+PLEATS_BOUNDS = {"cx": (120.0, 880.0), "cy": (640.0, 900.0), "waist": (120.0, 720.0),
+                 "drop": (80.0, 480.0), "flare": (0.8, 3.6), "count": (2.0, 9.0),
+                 "depth": (0.0, 90.0), "taper": (0.0, 1.0), "seed": (0.0, 360.0),
+                 "tilt": (-45.0, 45.0), "trim": (0.0, 0.40), "bulge": (0.0, 0.9)}
+PLEATS_STEPS = {"cx": 24.0, "cy": 20.0, "waist": 24.0, "drop": 20.0, "flare": 0.12,
+                "count": 1.0, "depth": 6.0, "taper": 0.12, "seed": 30.0, "tilt": 5.0,
+                "trim": 0.04, "bulge": 0.12}
+PLEATS_GROUPS = {"body": {"targets": ["skirt-pale"], "shapes": ["-body"]},
+                 "trim": {"targets": ["skirt-trim"], "shapes": ["-trim"]}}
+PLEATS_DEFAULTS = {"flare": 2.2, "count": 5.0, "depth": 0.0, "taper": 1.0, "seed": 0.0,
+                   "tilt": 0.0, "trim": 0.12, "bulge": 0.0}
+
+# `petal` emits one blob whose sid IS the node id, so each petal is its own group and its suffix
+# is the node id. Four instances are fitted jointly, one teacher mask each.
+PETAL_PARAMS = ["cx", "cy", "angle", "len", "wid", "curl"]
+PETAL_BOUNDS = {"cx": (0.0, 1024.0), "cy": (560.0, 1024.0), "angle": (-180.0, 180.0),
+                "len": (60.0, 520.0), "wid": (40.0, 420.0), "curl": (-0.9, 0.9)}
+PETAL_STEPS = {"cx": 20.0, "cy": 20.0, "angle": 12.0, "len": 24.0, "wid": 20.0, "curl": 0.12}
+PETAL_GROUPS = {"rose": {"targets": ["petal-rose"], "shapes": ["petalRose"]},
+                "warm": {"targets": ["petal-warm"], "shapes": ["petalWarm"]},
+                "blue": {"targets": ["petal-blue"], "shapes": ["petalBlue"]},
+                "peach": {"targets": ["petal-peach"], "shapes": ["petalPeach"]}}
+
 REGISTRY = {
     "sunhat": {"params": SUNHAT_PARAMS, "bounds": SUNHAT_BOUNDS, "steps": SUNHAT_STEPS,
                "groups": SUNHAT_GROUPS},
@@ -161,6 +190,10 @@ REGISTRY = {
             "groups": BOW_GROUPS},
     "arm": {"params": [], "bounds": {**ARM_AXIS_BOUNDS, **ARM_EXTRA_BOUNDS},
             "steps": {**ARM_AXIS_STEPS, **ARM_EXTRA_STEPS}, "groups": ARM_GROUPS},
+    "pleats": {"params": PLEATS_PARAMS, "bounds": PLEATS_BOUNDS, "steps": PLEATS_STEPS,
+               "groups": PLEATS_GROUPS},
+    "petal": {"params": PETAL_PARAMS, "bounds": PETAL_BOUNDS, "steps": PETAL_STEPS,
+              "groups": PETAL_GROUPS},
 }
 
 # family parameter defaults, used when the spec node omits an optional key (must match relate.py)
@@ -396,6 +429,22 @@ class FamilyFit:
             if param in node:
                 return self._expr(node[param], env)
             return self._expr(defaults[param], env)
+        if self.kind == "pleats":
+            at = node.get("at", [0.0, 0.0])
+            if param == "cx":
+                return self._expr(at[0], env)
+            if param == "cy":
+                return self._expr(at[1], env)
+            if param in node:
+                return self._expr(node[param], env)
+            return self._expr(PLEATS_DEFAULTS[param], env)
+        if self.kind == "petal":
+            at = node.get("at", [0.0, 0.0])
+            if param == "cx":
+                return self._expr(at[0], env)
+            if param == "cy":
+                return self._expr(at[1], env)
+            return self._expr(node[param], env)
         if self.kind == "face":
             at = node.get("at", [0.0, 0.0])
             if param == "cx":
@@ -438,6 +487,17 @@ class FamilyFit:
             for p in params_for_node(self.kind, node):
                 if p in ("cx", "cy"):
                     continue
+                node[p] = float(x[f"{pre}{p}"])
+            return node
+        if self.kind == "pleats":
+            node["at"] = [float(x[f"{pre}cx"]), float(x[f"{pre}cy"])]
+            for p in PLEATS_PARAMS:
+                if p not in ("cx", "cy"):
+                    node[p] = float(x[f"{pre}{p}"])
+            return node
+        if self.kind == "petal":
+            node["at"] = [float(x[f"{pre}cx"]), float(x[f"{pre}cy"])]
+            for p in ("angle", "len", "wid", "curl"):
                 node[p] = float(x[f"{pre}{p}"])
             return node
         if self.kind == "face":
@@ -631,7 +691,8 @@ def _halton(index: int, base: int) -> float:
     return r
 
 
-_PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71]
+_PRIMES = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71,
+           73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131]
 
 
 def halton_seeds(params: list[str], bounds: dict, count: int, skip: int = 7) -> list[dict]:
@@ -765,6 +826,11 @@ def main(argv: list[str] | None = None) -> int:
                     "tail2-w"]
         elif a.family == "arm":
             keys = ["spine", "w", "sleeve", "puff", "cuff-at", "cuff-h", "cuff-pad"]
+        elif a.family == "pleats":
+            keys = ["at", "waist", "drop", "flare", "count", "depth", "taper", "seed",
+                    "tilt", "trim", "bulge"]
+        elif a.family == "petal":
+            keys = ["at", "angle", "len", "wid", "curl"]
         else:
             keys = ["brim", "crown", "tilt", "lift", "drop", "crown-h", "flat",
                     "front", "rim", "droop"]

@@ -1,0 +1,29 @@
+# teacher-skirt.yaml — the M3b (lower body) teacher step, exactly like teacher-body.yaml.
+# NOT the artifact: it exists only so `draw freeze` floods each lower-body part out of image.jpg
+# once and writes a provenance-carrying sidecar under work/traced/. The family parameters are then
+# FITTED to those masks (work/fit-family.py) and the traces discarded — only fitted family
+# instances survive in spec.yaml (STATUS D20/D24/D25). Every probe is region-restricted and
+# colour-matched so the repeated palette (navy is hat + skirt + cuffs; cream is blouse + skirt)
+# cannot leak across parts. The seed/tol/box provenance is repeated in each sidecar.
+#
+# The pale apron and the navy trim are ONE skirt footprint split by colour (trim is #2d4e67, the
+# same navy as the underskirt): `skirt-pale` is scored by `pleats -body`, `skirt-trim` by
+# `pleats -trim`, and the `underskirt` mass by the dark backing blob. The petals are the
+# foreground flower panels the reviewer asked to read in FRONT of the skirt.
+frame: {w: 1024, h: 1024}
+layers: []
+draw:
+  - {region: skirt-pale, seed: [540, 800], tol: 20, fixed: true, box: [120, 620, 860, 1000], eps: 3,
+     fill: "#d2e2d8", desc: "pale skirt/apron — #d2e2d8 probe, region x[120,860] y[620,1000]"}
+  - {region: skirt-trim, seed: [760, 850], tol: 18, fixed: true, box: [430, 760, 900, 995], eps: 3,
+     fill: "#2d4e67", desc: "navy trim band along the pale skirt's hem — #2d4e67 probe, right/under arc"}
+  - {region: underskirt, seed: [150, 900], tol: 22, fixed: true, box: [0, 700, 900, 1024], eps: 3,
+     fill: "#2d4e67", desc: "navy underskirt mass, lower-left — #2d4e67 probe"}
+  - {region: petal-rose, seed: [300, 930], tol: 22, fixed: true, box: [40, 700, 520, 1024], eps: 3,
+     fill: "#e59295", desc: "rose petal panel — #e59295 probe"}
+  - {region: petal-warm, seed: [490, 985], tol: 20, fixed: true, box: [300, 900, 620, 1024], eps: 3,
+     fill: "#e5cb96", desc: "warm tan petal panel — #e5cb96 probe"}
+  - {region: petal-blue, seed: [400, 810], tol: 18, fixed: true, box: [250, 740, 520, 900], eps: 3,
+     fill: "#8bbdce", desc: "pale blue petal panel — #8bbdce probe"}
+  - {region: petal-peach, seed: [330, 700], tol: 16, fixed: true, box: [180, 600, 470, 790], eps: 3,
+     fill: "#f1dfd3", desc: "peach petal panel — #f1dfd3 probe"}

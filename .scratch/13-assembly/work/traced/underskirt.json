@@ -1,0 +1,70 @@
+{
+ "version": 1,
+ "node": "underskirt",
+ "kind": "region",
+ "spec": ".scratch/13-assembly/work/teacher-skirt.yaml",
+ "image": "../../../image.jpg",
+ "image_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+ "date": "2026-09-16",
+ "seed": [
+  150.0,
+  900.0
+ ],
+ "tol": 22.0,
+ "fixed": true,
+ "eps": 3.0,
+ "box": [
+  0.0,
+  700.0,
+  900.0,
+  1024.0
+ ],
+ "method": "scripts/relate.py:resolve(kind=region) -> scripts/scene_render.py:flood_region(fixed-range) -> cv2.approxPolyDP",
+ "vertex_count": 11,
+ "vertices": [
+  [
+   56.0,
+   890.0
+  ],
+  [
+   56.0,
+   896.0
+  ],
+  [
+   89.0,
+   902.0
+  ],
+  [
+   127.0,
+   926.0
+  ],
+  [
+   192.0,
+   985.0
+  ],
+  [
+   220.0,
+   1023.0
+  ],
+  [
+   273.0,
+   1023.0
+  ],
+  [
+   303.0,
+   982.0
+  ],
+  [
+   283.0,
+   937.0
+  ],
+  [
+   206.0,
+   897.0
+  ],
+  [
+   216.0,
+   863.0
+  ]
+ ]
+}
