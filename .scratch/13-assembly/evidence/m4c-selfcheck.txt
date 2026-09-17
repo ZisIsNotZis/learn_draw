@@ -1,0 +1,10 @@
+wave-edge      crest1 y390, trough y457, crest2 y190, dips 67/267 (>=50) -> PASS
+wave-infl      2nd-derivative sign changes: down 9, up 23 (concavity flips) -> PASS
+reach          mint frac x560-718/y350-650: 0.357 (>=0.20) -> PASS
+tilt           features -7px left / +39px up of skin centroid (need >=10 left, >=6 up) -> FAIL
+lids           dark fraction over iris top halves: [0.32, 0.35] (>=0.30) -> PASS
+neck           fully-background neck rows: 0 (0) -> PASS
+knee           skin lobe below hem: 12804px (>3000) -> PASS
+arms           fully-bg left-arm rows: 0 (0) -> PASS
+strand         thin isolated bars upper-left: 0 (0) -> PASS
+OVERALL: 1 FAIL

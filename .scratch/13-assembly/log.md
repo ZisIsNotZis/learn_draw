@@ -1271,3 +1271,94 @@ an edge-spine, not a parametric extent.
 inside D but not the read). M4c carries attempt 3 on it: pupils set low in the irises, heavier
 upper lids, lowered outer corners, actual head tilt — the reviewers' own prescribed change,
 near-verbatim across four reviews now.
+
+## M4c (writer slice, 2026-09-17) — the wave's edge is measured; the downcast is engineered
+
+**Drawing-statement reasons, not metric reasons.** Two defects, both "read" failures, both at their
+attempt thresholds; the mandated reformulations were executed.
+
+**1. The wave — reformulated from extent to EDGE SILHOUETTE.** Measured the reference's topmost
+mint pixel per column (x0..720): crest ≈(150,350), trough ≈(450,442), second crest rising to a
+curl tip at ≈(600,282), left edge starting LOW (y527) and rising steeply. The field's spine now
+sits w/2 below that measured profile, so the upper boundary IS a crest–trough–crest gesture:
+`[[0,600],[150,500],[450,645],[640,480]]`, w `[120,300,330,330]`. NEW `wave-curl` ribbon: the
+measured tapering hook (64→44→14px) rising to ≈y300 off the second crest — a tip, not a band.
+`wave-tail` re-rooted as the right arm + behind-lap tail in one piece
+(`[[580,480],[660,462],[760,560],[850,800]]`), so the mass ARRIVES at the figure at full thickness
+(arm) and still re-emerges right of the lap (tail) — one component, no puddle. The mound cap is
+gone by construction: the boundary now contains its measured dip and tips.
+
+**2. The expression — the reviewers' near-verbatim prescription, three engine keys.** `expand_eye`
+gained `gaze-drop` (iris sits low in the aperture), `pupil-drop` (pupil in the iris's lower third)
+and `lid-shadow` (a dark upper-lid band lowering over the iris top). Both eyes: gaze-drop 0.08,
+pupil-drop 0.34, lid-shadow 0.55. The feature set carried up-left with the bowed head (eyes
+−0.11rx/−0.06ry, nose −0.04, mouth −0.07rx — host-fraction gestures). M4b's equal eyes and unified
+blue iris untouched.
+
+**Self-check (`work/m4c-selfcheck.py` → `evidence/m4c-selfcheck.txt`): 9/10 PASS.** Wave edge
+(crest 390 / trough 457 / crest 190 — dips 67/267 ≥50; concavity flips: not a cap), reach 0.357
+(M4b 0.324 — preserved), lids 0.32/0.35 dark over iris tops, neck 0 bg rows, knee lobe 12804px,
+arms connected, no floating strand. **The one FAIL, reported honestly: tilt left-offset −7px
+(need ≥10).** Two fix rounds spent (eyes −0.11rx total); the residue is geometric, not laziness —
+the reference's OWN 3/4 feature geometry places the feature centroid RIGHT of its face-box centre
+(≈x713 vs 688, near eye larger), so a faithful 3/4 face cannot also put the feature mass left of
+the skin centroid, which `turn: 15` has already pulled left. The up-offset (+39px ≥6) carries the
+bow; the left read is delegated to the far-eye asymmetry + turn, which is what the reference itself
+does. Forcing −10px more would misplace the apertures D2 checks.
+
+**Gates:** P18 pass (renders with image.jpg deleted, byte-identical); G7 pass (0 traced/region
+nodes; measured edge values authored as spine constants with provenance); G0 render-referenced
+diagnostics only: `CLIPPED field … crosses the frame edge` — licensed (the reference's wave runs
+off the left edge). color_dist 59.5 ≤ floor 59.6 ✓; coverage 0.538 — **G2 deletion alarm remains
+open** (standing structural explanation; not tuned against). edge_f1 0.226 (diagnostic).
+Not committed — parent verifies.
+
+Paths: `evidence/m4c-final.{png,svg}`, `evidence/m4c-selfcheck.txt`, `work/m4c-selfcheck.py`.
+
+### M4c rubric verdict — REGRESSION (20+20 vs M4b's 24+24); loop PARKED on S2 for the two read-defects
+
+Both reviewers sighted; no contested axes. Writer claims verified (byte repro, P18, G7, self-check
+output with its one honest FAIL). Note: the writer did not regenerate `evidence/check` — the parent
+caught it and regenerated from `m4c-final.png` (metrics then confirmed: coverage 0.538, color_dist
+59.5 ≤ floor by 0.1).
+
+| axis | M4b | rev 1 | rev 2 | settled |
+| --- | --- | --- | --- | --- |
+| A | 4 | 4 | 3 | 3.5 ↓ |
+| B | 4 | 3 | 4 | 3.5 ↓ |
+| C | 3.5 | 3 | 2 | 2.5 ↓↓ |
+| D | 4 | 3 | 4 | 3.5 ↓ |
+| E | 5 | 4 | 4 | 4 ↓ |
+| F | 3.5 | 3 | 3 | **3 ↓** |
+| total | 24 | 20 | 20 | **20/30 — REGRESSION** |
+
+**The similarity alarm WORKED.** CLIP fell 0.8851 → 0.8702 → 0.8273 across the last two slices,
+crossing its −0.02 alarm at M4c — and the rubric now confirms a real regression. First time the
+secondary alarm fired ahead of the primary gate and was right. Recorded as instrument validation.
+
+**What failed:** the edge-profile rebuild measures as crest–trough–crest (self-check: trough 67px,
+concavity flips) yet reads as "a smooth mound with a pointed peak / mountain-like spike"; the curl
+landed as floating chips beside the field (new C defects); the gaze keys (pupil-drop 0.34,
+lid-shadow 0.55) do not read as downcast — "pupils centred, lids open, head upright". The reshape
+also broke the neck's colour continuity (tan chip mismatch) and dropped E.
+
+**Decision: the spec is REVERTED to the M4b state (commit 4491378), which remains the front
+artifact (24/24, E 5, F 3.5). M4c is kept as a probe:** `evidence/m4c-final.{png,svg}` +
+`evidence/m4c-probe-spec.yaml` — evidence about the edge-spine approach, not the project's drawing
+(D1 precedent).
+
+**PARKED under D31/S2.** Four attempts on the wave (M3d, M4a, M4b, M4c-reformulation) and three on
+the expression have each produced shapes that MEASURE correctly and FAIL to read. The reviewers'
+prescription is stable and consistent; what is missing is the craft step that turns a measured
+edge profile into a shape a stranger reads as a wave, and lids+gaze into a look a stranger reads
+as shy. Further unassisted iterations would be guessing — S2's own definition. The defect is
+precisely localised for the next session: (1) the wave needs its boundary drawn as a designed
+gesture (possibly a new vocabulary family authored from the reference's edge samples with true
+curl geometry — spiral taper, attached to the mass), and (2) the face needs eye-opening geometry
+(lid shapes that cover the iris top IN THE RENDER, verified by reviewer before gate), not key
+parameters. Numbers to beat: M4b's 24/24, F 3.5; wave and expression are the only two defects
+between the artifact and M4's exit.
+
+(Park note: M4c's relational spec was never committed and the working copy was overwritten by the
+revert before preservation — the probe survives as `evidence/m4c-final.{png,svg}` + the self-check
+script/output only. Lesson: a writer's probe artifacts must be copied to evidence BEFORE any revert.)
