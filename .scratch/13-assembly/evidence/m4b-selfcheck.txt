@@ -1,0 +1,6 @@
+1. wave     bridged largest comp x0-822 area218004; visible mint thickness {300: 234, 500: 176, 650: 136} (>=100 each, extent >=650) -> PASS
+2. expr     eye w 54 vs 67, h 55 vs 36 (within15%: False); red px in iris zone 0; lash-dark px 480 -> FAIL
+3. knee     skin blob 133x146 at (125,854) area12894; climb reached y854 (<=860: True) -> PASS
+4. hand     lap-mass frac beneath the hand 0.65 (>=0.50) -> PASS
+5. regr     neck fully-bg rows: 0 (True); floating purple bar: False -> PASS
+OVERALL: FAIL

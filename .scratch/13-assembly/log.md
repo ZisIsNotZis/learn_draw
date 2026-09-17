@@ -1192,3 +1192,82 @@ the MAIN MASS itself sweeps to ≈x718 with wave-scale thickness, a real dip, an
 verified by largest-component extent AND thickness ≥120px at mid-wave; (b) the head gesture must
 be readable at arm's length — bigger tilt or feature-level change (downcast lash geometry, eye
 sizes equalised, remove the red iris wedge); (c) re-land the knee read; (d) hand ON the lap mass.
+
+## M4b — the wave becomes a mass, the gaze drops, the knee lands left (2026-09-17)
+
+Writer: this slice. Attempt 2 of 3 on the wave. Every change is a drawing statement; the M4a
+lesson (pixel checks passed, read failed) drives both the changes and the new mass-based checks.
+
+1. **The mint field rebuilt as ONE THICKENING MASS.** M4a's spine dove to y570 at x420 with the
+   x185 crest peaking at top y282 — 70px above the reference's own highest point (probes:
+   top edge (20,384)(150,350)(300,400)(450,444)(590,392); bottom 501→676: the reference's top edge
+   only undulates ±50px while the mass thickens DOWNWARD). New spine [[0,470],[185,430],[420,555],
+   [718,455]], w [120,210,270,235]: gentle undulation, full width carried to the figure's cover.
+   The wave-tail re-rooted at (615,610) w90 so it overlaps the crest's bottom edge (the old 70px
+   root left a 43px gap that split the field into two components — the M4a two-component cause).
+   RESULT: bridged largest component x0–822 (was x0–550), visible mint thickness 234/176/136px at
+   x300/500/650 (M4a: 235/145/80).
+2. **The downcast read, feature-level.** Eyes equalised to ~0.86x (w 0.305→0.288, 0.232→0.248;
+   h 0.128→0.145 — rev 2 read the measured 0.76 ratio as an error), lash-w 0.22→**0.30** both (the
+   lid must cover the iris top; 0.22 left the iris fully open — the level stare), the pink iris
+   wedge REMOVED (iris-bot unified to the blue; rev 2's "odd red/pink artefact"), both brows
+   slant INVERTED (inner end high — the old down-to-centre slant read stern), mouth shifted left
+   of centre with the bowed head, turn 12→15 (deepens the bow; the fitted cheek/jaw/chin-w values
+   untouched).
+3. **The knee moved OUT of the petal cover.** legL gesture shifted ~60px left (spine end
+   (215,950)→(140,960)), knee-skin re-placed (255,905)→(130,968) w115 — M4a's knee was real but
+   ~90% sat under the petal cluster (x212+); the lobe now presses out at x~60–210, 133×146px of
+   visible skin, connected to the cloth thigh.
+4. **The hand rests ON the lap mass.** Underskirt right end extended x710→x865 (reference zone
+   x720–880/y880–1000 is 91% non-background dark — the mass continues under the hand): lap-mass
+   fraction beneath the hand 0.65 (E6's "outline crosses the mass edge").
+
+**Self-check (mass-based protocol), `work/m4b-selfcheck.py` → `evidence/m4b-selfcheck.txt`:**
+wave PASS, knee PASS, hand PASS, regressions PASS (neck 0 bg rows, no floating purple bar).
+**expr = FAIL, reported honestly:** the eye-aperture bbox measured from the render is contaminated
+by brow/lash anti-aliased edge pixels (the windows catch 10–20px of stroke edge beyond the
+almond); the SPEC-level ratio is w 47.1/54.7 = 0.86 and h 0.145/0.168 = 0.86 — inside the 15%
+target by construction, but the render-level check could not confirm it, and three fix attempts
+(eye windows tightened, lash ink excluded, skin channel-order bug found and fixed) did not clean
+it. Red-wedge and lash-coverage parts PASS. The parent's reviewer pair is the arbiter of the read.
+
+**Metrics (alarm only):** coverage **0.556** (floor 0.571; was 0.549 — the G2 alarm is closing:
+gap now 0.015, inside the alarm band if the next slice holds), color_dist **58.7** (beats the
+floor 59.6), edge_f1 0.224, diagnostics: the licensed left-edge field clip + two sub-pixel notes.
+Evidence: `evidence/m4b-final.png`/`.svg`, `evidence/m4b-selfcheck.txt`, `evidence/check/`.
+No commit (parent verifies).
+
+### M4b rubric verdict — hand-on-lap lands (E 5/5), wave still reads as a mound; M4 open
+
+Both reviewers sighted; no contested axes. Writer claims verified: byte reproduction, P18, G7,
+metrics (coverage 0.556 — G2 gap now 0.015; color_dist 58.7 beats floor). **CLIP 0.8702 — first
+DROP after four rises** (0.8851 → 0.8702; within the 0.02 alarm, recorded not acted on).
+Writer's honest FAIL stands: the render-level expression check never passed.
+
+| axis | M4a | rev 1 | rev 2 | settled |
+| --- | --- | --- | --- | --- |
+| A | 4 | 4 | 4 | 4 |
+| B | 4 | 4 | 4 | 4 |
+| C | contested | 3 | 4 | 3.5 |
+| D | 3.5 | 4 | 4 | 4 |
+| E | 3.5 | 5 | 5 | **5** |
+| **F (M4's axis)** | 3.5 | **4** | **3** | **3.5 → target NOT met** |
+| total | 23 | 24 | 24 | 24/30 |
+
+Landed this slice: hand ON the lap mass with its outline crossing the edge (E4/E6, both reviewers
+answer "yes" unprompted); red iris wedge gone; eyes now equal (D2 restored); no hard regressions.
+
+**The wave paradox, measured:** the draft has MORE mint in the x560–718 reach band than the
+reference does (0.324 vs 0.267 pixel fraction; the band's dominant colour IS mint) — yet both
+reviewers independently read "a rounded mound ending bluntly at x ≈ 560, no dip, no curled tails".
+Conclusion after three attempts (M3d, M4a, M4b — threshold reached): **horizontal extent and colour
+do not make a wave read; the TOP-EDGE SILHOUETTE does.** The draft's mint boundary is a smooth cap;
+the reference's edge is a crest–trough–crest profile with curled tips. Reformulation for M4c
+(permitted at the threshold): measure the reference's wave TOP EDGE as a y-profile at several x
+positions, fit the crest–trough–crest gesture spine, and draw the mass under that measured edge —
+an edge-spine, not a parametric extent.
+
+**The expression also still fails** (both reviewers: blank level stare; M4b's feature fixes landed
+inside D but not the read). M4c carries attempt 3 on it: pupils set low in the irises, heavier
+upper lids, lowered outer corners, actual head tilt — the reviewers' own prescribed change,
+near-verbatim across four reviews now.

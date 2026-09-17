@@ -53,24 +53,31 @@ draw:
   # occludes its right end. So: a 4-point band along that centreline, wider mid-frame, its right end
   # running behind the figure. The band's facets are the flat-cel idiom; the soft gradient is M4.
   - {ribbon: field,
-     spine: [[0, 462], [185, 402], [420, 570], [720, 470]],
-     w: [120, 240, 280, 170], fill: "#7dccc1", z: field,
+     spine: [[0, 470], [185, 430], [420, 555], [718, 455]],
+     w: [120, 210, 270, 235], fill: "#7dccc1", z: field,
      desc: "mint field as a sweeping wave: anchored ON the left edge, crest x190, dip x420, rising
-            to the figure's cover at x720. M4a: both M3d reviewers still read a mound because the
-            visible mint stopped ~x560 — the reference's mint reaches x717 at y360-440 (measured).
-            The right crest now rises to x720/w170 (top edge y385), so the wave shows in the
-            measured window between the streamer and the collar, and the dip deepened to 170px
-            (400->570) so the S reads at a glance. Left edge w120: the reference's mint spans
-            y384-501 at the frame edge (≈117px) — the measured value, not a tune"}
+            to the figure's cover at x718. M4b: M4a's crest FAILED the read — the reach was real
+            but 38px-thin (a band, not a mass; both reviewers still read a mound stopping x520).
+            Probes of the reference's top edge: (20,384)(150,350)(300,400)(450,444)(590,392) — the
+            top edge only UNDULATES ±50px; the mass thickens DOWNWARD (bottom edge 501→676). The
+            old spine dove to y570 at x420 with w280 (a sagging trough), and the x185 crest rose
+            to top y282 — 70px above the reference's highest point. Rebuilt: gentle undulation
+            around y430-555, widths 210/270/210 so the MAIN MASS carries ≥200px thickness through
+            x300/x500 and arrives at the figure's cover FULL-WIDTH (w235, top edge ≈y355 in the
+            measured window; the reference's own mint stops at the collar ~x690, so the mass —
+            not a sliver — is what must reach the figure, and it now does). Mass-based self-check: largest component to x≥650, column thickness
+            ≥100px at x300/500/650"}
   # M4a: the wave's tail passes BEHIND the lap mass and shows again to its right — the reference's
   # teal spray x[576,896] y[640,896] (colour-probed). Painted at `field`, so the skirt-dark band
   # occludes it exactly as the reference occludes its wave behind the lap.
   - {ribbon: wave-tail,
-     spine: [[610, 660], [720, 730], [830, 855]],
-     w: [70, 90, 55], fill: "#7dccc1", z: field,
+     spine: [[615, 610], [720, 730], [830, 855]],
+     w: [90, 90, 55], fill: "#7dccc1", z: field,
      desc: "the wave's right tail sweeping down behind the lap mass and re-emerging right of it —
-            the reference shows mint there (probed x768-896 y680-896); without it the field's
-            gesture dies at the figure's edge and reads as a ponded blob"}
+            the reference shows mint there (probed x768-896 y680-896); M4b: re-rooted at (615,610)
+            so it OVERLAPS the rebuilt crest's bottom edge — the old 70px start left a 43px
+            background gap at the root, which split the field into two components (M4a's
+            two-component cause) and read as two puddles"}
   # The wave's darker underside band, measured x[12,222] y[732,774] #4ca5b2 — it hugs the top edge of
   # the dark lap mass, so it also separates the field from the lap.
   - {ribbon: field-underside,
@@ -127,14 +134,18 @@ draw:
   # near-symmetric while the visible skin is a 3/4 view. Reported, not hidden — the hair slice has
   # to improve before this can rise.
   - {face: head, at: [head_cx, head_cy], rx: head_half, ry: head_deep,
-     cheek: 0.53456, jaw: 0.72640, chin-w: 0.02523, turn: 12.0,
+     cheek: 0.53456, jaw: 0.72640, chin-w: 0.02523, turn: 15.0,
      fill: "#f2e9d8", z: head,
      desc: "head: cranium ball + jaw wedge tapering to the chin — the ruler every other size uses;
             jaw shape fitted to the reference's visible skin with hair occluding (face-skin trace
             discarded): cheek 0.535, jaw 0.731, chin-w 0.025. M4a: turn -11.8 -> +12.0 — the head
             must TIP down-left (the shy bow; the old sign swung the chin RIGHT of skull centre,
-            which is the level stare the reviewers kept failing). +12 puts the chin ~24px left
-            of skull centre; the yaw read is carried by the far eye being 0.75x, not by turn.
+            which is the level stare the reviewers kept failing). M4b: 12 -> 15 — the M4a
+            reviewers still read a level stare at 12 (chin 29px left is below the readability
+            threshold at this scale); 15 deepens the bow while keeping the fitted jaw values
+            (cheek/jaw/chin-w) untouched, and the face diagnostics stay clean
+            (M4a's warning was about breaking the FITTED cheek, not about the axis).
+            The yaw read is carried by the far eye being ~0.86x, not by turn.
             Re-fitted after the
             hair became a family: the new hair occludes the skin differently, and the fit rose
             0.552 -> 0.575 (the old value was scored against the traced hair). The head box is
@@ -148,36 +159,48 @@ draw:
   # This is a 3/4 view, so the far eye is 0.75x the near one and the two are placed separately
   # -- NOT `mirror-of`, which would force them equal.
   - {eye: eyeR, host: head, at: [head.cx + 0.695*head.rx, head.cy + 0.035*head.ry],
-     w: 0.305*head.w, h: 0.168*head.h, tilt: -4, almond: 0.55, iris-w: 0.52, glints: 2,
-     lash-w: 0.22,
-     sclera-fill: "#fdf2f9", iris-top-fill: "#4470b3", iris-bot-fill: "#ef92ae",
+     w: 0.288*head.w, h: 0.168*head.h, tilt: -4, almond: 0.55, iris-w: 0.52, glints: 2,
+     lash-w: 0.30,
+     sclera-fill: "#fdf2f9", iris-top-fill: "#4470b3", iris-bot-fill: "#4470b3",
      pupil-fill: "#241a2c", lash-fill: "#0a0e18", refl-fill: "#62c7a8", glint-fill: "#ffffff",
-     z: features, desc: "near eye — layered almond, two-tone iris, tapered one-sided lash"}
+     z: features, desc: "near eye — layered almond, two-tone iris, tapered one-sided lash.
+            M4b: w 0.305 -> 0.288 and lash-w 0.22 -> 0.30 — rev 2 read the right eye as visibly
+            the larger (a 0.76 ratio reads as an error even though the reference's apertures
+            measure it), and the downcast read needs a lash band heavy enough to cover the iris
+            top (the M4a 0.22 left the iris fully open: the level stare). iris-bot now the same
+            blue as iris-top: the pink lower wedge read as an odd red artefact (rev 2), and the
+            reference's own pink there is the LID, not the iris"}
   - {eye: eyeL, host: head, at: [head.cx - 0.568*head.rx, head.cy - 0.018*head.ry],
-     w: 0.232*head.w, h: 0.128*head.h, tilt: -4, almond: 0.52, iris-w: 0.34, glints: 1,
-     lash-w: 0.22,
-     sclera-fill: "#fdf2f9", iris-top-fill: "#4470b3", iris-bot-fill: "#ef92ae",
+     w: 0.248*head.w, h: 0.145*head.h, tilt: -4, almond: 0.52, iris-w: 0.34, glints: 1,
+     lash-w: 0.30,
+     sclera-fill: "#fdf2f9", iris-top-fill: "#4470b3", iris-bot-fill: "#4470b3",
      pupil-fill: "#241a2c", lash-fill: "#0a0e18", refl-fill: "#62c7a8", glint-fill: "#ffffff",
-     z: features, desc: "far eye — 0.75x the near one (3/4 view), placed independently"}
+     z: features, desc: "far eye — M4b: 0.75x -> ~0.86x the near one (w 0.232 -> 0.248, h 0.128
+            -> 0.145), lash 0.22 -> 0.30, iris-bot unified — the far eye must stay smaller (3/4
+            view) but 0.76 read as a defect; 0.86 keeps the turn readable without the mismatch"}
   - {stroke: browR,
-     spine: [[eyeR.outerx + 0.05*eyeR.w, eyeR.topy - 0.34*eyeR.h],
-             [eyeR.innerx - 0.10*eyeR.w, eyeR.topy - 0.12*eyeR.h]],
-     w: 0.075*eyeR.h, ink: "#241d26", z: features, desc: "near brow, off the eye's own anchors"}
+     spine: [[eyeR.outerx + 0.05*eyeR.w, eyeR.topy - 0.16*eyeR.h],
+             [eyeR.innerx - 0.10*eyeR.w, eyeR.topy - 0.30*eyeR.h]],
+     w: 0.075*eyeR.h, ink: "#241d26", z: features, desc: "near brow — M4b: slant INVERTED (inner
+            end higher than outer). The old down-to-centre slant read as stern, the opposite of
+            the shy bow; the worried/shy brow rises toward the nose"}
   - {stroke: browL,
-     spine: [[eyeL.outerx + 0.05*eyeL.w, eyeL.topy - 0.30*eyeL.h],
-             [eyeL.innerx - 0.10*eyeL.w, eyeL.topy - 0.10*eyeL.h]],
-     w: 0.075*eyeL.h, ink: "#241d26", z: features, desc: "far brow — the far eye is not mirrored, so neither is it"}
+     spine: [[eyeL.outerx + 0.05*eyeL.w, eyeL.topy - 0.14*eyeL.h],
+             [eyeL.innerx - 0.10*eyeL.w, eyeL.topy - 0.28*eyeL.h]],
+     w: 0.075*eyeL.h, ink: "#241d26", z: features, desc: "far brow — same inverted slant as the
+            near one; the far eye is not mirrored, so neither is it"}
   - {stroke: nose,
      spine: [[head.cx - 0.10*head.rx, head.cy + 0.42*head.ry],
              [head.cx - 0.20*head.rx, head.cy + 0.50*head.ry]],
      w: 2.8, ink: "#8a7460", z: features,
      desc: "nose tick — canon A: nose at 0.73 of head height from the skull top"}
   - {stroke: mouth,
-     spine: [[head.cx - 0.02*head.rx, head.cy + 0.772*head.ry],
-             [head.cx + 0.05*head.rx, head.cy + 0.786*head.ry]],
+     spine: [[head.cx - 0.07*head.rx, head.cy + 0.772*head.ry],
+             [head.cx - 0.005*head.rx, head.cy + 0.786*head.ry]],
      w: 3.2, ink: "#8a7460", z: features,
-     desc: "mouth — canon A height; M4a: shorter and lighter (0.07 rx wide, w 3.0): the reference's
-            mouth is a small shy mark, and the reviewer-failing 'blank stare' is part wide mouth"}
+     desc: "mouth — canon A height; M4a: shorter and lighter (the reference's mouth is a small
+            shy mark). M4b: shifted left of centre (−0.07 rx) — the bowed head carries the mouth
+            with it; a centre mouth under a turned face reads as a stare"}
 
   # ---------------------------------------------------------------- hair
   # The hair is THREE instances of the `hair-mass` family — one silhouette each, as the vocabulary
@@ -355,29 +378,33 @@ draw:
   #     wrapping the knee bulge around y[750,930], NOT a tent down to y980.
   -
     {ribbon: underskirt,
-     spine: [[140, 880], [300, 870], [470, 885], [710, 950]],
-     w: [150, 170, 165, 125], fill: "#2d4e67", z: skirt-dark,
+     spine: [[140, 880], [300, 870], [470, 882], [865, 930]],
+     w: [150, 170, 165, 152], fill: "#2d4e67", z: skirt-dark,
      desc: "navy undermass lying ACROSS the lap — the measured diagonal band, highest at the knee
-            end (y794 at x220), descending under the apron to the right. The band across the thighs
-            is what the reviewers asked the seated pose to show"}
+            end (y794 at x220), descending under the apron to the right. M4b: right end extended
+            x710 -> x865 — the reference's mass continues under the hand (its zone x720-880/
+y880-1000 is 91% non-background, dark tones), and the hand must rest ON the mass: E[6] fails
+            while the hand sits beside the mass's edge with background under it"}
   # One cloth-covered leg: hip under the apron, knee pressing out at lower-left, drawn BEFORE the
   # skirt so the apron hem drapes over the thigh while the knee lobe reads below it. Fill is the
   # SKIRT'S OWN cloth (#d2e2d8) because the reference shows no skin on the legs — the knee reads as
   # the skirt bulging over it, with the knee highlight one shade darker as the fold.
   -
-    {leg: legL, spine: [[640, 775], [360, 855], [215, 950]],
-     w: [170, 185, 145],
+    {leg: legL, spine: [[600, 770], [300, 860], [140, 960]],
+     w: [170, 185, 150],
      fill: "#d2e2d8", stroke: "#252a33", sw: 2.4, knee: 1, knee-fill: "#c3d8ca", z: leg,
      desc: "left leg seated toward the viewer-left — hip under the apron, knee pressing the cloth
             out below the hem, shin to the lower-left, at the measured drape-lobe scale (reference
-            lap mass ~244px across). The old legR was a 76x115px sliver the pleats tent hid"}
+            lap mass ~244px across). M4b: the whole gesture shifts ~60px left so the knee lobe
+            CLEARS the petal cluster's cover (x212) — M4a's knee was real but 90% of it sat under
+            the petals, and what peeked out was the 76px sliver the reviewers called detached"}
   # M3d: the knee STILL did not read — the petal cluster (skirt-front) covers x212-400 y698-1024,
   # exactly where the cloth knee was. The reference shows the knee pressing out to the LEFT of the
   # petals with skin at the press point (measured: 12k skin px below y800). So the shin ends in a
   # skin lobe placed left of the petal cluster's cover, outside the apron: a leg, finally, below
   # the hem — cloth thigh, skin knee, one gesture.
-  - {blob: knee-skin, spine: [[300, 908], [172, 966]],
-     w: 105, fill: "#e8d7bd", z: leg,
+  - {blob: knee-skin, spine: [[255, 905], [130, 968]],
+     w: 115, fill: "#e8d7bd", z: leg,
      desc: "the knee pressing out of the cloth at lower-left — a skin lobe continuous with the
             cloth thigh (legL), outside the apron and left of the petal cluster, so the leg reads
             below the hem as the reference's does (skin at the press point)"}
