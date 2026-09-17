@@ -833,3 +833,72 @@ M2 z-order fix), `hair-mass` can cover the crown; in the reference the crown is 
 the brim with the hair below it. Candidate fix: the crown needs to paint *above* the hair while the
 brim stays below it — i.e. the hat's two parts belong on different sides of the hair, which is the same
 P17 z-split logic the brim already uses. Recorded for the hat work.
+
+## M3b exit verification (parent, resuming after session restart)
+
+The previous session ended after the M3b writer's evidence landed but before it was verified and
+reviewed. Verification, done by the parent:
+
+- **Reproduction:** `relate.py spec.yaml → render --size 1024x1024` reproduces
+  `evidence/m3b-final.png` **byte-identical**. The writer's render is genuine. (First two render
+  attempts hung — a stale `chrome-headless-shell` process; killed it and rendering is normal again.)
+- **G2 alarm FIRES:** coverage **0.535** vs floor 0.571 (floor − 0.01 = 0.561). color_dist 59.3 OK,
+  edge_f1 0.213 (diagnostic only).
+- **Alarm located and explained structurally, not tuned.** Per-cell coverage loss vs the M2 floor is
+  concentrated in the lower lap (worst cells: x512/y768 0.63→0.02, x512/y896 0.55→0.07, x384/y896
+  0.55→0.26, x640/y896 0.55→0.07). Pixel inspection of the worst cell shows the mechanism: the
+  reference there is mostly pale field **with small dark details** (fold/shadow/hair-tip streaks).
+  M2's broad dark lap fills covered those dark reference pixels *accidentally*; M3b's corrected pale
+  lap with the occlusion fix no longer paints dark there, so those reference pixels are unmatched.
+  Two components, to be weighed by the reviewers and measurement, not by the metric:
+  1. partly a **false alarm** — M2 was being credited for wrong-coloured masses that happened to
+     match dark detail;
+  2. partly a **real omission** — the navy underskirt/shadow detail does not show where the
+     reference is genuinely dark in the lap (candidate next slice: extend/shade the underskirt
+     where the reference's lap is dark, a structural statement, not a metric nudge).
+- Verdict deferred to the rubric (D30: G8 primary, G2 alarm ⇒ investigate, and this investigation is
+  the record). Two independent sight-proven reviewers dispatched on the standard bundle.
+
+### M3b rubric verdict (rubric v2, first use) — M3 does NOT exit
+
+Both reviewers SIGHTED: all three proof facts check against the repo's measurements (mint wave,
+right edge ≈x700–720 vs measured 718; seated right-of-centre, head upper-right; salmon shard
+x≈250–400/y≈700–950). Bundle: `evidence/check/` (regenerated from the verified `m3b-final.png`).
+CLIP similarity 0.8356 — no regression (rubric Part III table agrees at 0.836).
+
+| axis | rev 1 | rev 2 | spread |
+| --- | --- | --- | --- |
+| A · subject identity | 2 | 4 | **2 — CONTESTED, settled below** |
+| **B · human figure** | **1** | **2** | 1 | → target B ≥ 4 **NOT met** |
+| C · silhouette coherence | 3 | 3 | 0 |
+| D · feature legibility | 4 | 3 | 1 |
+| E · occlusion correctness | 5 | 4 | 1 | → target E ≥ 4 met |
+| F · style + composition | 3 | 3 | 0 |
+
+**A settled by measurement → 2 (rev 1's score).** rev 2's A=4 contains an arithmetic error (it
+applies its own −1 face deduction yet writes 4, so its un-deducted claim was 3), and it credits
+token 4 (seated pose) while agreeing with rev 1 that *no leg or knee below the hem is readable*.
+Measurement: the drawn knee is one 76×115 px skin blob at (470,904); the reference's lap mass in
+the lower-left is ≈244×244 px at (207,780) — a sliver in the wrong place cannot carry the token.
+**Recorded A = 2.**
+
+**E is real progress (M2 floor scored E≈1.5–2): 5 and 4.** The hat-z, hair-over-shoulder, arm-front,
+bow-front and hand-front relationships all now read. This is the occlusion work landing.
+
+**Why M3 still fails — B=1/2 against a target of 4.** Both reviewers independently:
+- no readable knee/leg below the hem;
+- the left arm is missing entirely (only the viewer-right arm exists);
+- a floating purple bar (≈x60–590, y260–430) attaches to nothing (C's one lost item too);
+- the mint field is a flat tilted ellipse, not the reference's sweeping wave (F's one lost item).
+rev 1's one change: *draw the seated lap and knees reaching lower-left under the pale skirt, dark
+mass across them.* rev 2's: *redraw the mint field as one sweeping wave anchored to the left edge
+with curled tails, streaming hair strands attached to the head.* Both are one-sentence structural
+statements — **S1 does not fire**, the run continues.
+
+Also recorded: both reviewers call the face a vacant forward stare, not the target's shy downcast
+look (the −1 on A twice; D denied its 5). And rev 1 reads the hat as one hat while rev 2 does not —
+the D-anchors borderline noted at M3a persists.
+
+**Verdict: M3b is better (E) and not enough (B). M3 stays open. Next slice = the lower body's
+readability (lap/knee at reference scale and position) + the left-half structure (wave, hair
+strands, purple bar).**

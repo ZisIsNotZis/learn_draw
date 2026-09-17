@@ -1,15 +1,15 @@
-art:    .scratch/13-assembly/evidence/m1-final.png
-bundle: .scratch/13-assembly/evidence/check
+art:    .scratch/13-assembly/evidence/m3b-final.png
+bundle: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check
 
 images (feed these, and nothing else):
-  .scratch/13-assembly/evidence/check/side-by-side.png  -- whole frame, ref beside draft
-  .scratch/13-assembly/evidence/check/draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale)
-  .scratch/13-assembly/evidence/check/region-1.png  -- worst-region #1 at (896,64,64,64) mean-dist 203, 2.0x
-  .scratch/13-assembly/evidence/check/region-2.png  -- worst-region #2 at (256,768,64,64) mean-dist 191, 2.0x
-  .scratch/13-assembly/evidence/check/region-3.png  -- worst-on-drawn #3 at (512,768,64,64) mean-dist 180, 2.0x
+  /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/side-by-side.png  -- whole frame, ref beside draft
+  /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale)
+  /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-1.png  -- worst-region #1 at (384,832,64,64) mean-dist 222, 2.0x
+  /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-2.png  -- worst-region #2 at (704,960,64,64) mean-dist 190, 2.0x
+  /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-3.png  -- worst-on-drawn #3 at (384,384,64,64) mean-dist 140, 2.0x
 
-metrics (breakage alarm only, never a target): {'precision': 0.174, 'recall': 0.054, 'edge_f1': 0.082, 'color_dist': 68.8, 'coverage': 0.528}
-vs recorded best: edge_f1 0.252 -> 0.082 (-0.170) | coverage 0.514 -> 0.528 (+0.014) | precision 0.322 -> 0.174 (-0.148) | recall 0.207 -> 0.054 (-0.153) | color_dist 62.8 -> 68.8 (+6.000)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/05-portrait-scene/evidence/current.png]
+metrics (breakage alarm only, never a target): {'precision': 0.304, 'recall': 0.164, 'edge_f1': 0.213, 'color_dist': 59.3, 'coverage': 0.535}
+vs recorded best: edge_f1 0.164 -> 0.213 (+0.049) | coverage 0.571 -> 0.535 (-0.036) | precision 0.335 -> 0.304 (-0.031) | recall 0.108 -> 0.164 (+0.056) | color_dist 59.6 -> 59.3 (-0.300)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/m2-final.png]
 
 reviewer protocol - do not skip:
   Give ONLY the images above to a FRESH-context reviewer with no other context.
