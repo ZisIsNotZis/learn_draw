@@ -1,11 +1,13 @@
 # STATUS — where this project is right now
 
-**One line:** **M3 EXITED 2026-09-17** — rubric B 4.5 / E 4 across both sight-proven reviewers
-(24/30, no contested axes). What moved B from 2 to 4.5 was the reformulated writer protocol:
-mandatory render-time pixel self-checks of every claimed visual fact before reporting. The G2
-dele­tion alarm (coverage 0.542 < 0.561) stays open with its recorded structural explanation and
-is M4's opening defect. Next: M4 — the fields (mint wave, downcast head), then the whole-figure
-promotion A/B.
+**One line:** **PARKED 2026-09-17 under D31/S2** for the two remaining read-defects (the mint
+wave's edge, the shy downcast expression). Front artifact = **M4b** (24/24, B 4, E 5, F 3.5;
+commit 4491378's spec, revert-verified byte-identical). Four reviewer-consistent attempts at the
+wave and three at the expression each produced shapes that MEASURE correctly and FAIL to read —
+M4c's edge-profile rebuild REGRESSED to 20/20 and was kept only as a probe. The CLIP similarity
+alarm fired (0.8851→0.8273) before the gate confirmed the regression: instrument validated.
+Everything else on M4's list has landed: hand-on-lap (E 5), eyes equal, neck connected, arms
+attached, hat one-hat, mid-frame tails.
 
 Last updated: 2026-09-17 · Direction lives in `docs/drawing/roadmap.md` · Milestones M0–M5
 
@@ -39,7 +41,7 @@ It is a **floor and an alarm**, never a target (roadmap R6).
 | **M1** recover the baseline's composition | the whole figure, coarsely, flat fills | ✅ **exit criteria met 2026-09-15 — baseline not promoted.** Coverage 0.528 vs 0.514 (nothing deleted); the baseline is still the better drawing (two blind reviewers, and the grid measurement agrees). Artifact: `.scratch/13-assembly/evidence/m1-final.png`; gates + rollbacks in `13-assembly/log.md` |
 | **M2** beat the baseline on the head | jaw/eyes/lash/hat crown/hair taper | 🔄 **in progress — attempt 2 still not passed.** Attempt 2 found and fixed the brim's real cause (a straight chord split across the disc, now a fold-over rim band — engine gain, kept) and improved every alarm vs attempt 1 (`coverage` 0.529, `color_dist` 65.6). But head-region measurement still favours the baseline (edge_f1 0.422 vs 0.173) because the baseline was **hand-fitted to the reference** while the assembly re-derived values coarsely. **Next: seed the geometry from the reference (D15)** |
 | **M3** body & cloth: rubric B ≥ 4 AND E ≥ 4 (D30) | collar, bow, arms, hands, pleats, seated lap | ✅ **EXITED 2026-09-17** (B 4.5, E 4; M3d verdict in `13-assembly/log.md`). Floor not promoted — that is M4's A/B |
-| **M4** beat the baseline on the fields | soft tier last (invariant 2) | 🔄 opening defects named: mint wave reads as a mound, blank level stare, G2 coverage alarm |
+| **M4** beat the baseline on the fields | soft tier last (invariant 2) | 🔄 **PARKED on S2**: F stuck at 3.5–3 across M4a/b/c; the wave and the expression are the only two defects left, both localised with reviewer prescriptions — see the park note in `13-assembly/log.md` |
 | **M5** withdrawal + stress | 15 → 16 → 17, reference-free | ⬜ blocked by M4 |
 
 ## In flight
@@ -50,13 +52,16 @@ commit → next slice*. A writer's report is always a **claim** until re-verifie
 (M3c: neck, left arm) a report asserted render-visible facts the render contradicted, so writer
 briefs now end with a mandatory pixel self-check of each claimed visual fact (2026-09-17).
 
-**M3 exited; M4 opening.** Writer protocol now includes the mandatory self-check that fixed M3
-(neck/arm/knee/strand pixel checks before reporting). M4's named defects from the M3d reviews:
-the mint field must read as a sweeping S-wave to ≈x718 with curled tails (both reviewers' top
-defect); the face needs the down-left tilt and downcast gaze (the −1 on A in every review since
-M3a); hair must overlap the shoulder; mid-frame ribbon/chest-panel composition restored; and the
-G2 coverage alarm (0.542) closes here or is answered structurally. The whole-figure blind A/B
-promotion is M4's exit act (D7/D10).
+**PARKED (D31/S2), next session's entry point.** Front artifact: M4b (commit 4491378 spec).
+Remaining defects, precisely localised, with reviewer prescriptions stable across four rounds:
+1. **The wave**: the boundary must be a DESIGNED gesture — likely a new vocabulary family
+   authored from the reference's edge samples with true curl geometry (spiral taper ATTACHED to
+   the mass; M4c's detached chips were a regression). Measured edge profiles alone do not read.
+2. **The expression**: eye-opening geometry that survives rendering (lid shapes covering the iris
+   top IN THE RENDER), gated by a reviewer BEFORE the milestone gate — key parameters (pupil-drop,
+   lid-shadow) measurably land but do not read.
+3. Numbers to beat: 24/24, F 3.5. G2 coverage alarm open at 0.556 (M4b state). When wave+gaze
+   land: M4 exit = F ≥ 4, then the whole-figure blind A/B promotion (D7/D10).
 
 The 2026-09-14/15 unsupervised research session is **stopped** (P0).
 
