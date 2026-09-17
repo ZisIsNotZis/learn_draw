@@ -1,4 +1,4 @@
-art:    .scratch/13-assembly/evidence/m3d-final.png
+art:    .scratch/13-assembly/evidence/m4a-final.png
 bundle: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check
 
 images (feed these, and nothing else):
@@ -6,10 +6,10 @@ images (feed these, and nothing else):
   /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale)
   /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-1.png  -- worst-region #1 at (192,960,64,64) mean-dist 213, 2.0x
   /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-2.png  -- worst-region #2 at (768,896,64,64) mean-dist 204, 2.0x
-  /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-3.png  -- worst-on-drawn #3 at (576,768,64,64) mean-dist 132, 2.0x
+  /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-3.png  -- worst-on-drawn #3 at (640,896,64,64) mean-dist 154, 2.0x
 
-metrics (breakage alarm only, never a target): {'precision': 0.297, 'recall': 0.187, 'edge_f1': 0.23, 'color_dist': 57.1, 'coverage': 0.542}
-vs recorded best: edge_f1 0.164 -> 0.23 (+0.066) | coverage 0.571 -> 0.542 (-0.029) | precision 0.335 -> 0.297 (-0.038) | recall 0.108 -> 0.187 (+0.079) | color_dist 59.6 -> 57.1 (-2.500)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/m2-final.png]
+metrics (breakage alarm only, never a target): {'precision': 0.29, 'recall': 0.182, 'edge_f1': 0.223, 'color_dist': 57.8, 'coverage': 0.549}
+vs recorded best: edge_f1 0.164 -> 0.223 (+0.059) | coverage 0.571 -> 0.549 (-0.022) | precision 0.335 -> 0.29 (-0.045) | recall 0.108 -> 0.182 (+0.074) | color_dist 59.6 -> 57.8 (-1.800)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/m2-final.png]
 
 reviewer protocol - do not skip:
   Give ONLY the images above to a FRESH-context reviewer with no other context.

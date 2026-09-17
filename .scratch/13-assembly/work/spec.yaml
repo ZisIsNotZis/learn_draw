@@ -53,13 +53,24 @@ draw:
   # occludes its right end. So: a 4-point band along that centreline, wider mid-frame, its right end
   # running behind the figure. The band's facets are the flat-cel idiom; the soft gradient is M4.
   - {ribbon: field,
-     spine: [[0, 460], [190, 418], [400, 545], [655, 468]],
-     w: [130, 250, 300, 150], fill: "#7dccc1", z: field,
-     desc: "mint field as a sweeping wave: anchored ON the left edge, crest at x190, dip at x400,
-            rising into the figure's cover — the S that makes it read as a wave, not a blob.
-            Centreline from the measured top/bottom edges (M3c note). M3d: the old spine started
-            at x15 (rounded cap short of the edge) and rose monotonically — that is why both
-            reviewers still read a closed blob; a wave needs the crest-dip-rise S"}
+     spine: [[0, 462], [185, 402], [420, 570], [720, 470]],
+     w: [120, 240, 280, 170], fill: "#7dccc1", z: field,
+     desc: "mint field as a sweeping wave: anchored ON the left edge, crest x190, dip x420, rising
+            to the figure's cover at x720. M4a: both M3d reviewers still read a mound because the
+            visible mint stopped ~x560 — the reference's mint reaches x717 at y360-440 (measured).
+            The right crest now rises to x720/w170 (top edge y385), so the wave shows in the
+            measured window between the streamer and the collar, and the dip deepened to 170px
+            (400->570) so the S reads at a glance. Left edge w120: the reference's mint spans
+            y384-501 at the frame edge (≈117px) — the measured value, not a tune"}
+  # M4a: the wave's tail passes BEHIND the lap mass and shows again to its right — the reference's
+  # teal spray x[576,896] y[640,896] (colour-probed). Painted at `field`, so the skirt-dark band
+  # occludes it exactly as the reference occludes its wave behind the lap.
+  - {ribbon: wave-tail,
+     spine: [[610, 660], [720, 730], [830, 855]],
+     w: [70, 90, 55], fill: "#7dccc1", z: field,
+     desc: "the wave's right tail sweeping down behind the lap mass and re-emerging right of it —
+            the reference shows mint there (probed x768-896 y680-896); without it the field's
+            gesture dies at the figure's edge and reads as a ponded blob"}
   # The wave's darker underside band, measured x[12,222] y[732,774] #4ca5b2 — it hugs the top edge of
   # the dark lap mass, so it also separates the field from the lap.
   - {ribbon: field-underside,
@@ -116,11 +127,15 @@ draw:
   # near-symmetric while the visible skin is a 3/4 view. Reported, not hidden — the hair slice has
   # to improve before this can rise.
   - {face: head, at: [head_cx, head_cy], rx: head_half, ry: head_deep,
-     cheek: 0.53456, jaw: 0.72640, chin-w: 0.02523, turn: -11.7888,
+     cheek: 0.53456, jaw: 0.72640, chin-w: 0.02523, turn: 12.0,
      fill: "#f2e9d8", z: head,
      desc: "head: cranium ball + jaw wedge tapering to the chin — the ruler every other size uses;
             jaw shape fitted to the reference's visible skin with hair occluding (face-skin trace
-            discarded): cheek 0.535, jaw 0.731, chin-w 0.025, turn -11.8deg. Re-fitted after the
+            discarded): cheek 0.535, jaw 0.731, chin-w 0.025. M4a: turn -11.8 -> +12.0 — the head
+            must TIP down-left (the shy bow; the old sign swung the chin RIGHT of skull centre,
+            which is the level stare the reviewers kept failing). +12 puts the chin ~24px left
+            of skull centre; the yaw read is carried by the far eye being 0.75x, not by turn.
+            Re-fitted after the
             hair became a family: the new hair occludes the skin differently, and the fit rose
             0.552 -> 0.575 (the old value was scored against the traced hair). The head box is
             PINNED at the measured skull value (P28) — freeing at/rx/ry buys IoU by shrinking the
@@ -133,12 +148,14 @@ draw:
   # This is a 3/4 view, so the far eye is 0.75x the near one and the two are placed separately
   # -- NOT `mirror-of`, which would force them equal.
   - {eye: eyeR, host: head, at: [head.cx + 0.695*head.rx, head.cy + 0.035*head.ry],
-     w: 0.305*head.w, h: 0.185*head.h, tilt: -4, almond: 0.55, iris-w: 0.52, glints: 2,
+     w: 0.305*head.w, h: 0.168*head.h, tilt: -4, almond: 0.55, iris-w: 0.52, glints: 2,
+     lash-w: 0.22,
      sclera-fill: "#fdf2f9", iris-top-fill: "#4470b3", iris-bot-fill: "#ef92ae",
      pupil-fill: "#241a2c", lash-fill: "#0a0e18", refl-fill: "#62c7a8", glint-fill: "#ffffff",
      z: features, desc: "near eye — layered almond, two-tone iris, tapered one-sided lash"}
   - {eye: eyeL, host: head, at: [head.cx - 0.568*head.rx, head.cy - 0.018*head.ry],
-     w: 0.232*head.w, h: 0.140*head.h, tilt: -4, almond: 0.52, iris-w: 0.34, glints: 1,
+     w: 0.232*head.w, h: 0.128*head.h, tilt: -4, almond: 0.52, iris-w: 0.34, glints: 1,
+     lash-w: 0.22,
      sclera-fill: "#fdf2f9", iris-top-fill: "#4470b3", iris-bot-fill: "#ef92ae",
      pupil-fill: "#241a2c", lash-fill: "#0a0e18", refl-fill: "#62c7a8", glint-fill: "#ffffff",
      z: features, desc: "far eye — 0.75x the near one (3/4 view), placed independently"}
@@ -156,10 +173,11 @@ draw:
      w: 2.8, ink: "#8a7460", z: features,
      desc: "nose tick — canon A: nose at 0.73 of head height from the skull top"}
   - {stroke: mouth,
-     spine: [[head.cx - 0.05*head.rx, head.cy + 0.755*head.ry],
-             [head.cx + 0.08*head.rx, head.cy + 0.775*head.ry]],
-     w: 3.4, ink: "#8a7460", z: features,
-     desc: "mouth dash — canon A: 0.85-0.89 of head height; measured dark mark at (682,354)"}
+     spine: [[head.cx - 0.02*head.rx, head.cy + 0.772*head.ry],
+             [head.cx + 0.05*head.rx, head.cy + 0.786*head.ry]],
+     w: 3.2, ink: "#8a7460", z: features,
+     desc: "mouth — canon A height; M4a: shorter and lighter (0.07 rx wide, w 3.0): the reference's
+            mouth is a small shy mark, and the reviewer-failing 'blank stare' is part wide mouth"}
 
   # ---------------------------------------------------------------- hair
   # The hair is THREE instances of the `hair-mass` family — one silhouette each, as the vocabulary
@@ -185,14 +203,15 @@ draw:
   - {hair-mass: hair-main, host: head,
      spine: [[head.cx + 1.49194*head.rx, head.cy - 0.25083*head.ry],
              [head.cx + 1.65501*head.rx, head.cy + 0.88037*head.ry],
-             [head.cx + 2.30679*head.rx, head.cy + 2.22967*head.ry],
-             [head.cx + 3.51211*head.rx, head.cy + 4.16439*head.ry]],
-     w: [0.59393*head.w, 0.74700*head.w, 0.06097*head.w, 0.09714*head.w],
+             [head.cx + 2.35800*head.rx, head.cy + 2.94700*head.ry],
+             [head.cx + 3.12600*head.rx, head.cy + 4.49100*head.ry]],
+     w: [0.59393*head.w, 0.74700*head.w, 0.33600*head.w, 0.15800*head.w],
      side: both, fill: "#3974ab", z: hair-front,
-     desc: "hair main mass — the long fall down the right, fitted as a tapered clump (4-point
-            gesture spine, width 0.59 -> 0.75 -> 0.06 -> 0.10 head-widths): fullest at the
-            shoulder, tapering to the tip at the frame edge; the width profile is the drawing
-            statement"}
+     desc: "hair main mass — the long fall down the right, fitted as a tapered clump; M4a: the
+            fall now REACHES the reference's measured extent (hair band x847-1024 y400-793):
+            the strand keeps ~64px width past the elbow and ends ~y775 ON the forearm, its
+            outline crossing the arm — the reference's hair lies OVER the shoulder, and rev 2's
+            one absent E item was exactly this missing overlap (it ended mid-air at ~y540)"}
   - {hair-mass: hair-lock, host: head,
      spine: [[head.cx - 0.66672*head.rx, head.cy - 0.87132*head.ry],
              [head.cx - 1.42125*head.rx, head.cy + 0.09877*head.ry]],
@@ -311,8 +330,8 @@ draw:
   # discarded. The navy `tail2` is the separate ribbon end hanging from the knot.
   - {bow: bow, at: [667, 530], w: 232, h: 145, spread: 129, tilt: -94,
      loop-len: 0.90, loop-w: 0.90, knot-w: 0.18, knot-h: 0.48,
-     tail-angle: 140, tail-len: 115, tail-w: 60,
-     tail2-angle: 94, tail2-len: 155, tail2-w: 22, tail2-fill: "#2f3c58",
+     tail-angle: 140, tail-len: 190, tail-w: 55,
+     tail2-angle: 94, tail2-len: 185, tail2-w: 22, tail2-fill: "#2f3c58",
      loop-fill: "#d35081", knot-fill: "#c04a78", tail-fill: "#d35081",
      stroke: "#7a2340", sw: 2.4, z: bow,
      desc: "bow as a real structure — two loops pinched at the knot, the knot wrap, and two tails
@@ -336,8 +355,8 @@ draw:
   #     wrapping the knee bulge around y[750,930], NOT a tent down to y980.
   -
     {ribbon: underskirt,
-     spine: [[140, 885], [300, 875], [470, 890], [700, 965]],
-     w: [145, 165, 150, 115], fill: "#2d4e67", z: skirt-dark,
+     spine: [[140, 880], [300, 870], [470, 885], [710, 950]],
+     w: [150, 170, 165, 125], fill: "#2d4e67", z: skirt-dark,
      desc: "navy undermass lying ACROSS the lap — the measured diagonal band, highest at the knee
             end (y794 at x220), descending under the apron to the right. The band across the thighs
             is what the reviewers asked the seated pose to show"}

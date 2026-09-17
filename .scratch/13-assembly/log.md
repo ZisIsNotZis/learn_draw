@@ -1109,3 +1109,86 @@ A/B, per D7/D10, and belongs to M4).
 
 **M3 EXIT RECORDED 2026-09-17. Next: M4 — the fields (soft tier last, invariant 2), opening with
 the mint wave and the downcast head; the whole-figure promotion A/B happens here.**
+
+## M4a — the fields: the wave reaches the figure, the head tips, the hair lands (2026-09-17)
+
+Writer: this slice. Five brief items, each with its drawing statement (invariant 1); every number
+below was probed from `image.jpg` before it entered the spec (P19), and the spec still renders
+with the image deleted (P18 — verified this slice, byte-identical).
+
+1. **The mint wave now REACHES the figure.** Both M3d reviewers read a mound because the visible
+   mint stopped ~x560; the reference's mint reaches **x717 at y360-440** (probed). The right crest
+   rises to x720 (w170, top edge ≈y385), so the wave shows in the measured window between the
+   streamer and the collar; the dip deepened 145→170px (crest y402 → trough y570) so the S reads
+   at a glance. Left edge w120 = the reference's measured 117px span at the frame edge. NEW
+   `wave-tail`: the field's tail sweeps down BEHIND the lap mass and re-emerges right of it —
+   the reference shows teal spray at x[576,896] y[640,896]; without it the gesture died at the
+   figure's edge (that is what "ponded blob" was).
+2. **The head tips down-left.** `turn` −11.8° → **+12.0°**: the old SIGN swung the chin RIGHT of
+   skull centre — the level stare rev 1 kept failing. The chin tip now renders 29px left of the
+   skull centre (self-check). Eyes: `h` 0.185/0.140 → 0.168/0.128 (heavier lid), `lash-w` 0.22
+   both (lash-weighted, downcast). Mouth: shorter and lighter (0.07 rx, w 3.2) — the shy mark.
+   The jaw shape values (cheek/jaw/chin-w, the fitted part) are untouched; only the axis moved.
+3. **Hair lies OVER the shoulder.** The fall kept ~64px width past the elbow and ends ~y775 ON
+   the forearm, outline crossing the arm — the reference's hair band runs x847-1024 y400-793
+   (probed); the old fitted taper vanished at ~y540, mid-air (rev 2's one absent E item).
+4. **Mid-frame tails.** Bow `tail-len` 115→190, `tail2-len` 155→185 — the long ribbon tails the
+   reference shows (rev 1's F6).
+5. **Dark lap mass shows.** Underskirt band w 145/165/150/115 → 150/170/165/125 and its right end
+   lifted to (710,950): the dark band reads between the petals where the reference is genuinely
+   dark. NOT a colour tune — the band's geometry, at the measured top edge.
+
+**Self-check (mandatory protocol): ALL 7 PASS** (`work/m4a-selfcheck.py`, output in
+`evidence/m4a-selfcheck.txt`): wave continuity 0px internal gap, mint extent x701; chin tip 29px
+left; hair on 18/17 arm rows; no stray strand; M3 regressions hold (neck 0 bg rows, knee 7742px,
+arms connected, cuff crosses the bow). Two checker bugs found and fixed while closing the checks
+(a `np.where` index slip that measured the row index instead of the chin x, and a scan window
+that ran past the figure's occlusion) — the checks measure the render, not the intent.
+
+**Metrics (alarm only):** coverage **0.549** (floor 0.571; was 0.542 — right direction, alarm
+still OPEN), color_dist **57.8** (beats the floor's 59.6), edge_f1 0.223, CLIP **0.8851**
+(fourth consecutive rise: 0.8356 → 0.8425 → 0.8479 → 0.8851). G7: zero traced/region nodes.
+Diagnostics: the licensed left-edge `field` crossing (the reference's field is cut by the frame
+too) and two sub-pixel notes (eyeL reflection, the deliberately small mouth).
+
+Evidence: `evidence/m4a-final.png` / `.svg`, `evidence/m4a-selfcheck.txt`, `evidence/check/`
+(regenerated from the final render). No commit (parent verifies).
+
+### M4a rubric verdict — F5 (the wave) still fails; the tilt does not read; M4 open
+
+Both reviewers sighted. Bundle: `evidence/check/` (m4a-final.png). Writer claims verified: byte
+reproduction, P18, G7, metrics (coverage 0.549 — G2 alarm still open; color_dist 57.8 beats floor),
+CLIP **0.8851** (fourth consecutive rise). Self-check: all 7 pass.
+
+| axis | M3d | rev 1 | rev 2 | spread | settled |
+| --- | --- | --- | --- | --- | --- |
+| A | 3.5 | 4 | 4 | 0 | 4 |
+| B | 4.5 | 4 | 4 | 0 | 4 |
+| C | 4.5 | 3 | 5 | **2 — CONTESTED, non-blocking** | — |
+| D | 4 | 4 | 3 | 1 | 3.5 |
+| E | 4 | 4 | 3 | 1 | 3.5 |
+| **F · style+composition (M4's axis)** | 3.5 | **3** | **4** | 1 | **3.5 → target NOT met** |
+| total | 24 | 23 | 23 | | 23/30 |
+
+**The headline result, recorded honestly: both of M4a's flagship changes PASSED their pixel
+self-checks and FAILED the visual read.**
+1. **The wave reached numerically but not visually.** The self-check measured mint pixels to x701;
+   measurement of the LARGEST COMPONENT shows the main mass is x0–550 (97801 px) and the x702
+   reach is a ~38px-thin band (20696 px). Both reviewers read a mound stopping x≈450–520. Lesson:
+   **self-checks must be mass-based (largest-component extent/thickness), never any-pixel
+   extents** — same discipline as D18, one level down.
+2. **The tilt turned the chin 29px left of skull centre and still reads as a level stare** (both
+   reviewers; rev 2 additionally: viewer-right eye larger than left, odd red/pink iris wedge).
+   A 12° gesture turn is below the readability threshold for this face at this scale.
+
+New regressions/watch items: knee-below-hem read LOST again (both reviewers — M3d's weak pass
+could not be re-confirmed; B5 stays the fragile item); rev 2 counts E4/E6 absent (hand beside the
+lap mass, not on it). C contested: rev1's three "floating shapes" sit in zones where the reference
+is 80–91% non-background — measurement cannot settle detachment-in-content; recorded contested,
+non-blocking (C is not M4's named axis).
+
+**M4 stays open (F 3.5). Next (M4b, attempt 2 of 3 on the wave):** (a) rebuild the mint field so
+the MAIN MASS itself sweeps to ≈x718 with wave-scale thickness, a real dip, and curled tails —
+verified by largest-component extent AND thickness ≥120px at mid-wave; (b) the head gesture must
+be readable at arm's length — bigger tilt or feature-level change (downcast lash geometry, eye
+sizes equalised, remove the red iris wedge); (c) re-land the knee read; (d) hand ON the lap mass.

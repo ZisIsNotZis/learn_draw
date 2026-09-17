@@ -1,0 +1,8 @@
+PASS wave           worst internal gap 0px (<=40), mint right extent x701 (>=650)
+PASS tilt           chin tip x659 = 29.0px left of skull centre 688 (>12); lash px near 334, far 318
+PASS hair-shoulder  hair present on 18/17 arm rows y560-700; no hair|bg split at the arm column
+PASS strand         thin isolated components in x60-560/y250-440: none
+PASS neck           fully-background neck rows: 0
+PASS knee           skin lobe below hem: 7742px (>3000)
+PASS arms           fully-bg columns on right-arm rows: 0; left cuff bg rows: 0
+OVERALL: PASS
