@@ -1010,3 +1010,102 @@ points, knee extent) and place by relation to them; (2) after rendering, run the
 (neck band non-background, arm/torso connectivity, skin below hem) and fix until they pass;
 (3) the mint wave must read with a curl, not just touch the left edge. **S1/S2 do not fire** —
 every fix is still a one-sentence structural statement.
+
+## M3d (writer) — the reformulation slice: drawn-but-not-reading, fixed by measurement
+
+Design-level slice after the 3-attempt threshold (parent's M3c verdict). Method: map the RENDER
+pixel-classes first (not the spec's intent), find why each failed part does not read, then make the
+one structural change per part. All values measured from the render or the reference; no metric was
+read until the drawing was done.
+
+**What the pixel map showed.** The "floating left arm" of the reviewers was really THREE detached
+things left of the bow's left edge (x≈576): the mint wave's tip (x≤525), the left twin-tail tip
+(x440–525, hair-back), and the left navy cuff (x560–576) — each with background on its right side.
+And the neck strip of M3a–c (y415–455) sat entirely BELOW the gap it was meant to close.
+
+Changes, each with its drawing statement:
+
+1. **NECK** — the strip now spans y369–429 (under the jaw, into the collar V), x665–730. The fill
+   is the skin's CEL SHADOW (`#cdb69a`, one step under `#e8d7bd`): the neck sits in jaw/collar
+   shadow, and at the light tone the strip was numerically 44.9 from the backdrop — indistinguishable
+   from background, which is exactly why no one saw a neck. The collar was raised 13px (`at` y
+   422.86→410): the reference's collar blue reaches y392–398 at the neck columns (measured median
+   `#96c3d6` at y398–410, x692–722), and its V opening must not open onto backdrop.
+2. **LEFT ARM** — spine shifted right (x565/548/560 → 592/583/595) so the puff sleeve and cuff
+   CROSS the bow's outline: they emerge from behind the bow with no background gap — the shoulder
+   is behind the bow's cover, which is the reference's own occlusion.
+3. **KNEE** — the cloth knee never read because the petal cluster (x212–400, y698–1024) paints
+   exactly over it. New `knee-skin` lobe (105px wide) at the shin end, left of the petals: cloth
+   thigh → skin knee pressing out, one gesture, below the hem, at the measured drape-lobe scale.
+   The reference shows skin at the press point (12k skin px below y800, measured by the parent).
+4. **MINT WAVE** — the old spine started at x15 (rounded cap short of the edge) and rose
+   monotonically: that is a blob, and both reviewers said so. Now anchored ON the left edge (x0)
+   with the crest-dip-rise S (y460→418→545→468): the S is what makes a wave read.
+5. **STREAMER** — re-tapered 5→13→18→22px toward the bow: a ribbon reads from its ROOT (widest at
+   the bow, pointed free end); equal-width blunt ends read as a floating stick.
+6. **TWIN-TAIL TIP** — re-rooted inside the bow's cover so the band crosses the bow's outline;
+   the visible tail is now continuous with the figure instead of ending 50px short of it.
+
+**Self-check (mandatory, new discipline) — `.scratch/13-assembly/work/m3d-selfcheck.py`, output
+`evidence/m3d-selfcheck.txt`: ALL FOUR PASS** on the final render:
+neck worst-row bg fraction 0.32 (< 0.5); left sleeve shares a connected component with the torso
+mass; knee skin region 102×126px below the hem lower-left (≥100); no floating thin component in the
+upper-left box. Each check is a direct pixel test of the reviewer-measured failure it fixes.
+
+**Metrics (after the drawing was done, alarm status honest):** coverage **0.542** (floor 0.571 —
+**G2 deletion alarm still firing**, essentially M3c's 0.546; the lap/apron redo is the deficit, and
+the M3c log's structural explanation stands: the pale lap no longer accidentally matches the dark
+detail M2's fills used to cover); color_dist **57.1** — still BEATS the floor 59.6 (required, held);
+edge_f1 0.230, recall 0.187 (diagnostics only). CLIP not re-run by the writer (parent instrument).
+
+**Gates the writer ran:** P18 PASS — spec renders byte-identical with image.jpg deleted; G7 PASS —
+zero traced/region nodes; diagnostics clean except the licensed `hair-main` CLIPPED (the reference's
+hair also exits the frame edge).
+
+Evidence: `evidence/m3d-final.png` / `.svg`, `evidence/m3d-selfcheck.txt`, `evidence/check/`
+(bundle regenerated from the final render). No commit (parent verifies and commits).
+
+### M3d rubric verdict — **M3 EXITS** (B ≥ 4 and E ≥ 4 across both reviewers, no contested axes)
+
+Both reviewers sighted (3/3 proof facts). Bundle: `evidence/check/` (m3d-final.png).
+Writer's claims re-verified by the parent before review: byte-identical reproduction, P18 pass
+(no-ref render identical), G7 pass, metrics as reported, and the mandatory self-check output
+(`evidence/m3d-selfcheck.txt`) confirmed by independent pixel checks (neck worst-row bg 0.21, no
+fully-background row). CLIP 0.8479 — third consecutive rise (0.8356 → 0.8425 → 0.8479), no alarm.
+
+| axis | M3c | rev 1 | rev 2 | spread | settled |
+| --- | --- | --- | --- | --- | --- |
+| A · subject identity | 3.5 | 3 | 4 | 1 | 3.5 |
+| **B · human figure** | **2** | **5** | **4** | 1 | **4.5 → target ≥4 MET** |
+| C · silhouette coherence | 2 | 5 | 4 | 1 | 4.5 |
+| D · feature legibility | 3.5 | 4 | 4 | 0 | 4 |
+| E · occlusion correctness | 4.5 | 4 | 4 | 0 | **4 → target ≥4 MET** |
+| F · style + composition | 3 | 3 | 4 | 1 | 3.5 |
+| **total** | 18–22/30 | 24 | 24 | | **24/30** |
+
+The reformulated slice worked: the mandatory render-time self-checks are what turned B from 2 to
+4.5 — neck connected (rev 2: "face → tan neck → striped collar → blouse, all contiguous"), both
+arms attach (rev 1: "no background gap at either shoulder"), a knee reads below the hem (weak, but
+both count it), and C's floating-bar item passes in both readings.
+
+**The self-check discipline is now the writer protocol.** One slice with pixel checks moved B more
+than three slices of shape vocabulary. Recorded as the standing method for every future slice.
+
+**Remaining named defects (both reviewers, converging):**
+1. The **mint field still reads as a mound/blob, not the sweeping wave** (rev 1 F5 ✘; rev 2's
+   biggest single defect: "stops near x≈560, flat and empty left half").
+2. The **face is a blank level stare** — rev 1's biggest single defect (A's −1 deduction applied
+   in every review since M3a): the head needs the down-left tilt, downcast lash-weighted eyes.
+3. Hair-over-shoulder overlap does not exist (rev 2's one absent E item — structure, not z-order).
+4. Mid-frame composition (long ribbon tails, frilled chest panels) thinned (rev 1 F6).
+
+**G2 alarm status at exit (explicit, unresolved):** coverage 0.542 < floor − 0.01. The structural
+explanation stands (M2 floor's accidental dark-match credit + the lap's paler colour-mass; zero
+painted pixels were removed). The colour-mass fidelity of the lap/fields is exactly M4's named
+work; the alarm is carried into M4 as its opening defect rather than silently waived or quietly
+tuned away (invariant 4). Milestone exit (named axes + D30 alarms) is recorded with this alarm
+explicitly open — the ratchet floor is NOT moved by M3 (promotion needs a whole-artifact blind
+A/B, per D7/D10, and belongs to M4).
+
+**M3 EXIT RECORDED 2026-09-17. Next: M4 — the fields (soft tier last, invariant 2), opening with
+the mint wave and the downcast head; the whole-figure promotion A/B happens here.**

@@ -53,11 +53,13 @@ draw:
   # occludes its right end. So: a 4-point band along that centreline, wider mid-frame, its right end
   # running behind the figure. The band's facets are the flat-cel idiom; the soft gradient is M4.
   - {ribbon: field,
-     spine: [[15, 443], [220, 484], [430, 540], [640, 420]],
-     w: [120, 250, 300, 140], fill: "#7dccc1", z: field,
-     desc: "mint field as a sweeping wave anchored to the LEFT EDGE — a 4-point band on the measured
-            centreline, thickest mid-frame (250-300px), narrowing into the figure's cover. Replaces
-            the flat tilted ellipse both reviewers named"}
+     spine: [[0, 460], [190, 418], [400, 545], [655, 468]],
+     w: [130, 250, 300, 150], fill: "#7dccc1", z: field,
+     desc: "mint field as a sweeping wave: anchored ON the left edge, crest at x190, dip at x400,
+            rising into the figure's cover — the S that makes it read as a wave, not a blob.
+            Centreline from the measured top/bottom edges (M3c note). M3d: the old spine started
+            at x15 (rounded cap short of the edge) and rose monotonically — that is why both
+            reviewers still read a closed blob; a wave needs the crest-dip-rise S"}
   # The wave's darker underside band, measured x[12,222] y[732,774] #4ca5b2 — it hugs the top edge of
   # the dark lap mass, so it also separates the field from the lap.
   - {ribbon: field-underside,
@@ -85,12 +87,15 @@ draw:
   # spine cannot close a loop) — the S-sweep suggests it, and the pink->blue gradient is a soft
   # field, i.e. M4. The old `hair-left` stroke misread this same band as hair wisps and is gone: the
   # band is the streamer's, not the hair's.
+  # M3d: the streamer read as a FLOATING BAR because both ends were blunt and similar width —
+  # nothing said which end is the root. A ribbon reads from its root: widest at the bow, tapering
+  # to a point at the free end (a cut ribbon end, not a stick end).
   - {ribbon: streamer,
-     spine: [[70, 268], [230, 358], [420, 425], [590, 505]],
-     w: [12, 14, 16, 11], fill: "#3a6ea8", z: ribbon,
-     desc: "the bow's long tail streamer — root curl top-left, blue band sweeping down-right INTO
-            the bow's cover (tip tucks behind the bow). One flat fill from the dominant blue
-            segment; the pink->blue gradient is deferred to M4 (soft tier)"}
+     spine: [[78, 272], [225, 360], [420, 428], [592, 506]],
+     w: [5, 13, 18, 22], fill: "#3a6ea8", z: ribbon,
+     desc: "the bow's long tail streamer — rooted at the bow (widest, 22px) and tapering to a
+            pointed free end top-left (5px): the taper is what says 'ribbon', not 'floating bar'.
+            The pink->blue gradient is deferred to M4 (soft tier)"}
 
   # ---------------------------------------------------------------- the ruler (declared first, painted late)
   # M2: a `face`, not an ellipse. Measured from image.jpg, the visible face is 128px wide at the
@@ -200,15 +205,19 @@ draw:
   # lock that pokes out from behind the figure at (420-520,537-623) (probed #5571ae at (470,570)) —
   # the tip of the left twin-tail passing behind the body. Root it behind the bow's cover, let the
   # tip show over the field (z hair-back), and keep it UNDER the figure like the reference.
+  # M3d: the twin-tail tip read as FLOATING because its visible right edge (x~525) stopped ~50px
+  # short of the bow's left edge (x~576) — background on all sides of the gap. Re-rooted: the spine
+  # now starts INSIDE the bow's cover and the band crosses the bow's outline, so the visible part
+  # is continuous with the figure (emerging from behind it, as the reference reads).
   - {hair-mass: hair-tip, host: head,
-     spine: [[head.cx - 0.30*head.rx, head.cy + 1.72*head.ry],
-             [head.cx - 1.93*head.rx, head.cy + 2.60*head.ry],
-             [head.cx - 2.53*head.rx, head.cy + 2.95*head.ry]],
-     w: [0.32*head.w, 0.29*head.w, 0.18*head.w],
+     spine: [[head.cx - 0.70*head.rx, head.cy + 2.42*head.ry],
+             [head.cx - 1.97*head.rx, head.cy + 2.86*head.ry],
+             [head.cx - 2.81*head.rx, head.cy + 3.13*head.ry]],
+     w: [0.34*head.w, 0.30*head.w, 0.18*head.w],
      side: both, fill: "#3974ab", z: hair-back,
-     desc: "left twin-tail tip emerging left of the lap — root hidden behind the bow, tip showing
-            over the wave. Replaces the old `hair-left` stroke, which misread the streamer's blue
-            band as hair"}
+     desc: "left twin-tail tip — root inside the bow's cover, sweeping down-left to the tip over
+            the wave; the band crosses the bow's outline so nothing floats. Replaces the old
+            `hair-left` stroke, which misread the streamer's blue band as hair"}
 
   # ---------------------------------------------------------------- body: blouse over the hair
   # NOTE (rolled back 2026-09-15): enlarging the cream mass to close the measured deficit made the
@@ -221,16 +230,30 @@ draw:
      desc: "blouse mass, chest to hip — measured pale x[691,874] y[436,688]"}
 
   # ---------------------------------------------------------------- neck (chin into the collar)
-  - {blob: neck, spine: [[frame.w*0.658, frame.h*0.405], [frame.w*0.658, frame.h*0.445]],
-     w: frame.w*0.047, fill: "#e8d7bd", z: neck,
-     desc: "neck from under the jaw into the collar — measured x[656,703] y[417,457]"}
+  # M3d: measured truth — face skin ends y378, collar starts y405, and the band between was
+  # BACKGROUND at every neck column: the head hovered (the M3a defect was never actually fixed;
+  # the old strip y415-455 sat entirely BELOW the gap it was meant to close). The strip now starts
+  # under the jaw (overlapping it; the head paints over the join) and ends inside the collar's
+  # neck-V (the neck paints after the collar, so the skin shows in the V, as a collar opening does).
+  - {blob: neck, spine: [[head.cx + 0.10*head.rx, head.cy + 0.92*head.ry],
+                         [head.cx + 0.09*head.rx, head.cy + 1.45*head.ry]],
+     w: 0.34*head.w, fill: "#cdb69a", z: neck,
+     desc: "neck from under the jaw (y~369) into the collar V (y~429) — measured x-extent
+            665-730; closes the measured 27px background gap that made the head hover. The fill
+            is the skin's CEL SHADOW tone (one step under #e8d7bd): the neck sits in the shadow
+            of the jaw and the collar, and at the light skin tone the strip was numerically and
+            visually indistinguishable from the pale backdrop"}
 
   # ---------------------------------------------------------------- sailor collar (M3a)
   # A collar is a flap with a neck U/V opening and a navy trim band along its outer edge, not a
   # blob. Fitted to the reference's frozen collar masks (traced/collar-pale + collar-trim*) with the
   # occluders derived from this spec's own `layers:` order, then the traces discarded (D24). The
   # 3/4 view is carried by `turn` (the neck V sits left of the collar centre, under the bow).
-  - {collar: collar, at: [784.12, 422.86], w: 188.45, h: 81.44,
+  # M3d: the reference's collar blue reaches y392-398 at the neck columns (measured median
+  # #96c3d6 at y398-410, x692-722) — 13px higher than the fitted centre put it, which is what left
+  # the V opening as backdrop between chin and collar. Raised to the measured height; the neck
+  # strip fills the V as before.
+  - {collar: collar, at: [784.12, 410.0], w: 188.45, h: 81.44,
      neck: 0.42060, v: 0.37127, trim: 0.32131, turn: -0.48411, tilt: -13.46198,
      fill: "#96c3d6", trim-fill: "#374b68", stroke: "#252a33", sw: 2.4, z: collar,
      desc: "sailor collar — flap + neck V opening + navy trim band along the outer U edge; the V is
@@ -267,15 +290,19 @@ draw:
   # shows only the LEFT PUFF SLEEVE + NAVY CUFF at x[520,585] y[615,690]; the forearm is hidden
   # behind the ruffle placket. So the limb paints at `arm-back` (UNDER the blouse — the new layer),
   # while its sleeve and cuff paint ABOVE it — the reference's own occlusion, declared in the family.
-  - {arm: armL, spine: [[565, 475], [548, 595], [560, 672]],
+  # M3d: the visible cuff sat at x560-576, ~20px of background short of the bow's left edge —
+  # a detached chip, which is why reviewers read 'left arm floats'. The spine shifts right so the
+  # sleeve and cuff CROSS the bow's outline: they emerge from behind the bow with no background
+  # gap, which is the anatomical truth too (the shoulder is behind the bow's cover).
+  - {arm: armL, spine: [[592, 480], [583, 600], [595, 675]],
      w: [52, 58, 44],
      sleeve: 0.42, puff: 1.10, cuff-h: 30, cuff-at: 0.40, cuff-pad: 0.024,
      fill: "#d7decc", sleeve-fill: "#e1e7dc", cuff-fill: "#2d3b58",
      stroke: "#252a33", sw: 2.4,
      z: arm-back, z-sleeve: sleeve, z-cuff: cuff,
-     desc: "left arm — shoulder to wrist, tucked BEHIND the blouse (limb at arm-back) with only the
-            puff sleeve and navy cuff showing, exactly as the reference occludes it; the bow covers
-            the shoulder join"}
+     desc: "left arm — shoulder to wrist tucked BEHIND the blouse; its puff sleeve and navy cuff
+            emerge from behind the bow's left edge (crossing it, no background gap), exactly the
+            reference's occlusion: the shoulder join is hidden by the bow"}
 
   # ---------------------------------------------------------------- bow (M3a: a real structure)
   # Replaces the three flat ellipses. A bow is two pinched loops + a knot + tails; the loops meet AT
@@ -319,12 +346,22 @@ draw:
   # SKIRT'S OWN cloth (#d2e2d8) because the reference shows no skin on the legs — the knee reads as
   # the skirt bulging over it, with the knee highlight one shade darker as the fold.
   -
-    {leg: legL, spine: [[630, 790], [370, 870], [215, 955]],
-     w: [165, 160, 140],
+    {leg: legL, spine: [[640, 775], [360, 855], [215, 950]],
+     w: [170, 185, 145],
      fill: "#d2e2d8", stroke: "#252a33", sw: 2.4, knee: 1, knee-fill: "#c3d8ca", z: leg,
-     desc: "left leg seated toward the viewer-left — hip under the apron, knee at (370,870) pressing
-            the cloth out below the hem, shin to (240,960), at the measured drape-lobe scale. The
-            old legR was a 76x115px sliver the pleats tent hid completely"}
+     desc: "left leg seated toward the viewer-left — hip under the apron, knee pressing the cloth
+            out below the hem, shin to the lower-left, at the measured drape-lobe scale (reference
+            lap mass ~244px across). The old legR was a 76x115px sliver the pleats tent hid"}
+  # M3d: the knee STILL did not read — the petal cluster (skirt-front) covers x212-400 y698-1024,
+  # exactly where the cloth knee was. The reference shows the knee pressing out to the LEFT of the
+  # petals with skin at the press point (measured: 12k skin px below y800). So the shin ends in a
+  # skin lobe placed left of the petal cluster's cover, outside the apron: a leg, finally, below
+  # the hem — cloth thigh, skin knee, one gesture.
+  - {blob: knee-skin, spine: [[300, 908], [172, 966]],
+     w: 105, fill: "#e8d7bd", z: leg,
+     desc: "the knee pressing out of the cloth at lower-left — a skin lobe continuous with the
+            cloth thigh (legL), outside the apron and left of the petal cluster, so the leg reads
+            below the hem as the reference's does (skin at the press point)"}
   # The skirt: a GENERATOR (scripts/relate.py `pleats`), not laid shapes. `count` is the number of
   # hem scallops, `depth` their amplitude, `taper` how they open from waist to hem, `seed` the phase;
   # the hem, the navy trim band and the crease lines are all sampled from that one wave, so changing

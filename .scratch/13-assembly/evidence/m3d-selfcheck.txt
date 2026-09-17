@@ -1,0 +1,5 @@
+1. neck    worst-row background fraction in x680-740, y376-405: 0.32  -> PASS
+2. left arm left-sleeve region shares a component with the torso mass: True  -> PASS
+3. knee    skin region below hem lower-left: (np.int32(169), np.int32(870), np.int32(102), np.int32(126), np.int32(7720))  -> PASS
+4. strand  floating thin component in x60-560/y250-440: none  -> PASS
+OVERALL: PASS
