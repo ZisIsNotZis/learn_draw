@@ -29,8 +29,10 @@
 
 frame: {w: 1024, h: 1024}
 
-layers: [bg, field, ribbon, hair-back, skirt-dark, leg, skirt, skirt-front, blouse, collar, arm,
-         sleeve, cuff, hand, neck, bow, hat, hat-front, head, features, hair-front]
+# M3c adds `arm-back`: the left forearm is hidden BEHIND the blouse (the reference shows only its
+# puff sleeve and navy cuff), so the limb paints under the blouse while its sleeve/cuff paint over it.
+layers: [bg, field, ribbon, hair-back, skirt-dark, leg, skirt, skirt-front, arm-back, blouse, collar,
+         arm, sleeve, cuff, hand, neck, bow, hat, hat-front, head, features, hair-front]
 
 vars:
   # ---- measured frame anchors: the "setting the frame" use of a reference (abstraction.md)
@@ -45,16 +47,50 @@ draw:
      desc: "flat backdrop — border median of the reference; the bottom-right drifts darker in the ref, deferred to M4"}
 
   # ---------------------------------------------------------------- field (left mass)
-  - {ellipse: field, at: [frame.w*0.365, frame.h*0.530], rx: frame.w*0.330, ry: frame.h*0.175,
-     fill: "#7dccc1", z: field,
-     desc: "mint field mass — sized to the measured AREA (126296px), not its bbox: fitting the bbox
-            over-fills by 56% and puts mint where the reference has figure. Softening is M4"}
+  # M3c: the mint mass is a WAVE, not an ellipse — both rubric reviewers failed it on exactly this
+  # (rubric F[5] names the test). Measured top edge: (20,384)(150,350)(300,400)(450,444)(590,392);
+  # bottom edge: (20,501)(150,575)(300,651)(520,676) — it thickens to mid-frame and the figure
+  # occludes its right end. So: a 4-point band along that centreline, wider mid-frame, its right end
+  # running behind the figure. The band's facets are the flat-cel idiom; the soft gradient is M4.
+  - {ribbon: field,
+     spine: [[15, 443], [220, 484], [430, 540], [640, 420]],
+     w: [120, 250, 300, 140], fill: "#7dccc1", z: field,
+     desc: "mint field as a sweeping wave anchored to the LEFT EDGE — a 4-point band on the measured
+            centreline, thickest mid-frame (250-300px), narrowing into the figure's cover. Replaces
+            the flat tilted ellipse both reviewers named"}
+  # The wave's darker underside band, measured x[12,222] y[732,774] #4ca5b2 — it hugs the top edge of
+  # the dark lap mass, so it also separates the field from the lap.
+  - {ribbon: field-underside,
+     spine: [[12, 753], [120, 748], [222, 760]],
+     w: [46, 44, 30], fill: "#4ca5b2", z: field,
+     desc: "teal underside band of the wave — the darker second tone where the wave turns under"}
+  # The wave's swirl tail: a pale sliver sweeping up-right on the wave, with its own small purple
+  # curl (measured ≈(20-227,507-603) and (107-160,470-530); colours probed). LOW CONFIDENCE: the
+  # sliver is 13-20px thin and my probes kept hitting the wave, so its width is a readable default.
+  - {ribbon: swirl-tail,
+     spine: [[25, 590], [120, 552], [220, 512]],
+     w: [16, 22, 12], fill: "#eef7f0", z: field,
+     desc: "the field's pale swirl tail — rubric F[6]: the mid-frame swirl tails must not be deleted"}
+  - {ribbon: swirl-curl,
+     spine: [[150, 472], [120, 505], [145, 532]],
+     w: [18, 24, 10], fill: "#8984a6", z: field,
+     desc: "the small purple curl at the swirl tail's root — measured #8984a6"}
 
-  # ---------------------------------------------------------------- ribbon sweep (over the field, behind the figure)
-  - {blob: ribbon-sweep,
-     spine: [[frame.w*0.07, frame.h*0.265], [frame.w*0.25, frame.h*0.355], [frame.w*0.46, frame.h*0.43]],
-     w: frame.w*0.085, fill: "#6673b8", z: ribbon,
-     desc: "long ribbon sweeping the left of the frame — measured band x[102,470] y[302,444]"}
+  # ---------------------------------------------------------------- bow streamer (over the field, behind the figure)
+  # M3c: the old `ribbon-sweep` was a straight purple BAR that attached to nothing (both reviewers;
+  # it cost C its one lost item). Measured truth: it is ONE long streamer — a spiral curl at the top
+  # left (30-160,170-260, pink) whose band sweeps down-right as the BLUE segment x[250,480]
+  # y[360,443] (measured thickness 11-16px, #3a6ea8) and runs into the bow's left loop. So: root it
+  # at the bow and give it the measured taper; the curl's SPIRAL is beyond the family (a ribbon
+  # spine cannot close a loop) — the S-sweep suggests it, and the pink->blue gradient is a soft
+  # field, i.e. M4. The old `hair-left` stroke misread this same band as hair wisps and is gone: the
+  # band is the streamer's, not the hair's.
+  - {ribbon: streamer,
+     spine: [[70, 268], [230, 358], [420, 425], [590, 505]],
+     w: [12, 14, 16, 11], fill: "#3a6ea8", z: ribbon,
+     desc: "the bow's long tail streamer — root curl top-left, blue band sweeping down-right INTO
+            the bow's cover (tip tucks behind the bow). One flat fill from the dominant blue
+            segment; the pink->blue gradient is deferred to M4 (soft tier)"}
 
   # ---------------------------------------------------------------- the ruler (declared first, painted late)
   # M2: a `face`, not an ellipse. Measured from image.jpg, the visible face is 128px wide at the
@@ -160,11 +196,19 @@ draw:
      desc: "hair cheek lock — the narrow strand falling down the left of the face, fitted as a
             third tapered clump; its gap to the fringe is the pink face pocket (skin through the
             notch), which is why the hair is several instances, not one silhouette"}
-  - {stroke: hair-left,
-     spine: [[frame.w*0.175, frame.h*0.32], [frame.w*0.35, frame.h*0.385], [frame.w*0.565, frame.h*0.42]],
-     w: frame.w*0.014, ink: "#3974ab", z: hair-front,
-     desc: "hair sweeping left across the shoulder — measured x[148,600] y[305,443] but only 13.7% filled,
-            i.e. wisps not a mass: a thin stroke, not a 105px ribbon (which read as a slab)"}
+  # The hair's left-side presence: the reference's only left-side HAIR below the head is one blue
+  # lock that pokes out from behind the figure at (420-520,537-623) (probed #5571ae at (470,570)) —
+  # the tip of the left twin-tail passing behind the body. Root it behind the bow's cover, let the
+  # tip show over the field (z hair-back), and keep it UNDER the figure like the reference.
+  - {hair-mass: hair-tip, host: head,
+     spine: [[head.cx - 0.30*head.rx, head.cy + 1.72*head.ry],
+             [head.cx - 1.93*head.rx, head.cy + 2.60*head.ry],
+             [head.cx - 2.53*head.rx, head.cy + 2.95*head.ry]],
+     w: [0.32*head.w, 0.29*head.w, 0.18*head.w],
+     side: both, fill: "#3974ab", z: hair-back,
+     desc: "left twin-tail tip emerging left of the lap — root hidden behind the bow, tip showing
+            over the wave. Replaces the old `hair-left` stroke, which misread the streamer's blue
+            band as hair"}
 
   # ---------------------------------------------------------------- body: blouse over the hair
   # NOTE (rolled back 2026-09-15): enlarging the cream mass to close the measured deficit made the
@@ -218,6 +262,21 @@ draw:
             the reference's mauve hand shape is partly under a translucent petal and cannot be
             separated by colour, so its size/pose is a readable default, not a measurement"}
 
+  # ---------------------------------------------------------------- left upper limb (M3c)
+  # Both reviewers counted the left arm ABSENT (B checklist item 2). Measured truth: the reference
+  # shows only the LEFT PUFF SLEEVE + NAVY CUFF at x[520,585] y[615,690]; the forearm is hidden
+  # behind the ruffle placket. So the limb paints at `arm-back` (UNDER the blouse — the new layer),
+  # while its sleeve and cuff paint ABOVE it — the reference's own occlusion, declared in the family.
+  - {arm: armL, spine: [[565, 475], [548, 595], [560, 672]],
+     w: [52, 58, 44],
+     sleeve: 0.42, puff: 1.10, cuff-h: 30, cuff-at: 0.40, cuff-pad: 0.024,
+     fill: "#d7decc", sleeve-fill: "#e1e7dc", cuff-fill: "#2d3b58",
+     stroke: "#252a33", sw: 2.4,
+     z: arm-back, z-sleeve: sleeve, z-cuff: cuff,
+     desc: "left arm — shoulder to wrist, tucked BEHIND the blouse (limb at arm-back) with only the
+            puff sleeve and navy cuff showing, exactly as the reference occludes it; the bow covers
+            the shoulder join"}
+
   # ---------------------------------------------------------------- bow (M3a: a real structure)
   # Replaces the three flat ellipses. A bow is two pinched loops + a knot + tails; the loops meet AT
   # the knot (the reference's are ~129deg apart about an up axis, not a symmetric 180). Fitted to
@@ -237,30 +296,35 @@ draw:
             (loops 0.57), and the unconstrained fit inflates `loop-w` to its bound chasing the mask
             — reported, not hidden. The bow outline is the reference's own line art"}
 
-  # ---------------------------------------------------------------- seated lower body (M3b)
-  # The reviewer's biggest defect (M3a verdict): "the skirt/seat/legs are collapsed into one navy
-  # capsule with a pink and an orange rounded rectangle floating inside it… reads as a bust on a
-  # beanbag." The mechanism was an OCCLUSION bug: `petal-pink`/`petal-warm` carried `z: skirt-dark`,
-  # so they painted INSIDE the skirt mass and read as windows/holes, not cloth in front of it.
-  # Fixed here: the skirt is a generated wavy-hem mass with a navy trim band, the colour panels are
-  # a layer ABOVE the skirt-front, and one bent leg/knee drops below the hem.
+  # ---------------------------------------------------------------- seated lower body (M3b+c)
+  # M3b fixed the occlusion bug (petals carried `z: skirt-dark` and painted INSIDE the mass). M3c
+  # rebuilds the lap from measurement, because both reviewers' biggest defect stayed: "no readable
+  # knee/leg below the hem" (B[5]) — and the old legR could never read, because the pleats tent
+  # (y745-980 across x[145,855]) painted entirely OVER it. Three measured facts drive the rebuild:
+  #   - the dark navy undermass lies ACROSS the lap as a diagonal band, top edge (150,821)(220,794)
+  #     (380,838)(450,824), dropping to (590,944), right end ≈x770 under the skirt-front petals;
+  #   - the knees press the pale cloth out BELOW-LEFT of the apron hem: draped fold lobes at
+  #     x[0,260] y[760,1024] (probed #c9e0d3 at (120,940)) — cloth-covered, no skin shows;
+  #   - the apron (pleats) is the upper panel only: waist under the bow ≈(660,620), its trimmed hem
+  #     wrapping the knee bulge around y[750,930], NOT a tent down to y980.
   -
-    {blob: underskirt,
-     spine: [[frame.w*0.13, frame.h*0.855], [frame.w*0.45, frame.h*0.885], [frame.w*0.82, frame.h*0.85]],
-     w: frame.w*0.225, fill: "#2d4e67", z: skirt-dark,
-     desc: "navy underskirt — the dark backing mass the pale skirt drapes over; measured x[51,857]
-            y[771,1024] (71,796px across two components). It is the seat, not a capsule"}
-  # One bent leg/knee, drawn BEFORE the skirt so the generated hem crosses its top and it emerges
-  # from under the hem rather than floating on the underside. LOW CONFIDENCE in the reference: the
-  # pale mass at bottom-centre (probe x[505,739] y[840,937]) is partly the apron's own drape, so the
-  # leg's size/pose is a readable seated default, not a separable measurement (measure-body.md).
+    {ribbon: underskirt,
+     spine: [[140, 885], [300, 875], [470, 890], [700, 965]],
+     w: [145, 165, 150, 115], fill: "#2d4e67", z: skirt-dark,
+     desc: "navy undermass lying ACROSS the lap — the measured diagonal band, highest at the knee
+            end (y794 at x220), descending under the apron to the right. The band across the thighs
+            is what the reviewers asked the seated pose to show"}
+  # One cloth-covered leg: hip under the apron, knee pressing out at lower-left, drawn BEFORE the
+  # skirt so the apron hem drapes over the thigh while the knee lobe reads below it. Fill is the
+  # SKIRT'S OWN cloth (#d2e2d8) because the reference shows no skin on the legs — the knee reads as
+  # the skirt bulging over it, with the knee highlight one shade darker as the fold.
   -
-    {leg: legR, spine: [[frame.w*0.66, frame.h*0.78], [frame.w*0.60, frame.h*0.895],
-                        [frame.w*0.545, frame.h*0.99]],
-     w: [frame.w*0.105, frame.w*0.125, frame.w*0.075],
-     fill: "#e8d7bd", stroke: "#252a33", sw: 2.4, knee: 1, knee-fill: "#f3e6d2", z: leg,
-     desc: "right leg bent at the knee, emerging below the skirt hem — a hip/knee/ankle gesture with
-            a width profile so it is a leg and not a tube; the seated lower body the reviewer asked for"}
+    {leg: legL, spine: [[630, 790], [370, 870], [215, 955]],
+     w: [165, 160, 140],
+     fill: "#d2e2d8", stroke: "#252a33", sw: 2.4, knee: 1, knee-fill: "#c3d8ca", z: leg,
+     desc: "left leg seated toward the viewer-left — hip under the apron, knee at (370,870) pressing
+            the cloth out below the hem, shin to (240,960), at the measured drape-lobe scale. The
+            old legR was a 76x115px sliver the pleats tent hid completely"}
   # The skirt: a GENERATOR (scripts/relate.py `pleats`), not laid shapes. `count` is the number of
   # hem scallops, `depth` their amplitude, `taper` how they open from waist to hem, `seed` the phase;
   # the hem, the navy trim band and the crease lines are all sampled from that one wave, so changing
@@ -268,33 +332,34 @@ draw:
   # Parameters FITTED to the frozen skirt masks (traced/skirt-pale, traced/skirt-trim) by mask IoU
   # with work/fit-family.py, then the traces discarded (D20/D24/D25). Fill values are measured.
   -
-    {pleats: skirt, at: [500, 745], waist: 330, drop: 235, flare: 2.15, count: 5, depth: 24,
-     taper: 1.0, seed: 0, tilt: 12, trim: 0.15, bulge: 0.22,
+    {pleats: skirt, at: [580, 665], waist: 300, drop: 150, flare: 1.9, count: 5, depth: 26,
+     taper: 1.0, seed: 0, tilt: -13, trim: 0.15, bulge: 0.22,
      fill: "#d2e2d8", trim-fill: "#2d4e67", stroke: "#252a33", sw: 2.4,
      fold-w: 1.8, fold-ink: "#9db8ad", z: skirt, z-trim: skirt,
-     desc: "pleated skirt — a flared cloth mass whose hem is a generated 5-fold wave with the navy
-            trim band hugging it (the hem, trim and creases share one wave). Params fitted to the
-            reference's frozen skirt masks by mask IoU (fit-family.py), traces discarded"}
+     desc: "pleated apron — the upper panel only: waist under the bow, hem wrapping the knee bulge
+            at y≈750-930, tilted so the knee side hangs lower (tilt -13; sign verified against the
+            render). Re-tuned from the M3b tent (at 500,745 drop 235 tilt 12) whose hem buried the
+            leg; hem, trim and creases still share one generated wave"}
   # The colour panels in FRONT of the skirt. In the reference these are the foreground flower
   # petals; the reviewer's fix is that they overlap the skirt so their outlines cross the navy edge
   # (occlusion, not colour). Each is a `petal` — a bowed gesture tapering to a point, fitted to its
   # frozen teacher mask. Restored from the M1 flat blobs to real shapes and lifted to `skirt-front`.
   -
-    {petal: petalRose, at: [300, 1010], angle: -84, len: 215, wid: 175, curl: 0.10,
+    {petal: petalRose, op: 0.8, at: [300, 1010], angle: -84, len: 215, wid: 175, curl: 0.10,
      fill: "#e2869c", stroke: "#252a33", sw: 2.4, z: skirt-front,
      desc: "rose petal — a foreground panel in front of the skirt, its outline crossing the navy
             edge; fitted to the reference's rose mask (traced/petal-rose)"}
   -
-    {petal: petalWarm, at: [492, 1018], angle: -74, len: 120, wid: 105, curl: 0.06,
+    {petal: petalWarm, op: 0.8, at: [492, 1018], angle: -74, len: 120, wid: 105, curl: 0.06,
      fill: "#e8b48c", stroke: "#252a33", sw: 2.4, z: skirt-front,
      desc: "warm tan petal — foreground panel over the skirt's lower edge; fitted to the
             reference's warm mask"}
   -
-    {petal: petalBlue, at: [392, 852], angle: -68, len: 105, wid: 95, curl: 0.08,
+    {petal: petalBlue, op: 0.8, at: [392, 852], angle: -68, len: 105, wid: 95, curl: 0.08,
      fill: "#8bbdce", stroke: "#252a33", sw: 2.4, z: skirt-front,
      desc: "pale blue petal — foreground panel; fitted to the reference's pale-blue mask"}
   -
-    {petal: petalPeach, at: [330, 768], angle: -82, len: 165, wid: 140, curl: 0.05,
+    {petal: petalPeach, op: 0.8, at: [330, 768], angle: -82, len: 165, wid: 140, curl: 0.05,
      fill: "#f1dfd3", stroke: "#252a33", sw: 2.4, z: skirt-front,
      desc: "peach petal — foreground panel; fitted to the reference's peach mask"}
 
@@ -337,8 +402,10 @@ draw:
 relations:
   - {front: head, behind: hat, desc: "the head and hair occlude the brim's middle: the hat is worn high and its brim passes behind the skull, while the crown and the brim's left and right lobes stay visible above and beside it (measured: the reference's visible teal surface is TWO pieces, x430-653 and x897-1023, split by head+hair — no single ellipse-half can match it, which is why the hat must paint under the head)"}
   - {front: hair-front, behind: blouse, desc: "front hair falls over the blouse"}
-  - {front: skirt, behind: underskirt, desc: "the pleated pale skirt drapes over the navy underskirt"}
+  - {front: skirt, behind: underskirt, desc: "the pleated pale apron drapes over the navy undermass"}
   - {front: petalRose, behind: skirt, desc: "the foreground petals lie OVER the skirt, so their outlines cross the navy edge — this is the M3b occlusion fix"}
-  - {front: blouse, behind: ribbon-sweep, desc: "the ribbon passes behind the figure"}
+  - {front: skirt, behind: legL, desc: "the apron hem drapes over the thigh; the knee presses out below the hem"}
+  - {front: blouse, behind: armL, desc: "the left forearm hides behind the blouse placket — only its puff sleeve and cuff show (the reference's own occlusion)"}
+  - {front: blouse, behind: streamer, desc: "the bow's long streamer passes behind the figure and roots at the bow's cover — it is no longer a floating bar"}
   - {front: hair-main, behind: head, desc: "the visible hair falls in front of the face; the hat still sits over the skull"}
   - {front: hair-lock, behind: head, desc: "the cheek lock falls in front of the face too — the same relation as the main mass"}

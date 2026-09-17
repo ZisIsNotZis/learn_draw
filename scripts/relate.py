@@ -1470,7 +1470,8 @@ def expand_petal(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     the middle and points at the tip — not an ellipse (which reads as a pill, not a petal).
 
     params: at (root) · angle (deg, tip direction) · len · wid / w · curl (0 = straight) ·
-            side · fill · stroke/sw
+            side · fill · stroke/sw · op (0-1 opacity; the reference's glass shards are
+            translucent, and the back end has carried `op` on blobs all along)
     Exposes bbox + `tipx/tipy`.
     """
     sid = str(node["petal"])
@@ -1482,6 +1483,7 @@ def expand_petal(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     fill = node.get("fill")
     stroke, sw = node.get("stroke"), node.get("sw")
     z = str(node.get("z", "default"))
+    op = ctx.scalar(node.get("op", 1.0))
     nx, ny = -math.sin(angle), math.cos(angle)
     mid = (root[0] + math.cos(angle) * length * 0.5 + nx * curl * length * 0.35,
            root[1] + math.sin(angle) * length * 0.5 + ny * curl * length * 0.35)
@@ -1490,8 +1492,10 @@ def expand_petal(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     widths = [width * 0.16, width, width * 0.03]
     poly = _hair_outline(spine, widths, side=str(node.get("side", "both")))
     emit.append({"blob": sid, "poly": poly, "fill": fill, "stroke": stroke, "sw": sw, "z": z,
+                 "op": op,
                  "desc": f"petal: a bowed gesture {length:.0f}px long, {width:.0f}px wide at the "
-                         f"middle, tapering to a point at the tip"})
+                         f"middle, tapering to a point at the tip" +
+                         (f" at opacity {op:.2f} (translucent glass shard)" if op < 1 else "")})
     anchor = bbox_anchor(sid, poly)
     anchor.env.update({f"{sid}.tipx": tip[0], f"{sid}.tipy": tip[1],
                        f"{sid}.rootx": root[0], f"{sid}.rooty": root[1]})
@@ -1907,7 +1911,8 @@ def emit_svg(emit: list[dict], layers: list[str], frame: dict[str, float]) -> st
                       if node.get("stroke") else "")
             if node.get("fill") is None and not node.get("stroke"):
                 stroke = ' stroke="#101820" stroke-width="2"'
-            body.append(f'{comment}<path d="{smooth_path(pts, closed=True)}" fill="{fill}"{stroke}/>')
+            op_attr = f' opacity="{node["op"]:.2f}"' if node.get("op", 1.0) < 1 else ""
+            body.append(f'{comment}<path d="{smooth_path(pts, closed=True)}" fill="{fill}"{stroke}{op_attr}/>')
         elif "stroke" in node:
             body.append(f'{comment}<path d="{smooth_path(node["spine"], closed=False)}" fill="none" '
                         f'stroke="{node.get("ink")}" stroke-width="{node["w"]:.1f}" stroke-linecap="round"/>')
