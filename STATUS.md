@@ -1,11 +1,13 @@
 # STATUS — where this project is right now
 
-**One line:** M1 rebuilt the figure's composition on the relational layer and now covers more of the
-reference than the baseline does (0.528 vs 0.514); M2 gave the head a real face — jaw, chin, layered
-eyes, fringe — but **failed its gate**: measured against the reference, the baseline's head is still
-closer (head-region distance 22.4 vs 40.7). The baseline remains the bar and nothing is promoted.
+**One line:** The ratchet floor is now the PARAMETRIC M2 assembly (D28; the hand-fitted 2026-09-11
+render is the fidelity reference/teacher). The rubric (D30) is the primary gate. M3 (the body) has
+run three slices — E (occlusion) passes at 4.5, but B (human figure) settles at 2: the neck gap,
+detached left arm and invisible knee persist as drawn-but-not-reading defects, and two writer
+self-reports were falsified by measurement (D-log 2026-09-17). M3d is in flight with a
+reformulated brief: mandatory pixel self-checks of every claimed visual fact before reporting.
 
-Last updated: 2026-09-15 · Direction lives in `docs/drawing/roadmap.md` · Milestones M0–M5
+Last updated: 2026-09-17 · Direction lives in `docs/drawing/roadmap.md` · Milestones M0–M5
 
 ## Current best artifact — the ratchet floor
 
@@ -36,43 +38,25 @@ It is a **floor and an alarm**, never a target (roadmap R6).
 | **M0** baseline recorded | make regression visible | ✅ done 2026-09-15 |
 | **M1** recover the baseline's composition | the whole figure, coarsely, flat fills | ✅ **exit criteria met 2026-09-15 — baseline not promoted.** Coverage 0.528 vs 0.514 (nothing deleted); the baseline is still the better drawing (two blind reviewers, and the grid measurement agrees). Artifact: `.scratch/13-assembly/evidence/m1-final.png`; gates + rollbacks in `13-assembly/log.md` |
 | **M2** beat the baseline on the head | jaw/eyes/lash/hat crown/hair taper | 🔄 **in progress — attempt 2 still not passed.** Attempt 2 found and fixed the brim's real cause (a straight chord split across the disc, now a fold-over rim band — engine gain, kept) and improved every alarm vs attempt 1 (`coverage` 0.529, `color_dist` 65.6). But head-region measurement still favours the baseline (edge_f1 0.422 vs 0.173) because the baseline was **hand-fitted to the reference** while the assembly re-derived values coarsely. **Next: seed the geometry from the reference (D15)** |
-| **M3** beat the baseline on body & cloth | collar, bow, sleeves, arms, hands, pleats | ⬜ blocked by M2 |
+| **M3** body & cloth: rubric B ≥ 4 AND E ≥ 4 (D30) | collar, bow, arms, hands, pleats, seated lap | 🔄 E MET (4.5) · **B = 2 after M3a/M3b/M3c** — 3-attempt threshold hit; M3d (reformulated: placement + render-time pixel self-checks) in flight |
 | **M4** beat the baseline on the fields | soft tier last (invariant 2) | ⬜ blocked by M3; the whole-figure promotion belongs here |
 | **M5** withdrawal + stress | 15 → 16 → 17, reference-free | ⬜ blocked by M4 |
 
 ## In flight
 
-**Running with full autonomous permission, to a stop condition (D31).** The user granted permission
-to orchestrate `fork=false` subagents until one of the standing stop conditions fires (roadmap S1–S3:
-abstraction / comprehension / perception failure). Whoever picks this up: the loop is
-*dispatch a writer → verify its claims myself → run the gates → commit → rubric-review → next slice*,
-and the writer's report is always a **claim** until re-verified.
+**Running with full autonomous permission, to a stop condition (D31).** The loop is
+*dispatch a writer → verify its claims by measurement → gates → two sight-proven rubric reviewers →
+commit → next slice*. A writer's report is always a **claim** until re-verified — twice now
+(M3c: neck, left arm) a report asserted render-visible facts the render contradicted, so writer
+briefs now end with a mandatory pixel self-check of each claimed visual fact (2026-09-17).
 
-**Next after M3a — the connected figure (the reviewers' verdict, and the S1 test).** Both rubric
-reviewers independently asked for *"one continuous silhouette — head → neck → shoulders → torso →
-skirt → legs — then re-cut the fills inside it."* The design question is whether that can be said
-**without a coordinate flood** (stop condition S1), and it can: the dismemberment is not "no silhouette
-node", it is that the masses **do not connect** — a detached head over a dress blob over a skirt island,
-with background showing between. So the fix is connecting **structure**, expressed in families and
-relations: a neck that reaches from the jaw into the collar, shoulders that carry the arms, a blouse that
-overlaps the skirt, an arm attached at the shoulder rather than floating. That is sayable in one
-sentence with no numbers, so **S1 does not fire and the run continues**.
+**M3d in flight** (reformulated after the 3-attempt threshold): neck that actually spans the
+jaw→collar band; left arm connected or removed; a knee below the hem at reference scale; a mint
+field that reads as a wave; the floating strand attached or deleted — each with a render-time
+pixel check the writer must pass before reporting. S1/S2 do not fire: every fix is still a
+one-sentence structural statement.
 
-Current: **M3a (upper body)** — collar, bow structure, arms, hands, sleeve/cuff — plus a **rubric
-pipeline validation** running on the frozen parametric floor (`evidence/m2-final.png`) by two
-independent reviewers, to (a) check the reviewers can actually see and (b) record a baseline rubric
-vector for the floor.
-
-
-**M2 — the head: attempts 1 and 2 both failed the gate; attempt 3 changes the approach.**
-The brim's real defect is fixed (D16). The blocking reason M2 cannot beat the baseline's head is
-now understood and is *strategic*, not artistic: the baseline was hand-fitted to the reference, and
-the assembly threw those reference-accurate values away to re-derive them coarsely (D15).
-**Next slice: seed the assembly's head geometry from the reference — measure → fill the spec → close
-the image — keeping the relational structure.** Slice home `.scratch/08-bust/spec.md`; iteration
-record `.scratch/13-assembly/log.md`.
-
-Nothing else is in flight. The 2026-09-14/15 unsupervised research session is **stopped** (P0).
+The 2026-09-14/15 unsupervised research session is **stopped** (P0).
 
 Its work is kept selectively, per `14-abstraction-research/spec.md`:
 
