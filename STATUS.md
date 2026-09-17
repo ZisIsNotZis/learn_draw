@@ -1,11 +1,11 @@
 # STATUS — where this project is right now
 
-**One line:** The ratchet floor is now the PARAMETRIC M2 assembly (D28; the hand-fitted 2026-09-11
-render is the fidelity reference/teacher). The rubric (D30) is the primary gate. M3 (the body) has
-run three slices — E (occlusion) passes at 4.5, but B (human figure) settles at 2: the neck gap,
-detached left arm and invisible knee persist as drawn-but-not-reading defects, and two writer
-self-reports were falsified by measurement (D-log 2026-09-17). M3d is in flight with a
-reformulated brief: mandatory pixel self-checks of every claimed visual fact before reporting.
+**One line:** **M3 EXITED 2026-09-17** — rubric B 4.5 / E 4 across both sight-proven reviewers
+(24/30, no contested axes). What moved B from 2 to 4.5 was the reformulated writer protocol:
+mandatory render-time pixel self-checks of every claimed visual fact before reporting. The G2
+dele­tion alarm (coverage 0.542 < 0.561) stays open with its recorded structural explanation and
+is M4's opening defect. Next: M4 — the fields (mint wave, downcast head), then the whole-figure
+promotion A/B.
 
 Last updated: 2026-09-17 · Direction lives in `docs/drawing/roadmap.md` · Milestones M0–M5
 
@@ -38,8 +38,8 @@ It is a **floor and an alarm**, never a target (roadmap R6).
 | **M0** baseline recorded | make regression visible | ✅ done 2026-09-15 |
 | **M1** recover the baseline's composition | the whole figure, coarsely, flat fills | ✅ **exit criteria met 2026-09-15 — baseline not promoted.** Coverage 0.528 vs 0.514 (nothing deleted); the baseline is still the better drawing (two blind reviewers, and the grid measurement agrees). Artifact: `.scratch/13-assembly/evidence/m1-final.png`; gates + rollbacks in `13-assembly/log.md` |
 | **M2** beat the baseline on the head | jaw/eyes/lash/hat crown/hair taper | 🔄 **in progress — attempt 2 still not passed.** Attempt 2 found and fixed the brim's real cause (a straight chord split across the disc, now a fold-over rim band — engine gain, kept) and improved every alarm vs attempt 1 (`coverage` 0.529, `color_dist` 65.6). But head-region measurement still favours the baseline (edge_f1 0.422 vs 0.173) because the baseline was **hand-fitted to the reference** while the assembly re-derived values coarsely. **Next: seed the geometry from the reference (D15)** |
-| **M3** body & cloth: rubric B ≥ 4 AND E ≥ 4 (D30) | collar, bow, arms, hands, pleats, seated lap | 🔄 E MET (4.5) · **B = 2 after M3a/M3b/M3c** — 3-attempt threshold hit; M3d (reformulated: placement + render-time pixel self-checks) in flight |
-| **M4** beat the baseline on the fields | soft tier last (invariant 2) | ⬜ blocked by M3; the whole-figure promotion belongs here |
+| **M3** body & cloth: rubric B ≥ 4 AND E ≥ 4 (D30) | collar, bow, arms, hands, pleats, seated lap | ✅ **EXITED 2026-09-17** (B 4.5, E 4; M3d verdict in `13-assembly/log.md`). Floor not promoted — that is M4's A/B |
+| **M4** beat the baseline on the fields | soft tier last (invariant 2) | 🔄 opening defects named: mint wave reads as a mound, blank level stare, G2 coverage alarm |
 | **M5** withdrawal + stress | 15 → 16 → 17, reference-free | ⬜ blocked by M4 |
 
 ## In flight
@@ -50,11 +50,13 @@ commit → next slice*. A writer's report is always a **claim** until re-verifie
 (M3c: neck, left arm) a report asserted render-visible facts the render contradicted, so writer
 briefs now end with a mandatory pixel self-check of each claimed visual fact (2026-09-17).
 
-**M3d in flight** (reformulated after the 3-attempt threshold): neck that actually spans the
-jaw→collar band; left arm connected or removed; a knee below the hem at reference scale; a mint
-field that reads as a wave; the floating strand attached or deleted — each with a render-time
-pixel check the writer must pass before reporting. S1/S2 do not fire: every fix is still a
-one-sentence structural statement.
+**M3 exited; M4 opening.** Writer protocol now includes the mandatory self-check that fixed M3
+(neck/arm/knee/strand pixel checks before reporting). M4's named defects from the M3d reviews:
+the mint field must read as a sweeping S-wave to ≈x718 with curled tails (both reviewers' top
+defect); the face needs the down-left tilt and downcast gaze (the −1 on A in every review since
+M3a); hair must overlap the shoulder; mid-frame ribbon/chest-panel composition restored; and the
+G2 coverage alarm (0.542) closes here or is answered structurally. The whole-figure blind A/B
+promotion is M4's exit act (D7/D10).
 
 The 2026-09-14/15 unsupervised research session is **stopped** (P0).
 
