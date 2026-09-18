@@ -1,0 +1,12 @@
+unity          mint within 6px of blue in the head window: 3213/23313 (13.8%, >=2%) -> PASS
+rooted         adjacency centroid (528,445) in x450-750/y200-550: True -> PASS
+one-piece      mint connected through painted pixels: 130943/130996 (100.0%, >=95%) -> PASS
+extent         mint min x 0 (<=120); band x560-718/y350-650 frac 0.299 (>=0.20) -> PASS
+no-chips       background-surrounded chips <900px: 0 [] -> PASS
+neck           fully-background neck rows: 0 (0) -> PASS
+knee           skin lobe below hem: 12804px (>3000) -> PASS
+arms           fully-bg left-arm rows: 0 (0) -> PASS
+hand-lap       lap-mass frac beneath the hand 0.65 (>=0.50) -> PASS
+strand         floating purple bar upper-left: False (False) -> PASS
+hair-shoulder  blue hair px over the forearm zone y700-790: 2556 (>500) -> PASS
+OVERALL: PASS

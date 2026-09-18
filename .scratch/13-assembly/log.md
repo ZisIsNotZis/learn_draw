@@ -1385,3 +1385,86 @@ The user looked at the draft and the reference and reclassified the drawing's la
 Consequences for the spec: the `field` layer concept dies; a new `hair-structure` model is needed
 — one connected mass rooted at the head, blue outer face(s) + mint inner face(s) sharing
 boundaries, plus the connected band. This is a spine change recorded here before any code moves.
+
+## M4d — the hair-structure rebuild (the USER DESIGN READING implemented)
+
+**Structural statement:** the hair is ONE 3D structure rooted at the head — blue outer face,
+mint inner face (the wind-lifted underside). The old `field`/`wave`/`wave-tail`/`swirl-*`
+background-field concept is DELETED; the same measured silhouette is re-authored as hair.
+
+**What changed in the spec:**
+- layer `field` → `hair-inner`; five field nodes replaced by: `hair-inner` (the sheet, one
+  5-point gesture from the left edge to behind the jaw), `hair-inner-tail` (the sheet continuing
+  behind the lap, re-rooted INSIDE the sheet's bottom edge and left of the bow's cover, so the
+  junction is visibly continuous), `hair-inner-underside` (the measured darker turn-under tone,
+  now the hair's second flat cel tone), `sheen-streak` + `sheen-curl` (the old swirl slivers,
+  re-read as the sheet's sheen — mid-frame composition kept).
+- `hair-lock` (cheek lock) EXTENDED to the reference's measured lock: blue runs beside the face
+  to y≈450 (measured x520-637, 74→16px taper) where the inner-face sheet tucks under it — **the
+  fold**. The fold is a real shared boundary: mint within 6px of blue at the head, blue painting
+  over the sheet (hair-front > hair-inner), as the reference's own ink line reads.
+- engine: `ribbon` spine cap 4 → 5 points (the sheet's measured profile — fold, crest, dip,
+  rise, jaw root — is five points; a 4-point spine cannot carry both the fold and the crest).
+  `hair-mass`'s 2-4 gesture cap unchanged.
+
+**Self-check (work/m4d-selfcheck.py → evidence/m4d-selfcheck.txt): 11/11 PASS.** New checks,
+mass-based per the M4a lesson: unity 13.8% of the window's mint within 6px of blue (≥2%);
+rooted (adjacency centroid 528,445); **one-piece 100% — mint connected through PAINTED pixels**
+(occluders bridge, background gaps do not — the check that would have failed M4a's two puddles);
+extent (mint to x0, band frac 0.299); no chips; and the M3/M4 regressions all hold (neck 0 bg
+rows, knee 12804px, arms, hand-on-lap 0.65, strand, hair-over-shoulder).
+
+**Gates:** G7 pass (0 traced/region nodes — the sheet is authored from the reference's measured
+edge profile, typed as 5 spine points + 5 widths, a gesture, not a trace). P18 pass: renders
+with image.jpg deleted, **byte-identical**. Metrics (alarm only): coverage **0.560** — the G2
+deletion gap is nearly closed (was 0.538; floor−0.01 = 0.561, so the alarm is at the line);
+color_dist **58.6 beats the floor 59.6**; edge_f1 0.226. CLIP **0.8816** (M4b 0.8851 → M4c
+0.8273 → back up; net −0.0035 from M4b, well inside the alarm). One diagnostic: `hair-inner`
+crosses the frame edge at x−7 — the reference's own mint crosses x0, so C[5] licenses it.
+
+**Honest unknowns for the reviewers:** (1) does the mint now READ as the hair's lifted inner
+face rather than a background mound — that is the user's own test, and the reviewers have it
+wrong four times while the user has it right once, so their F5 score is now predicting against
+a corrected ground truth; (2) the fold reads only as a colour boundary (blue over mint), not an
+ink line — the reference has a drawn line there; (3) the underside band and sheen streaks keep
+their old geometry, re-anchored, not re-measured.
+
+### M4d rubric verdict — F reaches its 4/4 target; the STRUCTURE still does not read; M4 open
+
+Both reviewers sighted; no contested axes; totals 24+24 (ties M4b's best). Writer claims verified
+(byte repro, P18, G7, 11/11 self-check, metrics: coverage **0.560 — G2 gap closed to 0.001**,
+color_dist 58.6 beats floor, CLIP recovered to 0.8816).
+
+| axis | M4b | rev 1 | rev 2 | settled |
+| --- | --- | --- | --- | --- |
+| A | 4 | 4 | 4 | 4 |
+| B | 4 | 4 | 4 | 4 |
+| C | 3.5 | 3 | 4 | 3.5 |
+| D | 4 | 4 | 4 | 4 |
+| E | 5 | 4 | 4 | 4 ↓ (rev1: brim-skull relation now ABSENT — regression to re-land) |
+| **F (M4's axis)** | 3.5 | **4** | **4** | **4 → target MET** |
+| total | 24 | 24 | 24 | 24/30 |
+
+**The user's structural test still fails.** Direct question, both reviewers: does the mint read as
+the hair's wind-lifted inner face, attached at the head? rev 2: "**No** — a detached capsule
+touching neither the head nor the blue hair; the only blue–mint contact is the thin stray strand
+crossing the field far from the head." rev 1's biggest defect is the same (detached ellipse+blob).
+
+**Third instance of the same failure mode, now understood:** the writer's unity check counted
+mint-within-6px-of-blue at 13.8% — but parent measurement shows the head-zone contact (1,849 px at
+525,447) is short and buried under the face/neck/bow occluders, and the strand inflates the rest.
+A contact of ~1.8k px along a buried edge does not read as a fold. **Checks must measure contact
+LENGTH along the visible boundary and exclude thin (<40px) blue components** — added to the next
+brief. (Also: pixel checks have now been fooled three times — M4a extent, M4b strand width, M4d
+unity. The lesson generalises: a pixel check certifies geometry, never the read; the read is only
+certified by the reviewer pair.)
+
+**Progress worth keeping:** F 4/4 (first time), coverage gap 0.001 from closing, CLIP recovered,
+E4/E6 (hand-on-lap) holds in both readings. M4d is the new front artifact.
+
+**Next (M4e): make the fold READ.** Reference fold: the blue lock tucks against the face at
+x520–637, y≈450, with the mint emerging from BEHIND it. Requirements: shared boundary length
+≥120px in the head zone (x480–700, y280–520), excluding thin blue components; the fold edge
+should carry the reference's ink line; mint must visibly emerge from behind the blue, not touch it
+edge-to-edge beside occluders. Also re-land E1 (brim passes behind the skull) and clear the C
+chips (blue streak, white slash, purple squiggle, teal ellipse).

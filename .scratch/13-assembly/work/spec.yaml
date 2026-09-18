@@ -31,7 +31,7 @@ frame: {w: 1024, h: 1024}
 
 # M3c adds `arm-back`: the left forearm is hidden BEHIND the blouse (the reference shows only its
 # puff sleeve and navy cuff), so the limb paints under the blouse while its sleeve/cuff paint over it.
-layers: [bg, field, ribbon, hair-back, skirt-dark, leg, skirt, skirt-front, arm-back, blouse, collar,
+layers: [bg, hair-inner, ribbon, hair-back, skirt-dark, leg, skirt, skirt-front, arm-back, blouse, collar,
          arm, sleeve, cuff, hand, neck, bow, hat, hat-front, head, features, hair-front]
 
 vars:
@@ -46,55 +46,56 @@ draw:
   - {rect: bg, full: true, fill: "#c3d7dc",
      desc: "flat backdrop — border median of the reference; the bottom-right drifts darker in the ref, deferred to M4"}
 
-  # ---------------------------------------------------------------- field (left mass)
-  # M3c: the mint mass is a WAVE, not an ellipse — both rubric reviewers failed it on exactly this
-  # (rubric F[5] names the test). Measured top edge: (20,384)(150,350)(300,400)(450,444)(590,392);
-  # bottom edge: (20,501)(150,575)(300,651)(520,676) — it thickens to mid-frame and the figure
-  # occludes its right end. So: a 4-point band along that centreline, wider mid-frame, its right end
-  # running behind the figure. The band's facets are the flat-cel idiom; the soft gradient is M4.
-  - {ribbon: field,
-     spine: [[0, 470], [185, 430], [420, 555], [718, 455]],
-     w: [120, 210, 270, 235], fill: "#7dccc1", z: field,
-     desc: "mint field as a sweeping wave: anchored ON the left edge, crest x190, dip x420, rising
-            to the figure's cover at x718. M4b: M4a's crest FAILED the read — the reach was real
-            but 38px-thin (a band, not a mass; both reviewers still read a mound stopping x520).
-            Probes of the reference's top edge: (20,384)(150,350)(300,400)(450,444)(590,392) — the
-            top edge only UNDULATES ±50px; the mass thickens DOWNWARD (bottom edge 501→676). The
-            old spine dove to y570 at x420 with w280 (a sagging trough), and the x185 crest rose
-            to top y282 — 70px above the reference's highest point. Rebuilt: gentle undulation
-            around y430-555, widths 210/270/210 so the MAIN MASS carries ≥200px thickness through
-            x300/x500 and arrives at the figure's cover FULL-WIDTH (w235, top edge ≈y355 in the
-            measured window; the reference's own mint stops at the collar ~x690, so the mass —
-            not a sliver — is what must reach the figure, and it now does). Mass-based self-check: largest component to x≥650, column thickness
-            ≥100px at x300/500/650"}
-  # M4a: the wave's tail passes BEHIND the lap mass and shows again to its right — the reference's
-  # teal spray x[576,896] y[640,896] (colour-probed). Painted at `field`, so the skirt-dark band
-  # occludes it exactly as the reference occludes its wave behind the lap.
-  - {ribbon: wave-tail,
-     spine: [[615, 610], [720, 730], [830, 855]],
-     w: [90, 90, 55], fill: "#7dccc1", z: field,
-     desc: "the wave's right tail sweeping down behind the lap mass and re-emerging right of it —
-            the reference shows mint there (probed x768-896 y680-896); M4b: re-rooted at (615,610)
-            so it OVERLAPS the rebuilt crest's bottom edge — the old 70px start left a 43px
-            background gap at the root, which split the field into two components (M4a's
-            two-component cause) and read as two puddles"}
-  # The wave's darker underside band, measured x[12,222] y[732,774] #4ca5b2 — it hugs the top edge of
-  # the dark lap mass, so it also separates the field from the lap.
-  - {ribbon: field-underside,
+  # -------------------------------------------------------------- hair INNER FACE (was "field")
+  # USER DESIGN READING (log.md 2026-09-17, authoritative): the mint mass is NOT a background
+  # field — it is the HAIR's inner face. The hair is one 3D structure rooted at the head: blue
+  # outer face, mint inner face (the underside the wind lifts). Measurement: at y380 the teal
+  # (109,204,197) meets the head's blue (59,113,161) across one ink line; at y450 the teal runs
+  # x600->x120 continuously with a slow gradient; the sheet's root shows behind the jaw
+  # (mint x592-779 at y390-420) and beside the left blue lock (blue x520-637 down to y450).
+  # So the old `field`/`wave`/`wave-tail` concept is DELETED and the same measured silhouette is
+  # re-rooted as hair: the sheet's right end now tucks under the head (behind the jaw/collar and
+  # the extended cheek lock) instead of ending at x718 as a free-floating "wave reach".
+  - {ribbon: hair-inner,
+     spine: [[0, 445], [185, 468], [420, 555], [660, 450], [795, 428]],
+     w: [112, 240, 250, 200, 120], fill: "#7dccc1", z: hair-inner,
+     desc: "the hair's wind-lifted INNER face — one sheet rooted at the head: the right end
+            (x795) passes behind the jaw/collar (collar paints later) and the extended cheek
+            lock (blue paints later), so the fold is a real shared boundary, not a gap. Top edge
+            from the reference's measured profile: x0 y389 (ref 384), x185 y348 (ref 351),
+            x420 y430 (ref 433-444); bottom edge x0 y501 (ref 501), x420 y680 (ref 676). The
+            slow leftward lightening is a soft field (M4); two flat tones here"}
+  # The sheet continues BEHIND the lap mass and shows again to its right (reference mint spray
+  # x768-896 y680-896): same structure, one piece of hair. Re-rooted UP so it overlaps the
+  # sheet's bottom edge (root top y530 vs sheet bottom ~y553 at x615) — the old start left a
+  # background gap that split the hair into two read-puddles.
+  - {ribbon: hair-inner-tail,
+     spine: [[520, 595], [700, 740], [830, 855]],
+     w: [100, 90, 55], fill: "#7dccc1", z: hair-inner,
+     desc: "the inner face continuing behind the lap mass, re-emerging right of it — same hair
+            structure as hair-inner. Root at (520,595): INSIDE the sheet's own bottom edge
+            (sheet bottom ≈y626 at x520) and left of the bow's cover (x551), so the junction is
+            visibly continuous — the old root sat behind the bow, which pixel-split the hair in
+            two and read as two puddles (M4a)"}
+  # The sheet's darker turn-under tone near the lap (measured x[12,222] y[732,774] #4ca5b2) —
+  # where the lifted hair rolls under toward the lap. Second flat tone of the cel pair.
+  - {ribbon: hair-inner-underside,
      spine: [[12, 753], [120, 748], [222, 760]],
-     w: [46, 44, 30], fill: "#4ca5b2", z: field,
-     desc: "teal underside band of the wave — the darker second tone where the wave turns under"}
-  # The wave's swirl tail: a pale sliver sweeping up-right on the wave, with its own small purple
-  # curl (measured ≈(20-227,507-603) and (107-160,470-530); colours probed). LOW CONFIDENCE: the
-  # sliver is 13-20px thin and my probes kept hitting the wave, so its width is a readable default.
-  - {ribbon: swirl-tail,
+     w: [46, 44, 30], fill: "#4ca5b2", z: hair-inner,
+     desc: "the inner face's darker turn-under band where the sheet rolls toward the lap —
+            the hair's second flat tone (the soft gradient is M4)"}
+  # Highlight streak + curl ON the sheet (measured ≈(20-227,507-603) and (107-160,470-530)):
+  # in hair terms these are the sheet's pale sheen streak and the small purple curl at its root.
+  # LOW CONFIDENCE: 13-20px thin; widths are readable defaults.
+  - {ribbon: sheen-streak,
      spine: [[25, 590], [120, 552], [220, 512]],
-     w: [16, 22, 12], fill: "#eef7f0", z: field,
-     desc: "the field's pale swirl tail — rubric F[6]: the mid-frame swirl tails must not be deleted"}
-  - {ribbon: swirl-curl,
+     w: [16, 22, 12], fill: "#eef7f0", z: hair-inner,
+     desc: "the inner face's pale sheen streak — rubric F[6]: the mid-frame swirl tails must
+            not be deleted; re-read as the hair sheet's sheen, not a field swirl"}
+  - {ribbon: sheen-curl,
      spine: [[150, 472], [120, 505], [145, 532]],
-     w: [18, 24, 10], fill: "#8984a6", z: field,
-     desc: "the small purple curl at the swirl tail's root — measured #8984a6"}
+     w: [18, 24, 10], fill: "#8984a6", z: hair-inner,
+     desc: "the small purple curl at the sheen streak's root — measured #8984a6"}
 
   # ---------------------------------------------------------------- bow streamer (over the field, behind the figure)
   # M3c: the old `ribbon-sweep` was a straight purple BAR that attached to nothing (both reviewers;
@@ -237,12 +238,17 @@ draw:
             one absent E item was exactly this missing overlap (it ended mid-air at ~y540)"}
   - {hair-mass: hair-lock, host: head,
      spine: [[head.cx - 0.66672*head.rx, head.cy - 0.87132*head.ry],
-             [head.cx - 1.42125*head.rx, head.cy + 0.09877*head.ry]],
-     w: [0.32490*head.w, 0.05294*head.w],
+             [head.cx - 1.42125*head.rx, head.cy + 0.09877*head.ry],
+             [head.cx - 1.72*head.rx, head.cy + 1.42*head.ry]],
+     w: [0.32490*head.w, 0.05294*head.w, 0.155*head.w],
      side: both, fill: "#3974ab", z: hair-front,
      desc: "hair cheek lock — the narrow strand falling down the left of the face, fitted as a
             third tapered clump; its gap to the fringe is the pink face pocket (skin through the
-            notch), which is why the hair is several instances, not one silhouette"}
+            notch), which is why the hair is several instances, not one silhouette.
+            M4d: EXTENDED down the jaw — the reference's lock runs beside the face to y≈450
+            (measured blue x520-637 y240-450, narrowing 74->16px), while the fitted clump stopped
+            at y275; the third spine point (y~418) carries it to the measured tip, where the
+            inner-face sheet tucks under it — the fold that roots the sheet at the head"}
   # The hair's left-side presence: the reference's only left-side HAIR below the head is one blue
   # lock that pokes out from behind the figure at (420-520,537-623) (probed #5571ae at (470,570)) —
   # the tip of the left twin-tail passing behind the body. Root it behind the bow's cover, let the
