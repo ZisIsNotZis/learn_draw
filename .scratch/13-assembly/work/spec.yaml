@@ -57,14 +57,20 @@ draw:
   # re-rooted as hair: the sheet's right end now tucks under the head (behind the jaw/collar and
   # the extended cheek lock) instead of ending at x718 as a free-floating "wave reach".
   - {ribbon: hair-inner,
-     spine: [[0, 445], [185, 468], [420, 555], [660, 450], [795, 428]],
-     w: [112, 240, 250, 200, 120], fill: "#7dccc1", z: hair-inner,
+     spine: [[0, 530], [185, 468], [420, 555], [660, 450], [795, 428]],
+     w: [340, 280, 250, 200, 120], fill: "#7dccc1", stroke: "#252a33", sw: 2.4, z: hair-inner,
      desc: "the hair's wind-lifted INNER face — one sheet rooted at the head: the right end
             (x795) passes behind the jaw/collar (collar paints later) and the extended cheek
             lock (blue paints later), so the fold is a real shared boundary, not a gap. Top edge
             from the reference's measured profile: x0 y389 (ref 384), x185 y348 (ref 351),
             x420 y430 (ref 433-444); bottom edge x0 y501 (ref 501), x420 y680 (ref 676). The
-            slow leftward lightening is a soft field (M4); two flat tones here"}
+            slow leftward lightening is a soft field (M4); two flat tones here.
+            M4e: (a) the LEFT end now reaches the reference's measured lower-left extent
+            (mint solid x0-250 y350-730: the old left end stopped at y501, which is why the
+            turn-under band floated as a teal ellipse) — w[0] 112->340, spine[0] y445->530;
+            (b) the sheet now carries the style's ink line (#252a33, the reference's own drawn
+            edge at the blue/mint fold — measured (0,47,71) at x600 y380), so the fold reads as
+            a drawn boundary, not a colour change"}
   # The sheet continues BEHIND the lap mass and shows again to its right (reference mint spray
   # x768-896 y680-896): same structure, one piece of hair. Re-rooted UP so it overlaps the
   # sheet's bottom edge (root top y530 vs sheet bottom ~y553 at x615) — the old start left a
@@ -80,22 +86,38 @@ draw:
   # The sheet's darker turn-under tone near the lap (measured x[12,222] y[732,774] #4ca5b2) —
   # where the lifted hair rolls under toward the lap. Second flat tone of the cel pair.
   - {ribbon: hair-inner-underside,
-     spine: [[12, 753], [120, 748], [222, 760]],
-     w: [46, 44, 30], fill: "#4ca5b2", z: hair-inner,
+     spine: [[40, 690], [150, 670], [250, 680]],
+     w: [46, 44, 30], fill: "#4ca5b2", stroke: "#252a33", sw: 2.4, z: hair-inner,
      desc: "the inner face's darker turn-under band where the sheet rolls toward the lap —
-            the hair's second flat tone (the soft gradient is M4)"}
+            the hair's second flat tone (the soft gradient is M4). M4e: moved to hug the
+            sheet's new bottom edge from INSIDE (the sheet now reaches y~700 at x0-250, its
+            measured reference extent) — the old y732-774 placement hung below the sheet and
+            read as a floating teal ellipse (M4d rev 2: 'degenerate')"}
   # Highlight streak + curl ON the sheet (measured ≈(20-227,507-603) and (107-160,470-530)):
   # in hair terms these are the sheet's pale sheen streak and the small purple curl at its root.
   # LOW CONFIDENCE: 13-20px thin; widths are readable defaults.
   - {ribbon: sheen-streak,
-     spine: [[25, 590], [120, 552], [220, 512]],
-     w: [16, 22, 12], fill: "#eef7f0", z: hair-inner,
-     desc: "the inner face's pale sheen streak — rubric F[6]: the mid-frame swirl tails must
-            not be deleted; re-read as the hair sheet's sheen, not a field swirl"}
+     spine: [[70, 560], [150, 532], [215, 505]],
+     w: [34, 44, 26], fill: "#eef7f0", z: hair-inner,
+     desc: "the inner face's pale sheen band — rubric F[6]: the mid-frame swirl tails must
+            not be deleted; re-read as the hair sheet's sheen, not a field swirl.
+            M4e: widened 16-22 -> 34-44px and shortened — a wide band ON the sheet reads as a
+            cel sheen; the old 16px slash read as a floating white chip (M4d rev 1)"}
   - {ribbon: sheen-curl,
-     spine: [[150, 472], [120, 505], [145, 532]],
-     w: [18, 24, 10], fill: "#8984a6", z: hair-inner,
-     desc: "the small purple curl at the sheen streak's root — measured #8984a6"}
+     spine: [[128, 500], [104, 528], [126, 552]],
+     w: [30, 36, 20], fill: "#8984a6", stroke: "#252a33", sw: 2.0, z: hair-inner,
+     desc: "the small purple curl at the sheen band's root — measured #8984a6.
+            M4e: widened and inked so it reads as a curl ON the sheet, not a squiggle chip"}
+  # The sheet's lower-left reach is PALE in the reference, not saturated: image.jpg at (128,700)
+  # is (177,214,171) — the wash fades toward the ground light. Extending the saturated sheet into
+  # that zone mismatches it (coverage cells x64-192/y640-704 fell ~0.5); so the reach is its own
+  # flat tone, measured, sitting INSIDE the sheet's extended silhouette.
+  - {ribbon: hair-inner-pale,
+     spine: [[0, 585], [100, 635], [200, 650]],
+     w: [170, 130, 80], fill: "#abd6b1", stroke: "#252a33", sw: 2.0, z: hair-inner,
+     desc: "the inner face's pale wash toward the lower-left ground light — measured
+            (177,214,171) at (128,700); the saturated sheet above it keeps its measured
+            top profile. Third flat tone of this face; the true gradient is M4"}
 
   # ---------------------------------------------------------------- bow streamer (over the field, behind the figure)
   # M3c: the old `ribbon-sweep` was a straight purple BAR that attached to nothing (both reviewers;
@@ -109,12 +131,24 @@ draw:
   # M3d: the streamer read as a FLOATING BAR because both ends were blunt and similar width —
   # nothing said which end is the root. A ribbon reads from its root: widest at the bow, tapering
   # to a point at the free end (a cut ribbon end, not a stick end).
-  - {ribbon: streamer,
-     spine: [[78, 272], [225, 360], [420, 428], [592, 506]],
-     w: [5, 13, 18, 22], fill: "#3a6ea8", z: ribbon,
-     desc: "the bow's long tail streamer — rooted at the bow (widest, 22px) and tapering to a
-            pointed free end top-left (5px): the taper is what says 'ribbon', not 'floating bar'.
-            The pink->blue gradient is deferred to M4 (soft tier)"}
+  # M4e: the old `streamer` is RE-ROOTED as hair. M3c had read this blue band as the bow's tail,
+  # but two independent M4d reviewers read it as "a thin stray hair strand" / "a stick laid across
+  # the field", and the USER's structural reading says this band is part of the wind-lifted hair
+  # (blue strands stream over the mint inner face). So it is now a LOCK of the head's hair: rooted
+  # BEHIND the cheek lock at the face (560,430 — under the blue that paints later), sweeping
+  # down-left ACROSS the mint sheet and tapering to a point (a strand end, not a stick end), in
+  # the hair's own blue. The bow keeps its family tails; this was never the drawn bow.
+  - {ribbon: hair-stream,
+     spine: [[560, 430], [420, 428], [225, 360], [78, 272]],
+     w: [22, 18, 13, 5], fill: "#3974ab", stroke: "#252a33", sw: 2.0, z: ribbon,
+     desc: "a lock of the head's blue hair streaming over the lifted inner face — rooted
+            behind the cheek lock (the root is hidden under hair-front), tapering to a point
+            top-left. M4e correction: the PATH is the reference's measured blue band
+            (M3c: x[250,480] y[360,443] thickness 11-16, free end 78,272 — verified again
+            today: image.jpg at (320,400) is hair blue (171,115,63)); only the ROOT moved
+            from the bow to the head, because two M4d reviewers and the user both read this
+            band as hair, not ribbon. The old re-route dropped the measured path and cost
+            exactly the cells where the reference's blue was being matched"}
 
   # ---------------------------------------------------------------- the ruler (declared first, painted late)
   # M2: a `face`, not an ellipse. Measured from image.jpg, the visible face is 128px wide at the
@@ -239,16 +273,20 @@ draw:
   - {hair-mass: hair-lock, host: head,
      spine: [[head.cx - 0.66672*head.rx, head.cy - 0.87132*head.ry],
              [head.cx - 1.42125*head.rx, head.cy + 0.09877*head.ry],
-             [head.cx - 1.72*head.rx, head.cy + 1.42*head.ry]],
-     w: [0.32490*head.w, 0.05294*head.w, 0.155*head.w],
+             [head.cx - 1.65*head.rx, head.cy + 1.66*head.ry]],
+     w: [0.32490*head.w, 0.11*head.w, 0.20*head.w],
      side: both, fill: "#3974ab", z: hair-front,
-     desc: "hair cheek lock — the narrow strand falling down the left of the face, fitted as a
-            third tapered clump; its gap to the fringe is the pink face pocket (skin through the
-            notch), which is why the hair is several instances, not one silhouette.
+     desc: "hair cheek lock — the strand falling down the left of the face; its gap to the fringe
+            is the pink face pocket (skin through the notch), which is why the hair is several
+            instances, not one silhouette.
             M4d: EXTENDED down the jaw — the reference's lock runs beside the face to y≈450
             (measured blue x520-637 y240-450, narrowing 74->16px), while the fitted clump stopped
             at y275; the third spine point (y~418) carries it to the measured tip, where the
-            inner-face sheet tucks under it — the fold that roots the sheet at the head"}
+            inner-face sheet tucks under it — the fold that roots the sheet at the head.
+            M4e: the tip is wider (0.155 -> 0.20 head.w) and reaches y~460 (cy+1.66ry), so the
+            shared blue/mint boundary over the sheet's root is LONG enough to read as a drawn
+            fold (M4d's 30px-wide tip gave only ~1.8k px of buried contact); the mid pinch is
+            opened 0.053 -> 0.11 so the lock reads as one strand, not two beads"}
   # The hair's left-side presence: the reference's only left-side HAIR below the head is one blue
   # lock that pokes out from behind the figure at (420-520,537-623) (probed #5571ae at (470,570)) —
   # the tip of the left twin-tail passing behind the body. Root it behind the bow's cover, let the
@@ -285,12 +323,15 @@ draw:
   # neck-V (the neck paints after the collar, so the skin shows in the V, as a collar opening does).
   - {blob: neck, spine: [[head.cx + 0.10*head.rx, head.cy + 0.92*head.ry],
                          [head.cx + 0.09*head.rx, head.cy + 1.45*head.ry]],
-     w: 0.34*head.w, fill: "#cdb69a", z: neck,
-     desc: "neck from under the jaw (y~369) into the collar V (y~429) — measured x-extent
-            665-730; closes the measured 27px background gap that made the head hover. The fill
-            is the skin's CEL SHADOW tone (one step under #e8d7bd): the neck sits in the shadow
-            of the jaw and the collar, and at the light skin tone the strip was numerically and
-            visually indistinguishable from the pale backdrop"}
+     w: 0.34*head.w, fill: "#4ca5b2", z: neck,
+     desc: "under-jaw strip from the chin (y~369) into the collar V (y~429) — measured x-extent
+            665-730; closes the measured 27px background gap that made the head hover.
+            M4e RECOLOUR: the reference shows MINT here, not skin — (110,201,198) at x680-720
+            y385-405: the hair's inner face passes BEHIND the jaw (the user's structure: the
+            hair and the head are one connected thing; there is no tan neck in the reference).
+            The fill is the sheet's own shadow tone #4ca5b2 (one step under the sheet's
+            #7dccc1), so the strip reads as the inner face in the jaw's shadow and the sheet's
+            root visually continues into it"}
 
   # ---------------------------------------------------------------- sailor collar (M3a)
   # A collar is a flap with a neck U/V opening and a navy trim band along its outer edge, not a
@@ -469,7 +510,7 @@ y880-1000 is 91% non-background, dark tones), and the hand must rest ON the mass
   # genuinely visible. Mean IoU 0.742 (far 0.780, near 0.703) — still under 0.85, because the
   # reference's visible top surface is split into two pieces by the head and one family surface
   # cannot reproduce that split. That failure is reported, not hidden; these are the best honest fit.
-  - {sunhat: hat, host: head, brim: 4.45707*head.w, crown: 1.18063*head.w, tilt: 30.6453,
+  - {sunhat: hat, host: head, brim: 4.72*head.w, crown: 1.18063*head.w, tilt: 30.6453,
      lift: -0.24378, drop: 2.01655, crown-h: 0.7577, flat: 0.43612, front: [0.0, 0.58621],
      rim: 0.17066, droop: -0.44104, pom: 2, pom-at: [0.694, 0.806], pom-r: 0.105,
      crown-fill: "#333f64", brim-fill: "#333f64", rim-fill: "#579eaf", pom-fill: "#df9199",
@@ -495,6 +536,6 @@ relations:
   - {front: petalRose, behind: skirt, desc: "the foreground petals lie OVER the skirt, so their outlines cross the navy edge — this is the M3b occlusion fix"}
   - {front: skirt, behind: legL, desc: "the apron hem drapes over the thigh; the knee presses out below the hem"}
   - {front: blouse, behind: armL, desc: "the left forearm hides behind the blouse placket — only its puff sleeve and cuff show (the reference's own occlusion)"}
-  - {front: blouse, behind: streamer, desc: "the bow's long streamer passes behind the figure and roots at the bow's cover — it is no longer a floating bar"}
+  - {front: blouse, behind: hair-stream, desc: "the streaming hair lock passes behind the figure at its root — it emerges from under the cheek lock, not from the bow"}
   - {front: hair-main, behind: head, desc: "the visible hair falls in front of the face; the hat still sits over the skull"}
   - {front: hair-lock, behind: head, desc: "the cheek lock falls in front of the face too — the same relation as the main mass"}

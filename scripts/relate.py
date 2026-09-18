@@ -919,8 +919,8 @@ def expand_hair_mass(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
         raise SpecError(f"relate: hair-mass {sid!r} needs `spine` (2-4 points, the gesture)")
     spine = [ctx.point(p) for p in node["spine"]]
     n = len(spine)
-    if not 2 <= n <= 4:
-        raise SpecError(f"relate: {sid}.spine needs 2-4 points (the gesture form), got {n}")
+    if not 2 <= n <= 5:
+        raise SpecError(f"relate: {sid}.spine needs 2-5 points (the gesture form), got {n}")
     raw_w = node.get("w", node.get("width"))
     if raw_w is None:
         raise SpecError(f"relate: hair-mass {sid!r} needs `w` (a width or a per-point profile)")
@@ -1398,12 +1398,15 @@ def expand_ribbon(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     """A ribbon: a tapering band of cloth along a gesture spine, with a lit face.
 
     A ribbon is not a bar. It is a band with two edges that TAPER, and it twists so part of its
-    surface faces the light. The family draws the band as one silhouette along a 2-4 point gesture
+    surface faces the light. The family draws the band as one silhouette along a 2-5 point gesture
     spine with a per-point width profile (`w`), and an optional `face` highlight stripe hugging one
     edge — the second surface seen as the ribbon turns — which is what reads as "ribbon" rather
     than "bar" (fixed 2026-09-16, M3b: the ribbon-sweep read as a flat detached beam).
+    M4d: cap raised 4 -> 5 for the hair's inner-face sheet — one continuous gesture from the head
+    fold to the left edge whose measured profile has five points (root fold, crest, dip, rise,
+    root under the jaw); a 4-point spine cannot carry both the fold and the measured crest.
 
-    params: spine (2-4 points) · w (scalar or per-point profile) · side · face (stripe width /
+    params: spine (2-5 points) · w (scalar or per-point profile) · side · face (stripe width /
             band width) · face-fill · fill · stroke/sw
     Emits `<id>` and, when face > 0, `<id>-face`. Exposes bbox + root/tip.
     """
@@ -1412,8 +1415,8 @@ def expand_ribbon(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
         raise SpecError(f"relate: ribbon {sid!r} needs `spine` (2-4 points, the gesture)")
     spine = [ctx.point(p) for p in node["spine"]]
     n = len(spine)
-    if not 2 <= n <= 4:
-        raise SpecError(f"relate: {sid}.spine needs 2-4 points (the gesture form), got {n}")
+    if not 2 <= n <= 5:
+        raise SpecError(f"relate: {sid}.spine needs 2-5 points (the gesture form), got {n}")
     raw_w = node.get("w")
     if raw_w is None:
         raise SpecError(f"relate: ribbon {sid!r} needs `w` (a width or a per-point profile)")

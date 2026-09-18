@@ -1,0 +1,16 @@
+PASS fold-contact             strand-excluded blue/mint adjacency in head zone: 1193px (>=360 = 120px x 3)
+PASS fold-tuck                contact on the face side of the lock: 547px = 0.46 (>=0.30)
+PASS no-strand                thin isolated blue bars in x0-560/y250-520: none
+PASS E1-brim-behind-skull     brim/head contact 5460px; background gap across brim rows: 0px
+PASS no-chips                 background-surrounded floating chips in x0-560/y250-700: none
+PASS reg-unity                mint within 6px of blue: 13234/193451
+PASS reg-rooted               adjacency centroid (630,310)
+PASS reg-one-piece            mint in strands-crossing-closed pieces: 100.0%
+PASS reg-extent               mint at left edge; band frac 0.29
+PASS reg-neck                 fully-background neck rows: 0
+PASS reg-knee                 skin lobe below hem: 12948px
+PASS reg-arms                 fully-background arm rows: 0
+PASS reg-hand-lap             hand px 3023, lap-mass frac 0.59
+PASS reg-strandless-upperleft floating bars upper-left: none
+PASS reg-hair-shoulder        blue hair px over the forearm zone: 1706
+OVERALL: PASS

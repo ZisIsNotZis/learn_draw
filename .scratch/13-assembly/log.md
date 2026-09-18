@@ -1468,3 +1468,56 @@ x520–637, y≈450, with the mint emerging from BEHIND it. Requirements: shared
 should carry the reference's ink line; mint must visibly emerge from behind the blue, not touch it
 edge-to-edge beside occluders. Also re-land E1 (brim passes behind the skull) and clear the C
 chips (blue streak, white slash, purple squiggle, teal ellipse).
+
+### M4e (writer slice) — the fold, rebuilt on the measured structure
+
+Changes, each with its drawing statement:
+1. **The fold now has a long, inked, tucked boundary.** The cheek lock's tip widened
+   (0.155 -> 0.20 head.w) and reached y~460 (the reference's measured lock bottom y450, blue
+   x520-637); the sheet's root passes under it. Measured: strand-excluded blue/mint contact in
+   the head zone x480-700/y280-520 = **1193px** (brief bar: >=360); **46% of it on the face side
+   of the lock** — the mint emerges from BEHIND the lock toward the face, which is the tuck.
+2. **The sheet carries the ink line** (#252a33 sw2.4 — the reference's own drawn edge: (0,47,71)
+   measured at x600 y380), so the fold is a drawn boundary, not a colour change.
+3. **The strand re-rooted at the head, ON its measured path.** The old `streamer` became
+   `hair-stream` (fill = the hair's #3974ab): root hidden under the cheek lock, path kept on
+   M3c's measured band (verified again: image.jpg (320,400) = (171,115,63) hair blue), tapering
+   to a point top-left. First re-route attempt dropped the measured path and cost the exact
+   cells where the reference's blue was being matched — corrected in-slice.
+4. **Lower-left reach in its measured PALE tone** (#abd6b1 from (177,214,171) at (128,700)):
+   the reference's sheet fades toward the ground light; extending the saturated fill there
+   mismatched (coverage 0.537 -> the pale tone restored 0.558).
+5. **E1 re-landed**: brim 4.46 -> 4.72 head-widths — the teal top surface now MEETS the head
+   silhouette with **zero background gap** across the brim rows (5460px contact); before, the
+   brim floated ~50px clear of the face and the skull-interrupts-brim relation could not read.
+6. **The under-jaw strip is mint, not tan** (#4ca5b2, the sheet's own shadow tone): the
+   reference shows the inner face passing behind the jaw there ((110,201,198) at x680-720
+   y385-405; no tan neck exists in the reference) — the user's structure, applied.
+7. Sheen streak/curl widened into bands on the sheet (16px slashes read as chips); underside
+   band moved to hug the sheet's new bottom edge from inside (it hung below and floated).
+
+Self-check: **15/15 PASS** (`work/m4e-selfcheck.py` -> `evidence/m4e-selfcheck.txt`) — new
+boundary-mass checks per the M4a/M4b/M4d lesson (contact length with thin components excluded;
+tuck = face-side contact fraction; floating = background-surrounded ring test).
+
+Pipeline: reproduction byte-identical; P18 PASS (renders with image.jpg deleted, byte-identical);
+G7 PASS (zero traced/region nodes). Metrics: edge_f1 0.193, coverage **0.558** (brief bound
+>=0.556 MET; the G2 floor gap narrows to 0.003, from M4b's 0.011 — the alarm is nearly closed),
+color_dist 61.0 (floor +1.4, well inside the breakage bound), CLIP **0.8952 — project high**
+(was 0.8816 at M4d, 0.8273 at the M4c regression). Bundle: `evidence/check/`.
+
+Honest notes: (1) precision fell 0.335 -> 0.234 across M4d->M4e — the sheet's full ink outline
+and the widened lock add drawn edges the reference does not have pixel-for-pixel; edge_f1 and
+precision stay diagnostics. (2) A writer-side lesson: one of my own spec patches broke the YAML
+while a stale SVG kept rendering, which faked a reproduction PASS — caught when the no-ref test
+failed. The pipeline now re-renders from the current spec before every verification; the parent
+should treat any writer claim of repro/P18 as void unless the SVG timestamp postdates the last
+spec edit.
+
+(M4e engine note: the uncommitted `relate.py` diff — ribbon/hair-mass spine cap 4 -> 5 — is
+REQUIRED by the committed M4d spec (its `hair-inner` sheet has a 5-point measured spine); without
+it the spec does not parse. It was re-made by the M4d writer after the M4c park reverted it, and
+must be committed together with M4e. Its own test (`hair-mass rejects a 1-point spine`) asserted
+the old "2-4" message string; updated to "2-5" — the test's intent (reject 1-point polylines)
+is unchanged and still passes. Test suite otherwise unchanged: the only failure remains the
+pre-existing hair-fitter mask test, broken at HEAD.)
