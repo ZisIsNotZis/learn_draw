@@ -1362,3 +1362,26 @@ between the artifact and M4's exit.
 (Park note: M4c's relational spec was never committed and the working copy was overwritten by the
 revert before preservation — the probe survives as `evidence/m4c-final.{png,svg}` + the self-check
 script/output only. Lesson: a writer's probe artifacts must be copied to evidence BEFORE any revert.)
+
+## USER DESIGN READING (2026-09-17, authoritative — overrides the "mint field" concept)
+
+The user looked at the draft and the reference and reclassified the drawing's largest structure:
+
+1. **The mint "field" is NOT background — it is the HAIR.** The hair is one large 3D structure
+   attached to the head, with two coloured faces: the OUTER face is blue (gradient toward the
+   tips), and the INNER face — the underside that normally lies against the body but is lifted by
+   the wind here — is the green/mint. They are one continuous mass. Measurement confirms: at y380,
+   teal (109,204,197) → ink line → hair blue (59,113,161) with nothing between; at y450 the teal
+   runs continuously x600→x120 with a slow gradient. The horizontal band across the frame is the
+   wind-lifted hair itself, physically connected to the head — drawing it as a separate "field"
+   or "ribbon" breaks the structure, which is exactly the disconnect reviewers kept reporting.
+2. **The whole head+hair is ONE region** — a huge hair area in which part is green and part is
+   blue — not strokes drawn piece by piece.
+3. Other confirmed defects (user): the "ribbon" still reads as diamond blocks, not streamers; the
+   skirt's bottom is wrong; the viewer-LEFT arm/hand is not connected to the body; the body is
+   missing parts. The **expression is acceptable for now — DEMOTED from the gate** (was A/D's −1
+   in every review; the user says it is not the priority).
+
+Consequences for the spec: the `field` layer concept dies; a new `hair-structure` model is needed
+— one connected mass rooted at the head, blue outer face(s) + mint inner face(s) sharing
+boundaries, plus the connected band. This is a spine change recorded here before any code moves.
