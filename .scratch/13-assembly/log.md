@@ -1521,3 +1521,25 @@ must be committed together with M4e. Its own test (`hair-mass rejects a 1-point 
 the old "2-4" message string; updated to "2-5" — the test's intent (reject 1-point polylines)
 is unchanged and still passes. Test suite otherwise unchanged: the only failure remains the
 pre-existing hair-fitter mask test, broken at HEAD.)
+
+## USER STRUCTURAL CORRECTIONS (2026-09-17, second reading — authoritative, supersedes parts of the first)
+
+The user viewed M4e vs M4d and corrected the model again, deeper:
+
+1. **The hair is ONE region, drawn outside-in.** First draw the whole hair as a single large
+   region with a SMOOTH outer contour; THEN divide it INSIDE with a smooth internal boundary into
+   the blue zone and the mint zone. There is no fold line, no tuck, no "two pieces glued" — mint
+   and blue are the same object. The M3d–M4e fold/tuck/ink-line approach was patching the wrong
+   model ("你不能把头发拆开来画，它是一个完整的整体，由外而内光滑地画出来").
+2. **The reference has NO knee.** The lower-left pale masses are skirt cloth and streamers. The
+   rubric's B5 item ("a leg or knee below the hem") misread the target from day one — six slices
+   chased a phantom. rubric.md B5 is corrected in the same commit (dated, user-provenance); the
+   spec's knee/leg nodes must be DELETED (they draw something that is not there — part of the
+   "奇怪的色块" the user named).
+3. **The ribbon must be ONE continuous loop** — not a chain of diamond blocks. A ring whose far
+   half is occluded by the body and whose near half is in front. Structure FIRST, colours and
+   gradients AFTER ("不能本末倒置"). Needs a continuous-loop primitive (or a continuous spine
+   drawn at back z with the front segment re-drawn above the body from the same geometry).
+
+Priority set by the user: structure (hair region, ribbon loop) → details (gradient etc.).
+M4f = the hair-region restructure + phantom-limb deletion. M4g = the ribbon loop.

@@ -57,8 +57,11 @@ Anchors are the contract. Score the anchor, not the effort.
 
 ### B · Human figure
 Score on the checklist `[1] neck`, `[2] both arms`, `[3] at least one hand with fingers`, `[4] a
-connected lower body (torso reaching the skirt/lap)`, `[5] a leg or knee below the hem`,
-`[6] head-to-body proportion plausible for a seated figure (~1:3–1:4)`:
+connected lower body (torso reaching the skirt/lap)`, `[5] no phantom limb below the hem — the
+reference's lower silhouette is skirt cloth + streamers ONLY (user-corrected 2026-09-17: the
+original has NO knee or leg there; tan/pale blobs read as skirt and ribbon, and drawing limbs
+there is a defect, not a feature)`, `[6] head-to-body proportion plausible for a seated figure
+(~1:3–1:4)`:
 - **0** ≤1 item. **1** 2 items. **2** 3 items. **3** 4 items. **4** 5 items. **5** all 6.
 - A limb that is drawn but **floats unattached** does not count.
 
