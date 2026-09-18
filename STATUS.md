@@ -1,13 +1,10 @@
 # STATUS — where this project is right now
 
-**One line:** **PARKED 2026-09-17 under D31/S2** for the two remaining read-defects (the mint
-wave's edge, the shy downcast expression). Front artifact = **M4b** (24/24, B 4, E 5, F 3.5;
-commit 4491378's spec, revert-verified byte-identical). Four reviewer-consistent attempts at the
-wave and three at the expression each produced shapes that MEASURE correctly and FAIL to read —
-M4c's edge-profile rebuild REGRESSED to 20/20 and was kept only as a probe. The CLIP similarity
-alarm fired (0.8851→0.8273) before the gate confirmed the regression: instrument validated.
-Everything else on M4's list has landed: hand-on-lap (E 5), eyes equal, neck connected, arms
-attached, hat one-hat, mid-frame tails.
+**One line:** **USER DESIGN BREAKTHROUGH 2026-09-17** — the mint "field" is not background at all:
+it is the HAIR's wind-lifted inner face (blue outer / green inner, one 3D structure attached to the
+head; measurement-confirmed). Four failed "wave" attempts failed because the object itself was
+modelled wrong. M4d rebuilds head+hair as one connected structure (field concept deleted);
+expression DEMOTED by the user. Front artifact until M4d verifies: M4b (24/24, B 4, E 5, F 3.5).
 
 Last updated: 2026-09-17 · Direction lives in `docs/drawing/roadmap.md` · Milestones M0–M5
 
@@ -52,16 +49,12 @@ commit → next slice*. A writer's report is always a **claim** until re-verifie
 (M3c: neck, left arm) a report asserted render-visible facts the render contradicted, so writer
 briefs now end with a mandatory pixel self-check of each claimed visual fact (2026-09-17).
 
-**PARKED (D31/S2), next session's entry point.** Front artifact: M4b (commit 4491378 spec).
-Remaining defects, precisely localised, with reviewer prescriptions stable across four rounds:
-1. **The wave**: the boundary must be a DESIGNED gesture — likely a new vocabulary family
-   authored from the reference's edge samples with true curl geometry (spiral taper ATTACHED to
-   the mass; M4c's detached chips were a regression). Measured edge profiles alone do not read.
-2. **The expression**: eye-opening geometry that survives rendering (lid shapes covering the iris
-   top IN THE RENDER), gated by a reviewer BEFORE the milestone gate — key parameters (pupil-drop,
-   lid-shadow) measurably land but do not read.
-3. Numbers to beat: 24/24, F 3.5. G2 coverage alarm open at 0.556 (M4b state). When wave+gaze
-   land: M4 exit = F ≥ 4, then the whole-figure blind A/B promotion (D7/D10).
+**M4d in flight — hair restructure** (the user's reading, authoritative): one connected
+hair-structure rooted at the head, blue outer face + mint inner face meeting at a drawn fold, the
+wind-lifted band as part of the same piece; field/wave family instances deleted. Next queued
+after it verifies: the viewer-left arm connection, the skirt bottom, and the ribbon-as-streamers
+(still diamond blocks). Expression demoted by the user. S2 park is LIFTED for the wave — it was
+never a wave.
 
 The 2026-09-14/15 unsupervised research session is **stopped** (P0).
 
