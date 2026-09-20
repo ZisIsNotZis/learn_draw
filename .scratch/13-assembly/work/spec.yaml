@@ -63,33 +63,29 @@ draw:
   # partly blue, partly mint.
   - {hair-region: hair, fill: "#7dccc1", z: hair-inner,
      anchors: [[2, 528], [185, 351], [420, 443], [520, 380], [600, 232], [660, 242], [740, 432],
-               [780, 458], [818, 530], [890, 650], [872, 895], [450, 800], [0, 820]],
+               [780, 458], [818, 530], [890, 650], [872, 895], [700, 1030], [300, 1045],
+               [-20, 1035], [-10, 800], [0, 600]],
      desc: "the hair as ONE region — step A of the outside-in model: one smooth closed spline
             through measured extremity anchors, filled the mint of the inner face. The x520-660
             segment rides UP to the blue hair's measured bottom edge (ref gap: ink line only,
-            2-8px; M4f draft gap was 110-205px of background = the 'detached blanket' read), so
-            the mint tucks behind the head and the internal boundary REACHES the silhouette. The
-            x680+ crest stays exposed (ref gap 141px there). Blue zone partitions from inside;"}
+            2-8px). M4h: the bottom-left NO LONGER CLOSES inside the frame — the reference's
+            mint runs INTO the frame bottom (x0: y527-1023, x100-150: y350-1023, no hem), so the
+            spline exits at the bottom-left corner ([700,1030],[300,1045],[-20,1035], behind the
+            lap mass where it crosses); a visible bottom hem inside the frame read as 'terrain'.
+            The x680+ crest stays exposed (ref gap 141px there). Blue zone partitions from inside;"}
   # Interior TONE ZONES of the mint face (the second/third flat tones of the cel pair; the true
-  # gradient is M4 — user: structure first, details later).
-  # The turn-under tone near the lap (measured x[12,222] y[732,774] #4ca5b2) — where the lifted
-  # hair rolls under toward the lap. Sits INSIDE the region's lower-left extent.
-  - {ribbon: hair-inner-underside,
-     spine: [[40, 690], [150, 670], [250, 680]],
-     w: [46, 44, 30], fill: "#4ca5b2", z: hair-inner,
-     desc: "the inner face's darker turn-under band where the hair rolls toward the lap —
-            an interior tone of the ONE region (the old sheet is gone; this hugs the region's
-            lower-left interior)"}
-  # The lower-left reach is PALE in the reference: image.jpg at (128,700) is (177,214,171) —
-  # the wash fades toward the ground light. An interior tone zone, measured, inside the region.
+  # gradient is M4 — user: structure first, details later). M4h: the turn-under band was DELETED
+  # rather than kept — its measured spot (x[12,222] y[732,774]) is now interior to the extended
+  # region, and an interior tone blob is exactly the "shadow ellipse" tell rev 2 named; flat
+  # single tone is the acceptable fallback. The pale wash stays, reshaped as a band HUGGING the
+  # region's left edge (the reference's pale wash toward the lower-left ground light: (177,214,171)
+  # at (128,700)) — a rim band reads as the face's turn-under; a mid-field ellipse reads as a blob.
   - {ribbon: hair-inner-pale,
-     spine: [[0, 750], [80, 760], [160, 770]],
-     w: [120, 90, 50], fill: "#abd6b1", z: hair-inner,
+     spine: [[6, 600], [14, 700], [26, 800]],
+     w: [30, 26, 22], fill: "#abd6b1", z: hair-inner,
      desc: "the inner face's pale wash toward the lower-left ground light — measured
-            (177,214,171) at (128,700); interior tone zone of the ONE region (third flat
-            tone; the true gradient is M4). M4g: moved down to HUG the region's lower-left
-            edge — the old mid-field position read as a floating light-mint ellipse
-            (M4f reviewers), a tone zone at the rim reads as the face's turn-under"}
+            (177,214,171) at (128,700); M4h: a band hugging the region's left edge (rim band),
+            not an interior ellipse (rev 2: interior tone blobs read as terrain)"}
 
   # ---------------------------------------------------------------- bow streamer (over the field, behind the figure)
   # M3c: the old `ribbon-sweep` was a straight purple BAR that attached to nothing (both reviewers;

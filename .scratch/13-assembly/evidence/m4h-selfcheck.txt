@@ -1,0 +1,20 @@
+PASS no-bottom-edge   visible bottom hem in x0-350: 0 columns with >=30px background run directly beneath the mint (worst x-: 0px)
+PASS tone-band-turn-under zone deleted — flat tone is acceptable
+PASS tone-band-pale   pale band spine [(6, 600), (14, 700), (26, 800)] edge distances [7, 15, 27]px (<=60)
+PASS one-region       hair union (closed over occluders, 101px): largest piece 100.0% (>=98%); raw union has 661 pieces
+PASS smooth-outer     mint silhouette (background-adjacent edge): max turn 15deg per 8px; 0 samples >45deg
+PASS partition        blue/mint boundary in head zone: 5362px total (>=1200), dominant arc 3525px (>=400), 8 arcs (a strand crossing makes it a small network, not one curve)
+PASS no-phantom       spec has leg/knee nodes: False; skin px below y850 outside the hands: 0
+PASS no-chips         background-surrounded chips in x0-560/y250-700: none
+PASS reg-extent       mint at left edge: True; band x560-718/y350-650 frac 0.31
+PASS reg-tail         mint tail zone x700-950/y680-900: 10866px
+PASS reg-neck         fully-background neck rows: 0
+PASS reg-arms         fully-background left-arm rows: 0
+PASS reg-hand-lap     hand px 2988, lap-mass frac 0.59
+PASS reg-E1-brim      brim/head contact 3016px; background gap across brim rows: 1px
+PASS reg-hair-shoulder blue hair px over the forearm zone: 1705
+PASS reg-strandless   floating thin bars upper-left: none
+PASS strand-rim       stream lock hugs the mint rim: 74% of its px within 13px of mint (>=50%); largest field-zone blue comp 8697px
+PASS ribbon-loop      bow one cluster: True ([38090]); loop back 3049px (>=2500); front segment in SVG: 1 path(s); its ink outline over the mass: 949px
+PASS crown-apex       crown apex y26 (>=8; ref 20); px above y5: 0
+OVERALL: PASS

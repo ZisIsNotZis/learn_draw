@@ -1676,3 +1676,45 @@ its interior tone zones read as shadow blobs. Parent measurement confirms the re
 runs to the frame bottom in the left columns. **M4h: extend the region's bottom-left off-frame
 (no visible bottom edge inside the frame — the figure occludes where it passes behind), integrate
 the tone zones as edge-hugging bands rather than interior blobs.**
+
+## M4h (writer claim — parent re-verification pending) — the sweep leaves the frame
+
+Rev 2's terrain diagnosis ("flat bottom edge, closed silhouette, internal shadow-ellipses")
+implemented literally:
+
+1. **No bottom edge:** hair-region spline bottom rerouted from the visible hem ([872,895]→
+   [450,800]→[0,820]) to exit the frame's bottom-left ([700,1030],[300,1045],[-20,1035]),
+   plus left-edge pin anchors ([-10,800],[0,600]) after the self-check caught the Catmull-Rom
+   close bulging to x≈184 at y700 (the region was NOT hugging the left edge). Verified: mint
+   spans to y1023 at x0–300, matching the reference's measured spans (x0: 527–1023).
+2. **Tone zones:** hair-inner-underside DELETED (its measured spot is interior to the extended
+   region; an interior tone blob is the exact "shadow ellipse" tell — flat tone is the
+   acceptable fallback). hair-inner-pale reshaped as a left-edge rim band
+   (spine [6,600],[14,700],[26,800], w 30/26/22 — edge distances 7/15/27px, certifies rim-hug).
+3. **Self-check hardening (two check bugs found by the work itself):** (a) the tone-band check
+   originally used a pixel mask whose centroid bled into anti-aliased base colour — now parses
+   the spec's own spine; (b) the distance transform could not see the frame edge (a region
+   flowing off-frame read as "interior") — mask now padded 2px so the frame counts as outside.
+   (c) smooth-outer now measures only background-adjacent contour segments (occluder-bordering
+   turns are occlusion, not kinks) — max turn on the true silhouette: 15°/8px.
+
+**Self-check 19/19 PASS** (no-bottom-edge 0 hem columns; tone bands hug; all M3/M4 regressions
+green). **P18** no-ref render byte-identical ✓ · **G7** zero ✓ ·
+**coverage 0.591 — best yet, floor +0.020** · color_dist 59.7 (floor +0.1) ·
+**CLIP 0.9049 — new project high** (0.836 → 0.8975 → 0.9049 across the user-correction slices).
+
+Parent's visual read (contaminated, not a gate): the girl now sits IN the sweep — the mass
+envelops from behind-head to bottom-left corner with no hem; "ground mound" read should be gone.
+Known remaining: the strand line still reads thin over the mint; ribbon-loop front segment
+low-contrast (structure done, colour separation queued); face as user-accepted.
+
+### M4h — the bottom edge is gone; the sweep flows off-frame (parent-verified, CLIP 0.9049 new high)
+
+Writer claims verified: byte-identical repro, P18 no-ref identical, G7 zero, self-check 19/19,
+metrics coverage **0.591 (floor +0.020 — G2 closed with the widest margin yet)**, color_dist 59.7
+(within bound), CLIP **0.9049 — new project high** (0.8356 → 0.8989 → 0.9049 across the M4
+restructure). Parent's own visual read: the mint now sweeps from upper-left off the bottom-left
+corner with no visible hem in the left half; the figure sits IN the flow; the terrain-mound feel
+is substantially reduced. Known remaining: the thin strand still reads as a line; ribbon-loop
+front segment is low-contrast (structure done, colour separation is the deferred detail tier);
+the face is unchanged per the user's demotion.
