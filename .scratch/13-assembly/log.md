@@ -1630,3 +1630,49 @@ reviews have now said versions of this.
 **M4g brief (queued): (1) the strand becomes hair — either it thickens/blends into the mint as a
 blue-over-mint lock (same object, two faces) or it is deleted; (2) the ribbon continuous loop;
 (3) chip cleanup; (4) crown apex pulled inside the top frame edge (rev2's C5 fail).**
+
+### M4g (writer=parent-direct) — the strand becomes the rim; the ribbon becomes ONE loop
+
+All four named defects addressed; self-check 18/18 PASS (adapted from m4f + 4 new items), P18
+byte-identical no-ref render, G7 zero, coverage 0.574 (> floor — G2 stays closed), color_dist
+60.1 (floor+0.5, inside bound), CLIP 0.8975 (−0.0014 vs M4e's 0.8952 high — flat). Test suite
+86/86.
+
+1. **The strand is now the RIM of the inner face.** Re-measured the reference's blue band
+   centreline: (500,431)(420,428)(300,406)(210,345)(150,329) — it runs ALONG the mint's top
+   edge and ends where that edge meets the left sweep. The draft's version overshot to (78,272),
+   floating above the edge = the "wire". Re-pathed to the measured line, thickness 16→6 (ref
+   11–16). Self-check: 74% of its px within 13px of the mint (hugging). Four reviews of
+   "independent streamer splitting the object" addressed by making it the boundary of the SAME
+   object — the user's model, now literal.
+2. **The ribbon is ONE continuous loop** (user direction): back segment from the bow knot
+   (667,545) down behind the lap mass (measured navy tail x569–661 y600–720; blue-grey
+   RGB(97,125,175) at (580,680)), width matched to the reference's ~64px root; front segment
+   re-emerges lower-left ((445,860)→(225,975)) as dark-teal cloth (RGB(41,87,112) measured),
+   drawn on a NEW `ribbon-front` layer between skirt-dark and skirt — half the ring behind the
+   body, half in front, one path. HONEST LIMIT: the front segment's fill is within ~10 RGB of
+   the lap mass (true in the reference too — its streamers fill that corner at the same tone),
+   so the emergence reads as texture-on-mass, not a high-contrast band; the ink outline
+   (946px detected) is the current separator. Tone/contrast separation is M4-details work.
+3. **Chips:** petalPeach +60px down, petalBlue +26px down — their outlines now cross the lap
+   mass edge (were "half-floating"); hair-inner-pale tone zone moved to hug the region's
+   lower-left rim (was a floating light-mint ellipse mid-field).
+4. **Crown apex** lowered (lift −0.244→−0.400): apex y26, background above (ref y20); px above
+   y5: 0.
+
+Artifacts: evidence/m4g-final.{png,svg}, work/m4g-selfcheck.py, evidence/m4g-selfcheck.txt.
+Not committed (writer brief). Parent re-verification + reviewer pair pending.
+
+### M4g rubric verdict — ribbon loop PASSES, crown fixed; the mint's "terrain tells" named
+
+rev 1: A4 B5 C3 D3 E5 F3 (23) · rev 2: A4 B4 C4 D4 E5 F4 (25). No contested axes.
+**The ribbon loop reads (rev 2: "one continuous band", colour split matching the target; caveat:
+bow-to-tail join implied behind the cuff). Crown apex fixed (both confirm inside frame). E 5/5.**
+
+**The mint read still fails, with the sharpest diagnosis yet (rev 2): "flat bottom edge, closed
+silhouette and internal shadow-ellipses say terrain".** The reference's mint has NO bottom edge —
+it streams out of the frame's bottom-left; the draft closes at y~800-820 with a visible hem, and
+its interior tone zones read as shadow blobs. Parent measurement confirms the reference's mint
+runs to the frame bottom in the left columns. **M4h: extend the region's bottom-left off-frame
+(no visible bottom edge inside the frame — the figure occludes where it passes behind), integrate
+the tone zones as edge-hugging bands rather than interior blobs.**

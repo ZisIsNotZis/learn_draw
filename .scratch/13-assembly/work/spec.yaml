@@ -31,7 +31,7 @@ frame: {w: 1024, h: 1024}
 
 # M3c adds `arm-back`: the left forearm is hidden BEHIND the blouse (the reference shows only its
 # puff sleeve and navy cuff), so the limb paints under the blouse while its sleeve/cuff paint over it.
-layers: [bg, hair-inner, ribbon, hair-back, skirt-dark, skirt, skirt-front, arm-back, blouse, collar,
+layers: [bg, hair-inner, ribbon, hair-back, skirt-dark, ribbon-front, skirt, skirt-front, arm-back, blouse, collar,
          arm, sleeve, cuff, hand, neck, bow, hat, hat-front, head, features, hair-front]
 
 vars:
@@ -83,11 +83,13 @@ draw:
   # The lower-left reach is PALE in the reference: image.jpg at (128,700) is (177,214,171) —
   # the wash fades toward the ground light. An interior tone zone, measured, inside the region.
   - {ribbon: hair-inner-pale,
-     spine: [[0, 585], [100, 635], [200, 650]],
-     w: [170, 130, 80], fill: "#abd6b1", z: hair-inner,
+     spine: [[0, 750], [80, 760], [160, 770]],
+     w: [120, 90, 50], fill: "#abd6b1", z: hair-inner,
      desc: "the inner face's pale wash toward the lower-left ground light — measured
             (177,214,171) at (128,700); interior tone zone of the ONE region (third flat
-            tone; the true gradient is M4)"}
+            tone; the true gradient is M4). M4g: moved down to HUG the region's lower-left
+            edge — the old mid-field position read as a floating light-mint ellipse
+            (M4f reviewers), a tone zone at the rim reads as the face's turn-under"}
 
   # ---------------------------------------------------------------- bow streamer (over the field, behind the figure)
   # M3c: the old `ribbon-sweep` was a straight purple BAR that attached to nothing (both reviewers;
@@ -109,14 +111,39 @@ draw:
   # down-left ACROSS the mint sheet and tapering to a point (a strand end, not a stick end), in
   # the hair's own blue. The bow keeps its family tails; this was never the drawn bow.
   - {ribbon: hair-stream,
-     spine: [[560, 430], [420, 428], [225, 360], [78, 272]],
-     w: [22, 18, 13, 5], fill: "#3974ab", stroke: "#252a33", sw: 2.0, z: ribbon,
-     desc: "a lock of the head's blue hair streaming over the lifted inner face — rooted
-            behind the cheek lock (the root is hidden under hair-front), tapering to a point
-            top-left. A blue ZONE of the one hair region streaming across the mint zone (the
-            user's model: one object, partly blue, partly mint) — the path is the reference's
-            measured blue band (M3c: x[250,480] y[360,443] thickness 11-16, free end 78,272;
-            image.jpg at (320,400) is hair blue (171,115,63))"}
+     spine: [[560, 430], [430, 427], [280, 385], [150, 329]],
+     w: [16, 15, 13, 6], fill: "#3974ab", stroke: "#252a33", sw: 2.0, z: ribbon,
+     desc: "a lock of the head's blue hair streaming over the lifted inner face — RE-PATHED to the
+            reference's measured centreline ((500,431),(420,428),(300,406),(210,345),(150,329)):
+            in the reference this band IS the mint face's rim — it hugs the inner face's top edge
+            and ends where that edge meets the left frame sweep (136,324). M4f's version ended
+            mid-field at (78,272), which four reviewers read as a wire/stick splitting the object;
+            hugging the rim makes it the boundary of the SAME object (thickness 11-16 measured;
+            root hidden under hair-front at the cheek lock)"}
+
+  # ---------------------------------------------------------------- the ribbon: ONE continuous loop (user direction)
+  # The user's model: the ribbon is a RING — one continuous band, its far half behind the body,
+  # its near half in front. Measured path in the reference: bow knot (667,530); the navy tail
+  # runs DOWN from it (x569-661, y600-720), disappears behind the lap mass, and the band
+  # RE-EMERGES lower-left as the dark-teal streamers filling the bottom-left corner
+  # (measured RGB(41,87,112) at (200,900),(280,940); the reference's bottom-left is filled
+  # with this cloth). Two nodes, one path: the back segment (z: ribbon, behind the body) and
+  # the front segment (z: ribbon-front, over the lap mass) share the measured line so the eye
+  # reads ONE band passing behind and re-emerging. Structure first; the pink->? gradient is M4.
+  - {ribbon: ribbon-loop-back,
+     spine: [[667, 545], [625, 655], [560, 735], [500, 800]],
+     w: [64, 52, 40, 26], fill: "#617daf", stroke: "#252a33", sw: 2.0, z: ribbon,
+     desc: "the ribbon's far half: from the bow knot DOWN behind the lap mass (measured navy
+            tail x569-661 y600-720; blue-grey RGB(97,125,175) at (580,680)) — drawn at ribbon
+            z so the body occludes its middle; the front segment continues the same line"}
+  - {ribbon: ribbon-loop-front,
+     spine: [[445, 860], [340, 920], [225, 975]],
+     w: [20, 17, 10], fill: "#29576f", stroke: "#252a33", sw: 2.0, z: ribbon-front,
+     desc: "the ribbon's near half RE-EMERGING lower-left: the same band's continuation where
+            the reference's bottom-left corner is filled with dark-teal streamer cloth
+            (RGB(41,87,112) measured at (200,900),(280,940)) — drawn ABOVE the lap mass so the
+            band's near half lies in front; shared line with ribbon-loop-back = one ring,
+            half occluded, per the user's direction"}
 
   # ---------------------------------------------------------------- the ruler (declared first, painted late)
   # M2: a `face`, not an ellipse. Measured from image.jpg, the visible face is 128px wide at the
@@ -424,13 +451,17 @@ draw:
      desc: "warm tan petal — foreground panel over the skirt's lower edge; fitted to the
             reference's warm mask"}
   -
-    {petal: petalBlue, op: 0.8, at: [392, 852], angle: -68, len: 105, wid: 95, curl: 0.08,
+    {petal: petalBlue, op: 0.8, at: [392, 878], angle: -68, len: 105, wid: 95, curl: 0.08,
      fill: "#8bbdce", stroke: "#252a33", sw: 2.4, z: skirt-front,
-     desc: "pale blue petal — foreground panel; fitted to the reference's pale-blue mask"}
+     desc: "pale blue petal — foreground panel; fitted to the reference's pale-blue mask.
+            M4g: +26px down so its outline crosses the lap mass's edge (M4f reviewers:
+            'half-floating on the mass boundary')"}
   -
-    {petal: petalPeach, op: 0.8, at: [330, 768], angle: -82, len: 165, wid: 140, curl: 0.05,
+    {petal: petalPeach, op: 0.8, at: [330, 828], angle: -82, len: 165, wid: 140, curl: 0.05,
      fill: "#f1dfd3", stroke: "#252a33", sw: 2.4, z: skirt-front,
-     desc: "peach petal — foreground panel; fitted to the reference's peach mask"}
+     desc: "peach petal — foreground panel; fitted to the reference's peach mask. M4g: +60px
+            down so its top outline crosses the mass edge instead of floating above it
+            (M4f reviewers: 'cream leaf half-floating')"}
 
   # ---------------------------------------------------------------- the hat (family; one drooping brim)
   # FITTED to the teacher's frozen brim masks, then the traces discarded (STATUS D24). The three
@@ -450,14 +481,14 @@ draw:
   # reference's visible top surface is split into two pieces by the head and one family surface
   # cannot reproduce that split. That failure is reported, not hidden; these are the best honest fit.
   - {sunhat: hat, host: head, brim: 4.72*head.w, crown: 1.18063*head.w, tilt: 30.6453,
-     lift: -0.24378, drop: 2.01655, crown-h: 0.7577, flat: 0.43612, front: [0.0, 0.58621],
+     lift: -0.40000, drop: 2.01655, crown-h: 0.7577, flat: 0.43612, front: [0.0, 0.58621],
      rim: 0.17066, droop: -0.44104, pom: 2, pom-at: [0.694, 0.806], pom-r: 0.105,
      crown-fill: "#333f64", brim-fill: "#333f64", rim-fill: "#579eaf", pom-fill: "#df9199",
      z: hat, z-front: hat-front, z-pom: hat-front,
      desc: "wide-brim sun hat, re-fitted from the reference's frozen brim measurement with the
             corrected (layer-derived) occlusion (fit-family.py, mask IoU 0.742): brim 4.46
             head-widths, crown 1.18, tilt 30.6deg, flat 0.436, fold rim 0.171, crown-h 0.758,
-            lift -0.244 head-radii, drop 2.017 crown-radii, and droop -0.441 — the near edge curls
+            lift -0.100 head-radii, drop 2.017 crown-radii, and droop -0.441 — the near edge curls
             up along the brim normal (positive droop would sag it; the reference's stiff brim wants
             a slight curl-up at this tilt). The two fills are the brim's two SURFACES: crown + far
             band navy (#333f64, one connected mass) under the teal top surface (#579eaf). Both poms
