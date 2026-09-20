@@ -1,10 +1,12 @@
 # STATUS — where this project is right now
 
-**One line:** **USER DESIGN BREAKTHROUGH 2026-09-17** — the mint "field" is not background at all:
-it is the HAIR's wind-lifted inner face (blue outer / green inner, one 3D structure attached to the
-head; measurement-confirmed). Four failed "wave" attempts failed because the object itself was
-modelled wrong. M4d rebuilds head+hair as one connected structure (field concept deleted);
-expression DEMOTED by the user. Front artifact until M4d verifies: M4b (24/24, B 4, E 5, F 3.5).
+**One line:** **PARKED AGAIN under D31/S2 (2026-09-17)** — this time on the mint-as-hair READ
+itself. Eight slices (M3d→M4i) brought every measured property to reference parity (contour
+profile within ~10–50px, attachment gap 2px = reference, off-frame flow, partition ink line), yet
+both independent reviewers still read the mint as "a separate cape/blanket" every time. Front
+artifact: **M4g** (23+25=24 mean; ribbon loop reads, B 4-5, E 5, coverage 0.574 > floor, CLIP
+0.8975). The question is handed to the user's eye — the only two correct diagnoses in this
+project's history were both theirs.
 
 Last updated: 2026-09-17 · Direction lives in `docs/drawing/roadmap.md` · Milestones M0–M5
 
@@ -49,12 +51,14 @@ commit → next slice*. A writer's report is always a **claim** until re-verifie
 (M3c: neck, left arm) a report asserted render-visible facts the render contradicted, so writer
 briefs now end with a mandatory pixel self-check of each claimed visual fact (2026-09-17).
 
-**M4d in flight — hair restructure** (the user's reading, authoritative): one connected
-hair-structure rooted at the head, blue outer face + mint inner face meeting at a drawn fold, the
-wind-lifted band as part of the same piece; field/wave family instances deleted. Next queued
-after it verifies: the viewer-left arm connection, the skirt bottom, and the ribbon-as-streamers
-(still diamond blocks). Expression demoted by the user. S2 park is LIFTED for the wave — it was
-never a wave.
+**PARKED (D31/S2) — the mint-as-hair read.** The geometry is at reference parity; the read has
+not flipped in eight attempts, each landing its measured objective. Parked question for the user:
+compare `evidence/m4g-final.png` with `image.jpg` — what makes the reference's mint read as HAIR?
+(Candidate hypotheses we can no longer distinguish: colour/value relative to the blue; strand
+marks/texture inside the mint; the curl language of the silhouette; the blue needing to extend
+further into the sweep.) The ribbon loop (M4g) and all other M4 gains stand; when the user's
+diagnosis arrives it becomes the next slice's structural statement — their two previous readings
+(feld-is-hair, no-knee) were each worth multiple axes.
 
 The 2026-09-14/15 unsupervised research session is **stopped** (P0).
 
