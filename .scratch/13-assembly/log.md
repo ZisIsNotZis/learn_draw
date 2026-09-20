@@ -1569,3 +1569,29 @@ intent, not to pass a number: the user's requirement is the REGION's own contour
   crosses the mint like a wire; (2) at the head, blue ends and mint begins without a visible
   same-object cue. Both are queued for M4g+ along with the ribbon loop. Independent reviewers
   hold the gate verdict.
+
+### M4f rubric verdict — B jumps to 5/4 (phantom fix pays), but the reconnection still fails; totals 23+23
+
+Both reviewers sighted; no contested axes. Parent-verified: self-check 15/15, P18, G7, coverage
+**0.575 — G2 alarm CLOSED** (first time above floor), CLIP 0.8926.
+
+| axis | M4e | rev 1 | rev 2 | settled |
+| --- | --- | --- | --- | --- |
+| A | 4 | 3 | 4 | 3.5 |
+| **B · human figure** | 4 | **5** | **4** | **4.5 — the phantom-limb correction PAYS** |
+| C | 3.5 | 3 | 2 | 2.5 ↓ (chips persist; NEW: crown cut flat by the top frame edge) |
+| D | 4 | 4 | 4 | 4 |
+| E | 4.5 | 5 | 5 | **5** |
+| F | 4 | 3 | 4 | 3.5 ↓ |
+| total | 24 | 23 | 23 | 23/30 |
+
+**Both reviewers' biggest defect is word-for-word the same:** reconnect the mint to the blue hair
+at the head — "the mint reads as a detached rounded mound/blanket the girl sits in front of".
+Parent measurement explains WHY it still reads detached: the blue/mint internal boundary lives
+almost entirely BEHIND the head — nearly none of it reaches the outer silhouette (adjacency
+x<520: ~none). The reference's boundary meets the SILHOUETTE at x≈600/y≈380–450 (blue above,
+mint below, visible from outside). **The one-region model is geometrically correct but the
+partition is invisible from outside** — an interior boundary the eye never crosses cannot tell
+the viewer these are one object. M4g: the boundary must INTERSECT the outer contour (blue→line→
+mint visible along the sweep), per both reviewers' prescriptions ("extend the mint's right edge
+up behind the left side of the blue hair just below the brim").
