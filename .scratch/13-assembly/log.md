@@ -1595,3 +1595,19 @@ partition is invisible from outside** — an interior boundary the eye never cro
 the viewer these are one object. M4g: the boundary must INTERSECT the outer contour (blue→line→
 mint visible along the sweep), per both reviewers' prescriptions ("extend the mint's right edge
 up behind the left side of the blue hair just below the brim").
+
+### M4f addendum (same session) — the boundary REACHES the silhouette; G2 closes with margin
+
+Parent measurement after M4f's review found the precise defect: reference blue→mint vertical gap
+at x560–640 is 2–8px (an ink line); the draft's was 110–205px of BACKGROUND — the mint's top edge
+sagged ~150–200px below the blue hair's bottom edge. Surgical fix: hair-region spline anchors
+x520–660 raised ([520,380],[600,232],[660,242]) so the mint tucks up behind the head; x680+ crest
+stays exposed (ref gap there is 141px — by design). Verified: x560 gap now **2px (= reference)**;
+x600–640 the face covers the boundary (correct layering); x680 exposed as in the reference.
+
+Metrics after the fix: **coverage 0.582 (+0.011 above floor — G2 closed with margin)**,
+color_dist 59.4 (beats floor), CLIP **0.8989 — new project high**, self-check 15/15 re-run PASS.
+Parent's visual read: the mint now visibly continues behind the head from the blue at the face's
+left edge; the "floating blanket" read should be substantially weakened. Remaining known defects
+(queued M4g): the thin blue strand still reads wire-like; ribbon still diamond-blocks; scattered
+petal chips; left arm.

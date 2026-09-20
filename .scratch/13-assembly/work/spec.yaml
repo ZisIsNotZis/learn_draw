@@ -62,14 +62,14 @@ draw:
   # masses/arm (their cover is the partition), so the union's outer silhouette is smooth and
   # partly blue, partly mint.
   - {hair-region: hair, fill: "#7dccc1", z: hair-inner,
-     anchors: [[2, 528], [185, 351], [420, 443], [740, 432], [780, 458], [818, 530],
-               [890, 650], [872, 895], [450, 800], [0, 820]],
+     anchors: [[2, 528], [185, 351], [420, 443], [520, 380], [600, 232], [660, 242], [740, 432],
+               [780, 458], [818, 530], [890, 650], [872, 895], [450, 800], [0, 820]],
      desc: "the hair as ONE region — step A of the outside-in model: one smooth closed spline
-            through 10 measured extremity anchors, filled the mint of the inner face. The blue
-            zone (fringe, main fall, cheek lock, streaming lock — painted above) partitions it
-            from inside along their own smooth outlines; where the silhouette is blue those
-            masses cover this edge, so the outer contour reads as one object, mint in the wind,
-            blue at the head and fall"}
+            through measured extremity anchors, filled the mint of the inner face. The x520-660
+            segment rides UP to the blue hair's measured bottom edge (ref gap: ink line only,
+            2-8px; M4f draft gap was 110-205px of background = the 'detached blanket' read), so
+            the mint tucks behind the head and the internal boundary REACHES the silhouette. The
+            x680+ crest stays exposed (ref gap 141px there). Blue zone partitions from inside;"}
   # Interior TONE ZONES of the mint face (the second/third flat tones of the cel pair; the true
   # gradient is M4 — user: structure first, details later).
   # The turn-under tone near the lap (measured x[12,222] y[732,774] #4ca5b2) — where the lifted

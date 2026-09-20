@@ -8,8 +8,8 @@ images (feed these, and nothing else):
   /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-2.png  -- worst-region #2 at (192,960,64,64) mean-dist 205, 2.0x
   /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-3.png  -- worst-on-drawn #3 at (512,832,64,64) mean-dist 173, 2.0x
 
-metrics (breakage alarm only, never a target): {'precision': 0.257, 'recall': 0.149, 'edge_f1': 0.189, 'color_dist': 59.9, 'coverage': 0.575}
-vs recorded best: edge_f1 0.164 -> 0.189 (+0.025) | coverage 0.571 -> 0.575 (+0.004) | precision 0.335 -> 0.257 (-0.078) | recall 0.108 -> 0.149 (+0.041) | color_dist 59.6 -> 59.9 (+0.300)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/m2-final.png]
+metrics (breakage alarm only, never a target): {'precision': 0.256, 'recall': 0.15, 'edge_f1': 0.19, 'color_dist': 59.4, 'coverage': 0.582}
+vs recorded best: edge_f1 0.164 -> 0.19 (+0.026) | coverage 0.571 -> 0.582 (+0.011) | precision 0.335 -> 0.256 (-0.079) | recall 0.108 -> 0.15 (+0.042) | color_dist 59.6 -> 59.4 (-0.200)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/m2-final.png]
 
 reviewer protocol - do not skip:
   Give ONLY the images above to a FRESH-context reviewer with no other context.
