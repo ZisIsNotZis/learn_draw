@@ -1733,3 +1733,42 @@ user's own model says the zones are divided by a smooth interior boundary — in
 that boundary is a drawn line. **M4i: one change — draw the smooth ink line along the blue/mint
 interior boundary near the head, running from the outer silhouette (below the brim, x~600) down
 to the collar/lock, exactly where the reference's is.** Nothing else.
+
+## M4i — the interior partition's ink line (single focused change)
+
+One node added (`ribbon: partition-line`, w 2.4, ink #252a33, z hair-front): the drawn edge of the
+blue/mint interior boundary at the head. Spine DERIVED from this drawing's own resolved blue/mint
+adjacency arc (dominant arc of the head-zone boundary network: x545–570, y300–450), not hand-typed
+and not copied from the reference's coordinates — the line sits on the DRAFT's boundary by
+construction. Nothing else changed.
+
+- Self-check 4/4 (`evidence/m4i-selfcheck.txt`): line-present 253px (>=150); on-boundary **100%**
+  of line pixels within 8px of BOTH blue and mint; smooth (authored spine, max turn 3.3deg/8px —
+  measured on the authored geometry because a 2.4px line cannot be isolated from touching strokes
+  in the raster; presence and on-boundary are measured on the render); m4h regressions 20/20 PASS.
+- Metrics: coverage 0.591, color_dist 59.7, edge_f1 0.203 — no movement (the line is an
+  articulation, not a mass). P18 no-ref render byte-identical. G7 zero.
+  CLIP **0.9056 — new project high**.
+- Rendered: the line runs down the face's left between the blue lock and the mint, from below the
+  brim line to the collar junction — the same articulation the reference draws at (0,47,71).
+
+### M4i rubric verdict — partition line did NOT flip the read; PARKED under S2
+
+rev 1: A4 B5 C3 D4 E5 F3 (24) · rev 2: A4 B4 C3 D3 E4 F3 (21) — mean 22.5 vs M4g's 24.
+Both reviewers STILL read the mint as "a separate cape/blanket". The ink-line hypothesis is
+falsified. Eight attempts on this read (M3d, M4a/b/c, M4f, M4f-add, M4g, M4h, M4i): every one
+landed its measured objective, the contour/profile/attachment/line are all at or near reference
+parity, and the read has not flipped. I can no longer say what change will flip it — each further
+attempt is a guess. **S2 fires for this defect.**
+
+**Action: spec REVERTED to M4g (commit 48816ee's spec), the best artifact (23+25=24 mean, B 4-5,
+E 5, ribbon loop reads). M4i kept as probe** (`evidence/m4i-final.{png,svg}`). Lesson: the line
+was reference-faithful but a 2.4px line evidently cannot re-characterise a 200k-px mass the eye
+has already classified.
+
+**What the park hands back to the user:** the two correct diagnoses in this project's history
+were both theirs (the field-is-hair reading; the no-knee reading). The question parked with them:
+look at `evidence/m4g-final.png` beside `image.jpg` — what specifically makes the reference's mint
+read as HAIR to you, that the draft's mint lacks? (Candidate hypotheses we can no longer
+distinguish between: the mint's colour/value relative to the blue; the mint's texture/strand
+marks; the silhouette's curl language; the hair's blue needing to extend further INTO the sweep.)

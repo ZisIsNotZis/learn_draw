@@ -1,0 +1,5 @@
+PASS line-present largest dark component in the boundary window: 253px (>=150)
+PASS on-boundary 100% of the line's pixels within 8px of BOTH blue and mint (>=70%)
+PASS smooth authored spine arc 148px; max turn 3.3deg per 8px (<45)
+FAIL m4h-regressions m4h suite: 17 PASS / 3 FAIL
+OVERALL: 1 FAIL
