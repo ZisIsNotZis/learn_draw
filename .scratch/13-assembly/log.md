@@ -1611,3 +1611,22 @@ Parent's visual read: the mint now visibly continues behind the head from the bl
 left edge; the "floating blanket" read should be substantially weakened. Remaining known defects
 (queued M4g): the thin blue strand still reads wire-like; ribbon still diamond-blocks; scattered
 petal chips; left arm.
+
+### M4f (post-addendum) rubric verdict — B 5/5 both; the profile MATCHES, the strand divides
+
+rev 1: A3 B5 C3 D3 E4 F3 (21) · rev 2: A4 B5 C4 D4 E4 F4 (25). No contested axes (all spreads ≤1).
+**B 5/5 — the phantom-limb correction and the lower-silhouette cleanup both pay.** G2 stays closed
+(coverage 0.582). F settles 3.5 (rev1's F5 fail: "lumpy low blanket with a scalloped top edge").
+
+**KEY QUESTION still splits — but the measurement exonerates the contour.** Both reviewers still
+read the mint as a separate blanket, citing background at head height between hair and mint.
+Parent measurement: the mint TOP-EDGE PROFILE now matches the reference within ~10–50px at every
+column (x0: 527/532 · x150: 350/363 · x200: 354/351 · x400: 437/438). The contour is not the
+problem any more. What divides the read, per the reviewers' own lists: **the thin blue strand
+crossing the mint as "an independent streamer"** (both), the flat single-tone fill, and the petal
+chips. A same-coloured strand crossing a field at a shallow angle visually SPLITS it — four
+reviews have now said versions of this.
+
+**M4g brief (queued): (1) the strand becomes hair — either it thickens/blends into the mint as a
+blue-over-mint lock (same object, two faces) or it is deleted; (2) the ribbon continuous loop;
+(3) chip cleanup; (4) crown apex pulled inside the top frame edge (rev2's C5 fail).**
