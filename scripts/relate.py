@@ -1555,11 +1555,68 @@ def expand_leg(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
     return ctx.add(anchor)
 
 
+def _catmull_closed(pts: list[tuple[float, float]], samples: int = 14) -> list[list[float]]:
+    """Closed Catmull-Rom spline through every point — C1-continuous, no kinks at the joins.
+
+    This is how a region is drawn SMOOTH from a handful of measured extremity anchors: the
+    tangent at each anchor runs along (P[i+1] - P[i-1]), so the curve leaves every anchor the
+    way it arrives (the user's hair model: one region, smooth outer contour, no fold corners).
+    """
+    n = len(pts)
+    out: list[list[float]] = []
+    for i in range(n):
+        p0, p1, p2, p3 = pts[(i - 1) % n], pts[i], pts[(i + 1) % n], pts[(i + 2) % n]
+        for j in range(samples):
+            t = j / samples
+            t2, t3 = t * t, t * t * t
+            out.append([
+                0.5 * (2 * p1[0] + (-p0[0] + p2[0]) * t
+                       + (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * t2
+                       + (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * t3),
+                0.5 * (2 * p1[1] + (-p0[1] + p2[1]) * t
+                       + (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * t2
+                       + (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * t3)])
+    return out
+
+
+def expand_hair_region(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
+    """The hair as ONE region: a smooth closed spline through measured extremity anchors.
+
+    USER STRUCTURAL CORRECTIONS (log.md 2026-09-17, second reading): the hair is not separate
+    pieces glued at a fold — it is one large region drawn OUTSIDE-IN. Step A is this family: the
+    whole hair (the wind-lifted mint inner face, the head/crown zone, the right fall's extent)
+    as one closed smooth contour. Step B — the blue zone — is any of the blue masses painted
+    above it, whose own smooth outlines are the region's interior partition; where the hair's
+    outer silhouette is blue, those masses cover this region's edge, so the union reads as one
+    object with two colour zones and no seam.
+
+    params: anchors (4+ relation points, the measured extremities, in silhouette order) ·
+            samples (per-span spline density, default 14) · fill · stroke/sw · z
+    Emits one blob. Exposes the bbox anchor (cx/cy/left/right/top/bottom/w/h).
+    """
+    sid = str(node["hair-region"])
+    anchors = node.get("anchors")
+    if not anchors or not isinstance(anchors, list) or len(anchors) < 4:
+        raise SpecError(f"relate: hair-region {sid!r} needs `anchors` (4+ measured extremity "
+                        f"points, in silhouette order)")
+    pts = [ctx.point(p) for p in anchors]
+    samples = int(ctx.scalar(node.get("samples", 14)))
+    poly = _catmull_closed(pts, samples)
+    fill = node.get("fill")
+    stroke, sw = node.get("stroke"), node.get("sw")
+    z = str(node.get("z", "default"))
+    emit.append({"blob": sid, "poly": poly, "fill": fill, "stroke": stroke, "sw": sw, "z": z,
+                 "desc": f"hair region: ONE smooth closed spline (Catmull-Rom, {samples}/span) "
+                         f"through {len(pts)} measured extremity anchors — the whole hair as a "
+                         f"single object; the blue zone partitions it from inside"})
+    return ctx.add(bbox_anchor(sid, poly))
+
+
 VOCAB = {"sunhat": expand_sunhat, "eye": expand_eye, "face": expand_face,
          "hair-mass": expand_hair_mass, "collar": expand_collar, "bow": expand_bow,
          "arm": expand_arm, "hand": expand_hand,
          "pleats": expand_pleats, "ribbon": expand_ribbon, "petal": expand_petal,
-         "leg": expand_leg}
+         "hair-region": expand_hair_region, "leg": expand_leg}
 SHAPES = ("ellipse", "blob", "stroke", "rect")
 # `region` is a computed shape: its outline is flooded from the reference raster at resolve time,
 # so it is a TEACHER node and needs `--ref`. It is listed apart from the primitives because it

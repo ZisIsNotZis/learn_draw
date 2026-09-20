@@ -1,15 +1,15 @@
-art:    .scratch/13-assembly/evidence/m4e-final.png
+art:    .scratch/13-assembly/evidence/m4f-final.png
 bundle: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check
 
 images (feed these, and nothing else):
   /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/side-by-side.png  -- whole frame, ref beside draft
   /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale)
   /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-1.png  -- worst-region #1 at (640,832,64,64) mean-dist 243, 2.0x
-  /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-2.png  -- worst-region #2 at (128,896,64,64) mean-dist 221, 2.0x
-  /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-3.png  -- worst-on-drawn #3 at (512,576,64,64) mean-dist 129, 2.0x
+  /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-2.png  -- worst-region #2 at (192,960,64,64) mean-dist 205, 2.0x
+  /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/check/region-3.png  -- worst-on-drawn #3 at (512,832,64,64) mean-dist 173, 2.0x
 
-metrics (breakage alarm only, never a target): {'precision': 0.234, 'recall': 0.164, 'edge_f1': 0.193, 'color_dist': 61.0, 'coverage': 0.558}
-vs recorded best: edge_f1 0.164 -> 0.193 (+0.029) | coverage 0.571 -> 0.558 (-0.013) | precision 0.335 -> 0.234 (-0.101) | recall 0.108 -> 0.164 (+0.056) | color_dist 59.6 -> 61.0 (+1.400)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/m2-final.png]
+metrics (breakage alarm only, never a target): {'precision': 0.257, 'recall': 0.149, 'edge_f1': 0.189, 'color_dist': 59.9, 'coverage': 0.575}
+vs recorded best: edge_f1 0.164 -> 0.189 (+0.025) | coverage 0.571 -> 0.575 (+0.004) | precision 0.335 -> 0.257 (-0.078) | recall 0.108 -> 0.149 (+0.041) | color_dist 59.6 -> 59.9 (+0.300)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/m2-final.png]
 
 reviewer protocol - do not skip:
   Give ONLY the images above to a FRESH-context reviewer with no other context.

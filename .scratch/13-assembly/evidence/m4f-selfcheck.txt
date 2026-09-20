@@ -1,0 +1,14 @@
+PASS one-region       hair union (closed over occluders, 101px): largest piece 100.0% (>=98%); raw union has 697 pieces
+PASS smooth-outer     mint silhouette (exposed region edge): max turn 60deg per 8px; 1 samples >45deg at [(527, 615)]
+PASS partition        blue/mint boundary in head zone: 1432px total (>=1200), dominant arc 528px (>=400), 6 arcs (a strand crossing makes it a small network, not one curve)
+PASS no-phantom       spec has leg/knee nodes: False; skin px below y850 outside the hands: 0
+PASS no-chips         background-surrounded chips in x0-560/y250-700: none
+PASS reg-extent       mint at left edge: True; band x560-718/y350-650 frac 0.17
+PASS reg-tail         mint tail zone x700-950/y680-900: 13702px
+PASS reg-neck         fully-background neck rows: 0
+PASS reg-arms         fully-background left-arm rows: 0
+PASS reg-hand-lap     hand px 2988, lap-mass frac 0.59
+PASS reg-E1-brim      brim/head contact 5421px; background gap across brim rows: 0px
+PASS reg-hair-shoulder blue hair px over the forearm zone: 1705
+PASS reg-strandless   floating thin bars upper-left: none
+OVERALL: PASS

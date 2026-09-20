@@ -31,7 +31,7 @@ frame: {w: 1024, h: 1024}
 
 # M3c adds `arm-back`: the left forearm is hidden BEHIND the blouse (the reference shows only its
 # puff sleeve and navy cuff), so the limb paints under the blouse while its sleeve/cuff paint over it.
-layers: [bg, hair-inner, ribbon, hair-back, skirt-dark, leg, skirt, skirt-front, arm-back, blouse, collar,
+layers: [bg, hair-inner, ribbon, hair-back, skirt-dark, skirt, skirt-front, arm-back, blouse, collar,
          arm, sleeve, cuff, hand, neck, bow, hat, hat-front, head, features, hair-front]
 
 vars:
@@ -46,78 +46,48 @@ draw:
   - {rect: bg, full: true, fill: "#c3d7dc",
      desc: "flat backdrop — border median of the reference; the bottom-right drifts darker in the ref, deferred to M4"}
 
-  # -------------------------------------------------------------- hair INNER FACE (was "field")
-  # USER DESIGN READING (log.md 2026-09-17, authoritative): the mint mass is NOT a background
-  # field — it is the HAIR's inner face. The hair is one 3D structure rooted at the head: blue
-  # outer face, mint inner face (the underside the wind lifts). Measurement: at y380 the teal
-  # (109,204,197) meets the head's blue (59,113,161) across one ink line; at y450 the teal runs
-  # x600->x120 continuously with a slow gradient; the sheet's root shows behind the jaw
-  # (mint x592-779 at y390-420) and beside the left blue lock (blue x520-637 down to y450).
-  # So the old `field`/`wave`/`wave-tail` concept is DELETED and the same measured silhouette is
-  # re-rooted as hair: the sheet's right end now tucks under the head (behind the jaw/collar and
-  # the extended cheek lock) instead of ending at x718 as a free-floating "wave reach".
-  - {ribbon: hair-inner,
-     spine: [[0, 530], [185, 468], [420, 555], [660, 450], [795, 428]],
-     w: [340, 280, 250, 200, 120], fill: "#7dccc1", stroke: "#252a33", sw: 2.4, z: hair-inner,
-     desc: "the hair's wind-lifted INNER face — one sheet rooted at the head: the right end
-            (x795) passes behind the jaw/collar (collar paints later) and the extended cheek
-            lock (blue paints later), so the fold is a real shared boundary, not a gap. Top edge
-            from the reference's measured profile: x0 y389 (ref 384), x185 y348 (ref 351),
-            x420 y430 (ref 433-444); bottom edge x0 y501 (ref 501), x420 y680 (ref 676). The
-            slow leftward lightening is a soft field (M4); two flat tones here.
-            M4e: (a) the LEFT end now reaches the reference's measured lower-left extent
-            (mint solid x0-250 y350-730: the old left end stopped at y501, which is why the
-            turn-under band floated as a teal ellipse) — w[0] 112->340, spine[0] y445->530;
-            (b) the sheet now carries the style's ink line (#252a33, the reference's own drawn
-            edge at the blue/mint fold — measured (0,47,71) at x600 y380), so the fold reads as
-            a drawn boundary, not a colour change"}
-  # The sheet continues BEHIND the lap mass and shows again to its right (reference mint spray
-  # x768-896 y680-896): same structure, one piece of hair. Re-rooted UP so it overlaps the
-  # sheet's bottom edge (root top y530 vs sheet bottom ~y553 at x615) — the old start left a
-  # background gap that split the hair into two read-puddles.
-  - {ribbon: hair-inner-tail,
-     spine: [[520, 595], [700, 740], [830, 855]],
-     w: [100, 90, 55], fill: "#7dccc1", z: hair-inner,
-     desc: "the inner face continuing behind the lap mass, re-emerging right of it — same hair
-            structure as hair-inner. Root at (520,595): INSIDE the sheet's own bottom edge
-            (sheet bottom ≈y626 at x520) and left of the bow's cover (x551), so the junction is
-            visibly continuous — the old root sat behind the bow, which pixel-split the hair in
-            two and read as two puddles (M4a)"}
-  # The sheet's darker turn-under tone near the lap (measured x[12,222] y[732,774] #4ca5b2) —
-  # where the lifted hair rolls under toward the lap. Second flat tone of the cel pair.
+  # ---------------------------------------------------------- hair: ONE REGION (M4f)
+  # USER STRUCTURAL CORRECTIONS 2 (log.md 2026-09-17, authoritative): the hair is ONE region drawn
+  # outside-in. STEP A is the node below — the whole hair (wind-lifted mint inner face, head/crown
+  # zone, right fall's extent) as ONE closed smooth Catmull-Rom spline through measured extremity
+  # anchors. STEP B is the partition: the blue masses painted above (hair-fringe/main/lock/stream,
+  # all smooth, all fitted) are the region's interior blue zone; their outlines are the smooth
+  # internal boundary. No fold, no tuck, no ink line between the zones, no two-pieces-glued look.
+  # Anchors measured 2026-09-17 from image.jpg (P19): left edge mint y528+; crest (185,351);
+  # descending top edge (420,443); the exposed mint band behind the jaw x592-785 y390-460 with
+  # BLUE at (800,415) right of it; the fall x847-1024 y400-793; the tail's re-emergence
+  # x768-896 y680-896; lower-left turn-under to y~774 with the left mint strip running down the
+  # frame edge; the hidden bottom path (behind skirt/petals) stays smooth and monotone so the
+  # spline cannot wobble into the visible zone. Anchors on the blue side sit UNDER the blue
+  # masses/arm (their cover is the partition), so the union's outer silhouette is smooth and
+  # partly blue, partly mint.
+  - {hair-region: hair, fill: "#7dccc1", z: hair-inner,
+     anchors: [[2, 528], [185, 351], [420, 443], [740, 432], [780, 458], [818, 530],
+               [890, 650], [872, 895], [450, 800], [0, 820]],
+     desc: "the hair as ONE region — step A of the outside-in model: one smooth closed spline
+            through 10 measured extremity anchors, filled the mint of the inner face. The blue
+            zone (fringe, main fall, cheek lock, streaming lock — painted above) partitions it
+            from inside along their own smooth outlines; where the silhouette is blue those
+            masses cover this edge, so the outer contour reads as one object, mint in the wind,
+            blue at the head and fall"}
+  # Interior TONE ZONES of the mint face (the second/third flat tones of the cel pair; the true
+  # gradient is M4 — user: structure first, details later).
+  # The turn-under tone near the lap (measured x[12,222] y[732,774] #4ca5b2) — where the lifted
+  # hair rolls under toward the lap. Sits INSIDE the region's lower-left extent.
   - {ribbon: hair-inner-underside,
      spine: [[40, 690], [150, 670], [250, 680]],
-     w: [46, 44, 30], fill: "#4ca5b2", stroke: "#252a33", sw: 2.4, z: hair-inner,
-     desc: "the inner face's darker turn-under band where the sheet rolls toward the lap —
-            the hair's second flat tone (the soft gradient is M4). M4e: moved to hug the
-            sheet's new bottom edge from INSIDE (the sheet now reaches y~700 at x0-250, its
-            measured reference extent) — the old y732-774 placement hung below the sheet and
-            read as a floating teal ellipse (M4d rev 2: 'degenerate')"}
-  # Highlight streak + curl ON the sheet (measured ≈(20-227,507-603) and (107-160,470-530)):
-  # in hair terms these are the sheet's pale sheen streak and the small purple curl at its root.
-  # LOW CONFIDENCE: 13-20px thin; widths are readable defaults.
-  - {ribbon: sheen-streak,
-     spine: [[70, 560], [150, 532], [215, 505]],
-     w: [34, 44, 26], fill: "#eef7f0", z: hair-inner,
-     desc: "the inner face's pale sheen band — rubric F[6]: the mid-frame swirl tails must
-            not be deleted; re-read as the hair sheet's sheen, not a field swirl.
-            M4e: widened 16-22 -> 34-44px and shortened — a wide band ON the sheet reads as a
-            cel sheen; the old 16px slash read as a floating white chip (M4d rev 1)"}
-  - {ribbon: sheen-curl,
-     spine: [[128, 500], [104, 528], [126, 552]],
-     w: [30, 36, 20], fill: "#8984a6", stroke: "#252a33", sw: 2.0, z: hair-inner,
-     desc: "the small purple curl at the sheen band's root — measured #8984a6.
-            M4e: widened and inked so it reads as a curl ON the sheet, not a squiggle chip"}
-  # The sheet's lower-left reach is PALE in the reference, not saturated: image.jpg at (128,700)
-  # is (177,214,171) — the wash fades toward the ground light. Extending the saturated sheet into
-  # that zone mismatches it (coverage cells x64-192/y640-704 fell ~0.5); so the reach is its own
-  # flat tone, measured, sitting INSIDE the sheet's extended silhouette.
+     w: [46, 44, 30], fill: "#4ca5b2", z: hair-inner,
+     desc: "the inner face's darker turn-under band where the hair rolls toward the lap —
+            an interior tone of the ONE region (the old sheet is gone; this hugs the region's
+            lower-left interior)"}
+  # The lower-left reach is PALE in the reference: image.jpg at (128,700) is (177,214,171) —
+  # the wash fades toward the ground light. An interior tone zone, measured, inside the region.
   - {ribbon: hair-inner-pale,
      spine: [[0, 585], [100, 635], [200, 650]],
-     w: [170, 130, 80], fill: "#abd6b1", stroke: "#252a33", sw: 2.0, z: hair-inner,
+     w: [170, 130, 80], fill: "#abd6b1", z: hair-inner,
      desc: "the inner face's pale wash toward the lower-left ground light — measured
-            (177,214,171) at (128,700); the saturated sheet above it keeps its measured
-            top profile. Third flat tone of this face; the true gradient is M4"}
+            (177,214,171) at (128,700); interior tone zone of the ONE region (third flat
+            tone; the true gradient is M4)"}
 
   # ---------------------------------------------------------------- bow streamer (over the field, behind the figure)
   # M3c: the old `ribbon-sweep` was a straight purple BAR that attached to nothing (both reviewers;
@@ -143,12 +113,10 @@ draw:
      w: [22, 18, 13, 5], fill: "#3974ab", stroke: "#252a33", sw: 2.0, z: ribbon,
      desc: "a lock of the head's blue hair streaming over the lifted inner face — rooted
             behind the cheek lock (the root is hidden under hair-front), tapering to a point
-            top-left. M4e correction: the PATH is the reference's measured blue band
-            (M3c: x[250,480] y[360,443] thickness 11-16, free end 78,272 — verified again
-            today: image.jpg at (320,400) is hair blue (171,115,63)); only the ROOT moved
-            from the bow to the head, because two M4d reviewers and the user both read this
-            band as hair, not ribbon. The old re-route dropped the measured path and cost
-            exactly the cells where the reference's blue was being matched"}
+            top-left. A blue ZONE of the one hair region streaming across the mint zone (the
+            user's model: one object, partly blue, partly mint) — the path is the reference's
+            measured blue band (M3c: x[250,480] y[360,443] thickness 11-16, free end 78,272;
+            image.jpg at (320,400) is hair blue (171,115,63))"}
 
   # ---------------------------------------------------------------- the ruler (declared first, painted late)
   # M2: a `face`, not an ellipse. Measured from image.jpg, the visible face is 128px wide at the
@@ -237,19 +205,16 @@ draw:
             shy mark). M4b: shifted left of centre (−0.07 rx) — the bowed head carries the mouth
             with it; a centre mouth under a turned face reads as a stare"}
 
-  # ---------------------------------------------------------------- hair
-  # The hair is THREE instances of the `hair-mass` family — one silhouette each, as the vocabulary
-  # sketches it (a gesture spine + a width profile). The reference's visible hair is one connected
-  # mass, but it reads as three clumps: a fringe over the forehead, the long fall down the right,
-  # and a cheek lock down the left. A single 4-point ribbon fits IoU 0.670 and a two-instance
-  # (main + lock) decomposition 0.751; splitting the fringe out of the main raises it to 0.799
-  # because the fringe and the fall have different gestures and the fringe must NOT spill onto the
-  # face. All three were FITTED to the reference's frozen visible-hair mask (`traced/hair-mass.json`)
-  # with `work/fit-family.py`, occluders derived from this spec's own `layers:` order (`hair-left` is
-  # the only node painted above them), and the trace was then discarded (roadmap D24/D25). The fit
-  # maximises mask IoU against the teacher's measurement and never reads edge_f1/color_dist
-  # (invariant 4). The ceiling is the gesture form: the reference's fringe/hairline is a concave
-  # corner a tapered band cannot reproduce, so ~0.80 is this family's honest approximation.
+  # ---------------------------------------------------------------- hair (the blue zone masses)
+  # STEP B of the outside-in model: the blue ZONE of the one hair region. These masses paint
+  # ABOVE the mint container; their own smooth outlines are the region's interior partition, and
+  # where the hair's outer silhouette is blue (crown, right fall) they cover the container's
+  # edge, so the union reads as one object. The three head masses were FITTED to the reference's
+  # frozen visible-hair mask (`traced/hair-mass.json`) with `work/fit-family.py`, occluders
+  # derived from this spec's own `layers:` order, and the trace was then discarded (D24/D25).
+  # The fit maximises mask IoU against the teacher's measurement and never reads edge_f1/
+  # color_dist (invariant 4). The ceiling is the gesture form: the reference's fringe/hairline
+  # is a concave corner a tapered band cannot reproduce, so ~0.80 is this family's honest IoU.
   - {hair-mass: hair-fringe, host: head,
      spine: [[head.cx - 0.81112*head.rx, head.cy - 1.06258*head.ry],
              [head.cx + 1.59920*head.rx, head.cy - 0.13827*head.ry]],
@@ -277,16 +242,15 @@ draw:
      w: [0.32490*head.w, 0.11*head.w, 0.20*head.w],
      side: both, fill: "#3974ab", z: hair-front,
      desc: "hair cheek lock — the strand falling down the left of the face; its gap to the fringe
-            is the pink face pocket (skin through the notch), which is why the hair is several
-            instances, not one silhouette.
+            is the pink face pocket (skin through the notch), which is why the blue zone is
+            several instances, not one silhouette.
             M4d: EXTENDED down the jaw — the reference's lock runs beside the face to y≈450
-            (measured blue x520-637 y240-450, narrowing 74->16px), while the fitted clump stopped
-            at y275; the third spine point (y~418) carries it to the measured tip, where the
-            inner-face sheet tucks under it — the fold that roots the sheet at the head.
-            M4e: the tip is wider (0.155 -> 0.20 head.w) and reaches y~460 (cy+1.66ry), so the
-            shared blue/mint boundary over the sheet's root is LONG enough to read as a drawn
-            fold (M4d's 30px-wide tip gave only ~1.8k px of buried contact); the mid pinch is
-            opened 0.053 -> 0.11 so the lock reads as one strand, not two beads"}
+            (measured blue x520-637 y240-450, narrowing 74->16px); the third spine point
+            carries it to the measured tip, where it meets the mint zone — the region's smooth
+            interior partition at the head (no fold line; the zones are one object).
+            M4e: the tip is wider (0.155 -> 0.20 head.w) and reaches y~460 (cy+1.66ry), giving
+            the blue/mint boundary over the zone junction real length; the mid pinch is opened
+            0.053 -> 0.11 so the lock reads as one strand, not two beads"}
   # The hair's left-side presence: the reference's only left-side HAIR below the head is one blue
   # lock that pokes out from behind the figure at (420-520,537-623) (probed #5571ae at (470,570)) —
   # the tip of the left twin-tail passing behind the body. Root it behind the bow's cover, let the
@@ -412,49 +376,24 @@ draw:
             (loops 0.57), and the unconstrained fit inflates `loop-w` to its bound chasing the mask
             — reported, not hidden. The bow outline is the reference's own line art"}
 
-  # ---------------------------------------------------------------- seated lower body (M3b+c)
-  # M3b fixed the occlusion bug (petals carried `z: skirt-dark` and painted INSIDE the mass). M3c
-  # rebuilds the lap from measurement, because both reviewers' biggest defect stayed: "no readable
-  # knee/leg below the hem" (B[5]) — and the old legR could never read, because the pleats tent
-  # (y745-980 across x[145,855]) painted entirely OVER it. Three measured facts drive the rebuild:
-  #   - the dark navy undermass lies ACROSS the lap as a diagonal band, top edge (150,821)(220,794)
-  #     (380,838)(450,824), dropping to (590,944), right end ≈x770 under the skirt-front petals;
-  #   - the knees press the pale cloth out BELOW-LEFT of the apron hem: draped fold lobes at
-  #     x[0,260] y[760,1024] (probed #c9e0d3 at (120,940)) — cloth-covered, no skin shows;
-  #   - the apron (pleats) is the upper panel only: waist under the bow ≈(660,620), its trimmed hem
-  #     wrapping the knee bulge around y[750,930], NOT a tent down to y980.
+  # ---------------------------------------------------------------- seated lower body (M3b+c, M4f cleanup)
+  # M3b fixed the occlusion bug (petals carried `z: skirt-dark` and painted INSIDE the mass). The
+  # lap is TWO masses: the dark navy undermass lying ACROSS it as a measured diagonal band, and
+  # the pale pleated apron over it. USER CORRECTION 2 (2026-09-17): the reference has NO knee and
+  # NO leg below the hem — the lower silhouette is skirt cloth + streamers only. The old legL/
+  # knee-skin nodes drew anatomy that is not there (six slices chased a phantom; rubric B5 is
+  # corrected accordingly) and are DELETED. The lower-left pale lobes the reviewers kept reading
+  # as a knee are the SKIRT's own cloth — the pleats and the navy band own that zone.
   -
     {ribbon: underskirt,
      spine: [[140, 880], [300, 870], [470, 882], [865, 930]],
      w: [150, 170, 165, 152], fill: "#2d4e67", z: skirt-dark,
-     desc: "navy undermass lying ACROSS the lap — the measured diagonal band, highest at the knee
-            end (y794 at x220), descending under the apron to the right. M4b: right end extended
-            x710 -> x865 — the reference's mass continues under the hand (its zone x720-880/
-y880-1000 is 91% non-background, dark tones), and the hand must rest ON the mass: E[6] fails
-            while the hand sits beside the mass's edge with background under it"}
-  # One cloth-covered leg: hip under the apron, knee pressing out at lower-left, drawn BEFORE the
-  # skirt so the apron hem drapes over the thigh while the knee lobe reads below it. Fill is the
-  # SKIRT'S OWN cloth (#d2e2d8) because the reference shows no skin on the legs — the knee reads as
-  # the skirt bulging over it, with the knee highlight one shade darker as the fold.
-  -
-    {leg: legL, spine: [[600, 770], [300, 860], [140, 960]],
-     w: [170, 185, 150],
-     fill: "#d2e2d8", stroke: "#252a33", sw: 2.4, knee: 1, knee-fill: "#c3d8ca", z: leg,
-     desc: "left leg seated toward the viewer-left — hip under the apron, knee pressing the cloth
-            out below the hem, shin to the lower-left, at the measured drape-lobe scale (reference
-            lap mass ~244px across). M4b: the whole gesture shifts ~60px left so the knee lobe
-            CLEARS the petal cluster's cover (x212) — M4a's knee was real but 90% of it sat under
-            the petals, and what peeked out was the 76px sliver the reviewers called detached"}
-  # M3d: the knee STILL did not read — the petal cluster (skirt-front) covers x212-400 y698-1024,
-  # exactly where the cloth knee was. The reference shows the knee pressing out to the LEFT of the
-  # petals with skin at the press point (measured: 12k skin px below y800). So the shin ends in a
-  # skin lobe placed left of the petal cluster's cover, outside the apron: a leg, finally, below
-  # the hem — cloth thigh, skin knee, one gesture.
-  - {blob: knee-skin, spine: [[255, 905], [130, 968]],
-     w: 115, fill: "#e8d7bd", z: leg,
-     desc: "the knee pressing out of the cloth at lower-left — a skin lobe continuous with the
-            cloth thigh (legL), outside the apron and left of the petal cluster, so the leg reads
-            below the hem as the reference's does (skin at the press point)"}
+     desc: "navy undermass lying ACROSS the lap — the measured diagonal band, highest at its
+            left end (y794 at x220), descending under the apron to the right. M4b: right end
+            extended x710 -> x865 — the reference's mass continues under the hand (its zone
+            x720-880/y880-1000 is 91% non-background, dark tones), and the hand must rest ON
+            the mass: E[6] fails while the hand sits beside the mass's edge with background
+            under it"}
   # The skirt: a GENERATOR (scripts/relate.py `pleats`), not laid shapes. `count` is the number of
   # hem scallops, `depth` their amplitude, `taper` how they open from waist to hem, `seed` the phase;
   # the hem, the navy trim band and the crease lines are all sampled from that one wave, so changing
@@ -466,8 +405,8 @@ y880-1000 is 91% non-background, dark tones), and the hand must rest ON the mass
      taper: 1.0, seed: 0, tilt: -13, trim: 0.15, bulge: 0.22,
      fill: "#d2e2d8", trim-fill: "#2d4e67", stroke: "#252a33", sw: 2.4,
      fold-w: 1.8, fold-ink: "#9db8ad", z: skirt, z-trim: skirt,
-     desc: "pleated apron — the upper panel only: waist under the bow, hem wrapping the knee bulge
-            at y≈750-930, tilted so the knee side hangs lower (tilt -13; sign verified against the
+     desc: "pleated apron — the upper panel only: waist under the bow, hem wrapping the lap bulge
+            at y≈750-930, tilted so the left side hangs lower (tilt -13; sign verified against the
             render). Re-tuned from the M3b tent (at 500,745 drop 235 tilt 12) whose hem buried the
             leg; hem, trim and creases still share one generated wave"}
   # The colour panels in FRONT of the skirt. In the reference these are the foreground flower
@@ -534,7 +473,7 @@ relations:
   - {front: hair-front, behind: blouse, desc: "front hair falls over the blouse"}
   - {front: skirt, behind: underskirt, desc: "the pleated pale apron drapes over the navy undermass"}
   - {front: petalRose, behind: skirt, desc: "the foreground petals lie OVER the skirt, so their outlines cross the navy edge — this is the M3b occlusion fix"}
-  - {front: skirt, behind: legL, desc: "the apron hem drapes over the thigh; the knee presses out below the hem"}
+  - {front: skirt, behind: underskirt, desc: "the pleated apron drapes over the navy undermass at the lap"}
   - {front: blouse, behind: armL, desc: "the left forearm hides behind the blouse placket — only its puff sleeve and cuff show (the reference's own occlusion)"}
   - {front: blouse, behind: hair-stream, desc: "the streaming hair lock passes behind the figure at its root — it emerges from under the cheek lock, not from the bow"}
   - {front: hair-main, behind: head, desc: "the visible hair falls in front of the face; the hat still sits over the skull"}

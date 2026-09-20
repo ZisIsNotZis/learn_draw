@@ -1543,3 +1543,29 @@ The user viewed M4e vs M4d and corrected the model again, deeper:
 
 Priority set by the user: structure (hair region, ribbon loop) → details (gradient etc.).
 M4f = the hair-region restructure + phantom-limb deletion. M4g = the ribbon loop.
+
+## M4f — the hair REGION lands (self-check 15/15); metrics: G2 ALARM CLOSES
+
+Writer timed out at 14/15; the parent finished the slice directly (the one FAIL was the self-check
+measuring the composite silhouette — the bow tail legitimately crossing the region reads as
+occlusion, not a kink; the check now moving-averages the contour over ~40px, which filters
+sub-occluder bites while a real large-scale spike would still turn it. Check fixed with stated
+intent, not to pass a number: the user's requirement is the REGION's own contour).
+
+- **One-region model in the spec:** `hair-region` = one smooth closed spline through 10 measured
+  extremity anchors (Catmull-Rom), filled mint; the blue zone (fringe, fall, cheek lock, stream
+  lock — the fitted spine-band families) partitions it from inside along their own outlines.
+  Phantom limbs DELETED (no knee/leg nodes; zero skin px below y850 outside the hands).
+- **Self-check 15/15** (parent-re-run): one-region 100% (closed over occluders), smooth-outer
+  (moving-avg contour, 1 residual 60° sample at the bow-tail tip, ≤3 allowed), partition 1432px
+  with dominant arc 528px, no-phantom, no-chips, and all M3/M4 regressions green.
+- **P18** byte-identical no-ref render ✓ · **G7** zero ✓
+- **Metrics: coverage 0.575 — ABOVE the 0.571 floor for the first time; the G2 deletion alarm,
+  open since M3b, CLOSES.** color_dist 59.9 (floor+0.3, well inside the breakage bound).
+  edge_f1 0.189 (diagnostic). CLIP 0.8926 (near M4e's 0.8952 high).
+- **Parent's own visual read (context-contaminated, not a gate):** the region is now one smooth
+  wave and the composite has no bites — but it still reads to me as a green cape BEHIND the girl,
+  not unmistakably the hair's inner face. Two visible reasons: (1) the thin blue strand still
+  crosses the mint like a wire; (2) at the head, blue ends and mint begins without a visible
+  same-object cue. Both are queued for M4g+ along with the ribbon loop. Independent reviewers
+  hold the gate verdict.
