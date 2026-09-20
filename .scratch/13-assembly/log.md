@@ -1718,3 +1718,18 @@ corner with no visible hem in the left half; the figure sits IN the flow; the te
 is substantially reduced. Known remaining: the thin strand still reads as a line; ribbon-loop
 front segment is low-contrast (structure done, colour separation is the deferred detail tier);
 the face is unchanged per the user's demotion.
+
+### M4h rubric verdict — 22+22; the missing articulation named: the interior boundary has no INK LINE
+
+rev 1: A3 B4 C3 D4 E5 F4 (22) · rev 2: A3 B4 C3 D4 E4 F4 (22). No contested axes. E 4-5, B 4-5
+hold. Both reviewers: mint still reads ground-bound; both mention the absence of any drawn
+boundary between blue and mint ("no shared boundary or continuity"; "nothing states...").
+
+**Synthesis of seven attempts:** the geometry (region, profile, attachment, off-frame flow) now
+measures at or near the reference everywhere — the deficit is STYLISTIC: the reference
+articulates the blue/mint interior partition with an ink line ((0,47,71) measured at the head
+boundary); M4d's wholesale removal of the fold deleted the line as well as the wrong tuck. The
+user's own model says the zones are divided by a smooth interior boundary — in flat-cel idiom
+that boundary is a drawn line. **M4i: one change — draw the smooth ink line along the blue/mint
+interior boundary near the head, running from the outer silhouette (below the brim, x~600) down
+to the collar/lock, exactly where the reference's is.** Nothing else.
