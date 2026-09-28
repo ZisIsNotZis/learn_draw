@@ -3,24 +3,28 @@
 Goal: learn to draw (SVG/CSS programmatic art, never diffusion/pixel) — first by recreating reference images with explainable, readable vector graphics, later without a reference. Reference target: `image.jpg` (anime-style portrait).
 
 Where we are right now: `STATUS.md` (repo root) — current best artifact, milestone, blockers.
-Where we are going: `docs/drawing/roadmap.md` — milestones M0–M5 and the gate every one must pass.
+Where we are going: `docs/drawing/roadmap.md` — current spatial-model milestones and gates.
+Architecture SSOT: `docs/drawing/spatial-model.md` — 2D artwork on 3D support surfaces;
+the engine computes visibility from depth. The current `relate.py`/SVG pipeline is legacy 2D.
 
 Method, style guide, and loop: `docs/drawing/method.md` — read before any drawing session.
-Authoring language (how a drawing is described): `docs/drawing/abstraction.md` — relations and object
-vocabulary, resolved by `scripts/relate.py`.
+Current 2D authoring language: `docs/drawing/abstraction.md` — relations and object vocabulary,
+resolved by `scripts/relate.py`; not the future spatial component language.
 Transferable lessons log: `docs/drawing/principles.md` (append-only).
-Compiled node format (back end): `docs/drawing/scene-format.md`.
+Current flat 2D compiled node format (back end): `docs/drawing/scene-format.md`.
 
 ## Invariant rules
 
 1. **Semantic layer only.** Every path/layer gets a name + intent comment. Every edit is justified by a statement about the drawing ("brim ellipse too flat"), never by "moved a point to lower a metric". Chasing pixel metrics = optimizer regression, forbidden.
-2. **Line art and coloring are separate concerns**, drawn and compared separately (line mode diff vs color mode diff). Line art comes *first*; soft fields come *last*.
+2. **Structure, line art and coloring are separate concerns.** First establish component identity,
+   attachment and depth-based visibility; then design/review line art separately from colouring.
+   Soft fields come *last*. A projected mesh edge is not automatically an art line.
 3. **A weird hint means upstream error.** If a diff hint points at something my mental model can't explain, my earlier drawing is structurally wrong — investigate backward, don't patch forward.
 4. **Metrics are signal, never target.** Log edge-F1 / color distance per iteration; never tune against them. `check` prints them as a breakage alarm only.
-5. **Geometry is computed, never eyeballed** (P19). No shape carries more than ~4 hand-typed coordinates — anything larger comes from a relation, a vocabulary node, `trace`/`region`, or a generator. Author in `abstraction.md` terms; absolute coordinates are compiler *output*, never authoring input.
-6. **The engine never sees the target** (P18). A reference may seed the values in a spec, then gets closed. Tracing is a teacher, never the engine — test every addition with the image deleted.
+5. **Geometry is computed, never eyeballed** (P19). No shape carries more than ~4 hand-typed coordinates — anything larger comes from a relation, a vocabulary node, `trace`/`region`, or a generator. Existing 2D art uses `abstraction.md`; new spatial components use `spatial-model.md`. Absolute frame coordinates are compiler output, not an authoring target.
+6. **The engine never sees the target** (P18). A reference may seed the values in a spec, then gets closed. Tracing is a teacher, never the engine — test every addition with the image deleted. For new spatial work, never hand-specify visibility cuts: component depth determines occlusion.
 7. **Never judge your own render.** Run `draw check`, then give `report.txt`'s image list — and nothing else — to a fresh-context reviewer asking "what is wrong here?". Verify a reviewer's spatial claims against the bundle's region coordinates (P7: observations are reliable, locations are not).
-8. **Never regress the recorded best.** `check` prints `vs recorded best:`; a render below it is a regression, however much the language improved. "Final", "readable" and "done" are claims that require the gate (roadmap G1–G6) — a claim without it is false, however clean the diagnostics are (P22). Promote a new best only through `scripts/draw baseline` after a passed gate.
+8. **Never regress the recorded best.** `check` prints `vs recorded best:` for comparable drawings; structural sketches are not comparable finished drawings and must not replace the baseline. "Final", "readable" and "done" require the applicable roadmap gate (P22). Promote a new best only through `scripts/draw baseline` after a passed whole-drawing gate.
 
 ## Layout
 

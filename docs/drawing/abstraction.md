@@ -1,4 +1,10 @@
-# Drawing language — relational front end
+# Drawing language — current 2D relational front end
+
+> **Scope:** this documents the existing resolver, not the intended spatial architecture.
+> The architecture SSOT is [`spatial-model.md`](spatial-model.md): 2D artwork on 3D support
+> surfaces with engine-calculated depth visibility. Its component-local coordinates are not
+> frame-placement coordinates. Existing global layers/relations are migration inputs, not the
+> answer for a ribbon alternating between near and far depth.
 
 How a drawing gets described at object level instead of coordinate level. Resolver:
 `scripts/relate.py` (the single canonical resolver — promoted 2026-09-14; forks deleted),
@@ -176,7 +182,7 @@ sentences* instead of leaving it to the author:
 - `OFF-CANVAS` / `CLIPPED` — shape entirely outside, or crossing the frame edge (with coordinates)
 - `SUB-PIXEL` — rendered smaller than ~3px, i.e. invisible
 - `CONTRADICTION` — a declared `relations:` intent (`front: hat, behind: hair`) disagrees with the
-  `layers` order; the engine says which layer wins
+  `layers` order in the **legacy 2D resolver**; this is not geometric depth testing
 - anchor table (`--anchors`) — every resolved handle, so the author can reason about what it got
 
 On the first proof render this caught two real defects before the image was looked at.

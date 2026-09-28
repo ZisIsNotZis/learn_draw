@@ -1,4 +1,9 @@
-# Scene format & renderer — compiled node format (back end)
+# Scene format & renderer — existing flat 2D back end
+
+> **Scope:** this is the current SVG compiler, not the planned depth-aware renderer.
+> [`spatial-model.md`](spatial-model.md) is the architecture SSOT. Global `z` layers and
+> manually complementary ring arcs below are legacy workarounds; the new engine must derive
+> visible fragments from 3D support depth without requiring an author to split the artwork.
 
 Purpose: the node format a drawing compiles *down* to — semantic nodes with parameters that compile to SVG (rendered via the existing chrome pipeline, so all compare/probe tooling works unchanged).
 
@@ -32,7 +37,7 @@ exceed ~4 coordinates (invariant 5 / P19). The budget limits authoring, not reso
 
 ## Layers & occlusion
 
-`layers:` is an optional first node (list of layer names, bottom→top). Renderer paints by layer order, then document order within a layer. **Occlusion is the renderer's job** — shapes are drawn whole, never pre-split. No path may encode "avoid another shape".
+`layers:` is an optional first node (list of layer names, bottom→top). Renderer paints by layer order, then document order within a layer. This renderer uses **global painter order**, not geometric depth. It can hide a whole shape behind another but cannot correctly alternate depth along one continuous bent surface. The intended engine (spatial-model.md) must do that without author-defined cuts.
 
 ## Node types
 

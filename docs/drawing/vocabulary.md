@@ -1,4 +1,10 @@
-# Vocabulary — object families and canons
+# Vocabulary — existing 2D families and canons
+
+> Inventory of the current relational resolver, not a specification of the future depth engine.
+> The component/surface contract is in [`spatial-model.md`](spatial-model.md). Some catalog
+> statuses and early canons below are historical; verify an implemented family against
+> `scripts/relate.py` before relying on this table. Transferable 2D artwork should attach
+> to a support surface rather than encode visibility cuts.
 
 Where drawing knowledge lives. `abstraction.md` defines the language (anchors / relations /
 vocabulary); this file catalogs the families, the proportion knowledge (**canons**) they carry, and

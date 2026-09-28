@@ -1,4 +1,9 @@
-# Drawing method — reference recreation via programmatic art
+# Drawing method — observation and review loop
+
+> The current 2D drawing loop below is historical/operational. For the new component-on-surface
+> method, [`spatial-model.md`](spatial-model.md) owns the architecture and
+> [`roadmap.md`](roadmap.md) owns the staged structural proof. Do not prescribe manual
+> occlusion splits or infer depth from global paint layers in new work.
 
 Loop: **observe → plan → draw → compare → reflect → revise**, cycled. Line art first, coloring second, soft fields last.
 

@@ -85,7 +85,10 @@ Regular, structured things (ribbons, curtains, hair strands, water ripples) shou
 User-supplied component plates (crops of the ref or redrawn versions) must be template-matched against the reference before being used as geometry sources — a plate's alignment tells you whether it is a position-true trace (usable for placement) or a redraw (usable for style/shape only). Matching = masked TM_SQDIFF over a scale scan; scale 2.0 on a 2048→1024 plate means 1:1. Redrawn plates match nothing and must not be force-fit.
 Learned: dress.png/cloth.png are redraws (style refs); hat/ribbon/head_hat are position-true.
 
-## P17 — z-plane split for wrap-around elements (user spec, REBUILD v2 #6/#3/#5)
+## P17 — z-plane split for wrap-around elements (historical 2D workaround, REBUILD v2 #6/#3/#5)
+
+**Superseded as an architecture prescription by P29.** This describes what the old flat
+renderer required, not what an author should do in the new spatial model.
 
 Elements that wrap AROUND the figure (ribbon circling the body, hair behind vs in front, hands tucked behind) are modeled as ONE continuous shape split by z-plane, never pre-split paths: two node instances sharing geometry (+seed), complementary arc/angle ranges, different `z`. For the ring generator the zigzag phase is purely angular, so complementary arcs re-join seamlessly. Occlusion stays the renderer's job (scene-format rule).
 Learned: ribbon ring back/front halves; green hair mass moved from front overlay to hair-behind layer.
@@ -224,3 +227,14 @@ shape but of how far the ruler ran away. Pin the host to its measured canon, fit
 host-relative, and report the fixed-ruler number even when a free fit looks better. A free fit that
 improves the fit metric while degrading the drawing is P25's lesson in a new costume.
 Learned: M2 attempt 4b (`.scratch/13-assembly/log.md`).
+
+## P29 — Let physical depth produce visibility, not the author (user correction, spatial model)
+
+A continuous 2D component is painted on a plane or a curved 3D support. A ribbon that bends
+around a person must remain one local artwork; it disappears where the person's surface is nearer
+and reappears where its own surface is nearer. The engine derives those visible fragments from
+projected depth. Asking a VLM to specify the precise hidden/reappearing intervals preserves the
+failure mode this architecture is meant to remove. A 3D scaffold explains occlusion but does not
+replace the artist's later selection and beautification of line art. Architecture SSOT:
+`docs/drawing/spatial-model.md`. Learned: user's explicit correction after M4j's apparently
+continuous but spatially misplaced ribbon.

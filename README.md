@@ -10,42 +10,32 @@ Starry-Night-class scene drawn from intent alone.
 
 ## Where this project is right now
 
-**Start with [`STATUS.md`](STATUS.md)** — current best artifact, the milestone in progress, and open
-defects. Direction lives in [`docs/drawing/roadmap.md`](docs/drawing/roadmap.md) (milestones M0–M5 and
-the six gates every one must pass).
+Start with [`STATUS.md`](STATUS.md). The user-approved target architecture is
+[`docs/drawing/spatial-model.md`](docs/drawing/spatial-model.md): separately drawn 2D
+components placed on 3D planes or curves, with visibility computed by depth. The existing
+`relate.py` / `scene_render.py` pipeline is a **flat 2D implementation**, not yet that engine.
+Current milestones and gates are in [`docs/drawing/roadmap.md`](docs/drawing/roadmap.md).
 
-Honest headline as of 2026-09-15: an unsupervised research session produced real *language* progress
-(one relational resolver, object families, measured canons, 24 principles) while its *drawings* fell
-**4.5–5.6× below** the best picture the repo already contained — and both were committed as "FINAL
-IMAGE" because nothing compared a new render against the previous best. That is now fixed
-(`scripts/draw baseline` records the floor; `check` reports the delta; a `coverage` metric makes
-deleted content visible). The full post-mortem is in
-[`.scratch/14-abstraction-research/spec.md`](.scratch/14-abstraction-research/spec.md) → Verdict.
+A bounded structural sketch (`scripts/spatial_sketch.py`) places one continuous striped ribbon
+around a coarse torso and projects two viewpoints. It uses approximate triangle painter sorting,
+not an exact vector visibility implementation. It does not reproduce the target portrait.
 
-## How it works
+The reference study is `image.jpg`; M4j is the latest 2D assembly study. The user accepted the
+improvement to hair but says the ribbon's position remains wrong. Historical decisions and
+iterations are preserved under `docs/drawing/history/` and `.scratch/13-assembly/log.md`.
 
-You do not write coordinates. You describe the drawing in words — anchors, relations, and object
-families — and a resolver computes the geometry.
+## Current toolchain (legacy 2D)
+
+`docs/drawing/abstraction.md` and `scene-format.md` document the working 2D authoring/renderer
+contract. `vocabulary.md` inventories reusable families, `method.md` the review loop, and
+`principles.md` transferable lessons. None of those overrides `spatial-model.md` on the new
+component/surface/visibility contract.
 
 ```bash
-# describe (relations only, no coordinates)         -> compile -> render -> judge
-.venv/bin/python scripts/relate.py <spec>.yaml -o art.png --anchors
-scripts/draw check art.png --ref image.jpg      # the whole visual feedback bundle + ratchet delta
-scripts/draw baseline art.png --ref image.jpg   # promote, only after a passed gate
+.venv/bin/python scripts/relate.py .scratch/13-assembly/work/spec.yaml -o /tmp/study.svg
+scripts/draw check .scratch/13-assembly/evidence/m4j-final.png --ref image.jpg
+.venv/bin/python scripts/spatial_sketch.py -o /tmp/spatial-sketch.svg
 ```
-
-| piece | what it is |
-| --- | --- |
-| `docs/drawing/roadmap.md` | direction: milestones and gates |
-| `docs/drawing/method.md` | the observe→plan→draw→compare→reflect→revise loop, tier ladder, style guide |
-| `docs/drawing/abstraction.md` | the authoring language (anchors / relations / vocabulary) |
-| `docs/drawing/vocabulary.md` | object families and measured **canons** (proportion knowledge) |
-| `docs/drawing/scene-format.md` | the compiled node format behind the resolver |
-| `docs/drawing/principles.md` | transferable lessons, P1–P24, append-only |
-| `scripts/relate.py` | the single relational resolver |
-| `scripts/scene_render.py` | compiles the node format to SVG, renders via headless Chrome |
-| `scripts/draw.py` | CLI: `check`, `baseline`, `compare`, `diff`, `ref`, `log`, `measure` |
-| `.scratch/NN-slug/` | one directory per exercise: `spec.md`, `work/`, `evidence/`, `log.md` |
 
 ## Running it
 
@@ -61,9 +51,9 @@ Rendering needs a Chrome build (the tooling uses `chrome-headless-shell` from a 
 
 Geometry is computed, never eyeballed (≤ ~4 hand-typed coordinates per shape). The engine never
 reads the target — a reference may *seed* values, then it is closed, and every addition is tested
-with the image deleted. Line art precedes colour; soft fields come last. Metrics are floors and
+with the image deleted. Structure and depth visibility precede designed line art; colour and soft fields come later. Metrics are floors and
 alarms, never targets. Never judge your own render: run `check`, then give its image list — and
-nothing else — to a fresh-context reviewer. Never regress the recorded best.
+nothing else — to a fresh-context reviewer. Never replace the recorded best with an unreviewed drawing; structural sketches are separate proofs.
 
 ## Licensing
 
