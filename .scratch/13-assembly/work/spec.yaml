@@ -31,7 +31,7 @@ frame: {w: 1024, h: 1024}
 
 # M3c adds `arm-back`: the left forearm is hidden BEHIND the blouse (the reference shows only its
 # puff sleeve and navy cuff), so the limb paints under the blouse while its sleeve/cuff paint over it.
-layers: [bg, hair-inner, ribbon, hair-back, skirt-dark, ribbon-front, skirt, skirt-front, arm-back, blouse, collar,
+layers: [bg, hair-inner, hair-blue, ribbon, hair-back, skirt-dark, ribbon-front, skirt, skirt-front, arm-back, blouse, collar,
          arm, sleeve, cuff, hand, neck, bow, hat, hat-front, head, features, hair-front]
 
 vars:
@@ -63,7 +63,8 @@ draw:
   # partly blue, partly mint.
   - {hair-region: hair, fill: "#7dccc1", z: hair-inner,
      anchors: [[2, 528], [185, 351], [420, 443], [520, 380], [600, 232], [660, 242], [740, 432],
-               [780, 458], [818, 530], [890, 650], [872, 895], [450, 800], [0, 820]],
+               [780, 458], [818, 530], [890, 650], [872, 895], [700, 1030], [300, 1045],
+               [-20, 1035], [-10, 800], [0, 600]],
      desc: "the hair as ONE region — step A of the outside-in model: one smooth closed spline
             through measured extremity anchors, filled the mint of the inner face. The x520-660
             segment rides UP to the blue hair's measured bottom edge (ref gap: ink line only,
@@ -83,8 +84,8 @@ draw:
   # The lower-left reach is PALE in the reference: image.jpg at (128,700) is (177,214,171) —
   # the wash fades toward the ground light. An interior tone zone, measured, inside the region.
   - {ribbon: hair-inner-pale,
-     spine: [[0, 750], [80, 760], [160, 770]],
-     w: [120, 90, 50], fill: "#abd6b1", z: hair-inner,
+     spine: [[0, 700], [120, 720], [260, 790], [400, 900]],
+     w: [150, 170, 170, 150], fill: "#abd6b1", z: hair-inner,
      desc: "the inner face's pale wash toward the lower-left ground light — measured
             (177,214,171) at (128,700); interior tone zone of the ONE region (third flat
             tone; the true gradient is M4). M4g: moved down to HUG the region's lower-left
@@ -110,40 +111,47 @@ draw:
   # BEHIND the cheek lock at the face (560,430 — under the blue that paints later), sweeping
   # down-left ACROSS the mint sheet and tapering to a point (a strand end, not a stick end), in
   # the hair's own blue. The bow keeps its family tails; this was never the drawn bow.
-  - {ribbon: hair-stream,
-     spine: [[560, 430], [430, 427], [280, 385], [150, 329]],
-     w: [16, 15, 13, 6], fill: "#3974ab", stroke: "#252a33", sw: 2.0, z: ribbon,
-     desc: "a lock of the head's blue hair streaming over the lifted inner face — RE-PATHED to the
-            reference's measured centreline ((500,431),(420,428),(300,406),(210,345),(150,329)):
-            in the reference this band IS the mint face's rim — it hugs the inner face's top edge
-            and ends where that edge meets the left frame sweep (136,324). M4f's version ended
-            mid-field at (78,272), which four reviewers read as a wire/stick splitting the object;
-            hugging the rim makes it the boundary of the SAME object (thickness 11-16 measured;
-            root hidden under hair-front at the cheek lock)"}
+  # ---------------------------------------------------------------- THE BLUE ZONE (one interior partition)
+  # USER MODEL, applied literally: the hair is ONE region; the blue is not separate shapes stacked
+  # on top — it is the region's OTHER FILL. This node is a second closed smooth spline sharing the
+  # region's outer contour on the head/right side (where the silhouette is blue) and closing along
+  # ONE smooth interior partition curve that runs around the hairline (y~215-300 over the face)
+  # and down to the cheek/collar junction (560,430) — so the eye crosses blue -> ink line -> mint
+  # along one drawn boundary, exactly as head.png reads. Its ink stroke IS the partition line.
+  - {hair-region: hair-blue, fill: "#3974ab", stroke: "#252a33", sw: 2.4, z: hair-blue,
+     anchors: [[560, 430], [600, 232], [660, 242], [740, 432], [780, 458], [818, 530],
+               [890, 650], [872, 895], [820, 700], [830, 480], [760, 300], [720, 218],
+               [640, 212], [575, 262], [555, 330], [565, 395]],
+     desc: "the blue ZONE of the one hair region — step B done as a fill, not stacked bands: a
+            closed smooth spline sharing the region's outer contour on the head/right side
+            (crown under the hat, the fall x847-1024 y400-793) and closing along ONE smooth
+            interior partition curve (hairline y~215 over the face, down past the temple to the
+            cheek/collar junction at 560,430). The ink stroke is the partition line the
+            reference draws between the zones. Replaces hair-fringe/main/lock/stream/tip:
+            four tapered bands stacked above a field is precisely the 'dismembered' look the
+            user rejected — one region, one partition, two fills"}
 
-  # ---------------------------------------------------------------- the ribbon: ONE continuous loop (user direction)
+  # ---------------------------------------------------------------- THE RIBBON: one continuous ring (user direction)
   # The user's model: the ribbon is a RING — one continuous band, its far half behind the body,
-  # its near half in front. Measured path in the reference: bow knot (667,530); the navy tail
-  # runs DOWN from it (x569-661, y600-720), disappears behind the lap mass, and the band
-  # RE-EMERGES lower-left as the dark-teal streamers filling the bottom-left corner
-  # (measured RGB(41,87,112) at (200,900),(280,940); the reference's bottom-left is filled
-  # with this cloth). Two nodes, one path: the back segment (z: ribbon, behind the body) and
-  # the front segment (z: ribbon-front, over the lap mass) share the measured line so the eye
-  # reads ONE band passing behind and re-emerging. Structure first; the pink->? gradient is M4.
+  # its near half in front. One path, three windows: from the bow knot DOWN behind the lap mass
+  # (back), re-emerging as a continuous salmon band that sweeps across the bottom-left shards
+  # zone (front) — the four petal diamonds are ABSORBED into this band, because four separate
+  # diamonds is precisely what the user rejected ('不是一个一个菱形'). Colours measured: navy
+  # tail RGB(97,125,175); salmon shard band = the petalRose fill family.
   - {ribbon: ribbon-loop-back,
-     spine: [[667, 545], [625, 655], [560, 735], [500, 800]],
-     w: [64, 52, 40, 26], fill: "#617daf", stroke: "#252a33", sw: 2.0, z: ribbon,
-     desc: "the ribbon's far half: from the bow knot DOWN behind the lap mass (measured navy
-            tail x569-661 y600-720; blue-grey RGB(97,125,175) at (580,680)) — drawn at ribbon
-            z so the body occludes its middle; the front segment continues the same line"}
+     spine: [[667, 545], [625, 655], [560, 735], [500, 800], [445, 860]],
+     w: [64, 52, 40, 30, 24], fill: "#617daf", stroke: "#252a33", sw: 2.0, z: ribbon,
+     desc: "the ring's far half: from the bow knot DOWN behind the lap mass (measured navy tail
+            x569-661 y600-720), continuing to the re-emergence point — one path with the front
+            segment, half occluded by the body per the user's direction"}
   - {ribbon: ribbon-loop-front,
-     spine: [[445, 860], [340, 920], [225, 975]],
-     w: [20, 17, 10], fill: "#29576f", stroke: "#252a33", sw: 2.0, z: ribbon-front,
-     desc: "the ribbon's near half RE-EMERGING lower-left: the same band's continuation where
-            the reference's bottom-left corner is filled with dark-teal streamer cloth
-            (RGB(41,87,112) measured at (200,900),(280,940)) — drawn ABOVE the lap mass so the
-            band's near half lies in front; shared line with ribbon-loop-back = one ring,
-            half occluded, per the user's direction"}
+     spine: [[470, 845], [390, 800], [300, 850], [200, 940], [110, 995]],
+     w: [80, 100, 115, 115, 85], fill: "#e2869c", stroke: "#252a33", sw: 2.0, z: ribbon-front,
+     desc: "the ring's near half RE-EMERGING and sweeping across the bottom-left shards zone in
+            ONE continuous salmon band (the reference's bottom-left cloth) — absorbs petalRose/
+            petalWarm/petalPeach: the four separate diamonds were the user's '一个一个菱形'
+            complaint. The band's far edge passes behind the lap mass, its near edge in front:
+            half-occluded ring, one continuous path"}
 
   # ---------------------------------------------------------------- the ruler (declared first, painted late)
   # M2: a `face`, not an ellipse. Measured from image.jpg, the visible face is 128px wide at the
@@ -286,16 +294,27 @@ draw:
   # short of the bow's left edge (x~576) — background on all sides of the gap. Re-rooted: the spine
   # now starts INSIDE the bow's cover and the band crosses the bow's outline, so the visible part
   # is continuous with the figure (emerging from behind it, as the reference reads).
-  - {hair-mass: hair-tip, host: head,
-     spine: [[head.cx - 0.70*head.rx, head.cy + 2.42*head.ry],
-             [head.cx - 1.97*head.rx, head.cy + 2.86*head.ry],
-             [head.cx - 2.81*head.rx, head.cy + 3.13*head.ry]],
-     w: [0.34*head.w, 0.30*head.w, 0.18*head.w],
-     side: both, fill: "#3974ab", z: hair-back,
-     desc: "left twin-tail tip — root inside the bow's cover, sweeping down-left to the tip over
-            the wave; the band crosses the bow's outline so nothing floats. Replaces the old
-            `hair-left` stroke, which misread the streamer's blue band as hair"}
 
+
+  # The left twin-tail lock: MEASURED reference blue (#5571ae at (470,570), zone x420-560
+  # y537-631) — under the one-region model it is the blue zone passing BEHIND the body and
+  # re-emerging at its left, exactly like the ribbon ring's own occlusion. Root hidden under
+  # the blouse/bow cover; the tip shows over the mint sheet.
+  - {hair-mass: hair-twintail, host: head,
+     spine: [[head.cx - 0.65*head.rx, head.cy + 2.55*head.ry],
+             [head.cx - 1.55*head.rx, head.cy + 2.60*head.ry],
+             [head.cx - 2.05*head.rx, head.cy + 2.44*head.ry]],
+     w: [0.30*head.w, 0.26*head.w, 0.16*head.w],
+     side: both, fill: "#3974ab", z: hair-back,
+     desc: "left twin-tail lock — the blue zone re-emerging from behind the body at its left
+            (measured zone x420-560 y537-631, root hidden under the blouse cover); the same
+            behind-the-body occlusion the ribbon ring uses"}
+
+  # ---------------------------------------------------------------- (blue zone masses REMOVED M4i-blue)
+  # The four tapered hair-mass bands (fringe/main/lock) and the twin-tail tip are GONE: they were
+  # separate shapes stacked on the mint field — the 'dismembered' look the user rejected. The blue
+  # zone is now ONE interior partition region (hair-blue, above). The face pocket survives via the
+  # partition curve's hairline arc (570,260)-(545,340): skin shows below it, blue above.
   # ---------------------------------------------------------------- body: blouse over the hair
   # NOTE (rolled back 2026-09-15): enlarging the cream mass to close the measured deficit made the
   # drawing WORSE (coverage 0.523 -> 0.502, grid distance 39.4 -> 43.2). The deficit is real but it
@@ -436,32 +455,10 @@ draw:
             at y≈750-930, tilted so the left side hangs lower (tilt -13; sign verified against the
             render). Re-tuned from the M3b tent (at 500,745 drop 235 tilt 12) whose hem buried the
             leg; hem, trim and creases still share one generated wave"}
-  # The colour panels in FRONT of the skirt. In the reference these are the foreground flower
-  # petals; the reviewer's fix is that they overlap the skirt so their outlines cross the navy edge
-  # (occlusion, not colour). Each is a `petal` — a bowed gesture tapering to a point, fitted to its
-  # frozen teacher mask. Restored from the M1 flat blobs to real shapes and lifted to `skirt-front`.
-  -
-    {petal: petalRose, op: 0.8, at: [300, 1010], angle: -84, len: 215, wid: 175, curl: 0.10,
-     fill: "#e2869c", stroke: "#252a33", sw: 2.4, z: skirt-front,
-     desc: "rose petal — a foreground panel in front of the skirt, its outline crossing the navy
-            edge; fitted to the reference's rose mask (traced/petal-rose)"}
-  -
-    {petal: petalWarm, op: 0.8, at: [492, 1018], angle: -74, len: 120, wid: 105, curl: 0.06,
-     fill: "#e8b48c", stroke: "#252a33", sw: 2.4, z: skirt-front,
-     desc: "warm tan petal — foreground panel over the skirt's lower edge; fitted to the
-            reference's warm mask"}
-  -
-    {petal: petalBlue, op: 0.8, at: [392, 878], angle: -68, len: 105, wid: 95, curl: 0.08,
-     fill: "#8bbdce", stroke: "#252a33", sw: 2.4, z: skirt-front,
-     desc: "pale blue petal — foreground panel; fitted to the reference's pale-blue mask.
-            M4g: +26px down so its outline crosses the lap mass's edge (M4f reviewers:
-            'half-floating on the mass boundary')"}
-  -
-    {petal: petalPeach, op: 0.8, at: [330, 828], angle: -82, len: 165, wid: 140, curl: 0.05,
-     fill: "#f1dfd3", stroke: "#252a33", sw: 2.4, z: skirt-front,
-     desc: "peach petal — foreground panel; fitted to the reference's peach mask. M4g: +60px
-            down so its top outline crosses the mass edge instead of floating above it
-            (M4f reviewers: 'cream leaf half-floating')"}
+  # The colour panels in FRONT of the skirt were ABSORBED into the ribbon ring (M4i-blue):
+  # (petalRose/petalWarm/petalBlue/petalPeach were DELETED: their zones are now the ribbon
+  # ring's continuous salmon front band — four separate diamonds was the user's complaint,
+  # and the band keeps the outline-crossing relationship they carried)
 
   # ---------------------------------------------------------------- the hat (family; one drooping brim)
   # FITTED to the teacher's frozen brim masks, then the traces discarded (STATUS D24). The three
@@ -503,9 +500,10 @@ relations:
   - {front: head, behind: hat, desc: "the head and hair occlude the brim's middle: the hat is worn high and its brim passes behind the skull, while the crown and the brim's left and right lobes stay visible above and beside it (measured: the reference's visible teal surface is TWO pieces, x430-653 and x897-1023, split by head+hair — no single ellipse-half can match it, which is why the hat must paint under the head)"}
   - {front: hair-front, behind: blouse, desc: "front hair falls over the blouse"}
   - {front: skirt, behind: underskirt, desc: "the pleated pale apron drapes over the navy undermass"}
-  - {front: petalRose, behind: skirt, desc: "the foreground petals lie OVER the skirt, so their outlines cross the navy edge — this is the M3b occlusion fix"}
+  - {front: ribbon-loop-front, behind: underskirt, desc: "the ring's near band crosses the navy undermass's edge — the outline-crossing relationship the petals carried"}
   - {front: skirt, behind: underskirt, desc: "the pleated apron drapes over the navy undermass at the lap"}
   - {front: blouse, behind: armL, desc: "the left forearm hides behind the blouse placket — only its puff sleeve and cuff show (the reference's own occlusion)"}
   - {front: blouse, behind: hair-stream, desc: "the streaming hair lock passes behind the figure at its root — it emerges from under the cheek lock, not from the bow"}
-  - {front: hair-main, behind: head, desc: "the visible hair falls in front of the face; the hat still sits over the skull"}
-  - {front: hair-lock, behind: head, desc: "the cheek lock falls in front of the face too — the same relation as the main mass"}
+  - {front: hair-blue, behind: hair, desc: "the blue zone is an interior partition of the one hair region: blue fill above, the mint inner face below, meeting along the partition's ink line"}
+  - {front: head, behind: hair-blue, desc: "the face paints over the blue zone's hairline arc; blue stays above it as the fringe"}
+  - {front: skirt, behind: underskirt, desc: "the pleated pale apron drapes over the navy undermass"}

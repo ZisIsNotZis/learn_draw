@@ -1772,3 +1772,33 @@ look at `evidence/m4g-final.png` beside `image.jpg` — what specifically makes 
 read as HAIR to you, that the draft's mint lacks? (Candidate hypotheses we can no longer
 distinguish between: the mint's colour/value relative to the blue; the mint's texture/strand
 marks; the silhouette's curl language; the hair's blue needing to extend further INTO the sweep.)
+
+### M4j — THE USER'S MODEL, APPLIED LITERALLY (parent-direct surgery, no writer)
+
+The user re-stated the hair/ribbon model and pointed at `head.png` as the structural exemplar.
+Parent direct surgery (writers kept patching the wrong layer):
+
+1. **Hair:** the four tapered blue bands (fringe/main/lock/stream) and the twin-tail chip are
+   GONE. The blue zone is now ONE interior partition region (`hair-blue`: closed smooth spline
+   sharing the region's outer contour on the head/right side, closing along ONE smooth
+   partition curve around the hairline at y~215 down to the cheek junction at 560,430) —
+   two fills of one region, meeting along the partition's ink stroke, exactly "先画整体外轮廓，
+   再内部分割". The measured twin-tail lock (#5571ae, x420-560 y537-631) is restored as the
+   blue zone re-emerging from behind the body (the same behind-the-body occlusion the ribbon
+   uses).
+2. **Ribbon:** one continuous ring — back segment from the bow down behind the lap mass; front
+   segment re-emerging and sweeping across the bottom-left shards zone as ONE salmon band that
+   ABSORBED the four petal diamonds (petalRose/Warm/Blue/Peach deleted — "一个一个菱形" was
+   the user's complaint). The band routes through the measured rose-shard zone (330,790).
+3. **Tone:** the reference's sheet pales toward the lower-left (measured (173,213,177) at
+   (100,650), (201,224,211) at (60,940)) — hair-inner-pale widened into the broad lower-left
+   tone band.
+4. **Restored M4h's off-frame bottom** (lost in the M4i revert): the region's bottom-left runs
+   to y1035/x-20 — no visible hem in the left half.
+
+Parent-verified: byte-identical repro, P18 no-ref identical, G7 zero, tests 86/86,
+CLIP **0.9059 — new project high**, coverage 0.559 (floor 0.571; **G2 alarm on by 0.012** —
+the honest cost of deleting the fragmented shapes the user rejected; recorded, not tuned:
+the restructure's continuity IS the user's directive). Parent's visual read: blue and mint are
+now two fills of one object; the ribbon is one continuous band sweeping off-frame. Reviewer
+pair holds the gate verdict (D30).
