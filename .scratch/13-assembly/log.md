@@ -1802,3 +1802,22 @@ the honest cost of deleting the fragmented shapes the user rejected; recorded, n
 the restructure's continuity IS the user's directive). Parent's visual read: blue and mint are
 now two fills of one object; the ribbon is one continuous band sweeping off-frame. Reviewer
 pair holds the gate verdict (D30).
+
+### M4j rubric verdict — the literal model scores LOWER (20+22 vs M4g's 23+25); PARKED for the user's eye
+
+rev 1: A3 B3 C3 D4 E4 F3 (20) · rev 2: A3 B4 C3 D3 E5 F3 (22). Both still fail the key question,
+but with CONTRADICTORY reasons (rev1: "mint never reaches the head"; rev2: "mint touches at both
+sides but the blue rides over it as a hard edge") — and new complaints (figure reads smaller/
+centre-shifted; the salmon ring band reads as an orphan strip). The partition line, the smooth
+region, the ring: all implemented literally per the user's model, verified by the parent's own
+eyes and measurements — and the independent read did not flip.
+
+**PARKED under S2, definitively, for this defect.** Nine attempts. The instrument now gives
+contradictory reasons; only the user's eye can say what is still wrong. The spec STAYS on the
+user's model (M4j, commit bf5f4d5) — their direction is authoritative even while the rubric
+disagrees; reverting to M4g would undo an explicit user directive to chase reviewer numbers,
+which is exactly backwards.
+
+Open items recorded for the next session: the reviewers' new observations may still contain
+real signal (figure scale vs the reference's frame-filling figure; the ring band's orphan read;
+the pale stub under the hand). But the next move belongs to the user.
