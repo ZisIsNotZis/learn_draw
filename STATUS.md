@@ -23,12 +23,24 @@ beauty and colour come later. The current SVG resolver does **not** implement th
 
 ## Current experiment
 
-`scripts/spatial_sketch.py` creates `.scratch/13-assembly/evidence/spatial-sketch.svg`: one continuous
-2D-striped ribbon mapped to a 3D loop around a coarse torso, shown from two viewpoints. Its
-triangle painter sort is only an approximate instructional sketch, **not** a proven exact vector
-visibility engine or a reconstruction of `image.jpg`. Next: inspect it, test near/far ordering and
-viewpoint changes, then choose an accurate visibility representation before migrating the assembly.
-See the proof criteria and limits in `docs/drawing/spatial-model.md`.
+**S0 geometry proof implemented (not an art gate):** `scripts/vector_visibility.py` projects
+opaque triangles, clips overlap by their *interpolated depth planes*, and outputs surviving SVG
+polygons. Tests cover opposite declaration orders, a crossing whose depth changes inside one
+triangle, strip closure and a viewpoint change. `scripts/spatial_sketch.py` renders the same
+unbroken 2D-striped ring around a torso in two views:
+`.scratch/13-assembly/evidence/spatial-sketch.svg` / `.png`. No author visibility intervals.
+This is a slow reference implementation, not a production-quality renderer: SVG anti-alias cracks
+at triangle seams and intersecting/coplanar surfaces still need harder tests.
+
+**S1 exploratory figure:** `scripts/figure_scaffold.py` creates two views of a coarse seated
+figure, head-attached hair sheet, bow and one continuous ribbon. Preview:
+`.scratch/13-assembly/evidence/figure-scaffold.png`. Bow/ribbon contact and geometric strip closure
+have tests. The pose and ribbon route are *hypotheses*, not a fit to `image.jpg`. Hair now uses a
+single twisting support whose projected face orientation chooses blue vs mint; this is a real
+two-sided *mechanism*, but its twist/layout are **not yet validated against the reference**. No
+independent visual reviewer or small-VLM comprehension gate has passed. Do not call the figure
+accepted or migrate it into the 2D assembly yet. The triangle mesh is visible in the preview;
+line art remains unsolved.
 
 ## Source map
 
@@ -43,8 +55,9 @@ See the proof criteria and limits in `docs/drawing/spatial-model.md`.
 
 ## Next executable step
 
-Check the structural sketch's two views and its component connectivity; make a minimal test where
-moving the camera changes which part of the *same* ribbon is occluded by the torso, with no visibility
-flags. Fix painter-sort artifacts by designing/testing correct vector visibility rather than drawing
-manual front/back paths. Only then add head, seated pose and hair-sheet supports and test comprehension
-with a smaller VLM. The reference is a teacher, never a runtime dependency (P18).
+Finish S1 by verifying image-layout and attachments against `image.jpg`, assessing the current
+two-sided sheet's *shape* (rather than its merely functioning orientation rule), and testing
+small-VLM comprehension on the two views. Resolve triangle seam artifacts in the vector SVG
+without masking real occlusion errors. The **ribbon's correct route is still unknown**; do not
+claim that this generic elliptical scaffold solved the user's specific placement complaint.
+The reference is a teacher, never a runtime dependency (P18).

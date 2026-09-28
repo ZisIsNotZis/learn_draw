@@ -33,16 +33,20 @@ runtime geometry. Preserve unrelated work and the recorded best; no automatic pr
 
 ## S0 — Structural proof (CURRENT)
 
-One uncut 2D ribbon on a 3D curved support, one torso/lap occluder and two cameras. A small
-instructional sketch exists in `scripts/spatial_sketch.py` but uses approximate triangle painter
-sorting. **Exit:** accurate visibility at crossings in both views; changing the camera changes
-occlusion without editing the ribbon or authoring visible ranges; source artwork remains one strip.
-No finished character or attractive line quality required.
+One uncut 2D ribbon on a 3D curved support, one torso/lap occluder and two cameras. The
+reference implementation `scripts/vector_visibility.py` clips projected SVG polygons at the
+interpolated depth intersection (not whole-triangle painter sorting). Tests cover both paint orders
+and a crossing whose depth flips inside a triangle; `spatial_sketch.py` exercises two views of the
+same complete strip. **S0 proof met for tested opaque triangles**, not certified for all tangencies,
+intersections or production-scale scenes. No finished character or attractive line quality required.
 
 ## S1 — Coarse figure layout
 
 Add head/torso/arms/skirt as coarse supported components, a head-attached hair sheet whose blue/mint
-faces are two sides of one sheet, and a continuous ribbon around the figure. Match major attachment,
+faces are two sides of one sheet, and a continuous ribbon around the figure. A first rough figure
+exists in `scripts/figure_scaffold.py`; its hair sheet *does* twist and choose blue/mint from
+projected face orientation, but its shape has not been validated, and the ribbon route is not
+reference-faithful. Match major attachment,
 scale, pose, projected silhouette and negative spaces of `image.jpg` without manually painting
 occlusion. **Exit:** two reviewers can identify a person and the main front/back relations; test
 camera variation and reference-free reproduction. Compare with M4j as historical evidence, not a

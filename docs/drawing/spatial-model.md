@@ -56,6 +56,8 @@ recovered ground truth. The final 2D line designer may deliberately depart from 
 
 Start with a simple torso/lap occluder, one continuous bent ribbon surface carrying a recognizable
 2D stripe, and two camera views (reference-like and side/oblique). Input the entire strip ONCE.
+`spatial_sketch.py` and `vector_visibility.py` now demonstrate this for tested opaque triangles;
+`figure_scaffold.py` is a deliberately coarse S1 pose probe, not an approved reconstruction.
 Passing proof: its near/far portions and the body's occlusion change automatically with viewpoint;
 no per-view redraw, manually cut path, or visibility flags. Inspect the whole strip in an unobstructed
 view and verify it stays connected in its own (u,v) domain. Then add a head-attached hair sheet with
@@ -70,7 +72,8 @@ milestone exit (G7); a one-off fitted mesh alone is not transferable knowledge.
 
 ## Open design choices (not silently decided)
 
-Exact support parameterization, line-art rules, vector visibility algorithm, and how much of the
-existing 2D spec to migrate require experiments. A painter-sort of whole surfaces is insufficient;
-a raster z-buffer can teach visibility but a final SVG output needs vector fragments or a
-reconstructible visible-boundary representation. Do not claim the sketch has solved these.
+Exact support parameterization, line-art rules and how much of the existing 2D spec to migrate
+require experiments. Whole-surface painter sorting is insufficient. The current SVG implementation
+computes vector fragments from triangular depth planes, but does not yet handle every degeneracy,
+intersection or performance case; triangle seam artefacts remain. Do not call that production-ready
+or mistake the generic scaffold's ribbon route for the reference's intended route.
