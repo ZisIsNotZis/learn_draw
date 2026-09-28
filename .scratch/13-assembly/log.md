@@ -1821,3 +1821,16 @@ which is exactly backwards.
 Open items recorded for the next session: the reviewers' new observations may still contain
 real signal (figure scale vs the reference's frame-filling figure; the ring band's orphan read;
 the pale stub under the hand). But the next move belongs to the user.
+
+### USER FEEDBACK (2026-09-17, post-M4j) — hair much better; ribbon ring position wrong; 3D plan
+
+The user reviewed M4j directly:
+1. **The hair is much better** — the one-region/two-fill model is accepted.
+2. **The ribbon ring's POSITION is wrong**, and the user cannot describe the correct position in
+   2D words ("我也不知道怎么给你描述"). The structure (one continuous ring, half occluded) is
+   accepted; the spatial path is not.
+3. **PLAN (user-decided): the user will open a new session with a stronger model to build a 3D
+   model** of the figure — so the hair's two faces and the ribbon's ring path can be understood
+   as 3D structures and projected, instead of described in 2D coordinates.
+
+Handoff brief for that session: `docs/drawing/handoff-3d.md`.
