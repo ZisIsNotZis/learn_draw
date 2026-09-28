@@ -1,12 +1,10 @@
 # STATUS — where this project is right now
 
-**One line:** **PARKED AGAIN under D31/S2 (2026-09-17)** — this time on the mint-as-hair READ
-itself. Eight slices (M3d→M4i) brought every measured property to reference parity (contour
-profile within ~10–50px, attachment gap 2px = reference, off-frame flow, partition ink line), yet
-both independent reviewers still read the mint as "a separate cape/blanket" every time. Front
-artifact: **M4g** (23+25=24 mean; ribbon loop reads, B 4-5, E 5, coverage 0.574 > floor, CLIP
-0.8975). The question is handed to the user's eye — the only two correct diagnoses in this
-project's history were both theirs.
+**One line:** **HAIR ACCEPTED by the user (M4j); ribbon ring's 3D position is the one open defect —
+indescribable in 2D, so the user will open a new session with a stronger model to build a 3D model
+of the figure. Handoff brief: `docs/drawing/handoff-3d.md`** (what the 3D model must capture, how
+its projection maps back into the relational spec, the hard constraints). Front artifact: M4j
+(commit `bf5f4d5`). All other documents below are current as of the same date.
 
 Last updated: 2026-09-17 · Direction lives in `docs/drawing/roadmap.md` · Milestones M0–M5
 
@@ -51,14 +49,11 @@ commit → next slice*. A writer's report is always a **claim** until re-verifie
 (M3c: neck, left arm) a report asserted render-visible facts the render contradicted, so writer
 briefs now end with a mandatory pixel self-check of each claimed visual fact (2026-09-17).
 
-**PARKED (D31/S2) — the mint-as-hair read.** The geometry is at reference parity; the read has
-not flipped in eight attempts, each landing its measured objective. Parked question for the user:
-compare `evidence/m4g-final.png` with `image.jpg` — what makes the reference's mint read as HAIR?
-(Candidate hypotheses we can no longer distinguish: colour/value relative to the blue; strand
-marks/texture inside the mint; the curl language of the silhouette; the blue needing to extend
-further into the sweep.) The ribbon loop (M4g) and all other M4 gains stand; when the user's
-diagnosis arrives it becomes the next slice's structural statement — their two previous readings
-(feld-is-hair, no-knee) were each worth multiple axes.
+**PARKED (D31/S2) → SUPERSEDED by the 3D plan.** The hair one-region model is ACCEPTED by the
+user (M4j). The ribbon ring's spatial position is the one open defect; the 3D session will attack
+it (see `docs/drawing/handoff-3d.md`). Queued after it: figure scale vs the reference's
+frame-filling figure (a recurring reviewer note), then M4 exit (F ≥ 4 + alarms) and the
+whole-figure blind A/B promotion.
 
 The 2026-09-14/15 unsupervised research session is **stopped** (P0).
 
