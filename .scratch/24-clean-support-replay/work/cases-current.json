@@ -1,0 +1,333 @@
+{
+  "camber_meaning": "dimensionless rise coefficient multiplying the sin^2(pi*u) envelope; frozen before any candidate image",
+  "cameras": [
+    {
+      "name": "front",
+      "pitch": 0,
+      "yaw": 0
+    },
+    {
+      "name": "oblique",
+      "pitch": 22,
+      "yaw": 38
+    }
+  ],
+  "cases": [
+    {
+      "camera": {
+        "name": "front",
+        "pitch": 0,
+        "yaw": 0
+      },
+      "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4",
+      "condition": "primary-existing-spec",
+      "name": "positive-half-twist-front",
+      "ribbon": {
+        "back": "#7188bd",
+        "bend": 0.42,
+        "depth": 0.12,
+        "family": "arch",
+        "front": "#e68aa4",
+        "heading": 0.0,
+        "length": 3.0,
+        "name": "twisted-two-sided",
+        "origin": [
+          -1.5,
+          0.0,
+          0.0
+        ],
+        "segments": 40,
+        "tip_ratio": 1.0,
+        "twist": 3.141592653589793,
+        "width": 0.36
+      },
+      "source": {
+        "case_name": "twisted-two-sided",
+        "path": ".scratch/19-ribbon-family/work/cases.json"
+      },
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618"
+    },
+    {
+      "camera": {
+        "name": "oblique",
+        "pitch": 22,
+        "yaw": 38
+      },
+      "camera_sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e",
+      "condition": "primary-existing-spec",
+      "name": "positive-half-twist-oblique",
+      "ribbon": {
+        "back": "#7188bd",
+        "bend": 0.42,
+        "depth": 0.12,
+        "family": "arch",
+        "front": "#e68aa4",
+        "heading": 0.0,
+        "length": 3.0,
+        "name": "twisted-two-sided",
+        "origin": [
+          -1.5,
+          0.0,
+          0.0
+        ],
+        "segments": 40,
+        "tip_ratio": 1.0,
+        "twist": 3.141592653589793,
+        "width": 0.36
+      },
+      "source": {
+        "case_name": "twisted-two-sided",
+        "path": ".scratch/19-ribbon-family/work/cases.json"
+      },
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618"
+    },
+    {
+      "camera": {
+        "name": "front",
+        "pitch": 0,
+        "yaw": 0
+      },
+      "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4",
+      "claim_limit": "regression-only; this answer is not modified or relabelled as a learner pass",
+      "condition": "untouched-failed-learner-regression-only",
+      "input_file_sha256": "dd995ab1d1cced202a63092263d489597339ae18d2ea761e77408c5b41e8455c",
+      "name": "failed-learner-negative-half-twist-front-regression-only",
+      "ribbon": {
+        "back": "#395d8f",
+        "bend": 0.7,
+        "depth": 0.45,
+        "family": "s-curve",
+        "front": "#e6a64b",
+        "heading": 0.5235987755982988,
+        "length": 4.0,
+        "name": "gentle-s-ribbon",
+        "origin": [
+          0.5,
+          -0.25,
+          0.2
+        ],
+        "segments": 48,
+        "tip_ratio": 0.3333333333333333,
+        "twist": -3.141592653589793,
+        "width": 0.4
+      },
+      "source": {
+        "path": ".scratch/19-ribbon-family/learner/gentle-s-ribbon.json"
+      },
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355"
+    },
+    {
+      "camera": {
+        "name": "oblique",
+        "pitch": 22,
+        "yaw": 38
+      },
+      "camera_sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e",
+      "claim_limit": "regression-only; this answer is not modified or relabelled as a learner pass",
+      "condition": "untouched-failed-learner-regression-only",
+      "input_file_sha256": "dd995ab1d1cced202a63092263d489597339ae18d2ea761e77408c5b41e8455c",
+      "name": "failed-learner-negative-half-twist-oblique-regression-only",
+      "ribbon": {
+        "back": "#395d8f",
+        "bend": 0.7,
+        "depth": 0.45,
+        "family": "s-curve",
+        "front": "#e6a64b",
+        "heading": 0.5235987755982988,
+        "length": 4.0,
+        "name": "gentle-s-ribbon",
+        "origin": [
+          0.5,
+          -0.25,
+          0.2
+        ],
+        "segments": 48,
+        "tip_ratio": 0.3333333333333333,
+        "twist": -3.141592653589793,
+        "width": 0.4
+      },
+      "source": {
+        "path": ".scratch/19-ribbon-family/learner/gentle-s-ribbon.json"
+      },
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355"
+    },
+    {
+      "camera": {
+        "name": "front",
+        "pitch": 0,
+        "yaw": 0
+      },
+      "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4",
+      "condition": "negative-control-and-root-width-check",
+      "name": "untwisted-teaching-arch-front-control",
+      "ribbon": {
+        "back": "#7188bd",
+        "bend": 0.42,
+        "depth": 0.12,
+        "family": "arch",
+        "front": "#e68aa4",
+        "heading": 0.0,
+        "length": 3.0,
+        "name": "teaching-arch",
+        "origin": [
+          -1.5,
+          0.0,
+          0.0
+        ],
+        "segments": 40,
+        "tip_ratio": 1.0,
+        "twist": 0.0,
+        "width": 0.36
+      },
+      "source": {
+        "case_name": "teaching-arch",
+        "path": ".scratch/19-ribbon-family/work/cases.json"
+      },
+      "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88"
+    }
+  ],
+  "frozen_camber": 0.35,
+  "post_integration_provenance": {
+    "derived_from": {
+      "path": ".scratch/21-ribbon-cross-section/work/cases-fine.json",
+      "sha256": "bbc8697195e1ca45805899f4fafa6bbae8fccab3021cb8673460e3c4418d0643"
+    },
+    "event": "clean support replay using independently reviewed canonical visibility integration",
+    "historical_outputs": "exercise21 plans, caches, panels, boards, learner outputs and width evidence remain historical and unchanged",
+    "scope": "only visibility dependency pin and this provenance block differ; no geometry, cases, author inputs, cameras, palettes, local stripe, camber, sampling, or acceptance criteria change",
+    "visibility_dependency": {
+      "canonical_reviewed_sha256": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa",
+      "historical_pre_integration_sha256": "6cea919d0c83b1c4ebb9b3ec3379854c910e2758610b449c036c25c9ce8e1ada",
+      "independent_review": "exercise23 bounded integration; a2e49637 validation and c7584bb3 archive-guard final OK",
+      "path": "scripts/vector_visibility.py"
+    }
+  },
+  "precision_retest": {
+    "actual_mesh_u_probes": {
+      "checkpoint_stations": [
+        0.49,
+        0.51
+      ],
+      "count": 44,
+      "off_station_32": "(i+0.37)/32 for i=0..31",
+      "stratified_96_mesh_half_stations": "(i+0.5)/96 for i in [0,10,21,31,42,53,63,74,84,95]",
+      "values": [
+        0.005208333333333333,
+        0.0115625,
+        0.0428125,
+        0.0740625,
+        0.1053125,
+        0.109375,
+        0.1365625,
+        0.1678125,
+        0.1990625,
+        0.22395833333333334,
+        0.2303125,
+        0.2615625,
+        0.2928125,
+        0.3240625,
+        0.328125,
+        0.3553125,
+        0.3865625,
+        0.4178125,
+        0.4427083333333333,
+        0.4490625,
+        0.4803125,
+        0.49,
+        0.51,
+        0.5115625,
+        0.5428125,
+        0.5572916666666666,
+        0.5740625,
+        0.6053125,
+        0.6365625,
+        0.6614583333333334,
+        0.6678125,
+        0.6990625,
+        0.7303125,
+        0.7615625,
+        0.7760416666666666,
+        0.7928125,
+        0.8240625,
+        0.8553125,
+        0.8802083333333334,
+        0.8865625,
+        0.9178125,
+        0.9490625,
+        0.9803125,
+        0.9947916666666666
+      ]
+    },
+    "author_inputs_cases_cameras_material_camber_unchanged": true,
+    "kind": "same-camber actual-mesh precision retest",
+    "only_sampling_change": {
+      "u_intervals": 96,
+      "v_intervals": 12
+    },
+    "original_case_plan_sha256": "ff8ff9944fa7c53f05abcf026550fb87eda3979ab9a9f3d8b27388b697b47d38",
+    "parent_independent_summary": {
+      "evidence_copy_path": ".scratch/21-ribbon-cross-section/evidence/fine/parent-width-checkpoint.json",
+      "per_spec": {
+        "gentle-s-ribbon": {
+          "failures": [],
+          "max_abs_difference": 0.00123328373314191,
+          "samples": 44
+        },
+        "teaching-arch": {
+          "failures": [],
+          "max_abs_difference": 0.00015545452208803878,
+          "samples": 44
+        },
+        "twisted-two-sided": {
+          "failures": [],
+          "max_abs_difference": 0.001973891854807841,
+          "samples": 44
+        }
+      },
+      "source_path": "/tmp/ribbon-surface-fine-width-parent.json",
+      "source_sha256": "ef00a5adeb2e78dfa8c1cb66bf21c227f62e4d45e316515ee69c420bbfd86a0a"
+    },
+    "reason": "selected48x6 actual mesh exceeded the declared 0.002 world-unit chord-width bound at off-station u values",
+    "selected_tolerance_world_units": 0.002
+  },
+  "question": "Does one modest transverse camber make the same two-sided ribbon turn more legibly when route, twist, attachment, palette, cameras, and local stripe remain fixed?",
+  "render_contract": {
+    "artwork": "unchanged base front/back fill plus existing longitudinal stripe",
+    "board": "labelled and unlabelled; all five frozen case/camera rows; no answer arrows",
+    "framing": "each flat/curved pair fits the union of both support geometries, then uses that identical transform",
+    "ink": "none",
+    "pairs": [
+      0.0,
+      0.35
+    ]
+  },
+  "sampling": {
+    "flat_and_curved_identical": true,
+    "selected_convergence_case": {
+      "u_intervals": 96,
+      "v_intervals": 12
+    },
+    "u_intervals": 96,
+    "v_intervals": 12
+  },
+  "schema": 1,
+  "sources": {
+    "failed_learner": {
+      "path": ".scratch/19-ribbon-family/learner/gentle-s-ribbon.json",
+      "sha256": "dd995ab1d1cced202a63092263d489597339ae18d2ea761e77408c5b41e8455c"
+    },
+    "family_cases": {
+      "path": ".scratch/19-ribbon-family/work/cases.json",
+      "sha256": "bd2732b806de26cc2d8a261be68e8f30e21e1f8f8bd5301556d85241a8bc5800"
+    },
+    "old_ribbon_generator": {
+      "path": "scripts/ribbon_family.py",
+      "sha256": "015ec14ec90da5768dbcdd9486220d3971c55673f0944971ccb3a8a47662bd3e"
+    },
+    "visibility_resolver": {
+      "path": "scripts/vector_visibility.py",
+      "sha256": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa"
+    }
+  },
+  "support_family": "parabolic-transverse-section-v1"
+}

@@ -1,0 +1,111 @@
+{
+  "schema": "a-corrected-teacher-garment-family-v1",
+  "canvas_crop": {
+    "width": 400,
+    "height": 480,
+    "registered_source_rectangle_xyxy_exclusive": [500, 320, 900, 800],
+    "coordinate_frame": "crop-local pixels for stations; family contour math in y-up crop plane",
+    "source_observation_scope": "visible shoulder/upper torso clothing and local composition only"
+  },
+  "parts": {
+    "neck_skin": {
+      "intent": "show a small actual neck-skin context inside the garment opening without reconstructing anatomy",
+      "source_observation": ["NS2", "NO2"],
+      "artist_parameterization": {"center_xy_crop_down": [218, 88], "ellipse_radii_px": [27, 51], "tilt_degrees": -5},
+      "generated_structural_hypothesis": "elliptical local skin closure; hidden neck and face are omitted"
+    },
+    "bodice": {
+      "intent": "broad tilted pale shoulder-to-upper-torso cloth field with an authored open neckline and inward descending exposed side",
+      "source_observation": ["BOL2", "BPI2", "BPI3", "BHE2"],
+      "artist_parameterization": {
+        "four_station_anchors_xy_crop_down": [[123, 140], [300, 154], [250, 397], [145, 397]],
+        "anchor_roles": ["left shoulder-side edge neighborhood", "authored covered/right shoulder extent", "lower-right visible edge interval end", "lower-left visible edge interval start"],
+        "neck_opening_center_xy_crop_down": [207, 126],
+        "neck_opening_width_px": 67,
+        "neck_opening_depth_px": 50,
+        "left_side_inward_ease_px": 26,
+        "lower_edge_slope_px": -2,
+        "palette": "#e8e7dc"
+      },
+      "generated_structural_hypothesis": "smooth closed support and covered right/armhole continuation; no verified armhole seam or complete hem"
+    },
+    "left_collar_leaf": {
+      "intent": "independent narrow pale collar leaf framing the left side of the actual skin opening",
+      "source_observation": ["CLI2", "NO2"],
+      "artist_parameterization": {"field_center_seed_xy_crop_down": [174, 105], "width_px": 48, "height_px": 51, "tilt_degrees": 19, "outer_reach_scale": 0.9, "palette": "#a8c8d6"},
+      "generated_structural_hypothesis": "generated leaf closure and overlap, no hidden collar join"
+    },
+    "right_collar_leaf": {
+      "intent": "separately shaped broader pale leaf on the right, preserving the observed asymmetry",
+      "source_observation": ["CRI2", "NO2"],
+      "artist_parameterization": {"field_center_seed_xy_crop_down": [250, 103], "width_px": 72, "height_px": 58, "tilt_degrees": -12, "outer_reach_scale": 1.0, "palette": "#91b8cb"},
+      "generated_structural_hypothesis": "independent generated leaf closure and layering; no forced symmetry or hidden join"
+    },
+    "puff_sleeve": {
+      "intent": "one continuous pale puff sleeve narrowing through its tube toward the dark cuff; no cap-to-tube ink seam",
+      "source_observation": ["SPI2", "SBO2", "SEED-SC3"],
+      "artist_parameterization": {"shoulder_station_xy_crop_down": [292, 164], "cuff_approach_xy_crop_down": [352, 299], "upper_half_width_px": 39, "mid_half_width_px": 31, "cuff_half_width_px": 22, "cap_bulge_px": 14, "tube_taper_start": 0.46, "curve_tension": 0.42, "palette": "#e2e2d7"},
+      "generated_structural_hypothesis": "single smoothed generated surface with local bodice overlap; hidden armhole and circumference unknown"
+    },
+    "dark_cuff": {
+      "intent": "visible dark cuff band at the narrow lower sleeve approach",
+      "source_observation": ["SEED-CU1", "SEED-SC3"],
+      "artist_parameterization": {"center_xy_crop_down": [352, 299], "band_length_px": 29, "half_width_px": 22, "axis_tilt_degrees": 24, "palette": "#29354d"},
+      "generated_structural_hypothesis": "local band overlay/contact; far-side ring and hidden closure unknown"
+    },
+    "bow_gather": {
+      "intent": "small front gather centered at the observed chest bow convergence neighborhood",
+      "source_observation": ["SEED-BK1"],
+      "artist_parameterization": {"center_xy_crop_down": [179, 179], "width_px": 28, "height_px": 22, "palette": "#aa3e67"},
+      "generated_structural_hypothesis": "compact generated knot surface; no hidden wrap"
+    },
+    "left_bow_loop": {
+      "intent": "rounded folded left loop with local free edge; no fabricated point tip",
+      "source_observation": ["SEED-BL1", "LFE2"],
+      "artist_parameterization": {"field_center_seed_xy_crop_down": [139, 171], "width_px": 61, "height_px": 45, "tilt_degrees": -17, "bend_px": 9, "palette": "#cf4b79"},
+      "generated_structural_hypothesis": "elliptic-lobe closure and gather overlap; numeric width is artist-authored"
+    },
+    "right_bow_loop": {
+      "intent": "independent visibly broader right loop, kept asymmetric to the left loop",
+      "source_observation": ["SEED-BR1", "RFE2"],
+      "artist_parameterization": {"field_center_seed_xy_crop_down": [230, 183], "width_px": 82, "height_px": 58, "tilt_degrees": 14, "bend_px": -12, "palette": "#d65381"},
+      "generated_structural_hypothesis": "elliptic-lobe closure and gather overlap; width contrast is an artist choice, not a measured ratio"
+    },
+    "down_tail_fragment": {
+      "intent": "short visible local downward pink-band fragment attached to the gather, with no point-tip claim",
+      "source_observation": ["SEED-BK1", "DTI2"],
+      "artist_parameterization": {"orientation_degrees_screen": 107, "width_px": 19, "hypothesis_route_length_px": 101, "end_style": "blunt generated local cut; unknown continuation omitted", "palette": "#c74676"},
+      "generated_structural_hypothesis": "artist-generated fragment beyond a local interior observation; endpoint and occlusion remain unknown"
+    },
+    "leftward_tail_fragment": {
+      "intent": "small pink band presence near the observed leftward/contact neighborhood, with the hidden connection and endpoint left open",
+      "source_observation": ["LTA2", "TBE2"],
+      "artist_parameterization": {"left_loop_attachment_offset_xy": [-12, 20], "contact_neighborhood_xy_crop_down": [44, 209], "width_px": 18, "route_bend_px": -23, "end_style": "generated band enters an identity-unknown neighbor; no visible tip", "palette": "#cc4777"},
+      "generated_structural_hypothesis": "artist-parameterized route from loop toward the local contact neighborhood; no source-backed centerline, hidden continuation, endpoint, or blue identity"
+    },
+    "unknown_blue_neighbor": {
+      "intent": "small neighboring blue field at the observed pink/blue contact; material identity deliberately unnamed",
+      "source_observation": ["LTA2"],
+      "artist_parameterization": {"contact_neighborhood_xy_crop_down": [44, 209], "width_px": 28, "height_px": 35, "palette": "#567da5"},
+      "generated_structural_hypothesis": "rounded occluding neighbor closure, not a bow component and not identified as hair or ribbon"
+    }
+  },
+  "supports": {
+    "body": {"z": 0.0, "u_depth_slope": 0.0008, "v_depth_slope": -0.0003},
+    "skin": {"z": 0.12, "u_depth_slope": 0.0004, "v_depth_slope": -0.0002},
+    "collar": {"z": 0.34, "u_depth_slope": 0.0006, "v_depth_slope": 0.0001},
+    "sleeve": {"z": 0.22, "u_depth_slope": -0.0005, "v_depth_slope": 0.0007},
+    "cuff": {"z": 0.39, "u_depth_slope": 0.0006, "v_depth_slope": -0.0002},
+    "bow": {"z": 0.55, "u_depth_slope": 0.0007, "v_depth_slope": -0.0003},
+    "tail": {"z": 0.49, "u_depth_slope": -0.0006, "v_depth_slope": 0.0004},
+    "blue_neighbor": {"z": 0.58, "u_depth_slope": 0.0004, "v_depth_slope": 0.0005}
+  },
+  "marks": {
+    "neckline_trim_width_px": 3.5,
+    "bodice_fold_count": 2,
+    "sleeve_fold_count": 2,
+    "bow_crease_count": 2,
+    "ink": "#273444",
+    "fold": "#b9b8aa"
+  }
+}

@@ -1,0 +1,710 @@
+{
+  "revision": "goal-recovery-r1-v2-completion",
+  "status": "CANDIDATE_EMITTED_FOR_MAIN_ROUTED_REVIEW; no visual/art/R1 PASS claimed",
+  "ticket": ".scratch/35-r1-articulated-study/issues/36-r1-v2-completion-recovery.md",
+  "completion_record": {
+    "authority": {
+      "authorizing_owner": "Main",
+      "execution_owner": "replacement single-writer integrator",
+      "scope": "finish already designed issue-26 v2 repair; no new art hypothesis or acceptance change",
+      "recursive_delegation": false,
+      "allocation_start": "2026-10-13T12:57:49+08:00",
+      "checkpoint_due": "2026-10-13T13:54:49+08:00",
+      "hard_stop": "2026-10-13T13:57:49+08:00",
+      "prior_issue26_breach": "45-minute cap exceeded by 11m01s; checkpoint missed; preserved as NOTDONE, not rolled authority"
+    },
+    "baseline": {
+      "branch": "master",
+      "head": "24693d4b764755165509fc206695ebca03ee44fe",
+      "baseline_status": "../goal-recovery-r1-v2-recovery/checkpoint-issue26-source-snapshot/git-status-porcelain-v2.baseline.txt",
+      "v1_manifest_sha256": "25f729e26723470d054a059b785ad1e316d53066b52e1bfffedaa0c90f5d8cde",
+      "v1_source_set_sha256": "c77499e3693d1d1c0aeda32ec0917565a621f55be90b7e5188328c4ba235690b",
+      "v1_manifest_listed_hashes_verified": 24,
+      "v1_mismatches": [],
+      "issue26_source_snapshot": "../goal-recovery-r1-v2-recovery/checkpoint-issue26-source-snapshot/",
+      "issue26_inventory": {
+        "present_source_derived_svg": [
+          "../goal-recovery-r1-v2/rendered/A-observed-garment.svg",
+          "../goal-recovery-r1-v2/rendered/B-baseline-support.svg"
+        ],
+        "missing_at_start": [
+          "PNG outputs",
+          "B variant/control/sheet SVG",
+          "draw-check bundles",
+          "completion manifest"
+        ],
+        "svg_provenance": "Both actual SVGs were byte-identical to current build_case_svg outputs and matched their before-touch SHA-256s; historical shell command remains unrecorded."
+      },
+      "preexisting_staged_entries_preserved": [
+        ".gitmodules",
+        "vendor/huashu-art-motion",
+        "vendor/huashu-design"
+      ],
+      "this_task_staged_or_committed": false
+    },
+    "source_changes": {
+      "geometry_or_shape_hypothesis_changed": false,
+      "single_narrow_wiring_correction": "Completion-copy finalize_manifest.py identifies issue-36 v2 completion and embeds completion record/preflight evidence instead of mislabeled issue-24 v1 metadata.",
+      "tests_added_or_updated": [
+        "test_goal_recovery_r1.py: test_all_b_case_captions_round_trip_through_utf8_svg_numeric_references"
+      ],
+      "source_provenance": "Fresh completion source copied from snapshotted issue-26 v2; r1_scene.py and all artwork semantics unchanged."
+    },
+    "commands_run": [
+      {
+        "command": "python3 -m py_compile <completion>/{observe_teacher,spatial_adapter,r1_scene,run_r1,compose_b_sheet,finalize_manifest,test_goal_recovery_r1}.py",
+        "result": "passed",
+        "summary": "initial completion-source syntax check"
+      },
+      {
+        "command": "PYTHONPATH=. timeout 110s /home/z/.venv/bin/pytest -p no:cacheprovider -q <completion>/test_goal_recovery_r1.py -k 'not complete_a_svg and not complete_b_baseline_svg'",
+        "result": "passed",
+        "summary": "6 passed, 2 deselected in 100.64s; compact semantic inputs, source registration, B support/contact/control, guarded adapter, bounds, and B caption decoding"
+      },
+      {
+        "command": "PYTHONPATH=. timeout 110s /home/z/.venv/bin/pytest -p no:cacheprovider -q <completion>/test_goal_recovery_r1.py::test_complete_a_svg_uses_guarded_components_and_reference_absent_reproduces",
+        "result": "not-run",
+        "summary": "Attempted once; timeout exit 124 after 110s, no stdout/stderr, unverified. Not treated as a failed assertion and not retried."
+      },
+      {
+        "command": "PYTHONPATH=. timeout 110s python3 <completion>/run_r1.py A --outdir <completion>/rendered",
+        "result": "passed",
+        "summary": "actual source-generated A SVG written; matches preserved issue-26 A SVG SHA-256"
+      },
+      {
+        "command": "PYTHONPATH=. timeout 110s python3 <completion>/run_r1.py baseline --outdir <completion>/rendered",
+        "result": "passed",
+        "summary": "actual source-generated B baseline SVG written; matches preserved issue-26 baseline SVG SHA-256"
+      },
+      {
+        "command": "PYTHONPATH=. timeout 110s python3 <completion>/run_r1.py variant --outdir <completion>/rendered",
+        "result": "passed",
+        "summary": "actual source-generated B variation SVG written"
+      },
+      {
+        "command": "PYTHONPATH=. timeout 110s python3 <completion>/run_r1.py control --outdir <completion>/rendered",
+        "result": "passed",
+        "summary": "actual source-generated unchanged-hand near-miss control SVG written"
+      },
+      {
+        "command": "timeout 110s python3 <completion>/compose_b_sheet.py",
+        "result": "passed",
+        "summary": "actual three-case B SVG sheet composed"
+      },
+      {
+        "command": "initial combined SVG candidate preflight",
+        "result": "failed",
+        "summary": "validator assertion incorrectly required middle-dot entity in the dash-only control label; no artifact/data mismatch; exact case-specific correction recorded in issue 36"
+      },
+      {
+        "command": "corrected case-specific SVG candidate preflight",
+        "result": "passed",
+        "summary": "5 XML SVGs parsed; dimensions, labels, ASCII numeric-entity captions, A topology/B hand part markers and contact sheet verified; no mismatches"
+      },
+      {
+        "command": "PYTHONPATH=. timeout 110s /home/z/.venv/bin/pytest -p no:cacheprovider -q <completion>/test_goal_recovery_r1.py::test_complete_b_baseline_svg_emits_supported_palm_and_depth_visible_prop",
+        "result": "passed",
+        "summary": "1 passed in 76.35s; complete source-generated baseline vector, named palm/fingers/prop, visible-boundary path, numeric captions, reference absence and determinism"
+      },
+      {
+        "command": "post-correction python3 -m py_compile <completion>/{finalize_manifest,test_goal_recovery_r1}.py",
+        "result": "passed",
+        "summary": "manifest wiring and updated XML test syntax"
+      },
+      {
+        "command": "scripts/draw render <completion>/rendered/A-observed-garment.svg -o <completion>/rendered/A-observed-garment.png",
+        "result": "passed",
+        "summary": "PNG 400x480"
+      },
+      {
+        "command": "scripts/draw render <completion>/rendered/B-baseline-support.svg -o <completion>/rendered/B-baseline-support.png",
+        "result": "passed",
+        "summary": "PNG 450x640"
+      },
+      {
+        "command": "scripts/draw render <completion>/rendered/B-variant-support.svg -o <completion>/rendered/B-variant-support.png",
+        "result": "passed",
+        "summary": "PNG 450x640"
+      },
+      {
+        "command": "scripts/draw render <completion>/rendered/B-near-miss-control.svg -o <completion>/rendered/B-near-miss-control.png",
+        "result": "passed",
+        "summary": "PNG 450x640"
+      },
+      {
+        "command": "scripts/draw render <completion>/rendered/B-original-support.svg -o <completion>/rendered/B-original-support.png",
+        "result": "passed",
+        "summary": "PNG 1350x640"
+      },
+      {
+        "command": "scripts/draw check <completion>/rendered/A-observed-garment.svg --ref <completion>/teacher-crop-registered.png --outdir <completion>/checks/A",
+        "result": "passed",
+        "summary": "A check bundle generated using exact registered 400x480 teacher crop; image-list recorded in checks/A/report.txt; metrics treated only as alarms"
+      },
+      {
+        "command": "scripts/draw check <completion>/rendered/B-original-support.svg --outdir <completion>/checks/B",
+        "result": "passed",
+        "summary": "reference-absent B check bundle generated; exact image list in checks/B/report.txt"
+      }
+    ],
+    "failed_or_unverified_commands": [
+      {
+        "command": "A complete-render pytest integration",
+        "exit_code": 124,
+        "stdout": "",
+        "stderr": "",
+        "disposition": "timeout/unverified; no retry; actual source SVG output and preserved-file hash match verified separately"
+      },
+      {
+        "command": "first combined output preflight",
+        "exit_code": 1,
+        "failure": "validator had an unconditional &#xB7; assertion for control, which correctly uses &#x2014;",
+        "disposition": "validation-script assertion error; corrected based on actual parsed SVG text; corrected preflight passed"
+      }
+    ],
+    "coverage": {
+      "source_and_teacher_crop": "source/crop mapping remains image.jpg (500,320)-(900,800), 400x480, no resize; tests passed; runtime path has no reference/crop inputs",
+      "A_semantic_topology": "fitted bodice, cap-to-tube-to-cuff attachment, paired collar leaves, small visible neck context, bow lobe/tail family ids checked in emitted SVG; no art review",
+      "B_hand_and_support": "current source creates one broad palm-support silhouette with grouped scallops and three sampled foot anchors; structural support test passed; baseline/variation/control outputs each emitted",
+      "control": "same hand with dish displacement remains the named near-miss; source structural test passed and output label/panel verified",
+      "adapter": "guarded contour, same sampled component feed to filled regions and depth-visible boundaries, semantic line path checked by focused tests",
+      "serialization": "UTF-8 source captions emitted as ASCII numeric XML refs; all three cases parsed back to exact Unicode title/caption without mojibake",
+      "collision_scope": "existing case-specific affine support/contact/depth evidence/tests only; not universal volume physics",
+      "render_and_draw_check": "all actual requested PNG outputs produced; A compares only to registered teacher crop, B check runs with no reference",
+      "independent_visual_or_structural_review": "not performed; Main must route fresh review"
+    },
+    "mismatches": [],
+    "unclosed_gates": [
+      "A/B independent image-only art/readability review",
+      "independent integrated construction/contact/nonintersection/depth acceptance",
+      "deterministic reproduction acceptance beyond scoped source/render checks",
+      "heldout compatibility/release and later distinct actual drawing",
+      "user feedback",
+      "all user-facing R1 artwork and physical/art acceptance gates"
+    ],
+    "image_review_report": "report.txt",
+    "no_art_or_r1_pass": true
+  },
+  "completion_record_sha256": "7fd97e817908b369005cb3e62105a4f548c696878dc4ca6c4031f003ddd41050",
+  "review_report_sha256": "189779e292dacc634020aa027dd5b81d173a5ba901988fc377debb057557feac",
+  "candidate_preflight": {
+    "path": "candidate-preflight.json",
+    "sha256": "35e07542e6fce356eadf985b7fb676d09b31a63e9adb19ae85caf501b5c34dc7"
+  },
+  "source_set_sha256": "03372b7031ab87d580a9ab0939d48a4e63526035c5585dbe6e4706c67b047419",
+  "source_sha256": {
+    "observe_teacher.py": "599e85982122bd1db5a8f143401ae4f6bf162fbe80af8740723ecb807d76a3bb",
+    "shape-grammar.md": "7a34530673f0659ec0820f4c3a83bcc3257d4d3b24b4edd7f9e203d1b87d5758",
+    "teacher-observations.json": "7d93160ce5313c3a45e9a817361071fb528ff4068e50fee1f0f4b6aca975b7d5",
+    "spatial_adapter.py": "1db424e5b6be6f6511b5112e53f07dabd4d73b0319541ffcad641509e4fa1678",
+    "r1_scene.py": "425a9096d43a743cb970c920c7272356d365bc2dfce433af90dc0f473628d452",
+    "run_r1.py": "c49cd8241d4299ca57adeacc4ab5f8ba7adecf12658021daf1c0b8052b489f71",
+    "compose_b_sheet.py": "6bbd13b5e94d17f4d3a19829f2f7dc9a3a96dcf1f453a01ea8e6f83dcd57e344",
+    "finalize_manifest.py": "cc97001dc6ae41c12d90d498b846eba81e38d4bafe37110d3e102139be50dce2",
+    "test_goal_recovery_r1.py": "038619e3a9f690264946e3443ed70325c71da7a6171dc6144e9dcfec9380b851"
+  },
+  "rendered_sha256": {
+    "rendered/A-observed-garment.svg": "35d6ced9175c05110251e31a629cb202e81101404e46ee038b032eef16e007c2",
+    "rendered/A-observed-garment.png": "3b57c3047f8ce199022a1dda1969e83d6dc0f17cccf6e339658a5458339f319c",
+    "rendered/B-baseline-support.svg": "ffe1dbd233afd0df3011ea91f07ba762e32d19f6a96fbf7e87b70b5892259aac",
+    "rendered/B-baseline-support.png": "92cd32b33417bf3198f54704a78bf44d27b1ec270287128d7564b9e4b280c26d",
+    "rendered/B-variant-support.svg": "465e901448fcf73f440f4cda1b4d67fb79221953c4d4d991ed93b4175a73320a",
+    "rendered/B-variant-support.png": "d9c600253d0facd1fbfaaf3bbcc7b9b7a8d2e8e0cc05e01599b47879fc944bb7",
+    "rendered/B-near-miss-control.svg": "b0779a21c6c6e64b4d680cc896fa377de964cb253e26f6f55b758e1c9da200c6",
+    "rendered/B-near-miss-control.png": "56cb5e0e4f13549352af17e6bcadb04ffaa55a28a60e158766f6d61b405ec40c",
+    "rendered/B-original-support.svg": "2fce35f4503ad806f22c8e2e9e737f12939cbd9d977050a34eddff26b5da538d",
+    "rendered/B-original-support.png": "81860c9da0a4d7be7f8a6cd04e1f30ef64a9712c6063ca8e42cb65f44311c193"
+  },
+  "teacher_evidence_sha256": {
+    "teacher-crop-registered.png": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+    "teacher-crop-focus.png": "30ecc088abc9c032153033bd0657224357518e81caa61a2a5e3bfd6151505c47",
+    "teacher-grid.png": "2a5c86567b3d6cfdd91e4ce7c6e30e59439af1479ea01a3364532df59a8cbb7f",
+    "teacher-region-windows.png": "dd34bf217ec609dad70081bcfbab6983d477faf17c8a95885c7a9e048d0553e2",
+    "teacher-observations.json": "7d93160ce5313c3a45e9a817361071fb528ff4068e50fee1f0f4b6aca975b7d5"
+  },
+  "review_bundle_sha256": {
+    "checks/A/draft-fullres.png": "c0355eefd41d43901aca8f454bc9537f38129a5825c33bd2d0e16547683f1d64",
+    "checks/A/draft.png": "3b57c3047f8ce199022a1dda1969e83d6dc0f17cccf6e339658a5458339f319c",
+    "checks/A/region-1.png": "17f025114689c371a58351d1ff25bf20b1fe0b78d8cd463619a69a5be411a8c4",
+    "checks/A/region-2.png": "660fb20f0631c402093f1ff12f9319e252d1e55b3881e636929e54fa9e315d10",
+    "checks/A/region-3.png": "4b541dd64a2019e293e484fb1900cf11083ae6c1e47bf1a2f7037435f81086b5",
+    "checks/A/report.txt": "4d201df4a41bf6eea6052bfa00eeea77d3f73fa42da6b3a68674fe23118ad9f0",
+    "checks/A/side-by-side.png": "457cf358c17789bd55a1d8161c0c05f4218da05d5a602dfa33b9c2596441d72a",
+    "checks/B/draft.png": "81860c9da0a4d7be7f8a6cd04e1f30ef64a9712c6063ca8e42cb65f44311c193",
+    "checks/B/report.txt": "83038d341f2e2da6af34d18deafc1a3362dd309935a4745b95bd87b8c986b458"
+  },
+  "teacher_observation": {
+    "source_path": "image.jpg",
+    "source_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+    "crop_path": "teacher-crop-registered.png",
+    "crop_sha256": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+    "crop_source_xyxy": [
+      500,
+      320,
+      900,
+      800
+    ],
+    "crop_dimensions": [
+      400,
+      480
+    ],
+    "resize": "none",
+    "observed_only_windows_path": "teacher-region-windows.png",
+    "window_manifest_path": "teacher-observations.json",
+    "engine_input": "none; scene/reproduction accepts semantic case only"
+  },
+  "artwork": {
+    "A": {
+      "svg": "rendered/A-observed-garment.svg",
+      "png": "rendered/A-observed-garment.png",
+      "claim": "teacher-fitted shoulder/upper-torso bodice, visible right puff sleeve/cuff, layered collar/trim, bow lobes/tails/folds; no hair/hand/pose claim",
+      "review_report": "checks/A/report.txt",
+      "review_image_list": [
+        ".scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/checks/A/side-by-side.png",
+        ".scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/checks/A/draft-fullres.png",
+        ".scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/checks/A/region-1.png",
+        ".scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/checks/A/region-2.png",
+        ".scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/checks/A/region-3.png"
+      ]
+    },
+    "B": {
+      "svg_contact_sheet": "rendered/B-original-support.svg",
+      "png_contact_sheet": "rendered/B-original-support.png",
+      "panels": [
+        {
+          "case": "baseline",
+          "svg": "rendered/B-baseline-support.svg",
+          "png": "rendered/B-baseline-support.png"
+        },
+        {
+          "case": "variant",
+          "svg": "rendered/B-variant-support.svg",
+          "png": "rendered/B-variant-support.png"
+        },
+        {
+          "case": "control",
+          "svg": "rendered/B-near-miss-control.svg",
+          "png": "rendered/B-near-miss-control.png"
+        }
+      ],
+      "claim": "original bent-arm articulated hand supports shallow fruit dish; raised/wider support variant; unchanged-hand near-miss control",
+      "review_report": "checks/B/report.txt",
+      "review_image_list": [
+        ".scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/checks/B/draft.png"
+      ]
+    }
+  },
+  "case_geometry_evidence": {
+    "baseline": {
+      "action": "a connected upright palm pad supports the dish continuously along its lower foot; three broad finger lobes and an integrated thumb heel stay grouped below the rim",
+      "successful_contact_world": "one broad palm-foot edge meets the sampled dish base at left, center, and right anchors",
+      "successful_side_contact": "thumb heel is part of the same closed hand silhouette; no standalone finger/dish polygons cross",
+      "control": "dish alone moved away from the unchanged hand by authored 0.34 scene units; labeled near miss",
+      "contact_point_crop_local": "not applicable; B is original and uses scene coordinates",
+      "collision_check": {
+        "declared_touches": [
+          {
+            "parts": [
+              "baseline-dish-wall",
+              "baseline-hand-support"
+            ],
+            "points": [
+              [
+                2.2956,
+                1.4
+              ],
+              [
+                2.55,
+                1.4
+              ],
+              [
+                2.8044,
+                1.4
+              ]
+            ],
+            "world_equality": true,
+            "projected_footprints_overlap": false,
+            "noncontact_area_depth_separated": false
+          }
+        ],
+        "depth-separated_overlaps": [
+          {
+            "parts": [
+              "baseline-shirt-panel",
+              "baseline-torso"
+            ],
+            "minimum_depth_separation": 0.030679999999999995
+          },
+          {
+            "parts": [
+              "baseline-neck",
+              "baseline-shirt-panel"
+            ],
+            "minimum_depth_separation": 0.030679999999999995
+          },
+          {
+            "parts": [
+              "baseline-shirt-panel",
+              "baseline-upper-arm"
+            ],
+            "minimum_depth_separation": 0.03164777836945781
+          },
+          {
+            "parts": [
+              "baseline-hair",
+              "baseline-head"
+            ],
+            "minimum_depth_separation": 0.05068
+          },
+          {
+            "parts": [
+              "baseline-dish-rim",
+              "baseline-dish-wall"
+            ],
+            "minimum_depth_separation": 0.05999999999999999
+          },
+          {
+            "parts": [
+              "baseline-dish-wall",
+              "baseline-fruit"
+            ],
+            "minimum_depth_separation": 0.07999999999999999
+          },
+          {
+            "parts": [
+              "baseline-dish-rim",
+              "baseline-fruit"
+            ],
+            "minimum_depth_separation": 0.01999999999999999
+          },
+          {
+            "parts": [
+              "baseline-fruit",
+              "baseline-leaf"
+            ],
+            "minimum_depth_separation": 0.020000000000000018
+          }
+        ],
+        "bounded_coplanar_attachment_joints": [
+          {
+            "parts": [
+              "baseline-neck",
+              "baseline-torso"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "baseline-torso",
+              "baseline-upper-arm"
+            ],
+            "bounded_support_transition_radius": 0.34
+          },
+          {
+            "parts": [
+              "baseline-head",
+              "baseline-neck"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "baseline-forearm",
+              "baseline-upper-arm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "baseline-forearm",
+              "baseline-hand-support"
+            ],
+            "bounded_support_transition_radius": 0.34
+          }
+        ],
+        "scope": "Actual case component footprints/supports only; not a general volume-physics claim"
+      },
+      "semantic_case": "baseline",
+      "dish_width_ratio": 1.0,
+      "wrist_target": [
+        1.8456,
+        1.15
+      ],
+      "dish_center": [
+        2.55,
+        1.74
+      ]
+    },
+    "variant": {
+      "action": "a connected upright palm pad supports the dish continuously along its lower foot; three broad finger lobes and an integrated thumb heel stay grouped below the rim",
+      "successful_contact_world": "one broad palm-foot edge meets the sampled dish base at left, center, and right anchors",
+      "successful_side_contact": "thumb heel is part of the same closed hand silhouette; no standalone finger/dish polygons cross",
+      "control": "dish alone moved away from the unchanged hand by authored 0.34 scene units; labeled near miss",
+      "contact_point_crop_local": "not applicable; B is original and uses scene coordinates",
+      "collision_check": {
+        "declared_touches": [
+          {
+            "parts": [
+              "variant-dish-wall",
+              "variant-hand-support"
+            ],
+            "points": [
+              [
+                2.265072,
+                1.6899999999999997
+              ],
+              [
+                2.55,
+                1.6899999999999997
+              ],
+              [
+                2.8349279999999997,
+                1.6899999999999997
+              ]
+            ],
+            "world_equality": true,
+            "projected_footprints_overlap": false,
+            "noncontact_area_depth_separated": false
+          }
+        ],
+        "depth-separated_overlaps": [
+          {
+            "parts": [
+              "variant-shirt-panel",
+              "variant-torso"
+            ],
+            "minimum_depth_separation": 0.030679999999999995
+          },
+          {
+            "parts": [
+              "variant-neck",
+              "variant-shirt-panel"
+            ],
+            "minimum_depth_separation": 0.030679999999999995
+          },
+          {
+            "parts": [
+              "variant-shirt-panel",
+              "variant-upper-arm"
+            ],
+            "minimum_depth_separation": 0.03170074940225681
+          },
+          {
+            "parts": [
+              "variant-hair",
+              "variant-head"
+            ],
+            "minimum_depth_separation": 0.05068
+          },
+          {
+            "parts": [
+              "variant-dish-rim",
+              "variant-dish-wall"
+            ],
+            "minimum_depth_separation": 0.059999999999999984
+          },
+          {
+            "parts": [
+              "variant-dish-wall",
+              "variant-fruit"
+            ],
+            "minimum_depth_separation": 0.07999999999999999
+          },
+          {
+            "parts": [
+              "variant-dish-rim",
+              "variant-fruit"
+            ],
+            "minimum_depth_separation": 0.01999999999999999
+          },
+          {
+            "parts": [
+              "variant-fruit",
+              "variant-leaf"
+            ],
+            "minimum_depth_separation": 0.01999999999999999
+          }
+        ],
+        "bounded_coplanar_attachment_joints": [
+          {
+            "parts": [
+              "variant-neck",
+              "variant-torso"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "variant-torso",
+              "variant-upper-arm"
+            ],
+            "bounded_support_transition_radius": 0.34
+          },
+          {
+            "parts": [
+              "variant-head",
+              "variant-neck"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "variant-forearm",
+              "variant-upper-arm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "variant-forearm",
+              "variant-hand-support"
+            ],
+            "bounded_support_transition_radius": 0.34
+          }
+        ],
+        "scope": "Actual case component footprints/supports only; not a general volume-physics claim"
+      },
+      "semantic_case": "variant",
+      "dish_width_ratio": 1.12,
+      "wrist_target": [
+        1.815072,
+        1.4399999999999997
+      ],
+      "dish_center": [
+        2.55,
+        2.03
+      ]
+    },
+    "near_miss_control": {
+      "action": "a connected upright palm pad supports the dish continuously along its lower foot; three broad finger lobes and an integrated thumb heel stay grouped below the rim",
+      "successful_contact_world": "one broad palm-foot edge meets the sampled dish base at left, center, and right anchors",
+      "successful_side_contact": "thumb heel is part of the same closed hand silhouette; no standalone finger/dish polygons cross",
+      "control": "dish alone moved away from the unchanged hand by authored 0.34 scene units; labeled near miss",
+      "contact_point_crop_local": "not applicable; B is original and uses scene coordinates",
+      "collision_check": {
+        "declared_touches": [],
+        "depth-separated_overlaps": [
+          {
+            "parts": [
+              "control-shirt-panel",
+              "control-torso"
+            ],
+            "minimum_depth_separation": 0.030679999999999995
+          },
+          {
+            "parts": [
+              "control-neck",
+              "control-shirt-panel"
+            ],
+            "minimum_depth_separation": 0.030679999999999995
+          },
+          {
+            "parts": [
+              "control-shirt-panel",
+              "control-upper-arm"
+            ],
+            "minimum_depth_separation": 0.03164777836945781
+          },
+          {
+            "parts": [
+              "control-hair",
+              "control-head"
+            ],
+            "minimum_depth_separation": 0.05068
+          },
+          {
+            "parts": [
+              "control-dish-rim",
+              "control-dish-wall"
+            ],
+            "minimum_depth_separation": 0.02909999999999996
+          },
+          {
+            "parts": [
+              "control-dish-wall",
+              "control-fruit"
+            ],
+            "minimum_depth_separation": 0.05882586654754063
+          },
+          {
+            "parts": [
+              "control-dish-rim",
+              "control-fruit"
+            ],
+            "minimum_depth_separation": 0.01999999999999999
+          },
+          {
+            "parts": [
+              "control-fruit",
+              "control-leaf"
+            ],
+            "minimum_depth_separation": 0.020000000000000018
+          }
+        ],
+        "bounded_coplanar_attachment_joints": [
+          {
+            "parts": [
+              "control-neck",
+              "control-torso"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "control-torso",
+              "control-upper-arm"
+            ],
+            "bounded_support_transition_radius": 0.34
+          },
+          {
+            "parts": [
+              "control-head",
+              "control-neck"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "control-forearm",
+              "control-upper-arm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "control-forearm",
+              "control-hand-support"
+            ],
+            "bounded_support_transition_radius": 0.34
+          }
+        ],
+        "scope": "Actual case component footprints/supports only; not a general volume-physics claim"
+      },
+      "semantic_case": "control",
+      "dish_width_ratio": 1.0,
+      "wrist_target": [
+        1.8456,
+        1.15
+      ],
+      "dish_center": [
+        2.55,
+        2.08
+      ]
+    }
+  },
+  "architecture": {
+    "support_pipeline": "revision-local composition over existing smooth sampler/guard, SupportFrame/Camera/component faces, vector_visibility, visible_segment_spans, compound path mapping",
+    "visibility": "depth-derived; no manually authored visibility intervals",
+    "scene_collision_scope": "actual affine support footprints/declared contacts for each B case; no general volume-physics claim",
+    "drawing_metrics": "draw check outputs are breakage alarms only; not tuned"
+  },
+  "gates_open": [
+    "independent image-only art/readability review",
+    "independent structural/depth review as assigned by Main",
+    "heldout compatibility/release and later distinct drawing",
+    "separate deterministic reproduction acceptance",
+    "user feedback",
+    "all R1 art/physical/depth/attachment gates"
+  ],
+  "no_staging_or_commit": true
+}

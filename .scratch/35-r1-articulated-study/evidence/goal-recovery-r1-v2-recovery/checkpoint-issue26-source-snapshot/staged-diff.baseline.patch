@@ -1,0 +1,26 @@
+diff --git a/.gitmodules b/.gitmodules
+new file mode 100644
+index 0000000..2e914b3
+--- /dev/null
++++ b/.gitmodules
+@@ -0,0 +1,6 @@
++[submodule "vendor/huashu-art-motion"]
++	path = vendor/huashu-art-motion
++	url = https://github.com/alchaincyf/huashu-art-motion
++[submodule "vendor/huashu-design"]
++	path = vendor/huashu-design
++	url = https://github.com/alchaincyf/huashu-design
+diff --git a/vendor/huashu-art-motion b/vendor/huashu-art-motion
+new file mode 160000
+index 0000000..f178bd7
+--- /dev/null
++++ b/vendor/huashu-art-motion
+@@ -0,0 +1 @@
++Subproject commit f178bd7754a71d6d399473af1501634548efa6cb
+diff --git a/vendor/huashu-design b/vendor/huashu-design
+new file mode 160000
+index 0000000..0830494
+--- /dev/null
++++ b/vendor/huashu-design
+@@ -0,0 +1 @@
++Subproject commit 0830494ecb1c117e25b313a8114fe55a6bf2b125

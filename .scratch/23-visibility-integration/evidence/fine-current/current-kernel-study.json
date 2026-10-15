@@ -1,0 +1,95 @@
+{
+  "computed_mesh_source_vs_current": {
+    "current": {
+      "png": ".scratch/23-visibility-integration/evidence/fine-current/mesh-4x3-current.png",
+      "png_sha256": "966bb311b79ba33d8a6dde961c04d5d82cb14ea41a836ccfd7f482379e852541",
+      "svg": ".scratch/23-visibility-integration/evidence/fine-current/mesh-4x3-current.svg",
+      "svg_sha256": "a7c53e24bf0978adc50436a79cd26466257b04cf6cc9095d5c4429186d8a7252"
+    },
+    "current_repeat": {
+      "byte_identical": true,
+      "png": ".scratch/23-visibility-integration/evidence/fine-current/mesh-4x3-current-repeat.png",
+      "png_sha256": "966bb311b79ba33d8a6dde961c04d5d82cb14ea41a836ccfd7f482379e852541"
+    },
+    "geometry": {
+      "face_count": 24,
+      "kind": "computed regular planar grid",
+      "nx": 4,
+      "ny": 3,
+      "rectangle": [
+        31.25,
+        27.375,
+        155.75,
+        120.75
+      ]
+    },
+    "source": {
+      "png": ".scratch/23-visibility-integration/evidence/fine-current/mesh-4x3-source.png",
+      "png_sha256": "966bb311b79ba33d8a6dde961c04d5d82cb14ea41a836ccfd7f482379e852541",
+      "svg": ".scratch/23-visibility-integration/evidence/fine-current/mesh-4x3-source.svg",
+      "svg_sha256": "a7c53e24bf0978adc50436a79cd26466257b04cf6cc9095d5c4429186d8a7252"
+    },
+    "source_vs_current_differing_pixels": 0
+  },
+  "fine_arch_source_vs_current": {
+    "current": {
+      "png": ".scratch/23-visibility-integration/evidence/fine-current/arch-current.png",
+      "png_sha256": "c7763f73fb86ef815ce7cafcacdd59b896481446c400971bc24c630219d07afc",
+      "svg": ".scratch/23-visibility-integration/evidence/fine-current/arch-current.svg",
+      "svg_sha256": "47c9bfdb8632da14a01914e5652377c7c11e3d4ad200ac30ed0c2bd87e0b9d7f"
+    },
+    "current_repeat": {
+      "byte_identical": true,
+      "png": ".scratch/23-visibility-integration/evidence/fine-current/arch-current-repeat.png",
+      "png_sha256": "c7763f73fb86ef815ce7cafcacdd59b896481446c400971bc24c630219d07afc"
+    },
+    "geometry": {
+      "camber": 0.35,
+      "camera": {
+        "name": "front",
+        "pitch": 0,
+        "yaw": 0
+      },
+      "fit_origin": [
+        239.99999999999997,
+        190.75806029271007
+      ],
+      "fit_scale": 146.66666666666666,
+      "ribbon_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+      "source_plan_case": "untwisted-teaching-arch-front-control",
+      "triangles": 4416,
+      "u_intervals": 96,
+      "v_intervals": 12
+    },
+    "safe_interior": {
+      "background_like_pixels_within3": 0,
+      "nonmatching_base_pixels_gt12": 0,
+      "pixel_count": 8495
+    },
+    "source": {
+      "png": ".scratch/23-visibility-integration/evidence/fine-current/arch-source.png",
+      "png_sha256": "86b9ecc1f33e72fb9454dd6b4bd519c7f9456b51df8a95881f7f4ae75078f372",
+      "svg": ".scratch/23-visibility-integration/evidence/fine-current/arch-source.svg",
+      "svg_sha256": "4154dfa77e5b4a43a0a7d653ff7ce8d9b201f12e782a197d5966ed950fab4d6a"
+    },
+    "source_vs_current_differing_pixels": 139
+  },
+  "plan": {
+    "path": ".scratch/23-visibility-integration/work/cases-fine-current.json",
+    "sha256": "0aca7eb8cae2511e6e2aeda79b0d1d94218f772a0ac5642e0e96354f83bab29e",
+    "source_plan_sha256": "bbc8697195e1ca45805899f4fafa6bbae8fccab3021cb8673460e3c4418d0643"
+  },
+  "producer": {
+    "chromium": {
+      "path": "/home/z/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell",
+      "version": "Google Chrome for Testing 151.0.7922.34"
+    },
+    "draw_py_sha256": "7b1bb3bece91dfe297e34aefab6b40af24bc02dbe4837bec03da604569ac7abf",
+    "path": "scripts/vector_visibility.py",
+    "sha256_after": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa",
+    "sha256_before": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa",
+    "study_script_sha256": "7bf5c1aa83e8e6e2eb1b509eb09b1d4b49f2073dd11009b926ba4b7efa65cf60",
+    "unchanged_during_run": true
+  },
+  "purpose": "Exercise23 derived fine renderer diagnostic only; no visual/art or camber gate."
+}

@@ -1,0 +1,65 @@
+{
+  "cases": [
+    {
+      "alpha_radians": 3.141592653589793,
+      "camera": "D-plus-10deg",
+      "card": false,
+      "case_id": "primary-dplus"
+    },
+    {
+      "alpha_radians": 2.0943951023931953,
+      "camera": "D-plus-10deg",
+      "card": false,
+      "case_id": "variation-2pi3-dplus"
+    },
+    {
+      "alpha_radians": 3.141592653589793,
+      "camera": "D-minus-symmetric",
+      "card": false,
+      "case_id": "negative-dminus"
+    },
+    {
+      "alpha_radians": 3.141592653589793,
+      "camera": "D-plus-10deg",
+      "card": true,
+      "case_id": "card-dplus"
+    }
+  ],
+  "fixed_art": {
+    "base_back": "#7188bd",
+    "base_front": "#e68aa4",
+    "material_width_world": 0.36,
+    "shared_stripe": "#472639",
+    "side_dependent_back_stripe": "#fff1b8",
+    "side_dependent_front_stripe": "#472639",
+    "u": [
+      0.0,
+      1.0
+    ],
+    "v": [
+      -0.18,
+      0.18
+    ]
+  },
+  "frozen_before_images": true,
+  "sampling": {
+    "maximum_submitted_inputs": 256,
+    "support_faces": 64,
+    "u_intervals": 16,
+    "v_intervals": 2
+  },
+  "schema": "local-art-identity-cases/v1",
+  "source_bindings": {
+    ".scratch/19-ribbon-family/work/cases.json": "bd2732b806de26cc2d8a261be68e8f30e21e1f8f8bd5301556d85241a8bc5800",
+    ".scratch/24-clean-support-replay/work/cases-current.json": "793ca4c206e44d3801cb5a1c82783a5fecbffb9d16e5c1539999445ba20b6034",
+    ".scratch/27-return-bend/evidence/proof/geometry-gate-completion.json": "5c1306b6c0fe37dc8aa22892ea013899ad46689eaa83a4b3750c452f59056ab9",
+    ".scratch/27-return-bend/work/build.py": "088541e6b481d4b9a086c11daa0ce3a264f4206b40bf0453c14cec36849216c8",
+    ".scratch/27-return-bend/work/cases.json": "95fa2bad3da49f092879d7cbfdd5871f7d7c6ff7a389ee1b55611b31f900cbbc",
+    ".scratch/27-return-bend/work/specs.json": "c5f874f3bc4d15a30eeffdff1676d1bf7b26a8144f46b034bfe69f120fd60603",
+    "scripts/ribbon_return.py": "618d701c3a26eb1f97d6b6cfd210ffe41eba3fe25032eb216d3c2ead398d2607",
+    "scripts/tests/test_ribbon_return.py": "cc933869b3c75a5458493151cc44972cde972c8a0ef90df35e19c93fc6a2cb67",
+    "scripts/tests/test_vector_visibility.py": "dfdaf991b63b918f9b0f7ad592e7e6d1d53300c259838e2db31ea65542edeb92",
+    "scripts/tests/test_vector_visibility_oracle.py": "91ccb65c7aaf19cc51554982094d7523280f2cc0df78c089a920a6b9c5363f8c",
+    "scripts/vector_visibility.py": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa"
+  }
+}

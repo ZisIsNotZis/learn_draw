@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "hypothesis": "A geometry-derived, depth-visible apparent contour at a camera-dependent turn of the same faceted ribbon may clarify the two-sided half-turn where .35 transverse camber alone did not.",
+  "frozen_inputs": {
+    "plan": ".scratch/24-clean-support-replay/work/cases-current.json",
+    "plan_sha256": "793ca4c206e44d3801cb5a1c82783a5fecbffb9d16e5c1539999445ba20b6034",
+    "support": {"path": "scripts/ribbon_surface.py", "sha256": "5c32715a9359e3228a7cd91e2bed020f47badcc6df949f2f54e6c8ae493df2f4"},
+    "family": {"path": "scripts/ribbon_family.py", "sha256": "015ec14ec90da5768dbcdd9486220d3971c55673f0944971ccb3a8a47662bd3e"},
+    "visibility_kernel": {"path": "scripts/vector_visibility.py", "sha256": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa"},
+    "tested_footprint_utilities": {"path": "scripts/ribbon_drawing.py", "sha256": "a3569bf9492ab88a5377a25523acbd93adf32069ac02825f8b370ec45cdba2dc"}
+  },
+  "support": {"camber": 0.35, "u_intervals": 96, "v_intervals": 12},
+  "comparison": {
+    "control": "exact cached exercise24 .35 support fill-only panel for the matching frozen row",
+    "candidate": "same panel, same geometry/fill visibility, with only classified apparent-contour ink added",
+    "ink_color": "#253746",
+    "ink_width_px": 1.2,
+    "weight_locked_before_candidate_images": true,
+    "line_role": "surface-turn apparent contour; not contact/contact boundary, material perimeter, stripe boundary, or mesh-wireframe"
+  },
+  "rows": [
+    {"plan_case_index": 0, "name": "positive-half-twist-front", "condition": "primary-existing-spec", "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618", "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4", "control_panel": ".scratch/24-clean-support-replay/evidence/panels/case-00-positive-half-twist-front-camber-035.svg"},
+    {"plan_case_index": 1, "name": "positive-half-twist-oblique", "condition": "primary-existing-spec", "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618", "camera_sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e", "control_panel": ".scratch/24-clean-support-replay/evidence/panels/case-01-positive-half-twist-oblique-camber-035.svg"},
+    {"plan_case_index": 2, "name": "failed-learner-negative-half-twist-front-regression-only", "condition": "untouched-failed-learner-regression-only", "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355", "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4", "control_panel": ".scratch/24-clean-support-replay/evidence/panels/case-02-failed-learner-negative-half-twist-front-regression-only-camber-035.svg"},
+    {"plan_case_index": 3, "name": "failed-learner-negative-half-twist-oblique-regression-only", "condition": "untouched-failed-learner-regression-only", "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355", "camera_sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e", "control_panel": ".scratch/24-clean-support-replay/evidence/panels/case-03-failed-learner-negative-half-twist-oblique-regression-only-camber-035.svg"},
+    {"plan_case_index": 4, "name": "untwisted-teaching-arch-front-control", "condition": "negative-control-and-root-width-check", "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88", "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4", "control_panel": ".scratch/24-clean-support-replay/evidence/panels/case-04-untwisted-teaching-arch-front-control-camber-035.svg"}
+  ],
+  "card_test": "temporary camera-facing foreground card generated from a selected candidate's screen-space line footprint; not present in the comparison rows"
+}

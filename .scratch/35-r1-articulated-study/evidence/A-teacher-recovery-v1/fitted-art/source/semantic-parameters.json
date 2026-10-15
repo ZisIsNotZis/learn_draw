@@ -1,0 +1,40 @@
+{
+  "id": "A-garment-family-fit-v1",
+  "role": "frozen compact semantic design parameters; not traced contours or engine image input",
+  "teacher": {
+    "registered_crop": "../../teacher-only/source-crop-registered.png",
+    "crop_source_xyxy": [500, 320, 900, 800],
+    "map": "crop(x,y) = source(500+x,320+y)",
+    "source_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+    "crop_sha256": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+    "observation_ids": ["N1", "N2", "CL1", "CL2", "CR1", "CR2", "BD1", "BD2", "BD3", "BD4", "SC1", "SC2", "SC3", "CU1", "BK1", "BL1", "BR1", "TL1", "TD1"],
+    "uncertainty": ["shoulder join exact seam", "pink left tail continuation/end at blue band", "blue band's identity", "hidden collar/bodice/sleeve joins", "cuff right continuation unknown"]
+  },
+  "camera": {"projection": "orthographic", "azimuth_degrees": 30, "elevation_degrees": 8, "framing": "registered crop 400x480; artwork parts only occupy source-visible garment region"},
+  "palette": {"background": "#75c9c4", "skin": "#e4a8b8", "bodice": "#f0f0e2", "sleeve": "#f0eee1", "collar_left": "#e5eadf", "collar_right": "#a9cbd7", "ink": "#293443", "bow": "#da3e73", "band_unknown": "#426ea4"},
+  "relations": {
+    "bodice": {
+      "intent": "continuous light upper bodice with an open curved neckline and shoulder-to-waist narrowing",
+      "teacher_ids": ["BD1", "BD3", "BD4", "N2"],
+      "anchors": {"left_shoulder": [108, 134], "sleeve_seam_top": [314, 136], "sleeve_seam_bottom": [300, 205], "right_hem": [270, 371]},
+      "left_hem_fraction": 0.05,
+      "neck_opening_width_fraction": 0.58,
+      "neck_opening_depth": 18,
+      "side_curve": 0.38
+    },
+    "neck_skin": {"intent": "visible neck field framed by collar pieces in bodice opening", "teacher_ids": ["N1", "N2"], "center": [215, 105], "radius": [58, 40]},
+    "collar_left": {"intent": "unequal pale left collar leaf with dark curved front trim", "teacher_ids": ["CL1", "CL2"], "anchors": [[150, 94], [186, 104], [213, 143], [171, 130]], "trim_width": 5.5},
+    "collar_right": {"intent": "broader blue pale right leaf frames neckline without asserting a hidden seam", "teacher_ids": ["CR1", "CR2"], "anchors": [[194, 93], [215, 143], [292, 123], [270, 94]], "trim_width": 6.0},
+    "right_sleeve": {"intent": "one continuous puff cap-to-tube silhouette, shared shoulder seam and narrowing cuff approach", "teacher_ids": ["BD2", "SC1", "SC2", "SC3"], "anchors": {"bodice_seam_top": [314, 136], "bodice_seam_bottom": [300, 205], "cap_peak": [350, 119], "cuff_center": [374, 302]}, "outer_bulge": 1.18, "cap_tube_transition": 0.61, "cuff_half_height": 17},
+    "cuff": {"intent": "dark band shares the sleeve opening, right continuation remains cropped/unknown", "teacher_ids": ["SC3", "CU1"], "half_width": 21, "half_height": 17, "overlap_into_sleeve": 3},
+    "bow_left_loop": {"intent": "smaller left loop, pinched to knot; folds do not split the ribbon", "teacher_ids": ["BK1", "BL1"], "center": [138, 171], "radii": [36, 24], "pinch": 0.22, "pinch_direction": 0},
+    "bow_right_loop": {"intent": "visibly broader right loop pinched toward shared knot", "teacher_ids": ["BK1", "BR1"], "center": [224, 179], "radii": [53, 29], "pinch": 0.18, "pinch_direction": 3.141592653589793},
+    "bow_knot": {"intent": "small central gathered join for unequal loops and different-direction visible tails", "teacher_ids": ["BK1"], "center": [171, 169], "radii": [12, 9]},
+    "bow_left_tail": {"intent": "leftward strip ends at the visible pink/blue overlap; continuation and true endpoint unknown", "teacher_ids": ["BK1", "TL1"], "anchors": [[164, 174], [119, 194], [72, 212], [44, 209]], "width_start": 16, "width_end": 9},
+    "bow_down_tail": {"intent": "separate down-left taper with its visible tip inside crop", "teacher_ids": ["BK1", "TD1"], "anchors": [[168, 176], [165, 211], [147, 250], [139, 276]], "width_start": 17, "width_end": 3},
+    "unclassified_blue_neighbor": {"intent": "small crop-visible blue band context only; not declared bow material or attached component", "teacher_ids": ["TL1"], "anchors": [[0, 207], [44, 199], [48, 216], [0, 226]]}
+  },
+  "supports": {"background": {"depth": 0.0, "slope_u": 0.0001, "slope_v": 0.0001}, "neck_skin": {"depth": 0.20, "slope_u": 0.0002, "slope_v": 0.0001}, "bodice": {"depth": 0.45, "slope_u": 0.0005, "slope_v": 0.0002}, "sleeve": {"attachment_normal_depth_gradient": 0.0002}, "collar": {"depth": 0.62, "slope_u": 0.0003, "slope_v": 0.0002}, "cuff": {"attachment_normal_depth_gradient": 0.0002}, "bow": {"depth": 0.76, "slope_u": 0.0003, "slope_v": 0.0002}, "neighbor": {"depth": 0.50, "slope_u": 0.0001, "slope_v": 0.0001}},
+  "line_art": {"role": "few edge/trim/fold/contact lines, all separately depth-clipped; no tessellation edges", "fold_marks": 4},
+  "source_scope": "A visible shoulder/upper-torso garment and immediate bow/collar context only; no face, hair, hand, arm pose, hidden anatomy, full torso or invented endpoints"
+}

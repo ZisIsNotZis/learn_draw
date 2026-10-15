@@ -1,0 +1,580 @@
+{
+  "files": [
+    {
+      "bytes": 2101,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/SHA256SUMS",
+      "sha256": "0e32394c05c433a7d6932bc27fadb3766373a38cbf79509339baa3f754be2d64"
+    },
+    {
+      "bytes": 120471,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/check/comparison-labelled/draft.png",
+      "sha256": "c2052322e71da33ab4322abd84ed3af4a62ab37e6dce0091c759f0159eda90fa"
+    },
+    {
+      "bytes": 735,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/check/comparison-labelled/report.txt",
+      "sha256": "58405b62e289ee29e5de031300ef18ea48107e1a22516e0a6a3b908dfbfbfc2d"
+    },
+    {
+      "bytes": 94633,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/check/comparison-unlabelled/draft.png",
+      "sha256": "dcb31261ceeddcfcfbc64d9eb02723475331229f31bcdb2130eeca8af31fc38b"
+    },
+    {
+      "bytes": 741,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/check/comparison-unlabelled/report.txt",
+      "sha256": "5b6f71965ad378e7883e9f23588e25e0b23226bf6c900f531b2a8423afa4258d"
+    },
+    {
+      "bytes": 42327,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/check/line-only-labelled/draft.png",
+      "sha256": "b42286b449ad95797c9bc77d2852c990da8f32e63395896a05b0b05770213e8c"
+    },
+    {
+      "bytes": 732,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/check/line-only-labelled/report.txt",
+      "sha256": "34f3898549d93077c42cf13002d25f9978e4bb8fe73556d7b273fff774671071"
+    },
+    {
+      "bytes": 12754,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/check/line-only-unlabelled/draft.png",
+      "sha256": "45e4132ab817a03aa2d73691c5743d46b0bebb77e79a90d053f782f1711d7092"
+    },
+    {
+      "bytes": 738,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/check/line-only-unlabelled/report.txt",
+      "sha256": "96e62288e9ae8a0a2aab7dac90950d5597e0976fe4c05d1fbc5f2d30d0bd043f"
+    },
+    {
+      "bytes": 1753616,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/comparison-labelled-manifest.json",
+      "sha256": "c8eed21566df71516b1234af7260c416f1dec149d4d651eebb76e7829adff6cb"
+    },
+    {
+      "bytes": 120471,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/comparison-labelled.png",
+      "sha256": "c2052322e71da33ab4322abd84ed3af4a62ab37e6dce0091c759f0159eda90fa"
+    },
+    {
+      "bytes": 73500606,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/comparison-labelled.svg",
+      "sha256": "20a106186d5384e48f807ef2f0c7273e1439cf699eb4ce0a7e45abb32ca14ee2"
+    },
+    {
+      "bytes": 1753617,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/comparison-unlabelled-manifest.json",
+      "sha256": "242fa17808713b4073409af7f1bf8c1df6110d06038346807fbc02f4dfb08e35"
+    },
+    {
+      "bytes": 94633,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/comparison-unlabelled.png",
+      "sha256": "dcb31261ceeddcfcfbc64d9eb02723475331229f31bcdb2130eeca8af31fc38b"
+    },
+    {
+      "bytes": 73499029,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/comparison-unlabelled.svg",
+      "sha256": "1661e53679795c5615ff165c1239c8245a7300d01a900fbb111ce1847e953170"
+    },
+    {
+      "bytes": 120471,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/determinism/comparison-labelled-repeat.png",
+      "sha256": "c2052322e71da33ab4322abd84ed3af4a62ab37e6dce0091c759f0159eda90fa"
+    },
+    {
+      "bytes": 1754115,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/line-only-labelled-manifest.json",
+      "sha256": "ef5a25dcf777d504008b9bde4d139f4823aa1a7c001374acb8beeeca101148f4"
+    },
+    {
+      "bytes": 42327,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/line-only-labelled.png",
+      "sha256": "b42286b449ad95797c9bc77d2852c990da8f32e63395896a05b0b05770213e8c"
+    },
+    {
+      "bytes": 52185789,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/line-only-labelled.svg",
+      "sha256": "068729f2ae049734053998951811aaf7a75c9024f75c9ba33cce31f238798d23"
+    },
+    {
+      "bytes": 1754116,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/line-only-unlabelled-manifest.json",
+      "sha256": "67e1d41d51dd4cf87d9de62045d1871dbc6bd2ab7017c10e404f880ef4ac1222"
+    },
+    {
+      "bytes": 12754,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/line-only-unlabelled.png",
+      "sha256": "45e4132ab817a03aa2d73691c5743d46b0bebb77e79a90d053f782f1711d7092"
+    },
+    {
+      "bytes": 52184024,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-fit-fix/line-only-unlabelled.svg",
+      "sha256": "84f30fbfa18aab253306127e3e545a0dcaa03d350452549200f1adb4ce0a51f1"
+    },
+    {
+      "bytes": 990,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-line-serialization-fix/SHA256SUMS",
+      "sha256": "b474767da38ff91cde678bd8949b4077394437977bba89eac1187adfaaa119ed"
+    },
+    {
+      "bytes": 42327,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-line-serialization-fix/check/line-only-labelled/draft.png",
+      "sha256": "b42286b449ad95797c9bc77d2852c990da8f32e63395896a05b0b05770213e8c"
+    },
+    {
+      "bytes": 732,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-line-serialization-fix/check/line-only-labelled/report.txt",
+      "sha256": "34f3898549d93077c42cf13002d25f9978e4bb8fe73556d7b273fff774671071"
+    },
+    {
+      "bytes": 12754,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-line-serialization-fix/check/line-only-unlabelled/draft.png",
+      "sha256": "45e4132ab817a03aa2d73691c5743d46b0bebb77e79a90d053f782f1711d7092"
+    },
+    {
+      "bytes": 738,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-line-serialization-fix/check/line-only-unlabelled/report.txt",
+      "sha256": "96e62288e9ae8a0a2aab7dac90950d5597e0976fe4c05d1fbc5f2d30d0bd043f"
+    },
+    {
+      "bytes": 1754115,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-line-serialization-fix/line-only-labelled-manifest.json",
+      "sha256": "2fc32c187da834a7540bfb2123caa4b8a3ff19da3ba3d97fbe3a82eb3eccd51d"
+    },
+    {
+      "bytes": 42327,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-line-serialization-fix/line-only-labelled.png",
+      "sha256": "b42286b449ad95797c9bc77d2852c990da8f32e63395896a05b0b05770213e8c"
+    },
+    {
+      "bytes": 51936577,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-line-serialization-fix/line-only-labelled.svg",
+      "sha256": "eafad0579b23f07e2e5c563ca377d85f7fbf798cd14c6d70f82d2ad2053e4922"
+    },
+    {
+      "bytes": 1754116,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-line-serialization-fix/line-only-unlabelled-manifest.json",
+      "sha256": "b79fd37227b37d161b3d939b59fa0de0cd0aea2a3aa316c267df53dfac7f706a"
+    },
+    {
+      "bytes": 12754,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-line-serialization-fix/line-only-unlabelled.png",
+      "sha256": "45e4132ab817a03aa2d73691c5743d46b0bebb77e79a90d053f782f1711d7092"
+    },
+    {
+      "bytes": 51934812,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/before-line-serialization-fix/line-only-unlabelled.svg",
+      "sha256": "773c1757390eb4791051bec8c7c88e0d329d6620bbb2c061378e8e79e2175f10"
+    },
+    {
+      "bytes": 1200,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-0-teaching-arch-front-col-0.json",
+      "sha256": "2da7bd9822eb3b786d5cbee889af57c5a64b94ccdb7d4c6f69e885f5cff5a73b"
+    },
+    {
+      "bytes": 402723,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-0-teaching-arch-front-col-0.svg",
+      "sha256": "608a2ec4b0cc526dc55a0da521fa0c08d3825574c62a846a4b63909b18193859"
+    },
+    {
+      "bytes": 90233,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-0-teaching-arch-front-col-1.json",
+      "sha256": "8ece332fb0646018d4e05a1f19d4ad3b286a76136c101b58092f695d93d44dbf"
+    },
+    {
+      "bytes": 3273750,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-0-teaching-arch-front-col-1.svg",
+      "sha256": "f1168f63917b5374a93f64b19fba5fc38bebb12ff464bc41d24319c966ea67f1"
+    },
+    {
+      "bytes": 90255,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-0-teaching-arch-front-col-2.json",
+      "sha256": "b6cb4141d6d707e4805d6b4e7094d94eeb50e0e0388254714e52b84e86c5e7f8"
+    },
+    {
+      "bytes": 3807762,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-0-teaching-arch-front-col-2.svg",
+      "sha256": "86e368a5eb43cb8763a1882ac85439c693e6914a6b628b2d0aa623c4c838e7d3"
+    },
+    {
+      "bytes": 1206,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-1-frozen-crossback-front-col-0.json",
+      "sha256": "b719d7eb87cf0c9f4bb10845a02ff8fcc41b7ad41d876b8ead604720bd075ec7"
+    },
+    {
+      "bytes": 319734,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-1-frozen-crossback-front-col-0.svg",
+      "sha256": "13bcd0c2d68efa78aa76a5acebce87965c1066f9c0b5e1d0115abfb447fdb60d"
+    },
+    {
+      "bytes": 94357,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-1-frozen-crossback-front-col-1.json",
+      "sha256": "35655946a6d8ba5ad6fffebd5f8cfb25cad5a6ad50fc93377e625838169eddde"
+    },
+    {
+      "bytes": 2081754,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-1-frozen-crossback-front-col-1.svg",
+      "sha256": "5fc91941f4843edd7ce87850aaf197b9e8631e7882dbe5029d05abf9bf390348"
+    },
+    {
+      "bytes": 94379,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-1-frozen-crossback-front-col-2.json",
+      "sha256": "124cf04f88164a9a8b8995e1e3cb0acce673aea29ae053bb7e707fabc5ccc230"
+    },
+    {
+      "bytes": 2708669,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-1-frozen-crossback-front-col-2.svg",
+      "sha256": "d33628d8f23d32eceb73f6ba118986de01e18bd52c9627b0815fcba7e05918ea"
+    },
+    {
+      "bytes": 1214,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-2-crossback-depth-reversed-front-col-0.json",
+      "sha256": "3d29660bb6d25a1c925eb8fbcbb84427a71fe25e77bdb83ffa814370384c9921"
+    },
+    {
+      "bytes": 421351,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-2-crossback-depth-reversed-front-col-0.svg",
+      "sha256": "9baf67c11fd5c0b26d91b75c1f6729edddadaccb52d1d6a05630c631cc6997a3"
+    },
+    {
+      "bytes": 104132,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-2-crossback-depth-reversed-front-col-1.json",
+      "sha256": "f03720a9a70aebd931a2b8bba52e1ab6f820ee6589e0745769ce104fd4301837"
+    },
+    {
+      "bytes": 3899495,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-2-crossback-depth-reversed-front-col-1.svg",
+      "sha256": "98832177875474fc596a07a4f750319347677b98127ee649a517b41b8d1d1665"
+    },
+    {
+      "bytes": 104154,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-2-crossback-depth-reversed-front-col-2.json",
+      "sha256": "47799147d12b936d151f61eeb76b411056d2a1816a277b9d956e6f91e723db9f"
+    },
+    {
+      "bytes": 4562762,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-2-crossback-depth-reversed-front-col-2.svg",
+      "sha256": "7ce637fa115de658e12b3eb1819256a49b0abf496c48a6dbbbfb5f4c1e5e821b"
+    },
+    {
+      "bytes": 1201,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-3-half-twist-front-col-0.json",
+      "sha256": "085a65fda9ae00107961b7ff37cb42fb113d3a0044cc232de9d60fb83b34a3dc"
+    },
+    {
+      "bytes": 411046,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-3-half-twist-front-col-0.svg",
+      "sha256": "34d3a161591766b7800a179d3c817d25dc315c602a04a3f54516598b2b8b8329"
+    },
+    {
+      "bytes": 90492,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-3-half-twist-front-col-1.json",
+      "sha256": "8fdb406e29707e8a6a33902cf20ce2e4bc2156ea748b4bcd7aca3ab6c96bb64b"
+    },
+    {
+      "bytes": 5771125,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-3-half-twist-front-col-1.svg",
+      "sha256": "92c025b28a21910fee60ccb21aac8662430fda3daad93aee6b3728e36c1ff6fd"
+    },
+    {
+      "bytes": 90528,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-3-half-twist-front-col-2.json",
+      "sha256": "6de602c14effbdc30cab65e01d5fc2f1cf37bb62355507f15a9256cd8ce018ec"
+    },
+    {
+      "bytes": 6808160,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-3-half-twist-front-col-2.svg",
+      "sha256": "62693231f3d1eba6c214632f16cba5c0b6b784910ff8f8d17653ad19eb316852"
+    },
+    {
+      "bytes": 1207,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-4-half-twist-oblique-col-0.json",
+      "sha256": "58a9a96c914af8f2971a2561ec90f05309a57f60b92125d9ec663459134e5c25"
+    },
+    {
+      "bytes": 617211,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-4-half-twist-oblique-col-0.svg",
+      "sha256": "ce722afbdf15cd1603306f9dc987f76893cc16e352878f6e0675b777c61f7554"
+    },
+    {
+      "bytes": 89880,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-4-half-twist-oblique-col-1.json",
+      "sha256": "362c05a566b3099039a0e60f79496f5588ca3b699d43d40b63fec3895437638d"
+    },
+    {
+      "bytes": 4822628,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-4-half-twist-oblique-col-1.svg",
+      "sha256": "c418936eb158b9dc40fb31c93691a30877f8b86f89fc5fc05ef5b4cb7e56fc5c"
+    },
+    {
+      "bytes": 89916,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-4-half-twist-oblique-col-2.json",
+      "sha256": "6a825dfdda9ae7eb114bb8ff7508c389269e0f549b60544513280eb9068ec07c"
+    },
+    {
+      "bytes": 6337486,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-4-half-twist-oblique-col-2.svg",
+      "sha256": "70b8353b84d972c9ccc3ae77e3a1960343a9cf8d89555a502b42614e34cd3c8c"
+    },
+    {
+      "bytes": 1183,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-5-failed-learner-front-regression-only-col-0.json",
+      "sha256": "3c3c796ddf3232692d3bf4047e04dec2a6e6cfc489bc44580f35e3522a01b5ed"
+    },
+    {
+      "bytes": 387647,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-5-failed-learner-front-regression-only-col-0.svg",
+      "sha256": "aa3eb341ec64403f14c14b275818440bfbe7b4bdb4e467be5a5e934b45b8a05f"
+    },
+    {
+      "bytes": 90421,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-5-failed-learner-front-regression-only-col-1.json",
+      "sha256": "2e0bb44e067b7bb5822947a8a68b106a1a88c07cf3e74fdd487de3893559acf0"
+    },
+    {
+      "bytes": 3499443,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-5-failed-learner-front-regression-only-col-1.svg",
+      "sha256": "1392cc8bbe89e4c598a0c4f1ace3138fee904cd4bf44cd53e93dd2bf771c3b7d"
+    },
+    {
+      "bytes": 90457,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-5-failed-learner-front-regression-only-col-2.json",
+      "sha256": "68008081731fd93f301a4a77054a4e35d9e375d2e6d7d976269ddb33a2efe2d0"
+    },
+    {
+      "bytes": 4291557,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-5-failed-learner-front-regression-only-col-2.svg",
+      "sha256": "2f9ce7493c7ddfe0feba0efaf93b890443d722b3f405f912abc69a19e40d6188"
+    },
+    {
+      "bytes": 1189,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-6-failed-learner-oblique-regression-only-col-0.json",
+      "sha256": "8ec86430983c7d75ced59c464abb792934a01dcbda69243754202f422115d004"
+    },
+    {
+      "bytes": 472939,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-6-failed-learner-oblique-regression-only-col-0.svg",
+      "sha256": "f27a71716eedf0419dbff710db07cdde2da8daeeb12cc7a12f3218122852b5cc"
+    },
+    {
+      "bytes": 90366,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-6-failed-learner-oblique-regression-only-col-1.json",
+      "sha256": "d76086e78c2006b0946e835daa730f94cd6c99985320a782321024f0ae8ae9ac"
+    },
+    {
+      "bytes": 7098243,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-6-failed-learner-oblique-regression-only-col-1.svg",
+      "sha256": "c1fca15a55f44edcc9700e71608eb706b0bf12813888069c99034a5a01cfb955"
+    },
+    {
+      "bytes": 90402,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-6-failed-learner-oblique-regression-only-col-2.json",
+      "sha256": "f0210594857074b5137c89b1567913649028bcace9e077df4f18c63c2b8ab945"
+    },
+    {
+      "bytes": 8381665,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-6-failed-learner-oblique-regression-only-col-2.svg",
+      "sha256": "13b24f40cf82a50634f61bef3f7631519d0faa6f25f728785e048534ce9bfcc0"
+    },
+    {
+      "bytes": 1204,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-7-external-support-card-front-col-0.json",
+      "sha256": "43cdcbc7eec8995d04f96454900cdc460ba78b71078487c8c07c5f2ee40a8a2d"
+    },
+    {
+      "bytes": 321700,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-7-external-support-card-front-col-0.svg",
+      "sha256": "2c027bd62ede3c8e97dff269761b782291281946cbfce2fb1e0cf8e1fa3bd691"
+    },
+    {
+      "bytes": 79553,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-7-external-support-card-front-col-1.json",
+      "sha256": "b720b1c23ecc799d20bfefe18aa73d34128afc3aba9001feab2f38c81808c6fb"
+    },
+    {
+      "bytes": 1928004,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-7-external-support-card-front-col-1.svg",
+      "sha256": "5a1009bdd8c1d65a4bbf0021625e1bce6cc8892d925766a587c2f622fc432345"
+    },
+    {
+      "bytes": 79575,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-7-external-support-card-front-col-2.json",
+      "sha256": "49e7c59c530993d51e6581fcaafd95cb9f62460c6250d0030cb3b041d8d1df9e"
+    },
+    {
+      "bytes": 2370634,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/cache/case-7-external-support-card-front-col-2.svg",
+      "sha256": "ffd9c09d40786514609b276e2527361d14f22ea78619f5f9aa0f6e6b1281de80"
+    },
+    {
+      "bytes": 305527,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/check/comparison-labelled/draft.png",
+      "sha256": "ec95dc6045ebfc0e31bf0f041dfb70fea8d5fea97c6d55db65a03b195d61402f"
+    },
+    {
+      "bytes": 735,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/check/comparison-labelled/report.txt",
+      "sha256": "58405b62e289ee29e5de031300ef18ea48107e1a22516e0a6a3b908dfbfbfc2d"
+    },
+    {
+      "bytes": 281353,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/check/comparison-unlabelled/draft.png",
+      "sha256": "8f3af57948f1e74ae018526b9a2acc2d63f333a4e5817f463c030a1b5a90ae69"
+    },
+    {
+      "bytes": 741,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/check/comparison-unlabelled/report.txt",
+      "sha256": "5b6f71965ad378e7883e9f23588e25e0b23226bf6c900f531b2a8423afa4258d"
+    },
+    {
+      "bytes": 127043,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/check/line-only-labelled/draft.png",
+      "sha256": "9356018623ad042590ba3b6f4a63a4178c60df5e72161b1f0486cec32b8feb59"
+    },
+    {
+      "bytes": 732,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/check/line-only-labelled/report.txt",
+      "sha256": "34f3898549d93077c42cf13002d25f9978e4bb8fe73556d7b273fff774671071"
+    },
+    {
+      "bytes": 99094,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/check/line-only-unlabelled/draft.png",
+      "sha256": "9150176c5c0b5744bf854b0e0c1e75458d5a037f05f8c1bc2f57a9c90a371854"
+    },
+    {
+      "bytes": 738,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/check/line-only-unlabelled/report.txt",
+      "sha256": "96e62288e9ae8a0a2aab7dac90950d5597e0976fe4c05d1fbc5f2d30d0bd043f"
+    },
+    {
+      "bytes": 1753616,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/comparison-labelled-manifest.json",
+      "sha256": "3607c9933ad15ff00022538c1995e05459c37ee3908734dcd40e42641e6c11a3"
+    },
+    {
+      "bytes": 305527,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/comparison-labelled.png",
+      "sha256": "ec95dc6045ebfc0e31bf0f041dfb70fea8d5fea97c6d55db65a03b195d61402f"
+    },
+    {
+      "bytes": 74999809,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/comparison-labelled.svg",
+      "sha256": "62ab9a281e4c512df8b3c4dee4624cfc5fb435b0a6cb30bea3c75a0098610bed"
+    },
+    {
+      "bytes": 1753617,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/comparison-unlabelled-manifest.json",
+      "sha256": "8f8f4687eb41161679e521fcb6c2fade7b0171075e4e78cba796b919b742993b"
+    },
+    {
+      "bytes": 281353,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/comparison-unlabelled.png",
+      "sha256": "8f3af57948f1e74ae018526b9a2acc2d63f333a4e5817f463c030a1b5a90ae69"
+    },
+    {
+      "bytes": 74998232,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/comparison-unlabelled.svg",
+      "sha256": "af9c67519701018aba08b3328e0f4194f248b3dc2334807cc3db9cd00b880681"
+    },
+    {
+      "bytes": 305527,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/determinism/comparison-labelled-repeat.png",
+      "sha256": "ec95dc6045ebfc0e31bf0f041dfb70fea8d5fea97c6d55db65a03b195d61402f"
+    },
+    {
+      "bytes": 99094,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/determinism/line-only-unlabelled-repeat.png",
+      "sha256": "9150176c5c0b5744bf854b0e0c1e75458d5a037f05f8c1bc2f57a9c90a371854"
+    },
+    {
+      "bytes": 1754256,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/line-only-labelled-manifest.json",
+      "sha256": "f0b4a1e7e8748458f67429d0b268294f550fb16c7664dd12b065e91843e8a560"
+    },
+    {
+      "bytes": 127043,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/line-only-labelled.png",
+      "sha256": "9356018623ad042590ba3b6f4a63a4178c60df5e72161b1f0486cec32b8feb59"
+    },
+    {
+      "bytes": 50911537,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/line-only-labelled.svg",
+      "sha256": "529baf9b0c9601095a2753d0d10d0e3d2a223b5adac744da8cfac847116aab73"
+    },
+    {
+      "bytes": 1754257,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/line-only-unlabelled-manifest.json",
+      "sha256": "126037280b6a4c0980a57bf65d1097188a85f376ce1645ac6a4c35cdacd896e4"
+    },
+    {
+      "bytes": 99094,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/line-only-unlabelled.png",
+      "sha256": "9150176c5c0b5744bf854b0e0c1e75458d5a037f05f8c1bc2f57a9c90a371854"
+    },
+    {
+      "bytes": 50909772,
+      "path": ".scratch/20-ribbon-drawing-rule/evidence/line-only-unlabelled.svg",
+      "sha256": "fd700b749fdee934e1189fe8a7a408da5d23e17d01c208532457e15b6b80559f"
+    },
+    {
+      "bytes": 4355,
+      "path": ".scratch/20-ribbon-drawing-rule/fit-centering-fix.md",
+      "sha256": "d143f42ca3d932614e6cbad5ff1fec9edb9962c18ffdcb79ccb84de36560429b"
+    },
+    {
+      "bytes": 18153,
+      "path": ".scratch/20-ribbon-drawing-rule/log.md",
+      "sha256": "e238fad36cd1e044089ff257a3a9dd395f9aa9791e010a9a8c08a331d121cff2"
+    },
+    {
+      "bytes": 5382,
+      "path": ".scratch/20-ribbon-drawing-rule/outcome.md",
+      "sha256": "2c4a774c47322021393e08d17b60b89ca05267e6df14ccda1f8f4fc883d96970"
+    },
+    {
+      "bytes": 10052,
+      "path": ".scratch/20-ribbon-drawing-rule/parent-validation.md",
+      "sha256": "cf25babcc71b61753aec44a23a0e7fa6e05795268fb007f5bd13f07ea5ddc950"
+    },
+    {
+      "bytes": 7667,
+      "path": ".scratch/20-ribbon-drawing-rule/spec.md",
+      "sha256": "ee6142873219abf003edcfff461b8d20df9c313fc82fe639ad75af4cc817bb36"
+    },
+    {
+      "bytes": 7162,
+      "path": ".scratch/20-ribbon-drawing-rule/teaching/drawing-card.md",
+      "sha256": "715199496fb94284b00553792b6c4c0a9a289f7233c81389622d6c9dc2f801b6"
+    },
+    {
+      "bytes": 24798,
+      "path": ".scratch/20-ribbon-drawing-rule/work/__pycache__/build_cached.cpython-312.pyc",
+      "sha256": "9a7154abdbfd9a3eb48ec1ed05db6a7f72653e4e759fc437fdeb325aa3b9b05c"
+    },
+    {
+      "bytes": 48556,
+      "path": ".scratch/20-ribbon-drawing-rule/work/build-progress.jsonl",
+      "sha256": "63ada76f0a7d9b68aeb9a4340011d51742e29adee4fe0ffd16b945e05f30f65c"
+    },
+    {
+      "bytes": 18644,
+      "path": ".scratch/20-ribbon-drawing-rule/work/build_cached.py",
+      "sha256": "a942441a7eef63364a7d9a96aacf057d4896fafe581cb968fd83ab7c319933e9"
+    },
+    {
+      "bytes": 4683,
+      "path": ".scratch/20-ribbon-drawing-rule/work/cases.json",
+      "sha256": "8a5a320fcb47ce7c38c8b3d605f480cf6a74e77611f831c4d01f002a5b891776"
+    },
+    {
+      "bytes": 4010,
+      "path": ".scratch/20-ribbon-drawing-rule/work/line-only-serialization-fix.md",
+      "sha256": "237adae19564f11eca243f6e3bc86b82a1dbd9b7f599495ecbf9fb5070e272e6"
+    },
+    {
+      "bytes": 3196,
+      "path": ".scratch/20-ribbon-drawing-rule/work/support-hashes.json",
+      "sha256": "5c3f689f25a7dac185708a9b572de944671816ee19facd59915ebbc8ee14e28a"
+    }
+  ],
+  "scope": "byte inventory of the untouched exercise20 historical plan, source, caches, images, and logs at renderer migration"
+}

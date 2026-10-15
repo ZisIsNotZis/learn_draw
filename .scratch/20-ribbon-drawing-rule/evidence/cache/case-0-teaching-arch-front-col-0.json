@@ -1,0 +1,41 @@
+{
+  "cache_key": "d7651c5ebf9b8923843e99e40dbc4d322d79dbd991d290f2a3b64e7e18a32d74",
+  "camera": {
+    "name": "front",
+    "pitch": 0,
+    "yaw": 0
+  },
+  "case": "teaching-arch-front",
+  "coverage": {
+    "candidate_count": 258,
+    "depth_tolerances": {
+      "barycentric_inside": 1e-08,
+      "cut_merge_parameter": 1e-08,
+      "depth_epsilon": 1e-07,
+      "projected_intersection": 1e-09,
+      "tie_bias": 1e-05,
+      "uv_join_parameter": 1e-08
+    },
+    "fill_regions": 2,
+    "motif_sides": [],
+    "motif_triangle_count": 0,
+    "overlap_span_count": 0,
+    "perimeter_spans": [],
+    "sampling_override": 128,
+    "silhouette_span_count": 0,
+    "stroke_polygon_count": 0,
+    "support_geometry_sha256": "2627398817f711e84b9bcce820debf6d1a796c82124f6ad7c98ecf82b07549dc",
+    "support_triangle_count": 256,
+    "visible_span_count": 0
+  },
+  "rule": "control",
+  "sampling": 128,
+  "source": {
+    "case_name": "teaching-arch",
+    "id": "frozen-family-cases",
+    "kind": "case"
+  },
+  "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+  "svg_bytes": 402723,
+  "svg_sha256": "608a2ec4b0cc526dc55a0da521fa0c08d3825574c62a846a4b63909b18193859"
+}

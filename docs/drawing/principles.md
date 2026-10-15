@@ -238,3 +238,33 @@ failure mode this architecture is meant to remove. A 3D scaffold explains occlus
 replace the artist's later selection and beautification of line art. Architecture SSOT:
 `docs/drawing/spatial-model.md`. Learned: user's explicit correction after M4j's apparently
 continuous but spatially misplaced ribbon.
+
+## P30 — Construction, interface use and visual reading are separate evidence (S1a ribbon study)
+
+A fresh smaller model successfully authored the requested S/taper/half-turn spec using only the
+teaching packet and a black-box generator. Parent checks confirmed attachment, widths and material
+sides; the visual reviewer still could not identify one continuous two-sided sheet. Neither valid
+JSON nor correct depth establishes drawing readability. Preserve an unaided failed image alongside
+successful parameter tests; repairing it and calling the repaired answer transferred hides the
+missing ability. Evidence and tested scope: `.scratch/19-ribbon-family/outcome.md`.
+
+## P31 — Diagnose a surprising visual cue before prescribing its removal (S1a twist/crossing)
+
+A twist's apparent point-like splice occurred at a smooth facing-normal sign change with positive
+world width: an expected edge-on projection, not a broken attachment. Higher tessellation reduced
+stripe scalloping but could not remove that event. Same-facing, same-colour crossing visits also
+merged perceptually despite depth separation; a geometry-derived occlusion contour helped the
+original crossing but not the depth-reversed control. Thus identify projection, approximation,
+visibility and artistic-expression causes separately. A physical explanation does not waive the
+visual gate, and a useful diagnostic line is not a general line-art solution. Evidence: S1a outcome
+and `evidence/parent-learner-projection.json`; scope remains those tested cases.
+
+## P32 — A valid contour candidate is not automatically a useful art line (ribbon rule trial)
+
+Complete depth-visible ribbon perimeter ink was generated from real local boundaries, with hidden
+finite-width ink clipped and no mesh diagonals. Yet the valid blind comparison found competing lines
+at crossings/twists; a side-consistent local motif did not clarify front order. Keep candidate
+extraction, visibility and **artistic selection** separate. Do not replace the missing selection rule
+with “draw every valid outline”, or call more consistent decoration a readability solution. This
+rejects the two tested treatments, not all contour approaches. Negative controls and exact revision:
+`.scratch/20-ribbon-drawing-rule/outcome.md`.

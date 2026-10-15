@@ -1,0 +1,76 @@
+{
+  "schema": 1,
+  "cameras": [
+    {"name": "front", "yaw": 0, "pitch": 0},
+    {"name": "oblique", "yaw": 38, "pitch": 22}
+  ],
+  "cases": [
+    {
+      "number": 1,
+      "name": "teaching-arch",
+      "purpose": "attached root; gentle bend; untwisted front face",
+      "ribbon": {
+        "name": "teaching-arch", "length": 3.0, "width": 0.36,
+        "tip_ratio": 1.0, "bend": 0.42, "depth": 0.12, "twist": 0.0,
+        "family": "arch", "origin": [-1.5, 0.0, 0.0], "heading": 0.0,
+        "front": "#e68aa4", "back": "#7188bd", "segments": 40
+      }
+    },
+    {
+      "number": 2,
+      "name": "bend-only",
+      "purpose": "only bend changes from teaching; length, width, frame and twist stay fixed",
+      "ribbon": {
+        "name": "bend-only", "length": 3.0, "width": 0.36,
+        "tip_ratio": 1.0, "bend": 1.05, "depth": 0.12, "twist": 0.0,
+        "family": "arch", "origin": [-1.5, 0.0, 0.0], "heading": 0.0,
+        "front": "#e68aa4", "back": "#7188bd", "segments": 40
+      }
+    },
+    {
+      "number": 3,
+      "name": "tapered-tip",
+      "purpose": "only tip ratio narrows; root width, centreline and attachment stay fixed",
+      "ribbon": {
+        "name": "tapered-tip", "length": 3.0, "width": 0.36,
+        "tip_ratio": 0.22, "bend": 0.42, "depth": 0.12, "twist": 0.0,
+        "family": "arch", "origin": [-1.5, 0.0, 0.0], "heading": 0.0,
+        "front": "#e68aa4", "back": "#7188bd", "segments": 40
+      }
+    },
+    {
+      "number": 4,
+      "name": "twisted-two-sided",
+      "purpose": "only total twist changes; camera-facing side selects its own colour",
+      "ribbon": {
+        "name": "twisted-two-sided", "length": 3.0, "width": 0.36,
+        "tip_ratio": 1.0, "bend": 0.42, "depth": 0.12, "twist": 3.141592653589793,
+        "family": "arch", "origin": [-1.5, 0.0, 0.0], "heading": 0.0,
+        "front": "#e68aa4", "back": "#7188bd", "segments": 40
+      }
+    },
+    {
+      "number": 5,
+      "name": "awkward-crossing",
+      "purpose": "distant u sections overlap in projection at different depths; no true surface intersection",
+      "ribbon": {
+        "name": "awkward-crossing", "length": 3.0, "width": 0.34,
+        "tip_ratio": 0.78, "bend": 0.8, "depth": 0.72, "twist": 0.0,
+        "family": "crossback", "origin": [-1.5, -0.35, 0.0], "heading": 0.0,
+        "front": "#e68aa4", "back": "#7188bd", "segments": 48
+      }
+    },
+    {
+      "number": 6,
+      "name": "body-card",
+      "purpose": "one continuous strip; compare unobstructed full route with depth-occluded support",
+      "ribbon": {
+        "name": "body-card", "length": 3.0, "width": 0.34,
+        "tip_ratio": 0.78, "bend": 0.8, "depth": 0.72, "twist": 0.0,
+        "family": "crossback", "origin": [-1.5, -0.35, 0.0], "heading": 0.0,
+        "front": "#e68aa4", "back": "#7188bd", "segments": 48
+      },
+      "support_card": {"bounds": [-0.52, -0.50, 0.52, 0.45]}
+    }
+  ]
+}

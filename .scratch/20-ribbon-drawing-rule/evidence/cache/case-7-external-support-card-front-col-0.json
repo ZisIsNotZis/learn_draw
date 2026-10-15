@@ -1,0 +1,41 @@
+{
+  "cache_key": "65eaa22265398e49c253feb35934eb40713d0cb666490b56d5b5cdfa6db00c8f",
+  "camera": {
+    "name": "front",
+    "pitch": 0,
+    "yaw": 0
+  },
+  "case": "external-support-card-front",
+  "coverage": {
+    "candidate_count": 258,
+    "depth_tolerances": {
+      "barycentric_inside": 1e-08,
+      "cut_merge_parameter": 1e-08,
+      "depth_epsilon": 1e-07,
+      "projected_intersection": 1e-09,
+      "tie_bias": 1e-05,
+      "uv_join_parameter": 1e-08
+    },
+    "fill_regions": 3,
+    "motif_sides": [],
+    "motif_triangle_count": 0,
+    "overlap_span_count": 0,
+    "perimeter_spans": [],
+    "sampling_override": 128,
+    "silhouette_span_count": 0,
+    "stroke_polygon_count": 0,
+    "support_geometry_sha256": "b53b110d79b46c9fc62bb66d6c26abbea1e37fbb7dd5bc5058d1b3eb51ebe60b",
+    "support_triangle_count": 256,
+    "visible_span_count": 0
+  },
+  "rule": "control",
+  "sampling": 128,
+  "source": {
+    "case_name": "body-card",
+    "id": "frozen-family-cases",
+    "kind": "case"
+  },
+  "source_spec_sha256": "54cc6a68d8bf17d554f9ec9cc6cb79f22aea363bf14cba3157a8bd2c926895ee",
+  "svg_bytes": 321700,
+  "svg_sha256": "2c027bd62ede3c8e97dff269761b782291281946cbfce2fb1e0cf8e1fa3bd691"
+}

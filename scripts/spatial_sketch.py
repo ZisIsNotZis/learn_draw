@@ -9,7 +9,7 @@ import math
 from pathlib import Path
 from xml.sax.saxutils import escape
 
-from vector_visibility import visible_fragments
+from vector_visibility import visible_regions
 
 
 def project(p, yaw, ox, oy, scale):
@@ -56,30 +56,37 @@ def ribbon():
             yield (p, r, s), color, 'ribbon'
 
 
-def view(yaw, ox):
+def view(yaw, ox, id_prefix=None):
     faces = [([project(p, yaw, ox, 295, 167) for p in tri], color, name)
              for tri, color, name in [*body(), *ribbon()]]
+    if id_prefix is None:
+        id_prefix = f'camera-{yaw}-{ox}'
     out = [f'<text x="{ox - 250}" y="34" font-size="19" fill="#20304a">'
            f'{escape(str(yaw))}° camera — same uncut surfaces</text>']
-    for pts, color, name in visible_fragments(faces):
-        coords = ' '.join(f'{x:.2f},{y:.2f}' for x, y, _ in pts)
-        out.append(f'<polygon points="{coords}" fill="{color}" data-component="{name}"/>')
+    for index, (path, color, name) in enumerate(visible_regions(faces)):
+        out.append(f'<!-- {escape(name)}: depth-visible region of this component fill -->')
+        out.append(f'<path id="{escape(id_prefix)}-{escape(name)}-fill-{index}" d="{path}" '
+                   f'fill="{color}" fill-rule="nonzero" data-component="{escape(name)}"/>')
     return '\n'.join(out)
+
+
+def svg_document():
+    """Build the complete two-camera document with disjoint SVG ID scopes."""
+    return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">'
+            '<rect width="1200" height="630" fill="#c5d9df"/>'
+            + view(0, 290, 'camera-0') + view(55, 900, 'camera-55')
+            + '<text x="28" y="610" font-size="15" fill="#20304a">'
+              'One 2D striped component on a curved 3D ring; torso hides it by depth. '
+              'Depth-clipped SVG polygons; the 2D ribbon is never cut by its author.'
+              '</text></svg>')
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('-o', '--output', type=Path, required=True)
     args = parser.parse_args()
-    svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">'
-           '<rect width="1200" height="630" fill="#c5d9df"/>'
-           + view(0, 290) + view(55, 900)
-           + '<text x="28" y="610" font-size="15" fill="#20304a">'
-             'One 2D striped component on a curved 3D ring; torso hides it by depth. '
-             'Depth-clipped SVG polygons; the 2D ribbon is never cut by its author.'
-             '</text></svg>')
     args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(svg, encoding='utf-8')
+    args.output.write_text(svg_document(), encoding='utf-8')
     print(args.output)
 
 

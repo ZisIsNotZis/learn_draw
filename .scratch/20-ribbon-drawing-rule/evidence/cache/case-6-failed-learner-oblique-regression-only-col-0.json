@@ -1,0 +1,40 @@
+{
+  "cache_key": "0c35bbd5eceb69a361cf21caa163bb188556151182b281ce378d2fd3d6a8375f",
+  "camera": {
+    "name": "oblique",
+    "pitch": 22,
+    "yaw": 38
+  },
+  "case": "failed-learner-oblique-regression-only",
+  "coverage": {
+    "candidate_count": 258,
+    "depth_tolerances": {
+      "barycentric_inside": 1e-08,
+      "cut_merge_parameter": 1e-08,
+      "depth_epsilon": 1e-07,
+      "projected_intersection": 1e-09,
+      "tie_bias": 1e-05,
+      "uv_join_parameter": 1e-08
+    },
+    "fill_regions": 4,
+    "motif_sides": [],
+    "motif_triangle_count": 0,
+    "overlap_span_count": 0,
+    "perimeter_spans": [],
+    "sampling_override": 128,
+    "silhouette_span_count": 0,
+    "stroke_polygon_count": 0,
+    "support_geometry_sha256": "e1c9efb6abbfba0c7359f93209560227f6035488da549027f5be8899cd4bd7fa",
+    "support_triangle_count": 256,
+    "visible_span_count": 0
+  },
+  "rule": "control",
+  "sampling": 128,
+  "source": {
+    "id": "failed-learner-spec",
+    "kind": "spec"
+  },
+  "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+  "svg_bytes": 472939,
+  "svg_sha256": "f27a71716eedf0419dbff710db07cdde2da8daeeb12cc7a12f3218122852b5cc"
+}

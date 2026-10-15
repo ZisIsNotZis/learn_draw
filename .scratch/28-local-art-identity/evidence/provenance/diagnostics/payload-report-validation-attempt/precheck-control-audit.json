@@ -1,0 +1,25 @@
+{
+  "content_pixel_bounds": [
+    68,
+    52,
+    387,
+    267
+  ],
+  "dimensions": [
+    480,
+    320
+  ],
+  "no_embedded_text": true,
+  "nonblank": true,
+  "pixel_margins": [
+    68,
+    52,
+    92,
+    52
+  ],
+  "png_sha256": "2bbbf061ea4a16fef3d0a692e40638989eb08cb5529bdc51b252451964fd8ed0",
+  "schema": "local-art-identity-control-integrity/v1",
+  "source_sha256": "7b37dd21eb924583481fba60b96af103c346ff0db3cd5a88b68d1ff53ddd3d8d",
+  "svg_namespace": "http://www.w3.org/2000/svg",
+  "svg_sha256": "89fd813030acbc6fbae7a3cee8c3e267db088a53b2c2cdaef2c2d02875dce8ea"
+}

@@ -1,0 +1,6 @@
+checks/A/side-by-side.png
+checks/A/draft-fullres.png
+checks/A/region-1.png
+checks/A/region-2.png
+checks/A/region-3.png
+checks/B/draft.png

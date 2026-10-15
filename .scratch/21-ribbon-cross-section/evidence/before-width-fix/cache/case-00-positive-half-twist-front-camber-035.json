@@ -1,0 +1,28 @@
+{
+  "cache_key": "b0c576a9a01d7086b564ea74cae4777de46d8f832263ec439adc7d000d397a1b",
+  "camber": 0.35,
+  "camera": {
+    "name": "front",
+    "pitch": 0,
+    "yaw": 0
+  },
+  "case": "positive-half-twist-front",
+  "case_index": 0,
+  "case_plan_sha256": "afd088d11e0375441069c7b60b07c04e5befb82c01bd2c267cfebf84ac136eb3",
+  "condition": "primary-existing-spec",
+  "input": {
+    "case_name": "twisted-two-sided",
+    "path": ".scratch/19-ribbon-family/work/cases.json"
+  },
+  "input_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+  "nonbackground_pixels": 15198,
+  "png_bytes": 11218,
+  "png_sha256": "787ecb427ab36f15db818060c24b8c8c931c6841a6e20fdb61afe0f70edb1940",
+  "renderer_sha256": "84aaaf008f97f594a30ab69aa713856654d2c9d40abfbed2aa64967b7fc10773",
+  "sampling": {
+    "u_intervals": 48,
+    "v_intervals": 6
+  },
+  "svg_bytes": 634561,
+  "svg_sha256": "ed50e3ba42acba68705b6e8496cf86a0ef1034877a3bb0ca4c84311ce02ddd2c"
+}

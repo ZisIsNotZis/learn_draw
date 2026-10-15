@@ -1,0 +1,14 @@
+DONE — new A cloth-construction candidate emitted within issue 46's allocation. This is candidate completion only, not an artistic judgment or A/R1 PASS.
+
+Source: `.scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/source/`
+SVG: `.scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/artwork-a.svg`
+PNG (400×480): `.scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/artwork-a.png`
+Registered-crop check and report: `.scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/check-a/report.txt`
+Exact review-image-only list for Main's fresh reviewer: `.scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/review-image-list.txt`
+Provenance/integrity manifest: `.scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/manifest.json` and `.scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/manifest.sha256`
+
+The reference crop was used only for finite teacher evidence and the external `scripts/draw check` comparison. The builder reads only the local semantic parameters. A reference-absent second build/render was byte-identical to primary SVG and PNG. Construction identity tests passed (7 tests). Writer did not open/judge output images; fresh visual/art review belongs to Main.
+
+**Still open:** fresh actual-image review and any Main-authorized scoped repair; broader independent construction/physical non-intersection/depth acceptance; B-v2 integration and its unchanged gates; heldout compatibility/drawing; R1 and human user acceptance. Corrected teacher semantic/input and output-chain PASS do not pass the artwork. No B source/output or sealed heldout was accessed.
+
+See `construction-contract.md` for exact source-observation limits, family laws, author-coordinate audit, and the frozen construction self-proof thresholds. Metrics in `check-a/report.txt` are breakage alarms only and drove no geometry or parameter changes.

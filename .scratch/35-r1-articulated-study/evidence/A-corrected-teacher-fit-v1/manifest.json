@@ -1,0 +1,198 @@
+{
+  "artifact": "A-only corrected-teacher clothing study candidate; writer-complete, not art/R1 accepted",
+  "ticket": ".scratch/35-r1-articulated-study/issues/45-a-corrected-teacher-fit-v1.md",
+  "teacher_source": {
+    "package": ".scratch/35-r1-articulated-study/evidence/A-teacher-reconstruction-v2/teacher-only-corrected-v2/",
+    "source_image_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+    "registered_crop_sha256": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+    "crop_source_xyxy_exclusive": [
+      500,
+      320,
+      900,
+      800
+    ],
+    "frozen_teacher_file_sha256": {
+      "provenance.json": "18e086f8e21ab040cfe63653a9fee7f2646cb8d87ce32385e522358bcff085c8",
+      "fit-correction.md": "8ad0e882362b00a7c0678138f9d332ab5cdd0f6bf1ce3007c2de1a1a61975b7f",
+      "family-fitting-interface.md": "133668c8e1688e075c0bc8969feb7ea9f191bfac5faa5935e10d380f546a24d6",
+      "topology-map.md": "026fd6bf97b6154e8fad69267c4aa6f28d501bea667787e2bd6418029eef2662",
+      "landmarks.csv": "5cb2dc0efccdde89333321bb8987f0ec92dfb02df9cd5d048c72e896b0905d80",
+      "manual-traces.json": "4e4e21b3def2fece29fbe2925dbf6732a8b1566d4ec0a7eab9ac86f31f9b9e41",
+      "pristine-fullcrop.png": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d"
+    },
+    "current_semantic_review": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/25d155f0-05d4-41ea-8e72-d0c1929292cd/r1/teacher-v2-independent-semantic-review.md",
+    "teacher_output_guard_review": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/3b2bad58-e1ed-44cd-bd21-f1aba0b6b4ce/r1/teacher-output-guard-review.md",
+    "fit_observation_boundary": "teacher-measurements/observation-boundary.json",
+    "one_time_sparse_trace_measurements": "teacher-measurements/station-measurements.json"
+  },
+  "scope": "registered 400x480 shoulder/upper-torso clothing only; neck skin context, separate unequal collars, tilted bodice, continuous puff sleeve/tube to dark cuff, gathered unequal loops and bounded tail/neighbor context",
+  "evidence_classes": [
+    "source_observation",
+    "artist_parameterization",
+    "generated_structural_hypothesis"
+  ],
+  "runtime_input_isolation": {
+    "builder_arguments": [
+      "--out SVG_PATH"
+    ],
+    "parameter_input": "source/semantic-parameters.json only",
+    "not_opened_by_builder": [
+      "image.jpg",
+      "crop/patch/region pixels",
+      "manual traces",
+      "landmark files",
+      "teacher manifest",
+      "B candidate",
+      "sealed heldout"
+    ],
+    "reference_is_used_only_by": "scripts/draw check external comparison after source/output freeze"
+  },
+  "renderer": {
+    "backend": "existing SupportFrame/Camera/component_faces/visible_regions/visible_segment_spans/compound path APIs plus smooth_spatial closed-contour guard",
+    "component_count": 12,
+    "generated_outline_vertices": 944,
+    "projected_faces": 920,
+    "author_anchor_limit": "maximum 4 coordinates per semantic component/mark; tests verify",
+    "manual_visibility_cuts": false,
+    "backend_or_physics_modified": false
+  },
+  "actual_outputs": {
+    "svg": "artwork-a.svg",
+    "png": "artwork-a.png",
+    "draw_check": "check-a/",
+    "exact_reviewer_image_list": "check-a/report.txt",
+    "reference_absent_repeat": [
+      "reproduction/rebuilt.svg",
+      "reproduction/rebuilt.png"
+    ]
+  },
+  "checks": {
+    "focused_test_command": "timeout 115s python3 -B -m pytest -p no:cacheprovider -q .scratch/35-r1-articulated-study/evidence/A-corrected-teacher-fit-v1/tests/test_a_garment_family.py",
+    "focused_tests": "6 passed, 12 subtests passed",
+    "reference_absent_repeat_svg_and_png": "byte-identical to artwork-a.svg/artwork-a.png",
+    "draw_check_metric_role": "alarm only; never used as a parameter target",
+    "draw_check_image_review": "not yet performed; writer did not open/judge any generated image"
+  },
+  "gates": {
+    "teacher_semantics": "independent limited-scope PASS supplied before this fit",
+    "teacher_output_chain": "independent final-chain PASS supplied before this fit",
+    "fit_writer_emission": "complete candidate artifacts emitted and deterministic reproduction checked",
+    "A_visual_art_review": "OPEN; Main owns fresh image-only review",
+    "construction_attachment_depth_review": "OPEN for independent R1 acceptance",
+    "heldout_compatibility_drawing": "OPEN, separate owner; sealed heldout not read",
+    "B_and_R1_integration": "OPEN; B not read/copied/rerendered",
+    "user_acceptance": "OPEN; no art or R1 PASS"
+  },
+  "files_excluding_manifest_and_sidecar": [
+    {
+      "path": "README.md",
+      "sha256": "f07f3130122861b9a0527bb2b143f1022dea9b4b2b67cd7982de56f97726c911",
+      "bytes": 2900
+    },
+    {
+      "path": "artwork-a.png",
+      "sha256": "bf5284680324a691eea70e9d23fce9721cfdf94188e92f6c0d67bf56bce36364",
+      "bytes": 33768
+    },
+    {
+      "path": "artwork-a.svg",
+      "sha256": "68b3948c4cd380993abf22e680077c1661750e2a35b386cde93d6e074d30fb30",
+      "bytes": 728114
+    },
+    {
+      "path": "check-a/draft-fullres.png",
+      "sha256": "36464f3c345baa7c7bcea87a7d13bfe63dd4559939d821152be04adfd9d279c1",
+      "bytes": 37514
+    },
+    {
+      "path": "check-a/draft.png",
+      "sha256": "bf5284680324a691eea70e9d23fce9721cfdf94188e92f6c0d67bf56bce36364",
+      "bytes": 33768
+    },
+    {
+      "path": "check-a/region-1.png",
+      "sha256": "2e1df03082277805ea6ec089e06a4081ac28344d72a0be524785827ea62105ae",
+      "bytes": 88904
+    },
+    {
+      "path": "check-a/region-2.png",
+      "sha256": "57291db8020746b364fb5beba8a70cc7396072b2825c695e85509d0f9989da15",
+      "bytes": 67583
+    },
+    {
+      "path": "check-a/region-3.png",
+      "sha256": "92095c9968f10ed221259ef0e33d1bdf13bfd121e5723b56c1649f301d72ee00",
+      "bytes": 49652
+    },
+    {
+      "path": "check-a/report.txt",
+      "sha256": "65d74577c274d9f3c93040b5618b9a89034d57d2040a09545822799c6bf47a81",
+      "bytes": 1756
+    },
+    {
+      "path": "check-a/side-by-side.png",
+      "sha256": "a66e8d96cdaf809c73d2601af394efab39a27bb604b6c9a1708d92cd4ae92b7c",
+      "bytes": 127554
+    },
+    {
+      "path": "fit-plan.md",
+      "sha256": "1a778e0fd8378b7460407defc54db364166528c02a30634f882422c737eaf7a1",
+      "bytes": 7541
+    },
+    {
+      "path": "report.txt",
+      "sha256": "65d74577c274d9f3c93040b5618b9a89034d57d2040a09545822799c6bf47a81",
+      "bytes": 1756
+    },
+    {
+      "path": "reproduction/final-hash-pair.sha256",
+      "sha256": "c1d351efe264cbc95a4ca682ce00144f2a34a5d17fa987f4ea84c4af13b67a81",
+      "bytes": 618
+    },
+    {
+      "path": "reproduction/rebuilt.png",
+      "sha256": "bf5284680324a691eea70e9d23fce9721cfdf94188e92f6c0d67bf56bce36364",
+      "bytes": 33768
+    },
+    {
+      "path": "reproduction/rebuilt.svg",
+      "sha256": "68b3948c4cd380993abf22e680077c1661750e2a35b386cde93d6e074d30fb30",
+      "bytes": 728114
+    },
+    {
+      "path": "review-image-list.txt",
+      "sha256": "1f7b5c9eab8f2beddd330d9e89200b2d5692cb0ea47b6eb1949e6ca95100f973",
+      "bytes": 459
+    },
+    {
+      "path": "source/build_a.py",
+      "sha256": "59839d340d091b8f4bbd28bacbc579ffcf3a7220f56bb68b0370ee5f4c02e136",
+      "bytes": 24763
+    },
+    {
+      "path": "source/finalize_manifest.py",
+      "sha256": "ff4618ee7ab1a2ce79c7895606d9cec9472b6e2bb486d5579f993b2c133d9bc3",
+      "bytes": 6369
+    },
+    {
+      "path": "source/semantic-parameters.json",
+      "sha256": "fb07c45ad16d8bf5b53f8c601d327b419b4cfe108bee3119cddeb095dda35687",
+      "bytes": 7651
+    },
+    {
+      "path": "teacher-measurements/observation-boundary.json",
+      "sha256": "f1986a8d5caad0889e53b40049c091d46dc3cf1a4c33fd35dc8b7255b5e7e8ad",
+      "bytes": 3401
+    },
+    {
+      "path": "teacher-measurements/station-measurements.json",
+      "sha256": "7c13543fdae23d732c791cea0c4a0d355065b461e9d8fb4939b59d097e0980f8",
+      "bytes": 2620
+    },
+    {
+      "path": "tests/test_a_garment_family.py",
+      "sha256": "3cfe0d01acd4647128cadce1a52f6a9a1b42c8ae3fb972e2263ab1df433d97c3",
+      "bytes": 7960
+    }
+  ]
+}

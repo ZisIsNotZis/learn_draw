@@ -1,0 +1,54 @@
+# branch.oid 24693d4b764755165509fc206695ebca03ee44fe
+# branch.head master
+# branch.upstream origin/master
+# branch.ab +0 -0
+1 A. N... 000000 100644 100644 0000000000000000000000000000000000000000 2e914b364dda179f4fab8f5999f64663a24e0a7c .gitmodules
+1 .M N... 100644 100644 100644 a323697d0a7d05bf1e8fecf68745f4f1b9ae7baf a323697d0a7d05bf1e8fecf68745f4f1b9ae7baf .scratch/active-work.md
+1 .M N... 100644 100644 100644 1ef482380f7211156d60a30cc8f7c638650c83ac 1ef482380f7211156d60a30cc8f7c638650c83ac STATUS.md
+1 .M N... 100644 100644 100644 c79ee0fb99d860b2c51abc6b3b52387692736215 c79ee0fb99d860b2c51abc6b3b52387692736215 docs/drawing/method.md
+1 .M N... 100644 100644 100644 bf482360f01eb3e8f49b460d06508ebb77ff255c bf482360f01eb3e8f49b460d06508ebb77ff255c docs/drawing/principles.md
+1 .M N... 100644 100644 100644 c5847babb5e92f3abb8c80a51d1be7df0927217e c5847babb5e92f3abb8c80a51d1be7df0927217e docs/drawing/roadmap.md
+1 .M N... 100644 100644 100644 97b3618e1198527f5b88d0190e940f291d0001ca 97b3618e1198527f5b88d0190e940f291d0001ca docs/drawing/spatial-model.md
+1 .M N... 100644 100644 100644 4cba80e7cdcbfeb36f27b309ef0f5ad8779f48d3 4cba80e7cdcbfeb36f27b309ef0f5ad8779f48d3 scripts/figure_scaffold.py
+1 .M N... 100644 100644 100644 1e52f8dc3515f8bd83718248f9e3cf03817dbf6f 1e52f8dc3515f8bd83718248f9e3cf03817dbf6f scripts/spatial_sketch.py
+1 .M N... 100644 100644 100644 44a7a319d174bf929906e2af16e314e007235c11 44a7a319d174bf929906e2af16e314e007235c11 scripts/tests/test_figure_scaffold.py
+1 .M N... 100644 100644 100644 385305fbce09a1f70a00f02465b020ed11d22371 385305fbce09a1f70a00f02465b020ed11d22371 scripts/tests/test_spatial_sketch.py
+1 .M N... 100644 100644 100644 cc6b6b60b31162c5c795ef2518a451a62edafc01 cc6b6b60b31162c5c795ef2518a451a62edafc01 scripts/vector_visibility.py
+1 A. S... 000000 160000 160000 0000000000000000000000000000000000000000 f178bd7754a71d6d399473af1501634548efa6cb vendor/huashu-art-motion
+1 A. S... 000000 160000 160000 0000000000000000000000000000000000000000 0830494ecb1c117e25b313a8114fe55a6bf2b125 vendor/huashu-design
+? .agents/
+? .scratch/00-tooling/evidence/check/
+? .scratch/18-spatial-closeout/
+? .scratch/19-ribbon-family/
+? .scratch/20-ribbon-drawing-rule/
+? .scratch/21-ribbon-cross-section/
+? .scratch/22-visibility-fragmentation/
+? .scratch/23-visibility-integration/
+? .scratch/24-clean-support-replay/
+? .scratch/25-apparent-contour/
+? .scratch/26-turn-mechanism-design/
+? .scratch/27-return-bend/
+? .scratch/28-local-art-identity/
+? .scratch/29-image-delivery-evidence/
+? .scratch/30-vendor-learning-plan-reset/
+? .scratch/31-s1a-teaching-artifact/
+? .scratch/32-s1b-composition/
+? .scratch/33-vendor-objective-audit/
+? .scratch/34-vendor-learning-roadmap-reset/
+? .scratch/35-r1-articulated-study/
+? docs/drawing/vendor-learning-map.md
+? evidence/
+? scripts/articulated_construction.py
+? scripts/articulated_line_visibility.py
+? scripts/ribbon_drawing.py
+? scripts/ribbon_family.py
+? scripts/ribbon_return.py
+? scripts/ribbon_surface.py
+? scripts/tests/test_articulated_construction.py
+? scripts/tests/test_articulated_render_adapter.py
+? scripts/tests/test_ribbon_drawing.py
+? scripts/tests/test_ribbon_family.py
+? scripts/tests/test_ribbon_return.py
+? scripts/tests/test_ribbon_surface.py
+? scripts/tests/test_vector_visibility.py
+? scripts/tests/test_vector_visibility_oracle.py

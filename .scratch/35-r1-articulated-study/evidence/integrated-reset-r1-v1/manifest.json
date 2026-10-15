@@ -1,0 +1,269 @@
+{
+  "artwork": {
+    "A": {
+      "check_report": "checks/A/report.txt",
+      "claim": "observed shoulder/upper-garment context, light bodice/sleeve, dark neckline/waist trim and pink bow; no hand or unobserved pose claim",
+      "dimensions": [
+        400,
+        480
+      ],
+      "png": "rendered/A-observed-garment.png",
+      "reference_registration": {
+        "crop_bounds_xyxy": [
+          500,
+          320,
+          900,
+          800
+        ],
+        "crop_png": "reference-crop.png",
+        "crop_sha256": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+        "image_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+        "mapping": "scene local coordinates are crop-pixel units with y-up; output pixel=(x,480-y), crop pixel=output pixel, source pixel=(500+crop_x,320+crop_y); no resize/stretch",
+        "named_correspondences": [
+          "shoulder/collar region",
+          "bow center and loops",
+          "neighboring waist trim"
+        ]
+      },
+      "review_image_list": [
+        "checks/A/side-by-side.png",
+        "checks/A/draft-fullres.png",
+        "checks/A/region-1.png",
+        "checks/A/region-2.png",
+        "checks/A/region-3.png"
+      ],
+      "svg": "rendered/A-observed-garment.svg"
+    },
+    "B": {
+      "cases": [
+        "baseline: raised-prop-grip",
+        "variant: chest-rest-prop-grip and 1.08 shoulder width",
+        "control: baseline with frozen 0.18*(upper+forearm) approach shortfall; visibly labeled CONTROL \u2014 near miss"
+      ],
+      "check_report": "checks/B/report.txt",
+      "claim": "original clothed upper-body bent-arm/hand/prop baseline, semantic changed target plus 1.08 shoulder proportion variant, and labeled near-miss control; same camera panels",
+      "dimensions": [
+        1260,
+        620
+      ],
+      "png": "rendered/B-original-action.png",
+      "review_image_list": [
+        "checks/B/draft.png"
+      ],
+      "svg": "rendered/B-original-action.svg"
+    }
+  },
+  "attempted_runs_fixed_before_final_pass": [
+    {
+      "command": "cd <revision> && ../../../../.venv/bin/python -m pytest -q test_integrated_pipeline.py",
+      "elapsed_seconds": null,
+      "exit_code": 1,
+      "result": "failed",
+      "stdout": "No module named pytest; switched to the available /home/z/.venv/bin/pytest runner."
+    },
+    {
+      "command": "PYTHONPATH=. .venv/bin/pytest -q <revision>/test_integrated_pipeline.py",
+      "elapsed_seconds": null,
+      "exit_code": 127,
+      "result": "failed",
+      "stdout": "/bin/bash: .venv/bin/pytest: No such file or directory; corrected runner path."
+    },
+    {
+      "command": "PYTHONPATH=. /home/z/.venv/bin/pytest -q <revision>/test_integrated_pipeline.py",
+      "elapsed_seconds": null,
+      "exit_code": 2,
+      "result": "failed",
+      "stdout": "Collection initially imported smooth_spatial before the adapter added its frozen vendor-module path; import order was corrected."
+    },
+    {
+      "command": "PYTHONPATH=. /home/z/.venv/bin/pytest -q <revision>/test_integrated_pipeline.py (initial integrated assertions)",
+      "elapsed_seconds": 53.86,
+      "exit_code": 1,
+      "result": "failed",
+      "stdout": "6 passed, 2 failed: invalid-contour assertion overconstrained the valid guard error; A crop-frame shape exceeded bounds. Both assertions/coordinates were corrected."
+    },
+    {
+      "command": "PYTHONPATH=. /home/z/.venv/bin/pytest -q <revision>/test_integrated_pipeline.py (bounds correction)",
+      "elapsed_seconds": 52.64,
+      "exit_code": 1,
+      "result": "failed",
+      "stdout": "7 passed, 1 failed: bodice curve overshot the viewport lower edge by about 5 px; sparse controls moved inward and final bounds check passed."
+    }
+  ],
+  "contract_ticket": ".scratch/35-r1-articulated-study/issues/21-integrated-reset-contract.md",
+  "execution_log": [
+    {
+      "command": "python3 <revision>/prepare_reference_crop.py",
+      "elapsed_capture": "not separately recorded",
+      "elapsed_seconds": null,
+      "exit_code": 0,
+      "result": "passed",
+      "stdout": "validated 1024x1024 source SHA-256 and exact 400x480 crop PNG SHA-256; wrote revision/reference-crop.png"
+    },
+    {
+      "command": "python3 -m py_compile <five revision Python files>; scoped Python text whitespace scan",
+      "elapsed_capture": "not separately recorded",
+      "elapsed_seconds": null,
+      "exit_code": 0,
+      "result": "passed",
+      "stdout": "final source compilation and whitespace validation passed"
+    },
+    {
+      "command": "PYTHONPATH=. /home/z/.venv/bin/pytest -p no:cacheprovider -q <revision>/test_integrated_pipeline.py",
+      "elapsed_seconds": 53.27,
+      "exit_code": 0,
+      "result": "passed",
+      "stdout": "........ [100%] 8 passed in 53.27s"
+    },
+    {
+      "command": "python3 <revision>/run_r1.py",
+      "elapsed_capture": "not separately recorded",
+      "elapsed_seconds": null,
+      "exit_code": 0,
+      "result": "passed",
+      "stdout": "A-observed-garment.svg and B-original-action.svg written inside revision/rendered"
+    },
+    {
+      "command": "scripts/draw render <A.svg> -o <A.png>; scripts/draw render <B.svg> -o <B.png>",
+      "elapsed_capture": "not separately recorded",
+      "elapsed_seconds": null,
+      "exit_code": 0,
+      "result": "passed",
+      "stdout": "A PNG 400x480; B PNG 1260x620"
+    },
+    {
+      "command": "scripts/draw check <A.svg> --ref <revision/reference-crop.png> --outdir <revision/checks/A>",
+      "elapsed_capture": "not separately recorded",
+      "elapsed_seconds": null,
+      "exit_code": 0,
+      "result": "passed",
+      "stdout": "report and five-image list saved in checks/A/report.txt; crop/output viewports match"
+    },
+    {
+      "command": "scripts/draw check <B.svg> --outdir <revision/checks/B>",
+      "elapsed_capture": "not separately recorded",
+      "elapsed_seconds": null,
+      "exit_code": 0,
+      "result": "passed",
+      "stdout": "reference-free report and drawing list saved in checks/B/report.txt"
+    },
+    {
+      "command": "git diff --cached --name-only",
+      "elapsed_capture": "not separately recorded",
+      "elapsed_seconds": null,
+      "exit_code": 0,
+      "result": "passed",
+      "stdout": "pre-existing staged paths only: .gitmodules, vendor/huashu-art-motion, vendor/huashu-design; no staging performed by this task"
+    }
+  ],
+  "execution_state": "integrated A+B candidate, rendering, and self-check produced; independent structural review and all later R1 gates remain open",
+  "hashes": {
+    "files_before_manifest_sha256": {
+      "checks/A/draft-fullres.png": "2173e457f62a39dc11e2dbd4197b242d24a6cd45cf1bbff30236ab374250544e",
+      "checks/A/draft.png": "5d46f6599d5821bcabec9cf9bd5cbdcb579b88458dee66a75396420cf0d08460",
+      "checks/A/region-1.png": "c16171734bd27d4c266d975cb4ab583f8bf4acef864a32580a43d74b8f51ce63",
+      "checks/A/region-2.png": "73e7d0cda64a68308bcf0fd2ad911b58ab4a50e7203085f08f81f72b1bdd9eee",
+      "checks/A/region-3.png": "e0d86b84417b5011ba5e8680811135385e47e70e3c149a04fa4e31fd9c2cc335",
+      "checks/A/report.txt": "1a905b84c3acb677ed0b0a3285cf209978f528c20f949c5de88b3a7c274fb5f9",
+      "checks/A/side-by-side.png": "4271fed91da62db68188592b3adf63c31b2fb835fc6c41c53464d1c9b7d58449",
+      "checks/B/draft.png": "e3064e41d5b832a7d653bfa83a2a122dcbb8f61afc961c3ef0dccfef959bce90",
+      "checks/B/report.txt": "21a8e068529c75304612abc1908afa6f4a7213d65fcc66d8573f1b27d2267cb3",
+      "handoff.md": "b45462499be761d55926c03f09405c4d02cfe2fd2a793e3bdc1f6be0d240f4c1",
+      "prepare_reference_crop.py": "8220d928fe941ebd8df0701f8440c3c7057d5499c118e5faf18af1313d33f31a",
+      "r1_scene.py": "526c7338dcc192c5d93b49df6a81f00e77b89d8c34bc66ca2948ad3e4dd55915",
+      "reference-crop.png": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+      "rendered/A-observed-garment.png": "5d46f6599d5821bcabec9cf9bd5cbdcb579b88458dee66a75396420cf0d08460",
+      "rendered/A-observed-garment.svg": "99ab3ddec8247721928e3f53784a9d2ffc5668c7d00e024581431006d58f5a21",
+      "rendered/B-original-action.png": "e3064e41d5b832a7d653bfa83a2a122dcbb8f61afc961c3ef0dccfef959bce90",
+      "rendered/B-original-action.svg": "18c9fbffe67fdba9b21441b25a60ed602d4e8a3508a60ea24354dc38621cc374",
+      "run_r1.py": "a65b025363a64e0da3f88d7b0c811bfb1a3429510bfc580452d3bbd4242a3264",
+      "spatial_adapter.py": "f3b41a2a67915fe4dfe0d77c857d87c3f45e7653775dbf9d4b1f6d6337c54505",
+      "spec.md": "3b26b1d9576a2140b8678b329719e0119139f7a27bd871d49edcdb7d1eea5dfd",
+      "test_integrated_pipeline.py": "23bbf80a6a8c526ca8cd23742a2ee2da8a95f0528523fb4a41a7ec7e75091bef"
+    },
+    "rendered_and_review_image_sha256": {
+      "checks/A/draft-fullres.png": "2173e457f62a39dc11e2dbd4197b242d24a6cd45cf1bbff30236ab374250544e",
+      "checks/A/draft.png": "5d46f6599d5821bcabec9cf9bd5cbdcb579b88458dee66a75396420cf0d08460",
+      "checks/A/region-1.png": "c16171734bd27d4c266d975cb4ab583f8bf4acef864a32580a43d74b8f51ce63",
+      "checks/A/region-2.png": "73e7d0cda64a68308bcf0fd2ad911b58ab4a50e7203085f08f81f72b1bdd9eee",
+      "checks/A/region-3.png": "e0d86b84417b5011ba5e8680811135385e47e70e3c149a04fa4e31fd9c2cc335",
+      "checks/A/side-by-side.png": "4271fed91da62db68188592b3adf63c31b2fb835fc6c41c53464d1c9b7d58449",
+      "checks/B/draft.png": "e3064e41d5b832a7d653bfa83a2a122dcbb8f61afc961c3ef0dccfef959bce90",
+      "rendered/A-observed-garment.png": "5d46f6599d5821bcabec9cf9bd5cbdcb579b88458dee66a75396420cf0d08460",
+      "rendered/A-observed-garment.svg": "99ab3ddec8247721928e3f53784a9d2ffc5668c7d00e024581431006d58f5a21",
+      "rendered/B-original-action.png": "e3064e41d5b832a7d653bfa83a2a122dcbb8f61afc961c3ef0dccfef959bce90",
+      "rendered/B-original-action.svg": "18c9fbffe67fdba9b21441b25a60ed602d4e8a3508a60ea24354dc38621cc374"
+    },
+    "source_and_dependency_sha256": {
+      "prepare_reference_crop.py": "8220d928fe941ebd8df0701f8440c3c7057d5499c118e5faf18af1313d33f31a",
+      "r1_scene.py": "526c7338dcc192c5d93b49df6a81f00e77b89d8c34bc66ca2948ad3e4dd55915",
+      "run_r1.py": "a65b025363a64e0da3f88d7b0c811bfb1a3429510bfc580452d3bbd4242a3264",
+      "scripts/articulated_construction.py": "1a339b1a324a406ce030945176e0d8293f15213f75f700adf57f60456a5c1931",
+      "scripts/articulated_line_visibility.py": "d4c11ff1cdb3244203b5dbd4959ec0059a556f89d240cbcf671bbc784d09c390",
+      "scripts/vector_visibility.py": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa",
+      "smooth_spatial.py": "e1497e8ecf06a9e79cb32a9f18fe293f8f3b904a6d1ec373b46fb83d8d4b57ad",
+      "spatial_adapter.py": "f3b41a2a67915fe4dfe0d77c857d87c3f45e7653775dbf9d4b1f6d6337c54505",
+      "test_integrated_pipeline.py": "23bbf80a6a8c526ca8cd23742a2ee2da8a95f0528523fb4a41a7ec7e75091bef"
+    }
+  },
+  "planning_input_accepted": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/442e7d7b-0bc7-4712-b57a-b264f9bf719a/r1/integrated-reset-feasibility-review.md",
+  "planning_input_scope": "feasibility/planning only; not art, implementation, structural, heldout, or user acceptance",
+  "pre_render_gates": {
+    "action_and_collision": "frozen B baseline/variant/control validate semantic anchors/contact/gap and current supported collision range checks; control gap >0.1 local units",
+    "bounds": "all sampled A/B component geometry, semantic line endpoints and labels are inside their matching viewports; A output/crop windows both 400x480",
+    "coordinate_budget": "8-test suite inspects every actual A/B scene ShapeSpec passed to adapter; each contour has 3\u20134 control pairs; authored line marks have two endpoints; B limbs/head/torso/hand/prop controls are generated from frozen IK/ellipse geometry",
+    "crop_registration": "prepare_reference_crop.py recomputed source and exact PNG crop hashes before first render",
+    "fill_and_stroke": "only typed adapter results consumed; emitted fill and boundary paths checked; direct raw-SVG substitution rejected",
+    "guard_dataflow": "wrappers capture sample guard, explicit guard, component_faces, visible_regions and visible_segment_spans; exact sample identity is asserted at component/fill/line boundary",
+    "image_isolation_and_determinism": "renderer API has output-path only; source scan and open guards deny image.jpg access; two independent reference-absent SVG writes have equal SHA-256",
+    "invalid_geometry": "crossed/degenerate contour rejected before component faces",
+    "occlusion": "front-support fixture changes both actual visible fill regions and semantic boundary spans/length",
+    "render_order": "all integration tests and crop/static prechecks passed before rendering/check; one source-comment compliance correction was made within this bounded implementation, followed by a final complete test/render/check pass",
+    "static": "final pytest import/compile plus final py_compile and scoped whitespace check passed"
+  },
+  "review_and_remaining_gates": {
+    "construction_contact_collision_depth": "independent WP05/WP06 gates remain unverified despite self-check tests",
+    "fresh_visual_review": "NOT RUN; no self visual judgement made",
+    "heldout": "sealed task compatibility/release and actual distinct drawing not performed",
+    "independent_feasibility": "PASS planning-only review is archived at the path above and recorded in task ticket",
+    "independent_structural_review": "NOT RUN; required before any fresh image-review verdict",
+    "metrics": "draw-check metrics are recorded only as breakage alarms, not tuned or treated as acceptance",
+    "user_feedback": "not requested or received; no PASS implied"
+  },
+  "revision": "integrated-reset-r1-v1",
+  "run_elapsed_basis": "wall clock from initial scoped Git/collision baseline epoch; command-level timing was not captured for most commands and is explicitly null rather than estimated",
+  "run_elapsed_seconds": 2706,
+  "source_boundary": {
+    "adapter_output": "VisibleSmoothComponent carries exact validated sample, actual Component, support-mapped faces, depth-visible fill regions and authored visible boundary spans",
+    "dependency_sha256": {
+      "scripts/articulated_construction.py": "1a339b1a324a406ce030945176e0d8293f15213f75f700adf57f60456a5c1931",
+      "scripts/articulated_line_visibility.py": "d4c11ff1cdb3244203b5dbd4959ec0059a556f89d240cbcf671bbc784d09c390",
+      "scripts/vector_visibility.py": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa",
+      "smooth_spatial.py": "e1497e8ecf06a9e79cb32a9f18fe293f8f3b904a6d1ec373b46fb83d8d4b57ad"
+    },
+    "emission_guard": "emitter requires typed adapter-result map, verifies component.outline is validated_sampled_contour, and rejects a raw SVG-path substitution",
+    "imports": [
+      "sample_closed_curve",
+      "validate_closed_contour",
+      "SupportFrame",
+      "Camera",
+      "Component",
+      "component_faces",
+      "visible_regions",
+      "visible_segment_spans",
+      "transform_compound_path"
+    ],
+    "owned_scope": "all new implementation, test, crop, rendered and check artifacts are inside this revision directory; historical engine/dependencies were not edited",
+    "renderer_api": "run_r1.write_svgs(output_directory); no target/reference argument or target-image file access"
+  },
+  "staging": "no stage/commit action; pre-existing staged entries preserved unchanged by this task",
+  "tests": {
+    "command": "PYTHONPATH=. /home/z/.venv/bin/pytest -p no:cacheprovider -q .scratch/35-r1-articulated-study/evidence/integrated-reset-r1-v1/test_integrated_pipeline.py",
+    "count": 8,
+    "elapsed_seconds": 53.27,
+    "file": "test_integrated_pipeline.py",
+    "result": "passed",
+    "summary": "8 passed in 53.27s"
+  },
+  "visual_verdict": "none; artifact/report list only; no R1 PASS"
+}

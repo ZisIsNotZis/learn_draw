@@ -1,0 +1,8 @@
+What is wrong here?
+
+.scratch/35-r1-articulated-study/evidence/A-teacher-recovery-v1/fitted-art/artwork-a.png
+.scratch/35-r1-articulated-study/evidence/A-teacher-recovery-v1/fitted-art/check-a/side-by-side.png
+.scratch/35-r1-articulated-study/evidence/A-teacher-recovery-v1/fitted-art/check-a/draft-fullres.png
+.scratch/35-r1-articulated-study/evidence/A-teacher-recovery-v1/fitted-art/check-a/region-1.png
+.scratch/35-r1-articulated-study/evidence/A-teacher-recovery-v1/fitted-art/check-a/region-2.png
+.scratch/35-r1-articulated-study/evidence/A-teacher-recovery-v1/fitted-art/check-a/region-3.png

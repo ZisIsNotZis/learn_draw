@@ -1,0 +1,85 @@
+{
+  "authority": {
+    "authorizing_owner": "Main",
+    "execution_owner": "replacement single-writer integrator",
+    "scope": "finish already designed issue-26 v2 repair; no new art hypothesis or acceptance change",
+    "recursive_delegation": false,
+    "allocation_start": "2026-10-13T12:57:49+08:00",
+    "checkpoint_due": "2026-10-13T13:54:49+08:00",
+    "hard_stop": "2026-10-13T13:57:49+08:00",
+    "prior_issue26_breach": "45-minute cap exceeded by 11m01s; checkpoint missed; preserved as NOTDONE, not rolled authority"
+  },
+  "baseline": {
+    "branch": "master",
+    "head": "24693d4b764755165509fc206695ebca03ee44fe",
+    "baseline_status": "../goal-recovery-r1-v2-recovery/checkpoint-issue26-source-snapshot/git-status-porcelain-v2.baseline.txt",
+    "v1_manifest_sha256": "25f729e26723470d054a059b785ad1e316d53066b52e1bfffedaa0c90f5d8cde",
+    "v1_source_set_sha256": "c77499e3693d1d1c0aeda32ec0917565a621f55be90b7e5188328c4ba235690b",
+    "v1_manifest_listed_hashes_verified": 24,
+    "v1_mismatches": [],
+    "issue26_source_snapshot": "../goal-recovery-r1-v2-recovery/checkpoint-issue26-source-snapshot/",
+    "issue26_inventory": {
+      "present_source_derived_svg": [
+        "../goal-recovery-r1-v2/rendered/A-observed-garment.svg",
+        "../goal-recovery-r1-v2/rendered/B-baseline-support.svg"
+      ],
+      "missing_at_start": ["PNG outputs", "B variant/control/sheet SVG", "draw-check bundles", "completion manifest"],
+      "svg_provenance": "Both actual SVGs were byte-identical to current build_case_svg outputs and matched their before-touch SHA-256s; historical shell command remains unrecorded."
+    },
+    "preexisting_staged_entries_preserved": [".gitmodules", "vendor/huashu-art-motion", "vendor/huashu-design"],
+    "this_task_staged_or_committed": false
+  },
+  "source_changes": {
+    "geometry_or_shape_hypothesis_changed": false,
+    "single_narrow_wiring_correction": "Completion-copy finalize_manifest.py identifies issue-36 v2 completion and embeds completion record/preflight evidence instead of mislabeled issue-24 v1 metadata.",
+    "tests_added_or_updated": ["test_goal_recovery_r1.py: test_all_b_case_captions_round_trip_through_utf8_svg_numeric_references"],
+    "source_provenance": "Fresh completion source copied from snapshotted issue-26 v2; r1_scene.py and all artwork semantics unchanged."
+  },
+  "commands_run": [
+    {"command": "python3 -m py_compile <completion>/{observe_teacher,spatial_adapter,r1_scene,run_r1,compose_b_sheet,finalize_manifest,test_goal_recovery_r1}.py", "result": "passed", "summary": "initial completion-source syntax check"},
+    {"command": "PYTHONPATH=. timeout 110s /home/z/.venv/bin/pytest -p no:cacheprovider -q <completion>/test_goal_recovery_r1.py -k 'not complete_a_svg and not complete_b_baseline_svg'", "result": "passed", "summary": "6 passed, 2 deselected in 100.64s; compact semantic inputs, source registration, B support/contact/control, guarded adapter, bounds, and B caption decoding"},
+    {"command": "PYTHONPATH=. timeout 110s /home/z/.venv/bin/pytest -p no:cacheprovider -q <completion>/test_goal_recovery_r1.py::test_complete_a_svg_uses_guarded_components_and_reference_absent_reproduces", "result": "not-run", "summary": "Attempted once; timeout exit 124 after 110s, no stdout/stderr, unverified. Not treated as a failed assertion and not retried."},
+    {"command": "PYTHONPATH=. timeout 110s python3 <completion>/run_r1.py A --outdir <completion>/rendered", "result": "passed", "summary": "actual source-generated A SVG written; matches preserved issue-26 A SVG SHA-256"},
+    {"command": "PYTHONPATH=. timeout 110s python3 <completion>/run_r1.py baseline --outdir <completion>/rendered", "result": "passed", "summary": "actual source-generated B baseline SVG written; matches preserved issue-26 baseline SVG SHA-256"},
+    {"command": "PYTHONPATH=. timeout 110s python3 <completion>/run_r1.py variant --outdir <completion>/rendered", "result": "passed", "summary": "actual source-generated B variation SVG written"},
+    {"command": "PYTHONPATH=. timeout 110s python3 <completion>/run_r1.py control --outdir <completion>/rendered", "result": "passed", "summary": "actual source-generated unchanged-hand near-miss control SVG written"},
+    {"command": "timeout 110s python3 <completion>/compose_b_sheet.py", "result": "passed", "summary": "actual three-case B SVG sheet composed"},
+    {"command": "initial combined SVG candidate preflight", "result": "failed", "summary": "validator assertion incorrectly required middle-dot entity in the dash-only control label; no artifact/data mismatch; exact case-specific correction recorded in issue 36"},
+    {"command": "corrected case-specific SVG candidate preflight", "result": "passed", "summary": "5 XML SVGs parsed; dimensions, labels, ASCII numeric-entity captions, A topology/B hand part markers and contact sheet verified; no mismatches"},
+    {"command": "PYTHONPATH=. timeout 110s /home/z/.venv/bin/pytest -p no:cacheprovider -q <completion>/test_goal_recovery_r1.py::test_complete_b_baseline_svg_emits_supported_palm_and_depth_visible_prop", "result": "passed", "summary": "1 passed in 76.35s; complete source-generated baseline vector, named palm/fingers/prop, visible-boundary path, numeric captions, reference absence and determinism"},
+    {"command": "post-correction python3 -m py_compile <completion>/{finalize_manifest,test_goal_recovery_r1}.py", "result": "passed", "summary": "manifest wiring and updated XML test syntax"},
+    {"command": "scripts/draw render <completion>/rendered/A-observed-garment.svg -o <completion>/rendered/A-observed-garment.png", "result": "passed", "summary": "PNG 400x480"},
+    {"command": "scripts/draw render <completion>/rendered/B-baseline-support.svg -o <completion>/rendered/B-baseline-support.png", "result": "passed", "summary": "PNG 450x640"},
+    {"command": "scripts/draw render <completion>/rendered/B-variant-support.svg -o <completion>/rendered/B-variant-support.png", "result": "passed", "summary": "PNG 450x640"},
+    {"command": "scripts/draw render <completion>/rendered/B-near-miss-control.svg -o <completion>/rendered/B-near-miss-control.png", "result": "passed", "summary": "PNG 450x640"},
+    {"command": "scripts/draw render <completion>/rendered/B-original-support.svg -o <completion>/rendered/B-original-support.png", "result": "passed", "summary": "PNG 1350x640"},
+    {"command": "scripts/draw check <completion>/rendered/A-observed-garment.svg --ref <completion>/teacher-crop-registered.png --outdir <completion>/checks/A", "result": "passed", "summary": "A check bundle generated using exact registered 400x480 teacher crop; image-list recorded in checks/A/report.txt; metrics treated only as alarms"},
+    {"command": "scripts/draw check <completion>/rendered/B-original-support.svg --outdir <completion>/checks/B", "result": "passed", "summary": "reference-absent B check bundle generated; exact image list in checks/B/report.txt"}
+  ],
+  "failed_or_unverified_commands": [
+    {"command": "A complete-render pytest integration", "exit_code": 124, "stdout": "", "stderr": "", "disposition": "timeout/unverified; no retry; actual source SVG output and preserved-file hash match verified separately"},
+    {"command": "first combined output preflight", "exit_code": 1, "failure": "validator had an unconditional &#xB7; assertion for control, which correctly uses &#x2014;", "disposition": "validation-script assertion error; corrected based on actual parsed SVG text; corrected preflight passed"}
+  ],
+  "coverage": {
+    "source_and_teacher_crop": "source/crop mapping remains image.jpg (500,320)-(900,800), 400x480, no resize; tests passed; runtime path has no reference/crop inputs",
+    "A_semantic_topology": "fitted bodice, cap-to-tube-to-cuff attachment, paired collar leaves, small visible neck context, bow lobe/tail family ids checked in emitted SVG; no art review",
+    "B_hand_and_support": "current source creates one broad palm-support silhouette with grouped scallops and three sampled foot anchors; structural support test passed; baseline/variation/control outputs each emitted",
+    "control": "same hand with dish displacement remains the named near-miss; source structural test passed and output label/panel verified",
+    "adapter": "guarded contour, same sampled component feed to filled regions and depth-visible boundaries, semantic line path checked by focused tests",
+    "serialization": "UTF-8 source captions emitted as ASCII numeric XML refs; all three cases parsed back to exact Unicode title/caption without mojibake",
+    "collision_scope": "existing case-specific affine support/contact/depth evidence/tests only; not universal volume physics",
+    "render_and_draw_check": "all actual requested PNG outputs produced; A compares only to registered teacher crop, B check runs with no reference",
+    "independent_visual_or_structural_review": "not performed; Main must route fresh review"
+  },
+  "mismatches": [],
+  "unclosed_gates": [
+    "A/B independent image-only art/readability review",
+    "independent integrated construction/contact/nonintersection/depth acceptance",
+    "deterministic reproduction acceptance beyond scoped source/render checks",
+    "heldout compatibility/release and later distinct actual drawing",
+    "user feedback",
+    "all user-facing R1 artwork and physical/art acceptance gates"
+  ],
+  "image_review_report": "report.txt",
+  "no_art_or_r1_pass": true
+}

@@ -1,0 +1,26 @@
+{
+  "draw_check_images_still_match_main_board": {
+    "comparison-labelled": {
+      "board_png_sha256": "546cb88d369b57e3625bc7c69cf54edf61af56ee681fdea8a68b9462999901e4",
+      "draft_matches_board_png": true,
+      "draw_check_draft_sha256": "546cb88d369b57e3625bc7c69cf54edf61af56ee681fdea8a68b9462999901e4",
+      "report_sha256": "c6bdcbbce53e1a0374bbbf51aa84c13ed88d25a927dc87ccf20ca7175f71cf1e"
+    },
+    "comparison-unlabelled": {
+      "board_png_sha256": "eb7bb6d64cf9e142672cf957fb32fc3b61c10836822b5494d44e7c114f9e9ac5",
+      "draft_matches_board_png": true,
+      "draw_check_draft_sha256": "eb7bb6d64cf9e142672cf957fb32fc3b61c10836822b5494d44e7c114f9e9ac5",
+      "report_sha256": "33a45217d193ec8b31eaa1152754e562a6eb63e02a043241685ce2c28abf3a47"
+    }
+  },
+  "renderer_provenance": {
+    "builder_sha256": "1d3615bed0f3fb98314c7a8ab5101eb6f4a223e6fe6a1164323f81741c430680",
+    "chromium": {
+      "path": "/home/z/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell",
+      "version": "Google Chrome for Testing 151.0.7922.34"
+    },
+    "draw_py_sha256": "7b1bb3bece91dfe297e34aefab6b40af24bc02dbe4837bec03da604569ac7abf"
+  },
+  "same_main_board_hashes": true,
+  "same_main_panel_hashes": true
+}

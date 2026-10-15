@@ -1,0 +1,40 @@
+{
+  "cache_key": "4f4f6941b8e14368a9f02d86924e5dd7550bd87f9d79026f49b97253bb0afdfd",
+  "camera": {
+    "name": "front",
+    "pitch": 0,
+    "yaw": 0
+  },
+  "case": "failed-learner-front-regression-only",
+  "coverage": {
+    "candidate_count": 258,
+    "depth_tolerances": {
+      "barycentric_inside": 1e-08,
+      "cut_merge_parameter": 1e-08,
+      "depth_epsilon": 1e-07,
+      "projected_intersection": 1e-09,
+      "tie_bias": 1e-05,
+      "uv_join_parameter": 1e-08
+    },
+    "fill_regions": 4,
+    "motif_sides": [],
+    "motif_triangle_count": 0,
+    "overlap_span_count": 0,
+    "perimeter_spans": [],
+    "sampling_override": 128,
+    "silhouette_span_count": 0,
+    "stroke_polygon_count": 0,
+    "support_geometry_sha256": "e1c9efb6abbfba0c7359f93209560227f6035488da549027f5be8899cd4bd7fa",
+    "support_triangle_count": 256,
+    "visible_span_count": 0
+  },
+  "rule": "control",
+  "sampling": 128,
+  "source": {
+    "id": "failed-learner-spec",
+    "kind": "spec"
+  },
+  "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+  "svg_bytes": 387647,
+  "svg_sha256": "aa3eb341ec64403f14c14b275818440bfbe7b4bdb4e467be5a5e934b45b8a05f"
+}

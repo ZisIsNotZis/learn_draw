@@ -1,0 +1,31 @@
+# WP04 compound-fill / semantic-line upstream repair ticket
+
+## Contract, authority, ownership, scope
+
+Main authorizes one bounded source-level repair inside the frozen WP04 renderer and a local adapter only. Owner: this worker, serial. Objective: establish the upstream cause of the observed fill fragmentation before appearance adjustment; preserve visible fragment boundaries/holes through panel transforms; ensure authored semantic strokes are depth-visible by their own support mapping rather than declaration order or panel clipping. Preserve the existing triangle/depth backend and WP03 geometry contract. No new construction hypothesis, shape redesign, camera adjustment, pixel optimization, backend rewrite, manual visibility cuts, or `intentionally visible` workaround. Existing finite planar XY/support intersection/contact checks remain in place; full volumetric collision is outside this architecture, but any actual current illegal intersection must still fail existing validation.
+
+Relevant inputs: fresh image observations and technical review supplied for this assignment; `work/render_r1.py`, `scripts/articulated_construction.py`, `scripts/vector_visibility.py`, frozen `work/scene.yaml` and `work/task-freeze.md`; prior records `issues/09`/`10` and `evidence/coordinate-repair-v1/render-manifest.md`. Hypothesis (not presumed): `visible_regions()` returns compound `M/L/Z` path subpaths for disconnected visibility fragments, while WP04 strips those commands and stitches all coordinate pairs into one polygon, making artificial bridges/radial wedges. Verify with actual output and a minimal topology repro before editing. Separate confirmed technical gap from review: semantic A/B strokes are currently emitted after fills without depth visibility; implement local renderer/helper depth clipping using line probes against actual support-mapped depth surfaces, with no manual cuts or panel-clip-as-occlusion.
+
+## Proof and preservation plan
+
+Before edits, record and hash-copy every existing SVG, PNG, and manifest in the WP04 working/evidence scope into a new immutable `evidence/coordinate-repair-v2/preserved-before/` tree; verify source/copy hashes. New SVG/PNG/report/manifest outputs only under new v2 paths; do not regenerate old `work/artwork*.svg`, old check directories, or edit WP03 scene/spec. Keep all commands ≤120s and total ≤40min. Add regressions for multiple disconnected fragments and a hole-preserving transformed region (including command/subpath count and transformed numeric coordinates), plus a concrete semantic stroke occlusion case in which a nearer support hides a back line independent of declaration order. Run focused and existing construction/visibility tests, current scene numerical validation, render/check chain, inspect geometry/region coordinates and report only new image list for fresh review. Do not judge image appearance, call any art gate PASS, or alter append-only project lessons. Do not stage or commit.
+
+## Initial status and unspent work
+
+Initial Git status contains unrelated staged `.gitmodules`/vendor entries and extensive dirty/untracked work; preserve them and create no staged changes. WP04's failed historical SVG bytes may already be absent (per issue 10); do not imply recovery. This bounded pass records a rendered revision and exact root-cause evidence. Parent/reviewer owns independent review. If root cause cannot be proven or criteria remain unknown within this pass, checkpoint unverified rather than broaden scope or retry indefinitely.
+
+## Outcome
+
+Implementation/checkpoint pending.
+
+## Bounded pass result
+
+Root cause is confirmed and repaired in WP04 serialization; see [`evidence/coordinate-repair-v2/render-manifest.md`](../evidence/coordinate-repair-v2/render-manifest.md) for revision-bound commands, topology/coordinate comparisons, hashes, and new-image-only review list. The prior generated work SVGs/evidence were not overwritten; all 19 existing SVG/PNG/manifest files under WP04 work/evidence were copied to `evidence/coordinate-repair-v2/preserved-before/`, then source/copy hashes were checked both during copy and after rendering.
+
+Changed only the WP04 renderer, a renderer-local path/line adapter, its source-named tests, and new v2 evidence/ticket. Multi-fragment engine paths retain every `M/L/Z` and winding through panel transformation; the renderer's semantic strokes now map via their own support and are segmented against nearer depth triangles. Synthetic reverse-declaration occlusion regression and actual B cases confirm hidden line intervals; the native depth backend and geometry API remain unchanged. Baseline/variant/control geometry validation remains PASS for its pre-existing bounded planar contract; no general-solid collision claim is made, and no geometry edit was authorized or needed.
+
+Focused adapter + construction + visibility/oracle suite: 42 tests passed. A/B/sheet `scripts/draw check` commands passed in the new v2 directory. Reviewer image list and numerical region/source coordinates are in the v2 manifest. This is source/render repair evidence only: no image was self-judged; art/depth independent review and all R1 gates remain BLOCKED/OPEN as applicable. Existing staged `.gitmodules` and vendor entries were present before this pass and remain unchanged; this task staged nothing. No dependency/environment/source-backend change, commit, or cleanup occurred.
+
+## Final revision supersession
+
+The final reviewed-by-writer source/output revision is `evidence/coordinate-repair-v3/`, not the earlier same-pass v2 render. V3 was emitted into a new immutable revision directory after aligning the adapter directly with the existing `ribbon_drawing` segment/triangle, barycentric, interpolation, and depth-tie probe methods. The v2 intermediate SVGs/PNGs/manifests remain untouched. Final manifest: [`evidence/coordinate-repair-v3/render-manifest.md`](../evidence/coordinate-repair-v3/render-manifest.md). Final scoped suite including existing ribbon-drawing probe tests: 59 passed; all v3 A/B/sheet `scripts/draw check` commands passed; final engine-to-panel path comparison passed for every fill component in A and all three B cases. Independent reviewer/art/depth gates remain pending.

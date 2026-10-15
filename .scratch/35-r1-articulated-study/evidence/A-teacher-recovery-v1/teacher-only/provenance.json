@@ -1,0 +1,30 @@
+{
+  "role": "A-only teacher evidence; not artwork or renderer geometry",
+  "created_at": "2026-10-13T14:10:36+08:00",
+  "source": "image.jpg",
+  "source_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+  "source_dimensions": [1024, 1024],
+  "crop_file": "source-crop-registered.png",
+  "crop_sha256": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+  "crop_source_xyxy": [500, 320, 900, 800],
+  "crop_dimensions": [400, 480],
+  "registration": "crop (x,y) maps to image.jpg source (500+x,320+y), no resize/stretch",
+  "overlay_file": "teacher-topology-overlay.png",
+  "overlay_sha256": "90a09656394f3a36055f485688a5d5c11d453f31076b30e0d43094c3492f0656",
+  "overlay_script": "make_teacher_overlay.py",
+  "overlay_script_sha256": "8f93bc24fc0639aa936d9ddf299fc153d3d371e040974365ea6739bfdbe4e545",
+  "landmarks_file": "landmarks.csv",
+  "landmarks_sha256": "8b3ac7e23fb119ecf9473e54ccdaee7e1a3fcaef21f363e6b5aec3f62705e144",
+  "topology_file": "topology-map.md",
+  "topology_sha256": "cbc606a43b396573dfd0ab33aba08df91fac10be5a5841ab341d5741b3ffec7a",
+  "method": {
+    "crop": "copied registered crop; dimensions and SHA-256 checked against the task freeze",
+    "landmarks": "manual semantic point observations from the displayed full registered crop, recorded as crop coordinates and mapped by fixed translation; all interpretations provisional for fresh review",
+    "overlay": "Pillow 12.3.0 ImageDraw; Lanczos display-only enlargement 2x; finite point markers and dashed topology pointers keyed to landmarks.csv; script contains exact operation",
+    "segmentation_or_trace": "none; no masks, frequency segmentation, boundary extraction, contour tracing, or renderer input"
+  },
+  "tolerance": null,
+  "tolerance_note": "Not applicable: no algorithmic segmentation, edge extraction, fitted contour, or raster-to-geometry materialization was performed. Point coordinates are manually read semantic anchors with per-point confidence/limits in landmarks.csv, not precision-fit boundaries.",
+  "coordinate_semantics": "landmark points indicate local observed features, not exact subpixel boundary intersections; dashed links express only adjacency hypotheses, never contours/seams",
+  "isolation": "teacher-only A evidence; prohibited as input to B, heldout, scene source, renderer, or reproduction"
+}

@@ -1,0 +1,105 @@
+{
+  "candidate": "A-cloth-construction-v2/scoped-repair-v1",
+  "files": [
+    {
+      "bytes": 44342,
+      "path": "artwork-a.png",
+      "sha256": "e98dfdc9ac5b507b5ad022251e7c99284452463c587ad7fec39af74c6ff13e6f"
+    },
+    {
+      "bytes": 659331,
+      "path": "artwork-a.svg",
+      "sha256": "9a470ffec679731a42673355d58f5ac19138b3c1048326dc3570096d137f664c"
+    },
+    {
+      "bytes": 53505,
+      "path": "check-a/draft-fullres.png",
+      "sha256": "395adc32a6d0f95f8538982befdc2e54c245cab17601976d806d457f333ee1e2"
+    },
+    {
+      "bytes": 44342,
+      "path": "check-a/draft.png",
+      "sha256": "e98dfdc9ac5b507b5ad022251e7c99284452463c587ad7fec39af74c6ff13e6f"
+    },
+    {
+      "bytes": 66401,
+      "path": "check-a/region-1.png",
+      "sha256": "3d7c470d3f7eadcc34575cf2666b722638153ab98dadcd4a0993d31b9b72bc13"
+    },
+    {
+      "bytes": 87593,
+      "path": "check-a/region-2.png",
+      "sha256": "e3aebadf6f5d3be12ae3f76e3dcabba5b824e88e55cd5a14cefc80ad5a0c429b"
+    },
+    {
+      "bytes": 49702,
+      "path": "check-a/region-3.png",
+      "sha256": "0259d626048b73d78c28aed079224d607631b77b80a2fdb0ad6bf699eb6f2401"
+    },
+    {
+      "bytes": 1854,
+      "path": "check-a/report.txt",
+      "sha256": "f247864c4b54073feffb9540af8507f32490436089b3de3abf54ca4e87c5ec91"
+    },
+    {
+      "bytes": 137547,
+      "path": "check-a/side-by-side.png",
+      "sha256": "a81f7e54646cd78b0017aad9f3f878d9340d5850bdd573cffb5d9b13b9badeb8"
+    },
+    {
+      "bytes": 10670,
+      "path": "construction-contract.md",
+      "sha256": "f0625d7e16ef8984e6b959643ea0c889c012c620830a13dc6c6a6b26eb19998c"
+    },
+    {
+      "bytes": 2259,
+      "path": "report.md",
+      "sha256": "618b124252a15820deb90cedd328140a57c875d851636d5e86b1fa01ed017913"
+    },
+    {
+      "bytes": 114,
+      "path": "review-image-list.txt",
+      "sha256": "fa43532f64e860c3183de01401ec525ab131ee5640d1c071dfc14f626d0c4771"
+    },
+    {
+      "bytes": 15676,
+      "path": "source/build_a.py",
+      "sha256": "4b6bcb492bcc798cd28e08a33ff1e44341399f3e64b6e7d02e8e3d6a9e3d7697"
+    },
+    {
+      "bytes": 19101,
+      "path": "source/family-rules.py",
+      "sha256": "0a4ad7b2de414133e2bbb4a7636fed25e3c6735b7fd6120047803b996cc8be5f"
+    },
+    {
+      "bytes": 7785,
+      "path": "source/finalize_manifest.py",
+      "sha256": "4088ddc2d9415b82084fe35f5cd871fd7bfd9485051f51a742e7c7e96f5c1f13"
+    },
+    {
+      "bytes": 6745,
+      "path": "source/semantic-parameters.json",
+      "sha256": "c5ee1751f2418c9d66606792af08b374862b5129e98cff636fd7ac8698a42ece"
+    },
+    {
+      "bytes": 11158,
+      "path": "tests/test_a_cloth_identity.py",
+      "sha256": "7b9e5c2fc1568a78cba83352ef48a13ebe27b54e35632b6a72496e48be242ac0"
+    },
+    {
+      "bytes": 2306,
+      "path": "tests/test_scoped_repair.py",
+      "sha256": "db3092bdf28ae3a7ba42d6e36b3394078da94fbb418cb36006ad88a1982a2ad7"
+    },
+    {
+      "bytes": 12603,
+      "path": "v2-manifest.json",
+      "sha256": "5792cde0534bd1ee17d361d1a5af422aa6dcd822dafb45c851d0f273a1a5dfb4"
+    },
+    {
+      "bytes": 1922,
+      "path": "v2-report.txt",
+      "sha256": "84191f8defa284deec774952bf3c1ccf3e77903a61267757ae1ea09ee952807d"
+    }
+  ]
+}

@@ -30,6 +30,10 @@ def ellipsoid(name, center, radii, color, nu=20, nv=10, angle=0):
             yield (p,r,s), color, name
 
 
+HEAD_CENTER = (0.73, 1.22, 0.50)
+HEAD_RADII = (0.46, 0.52, 0.35)
+
+
 def hair_sheet():
     """One head-attached curved sheet; its normal twists blue→mint.
 
@@ -42,11 +46,16 @@ def hair_sheet():
         u, v = i/nu, 2*j/nv - 1
         width = 0.12 + 1.18 * math.sin(math.pi*u/2)
         twist = math.pi + math.pi*min(u/.28, 1.0)
-        return (0.78 - 2.95*u,
-                1.25 - 1.18*u + width*v*0.63*math.cos(twist)
-                + 0.12*math.sin(math.pi*u),
-                -0.48 + 0.20*math.cos(math.pi*u)
-                + width*v*0.25*math.sin(twist) + 0.25*v*v)
+        x = 0.78 - 2.95*u
+        y = (1.25 - 1.18*u + width*v*0.63*math.cos(twist)
+             + 0.12*math.sin(math.pi*u))
+        # Root z comes from the head ellipsoid's upper surface, not a projected overlap.
+        cx, cy, cz = HEAD_CENTER
+        rx, ry, rz = HEAD_RADII
+        surface = max(0.0, 1 - ((x-cx)/rx)**2 - ((y-cy)/ry)**2)
+        root_z = cz + rz*math.sqrt(surface)
+        z = (1-u)*root_z + u*(-0.48 + 0.20*math.cos(math.pi*u))
+        return (x, y, z + width*v*0.25*math.sin(twist) + 0.25*u*v*v)
     for i in range(nu):
         for j in range(nv):
             p,q,r,s = point(i,j),point(i+1,j),point(i+1,j+1),point(i,j+1)
@@ -88,7 +97,7 @@ def scene():
     yield from ellipsoid('arm-right',(1.26,-.50,.70),(.17,.68,.17),'#e0e9db',12,8,.35)
     yield from ellipsoid('hand',(1.40,-1.00,.78),(.21,.13,.11),'#f7e3cc',12,7)
     yield from ellipsoid('neck',(.82,.69,.35),(.22,.22,.19),'#f7e3cc',12,7)
-    yield from ellipsoid('head',(.73,1.22,.50),(.46,.52,.35),'#f7e9d5',20,12)
+    yield from ellipsoid('head',HEAD_CENTER,HEAD_RADII,'#f7e9d5',20,12)
     yield from ellipsoid('brim',(.66,1.65,.36),(1.18,.10,.59),'#5c9dab',28,5,-.10)
     yield from ellipsoid('crown',(.77,1.84,.39),(.49,.27,.43),'#344361',20,8)
     for x in (.25,1.15):

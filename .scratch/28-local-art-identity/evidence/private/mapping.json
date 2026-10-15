@@ -1,0 +1,71 @@
+{
+  "column_policy_counts": {
+    "0": {
+      "SHARED_FIXED_LOCAL": 2,
+      "SIDE_DEPENDENT": 2
+    },
+    "1": {
+      "SHARED_FIXED_LOCAL": 2,
+      "SIDE_DEPENDENT": 2
+    }
+  },
+  "mapping_is_evaluator_private": true,
+  "placements": [
+    {
+      "case_id": "negative-dminus",
+      "column": 0,
+      "policy": "SHARED_FIXED_LOCAL",
+      "row": 0
+    },
+    {
+      "case_id": "negative-dminus",
+      "column": 1,
+      "policy": "SIDE_DEPENDENT",
+      "row": 0
+    },
+    {
+      "case_id": "variation-2pi3-dplus",
+      "column": 0,
+      "policy": "SIDE_DEPENDENT",
+      "row": 1
+    },
+    {
+      "case_id": "variation-2pi3-dplus",
+      "column": 1,
+      "policy": "SHARED_FIXED_LOCAL",
+      "row": 1
+    },
+    {
+      "case_id": "primary-dplus",
+      "column": 0,
+      "policy": "SHARED_FIXED_LOCAL",
+      "row": 2
+    },
+    {
+      "case_id": "primary-dplus",
+      "column": 1,
+      "policy": "SIDE_DEPENDENT",
+      "row": 2
+    },
+    {
+      "case_id": "card-dplus",
+      "column": 0,
+      "policy": "SIDE_DEPENDENT",
+      "row": 3
+    },
+    {
+      "case_id": "card-dplus",
+      "column": 1,
+      "policy": "SHARED_FIXED_LOCAL",
+      "row": 3
+    }
+  ],
+  "rows": [
+    "negative-dminus",
+    "variation-2pi3-dplus",
+    "primary-dplus",
+    "card-dplus"
+  ],
+  "schema": "local-art-identity-private-mapping/v1",
+  "seed": 2801
+}

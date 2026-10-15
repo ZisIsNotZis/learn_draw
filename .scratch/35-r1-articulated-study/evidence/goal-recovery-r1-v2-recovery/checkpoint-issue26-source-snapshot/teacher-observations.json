@@ -1,0 +1,408 @@
+{
+  "role": "teacher-only source and coarse semantic region observations; not renderer input",
+  "source": "image.jpg",
+  "source_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+  "source_dimensions": [
+    1024,
+    1024
+  ],
+  "registered_crop_source_xyxy": [
+    500,
+    320,
+    900,
+    800
+  ],
+  "crop_dimensions": [
+    400,
+    480
+  ],
+  "focus_crop_xyxy_within_registered_crop": [
+    74,
+    65,
+    384,
+    418
+  ],
+  "mapping": "crop (x,y) maps to source (500+x,320+y); no resize/stretch",
+  "coordinate_scope": "Only feature ROI windows and handwritten compact semantic anchors are extracted from the teacher; no dense source contour is sent to runtime.",
+  "regions": {
+    "bodice-and-shoulder": {
+      "purpose": "central light garment panel; neckline to curved hem",
+      "rough_observation_roi_crop_xyxy": [
+        82,
+        112,
+        331,
+        405
+      ],
+      "same_region_roi_source_xyxy": [
+        582,
+        432,
+        831,
+        725
+      ],
+      "roi_dimensions": [
+        249,
+        293
+      ],
+      "most_frequent_exact_jpeg_rgb_samples": [
+        {
+          "rgb": [
+            217,
+            228,
+            218
+          ],
+          "pixels": 2907
+        },
+        {
+          "rgb": [
+            225,
+            231,
+            220
+          ],
+          "pixels": 2745
+        },
+        {
+          "rgb": [
+            224,
+            230,
+            219
+          ],
+          "pixels": 2466
+        },
+        {
+          "rgb": [
+            77,
+            166,
+            179
+          ],
+          "pixels": 2385
+        },
+        {
+          "rgb": [
+            218,
+            229,
+            219
+          ],
+          "pixels": 2185
+        }
+      ],
+      "interpretation_limit": "rough teacher viewing window only; not an object mask, contour, or renderer input"
+    },
+    "right-sleeve-cap": {
+      "purpose": "puffed right sleeve attached to shoulder panel",
+      "rough_observation_roi_crop_xyxy": [
+        267,
+        106,
+        352,
+        286
+      ],
+      "same_region_roi_source_xyxy": [
+        767,
+        426,
+        852,
+        606
+      ],
+      "roi_dimensions": [
+        85,
+        180
+      ],
+      "most_frequent_exact_jpeg_rgb_samples": [
+        {
+          "rgb": [
+            225,
+            231,
+            220
+          ],
+          "pixels": 2670
+        },
+        {
+          "rgb": [
+            224,
+            230,
+            219
+          ],
+          "pixels": 1791
+        },
+        {
+          "rgb": [
+            231,
+            232,
+            222
+          ],
+          "pixels": 1238
+        },
+        {
+          "rgb": [
+            226,
+            233,
+            221
+          ],
+          "pixels": 599
+        },
+        {
+          "rgb": [
+            222,
+            231,
+            219
+          ],
+          "pixels": 513
+        }
+      ],
+      "interpretation_limit": "rough teacher viewing window only; not an object mask, contour, or renderer input"
+    },
+    "right-cuff": {
+      "purpose": "dark band at the sleeve opening",
+      "rough_observation_roi_crop_xyxy": [
+        326,
+        278,
+        399,
+        331
+      ],
+      "same_region_roi_source_xyxy": [
+        826,
+        598,
+        899,
+        651
+      ],
+      "roi_dimensions": [
+        73,
+        53
+      ],
+      "most_frequent_exact_jpeg_rgb_samples": [
+        {
+          "rgb": [
+            45,
+            59,
+            88
+          ],
+          "pixels": 517
+        },
+        {
+          "rgb": [
+            45,
+            59,
+            86
+          ],
+          "pixels": 180
+        },
+        {
+          "rgb": [
+            44,
+            58,
+            85
+          ],
+          "pixels": 122
+        },
+        {
+          "rgb": [
+            44,
+            58,
+            87
+          ],
+          "pixels": 114
+        },
+        {
+          "rgb": [
+            201,
+            171,
+            188
+          ],
+          "pixels": 83
+        }
+      ],
+      "interpretation_limit": "rough teacher viewing window only; not an object mask, contour, or renderer input"
+    },
+    "visible-neck-skin": {
+      "purpose": "small source-visible skin region inside the collar opening",
+      "rough_observation_roi_crop_xyxy": [
+        196,
+        38,
+        276,
+        130
+      ],
+      "same_region_roi_source_xyxy": [
+        696,
+        358,
+        776,
+        450
+      ],
+      "roi_dimensions": [
+        80,
+        92
+      ],
+      "most_frequent_exact_jpeg_rgb_samples": [
+        {
+          "rgb": [
+            150,
+            195,
+            214
+          ],
+          "pixels": 731
+        },
+        {
+          "rgb": [
+            216,
+            174,
+            193
+          ],
+          "pixels": 316
+        },
+        {
+          "rgb": [
+            241,
+            231,
+            212
+          ],
+          "pixels": 188
+        },
+        {
+          "rgb": [
+            152,
+            195,
+            212
+          ],
+          "pixels": 160
+        },
+        {
+          "rgb": [
+            150,
+            196,
+            212
+          ],
+          "pixels": 152
+        }
+      ],
+      "interpretation_limit": "rough teacher viewing window only; not an object mask, contour, or renderer input"
+    },
+    "layered-collar": {
+      "purpose": "cool pale folded collar under the neck",
+      "rough_observation_roi_crop_xyxy": [
+        122,
+        61,
+        311,
+        143
+      ],
+      "same_region_roi_source_xyxy": [
+        622,
+        381,
+        811,
+        463
+      ],
+      "roi_dimensions": [
+        189,
+        82
+      ],
+      "most_frequent_exact_jpeg_rgb_samples": [
+        {
+          "rgb": [
+            150,
+            195,
+            214
+          ],
+          "pixels": 1226
+        },
+        {
+          "rgb": [
+            110,
+            201,
+            198
+          ],
+          "pixels": 708
+        },
+        {
+          "rgb": [
+            110,
+            202,
+            196
+          ],
+          "pixels": 482
+        },
+        {
+          "rgb": [
+            152,
+            197,
+            213
+          ],
+          "pixels": 470
+        },
+        {
+          "rgb": [
+            150,
+            196,
+            212
+          ],
+          "pixels": 335
+        }
+      ],
+      "interpretation_limit": "rough teacher viewing window only; not an object mask, contour, or renderer input"
+    },
+    "bow-and-tails": {
+      "purpose": "pink paired loops, central gather and descending cloth tails",
+      "rough_observation_roi_crop_xyxy": [
+        39,
+        133,
+        273,
+        286
+      ],
+      "same_region_roi_source_xyxy": [
+        539,
+        453,
+        773,
+        606
+      ],
+      "roi_dimensions": [
+        234,
+        153
+      ],
+      "most_frequent_exact_jpeg_rgb_samples": [
+        {
+          "rgb": [
+            111,
+            201,
+            194
+          ],
+          "pixels": 1576
+        },
+        {
+          "rgb": [
+            211,
+            78,
+            127
+          ],
+          "pixels": 1287
+        },
+        {
+          "rgb": [
+            210,
+            79,
+            127
+          ],
+          "pixels": 1231
+        },
+        {
+          "rgb": [
+            224,
+            230,
+            219
+          ],
+          "pixels": 1205
+        },
+        {
+          "rgb": [
+            225,
+            231,
+            220
+          ],
+          "pixels": 1132
+        }
+      ],
+      "interpretation_limit": "rough teacher viewing window only; not an object mask, contour, or renderer input"
+    }
+  },
+  "evidence_files": {
+    "teacher-crop-registered.png": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+    "teacher-crop-focus.png": "30ecc088abc9c032153033bd0657224357518e81caa61a2a5e3bfd6151505c47",
+    "teacher-grid.png": "2a5c86567b3d6cfdd91e4ce7c6e30e59439af1479ea01a3364532df59a8cbb7f",
+    "teacher-region-windows.png": "dd34bf217ec609dad70081bcfbab6983d477faf17c8a95885c7a9e048d0553e2"
+  },
+  "runtime_boundary": "scene/reproduction imports neither this script nor any image output; source image stays closed during scene construction and render"
+}

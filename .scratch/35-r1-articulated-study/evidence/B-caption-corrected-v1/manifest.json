@@ -1,0 +1,78 @@
+{
+  "revision": "B-caption-corrected-v1",
+  "source": "caption-only derivative of frozen goal-recovery-r1-v2-completion rendered/B-original-support.svg",
+  "base_sha256": "2fce35f4503ad806f22c8e2e9e737f12939cbd9d977050a34eddff26b5da538d",
+  "new_svg_sha256": "daf5dfd2afabc7ed639942c180d209f0380e147c75aad353da50f859bc7c03c9",
+  "base_png_sha256": "81860c9da0a4d7be7f8a6cd04e1f30ef64a9712c6063ca8e42cb65f44311c193",
+  "new_png_sha256": "cc62191fae497922f8eb0582a0080a3dbf0694791d59edc10f4627c6a16bf733",
+  "caption_ascii": "bent arm - open hand supports dish from below",
+  "text_nodes_changed": 2,
+  "prior_claim_remaining": false,
+  "source_diff": "only two exact XML text-node character-data replacements; restoring new caption strings bytewise yields original SVG exactly; XML parse passed; all geometry/path/style/transform/node ordering/colour/viewport bytes therefore unchanged",
+  "caption_rectangles_px_xyxy": [
+    [
+      60,
+      595,
+      390,
+      616
+    ],
+    [
+      510,
+      595,
+      840,
+      616
+    ]
+  ],
+  "changed_pixel_bbox_xyxy": [
+    79,
+    603,
+    821,
+    615
+  ],
+  "pixels_outside_caption_rectangles": "exactly equal",
+  "control_label": "unchanged: CONTROL \u2014 near miss",
+  "sight_probes": [
+    {
+      "name": "hand-support",
+      "center_px": [
+        375,
+        420
+      ],
+      "crop_px": [
+        367,
+        412,
+        384,
+        429
+      ],
+      "equal": true
+    },
+    {
+      "name": "head",
+      "center_px": [
+        225,
+        205
+      ],
+      "crop_px": [
+        217,
+        197,
+        234,
+        214
+      ],
+      "equal": true
+    }
+  ],
+  "render_command": "scripts/draw render <new SVG> -o <new PNG> (run once)",
+  "draw_check_command": "scripts/draw check <new PNG> --outdir <new checks/B> (reference-free)",
+  "review_image_list": ".scratch/35-r1-articulated-study/evidence/B-caption-corrected-v1/checks/B/report.txt",
+  "old_candidate_manifest_sha256": "e76a94dcabd3bfa6c5a6f249c715d969f9fce21780c89f32b1940022967319d2",
+  "finite_art_disposition": "B body/action finite gate PASS per supplied independent disposition; caption correction pending fresh Main-routed review; not R1/transfer/heldout/user PASS",
+  "review_draft_dimensions_px": [
+    256,
+    121
+  ],
+  "evidence_files_sha256": {
+    "public-caption-disposition.md": "3d43168139f5187ba677e808018a4d2549902704b8baf4a818fe3406e6465f15",
+    "checks/B/report.txt": "967e01315f0b328f696479f9c3b1809fd729a76ae8274aa238e41fab5ea3b052",
+    "checks/B/draft.png": "85304ad93ded99bbe1431fa18d6ee1096b9738ad1e4dcabd440038f86366ac80"
+  }
+}

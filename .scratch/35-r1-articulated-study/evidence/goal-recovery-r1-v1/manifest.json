@@ -1,0 +1,749 @@
+{
+  "revision": "goal-recovery-r1-v1",
+  "status": "CANDIDATE_FROZEN_FOR_INDEPENDENT_REVIEW; no visual/art/R1 PASS claimed",
+  "ticket": ".scratch/35-r1-articulated-study/issues/24-goal-level-artistic-recovery.md",
+  "source_set_sha256": "c77499e3693d1d1c0aeda32ec0917565a621f55be90b7e5188328c4ba235690b",
+  "source_sha256": {
+    "observe_teacher.py": "9528838043a90e856b5c5e269d5e542c1ea04338b1c4d694ae57ac251e78f7fc",
+    "shape-grammar.md": "b0a76158b3557d03b728f4ced3e7c3f2204bf1d3ebbec93e003cbd13fd0d363e",
+    "teacher-observations.json": "591e8b9b33d3f4c277335a99933200b19bf9dc0f2ad9aaa5d0080be03cf0ce62",
+    "spatial_adapter.py": "1db424e5b6be6f6511b5112e53f07dabd4d73b0319541ffcad641509e4fa1678",
+    "r1_scene.py": "35af132cb618b9508b3f31b2b9c18f8d462ebbda84f11170f890251f28641932",
+    "run_r1.py": "c49cd8241d4299ca57adeacc4ab5f8ba7adecf12658021daf1c0b8052b489f71",
+    "compose_b_sheet.py": "6bbd13b5e94d17f4d3a19829f2f7dc9a3a96dcf1f453a01ea8e6f83dcd57e344",
+    "finalize_manifest.py": "8d2b1255e2aba23da2286e773ff63f3dc614d6df4b8dd4abef0bcdfc94b99a33",
+    "test_goal_recovery_r1.py": "bf4cb35fe390d4642ee5c4bda2838607f52b5596bedce69f2b48677c489002be"
+  },
+  "rendered_sha256": {
+    "rendered/A-observed-garment.svg": "412d78ead2aec6a14b73c826925f938e8381658acf1f46fa0b2b097c452f26a3",
+    "rendered/A-observed-garment.png": "45482580c62db4d915c88fa22d688b93b7aafe90e22017310550fd7b4f94ce46",
+    "rendered/B-baseline-support.svg": "4c12a1f40013df8019c1a615acfcc431fa14609594fedc1e73411f6e0a902ba2",
+    "rendered/B-baseline-support.png": "8ba19da105a372139b09795f8346252c836c2713213bb2ef8b9cdd48eb92004d",
+    "rendered/B-variant-support.svg": "c181c9317540f2c3fcb7fc1a2bfbc5304ddc3f9df010b40e8440a8e14cbc9441",
+    "rendered/B-variant-support.png": "78a638a353e426fc8ca0f00838f1896e0f50adba0f033461f14f29bf6a09ea7b",
+    "rendered/B-near-miss-control.svg": "a9c6bc6d5c31398574cd6ff03bcf33723f6fe6ea59d6ead975c70a77ac0112c5",
+    "rendered/B-near-miss-control.png": "5b76139975af7e7aff3f745b72c7e107c4c5cf3713896ed40a99c76bf2263fb0",
+    "rendered/B-original-support.svg": "f443ec32d026cddd0dfe1d60a8538ca6d232b71e9a57de32332cbac7aa8cd01e",
+    "rendered/B-original-support.png": "af6774f27dd71a3a33ad2e38fe071ad6858d84db27ea9f1d1bbca55a2a73669b"
+  },
+  "teacher_evidence_sha256": {
+    "teacher-crop-registered.png": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+    "teacher-crop-focus.png": "30ecc088abc9c032153033bd0657224357518e81caa61a2a5e3bfd6151505c47",
+    "teacher-grid.png": "2a5c86567b3d6cfdd91e4ce7c6e30e59439af1479ea01a3364532df59a8cbb7f",
+    "teacher-region-windows.png": "9efa912f86342e36edf389be67871c449f7cc06de9e68535fe1d58767bfedd39",
+    "teacher-observations.json": "591e8b9b33d3f4c277335a99933200b19bf9dc0f2ad9aaa5d0080be03cf0ce62"
+  },
+  "review_bundle_sha256": {
+    "checks/A/draft-fullres.png": "f460f4f595a3bec7d4a0feb1232d938f46512a557f03e82f0e8ca5bb7e25824b",
+    "checks/A/draft.png": "45482580c62db4d915c88fa22d688b93b7aafe90e22017310550fd7b4f94ce46",
+    "checks/A/region-1.png": "0ac2adfead722dcd63953033fd9284ae4d0dd03aeced06e8220dc4ca3ddaaea7",
+    "checks/A/region-2.png": "9ea9b6c43ca7f1b091a8af21d548ddd8ea288c80a922faf5bcb54d4769bf017d",
+    "checks/A/region-3.png": "600ffe4162a007c2ab27b114f1a26e70dedaa24da393a4729c5ab5ff464edfa7",
+    "checks/A/report.txt": "d47124bed5ae98bb8e60093da864717433aa010498fef5c9fe81033cc4787bd4",
+    "checks/A/side-by-side.png": "6b7822a0fc6a8abfb484c3aaab7aabc00a4367ce90089817d90ab73eb5c6c002",
+    "checks/B/draft.png": "af6774f27dd71a3a33ad2e38fe071ad6858d84db27ea9f1d1bbca55a2a73669b",
+    "checks/B/report.txt": "96815974b33ff762ac8b626e83c11dcc4d879517815a40b3269f774310525954"
+  },
+  "teacher_observation": {
+    "source_path": "image.jpg",
+    "source_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+    "crop_path": "teacher-crop-registered.png",
+    "crop_sha256": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+    "crop_source_xyxy": [
+      500,
+      320,
+      900,
+      800
+    ],
+    "crop_dimensions": [
+      400,
+      480
+    ],
+    "resize": "none",
+    "observed_only_windows_path": "teacher-region-windows.png",
+    "window_manifest_path": "teacher-observations.json",
+    "engine_input": "none; scene/reproduction accepts semantic case only"
+  },
+  "artwork": {
+    "A": {
+      "svg": "rendered/A-observed-garment.svg",
+      "png": "rendered/A-observed-garment.png",
+      "claim": "teacher-fitted shoulder/upper-torso bodice, visible right puff sleeve/cuff, layered collar/trim, bow lobes/tails/folds; no hair/hand/pose claim",
+      "review_report": "checks/A/report.txt",
+      "review_image_list": [
+        ".scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/checks/A/side-by-side.png",
+        ".scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/checks/A/draft-fullres.png",
+        ".scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/checks/A/region-1.png",
+        ".scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/checks/A/region-2.png",
+        ".scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/checks/A/region-3.png"
+      ]
+    },
+    "B": {
+      "svg_contact_sheet": "rendered/B-original-support.svg",
+      "png_contact_sheet": "rendered/B-original-support.png",
+      "panels": [
+        {
+          "case": "baseline",
+          "svg": "rendered/B-baseline-support.svg",
+          "png": "rendered/B-baseline-support.png"
+        },
+        {
+          "case": "variant",
+          "svg": "rendered/B-variant-support.svg",
+          "png": "rendered/B-variant-support.png"
+        },
+        {
+          "case": "control",
+          "svg": "rendered/B-near-miss-control.svg",
+          "png": "rendered/B-near-miss-control.png"
+        }
+      ],
+      "claim": "original bent-arm articulated hand supports shallow fruit dish; raised/wider support variant; unchanged-hand near-miss control",
+      "review_report": "checks/B/report.txt",
+      "review_image_list": [
+        ".scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/checks/B/draft.png"
+      ]
+    }
+  },
+  "case_geometry_evidence": {
+    "baseline": {
+      "action": "upturned connected palm supports shallow fruit dish with three fingertips; thumb braces the same left foot edge",
+      "successful_contact_world": "three fingertip support anchors and thumb brace equal their named dish-foot world points",
+      "successful_side_contact": "geometry shares the named left foot touch while the full finger/prop silhouette remains separate in area",
+      "control": "dish alone moved away from the unchanged hand by authored 0.34 scene units; labeled near miss",
+      "contact_point_crop_local": "not applicable; B is original and uses scene coordinates",
+      "collision_check": {
+        "declared_touches": [
+          {
+            "parts": [
+              "baseline-dish-wall",
+              "baseline-finger-index"
+            ],
+            "points": [
+              [
+                1.7955999999999999,
+                1.4
+              ]
+            ],
+            "world_equality": true,
+            "projected_footprints_overlap": false,
+            "noncontact_area_depth_separated": false
+          },
+          {
+            "parts": [
+              "baseline-dish-wall",
+              "baseline-finger-middle"
+            ],
+            "points": [
+              [
+                2.05,
+                1.4
+              ]
+            ],
+            "world_equality": true,
+            "projected_footprints_overlap": false,
+            "noncontact_area_depth_separated": false
+          },
+          {
+            "parts": [
+              "baseline-dish-wall",
+              "baseline-finger-ring"
+            ],
+            "points": [
+              [
+                2.3044,
+                1.4
+              ]
+            ],
+            "world_equality": true,
+            "projected_footprints_overlap": false,
+            "noncontact_area_depth_separated": false
+          },
+          {
+            "parts": [
+              "baseline-dish-wall",
+              "baseline-thumb-brace"
+            ],
+            "points": [
+              [
+                1.7955999999999999,
+                1.4
+              ]
+            ],
+            "world_equality": true,
+            "projected_footprints_overlap": false,
+            "noncontact_area_depth_separated": false
+          }
+        ],
+        "depth-separated_overlaps": [
+          {
+            "parts": [
+              "baseline-shirt-panel",
+              "baseline-torso"
+            ],
+            "minimum_depth_separation": 0.030679999999999995
+          },
+          {
+            "parts": [
+              "baseline-neck",
+              "baseline-shirt-panel"
+            ],
+            "minimum_depth_separation": 0.030679999999999995
+          },
+          {
+            "parts": [
+              "baseline-hair",
+              "baseline-head"
+            ],
+            "minimum_depth_separation": 0.05068
+          },
+          {
+            "parts": [
+              "baseline-dish-wall",
+              "baseline-forearm"
+            ],
+            "minimum_depth_separation": 0.009791707749999573
+          },
+          {
+            "parts": [
+              "baseline-dish-rim",
+              "baseline-forearm"
+            ],
+            "minimum_depth_separation": 0.06989999999999999
+          },
+          {
+            "parts": [
+              "baseline-dish-rim",
+              "baseline-dish-wall"
+            ],
+            "minimum_depth_separation": 0.05999999999999999
+          },
+          {
+            "parts": [
+              "baseline-dish-wall",
+              "baseline-fruit"
+            ],
+            "minimum_depth_separation": 0.07999999999999999
+          },
+          {
+            "parts": [
+              "baseline-dish-rim",
+              "baseline-fruit"
+            ],
+            "minimum_depth_separation": 0.01999999999999999
+          },
+          {
+            "parts": [
+              "baseline-fruit",
+              "baseline-leaf"
+            ],
+            "minimum_depth_separation": 0.019999999999999962
+          }
+        ],
+        "bounded_coplanar_attachment_joints": [
+          {
+            "parts": [
+              "baseline-neck",
+              "baseline-torso"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "baseline-torso",
+              "baseline-upper-arm"
+            ],
+            "bounded_support_transition_radius": 0.34
+          },
+          {
+            "parts": [
+              "baseline-head",
+              "baseline-neck"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "baseline-forearm",
+              "baseline-upper-arm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "baseline-forearm",
+              "baseline-palm"
+            ],
+            "bounded_support_transition_radius": 0.34
+          },
+          {
+            "parts": [
+              "baseline-finger-index",
+              "baseline-palm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "baseline-finger-middle",
+              "baseline-palm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "baseline-finger-ring",
+              "baseline-palm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "baseline-palm",
+              "baseline-thumb-brace"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "baseline-finger-index",
+              "baseline-thumb-brace"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "baseline-finger-middle",
+              "baseline-thumb-brace"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          }
+        ],
+        "scope": "Actual case component footprints/supports only; not a general volume-physics claim"
+      },
+      "semantic_case": "baseline",
+      "dish_width_ratio": 1.0,
+      "wrist_target": [
+        1.07,
+        1.22
+      ],
+      "dish_center": [
+        2.05,
+        1.74
+      ]
+    },
+    "variant": {
+      "action": "upturned connected palm supports shallow fruit dish with three fingertips; thumb braces the same left foot edge",
+      "successful_contact_world": "three fingertip support anchors and thumb brace equal their named dish-foot world points",
+      "successful_side_contact": "geometry shares the named left foot touch while the full finger/prop silhouette remains separate in area",
+      "control": "dish alone moved away from the unchanged hand by authored 0.34 scene units; labeled near miss",
+      "contact_point_crop_local": "not applicable; B is original and uses scene coordinates",
+      "collision_check": {
+        "declared_touches": [
+          {
+            "parts": [
+              "variant-dish-wall",
+              "variant-finger-index"
+            ],
+            "points": [
+              [
+                1.7650719999999998,
+                1.6899999999999997
+              ]
+            ],
+            "world_equality": true,
+            "projected_footprints_overlap": false,
+            "noncontact_area_depth_separated": false
+          },
+          {
+            "parts": [
+              "variant-dish-wall",
+              "variant-finger-middle"
+            ],
+            "points": [
+              [
+                2.05,
+                1.6899999999999997
+              ]
+            ],
+            "world_equality": true,
+            "projected_footprints_overlap": false,
+            "noncontact_area_depth_separated": false
+          },
+          {
+            "parts": [
+              "variant-dish-wall",
+              "variant-finger-ring"
+            ],
+            "points": [
+              [
+                2.3349279999999997,
+                1.6899999999999997
+              ]
+            ],
+            "world_equality": true,
+            "projected_footprints_overlap": false,
+            "noncontact_area_depth_separated": false
+          },
+          {
+            "parts": [
+              "variant-dish-wall",
+              "variant-thumb-brace"
+            ],
+            "points": [
+              [
+                1.7650719999999998,
+                1.6899999999999997
+              ]
+            ],
+            "world_equality": true,
+            "projected_footprints_overlap": false,
+            "noncontact_area_depth_separated": false
+          }
+        ],
+        "depth-separated_overlaps": [
+          {
+            "parts": [
+              "variant-shirt-panel",
+              "variant-torso"
+            ],
+            "minimum_depth_separation": 0.030679999999999995
+          },
+          {
+            "parts": [
+              "variant-neck",
+              "variant-shirt-panel"
+            ],
+            "minimum_depth_separation": 0.030679999999999995
+          },
+          {
+            "parts": [
+              "variant-hair",
+              "variant-head"
+            ],
+            "minimum_depth_separation": 0.05068
+          },
+          {
+            "parts": [
+              "variant-dish-wall",
+              "variant-forearm"
+            ],
+            "minimum_depth_separation": 0.00837951267999907
+          },
+          {
+            "parts": [
+              "variant-dish-rim",
+              "variant-forearm"
+            ],
+            "minimum_depth_separation": 0.06850079999999999
+          },
+          {
+            "parts": [
+              "variant-dish-rim",
+              "variant-dish-wall"
+            ],
+            "minimum_depth_separation": 0.05999999999999999
+          },
+          {
+            "parts": [
+              "variant-dish-wall",
+              "variant-fruit"
+            ],
+            "minimum_depth_separation": 0.07999999999999999
+          },
+          {
+            "parts": [
+              "variant-dish-rim",
+              "variant-fruit"
+            ],
+            "minimum_depth_separation": 0.01999999999999999
+          },
+          {
+            "parts": [
+              "variant-fruit",
+              "variant-leaf"
+            ],
+            "minimum_depth_separation": 0.019999999999999962
+          }
+        ],
+        "bounded_coplanar_attachment_joints": [
+          {
+            "parts": [
+              "variant-neck",
+              "variant-torso"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "variant-torso",
+              "variant-upper-arm"
+            ],
+            "bounded_support_transition_radius": 0.34
+          },
+          {
+            "parts": [
+              "variant-head",
+              "variant-neck"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "variant-forearm",
+              "variant-upper-arm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "variant-forearm",
+              "variant-palm"
+            ],
+            "bounded_support_transition_radius": 0.34
+          },
+          {
+            "parts": [
+              "variant-finger-index",
+              "variant-palm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "variant-finger-middle",
+              "variant-palm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "variant-finger-ring",
+              "variant-palm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "variant-palm",
+              "variant-thumb-brace"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "variant-finger-index",
+              "variant-thumb-brace"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "variant-finger-middle",
+              "variant-thumb-brace"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          }
+        ],
+        "scope": "Actual case component footprints/supports only; not a general volume-physics claim"
+      },
+      "semantic_case": "variant",
+      "dish_width_ratio": 1.12,
+      "wrist_target": [
+        1.07,
+        1.52
+      ],
+      "dish_center": [
+        2.05,
+        2.03
+      ]
+    },
+    "near_miss_control": {
+      "action": "upturned connected palm supports shallow fruit dish with three fingertips; thumb braces the same left foot edge",
+      "successful_contact_world": "three fingertip support anchors and thumb brace equal their named dish-foot world points",
+      "successful_side_contact": "geometry shares the named left foot touch while the full finger/prop silhouette remains separate in area",
+      "control": "dish alone moved away from the unchanged hand by authored 0.34 scene units; labeled near miss",
+      "contact_point_crop_local": "not applicable; B is original and uses scene coordinates",
+      "collision_check": {
+        "declared_touches": [],
+        "depth-separated_overlaps": [
+          {
+            "parts": [
+              "control-shirt-panel",
+              "control-torso"
+            ],
+            "minimum_depth_separation": 0.030679999999999995
+          },
+          {
+            "parts": [
+              "control-neck",
+              "control-shirt-panel"
+            ],
+            "minimum_depth_separation": 0.030679999999999995
+          },
+          {
+            "parts": [
+              "control-hair",
+              "control-head"
+            ],
+            "minimum_depth_separation": 0.05068
+          },
+          {
+            "parts": [
+              "control-dish-wall",
+              "control-upper-arm"
+            ],
+            "minimum_depth_separation": 0.039590588219803595
+          },
+          {
+            "parts": [
+              "control-dish-rim",
+              "control-upper-arm"
+            ],
+            "minimum_depth_separation": 0.06989999999999999
+          },
+          {
+            "parts": [
+              "control-dish-wall",
+              "control-forearm"
+            ],
+            "minimum_depth_separation": 0.03975270301183378
+          },
+          {
+            "parts": [
+              "control-dish-rim",
+              "control-dish-wall"
+            ],
+            "minimum_depth_separation": 0.0291
+          },
+          {
+            "parts": [
+              "control-dish-wall",
+              "control-fruit"
+            ],
+            "minimum_depth_separation": 0.05882586654754067
+          },
+          {
+            "parts": [
+              "control-dish-rim",
+              "control-fruit"
+            ],
+            "minimum_depth_separation": 0.01999999999999999
+          },
+          {
+            "parts": [
+              "control-fruit",
+              "control-leaf"
+            ],
+            "minimum_depth_separation": 0.019999999999999962
+          }
+        ],
+        "bounded_coplanar_attachment_joints": [
+          {
+            "parts": [
+              "control-neck",
+              "control-torso"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "control-torso",
+              "control-upper-arm"
+            ],
+            "bounded_support_transition_radius": 0.34
+          },
+          {
+            "parts": [
+              "control-head",
+              "control-neck"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "control-forearm",
+              "control-upper-arm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "control-forearm",
+              "control-palm"
+            ],
+            "bounded_support_transition_radius": 0.34
+          },
+          {
+            "parts": [
+              "control-finger-index",
+              "control-palm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "control-finger-middle",
+              "control-palm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "control-finger-ring",
+              "control-palm"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "control-palm",
+              "control-thumb-brace"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "control-finger-index",
+              "control-thumb-brace"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          },
+          {
+            "parts": [
+              "control-finger-middle",
+              "control-thumb-brace"
+            ],
+            "bounded_to_attachment_radius": 0.42
+          }
+        ],
+        "scope": "Actual case component footprints/supports only; not a general volume-physics claim"
+      },
+      "semantic_case": "control",
+      "dish_width_ratio": 1.0,
+      "wrist_target": [
+        1.07,
+        1.22
+      ],
+      "dish_center": [
+        2.05,
+        2.08
+      ]
+    }
+  },
+  "architecture": {
+    "support_pipeline": "revision-local composition over existing smooth sampler/guard, SupportFrame/Camera/component faces, vector_visibility, visible_segment_spans, compound path mapping",
+    "visibility": "depth-derived; no manually authored visibility intervals",
+    "scene_collision_scope": "actual affine support footprints/declared contacts for each B case; no general volume-physics claim",
+    "drawing_metrics": "draw check outputs are breakage alarms only; not tuned"
+  },
+  "gates_open": [
+    "independent image-only art/readability review",
+    "independent structural/depth review as assigned by Main",
+    "heldout compatibility/release and later distinct drawing",
+    "separate deterministic reproduction acceptance",
+    "user feedback",
+    "all R1 art/physical/depth/attachment gates"
+  ],
+  "no_staging_or_commit": true
+}

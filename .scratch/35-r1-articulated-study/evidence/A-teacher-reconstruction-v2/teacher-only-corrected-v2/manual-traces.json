@@ -1,0 +1,168 @@
+[
+  {
+    "id": "bodice-left-visible-interval",
+    "part": "bodice",
+    "crop_xy": [
+      [
+        123,
+        140
+      ],
+      [
+        113,
+        169
+      ],
+      [
+        96,
+        202
+      ],
+      [
+        87,
+        222
+      ],
+      [
+        95,
+        239
+      ]
+    ],
+    "status": "approximate visible outer-edge neighborhood; bow/overlap terminates observation; not a complete silhouette"
+  },
+  {
+    "id": "bodice-lower-visible-interval",
+    "part": "bodice-lower-edge",
+    "crop_xy": [
+      [
+        145,
+        397
+      ],
+      [
+        174,
+        405
+      ],
+      [
+        205,
+        406
+      ],
+      [
+        236,
+        401
+      ],
+      [
+        250,
+        396
+      ]
+    ],
+    "status": "approximate visible lower dark/color edge interval; not a crop-cut hem or inferred complete hem"
+  },
+  {
+    "id": "left-loop-outer-free-edge",
+    "part": "left bow loop",
+    "crop_xy": [
+      [
+        128,
+        145
+      ],
+      [
+        122,
+        157
+      ],
+      [
+        120,
+        177
+      ],
+      [
+        124,
+        194
+      ],
+      [
+        137,
+        205
+      ]
+    ],
+    "status": "approximate short visible outer lobe edge only; stops before gathered overlap, not a closed loop contour"
+  },
+  {
+    "id": "right-loop-outer-free-edge",
+    "part": "right bow loop",
+    "crop_xy": [
+      [
+        265,
+        166
+      ],
+      [
+        270,
+        180
+      ],
+      [
+        268,
+        194
+      ],
+      [
+        258,
+        213
+      ],
+      [
+        243,
+        228
+      ]
+    ],
+    "status": "approximate visible outer lobe edge only; overlap and lower continuation are not completed"
+  },
+  {
+    "id": "leftward-tail-centerline-visible",
+    "part": "pink left tail",
+    "crop_xy": [
+      [
+        167,
+        197
+      ],
+      [
+        143,
+        209
+      ],
+      [
+        116,
+        220
+      ],
+      [
+        88,
+        226
+      ],
+      [
+        63,
+        216
+      ],
+      [
+        45,
+        209
+      ]
+    ],
+    "status": "WITHDRAWN: entire trace, including every station, is historical annotation only; not source-backed centerline, width, axis, or fit input"
+  },
+  {
+    "id": "down-tail-centerline-visible",
+    "part": "pink down tail",
+    "crop_xy": [
+      [
+        169,
+        195
+      ],
+      [
+        174,
+        218
+      ],
+      [
+        166,
+        240
+      ],
+      [
+        157,
+        259
+      ],
+      [
+        158,
+        274
+      ]
+    ],
+    "status": "approximate center direction only; terminates at UNKNOWN overlap neighborhood, not a point tip"
+  }
+]

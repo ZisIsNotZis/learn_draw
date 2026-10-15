@@ -1,0 +1,87 @@
+{
+  "status": "PRE_RENDER_SOURCE_OUTPUT_PREFLIGHT_PASSED",
+  "files": {
+    "A": {
+      "path": "rendered/A-observed-garment.svg",
+      "sha256": "35d6ced9175c05110251e31a629cb202e81101404e46ee038b032eef16e007c2",
+      "bytes": 435124,
+      "dimensions": [
+        "400",
+        "480"
+      ],
+      "xml_parsed": true,
+      "labels": []
+    },
+    "baseline": {
+      "path": "rendered/B-baseline-support.svg",
+      "sha256": "ffe1dbd233afd0df3011ea91f07ba762e32d19f6a96fbf7e87b70b5892259aac",
+      "bytes": 269331,
+      "dimensions": [
+        "450",
+        "640"
+      ],
+      "xml_parsed": true,
+      "labels": [
+        "SUPPORT · chest level",
+        "bent arm · open palm supports dish · thumb braces rim"
+      ]
+    },
+    "variant": {
+      "path": "rendered/B-variant-support.svg",
+      "sha256": "465e901448fcf73f440f4cda1b4d67fb79221953c4d4d991ed93b4175a73320a",
+      "bytes": 268538,
+      "dimensions": [
+        "450",
+        "640"
+      ],
+      "xml_parsed": true,
+      "labels": [
+        "VARIATION · lifted + broader dish",
+        "bent arm · open palm supports dish · thumb braces rim"
+      ]
+    },
+    "control": {
+      "path": "rendered/B-near-miss-control.svg",
+      "sha256": "b0779a21c6c6e64b4d680cc896fa377de964cb253e26f6f55b758e1c9da200c6",
+      "bytes": 268508,
+      "dimensions": [
+        "450",
+        "640"
+      ],
+      "xml_parsed": true,
+      "labels": [
+        "CONTROL — near miss",
+        "dish displaced; hand remains still"
+      ]
+    },
+    "sheet": {
+      "path": "rendered/B-original-support.svg",
+      "sha256": "2fce35f4503ad806f22c8e2e9e737f12939cbd9d977050a34eddff26b5da538d",
+      "bytes": 806623,
+      "dimensions": [
+        "1350",
+        "640"
+      ],
+      "xml_parsed": true,
+      "labels": [
+        "SUPPORT · chest level",
+        "bent arm · open palm supports dish · thumb braces rim",
+        "VARIATION · lifted + broader dish",
+        "bent arm · open palm supports dish · thumb braces rim",
+        "CONTROL — near miss",
+        "dish displaced; hand remains still"
+      ]
+    }
+  },
+  "checks": [
+    "well-formed SVG XML",
+    "correct view dimensions",
+    "expected source-derived labels",
+    "case-specific numeric XML caption serialization without mojibake",
+    "A garment family/topology ids",
+    "B palm/dish/grouped-finger ids",
+    "three-case B sheet",
+    "A and B baseline outputs byte-match pre-existing source-derived SVGs"
+  ],
+  "mismatches": []
+}

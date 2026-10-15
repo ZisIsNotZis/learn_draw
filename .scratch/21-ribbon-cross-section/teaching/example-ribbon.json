@@ -1,0 +1,15 @@
+{
+  "name": "twisted-two-sided",
+  "length": 3.0,
+  "width": 0.36,
+  "tip_ratio": 1.0,
+  "bend": 0.42,
+  "depth": 0.12,
+  "twist": 3.141592653589793,
+  "family": "arch",
+  "origin": [-1.5, 0.0, 0.0],
+  "heading": 0.0,
+  "front": "#e68aa4",
+  "back": "#7188bd",
+  "segments": 40
+}

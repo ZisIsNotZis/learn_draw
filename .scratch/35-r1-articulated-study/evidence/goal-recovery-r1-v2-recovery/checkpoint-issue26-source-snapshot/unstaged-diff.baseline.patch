@@ -1,0 +1,807 @@
+diff --git a/.scratch/active-work.md b/.scratch/active-work.md
+index a323697..936a9a1 100644
+--- a/.scratch/active-work.md
++++ b/.scratch/active-work.md
+@@ -1,32 +1,9 @@
+-# Active work — spatial structural drawing
++# Active work — programmatic drawing learning
+ 
+-Status: **S0 tested opaque-triangle proof complete; S1 coarse figure is a probe, NOT accepted.**
+-Owner: local session. Branch: `master` (check current HEAD and worktree before resuming).
+-Architecture: `docs/drawing/spatial-model.md`; current state: `STATUS.md`.
++Status: R1 remains a two-track public art target. Prior integrated-reset candidate is unaccepted: issue 22 is structural-only PASS; issue 23 records unaccepted A garment and B hand/contact image findings. Following the user's explicit continuation instruction, Main authorized one goal-level artistic recovery that supersedes the prior internal stop only. Independent review (issue 25) found art/readability failures and reproduction remains unverified. Main authorized one evidence-backed repair under issue 26, not a new art hypothesis; the writer exceeded the 12:39:35+08:00 hard stop and checkpointed NOTDONE at 12:50:36+08:00 (56m01s elapsed). No further repair/render is authorized. v1 stays frozen/unchanged; v2 has only work-in-progress source/test/teacher evidence and no render, check, manifest, or review outputs. No prior failure is cleared and no art gate has passed.
+ 
+-## Delivered experiment
++Current contracts: [roadmap](../docs/drawing/roadmap.md) owns goals/gates; [vendor-learning-map](../docs/drawing/vendor-learning-map.md) owns vendor methods; [spatial model](../docs/drawing/spatial-model.md) owns architecture; STATUS owns observed state. Revision rationale/history: `35-r1-articulated-study/issues/06-two-track-contract-revision.md`.
+ 
+-- `scripts/vector_visibility.py`: orthographic projected-triangle clipping by interpolated
+-  depth plane; author never marks visibility intervals.
+-- `scripts/spatial_sketch.py`: one continuous local-2D-striped loop and torso, two cameras.
+-  `.scratch/13-assembly/evidence/spatial-sketch.svg` / `.png`.
+-- `scripts/figure_scaffold.py`: coarse seated person, one twisting hair sheet whose visible face
+-  chooses mint/blue, one bow-attached continuous ribbon. Two-view Preview:
+-  `.scratch/13-assembly/evidence/figure-scaffold.png`.
++R1 continuation owner, isolation, caps and acceptance are recorded in `35-r1-articulated-study/issues/24-goal-level-artistic-recovery.md`; preceding decisions/evidence remain append-only.
+ 
+-## Validation / limitations
+-
+-Tests: `scripts/tests/test_spatial_sketch.py`, `test_figure_scaffold.py`; old smoke tests must
+-still pass. Re-run after any edit. The renderer is a slow triangle-mesh *reference prototype*;
+-intersections/tangencies and seams are not production-proven. The figure is recognizable as a
+-coarse person but **not independently reviewed** and is not a reference fit; the ribbon's actual
+-spatial route remains ambiguous to the user, and the current ellipse is merely a hypothesis.
+-Do not migrate this into `.scratch/13-assembly/work/spec.yaml` or call M4 done.
+-
+-## Next step / stop
+-
+-S1 gate: use labelled views and image reference to evaluate layout and attachment; obtain a
+-sight-proven small-VLM comprehension check when available. Fix actual incorrect depth/seam cases
+-with isolated tests. The next substantive choice—what path the reference ribbon actually follows
+-around the body—is **S2 parked** pending better reference evidence or the user's visual feedback;
+-do not tune to metrics or guess again. Preserve the accepted M4j hair drawing.
++Frozen v1 candidate and manifest: `.scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/`; incomplete repair source is retained under `.scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/`. Issue 26 records reviewer-verified source coordinates, incomplete artifact inventory, the exceeded 45-minute hard stop, and the need for a new Main direction before any resumption. Keep A/B art/readability, attachment/nonintersection/depth acceptance, heldout compatibility/release/distinct drawing, independent reproduction acceptance, and user feedback open. Never alter old evidence, read sealed heldout, use vendor art/identity, stage/commit, or claim PASS. Preserve all prior dirty/staged work. The current drawing continuation does not authorize runtime/backend/environment/vendor/.agents changes or external generation/services.
+diff --git a/STATUS.md b/STATUS.md
+index 1ef4823..fee4f10 100644
+--- a/STATUS.md
++++ b/STATUS.md
+@@ -1,46 +1,48 @@
+ # STATUS — current project state
+ 
+ **Architecture SSOT:** [`docs/drawing/spatial-model.md`](docs/drawing/spatial-model.md).
+-**Goal:** an ordinary VLM composes a recognizable, roughly correctly placed figure using separate
+-2D-art components supported by 3D planes/curves; the engine computes occlusion from depth. Line
+-beauty and colour come later. The current SVG resolver does **not** implement this architecture.
++**Goal:** learn reference-based programmatic illustration and imitation, variation/transfer, then bounded reference-free original creation. Combine useful vendor methods with semantic primitives and the spatial support/depth architecture; deliver user-judgable artworks, not engine capabilities. See the milestone contract in [`docs/drawing/roadmap.md`](docs/drawing/roadmap.md) and vendor method coverage in [`docs/drawing/vendor-learning-map.md`](docs/drawing/vendor-learning-map.md). Current SVG resolver is legacy and does **not** implement the spatial architecture.
+ 
+ ## State
+ 
+-- The user says the hair in M4j is **much better**. The ribbon is conceptually continuous, but its
+-  position is wrong. No further 2D anchor adjustment is authorized by that observation.
+-- Current 2D assembly: `.scratch/13-assembly/work/spec.yaml`; M4j render:
+-  `.scratch/13-assembly/evidence/m4j-final.png` (commit `bf5f4d5`). It is a study artifact, not an
+-  accepted final drawing. The global `layers` and `front/behind` workaround currently splits the
+-  ribbon into front/back pieces: it is **not** the intended automatic depth engine.
++- The M4j 2D assembly and its hair/ribbon observations are historical study evidence, not current
++  authorized drawing work or accepted final artwork. Do not resume 2D anchor adjustments from those
++  observations; the forward contract is the current roadmap below.
+ - Historical best/ratchet: `.scratch/00-tooling/baseline/`; promotion still requires the applicable
+   visual gate. No promotion was made for M4j. Metric alarms are not drawing objectives.
+-- M3 body rubric exited previously; M4 is open. Do not infer that the previous milestone sequence
+-  validates the new spatial architecture. `docs/drawing/roadmap.md` owns forward gates.
+-- The user explicitly corrected the architecture: each component is independently drawn in 2D on
+-  a plane or 3D-curved support; the renderer determines visibility using actual component depths.
++- Prior M3/M4 milestone language belongs to the superseded historical sequence. It does not
++  describe current progress or establish any new spatial-architecture gate. `docs/drawing/roadmap.md`
++  owns forward gates.
++- The current architecture contract remains: each component is independently drawn in 2D on a
++  plane or 3D-curved support; the renderer determines visibility using actual component depths.
+   The model **must not** manually label where a ribbon disappears/reappears.
+ 
+-## Current experiment
++## Historical S0/S1 technical and scaffold evidence (not current experiment)
+ 
+-**S0 geometry proof implemented (not an art gate):** `scripts/vector_visibility.py` projects
++**S0 geometry proof (technical result, not an art gate):** `scripts/vector_visibility.py` projects
+ opaque triangles, clips overlap by their *interpolated depth planes*, and outputs surviving SVG
+-polygons. Tests cover opposite declaration orders, a crossing whose depth changes inside one
+-triangle, strip closure and a viewpoint change. `scripts/spatial_sketch.py` renders the same
+-unbroken 2D-striped ring around a torso in two views:
+-`.scratch/13-assembly/evidence/spatial-sketch.svg` / `.png`. No author visibility intervals.
+-This is a slow reference implementation, not a production-quality renderer: SVG anti-alias cracks
+-at triangle seams and intersecting/coplanar surfaces still need harder tests.
+-
+-**S1 exploratory figure:** `scripts/figure_scaffold.py` creates two views of a coarse seated
+-figure, head-attached hair sheet, bow and one continuous ribbon. Preview:
++polygons. The historical tests covered opposite declaration orders, a crossing whose depth changes
++inside one triangle, strip closure and a viewpoint change. `scripts/spatial_sketch.py` rendered the
++same unbroken 2D-striped ring around a torso in two views:
++`.scratch/13-assembly/evidence/spatial-sketch.svg` / `.png`, without author visibility intervals.
++S0 closeout grouped same-component/same-colour visible fragments into compound SVG fills, removing
++reproduced anti-alias cracks without changing depth clipping. Diagnostics are retained in
++`.scratch/18-spatial-closeout/evidence/after/`. This was a slow reference implementation, not a
++production renderer: different-fill boundaries, diverging edges and unrestricted intersections were
++not covered by the seam fix; exact coplanar ties retain a documented first-declared-wins policy.
++These are historical implementation and test facts, not a current product milestone or evidence of
++art acceptance.
++
++**S1 exploratory scaffold evidence:** `scripts/figure_scaffold.py` produced two views of a coarse
++seated figure, head-attached hair sheet, bow and one continuous ribbon. Historical preview:
+ `.scratch/13-assembly/evidence/figure-scaffold.png`. Bow/ribbon contact and geometric strip closure
+-have tests. The pose and ribbon route are *hypotheses*, not a fit to `image.jpg`. Hair now uses a
+-single twisting support whose projected face orientation chooses blue vs mint; this is a real
+-two-sided *mechanism*, but its twist/layout are **not yet validated against the reference**. No
+-independent visual reviewer or small-VLM comprehension gate has passed. Do not call the figure
+-accepted or migrate it into the 2D assembly yet. The triangle mesh is visible in the preview;
+-line art remains unsolved.
++had tests. The pose and ribbon route were hypotheses, not a fit to `image.jpg`. Hair used a single
++twisting support whose projected face orientation chose blue vs mint; this demonstrated a two-sided
++mechanism, but its twist/layout were **not validated against the reference**. No independent visual
++reviewer or small-VLM comprehension gate passed. The figure was not accepted or migrated into the
++2D assembly. The triangle mesh remains visible in that preview; line art remained unsolved. S1a
++perception/readability and transfer remain OPEN/UNRUN; Ex32 does not establish a person/character
++PASS. Preserve these records as history; they do not authorize old-scaffold patching.
+ 
+ ## Source map
+ 
+@@ -53,11 +55,12 @@ line art remains unsolved.
+   `docs/drawing/history/status-before-spatial-model.md` (**historical, not current instructions**)
+ - `docs/drawing/handoff-3d.md` is a superseded interpretation; read the spatial model instead.
+ 
+-## Next executable step
++## Authorized learning plan and current task
++
++S0 bounded technical visibility work is historical technical evidence, not an artwork milestone. The S1a code/method teaching artifact was accepted only within that artifact scope ([history](.scratch/31-s1a-teaching-artifact/)); S1a perception/readability and learner-transfer remain OPEN/UNRUN. Ex32 is old scaffold rotation/local attachment work, not figure or character PASS. Do not resume old-drawing patch iterations or infer any old visual gate passed. The new forward contract is [`docs/drawing/roadmap.md`](docs/drawing/roadmap.md); vendor method coverage is [`docs/drawing/vendor-learning-map.md`](docs/drawing/vendor-learning-map.md).
++
++R1's public task remains the two-track contract in [spec](.scratch/35-r1-articulated-study/spec.md) and [task freeze](.scratch/35-r1-articulated-study/work/task-freeze.md): A imitates only visible shoulder/upper-torso clothing/composition in `image.jpg`; B is an original bent-arm/hand/prop interaction with meaningful variation and a marked control. Neither target scope nor heldout, depth, geometry, art-review, reproduction, or user-feedback gate is reduced. The final prior integrated reset is preserved in [revision v1](.scratch/35-r1-articulated-study/evidence/integrated-reset-r1-v1/); issue 22 passed structural integration only, while [issue 23](.scratch/35-r1-articulated-study/issues/23-integrated-image-disposition.md) records A garment and B hand/contact visual failures. Those failures and the prior resource-blocked/unverified result remain historical facts; no prior candidate is accepted. Following the user's explicit continuation instruction, Main authorized one goal-level artistic recovery under [issue 24](.scratch/35-r1-articulated-study/issues/24-goal-level-artistic-recovery.md), superseding only the former internal no-continuation stop. The single-writer phase froze `.scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/`; independent review found art failures (issue 25) and Main authorized one evidence-backed repair in `.scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/` under issue 26's hard 45-minute cap (stop 2026-10-13T12:39:35+08:00). v1 remains unchanged/unaccepted. No structural self-check or repair is independent acceptance; this is not an art or R1 PASS. The separate sealed reference-free drawing remains unread and independently owned. No artwork/art acceptance is claimed; after all internal gates and actual-image presentation, pause for user feedback. Task-change rationale/history: `.scratch/35-r1-articulated-study/issues/06-two-track-contract-revision.md` and issue 24.
++
++**R1 state:** prior candidate resource-blocked / unverified (not PASS, not whole-objective failure); v1 goal-level candidate remains frozen/unaccepted after fresh art/depth review (issue 25). Main authorized one evidence-backed v2 repair under issue 26; its <=45-minute cap was exceeded and hard-stopped at 2026-10-13T12:50:36+08:00 (56m01s elapsed; 11m01s late), without timely checkpoint. V2 is **NOTDONE / incomplete**, not a new acceptance or art pass. It contains work-in-progress source/test/teacher evidence only; no v2 SVG/PNG, check bundle, or manifest was generated. V1 remains unchanged and hash-verified. The missed checkpoint, commands/evidence, open acceptance, and need for new Main direction before any resumption are recorded in [issue 26](.scratch/35-r1-articulated-study/issues/26-goal-recovery-v1-evidence-repair.md); prior 2706-second writer duration and issue-23 failures remain historical. See also [execution-loop audit](.scratch/35-r1-articulated-study/issues/20-execution-loop-audit.md), [reset contract](.scratch/35-r1-articulated-study/issues/21-integrated-reset-contract.md), [structural review](.scratch/35-r1-articulated-study/issues/22-integrated-reset-structural-review.md), and [image disposition](.scratch/35-r1-articulated-study/issues/23-integrated-image-disposition.md). R1 paths remain open: construction/contact/nonintersection/depth review, A/B independent artwork/readability review, heldout compatibility/release and later distinct drawing, deterministic reproduction acceptance, and user feedback.
+ 
+-Finish S1 by verifying image-layout and attachments against `image.jpg`, assessing the current
+-two-sided sheet's *shape* (rather than its merely functioning orientation rule), and testing
+-small-VLM comprehension on the two views. Resolve triangle seam artifacts in the vector SVG
+-without masking real occlusion errors. The **ribbon's correct route is still unknown**; do not
+-claim that this generic elliptical scaffold solved the user's specific placement complaint.
+-The reference is a teacher, never a runtime dependency (P18).
++**Image-delivery status (not a drawing milestone):** Ex29 prior attempt is VOID; Ex28 is VOID/IMAGE BLOCKED. The formal S1a visual/readability and learner-transfer gates therefore remain OPEN/UNRUN; code/method artifact acceptance does not waive them. Do not make runtime repair a drawing prerequisite or expand this blocker in the product roadmap. Historical evidence and exact blocker record: `.scratch/29-image-delivery-evidence/issues/04-native-delivery-correlation.md` and `05-active-runtime-stream-repair.md`. Continue independent authorized drawing-method/code learning. No infrastructure/runtime change is authorized by this status.
+diff --git a/docs/drawing/method.md b/docs/drawing/method.md
+index c79ee0f..6dc5780 100644
+--- a/docs/drawing/method.md
++++ b/docs/drawing/method.md
+@@ -1,9 +1,23 @@
+ # Drawing method — observation and review loop
+ 
+-> The current 2D drawing loop below is historical/operational. For the new component-on-surface
+-> method, [`spatial-model.md`](spatial-model.md) owns the architecture and
+-> [`roadmap.md`](roadmap.md) owns the staged structural proof. Do not prescribe manual
+-> occlusion splits or infer depth from global paint layers in new work.
++> The current 2D drawing loop below is historical/operational. For the component-on-surface
++> method, [`spatial-model.md`](spatial-model.md) owns the architecture and [`roadmap.md`](roadmap.md)
++> owns current product milestones, gates, and work-package rules. The concrete [R1 task contract](../../.scratch/35-r1-articulated-study/spec.md)
++> specifies the current R1 plan. Do not prescribe manual occlusion splits or infer depth from global
++> paint layers in new work.
++
++## Current learning unit
++
++Use the visible milestone and work-package contract in `roadmap.md`. A teaching example, generator, test, or fresh-model attempt is supporting evidence, never a substitute for a user-judgable rendered artwork. Learn from real examples, vary construction, retain causal failures, and generalize only after distinct uses. Models may inspect images but output text/code only; generated image assets are not a substitute. Construction/attachment, physical non-intersection, depth visibility, visual/art review and fresh-model transfer establish distinct claims. A rescued learner attempt is not unaided transfer.
++
++## Current spatial learning loop
++
++Follow [`roadmap.md`](roadmap.md): study applicable vendor and local methods, construct a bounded visible work, vary it, preserve success/failure and review the actual image. Establish plausible connected construction and attachment, separately check physical intersections, separately check depth visibility, then judge drawing/art; colour/material follows only when structure supports it. Reference observation may seed semantic parameters but never runtime geometry. Visual review needs actual image modality; code cannot substitute. If unavailable, mark the gate BLOCKED/UNVERIFIED and do not make runtime repair the objective.
++
++## Legacy 2D loop (not the spatial authoring contract)
++
++The following painter-order, path-edit and reference-compare guidance describes the retired/legacy
++2D resolver workflow only. It must not override the spatial architecture or new milestone gates.
+ 
+ Loop: **observe → plan → draw → compare → reflect → revise**, cycled. Line art first, coloring second, soft fields last.
+ 
+@@ -21,7 +35,7 @@ Loop: **observe → plan → draw → compare → reflect → revise**, cycled.
+ 5. **Reflect**: written note per iteration in `log.md` — what was wrong, what changed, why. Each reflection ends by asking: what is the *transferable* principle here? Distill into `docs/drawing/principles.md`.
+ 6. **Revise**: edit the named paths, commit as `v<N>`, re-run diff. Git history = my learning curve; roll back when a "fix" makes it worse.
+ 
+-## Tier ladder
++## Historical legacy 2D resolver tier ladder
+ 
+ - **T1 line art** — SVG strokes, no fill. Hardest sub-skill: spatial relationships (occlusion, where curves terminate) — diff hints for these look unexplainable; see invariant 3.
+   *Corrected 2026-09-14:* this reference has **no uniform black line art** — measured, only 12.6% of its
+@@ -33,10 +47,12 @@ Loop: **observe → plan → draw → compare → reflect → revise**, cycled.
+ - **T3 soft fields** — gradients, blurred blobs, opacity. Core idiom available *today*: **layered flat blobs under a shared silhouette, painted bottom-up** (every layer stays nameable). The painter's clipping-mask idiom (hard silhouette clip + blurred blobs inside, `mix-blend-mode`) is documented aspirationally but the back end has no clipPath/blend support yet — do not write a spec that needs them until 12-fields lands the capability. Soft fields come **last** (rung 12), never before line structure.
+ - **T4 photo realism** — stacked blurred-blob decomposition, feathered silhouettes, texture. Research tier; needs field-decomposition tooling (gradient direction/extent hints). Not scheduled.
+ 
+-## Curriculum (the ladder rungs)
++## Historical legacy 2D curriculum (archival, not current milestone sequence)
+ 
+-`.scratch/08..13` — one rung teaches one thing; each closes with a `draw check` + fresh-eyes verdict,
+-clean resolver diagnostics, and no shape over 4 hand-typed coordinates.
++`.scratch/08..13` records the former 2D resolver exercise ladder. Its rung order, `draw check` closure,
++resolver diagnostics and path-coordinate rules are historical evidence; they are not current R1–R4
++work-package instructions or automatic gates. Current milestones, review modality and feedback order
++are governed by `roadmap.md`; retain any old rung outputs only as historical evidence.
+ 
+ | rung | teaches | vocabulary it is allowed to demand |
+ | --- | --- | --- |
+@@ -51,9 +67,9 @@ Then the withdrawal that makes the end goal real: (a) redraw the assembled figur
+ spec with the image closed (canon extraction already happened during the ladder); (b) draw a *new*
+ subject from intent alone. Starry-Night-class complexity is the stress test after that, not before.
+ 
+-## SVG/CSS style guide (explainability contract)
++## Legacy resolver SVG/CSS output notes (not the spatial authoring contract)
+ 
+-Applies to what the resolver *emits*; the authoring language is `abstraction.md`.
++These describe only what the retired/current-2D resolver emits; the authoring language is `abstraction.md`. For new component artwork use the support-surface architecture and the roadmap/R1 task contract.
+ 
+ - viewBox matches reference pixel size; coordinates in reference space.
+ - `<g id="...">` per semantic part, painter order top-to-bottom in document.
+@@ -62,7 +78,11 @@ Applies to what the resolver *emits*; the authoring language is `abstraction.md`
+ - CSS allowed for soft fields (layered gradients, blur, blend modes); SVG for structure. One source file per iteration — either `.svg` or `.html` wrapper.
+ - Blur never touches structure (silhouettes, outlines, face features). If a soft field cannot state why it is soft in one line, it is deleted (12-fields rule).
+ 
+-## Tool usage
++## Legacy resolver tool usage
++
++The commands below are documented for the legacy 2D resolver/evidence format. Current milestone
++artifacts still need an image-list evidence bundle where applicable, but follow `roadmap.md` and the
++linked WP contract for authoritative acceptance, not legacy metrics or exercise sequencing.
+ 
+ - `check ART [--ref REF]` — **the whole visual feedback bundle in one command** (0.3s for a 1024² draft).
+   Emits into `<exercise>/evidence/check/`: a whole-frame side-by-side (panes ≤600px), the **1:1 draft
+@@ -83,15 +103,15 @@ Applies to what the resolver *emits*; the authoring language is `abstraction.md`
+ 
+ ## Guardrails
+ 
+-- **Measure against your own best, not against your own design.** The recorded best artifact lives in
+-  `.scratch/00-tooling/baseline/` and `check` prints a `vs recorded best:` line. A render below it is a
+-  **regression**, however much the language improved (roadmap R2). Promote only on a passed gate:
+-  `scripts/draw baseline <render> --ref image.jpg`. The baseline only ever moves up.
++- **Historical legacy 2D baseline rule:** old `draw check` bundles compared against
++  `.scratch/00-tooling/baseline/`, and old baseline promotion required the then-applicable gate.
++  These baseline records remain historical; they do not define the current R2 contract or waive any
++  roadmap/R1 gate.
+ - Metrics are progress signal only (invariant 4 in repo AGENTS.md). `check` prints them as a
+   **breakage alarm**: a jump means something broke, a good number never means the drawing is good.
+   `coverage` is additionally an **omission floor** — it answers "how much did you leave out?", the
+   question `color_dist` cannot answer. Floors and alarms, never targets.
+-- Max ~3 focused fix attempts per problem; still failing → reformulate at design level (e.g. wrong occlusion order), propose once-and-for-all structure fix.
++- Historical legacy 2D-loop note: former exercises allowed up to ~3 focused fixes per problem. This is not the current R1 attempt budget; use the concrete R1 contract and roadmap for current candidate/repair limits.
+ - **Never judge your own render.** Run `check`, then give `report.txt`'s image list — and nothing
+   else — to a FRESH-context reviewer with the open question "what is wrong here?". No leaked intent,
+   no history, no suspected verdict (a reviewer that knows what you were trying to do will confirm it).
+diff --git a/docs/drawing/principles.md b/docs/drawing/principles.md
+index bf48236..dc09cda 100644
+--- a/docs/drawing/principles.md
++++ b/docs/drawing/principles.md
+@@ -238,3 +238,33 @@ failure mode this architecture is meant to remove. A 3D scaffold explains occlus
+ replace the artist's later selection and beautification of line art. Architecture SSOT:
+ `docs/drawing/spatial-model.md`. Learned: user's explicit correction after M4j's apparently
+ continuous but spatially misplaced ribbon.
++
++## P30 — Construction, interface use and visual reading are separate evidence (S1a ribbon study)
++
++A fresh smaller model successfully authored the requested S/taper/half-turn spec using only the
++teaching packet and a black-box generator. Parent checks confirmed attachment, widths and material
++sides; the visual reviewer still could not identify one continuous two-sided sheet. Neither valid
++JSON nor correct depth establishes drawing readability. Preserve an unaided failed image alongside
++successful parameter tests; repairing it and calling the repaired answer transferred hides the
++missing ability. Evidence and tested scope: `.scratch/19-ribbon-family/outcome.md`.
++
++## P31 — Diagnose a surprising visual cue before prescribing its removal (S1a twist/crossing)
++
++A twist's apparent point-like splice occurred at a smooth facing-normal sign change with positive
++world width: an expected edge-on projection, not a broken attachment. Higher tessellation reduced
++stripe scalloping but could not remove that event. Same-facing, same-colour crossing visits also
++merged perceptually despite depth separation; a geometry-derived occlusion contour helped the
++original crossing but not the depth-reversed control. Thus identify projection, approximation,
++visibility and artistic-expression causes separately. A physical explanation does not waive the
++visual gate, and a useful diagnostic line is not a general line-art solution. Evidence: S1a outcome
++and `evidence/parent-learner-projection.json`; scope remains those tested cases.
++
++## P32 — A valid contour candidate is not automatically a useful art line (ribbon rule trial)
++
++Complete depth-visible ribbon perimeter ink was generated from real local boundaries, with hidden
++finite-width ink clipped and no mesh diagonals. Yet the valid blind comparison found competing lines
++at crossings/twists; a side-consistent local motif did not clarify front order. Keep candidate
++extraction, visibility and **artistic selection** separate. Do not replace the missing selection rule
++with “draw every valid outline”, or call more consistent decoration a readability solution. This
++rejects the two tested treatments, not all contour approaches. Negative controls and exact revision:
++`.scratch/20-ribbon-drawing-rule/outcome.md`.
+diff --git a/docs/drawing/roadmap.md b/docs/drawing/roadmap.md
+index c5847ba..2e062d7 100644
+--- a/docs/drawing/roadmap.md
++++ b/docs/drawing/roadmap.md
+@@ -1,73 +1,79 @@
+-# Roadmap — spatial drawing, then line art
+-
+-`STATUS.md` owns the current state. [`spatial-model.md`](spatial-model.md) owns the component/depth
+-architecture. This file owns forward milestones and acceptance, not historical iteration details.
+-The original M0–M5 record survives in `history/status-before-spatial-model.md` and
+-`.scratch/13-assembly/log.md`; it is not a license to claim the new architecture works.
+-
+-## Goal and non-negotiables
+-
+-A smaller, ordinary VLM should compose a recognizable, approximately placed person with plausible
+-occlusion using **2D artwork per component on 3D plane/curve supports**. The engine, not the author,
+-computes which portions are visible. Separate structural correctness from pleasing line design,
+-colour and texture. The final spec must render without the reference (P18); provenance and
+-transferability matter more than a copied contour. The reference may teach values but not serve as
+-runtime geometry. Preserve unrelated work and the recorded best; no automatic promotion on metrics.
+-
+-## Gates common to experiments
+-
+-- **Topology:** each named component remains connected in its local 2D domain; attachment points
+-  and near/far crossings are explained. No arbitrary split art or manual visibility intervals.
+-- **Visibility:** change camera or geometry and verify that covered portions update automatically.
+-  Check self-occlusion, crossing and re-emergence against independently chosen cases. Painter
+-  ordering of whole components does not pass.
+-- **Reference-free/deterministic:** render with `image.jpg` unavailable twice and compare outputs.
+-  No trace-derived final shapes at milestone exit (G7); distinguish sketch-proven concepts from a
+-  learned transferable family.
+-- **Perception:** inspect structure with labelled views/depth diagnostics, then ask sight-proven
+-  fresh reviewers (including smaller VLMs) to identify the figure and front/back relations. Treat
+-  reviewer locations as hypotheses to verify; user feedback is authoritative on intended design.
+-  Pixel metrics are breakage/omission alarms, not targets.
+-- **Claims:** a clean resolver or a high score cannot prove readability. Keep the former 2D
+-  baseline as a comparison artifact, not a gate that forces spatial sketches to imitate finished art.
+-
+-## S0 — Structural proof (CURRENT)
+-
+-One uncut 2D ribbon on a 3D curved support, one torso/lap occluder and two cameras. The
+-reference implementation `scripts/vector_visibility.py` clips projected SVG polygons at the
+-interpolated depth intersection (not whole-triangle painter sorting). Tests cover both paint orders
+-and a crossing whose depth flips inside a triangle; `spatial_sketch.py` exercises two views of the
+-same complete strip. **S0 proof met for tested opaque triangles**, not certified for all tangencies,
+-intersections or production-scale scenes. No finished character or attractive line quality required.
+-
+-## S1 — Coarse figure layout
+-
+-Add head/torso/arms/skirt as coarse supported components, a head-attached hair sheet whose blue/mint
+-faces are two sides of one sheet, and a continuous ribbon around the figure. A first rough figure
+-exists in `scripts/figure_scaffold.py`; its hair sheet *does* twist and choose blue/mint from
+-projected face orientation, but its shape has not been validated, and the ribbon route is not
+-reference-faithful. Match major attachment,
+-scale, pose, projected silhouette and negative spaces of `image.jpg` without manually painting
+-occlusion. **Exit:** two reviewers can identify a person and the main front/back relations; test
+-camera variation and reference-free reproduction. Compare with M4j as historical evidence, not a
+-requirement to preserve its guessed ribbon placement.
+-
+-## S2 — Line-art design
+-
+-Extract candidate visible contours, contact and fold/colour boundaries from the spatial scene, then
+-apply explicit **artistic** line selection/weight/curve rules. A mesh's every edge is not a line.
+-**Exit:** line-only renders read correctly without colour and without a depth-debug overlay; the
+-same object does not acquire accidental seams merely because its support is tessellated.
+-
+-## S3 — Colour, style and withdrawal
+-
+-Paint the components in their local 2D coordinates; style visible line/fill output. Test another
+-pose/subject, then a reference-free prompt with a smaller VLM. **Exit:** structural correctness
+-transfers beyond the original target, followed by visual review of finish. Whole-artifact baseline
+-promotion remains a separate blind preference decision, never a metric optimization.
+-
+-## Stop conditions
+-
+-Park rather than guess if (1) expression requires a flood of manual coordinates or visibility
+-exceptions, (2) the next change cannot be justified structurally, or (3) reviewers cannot see or
+-resolve the relevant distinction. Record artifact, evidence, blocker and next experiment in `STATUS.md`.
++# Roadmap — learn to make readable, expressive programmatic art
++
++`STATUS.md` owns observed current state and next entry; [`spatial-model.md`](spatial-model.md) owns spatial architecture; [`vendor-learning-map.md`](vendor-learning-map.md) alone owns vendor-source coverage and migration dispositions. This roadmap owns the product goal, milestone promises, gates and work-package contract. Historical evidence and decision rationale live in exercise tickets, not current-fact documents.
++
++## Product goal and invariants
++
++Learn by reference study, imitation and deliberate variation to create explainable, readable, artistically coherent programmatic illustrations, eventually making reasonable original work without a reference (including a Starry-Night-like challenge). Treat local vendor examples as a curriculum to systematically assess and absorb all useful non-image-generation methods, combining proven methods with existing primitives, 3D support surfaces and depth visibility. Vendor content is not presumed correct or already learned. Models may inspect references but author text/code only; no generated images, sprites or pixel-metric optimization. A reference teaches, it is not runtime geometry.
++
++A milestone is a user-perceivable artwork or newly demonstrated visual capability, not an engine, test suite or document. The artifact must be current, reviewable, and ready for the user's judgment. After each delivery, stop dependent work at the user feedback gate. Internal study, methods, work-package sequencing and technical replanning are project-autonomous; do not ask the user to decide internal plans. Never represent internal checks as the user's judgment or promise art success in advance.
++
++Keep three acceptance questions distinct:
++1. **Construction/attachment/pose:** do named parts form plausible connected objects and attach in a readable pose?
++2. **Physical geometry and visibility:** are solids/surfaces free of illegal intersections (or is a designed bend/contact explained), and does depth independently hide the physically farther surface? Correct occlusion does not excuse interpenetration; a hair strand entering a head/body must be plausibly divided/deformed or routed clear.
++3. **Drawing/art:** does the actual rendered image read clearly and feel compositionally/artfully coherent, with intentional line and colour treatment?
++
++Each relevant gate requires its own evidence. Geometry/code cannot establish visual quality. Experience checks use real rendered visual artifacts and a qualified sight-capable independent reviewer; actual experience is not runtime-enforced. Missing modality is BLOCKED/UNVERIFIED, never PASS. Metrics are alarms only.
++
++## Milestone path
++
++Stage names below are new roadmap identifiers; old S0–S3 names are historical facts, not completed gates or binding sequence. Methods/packages may be replanned without lowering product outcomes. Every stage has a vertical visible deliverable.
++
++### R1 — Readable articulated study
++
++- **Executable R1 work-package contract:** [`R1 task contract`](../../.scratch/35-r1-articulated-study/spec.md) and public [`two-track task freeze`](../../.scratch/35-r1-articulated-study/work/task-freeze.md) define owners, interfaces, evidence and finite budget; task-freeze revision is pending independent review/integrator approval, not art acceptance.
++- **Visible work/capability:** complementary actual images: (A) imitate only perceptible shoulder/upper-torso clothing/composition in `image.jpg`, with no hand/pose claim; (B) apply vendor MIT semantic IK/taper method to an original small clothed-upper-body bent arm/hand/simple-prop illustration, with meaningful changed-target/proportion variant and labeled awkward control. No matching pose photo required for B; it is not pose imitation or Huashu character reuse.
++- **Method and transfer:** abstract vendor construction semantics only; build original B using actual support/world binding and project depth visibility. A genuinely imitates observed reference parts. Keep independent sealed heldout reference-free drawing gate and require its owner to check compatibility/distinctness before release.
++- **User sees:** A and B as real authored images (not code or parameter tables), including B's baseline/variation/control; separate heldout image only after its gates. Each has a distinct, honest learning claim.
++- **Independent gates:** observed-part correspondence/visual art review; B construction/hand-contact/attachment and physical intersection; actual support/depth visibility; reference-absent deterministic reproduction; heldout compatibility/distinctness and review; user judges actual deliverables. No successful user feedback assumed.
++- **Dependencies/reuse:** current support/depth architecture and semantic primitives; world/support mapping must be implemented rather than tagged. No inferred 3D truth, old figure scaffold, or claim old S1a readability/transfer.
++- **Scope/non-goals:** bounded studies, not full anatomy/finished portrait/infrastructure work; no fabricated reference observation, matching extra pose-photo requirement, pixel tracing, or reuse of vendor Huashu character, frames or coordinates.
++- **Exit:** A visibly imitates only observed features, B is an intentional readable original image with meaningful variation/control, heldout remains a separate compatible reference-free drawing gate; actual support binding, attachment, contact, collision and depth each pass separately; visual review and reproduction pass; evidence hashes bind one revision. Then present actual images and pause.
++- **Risk/alternative:** if hand/contact is unreadable or geometry fails, revise representation within the finite two-hypothesis budget including already completed provisional code prep. Preserve control and evidence; do not hide intersection, invent observations, drop A/B, or lower readability. At limit, stop and report unresolved gates.
++
++### R2 — Responsive components and pose variation
++
++- **Visible work/capability:** a coherent multi-pose illustration/contact sheet of an upper-body figure showing hand/arm pose and hair or clothing response, with stable component identity and plausible attachment.
++- **Method and transfer:** extend R1 accepted construction using useful vendor continuous-time/response, local deformation and semantic renderer ideas; compare fixed/static and responsive variants across an awkward contact plus changed proportions. Distinguish motion as a construction test from video production.
++- **User sees:** a small set of genuinely varied, readable poses and a clearly comparable successful/failure case.
++- **Independent gates:** separate attachment/pose, non-intersection, depth visibility, visual consistency/readability, and reproducibility reviews on actual images; user feedback gate after delivery.
++- **Dependencies/reuse:** accepted R1 rules and current spatial support/depth; do not assume arbitrary collision solver or vendor painter-order visibility.
++- **Scope/non-goals:** a bounded pose set, not a film, audio/beat pipeline, full animation engine or generated assets.
++- **Exit:** changed pose/parameters produce coherent shape without per-frame hand editing; contact and attachment remain plausible; intersection and occlusion gates each pass; visual identity survives variants; final images/reproduction evidence are hashed and reviewed.
++- **Risk/alternative:** if responsive rules create implausible intersections, use a simpler explicitly supported motion range or keep the artwork static while preserving the same pose-variation/readability result; never call hidden collisions acceptable. Replan after two distinct rule hypotheses.
++
++### R3 — Reference-based composition and imitation
++
++- **Visible work/capability:** a readable, composed character illustration modeled from the designated reference, built from accepted semantic components (head, torso, arms/hands, clothing, hair, accessories) with front/three-quarter views or another justified view pair.
++- **Method and transfer:** systematically apply accepted vendor methods from the coverage map, including visual grammar/focal hierarchy, scene/pose organization, component renderer/material process when structure supports it, and useful quality/review methods. Compare reference-led construction with a variation in pose/proportion/camera; retain source attribution and migration evidence. No tracing as endpoint.
++- **User sees:** the actual reference-inspired image plus a materially varied version, readable as one intentional composition.
++- **Independent gates:** construction/attachment and collision; depth-derived visibility; whole-image visual/art review and line-versus-colour structure review; reference-free deterministic re-render; component variation. Human feedback is an explicit gate.
++- **Dependencies/reuse:** R1/R2 accepted methods, spatial architecture; legacy M4j and Ex32 remain historical controls, not accepted components or required starting scaffold.
++- **Scope/non-goals:** one bounded character/composition; no promise of exact reference reconstruction, no hand-entered dense contours, no baseline promotion without its separate gate.
++- **Exit:** composition is independently readable and coherent, variants preserve identity, all three acceptance dimensions separately documented, reference absent for reproduction, final review passes. Present and pause for user response.
++- **Risk/alternative:** reference ambiguity is recorded and resolved as an explicit plausible interpretation, not false recovered 3D truth. If composition is too complex, reduce secondary detail while preserving the core figure, pose, attachment and art quality.
++
++### R4 — Transfer to new subjects and original creation
++
++- **Visible work/capability:** a bounded portfolio of frozen tasks: a held-out reference imitation, a substantial variation/transfer to a different subject or proportions, and a reference-free original illustration from a short intent brief (culminating in a Starry-Night-like composition challenge only when prior results justify it).
++- **Method and transfer:** combine methods with evidence of reuse across distinct cases; compare held-out reference and original composition, preserve alternatives/failures, avoid target leakage and pixel tuning. Vendor map dispositions may evolve with evidence.
++- **User sees:** the actual task-group artworks, including reference-free original, not a claim of universal mastery.
++- **Independent gates:** each artifact gets appropriate construction/collision, depth visibility, visual/art review and reproducibility; fresh ordinary-model transfer may be tested only with capability-qualified visual access and frozen payload/tasks. User judges the resulting bounded body of work.
++- **Dependencies/reuse:** only reviewed reusable rules from earlier user-accepted slices; no assertion old S1a transfer passed.
++- **Scope/non-goals:** frozen, finite representative task set; no claim of universal drawing ability, no metric threshold as art verdict, no image-generation service.
++- **Exit:** each predeclared task has inspectable authored output and reproduction record; independent reviewers can identify what methods transferred and where they fail; reference-free task is independently judged as a coherent original image; all results presented for user feedback. This is bounded evidence, not proof of universal mastery.
++- **Risk/alternative:** if transfer fails, diagnose missing construction/visual rule and return to an appropriate visible slice; do not rescue the frozen answer and call it transfer. If capability/modality unavailable, report unverified, preserve artifacts and defer that gate.
++
++## Work-package and autonomy contract
++
++Each milestone is decomposed into cohesive WPs by category: (a) source/method study and migration card; (b) semantic construction/geometry; (c) rendering/art direction; (d) independent structure/geometry/depth proof; (e) visual experience/reproduction proof; (f) integration and user-ready delivery. Categories are a coverage checklist, not mandatory one-file tasks. Define complete coverage before dispatch.
++
++For each WP record objective, source inputs, exact outputs and acceptance, exclusive artifact/file ownership, interfaces, dependencies and genuinely parallel seams, exclusions, owner, integrator and reviewer. Shared scene contracts/render artifacts have one writer. Construction can run alongside source study only on stable interfaces; geometry, depth and experience checks consume the same final revision/artifact; integrate before whole-slice review. A single writer maintains tightly coupled roadmap/coverage-map facts; do not split simultaneous writers across this seam.
++
++Integration owner binds source/artifact/evidence hashes and commands to final revision. Fresh independent reviewer checks all milestone artifacts and consistency; visual reviewer must actually inspect images and establish sight capability. Human/user acceptance follows presentation and is not delegated or inferred. Preserve failures and prior evidence. Per milestone allow at most two distinct structural approaches; after no useful evidence or limit, stop, document unresolved outcome and replan at product-goal level, never silently reduce acceptance. No attempt cap makes failure a PASS.
++
++Workers autonomously select vendor methods, implementation details, work split and low-level alternatives inside this contract. They cannot waive user feedback gates, redefine art acceptance, claim unrun visual/experience evidence, change locked architecture/authority, or use runtime work as the product. Routine internal choices do not go to user.
++
++## Historical mapping and current state
++
++Old S0 bounded visibility geometry is a technical result, not an artwork milestone. Old S1a construction teaching artifact was independently accepted only as code/method artifact; S1a perception/readability and transfer remain OPEN/UNRUN. Ex32 is old scaffold pose rotation and local attachment repair, not a human/figure PASS. Old S1b/S2/S3 labels do not map to passed new milestones. Preserve all original records/evidence; do not repair old drawing iterations. Detailed vendor coverage is in [`vendor-learning-map.md`](vendor-learning-map.md). Current entry and blockers are in STATUS.
+diff --git a/docs/drawing/spatial-model.md b/docs/drawing/spatial-model.md
+index 97b3618..3846a9e 100644
+--- a/docs/drawing/spatial-model.md
++++ b/docs/drawing/spatial-model.md
+@@ -6,10 +6,15 @@ component/depth architecture. `abstraction.md` describes the *current* 2D resolv
+ 
+ ## Goal and boundary
+ 
+-An ordinary VLM should be able to compose a recognizable figure with roughly correct placement
+-and front/back relationships without manually drafting hundreds of coordinates or naming every
+-occlusion interval. Attractive line quality and colour are later problems. A reference illustration
+-teaches a scene, but neither the production engine nor its reference-free tests read that image.
++This architecture supports the learning goal in [`roadmap.md`](roadmap.md): progress from reference
++study and imitation through variation/transfer toward bounded reference-free original creation. A
++useful capability is recognizable components with plausible attachments and front/back relationships
++without manually drafting hundreds of coordinates or naming occlusion intervals; that capability
++alone is not an artwork milestone. Models may read images but output text/code only: no native
++image/video generation or generated sprites may substitute for constructing components. A reference
++teaches, but neither runtime geometry nor reference-free tests read it. Roadmap owns milestones and
++vendor learning; unavailable actual visual evidence leaves its gate open. Runtime repair is not a
++product goal.
+ 
+ **Component = 2D artwork + a support surface in 3D.** The artwork has its own local 2D coordinates
+ (u, v), outline and interior marks. The support may be a plane or a curved surface; a camera projects
+@@ -52,23 +57,30 @@ Geometry and depth may be approximate; **topology and attachment must be correct
+ stylized image cannot uniquely determine 3D, so the scaffold is a testable interpretation, not
+ recovered ground truth. The final 2D line designer may deliberately depart from the projection.
+ 
+-## Bounded structural sketch / proof
+-
+-Start with a simple torso/lap occluder, one continuous bent ribbon surface carrying a recognizable
+-2D stripe, and two camera views (reference-like and side/oblique). Input the entire strip ONCE.
+-`spatial_sketch.py` and `vector_visibility.py` now demonstrate this for tested opaque triangles;
+-`figure_scaffold.py` is a deliberately coarse S1 pose probe, not an approved reconstruction.
+-Passing proof: its near/far portions and the body's occlusion change automatically with viewpoint;
+-no per-view redraw, manually cut path, or visibility flags. Inspect the whole strip in an unobstructed
+-view and verify it stays connected in its own (u,v) domain. Then add a head-attached hair sheet with
+-blue outer and mint inner faces, and a coarse seated figure. Do not start with a detailed character.
+-
+-Validation at each stage: inspect attachments, projected silhouette, crossings, generated depth and
+-object identities separately; ask a small VLM to describe pose, attachments and front/back on held-out
+-views before judging beauty. Record uncertainty where the reference cannot disambiguate depth.
+-Only after the sketch explains the layout should it inform the 2D assembly. Compare against
+-`image.jpg` for teaching, then render with that file unavailable (P18). No traced contours at
+-milestone exit (G7); a one-off fitted mesh alone is not transferable knowledge.
++## Historical S0/S1 sketch and assembly sequence (archival; not current workflow)
++
++The former S0 technical exercise used a simple torso/lap occluder, one continuous bent ribbon
++surface with a recognizable 2D stripe, and two camera views (reference-like and side/oblique); its
++input represented the whole strip once. The retained `spatial_sketch.py` and `vector_visibility.py`
++artifacts demonstrate bounded opaque-triangle visibility cases. `figure_scaffold.py` was a coarse S1
++pose probe, not an approved reconstruction. Its technical success condition was automatic near/far
++visibility change with viewpoint, no per-view redraw/manual visibility cuts, and preservation of the
++strip's local `(u,v)` continuity. The historical sequence proposed adding a two-sided hair sheet and
++coarse seated figure next, and cautioned against detailed character work at that stage. This records
++the old technical sketch and its limited evidence; it is not a current R1 prerequisite, completed art
++milestone, or direction to expand the old scaffold.
++
++The associated former validation plan asked for separate attachment, projected silhouette,
++crossing, generated-depth and object-identity inspection, plus small-VLM descriptions on held-out
++views; it then proposed using the sketch to inform the legacy 2D assembly. That workflow is archival:
++it does **not** authorize automatic progression from sketch to assembly, and it does not establish a
++small-VLM, S1a readability, learner-transfer, or user-art acceptance pass. Record ambiguity about
++reference-derived depth rather than claim unique recovered 3D truth. For current milestone work,
++follow [`roadmap.md`](roadmap.md) and its linked concrete R1 contract for package ordering and gates;
++actual-image readability/art review and user feedback remain separate, explicit gates. The spatial
++architecture described above remains current: components are 2D art on support surfaces and engine
++depth determines visibility. Reference is a teacher, not runtime geometry; retain compact,
++explainable authored construction rather than traced contours or a one-off fitted mesh.
+ 
+ ## Open design choices (not silently decided)
+ 
+diff --git a/scripts/figure_scaffold.py b/scripts/figure_scaffold.py
+index 4cba80e..443f787 100644
+--- a/scripts/figure_scaffold.py
++++ b/scripts/figure_scaffold.py
+@@ -30,6 +30,10 @@ def ellipsoid(name, center, radii, color, nu=20, nv=10, angle=0):
+             yield (p,r,s), color, name
+ 
+ 
++HEAD_CENTER = (0.73, 1.22, 0.50)
++HEAD_RADII = (0.46, 0.52, 0.35)
++
++
+ def hair_sheet():
+     """One head-attached curved sheet; its normal twists blue→mint.
+ 
+@@ -42,11 +46,16 @@ def hair_sheet():
+         u, v = i/nu, 2*j/nv - 1
+         width = 0.12 + 1.18 * math.sin(math.pi*u/2)
+         twist = math.pi + math.pi*min(u/.28, 1.0)
+-        return (0.78 - 2.95*u,
+-                1.25 - 1.18*u + width*v*0.63*math.cos(twist)
+-                + 0.12*math.sin(math.pi*u),
+-                -0.48 + 0.20*math.cos(math.pi*u)
+-                + width*v*0.25*math.sin(twist) + 0.25*v*v)
++        x = 0.78 - 2.95*u
++        y = (1.25 - 1.18*u + width*v*0.63*math.cos(twist)
++             + 0.12*math.sin(math.pi*u))
++        # Root z comes from the head ellipsoid's upper surface, not a projected overlap.
++        cx, cy, cz = HEAD_CENTER
++        rx, ry, rz = HEAD_RADII
++        surface = max(0.0, 1 - ((x-cx)/rx)**2 - ((y-cy)/ry)**2)
++        root_z = cz + rz*math.sqrt(surface)
++        z = (1-u)*root_z + u*(-0.48 + 0.20*math.cos(math.pi*u))
++        return (x, y, z + width*v*0.25*math.sin(twist) + 0.25*u*v*v)
+     for i in range(nu):
+         for j in range(nv):
+             p,q,r,s = point(i,j),point(i+1,j),point(i+1,j+1),point(i,j+1)
+@@ -88,7 +97,7 @@ def scene():
+     yield from ellipsoid('arm-right',(1.26,-.50,.70),(.17,.68,.17),'#e0e9db',12,8,.35)
+     yield from ellipsoid('hand',(1.40,-1.00,.78),(.21,.13,.11),'#f7e3cc',12,7)
+     yield from ellipsoid('neck',(.82,.69,.35),(.22,.22,.19),'#f7e3cc',12,7)
+-    yield from ellipsoid('head',(.73,1.22,.50),(.46,.52,.35),'#f7e9d5',20,12)
++    yield from ellipsoid('head',HEAD_CENTER,HEAD_RADII,'#f7e9d5',20,12)
+     yield from ellipsoid('brim',(.66,1.65,.36),(1.18,.10,.59),'#5c9dab',28,5,-.10)
+     yield from ellipsoid('crown',(.77,1.84,.39),(.49,.27,.43),'#344361',20,8)
+     for x in (.25,1.15):
+diff --git a/scripts/spatial_sketch.py b/scripts/spatial_sketch.py
+index 1e52f8d..1edecc1 100644
+--- a/scripts/spatial_sketch.py
++++ b/scripts/spatial_sketch.py
+@@ -9,7 +9,7 @@ import math
+ from pathlib import Path
+ from xml.sax.saxutils import escape
+ 
+-from vector_visibility import visible_fragments
++from vector_visibility import visible_regions
+ 
+ 
+ def project(p, yaw, ox, oy, scale):
+@@ -56,30 +56,37 @@ def ribbon():
+             yield (p, r, s), color, 'ribbon'
+ 
+ 
+-def view(yaw, ox):
++def view(yaw, ox, id_prefix=None):
+     faces = [([project(p, yaw, ox, 295, 167) for p in tri], color, name)
+              for tri, color, name in [*body(), *ribbon()]]
++    if id_prefix is None:
++        id_prefix = f'camera-{yaw}-{ox}'
+     out = [f'<text x="{ox - 250}" y="34" font-size="19" fill="#20304a">'
+            f'{escape(str(yaw))}° camera — same uncut surfaces</text>']
+-    for pts, color, name in visible_fragments(faces):
+-        coords = ' '.join(f'{x:.2f},{y:.2f}' for x, y, _ in pts)
+-        out.append(f'<polygon points="{coords}" fill="{color}" data-component="{name}"/>')
++    for index, (path, color, name) in enumerate(visible_regions(faces)):
++        out.append(f'<!-- {escape(name)}: depth-visible region of this component fill -->')
++        out.append(f'<path id="{escape(id_prefix)}-{escape(name)}-fill-{index}" d="{path}" '
++                   f'fill="{color}" fill-rule="nonzero" data-component="{escape(name)}"/>')
+     return '\n'.join(out)
+ 
+ 
++def svg_document():
++    """Build the complete two-camera document with disjoint SVG ID scopes."""
++    return ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">'
++            '<rect width="1200" height="630" fill="#c5d9df"/>'
++            + view(0, 290, 'camera-0') + view(55, 900, 'camera-55')
++            + '<text x="28" y="610" font-size="15" fill="#20304a">'
++              'One 2D striped component on a curved 3D ring; torso hides it by depth. '
++              'Depth-clipped SVG polygons; the 2D ribbon is never cut by its author.'
++              '</text></svg>')
++
++
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('-o', '--output', type=Path, required=True)
+     args = parser.parse_args()
+-    svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">'
+-           '<rect width="1200" height="630" fill="#c5d9df"/>'
+-           + view(0, 290) + view(55, 900)
+-           + '<text x="28" y="610" font-size="15" fill="#20304a">'
+-             'One 2D striped component on a curved 3D ring; torso hides it by depth. '
+-             'Depth-clipped SVG polygons; the 2D ribbon is never cut by its author.'
+-             '</text></svg>')
+     args.output.parent.mkdir(parents=True, exist_ok=True)
+-    args.output.write_text(svg, encoding='utf-8')
++    args.output.write_text(svg_document(), encoding='utf-8')
+     print(args.output)
+ 
+ 
+diff --git a/scripts/tests/test_figure_scaffold.py b/scripts/tests/test_figure_scaffold.py
+index 44a7a31..29d78b9 100644
+--- a/scripts/tests/test_figure_scaffold.py
++++ b/scripts/tests/test_figure_scaffold.py
+@@ -34,6 +34,17 @@ class FigureScaffoldTests(unittest.TestCase):
+         self.assertIn('fill="#3974ab" stroke="#3974ab" stroke-width="0.22" data-component="hair-sheet"', svg)
+         self.assertIn('fill="#83cbbd" stroke="#83cbbd" stroke-width="0.22" data-component="hair-sheet"', svg)
+ 
++    def test_hair_sheet_root_lies_on_head_surface(self):
++        triangles = [tri for tri, _, name in figure.hair_sheet() if name == 'hair-sheet']
++        nu, nv = 20, 8
++        root_points = {point for tri in triangles[:2 * nv] for point in tri
++                       if abs(point[0] - 0.78) < 1e-12}
++        cx, cy, cz = figure.HEAD_CENTER
++        rx, ry, rz = figure.HEAD_RADII
++        for x, y, z in root_points:
++            equation = ((x-cx)/rx)**2 + ((y-cy)/ry)**2 + ((z-cz)/rz)**2
++            self.assertAlmostEqual(equation, 1.0, places=12)
++
+     def test_reference_is_not_loaded(self):
+         self.assertEqual(len(list(figure.scene())), len(list(figure.scene())))
+         self.assertIn('data-component="ribbon"', figure.view(0, 510))
+diff --git a/scripts/tests/test_spatial_sketch.py b/scripts/tests/test_spatial_sketch.py
+index 385305f..e3477c2 100644
+--- a/scripts/tests/test_spatial_sketch.py
++++ b/scripts/tests/test_spatial_sketch.py
+@@ -2,6 +2,7 @@
+ import importlib.util
+ from pathlib import Path
+ import unittest
++import xml.etree.ElementTree as ET
+ 
+ SCRIPTS = Path(__file__).resolve().parents[1]
+ import sys
+@@ -58,6 +59,20 @@ class VisibilityTests(unittest.TestCase):
+             self.assertIn('data-component="ribbon"', svg)
+             self.assertIn('data-component="body"', svg)
+ 
++    def test_view_uses_stroke_free_compound_fills(self):
++        svg = module.view(0, 290)
++        self.assertIn('<path id="', svg)
++        self.assertIn('fill-rule="nonzero"', svg)
++        self.assertNotIn('<polygon', svg)
++        self.assertNotIn('stroke=', svg)
++
++    def test_two_view_svg_ids_are_unique_across_both_cameras(self):
++        root = ET.fromstring(module.svg_document())
++        ids = [element.attrib['id'] for element in root.iter() if 'id' in element.attrib]
++        self.assertTrue(any(identifier.startswith('camera-0-') for identifier in ids))
++        self.assertTrue(any(identifier.startswith('camera-55-') for identifier in ids))
++        self.assertEqual(len(ids), len(set(ids)))
++
+ 
+ if __name__ == '__main__':
+     unittest.main()
+diff --git a/scripts/vector_visibility.py b/scripts/vector_visibility.py
+index cc6b6b6..b1b48a9 100644
+--- a/scripts/vector_visibility.py
++++ b/scripts/vector_visibility.py
+@@ -7,14 +7,15 @@ never authored front/back ranges. Slow reference implementation for small scenes
+ EPS = 1e-7
+ 
+ 
+-def line_clip(poly, fn, keep_positive=True):
++def _clip_halfspace(poly, fn, keep_positive, threshold):
++    """Clip to one signed halfspace, interpolating on its classification boundary."""
+     if not poly:
+         return []
+     out = []
+     for a, b in zip(poly, poly[1:] + poly[:1]):
+-        fa, fb = fn(a), fn(b)
+-        inside_a = fa >= -EPS if keep_positive else fa <= EPS
+-        inside_b = fb >= -EPS if keep_positive else fb <= EPS
++        fa, fb = fn(a) - threshold, fn(b) - threshold
++        inside_a = fa >= 0 if keep_positive else fa <= 0
++        inside_b = fb >= 0 if keep_positive else fb <= 0
+         if inside_a != inside_b:
+             t = fa / (fa - fb)
+             out.append(tuple(a[k] + t * (b[k] - a[k]) for k in range(3)))
+@@ -23,6 +24,12 @@ def line_clip(poly, fn, keep_positive=True):
+     return out
+ 
+ 
++def line_clip(poly, fn, keep_positive=True):
++    """Tolerance-aware public halfspace clip with intersections on its EPS boundary."""
++    threshold = -EPS if keep_positive else EPS
++    return _clip_halfspace(poly, fn, keep_positive, threshold)
++
++
+ def bbox(poly):
+     return (min(p[0] for p in poly), min(p[1] for p in poly),
+             max(p[0] for p in poly), max(p[1] for p in poly))
+@@ -32,6 +39,18 @@ def overlaps(a, b):
+     return a[0] < b[2] - EPS and b[0] < a[2] - EPS and a[1] < b[3] - EPS and b[1] < a[3] - EPS
+ 
+ 
++def _positive_area_overlap(a, b):
++    """Use convex-polygon SAT to reject touching-only projected triangle pairs."""
++    for polygon in (a, b):
++        for first, second in zip(polygon, polygon[1:] + polygon[:1]):
++            axis = (second[1] - first[1], first[0] - second[0])
++            a_projection = [axis[0] * point[0] + axis[1] * point[1] for point in a]
++            b_projection = [axis[0] * point[0] + axis[1] * point[1] for point in b]
++            if max(a_projection) <= min(b_projection) or max(b_projection) <= min(a_projection):
++                return False
++    return True
++
++
+ def depth_plane(tri):
+     (x0, y0, z0), (x1, y1, z1), (x2, y2, z2) = tri
+     det = (x1 - x0) * (y2 - y0) - (x2 - x0) * (y1 - y0)
+@@ -52,13 +71,17 @@ def subtract_convex(subject, cutter):
+     inside = subject
+     outside = []
+     for a, b in zip(cutter, cutter[1:] + cutter[:1]):
++        if a[0] == b[0] and a[1] == b[1]:
++            # A projected zero-length edge imposes no halfspace constraint.
++            continue
+         def edge(p):
+             return orientation * ((b[0] - a[0]) * (p[1] - a[1])
+                                   - (b[1] - a[1]) * (p[0] - a[0]))
+-        piece = line_clip(inside, edge, False)
++        # Exact complementary halves partition the subject without an overlapping EPS band.
++        piece = _clip_halfspace(inside, edge, False, 0.0)
+         if len(piece) >= 3:
+             outside.append(piece)
+-        inside = line_clip(inside, edge, True)
++        inside = _clip_halfspace(inside, edge, True, 0.0)
+         if len(inside) < 3:
+             break
+     return outside
+@@ -78,7 +101,8 @@ def visible_fragments(faces):
+     for index, (tri, color, component, plane, box) in enumerate(prepared):
+         fragments = [list(tri)]
+         for other_index, (other, _, _, other_plane, other_box) in enumerate(prepared):
+-            if other_index == index or not overlaps(box, other_box):
++            if (other_index == index or not overlaps(box, other_box)
++                    or not _positive_area_overlap(tri, other)):
+                 continue
+             # The portion of the occluder whose depth exceeds this face's plane.
+             # A deterministic tie rule avoids duplicate coplanar output.
+@@ -103,3 +127,41 @@ def visible_fragments(faces):
+                 break
+         for frag in fragments:
+             yield frag, color, component
++
++
++def _compound_path(polygons):
++    """Serialize filled polygons as consistently wound SVG subpaths.
++
++    Keeping a semantic fill in one path lets the SVG rasterizer cancel shared
++    tessellation edges instead of antialiasing each face independently. No
++    stroke or geometric expansion is applied, so true outer/occlusion edges
++    remain exactly the visibility boundary.
++    """
++    parts = []
++    for polygon in polygons:
++        area = sum(a[0] * b[1] - b[0] * a[1]
++                   for a, b in zip(polygon, polygon[1:] + polygon[:1]))
++        points = polygon if area >= 0 else list(reversed(polygon))
++        if len(points) < 3 or area == 0:
++            continue
++        commands = [f'M {points[0][0]:.12g} {points[0][1]:.12g}']
++        commands.extend(f'L {x:.12g} {y:.12g}' for x, y, _depth in points[1:])
++        commands.append('Z')
++        parts.append(' '.join(commands))
++    return ' '.join(parts)
++
++
++def visible_regions(faces):
++    """Yield (SVG path data, color, component) for each semantic fill.
++
++    Visible polygons sharing both component and color are combined into one
++    compound path. The subpaths have consistent winding so shared internal
++    edges cancel during fill rasterization; visibility geometry is unchanged.
++    """
++    groups = {}
++    for polygon, color, component in visible_fragments(faces):
++        groups.setdefault((component, color), []).append(polygon)
++    for (component, color), polygons in groups.items():
++        path = _compound_path(polygons)
++        if path:
++            yield path, color, component

@@ -1,0 +1,22 @@
+
+
+## Bounded 96x12 precision retest (same experiment, separate artifact set)
+
+Parent disposition was applied literally: the original frozen48x6 matrix/boards remain intact as coarse, **width-bound-failing** precision evidence; they are not described as a clean camber/perception verdict. Added `work/cases-fine.json` as a copy of the old case plan, changing only its `sampling` to96x12 and adding the explicit `precision_retest` provenance block. That block binds original plan SHA256 `ff8ff9944fa7c53f05abcf026550fb87eda3979ab9a9f3d8b27388b697b47d38`, copied parent checkpoint JSON SHA256 `ef00a5adeb2e78dfa8c1cb66bf21c227f62e4d45e316515ee69c420bbfd86a0a`, fixed tolerance `0.002`, and the frozen44-u measurement grid. Tests prove removing only that provenance and restoring the old sampling makes the fine plan semantically identical to `work/cases.json`; all five specs, source hashes, cameras, colors, learner claim limit, and camber are unchanged.
+
+The pre-render actual-mesh measurement ran before any fine candidate panel. Its44 fixed u values comprise `(i+0.37)/32`, `i=0..31`, ten stratified `96`-mesh half-stations `(i+0.5)/96`, and the checkpoint `.49/.51` probes. It intersects actual emitted triangle edges in UV and sums the 3D mesh-section chords. All **132** flat-versus-curved measurements (three unique frozen geometry specs ×44) are within `0.002` world units at96x12. Worker maxima: positive half-twist `0.001918923445`; learner regression `0.001255146721`; untwisted teaching arch `0.000155304360`. Parent's independently recorded44-location maxima are separately preserved in the retest provenance and are also below the bound: `0.001973891855`, `0.001233283733`, `0.000155454522`. These are two finite datasets, not a continuous guarantee. Evidence: `evidence/fine/fine-mesh-width.json`; parent source copy: `evidence/fine/parent-width-checkpoint.json`.
+
+The enlarged render was deliberately delayed until the fine plan, independent mesh-chord table, and the full test passed. The first flat/camber pair was profiled and incrementally checkpointed at96x12: flat12.58s, curved12.95s. The full5-row/10-panel precision build then completed in184.778s, below the900s build cap; longest individual panel save was61.36s, below the180s raster bound, with per-panel progress. All fine panels and both fine boards are isolated under `evidence/fine/`; original48x6 boards remain unchanged.
+
+Fine labelled/unlabelled draw checks passed, reference-free. Exact report image lists:
+- `.scratch/21-ribbon-cross-section/evidence/fine/check/comparison-labelled/draft.png -- the drawing`
+- `.scratch/21-ribbon-cross-section/evidence/fine/check/comparison-unlabelled/draft.png -- the drawing`
+
+Repeat build reused all ten fine panel caches with the same source keys/provenance and same board SVGs. Browser raster reproducibility was measured explicitly: the unlabelled PNG repeated byte-identically. The labelled PNG differed by8 pixels (of1,854,360), bbox `x=25,y=419..769`, in text-bearing pixels; SVGs, panel SVG/PNG hashes and cache keys were unchanged. The final fine labelled/unlabelled draw-check draft PNGs byte-match the current fine board PNGs. Exact record: `evidence/fine/determinism/repeat-build-diagnostic.json`. The labelled text raster delta is not normalized away or presented as perfect PNG determinism.
+
+Updated `teaching/transverse-support-card.md` to distinguish selected48x6 coarse failing-width evidence from the separate same-camber96x12 precision retest. No support algorithm, material, palette, case, camera, or source image changed. Only the dedicated geometry test suite was rerun (no unrelated suite rerun because no production support source changed): **16/16 passed**, including fine-plan immutability, the44-u/132-measurement bound check, and fine manifest/cache provenance.
+
+Fine precision plan SHA256: `bbc8697195e1ca45805899f4fafa6bbae8fccab3021cb8673460e3c4418d0643`.
+Fine builder/draw/Chromium identity is recorded in its panel caches, manifests, and fine determinism JSON; support SHA256 remains `5c32715a9359e3228a7cd91e2bed020f47badcc6df949f2f54e6c8ae493df2f4`; old plan, user learner, and old generator hashes remain unchanged. `cases-fine.json` changes no input fields; the failed learner remains a regression-only output.
+
+No fresh visual verdict was made. Parent still owns the single final fine-grid blind review; the fine matrix is an accuracy-corrected same hypothesis, not a new learner result or transfer pass. No commit, install, push, baseline change, or exercise file staging occurred.

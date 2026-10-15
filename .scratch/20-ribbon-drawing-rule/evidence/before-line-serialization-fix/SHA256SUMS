@@ -1,0 +1,10 @@
+b42286b449ad95797c9bc77d2852c990da8f32e63395896a05b0b05770213e8c  ./check/line-only-labelled/draft.png
+34f3898549d93077c42cf13002d25f9978e4bb8fe73556d7b273fff774671071  ./check/line-only-labelled/report.txt
+45e4132ab817a03aa2d73691c5743d46b0bebb77e79a90d053f782f1711d7092  ./check/line-only-unlabelled/draft.png
+96e62288e9ae8a0a2aab7dac90950d5597e0976fe4c05d1fbc5f2d30d0bd043f  ./check/line-only-unlabelled/report.txt
+2fc32c187da834a7540bfb2123caa4b8a3ff19da3ba3d97fbe3a82eb3eccd51d  ./line-only-labelled-manifest.json
+b42286b449ad95797c9bc77d2852c990da8f32e63395896a05b0b05770213e8c  ./line-only-labelled.png
+eafad0579b23f07e2e5c563ca377d85f7fbf798cd14c6d70f82d2ad2053e4922  ./line-only-labelled.svg
+b79fd37227b37d161b3d939b59fa0de0cd0aea2a3aa316c267df53dfac7f706a  ./line-only-unlabelled-manifest.json
+45e4132ab817a03aa2d73691c5743d46b0bebb77e79a90d053f782f1711d7092  ./line-only-unlabelled.png
+773c1757390eb4791051bec8c7c88e0d329d6620bbb2c061378e8e79e2175f10  ./line-only-unlabelled.svg

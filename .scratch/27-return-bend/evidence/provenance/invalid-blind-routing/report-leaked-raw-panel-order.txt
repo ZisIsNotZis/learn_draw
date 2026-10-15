@@ -1,0 +1,13 @@
+.scratch/27-return-bend/evidence/boards/comparison-unlabelled.png
+.scratch/27-return-bend/evidence/panels/panel-a191.png
+.scratch/27-return-bend/evidence/panels/panel-b704.png
+.scratch/27-return-bend/evidence/panels/panel-c628.png
+.scratch/27-return-bend/evidence/panels/panel-d315.png
+.scratch/27-return-bend/evidence/panels/panel-e943.png
+.scratch/27-return-bend/evidence/panels/panel-f837.png
+.scratch/27-return-bend/evidence/panels/panel-g292.png
+.scratch/27-return-bend/evidence/panels/panel-h156.png
+.scratch/27-return-bend/evidence/panels/panel-j601.png
+.scratch/27-return-bend/evidence/panels/panel-k482.png
+
+Describe the visible forms, continuity, and overlaps. What is unclear?

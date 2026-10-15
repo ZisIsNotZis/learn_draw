@@ -1,0 +1,48 @@
+{
+  "spec_sha256": "dd995ab1d1cced202a63092263d489597339ae18d2ea761e77408c5b41e8455c",
+  "intervals": 48,
+  "minimum_adjacent_width_axis_dot": 0.9786823935821841,
+  "minimum_adjacent_tangent_dot": 0.9748279094449729,
+  "cameras": {
+    "front": {
+      "facing_zero_brackets": [
+        {
+          "u_linear_frame_estimate": 0.4467763481712793,
+          "bracket": [
+            0.4375,
+            0.4583333333333333
+          ],
+          "facing_dot": [
+            0.0361728607098583,
+            -0.04506614098285007
+          ],
+          "world_full_width": 0.2808596404876588
+        }
+      ],
+      "root_tip_world_widths": [
+        0.4000000000000001,
+        0.13333333333333305
+      ]
+    },
+    "oblique": {
+      "facing_zero_brackets": [
+        {
+          "u_linear_frame_estimate": 0.7251532635082207,
+          "bracket": [
+            0.7083333333333334,
+            0.7291666666666666
+          ],
+          "facing_dot": [
+            0.055680395271996225,
+            -0.013285897855972728
+          ],
+          "world_full_width": 0.20662579639780781
+        }
+      ],
+      "root_tip_world_widths": [
+        0.4000000000000001,
+        0.13333333333333305
+      ]
+    }
+  }
+}

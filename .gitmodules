@@ -1,0 +1,6 @@
+[submodule "vendor/huashu-art-motion"]
+	path = vendor/huashu-art-motion
+	url = https://github.com/alchaincyf/huashu-art-motion
+[submodule "vendor/huashu-design"]
+	path = vendor/huashu-design
+	url = https://github.com/alchaincyf/huashu-design

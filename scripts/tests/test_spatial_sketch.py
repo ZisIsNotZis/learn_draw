@@ -2,6 +2,7 @@
 import importlib.util
 from pathlib import Path
 import unittest
+import xml.etree.ElementTree as ET
 
 SCRIPTS = Path(__file__).resolve().parents[1]
 import sys
@@ -57,6 +58,20 @@ class VisibilityTests(unittest.TestCase):
             svg = module.view(angle, 290)
             self.assertIn('data-component="ribbon"', svg)
             self.assertIn('data-component="body"', svg)
+
+    def test_view_uses_stroke_free_compound_fills(self):
+        svg = module.view(0, 290)
+        self.assertIn('<path id="', svg)
+        self.assertIn('fill-rule="nonzero"', svg)
+        self.assertNotIn('<polygon', svg)
+        self.assertNotIn('stroke=', svg)
+
+    def test_two_view_svg_ids_are_unique_across_both_cameras(self):
+        root = ET.fromstring(module.svg_document())
+        ids = [element.attrib['id'] for element in root.iter() if 'id' in element.attrib]
+        self.assertTrue(any(identifier.startswith('camera-0-') for identifier in ids))
+        self.assertTrue(any(identifier.startswith('camera-55-') for identifier in ids))
+        self.assertEqual(len(ids), len(set(ids)))
 
 
 if __name__ == '__main__':

@@ -1,0 +1,101 @@
+{
+  "case_plan_sha256": "8a5a320fcb47ce7c38c8b3d605f480cf6a74e77611f831c4d01f002a5b891776",
+  "cases": [
+    {
+      "camera": {
+        "name": "front",
+        "pitch": 0,
+        "yaw": 0
+      },
+      "mesh_sha256": "2627398817f711e84b9bcce820debf6d1a796c82124f6ad7c98ecf82b07549dc",
+      "name": "teaching-arch-front",
+      "sampling": 128,
+      "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+      "support_triangles": 256
+    },
+    {
+      "camera": {
+        "name": "front",
+        "pitch": 0,
+        "yaw": 0
+      },
+      "mesh_sha256": "b53b110d79b46c9fc62bb66d6c26abbea1e37fbb7dd5bc5058d1b3eb51ebe60b",
+      "name": "frozen-crossback-front",
+      "sampling": 128,
+      "source_spec_sha256": "0d1e0e19a1add90217fabd1df6138705f10ee5203e6120a8db24dea09a97367e",
+      "support_triangles": 256
+    },
+    {
+      "camera": {
+        "name": "front",
+        "pitch": 0,
+        "yaw": 0
+      },
+      "mesh_sha256": "f61de97e47c19844bb0935f88b51fdd46f0557dce7a5e98890a8bb7303f0f4fe",
+      "name": "crossback-depth-reversed-front",
+      "sampling": 128,
+      "source_spec_sha256": "0d1e0e19a1add90217fabd1df6138705f10ee5203e6120a8db24dea09a97367e",
+      "support_triangles": 256
+    },
+    {
+      "camera": {
+        "name": "front",
+        "pitch": 0,
+        "yaw": 0
+      },
+      "mesh_sha256": "876bd7de63579f61ffc8f7be1d10eced44c325c7e605740671f74b5dfebb7367",
+      "name": "half-twist-front",
+      "sampling": 128,
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "support_triangles": 256
+    },
+    {
+      "camera": {
+        "name": "oblique",
+        "pitch": 22,
+        "yaw": 38
+      },
+      "mesh_sha256": "876bd7de63579f61ffc8f7be1d10eced44c325c7e605740671f74b5dfebb7367",
+      "name": "half-twist-oblique",
+      "sampling": 128,
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "support_triangles": 256
+    },
+    {
+      "camera": {
+        "name": "front",
+        "pitch": 0,
+        "yaw": 0
+      },
+      "mesh_sha256": "e1c9efb6abbfba0c7359f93209560227f6035488da549027f5be8899cd4bd7fa",
+      "name": "failed-learner-front-regression-only",
+      "sampling": 128,
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "support_triangles": 256
+    },
+    {
+      "camera": {
+        "name": "oblique",
+        "pitch": 22,
+        "yaw": 38
+      },
+      "mesh_sha256": "e1c9efb6abbfba0c7359f93209560227f6035488da549027f5be8899cd4bd7fa",
+      "name": "failed-learner-oblique-regression-only",
+      "sampling": 128,
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "support_triangles": 256
+    },
+    {
+      "camera": {
+        "name": "front",
+        "pitch": 0,
+        "yaw": 0
+      },
+      "mesh_sha256": "b53b110d79b46c9fc62bb66d6c26abbea1e37fbb7dd5bc5058d1b3eb51ebe60b",
+      "name": "external-support-card-front",
+      "sampling": 128,
+      "source_spec_sha256": "54cc6a68d8bf17d554f9ec9cc6cb79f22aea363bf14cba3157a8bd2c926895ee",
+      "support_triangles": 256
+    }
+  ]
+}

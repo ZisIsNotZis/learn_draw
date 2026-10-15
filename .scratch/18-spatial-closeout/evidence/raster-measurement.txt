@@ -1,0 +1,15 @@
+Controlled raster seam comparison
+
+Command: scripts/draw render <adjacent-faces.svg> -o <adjacent-faces.png> --size 320x256
+Renderer: project scripts/draw using cached chrome-headless-shell.
+Source geometry: same flat 8x6 cell / alternating diagonal mesh, fractional coordinates, color #45c982, background #14212b; only separate polygons vs one grouped nonzero-winding compound path differ.
+Fixed interior sample: x=32..279 inclusive, y=28..213 inclusive (248×186 = 46,128 pixels), wholly inside the sheet silhouette.
+
+Before: 4,438 / 46,128 pixels differ from exact fill #45c982.
+After: 0 / 46,128 pixels differ from exact fill #45c982.
+The external silhouette is excluded. This is a raster coverage check, not a portrait similarity metric.
+
+Before SVG SHA-256: ca25ad71ec0b0834baeeccc0087c5e25554002c95392d73e17166b6a11980df2
+Before PNG SHA-256: 735adfd2239443bf8009c1876cdfd5e29ad88ec058488c331f93291bfd4ef2c1
+After SVG SHA-256: 137f02dbed08997dd0341b754c7d0bb3ff1ad7776a7660cf9a95f81365bac34f
+After PNG SHA-256: a080bd1835ce50fbdc3c860cb868524729bd51cb7d6b6be0e919496db6a2aefe

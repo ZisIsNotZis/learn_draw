@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "checkpoint": "after one board-export TypeError; before continuation",
+  "repository": {
+    "head": "24693d4b764755165509fc206695ebca03ee44fe",
+    "cached_diff_sha256": "d36b0b11e5833b1ba841b29af202dc157482b064eb9bb0c432684e74f6eae4a4",
+    "existing_staged_user_paths_unchanged": [".gitmodules", "vendor/huashu-art-motion", "vendor/huashu-design"],
+    "commit_or_pr": false
+  },
+  "protected_source_pins": {
+    "scripts/vector_visibility.py": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa",
+    "scripts/ribbon_family.py": "015ec14ec90da5768dbcdd9486220d3971c55673f0944971ccb3a8a47662bd3e",
+    "scripts/ribbon_surface.py": "5c32715a9359e3228a7cd91e2bed020f47badcc6df949f2f54e6c8ae493df2f4",
+    "scripts/ribbon_drawing.py": "a3569bf9492ab88a5377a25523acbd93adf32069ac02825f8b370ec45cdba2dc"
+  },
+  "protected_case_pins": {
+    ".scratch/19-ribbon-family/work/cases.json": "bd2732b806de26cc2d8a261be68e8f30e21e1f8f8bd5301556d85241a8bc5800",
+    ".scratch/24-clean-support-replay/work/cases-current.json": "793ca4c206e44d3801cb5a1c82783a5fecbffb9d16e5c1539999445ba20b6034",
+    ".scratch/24-clean-support-replay/evidence/panels/case-00-positive-half-twist-front-flat.svg": "54e1e474fe36e8dbaec9c7d73318b7832a88ecd8dcc4acc18d81828670379d09",
+    ".scratch/24-clean-support-replay/evidence/panels/case-04-untwisted-teaching-arch-front-control-flat.svg": "15e97acb08885105fafb670a78c8fdd88d999ad83ff0fad913a9af27a1b2d173"
+  },
+  "frozen_ex27_pins": {
+    "scripts/ribbon_return.py": "618d701c3a26eb1f97d6b6cfd210ffe41eba3fe25032eb216d3c2ead398d2607",
+    "scripts/tests/test_ribbon_return.py": "a3884abb8fb1aa080eeccce98746259c99e9ef330ee692155f9260bc85284fdc",
+    ".scratch/27-return-bend/work/build.py_after_narrow_fix": "fda43f81daaa9a4b6ab8e4e189e85876932c7fa62a98217d636867b61da39340",
+    ".scratch/27-return-bend/work/specs.json": "c5f874f3bc4d15a30eeffdff1676d1bf7b26a8144f46b034bfe69f120fd60603",
+    ".scratch/27-return-bend/work/cases.json": "95fa2bad3da49f092879d7cbfdd5871f7d7c6ff7a389ee1b55611b31f900cbbc",
+    ".scratch/27-return-bend/evidence/proof/geometry-gate.json_original_611_false_gate": "a0e4379fb33fab095d1d6e3d6d2178b9c94d1e41068b758ebce0ede045a0f878",
+    ".scratch/27-return-bend/evidence/proof/geometry-gate-corrected.json": "83ccee28c349623c779329989be955946bfc25ca7c4f8decb6f3164522f13bae",
+    ".scratch/27-return-bend/evidence/proof/geometry-gate-render-build.json": "d224de88434934ad966a95394b3f45037be24adcef8b549dab324111b398320a",
+    ".scratch/27-return-bend/evidence/diagnostics/dminus-resolution-v2.json": "1d27022bfd3999d5ee2fac3ecc188229422232a596f8aa9c124f15376ebe492f",
+    ".scratch/27-return-bend/evidence/build-progress.jsonl": "86160c0fbe426c5279f9e8a0ed98c21019916ff70f75fc9bc5db2a899048ceca"
+  },
+  "cached_panel_origin": {
+    "producer_sha256": "d8f90f99641e5400e8ac2febafa7bc42c530c6dca8fd193041e86ff86dc62aaa",
+    "geometry_module_sha256": "618d701c3a26eb1f97d6b6cfd210ffe41eba3fe25032eb216d3c2ead398d2607",
+    "renderer_kernel_sha256": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa",
+    "reason": "last pins-verified progress event before the ten cached panel-saved events"
+  },
+  "cached_raw_panels": {
+    "panel-a191": {"svg": "77973ae08b953d6b550f640f0bfa3e5b0118023801e0f27921e9fe3b31543839", "png": "50955be0671ea11ab3c26741fb07478054a6f2ae2541f910f92675ea8be15d8c"},
+    "panel-b704": {"svg": "2d405e28a375b7ea9a9bc3dcb04722ee04098fe055007c6c9508c4d67b56c7a3", "png": "6caf318ca5f1f53dfcb75ed0a4b079bc3c57e904cb77ebc399ef81b43bcac201"},
+    "panel-c628": {"svg": "ab51192d9d6c2f4b74e4d659674d1f814254c82c5c63be3346b8c0408edb4746", "png": "8a69c8fdea7ab734a6aff7f06713006f389d22caf2b902238e1ca1341e9034a8"},
+    "panel-d315": {"svg": "ce034e16c836c35249875feaa8ca84525e02f0b0a0443c8bbb3ed488584d66be", "png": "92c0012752709212281b5ba653caa7fa088e473e9038e12d6548932f06fa1e46"},
+    "panel-e943": {"svg": "77973ae08b953d6b550f640f0bfa3e5b0118023801e0f27921e9fe3b31543839", "png": "50955be0671ea11ab3c26741fb07478054a6f2ae2541f910f92675ea8be15d8c"},
+    "panel-f837": {"svg": "d6fe60d9359b73fcd4063aebd4f7cd3f3b05f0fb4fa0795e66fbfbd90f36dd9a", "png": "0c7f8c9978b23fccada5dbaf98866ac449573d70bb15732b299400052da1f67f"},
+    "panel-g292": {"svg": "3b73a3707c9a8745ebfddce175b1dad87f193e1dc9677370a55d620ab2154622", "png": "5e32da2c8625055555e1448558d5f0fc14802affd2b5f6fc1a2d5655004c8db7"},
+    "panel-h156": {"svg": "5f1b2bcf961d773a78bc4702c179b1896dee1674ef961392cf5e6e268b78e61f", "png": "9b95b9bad928845d7b54faa7c6fba8e4695ce1dee28bf6517b474a110e184cc4"},
+    "panel-j601": {"svg": "6dde0df748f60a335c1b7ad6dce713075249b8494f8e10a6da4644338ad07a07", "png": "562cfe60684acc6ec2b3e2864cc26956201c63f05207b6aac866a9fdaf89c602"},
+    "panel-k482": {"svg": "181080db4946e829becd510bd90183c1da8a1a9a301ad05eebe226cb31eb7b7b", "png": "5de37fa82beb107f9fcbff4a7465f7264c7cbe164a426fe53456012e9b792c88"}
+  },
+  "partial_artifact_state": {
+    "raw_panel_count": 10,
+    "complete_board_count": 0,
+    "report_txt_present": false,
+    "last_build_failure": "board_svg attempted to index a (side, record) tuple as metadata",
+    "narrow_fix": "unpack display item as (_side, record) in board loop",
+    "next_run": "resume cached board/export stage; verify saved panel hashes; do not change frozen geometry or regenerate panels"
+  }
+}

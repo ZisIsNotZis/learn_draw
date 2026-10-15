@@ -1,0 +1,20 @@
+art:    evidence/curve-garment-application/garment.svg
+bundle: /home/z/vibe/learn_draw/evidence/curve-garment-application/check
+
+images (feed these, and nothing else):
+  /home/z/vibe/learn_draw/evidence/curve-garment-application/check/side-by-side.png  -- whole frame, ref beside draft
+  /home/z/vibe/learn_draw/evidence/curve-garment-application/check/draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale)
+  /home/z/vibe/learn_draw/evidence/curve-garment-application/check/region-1.png  -- worst-region #1 at (576,384,64,64) mean-dist 252, 2.0x
+  /home/z/vibe/learn_draw/evidence/curve-garment-application/check/region-2.png  -- worst-region #2 at (512,0,64,64) mean-dist 215, 2.0x
+  /home/z/vibe/learn_draw/evidence/curve-garment-application/check/region-3.png  -- worst-on-drawn #3 at (576,128,64,64) mean-dist 210, 2.0x
+
+metrics (breakage alarm only, never a target): {'precision': 0.219, 'recall': 0.049, 'edge_f1': 0.08, 'color_dist': 118.8, 'coverage': 0.403}
+vs recorded best: edge_f1 0.164 -> 0.08 (-0.084) | coverage 0.571 -> 0.403 (-0.168) | precision 0.335 -> 0.219 (-0.116) | recall 0.108 -> 0.049 (-0.059) | color_dist 59.6 -> 118.8 (+59.200)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/m2-final.png]
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.

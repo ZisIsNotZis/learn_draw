@@ -1,0 +1,84 @@
+{
+  "case_plan_sha256": "bbc8697195e1ca45805899f4fafa6bbae8fccab3021cb8673460e3c4418d0643",
+  "event": "original positive half-twist front facing-zero station u=0.5",
+  "panels": [
+    {
+      "actual_normal_view_dot_range": [
+        0.0043410666344655255,
+        0.14623936603058402
+      ],
+      "camera": {
+        "name": "front",
+        "pitch": 0,
+        "yaw": 0
+      },
+      "center_matches_frozen_route_at_station": true,
+      "condition": "flat",
+      "facing_samples": 92,
+      "material_arc_world_units": 0.36000000000000004,
+      "projected_width_perpendicular_to_route_world_units": 0.028712194659584245,
+      "requested_continuous_width_world_units": 0.36,
+      "u": 0.5
+    },
+    {
+      "actual_normal_view_dot_range": [
+        -0.505637549245075,
+        0.6317999065931594
+      ],
+      "camera": {
+        "name": "front",
+        "pitch": 0,
+        "yaw": 0
+      },
+      "center_matches_frozen_route_at_station": true,
+      "condition": "camber-035",
+      "facing_samples": 92,
+      "material_arc_world_units": 0.3599999146814964,
+      "projected_width_perpendicular_to_route_world_units": 0.07243332847014028,
+      "requested_continuous_width_world_units": 0.36,
+      "u": 0.5
+    },
+    {
+      "actual_normal_view_dot_range": [
+        -0.4659821536790493,
+        -0.18067565471477956
+      ],
+      "camera": {
+        "name": "oblique",
+        "pitch": 22,
+        "yaw": 38
+      },
+      "center_matches_frozen_route_at_station": true,
+      "condition": "flat",
+      "facing_samples": 92,
+      "material_arc_world_units": 0.36000000000000004,
+      "projected_width_perpendicular_to_route_world_units": 0.17363120470495308,
+      "requested_continuous_width_world_units": 0.36,
+      "u": 0.5
+    },
+    {
+      "actual_normal_view_dot_range": [
+        -0.6871985439839056,
+        0.14137497918070802
+      ],
+      "camera": {
+        "name": "oblique",
+        "pitch": 22,
+        "yaw": 38
+      },
+      "center_matches_frozen_route_at_station": true,
+      "condition": "camber-035",
+      "facing_samples": 92,
+      "material_arc_world_units": 0.3599999146814964,
+      "projected_width_perpendicular_to_route_world_units": 0.16362534856934233,
+      "requested_continuous_width_world_units": 0.36,
+      "u": 0.5
+    }
+  ],
+  "purpose": "mechanism measurement, not a pixel/objective fit",
+  "renderer_sha256": "5c32715a9359e3228a7cd91e2bed020f47badcc6df949f2f54e6c8ae493df2f4",
+  "sampling": {
+    "u_intervals": 96,
+    "v_dense_intervals": 512
+  }
+}

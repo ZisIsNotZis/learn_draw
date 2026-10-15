@@ -1,0 +1,1331 @@
+{
+  "source": "/home/z/vibe/learn_draw/image.jpg",
+  "source_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+  "source_dimensions": [
+    1024,
+    1024
+  ],
+  "crop_sha256": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+  "crop_dimensions": [
+    400,
+    480
+  ],
+  "crop_xyxy": [
+    500,
+    320,
+    900,
+    800
+  ],
+  "all_192000_pixels_exact": true,
+  "landmarks_sha256": "8b3ac7e23fb119ecf9473e54ccdaee7e1a3fcaef21f363e6b5aec3f62705e144",
+  "landmark_count": 19,
+  "patch_definition": "inclusive radius 5 pixels, clipped to crop; raw pixels, no annotation or resampling in individual patch files",
+  "landmarks": [
+    {
+      "id": "N1",
+      "feature": "visible-neck-skin interior",
+      "crop_xy": [
+        232,
+        47
+      ],
+      "source_xy": [
+        732,
+        367
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        56,
+        119,
+        178
+      ],
+      "rgb_hex": "#3877b2",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 96,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            50,
+            116,
+            169
+          ],
+          "count": 6
+        },
+        {
+          "rgb": [
+            49,
+            115,
+            168
+          ],
+          "count": 4
+        },
+        {
+          "rgb": [
+            47,
+            114,
+            167
+          ],
+          "count": 4
+        },
+        {
+          "rgb": [
+            50,
+            116,
+            160
+          ],
+          "count": 3
+        },
+        {
+          "rgb": [
+            50,
+            117,
+            167
+          ],
+          "count": 3
+        }
+      ],
+      "teacher_confidence": "high",
+      "teacher_observation": "pink neck-skin field is visibly between chin/hair and collar; point is interior not boundary"
+    },
+    {
+      "id": "N2",
+      "feature": "front neckline opening low point",
+      "crop_xy": [
+        214,
+        121
+      ],
+      "source_xy": [
+        714,
+        441
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        148,
+        194,
+        206
+      ],
+      "rgb_hex": "#94c2ce",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 77,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            149,
+            195,
+            209
+          ],
+          "count": 21
+        },
+        {
+          "rgb": [
+            149,
+            195,
+            207
+          ],
+          "count": 11
+        },
+        {
+          "rgb": [
+            148,
+            194,
+            206
+          ],
+          "count": 5
+        },
+        {
+          "rgb": [
+            148,
+            194,
+            204
+          ],
+          "count": 4
+        },
+        {
+          "rgb": [
+            218,
+            179,
+            194
+          ],
+          "count": 2
+        }
+      ],
+      "teacher_confidence": "medium",
+      "teacher_observation": "visible pink-skin-to-garment/collar termination; exact shared boundary is softened by line and pixel sampling"
+    },
+    {
+      "id": "CL1",
+      "feature": "left collar leaf upper/outer visible point",
+      "crop_xy": [
+        150,
+        94
+      ],
+      "source_xy": [
+        650,
+        414
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        108,
+        203,
+        194
+      ],
+      "rgb_hex": "#6ccbc2",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 85,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            110,
+            202,
+            196
+          ],
+          "count": 23
+        },
+        {
+          "rgb": [
+            111,
+            201,
+            196
+          ],
+          "count": 6
+        },
+        {
+          "rgb": [
+            108,
+            203,
+            196
+          ],
+          "count": 4
+        },
+        {
+          "rgb": [
+            106,
+            203,
+            196
+          ],
+          "count": 3
+        },
+        {
+          "rgb": [
+            132,
+            205,
+            203
+          ],
+          "count": 2
+        }
+      ],
+      "teacher_confidence": "medium",
+      "teacher_observation": "light collar piece meets dark neckline trim here; not a fitted seam endpoint"
+    },
+    {
+      "id": "CL2",
+      "feature": "left collar leaf lower/front point",
+      "crop_xy": [
+        213,
+        124
+      ],
+      "source_xy": [
+        713,
+        444
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        148,
+        196,
+        207
+      ],
+      "rgb_hex": "#94c4cf",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 55,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            149,
+            195,
+            209
+          ],
+          "count": 20
+        },
+        {
+          "rgb": [
+            152,
+            195,
+            212
+          ],
+          "count": 10
+        },
+        {
+          "rgb": [
+            149,
+            195,
+            207
+          ],
+          "count": 9
+        },
+        {
+          "rgb": [
+            150,
+            195,
+            214
+          ],
+          "count": 7
+        },
+        {
+          "rgb": [
+            150,
+            195,
+            216
+          ],
+          "count": 6
+        }
+      ],
+      "teacher_confidence": "medium",
+      "teacher_observation": "light leaf approaches center opening; boundary partly shares trim and overlaps"
+    },
+    {
+      "id": "CR1",
+      "feature": "right collar leaf interior",
+      "crop_xy": [
+        271,
+        94
+      ],
+      "source_xy": [
+        771,
+        414
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        152,
+        197,
+        213
+      ],
+      "rgb_hex": "#98c5d5",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 8,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            152,
+            197,
+            213
+          ],
+          "count": 41
+        },
+        {
+          "rgb": [
+            152,
+            195,
+            212
+          ],
+          "count": 26
+        },
+        {
+          "rgb": [
+            153,
+            196,
+            213
+          ],
+          "count": 17
+        },
+        {
+          "rgb": [
+            150,
+            198,
+            213
+          ],
+          "count": 15
+        },
+        {
+          "rgb": [
+            154,
+            194,
+            212
+          ],
+          "count": 10
+        }
+      ],
+      "teacher_confidence": "medium",
+      "teacher_observation": "light blue collar surface is visibly distinct from pink skin and bodice; internal leaf seam uncertain"
+    },
+    {
+      "id": "CR2",
+      "feature": "right collar outer/trim transition",
+      "crop_xy": [
+        320,
+        113
+      ],
+      "source_xy": [
+        820,
+        433
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        27,
+        48,
+        72
+      ],
+      "rgb_hex": "#1b3048",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 97,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            152,
+            193,
+            211
+          ],
+          "count": 6
+        },
+        {
+          "rgb": [
+            149,
+            194,
+            211
+          ],
+          "count": 5
+        },
+        {
+          "rgb": [
+            151,
+            194,
+            211
+          ],
+          "count": 4
+        },
+        {
+          "rgb": [
+            5,
+            35,
+            61
+          ],
+          "count": 3
+        },
+        {
+          "rgb": [
+            148,
+            195,
+            211
+          ],
+          "count": 3
+        }
+      ],
+      "teacher_confidence": "medium",
+      "teacher_observation": "dark curved trim crosses light collar toward right shoulder; hair overlaps upper outer continuation"
+    },
+    {
+      "id": "BD1",
+      "feature": "left exposed bodice/shoulder patch",
+      "crop_xy": [
+        111,
+        126
+      ],
+      "source_xy": [
+        611,
+        446
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        110,
+        201,
+        198
+      ],
+      "rgb_hex": "#6ec9c6",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 15,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            110,
+            201,
+            198
+          ],
+          "count": 80
+        },
+        {
+          "rgb": [
+            108,
+            201,
+            195
+          ],
+          "count": 14
+        },
+        {
+          "rgb": [
+            110,
+            202,
+            196
+          ],
+          "count": 8
+        },
+        {
+          "rgb": [
+            111,
+            200,
+            198
+          ],
+          "count": 6
+        },
+        {
+          "rgb": [
+            112,
+            198,
+            199
+          ],
+          "count": 2
+        }
+      ],
+      "teacher_confidence": "medium",
+      "teacher_observation": "light garment visible around bow; bow and foreground form obscure continuation"
+    },
+    {
+      "id": "BD2",
+      "feature": "shoulder-to-sleeve adjacency zone",
+      "crop_xy": [
+        304,
+        128
+      ],
+      "source_xy": [
+        804,
+        448
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        12,
+        37,
+        63
+      ],
+      "rgb_hex": "#0c253f",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 104,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            55,
+            74,
+            106
+          ],
+          "count": 6
+        },
+        {
+          "rgb": [
+            53,
+            73,
+            105
+          ],
+          "count": 3
+        },
+        {
+          "rgb": [
+            61,
+            73,
+            110
+          ],
+          "count": 2
+        },
+        {
+          "rgb": [
+            56,
+            74,
+            106
+          ],
+          "count": 2
+        },
+        {
+          "rgb": [
+            54,
+            76,
+            108
+          ],
+          "count": 2
+        }
+      ],
+      "teacher_confidence": "low",
+      "teacher_observation": "sleeve and bodice boundaries converge under collar/hair; exact armhole/seam cannot be isolated confidently"
+    },
+    {
+      "id": "BD3",
+      "feature": "right bodice-side visible patch",
+      "crop_xy": [
+        281,
+        245
+      ],
+      "source_xy": [
+        781,
+        565
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        224,
+        230,
+        219
+      ],
+      "rgb_hex": "#e0e6db",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 2,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            224,
+            230,
+            219
+          ],
+          "count": 115
+        },
+        {
+          "rgb": [
+            225,
+            231,
+            220
+          ],
+          "count": 6
+        }
+      ],
+      "teacher_confidence": "high",
+      "teacher_observation": "light torso cloth immediately left of right sleeve; thin interior line is a fold/crease"
+    },
+    {
+      "id": "BD4",
+      "feature": "visible lower bodice/waist edge segment",
+      "crop_xy": [
+        270,
+        371
+      ],
+      "source_xy": [
+        770,
+        691
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        77,
+        166,
+        177
+      ],
+      "rgb_hex": "#4da6b1",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 8,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            77,
+            166,
+            177
+          ],
+          "count": 52
+        },
+        {
+          "rgb": [
+            77,
+            166,
+            179
+          ],
+          "count": 32
+        },
+        {
+          "rgb": [
+            77,
+            168,
+            180
+          ],
+          "count": 22
+        },
+        {
+          "rgb": [
+            75,
+            169,
+            180
+          ],
+          "count": 7
+        },
+        {
+          "rgb": [
+            78,
+            168,
+            178
+          ],
+          "count": 4
+        }
+      ],
+      "teacher_confidence": "medium",
+      "teacher_observation": "curved garment edge visible above lower crop contents; neighboring lower/left continuation is occluded"
+    },
+    {
+      "id": "SC1",
+      "feature": "right sleeve upper cap exterior",
+      "crop_xy": [
+        350,
+        119
+      ],
+      "source_xy": [
+        850,
+        439
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        166,
+        185,
+        193
+      ],
+      "rgb_hex": "#a6b9c1",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 113,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            231,
+            235,
+            227
+          ],
+          "count": 4
+        },
+        {
+          "rgb": [
+            53,
+            114,
+            173
+          ],
+          "count": 3
+        },
+        {
+          "rgb": [
+            56,
+            114,
+            167
+          ],
+          "count": 2
+        },
+        {
+          "rgb": [
+            49,
+            112,
+            173
+          ],
+          "count": 2
+        },
+        {
+          "rgb": [
+            230,
+            234,
+            226
+          ],
+          "count": 2
+        }
+      ],
+      "teacher_confidence": "high",
+      "teacher_observation": "outer sleeve silhouette begins below hair and curves outward"
+    },
+    {
+      "id": "SC2",
+      "feature": "right puff/tube midsection interior",
+      "crop_xy": [
+        360,
+        203
+      ],
+      "source_xy": [
+        860,
+        523
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        225,
+        231,
+        222
+      ],
+      "rgb_hex": "#e1e7de",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 24,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            225,
+            231,
+            220
+          ],
+          "count": 44
+        },
+        {
+          "rgb": [
+            225,
+            231,
+            222
+          ],
+          "count": 44
+        },
+        {
+          "rgb": [
+            223,
+            232,
+            220
+          ],
+          "count": 4
+        },
+        {
+          "rgb": [
+            220,
+            235,
+            216
+          ],
+          "count": 3
+        },
+        {
+          "rgb": [
+            225,
+            232,
+            218
+          ],
+          "count": 2
+        }
+      ],
+      "teacher_confidence": "high",
+      "teacher_observation": "continuous pale sleeve surface; no visible cap-to-tube seam warrants splitting these into separate pieces"
+    },
+    {
+      "id": "SC3",
+      "feature": "sleeve lower-inner/cuff approach",
+      "crop_xy": [
+        335,
+        278
+      ],
+      "source_xy": [
+        835,
+        598
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        223,
+        232,
+        220
+      ],
+      "rgb_hex": "#dfe8dc",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 9,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            223,
+            232,
+            220
+          ],
+          "count": 48
+        },
+        {
+          "rgb": [
+            222,
+            231,
+            219
+          ],
+          "count": 23
+        },
+        {
+          "rgb": [
+            223,
+            233,
+            218
+          ],
+          "count": 14
+        },
+        {
+          "rgb": [
+            221,
+            230,
+            218
+          ],
+          "count": 12
+        },
+        {
+          "rgb": [
+            221,
+            231,
+            221
+          ],
+          "count": 8
+        }
+      ],
+      "teacher_confidence": "medium",
+      "teacher_observation": "visible sleeve narrows toward dark cuff; outline is partly obscured by adjacent hair/background shapes"
+    },
+    {
+      "id": "CU1",
+      "feature": "dark cuff band visible center",
+      "crop_xy": [
+        373,
+        309
+      ],
+      "source_xy": [
+        873,
+        629
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        45,
+        59,
+        88
+      ],
+      "rgb_hex": "#2d3b58",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 51,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            45,
+            59,
+            88
+          ],
+          "count": 56
+        },
+        {
+          "rgb": [
+            45,
+            59,
+            86
+          ],
+          "count": 7
+        },
+        {
+          "rgb": [
+            44,
+            60,
+            88
+          ],
+          "count": 5
+        },
+        {
+          "rgb": [
+            44,
+            60,
+            86
+          ],
+          "count": 3
+        },
+        {
+          "rgb": [
+            47,
+            60,
+            88
+          ],
+          "count": 2
+        }
+      ],
+      "teacher_confidence": "high",
+      "teacher_observation": "dark band spans the sleeve opening; band continues toward crop right edge"
+    },
+    {
+      "id": "BK1",
+      "feature": "bow knot center",
+      "crop_xy": [
+        171,
+        169
+      ],
+      "source_xy": [
+        671,
+        489
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        204,
+        83,
+        129
+      ],
+      "rgb_hex": "#cc5381",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 104,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            204,
+            83,
+            129
+          ],
+          "count": 4
+        },
+        {
+          "rgb": [
+            208,
+            78,
+            126
+          ],
+          "count": 3
+        },
+        {
+          "rgb": [
+            207,
+            76,
+            125
+          ],
+          "count": 2
+        },
+        {
+          "rgb": [
+            206,
+            77,
+            125
+          ],
+          "count": 2
+        },
+        {
+          "rgb": [
+            189,
+            80,
+            122
+          ],
+          "count": 2
+        }
+      ],
+      "teacher_confidence": "high",
+      "teacher_observation": "central pink knot where visible loop and tail folds converge"
+    },
+    {
+      "id": "BL1",
+      "feature": "left loop interior",
+      "crop_xy": [
+        139,
+        171
+      ],
+      "source_xy": [
+        639,
+        491
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        211,
+        78,
+        127
+      ],
+      "rgb_hex": "#d34e7f",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 5,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            211,
+            78,
+            127
+          ],
+          "count": 54
+        },
+        {
+          "rgb": [
+            210,
+            77,
+            126
+          ],
+          "count": 30
+        },
+        {
+          "rgb": [
+            212,
+            79,
+            129
+          ],
+          "count": 24
+        },
+        {
+          "rgb": [
+            210,
+            79,
+            127
+          ],
+          "count": 11
+        },
+        {
+          "rgb": [
+            211,
+            78,
+            129
+          ],
+          "count": 2
+        }
+      ],
+      "teacher_confidence": "high",
+      "teacher_observation": "left broad loop field; interior fold strokes are not boundary evidence"
+    },
+    {
+      "id": "BR1",
+      "feature": "right loop interior",
+      "crop_xy": [
+        230,
+        183
+      ],
+      "source_xy": [
+        730,
+        503
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        210,
+        77,
+        126
+      ],
+      "rgb_hex": "#d24d7e",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 10,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            210,
+            77,
+            126
+          ],
+          "count": 42
+        },
+        {
+          "rgb": [
+            210,
+            79,
+            127
+          ],
+          "count": 34
+        },
+        {
+          "rgb": [
+            208,
+            78,
+            126
+          ],
+          "count": 16
+        },
+        {
+          "rgb": [
+            211,
+            80,
+            129
+          ],
+          "count": 11
+        },
+        {
+          "rgb": [
+            208,
+            80,
+            127
+          ],
+          "count": 8
+        }
+      ],
+      "teacher_confidence": "high",
+      "teacher_observation": "right broad loop field; visibly larger/wider than left loop in crop"
+    },
+    {
+      "id": "TL1",
+      "feature": "leftward pink-tail/blue-band overlap zone",
+      "crop_xy": [
+        44,
+        209
+      ],
+      "source_xy": [
+        544,
+        529
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        201,
+        79,
+        127
+      ],
+      "rgb_hex": "#c94f7f",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 113,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            109,
+            200,
+            187
+          ],
+          "count": 3
+        },
+        {
+          "rgb": [
+            107,
+            201,
+            187
+          ],
+          "count": 2
+        },
+        {
+          "rgb": [
+            113,
+            201,
+            190
+          ],
+          "count": 2
+        },
+        {
+          "rgb": [
+            116,
+            205,
+            193
+          ],
+          "count": 2
+        },
+        {
+          "rgb": [
+            131,
+            197,
+            193
+          ],
+          "count": 2
+        }
+      ],
+      "teacher_confidence": "medium",
+      "teacher_observation": "pink tail visibly meets/overlaps a blue band here; only blue band is visible from this area to crop x=0"
+    },
+    {
+      "id": "TD1",
+      "feature": "downward tail visible tip",
+      "crop_xy": [
+        139,
+        276
+      ],
+      "source_xy": [
+        639,
+        596
+      ],
+      "mapping_valid": true,
+      "rgb": [
+        211,
+        87,
+        131
+      ],
+      "rgb_hex": "#d35783",
+      "patch_radius_px": 5,
+      "patch_size": [
+        11,
+        11
+      ],
+      "patch_pixels": 121,
+      "unique_rgb": 64,
+      "most_common_rgb": [
+        {
+          "rgb": [
+            204,
+            78,
+            125
+          ],
+          "count": 31
+        },
+        {
+          "rgb": [
+            202,
+            79,
+            125
+          ],
+          "count": 13
+        },
+        {
+          "rgb": [
+            204,
+            78,
+            123
+          ],
+          "count": 6
+        },
+        {
+          "rgb": [
+            204,
+            80,
+            124
+          ],
+          "count": 6
+        },
+        {
+          "rgb": [
+            202,
+            81,
+            124
+          ],
+          "count": 3
+        }
+      ],
+      "teacher_confidence": "medium",
+      "teacher_observation": "visible pink tail tapers to a point in crop; verify independent interpretation because lower overlap complicates exact edge"
+    }
+  ]
+}

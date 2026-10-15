@@ -1,0 +1,58 @@
+{
+  "derived_from": {
+    "case_name": "untwisted-teaching-arch-front-control",
+    "path": ".scratch/21-ribbon-cross-section/work/cases-fine.json",
+    "sha256": "bbc8697195e1ca45805899f4fafa6bbae8fccab3021cb8673460e3c4418d0643"
+  },
+  "frozen_geometry": {
+    "camera": {
+      "name": "front",
+      "pitch": 0,
+      "yaw": 0
+    },
+    "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4",
+    "ribbon": {
+      "back": "#7188bd",
+      "bend": 0.42,
+      "depth": 0.12,
+      "family": "arch",
+      "front": "#e68aa4",
+      "heading": 0.0,
+      "length": 3.0,
+      "name": "teaching-arch",
+      "origin": [
+        -1.5,
+        0.0,
+        0.0
+      ],
+      "segments": 40,
+      "tip_ratio": 1.0,
+      "twist": 0.0,
+      "width": 0.36
+    },
+    "sampling": {
+      "u_intervals": 96,
+      "v_intervals": 12
+    },
+    "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+    "support_camber": 0.35
+  },
+  "producer": {
+    "historical_pre_integration_sha256": "6cea919d0c83b1c4ebb9b3ec3379854c910e2758610b449c036c25c9ce8e1ada",
+    "historical_test_snapshot_sha256": "8977f31fb12e1f9a660f30866bd0ba271e4541f86d29cc091e32cd5a9cd4acd2",
+    "path": "scripts/vector_visibility.py",
+    "reviewed_v3_kernel_sha256": "5f289fed2ffe3d35740e0d3927b0a2ed168883d8785f4786746e6610e3112da7",
+    "sha256": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa"
+  },
+  "purpose": "Exercise23 derived fine renderer diagnostic only; no visual/art or camber gate.",
+  "rendering": {
+    "depth_sample": "pixel-centre barycentric maximum depth",
+    "fit": "same flat+cambered pair fit as exercise21 fine plan",
+    "role": "new current-renderer diagnostic; do not overwrite/relabel exercise21 output",
+    "view_size": [
+      480,
+      320
+    ]
+  },
+  "schema": 1
+}

@@ -1,0 +1,266 @@
+{
+  "acceptance": {
+    "AArt": "not PASS",
+    "B": "untouched",
+    "R1": "not PASS",
+    "broaderConstructionPhysicalIntersectionDepth": "not independently accepted in this run; inherited cuff full seam only has its separate scoped PASS.",
+    "freshIndependentImageReview": "pending; use only review-image-list.txt and ask open question; no image self-view performed.",
+    "humanUserGate": "open",
+    "scopeAndSourceChecks": "candidate artifacts match the two authorized blocker scope; final implementation tests are recorded PASS, but original allocation timed out.",
+    "sealedHeldout": "unread"
+  },
+  "allocationHistory": {
+    "implementation": "Original 60-minute native worker allocation timed out at 3600000ms; process exitCode 1 and runtime acceptance not evaluated (worker metadata). Existing source/render/test artifacts are partial candidate evidence, not time-compliant acceptance.",
+    "metadataOnlyRecovery": "Parent separately authorized metadata finalization only (max 30 minutes; each command <=120 seconds). It produced manifest, standalone image list, ticket and current-state reconciliation; no source/test/SVG/PNG edits, test reruns, rendering or re-rendering in this recovery."
+  },
+  "authority": {
+    "artCriteriaDisposition": {
+      "bytes": 9600,
+      "path": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/b500e84f-2e67-4024-b3e3-daa7f3daa365/r1/cloth-v2-art-criteria-disposition.md",
+      "sha256": "3965260f179d6d641460f49cf4ed6370b9c0df2b45b8a804246587247da91a07"
+    },
+    "cuffIndependentReview": {
+      "bytes": 3258,
+      "path": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/b500e84f-2e67-4024-b3e3-daa7f3daa365/r1/cuff-fix-independent-check.md",
+      "sha256": "d1641a0f2a0702005d020c7eacfacf0db9b88e6111cd5f927790a5a907811bb7"
+    },
+    "ticket": ".scratch/35-r1-articulated-study/issues/48-a-cloth-construction-v3-two-blockers.md"
+  },
+  "candidate": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3",
+  "collarRepair": {
+    "actualAuthoredCoordinateInputsPerPart": "Existing identity test audits generator-consumed FamilyGeometry inputs; final command passed; maximum remains 4.",
+    "method": "Shared Q and unequal left/right root-to-expansion stations; cubic trim uses one signed scalar normal sweep per wedge and the exact same generated points form the outline and semantic contact edge.",
+    "test": "test_generated_collar_trim_is_curved_actual_outer_boundary checks curved trim membership in generated outline, common Q and skewed roots; full visual identity awaits fresh image review."
+  },
+  "commandsRun": [
+    {
+      "command": "timeout 115s python3 -B -m pytest -p no:cacheprovider -q .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/tests/test_a_cloth_identity.py .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/tests/test_scoped_repair.py",
+      "result": "passed (historical run record; not rerun during metadata-only recovery)",
+      "summary": "11 passed in 39.47s, recorded in original worker transcript; final scoped identity/contact tests including both targeted regressions."
+    },
+    {
+      "command": "timeout 115s python3 -B .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/source/build_a.py --out .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/artwork-a.svg",
+      "result": "passed (historical run record)",
+      "summary": "16 semantic parts, 888 projected faces, 920 generated outline vertices, max 4 authored coordinate inputs."
+    },
+    {
+      "command": "timeout 115s scripts/draw render .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/artwork-a.svg -o .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/artwork-a.png",
+      "result": "passed (historical run record)",
+      "summary": "400\u00d7480 PNG; SHA-256 recorded above."
+    },
+    {
+      "command": "timeout 115s scripts/draw check .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/artwork-a.svg --ref .scratch/35-r1-articulated-study/evidence/A-teacher-reconstruction-v2/teacher-only-corrected-v2/pristine-fullcrop.png --outdir .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/check-a",
+      "result": "passed (historical run record)",
+      "summary": "Registered-crop report and five review images generated; metrics alarm-only."
+    },
+    {
+      "command": "timeout 115s python3 -B .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/diagnostics/waist_coverage_diagnostic.py",
+      "result": "passed (historical run record)",
+      "summary": "Frozen-v1 versus v3 pixel/compound-coverage diagnostic saved."
+    },
+    {
+      "command": "timeout 115s python3 -B -m pytest -p no:cacheprovider -q .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/tests/test_scoped_repair.py -k 'final_waist_compound or generated_collar_trim'",
+      "result": "passed (historical run record)",
+      "summary": "2 passed, 2 deselected."
+    }
+  ],
+  "excludedFromCandidateFileList": "__pycache__/*.pyc runtime caches; present on disk but not source/output evidence. No cleanup performed.",
+  "files": [
+    {
+      "bytes": 43714,
+      "path": "artwork-a.png",
+      "sha256": "87336edaecbadd47ebee48e7b3381cb9e6b1efc9185c35b5d33d46ce9a95101b"
+    },
+    {
+      "bytes": 704566,
+      "path": "artwork-a.svg",
+      "sha256": "44af252e41283ed64b5406f4a4d2dc19a9ceca296e4ca77c724a66548c27c6f9"
+    },
+    {
+      "bytes": 53379,
+      "path": "check-a/draft-fullres.png",
+      "sha256": "4af1f5bb58fc97468c13529e48be3f24b7542b332da08036e3d1cdda1a87c4a0"
+    },
+    {
+      "bytes": 43714,
+      "path": "check-a/draft.png",
+      "sha256": "87336edaecbadd47ebee48e7b3381cb9e6b1efc9185c35b5d33d46ce9a95101b"
+    },
+    {
+      "bytes": 65659,
+      "path": "check-a/region-1.png",
+      "sha256": "cb6e287edc0d9ae9fb23f648ac2a0690dc3f83a7e0fa52dbf5f2d600c0d8a694"
+    },
+    {
+      "bytes": 87622,
+      "path": "check-a/region-2.png",
+      "sha256": "e055b0d4a3c98e496d9a093e0e88f26bbe9f06ad1bf20e65e71ca32ecb2105d1"
+    },
+    {
+      "bytes": 49702,
+      "path": "check-a/region-3.png",
+      "sha256": "0259d626048b73d78c28aed079224d607631b77b80a2fdb0ad6bf699eb6f2401"
+    },
+    {
+      "bytes": 1735,
+      "path": "check-a/report.txt",
+      "sha256": "35518c9a36e8b16f1b23e4f1cc29c9a94d683776111284be5632a33e0901fbb6"
+    },
+    {
+      "bytes": 137463,
+      "path": "check-a/side-by-side.png",
+      "sha256": "0f9f0b528fe8cdc19acd30bd2bd18e7c50015c7b5942ca75b5c5429df783f8e6"
+    },
+    {
+      "bytes": 2103,
+      "path": "diagnostics/waist-coverage-before-after.json",
+      "sha256": "76e5963c3cabcbbf318042200b4224684ee51377689c25d55d9ff681d96cdfc6"
+    },
+    {
+      "bytes": 5096,
+      "path": "diagnostics/waist_coverage_diagnostic.py",
+      "sha256": "83f6cd5bd177cd87168c11d28955b283202c4cf4e12bb2aca42c33db6199aa84"
+    },
+    {
+      "bytes": 444,
+      "path": "review-image-list.txt",
+      "sha256": "77b6deb00dce0b6257fa1cbcdec8c99bac3e65beb8c94f7aae87b269c00b2286"
+    },
+    {
+      "bytes": 15676,
+      "path": "source/build_a.py",
+      "sha256": "2045f87c539f30f4efdb7f7805957e85884023bf6e984a5c6c42bedcb3071ae1"
+    },
+    {
+      "bytes": 19475,
+      "path": "source/family-rules.py",
+      "sha256": "9d66eeb21dddc1dd44fe02b0a8ae0896992f816252ca9de896c96915431582ba"
+    },
+    {
+      "bytes": 6784,
+      "path": "source/semantic-parameters.json",
+      "sha256": "9c5f6842a08e488055bc74005ade9cd8fd39837891c0a9da623dbd802c86a9b7"
+    },
+    {
+      "bytes": 11271,
+      "path": "tests/test_a_cloth_identity.py",
+      "sha256": "65ed15bd6caeb271c97a383a4b65e7d15925b9a6c30712178f02393671ad175c"
+    },
+    {
+      "bytes": 5363,
+      "path": "tests/test_scoped_repair.py",
+      "sha256": "7f16f472c89c2fc804e825d609cca6dbf4602109dd8009ab9edfd8bf6728e43c"
+    }
+  ],
+  "inheritance": {
+    "scopedRepairArtworkPngSha256": "e98dfdc9ac5b507b5ad022251e7c99284452463c587ad7fec39af74c6ff13e6f",
+    "scopedRepairArtworkSvgSha256": "9a470ffec679731a42673355d58f5ac19138b3c1048326dc3570096d137f664c",
+    "scopedRepairBuildSha256": "4b6bcb492bcc798cd28e08a33ff1e44341399f3e64b6e7d02e8e3d6a9e3d7697",
+    "scopedRepairFamilyRulesSha256": "0a4ad7b2de414133e2bbb4a7636fed25e3c6735b7fd6120047803b996cc8be5f",
+    "scopedRepairManifestSha256": "5c4cfd276e92038673dd8af367f9bdfcad1880463788be928d6f90dccfc275f7",
+    "source": "independently checked scoped-repair-v1; cuff full-contact source correction kept unchanged"
+  },
+  "outputs": {
+    "checkReport": {
+      "bytes": 1735,
+      "path": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/check-a/report.txt",
+      "sha256": "35518c9a36e8b16f1b23e4f1cc29c9a94d683776111284be5632a33e0901fbb6"
+    },
+    "png": {
+      "bytes": 43714,
+      "path": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/artwork-a.png",
+      "sha256": "87336edaecbadd47ebee48e7b3381cb9e6b1efc9185c35b5d33d46ce9a95101b"
+    },
+    "pngDimensions": [
+      400,
+      480
+    ],
+    "reviewImageList": {
+      "bytes": 444,
+      "path": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/review-image-list.txt",
+      "sha256": "77b6deb00dce0b6257fa1cbcdec8c99bac3e65beb8c94f7aae87b269c00b2286"
+    },
+    "svg": {
+      "bytes": 704566,
+      "path": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3/artwork-a.svg",
+      "sha256": "44af252e41283ed64b5406f4a4d2dc19a9ceca296e4ca77c724a66548c27c6f9"
+    }
+  },
+  "preservedEarlierArtifactHashes": {
+    "scopedRepairArtworkPng": {
+      "bytes": 44342,
+      "path": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/scoped-repair-v1/artwork-a.png",
+      "sha256": "e98dfdc9ac5b507b5ad022251e7c99284452463c587ad7fec39af74c6ff13e6f"
+    },
+    "scopedRepairArtworkSvg": {
+      "bytes": 659331,
+      "path": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/scoped-repair-v1/artwork-a.svg",
+      "sha256": "9a470ffec679731a42673355d58f5ac19138b3c1048326dc3570096d137f664c"
+    },
+    "scopedRepairManifest": {
+      "bytes": 3200,
+      "path": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/scoped-repair-v1/manifest.json",
+      "sha256": "5c4cfd276e92038673dd8af367f9bdfcad1880463788be928d6f90dccfc275f7"
+    },
+    "v2ArtworkPng": {
+      "bytes": 44342,
+      "path": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/artwork-a.png",
+      "sha256": "e98dfdc9ac5b507b5ad022251e7c99284452463c587ad7fec39af74c6ff13e6f"
+    },
+    "v2ArtworkSvg": {
+      "bytes": 659331,
+      "path": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/artwork-a.svg",
+      "sha256": "9a470ffec679731a42673355d58f5ac19138b3c1048326dc3570096d137f664c"
+    },
+    "v2Manifest": {
+      "bytes": 12603,
+      "path": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/manifest.json",
+      "sha256": "5792cde0534bd1ee17d361d1a5af422aa6dcd822dafb45c851d0f273a1a5dfb4"
+    }
+  },
+  "recordedAt": "2026-10-13T23:21:11+08:00",
+  "schema": "a-cloth-construction-v3-finalization-manifest",
+  "sourceBoundary": "Exactly two reviewed A blockers only: asymmetric/skewed fold-wedge collar organization with trim derived from generated outer edge, and actual waist-cloth pixel continuity. No whole garment redraw, no teacher loop, no B/sealed changes; old source/candidates frozen.",
+  "staging": {
+    "commitsMade": false,
+    "newFilesStaged": false,
+    "preexistingStagedEntries": [
+      ".gitmodules",
+      "vendor/huashu-art-motion",
+      "vendor/huashu-design"
+    ]
+  },
+  "status": "candidate emitted; original implementation run timed out (acceptance not evaluated); metadata-only recovery finalized; NOT A-art PASS / NOT R1 PASS",
+  "waistDiagnosis": {
+    "diagnostic": "diagnostics/waist_coverage_diagnostic.py and diagnostics/waist-coverage-before-after.json; diagnostic and repair evidence kept separate.",
+    "finding": "Named 101-sample boundaries still coincide, but old bodice outline omitted generated right[-1]. Old compound visible-region path did not cover the probe and its actual raster pixel was background. Parent explicitly approved restoring this already-derived endpoint; no sections/support/depth were moved.",
+    "limitations": "The diagnostic checks one target probe and source-derived compound region; it is not proof of full-frame image acceptance.",
+    "new": {
+      "compoundPathCoversProbe": true,
+      "outlineIncludesRightEndpoint": true,
+      "renderedPixelRGB": [
+        232,
+        231,
+        220
+      ]
+    },
+    "old": {
+      "compoundPathCoversProbe": false,
+      "outlineIncludesRightEndpoint": false,
+      "renderedPixelRGB": [
+        120,
+        164,
+        155
+      ]
+    },
+    "probeCropXY": [
+      182.5869,
+      321.4802
+    ],
+    "probePixelXY": [
+      183,
+      321
+    ],
+    "sharedBoundaryMaxError101Samples": 0.0
+  }
+}

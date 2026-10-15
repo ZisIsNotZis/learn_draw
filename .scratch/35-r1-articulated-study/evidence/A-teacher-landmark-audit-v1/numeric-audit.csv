@@ -1,0 +1,20 @@
+id,crop_x,crop_y,source_x,source_y,mapping_valid,rgb_r,rgb_g,rgb_b,patch_radius_px,patch_width,patch_height,unique_rgb,modal_rgb,modal_count,confidence,semantic_reading
+N1,232,47,732,367,True,56,119,178,5,11,11,96,"50,116,169",6,high,visible-neck-skin interior
+N2,214,121,714,441,True,148,194,206,5,11,11,77,"149,195,209",21,medium,front neckline opening low point
+CL1,150,94,650,414,True,108,203,194,5,11,11,85,"110,202,196",23,medium,left collar leaf upper/outer visible point
+CL2,213,124,713,444,True,148,196,207,5,11,11,55,"149,195,209",20,medium,left collar leaf lower/front point
+CR1,271,94,771,414,True,152,197,213,5,11,11,8,"152,197,213",41,medium,right collar leaf interior
+CR2,320,113,820,433,True,27,48,72,5,11,11,97,"152,193,211",6,medium,right collar outer/trim transition
+BD1,111,126,611,446,True,110,201,198,5,11,11,15,"110,201,198",80,medium,left exposed bodice/shoulder patch
+BD2,304,128,804,448,True,12,37,63,5,11,11,104,"55,74,106",6,low,shoulder-to-sleeve adjacency zone
+BD3,281,245,781,565,True,224,230,219,5,11,11,2,"224,230,219",115,high,right bodice-side visible patch
+BD4,270,371,770,691,True,77,166,177,5,11,11,8,"77,166,177",52,medium,visible lower bodice/waist edge segment
+SC1,350,119,850,439,True,166,185,193,5,11,11,113,"231,235,227",4,high,right sleeve upper cap exterior
+SC2,360,203,860,523,True,225,231,222,5,11,11,24,"225,231,220",44,high,right puff/tube midsection interior
+SC3,335,278,835,598,True,223,232,220,5,11,11,9,"223,232,220",48,medium,sleeve lower-inner/cuff approach
+CU1,373,309,873,629,True,45,59,88,5,11,11,51,"45,59,88",56,high,dark cuff band visible center
+BK1,171,169,671,489,True,204,83,129,5,11,11,104,"204,83,129",4,high,bow knot center
+BL1,139,171,639,491,True,211,78,127,5,11,11,5,"211,78,127",54,high,left loop interior
+BR1,230,183,730,503,True,210,77,126,5,11,11,10,"210,77,126",42,high,right loop interior
+TL1,44,209,544,529,True,201,79,127,5,11,11,113,"109,200,187",3,medium,leftward pink-tail/blue-band overlap zone
+TD1,139,276,639,596,True,211,87,131,5,11,11,64,"204,78,125",31,medium,downward tail visible tip

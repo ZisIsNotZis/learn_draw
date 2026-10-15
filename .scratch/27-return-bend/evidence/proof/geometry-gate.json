@@ -1,0 +1,171 @@
+{
+  "card": {
+    "actual_opaque_card_triangles": 2,
+    "card_overlaps_ribbon": true,
+    "card_wins_depth": true,
+    "independent_card_depth_oracle": {
+      "card_overlap_samples": 898,
+      "opposite_facing_depth_overlap": 516,
+      "root_row_winners": 200,
+      "samples": 3083,
+      "step": 0.0125,
+      "tag_winners": {
+        "card": 1226,
+        "ribbon": 1857
+      },
+      "winners_by_facing_sign": {
+        "-1": 1776,
+        "0": 0,
+        "1": 1307
+      }
+    },
+    "submitted_art_and_card_faces": 162
+  },
+  "cases": {
+    "D-minus-symmetric": {
+      "camera": "D-minus-symmetric",
+      "connected": true,
+      "depth_clipped_area_by_facing_sign": {
+        "-1": 2.6385598046880347e-07,
+        "0": 0.0,
+        "1": 0.4006312415050457
+      },
+      "finite_nonzero_normals": true,
+      "independent_actual_depth_oracle": {
+        "card_overlap_samples": 0,
+        "opposite_facing_depth_overlap": 652,
+        "root_row_winners": 111,
+        "samples": 1928,
+        "step": 0.0125,
+        "tag_winners": {},
+        "winners_by_facing_sign": {
+          "-1": 611,
+          "0": 0,
+          "1": 1317
+        }
+      },
+      "kernel_fragments": 204,
+      "material_width_world": 0.36,
+      "profile_seconds": {
+        "geometry": 0.012949224998010322,
+        "independent_oracle": 0.01707364898175001,
+        "kernel": 0.005524894018890336
+      },
+      "projected_width_world": 0.36,
+      "root_row_clipped_area": 5.744845466896716e-11,
+      "sampled_centerline_self_intersection": false,
+      "support_faces": 64
+    },
+    "D-plus-10deg": {
+      "camera": "D-plus-10deg",
+      "connected": true,
+      "depth_clipped_area_by_facing_sign": {
+        "-1": 0.2321336277284001,
+        "0": 0.0,
+        "1": 0.3945447567570459
+      },
+      "finite_nonzero_normals": true,
+      "independent_actual_depth_oracle": {
+        "card_overlap_samples": 0,
+        "opposite_facing_depth_overlap": 186,
+        "root_row_winners": 199,
+        "samples": 2374,
+        "step": 0.0125,
+        "tag_winners": {},
+        "winners_by_facing_sign": {
+          "-1": 1073,
+          "0": 0,
+          "1": 1301
+        }
+      },
+      "kernel_fragments": 167,
+      "material_width_world": 0.36,
+      "profile_seconds": {
+        "geometry": 0.028328390006208792,
+        "independent_oracle": 0.020775732002221048,
+        "kernel": 0.005563757993513718
+      },
+      "projected_width_world": 0.3545307910843949,
+      "root_row_clipped_area": 0.04739993437156648,
+      "sampled_centerline_self_intersection": false,
+      "support_faces": 64
+    }
+  },
+  "declared_limits": [
+    "No source reference image, image coordinates, image metrics, contour tracing, or renderer reference input.",
+    "No parameter/camera sweep, search, rescue, or post-image geometry change.",
+    "A failed positive actual-area or independent actual-depth gate stops all dependent panels.",
+    "D-minus negative retains its actual hidden-side kernel residual as non-positive evidence.",
+    "The route midpoint is edge-on in D-plus; only off-center opposite-facing patches can establish two-side visibility.",
+    "This finite probe is not S1a, figure, hair, actual-3D-reference, or transfer acceptance."
+  ],
+  "fixed_sampling": {
+    "art_face_cap": 256,
+    "support_faces": 64,
+    "u_intervals": 16,
+    "v_intervals": 2
+  },
+  "positive_fixture_gate": true,
+  "schema": 1,
+  "status": "stopped-before-images",
+  "symmetric_negative_gate": false,
+  "timing": {
+    "all_geometry_gates_seconds": 0.2510237990063615
+  },
+  "variation_and_straight": {
+    "straight-control": {
+      "alpha_radians": 0.0,
+      "area_by_facing_sign": {
+        "-1": 1.063592373253186,
+        "0": 0.0,
+        "1": 0.0
+      },
+      "finite_nonzero_normals": true,
+      "kernel_fragments": 74,
+      "oracle": {
+        "card_overlap_samples": 0,
+        "opposite_facing_depth_overlap": 0,
+        "root_row_winners": 213,
+        "samples": 3408,
+        "step": 0.0125,
+        "tag_winners": {},
+        "winners_by_facing_sign": {
+          "-1": 3408,
+          "0": 0,
+          "1": 0
+        }
+      },
+      "root_area": 0.06647452332832406,
+      "sampled_centerline_self_intersection": false,
+      "submitted_art_faces": 160,
+      "support_faces": 64
+    },
+    "two-thirds-return": {
+      "alpha_radians": 2.0943951023931953,
+      "area_by_facing_sign": {
+        "-1": 0.4597836655455999,
+        "0": 0.0,
+        "1": 0.1131425533380628
+      },
+      "finite_nonzero_normals": true,
+      "kernel_fragments": 153,
+      "oracle": {
+        "card_overlap_samples": 0,
+        "opposite_facing_depth_overlap": 82,
+        "root_row_winners": 214,
+        "samples": 1971,
+        "step": 0.0125,
+        "tag_winners": {},
+        "winners_by_facing_sign": {
+          "-1": 1597,
+          "0": 0,
+          "1": 374
+        }
+      },
+      "root_area": 0.06647079216248153,
+      "sampled_centerline_self_intersection": false,
+      "submitted_art_faces": 160,
+      "support_faces": 64
+    }
+  }
+}

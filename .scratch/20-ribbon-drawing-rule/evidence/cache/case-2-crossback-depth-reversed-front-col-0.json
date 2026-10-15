@@ -1,0 +1,41 @@
+{
+  "cache_key": "670abce1ba91b3a4caca6a612415813927f5113c186b80b251c7b1c0bb6b8341",
+  "camera": {
+    "name": "front",
+    "pitch": 0,
+    "yaw": 0
+  },
+  "case": "crossback-depth-reversed-front",
+  "coverage": {
+    "candidate_count": 258,
+    "depth_tolerances": {
+      "barycentric_inside": 1e-08,
+      "cut_merge_parameter": 1e-08,
+      "depth_epsilon": 1e-07,
+      "projected_intersection": 1e-09,
+      "tie_bias": 1e-05,
+      "uv_join_parameter": 1e-08
+    },
+    "fill_regions": 2,
+    "motif_sides": [],
+    "motif_triangle_count": 0,
+    "overlap_span_count": 0,
+    "perimeter_spans": [],
+    "sampling_override": 128,
+    "silhouette_span_count": 0,
+    "stroke_polygon_count": 0,
+    "support_geometry_sha256": "f61de97e47c19844bb0935f88b51fdd46f0557dce7a5e98890a8bb7303f0f4fe",
+    "support_triangle_count": 256,
+    "visible_span_count": 0
+  },
+  "rule": "control",
+  "sampling": 128,
+  "source": {
+    "case_name": "awkward-crossing",
+    "id": "frozen-family-cases",
+    "kind": "case"
+  },
+  "source_spec_sha256": "0d1e0e19a1add90217fabd1df6138705f10ee5203e6120a8db24dea09a97367e",
+  "svg_bytes": 421351,
+  "svg_sha256": "9baf67c11fd5c0b26d91b75c1f6729edddadaccb52d1d6a05630c631cc6997a3"
+}

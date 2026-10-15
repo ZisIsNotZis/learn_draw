@@ -1,0 +1,20 @@
+art:    .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/rendered/A-observed-garment.svg
+bundle: .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/checks/A
+
+images (feed these, and nothing else):
+  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/checks/A/side-by-side.png  -- whole frame, ref beside draft
+  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/checks/A/draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale)
+  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/checks/A/region-1.png  -- worst-region #1 at (320,0,64,64) mean-dist 193, 2.0x
+  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/checks/A/region-2.png  -- worst-region #2 at (64,0,64,64) mean-dist 178, 2.0x
+  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v1/checks/A/region-3.png  -- worst-on-drawn #3 at (192,128,64,64) mean-dist 119, 2.0x
+
+metrics (breakage alarm only, never a target): {'precision': 0.34, 'recall': 0.114, 'edge_f1': 0.171, 'color_dist': 94.9, 'coverage': 0.455}
+vs recorded best: edge_f1 0.164 -> 0.171 (+0.007) | coverage 0.571 -> 0.455 (-0.116) | precision 0.335 -> 0.34 (+0.005) | recall 0.108 -> 0.114 (+0.006) | color_dist 59.6 -> 94.9 (+35.300)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/m2-final.png]
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.

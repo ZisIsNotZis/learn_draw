@@ -1,0 +1,34 @@
+{
+  "builder_sha256": "1d3615bed0f3fb98314c7a8ab5101eb6f4a223e6fe6a1164323f81741c430680",
+  "cache_key": "14bbac30793a4e4d494950adc2d5c6d97724bc524b86ae6a9c4b3b0a9b61802b",
+  "camber": 0.35,
+  "camera": {
+    "name": "front",
+    "pitch": 0,
+    "yaw": 0
+  },
+  "case": "positive-half-twist-front",
+  "case_index": 0,
+  "case_plan_sha256": "793ca4c206e44d3801cb5a1c82783a5fecbffb9d16e5c1539999445ba20b6034",
+  "chromium": {
+    "path": "/home/z/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell",
+    "version": "Google Chrome for Testing 151.0.7922.34"
+  },
+  "condition": "primary-existing-spec",
+  "draw_py_sha256": "7b1bb3bece91dfe297e34aefab6b40af24bc02dbe4837bec03da604569ac7abf",
+  "input": {
+    "case_name": "twisted-two-sided",
+    "path": ".scratch/19-ribbon-family/work/cases.json"
+  },
+  "input_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+  "nonbackground_pixels": 15222,
+  "png_bytes": 9375,
+  "png_sha256": "e6c21302af7bb00341e3de88296ba18d420ab600f3320d09c796cff7ceba2ca8",
+  "renderer_sha256": "5c32715a9359e3228a7cd91e2bed020f47badcc6df949f2f54e6c8ae493df2f4",
+  "sampling": {
+    "u_intervals": 96,
+    "v_intervals": 12
+  },
+  "svg_bytes": 762196,
+  "svg_sha256": "bb1900a50088da2792eace2b961e56adc884eee1393f132ca6c0a79e2c2eeb37"
+}

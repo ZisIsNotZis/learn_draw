@@ -1,0 +1,10 @@
+check-a/draft.png
+check-a/report.txt
+check-b/draft.png
+check-b/report.txt
+check-sheet/draft.png
+check-sheet/report.txt
+render-manifest.md
+source/artwork-a.svg
+source/artwork-b.svg
+source/artwork.svg

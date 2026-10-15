@@ -1,0 +1,65 @@
+{
+  "balanced_policy_columns": true,
+  "board_sha256": "efa4f55837a15e306b8e5cad8a05bb2fadc3ffa1d790415ea1da0d25aba1a438",
+  "board_svg_source_sha256": "33f11652bb081be674b87c63f00dc0e9b1d31369f6b13d5e6dc27419993be9f4",
+  "cell_gap_px": 20,
+  "cells": [
+    {
+      "column": 0,
+      "pixel_match": true,
+      "row": 0,
+      "source_panel_sha256": "1e7292be02b4b36fe0cbd091bc0dcd2059d2d6f25bb9f44eb74d5cf380a76881"
+    },
+    {
+      "column": 1,
+      "pixel_match": true,
+      "row": 0,
+      "source_panel_sha256": "92c0012752709212281b5ba653caa7fa088e473e9038e12d6548932f06fa1e46"
+    },
+    {
+      "column": 0,
+      "pixel_match": true,
+      "row": 1,
+      "source_panel_sha256": "0c7f8c9978b23fccada5dbaf98866ac449573d70bb15732b299400052da1f67f"
+    },
+    {
+      "column": 1,
+      "pixel_match": true,
+      "row": 1,
+      "source_panel_sha256": "6c730cf70fa4301506737770be0f4a3094f9ca1c9bc71e8145b76676bcbc85d3"
+    },
+    {
+      "column": 0,
+      "pixel_match": true,
+      "row": 2,
+      "source_panel_sha256": "b9f89a2a72dc80595322295a1676176a4f213500e47e4ea88f4bcf9de7a903a2"
+    },
+    {
+      "column": 1,
+      "pixel_match": true,
+      "row": 2,
+      "source_panel_sha256": "6caf318ca5f1f53dfcb75ed0a4b079bc3c57e904cb77ebc399ef81b43bcac201"
+    },
+    {
+      "column": 0,
+      "pixel_match": true,
+      "row": 3,
+      "source_panel_sha256": "9b95b9bad928845d7b54faa7c6fba8e4695ce1dee28bf6517b474a110e184cc4"
+    },
+    {
+      "column": 1,
+      "pixel_match": true,
+      "row": 3,
+      "source_panel_sha256": "fac077bc575af6e184b489c8f5671ed6c0ffb742bb73a040453bdee73f62a892"
+    }
+  ],
+  "columns": 2,
+  "height": 1380,
+  "labels_or_text": false,
+  "nonblank_cells": 8,
+  "outer_margin_px": 20,
+  "panel_pixels_match_frozen_mapping": true,
+  "private_mapping_sha256": "7f1eeae1571f230f0fc9631ddbf9d12652f6eca3440ee34f4ebfec8d1f28fb11",
+  "rows": 4,
+  "width": 900
+}

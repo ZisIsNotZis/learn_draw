@@ -1,0 +1,258 @@
+{
+  "analytic_positive_fixture_precheck": {
+    "facing_dot_magnitude_at_quarter": 0.868522898676589,
+    "minimum_camera_depth_delta_at_equal_screen_point_world": 0.7180031869938285,
+    "minimum_uncovered_exposed_margin_world": 0.09405852458399938,
+    "paired_centerline_delta_y_bound_world": [
+      0.7070951052389964,
+      1.5
+    ],
+    "paired_screen_offset_bound_world": [
+      0.12278577646195805,
+      0.2604722665003955
+    ],
+    "projected_width_world": 0.3545307910843949,
+    "reason": "paired route stations have equal x, opposite non-edge-on facing signs, nonzero screen offset smaller than their projected width, and strict camera-depth order; partial overlap leaves a nonzero exposed strip on each branch",
+    "selected_without_search": true,
+    "theta_at_u_quarter_radians": 0.4908738521234052
+  },
+  "criterion": {
+    "negative_fixture_hides_one_facing_side_in_independent_ray_oracle": true,
+    "no_parameter_or_camera_search": true,
+    "positive_independent_depth_winners_both_sides": true,
+    "positive_kernel_area_both_sides": true,
+    "positive_opposite_facing_actual_depth_overlap": true,
+    "positive_root_after_clip": true
+  },
+  "fixed_parameters": {
+    "L_world": 3.0,
+    "Nu": 32,
+    "Nv": 4,
+    "alpha_radians": 3.141592653589793,
+    "face_count_per_fixture": 256,
+    "origin": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "q": "3u^2-2u^3",
+    "tip_ratio": 1.0,
+    "w_material_world": 0.36
+  },
+  "mathematical_limits": {
+    "centerline_injective_under_monotone_turn_up_to_pi": true,
+    "claim_scope": "formula/domain only; finite projected depth cases are separately sampled",
+    "domain_surface_jacobian_Lw_half_minimum": 0.025,
+    "domain_width_minimum_world": 0.05
+  },
+  "method": {
+    "canonical_visibility": "vector_visibility.visible_fragments on generated projected triangles",
+    "independent_check": "screen-lattice barycentric triangle coverage; interpolate each actual projected depth and choose maximum toward viewer",
+    "independent_step": 0.0125,
+    "no_image_or_rendering": true
+  },
+  "negative_fixture": {
+    "camera_toward_viewer": [
+      0.0,
+      1.0,
+      0.0
+    ],
+    "connected_faces": 256,
+    "fragments_count": 840,
+    "frame": {
+      "W": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "e_d": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "e_x": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "right_handed": true
+    },
+    "independent_ray_depth_oracle": {
+      "nearest_depth_winners_by_facing_sign": {
+        "-1": 0,
+        "1": 2581
+      },
+      "opposite_facing_depth_overlap_samples": 2581,
+      "root_row_winner_samples": 0,
+      "sampled_points_with_surface": 2581,
+      "step_screen_units": 0.0125
+    },
+    "material_width_world": 0.36,
+    "name": "symmetric-alpha-pi-negative",
+    "nonzero_3d_face_normals": 256,
+    "orthonormal_right_handed_camera": true,
+    "paired_station_projection_error_world": 0.0,
+    "parameters": {
+      "L_world": 3.0,
+      "Nu": 32,
+      "Nv": 4,
+      "alpha_radians": 3.141592653589793,
+      "face_count": 256,
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "quadrature_steps": 256,
+      "tip_ratio": 1.0,
+      "w_material_world": 0.36
+    },
+    "profile_seconds": {
+      "geometry": 0.04157818600651808,
+      "independent_oracle": 0.039906791993416846,
+      "kernel": 0.027342137007508427
+    },
+    "projected_width_world": 0.36,
+    "quarter_branch_camera_depth_delta_world": 1.2050394720139792,
+    "quarter_branch_screen_offset_world": 0.0,
+    "root_row_visible_area_screen_square_units": 0.0,
+    "screen_right": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "screen_up": [
+      0.0,
+      0.0,
+      -1.0
+    ],
+    "status": "measured",
+    "visible_area_screen_square_units_by_face_facing_sign": {
+      "-1": 1.313623599620152e-07,
+      "0": 0.0,
+      "1": 0.40063151046472345
+    }
+  },
+  "negative_kernel_residual_area_fraction": 3.2788813026084565e-07,
+  "negative_kernel_residual_area_screen_square_units": 1.313623599620152e-07,
+  "overall": "pass",
+  "pins": {
+    "checker_sha256": "205d889d4ef8da4878261552bc600b0fa605d644ec33d463b7e8e7be1ceb2fc1",
+    "kernel_sha256": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa"
+  },
+  "positive_candidate": {
+    "camera_toward_viewer": [
+      0.0,
+      0.984807753012208,
+      0.17364817766693033
+    ],
+    "connected_faces": 256,
+    "fragments_count": 730,
+    "frame": {
+      "W": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "e_d": [
+        0.0,
+        1.0,
+        0.0
+      ],
+      "e_x": [
+        1.0,
+        0.0,
+        0.0
+      ],
+      "right_handed": true
+    },
+    "independent_ray_depth_oracle": {
+      "nearest_depth_winners_by_facing_sign": {
+        "-1": 1493,
+        "1": 2515
+      },
+      "opposite_facing_depth_overlap_samples": 1023,
+      "root_row_winner_samples": 160,
+      "sampled_points_with_surface": 4008,
+      "step_screen_units": 0.0125
+    },
+    "material_width_world": 0.36,
+    "name": "ten-degree-alpha-pi-positive-candidate",
+    "nonzero_3d_face_normals": 256,
+    "orthonormal_right_handed_camera": true,
+    "paired_station_projection_error_world": 0.2532186178008131,
+    "parameters": {
+      "L_world": 3.0,
+      "Nu": 32,
+      "Nv": 4,
+      "alpha_radians": 3.141592653589793,
+      "face_count": 256,
+      "origin": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "quadrature_steps": 256,
+      "tip_ratio": 1.0,
+      "w_material_world": 0.36
+    },
+    "profile_seconds": {
+      "geometry": 0.04873563998262398,
+      "independent_oracle": 0.06102514700614847,
+      "kernel": 0.02903614501701668
+    },
+    "projected_width_world": 0.3545307910843949,
+    "quarter_branch_camera_depth_delta_world": 1.1867322147251045,
+    "quarter_branch_screen_offset_world": 0.20925290833194743,
+    "root_row_visible_area_screen_square_units": 0.023734442129809498,
+    "screen_right": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "screen_up": [
+      0.0,
+      0.17364817766693036,
+      -0.9848077530122082
+    ],
+    "status": "measured",
+    "visible_area_screen_square_units_by_face_facing_sign": {
+      "-1": 0.23332891012238974,
+      "0": 0.0,
+      "1": 0.39454501760665156
+    }
+  },
+  "scope": "design-only numerical preflight; not a renderer/API/prototype or visual acceptance",
+  "tested_bounded_domain": {
+    "L_world": [
+      1.0,
+      3.0
+    ],
+    "Nu": [
+      16,
+      32
+    ],
+    "Nv": [
+      2,
+      4
+    ],
+    "alpha_radians": [
+      0.0,
+      3.141592653589793
+    ],
+    "face_cap": 256,
+    "frame_tolerance": 1e-10,
+    "origin_each_axis_world": [
+      -10.0,
+      10.0
+    ],
+    "tip_ratio": [
+      0.5,
+      1.0
+    ],
+    "w_root_world": [
+      0.1,
+      0.6
+    ]
+  }
+}

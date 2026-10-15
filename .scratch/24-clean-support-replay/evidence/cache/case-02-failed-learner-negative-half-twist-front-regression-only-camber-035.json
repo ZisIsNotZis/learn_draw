@@ -1,0 +1,33 @@
+{
+  "builder_sha256": "1d3615bed0f3fb98314c7a8ab5101eb6f4a223e6fe6a1164323f81741c430680",
+  "cache_key": "86a77d20b95664a03f59f3055287101c932d642791a3f3cc6f95eb5fc6466392",
+  "camber": 0.35,
+  "camera": {
+    "name": "front",
+    "pitch": 0,
+    "yaw": 0
+  },
+  "case": "failed-learner-negative-half-twist-front-regression-only",
+  "case_index": 2,
+  "case_plan_sha256": "793ca4c206e44d3801cb5a1c82783a5fecbffb9d16e5c1539999445ba20b6034",
+  "chromium": {
+    "path": "/home/z/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell",
+    "version": "Google Chrome for Testing 151.0.7922.34"
+  },
+  "condition": "untouched-failed-learner-regression-only",
+  "draw_py_sha256": "7b1bb3bece91dfe297e34aefab6b40af24bc02dbe4837bec03da604569ac7abf",
+  "input": {
+    "path": ".scratch/19-ribbon-family/learner/gentle-s-ribbon.json"
+  },
+  "input_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+  "nonbackground_pixels": 11810,
+  "png_bytes": 14301,
+  "png_sha256": "e412874632ac842370bc7889a48ce2444e760cf47d6c3ff9d96647e27a1a401f",
+  "renderer_sha256": "5c32715a9359e3228a7cd91e2bed020f47badcc6df949f2f54e6c8ae493df2f4",
+  "sampling": {
+    "u_intervals": 96,
+    "v_intervals": 12
+  },
+  "svg_bytes": 669616,
+  "svg_sha256": "84f6241ba1190cd00559997ccdd75289fcaf4649138fdf1097ea25ce6d845b12"
+}

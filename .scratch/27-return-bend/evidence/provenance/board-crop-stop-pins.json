@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "stop_state": "geometry-gate-passed; all ten cached panels verified and reused; labelled-board raster margin audit stopped",
+  "repository_head": "24693d4b764755165509fc206695ebca03ee44fe",
+  "cached_diff_sha256": "d36b0b11e5833b1ba841b29af202dc157482b064eb9bb0c432684e74f6eae4a4",
+  "visibility_kernel_sha256": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa",
+  "continuation_producer_sha256": "18002504010b59afa954ccff3308495a24f82db62c5f0d7861b0a91c2936ddee",
+  "cache_origin_producer_sha256": "d8f90f99641e5400e8ac2febafa7bc42c530c6dca8fd193041e86ff86dc62aaa",
+  "pre_resume_pin_file_sha256": "c26b138fdcfb0836c5b170377bc4b202c801a460a7e38cc4cd3e0b0366cc29f6",
+  "pre_render_geometry_gate_sha256": "83ccee28c349623c779329989be955946bfc25ca7c4f8decb6f3164522f13bae",
+  "first_resumed_geometry_gate_sha256": "ecf027d2c29c1e0e8119171be775b8d1edef74c16a6804a40ef1f18321c292ad",
+  "failed_original_gate_sha256": "a0e4379fb33fab095d1d6e3d6d2178b9c94d1e41068b758ebce0ede045a0f878",
+  "failed_label_board": {
+    "svg": ".scratch/27-return-bend/evidence/boards/diagnostics/comparison-labelled-margin-failure.svg",
+    "svg_sha256": "2996568cc8b0104ebfe03f50ea98ecb510ebd63b6529df05e4558f6ef78cc904",
+    "png": ".scratch/27-return-bend/evidence/boards/diagnostics/comparison-labelled-margin-failure.png",
+    "png_sha256": "4e295e27c2c02c8865b2db618655157e9350f1eade982967fb4d0975a5e8ba47",
+    "raster_margins_px": [19, 25, 19, 3],
+    "required_minimum_px": 4
+  },
+  "panel_cache": {
+    "count": 10,
+    "status": "verified by checkpoint hashes and frozen-source SVG reconstruction; not rerendered",
+    "plan_sha256": "95fa2bad3da49f092879d7cbfdd5871f7d7c6ff7a389ee1b55611b31f900cbbc"
+  },
+  "remaining_board_actions": [
+    "retain 420x320 raw panels and paired conditions unchanged",
+    "increase labelled board row pitch only; preserve failed board copy",
+    "reuse existing panel SVG/PNG hashes; assemble boards/report and run raster audits/determinism"
+  ]
+}

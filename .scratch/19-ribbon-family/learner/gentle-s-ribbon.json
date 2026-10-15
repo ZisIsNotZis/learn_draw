@@ -1,0 +1,15 @@
+{
+  "name": "gentle-s-ribbon",
+  "length": 4.0,
+  "width": 0.4,
+  "tip_ratio": 0.3333333333333333,
+  "bend": 0.7,
+  "depth": 0.45,
+  "twist": -3.141592653589793,
+  "family": "s-curve",
+  "origin": [0.5, -0.25, 0.2],
+  "heading": 0.5235987755982988,
+  "front": "#e6a64b",
+  "back": "#395d8f",
+  "segments": 48
+}

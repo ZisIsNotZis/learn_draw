@@ -1,0 +1,3559 @@
+{
+  "scope": "bounded kernel geometry witness; not a production acceptance",
+  "source_hashes": {
+    "canonical": "6cea919d0c83b1c4ebb9b3ec3379854c910e2758610b449c036c25c9ce8e1ada",
+    "candidate_v1": "ed07910a16000e82215b924d932c1859c4dc2da3b932f6d3740ccbb23cf08da6",
+    "candidate_v2": "6faa70eb71457dba5c848b0f46da98be9aebe914261e1763885ed3dd2e0a6855",
+    "candidate_v3": "5f289fed2ffe3d35740e0d3927b0a2ed168883d8785f4786746e6610e3112da7"
+  },
+  "line_clip_eps_times_x": {
+    "canonical": [
+      [
+        0.0,
+        -2.0000000000000004,
+        0.0
+      ],
+      [
+        0.0,
+        4.0,
+        0.0
+      ],
+      [
+        -0.8,
+        2,
+        0
+      ],
+      [
+        -0.8,
+        0,
+        0
+      ]
+    ],
+    "candidate_v1": [
+      [
+        0.0,
+        -2.0000000000000004,
+        0.0
+      ],
+      [
+        0.0,
+        4.0,
+        0.0
+      ],
+      [
+        -0.8,
+        2,
+        0
+      ],
+      [
+        -0.8,
+        0,
+        0
+      ]
+    ],
+    "candidate_v2": [
+      [
+        -1.0,
+        0.5,
+        0.0
+      ],
+      [
+        -1.0,
+        1.5,
+        0.0
+      ],
+      [
+        -0.8,
+        2,
+        0
+      ],
+      [
+        -0.8,
+        0,
+        0
+      ]
+    ],
+    "candidate_v3": [
+      [
+        -1.0,
+        0.5,
+        0.0
+      ],
+      [
+        -1.0,
+        1.5,
+        0.0
+      ],
+      [
+        -0.8,
+        2,
+        0
+      ],
+      [
+        -0.8,
+        0,
+        0
+      ]
+    ]
+  },
+  "line_clip_sign_scale_winding_cases": {
+    "canonical": [
+      {
+        "scale": 0.5,
+        "keep_positive": true,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 0.5,
+        "keep_positive": true,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 0.5,
+        "keep_positive": false,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 0.5,
+        "keep_positive": false,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": true,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": true,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": false,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": false,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": true,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": true,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": false,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": false,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "finite": true
+          }
+        ]
+      }
+    ],
+    "candidate_v1": [
+      {
+        "scale": 0.5,
+        "keep_positive": true,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 0.5,
+        "keep_positive": true,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 0.5,
+        "keep_positive": false,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 0.5,
+        "keep_positive": false,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": true,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": true,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": false,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": false,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": true,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": true,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": false,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": false,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.0,
+              2.5,
+              0.0
+            ],
+            "barycentric": [
+              1.5,
+              -0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": -0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.0,
+              -0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              -0.5,
+              1.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 1.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "finite": true
+          }
+        ]
+      }
+    ],
+    "candidate_v2": [
+      {
+        "scale": 0.5,
+        "keep_positive": true,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              -2.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -2.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 0.5,
+        "keep_positive": true,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              -2.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -2.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 0.5,
+        "keep_positive": false,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              2.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              2.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 0.5,
+        "keep_positive": false,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              2.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              2.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": true,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              -1.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -1.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": true,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              -1.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -1.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": false,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              1.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              1.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": false,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              1.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              1.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": true,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              -0.5,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.5,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": true,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              -0.5,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.5,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": false,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.5,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": false,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.5,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "finite": true
+          }
+        ]
+      }
+    ],
+    "candidate_v3": [
+      {
+        "scale": 0.5,
+        "keep_positive": true,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              -2.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -2.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 0.5,
+        "keep_positive": true,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              -2.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -2.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 0.5,
+        "keep_positive": false,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              2.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              2.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 0.5,
+        "keep_positive": false,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              2.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              2.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              1.0,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              1.0,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": true,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              -1.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -1.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": true,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              -1.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -1.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": false,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              1.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              1.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 1.0,
+        "keep_positive": false,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              1.0,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              1.0,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.5,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.5,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": true,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              -0.5,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.5,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": true,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              -0.5,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.5,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              -0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              -0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              -0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": false,
+        "reversed_input_winding": false,
+        "vertices": [
+          {
+            "point": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.5,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              0.0
+            ],
+            "finite": true
+          }
+        ]
+      },
+      {
+        "scale": 2.0,
+        "keep_positive": false,
+        "reversed_input_winding": true,
+        "vertices": [
+          {
+            "point": [
+              0.5,
+              1.5,
+              0.0
+            ],
+            "barycentric": [
+              0.5,
+              0.5,
+              -0.0
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.5,
+              0.5,
+              0.0
+            ],
+            "barycentric": [
+              0.0,
+              0.5,
+              0.5
+            ],
+            "finite": true,
+            "nearest_source_edge_t": 0.5,
+            "distance_to_source_edge": 0.0
+          },
+          {
+            "point": [
+              0.25,
+              0,
+              0
+            ],
+            "barycentric": [
+              0.0,
+              -0.0,
+              1.0
+            ],
+            "finite": true
+          },
+          {
+            "point": [
+              0.25,
+              2,
+              0
+            ],
+            "barycentric": [
+              1.0,
+              0.0,
+              -0.0
+            ],
+            "finite": true
+          }
+        ]
+      }
+    ]
+  },
+  "subtract_convex_eps_edge_witness": {
+    "subject": [
+      [
+        0,
+        0.0005,
+        0
+      ],
+      [
+        0.001,
+        0.0015,
+        0
+      ],
+      [
+        0,
+        0.0006,
+        0
+      ]
+    ],
+    "cutter": [
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        0.0001,
+        0,
+        1
+      ],
+      [
+        5e-05,
+        0.01,
+        1
+      ]
+    ],
+    "signed_edge_function_at_subject_vertices": [
+      5.0000000000000004e-08,
+      1.5000000000000002e-07,
+      6e-08
+    ],
+    "by_resolver": {
+      "canonical": {
+        "fragment_count": 3,
+        "fragment_areas": [
+          7.499999999999993e-08,
+          4.0789395481527225e-08,
+          2.7592760386563695e-10
+        ],
+        "zero_area_output_count": 0,
+        "source_area": 5e-08,
+        "true_intersection_area": 8.934676914607205e-09,
+        "expected_remaining_area": 4.106532308539279e-08,
+        "sum_fragment_area": 1.1606532308539279e-07,
+        "area_conservation_error": 7.5e-08,
+        "declared_numeric_error_bound": 1e-12,
+        "sum_to_source_area_ratio": 2.321306461707856,
+        "minimum_source_barycentric_weight_over_vertices": -0.6666666666666665,
+        "nonfinite_vertices": 0,
+        "pairwise_positive_area_overlaps": [],
+        "output_polygons": [
+          [
+            [
+              -0.0004999999999999999,
+              1.0842021724855044e-19,
+              0.0
+            ],
+            [
+              -0.0006666666666666665,
+              0.0,
+              0.0
+            ],
+            [
+              0,
+              0.0006,
+              0
+            ],
+            [
+              0,
+              0.0005,
+              0
+            ]
+          ],
+          [
+            [
+              9.656545545047286e-05,
+              0.0006869089099054256,
+              0.0
+            ],
+            [
+              9.701492537313435e-05,
+              0.0005970149253731343,
+              0.0
+            ],
+            [
+              0.001,
+              0.0015,
+              0
+            ]
+          ],
+          [
+            [
+              3.0135610246107534e-06,
+              0.0006027122049221496,
+              0.0
+            ],
+            [
+              0,
+              0.0006,
+              0
+            ],
+            [
+              0,
+              0.0005,
+              0
+            ],
+            [
+              2.51256281407036e-06,
+              0.0005025125628140704,
+              0.0
+            ]
+          ]
+        ],
+        "zero_area_outputs": 0,
+        "serialization_move_count_after_zero_area_filter": 3
+      },
+      "candidate_v1": {
+        "fragment_count": 3,
+        "fragment_areas": [
+          7.499999999999993e-08,
+          4.0789395481527225e-08,
+          2.7592760386563695e-10
+        ],
+        "zero_area_output_count": 0,
+        "source_area": 5e-08,
+        "true_intersection_area": 8.934676914607205e-09,
+        "expected_remaining_area": 4.106532308539279e-08,
+        "sum_fragment_area": 1.1606532308539279e-07,
+        "area_conservation_error": 7.5e-08,
+        "declared_numeric_error_bound": 1e-12,
+        "sum_to_source_area_ratio": 2.321306461707856,
+        "minimum_source_barycentric_weight_over_vertices": -0.6666666666666665,
+        "nonfinite_vertices": 0,
+        "pairwise_positive_area_overlaps": [],
+        "output_polygons": [
+          [
+            [
+              -0.0004999999999999999,
+              1.0842021724855044e-19,
+              0.0
+            ],
+            [
+              -0.0006666666666666665,
+              0.0,
+              0.0
+            ],
+            [
+              0,
+              0.0006,
+              0
+            ],
+            [
+              0,
+              0.0005,
+              0
+            ]
+          ],
+          [
+            [
+              9.656545545047286e-05,
+              0.0006869089099054256,
+              0.0
+            ],
+            [
+              9.701492537313435e-05,
+              0.0005970149253731343,
+              0.0
+            ],
+            [
+              0.001,
+              0.0015,
+              0
+            ]
+          ],
+          [
+            [
+              3.0135610246107534e-06,
+              0.0006027122049221496,
+              0.0
+            ],
+            [
+              0,
+              0.0006,
+              0
+            ],
+            [
+              0,
+              0.0005,
+              0
+            ],
+            [
+              2.51256281407036e-06,
+              0.0005025125628140704,
+              0.0
+            ]
+          ]
+        ],
+        "zero_area_outputs": 0,
+        "serialization_move_count_after_zero_area_filter": 3
+      },
+      "candidate_v2": {
+        "fragment_count": 3,
+        "fragment_areas": [
+          3.6111111111111086e-08,
+          4.169328816346338e-08,
+          1.2728761840341836e-09
+        ],
+        "zero_area_output_count": 0,
+        "source_area": 5e-08,
+        "true_intersection_area": 8.934676914607205e-09,
+        "expected_remaining_area": 4.106532308539279e-08,
+        "sum_fragment_area": 7.907727545860864e-08,
+        "area_conservation_error": 3.801195237321585e-08,
+        "declared_numeric_error_bound": 1e-12,
+        "sum_to_source_area_ratio": 1.5815455091721728,
+        "minimum_source_barycentric_weight_over_vertices": -5.551115123125783e-16,
+        "nonfinite_vertices": 0,
+        "pairwise_positive_area_overlaps": [
+          {
+            "fragment_indices": [
+              0,
+              1
+            ],
+            "intersection_area": 2.7804399274574455e-08,
+            "intersection_vertices": [
+              [
+                8.706467661691541e-05,
+                0.0005870646766169155,
+                0.0
+              ],
+              [
+                0.0001652901893731651,
+                0.0006652901893731652,
+                0.0
+              ],
+              [
+                0.0004999999999999997,
+                0.0009999999999999998,
+                0.0
+              ],
+              [
+                0.0004444444444444444,
+                0.001,
+                0.0
+              ],
+              [
+                8.661025385764062e-05,
+                0.0006779492284718766,
+                0.0
+              ],
+              [
+                8.661025385764062e-05,
+                0.0006779492284718766,
+                0.0
+              ]
+            ]
+          },
+          {
+            "fragment_indices": [
+              0,
+              2
+            ],
+            "intersection_area": 1.2728761840341816e-09,
+            "intersection_vertices": [
+              [
+                1.256281407035176e-05,
+                0.0005125628140703518,
+                0.0
+              ],
+              [
+                1.3058764439979886e-05,
+                0.0006117528879959818,
+                0.0
+              ],
+              [
+                0,
+                0.0006,
+                0
+              ],
+              [
+                0,
+                0.0005,
+                0
+              ]
+            ]
+          }
+        ],
+        "output_polygons": [
+          [
+            [
+              0.0004999999999999998,
+              0.0009999999999999998,
+              0.0
+            ],
+            [
+              0.00044444444444444436,
+              0.001,
+              0.0
+            ],
+            [
+              0,
+              0.0006,
+              0
+            ],
+            [
+              0,
+              0.0005,
+              0
+            ]
+          ],
+          [
+            [
+              8.661025385764062e-05,
+              0.0006779492284718766,
+              0.0
+            ],
+            [
+              8.706467661691543e-05,
+              0.0005870646766169155,
+              0.0
+            ],
+            [
+              0.001,
+              0.0015,
+              0
+            ]
+          ],
+          [
+            [
+              1.30587644399799e-05,
+              0.0006117528879959819,
+              0.0
+            ],
+            [
+              0,
+              0.0006,
+              0
+            ],
+            [
+              0,
+              0.0005,
+              0
+            ],
+            [
+              1.2562814070351762e-05,
+              0.0005125628140703518,
+              0.0
+            ]
+          ]
+        ],
+        "zero_area_outputs": 0,
+        "serialization_move_count_after_zero_area_filter": 3
+      },
+      "candidate_v3": {
+        "fragment_count": 2,
+        "fragment_areas": [
+          4.0789395481527225e-08,
+          2.7592760386563695e-10
+        ],
+        "zero_area_output_count": 0,
+        "source_area": 5e-08,
+        "true_intersection_area": 8.934676914607205e-09,
+        "expected_remaining_area": 4.106532308539279e-08,
+        "sum_fragment_area": 4.1065323085392863e-08,
+        "area_conservation_error": 7.279189390466644e-23,
+        "declared_numeric_error_bound": 1e-12,
+        "sum_to_source_area_ratio": 0.8213064617078573,
+        "minimum_source_barycentric_weight_over_vertices": -6.661338147750939e-16,
+        "nonfinite_vertices": 0,
+        "pairwise_positive_area_overlaps": [],
+        "output_polygons": [
+          [
+            [
+              9.656545545047286e-05,
+              0.0006869089099054256,
+              0.0
+            ],
+            [
+              9.701492537313435e-05,
+              0.0005970149253731343,
+              0.0
+            ],
+            [
+              0.001,
+              0.0015,
+              0
+            ]
+          ],
+          [
+            [
+              3.0135610246107534e-06,
+              0.0006027122049221496,
+              0.0
+            ],
+            [
+              0,
+              0.0006,
+              0
+            ],
+            [
+              0,
+              0.0005,
+              0
+            ],
+            [
+              2.51256281407036e-06,
+              0.0005025125628140704,
+              0.0
+            ]
+          ]
+        ],
+        "zero_area_outputs": 0,
+        "serialization_move_count_after_zero_area_filter": 2
+      }
+    },
+    "interpretation": "inspect source-subset, sum-versus-union and pairwise overlaps separately; no overlap merge/tolerance mechanism added"
+  }
+}

@@ -7,20 +7,27 @@ never authored front/back ranges. Slow reference implementation for small scenes
 EPS = 1e-7
 
 
-def line_clip(poly, fn, keep_positive=True):
+def _clip_halfspace(poly, fn, keep_positive, threshold):
+    """Clip to one signed halfspace, interpolating on its classification boundary."""
     if not poly:
         return []
     out = []
     for a, b in zip(poly, poly[1:] + poly[:1]):
-        fa, fb = fn(a), fn(b)
-        inside_a = fa >= -EPS if keep_positive else fa <= EPS
-        inside_b = fb >= -EPS if keep_positive else fb <= EPS
+        fa, fb = fn(a) - threshold, fn(b) - threshold
+        inside_a = fa >= 0 if keep_positive else fa <= 0
+        inside_b = fb >= 0 if keep_positive else fb <= 0
         if inside_a != inside_b:
             t = fa / (fa - fb)
             out.append(tuple(a[k] + t * (b[k] - a[k]) for k in range(3)))
         if inside_b:
             out.append(b)
     return out
+
+
+def line_clip(poly, fn, keep_positive=True):
+    """Tolerance-aware public halfspace clip with intersections on its EPS boundary."""
+    threshold = -EPS if keep_positive else EPS
+    return _clip_halfspace(poly, fn, keep_positive, threshold)
 
 
 def bbox(poly):
@@ -30,6 +37,18 @@ def bbox(poly):
 
 def overlaps(a, b):
     return a[0] < b[2] - EPS and b[0] < a[2] - EPS and a[1] < b[3] - EPS and b[1] < a[3] - EPS
+
+
+def _positive_area_overlap(a, b):
+    """Use convex-polygon SAT to reject touching-only projected triangle pairs."""
+    for polygon in (a, b):
+        for first, second in zip(polygon, polygon[1:] + polygon[:1]):
+            axis = (second[1] - first[1], first[0] - second[0])
+            a_projection = [axis[0] * point[0] + axis[1] * point[1] for point in a]
+            b_projection = [axis[0] * point[0] + axis[1] * point[1] for point in b]
+            if max(a_projection) <= min(b_projection) or max(b_projection) <= min(a_projection):
+                return False
+    return True
 
 
 def depth_plane(tri):
@@ -52,13 +71,17 @@ def subtract_convex(subject, cutter):
     inside = subject
     outside = []
     for a, b in zip(cutter, cutter[1:] + cutter[:1]):
+        if a[0] == b[0] and a[1] == b[1]:
+            # A projected zero-length edge imposes no halfspace constraint.
+            continue
         def edge(p):
             return orientation * ((b[0] - a[0]) * (p[1] - a[1])
                                   - (b[1] - a[1]) * (p[0] - a[0]))
-        piece = line_clip(inside, edge, False)
+        # Exact complementary halves partition the subject without an overlapping EPS band.
+        piece = _clip_halfspace(inside, edge, False, 0.0)
         if len(piece) >= 3:
             outside.append(piece)
-        inside = line_clip(inside, edge, True)
+        inside = _clip_halfspace(inside, edge, True, 0.0)
         if len(inside) < 3:
             break
     return outside
@@ -78,7 +101,8 @@ def visible_fragments(faces):
     for index, (tri, color, component, plane, box) in enumerate(prepared):
         fragments = [list(tri)]
         for other_index, (other, _, _, other_plane, other_box) in enumerate(prepared):
-            if other_index == index or not overlaps(box, other_box):
+            if (other_index == index or not overlaps(box, other_box)
+                    or not _positive_area_overlap(tri, other)):
                 continue
             # The portion of the occluder whose depth exceeds this face's plane.
             # A deterministic tie rule avoids duplicate coplanar output.
@@ -103,3 +127,41 @@ def visible_fragments(faces):
                 break
         for frag in fragments:
             yield frag, color, component
+
+
+def _compound_path(polygons):
+    """Serialize filled polygons as consistently wound SVG subpaths.
+
+    Keeping a semantic fill in one path lets the SVG rasterizer cancel shared
+    tessellation edges instead of antialiasing each face independently. No
+    stroke or geometric expansion is applied, so true outer/occlusion edges
+    remain exactly the visibility boundary.
+    """
+    parts = []
+    for polygon in polygons:
+        area = sum(a[0] * b[1] - b[0] * a[1]
+                   for a, b in zip(polygon, polygon[1:] + polygon[:1]))
+        points = polygon if area >= 0 else list(reversed(polygon))
+        if len(points) < 3 or area == 0:
+            continue
+        commands = [f'M {points[0][0]:.12g} {points[0][1]:.12g}']
+        commands.extend(f'L {x:.12g} {y:.12g}' for x, y, _depth in points[1:])
+        commands.append('Z')
+        parts.append(' '.join(commands))
+    return ' '.join(parts)
+
+
+def visible_regions(faces):
+    """Yield (SVG path data, color, component) for each semantic fill.
+
+    Visible polygons sharing both component and color are combined into one
+    compound path. The subpaths have consistent winding so shared internal
+    edges cancel during fill rasterization; visibility geometry is unchanged.
+    """
+    groups = {}
+    for polygon, color, component in visible_fragments(faces):
+        groups.setdefault((component, color), []).append(polygon)
+    for (component, color), polygons in groups.items():
+        path = _compound_path(polygons)
+        if path:
+            yield path, color, component

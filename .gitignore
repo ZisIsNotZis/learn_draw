@@ -19,3 +19,8 @@ worktrees/
 .env.*
 !.env.example
 *.log
+**/supervise.pid
+**/supervise.out
+**/train_driver.pid
+**/.smoke_ok
+/cpu.npz

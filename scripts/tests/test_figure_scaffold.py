@@ -34,6 +34,17 @@ class FigureScaffoldTests(unittest.TestCase):
         self.assertIn('fill="#3974ab" stroke="#3974ab" stroke-width="0.22" data-component="hair-sheet"', svg)
         self.assertIn('fill="#83cbbd" stroke="#83cbbd" stroke-width="0.22" data-component="hair-sheet"', svg)
 
+    def test_hair_sheet_root_lies_on_head_surface(self):
+        triangles = [tri for tri, _, name in figure.hair_sheet() if name == 'hair-sheet']
+        nu, nv = 20, 8
+        root_points = {point for tri in triangles[:2 * nv] for point in tri
+                       if abs(point[0] - 0.78) < 1e-12}
+        cx, cy, cz = figure.HEAD_CENTER
+        rx, ry, rz = figure.HEAD_RADII
+        for x, y, z in root_points:
+            equation = ((x-cx)/rx)**2 + ((y-cy)/ry)**2 + ((z-cz)/rz)**2
+            self.assertAlmostEqual(equation, 1.0, places=12)
+
     def test_reference_is_not_loaded(self):
         self.assertEqual(len(list(figure.scene())), len(list(figure.scene())))
         self.assertIn('data-component="ribbon"', figure.view(0, 510))

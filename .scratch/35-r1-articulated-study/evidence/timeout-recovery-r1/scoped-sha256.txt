@@ -1,0 +1,5 @@
+d4c11ff1cdb3244203b5dbd4959ec0059a556f89d240cbcf671bbc784d09c390  scripts/articulated_line_visibility.py
+57669a21da1cc9756d57f2835b434e2b82c60aff2812388fb482732973903884  scripts/tests/test_articulated_render_adapter.py
+42adfe2bf68d975ab6f41f001d7dec4fc00f6a7055fb88d8c12b6c1d3f42b655  .scratch/35-r1-articulated-study/work/render_r1.py
+374c9f274575a314e030041e32d93fbcc56b5840f507578e775655a173d9c7ca  .scratch/35-r1-articulated-study/issues/11-compound-fill-and-line-visibility-repair.md
+2d66f31f887f7c26b321ec1190613e8f5d8f73a0575c28225a397e949d761ffe  .scratch/35-r1-articulated-study/evidence/coordinate-repair-v3/render-manifest.md

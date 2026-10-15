@@ -1,0 +1,14 @@
+A	.gitmodules
+A	vendor/huashu-art-motion
+A	vendor/huashu-design
+M	.scratch/active-work.md
+M	STATUS.md
+M	docs/drawing/method.md
+M	docs/drawing/principles.md
+M	docs/drawing/roadmap.md
+M	docs/drawing/spatial-model.md
+M	scripts/figure_scaffold.py
+M	scripts/spatial_sketch.py
+M	scripts/tests/test_figure_scaffold.py
+M	scripts/tests/test_spatial_sketch.py
+M	scripts/vector_visibility.py

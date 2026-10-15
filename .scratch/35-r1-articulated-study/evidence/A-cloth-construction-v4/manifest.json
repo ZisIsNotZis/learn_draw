@@ -1,0 +1,166 @@
+{
+  "schema": "a-cloth-collar-wrap-v4-evidence-manifest",
+  "candidate": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4",
+  "ticket": ".scratch/35-r1-articulated-study/issues/49-a-cloth-construction-v4-collar-topology.md",
+  "recordedAt": "2026-10-14T01:02:38+08:00",
+  "authority": {
+    "approvedDesign": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/6c7deb21-7702-4f7f-8881-683b3cbaa4af/r1/collar-convergence-design-check.md",
+    "scope": "only collar finite-width wrap topology and necessary collar support seam alignment; R1 user acceptance/synchronization gate unchanged",
+    "priorAArtDisposition": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/b500e84f-2e67-4024-b3e3-daa7f3daa365/r1/cloth-v2-art-criteria-disposition.md",
+    "inheritedCuffReview": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/b500e84f-2e67-4024-b3e3-daa7f3daa365/r1/cuff-fix-independent-check.md"
+  },
+  "baseline": {
+    "sourceCandidate": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v3",
+    "sourceHashes": {
+      "build_a.py": "2045f87c539f30f4efdb7f7805957e85884023bf6e984a5c6c42bedcb3071ae1",
+      "family-rules.py": "9d66eeb21dddc1dd44fe02b0a8ae0896992f816252ca9de896c96915431582ba",
+      "semantic-parameters.json": "9c5f6842a08e488055bc74005ade9cd8fd39837891c0a9da623dbd802c86a9b7",
+      "test_a_cloth_identity.py": "65ed15bd6caeb271c97a383a4b65e7d15925b9a6c30712178f02393671ad175c",
+      "test_scoped_repair.py": "7f16f472c89c2fc804e825d609cca6dbf4602109dd8009ab9edfd8bf6728e43c"
+    },
+    "previousManifestSha256": "ec282a9eec94a382b45682b16d25475962bda137436f0d23927cb832a8806e74",
+    "previousPngSha256": "87336edaecbadd47ebee48e7b3381cb9e6b1efc9185c35b5d33d46ce9a95101b",
+    "previousSvgSha256": "44af252e41283ed64b5406f4a4d2dc19a9ceca296e4ca77c724a66548c27c6f9",
+    "preservationCheck": "All 17 durable file entries in v3 manifest matched recorded byte sizes and SHA-256; manifest.sha256 verified the v3 manifest hash. v3 and older artifacts were not written by this task.",
+    "cuffInheritance": "v3 retained the scoped-repair-v1 cuff full-seam source correction and prior independent PASS; v4 changed no cuff-family/build geometry. The inherited 101-sample cuff world-depth seam regression passes in v4 test_scoped_repair.py."
+  },
+  "empiricalCollarDiagnosis": {
+    "cause": "v3 `_wedge` inner boundary ended at shared Q and its generated trim also began at Q, so the collar front width was exactly zero and the leaves tapered to a point.",
+    "notCause": "The named `free_edge` is R/E/S-side geometry and does not pass through Q; its name was not the topological cause.",
+    "result": "Only collar topology/family, typed trim edge and necessary collar support seam changed. No bow/tail/hair/sleeve/waist/other A family, B, teacher, renderer/backend or sealed material was modified."
+  },
+  "collarConstruction": {
+    "family": "opening-finite-width-wrap-strip",
+    "innerBoundary": "Existing cubic I_i(R,Q) retained with inherited shared Q.",
+    "outwardNormal": "Resolved at Q using signed E-Q relation, then propagated continuously along each inner curve; no arbitrary normal flip.",
+    "widthField": "Low-dimensional Hermite field constrained by authored R/E/S station ordering and signed E/S normal widths; root widths 8px each, one common `parts.opening.collar_front_width` 14px, positive floor 1.5px; field tangents at E/S are derived and endpoint derivatives solve paired sweep continuity.",
+    "outerBoundary": "O_i = I_i + w_i n_i + H(t)(Qprime-Q-w_front*n_i(1)), H=3t^2-2t^3; both outer endpoints are the same derived Qprime, with opposite oriented contour derivatives matching at the join.",
+    "trim": "Typed `trim` edge is exactly the generated outer sampled point list, which is part of the closed wrap-strip contour; no independent overlay curve or triangle-mask line.",
+    "supportSeam": "Pair support planes are aligned along the full Q-to-Qprime world seam by adjusting each plane's tangent depth-gradient component to their shared average and preserving both transverse gradient components. Origin depths coincide at Q.",
+    "actualCoordinateInputs": "R/E/S (3) per collar; Q inherited from opening; Qprime and all handles derived. Whole-scene maximum remains 4 authored coordinate inputs.",
+    "guards": "Reject zero/nonfinite widths, undefined/degenerate shared normal bisector or endpoint normal basis, discontinuous outward normals, and any nonadjacent intersection among generated sampled outline edges."
+  },
+  "geometryEvidence": {
+    "frontWidth": 14.0,
+    "leftWidthFieldRange": [8.0, 66.99359584726898],
+    "rightWidthFieldRange": [8.0, 71.58101622874923],
+    "leftSupportDepthRange": [0.3706773473562945, 0.3811124143362107],
+    "rightSupportDepthRange": [0.3712634493913031, 0.3822148342721652],
+    "leftSignedDepthDifferenceVsSkinPlaneAtOutlineSamples": [0.22819176886244538, 0.24251241433621068],
+    "rightSignedDepthDifferenceVsSkinPlaneAtOutlineSamples": [0.21698137799119865, 0.2394148342721652],
+    "leftSignedDepthDifferenceVsBodicePlaneAtOutlineSamples": [0.3708000081234697, 0.385215694659967],
+    "rightSignedDepthDifferenceVsBodicePlaneAtOutlineSamples": [0.34925893772344485, 0.37641483427216516],
+    "depthSamplesMeaning": "Support-depth values are evaluated at sampled collar outline vertices against the skin/bodice support planes; these numerical separations are not an independent physical-intersection or whole-scene depth PASS.",
+    "worldSeam": {
+      "sampleCount": 101,
+      "maxXYZError": 1.1102230246251565e-16,
+      "requiredThreshold": 1e-8,
+      "transverseDepthGradient": "Preserved for each collar plane; regression compares before/after gradient projections normal to the seam."
+    },
+    "normalAndWidthRegression": "All generated 129 scalar field samples per leaf finite and >=1.5px; common front width >0; both inner curves end at shared Q; outer curves share derived Qprime and have continuous sweep.",
+    "negativeOpening": "Inherited skin negative-opening probes remain inside skin and outside both collar fields/bodice; no collar-to-skin weld was added.",
+    "legacyTriangleRegression": "Setting the former shared-Q front width to zero is rejected by the positive-width invariant.",
+    "offsetGuardRegression": "Synthetic bow-tie contour is rejected; actual generated samples are checked for finite positive offset and all nonadjacent edge intersections."
+  },
+  "teacherBoundaries": {
+    "currentCorrectedV2Gate": "NOT RUN / NOT PASS; no new teacher semantic acceptance was obtained.",
+    "NO2": "lower opening termination neighborhood only, not an exact seam or complete opening boundary.",
+    "CLI2_CRI2": "unequal pale collar-field interiors only; no dense trace or exact boundary fitting.",
+    "unknown": "All previously unknown/withdrawn claims remain unchanged; no teacher role was promoted.",
+    "runtime": "Teacher patches/crops are not runtime input; candidate build reads semantic-parameters.json only."
+  },
+  "build": {
+    "parts": 16,
+    "projectedFaces": 1058,
+    "generatedOutlineVertices": 1090,
+    "maxAuthoredCoordinateInputs": 4,
+    "imageDimensions": [400, 480],
+    "determinism": "Identity suite compares two SVG builds byte-for-byte; passed.",
+    "registeredCheck": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/check-a/report.txt",
+    "reviewImageList": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/review-image-list.txt",
+    "visualReview": "Not performed by writer. The fresh image-only review remains Main's responsibility; use only review-image-list.txt and the open question `what is wrong here?`.",
+    "metricPolicy": "draw check values are breakage alarms only and were not used to tune any parameter."
+  },
+  "commandsRun": [
+    {
+      "command": "timeout 115s python3 -B -m pytest -p no:cacheprovider -q .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/tests/test_a_cloth_identity.py",
+      "result": "passed",
+      "summary": "7 passed in 47.21s; includes identity, shared opening/negative-space, actual authored input budget, support/depth pipeline and reference-absent runtime/determinism checks."
+    },
+    {
+      "command": "timeout 115s python3 -B -m pytest -p no:cacheprovider -q .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/tests/test_scoped_repair.py",
+      "result": "passed",
+      "summary": "4 passed in 8.07s, including retained waist contour/raster coverage and cuff full-contact world-depth regression."
+    },
+    {
+      "command": "timeout 115s python3 -B -m pytest -p no:cacheprovider -q .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/tests/test_collar_wrap_strip.py",
+      "result": "passed",
+      "summary": "6 passed in 21.52s; positive width/old triangle rejection, finite/non-self-crossing offsets, degenerate-bisector rejection, inner Q/outer Qprime continuity, full sampled world seam/transverse-gradient preservation and typed trim depth clipping."
+    },
+    {
+      "command": "timeout 115s python3 -B .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/source/build_a.py --out .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/artwork-a.svg",
+      "result": "passed",
+      "summary": "16 parts, 1058 projected faces, 1090 generated outline vertices, max 4 authored coordinates."
+    },
+    {
+      "command": "timeout 115s scripts/draw render .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/artwork-a.svg -o .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/artwork-a.png",
+      "result": "passed",
+      "summary": "Actual 400x480 RGB PNG rendered from current candidate SVG."
+    },
+    {
+      "command": "timeout 115s scripts/draw check .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/artwork-a.svg --ref .scratch/35-r1-articulated-study/evidence/A-teacher-reconstruction-v2/teacher-only-corrected-v2/pristine-fullcrop.png --outdir .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/check-a",
+      "result": "passed",
+      "summary": "Registered comparison/check report and five real reviewer images generated."
+    },
+    {
+      "command": "python3 -B manifest verification against v3 manifest.json and manifest.sha256",
+      "result": "passed",
+      "summary": "All 17 v3 durable entries and v3 manifest digest unchanged."
+    },
+    {
+      "command": "python3 -B depth-plane/seam audit importing v4 build_a.py",
+      "result": "passed",
+      "summary": "101 world seam samples; maximum XYZ discrepancy 1.1102230246251565e-16; depth ranges recorded above."
+    }
+  ],
+  "developmentFailures": [
+    "Initial combined inherited/new pytest group exceeded its 115s command timeout after three failures; the source/test issues were corrected and all final suites were rerun as bounded groups. No broad timed-out group is claimed as PASS.",
+    "Initial build exposed a nested Qprime tuple in contour input; fixed before final build/render/tests.",
+    "Early collar regression exposed a floating-point exact endpoint assertion and a test treating SupportFrame as a wrapper; exact Qprime endpoint and test access were corrected; final tests pass.",
+    "One early depth diagnostic assumed local_to_world had a .z property; corrected to tuple indexing and rerun successfully."
+  ],
+  "acceptance": {
+    "writerCandidate": "complete with source/tests/actual SVG/PNG/registered comparison evidence",
+    "AArt": "not PASS; fresh independent image-only review pending",
+    "broaderConstructionPhysicalIntersectionDepth": "not independently reviewed or accepted in this task; support-plane ranges are disclosed and are not collision proof",
+    "B": "untouched",
+    "sealedHeldout": "unread and untouched",
+    "teacherAcceptance": "no new teacher acceptance; corrected-v2 remains NOT RUN / NOT PASS",
+    "R1": "not PASS",
+    "humanUserAcceptanceAndSynchronizationGate": "open and unchanged"
+  },
+  "staging": {
+    "taskFilesStaged": false,
+    "commitsMade": false,
+    "preexistingStagedEntriesPreserved": [".gitmodules", "vendor/huashu-art-motion", "vendor/huashu-design"]
+  },
+  "cachePolicy": "Generated __pycache__ files are excluded from the durable candidate file list, following the v3 manifest convention.",
+  "files": [
+    {"path":"artwork-a.png","bytes":44032,"sha256":"07998d71693039294008f7c402ee46ed86a0a43edc8e0c9115a39d7e25284da3"},
+    {"path":"artwork-a.svg","bytes":845408,"sha256":"374816508d69600ed21ecd694715b5d32374c84c3bb9a235460edcd3a0651842"},
+    {"path":"check-a/draft-fullres.png","bytes":53379,"sha256":"ae61780d4f10677a307abbc389c04506cdabe5e3601a7358cd0b76e6c992344f"},
+    {"path":"check-a/draft.png","bytes":44032,"sha256":"07998d71693039294008f7c402ee46ed86a0a43edc8e0c9115a39d7e25284da3"},
+    {"path":"check-a/region-1.png","bytes":65841,"sha256":"dea64ac8697f793e94cbcbe63de1afad2f7f494699b843ef1d8ef1539fb5a267"},
+    {"path":"check-a/region-2.png","bytes":87646,"sha256":"862c7898fdbb972a4320ed1132766bf79a4c326cc16059dc77eef553ccc95995"},
+    {"path":"check-a/region-3.png","bytes":49702,"sha256":"0259d626048b73d78c28aed079224d607631b77b80a2fdb0ad6bf699eb6f2401"},
+    {"path":"check-a/report.txt","bytes":1735,"sha256":"396d9326e8e513f69c7b1b44c02b2623aadf37a1b5daae895efab9d3d5bca9ed"},
+    {"path":"check-a/side-by-side.png","bytes":137446,"sha256":"c5c488107c2d7e9c05c01963ff1377a888e3e1392c5c53520b11f7623dc148de"},
+    {"path":"review-image-list.txt","bytes":444,"sha256":"9c68133290264022e3cc59235b09edbc6c7b662b7e430d1f5fdeb166937e3670"},
+    {"path":"source/build_a.py","bytes":17449,"sha256":"671206c0a4233d2571293bd32c22e2a5d8b36aa0f0ae0390e9424d3bd2ad4e2d"},
+    {"path":"source/family-rules.py","bytes":27694,"sha256":"82e3834d36be10706314e829070ab2fac79137968ba5a229975afdb2a1938e45"},
+    {"path":"source/semantic-parameters.json","bytes":6866,"sha256":"c272278aaf67a6fe1068b6d81de6567ccfd7bac14d1a49d184042a07bb68d32f"},
+    {"path":"tests/test_a_cloth_identity.py","bytes":11266,"sha256":"c618ef64d11ad4cffa205b09b6f57152949a5dcd6bd6fac4520b7ad885640992"},
+    {"path":"tests/test_collar_wrap_strip.py","bytes":5864,"sha256":"34cd0a924ae10920c6e07638d4c929e0cf1eb8a2baf811490c435998d94145dc"},
+    {"path":"tests/test_scoped_repair.py","bytes":5360,"sha256":"bad3751d7b10467d925c075e9ca1b4efd5b7f00f05561557cf56e2832c22e604"}
+  ]
+}

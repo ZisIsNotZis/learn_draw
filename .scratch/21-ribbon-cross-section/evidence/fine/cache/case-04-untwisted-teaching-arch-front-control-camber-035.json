@@ -1,0 +1,34 @@
+{
+  "builder_sha256": "1d3615bed0f3fb98314c7a8ab5101eb6f4a223e6fe6a1164323f81741c430680",
+  "cache_key": "c89d89d810505dad42e633fa32b618ced39f804412d15c4961c2ba66b1e9f7b9",
+  "camber": 0.35,
+  "camera": {
+    "name": "front",
+    "pitch": 0,
+    "yaw": 0
+  },
+  "case": "untwisted-teaching-arch-front-control",
+  "case_index": 4,
+  "case_plan_sha256": "bbc8697195e1ca45805899f4fafa6bbae8fccab3021cb8673460e3c4418d0643",
+  "chromium": {
+    "path": "/home/z/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell",
+    "version": "Google Chrome for Testing 151.0.7922.34"
+  },
+  "condition": "negative-control-and-root-width-check",
+  "draw_py_sha256": "7b1bb3bece91dfe297e34aefab6b40af24bc02dbe4837bec03da604569ac7abf",
+  "input": {
+    "case_name": "teaching-arch",
+    "path": ".scratch/19-ribbon-family/work/cases.json"
+  },
+  "input_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+  "nonbackground_pixels": 23923,
+  "png_bytes": 14964,
+  "png_sha256": "5dc96ce64237e1a8cdefaff12bb1207f392ab0c6e31005eade5ebd47b326360e",
+  "renderer_sha256": "5c32715a9359e3228a7cd91e2bed020f47badcc6df949f2f54e6c8ae493df2f4",
+  "sampling": {
+    "u_intervals": 96,
+    "v_intervals": 12
+  },
+  "svg_bytes": 1581490,
+  "svg_sha256": "881b3c9b0014f10c050d37da8bf8ed50bbc769b4262e9b4d17853ac944051832"
+}

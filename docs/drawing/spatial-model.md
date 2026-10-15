@@ -6,10 +6,15 @@ component/depth architecture. `abstraction.md` describes the *current* 2D resolv
 
 ## Goal and boundary
 
-An ordinary VLM should be able to compose a recognizable figure with roughly correct placement
-and front/back relationships without manually drafting hundreds of coordinates or naming every
-occlusion interval. Attractive line quality and colour are later problems. A reference illustration
-teaches a scene, but neither the production engine nor its reference-free tests read that image.
+This architecture supports the learning goal in [`roadmap.md`](roadmap.md): progress from reference
+study and imitation through variation/transfer toward bounded reference-free original creation. A
+useful capability is recognizable components with plausible attachments and front/back relationships
+without manually drafting hundreds of coordinates or naming occlusion intervals; that capability
+alone is not an artwork milestone. Models may read images but output text/code only: no native
+image/video generation or generated sprites may substitute for constructing components. A reference
+teaches, but neither runtime geometry nor reference-free tests read it. Roadmap owns milestones and
+vendor learning; unavailable actual visual evidence leaves its gate open. Runtime repair is not a
+product goal.
 
 **Component = 2D artwork + a support surface in 3D.** The artwork has its own local 2D coordinates
 (u, v), outline and interior marks. The support may be a plane or a curved surface; a camera projects
@@ -52,23 +57,30 @@ Geometry and depth may be approximate; **topology and attachment must be correct
 stylized image cannot uniquely determine 3D, so the scaffold is a testable interpretation, not
 recovered ground truth. The final 2D line designer may deliberately depart from the projection.
 
-## Bounded structural sketch / proof
+## Historical S0/S1 sketch and assembly sequence (archival; not current workflow)
 
-Start with a simple torso/lap occluder, one continuous bent ribbon surface carrying a recognizable
-2D stripe, and two camera views (reference-like and side/oblique). Input the entire strip ONCE.
-`spatial_sketch.py` and `vector_visibility.py` now demonstrate this for tested opaque triangles;
-`figure_scaffold.py` is a deliberately coarse S1 pose probe, not an approved reconstruction.
-Passing proof: its near/far portions and the body's occlusion change automatically with viewpoint;
-no per-view redraw, manually cut path, or visibility flags. Inspect the whole strip in an unobstructed
-view and verify it stays connected in its own (u,v) domain. Then add a head-attached hair sheet with
-blue outer and mint inner faces, and a coarse seated figure. Do not start with a detailed character.
+The former S0 technical exercise used a simple torso/lap occluder, one continuous bent ribbon
+surface with a recognizable 2D stripe, and two camera views (reference-like and side/oblique); its
+input represented the whole strip once. The retained `spatial_sketch.py` and `vector_visibility.py`
+artifacts demonstrate bounded opaque-triangle visibility cases. `figure_scaffold.py` was a coarse S1
+pose probe, not an approved reconstruction. Its technical success condition was automatic near/far
+visibility change with viewpoint, no per-view redraw/manual visibility cuts, and preservation of the
+strip's local `(u,v)` continuity. The historical sequence proposed adding a two-sided hair sheet and
+coarse seated figure next, and cautioned against detailed character work at that stage. This records
+the old technical sketch and its limited evidence; it is not a current R1 prerequisite, completed art
+milestone, or direction to expand the old scaffold.
 
-Validation at each stage: inspect attachments, projected silhouette, crossings, generated depth and
-object identities separately; ask a small VLM to describe pose, attachments and front/back on held-out
-views before judging beauty. Record uncertainty where the reference cannot disambiguate depth.
-Only after the sketch explains the layout should it inform the 2D assembly. Compare against
-`image.jpg` for teaching, then render with that file unavailable (P18). No traced contours at
-milestone exit (G7); a one-off fitted mesh alone is not transferable knowledge.
+The associated former validation plan asked for separate attachment, projected silhouette,
+crossing, generated-depth and object-identity inspection, plus small-VLM descriptions on held-out
+views; it then proposed using the sketch to inform the legacy 2D assembly. That workflow is archival:
+it does **not** authorize automatic progression from sketch to assembly, and it does not establish a
+small-VLM, S1a readability, learner-transfer, or user-art acceptance pass. Record ambiguity about
+reference-derived depth rather than claim unique recovered 3D truth. For current milestone work,
+follow [`roadmap.md`](roadmap.md) and its linked concrete R1 contract for package ordering and gates;
+actual-image readability/art review and user feedback remain separate, explicit gates. The spatial
+architecture described above remains current: components are 2D art on support surfaces and engine
+depth determines visibility. Reference is a teacher, not runtime geometry; retain compact,
+explainable authored construction rather than traced contours or a one-off fitted mesh.
 
 ## Open design choices (not silently decided)
 

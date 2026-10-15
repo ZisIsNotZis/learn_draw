@@ -1,0 +1,12 @@
+{
+  "all_panel_pngs_rerendered_in_child": true,
+  "all_panel_svgs_regenerated_in_child": true,
+  "board_control_child_hashes": {
+    "board:png": "efa4f55837a15e306b8e5cad8a05bb2fadc3ffa1d790415ea1da0d25aba1a438",
+    "board:svg": "33f11652bb081be674b87c63f00dc0e9b1d31369f6b13d5e6dc27419993be9f4",
+    "control:png": "2bbbf061ea4a16fef3d0a692e40638989eb08cb5529bdc51b252451964fd8ed0",
+    "control:svg": "89fd813030acbc6fbae7a3cee8c3e267db088a53b2c2cdaef2c2d02875dce8ea"
+  },
+  "child_hashes_sha256": "f332aa12c80694d0b5f31b5e5ad5cc1198920306593960205cf951339248f0d9",
+  "panel_count": 8
+}

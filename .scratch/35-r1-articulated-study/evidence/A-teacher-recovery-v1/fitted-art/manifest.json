@@ -1,0 +1,178 @@
+{
+  "artifact": "A-only semantic garment-family fitted candidate",
+  "status": "emitted candidate; fresh visual/art review and all R1/user gates remain open",
+  "task_ticket": ".scratch/35-r1-articulated-study/issues/38-a-garment-family-fit.md",
+  "source_set_sha256": "d2507a55876b46c6be8d1525b12ab1b0ae3be3409520b91e8633a2e5b12e8361",
+  "source_sha256": {
+    "source/build_a.py": "d135bca4928e575f7d8756224ddf9c66570141050e2e7cdea1e64beabb67a2a6",
+    "source/semantic-parameters.json": "b6f3e64fbd837d9746e6f9fd13ba1ed207248e18aa9d9bcf000fbe907afc158e",
+    "source/teacher-fit-bridge.md": "c792bb5ef0e2aeba355ec06d50f5cfb6fd84e34b038815e510bfa238d8999911",
+    "source/finalize_manifest.py": "62f51a1c93b6566c426f3c9d767dfb80e443691e2038cb29f27b5aa72a534953",
+    "tests/test_garment_family.py": "1394bbeab32ee01560eef03be2bf409f762a5f909c999448a7a8f5fe85c895ce"
+  },
+  "rendered_sha256": {
+    "artwork-a.svg": "c58d077a8366814230ea23db8f1120b0503b3d8226e8f1e2d55b236dd7fcba37",
+    "artwork-a.png": "1408093efeda663295243efcc3ddfe6d33a283169f45ec4a2d86c24eeec1fa24",
+    "report.txt": "e857bd397c136956047db47d485ff08dd72e1da794583058bdb27621f951bba7",
+    "candidate-status.md": "c14c63d8fda28d167e8dca3d91d00248fbb29d4d02ee9dc10cb8ba18aa7d25b3",
+    "repro-first-build.sha256": "5386961dc4b3e9aaa7f781de9d7e81f5cb7f45bd08b499a7d2fb80605451bc58",
+    "repro-second-build.sha256": "5386961dc4b3e9aaa7f781de9d7e81f5cb7f45bd08b499a7d2fb80605451bc58"
+  },
+  "review_bundle_sha256": {
+    "check-a/side-by-side.png": "f809dc82c3388a9550225a7e89da55b72f4d45176b148e8d2b45d901d71817f5",
+    "check-a/draft-fullres.png": "edae98158f471d564da91d2a9f2ad98d3640610032cff8ecc8231620385f6366",
+    "check-a/draft.png": "1408093efeda663295243efcc3ddfe6d33a283169f45ec4a2d86c24eeec1fa24",
+    "check-a/region-1.png": "52fbafff5d0c705487a2ea6bbe1f9ed748d36c6b9e4cdc8e6bb5e4d99f34628a",
+    "check-a/region-2.png": "deb76f63a6cb592453c943d16ab03634d583c69153f9c3eef0781f4238423497",
+    "check-a/region-3.png": "b5456942ed83ebdf7d3b6a6910ef93a7ce3f61bc9a1e9a9172f74b1bb7865393",
+    "check-a/report.txt": "eb066103e9ec7503bc92db54cd5e9982c132b01adb1fc848a6f21a36f4816242"
+  },
+  "teacher_input_reference_sha256": {
+    "source-crop-registered.png": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+    "teacher-topology-overlay.png": "90a09656394f3a36055f485688a5d5c11d453f31076b30e0d43094c3492f0656",
+    "landmarks.csv": "8b3ac7e23fb119ecf9473e54ccdaee7e1a3fcaef21f363e6b5aec3f62705e144",
+    "topology-map.md": "cbc606a43b396573dfd0ab33aba08df91fac10be5a5841ab341d5741b3ffec7a",
+    "provenance.json": "8880bd38fcb51dc8e26858b774d6d137f847da933fc964bb0fdfc0d13bb2b197",
+    "make_teacher_overlay.py": "8f93bc24fc0639aa936d9ddf299fc153d3d371e040974365ea6739bfdbe4e545"
+  },
+  "frozen_prior_candidate_reference": {
+    "manifest_sha256": "e76a94dcabd3bfa6c5a6f249c715d969f9fce21780c89f32b1940022967319d2",
+    "source_set_sha256": "03372b7031ab87d580a9ab0939d48a4e63526035c5585dbe6e4706c67b047419",
+    "source_sha256": {
+      "observe_teacher.py": "599e85982122bd1db5a8f143401ae4f6bf162fbe80af8740723ecb807d76a3bb",
+      "shape-grammar.md": "7a34530673f0659ec0820f4c3a83bcc3257d4d3b24b4edd7f9e203d1b87d5758",
+      "teacher-observations.json": "7d93160ce5313c3a45e9a817361071fb528ff4068e50fee1f0f4b6aca975b7d5",
+      "spatial_adapter.py": "1db424e5b6be6f6511b5112e53f07dabd4d73b0319541ffcad641509e4fa1678",
+      "r1_scene.py": "425a9096d43a743cb970c920c7272356d365bc2dfce433af90dc0f473628d452",
+      "run_r1.py": "c49cd8241d4299ca57adeacc4ab5f8ba7adecf12658021daf1c0b8052b489f71",
+      "compose_b_sheet.py": "6bbd13b5e94d17f4d3a19829f2f7dc9a3a96dcf1f453a01ea8e6f83dcd57e344",
+      "finalize_manifest.py": "cc97001dc6ae41c12d90d498b846eba81e38d4bafe37110d3e102139be50dce2",
+      "test_goal_recovery_r1.py": "038619e3a9f690264946e3443ed70325c71da7a6171dc6144e9dcfec9380b851"
+    },
+    "rendered_sha256": {
+      "rendered/A-observed-garment.svg": "35d6ced9175c05110251e31a629cb202e81101404e46ee038b032eef16e007c2",
+      "rendered/A-observed-garment.png": "3b57c3047f8ce199022a1dda1969e83d6dc0f17cccf6e339658a5458339f319c",
+      "rendered/B-baseline-support.svg": "ffe1dbd233afd0df3011ea91f07ba762e32d19f6a96fbf7e87b70b5892259aac",
+      "rendered/B-baseline-support.png": "92cd32b33417bf3198f54704a78bf44d27b1ec270287128d7564b9e4b280c26d",
+      "rendered/B-variant-support.svg": "465e901448fcf73f440f4cda1b4d67fb79221953c4d4d991ed93b4175a73320a",
+      "rendered/B-variant-support.png": "d9c600253d0facd1fbfaaf3bbcc7b9b7a8d2e8e0cc05e01599b47879fc944bb7",
+      "rendered/B-near-miss-control.svg": "b0779a21c6c6e64b4d680cc896fa377de964cb253e26f6f55b758e1c9da200c6",
+      "rendered/B-near-miss-control.png": "56cb5e0e4f13549352af17e6bcadb04ffaa55a28a60e158766f6d61b405ec40c",
+      "rendered/B-original-support.svg": "2fce35f4503ad806f22c8e2e9e737f12939cbd9d977050a34eddff26b5da538d",
+      "rendered/B-original-support.png": "81860c9da0a4d7be7f8a6cd04e1f30ef64a9712c6063ca8e42cb65f44311c193"
+    },
+    "teacher_evidence_sha256": {
+      "teacher-crop-registered.png": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+      "teacher-crop-focus.png": "30ecc088abc9c032153033bd0657224357518e81caa61a2a5e3bfd6151505c47",
+      "teacher-grid.png": "2a5c86567b3d6cfdd91e4ce7c6e30e59439af1479ea01a3364532df59a8cbb7f",
+      "teacher-region-windows.png": "dd34bf217ec609dad70081bcfbab6983d477faf17c8a95885c7a9e048d0553e2",
+      "teacher-observations.json": "7d93160ce5313c3a45e9a817361071fb528ff4068e50fee1f0f4b6aca975b7d5"
+    },
+    "review_bundle_sha256": {
+      "checks/A/draft-fullres.png": "c0355eefd41d43901aca8f454bc9537f38129a5825c33bd2d0e16547683f1d64",
+      "checks/A/draft.png": "3b57c3047f8ce199022a1dda1969e83d6dc0f17cccf6e339658a5458339f319c",
+      "checks/A/region-1.png": "17f025114689c371a58351d1ff25bf20b1fe0b78d8cd463619a69a5be411a8c4",
+      "checks/A/region-2.png": "660fb20f0631c402093f1ff12f9319e252d1e55b3881e636929e54fa9e315d10",
+      "checks/A/region-3.png": "4b541dd64a2019e293e484fb1900cf11083ae6c1e47bf1a2f7037435f81086b5",
+      "checks/A/report.txt": "4d201df4a41bf6eea6052bfa00eeea77d3f73fa42da6b3a68674fe23118ad9f0",
+      "checks/A/side-by-side.png": "457cf358c17789bd55a1d8161c0c05f4218da05d5a602dfa33b9c2596441d72a",
+      "checks/B/draft.png": "81860c9da0a4d7be7f8a6cd04e1f30ef64a9712c6063ca8e42cb65f44311c193",
+      "checks/B/report.txt": "83038d341f2e2da6af34d18deafc1a3362dd309935a4745b95bd87b8c986b458"
+    },
+    "status": "The frozen B v2-completion candidate remains candidate evidence; no B artwork/formal gate PASS is implied.",
+    "handling": "Hashes are references only; no B artifact was copied, rebuilt, visually opened, or edited. File bytes were read only to verify their declared hashes."
+  },
+  "teacher_semantic_gate": {
+    "verdict": "PASS for teacher-only visible part/topology observations only",
+    "review": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/2a74e8cc-0211-4631-b097-057ed526f1d4/r1/a-teacher-semantics-review.md",
+    "not_acceptance": [
+      "fitted shape",
+      "art/readability",
+      "transfer",
+      "R1",
+      "user approval"
+    ]
+  },
+  "reference_boundary": {
+    "geometry_runtime_inputs": [
+      "source/semantic-parameters.json"
+    ],
+    "runtime_reference_or_teacher_file_access": false,
+    "teacher_crop_use": "draw-check comparison only, outside authored geometry/build/render input",
+    "registered_crop_sha256": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+    "source_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+    "registration_rechecked": true
+  },
+  "construction": {
+    "semantic_parts": 13,
+    "generated_part_names": [
+      "bodice",
+      "neck-skin-opening",
+      "puff-sleeve-cap",
+      "right-sleeve-tube",
+      "dark-cuff-band",
+      "collar-left",
+      "collar-right",
+      "unclassified-blue-neighbor-fragment",
+      "bow-left-loop",
+      "bow-right-loop",
+      "bow-knot",
+      "bow-left-tail",
+      "bow-down-tail"
+    ],
+    "generated_outline_vertices": 375,
+    "shape_anchor_limit": 4,
+    "backend": "SupportFrame.local_to_world -> camera projection -> component_faces / visible_regions and visible_segment_spans; scripts/draw render",
+    "support_mapping": "real orthographic world support planes with finite depth offsets and gradients; not painter metadata",
+    "manual_visibility_cuts": false
+  },
+  "reproducibility": {
+    "command": "python3 -B source/build_a.py --out artwork-a.svg; scripts/draw render artwork-a.svg -o artwork-a.png",
+    "reference_absent": true,
+    "repeat_svg_sha256_png_sha256_byte_identical": true,
+    "image_pixels_match_draw_check_draft_fullres": true
+  },
+  "commands_and_results": [
+    {
+      "command": "python3 -B -m pytest -p no:cacheprovider -q <fitted-art>/tests/test_garment_family.py",
+      "result": "passed",
+      "summary": "8 passed in 1.24s; world-space shared contact lines checked"
+    },
+    {
+      "command": "python3 -m py_compile <fitted-art>/source/build_a.py <fitted-art>/tests/test_garment_family.py",
+      "result": "passed"
+    },
+    {
+      "command": "python3 -B <fitted-art>/source/build_a.py --out <fitted-art>/artwork-a.svg && scripts/draw render <fitted-art>/artwork-a.svg -o <fitted-art>/artwork-a.png",
+      "result": "passed",
+      "summary": "13 parts; 375 generated vertices; SVG plus 400x480 PNG"
+    },
+    {
+      "command": "scripts/draw check <fitted-art>/artwork-a.svg --ref <teacher-only>/source-crop-registered.png --outdir <fitted-art>/check-a",
+      "result": "passed",
+      "summary": "A comparison bundle and image list; metrics are alarm-only and not a fit target"
+    },
+    {
+      "command": "python3 -B reference/crop, A draw-check pixel, and previous v2 manifest hash verification",
+      "result": "passed",
+      "summary": "source/crop registration exact; A/check pixel identity; 33 previous manifest entries verified"
+    },
+    {
+      "command": "reference-absent second generator/render plus sha256sum diff",
+      "result": "passed",
+      "summary": "SVG and PNG hash files byte-identical across builds"
+    }
+  ],
+  "review_image_list": "report.txt",
+  "review_image_paths_exist": true,
+  "independent_art_review": "NOT RUN by this worker; Main owns fresh image-only review routing",
+  "open_gates": [
+    "A fitted-shape correspondence and visual/art/readability review",
+    "Main/user acceptance; this candidate is not presented or accepted",
+    "full R1 construction/attachment/nonintersection/depth gates beyond these local tests",
+    "sealed heldout compatibility/release and later reference-free drawing",
+    "integrated reproduction/independent reviews and user feedback"
+  ],
+  "no_stage_or_commit": true,
+  "preexisting_index_note": "The repository already had staged .gitmodules and two vendor gitlinks at task start; preserved without adding or removing any index entries."
+}

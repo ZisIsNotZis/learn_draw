@@ -1,0 +1,25 @@
+{
+  "facts": [
+    {
+      "color": "red",
+      "quadrant": "upper-left",
+      "shape": "circle"
+    },
+    {
+      "color": "blue",
+      "quadrant": "upper-right",
+      "shape": "square"
+    },
+    {
+      "color": "yellow",
+      "quadrant": "lower-left",
+      "shape": "triangle"
+    },
+    {
+      "color": "green",
+      "quadrant": "lower-right",
+      "shape": "diamond"
+    }
+  ],
+  "schema": "local-art-identity-capability-answer/v1"
+}

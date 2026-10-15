@@ -1,0 +1,105 @@
+{
+  "schema": 1,
+  "question": "Does a fixed-width center-route return bend make a single continuous two-sided strip more apparent than axial width-frame twist under frozen orthographic views?",
+  "return_support": {
+    "name": "primary-return-bend",
+    "root": [0.0, 0.0, 0.0],
+    "root_tangent": [1.0, 0.0, 0.0],
+    "bend_normal": [0.0, 0.0, 1.0],
+    "length": 3.0,
+    "width": 0.36,
+    "tip_ratio": 1.0,
+    "alpha_radians": 3.141592653589793,
+    "curve": "q(u)=3u^2-2u^3; theta=alpha*q; T=cos(theta)*ex+sin(theta)*ed; C=root+length*integral(T); P=C+0.5*v*width*(1-(1-tip_ratio)*u)*W",
+    "derived_bend_direction": "ed=W cross ex; W remains fixed; longitudinal width-frame twist is zero",
+    "quadrature": {
+      "method": "composite Simpson",
+      "fixed_steps_per_station": 256
+    }
+  },
+  "sampling": {
+    "u_intervals": 16,
+    "v_intervals": 2,
+    "support_faces": 64,
+    "max_submitted_opaque_faces_including_local_art_and_card": 256,
+    "reason": "Predeclared minimum allowed grid leaves room for exact local-UV stripe overlays and the two actual card triangles; all submitted input faces are counted, not just support faces."
+  },
+  "camera_bases": {
+    "D-plus-10deg": {
+      "toward_viewer": [0.0, 0.984807753012208, 0.17364817766693033],
+      "screen_right": [1.0, 0.0, 0.0],
+      "screen_up": [0.0, 0.17364817766693036, -0.9848077530122082]
+    },
+    "D-minus-symmetric": {
+      "toward_viewer": [0.0, 1.0, 0.0],
+      "screen_right": [1.0, 0.0, 0.0],
+      "screen_up": [0.0, 0.0, -1.0]
+    }
+  },
+  "camera_invariants": "R,U,D unit orthogonal within 1e-10; R cross U = D; all views are frozen, no camera search",
+  "variation": {
+    "name": "two-thirds-return",
+    "alpha_radians": 2.0943951023931953,
+    "camera": "D-plus-10deg"
+  },
+  "card": {
+    "name": "root-attached-opaque-card",
+    "transform": "corners = root + along*ex + 0.9*ed + across*W; along=[0.3,1.05], across=[-0.34,0.34]",
+    "opaque_fill": "#526a60",
+    "triangles": 2,
+    "camera": "D-plus-10deg"
+  },
+  "artwork": {
+    "base_front": "#e68aa4",
+    "base_back": "#7188bd",
+    "local_stripe_half_v": 0.18,
+    "stripe_front": "#472639",
+    "stripe_back": "#fff1b8",
+    "surface_face_facing": "actual finite triangle normal dot frozen camera direction",
+    "depth": "pinned opaque-triangle vector_visibility.visible_fragments; actual depths only",
+    "width_note": "material width w(u) and orthographic projected width w(u)*sqrt(1-(D dot W)^2) are recorded separately"
+  },
+  "panel": {
+    "width_px": 420,
+    "height_px": 320,
+    "max_scale_px_per_world_unit": 90,
+    "minimum_geometry_margin_px": 20,
+    "background": "#edf1ef"
+  },
+  "protected_inputs": {
+    "visibility_kernel": {
+      "path": "scripts/vector_visibility.py",
+      "sha256": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa"
+    },
+    "old_ribbon_source": {
+      "path": "scripts/ribbon_family.py",
+      "sha256": "015ec14ec90da5768dbcdd9486220d3971c55673f0944971ccb3a8a47662bd3e"
+    },
+    "old_cases": {
+      "path": ".scratch/19-ribbon-family/work/cases.json",
+      "sha256": "bd2732b806de26cc2d8a261be68e8f30e21e1f8f8bd5301556d85241a8bc5800"
+    },
+    "old_replay_cases": {
+      "path": ".scratch/24-clean-support-replay/work/cases-current.json",
+      "sha256": "793ca4c206e44d3801cb5a1c82783a5fecbffb9d16e5c1539999445ba20b6034"
+    },
+    "old_archival_panel_inputs": {
+      "axial_plus_pi_front_flat": {
+        "path": ".scratch/24-clean-support-replay/evidence/panels/case-00-positive-half-twist-front-flat.svg",
+        "sha256": "54e1e474fe36e8dbaec9c7d73318b7832a88ecd8dcc4acc18d81828670379d09"
+      },
+      "untwisted_arch_front_flat": {
+        "path": ".scratch/24-clean-support-replay/evidence/panels/case-04-untwisted-teaching-arch-front-control-flat.svg",
+        "sha256": "15e97acb08885105fafb670a78c8fdd88d999ad83ff0fad913a9af27a1b2d173"
+      }
+    }
+  },
+  "limits": [
+    "No source reference image, image coordinates, image metrics, contour tracing, or renderer reference input.",
+    "No parameter/camera sweep, search, rescue, or post-image geometry change.",
+    "A failed positive actual-area or independent actual-depth gate stops all dependent panels.",
+    "D-minus negative retains its actual hidden-side kernel residual as non-positive evidence.",
+    "The route midpoint is edge-on in D-plus; only off-center opposite-facing patches can establish two-side visibility.",
+    "This finite probe is not S1a, figure, hair, actual-3D-reference, or transfer acceptance."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "cached_control_panel": ".scratch/24-clean-support-replay/evidence/panels/case-04-untwisted-teaching-arch-front-control-camber-035.svg",
+  "camera": {
+    "name": "front",
+    "pitch": 0,
+    "yaw": 0
+  },
+  "camera_dependent_candidates": 0,
+  "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4",
+  "candidate_edges": [],
+  "candidate_panel_sha256": "45cbbd53a708e290b75743943dce2fb5d8da527939906b96a90ed4b65863a9be",
+  "condition": "negative-control-and-root-width-check",
+  "control_panel_sha256": "45cbbd53a708e290b75743943dce2fb5d8da527939906b96a90ed4b65863a9be",
+  "cue_weight_px": 1.2,
+  "depth_visible_centerline_spans": 0,
+  "fill_visibility_sha256": "45cbbd53a708e290b75743943dce2fb5d8da527939906b96a90ed4b65863a9be",
+  "fill_visibility_unchanged": true,
+  "finite_ink_patches": 0,
+  "name": "untwisted-teaching-arch-front-control",
+  "spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+  "support": {
+    "camber": 0.35,
+    "u_intervals": 96,
+    "v_intervals": 12
+  },
+  "support_geometry_sha256": "bf67e4c4fbbcfe6b85f50656e621ce2af34f43c493d574b158b5a3885bc75a4f",
+  "support_triangles": 4416,
+  "visible_spans": []
+}

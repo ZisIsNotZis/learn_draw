@@ -1,0 +1,267 @@
+{
+  "acceptance": {
+    "BIntegration": "open; not touched",
+    "R1": "not accepted",
+    "artistImageReview": "open; writer did not open/judge output",
+    "heldout": "open; sealed and unread",
+    "humanUserGate": "open",
+    "independentConstructionPhysicalIntersectionAndDepthReview": "open",
+    "sourceAndConstructionSelfChecks": "passed as writer checks"
+  },
+  "artistHypotheses": [
+    "all family seed coordinates and scalar width/bend/fullness values",
+    "shared opening/collar fold geometry",
+    "bodice axis and continuation/waist band",
+    "bodice-sleeve attachment and support depths",
+    "gather/loop return folds and tail routes",
+    "anonymous blue band geometry/support/relative overlap",
+    "local hair geometry/support/relative overlap"
+  ],
+  "authority": {
+    "designPath": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/44f91cea-8b0f-4499-a2b3-3face9964238/r1/garment-family-design-correction.md",
+    "designSha256": "52ffb7108a04f89b37e30fb83f9414356f157d8ca8ae7daaebe7d5e936ccf12b",
+    "ticket": ".scratch/35-r1-articulated-study/issues/46-a-cloth-construction-v2.md"
+  },
+  "candidate": ".scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2",
+  "commandsRun": [
+    {
+      "command": "timeout 115s python3 -B -m pytest -p no:cacheprovider -q .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/tests/test_a_cloth_identity.py",
+      "result": "passed",
+      "summary": "7 tests passed; identity/family, coordinate budget, attachment, depth/line, ref-absence and determinism checks"
+    },
+    {
+      "command": "timeout 115s python3 -B .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/source/build_a.py --out .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/artwork-a.svg",
+      "result": "passed",
+      "summary": "16 parts, 885 contour vertices, 853 projected faces; 4-coordinate maximum"
+    },
+    {
+      "command": "timeout 115s scripts/draw render .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/artwork-a.svg -o .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/artwork-a.png",
+      "result": "passed",
+      "summary": "400\u00d7480 actual PNG"
+    },
+    {
+      "command": "timeout 115s scripts/draw check .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/artwork-a.svg --ref .scratch/35-r1-articulated-study/evidence/A-teacher-reconstruction-v2/teacher-only-corrected-v2/pristine-fullcrop.png --outdir .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/check-a",
+      "result": "passed",
+      "summary": "registered 400\u00d7480 crop comparison and exact image list; metrics alarm-only, not used for parameter changes"
+    },
+    {
+      "command": "timeout 115s python3 -B .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/source/build_a.py --out .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/reproduction/rebuilt.svg && timeout 115s scripts/draw render .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/reproduction/rebuilt.svg -o .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/reproduction/rebuilt.png && cmp .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/artwork-a.svg .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/reproduction/rebuilt.svg && cmp .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/artwork-a.png .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v2/reproduction/rebuilt.png",
+      "result": "passed",
+      "summary": "SVG and PNG byte-identical"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 2071,
+      "path": "README.md",
+      "sha256": "467cb349173f2d4148c1946d2c0c4837ba95a8b82710ba983cf9f7e6586bd9b3"
+    },
+    {
+      "bytes": 44342,
+      "path": "artwork-a.png",
+      "sha256": "e98dfdc9ac5b507b5ad022251e7c99284452463c587ad7fec39af74c6ff13e6f"
+    },
+    {
+      "bytes": 659331,
+      "path": "artwork-a.svg",
+      "sha256": "9a470ffec679731a42673355d58f5ac19138b3c1048326dc3570096d137f664c"
+    },
+    {
+      "bytes": 53505,
+      "path": "check-a/draft-fullres.png",
+      "sha256": "395adc32a6d0f95f8538982befdc2e54c245cab17601976d806d457f333ee1e2"
+    },
+    {
+      "bytes": 44342,
+      "path": "check-a/draft.png",
+      "sha256": "e98dfdc9ac5b507b5ad022251e7c99284452463c587ad7fec39af74c6ff13e6f"
+    },
+    {
+      "bytes": 66401,
+      "path": "check-a/region-1.png",
+      "sha256": "3d7c470d3f7eadcc34575cf2666b722638153ab98dadcd4a0993d31b9b72bc13"
+    },
+    {
+      "bytes": 87593,
+      "path": "check-a/region-2.png",
+      "sha256": "e3aebadf6f5d3be12ae3f76e3dcabba5b824e88e55cd5a14cefc80ad5a0c429b"
+    },
+    {
+      "bytes": 49702,
+      "path": "check-a/region-3.png",
+      "sha256": "0259d626048b73d78c28aed079224d607631b77b80a2fdb0ad6bf699eb6f2401"
+    },
+    {
+      "bytes": 1735,
+      "path": "check-a/report.txt",
+      "sha256": "e68ae968928b952481cfaeb81f5545032f2f5529beb2dd452f1437e95050cde0"
+    },
+    {
+      "bytes": 137547,
+      "path": "check-a/side-by-side.png",
+      "sha256": "a81f7e54646cd78b0017aad9f3f878d9340d5850bdd573cffb5d9b13b9badeb8"
+    },
+    {
+      "bytes": 10670,
+      "path": "construction-contract.md",
+      "sha256": "f0625d7e16ef8984e6b959643ea0c889c012c620830a13dc6c6a6b26eb19998c"
+    },
+    {
+      "bytes": 1922,
+      "path": "report.txt",
+      "sha256": "84191f8defa284deec774952bf3c1ccf3e77903a61267757ae1ea09ee952807d"
+    },
+    {
+      "bytes": 606,
+      "path": "reproduction/final-hash-pair.sha256",
+      "sha256": "9120222f51620421ebc9dcb65980794f034dba24c249b3a61296ccd811229240"
+    },
+    {
+      "bytes": 44342,
+      "path": "reproduction/rebuilt.png",
+      "sha256": "e98dfdc9ac5b507b5ad022251e7c99284452463c587ad7fec39af74c6ff13e6f"
+    },
+    {
+      "bytes": 659331,
+      "path": "reproduction/rebuilt.svg",
+      "sha256": "9a470ffec679731a42673355d58f5ac19138b3c1048326dc3570096d137f664c"
+    },
+    {
+      "bytes": 444,
+      "path": "review-image-list.txt",
+      "sha256": "b10d7799b3f3f053ee73254e3eddf3df44497ad9f67809492e2415c4560209d7"
+    },
+    {
+      "bytes": 14744,
+      "path": "source/build_a.py",
+      "sha256": "7d3ef1fbb7fc1a6db875ce26178f51708193ff876a91c1f554baa7a6ec0f6158"
+    },
+    {
+      "bytes": 19101,
+      "path": "source/family-rules.py",
+      "sha256": "0a4ad7b2de414133e2bbb4a7636fed25e3c6735b7fd6120047803b996cc8be5f"
+    },
+    {
+      "bytes": 7785,
+      "path": "source/finalize_manifest.py",
+      "sha256": "4088ddc2d9415b82084fe35f5cd871fd7bfd9485051f51a742e7c7e96f5c1f13"
+    },
+    {
+      "bytes": 6745,
+      "path": "source/semantic-parameters.json",
+      "sha256": "c5ee1751f2418c9d66606792af08b374862b5129e98cff636fd7ac8698a42ece"
+    },
+    {
+      "bytes": 11158,
+      "path": "tests/test_a_cloth_identity.py",
+      "sha256": "7b9e5c2fc1568a78cba83352ef48a13ebe27b54e35632b6a72496e48be242ac0"
+    }
+  ],
+  "implementation": {
+    "actualCoordinateBudget": "tests/test_a_cloth_identity.py inspects FamilyGeometry.authored_inputs, not Component.anchors",
+    "builder": "source/build_a.py",
+    "familyRules": "source/family-rules.py",
+    "generatedContourVertices": 885,
+    "maximumActualAuthoredCoordinatesPerPart": 4,
+    "parameterSource": "source/semantic-parameters.json",
+    "parts": 16,
+    "projectedFaces": 853
+  },
+  "inputs": {
+    "design_authority": {
+      "path": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/44f91cea-8b0f-4499-a2b3-3face9964238/r1/garment-family-design-correction.md",
+      "sha256": "52ffb7108a04f89b37e30fb83f9414356f157d8ca8ae7daaebe7d5e936ccf12b"
+    },
+    "reference_source": {
+      "path": "/home/z/vibe/learn_draw/image.jpg",
+      "sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb"
+    },
+    "registered_crop": {
+      "path": "/home/z/vibe/learn_draw/.scratch/35-r1-articulated-study/evidence/A-teacher-reconstruction-v2/teacher-only-corrected-v2/pristine-fullcrop.png",
+      "sha256": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d"
+    },
+    "teacher_boundary": {
+      "path": "/home/z/vibe/learn_draw/.scratch/35-r1-articulated-study/evidence/A-teacher-reconstruction-v2/teacher-only-corrected-v2/fit-correction.md",
+      "sha256": "8ad0e882362b00a7c0678138f9d332ab5cdd0f6bf1ce3007c2de1a1a61975b7f"
+    },
+    "teacher_fitting_interface": {
+      "path": "/home/z/vibe/learn_draw/.scratch/35-r1-articulated-study/evidence/A-teacher-reconstruction-v2/teacher-only-corrected-v2/family-fitting-interface.md",
+      "sha256": "133668c8e1688e075c0bc8969feb7ea9f191bfac5faa5935e10d380f546a24d6"
+    },
+    "teacher_landmark_table": {
+      "path": "/home/z/vibe/learn_draw/.scratch/35-r1-articulated-study/evidence/A-teacher-reconstruction-v2/teacher-only-corrected-v2/landmarks.csv",
+      "sha256": "5cb2dc0efccdde89333321bb8987f0ec92dfb02df9cd5d048c72e896b0905d80"
+    },
+    "teacher_output_chain_review": {
+      "path": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/3b2bad58-e1ed-44cd-bd21-f1aba0b6b4ce/r1/teacher-output-guard-review.md",
+      "sha256": "92c6416b38275ca422c7c72cc326f59dd9a7b43b92d1e01f0d0b74b5efb6163b"
+    },
+    "teacher_provenance": {
+      "path": "/home/z/vibe/learn_draw/.scratch/35-r1-articulated-study/evidence/A-teacher-reconstruction-v2/teacher-only-corrected-v2/provenance.json",
+      "sha256": "18e086f8e21ab040cfe63653a9fee7f2646cb8d87ce32385e522358bcff085c8"
+    },
+    "teacher_semantic_review": {
+      "path": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/25d155f0-05d4-41ea-8e72-d0c1929292cd/r1/teacher-v2-independent-semantic-review.md",
+      "sha256": "4b8ed00c6d4909699b93c121e6cc889064769e59f3db6040f57543578d637f67"
+    },
+    "teacher_topology": {
+      "path": "/home/z/vibe/learn_draw/.scratch/35-r1-articulated-study/evidence/A-teacher-reconstruction-v2/teacher-only-corrected-v2/topology-map.md",
+      "sha256": "026fd6bf97b6154e8fad69267c4aa6f28d501bea667787e2bd6418029eef2662"
+    }
+  },
+  "metricsDisposition": "check bundle contains comparative alarm signals only; no metric-driven parameter edits",
+  "outputs": {
+    "byteIdenticalRepeat": true,
+    "png": "artwork-a.png",
+    "referenceAbsentRepeat": [
+      "reproduction/rebuilt.svg",
+      "reproduction/rebuilt.png"
+    ],
+    "registeredCropComparison": "check-a/report.txt",
+    "reviewImageList": "review-image-list.txt",
+    "sizePx": [
+      400,
+      480
+    ],
+    "svg": "artwork-a.svg"
+  },
+  "preservedPriorCandidateHashes": {
+    "issue45_artwork_png": {
+      "path": "/home/z/vibe/learn_draw/.scratch/35-r1-articulated-study/evidence/A-corrected-teacher-fit-v1/artwork-a.png",
+      "sha256": "bf5284680324a691eea70e9d23fce9721cfdf94188e92f6c0d67bf56bce36364"
+    },
+    "issue45_builder": {
+      "path": "/home/z/vibe/learn_draw/.scratch/35-r1-articulated-study/evidence/A-corrected-teacher-fit-v1/source/build_a.py",
+      "sha256": "59839d340d091b8f4bbd28bacbc579ffcf3a7220f56bb68b0370ee5f4c02e136"
+    },
+    "issue45_parameters": {
+      "path": "/home/z/vibe/learn_draw/.scratch/35-r1-articulated-study/evidence/A-corrected-teacher-fit-v1/source/semantic-parameters.json",
+      "sha256": "fb07c45ad16d8bf5b53f8c601d327b419b4cfe108bee3119cddeb095dda35687"
+    }
+  },
+  "schema": "a-cloth-construction-v2-candidate-manifest",
+  "sourceBoundary": "A-only crop-local clothing/composition plus Main-approved curlband/right-shoulder-sheet and independent anonymous crop-exiting blue band; B v2 unchanged, sealed heldout unread",
+  "status": "candidate emitted; not A-art PASS and not R1 PASS",
+  "teacherScope": {
+    "forbidden": [
+      "N1/BD1/BD4/TD1 identities",
+      "LTI2 as pink interior",
+      "all leftward-tail-centerline stations as verified axis or width",
+      "DTO2 terminal",
+      "exact full boundaries/seams/armhole/hem/cuff circumference",
+      "blue identity",
+      "pink-to-blue attachment"
+    ],
+    "outputChainReview": "PASS only for corrected-v2 output guard; not a fit/art verdict",
+    "semanticInputReview": "PASS only for corrected-v2 finite accepted/unknown source boundary; not an art verdict",
+    "whitelist": "corrected-v2 fit-correction.md only"
+  },
+  "visibleContext": {
+    "authorizedRoles": [
+      "crop-local neck curlband",
+      "crop-local right-shoulder hair sheet"
+    ],
+    "claim": "local appearance context only; hidden roots, ends, depth and full hairstyle unknown",
+    "separateProvenance": "artist-visible_context; no change to teacher garment whitelist"
+  }
+}

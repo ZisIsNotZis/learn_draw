@@ -1,0 +1,105 @@
+{
+  "schema": "local-art-identity-capability-evaluation/v1",
+  "authority": {
+    "role": "independent sight precheck evaluator only",
+    "formal_comparison_input_inspected": false,
+    "formal_comparison_input_delivered": false,
+    "private_mapping_inspected": false,
+    "key_facts_reproduced": false
+  },
+  "frozen_method": {
+    "contract": ".scratch/28-local-art-identity/design.md#capability-precheck-and-formal-blind-criterion",
+    "contract_sha256": "9053f08d7ef164d1efd35c083066da9de991ae5dd478678b78519469c40371cd",
+    "scoring_unit": "exact shape/color/quadrant triple",
+    "semantic_threshold": "at least 3 of 4 fully correct triples",
+    "dimension_claim_part_of_fact_score": false
+  },
+  "result": {
+    "semantic_score": {
+      "correct": 4,
+      "total": 4,
+      "threshold": 3,
+      "meets_threshold": true
+    },
+    "qualification": "VOID",
+    "void_reason": "No provider/runner request trace or receipt verifies that the image bytes were delivered to the recorded multimodal invocation.",
+    "dimension_discrepancy": {
+      "response_claim": [512, 384],
+      "actual_control_png": [480, 320],
+      "classification": "outside frozen shape/color/quadrant scoring contract; recorded separately and does not alter the semantic score"
+    }
+  },
+  "actual_input_identity": {
+    "path": ".scratch/28-local-art-identity/evidence/review/precheck/control-01.png",
+    "dimensions": [480, 320],
+    "bytes": 3002,
+    "sha256": "2bbbf061ea4a16fef3d0a692e40638989eb08cb5529bdc51b252451964fd8ed0",
+    "frozen_control_audit_sha256": "48e2819128befa39f0b0a6dbef87d94b73ba1c147e7ae059594780808e9b0b4e",
+    "frozen_control_audit_png_hash_matches": true,
+    "reviewer_tool_result": {
+      "tool": "read",
+      "raw_session_line": 9,
+      "image_content_returned_in_session_record": true,
+      "returned_image_sha256": "2bbbf061ea4a16fef3d0a692e40638989eb08cb5529bdc51b252451964fd8ed0",
+      "byte_equal_to_frozen_control": true,
+      "provider_delivery_proven": false
+    }
+  },
+  "response_and_key_linkage": {
+    "response_path": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/outputs/619d121e-e9f0-47e4-9fc9-5f5416daeacb/s1a/local-identity-sight-response.md",
+    "response_sha256": "9463df82caf489e69d1f88e24480a68e8992a7b2f752ad26dd6d90c9fbd07fa1",
+    "evaluator_only_key_path": ".scratch/28-local-art-identity/evidence/private/precheck-answer-key.json",
+    "evaluator_only_key_sha256": "25f49779e8f0d02400be87f18c5d2d7d92355db2502eb33d889c30a7d53ab28b",
+    "key_contents_recorded": false
+  },
+  "frozen_precheck_references": {
+    "payload_path": ".scratch/28-local-art-identity/evidence/review/precheck-payload.json",
+    "payload_file_sha256": "cc237e43de42a3eb15429371349d20d8a870609e54cb030a0e4292377ca95446",
+    "payload_canonical_sha256": "43a078334b7f21f05c6f90cb7f5d01b4ec0d87dd4c97b70b8a496ec0378b6781",
+    "provenance_manifest_path": ".scratch/28-local-art-identity/evidence/provenance/manifest.json",
+    "provenance_manifest_sha256": "cad9e4a6a800eeb5c6170120d71cf7cb6cb84b05c73498ec3fb21bc95f2b355b"
+  },
+  "reviewer_run_identity": {
+    "run_id": "cafdfd4f-97a6-49bc-86c0-cf88ef16edcb",
+    "workflow_key": "identity-sight-precheck",
+    "child_index": 0,
+    "run_status": "complete",
+    "exit_code": 0,
+    "runner_process_instance_id": "a7eb7572-9424-445b-b22d-9f98d5e8d0a0",
+    "reviewer_session_id": "01a122fc-ebaa-73fe-b403-63bd16993171",
+    "provider_recorded": "github-copilot",
+    "model_recorded": "gpt-6-luna",
+    "api_recorded": "openai-responses",
+    "provider_receipt": "not present; recorded provider/model metadata is not a receipt",
+    "post-tool-response_id_prefix": "J9JAH01z8w7ldrA0",
+    "post-tool-response_id_sha256": "2ebf841f12cdbdcc9911596098334a2e29828b21656a68c28095742665a65015",
+    "tool_call_id_sha256": "a45ef526a578d6a1b0c7cdcbfb7179c1cda481ca5b4f87ca797eabba1c767239"
+  },
+  "evidence_files": [
+    {
+      "role": "run_status_and_runner_identity",
+      "path": "/tmp/pi-subagents-uid-1000/async-subagent-runs/cafdfd4f-97a6-49bc-86c0-cf88ef16edcb/status.json",
+      "sha256": "32575868accf44be7a5585d9b826dda20c2215aefd9a60cc15f91fda1d1bc21e"
+    },
+    {
+      "role": "raw_reviewer_session_with_tool_image_attachment",
+      "path": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/2026-10-08T06-54-53-498Z_01a11a4b-2039-76c5-a684-ab5e85a397fe/5df902dd-4196-4791-8136-f07133ff4c2a/run-0/session.jsonl",
+      "sha256": "ac4c9a5b3a045e8d039e57afdb341ff596c4d7d9f563c5c34a0966661a1a35dc",
+      "tool_call_line": 8,
+      "tool_result_line": 9,
+      "post_tool_response_line": 11
+    },
+    {
+      "role": "reviewer_transcript_export_without_binary_image_payload",
+      "path": "/home/z/.pi/agent/sessions/--home-z-vibe-learn_draw--/subagent-artifacts/cafdfd4f-97a6-49bc-86c0-cf88ef16edcb_reviewer_transcript.jsonl",
+      "sha256": "2c657403a8d68f10e67616ffc0c1d4aec9e98d9e6371096d39320d839c62c3d8"
+    }
+  ],
+  "provider_delivery_evidence": {
+    "session_contains_exact_read_tool_image_bytes": true,
+    "provider_or_runner_request_trace_found": false,
+    "expected_receipt_path": ".scratch/28-local-art-identity/evidence/review/precheck-runner-receipt.json",
+    "expected_receipt_present": false,
+    "evidence_limit": "Tool image content plus the session input/output record is established; actual provider receipt/delivery is not independently verified. No network receipt is claimed."
+  }
+}

@@ -1,0 +1,3934 @@
+{
+  "cache_key": "55be2bf1c295ef2d09e623005c0ba46d3b75b04efd14ffc2f3ea3c54412920d7",
+  "camera": {
+    "name": "front",
+    "pitch": 0,
+    "yaw": 0
+  },
+  "case": "external-support-card-front",
+  "coverage": {
+    "candidate_count": 258,
+    "depth_tolerances": {
+      "barycentric_inside": 1e-08,
+      "cut_merge_parameter": 1e-08,
+      "depth_epsilon": 1e-07,
+      "projected_intersection": 1e-09,
+      "tie_bias": 1e-05,
+      "uv_join_parameter": 1e-08
+    },
+    "fill_regions": 3,
+    "motif_sides": [],
+    "motif_triangle_count": 0,
+    "overlap_span_count": 125,
+    "perimeter_spans": [
+      {
+        "boundary": "v=-1",
+        "candidate": 0,
+        "cell": 0,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 0,
+        "uv0": [
+          0.0,
+          -1.0
+        ],
+        "uv1": [
+          0.007812499999999999,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 1,
+        "cell": 0,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 1,
+        "uv0": [
+          0.0,
+          1.0
+        ],
+        "uv1": [
+          0.0078125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 2,
+        "cell": 1,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 2,
+        "uv0": [
+          0.0078125,
+          -1.0
+        ],
+        "uv1": [
+          0.015625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 3,
+        "cell": 1,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 3,
+        "uv0": [
+          0.0078125,
+          1.0
+        ],
+        "uv1": [
+          0.015625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 4,
+        "cell": 2,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 4,
+        "uv0": [
+          0.015625,
+          -1.0
+        ],
+        "uv1": [
+          0.0234375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 5,
+        "cell": 2,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 5,
+        "uv0": [
+          0.015625,
+          1.0
+        ],
+        "uv1": [
+          0.023437499999999986,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 6,
+        "cell": 3,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 6,
+        "uv0": [
+          0.0234375,
+          -1.0
+        ],
+        "uv1": [
+          0.03125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 7,
+        "cell": 3,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 7,
+        "uv0": [
+          0.0234375,
+          1.0
+        ],
+        "uv1": [
+          0.03125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 8,
+        "cell": 4,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 8,
+        "uv0": [
+          0.03125,
+          -1.0
+        ],
+        "uv1": [
+          0.0390625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 9,
+        "cell": 4,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 9,
+        "uv0": [
+          0.03125,
+          1.0
+        ],
+        "uv1": [
+          0.0390625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 10,
+        "cell": 5,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 10,
+        "uv0": [
+          0.0390625,
+          -1.0
+        ],
+        "uv1": [
+          0.046875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 11,
+        "cell": 5,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 11,
+        "uv0": [
+          0.0390625,
+          1.0
+        ],
+        "uv1": [
+          0.046875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 12,
+        "cell": 6,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 12,
+        "uv0": [
+          0.046875,
+          -1.0
+        ],
+        "uv1": [
+          0.0546875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 13,
+        "cell": 6,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 13,
+        "uv0": [
+          0.046875,
+          1.0
+        ],
+        "uv1": [
+          0.0546875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 14,
+        "cell": 7,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 14,
+        "uv0": [
+          0.0546875,
+          -1.0
+        ],
+        "uv1": [
+          0.0625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 15,
+        "cell": 7,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 15,
+        "uv0": [
+          0.0546875,
+          1.0
+        ],
+        "uv1": [
+          0.0625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 16,
+        "cell": 8,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 16,
+        "uv0": [
+          0.0625,
+          -1.0
+        ],
+        "uv1": [
+          0.0703125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 17,
+        "cell": 8,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 17,
+        "uv0": [
+          0.0625,
+          1.0
+        ],
+        "uv1": [
+          0.07031249999999999,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 18,
+        "cell": 9,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 18,
+        "uv0": [
+          0.0703125,
+          -1.0
+        ],
+        "uv1": [
+          0.078125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 19,
+        "cell": 9,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 19,
+        "uv0": [
+          0.0703125,
+          1.0
+        ],
+        "uv1": [
+          0.078125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 20,
+        "cell": 10,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 20,
+        "uv0": [
+          0.078125,
+          -1.0
+        ],
+        "uv1": [
+          0.0859375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 21,
+        "cell": 10,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 21,
+        "uv0": [
+          0.078125,
+          1.0
+        ],
+        "uv1": [
+          0.0859375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 22,
+        "cell": 11,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 22,
+        "uv0": [
+          0.0859375,
+          -1.0
+        ],
+        "uv1": [
+          0.09375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 23,
+        "cell": 11,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 23,
+        "uv0": [
+          0.0859375,
+          1.0
+        ],
+        "uv1": [
+          0.09375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 24,
+        "cell": 12,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 24,
+        "uv0": [
+          0.09375,
+          -1.0
+        ],
+        "uv1": [
+          0.1015625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 25,
+        "cell": 12,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 25,
+        "uv0": [
+          0.09375,
+          1.0
+        ],
+        "uv1": [
+          0.10156249999999999,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 26,
+        "cell": 13,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 26,
+        "uv0": [
+          0.1015625,
+          -1.0
+        ],
+        "uv1": [
+          0.109375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 27,
+        "cell": 13,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 27,
+        "uv0": [
+          0.1015625,
+          1.0
+        ],
+        "uv1": [
+          0.109375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 28,
+        "cell": 14,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 28,
+        "uv0": [
+          0.109375,
+          -1.0
+        ],
+        "uv1": [
+          0.1171875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 29,
+        "cell": 14,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 29,
+        "uv0": [
+          0.109375,
+          1.0
+        ],
+        "uv1": [
+          0.11626127837480348,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 29,
+        "cell": 14,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.06088592837864308,
+        "role": "overlap",
+        "source_triangle": 29,
+        "uv0": [
+          0.11626127837480348,
+          1.0
+        ],
+        "uv1": [
+          0.1171875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 30,
+        "cell": 15,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 30,
+        "uv0": [
+          0.1171875,
+          -1.0
+        ],
+        "uv1": [
+          0.1207964763939863,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 30,
+        "cell": 15,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.07277735012240485,
+        "role": "overlap",
+        "source_triangle": 30,
+        "uv0": [
+          0.1207964763939863,
+          -1.0
+        ],
+        "uv1": [
+          0.125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 31,
+        "cell": 15,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.06726161939755665,
+        "role": "overlap",
+        "source_triangle": 31,
+        "uv0": [
+          0.1171875,
+          1.0
+        ],
+        "uv1": [
+          0.125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 32,
+        "cell": 16,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.08289194647710524,
+        "role": "overlap",
+        "source_triangle": 32,
+        "uv0": [
+          0.125,
+          -1.0
+        ],
+        "uv1": [
+          0.1328125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 33,
+        "cell": 16,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.07927564907684168,
+        "role": "overlap",
+        "source_triangle": 33,
+        "uv0": [
+          0.125,
+          1.0
+        ],
+        "uv1": [
+          0.1328125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 34,
+        "cell": 17,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.09708430105030239,
+        "role": "overlap",
+        "source_triangle": 34,
+        "uv0": [
+          0.1328125,
+          -1.0
+        ],
+        "uv1": [
+          0.140625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 35,
+        "cell": 17,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.09226726601449124,
+        "role": "overlap",
+        "source_triangle": 35,
+        "uv0": [
+          0.1328125,
+          1.0
+        ],
+        "uv1": [
+          0.140625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 36,
+        "cell": 18,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.11247713395907569,
+        "role": "overlap",
+        "source_triangle": 36,
+        "uv0": [
+          0.140625,
+          -1.0
+        ],
+        "uv1": [
+          0.1484375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 37,
+        "cell": 18,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.10617072968016267,
+        "role": "overlap",
+        "source_triangle": 37,
+        "uv0": [
+          0.140625,
+          1.0
+        ],
+        "uv1": [
+          0.1484375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 38,
+        "cell": 19,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.1290319977922388,
+        "role": "overlap",
+        "source_triangle": 38,
+        "uv0": [
+          0.1484375,
+          -1.0
+        ],
+        "uv1": [
+          0.15625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 39,
+        "cell": 19,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.11450642793949531,
+        "role": "overlap",
+        "source_triangle": 39,
+        "uv0": [
+          0.1484375,
+          1.0
+        ],
+        "uv1": [
+          0.14964118440458865,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 39,
+        "cell": 19,
+        "farther_triangles": [
+          1,
+          186
+        ],
+        "nearest_depth_gap": 0.1181038707250203,
+        "role": "overlap",
+        "source_triangle": 39,
+        "uv0": [
+          0.14964118440458865,
+          1.0
+        ],
+        "uv1": [
+          0.15215361310300926,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 39,
+        "cell": 19,
+        "farther_triangles": [
+          1,
+          189
+        ],
+        "nearest_depth_gap": 0.12088373438693602,
+        "role": "overlap",
+        "source_triangle": 39,
+        "uv0": [
+          0.15215361310300926,
+          1.0
+        ],
+        "uv1": [
+          0.15251274856682917,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 39,
+        "cell": 19,
+        "farther_triangles": [
+          1,
+          188
+        ],
+        "nearest_depth_gap": 0.12468865382308177,
+        "role": "overlap",
+        "source_triangle": 39,
+        "uv0": [
+          0.15251274856682917,
+          1.0
+        ],
+        "uv1": [
+          0.15608404697382688,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 39,
+        "cell": 19,
+        "farther_triangles": [
+          1,
+          191
+        ],
+        "nearest_depth_gap": 0.12830655990755108,
+        "role": "overlap",
+        "source_triangle": 39,
+        "uv0": [
+          0.15608404697382688,
+          1.0
+        ],
+        "uv1": [
+          0.15625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 40,
+        "cell": 20,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.14669684127218652,
+        "role": "overlap",
+        "source_triangle": 40,
+        "uv0": [
+          0.15625,
+          -1.0
+        ],
+        "uv1": [
+          0.1640625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 41,
+        "cell": 20,
+        "farther_triangles": [
+          1,
+          191
+        ],
+        "nearest_depth_gap": 0.1292806000292407,
+        "role": "overlap",
+        "source_triangle": 41,
+        "uv0": [
+          0.15625,
+          1.0
+        ],
+        "uv1": [
+          0.15705405578971615,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 41,
+        "cell": 20,
+        "farther_triangles": [
+          1,
+          190
+        ],
+        "nearest_depth_gap": 0.1331574658026698,
+        "role": "overlap",
+        "source_triangle": 41,
+        "uv0": [
+          0.15705405578971615,
+          1.0
+        ],
+        "uv1": [
+          0.1600823919110995,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 41,
+        "cell": 20,
+        "farther_triangles": [
+          1,
+          193
+        ],
+        "nearest_depth_gap": 0.13784642705368794,
+        "role": "overlap",
+        "source_triangle": 41,
+        "uv0": [
+          0.1600823919110995,
+          1.0
+        ],
+        "uv1": [
+          0.16168922714205475,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 41,
+        "cell": 20,
+        "farther_triangles": [
+          1,
+          192
+        ],
+        "nearest_depth_gap": 0.14187272321085204,
+        "role": "overlap",
+        "source_triangle": 41,
+        "uv0": [
+          0.16168922714205475,
+          1.0
+        ],
+        "uv1": [
+          0.1640625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 42,
+        "cell": 21,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.16540624491750427,
+        "role": "overlap",
+        "source_triangle": 42,
+        "uv0": [
+          0.1640625,
+          -1.0
+        ],
+        "uv1": [
+          0.171875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 43,
+        "cell": 21,
+        "farther_triangles": [
+          1,
+          192
+        ],
+        "nearest_depth_gap": 0.14431099993883215,
+        "role": "overlap",
+        "source_triangle": 43,
+        "uv0": [
+          0.1640625,
+          1.0
+        ],
+        "uv1": [
+          0.16409826293485857,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 43,
+        "cell": 21,
+        "farther_triangles": [
+          1,
+          195
+        ],
+        "nearest_depth_gap": 0.14686764701613508,
+        "role": "overlap",
+        "source_triangle": 43,
+        "uv0": [
+          0.16409826293485857,
+          1.0
+        ],
+        "uv1": [
+          0.16650314727563664,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 43,
+        "cell": 21,
+        "farther_triangles": [
+          1,
+          194
+        ],
+        "nearest_depth_gap": 0.15141190685616696,
+        "role": "overlap",
+        "source_triangle": 43,
+        "uv0": [
+          0.16650314727563664,
+          1.0
+        ],
+        "uv1": [
+          0.16843634130978188,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 43,
+        "cell": 21,
+        "farther_triangles": [
+          1,
+          197
+        ],
+        "nearest_depth_gap": 0.15676790962038306,
+        "role": "overlap",
+        "source_triangle": 43,
+        "uv0": [
+          0.16843634130978188,
+          1.0
+        ],
+        "uv1": [
+          0.1716161382984635,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 43,
+        "cell": 21,
+        "farther_triangles": [
+          1,
+          196
+        ],
+        "nearest_depth_gap": 0.16037000189235842,
+        "role": "overlap",
+        "source_triangle": 43,
+        "uv0": [
+          0.1716161382984635,
+          1.0
+        ],
+        "uv1": [
+          0.171875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 44,
+        "cell": 22,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.18508177584005697,
+        "role": "overlap",
+        "source_triangle": 44,
+        "uv0": [
+          0.171875,
+          -1.0
+        ],
+        "uv1": [
+          0.1796875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 45,
+        "cell": 22,
+        "farther_triangles": [
+          1,
+          196
+        ],
+        "nearest_depth_gap": 0.1618732645957843,
+        "role": "overlap",
+        "source_triangle": 45,
+        "uv0": [
+          0.171875,
+          1.0
+        ],
+        "uv1": [
+          0.17302113625417145,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 45,
+        "cell": 22,
+        "farther_triangles": [
+          1,
+          199
+        ],
+        "nearest_depth_gap": 0.16769457049235972,
+        "role": "overlap",
+        "source_triangle": 45,
+        "uv0": [
+          0.17302113625417145,
+          1.0
+        ],
+        "uv1": [
+          0.17729016267850034,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 45,
+        "cell": 22,
+        "farther_triangles": [
+          1,
+          198
+        ],
+        "nearest_depth_gap": 0.17310968084636444,
+        "role": "overlap",
+        "source_triangle": 45,
+        "uv0": [
+          0.17729016267850034,
+          1.0
+        ],
+        "uv1": [
+          0.17805844300457221,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 45,
+        "cell": 22,
+        "farther_triangles": [
+          1,
+          201
+        ],
+        "nearest_depth_gap": 0.17568682113083528,
+        "role": "overlap",
+        "source_triangle": 45,
+        "uv0": [
+          0.17805844300457221,
+          1.0
+        ],
+        "uv1": [
+          0.1796875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 46,
+        "cell": 23,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.2056324591115637,
+        "role": "overlap",
+        "source_triangle": 46,
+        "uv0": [
+          0.1796875,
+          -1.0
+        ],
+        "uv1": [
+          0.1875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 47,
+        "cell": 23,
+        "farther_triangles": [
+          1,
+          201
+        ],
+        "nearest_depth_gap": 0.1816628192392656,
+        "role": "overlap",
+        "source_triangle": 47,
+        "uv0": [
+          0.1796875,
+          1.0
+        ],
+        "uv1": [
+          0.1835518405020845,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 47,
+        "cell": 23,
+        "farther_triangles": [
+          1,
+          200
+        ],
+        "nearest_depth_gap": 0.18597174417167384,
+        "role": "overlap",
+        "source_triangle": 47,
+        "uv0": [
+          0.1835518405020845,
+          1.0
+        ],
+        "uv1": [
+          0.18362882519378165,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 47,
+        "cell": 23,
+        "farther_triangles": [
+          1,
+          203
+        ],
+        "nearest_depth_gap": 0.18672380612706563,
+        "role": "overlap",
+        "source_triangle": 47,
+        "uv0": [
+          0.18362882519378165,
+          1.0
+        ],
+        "uv1": [
+          0.18423974311783367,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 47,
+        "cell": 23,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.18764019897414294,
+        "role": "overlap",
+        "source_triangle": 47,
+        "uv0": [
+          0.18423974311783367,
+          1.0
+        ],
+        "uv1": [
+          0.18446703942871115,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 47,
+        "cell": 23,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.1912045336775534,
+        "role": "overlap",
+        "source_triangle": 47,
+        "uv0": [
+          0.18446703942871115,
+          1.0
+        ],
+        "uv1": [
+          0.18749999999999997,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 48,
+        "cell": 24,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.22695535397977615,
+        "role": "overlap",
+        "source_triangle": 48,
+        "uv0": [
+          0.1875,
+          -1.0
+        ],
+        "uv1": [
+          0.1953125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 49,
+        "cell": 24,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.2031271294271398,
+        "role": "overlap",
+        "source_triangle": 49,
+        "uv0": [
+          0.1875,
+          1.0
+        ],
+        "uv1": [
+          0.1953125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 50,
+        "cell": 25,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.24893620881625592,
+        "role": "overlap",
+        "source_triangle": 50,
+        "uv0": [
+          0.1953125,
+          -1.0
+        ],
+        "uv1": [
+          0.203125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 51,
+        "cell": 25,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.22032474242024216,
+        "role": "overlap",
+        "source_triangle": 51,
+        "uv0": [
+          0.1953125,
+          1.0
+        ],
+        "uv1": [
+          0.203125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 52,
+        "cell": 26,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.2705470813441649,
+        "role": "overlap",
+        "source_triangle": 52,
+        "uv0": [
+          0.203125,
+          -1.0
+        ],
+        "uv1": [
+          0.2103172068687258,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 52,
+        "cell": 26,
+        "farther_triangles": [
+          0,
+          212
+        ],
+        "nearest_depth_gap": 0.28192106991349886,
+        "role": "overlap",
+        "source_triangle": 52,
+        "uv0": [
+          0.2103172068687258,
+          -1.0
+        ],
+        "uv1": [
+          0.2109375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 53,
+        "cell": 26,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.23740556960321024,
+        "role": "overlap",
+        "source_triangle": 53,
+        "uv0": [
+          0.203125,
+          1.0
+        ],
+        "uv1": [
+          0.2109375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 54,
+        "cell": 27,
+        "farther_triangles": [
+          0,
+          212
+        ],
+        "nearest_depth_gap": 0.2925913655147986,
+        "role": "overlap",
+        "source_triangle": 54,
+        "uv0": [
+          0.2109375,
+          -1.0
+        ],
+        "uv1": [
+          0.2175508907224693,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 54,
+        "cell": 27,
+        "farther_triangles": [
+          0,
+          215
+        ],
+        "nearest_depth_gap": 0.30408896831002463,
+        "role": "overlap",
+        "source_triangle": 54,
+        "uv0": [
+          0.2175508907224693,
+          -1.0
+        ],
+        "uv1": [
+          0.2187225267278086,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 54,
+        "cell": 27,
+        "farther_triangles": [
+          0,
+          214
+        ],
+        "nearest_depth_gap": 0.3058599169095806,
+        "role": "overlap",
+        "source_triangle": 54,
+        "uv0": [
+          0.2187225267278086,
+          -1.0
+        ],
+        "uv1": [
+          0.21875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 55,
+        "cell": 27,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.2541972075264485,
+        "role": "overlap",
+        "source_triangle": 55,
+        "uv0": [
+          0.2109375,
+          1.0
+        ],
+        "uv1": [
+          0.21875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 56,
+        "cell": 28,
+        "farther_triangles": [
+          0,
+          214
+        ],
+        "nearest_depth_gap": 0.31717142265573695,
+        "role": "overlap",
+        "source_triangle": 56,
+        "uv0": [
+          0.21875,
+          -1.0
+        ],
+        "uv1": [
+          0.22632268454486018,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 56,
+        "cell": 28,
+        "farther_triangles": [
+          0,
+          217
+        ],
+        "nearest_depth_gap": 0.32879928680661846,
+        "role": "overlap",
+        "source_triangle": 56,
+        "uv0": [
+          0.22632268454486018,
+          -1.0
+        ],
+        "uv1": [
+          0.2265625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 57,
+        "cell": 28,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.2705236288289209,
+        "role": "overlap",
+        "source_triangle": 57,
+        "uv0": [
+          0.21875,
+          1.0
+        ],
+        "uv1": [
+          0.2265625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 58,
+        "cell": 29,
+        "farther_triangles": [
+          0,
+          217
+        ],
+        "nearest_depth_gap": 0.3333612411353947,
+        "role": "overlap",
+        "source_triangle": 58,
+        "uv0": [
+          0.2265625,
+          -1.0
+        ],
+        "uv1": [
+          0.22938520687095956,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 58,
+        "cell": 29,
+        "farther_triangles": [
+          0,
+          216
+        ],
+        "nearest_depth_gap": 0.34499961811243773,
+        "role": "overlap",
+        "source_triangle": 58,
+        "uv0": [
+          0.22938520687095956,
+          -1.0
+        ],
+        "uv1": [
+          0.234375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 59,
+        "cell": 29,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.2862079482206373,
+        "role": "overlap",
+        "source_triangle": 59,
+        "uv0": [
+          0.2265625,
+          1.0
+        ],
+        "uv1": [
+          0.234375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 60,
+        "cell": 30,
+        "farther_triangles": [
+          0,
+          216
+        ],
+        "nearest_depth_gap": 0.3549145119585651,
+        "role": "overlap",
+        "source_triangle": 60,
+        "uv0": [
+          0.234375,
+          -1.0
+        ],
+        "uv1": [
+          0.23605139557266835,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 60,
+        "cell": 30,
+        "farther_triangles": [
+          0,
+          219
+        ],
+        "nearest_depth_gap": 0.3657456019173854,
+        "role": "overlap",
+        "source_triangle": 60,
+        "uv0": [
+          0.23605139557266835,
+          -1.0
+        ],
+        "uv1": [
+          0.24169191077098168,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 60,
+        "cell": 30,
+        "farther_triangles": [
+          0,
+          218
+        ],
+        "nearest_depth_gap": 0.3748287657182511,
+        "role": "overlap",
+        "source_triangle": 60,
+        "uv0": [
+          0.24169191077098168,
+          -1.0
+        ],
+        "uv1": [
+          0.2421875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 61,
+        "cell": 30,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.301075846854198,
+        "role": "overlap",
+        "source_triangle": 61,
+        "uv0": [
+          0.234375,
+          1.0
+        ],
+        "uv1": [
+          0.2421875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 62,
+        "cell": 31,
+        "farther_triangles": [
+          0,
+          218
+        ],
+        "nearest_depth_gap": 0.38246220327822267,
+        "role": "overlap",
+        "source_triangle": 62,
+        "uv0": [
+          0.2421875,
+          -1.0
+        ],
+        "uv1": [
+          0.24691558249847986,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 62,
+        "cell": 31,
+        "farther_triangles": [
+          0,
+          221
+        ],
+        "nearest_depth_gap": 0.39386320767355454,
+        "role": "overlap",
+        "source_triangle": 62,
+        "uv0": [
+          0.24691558249847986,
+          -1.0
+        ],
+        "uv1": [
+          0.25,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 63,
+        "cell": 31,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.314959897137359,
+        "role": "overlap",
+        "source_triangle": 63,
+        "uv0": [
+          0.2421875,
+          1.0
+        ],
+        "uv1": [
+          0.25,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 64,
+        "cell": 32,
+        "farther_triangles": [
+          0,
+          221
+        ],
+        "nearest_depth_gap": 0.40802323716594185,
+        "role": "overlap",
+        "source_triangle": 64,
+        "uv0": [
+          0.25,
+          -1.0
+        ],
+        "uv1": [
+          0.25677377230953496,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 64,
+        "cell": 32,
+        "farther_triangles": [
+          0,
+          220
+        ],
+        "nearest_depth_gap": 0.41916322969435715,
+        "role": "overlap",
+        "source_triangle": 64,
+        "uv0": [
+          0.25677377230953496,
+          -1.0
+        ],
+        "uv1": [
+          0.2578125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 65,
+        "cell": 32,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.32770507073225374,
+        "role": "overlap",
+        "source_triangle": 65,
+        "uv0": [
+          0.25,
+          1.0
+        ],
+        "uv1": [
+          0.2578125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 66,
+        "cell": 33,
+        "farther_triangles": [
+          0,
+          220
+        ],
+        "nearest_depth_gap": 0.42263097687047047,
+        "role": "overlap",
+        "source_triangle": 66,
+        "uv0": [
+          0.2578125,
+          -1.0
+        ],
+        "uv1": [
+          0.25925328725902164,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 66,
+        "cell": 33,
+        "farther_triangles": [
+          0,
+          223
+        ],
+        "nearest_depth_gap": 0.4334031127325588,
+        "role": "overlap",
+        "source_triangle": 66,
+        "uv0": [
+          0.25925328725902164,
+          -1.0
+        ],
+        "uv1": [
+          0.265625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 67,
+        "cell": 33,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.33917570190664403,
+        "role": "overlap",
+        "source_triangle": 67,
+        "uv0": [
+          0.2578125,
+          1.0
+        ],
+        "uv1": [
+          0.265625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 68,
+        "cell": 34,
+        "farther_triangles": [
+          0,
+          223
+        ],
+        "nearest_depth_gap": 0.4435717028519716,
+        "role": "overlap",
+        "source_triangle": 68,
+        "uv0": [
+          0.265625,
+          -1.0
+        ],
+        "uv1": [
+          0.2666755890107392,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 68,
+        "cell": 34,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.45385655723122253,
+        "role": "overlap",
+        "source_triangle": 68,
+        "uv0": [
+          0.2666755890107392,
+          -1.0
+        ],
+        "uv1": [
+          0.2734375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 69,
+        "cell": 34,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.3492640476652461,
+        "role": "overlap",
+        "source_triangle": 69,
+        "uv0": [
+          0.265625,
+          1.0
+        ],
+        "uv1": [
+          0.2734375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 70,
+        "cell": 35,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.47242027975020856,
+        "role": "overlap",
+        "source_triangle": 70,
+        "uv0": [
+          0.2734375,
+          -1.0
+        ],
+        "uv1": [
+          0.28125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 71,
+        "cell": 35,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.357900224513795,
+        "role": "overlap",
+        "source_triangle": 71,
+        "uv0": [
+          0.2734375,
+          1.0
+        ],
+        "uv1": [
+          0.28125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 72,
+        "cell": 36,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.4909658130698845,
+        "role": "overlap",
+        "source_triangle": 72,
+        "uv0": [
+          0.28125,
+          -1.0
+        ],
+        "uv1": [
+          0.2890625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 73,
+        "cell": 36,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.36506256947970994,
+        "role": "overlap",
+        "source_triangle": 73,
+        "uv0": [
+          0.28125,
+          1.0
+        ],
+        "uv1": [
+          0.2890625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 74,
+        "cell": 37,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.50777755065967,
+        "role": "overlap",
+        "source_triangle": 74,
+        "uv0": [
+          0.2890625,
+          -1.0
+        ],
+        "uv1": [
+          0.296875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 75,
+        "cell": 37,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.37078627592616903,
+        "role": "overlap",
+        "source_triangle": 75,
+        "uv0": [
+          0.2890625,
+          1.0
+        ],
+        "uv1": [
+          0.296875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 76,
+        "cell": 38,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.5224811864876266,
+        "role": "overlap",
+        "source_triangle": 76,
+        "uv0": [
+          0.296875,
+          -1.0
+        ],
+        "uv1": [
+          0.3046875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 77,
+        "cell": 38,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.37516663093484093,
+        "role": "overlap",
+        "source_triangle": 77,
+        "uv0": [
+          0.296875,
+          1.0
+        ],
+        "uv1": [
+          0.3046875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 78,
+        "cell": 39,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.5346705176012085,
+        "role": "overlap",
+        "source_triangle": 78,
+        "uv0": [
+          0.3046875,
+          -1.0
+        ],
+        "uv1": [
+          0.3125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 79,
+        "cell": 39,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.37835198933177655,
+        "role": "overlap",
+        "source_triangle": 79,
+        "uv0": [
+          0.3046875,
+          1.0
+        ],
+        "uv1": [
+          0.3125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 80,
+        "cell": 40,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.5439317777799182,
+        "role": "overlap",
+        "source_triangle": 80,
+        "uv0": [
+          0.3125,
+          -1.0
+        ],
+        "uv1": [
+          0.3203125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 81,
+        "cell": 40,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.38052210166745537,
+        "role": "overlap",
+        "source_triangle": 81,
+        "uv0": [
+          0.3125,
+          1.0
+        ],
+        "uv1": [
+          0.3203125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 82,
+        "cell": 41,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.5498831160145234,
+        "role": "overlap",
+        "source_triangle": 82,
+        "uv0": [
+          0.3203125,
+          -1.0
+        ],
+        "uv1": [
+          0.328125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 83,
+        "cell": 41,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.38185109649507476,
+        "role": "overlap",
+        "source_triangle": 83,
+        "uv0": [
+          0.3203125,
+          1.0
+        ],
+        "uv1": [
+          0.328125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 84,
+        "cell": 42,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.5522228707466705,
+        "role": "overlap",
+        "source_triangle": 84,
+        "uv0": [
+          0.328125,
+          -1.0
+        ],
+        "uv1": [
+          0.3359375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 85,
+        "cell": 42,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.3824614418159974,
+        "role": "overlap",
+        "source_triangle": 85,
+        "uv0": [
+          0.328125,
+          1.0
+        ],
+        "uv1": [
+          0.3359375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 86,
+        "cell": 43,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.5507729393755227,
+        "role": "overlap",
+        "source_triangle": 86,
+        "uv0": [
+          0.3359375,
+          -1.0
+        ],
+        "uv1": [
+          0.34375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 87,
+        "cell": 43,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.382382564088227,
+        "role": "overlap",
+        "source_triangle": 87,
+        "uv0": [
+          0.3359375,
+          1.0
+        ],
+        "uv1": [
+          0.34375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 88,
+        "cell": 44,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.5455014049410238,
+        "role": "overlap",
+        "source_triangle": 88,
+        "uv0": [
+          0.34375,
+          -1.0
+        ],
+        "uv1": [
+          0.3515625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 89,
+        "cell": 44,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.3815299431047538,
+        "role": "overlap",
+        "source_triangle": 89,
+        "uv0": [
+          0.34375,
+          1.0
+        ],
+        "uv1": [
+          0.3515625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 90,
+        "cell": 45,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.5365152636587918,
+        "role": "overlap",
+        "source_triangle": 90,
+        "uv0": [
+          0.3515625,
+          -1.0
+        ],
+        "uv1": [
+          0.359375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 91,
+        "cell": 45,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.37971382178920526,
+        "role": "overlap",
+        "source_triangle": 91,
+        "uv0": [
+          0.3515625,
+          1.0
+        ],
+        "uv1": [
+          0.359375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 92,
+        "cell": 46,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.5240266481400895,
+        "role": "overlap",
+        "source_triangle": 92,
+        "uv0": [
+          0.359375,
+          -1.0
+        ],
+        "uv1": [
+          0.3671875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 93,
+        "cell": 46,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.3766741214718582,
+        "role": "overlap",
+        "source_triangle": 93,
+        "uv0": [
+          0.359375,
+          1.0
+        ],
+        "uv1": [
+          0.3671875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 94,
+        "cell": 47,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.5083062731950128,
+        "role": "overlap",
+        "source_triangle": 94,
+        "uv0": [
+          0.3671875,
+          -1.0
+        ],
+        "uv1": [
+          0.375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 95,
+        "cell": 47,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.3726827834956256,
+        "role": "overlap",
+        "source_triangle": 95,
+        "uv0": [
+          0.3671875,
+          1.0
+        ],
+        "uv1": [
+          0.3733852842819421,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 95,
+        "cell": 47,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.3699977155815889,
+        "role": "overlap",
+        "source_triangle": 95,
+        "uv0": [
+          0.3733852842819421,
+          1.0
+        ],
+        "uv1": [
+          0.375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 96,
+        "cell": 48,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.4908391064270479,
+        "role": "overlap",
+        "source_triangle": 96,
+        "uv0": [
+          0.375,
+          -1.0
+        ],
+        "uv1": [
+          0.38187877590888625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 96,
+        "cell": 48,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.48080482205567654,
+        "role": "overlap",
+        "source_triangle": 96,
+        "uv0": [
+          0.38187877590888625,
+          -1.0
+        ],
+        "uv1": [
+          0.3828125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 97,
+        "cell": 48,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.3658130737370249,
+        "role": "overlap",
+        "source_triangle": 97,
+        "uv0": [
+          0.375,
+          1.0
+        ],
+        "uv1": [
+          0.3828125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 98,
+        "cell": 49,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.4682975879007314,
+        "role": "overlap",
+        "source_triangle": 98,
+        "uv0": [
+          0.3828125,
+          -1.0
+        ],
+        "uv1": [
+          0.390625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 99,
+        "cell": 49,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.3575198194166844,
+        "role": "overlap",
+        "source_triangle": 99,
+        "uv0": [
+          0.3828125,
+          1.0
+        ],
+        "uv1": [
+          0.390625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 100,
+        "cell": 50,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.44451932566429675,
+        "role": "overlap",
+        "source_triangle": 100,
+        "uv0": [
+          0.390625,
+          -1.0
+        ],
+        "uv1": [
+          0.3984375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 101,
+        "cell": 50,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.3471046171562707,
+        "role": "overlap",
+        "source_triangle": 101,
+        "uv0": [
+          0.390625,
+          1.0
+        ],
+        "uv1": [
+          0.3984375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 102,
+        "cell": 51,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.4185119274865357,
+        "role": "overlap",
+        "source_triangle": 102,
+        "uv0": [
+          0.3984375,
+          -1.0
+        ],
+        "uv1": [
+          0.40625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 103,
+        "cell": 51,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.33449268230162643,
+        "role": "overlap",
+        "source_triangle": 103,
+        "uv0": [
+          0.3984375,
+          1.0
+        ],
+        "uv1": [
+          0.40625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 104,
+        "cell": 52,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.39736897006646765,
+        "role": "overlap",
+        "source_triangle": 104,
+        "uv0": [
+          0.40625,
+          -1.0
+        ],
+        "uv1": [
+          0.41034217769834047,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 104,
+        "cell": 52,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 104,
+        "uv0": [
+          0.41034217769834047,
+          -1.0
+        ],
+        "uv1": [
+          0.4140625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 105,
+        "cell": 52,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.3196721546040967,
+        "role": "overlap",
+        "source_triangle": 105,
+        "uv0": [
+          0.40625,
+          1.0
+        ],
+        "uv1": [
+          0.4140625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 106,
+        "cell": 53,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 106,
+        "uv0": [
+          0.4140625,
+          -1.0
+        ],
+        "uv1": [
+          0.421875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 107,
+        "cell": 53,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.30268495055473554,
+        "role": "overlap",
+        "source_triangle": 107,
+        "uv0": [
+          0.4140625,
+          1.0
+        ],
+        "uv1": [
+          0.421875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 108,
+        "cell": 54,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 108,
+        "uv0": [
+          0.421875,
+          -1.0
+        ],
+        "uv1": [
+          0.4296875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 109,
+        "cell": 54,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.28361707956767906,
+        "role": "overlap",
+        "source_triangle": 109,
+        "uv0": [
+          0.421875,
+          1.0
+        ],
+        "uv1": [
+          0.4296875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 110,
+        "cell": 55,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 110,
+        "uv0": [
+          0.4296875,
+          -1.0
+        ],
+        "uv1": [
+          0.4375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 111,
+        "cell": 55,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.2625898978061342,
+        "role": "overlap",
+        "source_triangle": 111,
+        "uv0": [
+          0.4296875,
+          1.0
+        ],
+        "uv1": [
+          0.4375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 112,
+        "cell": 56,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 112,
+        "uv0": [
+          0.4375,
+          -1.0
+        ],
+        "uv1": [
+          0.4453125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 113,
+        "cell": 56,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.2397528180010463,
+        "role": "overlap",
+        "source_triangle": 113,
+        "uv0": [
+          0.4375,
+          1.0
+        ],
+        "uv1": [
+          0.4453125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 114,
+        "cell": 57,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 114,
+        "uv0": [
+          0.4453125,
+          -1.0
+        ],
+        "uv1": [
+          0.453125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 115,
+        "cell": 57,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.21527747128257174,
+        "role": "overlap",
+        "source_triangle": 115,
+        "uv0": [
+          0.4453125,
+          1.0
+        ],
+        "uv1": [
+          0.453125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 116,
+        "cell": 58,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 116,
+        "uv0": [
+          0.453125,
+          -1.0
+        ],
+        "uv1": [
+          0.4609375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 117,
+        "cell": 58,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.18935309312575446,
+        "role": "overlap",
+        "source_triangle": 117,
+        "uv0": [
+          0.453125,
+          1.0
+        ],
+        "uv1": [
+          0.4609375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 118,
+        "cell": 59,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 118,
+        "uv0": [
+          0.4609375,
+          -1.0
+        ],
+        "uv1": [
+          0.46875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 119,
+        "cell": 59,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.16218284954687098,
+        "role": "overlap",
+        "source_triangle": 119,
+        "uv0": [
+          0.4609375,
+          1.0
+        ],
+        "uv1": [
+          0.46875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 120,
+        "cell": 60,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 120,
+        "uv0": [
+          0.46875,
+          -1.0
+        ],
+        "uv1": [
+          0.4765625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 121,
+        "cell": 60,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.13398084210740382,
+        "role": "overlap",
+        "source_triangle": 121,
+        "uv0": [
+          0.46875,
+          1.0
+        ],
+        "uv1": [
+          0.4765625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 122,
+        "cell": 61,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 122,
+        "uv0": [
+          0.4765625,
+          -1.0
+        ],
+        "uv1": [
+          0.484375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 123,
+        "cell": 61,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.10496958004080734,
+        "role": "overlap",
+        "source_triangle": 123,
+        "uv0": [
+          0.4765625,
+          1.0
+        ],
+        "uv1": [
+          0.484375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 124,
+        "cell": 62,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 124,
+        "uv0": [
+          0.484375,
+          -1.0
+        ],
+        "uv1": [
+          0.4921875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 125,
+        "cell": 62,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.07537775989329201,
+        "role": "overlap",
+        "source_triangle": 125,
+        "uv0": [
+          0.484375,
+          1.0
+        ],
+        "uv1": [
+          0.4921875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 126,
+        "cell": 63,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 126,
+        "uv0": [
+          0.4921875,
+          -1.0
+        ],
+        "uv1": [
+          0.5,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 127,
+        "cell": 63,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.04543823722869156,
+        "role": "overlap",
+        "source_triangle": 127,
+        "uv0": [
+          0.4921875,
+          1.0
+        ],
+        "uv1": [
+          0.5,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 128,
+        "cell": 64,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 128,
+        "uv0": [
+          0.5,
+          -1.0
+        ],
+        "uv1": [
+          0.5078125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 129,
+        "cell": 64,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.015386108282031574,
+        "role": "overlap",
+        "source_triangle": 129,
+        "uv0": [
+          0.5,
+          1.0
+        ],
+        "uv1": [
+          0.5078125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 130,
+        "cell": 65,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 130,
+        "uv0": [
+          0.5078125,
+          -1.0
+        ],
+        "uv1": [
+          0.515625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 131,
+        "cell": 65,
+        "farther_triangles": [
+          1
+        ],
+        "nearest_depth_gap": 0.0001857302730330912,
+        "role": "overlap",
+        "source_triangle": 131,
+        "uv0": [
+          0.5078125,
+          1.0
+        ],
+        "uv1": [
+          0.5079045601035578,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 132,
+        "cell": 66,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 132,
+        "uv0": [
+          0.515625,
+          -1.0
+        ],
+        "uv1": [
+          0.5234375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 134,
+        "cell": 67,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 134,
+        "uv0": [
+          0.5234375,
+          -1.0
+        ],
+        "uv1": [
+          0.53125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 136,
+        "cell": 68,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 136,
+        "uv0": [
+          0.53125,
+          -1.0
+        ],
+        "uv1": [
+          0.5390625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 138,
+        "cell": 69,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 138,
+        "uv0": [
+          0.5390625,
+          -1.0
+        ],
+        "uv1": [
+          0.546875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 140,
+        "cell": 70,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 140,
+        "uv0": [
+          0.546875,
+          -1.0
+        ],
+        "uv1": [
+          0.5546875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 142,
+        "cell": 71,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 142,
+        "uv0": [
+          0.5546875,
+          -1.0
+        ],
+        "uv1": [
+          0.5625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 144,
+        "cell": 72,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 144,
+        "uv0": [
+          0.5625,
+          -1.0
+        ],
+        "uv1": [
+          0.5703125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 146,
+        "cell": 73,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 146,
+        "uv0": [
+          0.5703125,
+          -1.0
+        ],
+        "uv1": [
+          0.578125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 148,
+        "cell": 74,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 148,
+        "uv0": [
+          0.578125,
+          -1.0
+        ],
+        "uv1": [
+          0.5859375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 150,
+        "cell": 75,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 150,
+        "uv0": [
+          0.5859375,
+          -1.0
+        ],
+        "uv1": [
+          0.5876715838505817,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 221,
+        "cell": 110,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.001812286428359261,
+        "role": "overlap",
+        "source_triangle": 221,
+        "uv0": [
+          0.8651945063305644,
+          1.0
+        ],
+        "uv1": [
+          0.8671875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 223,
+        "cell": 111,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.01014188079724157,
+        "role": "overlap",
+        "source_triangle": 223,
+        "uv0": [
+          0.8671875,
+          1.0
+        ],
+        "uv1": [
+          0.875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 225,
+        "cell": 112,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.022635301048966938,
+        "role": "overlap",
+        "source_triangle": 225,
+        "uv0": [
+          0.875,
+          1.0
+        ],
+        "uv1": [
+          0.8828125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 226,
+        "cell": 113,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 226,
+        "uv0": [
+          0.883409501361681,
+          -1.0
+        ],
+        "uv1": [
+          0.890625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 227,
+        "cell": 113,
+        "farther_triangles": [
+          0
+        ],
+        "nearest_depth_gap": 0.031116932534988692,
+        "role": "overlap",
+        "source_triangle": 227,
+        "uv0": [
+          0.8828125,
+          1.0
+        ],
+        "uv1": [
+          0.8864592428104152,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 227,
+        "cell": 113,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 227,
+        "uv0": [
+          0.8864592428104152,
+          1.0
+        ],
+        "uv1": [
+          0.890625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 228,
+        "cell": 114,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 228,
+        "uv0": [
+          0.890625,
+          -1.0
+        ],
+        "uv1": [
+          0.8984375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 229,
+        "cell": 114,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 229,
+        "uv0": [
+          0.890625,
+          1.0
+        ],
+        "uv1": [
+          0.8984375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 230,
+        "cell": 115,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 230,
+        "uv0": [
+          0.8984375,
+          -1.0
+        ],
+        "uv1": [
+          0.90625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 231,
+        "cell": 115,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 231,
+        "uv0": [
+          0.8984375,
+          1.0
+        ],
+        "uv1": [
+          0.90625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 232,
+        "cell": 116,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 232,
+        "uv0": [
+          0.90625,
+          -1.0
+        ],
+        "uv1": [
+          0.9140625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 233,
+        "cell": 116,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 233,
+        "uv0": [
+          0.90625,
+          1.0
+        ],
+        "uv1": [
+          0.9140625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 234,
+        "cell": 117,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 234,
+        "uv0": [
+          0.9140625,
+          -1.0
+        ],
+        "uv1": [
+          0.921875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 235,
+        "cell": 117,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 235,
+        "uv0": [
+          0.9140625,
+          1.0
+        ],
+        "uv1": [
+          0.921875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 236,
+        "cell": 118,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 236,
+        "uv0": [
+          0.921875,
+          -1.0
+        ],
+        "uv1": [
+          0.9296875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 237,
+        "cell": 118,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 237,
+        "uv0": [
+          0.921875,
+          1.0
+        ],
+        "uv1": [
+          0.9296875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 238,
+        "cell": 119,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 238,
+        "uv0": [
+          0.9296875,
+          -1.0
+        ],
+        "uv1": [
+          0.9375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 239,
+        "cell": 119,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 239,
+        "uv0": [
+          0.9296875,
+          1.0
+        ],
+        "uv1": [
+          0.9375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 240,
+        "cell": 120,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 240,
+        "uv0": [
+          0.9375,
+          -1.0
+        ],
+        "uv1": [
+          0.9453125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 241,
+        "cell": 120,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 241,
+        "uv0": [
+          0.9375,
+          1.0
+        ],
+        "uv1": [
+          0.9453125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 242,
+        "cell": 121,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 242,
+        "uv0": [
+          0.9453125,
+          -1.0
+        ],
+        "uv1": [
+          0.953125,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 243,
+        "cell": 121,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 243,
+        "uv0": [
+          0.9453125,
+          1.0
+        ],
+        "uv1": [
+          0.953125,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 244,
+        "cell": 122,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 244,
+        "uv0": [
+          0.953125,
+          -1.0
+        ],
+        "uv1": [
+          0.9609375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 245,
+        "cell": 122,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 245,
+        "uv0": [
+          0.953125,
+          1.0
+        ],
+        "uv1": [
+          0.9609375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 246,
+        "cell": 123,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 246,
+        "uv0": [
+          0.9609375,
+          -1.0
+        ],
+        "uv1": [
+          0.96875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 247,
+        "cell": 123,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 247,
+        "uv0": [
+          0.9609375,
+          1.0
+        ],
+        "uv1": [
+          0.96875,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 248,
+        "cell": 124,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 248,
+        "uv0": [
+          0.96875,
+          -1.0
+        ],
+        "uv1": [
+          0.9765625,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 249,
+        "cell": 124,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 249,
+        "uv0": [
+          0.96875,
+          1.0
+        ],
+        "uv1": [
+          0.9765625,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 250,
+        "cell": 125,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 250,
+        "uv0": [
+          0.9765625,
+          -1.0
+        ],
+        "uv1": [
+          0.984375,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 251,
+        "cell": 125,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 251,
+        "uv0": [
+          0.9765625,
+          1.0
+        ],
+        "uv1": [
+          0.984375,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 252,
+        "cell": 126,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 252,
+        "uv0": [
+          0.984375,
+          -1.0
+        ],
+        "uv1": [
+          0.9921875,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 253,
+        "cell": 126,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 253,
+        "uv0": [
+          0.984375,
+          1.0
+        ],
+        "uv1": [
+          0.9921874999999999,
+          1.0
+        ]
+      },
+      {
+        "boundary": "v=-1",
+        "candidate": 254,
+        "cell": 127,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 254,
+        "uv0": [
+          0.9921875,
+          -1.0
+        ],
+        "uv1": [
+          1.0,
+          -1.0
+        ]
+      },
+      {
+        "boundary": "v=+1",
+        "candidate": 255,
+        "cell": 127,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 255,
+        "uv0": [
+          0.9921875,
+          1.0
+        ],
+        "uv1": [
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "boundary": "u=0",
+        "candidate": 256,
+        "cell": 0,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 1,
+        "uv0": [
+          0.0,
+          -1.0
+        ],
+        "uv1": [
+          0.0,
+          1.0
+        ]
+      },
+      {
+        "boundary": "u=1",
+        "candidate": 257,
+        "cell": 127,
+        "farther_triangles": [],
+        "nearest_depth_gap": null,
+        "role": "silhouette",
+        "source_triangle": 254,
+        "uv0": [
+          1.0,
+          -1.0
+        ],
+        "uv1": [
+          1.0,
+          1.0
+        ]
+      }
+    ],
+    "sampling_override": 128,
+    "silhouette_span_count": 87,
+    "stroke_polygon_count": 3432,
+    "support_geometry_sha256": "b53b110d79b46c9fc62bb66d6c26abbea1e37fbb7dd5bc5058d1b3eb51ebe60b",
+    "support_triangle_count": 256,
+    "visible_span_count": 212
+  },
+  "rule": "A",
+  "sampling": 128,
+  "source": {
+    "case_name": "body-card",
+    "id": "frozen-family-cases",
+    "kind": "case"
+  },
+  "source_spec_sha256": "54cc6a68d8bf17d554f9ec9cc6cb79f22aea363bf14cba3157a8bd2c926895ee",
+  "svg_bytes": 1928004,
+  "svg_sha256": "5a1009bdd8c1d65a4bbf0021625e1bce6cc8892d925766a587c2f622fc432345"
+}

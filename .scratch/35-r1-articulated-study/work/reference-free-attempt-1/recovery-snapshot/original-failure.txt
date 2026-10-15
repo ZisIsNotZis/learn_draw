@@ -1,0 +1,5 @@
+Preserved at recovery start (2026-10-13T19:35:10Z) from the failed initial validation attempt:
+- Original combined command `PYTHONPATH=. python source.py && PYTHONPATH=.:<attempt> python -m unittest discover ... -v` generated the SVG successfully, reported one failed test, then hit the 120-second tool limit before the suite summary.
+- Isolated command for `test_authored_points_feed_geometry_and_semantic_line_output` completed in 47.644s and failed at `test_source.py:56`, where a moved authored eye stroke did not change SVG output.
+- Direct API probe showed visible spans were empty for the first tested eye/nose segments, while the smile span was visible. This is a source/API geometry visibility issue, not an image-quality judgment.
+- Recovery snapshot copies and hashes of the six pre-recovery attempt files are recorded by matching SHA-256 values in the original and `recovery-snapshot/` paths.

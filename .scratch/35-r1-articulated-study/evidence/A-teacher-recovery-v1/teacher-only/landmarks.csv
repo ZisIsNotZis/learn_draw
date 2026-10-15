@@ -1,0 +1,20 @@
+id,feature,crop_x,crop_y,source_x,source_y,confidence,source-pixel observation and limitation
+N1,visible-neck-skin interior,232,47,732,367,high,pink neck-skin field is visibly between chin/hair and collar; point is interior not boundary
+N2,front neckline opening low point,214,121,714,441,medium,visible pink-skin-to-garment/collar termination; exact shared boundary is softened by line and pixel sampling
+CL1,left collar leaf upper/outer visible point,150,94,650,414,medium,light collar piece meets dark neckline trim here; not a fitted seam endpoint
+CL2,left collar leaf lower/front point,213,124,713,444,medium,light leaf approaches center opening; boundary partly shares trim and overlaps
+CR1,right collar leaf interior,271,94,771,414,medium,light blue collar surface is visibly distinct from pink skin and bodice; internal leaf seam uncertain
+CR2,right collar outer/trim transition,320,113,820,433,medium,dark curved trim crosses light collar toward right shoulder; hair overlaps upper outer continuation
+BD1,left exposed bodice/shoulder patch,111,126,611,446,medium,light garment visible around bow; bow and foreground form obscure continuation
+BD2,shoulder-to-sleeve adjacency zone,304,128,804,448,low,sleeve and bodice boundaries converge under collar/hair; exact armhole/seam cannot be isolated confidently
+BD3,right bodice-side visible patch,281,245,781,565,high,light torso cloth immediately left of right sleeve; thin interior line is a fold/crease, not proven panel seam
+BD4,visible lower bodice/waist edge segment,270,371,770,691,medium,curved garment edge visible above lower crop contents; neighboring lower/left continuation is occluded
+SC1,right sleeve upper cap exterior,350,119,850,439,high,outer sleeve silhouette begins below hair and curves outward
+SC2,right puff/tube midsection interior,360,203,860,523,high,continuous pale sleeve surface; no visible cap-to-tube seam warrants splitting these into separate pieces
+SC3,sleeve lower-inner/cuff approach,335,278,835,598,medium,visible sleeve narrows toward dark cuff; outline is partly obscured by adjacent hair/background shapes
+CU1,dark cuff band visible center,373,309,873,629,high,dark band spans the sleeve opening; band continues toward crop right edge
+BK1,bow knot center,171,169,671,489,high,central pink knot where visible loop and tail folds converge
+BL1,left loop interior,139,171,639,491,high,left broad loop field; interior fold strokes are not boundary evidence
+BR1,right loop interior,230,183,730,503,high,right broad loop field; visibly larger/wider than left loop in crop
+TL1,leftward pink-tail/blue-band overlap zone,44,209,544,529,medium,pink tail visibly meets/overlaps a blue band here; only blue band is visible from this area to crop x=0, so tail continuation versus occlusion/endpoint is unknown
+TD1,downward tail visible tip,139,276,639,596,medium,visible pink tail tapers to a point in crop; verify independent interpretation because lower overlap complicates exact edge

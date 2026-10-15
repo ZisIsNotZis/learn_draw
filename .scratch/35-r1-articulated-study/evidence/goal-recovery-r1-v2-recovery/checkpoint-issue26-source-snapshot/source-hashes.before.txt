@@ -1,0 +1,15 @@
+6bbd13b5e94d17f4d3a19829f2f7dc9a3a96dcf1f453a01ea8e6f83dcd57e344  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/compose_b_sheet.py
+8d2b1255e2aba23da2286e773ff63f3dc614d6df4b8dd4abef0bcdfc94b99a33  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/finalize_manifest.py
+599e85982122bd1db5a8f143401ae4f6bf162fbe80af8740723ecb807d76a3bb  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/observe_teacher.py
+425a9096d43a743cb970c920c7272356d365bc2dfce433af90dc0f473628d452  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/r1_scene.py
+35d6ced9175c05110251e31a629cb202e81101404e46ee038b032eef16e007c2  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/rendered/A-observed-garment.svg
+ffe1dbd233afd0df3011ea91f07ba762e32d19f6a96fbf7e87b70b5892259aac  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/rendered/B-baseline-support.svg
+c49cd8241d4299ca57adeacc4ab5f8ba7adecf12658021daf1c0b8052b489f71  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/run_r1.py
+7a34530673f0659ec0820f4c3a83bcc3257d4d3b24b4edd7f9e203d1b87d5758  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/shape-grammar.md
+1db424e5b6be6f6511b5112e53f07dabd4d73b0319541ffcad641509e4fa1678  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/spatial_adapter.py
+30ecc088abc9c032153033bd0657224357518e81caa61a2a5e3bfd6151505c47  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/teacher-crop-focus.png
+52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/teacher-crop-registered.png
+2a5c86567b3d6cfdd91e4ce7c6e30e59439af1479ea01a3364532df59a8cbb7f  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/teacher-grid.png
+7d93160ce5313c3a45e9a817361071fb528ff4068e50fee1f0f4b6aca975b7d5  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/teacher-observations.json
+dd34bf217ec609dad70081bcfbab6983d477faf17c8a95885c7a9e048d0553e2  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/teacher-region-windows.png
+c0b8de8d6dd84f339bc525033c4c9af621e082f32e8982bef50a60867d67d909  .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2/test_goal_recovery_r1.py

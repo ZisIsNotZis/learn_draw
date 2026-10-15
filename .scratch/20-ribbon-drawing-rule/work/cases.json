@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "question": "Can complete depth-visible semantic perimeter ink, followed by that ink plus a side-consistent full-local-UV motif, distinguish a turning ribbon under fixed old geometry and cameras?",
+  "sampling_override": 128,
+  "sampling_is_compiler_only": true,
+  "rule_order": ["control", "A", "B"],
+  "sources": {
+    "frozen-family-cases": {
+      "path": ".scratch/19-ribbon-family/work/cases.json",
+      "sha256": "bd2732b806de26cc2d8a261be68e8f30e21e1f8f8bd5301556d85241a8bc5800"
+    },
+    "failed-learner-spec": {
+      "path": ".scratch/19-ribbon-family/learner/gentle-s-ribbon.json",
+      "sha256": "dd995ab1d1cced202a63092263d489597339ae18d2ea761e77408c5b41e8455c"
+    },
+    "ribbon-generator": {
+      "path": "scripts/ribbon_family.py",
+      "sha256": "015ec14ec90da5768dbcdd9486220d3971c55673f0944971ccb3a8a47662bd3e"
+    },
+    "visibility-resolver": {
+      "path": "scripts/vector_visibility.py",
+      "sha256": "6cea919d0c83b1c4ebb9b3ec3379854c910e2758610b449c036c25c9ce8e1ada"
+    }
+  },
+  "camera_hashes": {
+    "front": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4",
+    "oblique": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+  },
+  "cases": [
+    {
+      "name": "teaching-arch-front",
+      "source": {"id": "frozen-family-cases", "kind": "case", "case_name": "teaching-arch"},
+      "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+      "camera": {"name": "front", "yaw": 0, "pitch": 0},
+      "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+    },
+    {
+      "name": "frozen-crossback-front",
+      "source": {"id": "frozen-family-cases", "kind": "case", "case_name": "awkward-crossing"},
+      "source_spec_sha256": "0d1e0e19a1add90217fabd1df6138705f10ee5203e6120a8db24dea09a97367e",
+      "camera": {"name": "front", "yaw": 0, "pitch": 0},
+      "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+    },
+    {
+      "name": "crossback-depth-reversed-front",
+      "source": {"id": "frozen-family-cases", "kind": "case", "case_name": "awkward-crossing"},
+      "source_spec_sha256": "0d1e0e19a1add90217fabd1df6138705f10ee5203e6120a8db24dea09a97367e",
+      "derived_change": "depth is replaced by -abs(original depth); no crossing u/screen coordinate is authored",
+      "depth_sign": -1,
+      "camera": {"name": "front", "yaw": 0, "pitch": 0},
+      "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+    },
+    {
+      "name": "half-twist-front",
+      "source": {"id": "frozen-family-cases", "kind": "case", "case_name": "twisted-two-sided"},
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "camera": {"name": "front", "yaw": 0, "pitch": 0},
+      "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+    },
+    {
+      "name": "half-twist-oblique",
+      "source": {"id": "frozen-family-cases", "kind": "case", "case_name": "twisted-two-sided"},
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "camera": {"name": "oblique", "yaw": 38, "pitch": 22},
+      "camera_sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+    },
+    {
+      "name": "failed-learner-front-regression-only",
+      "source": {"id": "failed-learner-spec", "kind": "spec"},
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "camera": {"name": "front", "yaw": 0, "pitch": 0},
+      "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4",
+      "claim_limit": "unchanged prior failed attempt shown as regression only, not repaired transfer"
+    },
+    {
+      "name": "failed-learner-oblique-regression-only",
+      "source": {"id": "failed-learner-spec", "kind": "spec"},
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "camera": {"name": "oblique", "yaw": 38, "pitch": 22},
+      "camera_sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e",
+      "claim_limit": "unchanged prior failed attempt shown as regression only, not repaired transfer"
+    },
+    {
+      "name": "external-support-card-front",
+      "source": {"id": "frozen-family-cases", "kind": "case", "case_name": "body-card"},
+      "source_spec_sha256": "54cc6a68d8bf17d554f9ec9cc6cb79f22aea363bf14cba3157a8bd2c926895ee",
+      "camera": {"name": "front", "yaw": 0, "pitch": 0},
+      "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+    }
+  ]
+}

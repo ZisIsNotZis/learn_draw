@@ -1,0 +1,76 @@
+{
+  "candidateV3": {
+    "backgroundFill": "#78a49b",
+    "bandSignedOutlineArea": -1386.757707,
+    "bodyUpperCompoundVisibleArea": 23827.021598,
+    "bodyUpperFill": "#e8e7dc",
+    "bodyUpperSignedOutlineArea": 36203.283381,
+    "bodyUpperWinding": "positive",
+    "builderSha256": "2045f87c539f30f4efdb7f7805957e85884023bf6e984a5c6c42bedcb3071ae1",
+    "compoundBodyPathCoversProbe": true,
+    "maxTwoSharedJoinErrorAt101Samples": 0.0,
+    "outlineIncludesNamedSharedRightEndpoint": true,
+    "pngSha256": "87336edaecbadd47ebee48e7b3381cb9e6b1efc9185c35b5d33d46ce9a95101b",
+    "probeCropXY": [
+      182.5869,
+      321.4802
+    ],
+    "probePixelXY": [
+      183,
+      321
+    ],
+    "renderedPixelIsBackgroundRGB": false,
+    "renderedPixelRGB": [
+      232,
+      231,
+      220
+    ],
+    "sameSupport": true,
+    "visiblePointRGBExpectedForBody": [
+      232,
+      231,
+      220
+    ],
+    "visibleRegionsHasBodyUpperPath": true,
+    "waistBandFill": "#d9d8ce",
+    "waistBandWinding": "negative",
+    "waistBoundarySamples": 101
+  },
+  "frozenScopedRepairV1": {
+    "backgroundFill": "#78a49b",
+    "bandSignedOutlineArea": -1386.757707,
+    "bodyUpperCompoundVisibleArea": 24717.230745,
+    "bodyUpperFill": "#e8e7dc",
+    "bodyUpperSignedOutlineArea": 35779.084642,
+    "bodyUpperWinding": "positive",
+    "builderSha256": "4b6bcb492bcc798cd28e08a33ff1e44341399f3e64b6e7d02e8e3d6a9e3d7697",
+    "compoundBodyPathCoversProbe": false,
+    "maxTwoSharedJoinErrorAt101Samples": 0.0,
+    "outlineIncludesNamedSharedRightEndpoint": false,
+    "pngSha256": "e98dfdc9ac5b507b5ad022251e7c99284452463c587ad7fec39af74c6ff13e6f",
+    "probeCropXY": [
+      182.5869,
+      321.4802
+    ],
+    "probePixelXY": [
+      183,
+      321
+    ],
+    "renderedPixelIsBackgroundRGB": true,
+    "renderedPixelRGB": [
+      120,
+      164,
+      155
+    ],
+    "sameSupport": true,
+    "visiblePointRGBExpectedForBody": [
+      232,
+      231,
+      220
+    ],
+    "visibleRegionsHasBodyUpperPath": true,
+    "waistBandFill": "#d9d8ce",
+    "waistBandWinding": "negative",
+    "waistBoundarySamples": 101
+  }
+}

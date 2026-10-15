@@ -1,0 +1,1253 @@
+{
+  "classifier": {
+    "correct_rule": "predeclared preflight barycentric b term uses y-y2; max actual depth wins",
+    "depth_order_policy": "fixed 1e-5 band for tie classification only; no thresholds swept",
+    "fault_reproduction": "the first gate's scratch builder used y-y0 in barycentric b; reproduced only to classify the original 611 count",
+    "masks_fixed_before_classification": true,
+    "sample_lattice": "same design preflight step 0.0125 and offsets x=.371,y=.619",
+    "source_edge_and_degenerate_policy": "strict min barycentric >=1e-10; source-edge candidates in [-1e-10,1e-10); abs denominator <=1e-14 is projected-degenerate"
+  },
+  "elapsed_seconds": 1.7786093250033446,
+  "fixed_fixture": {
+    "C0": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "L": 3.0,
+    "alpha_radians": 3.141592653589793,
+    "camera": "D-minus-symmetric",
+    "samples_compared_only": [
+      "16x2",
+      "32x4"
+    ],
+    "tip_ratio": 1.0,
+    "w": 0.36
+  },
+  "pins": {
+    "frozen_cases": "95fa2bad3da49f092879d7cbfdd5871f7d7c6ff7a389ee1b55611b31f900cbbc",
+    "frozen_specs": "c5f874f3bc4d15a30eeffdff1676d1bf7b26a8144f46b034bfe69f120fd60603",
+    "geometry_module": "618d701c3a26eb1f97d6b6cfd210ffe41eba3fe25032eb216d3c2ead398d2607",
+    "kernel": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa",
+    "original_failed_proof": "a0e4379fb33fab095d1d6e3d6d2178b9c94d1e41068b758ebce0ede045a0f878",
+    "reviewed_32x4_preflight": "205d889d4ef8da4878261552bc600b0fa605d644ec33d463b7e8e7be1ceb2fc1"
+  },
+  "purpose": "one fixed D-minus numeric diagnosis; no images or policy changes",
+  "results": {
+    "16x2": {
+      "counts": {
+        "buggy_hidden_winners": 611,
+        "buggy_hidden_winners_with_true_depth_tie": 0,
+        "buggy_hidden_winners_with_true_near_side_hit": 611,
+        "buggy_only_points_on_predeclared_source_edge": 0,
+        "buggy_only_points_outside_true_mesh": 0,
+        "correct_hidden_nearer_overlaps": 0,
+        "correct_hidden_side_winners": 0,
+        "correct_hidden_uncovered_points": 0,
+        "correct_positive_near_winners": 2581,
+        "correct_strict_surface_points": 2581,
+        "depth_policy_ties_1e-5": 0,
+        "sampled_lattice_points": 2610,
+        "source_edge_memberships": 0,
+        "source_edge_only_points": 0
+      },
+      "samples": 16,
+      "source_id_sign_validation": {
+        "facing_sign_mismatches": [],
+        "ids_unique_and_dense": true
+      },
+      "strict_projection_membership": {
+        "degenerate_denominator_epsilon": 1e-14,
+        "degenerate_projected_faces": [],
+        "depth_order_deadband": 1e-05,
+        "lattice_offsets": [
+          0.371,
+          0.619
+        ],
+        "lattice_step": 0.0125,
+        "strict_interior_epsilon": 1e-10
+      },
+      "support_face_count": 64,
+      "witnesses": {
+        "buggy_false_surface_memberships": [
+          {
+            "correct_surface_hits_with_faulty_membership": [
+              {
+                "cell": [
+                  0,
+                  1
+                ],
+                "depth": 5.5134262059822584e-05,
+                "facing_dot": -0.033745737821140376,
+                "faulty_interior_membership": true,
+                "faulty_weights_for_same_face": [
+                  0.04298611111111116,
+                  0.024736457220889744,
+                  0.932277431667999
+                ],
+                "fid": 3,
+                "normal_norm": 0.03374812260417872,
+                "sign": -1,
+                "uv": [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0625,
+                    1.0
+                  ],
+                  [
+                    0.0,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.04298611111111116,
+                  0.024736457220889744,
+                  0.932277431667999
+                ]
+              },
+              {
+                "cell": [
+                  15,
+                  1
+                ],
+                "depth": 1.4581727677102383,
+                "facing_dot": 0.033745737792416144,
+                "faulty_interior_membership": false,
+                "faulty_weights_for_same_face": [
+                  0.02473645724194506,
+                  -0.9817503461308337,
+                  1.9570138888888886
+                ],
+                "fid": 62,
+                "normal_norm": 0.03374812257557816,
+                "sign": 1,
+                "uv": [
+                  [
+                    0.9375,
+                    0.0
+                  ],
+                  [
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    1.0,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.02473645724194506,
+                  0.01824965386916609,
+                  0.9570138888888888
+                ]
+              }
+            ],
+            "correct_weights_for_same_face": [
+              0.04298611111111116,
+              0.024736457220889744,
+              0.932277431667999
+            ],
+            "depth_interpolated_with_correct_weights": 5.5134262059822584e-05,
+            "depth_interpolated_with_faulty_weights": 5.5134262059822584e-05,
+            "faulty_cell_uv": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                1.0
+              ],
+              [
+                0.0,
+                1.0
+              ]
+            ],
+            "faulty_face_id": 3,
+            "faulty_weights": [
+              0.04298611111111116,
+              0.024736457220889744,
+              0.932277431667999
+            ],
+            "lattice_index_xy": [
+              0,
+              0
+            ],
+            "screen_xy": [
+              0.0046375,
+              -0.17226249999999999
+            ],
+            "source_edge_hits": []
+          },
+          {
+            "correct_surface_hits_with_faulty_membership": [
+              {
+                "cell": [
+                  1,
+                  1
+                ],
+                "depth": 0.002603260521916133,
+                "facing_dot": -0.0336275929673734,
+                "faulty_interior_membership": true,
+                "faulty_weights_for_same_face": [
+                  0.042986111111111155,
+                  0.02495011104938923,
+                  0.9320637778394996
+                ],
+                "fid": 7,
+                "normal_norm": 0.03373589414509524,
+                "sign": -1,
+                "uv": [
+                  [
+                    0.0625,
+                    0.0
+                  ],
+                  [
+                    0.125,
+                    1.0
+                  ],
+                  [
+                    0.0625,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.042986111111111155,
+                  0.02495011104938923,
+                  0.9320637778394996
+                ]
+              },
+              {
+                "cell": [
+                  14,
+                  1
+                ],
+                "depth": 1.4556246413816636,
+                "facing_dot": 0.033627592963195965,
+                "faulty_interior_membership": false,
+                "faulty_weights_for_same_face": [
+                  0.02495011190667481,
+                  -0.9819640007955637,
+                  1.9570138888888888
+                ],
+                "fid": 58,
+                "normal_norm": 0.033735894141198146,
+                "sign": 1,
+                "uv": [
+                  [
+                    0.875,
+                    0.0
+                  ],
+                  [
+                    0.9375,
+                    0.0
+                  ],
+                  [
+                    0.9375,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.02495011190667481,
+                  0.018035999204436347,
+                  0.9570138888888888
+                ]
+              }
+            ],
+            "correct_weights_for_same_face": [
+              0.042986111111111155,
+              0.02495011104938923,
+              0.9320637778394996
+            ],
+            "depth_interpolated_with_correct_weights": 0.002603260521916133,
+            "depth_interpolated_with_faulty_weights": 0.002603260521916133,
+            "faulty_cell_uv": [
+              [
+                0.0625,
+                0.0
+              ],
+              [
+                0.125,
+                1.0
+              ],
+              [
+                0.0625,
+                1.0
+              ]
+            ],
+            "faulty_face_id": 7,
+            "faulty_weights": [
+              0.042986111111111155,
+              0.02495011104938923,
+              0.9320637778394996
+            ],
+            "lattice_index_xy": [
+              15,
+              0
+            ],
+            "screen_xy": [
+              0.19213750000000002,
+              -0.17226249999999999
+            ],
+            "source_edge_hits": []
+          },
+          {
+            "correct_surface_hits_with_faulty_membership": [
+              {
+                "cell": [
+                  2,
+                  1
+                ],
+                "depth": 0.018363165287007124,
+                "facing_dot": -0.032987760759586475,
+                "faulty_interior_membership": true,
+                "faulty_weights_for_same_face": [
+                  0.042986111111111155,
+                  0.02914472487214307,
+                  0.9278691640167458
+                ],
+                "fid": 11,
+                "normal_norm": 0.03371612775601518,
+                "sign": -1,
+                "uv": [
+                  [
+                    0.125,
+                    0.0
+                  ],
+                  [
+                    0.1875,
+                    1.0
+                  ],
+                  [
+                    0.125,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.042986111111111155,
+                  0.02914472487214307,
+                  0.9278691640167458
+                ]
+              },
+              {
+                "cell": [
+                  13,
+                  1
+                ],
+                "depth": 1.439864736572901,
+                "facing_dot": 0.03298776076829285,
+                "faulty_interior_membership": false,
+                "faulty_weights_for_same_face": [
+                  0.02914472586184094,
+                  -0.9861586147507299,
+                  1.957013888888889
+                ],
+                "fid": 54,
+                "normal_norm": 0.03371612776472576,
+                "sign": 1,
+                "uv": [
+                  [
+                    0.8125,
+                    0.0
+                  ],
+                  [
+                    0.875,
+                    0.0
+                  ],
+                  [
+                    0.875,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.02914472586184094,
+                  0.013841385249270215,
+                  0.9570138888888888
+                ]
+              }
+            ],
+            "correct_weights_for_same_face": [
+              0.042986111111111155,
+              0.02914472487214307,
+              0.9278691640167458
+            ],
+            "depth_interpolated_with_correct_weights": 0.018363165287007124,
+            "depth_interpolated_with_faulty_weights": 0.018363165287007124,
+            "faulty_cell_uv": [
+              [
+                0.125,
+                0.0
+              ],
+              [
+                0.1875,
+                1.0
+              ],
+              [
+                0.125,
+                1.0
+              ]
+            ],
+            "faulty_face_id": 11,
+            "faulty_weights": [
+              0.042986111111111155,
+              0.02914472487214307,
+              0.9278691640167458
+            ],
+            "lattice_index_xy": [
+              30,
+              0
+            ],
+            "screen_xy": [
+              0.3796375,
+              -0.17226249999999999
+            ],
+            "source_edge_hits": []
+          },
+          {
+            "correct_surface_hits_with_faulty_membership": [
+              {
+                "cell": [
+                  0,
+                  1
+                ],
+                "depth": 5.5134262059822584e-05,
+                "facing_dot": -0.033745737821140376,
+                "faulty_interior_membership": true,
+                "faulty_weights_for_same_face": [
+                  0.1124305555555555,
+                  0.024736457220889744,
+                  0.8628329872235547
+                ],
+                "fid": 3,
+                "normal_norm": 0.03374812260417872,
+                "sign": -1,
+                "uv": [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0625,
+                    1.0
+                  ],
+                  [
+                    0.0,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.1124305555555555,
+                  0.024736457220889744,
+                  0.8628329872235547
+                ]
+              },
+              {
+                "cell": [
+                  15,
+                  1
+                ],
+                "depth": 1.4581727677102383,
+                "facing_dot": 0.033745737792416144,
+                "faulty_interior_membership": false,
+                "faulty_weights_for_same_face": [
+                  0.02473645724194506,
+                  -0.9123059016863895,
+                  1.8875694444444444
+                ],
+                "fid": 62,
+                "normal_norm": 0.03374812257557816,
+                "sign": 1,
+                "uv": [
+                  [
+                    0.9375,
+                    0.0
+                  ],
+                  [
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    1.0,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.02473645724194506,
+                  0.08769409831361046,
+                  0.8875694444444445
+                ]
+              }
+            ],
+            "correct_weights_for_same_face": [
+              0.1124305555555555,
+              0.024736457220889744,
+              0.8628329872235547
+            ],
+            "depth_interpolated_with_correct_weights": 5.5134262059822584e-05,
+            "depth_interpolated_with_faulty_weights": 5.5134262059822584e-05,
+            "faulty_cell_uv": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                1.0
+              ],
+              [
+                0.0,
+                1.0
+              ]
+            ],
+            "faulty_face_id": 3,
+            "faulty_weights": [
+              0.1124305555555555,
+              0.024736457220889744,
+              0.8628329872235547
+            ],
+            "lattice_index_xy": [
+              0,
+              1
+            ],
+            "screen_xy": [
+              0.0046375,
+              -0.1597625
+            ],
+            "source_edge_hits": []
+          },
+          {
+            "correct_surface_hits_with_faulty_membership": [
+              {
+                "cell": [
+                  0,
+                  1
+                ],
+                "depth": 0.0002037441328410155,
+                "facing_dot": -0.033745737821140376,
+                "faulty_interior_membership": true,
+                "faulty_weights_for_same_face": [
+                  0.1124305555555555,
+                  0.09141154406964916,
+                  0.7961579003747954
+                ],
+                "fid": 3,
+                "normal_norm": 0.03374812260417872,
+                "sign": -1,
+                "uv": [
+                  [
+                    0.0,
+                    0.0
+                  ],
+                  [
+                    0.0625,
+                    1.0
+                  ],
+                  [
+                    0.0,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.1124305555555555,
+                  0.09141154406964916,
+                  0.7961579003747954
+                ]
+              },
+              {
+                "cell": [
+                  15,
+                  1
+                ],
+                "depth": 1.4580241578355404,
+                "facing_dot": 0.033745737792416144,
+                "faulty_interior_membership": false,
+                "faulty_weights_for_same_face": [
+                  0.09141154414745803,
+                  -0.9789809885919025,
+                  1.8875694444444444
+                ],
+                "fid": 62,
+                "normal_norm": 0.03374812257557816,
+                "sign": 1,
+                "uv": [
+                  [
+                    0.9375,
+                    0.0
+                  ],
+                  [
+                    1.0,
+                    0.0
+                  ],
+                  [
+                    1.0,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.09141154414745803,
+                  0.02101901140809748,
+                  0.8875694444444445
+                ]
+              }
+            ],
+            "correct_weights_for_same_face": [
+              0.1124305555555555,
+              0.09141154406964916,
+              0.7961579003747954
+            ],
+            "depth_interpolated_with_correct_weights": 0.0002037441328410155,
+            "depth_interpolated_with_faulty_weights": 0.0002037441328410155,
+            "faulty_cell_uv": [
+              [
+                0.0,
+                0.0
+              ],
+              [
+                0.0625,
+                1.0
+              ],
+              [
+                0.0,
+                1.0
+              ]
+            ],
+            "faulty_face_id": 3,
+            "faulty_weights": [
+              0.1124305555555555,
+              0.09141154406964916,
+              0.7961579003747954
+            ],
+            "lattice_index_xy": [
+              1,
+              1
+            ],
+            "screen_xy": [
+              0.0171375,
+              -0.1597625
+            ],
+            "source_edge_hits": []
+          }
+        ],
+        "edge_policy_witnesses": [],
+        "near_side_depth_witnesses": [],
+        "tie_policy_witnesses": []
+      }
+    },
+    "reviewed32x4": {
+      "counts": {
+        "buggy_hidden_winners": 605,
+        "buggy_hidden_winners_with_true_depth_tie": 0,
+        "buggy_hidden_winners_with_true_near_side_hit": 605,
+        "buggy_only_points_on_predeclared_source_edge": 0,
+        "buggy_only_points_outside_true_mesh": 0,
+        "correct_hidden_nearer_overlaps": 0,
+        "correct_hidden_side_winners": 0,
+        "correct_hidden_uncovered_points": 0,
+        "correct_positive_near_winners": 2581,
+        "correct_strict_surface_points": 2581,
+        "depth_policy_ties_1e-5": 0,
+        "sampled_lattice_points": 2610,
+        "source_edge_memberships": 0,
+        "source_edge_only_points": 0
+      },
+      "reviewed_preflight_oracle_crosscheck": {
+        "nearest_depth_winners_by_facing_sign": {
+          "-1": 0,
+          "1": 2581
+        },
+        "opposite_facing_depth_overlap_samples": 2581,
+        "root_row_winner_samples": 0,
+        "sampled_points_with_surface": 2581,
+        "step_screen_units": 0.0125
+      },
+      "samples": 32,
+      "source_id_sign_validation": {
+        "facing_sign_mismatches": [],
+        "ids_unique_and_dense": true
+      },
+      "strict_projection_membership": {
+        "degenerate_denominator_epsilon": 1e-14,
+        "degenerate_projected_faces": [],
+        "depth_order_deadband": 1e-05,
+        "lattice_offsets": [
+          0.371,
+          0.619
+        ],
+        "lattice_step": 0.0125,
+        "strict_interior_epsilon": 1e-10
+      },
+      "support_face_count": 256,
+      "witnesses": {
+        "buggy_false_surface_memberships": [
+          {
+            "correct_surface_hits_with_faulty_membership": [
+              {
+                "cell": [
+                  0,
+                  3
+                ],
+                "depth": 1.4005397526774786e-05,
+                "facing_dot": -0.00843743098456003,
+                "faulty_interior_membership": true,
+                "faulty_weights_for_same_face": [
+                  0.08597222222222232,
+                  0.049467071287903876,
+                  0.8645607064898738
+                ],
+                "fid": 7,
+                "normal_norm": 0.008437469461655673,
+                "sign": -1,
+                "uv": [
+                  [
+                    0.0,
+                    0.5
+                  ],
+                  [
+                    0.03125,
+                    1.0
+                  ],
+                  [
+                    0.0,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.08597222222222232,
+                  0.049467071287903876,
+                  0.8645607064898738
+                ]
+              },
+              {
+                "cell": [
+                  31,
+                  3
+                ],
+                "depth": 1.4582138965762244,
+                "facing_dot": 0.00843743098456003,
+                "faulty_interior_membership": false,
+                "faulty_weights_for_same_face": [
+                  0.049467071287903876,
+                  -0.9634948490656815,
+                  1.9140277777777777
+                ],
+                "fid": 254,
+                "normal_norm": 0.008437469461655673,
+                "sign": 1,
+                "uv": [
+                  [
+                    0.96875,
+                    0.5
+                  ],
+                  [
+                    1.0,
+                    0.5
+                  ],
+                  [
+                    1.0,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.049467071287903876,
+                  0.03650515093431845,
+                  0.9140277777777777
+                ]
+              }
+            ],
+            "correct_weights_for_same_face": [
+              0.08597222222222232,
+              0.049467071287903876,
+              0.8645607064898738
+            ],
+            "depth_interpolated_with_correct_weights": 1.4005397526774786e-05,
+            "depth_interpolated_with_faulty_weights": 1.4005397526774786e-05,
+            "faulty_cell_uv": [
+              [
+                0.0,
+                0.5
+              ],
+              [
+                0.03125,
+                1.0
+              ],
+              [
+                0.0,
+                1.0
+              ]
+            ],
+            "faulty_face_id": 7,
+            "faulty_weights": [
+              0.08597222222222232,
+              0.049467071287903876,
+              0.8645607064898738
+            ],
+            "lattice_index_xy": [
+              0,
+              0
+            ],
+            "screen_xy": [
+              0.0046375,
+              -0.17226249999999999
+            ],
+            "source_edge_hits": []
+          },
+          {
+            "correct_surface_hits_with_faulty_membership": [
+              {
+                "cell": [
+                  2,
+                  3
+                ],
+                "depth": 0.0024863099387315278,
+                "facing_dot": -0.008424027721008597,
+                "faulty_interior_membership": true,
+                "faulty_weights_for_same_face": [
+                  0.08597222222222231,
+                  0.04979875462465672,
+                  0.8642290231531209
+                ],
+                "fid": 23,
+                "normal_norm": 0.00843686671315428,
+                "sign": -1,
+                "uv": [
+                  [
+                    0.0625,
+                    0.5
+                  ],
+                  [
+                    0.09375,
+                    1.0
+                  ],
+                  [
+                    0.0625,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.08597222222222231,
+                  0.04979875462465672,
+                  0.8642290231531209
+                ]
+              },
+              {
+                "cell": [
+                  29,
+                  3
+                ],
+                "depth": 1.4557415920350196,
+                "facing_dot": 0.008424027721008597,
+                "faulty_interior_membership": false,
+                "faulty_weights_for_same_face": [
+                  0.04979875462465672,
+                  -0.9638265324024344,
+                  1.9140277777777777
+                ],
+                "fid": 238,
+                "normal_norm": 0.00843686671315428,
+                "sign": 1,
+                "uv": [
+                  [
+                    0.90625,
+                    0.5
+                  ],
+                  [
+                    0.9375,
+                    0.5
+                  ],
+                  [
+                    0.9375,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.04979875462465672,
+                  0.03617346759756559,
+                  0.9140277777777777
+                ]
+              }
+            ],
+            "correct_weights_for_same_face": [
+              0.08597222222222231,
+              0.04979875462465672,
+              0.8642290231531209
+            ],
+            "depth_interpolated_with_correct_weights": 0.0024863099387315278,
+            "depth_interpolated_with_faulty_weights": 0.0024863099387315278,
+            "faulty_cell_uv": [
+              [
+                0.0625,
+                0.5
+              ],
+              [
+                0.09375,
+                1.0
+              ],
+              [
+                0.0625,
+                1.0
+              ]
+            ],
+            "faulty_face_id": 23,
+            "faulty_weights": [
+              0.08597222222222231,
+              0.04979875462465672,
+              0.8642290231531209
+            ],
+            "lattice_index_xy": [
+              15,
+              0
+            ],
+            "screen_xy": [
+              0.19213750000000002,
+              -0.17226249999999999
+            ],
+            "source_edge_hits": []
+          },
+          {
+            "correct_surface_hits_with_faulty_membership": [
+              {
+                "cell": [
+                  4,
+                  3
+                ],
+                "depth": 0.018148440364929738,
+                "facing_dot": -0.008314890079704545,
+                "faulty_interior_membership": true,
+                "faulty_weights_for_same_face": [
+                  0.08597222222222232,
+                  0.057813104098207606,
+                  0.85621467367957
+                ],
+                "fid": 39,
+                "normal_norm": 0.008435718987558271,
+                "sign": -1,
+                "uv": [
+                  [
+                    0.125,
+                    0.5
+                  ],
+                  [
+                    0.15625,
+                    1.0
+                  ],
+                  [
+                    0.125,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.08597222222222232,
+                  0.057813104098207606,
+                  0.85621467367957
+                ]
+              },
+              {
+                "cell": [
+                  27,
+                  3
+                ],
+                "depth": 1.4400794616088215,
+                "facing_dot": 0.008314890079704545,
+                "faulty_interior_membership": false,
+                "faulty_weights_for_same_face": [
+                  0.057813104098207606,
+                  -0.9718408818759855,
+                  1.9140277777777779
+                ],
+                "fid": 222,
+                "normal_norm": 0.008435718987558271,
+                "sign": 1,
+                "uv": [
+                  [
+                    0.84375,
+                    0.5
+                  ],
+                  [
+                    0.875,
+                    0.5
+                  ],
+                  [
+                    0.875,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.057813104098207606,
+                  0.028159118124014722,
+                  0.9140277777777777
+                ]
+              }
+            ],
+            "correct_weights_for_same_face": [
+              0.08597222222222232,
+              0.057813104098207606,
+              0.85621467367957
+            ],
+            "depth_interpolated_with_correct_weights": 0.018148440364929738,
+            "depth_interpolated_with_faulty_weights": 0.018148440364929738,
+            "faulty_cell_uv": [
+              [
+                0.125,
+                0.5
+              ],
+              [
+                0.15625,
+                1.0
+              ],
+              [
+                0.125,
+                1.0
+              ]
+            ],
+            "faulty_face_id": 39,
+            "faulty_weights": [
+              0.08597222222222232,
+              0.057813104098207606,
+              0.85621467367957
+            ],
+            "lattice_index_xy": [
+              30,
+              0
+            ],
+            "screen_xy": [
+              0.3796375,
+              -0.17226249999999999
+            ],
+            "source_edge_hits": []
+          },
+          {
+            "correct_surface_hits_with_faulty_membership": [
+              {
+                "cell": [
+                  5,
+                  3
+                ],
+                "depth": 0.03315626034110337,
+                "facing_dot": -0.00817899030008869,
+                "faulty_interior_membership": true,
+                "faulty_weights_for_same_face": [
+                  0.08597222222222232,
+                  0.004990778145087896,
+                  0.9090369996326898
+                ],
+                "fid": 47,
+                "normal_norm": 0.008435029776791171,
+                "sign": -1,
+                "uv": [
+                  [
+                    0.15625,
+                    0.5
+                  ],
+                  [
+                    0.1875,
+                    1.0
+                  ],
+                  [
+                    0.15625,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.08597222222222232,
+                  0.004990778145087896,
+                  0.9090369996326898
+                ]
+              },
+              {
+                "cell": [
+                  26,
+                  3
+                ],
+                "depth": 1.4250716416326479,
+                "facing_dot": 0.00817899030008869,
+                "faulty_interior_membership": false,
+                "faulty_weights_for_same_face": [
+                  0.004990778145087896,
+                  -0.9190185559228656,
+                  1.9140277777777777
+                ],
+                "fid": 214,
+                "normal_norm": 0.008435029776791175,
+                "sign": 1,
+                "uv": [
+                  [
+                    0.8125,
+                    0.5
+                  ],
+                  [
+                    0.84375,
+                    0.5
+                  ],
+                  [
+                    0.84375,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.004990778145087896,
+                  0.08098144407713444,
+                  0.9140277777777777
+                ]
+              }
+            ],
+            "correct_weights_for_same_face": [
+              0.08597222222222232,
+              0.004990778145087896,
+              0.9090369996326898
+            ],
+            "depth_interpolated_with_correct_weights": 0.03315626034110337,
+            "depth_interpolated_with_faulty_weights": 0.03315626034110337,
+            "faulty_cell_uv": [
+              [
+                0.15625,
+                0.5
+              ],
+              [
+                0.1875,
+                1.0
+              ],
+              [
+                0.15625,
+                1.0
+              ]
+            ],
+            "faulty_face_id": 47,
+            "faulty_weights": [
+              0.08597222222222232,
+              0.004990778145087896,
+              0.9090369996326898
+            ],
+            "lattice_index_xy": [
+              37,
+              0
+            ],
+            "screen_xy": [
+              0.46713750000000004,
+              -0.17226249999999999
+            ],
+            "source_edge_hits": []
+          },
+          {
+            "correct_surface_hits_with_faulty_membership": [
+              {
+                "cell": [
+                  9,
+                  3
+                ],
+                "depth": 0.1802791029862176,
+                "facing_dot": -0.00662729258770963,
+                "faulty_interior_membership": true,
+                "faulty_weights_for_same_face": [
+                  0.08597222222222231,
+                  0.08464149086837124,
+                  0.8293862869094064
+                ],
+                "fid": 79,
+                "normal_norm": 0.008432187992094229,
+                "sign": -1,
+                "uv": [
+                  [
+                    0.28125,
+                    0.5
+                  ],
+                  [
+                    0.3125,
+                    1.0
+                  ],
+                  [
+                    0.28125,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.08597222222222231,
+                  0.08464149086837124,
+                  0.8293862869094064
+                ]
+              },
+              {
+                "cell": [
+                  22,
+                  3
+                ],
+                "depth": 1.2779487989875333,
+                "facing_dot": 0.00662729258770963,
+                "faulty_interior_membership": false,
+                "faulty_weights_for_same_face": [
+                  0.08464149086837124,
+                  -0.9986692686461489,
+                  1.9140277777777777
+                ],
+                "fid": 182,
+                "normal_norm": 0.008432187992094223,
+                "sign": 1,
+                "uv": [
+                  [
+                    0.6875,
+                    0.5
+                  ],
+                  [
+                    0.71875,
+                    0.5
+                  ],
+                  [
+                    0.71875,
+                    1.0
+                  ]
+                ],
+                "weights": [
+                  0.08464149086837124,
+                  0.0013307313538510758,
+                  0.9140277777777777
+                ]
+              }
+            ],
+            "correct_weights_for_same_face": [
+              0.08597222222222231,
+              0.08464149086837124,
+              0.8293862869094064
+            ],
+            "depth_interpolated_with_correct_weights": 0.1802791029862176,
+            "depth_interpolated_with_faulty_weights": 0.1802791029862176,
+            "faulty_cell_uv": [
+              [
+                0.28125,
+                0.5
+              ],
+              [
+                0.3125,
+                1.0
+              ],
+              [
+                0.28125,
+                1.0
+              ]
+            ],
+            "faulty_face_id": 79,
+            "faulty_weights": [
+              0.08597222222222231,
+              0.08464149086837124,
+              0.8293862869094064
+            ],
+            "lattice_index_xy": [
+              65,
+              0
+            ],
+            "screen_xy": [
+              0.8171375,
+              -0.17226249999999999
+            ],
+            "source_edge_hits": []
+          }
+        ],
+        "edge_policy_witnesses": [],
+        "near_side_depth_witnesses": [],
+        "tie_policy_witnesses": []
+      }
+    }
+  },
+  "schema": 1
+}

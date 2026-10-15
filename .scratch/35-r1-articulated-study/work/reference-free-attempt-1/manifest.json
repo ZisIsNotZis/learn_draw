@@ -1,0 +1,574 @@
+{
+  "status": "created",
+  "source": "source.py",
+  "svg": "artwork.svg",
+  "png": "artwork.png",
+  "components": [
+    {
+      "name": "paper",
+      "intent": "unbroken warm background field",
+      "support": "paper-surface",
+      "depth_ref": "paper-depth",
+      "origin": [
+        0,
+        0,
+        -3.0
+      ],
+      "anchors": [],
+      "attachments": []
+    },
+    {
+      "name": "sun_disc",
+      "intent": "soft circular accent behind the figure",
+      "support": "sun_disc-surface",
+      "depth_ref": "sun_disc-depth",
+      "origin": [
+        -0.1,
+        0.15,
+        -2.0
+      ],
+      "anchors": [],
+      "attachments": []
+    },
+    {
+      "name": "ground_shadow",
+      "intent": "small grounding shadow below the shoes",
+      "support": "ground_shadow-surface",
+      "depth_ref": "ground_shadow-depth",
+      "origin": [
+        -0.12,
+        -1.79,
+        -0.8
+      ],
+      "anchors": [],
+      "attachments": []
+    },
+    {
+      "name": "left_trouser",
+      "intent": "tapered cloth from hip to planted ankle",
+      "support": "left-trouser-surface",
+      "depth_ref": "left-trouser-depth",
+      "origin": [
+        -0.47,
+        -0.48,
+        0.05
+      ],
+      "anchors": [],
+      "attachments": []
+    },
+    {
+      "name": "right_trouser",
+      "intent": "slightly bent cloth leg balancing the stance",
+      "support": "right-trouser-surface",
+      "depth_ref": "right-trouser-depth",
+      "origin": [
+        -0.02,
+        -0.48,
+        0.06
+      ],
+      "anchors": [],
+      "attachments": []
+    },
+    {
+      "name": "left_shoe",
+      "intent": "rounded dark left shoe",
+      "support": "left_shoe-surface",
+      "depth_ref": "left_shoe-depth",
+      "origin": [
+        -0.66,
+        -1.76,
+        0.16
+      ],
+      "anchors": [],
+      "attachments": []
+    },
+    {
+      "name": "right_shoe",
+      "intent": "rounded dark right shoe",
+      "support": "right_shoe-surface",
+      "depth_ref": "right_shoe-depth",
+      "origin": [
+        0.32,
+        -1.73,
+        0.16
+      ],
+      "anchors": [],
+      "attachments": []
+    },
+    {
+      "name": "jacket",
+      "intent": "short tailored outer layer with a readable waist and shoulders",
+      "support": "jacket-surface",
+      "depth_ref": "jacket-depth",
+      "origin": [
+        -0.22,
+        0.08,
+        0.12
+      ],
+      "anchors": [
+        [
+          "left_shoulder",
+          [
+            -0.36,
+            0.37
+          ]
+        ],
+        [
+          "right_shoulder",
+          [
+            0.35,
+            0.44
+          ]
+        ],
+        [
+          "hem",
+          [
+            0,
+            -0.53
+          ]
+        ]
+      ],
+      "attachments": []
+    },
+    {
+      "name": "neck",
+      "intent": "visible neck joining head and jacket",
+      "support": "neck-surface",
+      "depth_ref": "neck-depth",
+      "origin": [
+        -0.25,
+        0.72,
+        0.16
+      ],
+      "anchors": [],
+      "attachments": []
+    },
+    {
+      "name": "hair_back",
+      "intent": "dark hair mass behind the face",
+      "support": "hair_back-surface",
+      "depth_ref": "hair_back-depth",
+      "origin": [
+        -0.27,
+        1.23,
+        0.18
+      ],
+      "anchors": [],
+      "attachments": []
+    },
+    {
+      "name": "face",
+      "intent": "warm oval face framed by hair",
+      "support": "face-surface",
+      "depth_ref": "face-depth",
+      "origin": [
+        -0.27,
+        1.23,
+        0.22
+      ],
+      "anchors": [],
+      "attachments": []
+    },
+    {
+      "name": "hair_cap",
+      "intent": "swept fringe and upper hair silhouette",
+      "support": "hair_cap-surface",
+      "depth_ref": "hair_cap-depth",
+      "origin": [
+        -0.27,
+        1.26,
+        0.28
+      ],
+      "anchors": [],
+      "attachments": []
+    },
+    {
+      "name": "raised_arm_upper",
+      "intent": "raised arm reaching toward the hat: shoulder-to-elbow sleeve",
+      "support": "raised_arm-surface",
+      "depth_ref": "raised_arm-depth",
+      "origin": [
+        0.13,
+        0.52,
+        0.12
+      ],
+      "anchors": [
+        [
+          "shoulder",
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          "elbow",
+          [
+            -0.19504185629620951,
+            0.8581134390583383
+          ]
+        ]
+      ],
+      "attachments": [
+        [
+          "jacket",
+          "shoulder",
+          "right_shoulder"
+        ]
+      ]
+    },
+    {
+      "name": "raised_arm_forearm",
+      "intent": "raised arm reaching toward the hat: elbow-to-wrist sleeve",
+      "support": "raised_arm-forearm-surface",
+      "depth_ref": "raised_arm-forearm-depth",
+      "origin": [
+        -0.06504185629620951,
+        1.3781134390583383,
+        0.5563288673177991
+      ],
+      "anchors": [
+        [
+          "elbow",
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          "wrist",
+          [
+            0.7650418562962095,
+            0.3218865609416617
+          ]
+        ]
+      ],
+      "attachments": [
+        [
+          "raised_arm_upper",
+          "elbow",
+          "elbow"
+        ]
+      ]
+    },
+    {
+      "name": "resting_arm_upper",
+      "intent": "lower resting sleeve along the jacket side: shoulder-to-elbow sleeve",
+      "support": "resting_arm-surface",
+      "depth_ref": "resting_arm-depth",
+      "origin": [
+        -0.58,
+        0.45,
+        0.12
+      ],
+      "anchors": [
+        [
+          "shoulder",
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          "elbow",
+          [
+            -0.47710870233145874,
+            -0.11165700228642841
+          ]
+        ]
+      ],
+      "attachments": [
+        [
+          "jacket",
+          "shoulder",
+          "left_shoulder"
+        ]
+      ]
+    },
+    {
+      "name": "resting_arm_forearm",
+      "intent": "lower resting sleeve along the jacket side: elbow-to-wrist sleeve",
+      "support": "resting_arm-forearm-surface",
+      "depth_ref": "resting_arm-forearm-depth",
+      "origin": [
+        -1.0571087023314587,
+        0.33834299771357157,
+        0.15190200065326526
+      ],
+      "anchors": [
+        [
+          "elbow",
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          "wrist",
+          [
+            0.23710870233145875,
+            -0.5183429977135716
+          ]
+        ]
+      ],
+      "attachments": [
+        [
+          "resting_arm_upper",
+          "elbow",
+          "elbow"
+        ]
+      ]
+    },
+    {
+      "name": "resting_hand",
+      "intent": "small relaxed hand at the lowered wrist",
+      "support": "resting_hand-surface",
+      "depth_ref": "resting_hand-depth",
+      "origin": [
+        -0.82,
+        -0.18,
+        0.3
+      ],
+      "anchors": [
+        [
+          "wrist",
+          [
+            0,
+            0
+          ]
+        ]
+      ],
+      "attachments": [
+        [
+          "resting_arm_forearm",
+          "wrist",
+          "wrist"
+        ]
+      ]
+    },
+    {
+      "name": "hat_brim",
+      "intent": "tilted oval brim with an exposed touch point",
+      "support": "hat-surface",
+      "depth_ref": "hat-depth",
+      "origin": [
+        0.79,
+        1.99,
+        0.72
+      ],
+      "anchors": [
+        [
+          "touch",
+          [
+            0.15,
+            -0.065
+          ]
+        ],
+        [
+          "crown_seat",
+          [
+            0,
+            0.05
+          ]
+        ]
+      ],
+      "attachments": []
+    },
+    {
+      "name": "hat_crown",
+      "intent": "small slanted crown rising from the brim",
+      "support": "hat-surface",
+      "depth_ref": "hat-depth",
+      "origin": [
+        0.79,
+        1.99,
+        0.72
+      ],
+      "anchors": [
+        [
+          "base",
+          [
+            0,
+            0.05
+          ]
+        ]
+      ],
+      "attachments": [
+        [
+          "hat_brim",
+          "base",
+          "crown_seat"
+        ]
+      ]
+    },
+    {
+      "name": "steadying_hand",
+      "intent": "palm and curved fingertips meet the brim at one contact anchor",
+      "support": "steadying_hand-surface",
+      "depth_ref": "steadying_hand-depth",
+      "origin": [
+        0.7,
+        1.7,
+        0.72
+      ],
+      "anchors": [
+        [
+          "wrist",
+          [
+            0,
+            0
+          ]
+        ],
+        [
+          "hat_touch",
+          [
+            0.24,
+            0.225
+          ]
+        ]
+      ],
+      "attachments": [
+        [
+          "raised_arm_forearm",
+          "wrist",
+          "wrist"
+        ],
+        [
+          "hat_brim",
+          "hat_touch",
+          "touch"
+        ]
+      ]
+    },
+    {
+      "name": "breeze_high",
+      "intent": "flowing wind mark indicating a gust across the pose",
+      "support": "breeze_high-surface",
+      "depth_ref": "breeze_high-depth",
+      "origin": [
+        -1.65,
+        2.25,
+        -0.55
+      ],
+      "anchors": [],
+      "attachments": []
+    },
+    {
+      "name": "breeze_low",
+      "intent": "flowing wind mark indicating a gust across the pose",
+      "support": "breeze_low-surface",
+      "depth_ref": "breeze_low-depth",
+      "origin": [
+        -1.72,
+        1.78,
+        -0.55
+      ],
+      "anchors": [],
+      "attachments": []
+    }
+  ],
+  "semantic_lines": [
+    {
+      "name": "jacket_contour",
+      "intent": "jacket silhouette seam",
+      "owner": "jacket"
+    },
+    {
+      "name": "face_contour",
+      "intent": "face contour",
+      "owner": "face"
+    },
+    {
+      "name": "hair_cap_contour",
+      "intent": "fringe edge",
+      "owner": "hair_cap"
+    },
+    {
+      "name": "hat_brim_contour",
+      "intent": "hat brim edge",
+      "owner": "hat_brim"
+    },
+    {
+      "name": "hat_crown_contour",
+      "intent": "crown edge",
+      "owner": "hat_crown"
+    },
+    {
+      "name": "eye_left",
+      "intent": "small attentive eye",
+      "owner": "face"
+    },
+    {
+      "name": "eye_right",
+      "intent": "small attentive eye",
+      "owner": "face"
+    },
+    {
+      "name": "nose_mark",
+      "intent": "quiet nose contour",
+      "owner": "face"
+    },
+    {
+      "name": "smile_mark",
+      "intent": "calm closed smile",
+      "owner": "face"
+    },
+    {
+      "name": "jacket_lapel",
+      "intent": "overlapping lapel seam",
+      "owner": "jacket"
+    },
+    {
+      "name": "jacket_center",
+      "intent": "short center opening seam",
+      "owner": "jacket"
+    }
+  ],
+  "construction": {
+    "canvas": {
+      "width": 600,
+      "height": 760,
+      "world_to_canvas": "translate(300 450) scale(140 -140)"
+    },
+    "camera": "orthographic default X-right/Y-up/Z-toward-viewer",
+    "contact": {
+      "component_a": "steadying_hand",
+      "anchor_a": "hat_touch",
+      "component_b": "hat_brim",
+      "anchor_b": "touch"
+    },
+    "ik": {
+      "raised_elbow": [
+        -0.06504185629620951,
+        1.3781134390583383
+      ],
+      "resting_elbow": [
+        -1.0571087023314587,
+        0.33834299771357157
+      ]
+    }
+  },
+  "attempt_status": "DONE — authored artifact and bounded technical self-evidence complete; no artistic verdict or R1 PASS claimed",
+  "input_provenance_file": "input-provenance.txt",
+  "artifact_hashes": {
+    "source.py": "945b72079af3db573dde4a9a3209fa8a70a6a1466f469f64be6605387de8a676",
+    "test_source.py": "78c1ee1e736b48901047a6024c67137e567f5bcc361cb0eab085cdb6176e2e53",
+    "artwork.svg": "6a50ee73ba5e33e7030b2f2ae4a45c32510e5e4f74a4045e597b5e5a9c5fbf3b",
+    "artwork.png": "99dbd3f04130e3d9035a1bfe5ec2c129a221e2beb38524039775067c9cd6df61",
+    "report/check/draft.png": "99dbd3f04130e3d9035a1bfe5ec2c129a221e2beb38524039775067c9cd6df61",
+    "report/check/report.txt": "159db81a6d953d920a2bd1cd9a8a5451cd0374f3fba2d9a5d78d57978b969293",
+    "input-provenance.txt": "208bc7aaf74d6532780d588431ef2246889480a2426508585473a2a082bf8ea8",
+    "ticket.md": "38e38d80fa7fcfbdcbd5c0fd0e85a0db0821218082d18c4f195d72a3be7b5abe"
+  },
+  "verification": {
+    "source_compile": "passed",
+    "self_tests": "5 passed; final suite duration 33.599s",
+    "svg_determinism": "passed by repeated generated SVG text equality in self-test",
+    "reference_free_check": "scripts/draw check called without --ref; report/check/report.txt image list names report/check/draft.png",
+    "renderer": "scripts/draw render produced artwork.png at 600x760",
+    "self_image_viewing": "not performed",
+    "independent_art_review": "pending; no art-quality claim",
+    "learning_or_transfer_gates": "not evaluated or claimed"
+  },
+  "recovery_snapshot": "recovery-snapshot/ (original six-file hashes matched at recovery start)",
+  "original_failed_run_record": "recovery-snapshot/original-failure.txt"
+}

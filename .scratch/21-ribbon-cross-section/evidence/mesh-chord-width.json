@@ -1,0 +1,725 @@
+{
+  "camera_scope": "world-space chord width is camera-independent; each unique frozen spec is tested once and its recorded front/oblique rows share that mesh",
+  "case_plan_sha256": "ff8ff9944fa7c53f05abcf026550fb87eda3979ab9a9f3d8b27388b697b47d38",
+  "fine96x12_within_bound": true,
+  "fine_failures": [],
+  "interpretation": "The fixed 48x6 raster mesh does not meet the declared 0.002 chord-width bound at every u. Values and failing samples are retained; camber, cases, cameras, algorithm, and candidates were not changed.",
+  "measurements": [
+    {
+      "48x6": {
+        "absolute_difference": 0.0,
+        "curved_mesh_chord_width": 0.36,
+        "curved_section_vertex_count": 7,
+        "flat_section_vertex_count": 7,
+        "legacy_finite_width": 0.36,
+        "mesh_chord_vs_512v_curve_arc": 0.0,
+        "signed_deficit_legacy_minus_curved": 0.0,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.0,
+        "curved_mesh_chord_width": 0.36,
+        "legacy_finite_width": 0.36,
+        "signed_deficit_legacy_minus_curved": 0.0,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "positive-half-twist-front",
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "u": 0.0
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0005989397224409609,
+        "curved_mesh_chord_width": 0.35940106027755897,
+        "curved_section_vertex_count": 14,
+        "flat_section_vertex_count": 14,
+        "legacy_finite_width": 0.35999999999999993,
+        "mesh_chord_vs_512v_curve_arc": -0.000598560517554525,
+        "signed_deficit_legacy_minus_curved": 0.0005989397224409609,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.0004865569049027907,
+        "curved_mesh_chord_width": 0.35951344309509725,
+        "legacy_finite_width": 0.36000000000000004,
+        "signed_deficit_legacy_minus_curved": 0.0004865569049027907,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "positive-half-twist-front",
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "u": 0.19
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.004237774090335988,
+        "curved_mesh_chord_width": 0.355762225909664,
+        "curved_section_vertex_count": 15,
+        "flat_section_vertex_count": 15,
+        "legacy_finite_width": 0.36,
+        "mesh_chord_vs_512v_curve_arc": -0.004237431746559828,
+        "signed_deficit_legacy_minus_curved": 0.004237774090335988,
+        "within_0.002_world_units": false
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.00040288526733400776,
+        "curved_mesh_chord_width": 0.35959711473266603,
+        "legacy_finite_width": 0.36000000000000004,
+        "signed_deficit_legacy_minus_curved": 0.00040288526733400776,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "positive-half-twist-front",
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "u": 0.49
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.000622822394974798,
+        "curved_mesh_chord_width": 0.3593771776050252,
+        "curved_section_vertex_count": 7,
+        "flat_section_vertex_count": 7,
+        "legacy_finite_width": 0.36,
+        "mesh_chord_vs_512v_curve_arc": -0.000622737076471036,
+        "signed_deficit_legacy_minus_curved": 0.000622822394974798,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.00015545452208798327,
+        "curved_mesh_chord_width": 0.35984454547791206,
+        "legacy_finite_width": 0.36000000000000004,
+        "signed_deficit_legacy_minus_curved": 0.00015545452208798327,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "positive-half-twist-front",
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "u": 0.5
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0042391780520345534,
+        "curved_mesh_chord_width": 0.35576082194796543,
+        "curved_section_vertex_count": 15,
+        "flat_section_vertex_count": 15,
+        "legacy_finite_width": 0.36,
+        "mesh_chord_vs_512v_curve_arc": -0.004238842969160772,
+        "signed_deficit_legacy_minus_curved": 0.0042391780520345534,
+        "within_0.002_world_units": false
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.00040252649505212457,
+        "curved_mesh_chord_width": 0.3595974735049479,
+        "legacy_finite_width": 0.36000000000000004,
+        "signed_deficit_legacy_minus_curved": 0.00040252649505212457,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "positive-half-twist-front",
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "u": 0.51
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0005990053427511466,
+        "curved_mesh_chord_width": 0.35940099465724884,
+        "curved_section_vertex_count": 14,
+        "flat_section_vertex_count": 14,
+        "legacy_finite_width": 0.36,
+        "mesh_chord_vs_512v_curve_arc": -0.0005986289681220724,
+        "signed_deficit_legacy_minus_curved": 0.0005990053427511466,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.00048659230526948427,
+        "curved_mesh_chord_width": 0.35951340769473056,
+        "legacy_finite_width": 0.36000000000000004,
+        "signed_deficit_legacy_minus_curved": 0.00048659230526948427,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "positive-half-twist-front",
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "u": 0.81
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0,
+        "curved_mesh_chord_width": 0.36,
+        "curved_section_vertex_count": 7,
+        "flat_section_vertex_count": 7,
+        "legacy_finite_width": 0.36,
+        "mesh_chord_vs_512v_curve_arc": 0.0,
+        "signed_deficit_legacy_minus_curved": 0.0,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.0,
+        "curved_mesh_chord_width": 0.36,
+        "legacy_finite_width": 0.36,
+        "signed_deficit_legacy_minus_curved": 0.0,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "positive-half-twist-front",
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "u": 1.0
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0,
+        "curved_mesh_chord_width": 0.4,
+        "curved_section_vertex_count": 7,
+        "flat_section_vertex_count": 7,
+        "legacy_finite_width": 0.4,
+        "mesh_chord_vs_512v_curve_arc": 0.0,
+        "signed_deficit_legacy_minus_curved": 0.0,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.0,
+        "curved_mesh_chord_width": 0.4000000000000001,
+        "legacy_finite_width": 0.4000000000000001,
+        "signed_deficit_legacy_minus_curved": 0.0,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.4,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "failed-learner-negative-half-twist-front-regression-only",
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "u": 0.0
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0004199163693579533,
+        "curved_mesh_chord_width": 0.3497532497026913,
+        "curved_section_vertex_count": 14,
+        "flat_section_vertex_count": 14,
+        "legacy_finite_width": 0.34933333333333333,
+        "mesh_chord_vs_512v_curve_arc": 0.0004203007752976995,
+        "signed_deficit_legacy_minus_curved": -0.0004199163693579533,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.00043210210047284203,
+        "curved_mesh_chord_width": 0.34976543543380617,
+        "legacy_finite_width": 0.34933333333333333,
+        "signed_deficit_legacy_minus_curved": -0.00043210210047284203,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.34933333333333333,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "failed-learner-negative-half-twist-front-regression-only",
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "u": 0.19
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.002177643972043397,
+        "curved_mesh_chord_width": 0.2715109773053769,
+        "curved_section_vertex_count": 15,
+        "flat_section_vertex_count": 15,
+        "legacy_finite_width": 0.2693333333333335,
+        "mesh_chord_vs_512v_curve_arc": 0.0021778990129808218,
+        "signed_deficit_legacy_minus_curved": -0.002177643972043397,
+        "within_0.002_world_units": false
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 7.309095331592408e-05,
+        "curved_mesh_chord_width": 0.2694064242866494,
+        "legacy_finite_width": 0.2693333333333335,
+        "signed_deficit_legacy_minus_curved": -7.309095331592408e-05,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.26933333333333337,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "failed-learner-negative-half-twist-front-regression-only",
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "u": 0.49
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.00046134992220348003,
+        "curved_mesh_chord_width": 0.26620531674446324,
+        "curved_section_vertex_count": 7,
+        "flat_section_vertex_count": 7,
+        "legacy_finite_width": 0.2666666666666667,
+        "mesh_chord_vs_512v_curve_arc": -0.00046128672331186005,
+        "signed_deficit_legacy_minus_curved": 0.00046134992220348003,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.00011515149784296907,
+        "curved_mesh_chord_width": 0.26655151516882375,
+        "legacy_finite_width": 0.2666666666666667,
+        "signed_deficit_legacy_minus_curved": 0.00011515149784296907,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.26666666666666666,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "failed-learner-negative-half-twist-front-regression-only",
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "u": 0.5
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0021473583525912776,
+        "curved_mesh_chord_width": 0.26614735835259123,
+        "curved_section_vertex_count": 15,
+        "flat_section_vertex_count": 15,
+        "legacy_finite_width": 0.26399999999999996,
+        "mesh_chord_vs_512v_curve_arc": 0.0021476173419841538,
+        "signed_deficit_legacy_minus_curved": -0.0021473583525912776,
+        "within_0.002_world_units": false
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 5.37309716904244e-05,
+        "curved_mesh_chord_width": 0.26405373097169044,
+        "legacy_finite_width": 0.264,
+        "signed_deficit_legacy_minus_curved": -5.37309716904244e-05,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.26399999999999996,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "failed-learner-negative-half-twist-front-regression-only",
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "u": 0.51
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.00021628814748475556,
+        "curved_mesh_chord_width": 0.18421628814748456,
+        "curved_section_vertex_count": 14,
+        "flat_section_vertex_count": 14,
+        "legacy_finite_width": 0.1839999999999998,
+        "mesh_chord_vs_512v_curve_arc": 0.00021646133381073018,
+        "signed_deficit_legacy_minus_curved": -0.00021628814748475556,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.00022269042428499364,
+        "curved_mesh_chord_width": 0.184222690424285,
+        "legacy_finite_width": 0.184,
+        "signed_deficit_legacy_minus_curved": -0.00022269042428499364,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.18399999999999994,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "failed-learner-negative-half-twist-front-regression-only",
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "u": 0.81
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0,
+        "curved_mesh_chord_width": 0.13333333333333305,
+        "curved_section_vertex_count": 7,
+        "flat_section_vertex_count": 7,
+        "legacy_finite_width": 0.13333333333333305,
+        "mesh_chord_vs_512v_curve_arc": 0.0,
+        "signed_deficit_legacy_minus_curved": 0.0,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.0,
+        "curved_mesh_chord_width": 0.13333333333333305,
+        "legacy_finite_width": 0.13333333333333305,
+        "signed_deficit_legacy_minus_curved": 0.0,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.1333333333333333,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        },
+        {
+          "name": "oblique",
+          "sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+        }
+      ],
+      "source_case": "failed-learner-negative-half-twist-front-regression-only",
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "u": 1.0
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0,
+        "curved_mesh_chord_width": 0.36,
+        "curved_section_vertex_count": 7,
+        "flat_section_vertex_count": 7,
+        "legacy_finite_width": 0.36,
+        "mesh_chord_vs_512v_curve_arc": 0.0,
+        "signed_deficit_legacy_minus_curved": 0.0,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.0,
+        "curved_mesh_chord_width": 0.36,
+        "legacy_finite_width": 0.36,
+        "signed_deficit_legacy_minus_curved": 0.0,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        }
+      ],
+      "source_case": "untwisted-teaching-arch-front-control",
+      "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+      "u": 0.0
+    },
+    {
+      "48x6": {
+        "absolute_difference": 8.031084812054612e-05,
+        "curved_mesh_chord_width": 0.3599196891518795,
+        "curved_section_vertex_count": 14,
+        "flat_section_vertex_count": 14,
+        "legacy_finite_width": 0.36000000000000004,
+        "mesh_chord_vs_512v_curve_arc": -8.027943923027969e-05,
+        "signed_deficit_legacy_minus_curved": 8.031084812054612e-05,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 2.054377430643628e-05,
+        "curved_mesh_chord_width": 0.35997945622569355,
+        "legacy_finite_width": 0.36,
+        "signed_deficit_legacy_minus_curved": 2.054377430643628e-05,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        }
+      ],
+      "source_case": "untwisted-teaching-arch-front-control",
+      "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+      "u": 0.19
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0006085519528575278,
+        "curved_mesh_chord_width": 0.3593914480471424,
+        "curved_section_vertex_count": 15,
+        "flat_section_vertex_count": 15,
+        "legacy_finite_width": 0.35999999999999993,
+        "mesh_chord_vs_512v_curve_arc": -0.000608285881857018,
+        "signed_deficit_legacy_minus_curved": 0.0006085519528575278,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.0001549279034505635,
+        "curved_mesh_chord_width": 0.35984507209654953,
+        "legacy_finite_width": 0.3600000000000001,
+        "signed_deficit_legacy_minus_curved": 0.0001549279034505635,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        }
+      ],
+      "source_case": "untwisted-teaching-arch-front-control",
+      "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+      "u": 0.49
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0006228223949746314,
+        "curved_mesh_chord_width": 0.35937717760502536,
+        "curved_section_vertex_count": 7,
+        "flat_section_vertex_count": 7,
+        "legacy_finite_width": 0.36,
+        "mesh_chord_vs_512v_curve_arc": -0.000622737076471036,
+        "signed_deficit_legacy_minus_curved": 0.0006228223949746314,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.00015545452208803878,
+        "curved_mesh_chord_width": 0.35984454547791206,
+        "legacy_finite_width": 0.3600000000000001,
+        "signed_deficit_legacy_minus_curved": 0.00015545452208803878,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        }
+      ],
+      "source_case": "untwisted-teaching-arch-front-control",
+      "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+      "u": 0.5
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0006074067648972892,
+        "curved_mesh_chord_width": 0.35939259323510275,
+        "curved_section_vertex_count": 15,
+        "flat_section_vertex_count": 15,
+        "legacy_finite_width": 0.36000000000000004,
+        "mesh_chord_vs_512v_curve_arc": -0.0006071353947402214,
+        "signed_deficit_legacy_minus_curved": 0.0006074067648972892,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.00015528329728042856,
+        "curved_mesh_chord_width": 0.35984471670271956,
+        "legacy_finite_width": 0.36,
+        "signed_deficit_legacy_minus_curved": 0.00015528329728042856,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        }
+      ],
+      "source_case": "untwisted-teaching-arch-front-control",
+      "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+      "u": 0.51
+    },
+    {
+      "48x6": {
+        "absolute_difference": 8.03946284937962e-05,
+        "curved_mesh_chord_width": 0.35991960537150613,
+        "curved_section_vertex_count": 14,
+        "flat_section_vertex_count": 14,
+        "legacy_finite_width": 0.35999999999999993,
+        "mesh_chord_vs_512v_curve_arc": -8.036227940277918e-05,
+        "signed_deficit_legacy_minus_curved": 8.03946284937962e-05,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 2.057908162195199e-05,
+        "curved_mesh_chord_width": 0.359979420918378,
+        "legacy_finite_width": 0.35999999999999993,
+        "signed_deficit_legacy_minus_curved": 2.057908162195199e-05,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        }
+      ],
+      "source_case": "untwisted-teaching-arch-front-control",
+      "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+      "u": 0.81
+    },
+    {
+      "48x6": {
+        "absolute_difference": 0.0,
+        "curved_mesh_chord_width": 0.36,
+        "curved_section_vertex_count": 7,
+        "flat_section_vertex_count": 7,
+        "legacy_finite_width": 0.36,
+        "mesh_chord_vs_512v_curve_arc": 0.0,
+        "signed_deficit_legacy_minus_curved": 0.0,
+        "within_0.002_world_units": true
+      },
+      "96x12_same_camber": {
+        "absolute_difference": 0.0,
+        "curved_mesh_chord_width": 0.36,
+        "legacy_finite_width": 0.36,
+        "signed_deficit_legacy_minus_curved": 0.0,
+        "within_0.002_world_units": true
+      },
+      "continuous_requested_width": 0.36,
+      "same_frozen_camera_rows": [
+        {
+          "name": "front",
+          "sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+        }
+      ],
+      "source_case": "untwisted-teaching-arch-front-control",
+      "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+      "u": 1.0
+    }
+  ],
+  "method": "intersect every generated SupportTriangle UV edge with fixed-u, interpolate its actual 3D edge point, deduplicate shared points by v, sort, sum consecutive 3D chords",
+  "purpose": "actual triangle/UV cross-section chord width; diagnostic, not a changed candidate",
+  "sampled_u": [
+    0.0,
+    0.19,
+    0.49,
+    0.5,
+    0.51,
+    0.81,
+    1.0
+  ],
+  "sampling": {
+    "fine_same_camber": [
+      96,
+      12
+    ],
+    "selected": [
+      48,
+      6
+    ]
+  },
+  "selected48x6_within_bound": false,
+  "selected_bound_world_units": 0.002,
+  "selected_failures": [
+    {
+      "absolute_difference": 0.004237774090335988,
+      "case": "positive-half-twist-front",
+      "signed_deficit": 0.004237774090335988,
+      "u": 0.49
+    },
+    {
+      "absolute_difference": 0.0042391780520345534,
+      "case": "positive-half-twist-front",
+      "signed_deficit": 0.0042391780520345534,
+      "u": 0.51
+    },
+    {
+      "absolute_difference": 0.002177643972043397,
+      "case": "failed-learner-negative-half-twist-front-regression-only",
+      "signed_deficit": -0.002177643972043397,
+      "u": 0.49
+    },
+    {
+      "absolute_difference": 0.0021473583525912776,
+      "case": "failed-learner-negative-half-twist-front-regression-only",
+      "signed_deficit": -0.0021473583525912776,
+      "u": 0.51
+    }
+  ],
+  "support_module_sha256": "5c32715a9359e3228a7cd91e2bed020f47badcc6df949f2f54e6c8ae493df2f4",
+  "test_helper_sha256": "2e4bc3c3d3853d834f745bc5967ded5e788b369ac5d61317bd34ae1a1fb68121"
+}

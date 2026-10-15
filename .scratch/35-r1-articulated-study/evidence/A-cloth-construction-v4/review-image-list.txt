@@ -1,0 +1,5 @@
+.scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/check-a/side-by-side.png
+.scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/check-a/draft-fullres.png
+.scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/check-a/region-1.png
+.scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/check-a/region-2.png
+.scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/check-a/region-3.png

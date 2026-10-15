@@ -1,0 +1,13 @@
+R1 v2 completion — independent image review inputs
+
+A — observed garment
+.scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/checks/A/side-by-side.png
+.scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/checks/A/draft-fullres.png
+.scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/checks/A/region-1.png
+.scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/checks/A/region-2.png
+.scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/checks/A/region-3.png
+
+B — baseline / variation / near-miss control sheet
+.scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/checks/B/draft.png
+
+Open question for the image-only review: what is wrong here?

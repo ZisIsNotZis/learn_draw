@@ -1,0 +1,86 @@
+{
+  "disposition": "not reused; deterministic child failed because isolated worker lacked scripts import path; builder corrected and these artifacts are not final",
+  "panels": [
+    {
+      "bytes": 3290,
+      "name": "card-dplus--SHARED_FIXED_LOCAL.png",
+      "sha256": "fac077bc575af6e184b489c8f5671ed6c0ffb742bb73a040453bdee73f62a892"
+    },
+    {
+      "bytes": 18180,
+      "name": "card-dplus--SHARED_FIXED_LOCAL.svg",
+      "sha256": "6976ba03bcd545903114d984afd7b9a67a55972b8b7103a1503793de4a33010f"
+    },
+    {
+      "bytes": 3263,
+      "name": "card-dplus--SIDE_DEPENDENT.png",
+      "sha256": "9b95b9bad928845d7b54faa7c6fba8e4695ce1dee28bf6517b474a110e184cc4"
+    },
+    {
+      "bytes": 18325,
+      "name": "card-dplus--SIDE_DEPENDENT.svg",
+      "sha256": "948db3a7f32b001657e34ea361b9faebd54595395da2577c3cd0a5a13b10a11f"
+    },
+    {
+      "bytes": 1323,
+      "name": "negative-dminus--SHARED_FIXED_LOCAL.png",
+      "sha256": "1e7292be02b4b36fe0cbd091bc0dcd2059d2d6f25bb9f44eb74d5cf380a76881"
+    },
+    {
+      "bytes": 13652,
+      "name": "negative-dminus--SHARED_FIXED_LOCAL.svg",
+      "sha256": "f3bb0f3d7d73fe7ed7b6e2d23f49f89b2ef5e419b96d6a29255d045362c68fab"
+    },
+    {
+      "bytes": 1323,
+      "name": "negative-dminus--SIDE_DEPENDENT.png",
+      "sha256": "92c0012752709212281b5ba653caa7fa088e473e9038e12d6548932f06fa1e46"
+    },
+    {
+      "bytes": 13797,
+      "name": "negative-dminus--SIDE_DEPENDENT.svg",
+      "sha256": "e14cfe22c4b166c7f9e73efb61dc0a3671198bc41d084a377bacc2b11085fb0f"
+    },
+    {
+      "bytes": 3425,
+      "name": "primary-dplus--SHARED_FIXED_LOCAL.png",
+      "sha256": "b9f89a2a72dc80595322295a1676176a4f213500e47e4ea88f4bcf9de7a903a2"
+    },
+    {
+      "bytes": 20673,
+      "name": "primary-dplus--SHARED_FIXED_LOCAL.svg",
+      "sha256": "35f00c925e1581cf75c5a09a779f178aa4fb6d3dee7b4fb1894e2f79674de1c6"
+    },
+    {
+      "bytes": 3359,
+      "name": "primary-dplus--SIDE_DEPENDENT.png",
+      "sha256": "6caf318ca5f1f53dfcb75ed0a4b079bc3c57e904cb77ebc399ef81b43bcac201"
+    },
+    {
+      "bytes": 20818,
+      "name": "primary-dplus--SIDE_DEPENDENT.svg",
+      "sha256": "8478caf9c351d24d603a42fef95655ef9499bf3161e0251b3309a7228b8be35f"
+    },
+    {
+      "bytes": 3646,
+      "name": "variation-2pi3-dplus--SHARED_FIXED_LOCAL.png",
+      "sha256": "6c730cf70fa4301506737770be0f4a3094f9ca1c9bc71e8145b76676bcbc85d3"
+    },
+    {
+      "bytes": 19717,
+      "name": "variation-2pi3-dplus--SHARED_FIXED_LOCAL.svg",
+      "sha256": "8e9cbb921c91f77c637016115a45a7e6a20a932817d7438f7c0a059bccde636a"
+    },
+    {
+      "bytes": 3585,
+      "name": "variation-2pi3-dplus--SIDE_DEPENDENT.png",
+      "sha256": "0c7f8c9978b23fccada5dbaf98866ac449573d70bb15732b299400052da1f67f"
+    },
+    {
+      "bytes": 19862,
+      "name": "variation-2pi3-dplus--SIDE_DEPENDENT.svg",
+      "sha256": "f8e76c7d240e1137967d0e7ce9cadbe261295bae563848e1576c7316cc3f9acd"
+    }
+  ],
+  "schema": "local-art-identity-nonfinal-panel-attempt/v1"
+}

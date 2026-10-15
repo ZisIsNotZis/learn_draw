@@ -1,0 +1,79 @@
+{
+  "board_hashes": [
+    [
+      "f8a66cca75fe601b17cfa042cdb340232aca774c195510a9fc12e0c08d5cadf3",
+      "546cb88d369b57e3625bc7c69cf54edf61af56ee681fdea8a68b9462999901e4"
+    ],
+    [
+      "1c7a2935680f1921921cf65ae2a4a915fabf41f3f918ce54639ec2ee9d7bdae7",
+      "eb7bb6d64cf9e142672cf957fb32fc3b61c10836822b5494d44e7c114f9e9ac5"
+    ]
+  ],
+  "case_plan_sha256": "ff8ff9944fa7c53f05abcf026550fb87eda3979ab9a9f3d8b27388b697b47d38",
+  "command": ".venv/bin/python .scratch/21-ribbon-cross-section/work/build.py",
+  "panels": [
+    [
+      "positive-half-twist-front",
+      0.0,
+      "24722cf897bd06401dad3f7a3e7e1951c0684b230c96c01071e2bc7989520f34",
+      "c9db8df52cbf44679827f6a1255e52f4379978570cba28113947c03e06d81bda"
+    ],
+    [
+      "positive-half-twist-front",
+      0.35,
+      "7be4844f4972af03119bac61b1722860abd1265562ef7faad13dad1660dceba7",
+      "c65452f26a3946efcb48886d74e5581c0db0a36d85beac878b2bdc71b3df429b"
+    ],
+    [
+      "positive-half-twist-oblique",
+      0.0,
+      "a8a3199e09ec9d6d285e8c43cc40e94b99c1bcfeb5a9d03d9c80e77274d3346e",
+      "2729f66c1e1b24c3e931d97335d82fdb7eafed054319c73289a24df86ddcac6e"
+    ],
+    [
+      "positive-half-twist-oblique",
+      0.35,
+      "d8d00d22024714966d99eea072f64719b717da2a4ece7f1567e67aefea3e3a3e",
+      "babb58a0a59d91aced16dbbe371654d139ac98e1723a0a53d0bf7209547b1a48"
+    ],
+    [
+      "failed-learner-negative-half-twist-front-regression-only",
+      0.0,
+      "0876d1af5d6f7fc3da6c8e4f8e2e0bcf1b9629f424680fd2ca9d92b658bc806b",
+      "52a7114a84115e4afbd44bff56ce2d4fb207c5ff47e3fceff0ce1a8bbc80ea6b"
+    ],
+    [
+      "failed-learner-negative-half-twist-front-regression-only",
+      0.35,
+      "83363e17c26639642138bb7285712bc1de151341dee697a28d9cf8f3e8b872f0",
+      "c765d9e1841f1008eaf0aa222a91c3ab796d7a91ef0a7a5aac110fc36ca1ef49"
+    ],
+    [
+      "failed-learner-negative-half-twist-oblique-regression-only",
+      0.0,
+      "85ad1667cbf0ade8d324c0ac39ac9955eaf3389c21e2866a46121a5cceff2123",
+      "70a40d4eaab04cfca81b09a35c6af6a0271bb6ebb3abd70c64248cb6daf5043a"
+    ],
+    [
+      "failed-learner-negative-half-twist-oblique-regression-only",
+      0.35,
+      "256a6180fd126eabb108170649dd21ea9dca8be07e666f47cdf2a5ec9e13358c",
+      "431effc71e30848513d86932ba6a60e1b1b65373e37fa891840ecc0600be85ff"
+    ],
+    [
+      "untwisted-teaching-arch-front-control",
+      0.0,
+      "316ac559c544006d2dbcb89a009ac67fa3ee5d23b5c68a4a5bbb5dc9b84caee6",
+      "9a97be7d9a0341f3a4ee88dfe792b686e2e48e6e16a3f001e42408b0a39708b7"
+    ],
+    [
+      "untwisted-teaching-arch-front-control",
+      0.35,
+      "263126931ed2dbb4d49867bb381403f898cd15fa4da616c0c2ac338b580de9a5",
+      "abee6d9d7cc81bf32ca69867a3fcb4049b8533a5ea7d9871df9aeffcba9e6f92"
+    ]
+  ],
+  "renderer_sha256": "5c32715a9359e3228a7cd91e2bed020f47badcc6df949f2f54e6c8ae493df2f4",
+  "result": "passed",
+  "same_svg_png_panel_and_board_hashes": true
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "id": "neck-collar-opening",
+    "xyxy": [
+      150,
+      30,
+      330,
+      155
+    ],
+    "reading": "context window for visible pink neck field, two unequal pale collar fields, dark trim and lower opening; not a segmentation mask",
+    "source_xyxy": [
+      650,
+      350,
+      830,
+      475
+    ],
+    "raw_patch": "raw-regions/neck-collar-opening.png",
+    "sha256": "e8c88572df940d835093ea8f6b382a9b59c26a10d07f193e953923eec9f35d17",
+    "pixels": 22500,
+    "resampling": "none; raw crop pixels"
+  },
+  {
+    "id": "bodice-left-and-lower",
+    "xyxy": [
+      60,
+      125,
+      310,
+      430
+    ],
+    "reading": "context window for exposed left garment silhouette, bodice interior and visible lower edge; interruptions/foreground remain explicit",
+    "source_xyxy": [
+      560,
+      445,
+      810,
+      750
+    ],
+    "raw_patch": "raw-regions/bodice-left-and-lower.png",
+    "sha256": "fd7601b1d43c0847dd779be53b6b24641ccdb8cc7ca3f3b2ba933721df91bb79",
+    "pixels": 76250,
+    "resampling": "none; raw crop pixels"
+  },
+  {
+    "id": "sleeve-and-cuff",
+    "xyxy": [
+      290,
+      105,
+      400,
+      350
+    ],
+    "reading": "context window for continuous pale sleeve field, partial silhouette and dark cuff; no invented cap seam or complete cuff",
+    "source_xyxy": [
+      790,
+      425,
+      900,
+      670
+    ],
+    "raw_patch": "raw-regions/sleeve-and-cuff.png",
+    "sha256": "ac6fbca6e290f6062bdb9e8899126d17cd8bb2c91985e8631545c93fe91df676",
+    "pixels": 26950,
+    "resampling": "none; raw crop pixels"
+  },
+  {
+    "id": "bow-and-tails",
+    "xyxy": [
+      0,
+      130,
+      285,
+      305
+    ],
+    "reading": "context window for knot, unequal visible loops, left pink/blue contact, down-tail and terminal occlusion; no forced endpoints",
+    "source_xyxy": [
+      500,
+      450,
+      785,
+      625
+    ],
+    "raw_patch": "raw-regions/bow-and-tails.png",
+    "sha256": "8889dce4d3045d672b1c362d1b85bcd38f2293d7b5805769b4fa0816eb451ba1",
+    "pixels": 49875,
+    "resampling": "none; raw crop pixels"
+  }
+]

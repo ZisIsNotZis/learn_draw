@@ -1,0 +1,34 @@
+{
+  "builder_sha256": "1d3615bed0f3fb98314c7a8ab5101eb6f4a223e6fe6a1164323f81741c430680",
+  "cache_key": "1cf76bfe02912aa42478017bb3126c830abdbc1104556400b5aa178bbcd6c81c",
+  "camber": 0.35,
+  "camera": {
+    "name": "oblique",
+    "pitch": 22,
+    "yaw": 38
+  },
+  "case": "positive-half-twist-oblique",
+  "case_index": 1,
+  "case_plan_sha256": "bbc8697195e1ca45805899f4fafa6bbae8fccab3021cb8673460e3c4418d0643",
+  "chromium": {
+    "path": "/home/z/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell",
+    "version": "Google Chrome for Testing 151.0.7922.34"
+  },
+  "condition": "primary-existing-spec",
+  "draw_py_sha256": "7b1bb3bece91dfe297e34aefab6b40af24bc02dbe4837bec03da604569ac7abf",
+  "input": {
+    "case_name": "twisted-two-sided",
+    "path": ".scratch/19-ribbon-family/work/cases.json"
+  },
+  "input_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+  "nonbackground_pixels": 18100,
+  "png_bytes": 19136,
+  "png_sha256": "aa9bfab9470696e8983ffe6c5cb89bebfbb1f09c90bf450f9e59daf2cd7ae4ca",
+  "renderer_sha256": "5c32715a9359e3228a7cd91e2bed020f47badcc6df949f2f54e6c8ae493df2f4",
+  "sampling": {
+    "u_intervals": 96,
+    "v_intervals": 12
+  },
+  "svg_bytes": 3786165,
+  "svg_sha256": "d5941895f7eec778d38479fab73791ac94ee90d74f763923f1ec28a47e176b14"
+}

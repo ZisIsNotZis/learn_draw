@@ -1,0 +1,16 @@
+{
+  "role": "numeric cross-check of A teacher landmarks; not replacement teacher evidence, art, or renderer input",
+  "source": "image.jpg",
+  "source_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+  "teacher_inputs": [
+    "../A-teacher-recovery-v1/teacher-only/landmarks.csv",
+    "../A-teacher-recovery-v1/teacher-only/provenance.json",
+    "../A-teacher-recovery-v1/teacher-only/topology-map.md",
+    "../A-teacher-recovery-v1/teacher-only/source-crop-registered.png"
+  ],
+  "registration": "exact source crop (500,320)-(900,800), crop x/y maps to source (500+x,320+y), no resize; all 192000 RGB pixels equality checked",
+  "audit_method": "Pillow pixel RGB at each original point and finite radius-5 square raw patch histogram; no segmentation, edge detection, tracing, fitting, rendering, or object classification by RGB",
+  "patches": "11x11 pixels where available, clipped at crop boundary; original unmodified pixel samples",
+  "image_board_label_policy": "figure ID and source coordinate only; no RGB or correct object label",
+  "limitations": "numeric color is not proof of semantic identity; N1 inconsistency requires independent semantic review; no replacement coordinate proposed"
+}

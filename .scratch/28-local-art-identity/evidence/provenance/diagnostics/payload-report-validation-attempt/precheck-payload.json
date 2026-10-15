@@ -1,0 +1,7 @@
+{
+  "schema": "local-art-identity-capability/v1",
+  "images": [
+    ".scratch/28-local-art-identity/evidence/review/precheck/control-01.png"
+  ],
+  "prompt": "Describe the visible forms and their positions."
+}

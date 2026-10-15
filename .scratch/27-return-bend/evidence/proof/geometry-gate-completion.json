@@ -1,0 +1,214 @@
+{
+  "card": {
+    "actual_opaque_card_triangles": 2,
+    "card_overlaps_ribbon": true,
+    "card_wins_depth": true,
+    "independent_card_depth_oracle": {
+      "card_overlap_samples": 2678,
+      "depth_policy_tie_samples_1e-5": 0,
+      "opposite_facing_depth_overlap": 2006,
+      "projected_degenerate_faces_1e-14": 0,
+      "root_row_winners": 300,
+      "samples": 4518,
+      "source_edge_memberships_1e-10": 0,
+      "source_edge_only_points_1e-10": 0,
+      "step": 0.0125,
+      "tag_winners": {
+        "card": 1484,
+        "ribbon": 3034
+      },
+      "winners_by_facing_sign": {
+        "-1": 1989,
+        "0": 0,
+        "1": 2529
+      }
+    },
+    "submitted_art_and_card_faces": 162
+  },
+  "cases": {
+    "D-minus-symmetric": {
+      "camera": "D-minus-symmetric",
+      "connected": true,
+      "depth_clipped_area_by_facing_sign": {
+        "-1": 2.6385598046880347e-07,
+        "0": 0.0,
+        "1": 0.4006312415050457
+      },
+      "finite_nonzero_normals": true,
+      "independent_actual_depth_oracle": {
+        "card_overlap_samples": 0,
+        "depth_policy_tie_samples_1e-5": 0,
+        "opposite_facing_depth_overlap": 2581,
+        "projected_degenerate_faces_1e-14": 0,
+        "root_row_winners": 0,
+        "samples": 2581,
+        "source_edge_memberships_1e-10": 0,
+        "source_edge_only_points_1e-10": 0,
+        "step": 0.0125,
+        "tag_winners": {},
+        "winners_by_facing_sign": {
+          "-1": 0,
+          "0": 0,
+          "1": 2581
+        }
+      },
+      "kernel_fragments": 204,
+      "material_width_world": 0.36,
+      "profile_seconds": {
+        "geometry": 0.016326991986716166,
+        "independent_oracle": 0.022701295994920656,
+        "kernel": 0.005650439998134971
+      },
+      "projected_width_world": 0.36,
+      "root_row_clipped_area": 5.744845466896716e-11,
+      "sampled_centerline_self_intersection": false,
+      "source_visibility_audit": {
+        "facing_sign_mismatches": [],
+        "ids_unique_dense": true
+      },
+      "submitted_art_faces_including_support": 160,
+      "support_faces": 64
+    },
+    "D-plus-10deg": {
+      "camera": "D-plus-10deg",
+      "connected": true,
+      "depth_clipped_area_by_facing_sign": {
+        "-1": 0.2321336277284001,
+        "0": 0.0,
+        "1": 0.3945447567570459
+      },
+      "finite_nonzero_normals": true,
+      "independent_actual_depth_oracle": {
+        "card_overlap_samples": 0,
+        "depth_policy_tie_samples_1e-5": 0,
+        "opposite_facing_depth_overlap": 1028,
+        "projected_degenerate_faces_1e-14": 0,
+        "root_row_winners": 300,
+        "samples": 4002,
+        "source_edge_memberships_1e-10": 0,
+        "source_edge_only_points_1e-10": 0,
+        "step": 0.0125,
+        "tag_winners": {},
+        "winners_by_facing_sign": {
+          "-1": 1489,
+          "0": 0,
+          "1": 2513
+        }
+      },
+      "kernel_fragments": 167,
+      "material_width_world": 0.36,
+      "profile_seconds": {
+        "geometry": 0.02832109501468949,
+        "independent_oracle": 0.02820495399646461,
+        "kernel": 0.01020488198264502
+      },
+      "projected_width_world": 0.3545307910843949,
+      "root_row_clipped_area": 0.04739993437156648,
+      "sampled_centerline_self_intersection": false,
+      "source_visibility_audit": {
+        "facing_sign_mismatches": [],
+        "ids_unique_dense": true
+      },
+      "submitted_art_faces_including_support": 160,
+      "support_faces": 64
+    }
+  },
+  "declared_limits": [
+    "No source reference image, image coordinates, image metrics, contour tracing, or renderer reference input.",
+    "No parameter/camera sweep, search, rescue, or post-image geometry change.",
+    "A failed positive actual-area or independent actual-depth gate stops all dependent panels.",
+    "D-minus negative retains its actual hidden-side kernel residual as non-positive evidence.",
+    "The route midpoint is edge-on in D-plus; only off-center opposite-facing patches can establish two-side visibility.",
+    "This finite probe is not S1a, figure, hair, actual-3D-reference, or transfer acceptance."
+  ],
+  "fixed_sampling": {
+    "art_face_cap": 256,
+    "card_case_total_submitted_faces": 162,
+    "depth_policy_band": 1e-05,
+    "primary_submitted_art_faces": 160,
+    "projected_degenerate_epsilon": 1e-14,
+    "strict_interior_epsilon": 1e-10,
+    "support_faces": 64,
+    "u_intervals": 16,
+    "v_intervals": 2
+  },
+  "positive_fixture_gate": true,
+  "schema": 1,
+  "status": "passed",
+  "symmetric_negative_gate": true,
+  "timing": {
+    "all_geometry_gates_seconds": 0.31108445499558
+  },
+  "variation_and_straight": {
+    "straight-control": {
+      "alpha_radians": 0.0,
+      "area_by_facing_sign": {
+        "-1": 1.063592373253186,
+        "0": 0.0,
+        "1": 0.0
+      },
+      "finite_nonzero_normals": true,
+      "kernel_fragments": 74,
+      "oracle": {
+        "card_overlap_samples": 0,
+        "depth_policy_tie_samples_1e-5": 0,
+        "opposite_facing_depth_overlap": 0,
+        "projected_degenerate_faces_1e-14": 0,
+        "root_row_winners": 420,
+        "samples": 6720,
+        "source_edge_memberships_1e-10": 0,
+        "source_edge_only_points_1e-10": 0,
+        "step": 0.0125,
+        "tag_winners": {},
+        "winners_by_facing_sign": {
+          "-1": 6720,
+          "0": 0,
+          "1": 0
+        }
+      },
+      "root_area": 0.06647452332832406,
+      "sampled_centerline_self_intersection": false,
+      "source_visibility_audit": {
+        "facing_sign_mismatches": [],
+        "ids_unique_dense": true
+      },
+      "submitted_art_faces": 160,
+      "support_faces": 64
+    },
+    "two-thirds-return": {
+      "alpha_radians": 2.0943951023931953,
+      "area_by_facing_sign": {
+        "-1": 0.4597836655455999,
+        "0": 0.0,
+        "1": 0.1131425533380628
+      },
+      "finite_nonzero_normals": true,
+      "kernel_fragments": 153,
+      "oracle": {
+        "card_overlap_samples": 0,
+        "depth_policy_tie_samples_1e-5": 0,
+        "opposite_facing_depth_overlap": 347,
+        "projected_degenerate_faces_1e-14": 0,
+        "root_row_winners": 420,
+        "samples": 3673,
+        "source_edge_memberships_1e-10": 0,
+        "source_edge_only_points_1e-10": 0,
+        "step": 0.0125,
+        "tag_winners": {},
+        "winners_by_facing_sign": {
+          "-1": 2937,
+          "0": 0,
+          "1": 736
+        }
+      },
+      "root_area": 0.06647079216248153,
+      "sampled_centerline_self_intersection": false,
+      "source_visibility_audit": {
+        "facing_sign_mismatches": [],
+        "ids_unique_dense": true
+      },
+      "submitted_art_faces": 160,
+      "support_faces": 64
+    }
+  }
+}

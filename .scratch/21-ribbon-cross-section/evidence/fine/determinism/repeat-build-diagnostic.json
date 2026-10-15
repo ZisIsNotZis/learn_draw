@@ -1,0 +1,39 @@
+{
+  "board_png_raster_comparison": {
+    "comparison-labelled": {
+      "after_png_sha256": "34c308d2d6da40babdd6548d1ac14adabe530da871b02fb47e357a3affbcad94",
+      "bbox": [
+        25,
+        419,
+        25,
+        769
+      ],
+      "before_png_sha256": "73aa14027d00a8a73677ec623ceefcebc77cc53295ac695b3beeb3617ebc7d25",
+      "mismatched_pixels": 8,
+      "pixel_equal": false,
+      "total_pixels": 1854360
+    },
+    "comparison-unlabelled": {
+      "after_png_sha256": "4a0f44ca1e58a9d4739bdc449f0579553344e61b49d6955d81d9a42a1678d74c",
+      "bbox": null,
+      "before_png_sha256": "4a0f44ca1e58a9d4739bdc449f0579553344e61b49d6955d81d9a42a1678d74c",
+      "mismatched_pixels": 0,
+      "pixel_equal": true,
+      "total_pixels": 1740120
+    }
+  },
+  "case_plan_sha256": "bbc8697195e1ca45805899f4fafa6bbae8fccab3021cb8673460e3c4418d0643",
+  "command": ".venv/bin/python .scratch/21-ribbon-cross-section/work/build.py --plan .scratch/21-ribbon-cross-section/work/cases-fine.json --evidence .scratch/21-ribbon-cross-section/evidence/fine --progress .scratch/21-ribbon-cross-section/work/fine-build-progress.jsonl",
+  "interpretation": "Any labelled text-only raster delta is reported rather than normalized away.",
+  "renderer_provenance": {
+    "builder_sha256": "1d3615bed0f3fb98314c7a8ab5101eb6f4a223e6fe6a1164323f81741c430680",
+    "chromium": {
+      "path": "/home/z/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell",
+      "version": "Google Chrome for Testing 151.0.7922.34"
+    },
+    "draw_py_sha256": "7b1bb3bece91dfe297e34aefab6b40af24bc02dbe4837bec03da604569ac7abf"
+  },
+  "same_board_svg_hashes": true,
+  "same_panel_hashes_and_cache_keys": true,
+  "support_module_sha256": "5c32715a9359e3228a7cd91e2bed020f47badcc6df949f2f54e6c8ae493df2f4"
+}

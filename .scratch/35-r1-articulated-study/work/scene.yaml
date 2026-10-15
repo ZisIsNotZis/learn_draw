@@ -1,0 +1,61 @@
+# WP03 semantic scene interface; authored design relations, not recovered 3D truth.
+# Geometry is computed by scripts.articulated_construction.build_study_case.
+version: 1
+engine:
+  camera: {projection: orthographic, azimuth_degrees: 30, elevation_degrees: 8}
+  visibility_adapter: scripts.articulated_construction.visible_scene
+  triangle_backend: scripts.vector_visibility.visible_fragments
+  manual_visibility_cuts: false
+  coordinate_flow: local_uv -> SupportFrame.local_to_world -> Camera.project(x,y,depth) -> triangle depth clipping
+supports:
+  body-front: {depth_ref: body-depth, mapping: affine_3d_plane}
+  arm-surface: {depth_ref: arm-depth, mapping: affine_3d_plane}
+  hand-surface: {depth_ref: hand-depth, mapping: affine_3d_plane}
+  prop-surface: {depth_ref: prop-depth, mapping: affine_3d_plane}
+  depth_rule: support-frame affine axes map each local vertex to its own world xyz; case geometry uses intersecting/tilted plane frames meeting at named anchors, not painter-order tags
+components:
+  - {id: head, intent: separate head silhouette, support: body-front, geometry: generated_ellipse}
+  - {id: neck, intent: generated head-to-torso connector, support: body-front, geometry: generated_ellipse, attaches: [head, torso]}
+  - {id: torso, intent: clothed upper-body mass; shoulder anchor from torso boundary, support: body-front, geometry: generated_ellipse}
+  - {id: upper_arm, intent: semantic shoulder-to-elbow sleeve taper, support: arm-surface, geometry: smooth_capped_taper, attaches: [torso, forearm]}
+  - {id: forearm, intent: semantic elbow-to-wrist sleeve taper, support: arm-surface, geometry: smooth_capped_taper, attaches: [upper_arm, hand]}
+  - {id: hand, intent: generated palm attached at wrist and reaching contact, support: hand-surface, geometry: generated_ellipse, attaches: [forearm, prop]}
+  - {id: prop, intent: simple authored oval hand-contact prop, support: prop-surface, geometry: generated_ellipse, attaches: [hand]}
+construction:
+  method: two_bone_semantic_ik_plus_smoothstep_taper
+  method_source: vendor/huashu-art-motion/scripts/engine/lib/rig.js (MIT R.ik2/R.taper abstraction only)
+  coordinates: generated_from_component_relations
+  hand_authored_shape_coordinates_max: 4
+  contact_rule: successful palm rightmost boundary equals prop leftmost boundary at declared touch coordinate
+  validation: scripts.articulated_construction.validate_study_case
+  limits:
+    attachment_world_anchor_tolerance: 1.0e-8
+    attached_joint_overlap_radius_local_units: 0.90
+    undeclared_same_xy_footprint: rejected_if_support_planes_intersect
+    hand_prop_success_contact: exact_shared_world_anchor
+    control_contact: absent_link_and_positive_xy_gap
+cases:
+  baseline:
+    camera: B-original-bust (fixed)
+    target_semantic: raised-prop-grip
+    contact_design_value_uv: [2.05, 1.65]
+    shoulder_width_torso_units: 1.00
+    expected: arm-connected-hand-tangent-to-prop
+  variant:
+    camera: B-original-bust (same fixed camera)
+    target_semantic: chest-rest-prop-grip
+    contact_design_value_uv: [2.00, 1.45]
+    shoulder_width_torso_units: 1.08
+    expected: reachable-arm-connected-hand-tangent-to-prop
+    provenance: authored controlled target/proportion variation in public task freeze; not photo-derived
+  control:
+    camera: B-original-bust (same fixed camera)
+    copied_from: baseline
+    target_rule: baseline_wrist_target_minus_0.18_times_sum_of_segment_lengths_along_final_approach
+    label: CONTROL — near miss
+    expected: positive_hand_to_prop_gap; not accepted art
+integrity:
+  reference_pixels_read_by_geometry_engine: false
+  sealed_heldout_read: false
+  no_vendor_art_coordinates_frames_or_images: true
+  scene_role: WP03 geometry/interface fixture only; not a rendered illustration or art pass

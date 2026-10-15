@@ -1,9 +1,23 @@
 # Drawing method — observation and review loop
 
-> The current 2D drawing loop below is historical/operational. For the new component-on-surface
-> method, [`spatial-model.md`](spatial-model.md) owns the architecture and
-> [`roadmap.md`](roadmap.md) owns the staged structural proof. Do not prescribe manual
-> occlusion splits or infer depth from global paint layers in new work.
+> The current 2D drawing loop below is historical/operational. For the component-on-surface
+> method, [`spatial-model.md`](spatial-model.md) owns the architecture and [`roadmap.md`](roadmap.md)
+> owns current product milestones, gates, and work-package rules. The concrete [R1 task contract](../../.scratch/35-r1-articulated-study/spec.md)
+> specifies the current R1 plan. Do not prescribe manual occlusion splits or infer depth from global
+> paint layers in new work.
+
+## Current learning unit
+
+Use the visible milestone and work-package contract in `roadmap.md`. A teaching example, generator, test, or fresh-model attempt is supporting evidence, never a substitute for a user-judgable rendered artwork. Learn from real examples, vary construction, retain causal failures, and generalize only after distinct uses. Models may inspect images but output text/code only; generated image assets are not a substitute. Construction/attachment, physical non-intersection, depth visibility, visual/art review and fresh-model transfer establish distinct claims. A rescued learner attempt is not unaided transfer.
+
+## Current spatial learning loop
+
+Follow [`roadmap.md`](roadmap.md): study applicable vendor and local methods, construct a bounded visible work, vary it, preserve success/failure and review the actual image. Establish plausible connected construction and attachment, separately check physical intersections, separately check depth visibility, then judge drawing/art; colour/material follows only when structure supports it. Reference observation may seed semantic parameters but never runtime geometry. Visual review needs actual image modality; code cannot substitute. If unavailable, mark the gate BLOCKED/UNVERIFIED and do not make runtime repair the objective.
+
+## Legacy 2D loop (not the spatial authoring contract)
+
+The following painter-order, path-edit and reference-compare guidance describes the retired/legacy
+2D resolver workflow only. It must not override the spatial architecture or new milestone gates.
 
 Loop: **observe → plan → draw → compare → reflect → revise**, cycled. Line art first, coloring second, soft fields last.
 
@@ -21,7 +35,7 @@ Loop: **observe → plan → draw → compare → reflect → revise**, cycled. 
 5. **Reflect**: written note per iteration in `log.md` — what was wrong, what changed, why. Each reflection ends by asking: what is the *transferable* principle here? Distill into `docs/drawing/principles.md`.
 6. **Revise**: edit the named paths, commit as `v<N>`, re-run diff. Git history = my learning curve; roll back when a "fix" makes it worse.
 
-## Tier ladder
+## Historical legacy 2D resolver tier ladder
 
 - **T1 line art** — SVG strokes, no fill. Hardest sub-skill: spatial relationships (occlusion, where curves terminate) — diff hints for these look unexplainable; see invariant 3.
   *Corrected 2026-09-14:* this reference has **no uniform black line art** — measured, only 12.6% of its
@@ -33,10 +47,12 @@ Loop: **observe → plan → draw → compare → reflect → revise**, cycled. 
 - **T3 soft fields** — gradients, blurred blobs, opacity. Core idiom available *today*: **layered flat blobs under a shared silhouette, painted bottom-up** (every layer stays nameable). The painter's clipping-mask idiom (hard silhouette clip + blurred blobs inside, `mix-blend-mode`) is documented aspirationally but the back end has no clipPath/blend support yet — do not write a spec that needs them until 12-fields lands the capability. Soft fields come **last** (rung 12), never before line structure.
 - **T4 photo realism** — stacked blurred-blob decomposition, feathered silhouettes, texture. Research tier; needs field-decomposition tooling (gradient direction/extent hints). Not scheduled.
 
-## Curriculum (the ladder rungs)
+## Historical legacy 2D curriculum (archival, not current milestone sequence)
 
-`.scratch/08..13` — one rung teaches one thing; each closes with a `draw check` + fresh-eyes verdict,
-clean resolver diagnostics, and no shape over 4 hand-typed coordinates.
+`.scratch/08..13` records the former 2D resolver exercise ladder. Its rung order, `draw check` closure,
+resolver diagnostics and path-coordinate rules are historical evidence; they are not current R1–R4
+work-package instructions or automatic gates. Current milestones, review modality and feedback order
+are governed by `roadmap.md`; retain any old rung outputs only as historical evidence.
 
 | rung | teaches | vocabulary it is allowed to demand |
 | --- | --- | --- |
@@ -51,9 +67,9 @@ Then the withdrawal that makes the end goal real: (a) redraw the assembled figur
 spec with the image closed (canon extraction already happened during the ladder); (b) draw a *new*
 subject from intent alone. Starry-Night-class complexity is the stress test after that, not before.
 
-## SVG/CSS style guide (explainability contract)
+## Legacy resolver SVG/CSS output notes (not the spatial authoring contract)
 
-Applies to what the resolver *emits*; the authoring language is `abstraction.md`.
+These describe only what the retired/current-2D resolver emits; the authoring language is `abstraction.md`. For new component artwork use the support-surface architecture and the roadmap/R1 task contract.
 
 - viewBox matches reference pixel size; coordinates in reference space.
 - `<g id="...">` per semantic part, painter order top-to-bottom in document.
@@ -62,7 +78,11 @@ Applies to what the resolver *emits*; the authoring language is `abstraction.md`
 - CSS allowed for soft fields (layered gradients, blur, blend modes); SVG for structure. One source file per iteration — either `.svg` or `.html` wrapper.
 - Blur never touches structure (silhouettes, outlines, face features). If a soft field cannot state why it is soft in one line, it is deleted (12-fields rule).
 
-## Tool usage
+## Legacy resolver tool usage
+
+The commands below are documented for the legacy 2D resolver/evidence format. Current milestone
+artifacts still need an image-list evidence bundle where applicable, but follow `roadmap.md` and the
+linked WP contract for authoritative acceptance, not legacy metrics or exercise sequencing.
 
 - `check ART [--ref REF]` — **the whole visual feedback bundle in one command** (0.3s for a 1024² draft).
   Emits into `<exercise>/evidence/check/`: a whole-frame side-by-side (panes ≤600px), the **1:1 draft
@@ -83,15 +103,15 @@ Applies to what the resolver *emits*; the authoring language is `abstraction.md`
 
 ## Guardrails
 
-- **Measure against your own best, not against your own design.** The recorded best artifact lives in
-  `.scratch/00-tooling/baseline/` and `check` prints a `vs recorded best:` line. A render below it is a
-  **regression**, however much the language improved (roadmap R2). Promote only on a passed gate:
-  `scripts/draw baseline <render> --ref image.jpg`. The baseline only ever moves up.
+- **Historical legacy 2D baseline rule:** old `draw check` bundles compared against
+  `.scratch/00-tooling/baseline/`, and old baseline promotion required the then-applicable gate.
+  These baseline records remain historical; they do not define the current R2 contract or waive any
+  roadmap/R1 gate.
 - Metrics are progress signal only (invariant 4 in repo AGENTS.md). `check` prints them as a
   **breakage alarm**: a jump means something broke, a good number never means the drawing is good.
   `coverage` is additionally an **omission floor** — it answers "how much did you leave out?", the
   question `color_dist` cannot answer. Floors and alarms, never targets.
-- Max ~3 focused fix attempts per problem; still failing → reformulate at design level (e.g. wrong occlusion order), propose once-and-for-all structure fix.
+- Historical legacy 2D-loop note: former exercises allowed up to ~3 focused fixes per problem. This is not the current R1 attempt budget; use the concrete R1 contract and roadmap for current candidate/repair limits.
 - **Never judge your own render.** Run `check`, then give `report.txt`'s image list — and nothing
   else — to a FRESH-context reviewer with the open question "what is wrong here?". No leaked intent,
   no history, no suspected verdict (a reviewer that knows what you were trying to do will confirm it).

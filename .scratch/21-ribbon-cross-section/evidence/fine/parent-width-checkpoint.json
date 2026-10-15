@@ -1,0 +1,20 @@
+[
+  {
+    "name": "twisted-two-sided",
+    "samples": 44,
+    "max_abs_difference": 0.001973891854807841,
+    "failures": []
+  },
+  {
+    "name": "gentle-s-ribbon",
+    "samples": 44,
+    "max_abs_difference": 0.00123328373314191,
+    "failures": []
+  },
+  {
+    "name": "teaching-arch",
+    "samples": 44,
+    "max_abs_difference": 0.00015545452208803878,
+    "failures": []
+  }
+]

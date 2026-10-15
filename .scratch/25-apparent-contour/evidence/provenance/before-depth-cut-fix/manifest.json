@@ -1,0 +1,32 @@
+{
+  "files": {
+    "apparent_contour.py": {
+      "path": ".scratch/25-apparent-contour/work/apparent_contour.py",
+      "restored_from": "original run write/edit record",
+      "sha256": "9b926b1cb9fdbc2c199fc3f056fda5a8ead249161b3ec3947d21f817fff844b8"
+    },
+    "build.py": {
+      "path": ".scratch/25-apparent-contour/work/build.py",
+      "restored_from": "original run write/edit record",
+      "sha256": "4131d576a159fd15953073889a5ab02d748b4d6fd8c7ee7d1183f322829b5521"
+    },
+    "test_apparent_contour.py": {
+      "path": ".scratch/25-apparent-contour/work/test_apparent_contour.py",
+      "restored_from": "original run write/edit record",
+      "sha256": "2c4756b3386eb2f692adf282d3c168b09395d39f958775aa4eebeeefb70e2c6f"
+    }
+  },
+  "preserved_pre_fix_evidence": {
+    ".scratch/25-apparent-contour/evidence/comparison-labelled.png": "b1fe5885fdb29d47e09b645ebc5ad942da68087d858d535df603cee43edff5ea",
+    ".scratch/25-apparent-contour/evidence/comparison-labelled.svg": "339f8ef52b168587e3121e7f61fea0190bf4887a37c6aaab7f34c6a6910d2b15",
+    ".scratch/25-apparent-contour/evidence/comparison-unlabelled.png": "fe5a96bbe2344e880ef9f5a1c5e71b079f30af973c9c5e8625f731a60973100d",
+    ".scratch/25-apparent-contour/evidence/comparison-unlabelled.svg": "db745ae881eb9162dce9bcf2a84f5b9a3e9a225329d98e92320192e28be6c870",
+    ".scratch/25-apparent-contour/evidence/provenance/build-ledger.json": "ff578864a81104a9b49cfb0f9b7b229548c29327dda02fadc2b9e6f8f27b4864",
+    ".scratch/25-apparent-contour/work/cases.json": "a312f78cffe119122d28eb7cf9fbdfa236888d21cd46bc8c7bb2e487b482cf67"
+  },
+  "protected_pins": {
+    "scripts/ribbon_surface.py": "5c32715a9359e3228a7cd91e2bed020f47badcc6df949f2f54e6c8ae493df2f4",
+    "scripts/vector_visibility.py": "fa4c31acf8ffc622352d1feb192e4adddc7931be9cdfc046fda70b1f4d23d3fa"
+  },
+  "purpose": "Byte-verified archival snapshot immediately before reviewer P1 depth-cut repair; do not use as current producer."
+}

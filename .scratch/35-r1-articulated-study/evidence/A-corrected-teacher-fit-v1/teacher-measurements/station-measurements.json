@@ -1,0 +1,15 @@
+{
+  "purpose": "One-time named measurements of accepted sparse teacher-pointer traces to characterize local trend and guide compact fit intent. This file is excluded from builder/runtime inputs. Measures are not complete boundaries or pixel truth.",
+  "source": ".scratch/35-r1-articulated-study/evidence/A-teacher-reconstruction-v2/teacher-only-corrected-v2/manual-traces.json",
+  "source_sha256": "4e4e21b3def2fece29fbe2925dbf6732a8b1566d4ec0a7eab9ac86f31f9b9e41",
+  "accepted_trace_ids_only": ["bodice-left-visible-interval", "bodice-lower-visible-interval", "left-loop-outer-free-edge", "right-loop-outer-free-edge"],
+  "excluded_trace_ids": ["leftward-tail-centerline-visible"],
+  "coordinate_units": "registered crop pixels; y down",
+  "measurements": [
+    {"id": "bodice-left-visible-interval", "stations": 5, "station_bbox_xyxy": [87, 140, 123, 239], "approx_polyline_length_px": 108.52, "endpoint_chord_px": 102.88, "turn_degrees_between_segments": [8.2, -3.0, -49.4], "classification": "descending/inward contour neighborhood with a final turn; observation ends at bow overlap; not a completed bodice side"},
+    {"id": "bodice-lower-visible-interval", "stations": 5, "station_bbox_xyxy": [145, 396, 250, 406], "approx_polyline_length_px": 107.37, "endpoint_chord_px": 105.0, "turn_degrees_between_segments": [-13.6, -11.0, -10.5], "classification": "shallow continuous lower-edge trend across 105px; local interval only, not complete hem"},
+    {"id": "left-loop-outer-free-edge", "stations": 5, "station_bbox_xyxy": [120, 145, 137, 205], "approx_polyline_length_px": 68.01, "endpoint_chord_px": 60.67, "turn_degrees_between_segments": [-20.9, -19.0, -36.5], "classification": "short curved free-edge arc only; cannot measure complete lobe width/height"},
+    {"id": "right-loop-outer-free-edge", "stations": 5, "station_bbox_xyxy": [243, 166, 270, 228], "approx_polyline_length_px": 71.69, "endpoint_chord_px": 65.79, "turn_degrees_between_segments": [27.8, 19.6, 17.2], "classification": "separate oppositely turning short free-edge arc only; cannot infer full lobe dimensions or width ratio"}
+  ],
+  "interpretation_boundary": "The independent semantic review accepts these as approximate short open pointer/edge intervals. The numeric arc lengths and turns characterize annotation only; they do not establish exact pixel edges, closed shapes, hidden seams, ribbon routes, or lobe sizes. The right loop's broader appearance is a qualitative source observation; its encoded dimensional contrast is explicitly artist parameterization. No measurement was made from LTI2 or the withdrawn centerline trace."
+}

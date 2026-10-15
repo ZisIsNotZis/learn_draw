@@ -1,0 +1,5 @@
+check-a/side-by-side.png
+check-a/draft-fullres.png
+check-a/region-1.png
+check-a/region-2.png
+check-a/region-3.png

@@ -1,0 +1,13 @@
+# A-only garment family candidate — status
+
+**Source/render:** `source/build_a.py` + `source/semantic-parameters.json` produce `artwork-a.svg`; `scripts/draw render` produces 400×480 `artwork-a.png`. The built image is A-only crop-framed clothing art, not a portrait or complete reconstruction.
+
+**Semantic input gate:** `teacher-only` fresh reviewer PASS accepted only the visible part/topology observations. The registered crop/source hashes are recorded in `source/semantic-parameters.json`, `source/teacher-fit-bridge.md` and `manifest.json`. Runtime receives only the semantic parameter JSON. It does not load reference, teacher crop, overlay, landmarks, trace or B. The crop is passed only to the out-of-engine `scripts/draw check` diagnostic bundle. A has 13 generated semantic parts; a separately editable cap and sleeve tube share a world-space construction boundary (without an unsupported inked cloth seam), while cap/bodice and tube/cuff also share explicit world-space contacts, collar pieces frame a neck-skin opening, and separate unequal bow loops/tails join at a knot. Thin trim/fold marks are clipped by support-derived depth.
+
+**Self-checks:** 8 focused tests passed, including anchor budget, generated simple contours, bounds, world/camera projection, shared bodice/cap, cap/tube and tube/cuff contacts without positive-area intersections, intended knot/loop overlap, semantic-line visibility and reference-path isolation. `artwork-a.png` and the `draw check` 1:1 raster have equal RGBA pixels. Reference-absent SVG+PNG rebuild repeated byte-identically (see both `repro-*.sha256`). These are construction/render evidence, not artwork acceptance.
+
+**Comparison:** `check-a/` is the `scripts/draw check` bundle against the registered crop; `report.txt` is the isolated image-only reviewer payload. Report metrics are alarms only and have not driven edits. The writer did not inspect/judge the PNGs. No independent visual/art reviewer has run in this worker package; Main owns fresh review routing.
+
+**Prior B preservation:** no B file was opened by an engine, edited or rerendered. `manifest.json` references the previous v2-completion manifest and its full source/SVG/PNG hash dictionaries. Its recorded B status remains candidate only, not formal/art acceptance. Hash verification checked 33 entries in that manifest and did not create/copy any B artifact.
+
+**Open gates:** A fitted-shape and art/readability/correspondence judgment by fresh reviewer; Main/user acceptance; remaining R1 attachment/nonintersection/depth gates beyond local tests; reference-free heldout compatibility/release/drawing; integrated deterministic reproduction and user feedback. Neither teacher semantic PASS nor these construction checks imply A-art PASS or R1 PASS.

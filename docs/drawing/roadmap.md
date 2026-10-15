@@ -1,73 +1,79 @@
-# Roadmap — spatial drawing, then line art
+# Roadmap — learn to make readable, expressive programmatic art
 
-`STATUS.md` owns the current state. [`spatial-model.md`](spatial-model.md) owns the component/depth
-architecture. This file owns forward milestones and acceptance, not historical iteration details.
-The original M0–M5 record survives in `history/status-before-spatial-model.md` and
-`.scratch/13-assembly/log.md`; it is not a license to claim the new architecture works.
+`STATUS.md` owns observed current state and next entry; [`spatial-model.md`](spatial-model.md) owns spatial architecture; [`vendor-learning-map.md`](vendor-learning-map.md) alone owns vendor-source coverage and migration dispositions. This roadmap owns the product goal, milestone promises, gates and work-package contract. Historical evidence and decision rationale live in exercise tickets, not current-fact documents.
 
-## Goal and non-negotiables
+## Product goal and invariants
 
-A smaller, ordinary VLM should compose a recognizable, approximately placed person with plausible
-occlusion using **2D artwork per component on 3D plane/curve supports**. The engine, not the author,
-computes which portions are visible. Separate structural correctness from pleasing line design,
-colour and texture. The final spec must render without the reference (P18); provenance and
-transferability matter more than a copied contour. The reference may teach values but not serve as
-runtime geometry. Preserve unrelated work and the recorded best; no automatic promotion on metrics.
+Learn by reference study, imitation and deliberate variation to create explainable, readable, artistically coherent programmatic illustrations, eventually making reasonable original work without a reference (including a Starry-Night-like challenge). Treat local vendor examples as a curriculum to systematically assess and absorb all useful non-image-generation methods, combining proven methods with existing primitives, 3D support surfaces and depth visibility. Vendor content is not presumed correct or already learned. Models may inspect references but author text/code only; no generated images, sprites or pixel-metric optimization. A reference teaches, it is not runtime geometry.
 
-## Gates common to experiments
+A milestone is a user-perceivable artwork or newly demonstrated visual capability, not an engine, test suite or document. The artifact must be current, reviewable, and ready for the user's judgment. After each delivery, stop dependent work at the user feedback gate. Internal study, methods, work-package sequencing and technical replanning are project-autonomous; do not ask the user to decide internal plans. Never represent internal checks as the user's judgment or promise art success in advance.
 
-- **Topology:** each named component remains connected in its local 2D domain; attachment points
-  and near/far crossings are explained. No arbitrary split art or manual visibility intervals.
-- **Visibility:** change camera or geometry and verify that covered portions update automatically.
-  Check self-occlusion, crossing and re-emergence against independently chosen cases. Painter
-  ordering of whole components does not pass.
-- **Reference-free/deterministic:** render with `image.jpg` unavailable twice and compare outputs.
-  No trace-derived final shapes at milestone exit (G7); distinguish sketch-proven concepts from a
-  learned transferable family.
-- **Perception:** inspect structure with labelled views/depth diagnostics, then ask sight-proven
-  fresh reviewers (including smaller VLMs) to identify the figure and front/back relations. Treat
-  reviewer locations as hypotheses to verify; user feedback is authoritative on intended design.
-  Pixel metrics are breakage/omission alarms, not targets.
-- **Claims:** a clean resolver or a high score cannot prove readability. Keep the former 2D
-  baseline as a comparison artifact, not a gate that forces spatial sketches to imitate finished art.
+Keep three acceptance questions distinct:
+1. **Construction/attachment/pose:** do named parts form plausible connected objects and attach in a readable pose?
+2. **Physical geometry and visibility:** are solids/surfaces free of illegal intersections (or is a designed bend/contact explained), and does depth independently hide the physically farther surface? Correct occlusion does not excuse interpenetration; a hair strand entering a head/body must be plausibly divided/deformed or routed clear.
+3. **Drawing/art:** does the actual rendered image read clearly and feel compositionally/artfully coherent, with intentional line and colour treatment?
 
-## S0 — Structural proof (CURRENT)
+Each relevant gate requires its own evidence. Geometry/code cannot establish visual quality. Experience checks use real rendered visual artifacts and a qualified sight-capable independent reviewer; actual experience is not runtime-enforced. Missing modality is BLOCKED/UNVERIFIED, never PASS. Metrics are alarms only.
 
-One uncut 2D ribbon on a 3D curved support, one torso/lap occluder and two cameras. The
-reference implementation `scripts/vector_visibility.py` clips projected SVG polygons at the
-interpolated depth intersection (not whole-triangle painter sorting). Tests cover both paint orders
-and a crossing whose depth flips inside a triangle; `spatial_sketch.py` exercises two views of the
-same complete strip. **S0 proof met for tested opaque triangles**, not certified for all tangencies,
-intersections or production-scale scenes. No finished character or attractive line quality required.
+## Milestone path
 
-## S1 — Coarse figure layout
+Stage names below are new roadmap identifiers; old S0–S3 names are historical facts, not completed gates or binding sequence. Methods/packages may be replanned without lowering product outcomes. Every stage has a vertical visible deliverable.
 
-Add head/torso/arms/skirt as coarse supported components, a head-attached hair sheet whose blue/mint
-faces are two sides of one sheet, and a continuous ribbon around the figure. A first rough figure
-exists in `scripts/figure_scaffold.py`; its hair sheet *does* twist and choose blue/mint from
-projected face orientation, but its shape has not been validated, and the ribbon route is not
-reference-faithful. Match major attachment,
-scale, pose, projected silhouette and negative spaces of `image.jpg` without manually painting
-occlusion. **Exit:** two reviewers can identify a person and the main front/back relations; test
-camera variation and reference-free reproduction. Compare with M4j as historical evidence, not a
-requirement to preserve its guessed ribbon placement.
+### R1 — Readable articulated study
 
-## S2 — Line-art design
+- **Executable R1 work-package contract:** [`R1 task contract`](../../.scratch/35-r1-articulated-study/spec.md) and public [`two-track task freeze`](../../.scratch/35-r1-articulated-study/work/task-freeze.md) define owners, interfaces, evidence and finite budget; task-freeze revision is pending independent review/integrator approval, not art acceptance.
+- **Visible work/capability:** complementary actual images: (A) imitate only perceptible shoulder/upper-torso clothing/composition in `image.jpg`, with no hand/pose claim; (B) apply vendor MIT semantic IK/taper method to an original small clothed-upper-body bent arm/hand/simple-prop illustration, with meaningful changed-target/proportion variant and labeled awkward control. No matching pose photo required for B; it is not pose imitation or Huashu character reuse.
+- **Method and transfer:** abstract vendor construction semantics only; build original B using actual support/world binding and project depth visibility. A genuinely imitates observed reference parts. Keep independent sealed heldout reference-free drawing gate and require its owner to check compatibility/distinctness before release.
+- **User sees:** A and B as real authored images (not code or parameter tables), including B's baseline/variation/control; separate heldout image only after its gates. Each has a distinct, honest learning claim.
+- **Independent gates:** observed-part correspondence/visual art review; B construction/hand-contact/attachment and physical intersection; actual support/depth visibility; reference-absent deterministic reproduction; heldout compatibility/distinctness and review; user judges actual deliverables. No successful user feedback assumed.
+- **Dependencies/reuse:** current support/depth architecture and semantic primitives; world/support mapping must be implemented rather than tagged. No inferred 3D truth, old figure scaffold, or claim old S1a readability/transfer.
+- **Scope/non-goals:** bounded studies, not full anatomy/finished portrait/infrastructure work; no fabricated reference observation, matching extra pose-photo requirement, pixel tracing, or reuse of vendor Huashu character, frames or coordinates.
+- **Exit:** A visibly imitates only observed features, B is an intentional readable original image with meaningful variation/control, heldout remains a separate compatible reference-free drawing gate; actual support binding, attachment, contact, collision and depth each pass separately; visual review and reproduction pass; evidence hashes bind one revision. Then present actual images and pause.
+- **Risk/alternative:** if hand/contact is unreadable or geometry fails, revise representation within the finite two-hypothesis budget including already completed provisional code prep. Preserve control and evidence; do not hide intersection, invent observations, drop A/B, or lower readability. At limit, stop and report unresolved gates.
 
-Extract candidate visible contours, contact and fold/colour boundaries from the spatial scene, then
-apply explicit **artistic** line selection/weight/curve rules. A mesh's every edge is not a line.
-**Exit:** line-only renders read correctly without colour and without a depth-debug overlay; the
-same object does not acquire accidental seams merely because its support is tessellated.
+### R2 — Responsive components and pose variation
 
-## S3 — Colour, style and withdrawal
+- **Visible work/capability:** a coherent multi-pose illustration/contact sheet of an upper-body figure showing hand/arm pose and hair or clothing response, with stable component identity and plausible attachment.
+- **Method and transfer:** extend R1 accepted construction using useful vendor continuous-time/response, local deformation and semantic renderer ideas; compare fixed/static and responsive variants across an awkward contact plus changed proportions. Distinguish motion as a construction test from video production.
+- **User sees:** a small set of genuinely varied, readable poses and a clearly comparable successful/failure case.
+- **Independent gates:** separate attachment/pose, non-intersection, depth visibility, visual consistency/readability, and reproducibility reviews on actual images; user feedback gate after delivery.
+- **Dependencies/reuse:** accepted R1 rules and current spatial support/depth; do not assume arbitrary collision solver or vendor painter-order visibility.
+- **Scope/non-goals:** a bounded pose set, not a film, audio/beat pipeline, full animation engine or generated assets.
+- **Exit:** changed pose/parameters produce coherent shape without per-frame hand editing; contact and attachment remain plausible; intersection and occlusion gates each pass; visual identity survives variants; final images/reproduction evidence are hashed and reviewed.
+- **Risk/alternative:** if responsive rules create implausible intersections, use a simpler explicitly supported motion range or keep the artwork static while preserving the same pose-variation/readability result; never call hidden collisions acceptable. Replan after two distinct rule hypotheses.
 
-Paint the components in their local 2D coordinates; style visible line/fill output. Test another
-pose/subject, then a reference-free prompt with a smaller VLM. **Exit:** structural correctness
-transfers beyond the original target, followed by visual review of finish. Whole-artifact baseline
-promotion remains a separate blind preference decision, never a metric optimization.
+### R3 — Reference-based composition and imitation
 
-## Stop conditions
+- **Visible work/capability:** a readable, composed character illustration modeled from the designated reference, built from accepted semantic components (head, torso, arms/hands, clothing, hair, accessories) with front/three-quarter views or another justified view pair.
+- **Method and transfer:** systematically apply accepted vendor methods from the coverage map, including visual grammar/focal hierarchy, scene/pose organization, component renderer/material process when structure supports it, and useful quality/review methods. Compare reference-led construction with a variation in pose/proportion/camera; retain source attribution and migration evidence. No tracing as endpoint.
+- **User sees:** the actual reference-inspired image plus a materially varied version, readable as one intentional composition.
+- **Independent gates:** construction/attachment and collision; depth-derived visibility; whole-image visual/art review and line-versus-colour structure review; reference-free deterministic re-render; component variation. Human feedback is an explicit gate.
+- **Dependencies/reuse:** R1/R2 accepted methods, spatial architecture; legacy M4j and Ex32 remain historical controls, not accepted components or required starting scaffold.
+- **Scope/non-goals:** one bounded character/composition; no promise of exact reference reconstruction, no hand-entered dense contours, no baseline promotion without its separate gate.
+- **Exit:** composition is independently readable and coherent, variants preserve identity, all three acceptance dimensions separately documented, reference absent for reproduction, final review passes. Present and pause for user response.
+- **Risk/alternative:** reference ambiguity is recorded and resolved as an explicit plausible interpretation, not false recovered 3D truth. If composition is too complex, reduce secondary detail while preserving the core figure, pose, attachment and art quality.
 
-Park rather than guess if (1) expression requires a flood of manual coordinates or visibility
-exceptions, (2) the next change cannot be justified structurally, or (3) reviewers cannot see or
-resolve the relevant distinction. Record artifact, evidence, blocker and next experiment in `STATUS.md`.
+### R4 — Transfer to new subjects and original creation
+
+- **Visible work/capability:** a bounded portfolio of frozen tasks: a held-out reference imitation, a substantial variation/transfer to a different subject or proportions, and a reference-free original illustration from a short intent brief (culminating in a Starry-Night-like composition challenge only when prior results justify it).
+- **Method and transfer:** combine methods with evidence of reuse across distinct cases; compare held-out reference and original composition, preserve alternatives/failures, avoid target leakage and pixel tuning. Vendor map dispositions may evolve with evidence.
+- **User sees:** the actual task-group artworks, including reference-free original, not a claim of universal mastery.
+- **Independent gates:** each artifact gets appropriate construction/collision, depth visibility, visual/art review and reproducibility; fresh ordinary-model transfer may be tested only with capability-qualified visual access and frozen payload/tasks. User judges the resulting bounded body of work.
+- **Dependencies/reuse:** only reviewed reusable rules from earlier user-accepted slices; no assertion old S1a transfer passed.
+- **Scope/non-goals:** frozen, finite representative task set; no claim of universal drawing ability, no metric threshold as art verdict, no image-generation service.
+- **Exit:** each predeclared task has inspectable authored output and reproduction record; independent reviewers can identify what methods transferred and where they fail; reference-free task is independently judged as a coherent original image; all results presented for user feedback. This is bounded evidence, not proof of universal mastery.
+- **Risk/alternative:** if transfer fails, diagnose missing construction/visual rule and return to an appropriate visible slice; do not rescue the frozen answer and call it transfer. If capability/modality unavailable, report unverified, preserve artifacts and defer that gate.
+
+## Work-package and autonomy contract
+
+Each milestone is decomposed into cohesive WPs by category: (a) source/method study and migration card; (b) semantic construction/geometry; (c) rendering/art direction; (d) independent structure/geometry/depth proof; (e) visual experience/reproduction proof; (f) integration and user-ready delivery. Categories are a coverage checklist, not mandatory one-file tasks. Define complete coverage before dispatch.
+
+For each WP record objective, source inputs, exact outputs and acceptance, exclusive artifact/file ownership, interfaces, dependencies and genuinely parallel seams, exclusions, owner, integrator and reviewer. Shared scene contracts/render artifacts have one writer. Construction can run alongside source study only on stable interfaces; geometry, depth and experience checks consume the same final revision/artifact; integrate before whole-slice review. A single writer maintains tightly coupled roadmap/coverage-map facts; do not split simultaneous writers across this seam.
+
+Integration owner binds source/artifact/evidence hashes and commands to final revision. Fresh independent reviewer checks all milestone artifacts and consistency; visual reviewer must actually inspect images and establish sight capability. Human/user acceptance follows presentation and is not delegated or inferred. Preserve failures and prior evidence. Per milestone allow at most two distinct structural approaches; after no useful evidence or limit, stop, document unresolved outcome and replan at product-goal level, never silently reduce acceptance. No attempt cap makes failure a PASS.
+
+Workers autonomously select vendor methods, implementation details, work split and low-level alternatives inside this contract. They cannot waive user feedback gates, redefine art acceptance, claim unrun visual/experience evidence, change locked architecture/authority, or use runtime work as the product. Routine internal choices do not go to user.
+
+## Historical mapping and current state
+
+Old S0 bounded visibility geometry is a technical result, not an artwork milestone. Old S1a construction teaching artifact was independently accepted only as code/method artifact; S1a perception/readability and transfer remain OPEN/UNRUN. Ex32 is old scaffold pose rotation and local attachment repair, not a human/figure PASS. Old S1b/S2/S3 labels do not map to passed new milestones. Preserve all original records/evidence; do not repair old drawing iterations. Detailed vendor coverage is in [`vendor-learning-map.md`](vendor-learning-map.md). Current entry and blockers are in STATUS.

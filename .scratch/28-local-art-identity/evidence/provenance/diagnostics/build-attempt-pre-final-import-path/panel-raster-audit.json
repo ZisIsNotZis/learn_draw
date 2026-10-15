@@ -1,0 +1,141 @@
+{
+  "panels": [
+    {
+      "case_id": "primary-dplus",
+      "dimensions": [
+        420,
+        320
+      ],
+      "nonblank": true,
+      "path": ".scratch/28-local-art-identity/evidence/panels/primary-dplus--SIDE_DEPENDENT.png",
+      "pixel_margins": [
+        159,
+        132,
+        159,
+        132
+      ],
+      "policy": "SIDE_DEPENDENT",
+      "sha256": "6caf318ca5f1f53dfcb75ed0a4b079bc3c57e904cb77ebc399ef81b43bcac201"
+    },
+    {
+      "case_id": "primary-dplus",
+      "dimensions": [
+        420,
+        320
+      ],
+      "nonblank": true,
+      "path": ".scratch/28-local-art-identity/evidence/panels/primary-dplus--SHARED_FIXED_LOCAL.png",
+      "pixel_margins": [
+        159,
+        132,
+        159,
+        132
+      ],
+      "policy": "SHARED_FIXED_LOCAL",
+      "sha256": "b9f89a2a72dc80595322295a1676176a4f213500e47e4ea88f4bcf9de7a903a2"
+    },
+    {
+      "case_id": "variation-2pi3-dplus",
+      "dimensions": [
+        420,
+        320
+      ],
+      "nonblank": true,
+      "path": ".scratch/28-local-art-identity/evidence/panels/variation-2pi3-dplus--SIDE_DEPENDENT.png",
+      "pixel_margins": [
+        144,
+        128,
+        144,
+        128
+      ],
+      "policy": "SIDE_DEPENDENT",
+      "sha256": "0c7f8c9978b23fccada5dbaf98866ac449573d70bb15732b299400052da1f67f"
+    },
+    {
+      "case_id": "variation-2pi3-dplus",
+      "dimensions": [
+        420,
+        320
+      ],
+      "nonblank": true,
+      "path": ".scratch/28-local-art-identity/evidence/panels/variation-2pi3-dplus--SHARED_FIXED_LOCAL.png",
+      "pixel_margins": [
+        144,
+        128,
+        144,
+        128
+      ],
+      "policy": "SHARED_FIXED_LOCAL",
+      "sha256": "6c730cf70fa4301506737770be0f4a3094f9ca1c9bc71e8145b76676bcbc85d3"
+    },
+    {
+      "case_id": "negative-dminus",
+      "dimensions": [
+        420,
+        320
+      ],
+      "nonblank": true,
+      "path": ".scratch/28-local-art-identity/evidence/panels/negative-dminus--SIDE_DEPENDENT.png",
+      "pixel_margins": [
+        159,
+        143,
+        159,
+        143
+      ],
+      "policy": "SIDE_DEPENDENT",
+      "sha256": "92c0012752709212281b5ba653caa7fa088e473e9038e12d6548932f06fa1e46"
+    },
+    {
+      "case_id": "negative-dminus",
+      "dimensions": [
+        420,
+        320
+      ],
+      "nonblank": true,
+      "path": ".scratch/28-local-art-identity/evidence/panels/negative-dminus--SHARED_FIXED_LOCAL.png",
+      "pixel_margins": [
+        159,
+        143,
+        159,
+        143
+      ],
+      "policy": "SHARED_FIXED_LOCAL",
+      "sha256": "1e7292be02b4b36fe0cbd091bc0dcd2059d2d6f25bb9f44eb74d5cf380a76881"
+    },
+    {
+      "case_id": "card-dplus",
+      "dimensions": [
+        420,
+        320
+      ],
+      "nonblank": true,
+      "path": ".scratch/28-local-art-identity/evidence/panels/card-dplus--SIDE_DEPENDENT.png",
+      "pixel_margins": [
+        159,
+        129,
+        159,
+        129
+      ],
+      "policy": "SIDE_DEPENDENT",
+      "sha256": "9b95b9bad928845d7b54faa7c6fba8e4695ce1dee28bf6517b474a110e184cc4"
+    },
+    {
+      "case_id": "card-dplus",
+      "dimensions": [
+        420,
+        320
+      ],
+      "nonblank": true,
+      "path": ".scratch/28-local-art-identity/evidence/panels/card-dplus--SHARED_FIXED_LOCAL.png",
+      "pixel_margins": [
+        159,
+        129,
+        159,
+        129
+      ],
+      "policy": "SHARED_FIXED_LOCAL",
+      "sha256": "fac077bc575af6e184b489c8f5671ed6c0ffb742bb73a040453bdee73f62a892"
+    }
+  ],
+  "schema": "local-art-identity-panel-raster-audit/v1"
+}

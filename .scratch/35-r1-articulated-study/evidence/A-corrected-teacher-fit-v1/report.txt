@@ -1,0 +1,20 @@
+art:    .scratch/35-r1-articulated-study/evidence/A-corrected-teacher-fit-v1/artwork-a.svg
+bundle: .scratch/35-r1-articulated-study/evidence/A-corrected-teacher-fit-v1/check-a
+
+images (feed these, and nothing else):
+  .scratch/35-r1-articulated-study/evidence/A-corrected-teacher-fit-v1/check-a/side-by-side.png  -- whole frame, ref beside draft
+  .scratch/35-r1-articulated-study/evidence/A-corrected-teacher-fit-v1/check-a/draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale)
+  .scratch/35-r1-articulated-study/evidence/A-corrected-teacher-fit-v1/check-a/region-1.png  -- worst-region #1 at (128,192,64,64) mean-dist 134, 2.0x
+  .scratch/35-r1-articulated-study/evidence/A-corrected-teacher-fit-v1/check-a/region-2.png  -- worst-region #2 at (192,0,64,64) mean-dist 130, 2.0x
+  .scratch/35-r1-articulated-study/evidence/A-corrected-teacher-fit-v1/check-a/region-3.png  -- worst-on-drawn #3 at (0,0,64,64) mean-dist 125, 2.0x
+
+metrics (breakage alarm only, never a target): {'precision': 0.313, 'recall': 0.121, 'edge_f1': 0.174, 'color_dist': 87.4, 'coverage': 0.412}
+vs recorded best: edge_f1 0.164 -> 0.174 (+0.010) | coverage 0.571 -> 0.412 (-0.159) | precision 0.335 -> 0.313 (-0.022) | recall 0.108 -> 0.121 (+0.013) | color_dist 59.6 -> 87.4 (+27.800)   [best recorded 2026-09-15: /home/z/vibe/learn_draw/.scratch/13-assembly/evidence/m2-final.png]
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.

@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "question": "Does one modest transverse camber make the same two-sided ribbon turn more legibly when route, twist, attachment, palette, cameras, and local stripe remain fixed?",
+  "support_family": "parabolic-transverse-section-v1",
+  "frozen_camber": 0.35,
+  "camber_meaning": "dimensionless rise coefficient multiplying the sin^2(pi*u) envelope; frozen before any candidate image",
+  "sampling": {
+    "u_intervals": 48,
+    "v_intervals": 6,
+    "flat_and_curved_identical": true,
+    "selected_convergence_case": {"u_intervals": 96, "v_intervals": 12}
+  },
+  "sources": {
+    "family_cases": {
+      "path": ".scratch/19-ribbon-family/work/cases.json",
+      "sha256": "bd2732b806de26cc2d8a261be68e8f30e21e1f8f8bd5301556d85241a8bc5800"
+    },
+    "failed_learner": {
+      "path": ".scratch/19-ribbon-family/learner/gentle-s-ribbon.json",
+      "sha256": "dd995ab1d1cced202a63092263d489597339ae18d2ea761e77408c5b41e8455c"
+    },
+    "old_ribbon_generator": {
+      "path": "scripts/ribbon_family.py",
+      "sha256": "015ec14ec90da5768dbcdd9486220d3971c55673f0944971ccb3a8a47662bd3e"
+    },
+    "visibility_resolver": {
+      "path": "scripts/vector_visibility.py",
+      "sha256": "6cea919d0c83b1c4ebb9b3ec3379854c910e2758610b449c036c25c9ce8e1ada"
+    }
+  },
+  "cameras": [
+    {"name": "front", "yaw": 0, "pitch": 0},
+    {"name": "oblique", "yaw": 38, "pitch": 22}
+  ],
+  "cases": [
+    {
+      "name": "positive-half-twist-front",
+      "condition": "primary-existing-spec",
+      "source": {"path": ".scratch/19-ribbon-family/work/cases.json", "case_name": "twisted-two-sided"},
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "ribbon": {
+        "name": "twisted-two-sided", "length": 3.0, "width": 0.36,
+        "tip_ratio": 1.0, "bend": 0.42, "depth": 0.12,
+        "twist": 3.141592653589793, "family": "arch",
+        "origin": [-1.5, 0.0, 0.0], "heading": 0.0,
+        "front": "#e68aa4", "back": "#7188bd", "segments": 40
+      },
+      "camera": {"name": "front", "yaw": 0, "pitch": 0},
+      "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+    },
+    {
+      "name": "positive-half-twist-oblique",
+      "condition": "primary-existing-spec",
+      "source": {"path": ".scratch/19-ribbon-family/work/cases.json", "case_name": "twisted-two-sided"},
+      "source_spec_sha256": "23c2156b82b501f4be5c4a23005f0c3e0eb387a397ff408f17e576f564747618",
+      "ribbon": {
+        "name": "twisted-two-sided", "length": 3.0, "width": 0.36,
+        "tip_ratio": 1.0, "bend": 0.42, "depth": 0.12,
+        "twist": 3.141592653589793, "family": "arch",
+        "origin": [-1.5, 0.0, 0.0], "heading": 0.0,
+        "front": "#e68aa4", "back": "#7188bd", "segments": 40
+      },
+      "camera": {"name": "oblique", "yaw": 38, "pitch": 22},
+      "camera_sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e"
+    },
+    {
+      "name": "failed-learner-negative-half-twist-front-regression-only",
+      "condition": "untouched-failed-learner-regression-only",
+      "source": {"path": ".scratch/19-ribbon-family/learner/gentle-s-ribbon.json"},
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "input_file_sha256": "dd995ab1d1cced202a63092263d489597339ae18d2ea761e77408c5b41e8455c",
+      "ribbon": {
+        "name": "gentle-s-ribbon", "length": 4.0, "width": 0.4,
+        "tip_ratio": 0.3333333333333333, "bend": 0.7, "depth": 0.45,
+        "twist": -3.141592653589793, "family": "s-curve",
+        "origin": [0.5, -0.25, 0.2], "heading": 0.5235987755982988,
+        "front": "#e6a64b", "back": "#395d8f", "segments": 48
+      },
+      "camera": {"name": "front", "yaw": 0, "pitch": 0},
+      "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4",
+      "claim_limit": "regression-only; this answer is not modified or relabelled as a learner pass"
+    },
+    {
+      "name": "failed-learner-negative-half-twist-oblique-regression-only",
+      "condition": "untouched-failed-learner-regression-only",
+      "source": {"path": ".scratch/19-ribbon-family/learner/gentle-s-ribbon.json"},
+      "source_spec_sha256": "da7ef1959948d103cf070e42147d61762a8df9eadfc7e6da4cd2ef0e66edf355",
+      "input_file_sha256": "dd995ab1d1cced202a63092263d489597339ae18d2ea761e77408c5b41e8455c",
+      "ribbon": {
+        "name": "gentle-s-ribbon", "length": 4.0, "width": 0.4,
+        "tip_ratio": 0.3333333333333333, "bend": 0.7, "depth": 0.45,
+        "twist": -3.141592653589793, "family": "s-curve",
+        "origin": [0.5, -0.25, 0.2], "heading": 0.5235987755982988,
+        "front": "#e6a64b", "back": "#395d8f", "segments": 48
+      },
+      "camera": {"name": "oblique", "yaw": 38, "pitch": 22},
+      "camera_sha256": "5681f01003e73dafb46e1e7093bd825f0814d0c603df3f10414ae494dca23c3e",
+      "claim_limit": "regression-only; this answer is not modified or relabelled as a learner pass"
+    },
+    {
+      "name": "untwisted-teaching-arch-front-control",
+      "condition": "negative-control-and-root-width-check",
+      "source": {"path": ".scratch/19-ribbon-family/work/cases.json", "case_name": "teaching-arch"},
+      "source_spec_sha256": "f14e326804cc536214e0ae17993c43cbf5b1784fcb0ad55db2b4310f4b136b88",
+      "ribbon": {
+        "name": "teaching-arch", "length": 3.0, "width": 0.36,
+        "tip_ratio": 1.0, "bend": 0.42, "depth": 0.12,
+        "twist": 0.0, "family": "arch",
+        "origin": [-1.5, 0.0, 0.0], "heading": 0.0,
+        "front": "#e68aa4", "back": "#7188bd", "segments": 40
+      },
+      "camera": {"name": "front", "yaw": 0, "pitch": 0},
+      "camera_sha256": "5159d420a1d4d2084baeb08ccd12c1d0406492a701c90e4410211d47f11703d4"
+    }
+  ],
+  "render_contract": {
+    "pairs": [0.0, 0.35],
+    "artwork": "unchanged base front/back fill plus existing longitudinal stripe",
+    "ink": "none",
+    "framing": "each flat/curved pair fits the union of both support geometries, then uses that identical transform",
+    "board": "labelled and unlabelled; all five frozen case/camera rows; no answer arrows"
+  }
+}
