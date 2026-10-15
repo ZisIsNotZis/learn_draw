@@ -3,6 +3,7 @@ __pycache__/
 .tmp/
 .pi/
 .pi-glla/
+.agents/
 
 # Common local caches and temporary workspaces
 node_modules/
