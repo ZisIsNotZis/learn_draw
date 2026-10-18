@@ -49,6 +49,17 @@ CROWN_DEPTH = 0.18           # behind the head (head is 0.30)
 FALL_DEPTH = 0.52            # in front of the shoulders (sleeves are 0.30)
 TWIST_START = 0.48           # the quarter turn happens here, above the frame
 TWIST_SPAN = 0.10
+# The mass reaches the face where the sheet passes it.  A sheet attached at the head
+# cannot leave background showing between its edge and the face: at this route the edge
+# ran up to 39 px short of the face field's left boundary at the temple and 6 px short of
+# its right boundary where the sheet crosses in front of the face, enclosing two
+# background islands (measured on the v6 render: 1019 px2 and 17 px2).  The sheet is a
+# strip of one symmetric half width, so half of each reach comes from moving the spine
+# toward the face and half from growing the width: the outer edge keeps its position.
+# Each row is (route fraction, half window, px of reach at the peak), not a coordinate.
+FACE_REACH = ((0.39, 0.065, 44.0),     # the temple, left of the face field
+              (0.62, 0.050, 14.0))     # the cross in front of the face, above the jaw
+FACE_REACH_SPINE_SHARE = 0.5
 STEPS = 6
 
 
@@ -76,6 +87,16 @@ def _curl(t: float, shoulder_t: float) -> float:
     return CURL_AMPLITUDE * math.sin(math.pi * (t - lo) / (hi - lo))
 
 
+def _reach(t: float) -> float:
+    """Px the mass reaches toward the face at this route fraction: the sum of the pulses."""
+    total = 0.0
+    for centre, half_window, amount in FACE_REACH:
+        lo, hi = centre - half_window, centre + half_window
+        if lo < t < hi:
+            total += amount * math.sin(math.pi * (t - lo) / (hi - lo))
+    return total
+
+
 def _spine_factory():
     dense = _base_route()
     count = len(dense) - 1
@@ -98,14 +119,23 @@ def _spine_factory():
             offset = _curl(t, shoulder_t)
             x += (-dy / length) * offset
             y += (dx / length) * offset
+            # toward the face: the opposite normal, so the mass reaches the head there
+            reach = FACE_REACH_SPINE_SHARE * _reach(t)
+            x += (dy / length) * reach
+            y += (-dx / length) * reach
         return (x, y)
 
     return spine, shoulder_t
 
 
 def half_width(t: float) -> float:
-    """A tapered terminal, a maximum beside the face, and variation along the route."""
-    return WIDTH_TIP + (WIDTH_MAX - WIDTH_TIP) * math.sin(math.pi * min(1.0, max(0.0, t))) ** 0.6
+    """A tapered terminal, a maximum beside the face, and variation along the route.
+
+    The face reach is added here, so the generator owns the reach and no station table
+    is hand-typed: the sheet meets the face instead of stopping short of it.
+    """
+    base = WIDTH_TIP + (WIDTH_MAX - WIDTH_TIP) * math.sin(math.pi * min(1.0, max(0.0, t))) ** 0.6
+    return base + (1.0 - FACE_REACH_SPINE_SHARE) * _reach(t)
 
 
 def depth(t: float) -> float:

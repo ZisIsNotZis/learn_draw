@@ -50,25 +50,59 @@ class TwoSleeveTest(unittest.TestCase):
         self.assertEqual(4, len(supports), msg="each piece must sit on its own support")
 
     def test_second_cuff_is_authored_whole(self):
-        """The second cuff keeps its whole authored area and shows almost none of it.
+        """The second cuff keeps its whole authored area and shows a small band of it.
 
-        The previous version of this test ended on `assertGreaterEqual(visible, 0.0)`,
-        an absolute area against zero, which no geometry can fail (B2 of the v6
-        closeout).  The measurements below move in opposite directions on purpose: the
-        authored area must exist, and the surviving area must be a small fraction of
-        it.  A cuff drawn small, or a cuff nothing occludes, fails this test.
+        The v6 version of this test ended on `assertLess(visible, authored * 0.01)`: it
+        asserted the cuff was *entirely* hidden, which is what the user rejected.  The
+        claim checked here is the requirement instead — the cuff is authored whole and a
+        small fraction of the first cuff's area survives in front of it, measured against
+        the first cuff because that is the ratio the reference fixes (17 %, `24x21` px
+        against the right band's 2036 px).  `test_the_small_cuff_band_rejects_both_failures`
+        holds the band's two ends against the two ways of losing it.
         """
         cuff = self.parts["A-left-cuff"]
         authored = outline_area(cuff)
         visible = visible_area(self.faces, cuff.name)
+        fraction = visible / outline_area(self.parts["A-right-cuff"])
+        print(f"\nsecond cuff: authored {authored:.1f} px2, visible {visible:.2f} px2, "
+              f"{fraction * 100:.1f} % of the first cuff's {outline_area(self.parts['A-right-cuff']):.1f} px2")
         self.assertGreater(authored, 100.0,
                            msg=f"the second cuff has almost no authored extent ({authored:.3f} px2)")
-        # At this revision the authored cuff lies entirely behind the bow and the hair
-        # fall, so its surviving extent is ~0: an occlusion result, not an authored cut,
-        # and test_second_cuff_extent_is_a_depth_result proves the whole shape exists.
-        self.assertLess(visible, authored * 0.01,
-                        msg=f"the second cuff is not occluded: {visible:.3f} px2 of "
-                            f"{authored:.1f} authored px2 survive")
+        self.assertGreaterEqual(fraction, 0.10,
+                                msg=f"the second cuff is too occluded to read: {visible:.2f} px2 "
+                                    f"= {fraction * 100:.1f} % of the first cuff (< 10 %)")
+        self.assertLessEqual(fraction, 0.25,
+                             msg=f"the second cuff is not small and partly covered: "
+                                 f"{fraction * 100:.1f} % of the first cuff (> 25 %)")
+
+    def test_the_small_cuff_band_rejects_both_failures(self):
+        """Mutation pair for the band above: hidden fails it, exposed fails it too.
+
+        Both mutations move the same numbers the delivered test reads, so the band
+        cannot pass on a cuff nothing occludes and cannot pass on a cuff that is not
+        there.  Neither mutation touches the authored geometry: the hidden one slides the
+        cuff back to the position the v6 revision authored ((95,263), i.e. +14,+8 in the
+        plane), where the hair fall and the bow hide it completely; the exposed one drops
+        the front cloth, exactly as the wholeness ablation does.
+        """
+        first_cuff = outline_area(self.parts["A-right-cuff"])
+        delivered = visible_area(self.faces, "A-left-cuff") / first_cuff
+        hidden_faces = tuple(
+            (tuple((x + 14.0, y + 8.0, z) for x, y, z in tri), color, name)
+            if name == "A-left-cuff" else (tri, color, name)
+            for tri, color, name in self.faces)
+        hidden = visible_area(hidden_faces, "A-left-cuff") / first_cuff
+        exposed_faces = tuple(face for face in self.faces
+                              if face[2] not in ("A-bow-ribbon", "A-hair-sheet"))
+        exposed = visible_area(exposed_faces, "A-left-cuff") / first_cuff
+        print(f"\nband {0.10:.2f}..{0.25:.2f}: delivered {delivered:.3f}, "
+              f"at the v6 coordinate {hidden:.3f}, front cloth lifted {exposed:.3f}")
+        self.assertGreaterEqual(delivered, 0.10)
+        self.assertLessEqual(delivered, 0.25)
+        self.assertLess(hidden, 0.10,
+                        msg=f"a cuff under the hair fall and the bow still clears the band ({hidden:.3f})")
+        self.assertGreater(exposed, 0.25,
+                           msg=f"a cuff nothing occludes stays inside the band ({exposed:.3f})")
 
     def test_second_cuff_extent_is_a_depth_result(self):
         """Lift every cloth piece in front of the cuff and the same authored geometry

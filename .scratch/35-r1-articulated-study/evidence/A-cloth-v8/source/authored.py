@@ -87,7 +87,7 @@ LANDMARKS = {
     },
     "sleeve": {
         "A-right-sleeve": (("C", (362.0, 300.0)),),
-        "A-left-sleeve": (("C", (95.0, 263.0)),),
+        "A-left-sleeve": (("C", (81.0, 271.0)),),
     },
 }
 

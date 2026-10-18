@@ -26,7 +26,13 @@ from .frames import (Anchor, ClothEdge, PartFrame, PlanarPart, Point, align_dept
 RIGHT = dict(cuff_xy=(362.0, 300.0), shoulder_radius=29.0, cuff_radius=20.0, fullness=16.0,
              cap_height=34.0, skew=3.5, palette="#e2e2d7", seat_t=0.0, seat_left_side=True,
              z=0.30, grad=(-0.0003, -0.0004), band_depth=13.0, seat_anchor="shoulder_left")
-LEFT = dict(cuff_xy=(95.0, 263.0), shoulder_radius=24.0, cuff_radius=12.0, fullness=11.0,
+# The second cuff's centre is the one authored coordinate of the left sleeve.  It sits
+# under the left hair fall and the bow's left tail, and the user's requirement is that
+# the second sleeve is "not invisible, it's just small, partially covered": the cuff is
+# authored whole and its *position* puts part of it clear of both pieces, so the wedge
+# the camera sees is depth's output.  (Measured: 88.4 px^2 visible = 16.4 % of the first
+# cuff's 539.5 px^2, against the reference's 17 %.)
+LEFT = dict(cuff_xy=(81.0, 271.0), shoulder_radius=24.0, cuff_radius=12.0, fullness=11.0,
             cap_height=22.0, skew=2.0, palette="#e2e2d7", seat_t=0.16, seat_left_side=False,
             z=0.30, grad=(0.0001, -0.0003), band_depth=13.0, seat_anchor="left_seat")
 CUFF_FILL = "#29354d"
