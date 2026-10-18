@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import re
 import sys
+from collections import Counter
 import unittest
 from pathlib import Path
 
@@ -47,6 +48,22 @@ class HairSheetTest(unittest.TestCase):
         self.assertIn(hair.OUTSIDE_FILL, fills)
         self.assertIn(hair.INSIDE_FILL, fills,
                       msg="the inside of the sheet is not visible anywhere")
+
+    def test_the_twist_is_what_turns_the_sheet_over(self):
+        """Remove the twist and the mint must all but vanish: the reverse side is a
+        twist result, not the route's hairpin self-overlap seen through a gap."""
+        authored = hair.twist
+        turned = Counter(fill for _t, fill, _n in self.part.faces())[hair.INSIDE_FILL]
+        try:
+            hair.twist = lambda t: 0.0
+            flat = assemble.build()["parts"]["A-hair-sheet"]
+            untwisted = Counter(fill for _t, fill, _n in flat.faces())[hair.INSIDE_FILL]
+        finally:
+            hair.twist = authored
+        self.assertGreater(turned, 0, msg="the authored sheet never shows its reverse side")
+        self.assertGreater(turned, 10 * max(untwisted, 1),
+                           msg=f"removing the twist barely changes the reverse side "
+                               f"({turned} faces turned, {untwisted} with no twist)")
 
     def test_sheet_is_curved_in_depth(self):
         depths = [point[2] for row in self.part.grid for point in row]

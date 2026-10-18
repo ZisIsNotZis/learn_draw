@@ -1,6 +1,6 @@
 {
-  "candidate": "A-cloth-v5",
-  "milestone": "R1 M1a (A track, observed clothing imitation only)",
+  "candidate": "A-cloth-v6",
+  "milestone": "R1 M1a repair round 1 (A track, observed clothing and head boundary only)",
   "canvas": [
     400,
     480
@@ -14,64 +14,59 @@
       900,
       800
     ],
-    "crop_sha256": "52e01f5e75e5d98fcd9a0a4c63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+    "crop_sha256": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
     "engine_reads_reference_at_build_time": false
   },
   "files": [
     {
       "path": "README.md",
-      "sha256": "d7652edb2e28292054140a7a968819e2c00e305862cc2350a1a9e897f6edda16",
-      "bytes": 11016
+      "sha256": "477b48b06bbe50d57f3ee17b86af5b6a77355b6402fada1542ebe5126078ce20",
+      "bytes": 15132
     },
     {
       "path": "artwork-a.png",
-      "sha256": "49db5ca84cd9eeaf31bf709fd8124332e69e8fb9bd32e3f3759da99a7e085343",
-      "bytes": 64673
+      "sha256": "426e9e66fb99b713578f735222b4daf696e0d5e93bce1eb936290f071c26e3a6",
+      "bytes": 64073
     },
     {
       "path": "artwork-a.svg",
-      "sha256": "8d1c7e5907031d8b71ed514b3a1b3893affd0143e9fb17a53a396b6ebd463eb4",
-      "bytes": 431411
+      "sha256": "d54bca51e8f0ff90847f300e1d9dbf24d4d2d882990e0354e3986d43c8284a98",
+      "bytes": 501414
     },
     {
       "path": "check-a/draft-fullres.png",
-      "sha256": "49db5ca84cd9eeaf31bf709fd8124332e69e8fb9bd32e3f3759da99a7e085343",
-      "bytes": 64673
+      "sha256": "426e9e66fb99b713578f735222b4daf696e0d5e93bce1eb936290f071c26e3a6",
+      "bytes": 64073
     },
     {
       "path": "check-a/draft.png",
-      "sha256": "17fd607230c900de4f79bc6ba1ee67652cbd0b57028e9b43c1f46f6db59979e9",
-      "bytes": 54098
+      "sha256": "793c70845cc5160b2942a9d0671c7410936d71ddcde244a4494f710d8a450404",
+      "bytes": 53595
     },
     {
       "path": "check-a/region-1.png",
-      "sha256": "aeec3574ca2beb516603e91f1441730d8e76aa1bc6e367a9d38bad50f8b9f6d0",
-      "bytes": 69203
+      "sha256": "49787085df9599f983410829a2dc2026137a5bc06377f403a5ce8af95a9dd363",
+      "bytes": 67884
     },
     {
       "path": "check-a/region-2.png",
-      "sha256": "05dc4bb7cf3d8ca1b7789637c670401f1bf04906dd2ea2707d33656b9d1fda92",
-      "bytes": 74121
+      "sha256": "89aa820fc3461a2e7c57a7fbf7145bfbfd74c31d25c4b6a4a0cf95a98cdaf47c",
+      "bytes": 68768
     },
     {
       "path": "check-a/region-3.png",
-      "sha256": "631d6065433820e45046fa3f7be141b9f1596bee325847c2f11f16d70ca7e3d3",
-      "bytes": 71776
+      "sha256": "018bf2f93b67287c83a1c297c46ef76f986502796b76a88dd5086e80c0ab1ac2",
+      "bytes": 65706
     },
     {
       "path": "check-a/report.txt",
-      "sha256": "5d04a28ca75f3969b1dc8403e2e226a62b08eea26d372667f6ee97a6b4a43793",
+      "sha256": "55d317550eb403525a9d2bd820b2c2c3de25bc6c077ba99bc8bc86274dcb47f4",
       "bytes": 1647
     },
     {
-      "path": "check-a/review-image-list.txt",
-      "sha256": "04adca8428188b6f530335db840a581ded91eea9365c0663e0ded8d1525c84ea",
-      "bytes": 550
-    },
-    {
       "path": "check-a/side-by-side.png",
-      "sha256": "1143393e34f6793890a5b9fb2721f2abbb4d234415eae58f95c8fdc50a52ab40",
-      "bytes": 145473
+      "sha256": "e157af840d0d84589dd638d275c0994b780679d97c77dbc7968c0c15451a4f6f",
+      "bytes": 145108
     },
     {
       "path": "ref/crop-400x480.png",
@@ -99,19 +94,24 @@
       "bytes": 109234
     },
     {
+      "path": "repair-log.md",
+      "sha256": "19f39645b5a2bb4e935cb35d0eb6622318de333c9c150e346d764a59cec8b47b",
+      "bytes": 9496
+    },
+    {
       "path": "source/__init__.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "bytes": 0
     },
     {
       "path": "source/assemble.py",
-      "sha256": "02cf369a126340bfe4b4e7a22c5835361238372cc162945695f30c3b246af6f6",
-      "bytes": 8088
+      "sha256": "9c66f3ee342b43f53c4c67b4bd1f3210302a55d23a1290af474ccb1deb8fb098",
+      "bytes": 9278
     },
     {
       "path": "source/build-report.json",
-      "sha256": "b98a07b489760c20314f4f42da2ebd30e71ce03d92a6ceb77495e109a6124756",
-      "bytes": 2262
+      "sha256": "55284881ea865b7b5e52440e20462b08f26fb43f4596eafa8b5581610d7cf6f9",
+      "bytes": 2486
     },
     {
       "path": "source/build_a.py",
@@ -130,48 +130,53 @@
     },
     {
       "path": "source/parts/bodice.py",
-      "sha256": "fdcc7b6ede1a3f8999a0f678ed940ea6b7728fcef45d70da696163f8726c67ac",
-      "bytes": 7005
+      "sha256": "7a120d204a040c1c3a0a02ab83b2a0bb0d6cc37713b06baff05a50c2e635a46f",
+      "bytes": 6789
     },
     {
       "path": "source/parts/bow.py",
-      "sha256": "f43c3bb4bd6f10f92e3abbd0e7fb201dc40855d42607397fc459af00ae0801d4",
-      "bytes": 8186
+      "sha256": "6ae7f2d5cbdcf4dcee623b1f330a055edcee752e9aebf73c442fce792d2e6bed",
+      "bytes": 9719
     },
     {
       "path": "source/parts/collar.py",
-      "sha256": "ea0170d655defe127304136582c6a666a2821a564282008b2b5f0b28ca855ac7",
-      "bytes": 5435
+      "sha256": "c13d6b126277649bf2898dc3fc994c043811b7ebf0508e2deca17145162755ff",
+      "bytes": 5556
     },
     {
       "path": "source/parts/families.py",
-      "sha256": "ae62c3313b078c1ac8066023950a685116457efb8c313d9b19f96de6c56c78bd",
-      "bytes": 27689
+      "sha256": "d303de4dae58ad0f03e5417435fae069d5638e5a9c798e6cf11acd9d852e9d47",
+      "bytes": 32322
     },
     {
       "path": "source/parts/frames.py",
-      "sha256": "44f27b3d59d600d20288d52ec7211271cb9ed7b6b4c13a29e49df1e2553be4f7",
-      "bytes": 11950
+      "sha256": "8dc4f555369543d57acbe68e1c1124b927def03596bd1b29ee770f89b9b33503",
+      "bytes": 12748
     },
     {
       "path": "source/parts/hair.py",
-      "sha256": "0b021c68c6ce818cfa2fdcd5c4e260977086e0803a3317df4c98002236e6155d",
-      "bytes": 4470
+      "sha256": "2d5c65f4b63897c3205d53153665ecbfb3300d46cddccd6872ccd8ed9964c3c3",
+      "bytes": 6906
+    },
+    {
+      "path": "source/parts/head.py",
+      "sha256": "459f0a7564bedcd099cd297615411a6e2cabab5299a9213c4545d47b3750a582",
+      "bytes": 2898
     },
     {
       "path": "source/parts/skin.py",
-      "sha256": "e344aee55be656539e9b0431f259a1140f9264159f9150fadb7dabadaec160a3",
-      "bytes": 2454
+      "sha256": "a3487f07d72bbafe398f74409a237106602115155b7ef0c5619c5c953282021d",
+      "bytes": 2737
     },
     {
       "path": "source/parts/sleeve.py",
-      "sha256": "77384baad686b448d18cda9c36e4037fdb4b4070e88ae25d3399c08454b3067b",
-      "bytes": 5742
+      "sha256": "aab350e8001baf3e8ea2ed45ef40fa8b2b1fad575feb3c6e9895c3f156df2a16",
+      "bytes": 5586
     },
     {
       "path": "source/seam_contract.py",
-      "sha256": "3b7e5619ef45359952a064fb57ced6e78dcacfb7f29c92382d061e93d795a1f8",
-      "bytes": 7621
+      "sha256": "599addc72e3596185d7965601f529a367964b5016cfc1efdaea233f4af8381f8",
+      "bytes": 8422
     },
     {
       "path": "tests/__init__.py",
@@ -180,13 +185,13 @@
     },
     {
       "path": "tests/negative-control-output.txt",
-      "sha256": "e7727d26baf85242e7738660fa985b0b7b549da1617211a12083b7b983410528",
+      "sha256": "ae1ae6735f755ea7b62d609d606d06549be26bbce3eadd09a850b19025d2fd44",
       "bytes": 352
     },
     {
       "path": "tests/test_hair_two_sided.py",
-      "sha256": "eee101d441c9c1b214bd24747055ad207e79d6ae8e7bfe8009c2907f709f28a9",
-      "bytes": 2514
+      "sha256": "326aad255e33897e9c7451f228975310ced20fefbcf3a11810e5345e06c217d1",
+      "bytes": 3466
     },
     {
       "path": "tests/test_identity.py",
@@ -200,8 +205,8 @@
     },
     {
       "path": "tests/test_two_sleeves.py",
-      "sha256": "18db4511578f01bfda7b87b8021648ef113855ee88bfadbbd197a123573769c6",
-      "bytes": 3362
+      "sha256": "e2f8756b6af5aac0545dada17bddc3e09a6346b239e462597a50536d8dd1e7bc",
+      "bytes": 4094
     },
     {
       "path": "work-checkpoint.md",
@@ -216,9 +221,17 @@
   },
   "checks": {
     "build": "source/build_a.py (seam contract enforced; exits non-zero on a failed joint)",
-    "tests": "python -m unittest discover -s tests -t . (21 tests)",
-    "negative_control": "tests/negative-control-output.txt + tests/test_seam_contract.py",
-    "visual_bundle": "check-a/report.txt"
+    "tests": "python3 -m unittest discover -s tests -t . (22 tests)",
+    "negative_control": "tests/negative-control-output.txt (translation and depth controls)",
+    "visual_bundle": "check-a/report.txt",
+    "reproducible": "two builds into separate paths are byte-identical to artwork-a.svg"
+  },
+  "facts": {
+    "parts": 13,
+    "faces": 2018,
+    "visible_fill_regions": 15,
+    "declared_joints": 18,
+    "failed_joints": 0
   },
   "no_art_verdict": true
 }

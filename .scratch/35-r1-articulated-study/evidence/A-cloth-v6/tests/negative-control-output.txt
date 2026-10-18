@@ -1,4 +1,4 @@
-intact build: 16 declared joints, 0 failed
+intact build: 18 declared joints, 0 failed
 BROKEN: S1-collar-front | boundary gap 4.000000 > 1e-06
 BROKEN: S3-collar-right-root | boundary gap 4.000000 > 1e-06
 BROKEN: S5-skin-right-root | boundary gap 4.000000 > 1e-06
