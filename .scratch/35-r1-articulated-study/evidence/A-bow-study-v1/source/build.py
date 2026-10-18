@@ -25,6 +25,7 @@ from ribbon import depth_buffer, signed_area, visible_runs  # noqa: E402
 
 RAIL_SAMPLES = 620
 CREASE_SAMPLES = 13
+INFLATE = 0.8
 
 
 def _fmt(pts):
@@ -46,8 +47,19 @@ def resolve(break_depth=True):
         if abs(area) < 1e-6:
             continue
         forward = area < 0.0          # y grows downward, so a viewer-facing face sweeps negative
+        # Inflate by INFLATE px about the centroid before emitting: adjacent triangles share
+        # their vertices exactly, and the renderer's antialiasing otherwise leaves a
+        # background-coloured sliver between them (measured: fans of cracks at both folds,
+        # where the strip is edge-on and the triangles are long and thin).  The inflation
+        # moves each edge by <1 px and cannot change a triangle's winding.
+        cx, cy = pts[:, 0].mean(), pts[:, 1].mean()
+        grown = []
+        for p in pts:
+            dx, dy = p[0] - cx, p[1] - cy
+            n = math.hypot(dx, dy) or 1.0
+            grown.append((p[0] + INFLATE * dx / n, p[1] + INFLATE * dy / n))
         fills.append({
-            "points": [(p[0], p[1]) for p in pts],
+            "points": grown,
             "z": float(pts[:, 2].mean()),
             "face": "front" if forward else "back",
             "u0": st.u[tri[0][0]],
@@ -110,7 +122,7 @@ def svg(res):
         # renderer's antialiasing seam (measured: a radial fan across every lobe).  A
         # sliver narrower than the stroke is left unstroked: its long edges, drawn, are
         # themselves the fan (measured at the two folds before this guard).
-        stroke = (' stroke="%s" stroke-width="1.2"' % colour) if f["area"] >= 4.0 else ""
+        stroke = ' stroke="%s" stroke-width="2.6"' % colour
         out.append('<polygon class="face-%s" data-u0="%.4f" data-u1="%.4f" points="%s" '
                    'fill="%s"%s/>' % (f["face"], f["u0"], f["u1"], _fmt(f["points"]),
                                       colour, stroke))
