@@ -102,8 +102,8 @@
     },
     {
       "path": "tests/test_hand_construction.py",
-      "sha256": "5d79f8777621827ac312670b251a1aa034b48ba146c7c98ee1457e52c055d0cc",
-      "bytes": 23841
+      "sha256": "b760d294d59e8857025be5efe6ecbfb1d97e1df4ad35217afc85f59ae43c4482",
+      "bytes": 23997
     }
   ]
 }

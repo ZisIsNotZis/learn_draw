@@ -370,10 +370,8 @@ def test_control_differs_only_in_the_dish_displacement(baseline, control):
     # mutate one hand point by a millimetre and the single-variable claim must collapse
     nudged = {name: (shape.controls if name != "palm" else tuple(
         Point(p.u, p.v + 0.001) for p in shape.controls)) for name, shape in moved.items()}
-    def differing_under(map_under_test):
-        return {name for name in base
-                if base[name].controls != map_under_test[name].controls
-                or base[name].support.origin != map_under_test[name].support.origin}
+    def differing_under(controls_by_name):
+        return {name for name in base if base[name].controls != controls_by_name[name]}
     assert differing_under(nudged) == DISH_OBJECT | {"palm"}
     _expect_failure(lambda: assert_true(differing_under(nudged) == DISH_OBJECT),
                     "single-variable control")
