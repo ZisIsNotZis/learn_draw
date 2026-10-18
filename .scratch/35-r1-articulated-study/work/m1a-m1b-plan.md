@@ -2,7 +2,11 @@
 
 Owns: the approved milestone list to first level for this advance, the M1a/M1b writer work packages, the review work packages that follow each writer, and the integration step. It decides no product scope of its own: scope is the user's decisions recorded in [issue 54](../issues/54-user-review-scope-hair-and-hand.md), the public [task freeze](task-freeze.md) and the R1 section of [roadmap](../../../docs/drawing/roadmap.md).
 
-Status: M0 (this document and the roadmap fourth acceptance question) is delivered as documentation only. M1a and M1b writers are dispatched; no writer output has returned, so no milestone, review, integration or gate is complete. M2, M3 and M4 are not started.
+Status: M0 is delivered as documentation only. M1a and M1b each produced mechanically verified packages under the writer work packages below, but neither milestone's acceptance holds: no A or B image has passed an independent art/cohesion review, and the reviews of both rebuilds failed. No writer is dispatched now and no further art attempt is authorized until the user records his choice of model tier or scope; dispositions are in the [acceptance ledger](../evidence/acceptance-ledger.md) and [`STATUS.md`](../../../STATUS.md). M2, M3 and M4 are not started.
+
+## Budget rule (corrected after the harness limit was observed)
+
+The harness kills a child run at a hard 30-minute wall clock (1,800,000 ms, observed twice in this session; [principles](../../../docs/drawing/principles.md) P34, [method](../../../docs/drawing/method.md) section "Running the loop by delegation"). The budgets this document first carried — 120-minute writers with 100-minute checkpoints, 40-minute reviews — exceeded the run they budgeted and could not be honoured; every budget field below now names one harness stage, and a package that does not fit is either split into sequential stages each true at a cut or dispatched with an explicitly raised timeout stated in the dispatch. Source, renders, manifest and `check` bundle precede documentation so a kill leaves a smaller package rather than a false one.
 
 ## Authority and inputs
 
@@ -23,7 +27,7 @@ Each milestone is a user synchronisation point: the user sees the actual rendere
 - **Deliverable:** `.scratch/35-r1-articulated-study/evidence/A-cloth-v5/` — part library + assembly source, seam-contract test with negative control plus the hair/sleeve tests, `artwork-a.svg` and `artwork-a.png` at 400x480, a `scripts/draw check` bundle written under that directory, hash manifest, README with the object and seam inventory.
 - **Acceptance:** the package self-checks of the M1a work package below all pass, and two fresh independent reviews (image-only art/cohesion; structural/depth) both find no blocking defect on the frozen image list and revision. The writer awards no art verdict.
 - **Synchronisation point:** the user is shown the actual A v5 PNG with the review verdicts and the open items. No baseline promotion and no 2D-art resumption happens before his response.
-- **Status:** content decided by the user; writing in flight.
+- **Status:** content decided by the user; writer dispatched and returned; acceptance NOT met (see the writer work package below and the [acceptance ledger](../evidence/acceptance-ledger.md)).
 
 ### M1b — B hand rebuild at the detailed level
 
@@ -31,7 +35,7 @@ Each milestone is a user synchronisation point: the user sees the actual rendere
 - **Deliverable:** `.scratch/35-r1-articulated-study/evidence/B-hand-v2/` — hand primitive family + scene source, construction/contact tests, three-panel sheet SVG + PNG and per-panel PNGs, a reference-free `scripts/draw check` bundle written under that directory, hash manifest, README stating which contact claims are geometric consequences and which are author hypotheses.
 - **Acceptance:** the package self-checks of the M1b work package below pass, captions claim nothing the image does not show, and two fresh independent reviews (image-only art/cohesion; structural/depth and contact derivation) find no blocking defect.
 - **Synchronisation point:** the user is shown the actual three-panel sheet with the review verdicts and the contact-claim inventory.
-- **Status:** content decided by the user; writing in flight.
+- **Status:** content decided by the user; writer dispatched and returned; acceptance NOT met (see the writer work package below and the [acceptance ledger](../evidence/acceptance-ledger.md)).
 
 ### M2 — sealed reference-free drawing (blocked on user action)
 
@@ -65,7 +69,7 @@ M3 and M4 are derived from the roadmap's R1 exit contract (reproduction gate, th
 - **Scope:** `docs/drawing/roadmap.md` (fourth acceptance question), this plan, [issue 54](../issues/54-user-review-scope-hair-and-hand.md), `STATUS.md`.
 - **Exclusions:** no drawing code, no artwork, no evidence directory, no script, no `AGENTS.md`, no `principles.md` edit.
 - **Acceptance:** the roadmap lists the fourth question and no longer says three; this plan carries owners, acceptance and numeric budgets per work package; issue 54 records the advance; STATUS records the advance and points here; `git diff --check` is clean.
-- **Budget:** 40 minutes wall clock, hard stop.
+- **Budget:** 25 minutes wall clock, hard stop, inside the harness stage.
 - **Status:** delivered as documentation; the advance gate is the parent's check, not a self-verdict.
 
 ## M1a work package — A v5 writer
@@ -77,7 +81,9 @@ M3 and M4 are derived from the roadmap's R1 exit contract (reproduction gate, th
 - **Exclusions:** no hand or pose claim, no reference geometry outside the crop, no hand-drawn visibility cut or shortened outline for the second cuff, no third-party/vendor art reuse, no metric tuning, no edit of another package, no baseline promotion.
 - **Required properties:** one continuous bow ribbon with width continuous through the knot; two whole sleeves with the second cuff's visible extent produced by the existing depth computation; one head-attached two-sided curved hair sheet whose layout and twist are re-derived from the crop rather than copied from S1's untested twist; per-part family modules authored in their own (u,v) frames with named seam anchors; an enforced seam contract (coincident boundary within epsilon, shared tangent) with a negative control that demonstrably fails the test before restoration; a README object inventory stating the one connected thing each named object is, and any deliberate split.
 - **Acceptance (proved by command, art verdict excluded):** all package tests pass; the deliberately broken joint fails the seam test before restoration; both cuffs exist as components and the second one's visible extent is a depth result; the hair sheet has two distinct side fills; the bow strip's width is continuous through the knot; manifest hashes verify; the check bundle exists under the package directory.
-- **Budget:** 120 minutes wall clock from the first tool call; intermediate checkpoint written into the directory at 100 minutes; hard stop at 120. No-progress cap: two distinct geometry hypotheses per acceptance item, then stop and report rather than trying a third. The writer never extends its own allocation.
+- **Budget:** one harness stage of 25 minutes wall clock, or an explicitly raised timeout of 60 minutes named at dispatch; the work does not fit one 25-minute stage, so without the raised timeout it is two sequential stages (A-1 source, render, manifest, check bundle; A-2 tests, README, closeout), each true at a cut. Hard stop at the allocation the dispatch names. No-progress cap: two distinct geometry hypotheses per acceptance item, then stop and report rather than trying a third. The writer never extends its own allocation.
+- **What was actually produced under the old budget:** `evidence/A-cloth-v5/` (rebuilt; art review failed), `evidence/A-cloth-v6/` (killed mid-flight by infrastructure near 100 minutes, package inconsistent; resumed and repaired), `evidence/A-cloth-v6-closeout/` and `evidence/A-cloth-v8/` (mechanically verified; no art verdict). See the [acceptance ledger](../evidence/acceptance-ledger.md).
+- **Status:** writer work returned; acceptance NOT met — no art/cohesion review passed.
 - **Artefacts emitted:** `source/`, `tests/`, `artwork-a.svg`, `artwork-a.png` (400x480), `check/` bundle with `report.txt`, `manifest.json`, `manifest.sha256`, `README.md`, and the checkpoint file.
 - **Stop and report:** if depth cannot occlude the second cuff, report that blocker instead of authoring the cut; if two hypotheses fail an acceptance item, stop and report unresolved rather than lowering it.
 
@@ -90,7 +96,9 @@ M3 and M4 are derived from the roadmap's R1 exit contract (reproduction gate, th
 - **Exclusions:** no reference imitation for B, no change to the approved concept, panel set, variation target or control offset, no manual visibility cuts between fingers, thumb, palm and dish, no caption claiming an unshown thumb or brace, no edit of another package, no baseline promotion.
 - **Required properties:** palm, four fingers and a thumb built from tapered tube/strip primitives with their own anchors and individual pose, readable as separate digits at final size and not a traced contour table; grip contact derived from the dish geometry (palm cup supporting the underside, fingers/thumb closing on the rim enough to read as support), with README naming which contact is a geometric consequence and which is an author hypothesis; three panels preserved (baseline chest level, variation lifted + broader dish, control near miss); depth decides overlap.
 - **Acceptance (proved by command, art verdict excluded):** construction tests for digit count, separation and taper plus the derived contact relation all pass; sheet and per-panel PNGs exist; digits are individually posed and separable; the contact relation is computed from the dish; captions make no claim the image does not show; manifest hashes verify; the reference-free check bundle exists.
-- **Budget:** 120 minutes wall clock from the first tool call; checkpoint written into the directory at 100 minutes; hard stop at 120. No-progress cap: two distinct hand-construction hypotheses, then stop and report. The writer never extends its own allocation.
+- **Budget:** one harness stage of 25 minutes wall clock, or an explicitly raised timeout of 60 minutes named at dispatch; the work does not fit one 25-minute stage, so without the raised timeout it is two sequential stages (B-1 hand primitives, contact, panels, check bundle; B-2 tests, README, repair log, manifest), each true at a cut. Hard stop at the allocation the dispatch names. No-progress cap: two distinct hand-construction hypotheses, then stop and report. The writer never extends its own allocation.
+- **What was actually produced under the old budget:** `evidence/B-hand-v2/` (constructed; art review failed — the fingers read as a rake) and `evidence/B-hand-v2-r1/` (root causes fixed and mechanically verified; image review still failed — the held dish does not read). See the [acceptance ledger](../evidence/acceptance-ledger.md).
+- **Status:** writer work returned; acceptance NOT met — the image review failed on the hold.
 - **Artefacts emitted:** `source/`, `tests/`, three-panel sheet SVG + PNG and per-panel PNGs, `check/` bundle with `report.txt`, `manifest.json`, `manifest.sha256`, `README.md`, and the checkpoint file.
 - **Stop and report:** if the derived contact cannot be made to read without a false claim, keep the truthful open-support reading, report the gap, and never restore the `thumb braces rim` caption.
 
@@ -104,7 +112,7 @@ Every review is fresh-context and independent of the writer; the writer's own te
 - **Inputs:** the A v5 `report.txt` image list and the frozen PNG revision only; the reference crop for correspondence where the acceptance question is observed-part imitation. No writer README, source or rationale.
 - **Questions:** for each of the four acceptance questions — construction/attachment/pose, physical geometry and visibility, drawing/art, object cohesion — what is wrong here? Name any object that reads as more than one disconnected piece, any second cuff that reads as an authored cut, and any region where the hair reads flat or single-sided.
 - **Acceptance:** a verdict per acceptance question plus specific blocking/nonblocking findings located against the image coordinates, or an explicit BLOCKED for missing modality.
-- **Budget:** 40 minutes wall clock, hard stop; one follow-up question round to the parent only.
+- **Budget:** 25 minutes wall clock, hard stop, inside the harness stage; one follow-up question round to the parent only.
 
 ### M1a-RV-STRUCT — A v5 structural and depth review
 
@@ -112,7 +120,7 @@ Every review is fresh-context and independent of the writer; the writer's own te
 - **Inputs:** the A v5 source, tests, manifest and reports, the registered crop facts, and the frozen revision hashes. No art verdict requested.
 - **Questions:** does the seam contract actually fail on the negative control; is the second cuff's surviving outline a depth computation rather than an authored shape; is the hair one two-sided sheet with projected-face fill selection; is the bow one continuous strip; do the manifest hashes and test results verify.
 - **Acceptance:** each check re-run or re-derived with its command, a finding list with locations, and the unverifiable parts named.
-- **Budget:** 40 minutes wall clock, hard stop.
+- **Budget:** one harness stage; a package whose checks cannot be re-run in 25 minutes is dispatched with an explicitly raised timeout named at dispatch.
 
 ### M1b-RV-IMAGE — B hand v2 image-only art and cohesion review
 
@@ -120,7 +128,7 @@ Every review is fresh-context and independent of the writer; the writer's own te
 - **Inputs:** the frozen three-panel sheet and per-panel PNGs with exact paths. No writer README or rationale.
 - **Questions:** does the hold read in baseline and variation; do the digits read as separate digits at final size; does the hand read as one connected object with the arm and palm; does the control still read as a legible near miss; is any caption false against the image.
 - **Acceptance:** a verdict per acceptance question with located findings, or BLOCKED for missing modality.
-- **Budget:** 40 minutes wall clock, hard stop.
+- **Budget:** 25 minutes wall clock, hard stop, inside the harness stage.
 
 ### M1b-RV-STRUCT — B hand v2 structural, depth and contact review
 
@@ -128,7 +136,7 @@ Every review is fresh-context and independent of the writer; the writer's own te
 - **Inputs:** B hand v2 source, tests, manifest, and the frozen revision hashes; the approved concept/variation/control parameters.
 - **Questions:** are digits and thumb constructed primitives rather than drawn marks; is the contact relation computed from the dish; is the control's gap produced by its frozen offset; does visibility come from depth; do the tests and hashes verify.
 - **Acceptance:** each check re-run with its command, findings located in source and image, and the unverifiable parts named.
-- **Budget:** 40 minutes wall clock, hard stop.
+- **Budget:** one harness stage; raised explicitly at dispatch when the checks cannot be re-run in 25 minutes.
 
 ### Repair cycle
 
@@ -140,7 +148,7 @@ Each review round allows one scoped repair by the original writer followed by a 
 - **Writable path:** `.scratch/35-r1-articulated-study/evidence/r1-advance-integrated-v1/` only.
 - **Steps:** take only writer revisions whose reviews are complete and whose hashes are bound; copy the exact image sets and archived review reports; write one combined manifest; rerun the applicable tests and a reference-absent reproduction of each image; check cross-artefact consistency (one revision per image and report, captions truthful, no manual visibility cut introduced anywhere); record the open gates and the exact image list for the user.
 - **Acceptance:** combined manifest verifies, reproduction matches, every review is bound to the delivered hashes, and the open-gate list is complete. The integrator merges and verifies; it does not decide art and does not waive a gate.
-- **Budget:** 45 minutes wall clock, hard stop.
+- **Budget:** 25 minutes wall clock, hard stop, inside the harness stage; an integration that does not fit is two sequential stages (bind and reproduce; archive reviews and write the index), each true at a cut.
 - **Artefacts emitted:** `images/`, `reviews/` (verbatim reports plus hashes), `manifest.json`, `manifest.sha256`, `reproduction.md`, `index.md`, and the user-facing image list.
 
 ## Sequencing, and what this plan does not authorize

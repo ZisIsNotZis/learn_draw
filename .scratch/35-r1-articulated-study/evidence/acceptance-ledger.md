@@ -1,6 +1,6 @@
 # R1 acceptance evidence ledger
 
-Current bounded dispositions: **A-cloth-construction-v4 passes only the finite A visual/art gate**; **B body/action passes its finite art/action gate on the frozen v2-completion B image**. The B base image's sole public-caption claim defect has a presentation-only derivative in `B-caption-corrected-v1/`; its caption-delta review is pending, so do not yet call that derivative fully presentation-accepted. A v4's two reviewed P1s are closed; prior P2 observations remain nonblocking and retained. Neither finite gate establishes overall A/R1, transfer, heldout, reproducibility, integration, or user acceptance. Do not label R1 or transfer PASS.
+Current bounded dispositions: **A-cloth-construction-v4 passes only the finite A visual/art gate**; **B body/action passes its finite art/action gate on the frozen v2-completion B image**. The R1 advance's M1a and M1b rebuilds are recorded below: A v5 and B-hand-v2 failed image review, B-hand-v2-r1 passed its mechanical evidence and failed a further image review, and A v6, v6-closeout and v8 carry no image verdict at all. So **no current candidate is accepted artwork on either track**: a finite gate on a superseded candidate is not current acceptance. The B base image's sole public-caption claim defect has a presentation-only derivative in `B-caption-corrected-v1/`; its caption-delta review is pending, so do not yet call that derivative fully presentation-accepted. A v4's two reviewed P1s are closed; prior P2 observations remain nonblocking and retained. Neither finite gate establishes overall A/R1, transfer, heldout, reproducibility, integration, or user acceptance. Do not label R1 or transfer PASS.
 
 ## B-caption-corrected-v1 — finite B art and truthful-caption scope
 
@@ -34,3 +34,56 @@ Reports are preserved as distinct original artifacts; no prior report or candida
 - **Historical execution status:** issue 49 records the original implementation allocation as NOTDONE. Independent candidate review is a later bounded disposition and does not erase that process outcome or the separate unrun/full gates.
 
 Ticket: [issue 50](../issues/50-a-v4-finite-art-acceptance-and-open-gates.md). Current project summary: [`STATUS.md`](../../../STATUS.md).
+
+## A-cloth-v5 — M1a rebuild: art gate FAILED
+
+Candidate: [`A-cloth-v5/`](A-cloth-v5/). The first A rebuild from the v4 construction: one continuous bow strip with one constant width, two whole sleeves with whole transverse cuffs, one head-attached two-sided hair sheet, and an enforced seam contract with a negative control. Its structural properties were independently re-verified and carried unchanged into every later A candidate.
+
+The independent image-only review **failed** the art gate. Its blocking findings are recorded verbatim in the repair dispatch [`work/wave3-a-repair.js`](../work/wave3-a-repair.js) as D1–D12. The package is frozen as the record of what that rebuild got wrong; it is not accepted and was not promoted.
+
+## A-cloth-v6 — build repair, no art verdict
+
+Candidate: [`A-cloth-v6/`](A-cloth-v6/). A repair of v5's image findings that also fixed the build defect behind them: `families.neck_skin` emitted a self-intersecting contour, which crashed every build of the package, and [`repair-log.md`](A-cloth-v6/repair-log.md) records that repair and states per defect what is fixed, partial or not fixed rather than claiming image fixes nobody reviewed.
+
+This run was killed mid-flight by infrastructure while its `work-checkpoint.md` claimed a complete, hash-verified package; `sha256sum -c manifest.sha256` and the missing `check-a/` bundle disproved it. The package is therefore evidence of the honesty problem P34 records, not of acceptance.
+
+## A-cloth-v6-closeout — mechanical truth recovered
+
+Candidate: [`A-cloth-v6-closeout/`](A-cloth-v6-closeout/). The same drawing with every claim made true and checkable: the anchor inventory is complete and fails on an unaccounted anchor, two tautological tests were rewritten to measure emitted geometry with mutation demonstrations, the declared authoring inventory equals the actual hand-typed input count via an AST scan, each face's fill comes from that triangle's own projected winding, unreachable construction is deleted with its caller search recorded, 44 tests pass, 44 manifest entries verify, and a second build reproduces the delivered artwork byte-for-byte.
+
+No art or cohesion verdict was requested or given; the package is mechanical evidence only. Ticket: [`closeout-log.md`](A-cloth-v6-closeout/closeout-log.md).
+
+## A-cloth-v8 — user-requirement conformance, no art verdict
+
+Candidate: [`A-cloth-v8/`](A-cloth-v8/). The closeout package with the user's two measured requirements met: the second cuff's surviving area is **16.4 % of the first cuff's** (539.5 px²), inside the 10–25 % band and against the reference's own 17 % (`work/a-art-direction-brief.md`), and the two enclosed background islands are **2 → 0**. its README reports 47 passing tests; 46 manifest entries verify (`sha256sum -c manifest.sha256`, all OK); both fractions have a negative control that reproduces the prior value when the fix is removed.
+
+No image-only review of this package is recorded in the tree — no dispatch script and no returned report — so its art and cohesion gates are **NOT RUN**, not passed. Ticket: [`conformance-log.md`](A-cloth-v8/conformance-log.md).
+
+## B-hand-v2 — M1b construction: art gate FAILED
+
+Candidate: [`B-hand-v2/`](B-hand-v2/). The first constructed hand (palm, four tapered fingers, thumb, contact derived from the dish) inside the B concept, variation and control the user had already judged readable.
+
+The independent image-only review **failed** the art gate: the fingers read as rake tines over a flat palm slab in every panel. The execution-capable reviewer additionally found two tautological construction tests and a dead palm builder, which is why the M1b acceptance cannot rest on a green suite. See [`work/wave6-b-repair.js`](../work/wave6-b-repair.js) for the findings and `work/wave7-recovery.js` for the re-dispatch after the run was reaped.
+
+## B-hand-v2-r1 — repaired construction: mechanical evidence passes, art gate FAILED
+
+Candidate: [`B-hand-v2-r1/`](B-hand-v2-r1/). Root causes fixed rather than symptoms: the rim's outward normal sign was inverted, so every fingertip vanished behind the rim; the palm's wrist end was wider than the sleeve cuff; a three-piece arm became one loft. 16 construction tests pass, re-run independently, and they contain their own mutation demonstrations; the control differs from the baseline only in the dish displacement; captions claim nothing the image does not show; 20 manifest entries verify.
+
+The independent image review then **failed** it on the picture: the dish does not read as held — the fingers stand as prongs in front of the dish's near wall with the palm behind and below it, and a gap remains between hand and dish — one panel's dish interior band is truncated, and the panels differ in more than the dish (tomato colour and size, occlusion order), so the image is not a single-variable comparison even though the hand geometry is identical. The review was returned to the parent and is **not archived in this tree**; these findings are the parent's record of it.
+
+### Open wording defects in B-hand-v2-r1 (recorded, not fixed)
+
+- `README.md` and `repair-log.md` say the palm's wrist is *narrower* than the sleeve cuff; it is wider — `PALM_WRIST_HALF = 0.088` against a `0.078` half cuff (0.176 vs 0.156 full width). The cuff covers the wrist because the heel lies on a plane behind the arm, not because the palm narrows.
+- The claim "digits are separate, 4.4 px" holds only for the distal halves. Measured on whole digit outlines, adjacent roots are effectively touching (middle–ring 0.001 px, index–middle 0.071 px, index–thumb 0.119 px at 102 px/unit), because the separation test measures `_distal_half` only.
+- `source/scene.py` imports `build_visible_smooth_component` and never calls it, so "no dead construction" states more than the source shows.
+
+Each is a documentation and test-scope repair inside one package; none changes the drawing.
+
+## Current dispositions after M1a and M1b
+
+- **Verified (mechanical):** the A v6-closeout and v8 packages and the B r1 package pass their own suites with mutation-capable checks, verify their manifests, and their headline numbers have negative controls.
+- **Failed (art):** A v5 and B-hand-v2 failed image-only review; B-hand-v2-r1 failed a further image review on the hold.
+- **Not run (art):** A v6, A v6-closeout and A v8 have no image-only verdict recorded anywhere in the tree; a mechanical pass is not an art verdict.
+- **Accepted:** nothing on either track is accepted artwork. The only independent art disposition recorded here is the finite A v4 gate above, which the user's own review of that image then contradicted; it is not current acceptance.
+- **Blocked on:** the user's choice between a stronger model, a reduced scope or continuing at the current model tier. No art attempt may start before it is recorded.
+- **Open everywhere:** reproduction at the integrated level, heldout compatibility/release, transfer, integrated R1 acceptance, and user judgment. Do not label R1 or transfer PASS.

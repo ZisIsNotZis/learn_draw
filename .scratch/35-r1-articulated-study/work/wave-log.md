@@ -1,0 +1,34 @@
+# R1 advance wave log — work packages dispatched
+
+Owns: which work packages this advance dispatched, what each was for, what came back and where its artefact is, so a later reader can see what was attempted without reading a chat transcript. Owns no disposition: acceptance lives in the [acceptance ledger](../evidence/acceptance-ledger.md), state in [`STATUS.md`](../../../STATUS.md), and the milestone contract in the [plan](m1a-m1b-plan.md).
+
+Rows are checkable from the committed dispatch script (`plan:` commit messages) or the package directory they name. A row marked † is the parent's account of a run whose own record is not in the tree — no run log, no dispatch script, or no returned artefact survives.
+
+| # | Key | Purpose | Outcome | Artefact |
+|---|---|---|---|---|
+| 1 | `m0-contract-freeze` | Freeze the contract: roadmap's fourth acceptance question (object cohesion), the M1a–M4 plan, issue 54 | Delivered as documentation | [`docs/drawing/roadmap.md`](../../../docs/drawing/roadmap.md), [plan](m1a-m1b-plan.md), [issue 54](../issues/54-user-review-scope-hair-and-hand.md) |
+| 2 | `m1a-a-rebuild` | M1a writer: A v5 rebuild — one continuous bow strip, two whole sleeves, one two-sided hair sheet, seam contract | Package returned; independent image review **failed** the art gate | [`evidence/A-cloth-v5/`](../evidence/A-cloth-v5/) |
+| 3 | `m1b-b-hand` | M1b writer: B hand v2 — palm, four tapered fingers, thumb, contact derived from the dish | Package returned; independent image review **failed** (fingers as rake tines) | [`evidence/B-hand-v2/`](../evidence/B-hand-v2/) |
+| 4 | `review-a-image` | Image-only review of A v5 | Failed the art gate; its findings became D1–D6 of the repair dispatch | [`wave3-a-repair.js`](wave3-a-repair.js) |
+| 5 | `review-a-structure` | Structural review of A v5 (bow strip, sleeves, hair, seam contract) | Findings fed the repair dispatch; the mechanism claims it did not disprove survived into v6 | [`wave3-a-repair.js`](wave3-a-repair.js) |
+| 6 | `m1a-repair-1` | A v6 repair writer | Killed mid-flight by infrastructure; left a `work-checkpoint.md` claiming completeness the tree did not have (`check-a/` absent, stale source hashes) | [`evidence/A-cloth-v6/`](../evidence/A-cloth-v6/) |
+| 7 | `review-b-image` | Image-only review of B hand v2 | Failed the art gate (rake, hidden contact, three sticks for an arm, colliding warms) | [`wave6-b-repair.js`](wave6-b-repair.js) |
+| 8 | `review-b-structure` | Execution review of B hand v2: run the suite, trace the contact, check captions | One of the three runs reaped before it returned; re-dispatched in wave 7 | [`wave7-recovery.js`](wave7-recovery.js) |
+| 9 | `tooling-review-images` | Make `check` bundles carry the 1:1 image a reviewer actually judges | Delivered: `scripts/draw.py` writes `draft-fullres.png` and lists it first | [`scripts/draw.py`](../../../scripts/draw.py), [`method.md`](../../../docs/drawing/method.md) |
+| 10 | `m1b-repair-1` (first dispatch) | B hand v2-r1 repair writer | Root causes fixed and the package delivered; its history records an interruption at 12:49 whose partial edits were committed as `edf0a1c` before the geometry repair resumed | [`evidence/B-hand-v2-r1/`](../evidence/B-hand-v2-r1/) |
+| 11 † | B r1 writer, interrupted iteration | The writer stopped mid-iteration instead of finishing a stage | Nothing was lost: its uncommitted edits were committed as `edf0a1c` (message: preserve interrupted iteration edits before geometry repair) and the geometry repair resumed from them toward the delivered package | [`evidence/B-hand-v2-r1/`](../evidence/B-hand-v2-r1/), commit `edf0a1c` |
+| 12 † | `m1b-repair-1` (re-dispatch) | Re-dispatch of the B repair after the reported run reaping | No commit and no artefact: the branch holds only its base commit | — |
+| 13 | `m1a-resume` | Resume A v6 in its own worktree after the kill: rebuild artefacts, true manifest, honest repair log | Delivered: a repair log stating each defect's true status, a reproducible build, a green manifest | [`evidence/A-cloth-v6/`](../evidence/A-cloth-v6/) |
+| 14 † | `review-b-structure` (re-dispatch) | The B v2 execution review, re-run after reaping | No report in the tree | — |
+| 15 † | `review-a6-image` | Image-only review of A v6 | Outcome not recorded in the tree; A v6 therefore carries no image verdict | — |
+| 16 | `review-a6-structure` | Execution review of A v6: build, manifest, tautologies, hair twist, dead code | Returned mechanical blocking defects (joint inventory, two tautologies, authoring-budget mismatch) and nonblocking ones (per-quad fill, self-comparing tangents, dead code), quoted verbatim in the closeout dispatch | [`wave10-a-closeout.js`](wave10-a-closeout.js) |
+| 17 | `art-direction-brief` | Measure the crop and give the next A attempt measurable reading targets | Delivered: the target band the v8 conformance is judged against | [`a-art-direction-brief.md`](a-art-direction-brief.md), [`a-measure-crop.py`](a-measure-crop.py) |
+| 18 | `m1a-v6-closeout` | Make every A v6 claim true: joint inventory, tautologies rewritten with mutation demonstrations, AST authoring inventory, per-face fill by own winding, dead code deleted | Delivered: 44 tests, 44/44 hashes, byte-identical rebuild | [`evidence/A-cloth-v6-closeout/`](../evidence/A-cloth-v6-closeout/) |
+| 19 † | A conformance run (branch `pi-subagents/a-cloth-v7-1251`) | Meet the user's two measured requirements on the closeout package | Delivered as `A-cloth-v8`: second cuff 16.4 % of the first, background islands 2 → 0, 47 tests, 46/46 hashes; submitted to no image reviewer | [`evidence/A-cloth-v8/`](../evidence/A-cloth-v8/) |
+| 20 † | Duplicate package | A package dispatched and then found to be a copy of an existing one | Deleted as a copy; no file, directory or branch records it, so the tree cannot show which package it duplicated | — |
+
+## Facts about the runs themselves
+
+- The harness kills a child at a 30-minute wall clock, and a budget larger than that wall orders nothing ([principles](../../../docs/drawing/principles.md) P34; [method](../../../docs/drawing/method.md) "Running the loop by delegation"). The [plan](m1a-m1b-plan.md) first carried 120-minute writers and 100-minute checkpoints and now carries stage-sized budgets.
+- Three sibling runs were reaped at one instant by run-directory retention cleanup while their status still read as running (P35; header of [`wave7-recovery.js`](wave7-recovery.js)). Wave 7 exists only to re-dispatch those roles.
+- Dispatching a package is itself a committed artefact: every dispatch script in this directory is committed under a `plan:` message so a worktree-isolated child can start from a clean tree. Rows 18 and 19 have no such script, which is why their outcomes rest on the parent's account rather than on a dispatch record.
