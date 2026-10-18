@@ -228,13 +228,13 @@ def palm_pad(contact_edge: tuple[Point, ...], wrist: Point, *, wrist_half: float
     # distal knuckle pad: from the rim's far end the palm continues briefly, then turns
     knuckle_end = shifted(edge[-1], across, -knuckle_drop)
     distal = spline((edge[-1],
-                     shifted(mix(edge[-1], knuckle_end, 0.40), axis, 0.020),
-                     shifted(mix(edge[-1], knuckle_end, 0.74), axis, 0.012),
+                     shifted(mix(edge[-1], knuckle_end, 0.40), axis, 0.008),
+                     shifted(mix(edge[-1], knuckle_end, 0.74), axis, 0.004),
                      knuckle_end))
     # ulnar flank: knuckle pad back to the wrist's lower side, bulging outward
     ulnar = spline((knuckle_end,
-                    shifted(mix(knuckle_end, wrist_down, 0.32), across, -0.055),
-                    shifted(mix(knuckle_end, wrist_down, 0.70), across, -0.045),
+                    shifted(mix(knuckle_end, wrist_down, 0.32), across, -0.028),
+                    shifted(mix(knuckle_end, wrist_down, 0.70), across, -0.022),
                     wrist_down))
     wrist_cap = [shifted(wrist,
                          Point(across.u * math.cos(theta) - axis.u * math.sin(theta),

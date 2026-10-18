@@ -34,7 +34,8 @@ from spatial_adapter import (
     sample_closed_curve, validate_closed_contour,
 )
 from hand_family import (
-    Loft, PalmPad, arm_tube, digit_tube, mix, palm_pad, perp, profile_tube, shifted, unit,
+    Loft, PalmPad, arm_tube, digit_tube, loft_tube, mix, palm_pad, perp, profile_tube,
+    shifted, unit,
 )
 
 
@@ -144,27 +145,27 @@ class DeclaredContact:
 HAND_DEPTH_SLOPE = 0.03        # hand surface tilts toward the viewer, as in the reviewed sheet
 CONTACT_INSET = 0.006          # palm rim edge tucks this far under the dish foot (hidden)
 DISH_DEPTH_OFFSET = 0.012      # dish surface sits this far in front of the palm plane
-PALM_WRIST_HALF = 0.150        # the palm narrows to this at the wrist
-PALM_KNUCKLE_DROP = 0.170      # the palm's knuckle pad continues this far past the rim's far end
+PALM_WRIST_HALF = 0.120        # the palm narrows to this at the wrist
+PALM_KNUCKLE_DROP = 0.130      # the palm's knuckle pad continues this far past the rim's far end
 PALM_THENAR_BULGE = 0.070      # the thumb-side flank swells out by this much
 KNUCKLE_SETBACK = 0.014        # digit roots sit this far inside the palm's contact rim
 DISH_FOOT_FRACTION = 0.48      # the dish's flat foot spans this fraction of its radius each way
 
 FINGERS = (
-    DigitSpec("index", "index digit climbs the dish's near wall to its rim band",
-              0.10, 122.0, 0.012, 0.058, 0.049, 0.032, -0.055, 0.0200),
-    DigitSpec("middle", "middle digit is the longest and hooks over the rim band",
-              0.37, 100.0, -0.010, 0.060, 0.051, 0.033, -0.020, 0.0215),
-    DigitSpec("ring", "ring digit stands beside the middle digit and stops at the rim",
-              0.64, 80.0, 0.010, 0.057, 0.048, 0.031, 0.020, 0.0230),
-    DigitSpec("little", "little digit hooks the rim band on the far side of the hand",
-              0.91, 60.0, -0.008, 0.050, 0.042, 0.028, 0.055, 0.0245),
+    DigitSpec("index", "index digit cradles the dish's near-left rim",
+              0.02, 145.0, 0.012, 0.076, 0.066, 0.044, -0.075, 0.0200),
+    DigitSpec("middle", "middle digit climbs the dish's near wall to its rim band",
+              0.35, 108.0, -0.010, 0.078, 0.068, 0.046, -0.052, 0.0215),
+    DigitSpec("ring", "ring digit cradles the dish's near-right rim",
+              0.65, 72.0, 0.010, 0.075, 0.065, 0.044, 0.055, 0.0230),
+    DigitSpec("little", "little digit hooks the rim band at the dish's right end",
+              0.98, 35.0, -0.008, 0.066, 0.057, 0.038, 0.078, 0.0245),
 )
 THUMB = DigitSpec("thumb", "thumb presses the dish's near-left wall from outside",
-                  0.90, 168.0, 0.006, 0.078, 0.066, 0.050, -0.030, 0.0260)
+                  0.90, 150.0, 0.006, 0.086, 0.074, 0.055, -0.030, 0.0260)
 
 ARM_DEPTH = 0.048              # the sleeve sits in front of the torso plane and the vest
-ARM_SHOULDER_HALF = 0.215      # sleeve width at the shoulder cap
+ARM_SHOULDER_HALF = 0.240      # sleeve width at its own rounded shoulder cap
 ARM_ELBOW_HALF = 0.118         # sleeve narrows through the bend
 ARM_WRIST_HALF = 0.078         # and tapers into the wrist
 
@@ -493,8 +494,8 @@ def _b_case(case: str) -> tuple[tuple[ShapeSpec, ...], tuple[LineSpec, ...], dic
     control = case == "control"
     support_center = Point(2.50, 2.10 if variant else 1.92)
     dish_center = Point(support_center.u, support_center.v + (0.34 if control else 0.0))
-    dish_rx = 0.60 * (1.12 if variant else 1.0)
-    dish_depth = 0.62
+    dish_rx = 0.62 * (1.12 if variant else 1.0)
+    dish_depth = 0.46
 
     # The hand is built against the nominal (own-case) dish, so in the control the dish
     # alone is displaced and the hand is unchanged geometry.
@@ -503,7 +504,7 @@ def _b_case(case: str) -> tuple[tuple[ShapeSpec, ...], tuple[LineSpec, ...], dic
     foot = dish_foot_contact(nominal_contour)
     rim = RimBand(Point(support_center.u, support_center.v - 0.005), dish_rx, 0.115)
     left_wall = dish_wall(nominal_contour, support_center, "left")
-    wrist = Point(2.05, 0.80)
+    wrist = Point(2.20, 1.05)
 
     shoulder = Point(0.60, 2.00)
     limb = construct_limb(LimbParameters(
@@ -519,7 +520,7 @@ def _b_case(case: str) -> tuple[tuple[ShapeSpec, ...], tuple[LineSpec, ...], dic
     arm_loft = arm_tube(shoulder, limb.elbow, wrist, shoulder_half=ARM_SHOULDER_HALF,
                         elbow_half=ARM_ELBOW_HALF, wrist_half=ARM_WRIST_HALF)
     upper_arm = _shape(f"{case}-arm",
-                       "one continuous sleeve: shoulder cap, bend at the elbow, taper into the wrist",
+                       "one continuous sleeve: rounded shoulder cap over the torso, bend at the elbow, taper into the wrist",
                        arm_support, SLEEVE, (shoulder, limb.elbow, wrist), arm_loft.outline,
                        family="lofted_limb",
                        attachments=((f"{case}-palm", "wrist", "wrist"),),
@@ -533,8 +534,6 @@ def _b_case(case: str) -> tuple[tuple[ShapeSpec, ...], tuple[LineSpec, ...], dic
                                  u_axis=(1, 0, 0), v_axis=(0, 1, 0))
     hair_support = SupportFrame(f"{case}-hair-front", f"{case}-hair-depth", origin=(0, 0, .065),
                                u_axis=(1, 0, 0), v_axis=(0, 1, 0))
-    cap_support = SupportFrame(f"{case}-shoulder-cap", f"{case}-shoulder-cap-depth",
-                              origin=(0, 0, .060), u_axis=(1, 0, 0), v_axis=(0, 1, 0))
 
     neck_base = Point(-.06, 2.12)
     head_base = Point(-.10, 2.44)
@@ -573,21 +572,13 @@ def _b_case(case: str) -> tuple[tuple[ShapeSpec, ...], tuple[LineSpec, ...], dic
     head = _shape(f"{case}-head", "skull and jaw mass turned toward the dish; the head makes no face claim",
                   body_support, SKIN, (chin, crown), skull.outline, family="lofted_profile",
                   semantic_anchors=(("head-base", head_base), ("chin", chin)))
-    hair_centers = (Point(-.52, 2.62), Point(-.40, 3.30), Point(-.02, 3.52), Point(.34, 3.06))
-    hair = _shape(f"{case}-hair", "hair mass over the back and crown, ending at the fringe",
-                  hair_support, HAIR, (hair_centers[0], hair_centers[1], hair_centers[3]),
-                  profile_tube(Point(-.52, 2.62), Point(.34, 3.06),
-                               knots=((0.0, .11), (0.30, .26), (0.62, .27), (1.0, .10)),
-                               samples=25).outline,
-                  family="lofted_hair_mass")
-
-    # --- shoulder cap: joins the sleeve to the torso over the joint
-    shoulder_cap = _shape(f"{case}-shoulder-cap",
-                          "shoulder cap joins the sleeve to the torso over the shoulder joint",
-                          cap_support, SLEEVE, (shoulder,),
-                          _ellipse_outline(Point(shoulder.u - 0.02, shoulder.v - 0.02), 0.235, 0.215),
-                          family="shoulder_cap",
-                          semantic_anchors=(("joint", shoulder),))
+    hair_centers = (Point(-.50, 2.62), Point(-.46, 3.22), Point(-.04, 3.46), Point(.32, 3.14))
+    hair_loft = loft_tube(hair_centers,
+                          ((0.0, .10), (0.26, .25), (0.55, .27), (0.80, .20), (1.0, .09)),
+                          samples=29, cap_steps=6)
+    hair = _shape(f"{case}-hair", "hair mass over the back, crown and fringe",
+                  hair_support, HAIR, (hair_centers[0], hair_centers[2], hair_centers[3]),
+                  hair_loft.outline, family="lofted_hair_mass")
 
     # --- hand: palm pad, four digits, thumb
     hand = build_hand(case, foot, rim, left_wall, wrist, hand_z, SKIN)
@@ -612,16 +603,16 @@ def _b_case(case: str) -> tuple[tuple[ShapeSpec, ...], tuple[LineSpec, ...], dic
                        _ellipse_outline(rim_center, actual_rim.rx - 0.012, actual_rim.ry - 0.010),
                        family="dish_rim")
     fruit_support = _hand_support(case, "fruit", hand_z + DISH_DEPTH_OFFSET + 0.080)
-    fruit_center = Point(dish_center.u - .10, dish_center.v + .06)
+    fruit_center = Point(dish_center.u - .08, dish_center.v - .02)
     fruit = _shape(f"{case}-fruit", "single apricot-like fruit makes the carried dish a small still life",
                    fruit_support, FRUIT, (fruit_center,), _ellipse_outline(fruit_center, .165, .195),
                    family="elliptic_fruit")
     leaf_support = _hand_support(case, "leaf", hand_z + DISH_DEPTH_OFFSET + 0.100)
-    leaf_center = Point(fruit_center.u + .06, fruit_center.v + .20)
+    leaf_center = Point(fruit_center.u + .06, fruit_center.v + .19)
     leaf = _shape(f"{case}-leaf", "small oval leaf accent echoes the carried still life", leaf_support,
                   LEAF, (leaf_center,), _ellipse_outline(leaf_center, .125, .070), family="leaf_ovoid")
 
-    shapes = (torso, vest, neck_shape, head, hair, shoulder_cap, upper_arm,
+    shapes = (torso, vest, neck_shape, head, hair, upper_arm,
               hand.palm, *hand.fingers, hand.thumb, dish, rim_shape, fruit, leaf)
 
     # --- semantic lines: construction cues, each owned by the surface it sits on
@@ -647,11 +638,11 @@ def _b_case(case: str) -> tuple[tuple[ShapeSpec, ...], tuple[LineSpec, ...], dic
     lines.append(_line(f"{case}-collar-line", "collar edge where the vest meets the neck",
                        f"{case}-vest-panel", (neck_a, neck_b), _line_curve(neck_a, neck_b, -0.03),
                        VEST_LINE, 1.7))
-    armhole_a = Point(.30, 2.22)
-    armhole_b = Point(.06, 1.22)
+    armhole_a = Point(.24, 2.14)
+    armhole_b = Point(.40, 1.30)
     lines.append(_line(f"{case}-armhole-seam", "vest armhole edge: the garment boundary the sleeve passes",
                        f"{case}-vest-panel", (armhole_a, armhole_b),
-                       _line_curve(armhole_a, armhole_b, 0.10), VEST_LINE, 1.8))
+                       _line_curve(armhole_a, armhole_b, 0.09), VEST_LINE, 1.8))
     elbow_a = shifted(limb.elbow, perp(unit(Point(limb.elbow.u - shoulder.u, limb.elbow.v - shoulder.v))),
                       -0.11)
     elbow_b = shifted(limb.elbow, perp(unit(Point(limb.elbow.u - shoulder.u, limb.elbow.v - shoulder.v))),
