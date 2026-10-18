@@ -99,8 +99,6 @@ class Loft:
     """A constructed limb: arc-length stations and the closed outline they emit."""
     stations: tuple[Station, ...]
     outline: tuple[Point, ...]
-    def start(self) -> Point:
-        return self.stations[0].center
     def end(self) -> Point:
         return self.stations[-1].center
     def station_at(self, t: float) -> Station:
@@ -194,12 +192,15 @@ class PalmPad:
     wrist_edge: tuple[Point, Point]
     knuckle_edge: tuple[Point, Point]
     axis: Point
-    length: float
 
 
 def palm_pad(contact_edge: tuple[Point, ...], wrist: Point, *, wrist_half: float,
-             pad_half: float, knuckle_drop: float, thenar_bulge: float) -> PalmPad:
+             knuckle_drop: float, thenar_bulge: float) -> PalmPad:
     """Build the palm from the dish-derived contact rim and the wrist, nothing else.
+
+    The wrist end is a shallow rounded heel, deliberately shorter along the axis than the
+    sleeve's own cap, so the forearm's cuff covers it and the palm emerges from the sleeve
+    instead of butting it.
 
     The contact rim (derived from the dish's own foot) is the palm's distal edge, so
     the pad ends exactly where the dish's underside begins; the pad widens from the
@@ -211,7 +212,6 @@ def palm_pad(contact_edge: tuple[Point, ...], wrist: Point, *, wrist_half: float
     foot_mid = mix(edge[0], edge[-1], 0.5)
     axis = unit(Point(foot_mid.u - wrist.u, foot_mid.v - wrist.v))
     across = perp(axis)
-    length = math.hypot(foot_mid.u - wrist.u, foot_mid.v - wrist.v)
     wrist_up = shifted(wrist, across, wrist_half)
     wrist_down = shifted(wrist, across, -wrist_half)
 
@@ -239,7 +239,7 @@ def palm_pad(contact_edge: tuple[Point, ...], wrist: Point, *, wrist_half: float
     wrist_cap = [shifted(wrist,
                          Point(across.u * math.cos(theta) - axis.u * math.sin(theta),
                                across.v * math.cos(theta) - axis.v * math.sin(theta)),
-                         wrist_half)
+                         wrist_half if math.cos(theta) >= 0 else wrist_half * 0.55)
                  for theta in (math.pi - math.pi * k / 5 for k in range(6))]
     # thenar flank: the thumb side, bulging out from the wrist toward the rim's near end
     thenar = spline((wrist_up,
@@ -254,4 +254,4 @@ def palm_pad(contact_edge: tuple[Point, ...], wrist: Point, *, wrist_half: float
     if math.hypot(outline[0].u - outline[-1].u, outline[0].v - outline[-1].v) <= 1e-9:
         outline.pop()
     return PalmPad(tuple(outline), edge, (wrist_up, wrist_down), (edge[-1], knuckle_end),
-                   axis, length)
+                   axis)

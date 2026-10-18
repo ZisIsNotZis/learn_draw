@@ -93,9 +93,9 @@ class RimBand:
                      self.center.v - self.ry * math.sin(phi))
 
     def outward_normal(self, degrees: float) -> Point:
-        """Unit normal pointing from the rim band outward (away from the bowl's mouth)."""
+        """Unit normal pointing away from the mouth's centre, i.e. down the bowl's outer wall."""
         phi = math.radians(degrees)
-        return unit(Point(-math.cos(phi) / self.rx, math.sin(phi) / self.ry))
+        return unit(Point(math.cos(phi) / self.rx, -math.sin(phi) / self.ry))
 
     def near_arc(self, samples: int = 360, low: float = 0.0, high: float = 180.0) -> tuple[Point, ...]:
         """Sampled near-rim arc, the independent measurement used to check grip contact."""
@@ -145,24 +145,24 @@ class DeclaredContact:
 HAND_DEPTH_SLOPE = 0.03        # hand surface tilts toward the viewer, as in the reviewed sheet
 CONTACT_INSET = 0.006          # palm rim edge tucks this far under the dish foot (hidden)
 DISH_DEPTH_OFFSET = 0.012      # dish surface sits this far in front of the palm plane
-PALM_WRIST_HALF = 0.120        # the palm narrows to this at the wrist
-PALM_KNUCKLE_DROP = 0.130      # the palm's knuckle pad continues this far past the rim's far end
-PALM_THENAR_BULGE = 0.070      # the thumb-side flank swells out by this much
+PALM_WRIST_HALF = 0.115        # the palm narrows to this where the sleeve's cuff covers it
+PALM_KNUCKLE_DROP = 0.105      # the palm's knuckle pad continues this far past the rim's far end
+PALM_THENAR_BULGE = 0.060      # the thumb-side flank swells out by this much
 KNUCKLE_SETBACK = 0.014        # digit roots sit this far inside the palm's contact rim
-DISH_FOOT_FRACTION = 0.48      # the dish's flat foot spans this fraction of its radius each way
+DISH_FOOT_FRACTION = 0.40      # the dish's flat foot spans this fraction of its radius each way
 
 FINGERS = (
-    DigitSpec("index", "index digit cradles the dish's near-left rim",
-              0.02, 145.0, 0.012, 0.076, 0.066, 0.044, -0.075, 0.0200),
-    DigitSpec("middle", "middle digit climbs the dish's near wall to its rim band",
-              0.35, 108.0, -0.010, 0.078, 0.068, 0.046, -0.052, 0.0215),
-    DigitSpec("ring", "ring digit cradles the dish's near-right rim",
-              0.65, 72.0, 0.010, 0.075, 0.065, 0.044, 0.055, 0.0230),
-    DigitSpec("little", "little digit hooks the rim band at the dish's right end",
-              0.98, 35.0, -0.008, 0.066, 0.057, 0.038, 0.078, 0.0245),
+    DigitSpec("index", "index digit climbs the dish's near wall left of centre",
+              0.04, 118.0, 0.020, 0.080, 0.070, 0.046, -0.045, 0.0200),
+    DigitSpec("middle", "middle digit is the longest and climbs highest on the near wall",
+              0.35, 100.0, 0.014, 0.082, 0.072, 0.048, -0.020, 0.0215),
+    DigitSpec("ring", "ring digit stands beside the middle digit, a little lower",
+              0.66, 82.0, 0.020, 0.079, 0.069, 0.046, 0.020, 0.0230),
+    DigitSpec("little", "little digit is the shortest and hooks the near wall lowest",
+              0.96, 64.0, 0.034, 0.069, 0.060, 0.040, 0.045, 0.0245),
 )
 THUMB = DigitSpec("thumb", "thumb presses the dish's near-left wall from outside",
-                  0.90, 150.0, 0.006, 0.086, 0.074, 0.055, -0.030, 0.0260)
+                  0.90, 122.0, 0.026, 0.090, 0.078, 0.058, -0.030, 0.0260)
 
 ARM_DEPTH = 0.048              # the sleeve sits in front of the torso plane and the vest
 ARM_SHOULDER_HALF = 0.240      # sleeve width at its own rounded shoulder cap
@@ -344,7 +344,7 @@ def build_hand(case: str, foot: tuple[Point, ...], rim: RimBand, wall: tuple[tup
     """
     contact_edge = tuple(Point(point.u, point.v + CONTACT_INSET) for point in foot)
     pad = palm_pad(contact_edge, wrist, wrist_half=PALM_WRIST_HALF,
-                   pad_half=0.0, knuckle_drop=PALM_KNUCKLE_DROP,
+                   knuckle_drop=PALM_KNUCKLE_DROP,
                    thenar_bulge=PALM_THENAR_BULGE)
     palm = _shape(f"{case}-palm",
                   "palm pad: its distal rim is the dish's foot line, its wrist end meets the forearm",
@@ -362,8 +362,10 @@ def build_hand(case: str, foot: tuple[Point, ...], rim: RimBand, wall: tuple[tup
         root = shifted(mix(contact_edge[0], contact_edge[-1], spec.foot_fraction),
                        pad.axis, -KNUCKLE_SETBACK)
         rim_point = rim.near_point(spec.rim_angle_degrees)
-        # the tip centre sits `reach` off the rim arc along the arc's outward normal
-        tip = shifted(rim_point, rim.outward_normal(spec.rim_angle_degrees), spec.reach)
+        # the tip centre sits tip_half + reach down the bowl's outer wall from the rim band,
+        # so the fingertip's own edge stops `reach` short of the glazed band
+        tip = shifted(rim_point, rim.outward_normal(spec.rim_angle_degrees),
+                      spec.tip_half + spec.reach)
         toward = unit(Point(tip.u - root.u, tip.v - root.v))
         joint = shifted(mix(root, tip, 0.52), perp(toward), spec.bend)
         loft = digit_tube(root, joint, tip, base_half=spec.base_half, joint_half=spec.joint_half,
@@ -504,7 +506,7 @@ def _b_case(case: str) -> tuple[tuple[ShapeSpec, ...], tuple[LineSpec, ...], dic
     foot = dish_foot_contact(nominal_contour)
     rim = RimBand(Point(support_center.u, support_center.v - 0.005), dish_rx, 0.115)
     left_wall = dish_wall(nominal_contour, support_center, "left")
-    wrist = Point(2.20, 1.05)
+    wrist = Point(2.34, 1.02)
 
     shoulder = Point(0.60, 2.00)
     limb = construct_limb(LimbParameters(
