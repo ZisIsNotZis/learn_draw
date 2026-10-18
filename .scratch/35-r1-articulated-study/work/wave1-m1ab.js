@@ -1,0 +1,117 @@
+// Wave 1 — R1 advance: M0 doc freeze, M1a A rebuild, M1b B hand rebuild.
+// Three writers on disjoint paths, each isolated in its own managed worktree.
+const COMMON = [
+  "You are one child of a delegation tree; you have no dialogue with the user and you report to the parent only.",
+  "Repo: /home/z/vibe/learn_draw (project instructions: AGENTS.md at the repo root — read it first; its invariant rules are binding).",
+  "Working rules you must read before acting: AGENTS.md, docs/drawing/spatial-model.md (architecture SSOT), docs/drawing/method.md (method + loop), docs/drawing/roadmap.md (R1 contract and acceptance questions), docs/drawing/principles.md (P31-P33 especially), .scratch/35-r1-articulated-study/spec.md, .scratch/35-r1-articulated-study/work/task-freeze.md, .scratch/35-r1-articulated-study/issues/54-user-review-scope-hair-and-hand.md, .scratch/35-r1-articulated-study/evidence/acceptance-ledger.md.",
+  "Environment: run drawing tools only through scripts/draw (wrapper) or .venv/bin/python. If .venv is missing in your worktree, run `uv venv .venv && uv pip install -e .` once (uv is on PATH; wheels are cached). The renderer is resolved automatically by scripts/renderer.py.",
+  "Never judge your own render as art acceptance. You may inspect your own output for obvious breakage, but the art verdict belongs to a fresh independent reviewer. Do not write a self-verdict anywhere.",
+  "Metrics from scripts/draw check are a breakage alarm, never a target. Never tune geometry against a metric.",
+  "Geometry is computed, never eyeballed: no shape may carry more than ~4 hand-typed coordinates; larger shapes come from a relation, a family generator, or a curve. Absolute frame coordinates are compiler output, not authoring input.",
+  "The engine never sees the target reference at runtime. A reference may seed parameter values, then is closed.",
+  "Do not specify visibility cuts, visible_ranges, front/behind copies or paint-layer splits by hand. Depth decides what is visible.",
+  "Report honestly: name what you verified, how, and what remains unverified. Never call an unrun check a pass.",
+  "Budget and stop conditions are binding: do not extend your own allocation, do not silently widen scope, and stop to report if a blocker makes acceptance unreachable.",
+].join("\n");
+
+const A_TASK = [
+  COMMON,
+  "",
+  "ROLE: A-cloth writer (single writer) for milestone M1a. You own exactly one new directory: .scratch/35-r1-articulated-study/evidence/A-cloth-v5/ .",
+  "Every other path is read-only for you, including STATUS.md, docs/, other evidence directories, all of scripts/ (you may read and import scripts/*.py but must not modify them), the sealed/heldout material (do not read it at all), and every B artefact.",
+  "",
+  "GOAL: rebuild the A candidate so that each drawn object reads as one connected physical thing, keeping the existing task scope: imitate only the clothing/composition of the reference crop. There is no hand claim in A; do not draw the clasped hands.",
+  "",
+  "REFERENCE: the registered teacher crop is image.jpg with source bbox 500,320,900,800 -> a 400x480 crop. Copy/derive that crop into your directory as your only geometric reference and author in that 400x480 frame. Do not read geometry from outside that crop.",
+  "",
+  "STARTING MATERIAL (read, then write your own): .scratch/35-r1-articulated-study/evidence/A-cloth-construction-v4/source/build_a.py, family-rules.py, semantic-parameters.json; scripts/articulated_construction.py (Component/SupportFrame/Camera/Point), scripts/ribbon_surface.py (two-sided paint driven by triangle winding), scripts/figure_scaffold.py (`hair_sheet()` — the two-sided twisting hair sheet), scripts/vector_visibility.py (depth-visible fragments), scripts/relate.py only if you need it. A v4 is byte-frozen: copy, never edit in place.",
+  "",
+  "REQUIRED PROPERTIES (each is an acceptance item, not a suggestion):",
+  "1. BOW = ONE CONTINUOUS RIBBON. Author one centerline that visits the knot, the left lobe, returns to the knot, the right lobe, returns to the knot, then the down tail and the left tail. The strip's width is continuous through the knot: no tail root that is wider than the knot and no tail that starts at an offset from the knot's edge. Lobe overlap and the fold/crease reading come from depth overlap of the same continuous strip plus authored interior crease marks; the lobes are solid cloth (the reference has no holes), so do not invent holes.",
+  "2. TWO SLEEVES. The reference crop contains a second sleeve whose dark cuff is small and largely covered by the pink bow tail (approximately (84,257)-(105,271) in crop coordinates, with a white sleeve sliver beside it). Author both sleeves whole (shoulder cap -> sleeve -> cuff, each as its own component on its own support). The second cuff's surviving visible shape must be produced by the existing depth visibility computation; you must NOT author a cut, a shortened outline, or a separate 'visible part' shape for it. If the depth engine cannot occlude it, stop and report that as the blocker instead of hand-cutting.",
+  "3. HAIR = ONE TWO-SIDED CURVED SHEET. Reuse the S1 mechanism (a head-attached curved support whose normal twists, with fill chosen by projected face orientation: deep blue outside, mint inside). Re-derive the sheet's layout, twist and extent from the crop rather than copying S1's untested twist. A v4's flat single-colour `_band_from_stations` band is the recorded regression to remove.",
+  "4. PART LIBRARY. Split the build into one module per object family (collar strip pair, bodice, sleeve, cuff, bow ribbon, hair sheet, ribbon bands), each authored in its own local (u,v) frame with named seam anchors. Authoring must be per-part, not one monolithic function.",
+  "5. SEAM CONTRACT, ENFORCED. Every declared joint between parts states a shared seam: the two boundaries must coincide within a small epsilon and share a tangent direction. Write a test that checks all declared seams and FAILS when a joint is broken. Include a negative control that deliberately breaks one joint and demonstrates the test failing, then restores it. A joint asserted only by name is what produced the defect this milestone fixes.",
+  "6. OBJECT COHESION. The README must list every named object and state, per object, the single connected thing it is; if any object is intentionally split, say why.",
+  "",
+  "DELIVERABLES inside evidence/A-cloth-v5/ :",
+  "- source/ : the part library + assembly + your build entry point",
+  "- tests/ : seam-contract test with negative control, two-sided-hair test, two-sleeve presence test, and any identity test you rely on",
+  "- artwork-a.svg and artwork-a.png at 400x480",
+  "- a scripts/draw check bundle (use --outdir into your directory, never the default path) with its report",
+  "- manifest.json + manifest.sha256 covering every source and output file",
+  "- README.md: object inventory, seam inventory, what is observed from the crop vs what is an artist hypothesis, exact commands run, and explicit unverified items",
+  "",
+  "ACCEPTANCE (prove it; do not self-award an art verdict): every test passes and the negative control fails before restoration; both cuffs exist as components and the second one's visible extent is a depth result; the hair sheet has two distinct side fills; the bow is one strip whose width is continuous through the knot; the manifest hashes verify; the check bundle exists.",
+  "",
+  "BUDGET: 120 minutes wall clock from your first tool call; write an intermediate checkpoint into your directory at 100 minutes; hard stop at 120. No-progress cap: after two distinct geometry hypotheses that both fail to satisfy an acceptance item, stop and report instead of trying a third. Do not extend yourself.",
+  "",
+  "REPORT BACK: the file list with hashes, which acceptance items you verified and by which command, which are unverified and why, the object and seam inventory, and any blocker.",
+].join("\n");
+
+const B_TASK = [
+  COMMON,
+  "",
+  "ROLE: B-hand writer (single writer) for milestone M1b. You own exactly one new directory: .scratch/35-r1-articulated-study/evidence/B-hand-v2/ .",
+  "Every other path is read-only for you, including STATUS.md, docs/, all of scripts/, every A artefact, and the sealed/heldout material (do not read it at all).",
+  "",
+  "GOAL: rebuild the B illustration's hand at a detailed level. The user's judgement is that the hold concept now reads correctly in both the support and the variation panel, and that the failure is only the drawing level of the hand ('toy-level hand'). So keep the concept, the variation and the control, and replace the hand construction.",
+  "",
+  "STARTING MATERIAL (read, copy, never edit in place): .scratch/35-r1-articulated-study/evidence/goal-recovery-r1-v2-completion/r1_scene.py and its spatial_adapter.py, shape-grammar.md, teacher-observations.json; the accepted sheet at evidence/goal-recovery-r1-v2-completion/rendered/ and evidence/B-caption-corrected-v1/ (presentation-only derivative whose captions are already truthful). B runs WITHOUT a reference: run scripts/draw check with no --ref.",
+  "",
+  "REQUIRED PROPERTIES:",
+  "1. HAND AS CONSTRUCTED GEOMETRY. Build palm, four fingers and a thumb from tapered strip/tube primitives (a tube family with a width taper along its length), each with its own anchors, not a blob with drawn-on claw lines. Fingers and thumb must be separable, individually posed, and read as separate digits at the final size — while remaining a compact, explainable construction, not a traced contour table.",
+  "2. GRIP CONTACT IS DERIVED, NOT DRAWN. The hold is 'open hand supports the dish from below'. Derive the contact from the dish geometry: the palm's cup supports the dish's underside, and the fingers/thumb close on the rim enough to read as support. State in the README which contact is a geometric consequence and which is an author hypothesis. Do not claim a visible thumb bracing the rim unless the rendered image actually shows it; the published caption must stay truthful.",
+  "3. THREE PANELS PRESERVED: baseline (chest level), variation (lifted + broader dish), control (dish displaced, hand still, near miss). The hold must read in baseline and variation; the control must remain a legible failure.",
+  "4. NO manual visibility cuts; depth decides overlap between fingers, thumb, palm and dish.",
+  "",
+  "DELIVERABLES inside evidence/B-hand-v2/ :",
+  "- source/ : the scene/build script and the hand primitive family",
+  "- tests/ : construction tests for digit count/separation/taper and for the derived contact relation, plus any identity test you rely on",
+  "- the three-panel sheet SVG + PNG (same canvas convention as the accepted sheet), plus per-panel PNGs",
+  "- a scripts/draw check bundle (reference-free, --outdir into your directory) with its report",
+  "- manifest.json + manifest.sha256 covering every source and output file",
+  "- README.md: hand construction vocabulary, contact claims (geometric consequence vs hypothesis), exact commands run, explicit unverified items",
+  "",
+  "ACCEPTANCE (prove it; do not self-award an art verdict): tests pass; the sheet and per-panel PNGs exist; digits are individually posed and separable; the contact relation is computed from the dish; captions make no claim the image does not show; manifest hashes verify.",
+  "",
+  "BUDGET: 120 minutes wall clock from your first tool call; checkpoint at 100 minutes; hard stop at 120. No-progress cap: two distinct hand-construction hypotheses. Do not extend yourself.",
+  "",
+  "REPORT BACK: file list with hashes, which acceptance items you verified and by which command, which are unverified and why, the contact-claim inventory, and any blocker.",
+].join("\n");
+
+const DOC_TASK = [
+  COMMON,
+  "",
+  "ROLE: contract-freeze writer (documentation only) for the M0 work package of the R1 advance. You own documentation paths only and write no drawing code and no artwork.",
+  "",
+  "The user approved, in this order: (a) A keeps its no-hand scope but must show BOTH sleeves, with the second cuff's visible shape produced by depth occlusion; (b) hair returns to the two-sided curved sheet mechanism; (c) B's hand is rebuilt at the detailed level; (d) an additional acceptance question — object cohesion — is added to the roadmap; (e) the advance instruction was given for milestones M1a, M1b, M2, M3, M4.",
+  "",
+  "TASKS:",
+  "1. docs/drawing/roadmap.md — add the fourth acceptance question to the numbered list in the 'Product goal and invariants' section, in the same style as the existing three: it states that every named object in a delivered drawing must read, in the actual rendered image, as one connected visible thing, that an intentionally split object must be documented as such, and that this is separate evidence from construction, geometry and art. Update the surrounding sentence that currently says three, without disturbing the other three questions.",
+  "2. Create .scratch/35-r1-articulated-study/work/m1a-m1b-plan.md — the approved plan to first level: milestone list M1a, M1b, M2, M3, M4 with outcome, deliverable, acceptance and synchronisation point for each; then the M1a and M1b work packages with owner, exact directories in scope, exclusions, acceptance and numeric budget (120 min writer, checkpoint 100, hard stop 120, no-progress cap 2 hypotheses), and the artefacts each must emit; then the review work packages that follow each writer (fresh independent reviewer, image-only plus structural, no self-review) and the integration step. M2 is marked as requiring the user to release the sealed task and authorize a new creator role; M3 and M4 are marked as later milestones, not started.",
+  "3. .scratch/35-r1-articulated-study/issues/54-user-review-scope-hair-and-hand.md — append a short 'Advance entered' section: the advance instruction was given, the plan path, the milestone list, and that the roadmap object-cohesion question was added. Keep the existing content intact.",
+  "4. STATUS.md — add one current-fact paragraph (in place, in the file's existing style) recording: the advance phase was entered on the user's instruction; M1a/M1b/M2/M3/M4 are the approved milestone list; the object-cohesion acceptance question was added to the roadmap; the plan lives at the path above; both writers are dispatched with the stated budgets; no artwork is accepted and no gate is claimed passed.",
+  "",
+  "ACCEPTANCE: roadmap contains the fourth question and no longer claims three; the plan file exists with owners, acceptance and numeric budgets per work package; issue 54 records the advance; STATUS records the advance and points at the plan; `git diff --check` is clean. Do not edit AGENTS.md, docs/drawing/principles.md, any evidence directory, or any script.",
+  "",
+  "BUDGET: 40 minutes. Report the exact files changed with a one-line summary each, plus any wording you had to decide.",
+].join("\n");
+
+const tasks = [
+  { key: "m0-contract-freeze", label: "Freeze contract: roadmap object-cohesion question and M1a/M1b plan", agent: "worker", task: DOC_TASK },
+  { key: "m1a-a-rebuild", label: "Rebuild A: continuous bow ribbon, two sleeves, two-sided hair", agent: "worker", task: A_TASK },
+  { key: "m1b-b-hand", label: "Rebuild B hand: palm, four fingers, thumb, derived grip contact", agent: "worker", task: B_TASK },
+];
+
+const launched = tasks.map((t) =>
+  runs.run(t.key, {
+    agent: t.agent,
+    task: t.task,
+    label: t.label,
+    model: "deepseek/deepseek-flash:low",
+    worktree: true,
+    async: true,
+  })
+);
+return runs.all(launched);
