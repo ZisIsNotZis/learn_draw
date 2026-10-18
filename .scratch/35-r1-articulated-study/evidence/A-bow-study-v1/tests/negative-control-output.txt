@@ -1,0 +1,11 @@
+crossing-break negative control (P37): the mechanism must be visible as a failure
+real build   : 10 crossings audited, 0 failures
+mutation     : --no-depth-break, 10 crossings audited, 10 failures
+  mutation failures (expected, this is the point):
+    rear edge drawn through the crossing at (164,260) (rail L, s=0.102), with nothing painted over it
+    rear edge drawn through the crossing at (358,242) (rail L, s=0.189), with nothing painted over it
+    rear edge drawn through the crossing at (337,208) (rail L, s=0.547), with nothing painted over it
+    rear edge drawn through the crossing at (451,163) (rail L, s=0.585), with nothing painted over it
+    rear edge drawn through the crossing at (451,163) (rail L, s=0.595), with nothing painted over it
+    rear edge drawn through the crossing at (451,162) (rail L, s=0.605), with nothing painted over it
+PASS: the mechanism is what makes the test pass

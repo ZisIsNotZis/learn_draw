@@ -86,17 +86,19 @@ WRAP = -1.75 * THICKNESS       # -28  the knot band, passing over both loops
 
 def _fields(parts):
     P = lambda k, f=0.0: _knot_at(parts, k, f)  # noqa: E731
+    # One width field, in canvas px.  It narrows into every turn: a turn of radius b
+    # cannot carry a strip wider than b without the two rails crossing at the inside of
+    # the turn, so the ribbon is gathered where it turns and fullest out on the loops.
     half = Field([
         (P(0, 0.0), 15.0), (P(0, 0.55), 30.0), (P(0, 1.0), 40.0),
         (P(1, 0.35), 22.0), (P(1, 1.0), 34.0),
-        (P(2, 0.25), HALF_WIDTH * 0.80), (P(2, 1.0), HALF_WIDTH),
+        (P(2, 0.25), HALF_WIDTH * 0.80), (P(2, 0.55), HALF_WIDTH * 0.62),
+        (P(2, 1.0), HALF_WIDTH * 0.40),
         (P(3, 0.5), HALF_WIDTH * 0.30),                 # the fold pinches the ribbon
-        (P(3, 1.0), HALF_WIDTH),
-        (P(4, 1.0), HALF_WIDTH * 0.86),
-        (P(5, 0.5), HALF_WIDTH * 0.78), (P(5, 1.0), HALF_WIDTH * 0.9),
-        (P(6, 0.5), HALF_WIDTH * 0.28),                  # right fold, tighter
-        (P(6, 1.0), HALF_WIDTH * 0.94),
-        (P(7, 1.0), HALF_WIDTH * 0.82),
+        (P(4, 0.30), HALF_WIDTH * 0.85), (P(4, 1.0), HALF_WIDTH * 0.86),
+        (P(5, 0.45), HALF_WIDTH * 0.90), (P(5, 1.0), HALF_WIDTH * 0.45),
+        (P(6, 0.5), HALF_WIDTH * 0.28),                 # right fold, tighter
+        (P(7, 0.30), HALF_WIDTH * 0.88), (P(7, 1.0), HALF_WIDTH * 0.82),
         (P(8, 0.45), 46.0), (P(8, 1.0), 17.0),
     ])
     depth = Field([
@@ -111,17 +113,17 @@ def _fields(parts):
         (P(8, 1.0), BACK_TAIL),
     ])
     # roll: how far the strip is turned about its own axis.  cos(roll) < 0 means the
-    # triangle's own winding points away from the camera, so that face wears the back
-    # colour.  Rolls stop short of edge-on and skip the 90-degree dead band.
+    # triangle's own winding points away from the camera, so that face wears the ribbon's
+    # back colour.  A roll near 90 degrees projects the strip to a line; measured on this
+    # drawing, a roll ramp through edge-on leaves a wedge of hairline triangles, so the
+    # ribbon is kept flat everywhere except the lower tail, which hangs turned over.
     roll = Field([
         (P(0, 0.0), 10.0), (P(1, 0.0), 16.0),
-        (P(1, 1.0), 26.0),
-        (P(3, 0.46), 101.0), (P(3, 0.54), 101.0),        # the fold turns the ribbon over
-        (P(3, 1.0), 0.0),
-        (P(5, 1.0), -18.0),
-        (P(6, 0.22), -36.0), (P(6, 0.78), -36.0),
-        (P(6, 1.0), 0.0),
-        (P(8, 0.55), 20.0), (P(8, 1.0), 152.0),          # the lower tail hangs turned over
+        (P(1, 1.0), 24.0),
+        (P(2, 1.0), 0.0), (P(3, 1.0), 0.0), (P(4, 1.0), 0.0),
+        (P(5, 1.0), -14.0),
+        (P(6, 1.0), 0.0), (P(7, 1.0), 0.0),
+        (P(8, 0.50), 20.0), (P(8, 1.0), 152.0),
     ])
     return half, depth, roll
 

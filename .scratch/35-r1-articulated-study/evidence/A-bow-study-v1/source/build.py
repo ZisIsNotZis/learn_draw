@@ -36,9 +36,29 @@ def resolve(break_depth=True):
     """Build the drawing: fills in painter order, plus the visible runs of every stroke."""
     art = bow.build()
     st, tris = art["strip"], art["tris"]
+    if not break_depth:
+        # the mutation the crossing test must catch: remove the depth separation itself, so
+        # no crossing has a break and every stroke is emitted unbroken
+        st.p[:, 2] = 0.0
     h_px, w_px = bow.CANVAS[1], bow.CANVAS[0]
     zbuf = depth_buffer(st, tris, w_px, h_px)
     eps = art["thickness"] * 0.45
+    # A stroke is covered if a nearer surface is within its own half-width: at a crossing the
+    # front edge covers the rear one even where the front triangle's interior does not reach
+    # the rear stroke's pixel.  Testing against a locally-nearest depth is what breaks the
+    # rear edge at the crossing instead of relying on paint order.
+    near = zbuf.copy()
+    for dy in range(-2, 3):
+        for dx in range(-2, 3):
+            if dx == 0 and dy == 0:
+                continue
+            shifted = np.full_like(zbuf, np.inf)
+            ys = slice(max(0, dy), zbuf.shape[0] + min(0, dy))
+            xs = slice(max(0, dx), zbuf.shape[1] + min(0, dx))
+            sys_ = slice(max(0, -dy), zbuf.shape[0] + min(0, -dy))
+            sxs = slice(max(0, -dx), zbuf.shape[1] + min(0, -dx))
+            shifted[ys, xs] = zbuf[sys_, sxs]
+            np.minimum(near, shifted, out=near)
 
     fills = []
     for tri in tris:
@@ -72,10 +92,11 @@ def resolve(break_depth=True):
     for label, v in (("L", 1.0), ("R", -1.0)):
         pts3 = np.array([st.point(i, v) for i in range(len(st.u))])
         runs = ([(0, len(pts3) - 1)] if not break_depth
-                else visible_runs(pts3, zbuf, eps))
+                else visible_runs(pts3, near, eps))
         for i0, i1 in runs:
             rails.append({
                 "rail": label,
+                "z": float(pts3[i0:i1 + 1][:, 2].mean()),
                 "s0": float(st.u[i0]), "s1": float(st.u[i1]),
                 "points": [(p[0], p[1]) for p in pts3[i0:i1 + 1]],
             })
@@ -87,7 +108,7 @@ def resolve(break_depth=True):
         pts3 = np.array([st.sample(u + curve * math.sin(math.pi * t), v)
                          for t, v in zip(ts, vs)])
         runs = ([(0, len(pts3) - 1)] if not break_depth
-                else visible_runs(pts3, zbuf, eps))
+                else visible_runs(pts3, near, eps))
         for i0, i1 in runs:
             creases.append({
                 "mark": idx, "u": u,
@@ -129,7 +150,9 @@ def svg(res):
     out.append("</g>")
     out.append('<g id="rails" fill="none" stroke="%s" stroke-width="3.4" '
                'stroke-linecap="round">' % bow.PALETTE["rail"])
-    for r in res["rails"]:
+    # far to near: a nearer rail paints over a rear one, so the rear edge is covered by
+    # depth even at the stations where its own stroke is not clipped
+    for r in sorted(res["rails"], key=lambda r: -r["z"]):
         out.append('<polyline class="rail" data-rail="%s" data-s0="%.4f" data-s1="%.4f" '
                    'points="%s"/>' % (r["rail"], r["s0"], r["s1"], _fmt(r["points"])))
     out.append("</g>")

@@ -1,0 +1,90 @@
+{
+ "evidence": "A-bow-study-v1",
+ "files": [
+  {
+   "bytes": 16054,
+   "path": "README.md",
+   "sha256": "46e772ffd02efaab69611026dc79a5cfa20efa450c65841e7d715fb90f27ffc4"
+  },
+  {
+   "bytes": 149384,
+   "path": "artwork.png",
+   "sha256": "a404f97577516cca414db1d0bcde8a60da6e839e9198e68ca06033a3dc409211"
+  },
+  {
+   "bytes": 221408,
+   "path": "artwork.svg",
+   "sha256": "1671c1c881a86ae24f857bb45c1a8c4165a4658e5c3410b75245bf11ab8ea0ea"
+  },
+  {
+   "bytes": 162807,
+   "path": "check/draft-fullres.png",
+   "sha256": "e2a10c26f2c549fb85b634ea337be37b159c0566747ede294596c9a40d8a0860"
+  },
+  {
+   "bytes": 149384,
+   "path": "check/draft.png",
+   "sha256": "a404f97577516cca414db1d0bcde8a60da6e839e9198e68ca06033a3dc409211"
+  },
+  {
+   "bytes": 1102,
+   "path": "check/report.txt",
+   "sha256": "1c7f7c3798aecc3fab4124bad394f09e52fc9b9b047ddff49e1066f887b16d3d"
+  },
+  {
+   "bytes": 8345,
+   "path": "source/build.py",
+   "sha256": "ee22834fa08231012d600af660f4f068e74060046c373c651015b6f9f1560778"
+  },
+  {
+   "bytes": 3157,
+   "path": "source/manifest.py",
+   "sha256": "8620f796179c5eec431194abc5495d9d1af1e3d8b40234994e80748673de96ff"
+  },
+  {
+   "bytes": 0,
+   "path": "source/parts/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "bytes": 8205,
+   "path": "source/parts/bow.py",
+   "sha256": "f39cdee3e347e157012dbed5b2ab81619b12ca2db1895f622742d84c5ada1914"
+  },
+  {
+   "bytes": 8881,
+   "path": "source/ribbon.py",
+   "sha256": "4ddd52c6106d712a8748db01cb7981f8a16b0b8b7e90e3aa0458f05bdb30dd76"
+  },
+  {
+   "bytes": 0,
+   "path": "tests/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "bytes": 908,
+   "path": "tests/negative-control-output.txt",
+   "sha256": "ace6fea19e50d5d1c6ff1007d900ca64a463b3c91ccb1aeb918d9bb1a9a9e486"
+  },
+  {
+   "bytes": 6114,
+   "path": "tests/test_crossing_break.py",
+   "sha256": "db829fef83a476a5853a8b760a401e1371aeb170f5cdd26dc7e44f56af2a7004"
+  },
+  {
+   "bytes": 3995,
+   "path": "tests/test_fill_and_build.py",
+   "sha256": "598afe1962fae1c60acf4b8f12f05bf05cf251358d491a98465b2c7852f73ec9"
+  },
+  {
+   "bytes": 4881,
+   "path": "tests/test_package.py",
+   "sha256": "0092f0e38ea28e00e7fe97c7ef4b10b70e8a55239b3c25cf75c806cf948a3bbc"
+  },
+  {
+   "bytes": 5277,
+   "path": "tests/test_ribbon_continuity.py",
+   "sha256": "fd9525eed150364d519b550c1b5ec4123ce77d5d785b69ef6adf00de46d2e00f"
+  }
+ ]
+}
