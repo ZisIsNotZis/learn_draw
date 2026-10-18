@@ -145,7 +145,7 @@ class DeclaredContact:
 HAND_DEPTH_SLOPE = 0.03        # hand surface tilts toward the viewer, as in the reviewed sheet
 CONTACT_INSET = 0.006          # palm rim edge tucks this far under the dish foot (hidden)
 DISH_DEPTH_OFFSET = 0.012      # dish surface sits this far in front of the palm plane
-PALM_WRIST_HALF = 0.115        # the palm narrows to this where the sleeve's cuff covers it
+PALM_WRIST_HALF = 0.088        # the palm narrows to this where the sleeve's cuff covers it
 PALM_KNUCKLE_DROP = 0.105      # the palm's knuckle pad continues this far past the rim's far end
 PALM_THENAR_BULGE = 0.060      # the thumb-side flank swells out by this much
 KNUCKLE_SETBACK = 0.014        # digit roots sit this far inside the palm's contact rim
@@ -162,7 +162,7 @@ FINGERS = (
               0.96, 64.0, 0.034, 0.069, 0.060, 0.040, 0.045, 0.0245),
 )
 THUMB = DigitSpec("thumb", "thumb presses the dish's near-left wall from outside",
-                  0.90, 122.0, 0.026, 0.090, 0.078, 0.058, -0.030, 0.0260)
+                  0.90, 153.0, 0.026, 0.090, 0.078, 0.058, -0.030, 0.0260)
 
 ARM_DEPTH = 0.048              # the sleeve sits in front of the torso plane and the vest
 ARM_SHOULDER_HALF = 0.240      # sleeve width at its own rounded shoulder cap
@@ -506,7 +506,7 @@ def _b_case(case: str) -> tuple[tuple[ShapeSpec, ...], tuple[LineSpec, ...], dic
     foot = dish_foot_contact(nominal_contour)
     rim = RimBand(Point(support_center.u, support_center.v - 0.005), dish_rx, 0.115)
     left_wall = dish_wall(nominal_contour, support_center, "left")
-    wrist = Point(2.34, 1.02)
+    wrist = Point(2.36, 1.10)
 
     shoulder = Point(0.60, 2.00)
     limb = construct_limb(LimbParameters(

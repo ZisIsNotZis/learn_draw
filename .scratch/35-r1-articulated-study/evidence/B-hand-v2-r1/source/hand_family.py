@@ -239,7 +239,7 @@ def palm_pad(contact_edge: tuple[Point, ...], wrist: Point, *, wrist_half: float
     wrist_cap = [shifted(wrist,
                          Point(across.u * math.cos(theta) - axis.u * math.sin(theta),
                                across.v * math.cos(theta) - axis.v * math.sin(theta)),
-                         wrist_half if math.cos(theta) >= 0 else wrist_half * 0.55)
+                         wrist_half if math.cos(theta) >= 0 else wrist_half * 0.45)
                  for theta in (math.pi - math.pi * k / 5 for k in range(6))]
     # thenar flank: the thumb side, bulging out from the wrist toward the rim's near end
     thenar = spline((wrist_up,
