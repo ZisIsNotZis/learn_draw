@@ -1,0 +1,99 @@
+{
+  "revision": "B-hand-v2",
+  "scope": "README, source, tests, rendered panels/sheet and the reference-free draw-check bundle",
+  "covered_folders": [
+    "source",
+    "tests",
+    "rendered",
+    "check"
+  ],
+  "generated_by": "source/make_manifest.py",
+  "reference_free": true,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "c98c7c3cf33ac039ea2697723c8c1dfd876043c65de97a2250c4f0967250692e",
+      "bytes": 10274
+    },
+    {
+      "path": "check/draft.png",
+      "sha256": "03a594476367e374df0f037b9cc6d782512be5c2de49a02434685cd8c704c4c1",
+      "bytes": 15561
+    },
+    {
+      "path": "check/report.txt",
+      "sha256": "2f0be49d5922d3b1ffddf9aba83a251227e72fa5b277576c85ac8c736d8c93ff",
+      "bytes": 736
+    },
+    {
+      "path": "rendered/B-baseline-support.png",
+      "sha256": "69122ee7aaab19266f045540f52bb7d6b9086937473e09c19e84597cf484659a",
+      "bytes": 38943
+    },
+    {
+      "path": "rendered/B-baseline-support.svg",
+      "sha256": "edc9ae249c7badcf52866b834b686a0aceba8e2d4ff30a9e0146786f53f353b7",
+      "bytes": 593039
+    },
+    {
+      "path": "rendered/B-near-miss-control.png",
+      "sha256": "afaf6e7395152e7c1419efdc52bc218d1da6bb3e4dd95cef45f5fa82be4701cd",
+      "bytes": 39372
+    },
+    {
+      "path": "rendered/B-near-miss-control.svg",
+      "sha256": "00000f0f5c3c6c08a988298ce79eae56250454ed6b1df6deb9b5ab009562bcaa",
+      "bytes": 469785
+    },
+    {
+      "path": "rendered/B-original-support.png",
+      "sha256": "c6b728c76c65ac62d33c8d79caa1f8979dcc85808a1e2692f45ae6780ad43318",
+      "bytes": 85590
+    },
+    {
+      "path": "rendered/B-original-support.svg",
+      "sha256": "7ed2e2fb8f541525e55ad8aff18e84244c8a50a92a56770d1e9609cc5fcf7650",
+      "bytes": 1622819
+    },
+    {
+      "path": "rendered/B-variant-support.png",
+      "sha256": "d20f42617e8b54893ec10eced572856106f807be3782b559448eefb862c4d79e",
+      "bytes": 41875
+    },
+    {
+      "path": "rendered/B-variant-support.svg",
+      "sha256": "a3857abd3bc9adbd47e143ea59ca2210fc027e03855a498966e8f62f59473b90",
+      "bytes": 559749
+    },
+    {
+      "path": "source/hand_family.py",
+      "sha256": "c3db32991af8cc13a6585a2c26106721bc7fa97940f9f8e44f66b267a32c16a3",
+      "bytes": 9189
+    },
+    {
+      "path": "source/make_manifest.py",
+      "sha256": "08b1da8ee3a6157c3142e2f412ebf3859adaa29d36c07317a345ebb406dc3877",
+      "bytes": 1692
+    },
+    {
+      "path": "source/run_b.py",
+      "sha256": "6531f2671018d068f177e900bcccdef416a634b65f0105a0db8002dc1cb18f4c",
+      "bytes": 1831
+    },
+    {
+      "path": "source/scene.py",
+      "sha256": "3bd5e634fd6789cdf39914ecb92dcf41d4bc47ec77c3e4e1ab192f178284b3a4",
+      "bytes": 46269
+    },
+    {
+      "path": "source/spatial_adapter.py",
+      "sha256": "2298d93dac19709c192ea93f186631f907aebc6a095e01f89328974cf4742af8",
+      "bytes": 3399
+    },
+    {
+      "path": "tests/test_hand_construction.py",
+      "sha256": "60103cf63da2b4cf01ad19ad4efc5d087b25040a942acd7c04b88583268abc85",
+      "bytes": 13417
+    }
+  ]
+}
