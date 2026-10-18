@@ -10,10 +10,9 @@ try:
 except ImportError as e:
     raise SystemExit(f"scene_render needs cv2 in the active interpreter: {e}; use .venv/bin/python")
 import numpy as np
+from renderer import chrome_path
 
-CHROME = os.path.expanduser(
-    "~/.cache/ms-playwright/chromium_headless_shell-1234/"
-    "chrome-headless-shell-linux64/chrome-headless-shell")
+CHROME = chrome_path()
 
 # per-type allowed keys; first key listed is the id-bearing type key
 SCHEMA = {

@@ -9,10 +9,9 @@ so a drawing that regresses is visible as a regression instead of being called p
 import argparse, hashlib, json, os, re, shutil, subprocess, sys, datetime
 import numpy as np
 import cv2
+from renderer import chrome_path
 
-CHROME = os.path.expanduser(
-    "~/.cache/ms-playwright/chromium_headless_shell-1234/"
-    "chrome-headless-shell-linux64/chrome-headless-shell")
+CHROME = chrome_path()
 
 # The recorded best artifact — the floor every new render is measured against (see roadmap M-gates).
 BASELINE_DIR = ".scratch/00-tooling/baseline"

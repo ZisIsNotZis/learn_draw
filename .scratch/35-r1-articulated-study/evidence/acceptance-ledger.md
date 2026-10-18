@@ -33,4 +33,4 @@ Reports are preserved as distinct original artifacts; no prior report or candida
 - **Not passed:** full R1, transfer, or user acceptance. No claim of B or heldout evaluation.
 - **Historical execution status:** issue 49 records the original implementation allocation as NOTDONE. Independent candidate review is a later bounded disposition and does not erase that process outcome or the separate unrun/full gates.
 
-Ticket: [issue 50](../issues/50-a-v4-finite-art-acceptance-and-open-gates.md). Current project summary: [`STATUS.md`](../../../STATUS.md); active handoff: [`active-work.md`](../../active-work.md).
+Ticket: [issue 50](../issues/50-a-v4-finite-art-acceptance-and-open-gates.md). Current project summary: [`STATUS.md`](../../../STATUS.md).

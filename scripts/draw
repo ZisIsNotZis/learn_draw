@@ -1,3 +1,7 @@
 #!/usr/bin/env bash
-# draw — wrapper running scripts/draw.py in the project venv
-exec "$(dirname "$0")/../.venv/bin/python" "$(dirname "$0")/draw.py" "$@"
+# draw — wrapper running scripts/draw.py; prefers the project venv when present
+DIR="$(cd "$(dirname "$0")" && pwd)"
+if [ -x "$DIR/../.venv/bin/python" ]; then
+  exec "$DIR/../.venv/bin/python" "$DIR/draw.py" "$@"
+fi
+exec python3 "$DIR/draw.py" "$@"

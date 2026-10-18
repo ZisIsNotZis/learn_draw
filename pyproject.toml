@@ -1,0 +1,18 @@
+[project]
+name = "learn-draw"
+version = "0.0.0"
+description = "Learning to draw via programmatic vector art (SVG/CSS) — tooling environment"
+requires-python = ">=3.11"
+# The environment is declared so it can be rebuilt: `uv venv .venv && uv pip install -e .`
+# The renderer is not a Python package: scripts/renderer.py resolves the newest
+# chromium_headless_shell-* already present in the playwright cache (override with
+# CHROME_HEADLESS_SHELL).
+dependencies = [
+    "numpy",
+    "opencv-python-headless",
+    "pillow",
+    "pyyaml",
+]
+
+[tool.uv]
+package = false

@@ -268,3 +268,21 @@ extraction, visibility and **artistic selection** separate. Do not replace the m
 with “draw every valid outline”, or call more consistent decoration a readability solution. This
 rejects the two tested treatments, not all contour approaches. Negative controls and exact revision:
 `.scratch/20-ribbon-drawing-rule/outcome.md`.
+
+## P33 — Declared parts are not a connected object; a physical thing is one continuous strip (A v4 review)
+
+A drawing can carry a dozen named components with support frames and attachment records and still render
+as disconnected pieces, because an attachment record is a name, not a geometric requirement. The A v4
+bow is the recorded case: a 12×15 px gather patch, two independent solid lobes, and a tail starting at an
+offset whose 16.8 px width exceeds the knot's 12 px, so the tail's root is a straight cut beside the knot
+rather than an emergence from it. The physical object is one ribbon visiting knot → lobe → knot → lobe →
+knot → tails, and the reference's lobes are solid cloth read through crease and fold lines, not holes.
+Consequences that generalise: a joint needs a seam contract (coincident boundary, shared tangent) that a
+build can fail, so the defect is caught before a reviewer sees it; and a surface mechanism, once earned,
+must not be silently simplified away — A v4's hair fell back from S1's two-sided twisting sheet
+(`figure_scaffold.hair_sheet`, projected-face-orientation paint generalised in `ribbon_surface.py`) to a
+flat single-colour band. Composition also decides whether such a defect is even visible: the second
+sleeve exists, is small and mostly covered by the bow tail, and its surviving shape belongs to depth
+occlusion rather than an author-drawn cut. Evidence: `.scratch/35-r1-articulated-study/issues/54-user-review-scope-hair-and-hand.md`,
+`evidence/A-cloth-construction-v4/source/family-rules.py` (`gather_patch`, `folded_loop`, `tension_tail`,
+`_band_from_stations`), and the registered reference crop `500,320,900,800`.
