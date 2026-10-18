@@ -18,7 +18,7 @@ for path in (str(ROOT), str(EVIDENCE)):
         sys.path.insert(0, path)
 
 from source import assemble, seam_contract                     # noqa: E402
-from source.parts.frames import PartFrame, Point               # noqa: E402
+from source.parts.frames import Anchor, PartFrame, Point        # noqa: E402
 
 
 class SeamContractTest(unittest.TestCase):
@@ -73,6 +73,37 @@ class SeamContractTest(unittest.TestCase):
         names = {f["name"] for f in seam_contract.failures(seam_contract.check(broken_parts))}
         self.assertTrue({"S10-left-cuff", "S10-left-cuff-right"} & names,
                         msg=f"cuff on an unrelated support was not detected: {names}")
+
+    def test_negative_control_rotated_tangent(self):
+        """Rotate one leaf's declared seam direction by 30 degrees and move nothing.
+
+        The boundaries stay coincident and the depth relation still holds, so only the
+        tangent clause can notice: without this control the clause is unchecked against
+        its own failure.  The rotation is applied to the leaf's local tangent; the frame
+        map is a rotation, so the plane angle between the two declared directions stays
+        30 degrees.
+        """
+        angle = math.radians(30.0)
+        cos, sin = math.cos(angle), math.sin(angle)
+        leaf = self.parts["A-collar-right"]
+        anchor = leaf.anchors["Q_prime"]
+        tx, ty = anchor.tangent
+        rotated = (tx * cos - ty * sin, tx * sin + ty * cos)
+        anchors = dict(leaf.anchors)
+        anchors["Q_prime"] = Anchor(anchor.point, rotated)
+        broken_parts = dict(self.parts)
+        broken_parts["A-collar-right"] = dataclasses.replace(leaf, anchors=anchors)
+
+        broken = {f["name"]: f["detail"]
+                  for f in seam_contract.failures(seam_contract.check(broken_parts))}
+        self.assertIn("S1-collar-front", broken, msg=f"the rotated tangent was not detected: {broken}")
+        self.assertIn("tangent mismatch", broken["S1-collar-front"])
+        self.assertNotIn("boundary gap", broken["S1-collar-front"],
+                         msg="only the direction was changed, so no boundary may move")
+
+        restored = seam_contract.check(self.parts)
+        self.assertEqual([], seam_contract.failures(restored),
+                         msg="restoring the declared tangent did not restore the seam")
 
     def test_shared_seam_has_coincident_boundaries(self):
         for joint in seam_contract.JOINTS:

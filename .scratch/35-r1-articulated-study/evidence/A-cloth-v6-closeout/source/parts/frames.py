@@ -12,8 +12,9 @@ is the parameterization itself, so it may fold back through depth.
 
 The two-sided paint rule is one function shared by both sheet parts: the fill of a
 face is chosen by the orientation of its own surface normal against the camera,
-i.e. by the projected winding of the triangle.  A sheet that twists shows its
-back side where the winding reverses; nothing is painted by declaration.
+i.e. by the projected winding of *that triangle*.  A sheet that twists shows its
+back side where the winding reverses; nothing is painted by declaration, and no
+triangle inherits its neighbour's fill (`tests/test_fill_winding.py`).
 """
 from __future__ import annotations
 
@@ -233,6 +234,9 @@ class SheetPart:
     authored: tuple = ()
 
     def faces(self) -> list[tuple[tuple, str, str]]:
+        # Each triangle is painted by its OWN winding.  A quad split into two triangles
+        # can have the two triangles facing opposite ways near a fold, so one fill per
+        # quad would give one of them the other side's colour.
         out = []
         for i in range(len(self.grid) - 1):
             for j in range(len(self.grid[i]) - 1):
@@ -240,9 +244,12 @@ class SheetPart:
                 p10 = self.grid[i + 1][j]
                 p11 = self.grid[i + 1][j + 1]
                 p01 = self.grid[i][j + 1]
-                fill = two_sided_fill(p00, p10, p01, self.front_fill, self.back_fill)
-                out.append(((p00, p10, p11), fill, self.name))
-                out.append(((p00, p11, p01), fill, self.name))
+                out.append(((p00, p10, p11),
+                            two_sided_fill(p00, p10, p11, self.front_fill, self.back_fill),
+                            self.name))
+                out.append(((p00, p11, p01),
+                            two_sided_fill(p00, p11, p01, self.front_fill, self.back_fill),
+                            self.name))
         return out
 
     def plane_anchor(self, key: str):

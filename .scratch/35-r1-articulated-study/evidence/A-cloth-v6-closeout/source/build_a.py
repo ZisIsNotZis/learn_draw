@@ -5,8 +5,8 @@ Reference discipline: this program never reads image.jpg or the crop.  The crop
 seeded the design numbers while they were authored; the engine sees geometry only.
 Run from the repository root:
 
-    .venv/bin/python .scratch/35-r1-articulated-study/evidence/A-cloth-v5/source/build_a.py \
-        --out .scratch/35-r1-articulated-study/evidence/A-cloth-v5/artwork-a.svg
+    python3 .scratch/35-r1-articulated-study/evidence/A-cloth-v6-closeout/source/build_a.py \
+        --out .scratch/35-r1-articulated-study/evidence/A-cloth-v6-closeout/artwork-a.svg
 """
 from __future__ import annotations
 
@@ -34,6 +34,7 @@ def main() -> int:
     scene = assemble.build()
     findings = seam_contract.check(scene["parts"])
     failures = seam_contract.failures(findings)
+    inventory = seam_contract.unaccounted_anchors(scene["parts"])
     svg, info = assemble.render_svg(scene)
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -49,16 +50,32 @@ def main() -> int:
         seams_total=len(findings),
         seams_failed=len(failures),
         seam_findings=findings,
+        anchors_declared=inventory["declared"],
+        anchors_joint_endpoints=inventory["joint_endpoints"],
+        anchors_non_joints=inventory["non_joints"],
+        anchors_unaccounted=inventory["unaccounted"],
+        anchors_inventory_errors=inventory["non_joint_without_reason"]
+                                + inventory["inventory_names_a_missing_anchor"],
     )
     if args.report:
         Path(args.report).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({k: report[k] for k in ("parts", "faces", "visible_fill_regions",
-                                             "seams_total", "seams_failed")}, sort_keys=True))
+                                             "seams_total", "seams_failed", "anchors_declared",
+                                             "anchors_joint_endpoints", "anchors_non_joints")},
+                     sort_keys=True))
+    failed = False
     if failures:
         for finding in failures:
             print(f"SEAM FAILED {finding['name']}: {finding['detail']}", file=sys.stderr)
-        return 1
-    return 0
+        failed = True
+    for name in report["anchors_unaccounted"]:
+        print(f"ANCHOR UNACCOUNTED {name}: no joint reads it and NON_JOINTS gives no reason",
+              file=sys.stderr)
+        failed = True
+    for name in report["anchors_inventory_errors"]:
+        print(f"ANCHOR INVENTORY ERROR {name}", file=sys.stderr)
+        failed = True
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

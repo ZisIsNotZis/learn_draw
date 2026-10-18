@@ -117,13 +117,18 @@ def _glue(pieces):
 # layer of the knot would be decided by the visibility tie rule instead of by depth.
 CLOTH_THICKNESS = 0.012
 
+# One depth band per piece of the strip, ordered outermost-first: the tie's last pass is
+# in front, then the pass between the lobes, then the pass that leaves the left limb.
+# Pass 1 is a ramp and passes 2 and 3 are flat, so the three knot passes must miss each
+# other by at least one cloth thickness over their whole spans -- a ramp whose midpoint
+# reaches pass 2's band puts two knot layers at the same depth at that station.
 PIECE_DEPTH = (
     (0.600, 0.600),                              # left tail: on the chest, in front of the cuff it crosses
-    (0.600, 0.600 + 2 * CLOTH_THICKNESS),        # knot pass 1, in front of the left limb
+    (0.600, 0.600 + CLOTH_THICKNESS / 2),        # knot pass 1, in front of the left limb
     (0.600 - CLOTH_THICKNESS, 0.600 - CLOTH_THICKNESS),   # left lobe outbound limb
     (0.600 - CLOTH_THICKNESS, 0.600 - CLOTH_THICKNESS),   # left lobe fold
     (0.600 - 3 * CLOTH_THICKNESS, 0.600 - 3 * CLOTH_THICKNESS),  # left lobe return, behind the outbound one
-    (0.600 + CLOTH_THICKNESS, 0.600 + CLOTH_THICKNESS),   # knot pass 2, between the lobes
+    (0.600 + 1.5 * CLOTH_THICKNESS, 0.600 + 1.5 * CLOTH_THICKNESS),  # knot pass 2, between the lobes
     (0.600 - 2 * CLOTH_THICKNESS, 0.600 - 2 * CLOTH_THICKNESS),  # right lobe outbound limb
     (0.600 - 2 * CLOTH_THICKNESS, 0.600 - 2 * CLOTH_THICKNESS),  # right lobe fold
     (0.600 - 3 * CLOTH_THICKNESS, 0.600 - 3 * CLOTH_THICKNESS),  # right lobe return
@@ -210,19 +215,19 @@ def _marks(surface, spans, count):
     each lobe, and across the tie where the ribbon crosses itself.  There is no mark
     that sweeps a whole limb, because a ribbon has no such line.
     """
-    marks = [("A-bow-ribbon-edge-front", "silhouette", surface.edge(0.0, 1.0, 1.0, 120), INK),
-             ("A-bow-ribbon-edge-back", "silhouette", surface.edge(0.0, 1.0, -1.0, 120), INK)]
+    marks = [("A-bow-ribbon-edge-front", "A-bow-ribbon", "silhouette", surface.edge(0.0, 1.0, 1.0, 120), INK),
+             ("A-bow-ribbon-edge-back", "A-bow-ribbon", "silhouette", surface.edge(0.0, 1.0, -1.0, 120), INK)]
     for name, piece in (("A-bow-left-fold-crease", 3), ("A-bow-right-fold-crease", 7)):
         lo, hi = spans[piece]
         centre = (lo + hi) / 2 / count
         half = 0.35 * (hi - lo) / count
-        marks.append((name, "fold_edge",
+        marks.append((name, "A-bow-ribbon", "fold_edge",
                       tuple(surface.point(centre - half + 2 * half * i / 7,
                                           -0.8 + 1.6 * i / 7) for i in range(8)), INK))
     lo, hi = spans[9]
     centre = (lo + hi) / 2 / count
     half = 0.35 * (hi - lo) / count
-    marks.append(("A-bow-knot-wrap-fold", "fold_edge",
+    marks.append(("A-bow-knot-wrap-fold", "A-bow-ribbon", "fold_edge",
                   tuple(surface.point(centre - half + 2 * half * i / 7,
                                       -0.9 + 1.8 * i / 7) for i in range(8)), INK))
     return marks

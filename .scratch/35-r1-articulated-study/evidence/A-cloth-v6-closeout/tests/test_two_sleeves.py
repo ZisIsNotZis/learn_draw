@@ -50,16 +50,25 @@ class TwoSleeveTest(unittest.TestCase):
         self.assertEqual(4, len(supports), msg="each piece must sit on its own support")
 
     def test_second_cuff_is_authored_whole(self):
+        """The second cuff keeps its whole authored area and shows almost none of it.
+
+        The previous version of this test ended on `assertGreaterEqual(visible, 0.0)`,
+        an absolute area against zero, which no geometry can fail (B2 of the v6
+        closeout).  The measurements below move in opposite directions on purpose: the
+        authored area must exist, and the surviving area must be a small fraction of
+        it.  A cuff drawn small, or a cuff nothing occludes, fails this test.
+        """
         cuff = self.parts["A-left-cuff"]
         authored = outline_area(cuff)
         visible = visible_area(self.faces, cuff.name)
-        self.assertGreater(authored, 0.0, msg="the second cuff has no authored extent")
+        self.assertGreater(authored, 100.0,
+                           msg=f"the second cuff has almost no authored extent ({authored:.3f} px2)")
         # At this revision the authored cuff lies entirely behind the bow and the hair
-        # fall, so its surviving extent is zero: that is an occlusion result, not an
-        # authored cut, and the fabrication test below proves the whole shape exists.
-        self.assertGreaterEqual(visible, 0.0)
-        self.assertLess(visible, authored * 0.75,
-                        msg="the second cuff is not occluded: its visible shape was not cut by depth")
+        # fall, so its surviving extent is ~0: an occlusion result, not an authored cut,
+        # and test_second_cuff_extent_is_a_depth_result proves the whole shape exists.
+        self.assertLess(visible, authored * 0.01,
+                        msg=f"the second cuff is not occluded: {visible:.3f} px2 of "
+                            f"{authored:.1f} authored px2 survive")
 
     def test_second_cuff_extent_is_a_depth_result(self):
         """Lift every cloth piece in front of the cuff and the same authored geometry

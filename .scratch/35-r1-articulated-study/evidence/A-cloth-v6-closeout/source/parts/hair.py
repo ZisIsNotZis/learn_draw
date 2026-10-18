@@ -131,8 +131,8 @@ def build():
         authored=(("left_tip", LEFT_TIP_XY), ("left_bulge", LEFT_BULGE_XY),
                   ("crown", CROWN_XY), ("right_shoulder", RIGHT_SHOULDER_XY),
                   ("right_tip", RIGHT_TIP_XY)))
-    marks = [("A-hair-sheet-edge-front", "silhouette", surface.edge(0.0, 1.0, 1.0, 140), INK),
-             ("A-hair-sheet-edge-back", "silhouette", surface.edge(0.0, 1.0, -1.0, 140), INK)]
+    marks = [("A-hair-sheet-edge-front", "A-hair-sheet", "silhouette", surface.edge(0.0, 1.0, 1.0, 140), INK),
+             ("A-hair-sheet-edge-back", "A-hair-sheet", "silhouette", surface.edge(0.0, 1.0, -1.0, 140), INK)]
     # Creases only where the sheet's own route bends: the left mass, the crown turn and
     # the shoulder curl.  Each is a short curve lying on the surface, never a chord.
     for name, centre, half_window in (("A-hair-left-mass-fold", 0.16, 0.030),
@@ -140,6 +140,6 @@ def build():
                                       ("A-hair-shoulder-curl-fold", shoulder_t + 0.03, 0.028)):
         points = tuple(surface.point(centre - half_window + 2 * half_window * i / 8,
                                      0.75 - 1.55 * i / 8) for i in range(9))
-        marks.append((name, "fold_edge", points, INK))
+        marks.append((name, "A-hair-sheet", "fold_edge", points, INK))
     return {"A-hair-sheet": part}, marks, dict(surface=surface, dense=_base_route(),
                                                shoulder_t=shoulder_t)

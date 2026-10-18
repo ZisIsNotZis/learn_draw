@@ -19,6 +19,24 @@ compares real geometry:
 
 `check` returns one finding per joint for every declared joint; a build fails if any
 finding is not ok.
+
+What the tangent clause does and does not prove.  Each side's tangent is the direction
+that side declares for the seam: the collar leaf's local +u is defined as R -> Q, the
+sleeve's cross direction is the terminal section, and the bodice, band and skin
+anchors compute `_toward(anchor, anchor)` from two shared stations.  Because both
+sides name the same two stations, the clause compares two independent derivations of
+one direction in two different frames -- it verifies *declaration consistency*, not a
+direction read off the emitted outline.  Deriving the tangent from the sampled outline
+instead was measured and rejected: the polygon's local chord at an anchor departs from
+the cloth's seam direction by up to 87 degrees at a corner (S8-band-continuation),
+because the outline is a sampled contour and not a seam.  The consequence is recorded
+in the README: the clause can catch a rotated declared direction (negative control
+`test_negative_control_rotated_tangent` in `tests/test_seam_contract.py`) and cannot
+catch an outline that rotates while its anchor stays put.
+
+Completeness is checked, not asserted: every anchor a part declares must appear in a
+`Joint` here or in `NON_JOINTS` with a stated reason, and every `NON_JOINTS` entry must
+name a real declared anchor.  `tests/test_anchor_inventory.py` enforces both directions.
 """
 from __future__ import annotations
 
@@ -79,8 +97,9 @@ JOINTS = (
 )
 
 # Every declared (part, anchor) pair that is *not* a joint, with the reason it is not.
-# `tests/test_seam_contract.py` fails if a part declares an anchor that appears in
-# neither this map nor a Joint, so the joint list is provably the whole list.
+# `tests/test_anchor_inventory.py` fails in both directions: a part that declares an
+# anchor appearing in neither this map nor a Joint, and an entry here that names an
+# anchor no part declares.
 NON_JOINTS = {
     ("A-head-face", "chin"): "a station on the jaw seam between the two joint anchors; the seam is "
                              "declared at its two ends and the chin is read as the shared relation's "
@@ -164,3 +183,35 @@ def check(parts, joints=JOINTS):
 
 def failures(findings):
     return [f for f in findings if not f["ok"]]
+
+
+def joint_endpoints(joints=JOINTS):
+    """Every (part, anchor) pair a joint reads."""
+    return {(joint.a[0], joint.a[1]) for joint in joints} | {(joint.b[0], joint.b[1]) for joint in joints}
+
+
+def declared_anchors(parts):
+    """Every (part, anchor) pair the part library declares."""
+    return {(name, key) for name, part in parts.items() for key in part.anchors}
+
+
+def unaccounted_anchors(parts, joints=JOINTS, non_joints=None):
+    """Declared anchors that no joint reads and no reason excuses.
+
+    An anchor that nothing reads is an unchecked claim about a boundary, so the set
+    must be empty; `tests/test_anchor_inventory.py` holds it at zero and the build
+    fails when it is not.  The called-with inventory is also checked the other way:
+    an entry that names an anchor no part declares is reported too.
+    """
+    if non_joints is None:
+        non_joints = NON_JOINTS
+    endpoints = joint_endpoints(joints)
+    declared = declared_anchors(parts)
+    unaccounted = sorted(declared - endpoints - set(non_joints))
+    phantom = sorted((set(non_joints) | endpoints) - declared)
+    reasons_missing = sorted(key for key, reason in non_joints.items() if not reason.strip())
+    return dict(declared=len(declared), joint_endpoints=len(declared & endpoints),
+                non_joints=len(declared & set(non_joints)),
+                unaccounted=[f"{part}.{anchor}" for part, anchor in unaccounted],
+                non_joint_without_reason=[f"{part}.{anchor}" for part, anchor in reasons_missing],
+                inventory_names_a_missing_anchor=[f"{part}.{anchor}" for part, anchor in phantom])

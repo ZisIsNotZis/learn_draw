@@ -8,6 +8,10 @@ is derived from the same body width field instead of being a drawn stripe.
 Local frame: origin at the chest station C0, +u along the body axis toward the
 waist station Cw.  The three pieces share this frame and its support, which is why
 their shared sections cannot drift apart.
+
+Authored coordinates (three): the chest station C0, the waist direction station Cw
+and the exposed silhouette station Eleft.  Every width, section, gather fold and the
+waist band itself is derived from this one body width field.
 """
 from __future__ import annotations
 
@@ -53,7 +57,8 @@ def build(opening_plane: Point, left_root_plane: Point, right_root_plane: Point)
     # solved once in the shared plane and each piece's artwork is stored in its frame.
     spec = dict(authored_xy={"C0": tp(crop(*CHEST_XY)), "Cw": tp(crop(*WAIST_XY)),
                              "Eleft": tp(crop(*LEFT_EDGE_XY)), "Q": tp(opening_plane)},
-                authored_input_xy={"Cw": tp(crop(*WAIST_XY)), "Eleft": tp(crop(*LEFT_EDGE_XY))},
+                authored_input_xy={"C0": tp(crop(*CHEST_XY)), "Cw": tp(crop(*WAIST_XY)),
+                                   "Eleft": tp(crop(*LEFT_EDGE_XY))},
                 **BODY)
     # The generator closes its right0 silhouette chain with `right_root`. The body
     # frame's +v is the wearer's right, which is the crop's left, so the crop-left

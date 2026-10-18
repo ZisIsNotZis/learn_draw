@@ -70,8 +70,9 @@ OBJECTS = {
 # One line-weight policy, applied by semantic class and never per part.  A class says
 # what a line is *for*: the outer contour of a cloth object, a cloth's terminal edge, a
 # place where two pieces meet, one fold of the same cloth, or an applied band that is a
-# colour region rather than a line.  Every drawn mark names its class and the geometry
-# that produced it, and `tests/test_line_ownership.py` fails a mark that names neither.
+# colour region rather than a line.  Every drawn mark names its class, its owning part
+# and the geometry that produced it; `tests/test_line_ownership.py` fails a mark that
+# names none of them, or a class this policy does not declare.
 CONTOUR_INK = "#2f3d47"
 FOLD_INK = "#5b6a72"
 TRIM_COLOR = "#293346"
@@ -138,10 +139,12 @@ def mark_geometry(scene):
             points = tuple(support.local_to_world(p) for p in edge.points)
             marks.append((f"{part.name}-{edge.type}-{index}", part.name, edge.type,
                           f"{part.name}.edges[{index}] ({edge.intent})", points))
-    for name, line_class, points, _ink in scene["sheet_marks"]:
+    for name, owner, line_class, points, _ink in scene["sheet_marks"]:
         if line_class not in LINE_POLICY:
             raise ValueError(f"{name}: undeclared line class {line_class}")
-        marks.append((name, name.split("-", 1)[0], line_class,
+        if owner not in scene["parts"]:
+            raise ValueError(f"{name}: owner {owner} is not a declared part")
+        marks.append((name, owner, line_class,
                       f"{name} sampled on its sheet surface", points))
     return tuple(marks)
 

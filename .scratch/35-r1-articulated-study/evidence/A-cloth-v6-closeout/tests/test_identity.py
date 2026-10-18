@@ -3,6 +3,7 @@ is one strip whose width is continuous through the knot.
 """
 from __future__ import annotations
 
+import math
 import sys
 import unittest
 from pathlib import Path
@@ -54,15 +55,36 @@ class ObjectIdentityTest(unittest.TestCase):
         self.assertTrue(all(len(row) == len(ribbon.grid[0]) for row in ribbon.grid))
 
     def test_bow_width_is_continuous_through_the_knot(self):
+        """Measure the delivered strip: the width of every emitted row, across the knot.
+
+        The defect this closes (P33, and B2 of the v6 closeout) is a tail root wider
+        than the knot.  The previous version of this test built a set from the literal
+        `HALF_WIDTH` twice, so it could not fail — not even with `HALF_WIDTH = nan`.
+        Here the numbers come off the strip's own sampled grid: a row's width is the
+        distance between the two edge points the surface emitted for it.
+        """
         ribbon = self.parts["A-bow-ribbon"]
-        polyline = self.scene["bow"]["polyline"]
-        half_widths = {round(bow.HALF_WIDTH, 9)}
-        # the strip's width relation is one value for the whole ribbon
-        self.assertEqual(1, len(half_widths))
-        self.assertEqual(bow.HALF_WIDTH, self.scene["bow"]["half_width"])
-        # no tail root may be wider than the knot: sample the strip's width relation everywhere
-        samples = [bow.HALF_WIDTH for _ in polyline]
-        self.assertEqual(1, len({round(w, 9) for w in samples}))
+        rows = ribbon.grid
+        self.assertGreater(len(rows), 100, msg="the ribbon is not sampled")
+        widths = [math.dist(row[0], row[-1]) for row in rows]
+        self.assertTrue(all(math.isfinite(w) for w in widths),
+                        msg="an emitted width is not a finite number")
+        # one width for the whole ribbon, measured rather than declared
+        self.assertLess(max(widths) - min(widths), 1e-6,
+                        msg=f"the strip's measured width varies by "
+                            f"{max(widths) - min(widths):.6f} between its rows")
+        self.assertGreater(min(widths), 1.0, msg="the strip is a line, not a ribbon")
+        # and the strip really does pass the knot, at that same width
+        knot = ribbon.anchors["knot"][0]
+        knot_rows = [i for i, row in enumerate(rows)
+                     if math.hypot(row[0][0] - knot[0], row[0][1] - knot[1]) < 20.0]
+        self.assertGreaterEqual(len(knot_rows), 3, msg="the strip does not pass the knot")
+        for index in knot_rows:
+            self.assertAlmostEqual(widths[index], min(widths), places=6,
+                                   msg=f"row {index} at the knot has a different width")
+        # no tail root is wider than the knot: the ends are rows of the same strip
+        self.assertAlmostEqual(widths[0], widths[-1], places=6,
+                              msg="the two ends of the strip have different widths")
 
     def test_bow_visits_knot_lobe_knot_lobe_knot(self):
         """The centreline must return to the knot between the lobes and before the tail."""

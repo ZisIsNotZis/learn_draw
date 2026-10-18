@@ -83,8 +83,7 @@ def _sleeve(prefix: str, spec: dict, seat: Point):
         intent="whole transverse cuff band; its visible extent is a depth result",
         frame=cuff_frame, outline=cuff_outline, edges=cuff_edges, fill=CUFF_FILL,
         anchors={"contact_left": Anchor(_shifted(cuff_geom.named_stations["upper_left"], shift), (0.0, 1.0)),
-                 "contact_right": Anchor(_shifted(cuff_geom.named_stations["upper_right"], shift), (0.0, -1.0)),
-                 "sleeve_seat": Anchor(Point(0.0, 0.0), (1.0, 0.0))})
+                 "contact_right": Anchor(_shifted(cuff_geom.named_stations["upper_right"], shift), (0.0, -1.0))})
     return {sleeve.name: sleeve, cuff.name: cuff}
 
 
