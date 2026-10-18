@@ -1,8 +1,8 @@
-# R1 advance plan — milestones M1a, M1b, M2, M3, M4
+# R1 advance plan — R1a object studies, superseded M1a/M1b, milestones M2–M4
 
-Owns: the approved milestone list to first level for this advance, the M1a/M1b writer work packages, the review work packages that follow each writer, and the integration step. It decides no product scope of its own: scope is the user's decisions recorded in [issue 54](../issues/54-user-review-scope-hair-and-hand.md), the public [task freeze](task-freeze.md) and the R1 section of [roadmap](../../../docs/drawing/roadmap.md).
+Owns: the approved milestone list to first level for this advance, the R1a object-study work packages now in flight, the superseded M1a/M1b figure work packages kept as history, the review work packages, and the integration step. It decides no product scope of its own: scope is the user's decisions recorded in [issue 54](../issues/54-user-review-scope-hair-and-hand.md) and [issue 55](../issues/55-r1a-object-study-scope.md), the public [task freeze](task-freeze.md) and the R1a/R1b sections of [roadmap](../../../docs/drawing/roadmap.md).
 
-Status: M0 is delivered as documentation only. M1a and M1b each produced mechanically verified packages under the writer work packages below, but neither milestone's acceptance holds: no A or B image has passed an independent art/cohesion review, and the reviews of both rebuilds failed. No writer is dispatched now and no further art attempt is authorized until the user records his choice of model tier or scope; dispositions are in the [acceptance ledger](../evidence/acceptance-ledger.md) and [`STATUS.md`](../../../STATUS.md). M2, M3 and M4 are not started.
+Status: M0 is delivered as documentation only. M1a and M1b each produced mechanically verified packages under the writer work packages below, but neither milestone's acceptance holds: no A or B image has passed an independent art/cohesion review, and the reviews of both rebuilds failed. The user then approved a reduced scope, option b ([issue 55](../issues/55-r1a-object-study-scope.md)), which **supersedes the M1a and M1b figure packages with the two R1a object-study work packages below**; the M1a/M1b records are kept as history, not deleted. R1b, the composition those figure packages belonged to, is deferred and unweakened ([roadmap](../../../docs/drawing/roadmap.md)). M2, M3 and M4 are not started. Dispositions are in the [acceptance ledger](../evidence/acceptance-ledger.md) and [`STATUS.md`](../../../STATUS.md).
 
 ## Budget rule (corrected after the harness limit was observed)
 
@@ -11,15 +11,17 @@ The harness kills a child run at a hard 30-minute wall clock (1,800,000 ms, obse
 ## Authority and inputs
 
 - User decisions under issue 54: A keeps its no-hand scope but must show **both sleeves**, the second cuff's visible shape produced by depth occlusion; hair returns to the two-sided curved sheet; B's hand is rebuilt at the detailed level; an additional acceptance question, **object cohesion**, is added to the roadmap; and the advance instruction was given for M1a, M1b, M2, M3, M4.
-- Construction contract: [task freeze](task-freeze.md) (A imitates only the observed shoulder/upper-torso clothing of the registered 400x480 crop, no hand claim; B is an original bent-arm/hand/prop illustration with baseline, meaningful variation and labeled control, reference-free).
+- User decision under issue 55: the latest A and B candidates are **"much better, maybe not the best, but at least somewhat acceptable"** (qualified partial acceptance, no gate closed), and the reduced scope — option b, single-object studies filling the frame — is approved, which supersedes the M1a/M1b figure packages with the R1a object-study work packages below.
+- R1a study contracts: [`r1a-object-study-contracts.md`](r1a-object-study-contracts.md) — the authoritative canvas, requirements, artefacts and acceptance of both object studies.
+- R1b construction contract (not current work): [task freeze](task-freeze.md) (A imitates only the observed shoulder/upper-torso clothing of the registered 400x480 crop, no hand claim; B is an original bent-arm/hand/prop illustration with baseline, meaningful variation and labeled control, reference-free).
 - Architecture: [spatial-model.md](../../../docs/drawing/spatial-model.md) — 2D art on support surfaces, visibility computed from depth.
-- Gate definitions: [roadmap R1](../../../docs/drawing/roadmap.md), including the new fourth acceptance question.
+- Gate definitions: [roadmap](../../../docs/drawing/roadmap.md) R1a and R1b, including the fourth acceptance question.
 - Transferable lessons that bind this rebuild: [principles.md](../../../docs/drawing/principles.md) P31–P33.
-- Writer dispatch payloads: [wave1-m1ab.js](wave1-m1ab.js).
+- Superseded writer dispatch payloads: [wave1-m1ab.js](wave1-m1ab.js).
 
 ## Approved milestone list
 
-Each milestone is a user synchronisation point: the user sees the actual rendered images and the independent verdicts, and dependent work stops until he responds. A milestone is complete only when its acceptance holds on one frozen revision; no milestone substitutes for a later one.
+Each milestone is a user synchronisation point: the user sees the actual rendered images and the independent verdicts, and dependent work stops until he responds. A milestone is complete only when its acceptance holds on one frozen revision; no milestone substitutes for a later one. The R1a object studies (after M0) are the current work packages; M1a and M1b are superseded figure packages kept as history.
 
 ### M1a — A v5 clean rebuild (two sleeves, curved hair, one continuous bow)
 
@@ -27,7 +29,7 @@ Each milestone is a user synchronisation point: the user sees the actual rendere
 - **Deliverable:** `.scratch/35-r1-articulated-study/evidence/A-cloth-v5/` — part library + assembly source, seam-contract test with negative control plus the hair/sleeve tests, `artwork-a.svg` and `artwork-a.png` at 400x480, a `scripts/draw check` bundle written under that directory, hash manifest, README with the object and seam inventory.
 - **Acceptance:** the package self-checks of the M1a work package below all pass, and two fresh independent reviews (image-only art/cohesion; structural/depth) both find no blocking defect on the frozen image list and revision. The writer awards no art verdict.
 - **Synchronisation point:** the user is shown the actual A v5 PNG with the review verdicts and the open items. No baseline promotion and no 2D-art resumption happens before his response.
-- **Status:** content decided by the user; writer dispatched and returned; acceptance NOT met (see the writer work package below and the [acceptance ledger](../evidence/acceptance-ledger.md)).
+- **Status:** content decided by the user; writer dispatched and returned; acceptance NOT met (see the writer work package below and the [acceptance ledger](../evidence/acceptance-ledger.md)). Superseded by the R1a scope decision ([issue 55](../issues/55-r1a-object-study-scope.md)); the milestone stays in this record unaccepted.
 
 ### M1b — B hand rebuild at the detailed level
 
@@ -35,7 +37,7 @@ Each milestone is a user synchronisation point: the user sees the actual rendere
 - **Deliverable:** `.scratch/35-r1-articulated-study/evidence/B-hand-v2/` — hand primitive family + scene source, construction/contact tests, three-panel sheet SVG + PNG and per-panel PNGs, a reference-free `scripts/draw check` bundle written under that directory, hash manifest, README stating which contact claims are geometric consequences and which are author hypotheses.
 - **Acceptance:** the package self-checks of the M1b work package below pass, captions claim nothing the image does not show, and two fresh independent reviews (image-only art/cohesion; structural/depth and contact derivation) find no blocking defect.
 - **Synchronisation point:** the user is shown the actual three-panel sheet with the review verdicts and the contact-claim inventory.
-- **Status:** content decided by the user; writer dispatched and returned; acceptance NOT met (see the writer work package below and the [acceptance ledger](../evidence/acceptance-ledger.md)).
+- **Status:** content decided by the user; writer dispatched and returned; acceptance NOT met (see the writer work package below and the [acceptance ledger](../evidence/acceptance-ledger.md)). Superseded by the R1a scope decision ([issue 55](../issues/55-r1a-object-study-scope.md)); the milestone stays in this record unaccepted.
 
 ### M2 — sealed reference-free drawing (blocked on user action)
 
@@ -47,7 +49,7 @@ Each milestone is a user synchronisation point: the user sees the actual rendere
 
 ### M3 — integrated R1 delivery
 
-- **Outcome:** one frozen, integrated revision in which A v5, B hand v2 and (once released and drawn) M2 are bound to their reviews and reproduced together, so the user judges one coherent delivery instead of three scattered candidates.
+- **Outcome:** one frozen, integrated revision in which the accepted R1b composition and (once released and drawn) M2 are bound to their reviews and reproduced together, so the user judges one coherent delivery instead of scattered candidates.
 - **Deliverable:** `.scratch/35-r1-articulated-study/evidence/r1-advance-integrated-v1/` — the exact image set, one hash manifest covering every source, output and archived review report, the reference-absent reproduction record, and the integrator's index.
 - **Acceptance:** every upstream review is bound to the same hashes as the delivered images; a reference-absent re-render reproduces the delivered images; cross-artefact consistency holds (one revision per image and per report); the integrator waives no gate.
 - **Synchronisation point:** the user sees the integrated actual images with their verdicts.
@@ -72,7 +74,31 @@ M3 and M4 are derived from the roadmap's R1 exit contract (reproduction gate, th
 - **Budget:** 25 minutes wall clock, hard stop, inside the harness stage.
 - **Status:** delivered as documentation; the advance gate is the parent's check, not a self-verdict.
 
-## M1a work package — A v5 writer
+## R1a work packages — object studies (issue 55)
+
+Both study contracts — canvas, object, binding construction requirements, artefacts and acceptance — are owned by [`r1a-object-study-contracts.md`](r1a-object-study-contracts.md); this plan owns only the owner, directory and budget.
+
+### R1a-A-BOW — A-bow-study-v1 writer
+
+- **Owner:** A-bow-study writer, single writer, own directory.
+- **Writable path:** `.scratch/35-r1-articulated-study/evidence/A-bow-study-v1/` only.
+- **Read-only:** `STATUS.md`, `docs/`, all of `scripts/` (read and import, never modify), every other evidence directory, and the sealed/heldout material (not read at all).
+- **Acceptance:** the contract's acceptance list passes on one frozen revision, and a fresh independent image-only art/cohesion review finds no blocking defect on the frozen image list. The writer awards no art verdict.
+- **Budget:** one harness stage of 25 minutes wall clock, or a raised timeout named at dispatch when the package must fit one run; hard stop at the named allocation; the writer never extends its own allocation. No-progress cap: two construction hypotheses, then stop and report unresolved.
+- **Status:** dispatched; no package returned.
+
+### R1a-B-HAND — B-hand-study-v1 writer
+
+- **Owner:** B-hand-study writer, single writer, own directory.
+- **Writable path:** `.scratch/35-r1-articulated-study/evidence/B-hand-study-v1/` only; may copy primitives from `B-hand-v2-r1/` read-only.
+- **Read-only:** `STATUS.md`, `docs/`, all of `scripts/` (read and import, never modify), every other evidence directory, and the sealed/heldout material (not read at all).
+- **Acceptance:** the contract's acceptance list passes on one frozen revision, and a fresh independent image-only art/cohesion review finds no blocking defect on the frozen image list. The writer awards no art verdict.
+- **Budget:** one harness stage of 25 minutes wall clock, or a raised timeout named at dispatch; hard stop at the named allocation; the writer never extends its own allocation. No-progress cap: two construction hypotheses, then stop and report unresolved.
+- **Status:** dispatched; no package returned. The optional lifted second image is not authorized until everything else is complete.
+
+Each study is followed by a fresh image-only art/cohesion review against its frozen image list, budgeted at one harness stage, following the M1a-RV-IMAGE pattern; the contract's own tests are in-slice evidence, not review. The two studies are separate user presentations and never combine into an R1b delivery.
+
+## M1a work package — A v5 writer (superseded by R1a)
 
 - **Owner:** A-cloth writer (single writer, one worktree).
 - **Writable path:** `.scratch/35-r1-articulated-study/evidence/A-cloth-v5/` only.
@@ -83,11 +109,11 @@ M3 and M4 are derived from the roadmap's R1 exit contract (reproduction gate, th
 - **Acceptance (proved by command, art verdict excluded):** all package tests pass; the deliberately broken joint fails the seam test before restoration; both cuffs exist as components and the second one's visible extent is a depth result; the hair sheet has two distinct side fills; the bow strip's width is continuous through the knot; manifest hashes verify; the check bundle exists under the package directory.
 - **Budget:** one harness stage of 25 minutes wall clock, or an explicitly raised timeout of 60 minutes named at dispatch; the work does not fit one 25-minute stage, so without the raised timeout it is two sequential stages (A-1 source, render, manifest, check bundle; A-2 tests, README, closeout), each true at a cut. Hard stop at the allocation the dispatch names. No-progress cap: two distinct geometry hypotheses per acceptance item, then stop and report rather than trying a third. The writer never extends its own allocation.
 - **What was actually produced under the old budget:** `evidence/A-cloth-v5/` (rebuilt; art review failed), `evidence/A-cloth-v6/` (killed mid-flight by infrastructure near 100 minutes, package inconsistent; resumed and repaired), `evidence/A-cloth-v6-closeout/` and `evidence/A-cloth-v8/` (mechanically verified; no art verdict). See the [acceptance ledger](../evidence/acceptance-ledger.md).
-- **Status:** writer work returned; acceptance NOT met — no art/cohesion review passed.
+- **Status:** writer work returned; acceptance NOT met — no art/cohesion review passed. Superseded as a work package by the R1a scope decision ([issue 55](../issues/55-r1a-object-study-scope.md)); this record is kept.
 - **Artefacts emitted:** `source/`, `tests/`, `artwork-a.svg`, `artwork-a.png` (400x480), `check/` bundle with `report.txt`, `manifest.json`, `manifest.sha256`, `README.md`, and the checkpoint file.
 - **Stop and report:** if depth cannot occlude the second cuff, report that blocker instead of authoring the cut; if two hypotheses fail an acceptance item, stop and report unresolved rather than lowering it.
 
-## M1b work package — B hand writer
+## M1b work package — B hand writer (superseded by R1a)
 
 - **Owner:** B-hand writer (single writer, one worktree).
 - **Writable path:** `.scratch/35-r1-articulated-study/evidence/B-hand-v2/` only.
@@ -98,7 +124,7 @@ M3 and M4 are derived from the roadmap's R1 exit contract (reproduction gate, th
 - **Acceptance (proved by command, art verdict excluded):** construction tests for digit count, separation and taper plus the derived contact relation all pass; sheet and per-panel PNGs exist; digits are individually posed and separable; the contact relation is computed from the dish; captions make no claim the image does not show; manifest hashes verify; the reference-free check bundle exists.
 - **Budget:** one harness stage of 25 minutes wall clock, or an explicitly raised timeout of 60 minutes named at dispatch; the work does not fit one 25-minute stage, so without the raised timeout it is two sequential stages (B-1 hand primitives, contact, panels, check bundle; B-2 tests, README, repair log, manifest), each true at a cut. Hard stop at the allocation the dispatch names. No-progress cap: two distinct hand-construction hypotheses, then stop and report. The writer never extends its own allocation.
 - **What was actually produced under the old budget:** `evidence/B-hand-v2/` (constructed; art review failed — the fingers read as a rake) and `evidence/B-hand-v2-r1/` (root causes fixed and mechanically verified; image review still failed — the held dish does not read). See the [acceptance ledger](../evidence/acceptance-ledger.md).
-- **Status:** writer work returned; acceptance NOT met — the image review failed on the hold.
+- **Status:** writer work returned; acceptance NOT met — the image review failed on the hold. Superseded as a work package by the R1a scope decision ([issue 55](../issues/55-r1a-object-study-scope.md)); this record is kept.
 - **Artefacts emitted:** `source/`, `tests/`, three-panel sheet SVG + PNG and per-panel PNGs, `check/` bundle with `report.txt`, `manifest.json`, `manifest.sha256`, `README.md`, and the checkpoint file.
 - **Stop and report:** if the derived contact cannot be made to read without a false claim, keep the truthful open-support reading, report the gap, and never restore the `thumb braces rim` caption.
 
@@ -153,6 +179,8 @@ Each review round allows one scoped repair by the original writer followed by a 
 
 ## Sequencing, and what this plan does not authorize
 
-M0 completes before M1a/M1b are read as contract. M1a and M1b are concurrent because their writable directories, references and artefacts are disjoint; neither may read the other's in-flight output. Reviews follow their writer; integration follows both review sets and is the only place the two are combined. M2 waits for the user; M3 waits for M1a, M1b and — when released — M2; M4 waits for M3.
+M0 completes before any work package below is read as contract. The R1a studies are concurrent because their writable directories, references and artefacts are disjoint; neither may read the other's in-flight output. Each study's review follows its writer, and the two studies are presented separately, never integrated. M1a and M1b are superseded figure packages: they belong to R1b, which starts once both R1a studies pass. M2 waits for the user; M3 waits for R1b and — when released — M2; M4 waits for M3.
 
-This plan does not authorize: any drawing or code change outside the two writer directories, any edit to `AGENTS.md`, `principles.md`, the task freeze, scripts or evidence directories, any read of the sealed heldout, any baseline promotion, any push, or any claim that a milestone, review or gate has passed.
+This plan does not authorize: any drawing or code change outside a dispatched writer's own directory, any edit to `AGENTS.md`, `principles.md`, the task freeze, scripts or evidence directories, any read of the sealed heldout, any baseline promotion, any push, or any claim that a milestone, review or gate has passed.
+
+M1a and M1b are superseded, not deleted: they belong to R1b, which is deferred until the R1a studies pass ([roadmap](../../../docs/drawing/roadmap.md), [issue 55](../issues/55-r1a-object-study-scope.md)).

@@ -1,6 +1,24 @@
 # R1 acceptance evidence ledger
 
-Current bounded dispositions: **A-cloth-construction-v4 passes only the finite A visual/art gate**; **B body/action passes its finite art/action gate on the frozen v2-completion B image**. The R1 advance's M1a and M1b rebuilds are recorded below: A v5 and B-hand-v2 failed image review, B-hand-v2-r1 passed its mechanical evidence and failed a further image review, and A v6, v6-closeout and v8 carry no image verdict at all. So **no current candidate is accepted artwork on either track**: a finite gate on a superseded candidate is not current acceptance. The B base image's sole public-caption claim defect has a presentation-only derivative in `B-caption-corrected-v1/`; its caption-delta review is pending, so do not yet call that derivative fully presentation-accepted. A v4's two reviewed P1s are closed; prior P2 observations remain nonblocking and retained. Neither finite gate establishes overall A/R1, transfer, heldout, reproducibility, integration, or user acceptance. Do not label R1 or transfer PASS.
+Current bounded dispositions: **A-cloth-construction-v4 passes only the finite A visual/art gate**; **B body/action passes its finite art/action gate on the frozen v2-completion B image**. The R1 advance's M1a and M1b rebuilds are recorded below: A v5 and B-hand-v2 failed image review, B-hand-v2-r1 passed its mechanical evidence and failed a further image review, and A v6, v6-closeout and v8 carry no independent image-only review at all. **No candidate passes an independent gate at the original figure scope**: a finite gate on a superseded candidate is not current acceptance. The user's own qualified verdict on A v8 and B-hand-v2-r1 is recorded below as user judgement, not an independent review and not a gate pass. The B base image's sole public-caption claim defect has a presentation-only derivative in `B-caption-corrected-v1/`; its caption-delta review is pending, so do not yet call that derivative fully presentation-accepted. A v4's two reviewed P1s are closed; prior P2 observations remain nonblocking and retained. Neither finite gate establishes overall A/R1, transfer, heldout, reproducibility, integration, or user acceptance. Do not label R1 or transfer PASS.
+
+## User verdict on A-cloth-v8 and B-hand-v2-r1 — qualified acceptance, not a gate
+
+Disposition kind: **user judgement**, distinct from an independent review. It applies to exactly `A-cloth-v8`'s image and `B-hand-v2-r1`'s images at their current commits, and to nothing else.
+
+The user's words, recorded verbatim:
+
+> much better, maybe not the best, but at least somewhat acceptable
+
+Recorded meaning: he accepts those two images as they stand as somewhat acceptable, and explicitly not as the best or final. It is not a gate pass — it closes no construction/attachment, geometry/visibility, art or object-cohesion gate, it overturns neither A v5's nor B-hand-v2's failed review nor B-hand-v2-r1's failed image review, and it is not R1, transfer, heldout, reproduction or integrated acceptance. It says nothing about any later candidate, including the R1a object studies.
+
+## R1a object-study scope decision
+
+The user approved the reduced scope, option b — single-object studies filling the frame — in his words:
+
+> Maybe just proceed, i.e. b?
+
+Decision record: [issue 55](../issues/55-r1a-object-study-scope.md). Gates: [roadmap R1a/R1b](../../../docs/drawing/roadmap.md). The two study contracts are owned by [`work/r1a-object-study-contracts.md`](../work/r1a-object-study-contracts.md), and no image from either study is yet a candidate here. R1b's exit conditions are unchanged, and R1a passing does not satisfy R1b.
 
 ## B-caption-corrected-v1 — finite B art and truthful-caption scope
 
@@ -57,7 +75,7 @@ No art or cohesion verdict was requested or given; the package is mechanical evi
 
 Candidate: [`A-cloth-v8/`](A-cloth-v8/). The closeout package with the user's two measured requirements met: the second cuff's surviving area is **16.4 % of the first cuff's** (539.5 px²), inside the 10–25 % band and against the reference's own 17 % (`work/a-art-direction-brief.md`), and the two enclosed background islands are **2 → 0**. its README reports 47 passing tests; 46 manifest entries verify (`sha256sum -c manifest.sha256`, all OK); both fractions have a negative control that reproduces the prior value when the fix is removed.
 
-No image-only review of this package is recorded in the tree — no dispatch script and no returned report — so its art and cohesion gates are **NOT RUN**, not passed. Ticket: [`conformance-log.md`](A-cloth-v8/conformance-log.md).
+No independent image-only review of this package is recorded in the tree — no dispatch script and no returned report — so its art and cohesion gates are **NOT RUN**, not passed. The user's own qualified verdict on this image is recorded above; it is user judgement, not an independent review, and it runs no gate. Ticket: [`conformance-log.md`](A-cloth-v8/conformance-log.md).
 
 ## B-hand-v2 — M1b construction: art gate FAILED
 
@@ -83,7 +101,8 @@ Each is a documentation and test-scope repair inside one package; none changes t
 
 - **Verified (mechanical):** the A v6-closeout and v8 packages and the B r1 package pass their own suites with mutation-capable checks, verify their manifests, and their headline numbers have negative controls.
 - **Failed (art):** A v5 and B-hand-v2 failed image-only review; B-hand-v2-r1 failed a further image review on the hold.
-- **Not run (art):** A v6, A v6-closeout and A v8 have no image-only verdict recorded anywhere in the tree; a mechanical pass is not an art verdict.
-- **Accepted:** nothing on either track is accepted artwork. The only independent art disposition recorded here is the finite A v4 gate above, which the user's own review of that image then contradicted; it is not current acceptance.
-- **Blocked on:** the user's choice between a stronger model, a reduced scope or continuing at the current model tier. No art attempt may start before it is recorded.
-- **Open everywhere:** reproduction at the integrated level, heldout compatibility/release, transfer, integrated R1 acceptance, and user judgment. Do not label R1 or transfer PASS.
+- **Not run (independent art review):** A v6, A v6-closeout and A v8 have no independent image-only review recorded anywhere in the tree; a mechanical pass is not an art verdict, and the user's qualified verdict above is not one either.
+- **User judgement:** the user called A v8 and B-hand-v2-r1 "much better, maybe not the best, but at least somewhat acceptable" — a qualified partial acceptance of those two images that closes no gate.
+- **Accepted:** no candidate passes an independent art gate at the original figure scope. The only independent art disposition recorded here is the finite A v4 gate above, which the user's own review of that image then contradicted; it is not current acceptance.
+- **Scope:** the user approved the reduced scope, R1a object studies, recorded in the scope section above and [issue 55](../issues/55-r1a-object-study-scope.md); R1b's exit conditions are unchanged and R1a passing does not satisfy R1b.
+- **Open everywhere:** reproduction at the integrated level, heldout compatibility/release, transfer, integrated R1 acceptance, and user judgment at a real gate. Do not label R1 or transfer PASS.

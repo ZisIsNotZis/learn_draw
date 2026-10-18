@@ -22,6 +22,23 @@ Stage names below are new roadmap identifiers; old S0–S3 names are historical 
 
 ### R1 — Readable articulated study
 
+R1 splits into R1a object studies and R1b articulated composition by the user's approved scope decision ([issue 55](../../.scratch/35-r1-articulated-study/issues/55-r1a-object-study-scope.md)). The four acceptance questions above apply unchanged to both, and R1a passing does not satisfy R1b.
+
+#### R1a — Object studies
+
+- **Visible work/capability:** two actual images, each one object filling its own frame: (A) the bow alone, imitating only the reference's observed bow, with no torso/sleeve/hair/collar claim; (B) an original reference-free hand-with-dish, with no head/torso/shoulder-join/arm-connection claim and no panel sheet.
+- **Method and transfer:** computed geometry from relations and vocabulary rather than hand-typed contours; no author-specified visibility cuts, so depth decides; a mechanism claim carries a test that fails when the mechanism is removed; the reference seeds A's parameters and is then closed, so the build reads neither the crop nor any metric at runtime.
+- **User sees:** each study as a real authored image with its own independent verdicts, at its own user presentation.
+- **Independent gates:** per study, construction/attachment, physical geometry and depth visibility, drawing/art, and object cohesion each judged separately on the actual image.
+- **Scope/non-goals:** one object per image; no figure composition, no captions, no B panel set, no sealed heldout read, no metric tuning, no baseline promotion.
+- **Exit:** both studies' four acceptance questions pass on one frozen revision each; a reference-free study reproduces reference-free; one manifest binds each study's revision; each study is presented for the user's judgment. R1a passing does not satisfy R1b.
+- **Risk/alternative:** if an object still does not read, revise the construction hypothesis inside that study's finite budget; at two failed hypotheses preserve the evidence and report unresolved rather than lowering an acceptance question.
+- **Contracts:** the two study contracts, including canvases, artefacts and acceptance, are owned by [`r1a-object-study-contracts.md`](../../.scratch/35-r1-articulated-study/work/r1a-object-study-contracts.md).
+
+#### R1b — Articulated composition (deferred)
+
+The original R1 composition, deferred not deleted: it starts once both R1a studies pass, and its exit conditions below are unchanged and unweakened.
+
 - **Executable R1 work-package contract:** [`R1 task contract`](../../.scratch/35-r1-articulated-study/spec.md) and public [`two-track task freeze`](../../.scratch/35-r1-articulated-study/work/task-freeze.md) define owners, interfaces, evidence and finite budget; task-freeze revision is pending independent review/integrator approval, not art acceptance.
 - **Visible work/capability:** complementary actual images: (A) imitate only perceptible shoulder/upper-torso clothing/composition in `image.jpg`, with no hand/pose claim; (B) apply vendor MIT semantic IK/taper method to an original small clothed-upper-body bent arm/hand/simple-prop illustration, with meaningful changed-target/proportion variant and labeled awkward control. No matching pose photo required for B; it is not pose imitation or Huashu character reuse.
 - **Method and transfer:** abstract vendor construction semantics only; build original B using actual support/world binding and project depth visibility. A genuinely imitates observed reference parts. Keep independent sealed heldout reference-free drawing gate and require its owner to check compatibility/distinctness before release.
@@ -31,6 +48,7 @@ Stage names below are new roadmap identifiers; old S0–S3 names are historical 
 - **Scope/non-goals:** bounded studies, not full anatomy/finished portrait/infrastructure work; no fabricated reference observation, matching extra pose-photo requirement, pixel tracing, or reuse of vendor Huashu character, frames or coordinates.
 - **Exit:** A visibly imitates only observed features, B is an intentional readable original image with meaningful variation/control, heldout remains a separate compatible reference-free drawing gate; actual support binding, attachment, contact, collision and depth each pass separately; visual review and reproduction pass; evidence hashes bind one revision. Then present actual images and pause.
 - **Risk/alternative:** if hand/contact is unreadable or geometry fails, revise representation within the finite two-hypothesis budget including already completed provisional code prep. Preserve control and evidence; do not hide intersection, invent observations, drop A/B, or lower readability. At limit, stop and report unresolved gates.
+- **Status:** deferred until both R1a studies pass; nothing in R1b has started, and no R1a result satisfies or substitutes for any condition above.
 
 ### R2 — Responsive components and pose variation
 
