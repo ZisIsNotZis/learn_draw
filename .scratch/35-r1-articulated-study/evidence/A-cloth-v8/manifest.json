@@ -1,0 +1,270 @@
+{
+  "candidate": "A-cloth-v6-closeout",
+  "milestone": "R1 M1a closeout round: v6 with B1-B3 and N1-N7 dispositions (A track, no art verdict)",
+  "canvas": [
+    400,
+    480
+  ],
+  "reference": {
+    "source": "image.jpg",
+    "source_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+    "crop_xyxy_exclusive": [
+      500,
+      320,
+      900,
+      800
+    ],
+    "crop_sha256": "52e01f5e75e5d98fcd9a0a4c63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+    "engine_reads_reference_at_build_time": false
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "525dfd9359d49db2db0f69a7d27daf9fe213426fd2f97d9752e80cbd2223da04",
+      "bytes": 20188
+    },
+    {
+      "path": "artwork-a.png",
+      "sha256": "2fef5e2bac1f4a885fa55c18cac39a30f0b954777e865369c778f8047fe937ef",
+      "bytes": 63877
+    },
+    {
+      "path": "artwork-a.svg",
+      "sha256": "c6be4b42e37bfc4e110eb54f2f794bd65f6f8291ea39a9b9955e39b4ab018021",
+      "bytes": 501744
+    },
+    {
+      "path": "check-a/draft-fullres.png",
+      "sha256": "2fef5e2bac1f4a885fa55c18cac39a30f0b954777e865369c778f8047fe937ef",
+      "bytes": 63877
+    },
+    {
+      "path": "check-a/draft.png",
+      "sha256": "57195921189bb8fc77f78286f66315b71dd078427ad854ff8925e70a4ed023b9",
+      "bytes": 53344
+    },
+    {
+      "path": "check-a/region-1.png",
+      "sha256": "49787085df9599f983410829a2dc2026137a5bc06377f403a5ce8af95a9dd363",
+      "bytes": 67884
+    },
+    {
+      "path": "check-a/region-2.png",
+      "sha256": "4a4558b562de7c94da873c16a9a6aed1c8787fabe5cb087b0922320107c62747",
+      "bytes": 68677
+    },
+    {
+      "path": "check-a/region-3.png",
+      "sha256": "56bdbb5c7e61431e70ce5298f28e4219257f4621cbb287b3cc76b717fbd3af73",
+      "bytes": 65656
+    },
+    {
+      "path": "check-a/report.txt",
+      "sha256": "faf1edaa2752fe2f2febe6611a32aac2fbfada823feea07bf5f9af36b44779ee",
+      "bytes": 1934
+    },
+    {
+      "path": "check-a/side-by-side.png",
+      "sha256": "b1d9e23429fbffc50c5aa9c1718713eea39b1498b330ea54f29e7e98b2d4b72f",
+      "bytes": 144937
+    },
+    {
+      "path": "closeout-log.md",
+      "sha256": "197896beaadfc534c60c5f631356bfdaa2f8ba4a6b739871a4c5c0334e8a6344",
+      "bytes": 13300
+    },
+    {
+      "path": "ref/crop-400x480.png",
+      "sha256": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+      "bytes": 170739
+    },
+    {
+      "path": "ref/zoom-bow.png",
+      "sha256": "a90f5f02f06193d8814533a8a8bb39672fc629a8b5c6ac0ff6003b1bb4879e18",
+      "bytes": 160407
+    },
+    {
+      "path": "ref/zoom-hair-top.png",
+      "sha256": "9632bd8775eb3a99a0f7c9b4a0a7ff6fdf4b12211ac5d456399e1af1beef9e55",
+      "bytes": 194083
+    },
+    {
+      "path": "ref/zoom-left-sleeve.png",
+      "sha256": "1c2fb5063ba2ff7889a08ee9b696fc2746d46f4bd299a0e9cea87677b9eecc4a",
+      "bytes": 89936
+    },
+    {
+      "path": "ref/zoom-right-sleeve.png",
+      "sha256": "17418e5a9e059e652fd4d0a429a0ef5c43b6d9be97c07ba12562bb09789fddf9",
+      "bytes": 109234
+    },
+    {
+      "path": "source/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "source/assemble.py",
+      "sha256": "0044460bafc1d5f31296f5d110aa32a3213a937e7aaccf1d56e65de3938ebb50",
+      "bytes": 9448
+    },
+    {
+      "path": "source/authored.py",
+      "sha256": "55a84a86b6401147d90df87daaef2beaee8d69c03bc2980ae3bdd647087f6bad",
+      "bytes": 9175
+    },
+    {
+      "path": "source/build-report.json",
+      "sha256": "a88dfe673ee0dbda156994d8a76b05a3d7cb96f06e22008ba11d78f388db568e",
+      "bytes": 2644
+    },
+    {
+      "path": "source/build_a.py",
+      "sha256": "b1b2e1036598b645ff79f874c52556a53d52cc56dda902843df1d0a233bf31c3",
+      "bytes": 3208
+    },
+    {
+      "path": "source/lines.py",
+      "sha256": "9a8b10de717f326698d7e2cee3990f386b54fc39030839f50cad32158f6cbee5",
+      "bytes": 3174
+    },
+    {
+      "path": "source/parts/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "source/parts/bodice.py",
+      "sha256": "272e338b9ba05cdaba0c8038a645630556b8aba428ec8c0d69805a332df7c87d",
+      "bytes": 7081
+    },
+    {
+      "path": "source/parts/bow.py",
+      "sha256": "e74704624c40121064798beb580b4d57826f51146e1186e5fced685bef58959e",
+      "bytes": 10225
+    },
+    {
+      "path": "source/parts/collar.py",
+      "sha256": "c13d6b126277649bf2898dc3fc994c043811b7ebf0508e2deca17145162755ff",
+      "bytes": 5556
+    },
+    {
+      "path": "source/parts/families.py",
+      "sha256": "008a43da6a6333aa986e81ee0ac8f21acebe87070b9467458e12ad1f73230fb0",
+      "bytes": 25333
+    },
+    {
+      "path": "source/parts/frames.py",
+      "sha256": "8a93d7aca13b73a3f142782fcc07abb9ca783c0f676be2ad49554f7776db502d",
+      "bytes": 13209
+    },
+    {
+      "path": "source/parts/hair.py",
+      "sha256": "f73391afb8e65584f23b9b125ece996610e9c0bf95cb4af9cec97fb80f825f4e",
+      "bytes": 6954
+    },
+    {
+      "path": "source/parts/head.py",
+      "sha256": "459f0a7564bedcd099cd297615411a6e2cabab5299a9213c4545d47b3750a582",
+      "bytes": 2898
+    },
+    {
+      "path": "source/parts/skin.py",
+      "sha256": "a3487f07d72bbafe398f74409a237106602115155b7ef0c5619c5c953282021d",
+      "bytes": 2737
+    },
+    {
+      "path": "source/parts/sleeve.py",
+      "sha256": "807496727320fe5fb03f39d3ea82bd2ca7f8e3555c336092b2919aa8ac28300c",
+      "bytes": 5517
+    },
+    {
+      "path": "source/seam_contract.py",
+      "sha256": "a87b15ccf3d60c9355cfd499a4320467d455d8bd8da9a4085b2bff366452602c",
+      "bytes": 11411
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "tests/negative-control-output.txt",
+      "sha256": "bbbc0a436618e8779f41b4f56c987116eb475ef5475f3cc77bed9fec38f03046",
+      "bytes": 3652
+    },
+    {
+      "path": "tests/test_anchor_inventory.py",
+      "sha256": "aaf5d52d67d6fcff4fe7cf981d28aac025fc16d6dd8feb7af5869a83d9948343",
+      "bytes": 4452
+    },
+    {
+      "path": "tests/test_authoring_inventory.py",
+      "sha256": "aa4f19a7c498189527ae83480fd04e33ee27c0493b4b0a30cbe1b5afd6914376",
+      "bytes": 5596
+    },
+    {
+      "path": "tests/test_fill_winding.py",
+      "sha256": "e37a60009be65c3cf05e0d6dbf612f72bac57207f8eedbed398015d522a39fcd",
+      "bytes": 3750
+    },
+    {
+      "path": "tests/test_hair_two_sided.py",
+      "sha256": "326aad255e33897e9c7451f228975310ced20fefbcf3a11810e5345e06c217d1",
+      "bytes": 3466
+    },
+    {
+      "path": "tests/test_identity.py",
+      "sha256": "ec5d0c8b5380501a40b05619c1a09faefcb0e3ad88471e353b02dadea24819eb",
+      "bytes": 6649
+    },
+    {
+      "path": "tests/test_line_ownership.py",
+      "sha256": "a2f03cd09b48695bad4f1c8fae778249b0e19c0f81294a9d92db87e3606c2a46",
+      "bytes": 4159
+    },
+    {
+      "path": "tests/test_seam_contract.py",
+      "sha256": "64a72e7400416d4ceb6f72c8137dfd2946ee9f9fa6f70f4cb6e9d4fc1ac911a1",
+      "bytes": 5773
+    },
+    {
+      "path": "tests/test_two_sleeves.py",
+      "sha256": "3adfe99b55d8713abd34cb11f6973044d86569463c13cc6ad8923cc2c13cc1a2",
+      "bytes": 4678
+    }
+  ],
+  "artwork": {
+    "svg": "artwork-a.svg",
+    "png": "artwork-a.png",
+    "png_source": "check-a/draft-fullres.png (copied 1:1 from scripts/draw check at this revision)"
+  },
+  "checks": {
+    "build": "source/build_a.py (seam contract and anchor inventory enforced; exits non-zero on either)",
+    "tests": "python3 -m unittest discover -s tests -t . (44 tests)",
+    "authoring_inventory": "python3 source/authored.py (declared pairs against the source, by AST)",
+    "negative_controls": "tests/negative-control-output.txt (source mutations, each restored)",
+    "visual_bundle": "check-a/report.txt (current scripts/draw reviewer protocol)",
+    "reproducible": "two builds into separate paths are byte-identical to artwork-a.svg"
+  },
+  "facts": {
+    "parts": 13,
+    "faces": 2018,
+    "visible_fill_regions": 15,
+    "marks": 38,
+    "mark_paths": 59,
+    "declared_joints": 18,
+    "failed_joints": 0,
+    "anchors_declared": 36,
+    "anchors_joint_endpoints": 34,
+    "anchors_non_joints": 2,
+    "anchors_unaccounted": 0
+  },
+  "manifest_handling": "manifest.json lists every delivered file except itself and manifest.sha256; manifest.sha256 is generated from this list plus manifest.json, so only manifest.sha256's own hash is not inside the pair",
+  "open_items": [
+    "two background-coloured regions are enclosed by ink in artwork-a.png (N4): 1019 px at (162,39,35,60), 17 px at (243,82,5,10); closing them is a drawing change",
+    "the second (left) cuff is fully occluded at this revision",
+    "the seam tangent clause cannot detect an outline that rotates about a static anchor"
+  ],
+  "no_art_verdict": true
+}
