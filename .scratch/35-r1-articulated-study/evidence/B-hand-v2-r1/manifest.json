@@ -1,6 +1,6 @@
 {
   "revision": "B-hand-v2",
-  "scope": "README, source, tests, rendered panels/sheet and the reference-free draw-check bundle",
+  "scope": "README, repair-log, source, tests, rendered panels/sheet and the reference-free draw-check bundle",
   "covered_folders": [
     "source",
     "tests",
@@ -12,68 +12,78 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "c98c7c3cf33ac039ea2697723c8c1dfd876043c65de97a2250c4f0967250692e",
-      "bytes": 10274
+      "sha256": "096cc248c5c5b9d05350324e5ecccca1c3dcfa6f0648c401850525a4451f2a1b",
+      "bytes": 10038
+    },
+    {
+      "path": "check/draft-fullres.png",
+      "sha256": "46bf62b526afe8e46b086ca4d1205b227cc86fb02dae43bad137735792609d39",
+      "bytes": 156282
     },
     {
       "path": "check/draft.png",
-      "sha256": "03a594476367e374df0f037b9cc6d782512be5c2de49a02434685cd8c704c4c1",
-      "bytes": 15561
+      "sha256": "dd7144b4ce34d0e7d33c6fbff8b9397506bc39bfad38a2133c27c85a32a29e3c",
+      "bytes": 15456
     },
     {
       "path": "check/report.txt",
-      "sha256": "2f0be49d5922d3b1ffddf9aba83a251227e72fa5b277576c85ac8c736d8c93ff",
-      "bytes": 736
+      "sha256": "d346e01ef9f0d0aed5240a6054b630a063cb91ee49306d16fa549fe2042ea8ce",
+      "bytes": 1121
     },
     {
       "path": "rendered/B-baseline-support.png",
-      "sha256": "69122ee7aaab19266f045540f52bb7d6b9086937473e09c19e84597cf484659a",
-      "bytes": 38943
+      "sha256": "ec622c335ad56dbd08b88485ad6b96207010c50bd045ce2ffbc0192fb1e7e947",
+      "bytes": 43184
     },
     {
       "path": "rendered/B-baseline-support.svg",
-      "sha256": "edc9ae249c7badcf52866b834b686a0aceba8e2d4ff30a9e0146786f53f353b7",
-      "bytes": 593039
+      "sha256": "d8f42599dde0a1f37a1d74c75eb173949d0b6285e2b1dbfa7d4bda7f76104c73",
+      "bytes": 1004910
     },
     {
       "path": "rendered/B-near-miss-control.png",
-      "sha256": "afaf6e7395152e7c1419efdc52bc218d1da6bb3e4dd95cef45f5fa82be4701cd",
-      "bytes": 39372
+      "sha256": "7a0eda3108a7df9d3041b6ac609ab1415de9ad0b5a83f5b39b49252838ee2caa",
+      "bytes": 44020
     },
     {
       "path": "rendered/B-near-miss-control.svg",
-      "sha256": "00000f0f5c3c6c08a988298ce79eae56250454ed6b1df6deb9b5ab009562bcaa",
-      "bytes": 469785
+      "sha256": "f2d9c8b4e4ee87229c456498c05074bedc7cf685ce0bc07736b290f3287a9901",
+      "bytes": 835521
     },
     {
       "path": "rendered/B-original-support.png",
-      "sha256": "c6b728c76c65ac62d33c8d79caa1f8979dcc85808a1e2692f45ae6780ad43318",
-      "bytes": 85590
+      "sha256": "0587897529c8705a97b0e7dcf510fe2e9babb21185a33aa1a62ecd9ce2cd692c",
+      "bytes": 85754
     },
     {
       "path": "rendered/B-original-support.svg",
-      "sha256": "7ed2e2fb8f541525e55ad8aff18e84244c8a50a92a56770d1e9609cc5fcf7650",
-      "bytes": 1622819
+      "sha256": "2eedc80ba319a1bb4d69241495519b6dd7061e882af55a65ab0c368e38ad118c",
+      "bytes": 2843889
     },
     {
       "path": "rendered/B-variant-support.png",
-      "sha256": "d20f42617e8b54893ec10eced572856106f807be3782b559448eefb862c4d79e",
-      "bytes": 41875
+      "sha256": "019d6f288f3b8c13aa03b3dc47849a84b235905864e0adf186b0cac0dbcfe34e",
+      "bytes": 45422
     },
     {
       "path": "rendered/B-variant-support.svg",
-      "sha256": "a3857abd3bc9adbd47e143ea59ca2210fc027e03855a498966e8f62f59473b90",
-      "bytes": 559749
+      "sha256": "01cd6ac672d552f162e9005248c92c5eb3bed9079128539ecbef530e270fbc08",
+      "bytes": 1003212
+    },
+    {
+      "path": "repair-log.md",
+      "sha256": "4fbac0cc79d0d852744e1ae009f62818824629f94c60815a70864d1ec8b5e5ac",
+      "bytes": 8159
     },
     {
       "path": "source/hand_family.py",
-      "sha256": "c3db32991af8cc13a6585a2c26106721bc7fa97940f9f8e44f66b267a32c16a3",
-      "bytes": 9189
+      "sha256": "d8addbe3648a68eacdae33a7a7ba7bc99e67d0423526de889e9e2f1358a87e9f",
+      "bytes": 11667
     },
     {
       "path": "source/make_manifest.py",
-      "sha256": "08b1da8ee3a6157c3142e2f412ebf3859adaa29d36c07317a345ebb406dc3877",
-      "bytes": 1692
+      "sha256": "8e6238e9e6eef1f946d1902e59bbcdcb6ce103e445c921682ac09e64a437841b",
+      "bytes": 1728
     },
     {
       "path": "source/run_b.py",
@@ -82,8 +92,8 @@
     },
     {
       "path": "source/scene.py",
-      "sha256": "3bd5e634fd6789cdf39914ecb92dcf41d4bc47ec77c3e4e1ab192f178284b3a4",
-      "bytes": 46269
+      "sha256": "c3aba45c3e3d86ad4de90341dbe7ba81d53e34daee485e70a97690191125844c",
+      "bytes": 47378
     },
     {
       "path": "source/spatial_adapter.py",
@@ -92,8 +102,8 @@
     },
     {
       "path": "tests/test_hand_construction.py",
-      "sha256": "60103cf63da2b4cf01ad19ad4efc5d087b25040a942acd7c04b88583268abc85",
-      "bytes": 13417
+      "sha256": "5d79f8777621827ac312670b251a1aa034b48ba146c7c98ee1457e52c055d0cc",
+      "bytes": 23841
     }
   ]
 }

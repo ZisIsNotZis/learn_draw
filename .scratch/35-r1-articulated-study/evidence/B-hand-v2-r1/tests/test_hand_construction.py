@@ -368,11 +368,15 @@ def test_control_differs_only_in_the_dish_displacement(baseline, control):
     assert differing_lines == DISH_LINES
     assert control_evidence["collision_check"]["declared_contacts"] == []
     # mutate one hand point by a millimetre and the single-variable claim must collapse
-    def mutated():
-        assert moved["palm"].controls == base["palm"].controls
-    _expect_failure(lambda: assert_true(moved["palm"].controls == tuple(
-        Point(p.u, p.v + 0.001) for p in base["palm"].controls)), "single-variable control")
-    _expect_failure(mutated, "single-variable control (identity branch)")
+    nudged = {name: (shape.controls if name != "palm" else tuple(
+        Point(p.u, p.v + 0.001) for p in shape.controls)) for name, shape in moved.items()}
+    def differing_under(map_under_test):
+        return {name for name in base
+                if base[name].controls != map_under_test[name].controls
+                or base[name].support.origin != map_under_test[name].support.origin}
+    assert differing_under(nudged) == DISH_OBJECT | {"palm"}
+    _expect_failure(lambda: assert_true(differing_under(nudged) == DISH_OBJECT),
+                    "single-variable control")
 
 
 # --- depth does the occlusion ---------------------------------------------------------------
@@ -393,6 +397,17 @@ def test_depth_engine_cuts_the_dish_outline_and_fills_every_digit(baseline):
     visible_length = sum(math.hypot(b[0] - a[0], b[1] - a[1]) for a, b in dish_spans)
     assert visible_length < 0.95 * perimeter, "the digits did not interrupt the dish's outline"
     assert visible["baseline-palm"][0], "palm produced no visible fill"
+    # E2: the dish object is in front of the palm and behind the fingertips, and its glazed
+    # rim is in front of them again -- the hand wraps the dish rather than sitting under a decal
+    by_name = {shape.name: shape for shape in study.shapes}
+    wall_z = by_name["baseline-dish-wall"].support.origin[2]
+    rim_z = by_name["baseline-dish-rim"].support.origin[2]
+    palm_z = by_name["baseline-palm"].support.origin[2]
+    digits = _digits(study.shapes)
+    assert palm_z < wall_z, "the palm is not behind the dish"
+    for name, shape in digits.items():
+        assert shape.support.origin[2] > wall_z, f"{name} is not in front of the dish's wall"
+        assert shape.support.origin[2] < rim_z, f"{name} is not behind the dish's glazed rim"
 
 
 # --- captions and construction hygiene ------------------------------------------------------

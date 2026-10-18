@@ -14,7 +14,7 @@ def digest(path: Path) -> str:
 
 
 def covered_files() -> list[Path]:
-    files = [ROOT / "README.md"]
+    files = [ROOT / "README.md", ROOT / "repair-log.md"]
     for folder in INCLUDE:
         for path in sorted((ROOT / folder).rglob("*")):
             if path.is_file() and not path.name.endswith(SKIP_SUFFIXES) and "__pycache__" not in path.parts:
@@ -29,7 +29,7 @@ def main() -> None:
                         "bytes": path.stat().st_size})
     manifest = {
         "revision": "B-hand-v2",
-        "scope": "README, source, tests, rendered panels/sheet and the reference-free draw-check bundle",
+        "scope": "README, repair-log, source, tests, rendered panels/sheet and the reference-free draw-check bundle",
         "covered_folders": list(INCLUDE),
         "generated_by": "source/make_manifest.py",
         "reference_free": True,
