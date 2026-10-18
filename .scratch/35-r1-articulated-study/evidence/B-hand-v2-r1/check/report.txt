@@ -1,14 +1,17 @@
-art:    .scratch/35-r1-articulated-study/evidence/B-hand-v2/rendered/B-original-support.png
-bundle: .scratch/35-r1-articulated-study/evidence/B-hand-v2/check
+art:    .scratch/35-r1-articulated-study/evidence/B-hand-v2-r1/rendered/B-original-support.png
+bundle: .scratch/35-r1-articulated-study/evidence/B-hand-v2-r1/check
 
 images (feed these, and nothing else):
-  .scratch/35-r1-articulated-study/evidence/B-hand-v2/check/draft.png  -- the drawing
+  .scratch/35-r1-articulated-study/evidence/B-hand-v2-r1/check/draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale) - judge detail here
+  .scratch/35-r1-articulated-study/evidence/B-hand-v2-r1/check/draft.png  -- downscaled preview (width <= 256px) - layout only, never detail
 
 no --ref given: nothing to compare against (reference-free stage)
 
 reviewer protocol - do not skip:
   Give ONLY the images above to a FRESH-context reviewer with no other context.
   Ask the open question: 'what is wrong here?'
+  Judge detail only on the 1:1 images (draft-fullres.png, region-*.png). Previews and
+  side-by-side panes are downscaled: they show layout, never line weight or separation.
   Never leak your intent, your history, or a suspected verdict.
   Verify every claim against a measurement before acting on it (P7).
 

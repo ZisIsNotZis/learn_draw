@@ -149,17 +149,17 @@ PALM_WRIST_HALF = 0.088        # the palm narrows to this where the sleeve's cuf
 PALM_KNUCKLE_DROP = 0.105      # the palm's knuckle pad continues this far past the rim's far end
 PALM_THENAR_BULGE = 0.060      # the thumb-side flank swells out by this much
 KNUCKLE_SETBACK = 0.014        # digit roots sit this far inside the palm's contact rim
-DISH_FOOT_FRACTION = 0.40      # the dish's flat foot spans this fraction of its radius each way
+DISH_FOOT_FRACTION = 0.44      # the dish's flat foot spans this fraction of its radius each way
 
 FINGERS = (
     DigitSpec("index", "index digit climbs the dish's near wall left of centre",
-              0.04, 118.0, 0.020, 0.080, 0.070, 0.046, -0.045, 0.0200),
+              0.04, 118.0, 0.020, 0.080, 0.056, 0.046, -0.045, 0.0200),
     DigitSpec("middle", "middle digit is the longest and climbs highest on the near wall",
-              0.35, 100.0, 0.014, 0.082, 0.072, 0.048, -0.020, 0.0215),
+              0.35, 100.0, 0.014, 0.082, 0.058, 0.048, -0.020, 0.0215),
     DigitSpec("ring", "ring digit stands beside the middle digit, a little lower",
-              0.66, 82.0, 0.020, 0.079, 0.069, 0.046, 0.020, 0.0230),
+              0.66, 82.0, 0.020, 0.079, 0.055, 0.046, 0.020, 0.0230),
     DigitSpec("little", "little digit is the shortest and hooks the near wall lowest",
-              0.96, 64.0, 0.034, 0.069, 0.060, 0.040, 0.045, 0.0245),
+              0.96, 64.0, 0.034, 0.069, 0.048, 0.040, 0.045, 0.0245),
 )
 THUMB = DigitSpec("thumb", "thumb presses the dish's near-left wall from outside",
                   0.90, 153.0, 0.026, 0.090, 0.078, 0.058, -0.030, 0.0260)
