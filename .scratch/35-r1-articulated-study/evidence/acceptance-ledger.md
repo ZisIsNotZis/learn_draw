@@ -97,11 +97,28 @@ The independent image review then **failed** it on the picture: the dish does no
 
 Each is a documentation and test-scope repair inside one package; none changes the drawing.
 
+### R1a — object study: A-bow-study-v1 (bow alone, 800x560)
+
+Candidate: [A-bow-study-v1/](A-bow-study-v1/), commit two `A-bow-study-v1:` commits before the v2 branch point.
+
+**Verified (mechanical, by the writer and re-derivable from the package):** one strip walked once by a 9-segment route into 621 stations and 1240 triangles; one width field (15 to 112 half-width px, pinched at every turn), one depth field (WRAP -28 / FRONT 0 / MID +16 / BACK_TAIL +36, cloth thickness 16) and one roll field, so a knot patch, a lobe solid or a tail slab cannot be expressed by construction; 10 audited self-crossings, each with a broken rear edge and a mutation demonstration that fails 10/10; 7 creases sampled in the strip's own (u,v) and clipped by depth; both faces coloured from each triangle's own projected winding (22 back-facing triangles on the turned-over lower tail); one hand-typed position in the whole build; no image library in source and byte-identical output built from a different cwd; manifest verifies and the check bundle lists the 1:1 image first.
+
+**Measured against the reference:** bbox aspect 1.58 vs 1.57; lobe ratio 1.30 vs 1.29; 7 interior strokes vs the reference's 7; fill `#ce4e7e`, fold value `#67233d`, background `#77c8c0` sampled from the reference. Missed: knot position 0.63 of the width vs 0.70, knot band about 22 % shorter than the measured 59 px waist.
+
+**Failed (art), by an independent image-only review:** the mass reads as a bow only with moderate confidence; the centre does not resolve. Named defects: two background islands enclosed inside the lobes where the reference's lobes are solid cloth; no readable knot, with the mass widest where it must pinch; a beak-like spike at top centre (about x 0.56, y 0.19); a doubled/hatched edge at lower right (about x 0.73-0.82); the lower tail reading as a stem on a stand; nearly all interior strokes free-terminating; and a single flat fill leaving overlap order unreadable. Locations are the reviewer's approximations (P7).
+
+**Consequence:** `A-bow-study-v2` repairs exactly those six defects, each with a test that fails on return. Its first run's process died mid-write (runner exit 1, `writer-close-unverified`), leaving source and tests with no artwork, bundle or manifest; that partial state is committed verbatim and marked unverified. No v2 image, verdict or disposition exists.
+
+### R1a — object study: B-hand-study-v1 (hand and dish alone, 900x700)
+
+In flight. Artwork, source, tests and a check bundle exist; no independent image-only verdict and no disposition are recorded. Nothing here may be read as a pass.
+
 ## Current dispositions after M1a and M1b
 
 - **Verified (mechanical):** the A v6-closeout and v8 packages and the B r1 package pass their own suites with mutation-capable checks, verify their manifests, and their headline numbers have negative controls.
 - **Failed (art):** A v5 and B-hand-v2 failed image-only review; B-hand-v2-r1 failed a further image review on the hold.
 - **Not run (independent art review):** A v6, A v6-closeout and A v8 have no independent image-only review recorded anywhere in the tree; a mechanical pass is not an art verdict, and the user's qualified verdict above is not one either.
+- **Failed (art), R1a:** A-bow-study-v1 failed an independent image-only review on six named defects; its mechanical evidence still holds and is what v2 builds on. B-hand-study-v1 has no verdict.
 - **User judgement:** the user called A v8 and B-hand-v2-r1 "much better, maybe not the best, but at least somewhat acceptable" — a qualified partial acceptance of those two images that closes no gate.
 - **Accepted:** no candidate passes an independent art gate at the original figure scope. The only independent art disposition recorded here is the finite A v4 gate above, which the user's own review of that image then contradicted; it is not current acceptance.
 - **Scope:** the user approved the reduced scope, R1a object studies, recorded in the scope section above and [issue 55](../issues/55-r1a-object-study-scope.md); R1b's exit conditions are unchanged and R1a passing does not satisfy R1b.

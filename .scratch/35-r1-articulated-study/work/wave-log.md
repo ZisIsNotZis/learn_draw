@@ -26,6 +26,10 @@ Rows are checkable from the committed dispatch script (`plan:` commit messages) 
 | 18 | `m1a-v6-closeout` | Make every A v6 claim true: joint inventory, tautologies rewritten with mutation demonstrations, AST authoring inventory, per-face fill by own winding, dead code deleted | Delivered: 44 tests, 44/44 hashes, byte-identical rebuild | [`evidence/A-cloth-v6-closeout/`](../evidence/A-cloth-v6-closeout/) |
 | 19 † | A conformance run (branch `pi-subagents/a-cloth-v7-1251`) | Meet the user's two measured requirements on the closeout package | Delivered as `A-cloth-v8`: second cuff 16.4 % of the first, background islands 2 → 0, 47 tests, 46/46 hashes; submitted to no image reviewer | [`evidence/A-cloth-v8/`](../evidence/A-cloth-v8/) |
 | 20 † | Duplicate package | A package dispatched and then found to be a copy of an existing one | Deleted as a copy; no file, directory or branch records it, so the tree cannot show which package it duplicated | — |
+| 21 | `A-bow-study-v1` | Draw the bow alone, filling 800x560: one strip, 9-segment route, one width/depth/roll field, depth-resolved crossings | Delivered: 10 audited crossings with a 10/10 mutation, 7 creases, measured ratios, verifying manifest; independent image review **failed** six named defects | [`evidence/A-bow-study-v1/`](../evidence/A-bow-study-v1/) |
+| 22 | `A-bow-study-v2` | Repair those six defects, each with a test that fails on return | First run's process died mid-write (runner exit 1, `writer-close-unverified`); partial source+tests committed verbatim and **unverified**, no artwork/bundle/manifest | [`evidence/A-bow-study-v2/`](../evidence/A-bow-study-v2/) |
+| 23 | `A-bow-study-v2` resume | Reconcile the partial and complete the package | Dispatched, in flight | [`evidence/A-bow-study-v2/`](../evidence/A-bow-study-v2/) |
+| 24 | `B-hand-study-v1` | Draw the hand and dish alone, filling 900x700, reference-free | Artwork, source, tests and bundle produced; in flight; **no verdict** | [`evidence/B-hand-study-v1/`](../evidence/B-hand-study-v1/) |
 
 ## Facts about the runs themselves
 
