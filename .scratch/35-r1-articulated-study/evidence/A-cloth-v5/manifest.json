@@ -1,0 +1,224 @@
+{
+  "candidate": "A-cloth-v5",
+  "milestone": "R1 M1a (A track, observed clothing imitation only)",
+  "canvas": [
+    400,
+    480
+  ],
+  "reference": {
+    "source": "image.jpg",
+    "source_sha256": "322ad77c0cfd28fa040c625c55c592a54b3052ac4bea61fc31d967d8acff81fb",
+    "crop_xyxy_exclusive": [
+      500,
+      320,
+      900,
+      800
+    ],
+    "crop_sha256": "52e01f5e75e5d98fcd9a0a4c63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+    "engine_reads_reference_at_build_time": false
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "d7652edb2e28292054140a7a968819e2c00e305862cc2350a1a9e897f6edda16",
+      "bytes": 11016
+    },
+    {
+      "path": "artwork-a.png",
+      "sha256": "49db5ca84cd9eeaf31bf709fd8124332e69e8fb9bd32e3f3759da99a7e085343",
+      "bytes": 64673
+    },
+    {
+      "path": "artwork-a.svg",
+      "sha256": "8d1c7e5907031d8b71ed514b3a1b3893affd0143e9fb17a53a396b6ebd463eb4",
+      "bytes": 431411
+    },
+    {
+      "path": "check-a/draft-fullres.png",
+      "sha256": "49db5ca84cd9eeaf31bf709fd8124332e69e8fb9bd32e3f3759da99a7e085343",
+      "bytes": 64673
+    },
+    {
+      "path": "check-a/draft.png",
+      "sha256": "17fd607230c900de4f79bc6ba1ee67652cbd0b57028e9b43c1f46f6db59979e9",
+      "bytes": 54098
+    },
+    {
+      "path": "check-a/region-1.png",
+      "sha256": "aeec3574ca2beb516603e91f1441730d8e76aa1bc6e367a9d38bad50f8b9f6d0",
+      "bytes": 69203
+    },
+    {
+      "path": "check-a/region-2.png",
+      "sha256": "05dc4bb7cf3d8ca1b7789637c670401f1bf04906dd2ea2707d33656b9d1fda92",
+      "bytes": 74121
+    },
+    {
+      "path": "check-a/region-3.png",
+      "sha256": "631d6065433820e45046fa3f7be141b9f1596bee325847c2f11f16d70ca7e3d3",
+      "bytes": 71776
+    },
+    {
+      "path": "check-a/report.txt",
+      "sha256": "5d04a28ca75f3969b1dc8403e2e226a62b08eea26d372667f6ee97a6b4a43793",
+      "bytes": 1647
+    },
+    {
+      "path": "check-a/review-image-list.txt",
+      "sha256": "04adca8428188b6f530335db840a581ded91eea9365c0663e0ded8d1525c84ea",
+      "bytes": 550
+    },
+    {
+      "path": "check-a/side-by-side.png",
+      "sha256": "1143393e34f6793890a5b9fb2721f2abbb4d234415eae58f95c8fdc50a52ab40",
+      "bytes": 145473
+    },
+    {
+      "path": "ref/crop-400x480.png",
+      "sha256": "52e01f5e75e5d98fcd9a0a4ac63be91ed09b8a18ca0f62e7e0348a021b2dd87d",
+      "bytes": 170739
+    },
+    {
+      "path": "ref/zoom-bow.png",
+      "sha256": "a90f5f02f06193d8814533a8a8bb39672fc629a8b5c6ac0ff6003b1bb4879e18",
+      "bytes": 160407
+    },
+    {
+      "path": "ref/zoom-hair-top.png",
+      "sha256": "9632bd8775eb3a99a0f7c9b4a0a7ff6fdf4b12211ac5d456399e1af1beef9e55",
+      "bytes": 194083
+    },
+    {
+      "path": "ref/zoom-left-sleeve.png",
+      "sha256": "1c2fb5063ba2ff7889a08ee9b696fc2746d46f4bd299a0e9cea87677b9eecc4a",
+      "bytes": 89936
+    },
+    {
+      "path": "ref/zoom-right-sleeve.png",
+      "sha256": "17418e5a9e059e652fd4d0a429a0ef5c43b6d9be97c07ba12562bb09789fddf9",
+      "bytes": 109234
+    },
+    {
+      "path": "source/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "source/assemble.py",
+      "sha256": "02cf369a126340bfe4b4e7a22c5835361238372cc162945695f30c3b246af6f6",
+      "bytes": 8088
+    },
+    {
+      "path": "source/build-report.json",
+      "sha256": "b98a07b489760c20314f4f42da2ebd30e71ce03d92a6ceb77495e109a6124756",
+      "bytes": 2262
+    },
+    {
+      "path": "source/build_a.py",
+      "sha256": "bfb23066208d02165bd581fccb2343cd1b06fa3d83b0a3d2e01e7f2a8d14f193",
+      "bytes": 2256
+    },
+    {
+      "path": "source/lines.py",
+      "sha256": "9a8b10de717f326698d7e2cee3990f386b54fc39030839f50cad32158f6cbee5",
+      "bytes": 3174
+    },
+    {
+      "path": "source/parts/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "source/parts/bodice.py",
+      "sha256": "fdcc7b6ede1a3f8999a0f678ed940ea6b7728fcef45d70da696163f8726c67ac",
+      "bytes": 7005
+    },
+    {
+      "path": "source/parts/bow.py",
+      "sha256": "f43c3bb4bd6f10f92e3abbd0e7fb201dc40855d42607397fc459af00ae0801d4",
+      "bytes": 8186
+    },
+    {
+      "path": "source/parts/collar.py",
+      "sha256": "ea0170d655defe127304136582c6a666a2821a564282008b2b5f0b28ca855ac7",
+      "bytes": 5435
+    },
+    {
+      "path": "source/parts/families.py",
+      "sha256": "ae62c3313b078c1ac8066023950a685116457efb8c313d9b19f96de6c56c78bd",
+      "bytes": 27689
+    },
+    {
+      "path": "source/parts/frames.py",
+      "sha256": "44f27b3d59d600d20288d52ec7211271cb9ed7b6b4c13a29e49df1e2553be4f7",
+      "bytes": 11950
+    },
+    {
+      "path": "source/parts/hair.py",
+      "sha256": "0b021c68c6ce818cfa2fdcd5c4e260977086e0803a3317df4c98002236e6155d",
+      "bytes": 4470
+    },
+    {
+      "path": "source/parts/skin.py",
+      "sha256": "e344aee55be656539e9b0431f259a1140f9264159f9150fadb7dabadaec160a3",
+      "bytes": 2454
+    },
+    {
+      "path": "source/parts/sleeve.py",
+      "sha256": "77384baad686b448d18cda9c36e4037fdb4b4070e88ae25d3399c08454b3067b",
+      "bytes": 5742
+    },
+    {
+      "path": "source/seam_contract.py",
+      "sha256": "3b7e5619ef45359952a064fb57ced6e78dcacfb7f29c92382d061e93d795a1f8",
+      "bytes": 7621
+    },
+    {
+      "path": "tests/__init__.py",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "tests/negative-control-output.txt",
+      "sha256": "e7727d26baf85242e7738660fa985b0b7b549da1617211a12083b7b983410528",
+      "bytes": 352
+    },
+    {
+      "path": "tests/test_hair_two_sided.py",
+      "sha256": "eee101d441c9c1b214bd24747055ad207e79d6ae8e7bfe8009c2907f709f28a9",
+      "bytes": 2514
+    },
+    {
+      "path": "tests/test_identity.py",
+      "sha256": "11f4b93117a5e216e2272810c76fac0c17cff39c203c19c66cee66de3f49e534",
+      "bytes": 5191
+    },
+    {
+      "path": "tests/test_seam_contract.py",
+      "sha256": "39416cbff994d08d6b8f858010d71b0087d53bcc0f80dd63294e7252b8cf3c49",
+      "bytes": 4103
+    },
+    {
+      "path": "tests/test_two_sleeves.py",
+      "sha256": "18db4511578f01bfda7b87b8021648ef113855ee88bfadbbd197a123573769c6",
+      "bytes": 3362
+    },
+    {
+      "path": "work-checkpoint.md",
+      "sha256": "6bb7f4e97b34cef6c20b86f093cc2e23feb71c6c0d427bb35c157f696d0ec4ef",
+      "bytes": 841
+    }
+  ],
+  "artwork": {
+    "svg": "artwork-a.svg",
+    "png": "artwork-a.png",
+    "png_source": "check-a/draft-fullres.png (scripts/draw check at 1:1, 400x480)"
+  },
+  "checks": {
+    "build": "source/build_a.py (seam contract enforced; exits non-zero on a failed joint)",
+    "tests": "python -m unittest discover -s tests -t . (21 tests)",
+    "negative_control": "tests/negative-control-output.txt + tests/test_seam_contract.py",
+    "visual_bundle": "check-a/report.txt"
+  },
+  "no_art_verdict": true
+}
