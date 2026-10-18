@@ -279,6 +279,9 @@ def head_face(spec):
                      edges,spec.get("authored_input_xy",a),"jaw-and-frame-cut-face-field")
 
 
+NECK_WRAP = 8.0     # generated clearance of the hidden neck boundary past the jaw's right end
+
+
 def neck_skin(spec, jaw):
     jaw=tuple((float(p.u),float(p.v)) if hasattr(p,"u") else (float(p[0]),float(p[1])) for p in jaw)
     """The neck field between the shared jaw relation and the shared collar opening.
@@ -286,18 +289,28 @@ def neck_skin(spec, jaw):
     Its two hand-typed coordinates are none: the top comes from the face's jaw relation
     and the bottom from the collar's opening relation, so both ends are geometric
     consequences and the neck tapers into the collar instead of running as a column.
+
+    The sheet continues *behind* the collar leaves, and the collar's inner edge hugs the
+    jaw within about a pixel, so the hidden right boundary must go round the jaw's right
+    end (`wrap`) instead of straight from the right collar root to Q: the straight path
+    crosses the jaw relation and makes the contour self-intersecting.  The wrap lies
+    behind the collar, which is layered in front of the skin (joint S4/S5), so no part of
+    it is visible and it carries no ink edge.
     """
     a=spec["authored_xy"];Rl,Q,Rr=(tuple(a[k]) for k in ("R_left","Q","R_right"))
     jl,jr=tuple(jaw[0]),tuple(jaw[-1])
     left=_bezier(jl,_lerp(jl,Rl,.45),_lerp(Rl,jl,.30),Rl,12)
     right=_bezier(jr,_lerp(jr,Rr,.45),_lerp(Rr,jr,.30),Rr,12)
     opening_path=_bezier(Rl,_lerp(Rl,Q,.38),_lerp(Rl,Q,.72),Q,16)
-    opening_path2=_bezier(Q,_lerp(Q,Rr,.25),_lerp(Q,Rr,.74),Rr,16)
-    outline=_clean_closed((*jaw,*right[1:],*tuple(reversed(opening_path2))[1:],
+    wrap=(max(jr[0],Rr[0])+NECK_WRAP,min(jr[1],Rr[1]))
+    hidden_down=_bezier(Rr,_lerp(Rr,wrap,.66),_lerp(wrap,jr,.18),wrap,10)
+    hidden_to_q=_bezier(wrap,_lerp(wrap,Q,.34),_lerp(Q,wrap,.30),Q,16)
+    hidden=tuple(hidden_down)+tuple(hidden_to_q[1:])
+    outline=_clean_closed((*jaw,*right[1:],*hidden[1:],
                            *tuple(reversed(opening_path))[1:],*tuple(reversed(left))[1:]))
     edges=(_edge("contact",jaw,"A-visible-neck-skin","shared chin/jaw relation with the face field"),
-           _edge("contact",(*opening_path,*opening_path2[1:]),"A-visible-neck-skin",
-                 "visible skin follows the shared opening relation"),
+           _edge("contact",tuple(reversed(opening_path)),"A-visible-neck-skin",
+                 "visible skin follows the shared opening relation down into Q"),
            _edge("silhouette",left,"A-visible-neck-skin","neck side from the jaw corner into the collar root"),
            _edge("silhouette",tuple(reversed(right)),"A-visible-neck-skin","opposing neck side"))
     return _geometry(outline,{"R_left":Rl,"Q":Q,"R_right":Rr,"jaw_left":jl,"jaw_right":jr},edges,

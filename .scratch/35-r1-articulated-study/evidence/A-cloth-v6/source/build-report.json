@@ -1,5 +1,5 @@
 {
-  "svg": ".scratch/35-r1-articulated-study/evidence/A-cloth-v5/artwork-a.svg",
+  "svg": ".scratch/35-r1-articulated-study/evidence/A-cloth-v6/artwork-a.svg",
   "parts": [
     "A-bodice-continuation",
     "A-bodice-upper",
@@ -8,17 +8,18 @@
     "A-collar-right",
     "A-derived-waist-band",
     "A-hair-sheet",
+    "A-head-face",
     "A-left-cuff",
     "A-left-sleeve",
     "A-right-cuff",
     "A-right-sleeve",
     "A-visible-neck-skin"
   ],
-  "faces": 1740,
-  "visible_fill_regions": 14,
-  "marks": 30,
-  "mark_paths": 52,
-  "seams_total": 16,
+  "faces": 2018,
+  "visible_fill_regions": 15,
+  "marks": 38,
+  "mark_paths": 59,
+  "seams_total": 18,
   "seams_failed": 0,
   "seam_findings": [
     {
@@ -101,6 +102,18 @@
     },
     {
       "name": "S10-left-cuff-right",
+      "kind": "seam",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "S11-jaw-left",
+      "kind": "seam",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "S12-jaw-right",
       "kind": "seam",
       "ok": true,
       "detail": ""
