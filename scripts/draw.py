@@ -385,16 +385,18 @@ def cmd_check(a):
     if a.ref:
         ref = imread(a.ref, (draft.shape[1], draft.shape[0]))
         m = metrics(ref, draft)
-        p = os.path.join(outdir, "side-by-side.png")
-        imwrite(p, side_by_side(_fit(ref, a.pane), _fit(draft, a.pane), "REF", "DRAFT"))
-        written.append((p, "whole frame, ref beside draft"))
-        lines.append(f"metrics (breakage alarm only, never a target): {m}")
 
         # The whole-frame pane downscales to <=pane px and destroys exactly the detail a reviewer
-        # must judge (glints, lash taper, marks, hat tilt). Always ship the 1:1 draft too.
+        # must judge (glints, lash taper, marks, hat tilt). The 1:1 draft is written and listed
+        # first, so a reviewer's first drawing image is never a downscale.
         fp = os.path.join(outdir, "draft-fullres.png")
         imwrite(fp, draft)
-        written.append((fp, "DRAFT at full resolution (1:1, no downscale)"))
+        written.append((fp, "DRAFT at full resolution (1:1, no downscale) - judge detail here"))
+
+        p = os.path.join(outdir, "side-by-side.png")
+        imwrite(p, side_by_side(_fit(ref, a.pane), _fit(draft, a.pane), "REF", "DRAFT"))
+        written.append((p, f"whole frame, ref beside draft (panes <= {a.pane}px, layout only)"))
+        lines.append(f"metrics (breakage alarm only, never a target): {m}")
 
         best = load_baseline()
         if best and best.get("metrics"):
@@ -426,10 +428,20 @@ def cmd_check(a):
             written.append((rp, f"{kind} #{i} at ({x},{y},{w},{h}) "
                                 f"mean-dist {badness:.0f}, {zoom:.1f}x"))
     else:
+        # A reference-free bundle has no side-by-side and no region crops, so a bounded `draft.png`
+        # preview used to be the only drawing image a reviewer was handed: a 1350px sheet arrived
+        # at 256px and line separations were judged from a thumbnail. The 1:1 image is therefore
+        # mandatory here, named, and listed first; the preview stays as a layout convenience.
+        full = os.path.join(outdir, "draft-fullres.png")
+        if os.path.abspath(full) != os.path.abspath(draft_path):
+            imwrite(full, draft)
+        written.append((full, "DRAFT at full resolution (1:1, no downscale) - judge detail here"))
         p = os.path.join(outdir, "draft.png")
-        if os.path.abspath(p) != os.path.abspath(draft_path):
+        if os.path.abspath(p) == os.path.abspath(draft_path):
+            written.append((p, "the source image itself (already 1:1; no preview needed)"))
+        elif os.path.abspath(p) != os.path.abspath(full):
             imwrite(p, _fit(draft, a.pane))
-        written.append((p, "the drawing"))
+            written.append((p, f"downscaled preview (width <= {a.pane}px) - layout only, never detail"))
         lines.append("no --ref given: nothing to compare against (reference-free stage)")
 
     report = os.path.join(outdir, "report.txt")
@@ -449,6 +461,8 @@ def cmd_check(a):
         "reviewer protocol - do not skip:",
         "  Give ONLY the images above to a FRESH-context reviewer with no other context.",
         "  Ask the open question: 'what is wrong here?'",
+        "  Judge detail only on the 1:1 images (draft-fullres.png, region-*.png). Previews and",
+        "  side-by-side panes are downscaled: they show layout, never line weight or separation.",
         "  Never leak your intent, your history, or a suspected verdict.",
         "  Verify every claim against a measurement before acting on it (P7).",
         "",

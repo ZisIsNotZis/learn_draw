@@ -91,7 +91,9 @@ linked WP contract for authoritative acceptance, not legacy metrics or exercise 
   than only where mass is missing — `report.txt`, and the metrics line with the delta against the
   recorded best. **It carries no verdict by design** — it refuses to tell you whether the drawing is
   good, because that judgment is the reviewer's.
-  Omit `--ref` for the reference-free stage (bundle is just the drawing + an adjusted protocol).
+  Omit `--ref` for the reference-free stage: the bundle is the **1:1 drawing** (`draft-fullres.png`,
+  listed first) plus a bounded `draft.png` preview for layout only, with an adjusted protocol — a
+  reviewer judges detail on the 1:1 image, never on the preview.
 - `baseline ART [--ref REF]` — record ART as the project's best artifact (the ratchet floor). Only
   ever called after a passed gate; `check` compares every later render against it.
 - `compare REF SRC [--region x,y,w,h --zoom N]` — ad-hoc side-by-side, one attention pass. Detail
