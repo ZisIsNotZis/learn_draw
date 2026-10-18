@@ -133,6 +133,18 @@ linked WP contract for authoritative acceptance, not legacy metrics or exercise 
   see and mislabel *where* they saw it; the `check` bundle names each region's coordinates so the two
   can be told apart.
 
+## Running the loop by delegation (harness facts)
+
+The loop above is executed by a parent that dispatches writers and reviewers, and the harness decides whether a dispatch can do anything at all. What each dispatch must do about the facts that bind it:
+
+- **Size a writer budget inside the harness wall (P34).** A subagent run is killed at the harness wall — 1,800,000 ms (~30 min) observed here — so a dispatch budget larger than that wall is fiction; fit the package inside the limit or raise the timeout explicitly at dispatch, and have the writer commit a checkpoint every few minutes, since reaping (P35) takes uncommitted work without warning.
+- **Order the deliverables so the package is true at any kill point (P34).** Source, renders, manifest and `check` bundle first, documentation last — a kill then leaves a smaller package rather than a false one. The mechanical test for "this package is true" is `sha256sum -c manifest.sha256` plus the existence of every listed file, run before any reviewer is dispatched.
+- **Never read liveness off `status` (P35).** Runs reaped this session were still reported as running; sample a live process, a new event timestamp and a growing artefact, and treat no process, no new events and no new files as death whatever the status says.
+- **Commit the dispatch script before launching worktree-isolated children.** Managed worktree isolation refuses a dirty tree, and writing the script is the dirt; every dispatch script in `.scratch/35-r1-articulated-study/work/` is committed under a `plan:` message for that reason.
+- **Pair an image-only reviewer with an execution-capable one (P36).** One judges the picture; the other re-runs the tests, manifests and negative controls and reports the commands that produced them. Pairing is not a substitute for `rubric.md`'s two independent reviewers on the image half.
+- **Name the 1:1 image in the review dispatch, and check the bundle is current.** A review this session judged a thumbnail — `.scratch/35-r1-articulated-study/evidence/B-hand-v2/check/draft.png` is 256×121 for a 1350×640 sheet — and its reviewer reported "the image arrived at thumbnail scale". `scripts/draw.py` now writes `draft-fullres.png` and lists it first; a bundle older than that change is stale evidence to regenerate, not to dispatch.
+- **Run a documented command before trusting it (P38).** At session start none of the loop's commands ran — a missing `.venv`, a module absent from the environment, a deleted renderer revision, no committed dependency file. A command surface that cannot run is a gate failure, and the repair is declared dependencies, dynamically resolved paths and a wrapper that degrades to an available interpreter.
+
 ## Judging (P14 reframe)
 
 Primary criterion: the drawing looks like a proper artwork in the reference's style — judged by looking at the full render and by fresh-eyes critic review. Zone-distance/edge metrics are weak regression signals only (catch accidental breakage), never objectives to tune against. Holistic semantic shapes outrank pixel correspondence; a fragmented but "closer" draft is worse than a coherent drawing.

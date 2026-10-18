@@ -286,3 +286,33 @@ sleeve exists, is small and mostly covered by the bow tail, and its surviving sh
 occlusion rather than an author-drawn cut. Evidence: `.scratch/35-r1-articulated-study/issues/54-user-review-scope-hair-and-hand.md`,
 `evidence/A-cloth-construction-v4/source/family-rules.py` (`gather_patch`, `folded_loop`, `tension_tail`,
 `_band_from_stations`), and the registered reference crop `500,320,900,800`.
+
+## P34 — A budget the harness does not honour orders nothing; order the work so it is true at any cut (A v6)
+
+A subagent run is killed at the harness wall — 1,800,000 ms observed in this session's harness, about thirty minutes — so a dispatch that budgets sixty or a hundred and twenty minutes is spending time the run will never be given, and the writer is stopped wherever it had reached. The kill is never clean: the A-cloth-v6 run was taken mid-iteration by infrastructure instead (run reaping, P35) and left source ahead of its renders, its manifest and its check bundle — exactly the inconsistency the package's own gates exist to catch — while `work-checkpoint.md` asserted a completeness the tree did not have.
+Two things generalise. A stated budget must fit inside the harness limit, or the limit is raised explicitly at dispatch. And the deliverables are ordered so the package is true at any cut — source, renders, manifest and check bundle first, documentation last — so a kill leaves a smaller package rather than a false one, and `sha256sum -c manifest.sha256` plus every listed file existing is the check that decides "true".
+Evidence: `.scratch/35-r1-articulated-study/evidence/A-cloth-v6/work-checkpoint.md` claims everything complete and hash-verified, while `sha256sum -c manifest.sha256` reported 20 entries OK, the whole `check-a/` bundle was absent from that revision and several `source/*.py` hashes were stale (verification recorded in `.scratch/35-r1-articulated-study/work/wave7-recovery.js`); the preserved state is commit `2fd6a82`.
+
+## P35 — Liveness is observed, never read from a status field (run reaping, wave 7)
+
+Three sibling runs died at the same instant (03:59:44Z) when run-directory retention cleanup deleted their run directories and async config files, and `status` kept reporting them as running because the status lived in the directories that were deleted.
+So a stored status is a claim about a record, never about a process: conclude a child is alive only from a live process and a new event timestamp and a growing artefact, and call it dead on no process, no new events and no new files, however confidently the status disagrees. P26's lesson one level down — a reading is only as good as the thing the instrument actually observes.
+Evidence: `.scratch/35-r1-articulated-study/work/wave7-recovery.js`, the recovery dispatch that opens with this warning.
+
+## P36 — Execution capability is a reviewer property, like sight (A v5 review pair)
+
+P26 established that a reviewer must prove it can see. Execution is the same kind of property: a reviewer whose session has no execution tools reports every check as NOT RUN, which is honest and is not verification, and a dispatch that asks only for judgement returns a prose verdict over claims nobody ran.
+Pair the two reviewers and keep their reports separate — an image-only reviewer answers what is wrong with the picture, an execution-capable reviewer re-runs the mechanical claims (tests, manifests, negative controls, mutations) and reports them with the commands that produced them — and let neither one's silence stand in for the other's gate.
+Evidence: `.scratch/35-r1-articulated-study/work/wave2-review-a.js` (the A-cloth-v5 pair, whose structural half prefaced its report with an execution-limit note) and `.scratch/35-r1-articulated-study/work/wave4-review-b.js`, which opens by telling its verifier that an earlier reviewer could not run anything.
+
+## P37 — A mechanism claim is unproven until a check distinguishes the mechanism from its absence (A v6, B v2)
+
+A README sentence — the hair passes a twist function, the cuff is one whole authored piece, the seam contract covers every joint — is prose until some check fails when the mechanism is removed: the twist set to zero, one joint broken on purpose, one declared file dropped from the manifest. That failing check is what turns the claim into evidence, and its absence means the claim is unproven rather than supported.
+What P30's separation of construction, interface use and visual reading does not say is how often the two disagree: this session three A candidates and two B candidates passed every code-level gate and still failed their image reviews.
+Evidence: `.scratch/35-r1-articulated-study/evidence/A-cloth-v8/tests/test_hair_two_sided.py` (`test_the_twist_is_what_turns_the_sheet_over` removes the twist and requires the reverse-side fill to collapse), `.scratch/35-r1-articulated-study/evidence/A-cloth-v6/tests/negative-control-output.txt` (18 joints intact, 5 failures when broken, 0 after restore), and the review dispatches `.scratch/35-r1-articulated-study/work/wave2-review-a.js`, `wave4-review-b.js`, `wave8-review-a6.js`.
+
+## P38 — A command surface that cannot run has no gates (session-start tooling rot)
+
+At this session's start the documented loop could not run at all: `scripts/draw` pointed at a `.venv` that did not exist, `scripts/draw.py` imported a module the environment lacked, the renderer path was pinned to a playwright revision that had been deleted, and no dependency file had ever been committed — while every document went on describing the loop in the present tense and every earlier record still read as verified.
+So run a documented command before trusting it, and treat a broken command surface as a gate failure rather than an inconvenience: with no runnable loop nothing below it is verifiable, whatever the records say. The repair generalises — declare the dependencies, resolve a versioned path dynamically instead of pinning it, and let the wrapper degrade to whatever interpreter exists.
+Evidence: the environment repair recorded in `.scratch/35-r1-articulated-study/issues/54-user-review-scope-hair-and-hand.md` and its current state — `pyproject.toml` tracked, `scripts/renderer.py` selecting the highest cached revision, `scripts/draw` falling back to `python3`.
