@@ -84,3 +84,14 @@ No artwork is accepted here, no candidate is replaced, no sealed/heldout content
 promotion of the recorded best is implied. A v4 and the B caption derivative remain byte-preserved at
 their recorded hashes. R1, transfer, heldout, integrated depth/geometry, reproduction and user
 acceptance remain open.
+
+## Advance entered
+
+The user then gave the advance instruction for this R1 advance. The approved milestone list, in order, is **M1a, M1b, M2, M3, M4**, and the plan to first level is frozen at
+[`work/m1a-m1b-plan.md`](../work/m1a-m1b-plan.md): milestone outcomes, deliverables, acceptance and synchronisation points, the M1a/M1b writer work packages with exact
+directory scope and numeric budget, the fresh independent image-only and structural review work packages that follow each writer, and the integration step. M2 needs the user to
+release the sealed reference-free task and authorize its separate creator role before anything starts; M3 and M4 are later milestones and are not started.
+
+The gap recorded above is closed on the roadmap side: `docs/drawing/roadmap.md` now carries a fourth acceptance question, object cohesion, alongside construction/attachment/pose,
+physical geometry and visibility, and drawing/art. The earlier "not yet executed" framing of the proposed direction is superseded only by this advance record; no artwork is accepted
+and no gate is claimed passed.

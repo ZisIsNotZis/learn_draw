@@ -8,10 +8,11 @@ Learn by reference study, imitation and deliberate variation to create explainab
 
 A milestone is a user-perceivable artwork or newly demonstrated visual capability, not an engine, test suite or document. The artifact must be current, reviewable, and ready for the user's judgment. After each delivery, stop dependent work at the user feedback gate. Internal study, methods, work-package sequencing and technical replanning are project-autonomous; do not ask the user to decide internal plans. Never represent internal checks as the user's judgment or promise art success in advance.
 
-Keep three acceptance questions distinct:
+Keep four acceptance questions distinct:
 1. **Construction/attachment/pose:** do named parts form plausible connected objects and attach in a readable pose?
 2. **Physical geometry and visibility:** are solids/surfaces free of illegal intersections (or is a designed bend/contact explained), and does depth independently hide the physically farther surface? Correct occlusion does not excuse interpenetration; a hair strand entering a head/body must be plausibly divided/deformed or routed clear.
 3. **Drawing/art:** does the actual rendered image read clearly and feel compositionally/artfully coherent, with intentional line and colour treatment?
+4. **Object cohesion:** does every named object read, in the actual rendered image, as one connected visible thing, with any intentionally split object documented as a deliberate split? This is separate evidence from construction, geometry and art, because a drawing can pass all three while one object still renders as two detached pieces and only the image shows whether it reads as one thing.
 
 Each relevant gate requires its own evidence. Geometry/code cannot establish visual quality. Experience checks use real rendered visual artifacts and a qualified sight-capable independent reviewer; actual experience is not runtime-enforced. Missing modality is BLOCKED/UNVERIFIED, never PASS. Metrics are alarms only.
 
@@ -50,7 +51,7 @@ Stage names below are new roadmap identifiers; old S0–S3 names are historical 
 - **Independent gates:** construction/attachment and collision; depth-derived visibility; whole-image visual/art review and line-versus-colour structure review; reference-free deterministic re-render; component variation. Human feedback is an explicit gate.
 - **Dependencies/reuse:** R1/R2 accepted methods, spatial architecture; legacy M4j and Ex32 remain historical controls, not accepted components or required starting scaffold.
 - **Scope/non-goals:** one bounded character/composition; no promise of exact reference reconstruction, no hand-entered dense contours, no baseline promotion without its separate gate.
-- **Exit:** composition is independently readable and coherent, variants preserve identity, all three acceptance dimensions separately documented, reference absent for reproduction, final review passes. Present and pause for user response.
+- **Exit:** composition is independently readable and coherent, variants preserve identity, all four acceptance dimensions separately documented, reference absent for reproduction, final review passes. Present and pause for user response.
 - **Risk/alternative:** reference ambiguity is recorded and resolved as an explicit plausible interpretation, not false recovered 3D truth. If composition is too complex, reduce secondary detail while preserving the core figure, pose, attachment and art quality.
 
 ### R4 — Transfer to new subjects and original creation
