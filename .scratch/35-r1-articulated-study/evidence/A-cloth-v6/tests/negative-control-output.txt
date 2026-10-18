@@ -1,0 +1,7 @@
+intact build: 18 declared joints, 0 failed
+BROKEN: S1-collar-front | boundary gap 4.000000 > 1e-06
+BROKEN: S3-collar-right-root | boundary gap 4.000000 > 1e-06
+BROKEN: S5-skin-right-root | boundary gap 4.000000 > 1e-06
+BROKEN: S10-left-cuff | depth gap 0.500000 > 0.002
+BROKEN: S10-left-cuff-right | depth gap 0.500000 > 0.002
+restored build: 0 failed
