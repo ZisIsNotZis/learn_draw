@@ -1,10 +1,12 @@
-# A-cloth-v6-closeout — the v6 candidate with its false claims removed (M1a, A track)
+# A-cloth-v8 — v6-closeout with the second cuff visible and no background islands (M1a, A track)
 
-This directory is `.scratch/35-r1-articulated-study/evidence/A-cloth-v6/` copied and
-closed out: same drawing, same parts, same palette and composition, with every claim it
-made about itself either proved at this revision or removed.  Nothing here decides
-whether the picture is good; **no art verdict is recorded, and the artwork verdict
-belongs to a fresh independent reviewer.**
+This directory is `.scratch/35-r1-articulated-study/evidence/A-cloth-v6-closeout/`
+copied and brought to conformance on the two points the user's review fixed (issue 54:
+two sleeves, the second "not invisible, it's just small, partially covered"; and the
+hair facts in `work/a-art-direction-brief.md`: no background-coloured hole inside a hair
+mass).  Same drawing, same parts, same palette and composition; nothing else was
+touched.  Nothing here decides whether the picture is good; **no art verdict is
+recorded, and the artwork verdict belongs to a fresh independent reviewer.**
 
 The reference is the registered crop of `image.jpg` (source bbox `500,320,900,800` →
 400×480, crop SHA-256
@@ -12,12 +14,14 @@ The reference is the registered crop of `image.jpg` (source bbox `500,320,900,80
 `ref/crop-400x480.png`.  The build reads no image: the crop seeded the numbers while
 they were authored, and the engine sees geometry only.
 
-What the closeout changed, and why each change was allowed: B1–B3 and N1–N7 of
-[`closeout-log.md`](closeout-log.md).  No shape, proportion, palette or composition was
-changed.  Three fixes touch rendered pixels: the per-triangle two-sided fill (N1), the
-knot-pass depth separation (N7), and the mark *comments* that now name the owning part
-(N4, comments only).  Everything else is a test, a declaration, a docstring or a
-deletion.
+What this revision changed, with the before/after numbers, the commands and the
+mutation evidence for each: [`conformance-log.md`](conformance-log.md) — FIX 1 (the second
+cuff's surviving wedge, 0.0 % → 16.4 % of the first cuff) and FIX 2 (both enclosed
+background islands closed by routing the hair sheet's outline to the face, 2 → 0).  Two
+source files change (`parts/sleeve.py`: one authored coordinate; `parts/hair.py`: one
+generator reach term), plus two tests and one new test file.
+[`closeout-log.md`](closeout-log.md) is the v6 record kept as it was, including its item
+N4, which this revision closes.
 
 ## What this drawing is
 
@@ -35,8 +39,8 @@ a part is missing from the inventory or an object is split without a stated reas
 | bow | `A-bow-ribbon` | one magenta ribbon tied into a bow: knot, two lobes, two tails | — |
 | hair | `A-hair-sheet` | one head-attached hair sheet whose reverse side faces the camera after the crown turn | — |
 
-Generated at this revision: **2018 faces, 15 visible fill regions, 38 marks clipped into
-59 paths, 18 declared joints, 0 failed, 36 declared anchors = 34 joint endpoints + 2
+Generated at this revision: **2018 faces, 15 visible fill regions, 41 marks clipped into
+62 paths, 18 declared joints, 0 failed, 36 declared anchors = 34 joint endpoints + 2
 stated non-joints.**
 
 ## The seam contract, and what each clause proves
@@ -116,12 +120,25 @@ relation (`families.jaw_section`, called with the same stations by `head.py` and
 the boundary the collar hides is routed round the jaw's right end (`NECK_WRAP = 8.0`)
 because a straight path would cross the jaw relation and invert the contour.
 
-**Two whole sleeves with whole cuffs.**  Each sleeve runs from its shoulder cap to the
-shared terminal section on its own support; each cuff is a whole band sewn to that
-section (S9/S10).  The second (left) cuff's authored area is 331.5 px² and its surviving
-area is ~0, because the bow (z 0.60) and the hair fall (z 0.45) are in front of it; lifting
-those pieces restores its authored area within 2 %, which is what makes the occlusion a
-depth result rather than an authored cut.
+**Two whole sleeves with whole cuffs, the second partly visible.**  Each sleeve runs
+from its shoulder cap to the shared terminal section on its own support; each cuff is a
+whole band sewn to that section (S9/S10).  The second (left) cuff's authored area is
+331.5 px² and **88.37 px² of it survives — 16.4 % of the first cuff's 539.5 px²**
+(`tests/test_two_sleeves.py::test_second_cuff_is_authored_whole` prints that number); the
+bow (z 0.60) and the hair fall (z 0.45) are in front of it, so the wedge is depth's output
+and not an authored cut.  The cuff is never cut, shortened or given a "visible part": its
+one authored coordinate puts it clear of the fall, and lifting the front cloth restores
+its whole authored area within 2 %.
+
+**No background island inside the drawing.**  Two background-coloured regions used to be
+enclosed by ink — 1023 px at bbox (162,39,35,60) and 17 px at (243,82,4,9) in the v6
+render — and the count is now **0** on the delivered 400×480 PNG
+(`tests/test_no_background_holes.py` prints the count and the rule: background = every
+channel within 6 of #78a49b, 4-connected, a component touching the border is ignored, any
+other component of ≥ 4 px is a hole).  They are closed by routing the hair sheet's
+outline to the face field, not by drawing a patch over them; the same rule run against
+`evidence/A-cloth-v6-closeout/artwork-a.png` still reports both islands, so the test can
+fail.
 
 **No manual clipping.**  Nothing in `source/` declares a visible range or a back/front
 copy.  Fills come from `scripts/vector_visibility.visible_regions` over projected
@@ -174,19 +191,20 @@ stands now.  The full table with locations is in
 | the fill of each face comes from its own winding | false for 48 of 1380 faces; now true, with that count kept as the negative control |
 | the shared tangent is a geometric boundary check | it is a declaration check; said so, and given its third negative control |
 | `tests/test_line_ownership.py` enforces line ownership | the file did not exist; it exists now, and the `owner` stamp it checks was itself wrong |
-| dead code, a missing hole test and a missing tangency control are merely "unverified" | dead code deleted with reachability evidence, tangency control added; the hole test is still missing **and the drawing currently has two enclosed background holes** |
+| dead code, a missing hole test and a missing tangency control are merely "unverified" | dead code deleted with reachability evidence, tangency control added; the hole test was still missing in v6 **and the drawing had two enclosed background holes** — v8 adds the test and closes both holes (`conformance-log.md`, FIX 2) |
 
 ## Files
 
 | path | what it is |
 | --- | --- |
 | `source/` | part library: `assemble.py` (scene + SVG), `build_a.py` (build entry point, enforces the seam contract and the anchor inventory), `seam_contract.py`, `authored.py` (the authoring inventory), `lines.py`, `parts/` (one module per object family) |
-| `tests/` | 44 `unittest` tests, plus `negative-control-output.txt` (the mutation transcript) |
+| `tests/` | 47 `unittest` tests, plus `negative-control-output.txt` (the v6 mutation transcript; the v8 mutation pairs live in the tests themselves) |
 | `artwork-a.svg`, `artwork-a.png` | the built SVG and its 1:1 render (400×480) |
 | `check-a/` | the `scripts/draw check` bundle from the current tooling: `draft-fullres.png` (1:1, bytes equal to `artwork-a.png`), `draft.png`, `side-by-side.png`, three region crops, `report.txt` with the current reviewer protocol |
 | `ref/` | the reference crop and four zoom crops used while authoring |
 | `manifest.json`, `manifest.sha256` | the file set with its hashes |
-| `closeout-log.md` | B1–B3 and N1–N7, each with its disposition and the command that shows it |
+| `closeout-log.md` | the v6 record: B1–B3 and N1–N7, each with its disposition and the command that shows it |
+| `conformance-log.md` | FIX 1 and FIX 2: what changed, before/after numbers, commands, mutation evidence |
 
 The previous package's `repair-log.md` (D1–D12) and `work-checkpoint.md` were removed
 here: the checkpoint's "complete and hash-verified" claim was false, and the repair log's
@@ -197,9 +215,9 @@ below.
 ## Commands actually run at this revision
 
 ```bash
-PKG=.scratch/35-r1-articulated-study/evidence/A-cloth-v6-closeout
+PKG=.scratch/35-r1-articulated-study/evidence/A-cloth-v8
 
-# tests: 44, all passing (run from $PKG)
+# tests: 47, all passing (run from $PKG)
 python3 -m unittest discover -s tests -t .
 
 # the authoring table (declared against the source by AST)
@@ -218,9 +236,16 @@ cp $PKG/check-a/draft-fullres.png $PKG/artwork-a.png
 python3 $PKG/source/build_a.py --out /tmp/brep1/a.svg
 python3 $PKG/source/build_a.py --out /tmp/brep2/a.svg
 cmp /tmp/brep1/a.svg /tmp/brep2/a.svg && cmp /tmp/brep1/a.svg $PKG/artwork-a.svg
-#   identical; sha256 c6be4b42e37bfc4e110eb54f2f794bd65f6f8291ea39a9b9955e39b4ab018021
+#   identical; sha256 120579a26adb1d2e4bc20cdc3a5a4559344cd637485d0bccca7510554014bba2
 #   artwork-a.png == check-a/draft-fullres.png, sha256
-#   2fef5e2bac1f4a885fa55c18cac39a30f0b954777e865369c778f8047fe937ef
+#   da9d92c9935697a6a8fa70e25f61b7a2218e7dbd414817433a8f0bd39febd38b
+
+# the two measured facts of this revision, each with the test that prints it
+python3 -m unittest tests.test_two_sleeves tests.test_no_background_holes -v
+#   second cuff: authored 331.5 px2, visible 88.37 px2, 16.4 % of the first cuff's 539.5 px2
+#   band 0.10..0.25: delivered 0.164, at the v6 coordinate 0.000, front cloth lifted 0.614
+#   400x480 artwork-a.png: 0 enclosed background component(s) at tolerance 6, minimum 4 px
+#   rule applied to A-cloth-v6-closeout/artwork-a.png: [(1023, (162,39,35,60)), (17, (243,82,4,9))]
 
 # manifest, and the manifest pair's own handling
 (cd $PKG && sha256sum -c manifest.sha256)
@@ -231,7 +256,7 @@ Manifest handling: `manifest.json` lists every delivered file except `manifest.j
 `manifest.sha256` is generated from `manifest.json`'s list *plus* `manifest.json`, so the
 pair is bound to each other in one direction and nothing is left unverified except
 `manifest.sha256` itself, which the reader can recompute from the same list.  At this
-revision 44 entries verify OK (43 delivered files plus `manifest.json`) and
+revision 46 entries verify OK (45 delivered files plus `manifest.json`) and
 `manifest.sha256` itself is the one hash the pair cannot contain; its own value is the
 last line of `manifest.json`'s companion list, recomputable from that list.  A full set
 of OK means the delivered set is the set described; the
@@ -242,14 +267,17 @@ hide behind its own success.
 
 - `build_a.py` exits 0: 13 parts, 2018 faces, 18 declared joints, 0 failed, 36 anchors
   declared = 34 joint endpoints + 2 stated non-joints + 0 unaccounted.
-- 44 tests pass, including: every declared joint passes; a 4 px translation fails and the
+- 47 tests pass, including: every declared joint passes; a 4 px translation fails and the
   restored build passes; a cuff on an unrelated support fails; a rotated declared tangent
   fails while the boundary stays put; an unaccounted anchor is reported by both the build
   and the test; both sleeves and both cuffs exist on four distinct supports; the second
   cuff's authored area reappears when the front cloth is lifted; the hair has both side
   fills and loses them without the twist; every face's fill agrees with its own winding;
   the bow's measured width is constant through the knot; the declared authoring inventory
-  equals the hand-typed stations in the source for every part.
+  equals the hand-typed stations in the source for every part; the second cuff's surviving
+  area is 16.4 % of the first cuff's and the band rejects both a hidden (0.000) and a fully
+  exposed (0.614) cuff; the delivered render has zero enclosed background components while
+  the same rule finds the v6 render's two.
 - Four source mutations fail their test and pass after restoration (unaccounted anchor,
   bow width, cuff in front, per-quad fill): `tests/negative-control-output.txt`.
 - Two builds are byte-identical and equal to the shipped `artwork-a.svg`.
@@ -262,23 +290,22 @@ hide behind its own success.
 - **No art verdict.**  Nobody has judged these images at this revision.
   `check-a/report.txt` lists the images for a fresh reviewer; the metrics in it (edge-F1
   0.282, coverage 0.416) are a breakage alarm, and nothing was tuned against them.
-- **The second (left) cuff is fully occluded at this revision**: authored 331.5 px²,
-  visible ~3.6e-12 px².  Wholeness and depth origin are proved by the ablation test, but
-  the small visible cuff the user asked for ("not invisible, just small, partially
-  covered") is absent from the image.  This is a drawing decision, not a claim defect, and
-  it was not changed here.
+- **How the second cuff's wedge *reads* is unjudged.**  It is measured at 88.37 px²
+  (16.4 % of the first cuff, against the reference's 17 %), but whether the dark wedge
+  emerging between the hair fall and the bow's left tail looks like a cuff is an art
+  judgement for a fresh reviewer.
+- **The reach term changes the hair silhouette where the sheet meets the face.**  Those
+  two places are filled now and were background before; their appearance is unjudged.
 - **The tangent clause cannot see an outline that rotates about a static anchor.**  It
   compares declared directions; deriving them from the sampled outline is measured to be
   unfaithful (up to 84.3° at a corner).  A seam whose two outlines rotate together while
   the declarations stay is not detected.
-- **No hole test, no line-ownership test on the drawn PNG.**  `test_line_ownership.py`
-  checks the emitted marks and the SVG paths, not the raster.  A hair-hole test does not
-  exist in this package; a scan of the delivered PNG with `cv2.connectedComponents`
-  found **two background-coloured regions fully enclosed by ink** — 1019 px at
-  (162,39,35,60) and 17 px at (243,82,5,10) — so the claim "no background gap sits inside
-  the drawn silhouette" is not only untested here, it is currently **false** and closing
-  it means changing the drawing.  Recorded as an open blocking art/geometry item in
-  `closeout-log.md` (N4) rather than patched.
+- **The hole rule sees the raster, not the hair.**  `tests/test_no_background_holes.py`
+  checks enclosed background components on the delivered PNG (4-connected, tolerance 6,
+  ≥ 4 px); an island thinner than 4 px would not be reported, and the rule does not ask
+  which part encloses the island — it rejects any enclosed background, which is stricter.
+  `test_line_ownership.py` still checks the emitted marks and the SVG paths, not the
+  raster.
 - **The authoring scan covers two-number literal pairs only.**  A coordinate split into
   two separate scalar literals would not be counted; this revision's part modules do not
   do that (read, not checked).

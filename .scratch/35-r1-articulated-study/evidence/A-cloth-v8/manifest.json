@@ -1,6 +1,6 @@
 {
-  "candidate": "A-cloth-v6-closeout",
-  "milestone": "R1 M1a closeout round: v6 with B1-B3 and N1-N7 dispositions (A track, no art verdict)",
+  "candidate": "A-cloth-v8",
+  "milestone": "R1 M1a conformance round: v6-closeout with the second cuff's wedge visible (FIX 1) and no background islands inside the drawing (FIX 2) (A track, no art verdict)",
   "canvas": [
     400,
     480
@@ -20,58 +20,63 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "525dfd9359d49db2db0f69a7d27daf9fe213426fd2f97d9752e80cbd2223da04",
-      "bytes": 20188
+      "sha256": "16d9d299c3936809c3aab49e9466049b843446d34aff5aedb1fe2dbfd1fe5df2",
+      "bytes": 22438
     },
     {
       "path": "artwork-a.png",
-      "sha256": "2fef5e2bac1f4a885fa55c18cac39a30f0b954777e865369c778f8047fe937ef",
-      "bytes": 63877
+      "sha256": "da9d92c9935697a6a8fa70e25f61b7a2218e7dbd414817433a8f0bd39febd38b",
+      "bytes": 62464
     },
     {
       "path": "artwork-a.svg",
-      "sha256": "c6be4b42e37bfc4e110eb54f2f794bd65f6f8291ea39a9b9955e39b4ab018021",
-      "bytes": 501744
+      "sha256": "120579a26adb1d2e4bc20cdc3a5a4559344cd637485d0bccca7510554014bba2",
+      "bytes": 579805
     },
     {
       "path": "check-a/draft-fullres.png",
-      "sha256": "2fef5e2bac1f4a885fa55c18cac39a30f0b954777e865369c778f8047fe937ef",
-      "bytes": 63877
+      "sha256": "da9d92c9935697a6a8fa70e25f61b7a2218e7dbd414817433a8f0bd39febd38b",
+      "bytes": 62464
     },
     {
       "path": "check-a/draft.png",
-      "sha256": "57195921189bb8fc77f78286f66315b71dd078427ad854ff8925e70a4ed023b9",
-      "bytes": 53344
+      "sha256": "03e005e25d07828f13900255853c44baf22763b6ed3578e6722ad82d90251b04",
+      "bytes": 52386
     },
     {
       "path": "check-a/region-1.png",
-      "sha256": "49787085df9599f983410829a2dc2026137a5bc06377f403a5ce8af95a9dd363",
-      "bytes": 67884
+      "sha256": "3cc93e67e8d54a98043dadb2d44f68e4a1d45471724c0301b8e93109a6d42c67",
+      "bytes": 65920
     },
     {
       "path": "check-a/region-2.png",
-      "sha256": "4a4558b562de7c94da873c16a9a6aed1c8787fabe5cb087b0922320107c62747",
-      "bytes": 68677
+      "sha256": "b95f2056912e36eb5c54f35c6608fec8b84afe239186fcbff3f6b7098836b862",
+      "bytes": 68658
     },
     {
       "path": "check-a/region-3.png",
-      "sha256": "56bdbb5c7e61431e70ce5298f28e4219257f4621cbb287b3cc76b717fbd3af73",
-      "bytes": 65656
+      "sha256": "9f68b26e785daff8c9dbc449e2c884a231822ff60b552f7e9e135eceb98d9315",
+      "bytes": 64178
     },
     {
       "path": "check-a/report.txt",
-      "sha256": "faf1edaa2752fe2f2febe6611a32aac2fbfada823feea07bf5f9af36b44779ee",
-      "bytes": 1934
+      "sha256": "c9a110cb6e66caf6413724ed5aac566956048c58a6928e1129f43bc476fa992c",
+      "bytes": 1212
     },
     {
       "path": "check-a/side-by-side.png",
-      "sha256": "b1d9e23429fbffc50c5aa9c1718713eea39b1498b330ea54f29e7e98b2d4b72f",
-      "bytes": 144937
+      "sha256": "63ecd8d8e2549844068b614094140e2b0a164096492535071434e9228f4819a3",
+      "bytes": 143947
     },
     {
       "path": "closeout-log.md",
       "sha256": "197896beaadfc534c60c5f631356bfdaa2f8ba4a6b739871a4c5c0334e8a6344",
       "bytes": 13300
+    },
+    {
+      "path": "conformance-log.md",
+      "sha256": "1d6967911b1729d547e73b7d41b2d6e30a546d4aaae16c5d9be0416fbf42b9f4",
+      "bytes": 8400
     },
     {
       "path": "ref/crop-400x480.png",
@@ -110,13 +115,13 @@
     },
     {
       "path": "source/authored.py",
-      "sha256": "55a84a86b6401147d90df87daaef2beaee8d69c03bc2980ae3bdd647087f6bad",
+      "sha256": "43f78911d55c3d64464239cb82a69bfaff767abbc8d9251f105d815be52f107d",
       "bytes": 9175
     },
     {
       "path": "source/build-report.json",
-      "sha256": "a88dfe673ee0dbda156994d8a76b05a3d7cb96f06e22008ba11d78f388db568e",
-      "bytes": 2644
+      "sha256": "2b30c55bc043c3a3be2ed710de88075f7b688d054348785af6b9b91a0159e2fe",
+      "bytes": 2582
     },
     {
       "path": "source/build_a.py",
@@ -160,8 +165,8 @@
     },
     {
       "path": "source/parts/hair.py",
-      "sha256": "f73391afb8e65584f23b9b125ece996610e9c0bf95cb4af9cec97fb80f825f4e",
-      "bytes": 6954
+      "sha256": "7e976a51e0cefdbeb530f1f45932e0c7cb8b68ab825d2b3e24af19e43c7cfd65",
+      "bytes": 8655
     },
     {
       "path": "source/parts/head.py",
@@ -175,8 +180,8 @@
     },
     {
       "path": "source/parts/sleeve.py",
-      "sha256": "807496727320fe5fb03f39d3ea82bd2ca7f8e3555c336092b2919aa8ac28300c",
-      "bytes": 5517
+      "sha256": "6c4d7e952f4edef319853bcf3a2340cca0b8e243c6ca6e45768351711ec1ae34",
+      "bytes": 6007
     },
     {
       "path": "source/seam_contract.py",
@@ -224,14 +229,19 @@
       "bytes": 4159
     },
     {
+      "path": "tests/test_no_background_holes.py",
+      "sha256": "d9c842571fea47c497e965cff2af48476a2d24cf10b9ff86f1e1b18cbb7ba735",
+      "bytes": 5577
+    },
+    {
       "path": "tests/test_seam_contract.py",
       "sha256": "64a72e7400416d4ceb6f72c8137dfd2946ee9f9fa6f70f4cb6e9d4fc1ac911a1",
       "bytes": 5773
     },
     {
       "path": "tests/test_two_sleeves.py",
-      "sha256": "3adfe99b55d8713abd34cb11f6973044d86569463c13cc6ad8923cc2c13cc1a2",
-      "bytes": 4678
+      "sha256": "de36d30a85f2b6cb4220af1af5b54958c3baa617940c224924b7581960bd1c22",
+      "bytes": 6968
     }
   ],
   "artwork": {
@@ -241,30 +251,36 @@
   },
   "checks": {
     "build": "source/build_a.py (seam contract and anchor inventory enforced; exits non-zero on either)",
-    "tests": "python3 -m unittest discover -s tests -t . (44 tests)",
+    "tests": "python3 -m unittest discover -s tests -t . (47 tests)",
     "authoring_inventory": "python3 source/authored.py (declared pairs against the source, by AST)",
     "negative_controls": "tests/negative-control-output.txt (source mutations, each restored)",
     "visual_bundle": "check-a/report.txt (current scripts/draw reviewer protocol)",
-    "reproducible": "two builds into separate paths are byte-identical to artwork-a.svg"
+    "reproducible": "two builds into separate paths are byte-identical to artwork-a.svg",
+    "hole_rule": "tests/test_no_background_holes.py: enclosed background components on the delivered PNG, 4-connected, tolerance 6, minimum 4 px; demonstrated on the v6-closeout render"
   },
   "facts": {
     "parts": 13,
     "faces": 2018,
     "visible_fill_regions": 15,
-    "marks": 38,
-    "mark_paths": 59,
+    "marks": 41,
+    "mark_paths": 62,
     "declared_joints": 18,
     "failed_joints": 0,
     "anchors_declared": 36,
     "anchors_joint_endpoints": 34,
     "anchors_non_joints": 2,
-    "anchors_unaccounted": 0
+    "anchors_unaccounted": 0,
+    "second_cuff_visible_px2": 88.37,
+    "second_cuff_authored_px2": 331.5,
+    "first_cuff_authored_px2": 539.5,
+    "second_cuff_fraction_of_first_cuff": 0.164,
+    "enclosed_background_components": 0
   },
   "manifest_handling": "manifest.json lists every delivered file except itself and manifest.sha256; manifest.sha256 is generated from this list plus manifest.json, so only manifest.sha256's own hash is not inside the pair",
   "open_items": [
-    "two background-coloured regions are enclosed by ink in artwork-a.png (N4): 1019 px at (162,39,35,60), 17 px at (243,82,5,10); closing them is a drawing change",
-    "the second (left) cuff is fully occluded at this revision",
-    "the seam tangent clause cannot detect an outline that rotates about a static anchor"
+    "the second cuff's wedge and the two closed hair regions are unjudged art: no art verdict is recorded here",
+    "the seam tangent clause cannot detect an outline that rotates about a static anchor",
+    "the hole rule ignores enclosed background thinner than 4 px and does not ask which part encloses it"
   ],
   "no_art_verdict": true
 }
