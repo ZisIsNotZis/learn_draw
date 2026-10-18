@@ -1,5 +1,5 @@
 {
-  "svg": ".scratch/35-r1-articulated-study/evidence/A-cloth-v6/artwork-a.svg",
+  "svg": ".scratch/35-r1-articulated-study/evidence/A-cloth-v6-closeout/artwork-a.svg",
   "parts": [
     "A-bodice-continuation",
     "A-bodice-upper",
@@ -130,5 +130,10 @@
       "ok": true,
       "detail": ""
     }
-  ]
+  ],
+  "anchors_declared": 36,
+  "anchors_joint_endpoints": 34,
+  "anchors_non_joints": 2,
+  "anchors_unaccounted": [],
+  "anchors_inventory_errors": []
 }
