@@ -3,10 +3,11 @@
 Goal: learn to draw (SVG/CSS programmatic art, never diffusion/pixel) — first by recreating reference images with explainable, readable vector graphics, later without a reference. Reference target: `image.jpg` (anime-style portrait).
 
 Where we are right now: `STATUS.md` (repo root) — current best artifact, milestone, blockers.
-Where the current advance's contracts and run records are: `.scratch/35-r1-articulated-study/work/wave12-contracts.md`
-and the wave log beside it; reviews land verbatim in `.scratch/35-r1-articulated-study/evidence/reviews-r1a/`.
-This project's roadmap, its split and its mailbox (`mail/`, below this file) are held by the node that owns
-the project, not by any package it dispatches; a package's answer is its report, and the owner files it.
+Where the current advance's contracts and run records are: `.scratch/35-r1-articulated-study/work/wave14-contracts.md`
+(wave 13: `wave13-contracts.md`; wave 12: `wave12-contracts.md`) and the wave log beside them; reviews land verbatim in `.scratch/35-r1-articulated-study/evidence/reviews-r1a/`.
+This project's roadmap, its split and its mailbox (`mail/`, below this file — its shape is declared in
+`mail/README.md`) are held by the node that owns the project, not by any package it dispatches; a
+package's answer is its report, and the owner files it.
 Where we are going: `docs/drawing/roadmap.md` — current spatial-model milestones and gates.
 Architecture SSOT: `docs/drawing/spatial-model.md` — 2D artwork on 3D support surfaces;
 the engine computes visibility from depth. The current `relate.py`/SVG pipeline is legacy 2D.
