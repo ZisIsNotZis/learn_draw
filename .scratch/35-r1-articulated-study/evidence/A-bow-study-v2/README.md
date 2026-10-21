@@ -13,13 +13,16 @@ trusting any number in it.
 
 ## State — read this first
 
-This package is **not complete and not self-consistent with its own contract**. It is
-committed at a point where the geometry holds far better than it did, and where the remaining
-work is named rather than hidden.
+This package is **not complete**: the width law holds and every artefact here is rebuilt from
+this revision, but the six defect tests the R1a contract demands are still not written. Read
+
+the "State" section before trusting any number in it.
+
+## State — read this first
 
 | item | state |
 | --- | --- |
-| inherited test suite (17 tests, unmodified assertions) | **16 pass, 1 fails**: `test_width_is_continuous_along_the_emitted_strip`, worst isolation 3.58 px against its 3.0 px limit |
+| inherited test suite (17 tests, unmodified assertions) | **17 pass, 0 fail**: worst width isolation 2.69 px against its 3.0 px limit |
 | six tests, one per defect named by the v1 image review | **not written** (0 of 6) |
 | negative-control output for the crossing-break mechanism | written, `tests/negative-control-output.txt`, mutation 17/17 fails |
 | build reproducible from committed source | `source/build.py --out /tmp/a2.svg` is byte-identical to `artwork.svg` |
@@ -53,22 +56,29 @@ work is named rather than hidden.
    the widest part of a sausage. Widths through the knot: `H_KNOT`.
 6. **The lower tail hangs in front of the right lobe** instead of behind it, so its rails run
    from the knot to the frame edge unbroken instead of stopping at a horizontal ledge.
+7. **The fold's pinch is stated once.** The right fold's width was crushed at the band's end
+   (`0.92` of the band's route length) *and* at the fold turn's own middle, so the band's
+   belly had to be reached in 16 stations and given back in 15. Two cosine ramps that short
+   turn the emitted width series at `(pi^2/2)(dh/N^2)` = 1.9 + 2.1 half-width px per station²
+   at their apex: an isolation of 3.58 px, which the continuity test read as a piece boundary.
+   The pinch now has one home, the fold turn's middle, matching the left fold's `P(3, 0.5)`;
+   the band's belly keeps its value and gains 36 stations to fall over.
 
 ## Measured on this build (emitted geometry, not source literals)
 
 | quantity | value | how it is measured |
 | --- | --- | --- |
 | ribbon | one strip, 621 stations, 1240 triangles, 6 route runs + 3 turns | `bow.build()` |
-| triangles disagreeing with their own winding | **0 of 1240** (1187 front, 53 back) | polygon area sign vs its `class` |
+| triangles disagreeing with their own winding | **0 of 1240** (1171 front, 69 back) | polygon area sign vs its `class` |
 | strip width | 62.1 … 300.0 px, ratio **4.83** (floor 4.0) | `tests/test_ribbon_continuity.py` |
-| steepest width step | 19.19 px = 6.4 % of the widest | same |
-| worst width isolation | **3.58 px** against the 3.0 px limit → the one failing test | same |
-| knot waist | narrowest in the band 64.0 px, loops median 117.7 px = **0.54** (limit 0.55) | same |
+| steepest width step | 18.44 px = 6.1 % of the widest | same |
+| worst width isolation | **2.69 px** against the 3.0 px limit | same |
+| knot waist | narrowest in the band 64.0 px, loops median 140.8 px = **0.45** (limit 0.55) | same |
 | knot position | narrowest column chord at x = 540 of the emitted cloth's x 0…749 = **0.72** of its width | column chords of the union of the emitted fills |
 | enclosed background islands inside the lobes | **0** of area > 40 px² | connected components of the filled mask, border-reachable = outside |
 | audited self-crossings | **17**, all with a depth break and a broken rear edge; mutation `--no-depth-break` fails 17/17 | `tests/test_crossing_break.py` |
-| sub-pen triangles (narrower than the pen) | 125 of 1240, each stroked at 2x its own altitude, never at the seam width | `build.resolve()["slivers"]` |
-| rail runs / crease runs emitted | 13 / 6 | `source/build.py` |
+| sub-pen triangles (narrower than the pen) | 122 of 1240, each stroked at 2x its own altitude, never at the seam width | `build.resolve()["slivers"]` |
+| rail runs / crease runs emitted | 12 / 6 | `source/build.py` |
 
 ## The fields (author choices, with the radii they cost)
 
@@ -113,11 +123,19 @@ that the knot matches the reference's shape.
   changes the geometry behind four of them, but no test asserts any of the six and no negative
   control restores v1's behaviour to make one fail. That is the largest gap in this package
   and it is the next writer's first job.
-- **The width isolation test still fails** (3.58 vs 3.0). The cause is known: a 180-degree
-  turn's pinch and the lobe's fullness have to be reached inside a route part that is only
-  0.034 of the strip long, and the cosine field's zero derivative at each knot puts a step
-  into the width series there. Fixing it honestly means giving the right lobe's return limb
-  more length in the route, not smoothing a number.
+- **The width isolation test now passes** (2.69 against 3.0, was 3.58). The old reading —
+  "the lobes' and the fold's fullness have to be reached inside a route part that is only
+  0.034 of the strip long, so the field needs more length" — was wrong about the mechanism:
+  the field did not need more length, the pinch was stated twice. The route, the turn count
+  and the loop count are unchanged.
+- **A second piece boundary is still in the width field, and it is not visible to the emitted
+  series.** `_knot_at(parts, 8, frac)` returns 1.0 for `k = 8`, so the lower tail's three width
+  knots (`P(8,0.12)=H_KNOT`, `P(8,0.45)=96`, `(1.0,122)`) all land at `u = 1.0` and the tail
+  tapers 92 → 32 instead of being crushed and then broad as the source says. The strip's
+  last station therefore carries a 90 half-width px step (`h[619]=32.0`, `h[620]=122.0`) that
+  the width series cannot see, because the series samples station starts and stops at 619.
+  Fixing it changes the tail's silhouette and the emitted width range; it is a separate
+  judgement and was not taken here.
 - **The image still carries defects I can see and have not closed**: a fan of thin dark
   wedges inside the left lobe at its fold, a crumpled crossing at the knot, and a pointed
   peak at the top centre. Whether they still read as the v1 review's defects is a reviewer's
@@ -132,7 +150,7 @@ that the knot matches the reference's shape.
 
 ```bash
 cd .scratch/35-r1-articulated-study/evidence/A-bow-study-v2
-PYTHONDONTWRITEBYTECODE=1 ../../../../.venv/bin/python -m unittest discover -s tests -t .   # 16/17
+PYTHONDONTWRITEBYTECODE=1 ../../../../.venv/bin/python -m unittest discover -s tests -t .   # 17/17
 ../../../../.venv/bin/python source/build.py --out /tmp/a2.svg && cmp /tmp/a2.svg artwork.svg
 ../../../../scripts/draw render artwork.svg -o artwork.png
 ../../../../scripts/draw check artwork.svg --outdir check

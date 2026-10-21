@@ -2,29 +2,29 @@
  "evidence": "A-bow-study-v2",
  "files": [
   {
-   "bytes": 9666,
+   "bytes": 10952,
    "path": "README.md",
-   "sha256": "c885692b08ce8637f72ccc35036c3a56651f25b7090baf51918e4e6ff3c0ea15"
+   "sha256": "563d52ea8cfbcf322779ffeaef132f251529d75969bfe824d1810f69b12f0842"
   },
   {
-   "bytes": 142930,
+   "bytes": 145780,
    "path": "artwork.png",
-   "sha256": "1a69af0e1cdc43ecaad02a2f64026d3a78e3d447fcae1dfc2c7241c11c048dfc"
+   "sha256": "103e6f73888df80e1db28bc87dbba84bb238d4a7186435a9c76bda936a73f9a8"
   },
   {
-   "bytes": 219390,
+   "bytes": 219113,
    "path": "artwork.svg",
-   "sha256": "db942145c2110680c8699666e28507ecdf1dbf06f7b3ffce3b8f3e30b087e583"
+   "sha256": "55f2ae5242ff1cc81178c74de7559adba76bbddd1f36d68a38d8e25b87608182"
   },
   {
-   "bytes": 168382,
+   "bytes": 173705,
    "path": "check/draft-fullres.png",
-   "sha256": "23e87c7a156987235981bdce15c41b53c27162129eeed96d0613ae847694e87b"
+   "sha256": "38a6046798b873055aa0c1f62a02f9563e8a461a73cc115bc33684f2eb454eac"
   },
   {
-   "bytes": 142930,
+   "bytes": 145780,
    "path": "check/draft.png",
-   "sha256": "1a69af0e1cdc43ecaad02a2f64026d3a78e3d447fcae1dfc2c7241c11c048dfc"
+   "sha256": "103e6f73888df80e1db28bc87dbba84bb238d4a7186435a9c76bda936a73f9a8"
   },
   {
    "bytes": 874,
@@ -47,9 +47,9 @@
    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   {
-   "bytes": 13645,
+   "bytes": 14165,
    "path": "source/parts/bow.py",
-   "sha256": "8af4a8ee0fbec87aea67f7586bba7fa31ce304824cb0db6f2be4d500e5c3a1ce"
+   "sha256": "fb3f28bd225e875a19807e13aff9d464696b56096962c6848a8034b0ed1baa52"
   },
   {
    "bytes": 8881,
