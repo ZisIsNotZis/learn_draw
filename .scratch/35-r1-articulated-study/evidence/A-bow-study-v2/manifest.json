@@ -2,29 +2,29 @@
  "evidence": "A-bow-study-v2",
  "files": [
   {
-   "bytes": 10952,
+   "bytes": 11908,
    "path": "README.md",
-   "sha256": "563d52ea8cfbcf322779ffeaef132f251529d75969bfe824d1810f69b12f0842"
+   "sha256": "8afa9b6490eff6f50bbb9a03616a0122cc674a46c7f0a3b8e7f13d5fe24bcca5"
   },
   {
-   "bytes": 145780,
+   "bytes": 154016,
    "path": "artwork.png",
-   "sha256": "103e6f73888df80e1db28bc87dbba84bb238d4a7186435a9c76bda936a73f9a8"
+   "sha256": "b425bb2be36a26792c1bb5c94c6c23add350d246cfa5f90365986f9edcbde13e"
   },
   {
-   "bytes": 219113,
+   "bytes": 218949,
    "path": "artwork.svg",
-   "sha256": "55f2ae5242ff1cc81178c74de7559adba76bbddd1f36d68a38d8e25b87608182"
+   "sha256": "94bc05c2ccdae0f89e7473caff72891d712707e1898c8ab7914395995628b1f7"
   },
   {
-   "bytes": 173705,
+   "bytes": 177197,
    "path": "check/draft-fullres.png",
-   "sha256": "38a6046798b873055aa0c1f62a02f9563e8a461a73cc115bc33684f2eb454eac"
+   "sha256": "1d517c0c82061c39831f034811a973ade9a4858796ecc6e6a16b8949998dbe7d"
   },
   {
-   "bytes": 145780,
+   "bytes": 154016,
    "path": "check/draft.png",
-   "sha256": "103e6f73888df80e1db28bc87dbba84bb238d4a7186435a9c76bda936a73f9a8"
+   "sha256": "b425bb2be36a26792c1bb5c94c6c23add350d246cfa5f90365986f9edcbde13e"
   },
   {
    "bytes": 874,
@@ -47,9 +47,9 @@
    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   {
-   "bytes": 14165,
+   "bytes": 15345,
    "path": "source/parts/bow.py",
-   "sha256": "fb3f28bd225e875a19807e13aff9d464696b56096962c6848a8034b0ed1baa52"
+   "sha256": "058c7226074b91b0ce67c1ad90f2a0d827e5871be6a3169b26be1165097aceb3"
   },
   {
    "bytes": 8881,
@@ -64,7 +64,7 @@
   {
    "bytes": 908,
    "path": "tests/negative-control-output.txt",
-   "sha256": "48823c45333969818c80d762096414cf0a9ae10fabd09cbeedc642d0d887c7e7"
+   "sha256": "6e95f8760b2264b819f3ec81e5d7532fafb0bfbd798cb355fa364be99e518339"
   },
   {
    "bytes": 6114,

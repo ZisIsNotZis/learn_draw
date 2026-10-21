@@ -105,10 +105,18 @@ def _parts_u(route, spine):
 
 
 def _knot_at(parts, k, frac=0.0):
-    """The strip parameter at fractional position `frac` inside route part k."""
-    if k >= len(parts) - 1:
+    """The strip parameter at fractional position `frac` inside route part k.
+
+    `parts[k]` is where part k begins; part k ends where part k+1 begins, and the LAST part
+    ends at the strip's end, u = 1.0.  Reading the last part's end off `parts[k + 1]` is what
+    used to be missing here: the old guard returned 1.0 for the last part, so every fraction
+    inside it collapsed onto the strip's end and the lower tail's three width knots landed on
+    the same station.  The part's own span, not its start, is the interval a fraction walks.
+    """
+    if k >= len(parts):
         return 1.0
-    return parts[k] + (parts[k + 1] - parts[k]) * frac
+    end = parts[k + 1] if k + 1 < len(parts) else 1.0
+    return parts[k] + (end - parts[k]) * frac
 
 
 # ---- the three fields along the strip -------------------------------------------------
@@ -125,7 +133,7 @@ WRAP = -3.75 * THICKNESS       # -60  the knot's wrap, the one pass over everyth
 LOBE_OUT = -2.5 * THICKNESS    # -40  each lobe's outward limb, in front of its return
 LOBE_RET = 2.5 * THICKNESS     # +40  each lobe's returning limb, behind its outward limb
 BAND = -1.25 * THICKNESS       # -20  the band crossing the knot, over both limbs' returns
-TAIL_OUT = -3.75 * THICKNESS   # -60  the lower tail, hanging in front of the right lobe
+TAIL_OUT = -6.25 * THICKNESS   # -100 the lower tail, in front of everything it crosses
 
 
 def _fields(parts):
@@ -167,7 +175,15 @@ def _fields(parts):
         (P(5, 0.12), BAND), (P(5, 0.90), BAND),                # over both returns
         (P(7, 0.10), LOBE_RET),                                # the right fold: band -> behind
         (P(7, 0.92), LOBE_RET),
-        (P(8, 0.10), TAIL_OUT),                                # the tail, over the right lobe
+        # The tail has no turn, so its swing has no turn to sit in, and it must not sit where
+        # the tail is broad: at the junction the corrected width field makes it 182 px wide,
+        # so its rails sweep across the knot, over the band's and the wrap's rails.  A swing
+        # there put the tail within 0.3 px of the wrap's depth at (547,354) and within 6.0 px
+        # of the band's at (543,193).  It therefore sits where the ribbon is crushed to
+        # H_KNOT: the tail leaves the knot at the lobe's level, turns over inside its own
+        # waist, and is at TAIL_OUT over the whole broad part it hangs in front of.
+        (P(8, 0.05), LOBE_RET),
+        (P(8, 0.30), TAIL_OUT),                                # the tail, over the right lobe
         (1.0, TAIL_OUT),
     ])
     # roll: how far the strip is turned about its own axis.  A roll near 90 degrees projects

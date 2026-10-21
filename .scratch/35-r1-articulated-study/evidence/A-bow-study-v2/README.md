@@ -13,10 +13,9 @@ trusting any number in it.
 
 ## State — read this first
 
-This package is **not complete**: the width law holds and every artefact here is rebuilt from
-this revision, but the six defect tests the R1a contract demands are still not written. Read
-
-the "State" section before trusting any number in it.
+This package is **not complete**: the width law and the tail's piece boundary both hold, and
+every artefact here is rebuilt from this revision, but the six defect tests the R1a contract
+demands are still not written.
 
 ## State — read this first
 
@@ -24,7 +23,7 @@ the "State" section before trusting any number in it.
 | --- | --- |
 | inherited test suite (17 tests, unmodified assertions) | **17 pass, 0 fail**: worst width isolation 2.69 px against its 3.0 px limit |
 | six tests, one per defect named by the v1 image review | **not written** (0 of 6) |
-| negative-control output for the crossing-break mechanism | written, `tests/negative-control-output.txt`, mutation 17/17 fails |
+| negative-control output for the crossing-break mechanism | written, `tests/negative-control-output.txt`, mutation 19/19 fails |
 | build reproducible from committed source | `source/build.py --out /tmp/a2.svg` is byte-identical to `artwork.svg` |
 | delivered PNG | a fresh `scripts/draw render artwork.svg` of the delivered SVG |
 | `check/` bundle | emitted by `scripts/draw check artwork.svg --outdir check`, 1:1 image listed first |
@@ -63,21 +62,32 @@ the "State" section before trusting any number in it.
    at their apex: an isolation of 3.58 px, which the continuity test read as a piece boundary.
    The pinch now has one home, the fold turn's middle, matching the left fold's `P(3, 0.5)`;
    the band's belly keeps its value and gains 36 stations to fall over.
+8. **The tail's three knots are three knots.** `_knot_at(parts, k, frac)` read part `k`'s end
+   off `parts[k + 1]` and returned `1.0` for the last part, so every fraction inside the lower
+   tail collapsed onto the strip's end and its three width knots landed on one station — a
+   90 half-px step the continuity test could not see at the series boundary. The last part now
+   walks its own span (`parts[k]` … `1.0`), so the tail's width series is the one the source
+   declares (width range 62.1…300.0 → 63.8…300.0 px, stations 621 → 620, crossings 17 → 19).
+9. **The tail's depth level is where its own geometry is.** With the tail's width no longer
+   collapsing, its rails at the junction are 182 px wide and sweep across the knot, within
+   0.3 px of the wrap's depth; the swing therefore moved to where the ribbon is crushed to
+   `H_KNOT`, and the tail's level is `-6.25` cloth thicknesses instead of `-3.75`, so it reads
+   in front of everything it crosses.
 
 ## Measured on this build (emitted geometry, not source literals)
 
 | quantity | value | how it is measured |
 | --- | --- | --- |
-| ribbon | one strip, 621 stations, 1240 triangles, 6 route runs + 3 turns | `bow.build()` |
+| ribbon | one strip, 620 stations, 1240 triangles, 6 route runs + 3 turns | `bow.build()` |
 | triangles disagreeing with their own winding | **0 of 1240** (1171 front, 69 back) | polygon area sign vs its `class` |
-| strip width | 62.1 … 300.0 px, ratio **4.83** (floor 4.0) | `tests/test_ribbon_continuity.py` |
+| strip width | 63.8 … 300.0 px, ratio **4.70** (floor 4.0) | `tests/test_ribbon_continuity.py` |
 | steepest width step | 18.44 px = 6.1 % of the widest | same |
 | worst width isolation | **2.69 px** against the 3.0 px limit | same |
 | knot waist | narrowest in the band 64.0 px, loops median 140.8 px = **0.45** (limit 0.55) | same |
 | knot position | narrowest column chord at x = 540 of the emitted cloth's x 0…749 = **0.72** of its width | column chords of the union of the emitted fills |
 | enclosed background islands inside the lobes | **0** of area > 40 px² | connected components of the filled mask, border-reachable = outside |
-| audited self-crossings | **17**, all with a depth break and a broken rear edge; mutation `--no-depth-break` fails 17/17 | `tests/test_crossing_break.py` |
-| sub-pen triangles (narrower than the pen) | 122 of 1240, each stroked at 2x its own altitude, never at the seam width | `build.resolve()["slivers"]` |
+| audited self-crossings | **19**, all with a depth break and a broken rear edge; mutation `--no-depth-break` fails 19/19 | `tests/test_crossing_break.py` |
+| sub-pen triangles (narrower than the pen) | 93 of 1240, each stroked at 2x its own altitude, never at the seam width | `build.resolve()["slivers"]` |
 | rail runs / crease runs emitted | 12 / 6 | `source/build.py` |
 
 ## The fields (author choices, with the radii they cost)
