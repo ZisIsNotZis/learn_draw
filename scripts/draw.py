@@ -302,13 +302,25 @@ def _fit(img: np.ndarray, max_w: int) -> np.ndarray:
 
 
 def _check_dir(art: str) -> str:
-    """Evidence dir for a drawing: <exercise>/evidence/check for .scratch arts, else <dir>/check."""
+    """Evidence dir for a drawing: a package under .scratch/<ex>/evidence/<pkg>/ owns its own bundle
+    (<pkg>/check); other .scratch arts get <ex>/evidence/check; anything else <its dir>/check.
+
+    A drawing that lives inside an evidence package is that package's revision, and its bundle must
+    describe it. The older rule sent every .scratch art to <ex>/evidence/check, one level above such a
+    package, so `draw check <pkg>/artwork.svg` silently wrote a sibling directory and left the
+    package's own check/ holding whatever was there before (P39; the B-hand-study-v1-r1 repair whose
+    report.txt named the revision it replaced).
+    """
     ap_ = os.path.abspath(art)
     parts = ap_.split(os.sep)
     if ".scratch" in parts:
         i = parts.index(".scratch")
         if i + 1 < len(parts):
-            return os.path.join(os.sep.join(parts[:i + 1]), parts[i + 1], "evidence", "check")
+            ex = os.sep.join(parts[:i + 2])
+            rel = parts[i + 2:]
+            if len(rel) >= 2 and rel[0] == "evidence":
+                return os.path.join(os.path.dirname(ap_), "check")
+            return os.path.join(ex, "evidence", "check")
     return os.path.join(os.path.dirname(ap_) or ".", "check")
 
 
