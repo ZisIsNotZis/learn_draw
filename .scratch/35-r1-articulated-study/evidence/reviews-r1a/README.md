@@ -11,6 +11,7 @@ the state every candidate in this project carries until a report exists here.
 | study | report | revision | images judged | verdict |
 | --- | --- | --- | --- | --- |
 | `B-hand-study-v1` | `B-hand-study-v1-image-review-1.md` | `5e12d36` | `check/draft-fullres.png` `e428bb0d…`, `check/draft.png` `0dbeb263…` | **BLOCK** — 3 blocking, 5 nonblocking findings, returned 2026-10-21 (wave 12). Reviewer's scope statement: opened exactly the two PNGs, read no other file, executed nothing. |
+| `A-bow-study-v2` | `A-bow-study-v2-image-review-1.md` | `3825d51` | `check/draft-fullres.png` `1d517c0c…` | **FAIL** — 6 blocking, 4 nonblocking findings, returned 2026-10-21 (wave 15 package J). Verdict binds to the commit and the image only; the reviewer recorded `manifest.sha256` as outside its input set. |
 
 The producer's own claims are in the study's `README.md` and are not evidence of art. The mechanical
 results are the study's own suite, and a mechanical pass is not an art verdict (ledger, "Open

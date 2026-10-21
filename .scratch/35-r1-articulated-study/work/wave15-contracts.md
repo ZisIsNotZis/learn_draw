@@ -92,12 +92,20 @@ criterion, and never by promoting a revision whose review did not bind to its ha
 
 Added by the owner on 2026-10-21 after wave 14's second round landed, without changing J–M above.
 
-**Package J launches now.** Its launch condition is met: package F2 committed `3825d51`, the suite
-prints `OK` over 17 tests, and the bundle was regenerated from that revision (`draft.png` equal to
-`artwork.png`, manifest 17/17). Its binding for this dispatch: commit `3825d51`, the sha256 of
-`check/draft-fullres.png` and of `manifest.sha256` as recorded in the dispatch line of this wave's
-log. **Package K does not launch yet**: its condition is a suite whose one failure is *named*, and
-B's is the measured index pad below.
+**Package J returned FAIL** (`d6b6fd3`), bound to commit `3825d51`, `check/draft-fullres.png`
+sha256 `1d517c0c82061c39831f034811a973ade9a4858796ecc6e6a16b8949998dbe7d`, verified before it
+judged; it recorded `manifest.sha256` as outside its input set and did not extend the verdict to it.
+Its six blocking findings are in [`../evidence/reviews-r1a/A-bow-study-v2-image-review-1.md`](../evidence/reviews-r1a/A-bow-study-v2-image-review-1.md)
+and none of them is one of the six v1's review named. **The bow therefore carries no passing art
+verdict and M (its execution review) is not launched**: an execution verdict on a revision whose art
+gate failed buys nothing, and the repair of B1–B6 is a new package for the next round.
+
+**Package K and package L were dispatched together by the owner**, not sequentially: waiting for K's
+reading before launching L costs a reviewer round and buys nothing, because the two bind to the same
+revision and answer different questions. That routing is root's `assumed` decision, not the person's.
+Both bind to commit `34b31b4`, `check/draft-fullres.png` sha256
+`4dbcad2ec517191c73c75057f948f0a73aeec5566566df922e1f9ac8e8354083`, `manifest.sha256` sha256
+`6127712360946cd1072ae59bf00548cbcc3175826aca5bcfa8e622d511d907b7` (19 entries).
 
 **Package G3 — `r1a-b-hand-r1-index-pad`** (work package, one writer, wave 14's package G at its
 third stage). The first round's G2 put every pad's axis on the chord parallel to its underside and
@@ -118,6 +126,15 @@ bound, the **index pad moved 10.6 → 7.05 px and is still 2.05 px over** (`4eaf
   unreachable by the arrival angle, report the bound that makes it so — as R3 was reached — and it
   becomes a `contract` report upward.
 - **Spend:** `idle-compute`, no exclusive resource. **Wall clock 18 minutes, hard stop.**
+- **Landed `34b31b4`, 23/23:** `source/contact.py::finger` puts a third knot `PAD_RUN` (1.6 tip
+  radii) behind the approach knot on the pad's own axis, because the middle digit's pad chord
+  (2.2 px at `reach = 0.98`) is shorter than the tube's sample spacing (10 px) so its last
+  cross-section inherited the shaft's direction. Closest vertex per digit: index 1.60, middle 4.26,
+  ring 2.86, little 1.60, thumb 1.63 px inside the inherited window `> -1.0`, `< 5.5`; lift
+  mutation still fails at 21.77 px. No bound moved, no assertion or test edited. The writer left
+  the word `SUITE GREEN` in place but the regenerated `manifest.sha256` listed the pre-edit
+  `README.md` hash; the owner re-ran `source/manifest.py --write` before committing, so all 19
+  entries verify and none is unlisted.
 - **Stop:** commit a self-consistent package at the clock and report the number reached; a truthful
   RED with a measurement is a valid report.
 
