@@ -1,89 +1,95 @@
-# Wave 15 — the four verdicts R1a exit needs, cut before they can be launched
+# Wave 15 — the two packages that can move R1a past wave 14
 
-Cut by the owner of `learn_draw` on 2026-10-21 while wave 14's two writers were still running, so
-that a kill of this session costs an order rather than a contract. Wave 14 is
+Cut by the owner of `learn_draw` on 2026-10-21, from the state wave 14's second round left:
+`A-bow-study-v2` green at 17/17 (`3825d51`) with **no image verdict on any revision**, and
+`B-hand-study-v1-r1` at 22/23 (`4eafe0e`) with one measured contact defect — the index pad hovers
+**7.05 px** below the dish's underside against a **5.5 px** bound. Wave 14 is
 [`wave14-contracts.md`](wave14-contracts.md).
 
-## Why four and not two
+## Why these two and nothing else
 
-R1a's exit ( [`docs/drawing/roadmap.md`](../../../docs/drawing/roadmap.md) § R1a) is: *both studies'
-four acceptance questions pass on one frozen revision each; a reference-free study reproduces
-reference-free; one manifest binds each study's revision; each study is presented for the user's
-judgment.* The four acceptance questions are construction/attachment/pose, physical geometry and depth
-visibility, drawing/art, and object cohesion — and an image reviewer cannot answer the mechanical two
-any more than an execution reviewer can answer the two that need sight (P36). So each study takes one
-image-only verdict and one execution verdict, and neither stands for the other.
+R1a's exit line is met when both object studies pass their gates. Both are mechanically near-complete
+and **neither has an image disposition**: A has 17/17 and a bundle no reviewer has opened since the
+geometry moved; B is one stage short of its own suite. A verdict on the bow cannot be made by its
+producer (P22, invariant 7) and is the only step that can turn 17/17 into a milestone reading; the
+index pad is the only remaining *measured* failure between B and its own reviewer. Packages H (the
+bow's six defect tests) and I (B's absent tests, well shading, N1–N5) stay uncut: a defect test
+written before a verdict encodes the producer's guess at the defect, which is why wave 14 cut H that
+way.
 
-## What each review is bound to
+**Allocation, one writer per area:** package C writes one file under
+`evidence/reviews-r1a/` and runs no git command; package G3 writes only
+`evidence/B-hand-study-v1-r1/` and commits it. No path is shared.
 
-Every review below binds to **one frozen revision**: the commit hash, the sha256 of the 1:1 image named
-first in `check/report.txt`, and the sha256 of `manifest.sha256`. A revision that moves invalidates its
-verdict, and the verdict says so in its first line. The owner records the binding in the ledger in the
-same act.
+## Package C — `r1a-a-bow-v2-image-review-1` (review, fresh context)
 
-## Package J — `r1a-a-bow-v2-image-review` (image-only judge, read-only)
+- **Kind and name:** review, `r1a-a-bow-v2-image-review-1`, serving the `learn_draw` roadmap at
+  R1a's art gate for the bow study. It holds no directory, document or roadmap, and dispatches
+  nothing.
+- **rev:** the working tree as it stands at `3825d51`; the images are
+  `.scratch/35-r1-articulated-study/evidence/A-bow-study-v2/check/draft-fullres.png` (1:1, judge
+  detail here) and `check/draft.png`.
+- **accept (the criterion the drawing is judged against, and nothing else):** the bow of the
+  reference must **read as a ribbon tied into a bow** — a knot where the ribbon wraps and crosses
+  itself, two lobes with curved free edges opening away from the knot, two tails leaving the frame,
+  creases that follow real folds. The failure readings are: two closed pills, a bowtie, a flat
+  sticker, a crumpled paper bag, two lobes joined by a chord. The reference it imitates is
+  `image.jpg`, bow bbox `(33,134)-(271,285)` of the registered crop
+  `evidence/A-cloth-v8/ref/crop-400x480.png` (read-only; palette and lobe solidity may be compared
+  against it).
+- **change:** nothing. This packaged review repairs no file, edits no source and re-renders nothing.
+- **ran:** nothing was run to produce the images on the reviewer's behalf; they exist and are listed
+  in `check/report.txt`. The suite's mechanical result (17/17) is the owner's evidence and is **not**
+  an art verdict — do not treat it as one.
+- **judge:** read the two images and answer "what is wrong here?", then judge each finding against
+  the `accept` line above. Report every finding as location + the criterion it violates + what you
+  saw, so an owner can measure it; a finding whose location you cannot place is reported as a
+  location you could not place.
+- **blocking:** say for each finding whether it blocks the `accept` line or is an observation to
+  carry forward.
+- **budget:** `idle-compute`, no exclusive resource, **18 minutes wall clock, hard stop.**
+- **escalate:** if the images cannot be opened or are not the 800x560 canvas the report claims, say
+  so and stop; that is a `blocked` verdict, not a pass.
+- **repair:** none. A defect named here becomes a writer package cut by the owner.
+- **Verbal shape:** exactly one verdict — `pass`, `fail` (with the violated criterion and how to
+  reproduce the reading), or `blocked` (with what is missing). Write it to
+  `evidence/reviews-r1a/A-bow-study-v2-image-review-1.md` in the shape of
+  `evidence/reviews-r1a/B-hand-study-v1-image-review-1.md` (blocking findings, then nonblocking
+  observations). Run no git command; the owner commits the review.
 
-- **Owner:** fresh independent sight-capable reviewer, launched `fresh`. It awards one art and one
-  cohesion verdict on the picture and nothing else.
-- **Inputs:** line 1 of `evidence/A-bow-study-v2/check/report.txt` (the 1:1 image) and the source image
-  it lists. **Nothing else** — no README, no `source/`, no `tests/`, no manifest, no ledger, no wave log,
-  no producer report, and **not** the six defects v1's review named: a reviewer handed the previous
-  verdict answers the previous verdict. Its findings are compared against the six by the owner.
-- **Questions:** as in wave 13 package C — the must-read-as line for a ribbon bow (a knot where the
-  ribbon wraps and crosses itself; two lobes with curved free edges opening away from the knot; two
-  tails leaving the frame; creases following real folds) and the failure readings (two closed pills, a
-  bowtie, a flat sticker, a crumpled paper bag, two lobes joined by a chord), plus the four acceptance
-  questions it can answer from the image: does the object read as one connected thing, and does the
-  image read as a drawing rather than as a mesh.
-- **Writes:** `evidence/reviews-r1a/A-bow-study-v2-image-review-1.md` and nothing else.
-- **Spend:** `idle-compute` + `time`. **Wall clock:** 20 minutes, hard stop.
-- **Launches when:** package F has committed a revision whose suite is green or whose one failure is
-  named, and the owner has written the binding (commit + two hashes) into the dispatch.
+## Package G3 — `r1a-b-hand-r1-index-pad` (work package, one writer)
 
-## Package K — `r1a-b-hand-r1-image-review` (image-only judge, read-only)
+- **Kind and name:** work package, `r1a-b-hand-r1-index-pad`, serving the `learn_draw` roadmap at
+  R1a's contact criterion for the hand study.
+- **Goal:** every digit rests on the dish's own emitted underside within the bound the inherited
+  test already uses, with nothing in that test added, removed or lowered.
+- **Writable path:** `.scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1/` only.
+  `B-hand-study-v1/` is frozen evidence and is not touched.
+- **Scope, in this order:** (1) the **index** digit's arrival angle — it stands 7.05 px below the
+  underside where the middle and ring already sit inside the 5.5 px bound after package G2 made each
+  pad's axis the chord parallel to the surface and offset the approach knot by the tip radius
+  (`contact.py::finger`, the radius law reaching `r_tip` by 0.88 of the span). The middle and ring
+  must stay inside the bound and the distal separations must stay at or above the 0.30 floor with
+  roots at or below 0.10. (2) rebuild and commit: `artwork.svg`/`artwork.png`, the `check/` bundle
+  routed **inside the package** with `draft-fullres.png` listed first, `manifest.json` +
+  `manifest.sha256`, README numbers. No new test, no art change judged by eye, no change to the
+  dish, the palm, the thumb, the well's spoke fan (blocker B2) or N1–N5.
+- **Accept:** `cd <package> && PYTHONDONTWRITEBYTECODE=1 ../../../../.venv/bin/python -m unittest
+  discover -s tests -t .` prints `OK` over **23 tests** (today: `FAILED (failures=1)`, index 7.051 px
+  not less than 5.5); the per-digit stand-off is quoted from the suite output inside
+  `>= -1.0` and `< clearance + 4.0`; the lift mutation still fails as it must; distal/root
+  separations quoted; a fresh build `cmp`-identical to `artwork.svg` and a fresh render to
+  `artwork.png`; `check/report.txt` line 1 resolves inside this package; `manifest.py --check` and
+  `sha256sum -c` verify over the real file set; one commit at the end.
+- **Out of scope, and named so it is not smuggled in:** the four tests package E demanded, package
+  H's defect tests, blocker B2, N1–N5 — package I, next wave.
+- **Spend:** `idle-compute`, no exclusive resource. **Wall clock 18 minutes, hard stop.**
+- **Stop:** at the clock, commit a self-consistent package (artwork, bundle, manifest, README) and
+  report the number reached. A truthful RED with a measurement is a valid report. **Never lower a
+  bound or weaken an assertion to pass** — if the index pad cannot be closed by the arrival angle,
+  report the bound that makes it unreachable (as R3 was reached) rather than editing the test.
 
-- **Owner:** fresh independent sight-capable reviewer, launched `fresh`.
-- **Inputs:** `evidence/B-hand-study-v1-r1/check/report.txt` line 1 and the two images it lists, at the
-  sha256 the dispatch names. **Nothing else**, and not the archived v1 verdict or its three blockers.
-- **Questions:** the four acceptance questions as far as an image can answer them, plus the study
-  contract's must-read-as line for a hand holding a plate (a hand with distinguishable digits whose
-  relation to the plate is legible; the plate supported rather than floating; failure readings: five
-  prongs, a dish on a stick, a hand in front of the plate it is supposed to hold).
-- **Writes:** `evidence/reviews-r1a/B-hand-study-v1-r1-image-review-1.md` and nothing else.
-- **Spend:** `idle-compute` + `time`. **Wall clock:** 20 minutes, hard stop.
-- **Launches when:** package G (and, for the tests, package I) has landed and the bundle is regenerated
-  from that revision — a stale bundle is exactly what made the wave 13 revision unreviewable.
+## Launch order
 
-## Package L — `r1a-b-hand-r1-execution-review` (execution check, read-only)
-
-- **Owner:** fresh independent reviewer with execution tools (P36: a reviewer whose session cannot run
-  a command reports everything NOT RUN, which is honest and is not verification).
-- **Inputs:** `evidence/B-hand-study-v1-r1/` at the dispatched hash, its tests, `manifest.json`,
-  `manifest.sha256`, and the contract it was built to
-  ([`r1a-object-study-contracts.md`](r1a-object-study-contracts.md) § B-hand-study-v1). The README is a
-  **claim list to falsify**, never evidence.
-- **Questions:** (1) the suite passes from a clean tree, and the delivered PNG equals a fresh build and
-  a fresh render through the documented path, byte for byte; (2) `manifest.py --check` and
-  `sha256sum -c` verify 100 % over the real file set, and no file present is unlisted; (3) the contact
-  test *re-derives* the dish's underside (perturb `FOOT_RADIUS`/`AXIS_UNDER_Z` and watch it fail), and
-  the lift mutation still fails; (4) the occlusion count and its inverted-depth mutation are
-  reproducible; (5) no source file names `image.jpg` or imports an image library; (6) the printed
-  separation numbers match the README; (7) no README claim lacks source support; (8) **the
-  construction/attachment and physical-geometry questions**: does every named part attach where the
-  claim says, are there illegal interpenetrations, and does depth hide what is farther.
-- **Writes:** `evidence/reviews-r1a/B-hand-study-v1-r1-execution-review-1.md` and nothing else.
-- **Spend:** `idle-compute` + `time`. **Wall clock:** 25 minutes, hard stop.
-
-## Package M — `r1a-a-bow-v2-execution-review` (execution check, read-only)
-
-Same shape as package L, over `evidence/A-bow-study-v2/`, with two additions specific to A: the
-reference may seed parameters and must then be closed (the build reads neither the crop nor a metric at
-runtime), and every measured-vs-author-choice table in the README must match the emitted numbers.
-
-## The gate after them
-
-When J and M pass, and K and L pass, and each study's reference-free reproduction and manifest are
-verified by the owner, R1a is at its exit gate: **the person sees both images and judges them**. No
-agent awards that; no agent approves it on his behalf, and if he is away the gate waits. A study whose
-verdict fails is repaired inside its own finite budget, or reported unresolved — never with a lowered
-criterion, and never by promoting a revision whose review did not bind to its hash.
+C and G3 run in parallel: disjoint write areas, one reviewer and one writer, no shared file. Package
+D (B's structural review) still waits for package I, not for G3. Nothing is pushed.
