@@ -35,6 +35,10 @@ precision, is what the four image verdicts were failing at.**
 | `source/joint_audit.py` | the two pixel measurements, on the delivered PNG, with no image library in `source/` (polygon raster by ray crossing, so the drawing source stays drawing). |
 | `tests/` | `test_joint_audit.py` (the criterion + its control); the underside contact test now exempts the wrapped digit and a new test measures it against the surface it presses. Nothing was weakened: every digit still has a contact test, and the mutation that lifts the hand 20 px still fails. |
 
+## The fresh image-only review (verdict: crossing present, holding reads weakly)
+
+Archived verbatim at [`../reviews-r1a/B-hand-study-v2-rimwrap-image-review-1.md`](../reviews-r1a/B-hand-study-v2-rimwrap-image-review-1.md): the reviewer saw flesh inside the near rim — the declared crossing is in the picture — but said the digit "neither wraps the rim nor presses it", reading "as a pasted-on tab rather than a finger hooking the rim", and that the picture holds only weakly. That is **failure route (a)**: the floor is met and the picture does not read, so H1 is not refuted at the joint route; the next hypothesis is the crossing's *shape and placement*, and no third variant is attempted before it is written down and its cost reported. No art pass.
+
 ## What is not claimed
 
 No art verdict. Whether flesh over the rim **reads as holding the dish** is a fresh
