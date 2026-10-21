@@ -78,6 +78,17 @@ afterwards. Relaunching K and L if they were reaped is one reviewer dispatch and
 Priority against siblings, since you asked for it upstream: **G3 is closed and B is waiting only on two
 verdicts; the bow is the only thing in R1a that has no path forward without a decision.**
 
+
+## Correction landed while this report was being written
+
+Package L committed `91782af` inside `evidence/B-hand-study-v1-r1/` — outside its read-only scope —
+regenerating `tests/negative-control-output.txt` and the two manifest files, so the revision B's two
+reviews bind to moved from `34b31b4` to **`91782af`** and `manifest.sha256` from `61277123…` to
+`8a47f0f0…`. The judged image did not move: `check/draft-fullres.png` is still `4dbcad2e…`
+byte-for-byte, so K's image verdict is unaffected and L's verdict has to say which revision each
+result belongs to; both were steered to state exactly that. Nothing was reverted. Recorded in
+`.scratch/35-r1-articulated-study/work/wave15-contracts.md` § The revision moved under K and L.
+
 ## Effort
 
 This session: `machine_time`, idle class, no device held exclusively. No money, no person-attention

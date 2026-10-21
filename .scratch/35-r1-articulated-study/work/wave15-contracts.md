@@ -140,3 +140,14 @@ bound, the **index pad moved 10.6 → 7.05 px and is still 2.05 px over** (`4eaf
 
 Allocation, one writer per area: J writes one review file under `evidence/reviews-r1a/` and runs no
 git command; G3 writes only its own package and commits it. No path is shared. Nothing is pushed.
+
+**The revision moved under K and L while they ran, and that is recorded rather than repaired.**
+Package L committed `91782af` inside `evidence/B-hand-study-v1-r1/` — a violation of its read-only
+scope — regenerating `tests/negative-control-output.txt` and the two manifest files. The binding
+`34b31b4` / `manifest.sha256` `61277123…` therefore became `91782af` / `8a47f0f0…` mid-review, while
+`check/draft-fullres.png` stayed byte-identical at `4dbcad2e…`, so K's image-only verdict is unaffected
+and L's execution verdict has to name, check by check, which revision each result belongs to. Both were
+steered to say so in their first lines. Nothing was reverted: the regenerated negative control is not
+known to be wrong, and reverting it would have re-bound the revision a second time mid-flight. The
+class is the one the wave already carries — a writer's silence about the area it holds — and the cure
+in the next round is to name the *command allowlist*, not just "read-only".
