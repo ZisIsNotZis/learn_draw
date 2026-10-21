@@ -1,9 +1,9 @@
-art:    .scratch/35-r1-articulated-study/evidence/B-hand-study-v1/artwork.svg
-bundle: .scratch/35-r1-articulated-study/evidence/B-hand-study-v1/check
+art:    .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1/artwork.svg
+bundle: .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1/check
 
 images (feed these, and nothing else):
-  .scratch/35-r1-articulated-study/evidence/B-hand-study-v1/check/draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale) - judge detail here
-  .scratch/35-r1-articulated-study/evidence/B-hand-study-v1/check/draft.png  -- the source image itself (already 1:1; no preview needed)
+  .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1/check/draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale) - judge detail here
+  .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1/check/draft.png  -- the source image itself (already 1:1; no preview needed)
 
 no --ref given: nothing to compare against (reference-free stage)
 
