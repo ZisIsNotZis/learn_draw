@@ -1,0 +1,80 @@
+{
+ "evidence": "A-bow-study-v3",
+ "files": [
+  {
+   "bytes": 3619,
+   "path": "README.md",
+   "sha256": "50b6158c4e94a285a45fc88c21c697f0bef61e3b1d84a383d59ec3d5033e4574"
+  },
+  {
+   "bytes": 35588,
+   "path": "artwork.png",
+   "sha256": "b3ca8cf082755d0ed62d449bbac2091b8d56ab2ca2ef6e755f948eec28045f92"
+  },
+  {
+   "bytes": 16319,
+   "path": "artwork.svg",
+   "sha256": "4324fd06c996a04632efe02eec0bae3334c402af1a087eb1d3c01d6222c7d4e7"
+  },
+  {
+   "bytes": 41875,
+   "path": "check/draft-fullres.png",
+   "sha256": "fc30a067d1aad031e6266dac33b2a1001b1b4c74d180cf2c15f65f621276a927"
+  },
+  {
+   "bytes": 35588,
+   "path": "check/draft.png",
+   "sha256": "b3ca8cf082755d0ed62d449bbac2091b8d56ab2ca2ef6e755f948eec28045f92"
+  },
+  {
+   "bytes": 1174,
+   "path": "check/report.txt",
+   "sha256": "17256dac0142383f0081e70b86fe96aa81e3ddf232309622a51d83a6e6eb499e"
+  },
+  {
+   "bytes": 3281,
+   "path": "source/build.py",
+   "sha256": "dd94b5e0e0f489d18c4732ef1f1675267837244f79461b79540cc3affe3c5938"
+  },
+  {
+   "bytes": 3157,
+   "path": "source/manifest.py",
+   "sha256": "73fcde389967485800986c1b906997bc8e0afc1bf651f2828ac76fbd62ba6975"
+  },
+  {
+   "bytes": 0,
+   "path": "source/parts/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "bytes": 6851,
+   "path": "source/parts/bow.py",
+   "sha256": "b10177b72aed45637a7fb822b4dcd119d7d8ad68174ef99ddde3906cd7643e66"
+  },
+  {
+   "bytes": 0,
+   "path": "tests/__init__.py",
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "bytes": 2896,
+   "path": "tests/test_knot_crossing.py",
+   "sha256": "9c8fc71b10e5347f225fe5044021abbb1ffbdd5d131af42c76790a771fa79d36"
+  },
+  {
+   "bytes": 4881,
+   "path": "tests/test_package.py",
+   "sha256": "0092f0e38ea28e00e7fe97c7ef4b10b70e8a55239b3c25cf75c806cf948a3bbc"
+  },
+  {
+   "bytes": 2314,
+   "path": "tests/test_reproducible.py",
+   "sha256": "ba76b86f65fe08e833d838280fc73bda86276edf9f30f52c5fa37dd81705534e"
+  },
+  {
+   "bytes": 8036,
+   "path": "tests/test_shape.py",
+   "sha256": "51d6dd0a4242771d7377b8f1d6c9037c9dca43e43d98080c332ef5b4b1f9b3d6"
+  }
+ ]
+}
