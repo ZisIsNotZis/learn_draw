@@ -151,3 +151,25 @@ steered to say so in their first lines. Nothing was reverted: the regenerated ne
 known to be wrong, and reverting it would have re-bound the revision a second time mid-flight. The
 class is the one the wave already carries — a writer's silence about the area it holds — and the cure
 in the next round is to name the *command allowlist*, not just "read-only".
+
+## Wave 15, third round — Package N `r1a-a-bow-v3-knot` and its review (dispatched)
+
+- **Why:** J returned FAIL on `A-bow-study-v2` and root routed the bow back to repair instead of putting a
+  rejected picture in front of the person: a picture its own review has already rejected is repaired
+  first, and the pinned hash plus rebuild command are what make that judgement expire with the artefact.
+- **Package N (writer).** Scope `evidence/A-bow-study-v3/` only, created as a copy of the frozen
+  `A-bow-study-v2/`, which is not modified (its image hash is bound to J). J's six blockers are the
+  acceptance, read from `reviews-r1a/A-bow-study-v2-image-review-1.md`; the palette J says is right is
+  unchanged, the flat cel fill stays, both tails leave the frame, no enclosed islands. Accept: suite green
+  in the new package, byte-identical rebuild, `manifest.py --check` and `sha256sum -c` clean, `scripts/draw.py
+  check` regenerates `check/draft-fullres.png` with a `check/report.txt` naming it, the README names that image
+  and that command, one commit naming the six blockers, and a per-blocker cured / not-cured statement with
+  its evidence. Wall clock 12 minutes, commit at 10 whatever exists.
+- **Package N review (image-only, read-only, fresh).** Chained to N so the verdict binds to whatever N
+  committed. It resolves and prints its own binding (image sha256, `git rev-parse --short HEAD`) and the
+  rebuild command before it judges; inputs are the 1:1 image and the reference crop and nothing else, and not
+  the archived J verdict. Verdict is one of PASS / FAIL with criterion, location and reproduction / BLOCKED
+  with what is missing; if its context cannot display images it must return BLOCKED naming that. Writes only
+  `reviews-r1a/A-bow-study-v3-image-review-1.md`.
+- **Class recorded with it:** the evidence and the thing it judges may not drift apart — the README names its
+  own review image, and the reviewer pins its own binding. Both are cures in the artefact, not notes in a log.
