@@ -9,8 +9,9 @@ and package E of [`../../work/wave13-contracts.md`](../../work/wave13-contracts.
 
 **Read this first: the suite is RED on exactly one test and the reason is a measured defect, not
 a stale measurement** — `TestContact::test_every_digit_rests_on_the_underside_and_none_penetrates_it`
-fails because the middle and ring pads stand 10.6 px off the dish's underside against the stated
-1.5 px, i.e. those two digits hover. Everything else passes (22 of 23). This package awards no
+fails because the index pad stands **7.1 px** off the dish's underside against the stated 1.5 px
+(the test allows up to 5.5; the middle and ring pads, at 10.6 px before the pad-axis change below,
+now sit inside it). One digit still hovers. Everything else passes (22 of 23). This package awards no
 art verdict and claims none: a fresh reviewer decides, and the state below is not ready for one.
 The review bundle is truthful for this revision (§ Commands), which the previous pass could not
 claim.
@@ -100,22 +101,22 @@ now reads as a hand is a reviewer's question and nobody has answered it.
 ## One measured failure, open
 
 `TestContact::test_every_digit_rests_on_the_underside_and_none_penetrates_it` fails on the
-middle and ring digits:
+**index** digit:
 
 ```
-index    tip   3.60 ..  33.40 px below the dish's underside
-middle   tip  10.65 ..  30.29 px below the dish's underside
-ring     (breaks the assertion at 10.6 px)
+index    tip   7.05 ..  29.96 px below the dish's underside   (breaks the assertion: 7.05 > 5.5)
+middle, ring, little, thumb: inside the bounds, quoted from the suite
 ```
 
 The cause is in `contact.finger`, not in the measurement: the pad's centre is offset along the
 surface normal by `r_tip + clearance`, but the digit arrives at the surface steeply, so the tube's
 cross-section — a disc perpendicular to the digit's own tangent, not to the plate — stands off by
-`r_tip · (1 − sin θ)` in addition to the clearance. The last pass re-targeted the test onto the
-right surface and this is the defect the re-target exposed. The cure is a pad whose axis runs
-parallel to the surface it rests on (or an offset computed from the digit's own arrival angle);
-it was attempted in this pass and made the stand-off worse, so it was reverted rather than left
-half-landed.
+`r_tip · (1 − sin θ)` in addition to the clearance. Two changes have been made against it:
+the pad's approach knot is now offset by the **tip** radius rather than the middle radius (so the
+pad's axis is the chord parallel to the surface, not a line tilted into the plate) and the radius
+law reaches `r_tip` by 0.88 of the span instead of at the tip. That took the middle and ring pads
+from 10.6 px to inside the bound and the index pad from 10.6 px to **7.05 px**; the index still
+sits 2.05 px over. What remains is the arrival angle of that one digit, not the pad's mechanism.
 
 ## The contract conflict the previous pass hit — RESOLVED (kept for the record)
 
@@ -199,7 +200,8 @@ scripts/draw check .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1/
   control.
 - The rim-band contour, the highlight's hard termination, the stray marks inside the well and the
   pale tip quads (review items N1–N5) are untouched.
-- the pads standing 10.6 px off the underside (the open failure above) is **not** fixed;
+- the index pad standing 7.1 px off the underside (the open failure above) is **not** fixed;
+  the pad-axis change took the previous 10.6 px to 7.05 px but not inside the 5.5 px bound;
 - `--lift` (the optional second image) was not re-checked after the pose change.
 
 ## Tests changed (resolution R1)

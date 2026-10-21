@@ -81,13 +81,23 @@ def finger(name, rings, *, root, station, reach, radii, clearance, samples=24, t
     instead of a flat seam.
 
     `radii` = (knuckle, proximal, middle, tip).  Nothing here is a coordinate of a contour.
+
+    The **pad's axis runs parallel to the surface it rests on**.  Both pad knots - the approach
+    and the tip - stand the same one tip-radius plus the clearance off the underside, each
+    along its own station's normal, so the chord between them is tangent to the surface and the
+    tube's last cross-section, which is perpendicular to that chord, reaches down to the
+    clearance instead of hovering at the tip radius above it.  Offsetting the approach knot by
+    the wider middle radius (as it was) tilts the axis into the plate, and a steeply arriving
+    digit then stands off by a further `r_tip * (1 - sin theta)` measured at its own pad.  The
+    radius law reaches the tip radius by the approach station and holds it, so the pad is a
+    cylinder over that span rather than a taper that pulls the cross-section off the chord.
     """
     r_knuckle, r_prox, r_mid, r_tip = radii
     law = digits.law(((0.0, r_knuckle * 0.86), (0.12, r_knuckle), (0.45, r_prox),
-                      (0.74, r_mid), (1.0, r_tip)))
-    tip, _tip_p, _tip_n = pad_contact(rings, reach, station, r_tip, clearance)
+                      (0.74, r_mid), (0.88, r_tip), (1.0, r_tip)))
     approach_t = min(1.0, reach + (1.0 - reach) * 0.55)
-    approach, _ap_p, _ap_n = pad_contact(rings, approach_t, station, r_mid, clearance)
+    approach, _ap_p, _ap_n = pad_contact(rings, approach_t, station, r_tip, clearance)
+    tip, _tip_p, _tip_n = pad_contact(rings, reach, station, r_tip, clearance)
     knots = [np.asarray(root, float), approach, tip]
     return digits.tube(name, knots, law, samples=samples, angles=20, thin=thin,
                        up_hint=(0.0, 0.0, 1.0))
