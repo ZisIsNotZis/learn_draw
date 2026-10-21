@@ -10,7 +10,7 @@ the state every candidate in this project carries until a report exists here.
 
 | study | report | revision | images judged | verdict |
 | --- | --- | --- | --- | --- |
-| `B-hand-study-v1` | `B-hand-study-v1-image-review-1.md` | `5e12d36` | `check/draft-fullres.png` `e428bb0d…`, `check/draft.png` `0dbeb263…` | dispatched 2026-10-21 (wave 12); not yet returned |
+| `B-hand-study-v1` | `B-hand-study-v1-image-review-1.md` | `5e12d36` | `check/draft-fullres.png` `e428bb0d…`, `check/draft.png` `0dbeb263…` | **BLOCK** — 3 blocking, 5 nonblocking findings, returned 2026-10-21 (wave 12). Reviewer's scope statement: opened exactly the two PNGs, read no other file, executed nothing. |
 
 The producer's own claims are in the study's `README.md` and are not evidence of art. The mechanical
 results are the study's own suite, and a mechanical pass is not an art verdict (ledger, "Open

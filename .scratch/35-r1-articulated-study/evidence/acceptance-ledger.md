@@ -117,14 +117,26 @@ The package overran its 2-hour wall clock by about 25 minutes; the overrun was s
 
 The writer named what an image reviewer will most likely strike, and it is the honest reading: the four fingers are fairly uniform in width and reach, so the contract's "rake tines" failure has moved from the pose to the uniformity; the palm reads as one flattened mass with no heel wedge, knuckle row or thenar bulge; the palm's contact with the dish's foot is true in the geometry and invisible in the image (it happens behind the dish's near wall); there are faint radial spokes at the bowl's floor centre where sub-pixel apex quads are inflated 0.45 px; and the object group is about 140 px narrower than the canvas on the left.
 
-**Verdict:** none. The image-only review is dispatched as wave 12 row 26 and is archived under [`reviews-r1a/`](reviews-r1a/README.md). Nothing here may be read as a pass.
+**Verdict: BLOCK** — the image-only review of `5e12d36` returned three blocking findings and five
+nonblocking ones; it is archived verbatim in
+[`reviews-r1a/B-hand-study-v1-image-review-1.md`](reviews-r1a/B-hand-study-v1-image-review-1.md). The
+blockers: **occlusion inverted** — the digits are drawn in front of the plate's near rim, so the dish
+reads as balanced on fingertips and the rim is cut where it must be foreground; **a radial spoke fan
+with concentric banding in the well**, which turns the bowl into a flat lens with one rim (the loudest
+artefact in the picture, and the writer had already flagged its cause: sub-pixel apex quads inflated
+0.45 px plus a 60-step revolution flat-shaded); **the hand is five evenly spaced parallel prongs with
+no thumb opposition and no knuckle mass**. Two of the three are the study contract's own named failure
+readings — "a hand intersecting a plate" and "fingers as rake tines" — which is the honest reading of
+this revision: the construction is derivable and reproducible, and the pose it produces is the wrong
+pose. Nothing here may be read as a pass; the repair is `r1a-b-hand-repair-1` (wave 13 package E,
+`evidence/B-hand-study-v1-r1/`), and `B-hand-study-v1/` stays frozen as the revision the verdict binds.
 
 ## Current dispositions after M1a and M1b
 
 - **Verified (mechanical):** the A v6-closeout and v8 packages and the B r1 package pass their own suites with mutation-capable checks, verify their manifests, and their headline numbers have negative controls.
 - **Failed (art):** A v5 and B-hand-v2 failed image-only review; B-hand-v2-r1 failed a further image review on the hold.
 - **Not run (independent art review):** A v6, A v6-closeout and A v8 have no independent image-only review recorded anywhere in the tree; a mechanical pass is not an art verdict, and the user's qualified verdict above is not one either.
-- **Failed (art), R1a:** A-bow-study-v1 failed an independent image-only review on six named defects; its mechanical evidence still holds and is what v2 builds on. B-hand-study-v1 is delivered and mechanically self-reported; its image-only review is in flight (wave 12).
+- **Failed (art), R1a:** A-bow-study-v1 failed an independent image-only review on six named defects; its mechanical evidence still holds and is what v2 builds on. B-hand-study-v1 failed its image-only review at `5e12d36` with three blocking findings (inverted occlusion at the near rim, a spoke fan in the well, rake-tine digits) and is repaired as `B-hand-study-v1-r1`.
 - **User judgement:** the user called A v8 and B-hand-v2-r1 "much better, maybe not the best, but at least somewhat acceptable" — a qualified partial acceptance of those two images that closes no gate.
 - **Accepted:** no candidate passes an independent art gate at the original figure scope. The only independent art disposition recorded here is the finite A v4 gate above, which the user's own review of that image then contradicted; it is not current acceptance.
 - **Scope:** the user approved the reduced scope, R1a object studies, recorded in the scope section above and [issue 55](../issues/55-r1a-object-study-scope.md); R1b's exit conditions are unchanged and R1a passing does not satisfy R1b.
