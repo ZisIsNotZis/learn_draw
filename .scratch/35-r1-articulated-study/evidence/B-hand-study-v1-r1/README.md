@@ -1,4 +1,4 @@
-# B-hand-study-v1-r1 — repair pass on the failed B hand study (ONE MEASURED FAILURE OPEN)
+# B-hand-study-v1-r1 — repair pass on the failed B hand study (SUITE GREEN, ART VERDICT ABSENT)
 
 This directory is a copy of `../B-hand-study-v1/` (which stays untouched: it is the revision
 the archived image review is bound to by hash) carrying one repair pass against
@@ -7,14 +7,13 @@ the archived verdict
 [`../../evidence/reviews-r1a/B-hand-study-v1-image-review-1.md`](../reviews-r1a/B-hand-study-v1-image-review-1.md),
 and package E of [`../../work/wave13-contracts.md`](../../work/wave13-contracts.md).
 
-**Read this first: the suite is RED on exactly one test and the reason is a measured defect, not
-a stale measurement** — `TestContact::test_every_digit_rests_on_the_underside_and_none_penetrates_it`
-fails because the index pad stands **7.1 px** off the dish's underside against the stated 1.5 px
-(the test allows up to 5.5; the middle and ring pads, at 10.6 px before the pad-axis change below,
-now sit inside it). One digit still hovers. Everything else passes (22 of 23). This package awards no
-art verdict and claims none: a fresh reviewer decides, and the state below is not ready for one.
-The review bundle is truthful for this revision (§ Commands), which the previous pass could not
-claim.
+**Read this first: the suite is green, 23 of 23.** Every digit's tip ring now rests on the dish's
+own underside inside the bounds the inherited contact test already states: the closest vertex of
+each pad stands between 1.60 px and 4.26 px off the surface, against the test's window of
+`> −1.0` and `< clearance + 4.0` (5.5 px at the stated 1.5 px clearance). The lift mutation
+(`clearance + 20 px`) still fails the check at 21.77 px. No bound was moved, no assertion was
+edited, no test was added or deleted. This package awards no art verdict and claims none: a fresh
+reviewer decides.
 
 ## What changed in the construction
 
@@ -65,14 +64,18 @@ Three things, each committed separately:
    upper end is cut by the near rim.
 3. **The three contact tests re-targeted per resolution R1** (see § Tests), against the dish's
    `derived_rings()` → `contact.underside_ring()` surface instead of the retired rim-band top.
+4. **The pad's arrival angle** (this pass, package G3): the third knot on the pad's own axis, one
+   `PAD_RUN` behind the approach knot, so the last cross-section is framed by the pad and not by
+   the shaft. That is the change that closed the stand-off on all five digits; the numbers are in
+   § the last measured stand-off.
 
 ## Finding → repair, against the archived review
 
 | # | finding (archived review) | what was done | status |
 | --- | --- | --- | --- |
-| B1 | occlusion inverted: digits in front of the near rim, dish unsupported | every contact moved to the dish's underside rings, so the rim is the nearest surface at every overlapping pixel; the knuckle line moved back below the plate's lower silhouette so each digit's length reads against the background | **geometry done; the occlusion is gone by construction** (120 of 120 ink crossings carry a depth gap). Legible in the measured sense: five digit lengths now show below the plate where the previous revision showed one stub. **The pads themselves do not read outboard** — see "what R2 could not deliver" |
+| B1 | occlusion inverted: digits in front of the near rim, dish unsupported | every contact moved to the dish's underside rings, so the rim is the nearest surface at every overlapping pixel; the knuckle line moved back below the plate's lower silhouette so each digit's length reads against the background | **geometry done; the occlusion is gone by construction** (91 of 91 occlusions carry a depth gap, over 98 crossings and 7 contacts). Legible in the measured sense: five digit lengths now show below the plate where the previous revision showed one stub. **The pads themselves do not read outboard** — see "what R2 could not deliver" |
 | B2 | radial spoke fan + concentric terracing in the well | bowl tessellation 17 → 33 rows; the inflate/underlay change was designed but **not landed** | **NOT FIXED** |
-| B3 | five near-parallel, evenly spaced prongs; no thumb opposition, no knuckle mass; bottom block unreadable | uneven stations (202/240/288/330 deg) + unequal reaches + unequal radii; thumb rooted on the measured near flank at 338 deg; knuckle bulge at each finger's base; heel bulge in the palm | **partly done** — the distal halves now separate at 0.85 / 1.15 / 1.32 of a digit's width, but **the signed thumb-opposition test is absent**: nothing measures that the thumb opposes the fingers, only that it is rooted on the measured near flank |
+| B3 | five near-parallel, evenly spaced prongs; no thumb opposition, no knuckle mass; bottom block unreadable | uneven stations (202/240/288/330 deg) + unequal reaches + unequal radii; thumb rooted on the measured near flank at 338 deg; knuckle bulge at each finger's base; heel bulge in the palm | **partly done** — the distal halves now separate at 1.12 / 1.65 / 1.57 of a digit's width, but **the signed thumb-opposition test is absent**: nothing measures that the thumb opposes the fingers, only that it is rooted on the measured near flank |
 | N1 | staircase silhouette, boxy flat digits | not addressed (tessellation of the digits unchanged) | not fixed |
 | N2 | transverse seam + dark V notch where digits meet the palm | knuckle bulges change the digit bases; not measured | not verified |
 | N3 | doubled rim contour, hard-terminating highlight | not addressed | not fixed |
@@ -98,25 +101,45 @@ So a pad that rests on the underside is always behind the plate, and what R2 can
 digit's *length* reading against the background — which is what was delivered. Whether the pose
 now reads as a hand is a reviewer's question and nobody has answered it.
 
-## One measured failure, open
+## The last measured stand-off, and how it was closed
 
-`TestContact::test_every_digit_rests_on_the_underside_and_none_penetrates_it` fails on the
-**index** digit:
+`TestContact::test_every_digit_rests_on_the_underside_and_none_penetrates_it` measures each digit's
+tip ring against the dish's underside, re-derived through `dish.derived_rings()` →
+`contact.underside_ring()`. Quoted from the suite, all five digits:
 
 ```
-index    tip   7.05 ..  29.96 px below the dish's underside   (breaks the assertion: 7.05 > 5.5)
-middle, ring, little, thumb: inside the bounds, quoted from the suite
+index    tip   1.60 ..  35.41 px below the dish's underside
+middle   tip   4.26 ..  36.77 px below the dish's underside
+ring     tip   2.86 ..  30.15 px below the dish's underside
+little   tip   1.60 ..  25.40 px below the dish's underside
+thumb    tip   1.63 ..  53.37 px below the dish's underside
+mutation (clearance + 20 px): lowest 21.77 px
 ```
 
-The cause is in `contact.finger`, not in the measurement: the pad's centre is offset along the
-surface normal by `r_tip + clearance`, but the digit arrives at the surface steeply, so the tube's
-cross-section — a disc perpendicular to the digit's own tangent, not to the plate — stands off by
-`r_tip · (1 − sin θ)` in addition to the clearance. Two changes have been made against it:
-the pad's approach knot is now offset by the **tip** radius rather than the middle radius (so the
-pad's axis is the chord parallel to the surface, not a line tilted into the plate) and the radius
-law reaches `r_tip` by 0.88 of the span instead of at the tip. That took the middle and ring pads
-from 10.6 px to inside the bound and the index pad from 10.6 px to **7.05 px**; the index still
-sits 2.05 px over. What remains is the arrival angle of that one digit, not the pad's mechanism.
+The stand-off was never the contact point: that point is derived correctly. It was the **arrival
+angle** — the orientation of the tube's last cross-section, which is framed from the sampled
+centreline, therefore from the direction between the last two samples, therefore from the *shaft*
+whenever the pad's own chord is shorter than the sample spacing. The middle digit lands at
+`reach = 0.98`, where a chord of 2.2 px runs against a spacing of 10 px: its pad stood on edge to
+the plate and its nearest vertex was 13.5 px off however exactly its contact point was derived.
+
+Two changes, both in `contact.py::finger`, neither touching a test:
+
+- the pad's two knots (approach and tip) stand the same **tip** radius plus the clearance off the
+  underside, each along its own station's normal, so the chord between them is parallel to the
+  surface (package G2's change, kept);
+- a third knot sits `PAD_RUN` = 1.6 tip radii behind the approach knot, on the pad's own axis. The
+  approach-to-tip span is then a straight run along the plate, longer than the tube's sample
+  spacing, so the last cross-section is framed by the pad and its nearest vertex reaches the
+  clearance instead of the pad's radius.
+
+Measured before → after, minimum stand-off per digit: index 7.05 → 1.60, middle 13.50 → 4.26,
+ring 13.56 → 2.86, little 6.24 → 1.60, thumb 8.81 → 1.63. Only the index digit was previously
+named because the assertion stops at the first digit it visits; all five were over.
+
+`PAD_RUN` is not free: at 1.7 the thumb's bend into its pad breaks the palm's rear edge
+(`tests/test_occlusion_break.py::test_every_occlusion_has_a_broken_rear_edge`), so the run is as
+long as the frame allows, not as long as the contact bound allows.
 
 ## The contract conflict the previous pass hit — RESOLVED (kept for the record)
 
@@ -160,12 +183,12 @@ distal = station 0.60, as a fraction of the two digits' mean width — quoted ve
 suite's own output, every pair:
 
 ```
-distal index -middle gap  45.0 / width  53.0 = 0.85
-distal middle-ring   gap  55.6 / width  48.3 = 1.15
-distal ring  -little gap  53.7 / width  40.7 = 1.32
-roots index -middle gap   0.6 / width  52.4 = 0.01
-roots middle-ring   gap   0.6 / width  48.1 = 0.01
-roots ring  -little gap   2.8 / width  42.1 = 0.07
+distal index -middle gap  58.4 / width  52.3 = 1.12
+distal middle-ring   gap  79.4 / width  48.2 = 1.65
+distal ring  -little gap  63.5 / width  40.6 = 1.57
+roots index -middle gap   0.7 / width  51.7 = 0.01
+roots middle-ring   gap   2.6 / width  48.1 = 0.05
+roots ring  -little gap   1.8 / width  41.9 = 0.04
 ```
 
 Every distal pair is above the inherited 0.30 floor and every root is below the 0.10 limit. The
@@ -177,7 +200,7 @@ floor was not moved: it reads 0.30 in `tests/test_hand_construction.py` (`DISTAL
 cd .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1
 ../../../../.venv/bin/python source/build.py                 # -> artwork.svg (deterministic)
 ../../../../scripts/draw render artwork.svg -o artwork.png   # the documented render path
-../../../../.venv/bin/python -m unittest discover -s tests -t .   # 23 inherited tests: 22 pass, 1 fail
+../../../../.venv/bin/python -m unittest discover -s tests -t .   # 23 inherited tests: OK
 ../../../../.venv/bin/python source/manifest.py --check      # 19/19
 sha256sum -c manifest.sha256                                 # 19/19 OK
 # the review bundle, routed inside this package (no --ref: this stage is reference-free)
@@ -200,8 +223,12 @@ scripts/draw check .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1/
   control.
 - The rim-band contour, the highlight's hard termination, the stray marks inside the well and the
   pale tip quads (review items N1–N5) are untouched.
-- the index pad standing 7.1 px off the underside (the open failure above) is **not** fixed;
-  the pad-axis change took the previous 10.6 px to 7.05 px but not inside the 5.5 px bound;
+- the contact window is met by every digit but **the middle digit is the tightest at 4.26 px
+  against the 5.5 px bound**; a wider `PAD_RUN` closes that margin further but breaks the palm's
+  rear edge, so the two are in tension and only the occlusion test decides between them;
+- the distal separations grew with the pad straightening (0.82/1.17/1.28 → 1.12/1.65/1.57 of a
+  digit's width): the digits are now further apart than the previous revision's, and whether that
+  reads as a hand rather than as five prongs is a reviewer's question, not this document's claim;
 - `--lift` (the optional second image) was not re-checked after the pose change.
 
 ## Tests changed (resolution R1)

@@ -2,29 +2,29 @@
  "evidence": "B-hand-study-v1",
  "files": [
   {
-   "bytes": 16077,
+   "bytes": 17914,
    "path": "README.md",
-   "sha256": "c05ceb7d904ff0afbee60dce6334e731abb5d48e873f3c9651cb52ad3121f4e5"
+   "sha256": "0f694e3899be7dc058e8030586dd3a0918b5703747c450291ddacb96a79a277f"
   },
   {
-   "bytes": 181745,
+   "bytes": 188364,
    "path": "artwork.png",
-   "sha256": "541e517f32eb88471955387c9fb3626532de53900bba46e2470bccbfe396ba8c"
+   "sha256": "174d74551629f99b62094e4cb8bdaf9c8cdaf3e71d1a67ab61835cf301c1c65a"
   },
   {
-   "bytes": 377525,
+   "bytes": 373659,
    "path": "artwork.svg",
-   "sha256": "eac59162495da5f33a24631b4f0920a850e55c1d1671430793bd85876c6ac521"
+   "sha256": "b99239fa9e5864b4ecba37e4a7a4a92c1ba90ff19af958cc926e05d57808767d"
   },
   {
-   "bytes": 199509,
+   "bytes": 204642,
    "path": "check/draft-fullres.png",
-   "sha256": "2880394a56bc9187c638c4ea5ac6036a7ba96c50efd8e4362ea61daf7b43ed53"
+   "sha256": "4dbcad2ec517191c73c75057f948f0a73aeec5566566df922e1f9ac8e8354083"
   },
   {
-   "bytes": 181745,
+   "bytes": 188364,
    "path": "check/draft.png",
-   "sha256": "541e517f32eb88471955387c9fb3626532de53900bba46e2470bccbfe396ba8c"
+   "sha256": "174d74551629f99b62094e4cb8bdaf9c8cdaf3e71d1a67ab61835cf301c1c65a"
   },
   {
    "bytes": 1118,
@@ -37,9 +37,9 @@
    "sha256": "8d1e7f62cb8eaa21c02249d889ed833a221eee37359e12e20b06e3348ea4fabb"
   },
   {
-   "bytes": 8222,
+   "bytes": 9448,
    "path": "source/contact.py",
-   "sha256": "7ff8d41faaace5218c68e504544ea15f1e12b39c2bed16b4164f1707e19cff3e"
+   "sha256": "813878254e96e910113c307c49e52495cbcd0b477620c4401ccbb9d1b3d6e2b3"
   },
   {
    "bytes": 5199,

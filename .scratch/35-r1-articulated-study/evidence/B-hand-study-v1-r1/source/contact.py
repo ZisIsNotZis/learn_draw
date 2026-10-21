@@ -64,6 +64,14 @@ def underside_ring(rings, t):
     return seq[-1][1]
 
 
+# How far back from the pad's approach knot the digit straightens onto the pad's own axis,
+# in tip radii.  It has to exceed the tube's own sample spacing (roughly a tenth of a digit's
+# arc) or the last cross-section still inherits the shaft's direction, and it has to stay short
+# enough that the bend into the pad happens inside the digit's own silhouette - at 1.7 tip radii
+# the thumb's bend breaks the palm's rear edge (`tests/test_occlusion_break.py`).
+PAD_RUN = 1.6
+
+
 def pad_contact(rings, t, station, radius, clearance):
     """The point a pad of `radius` has to sit at to touch the underside at (t, station)."""
     ring = underside_ring(rings, t)
@@ -82,15 +90,25 @@ def finger(name, rings, *, root, station, reach, radii, clearance, samples=24, t
 
     `radii` = (knuckle, proximal, middle, tip).  Nothing here is a coordinate of a contour.
 
-    The **pad's axis runs parallel to the surface it rests on**.  Both pad knots - the approach
-    and the tip - stand the same one tip-radius plus the clearance off the underside, each
-    along its own station's normal, so the chord between them is tangent to the surface and the
-    tube's last cross-section, which is perpendicular to that chord, reaches down to the
-    clearance instead of hovering at the tip radius above it.  Offsetting the approach knot by
-    the wider middle radius (as it was) tilts the axis into the plate, and a steeply arriving
-    digit then stands off by a further `r_tip * (1 - sin theta)` measured at its own pad.  The
-    radius law reaches the tip radius by the approach station and holds it, so the pad is a
-    cylinder over that span rather than a taper that pulls the cross-section off the chord.
+    The **pad's axis runs parallel to the surface it rests on, and the digit arrives along it**.
+    Three things hold that, and each cures a stand-off measured against the underside:
+
+      * both pad knots - the approach and the tip - stand the same one tip-radius plus the
+        clearance off the underside, each along its own station's normal, so the chord between
+        them is parallel to the surface.  Offsetting the approach knot by the wider middle
+        radius tilts the axis into the plate;
+      * the radius law reaches the tip radius by the approach station and holds it, so the pad
+        is a cylinder over that span rather than a taper that pulls the cross-section off the
+        chord;
+      * a third knot sits `PAD_RUN` tip radii behind the approach knot, on the pad's own axis.
+        The tube's cross-sections are framed from the sampled centreline, so the last one
+        inherits the direction between the last two samples - the *shaft's*, not the chord's -
+        whenever the pad's chord is shorter than that sample spacing.  The middle digit lands
+        at `reach = 0.98`, a chord of 2.2 px against a spacing of 10 px: its pad stood on edge
+        to the plate and its nearest vertex was 13.5 px off, however exactly its contact point
+        was derived.  With the knot the approach-to-tip span is a straight run along the pad
+        axis, longer than the spacing, so the last cross-section is framed by the pad and its
+        nearest vertex reaches the clearance.
     """
     r_knuckle, r_prox, r_mid, r_tip = radii
     law = digits.law(((0.0, r_knuckle * 0.86), (0.12, r_knuckle), (0.45, r_prox),
@@ -98,7 +116,8 @@ def finger(name, rings, *, root, station, reach, radii, clearance, samples=24, t
     approach_t = min(1.0, reach + (1.0 - reach) * 0.55)
     approach, _ap_p, _ap_n = pad_contact(rings, approach_t, station, r_tip, clearance)
     tip, _tip_p, _tip_n = pad_contact(rings, reach, station, r_tip, clearance)
-    knots = [np.asarray(root, float), approach, tip]
+    pad_axis = geo.unit(tip - approach)
+    knots = [np.asarray(root, float), approach - pad_axis * (PAD_RUN * r_tip), approach, tip]
     return digits.tube(name, knots, law, samples=samples, angles=20, thin=thin,
                        up_hint=(0.0, 0.0, 1.0))
 
