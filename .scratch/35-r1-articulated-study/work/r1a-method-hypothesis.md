@@ -67,8 +67,14 @@ Four rules, each with the check that refuses it:
    front piece's projection lies inside the rear piece's outline. A joint without a declared crossing
    region is not a joint, it is two objects near each other, and the package is not accepted.
 2. **The crossing has an area floor, in pixels, on the rendered image:** front-piece fill inside the
-   rear piece's outline ≥ **1 % of the rear piece's projected area** and ≥ 10 × stroke-width². The floor
-   is relative to the object, so it does not invent an absolute number, and it scales with framing.
+   rear piece's **projected outline from the rear piece's own geometry** — the outline the picture would
+   show if the front piece were absent, not its visible outline, which is exactly the pixel set the
+   front piece covers — ≥ **1 % of the rear piece's projected area** and ≥ 10 × stroke-width². The floor
+   is relative to the object, so it does not invent an absolute number, and it scales with framing. At
+   r1's framing the dish's footprint is ≈ 135 k px, so the floor is ≈ 1.35 k px, and the flesh runs just
+   under the rim in that picture are 13–48 px wide; a 40 px digit therefore has to overshoot the near
+   rim by ≈ 35 px of depth for the crossing to clear the floor (inference from the two measurements, not
+   a measurement of a crossing that does not yet exist).
 3. **Exactly one contour breaks.** Across the crossing span the front piece's contour is unbroken and
    the rear piece's contour terminates on it, with no spur and no smear; a junction where both contours
    survive is a *merge* and fails, and one where neither touches is a *miss* and fails.
