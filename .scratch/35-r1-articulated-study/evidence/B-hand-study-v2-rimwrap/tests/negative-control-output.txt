@@ -1,0 +1,21 @@
+occlusion-break negative control (P37): the mechanism must be visible as a failure
+real build : 108 occlusions, 0 failures, 5 contacts
+mutation   : --no-depth-break, 108 occlusions, 108 failures, 5 contacts
+  mutation failures (expected, this is the point):
+    rear edge drawn through, palm.sil0 x index.sil0 at (404,572) (rear palm, s=0.790)
+    rear edge drawn through, palm.sil0 x index.sil0 at (399,609) (rear palm, s=0.839)
+    rear edge drawn through, palm.sil0 x thumb.sil0 at (554,604) (rear thumb, s=0.129)
+    rear edge drawn through, palm.sil0 x thumb.sil0 at (546,510) (rear thumb, s=0.889)
+    rear edge drawn through, palm.sil0 x little.sil0 at (555,567) (rear little, s=0.264)
+    rear edge drawn through, palm.sil0 x middle.sil1 at (389,386) (rear palm, s=0.651)
+    rear edge drawn through, palm.sil0 x middle.sil1 at (389,386) (rear palm, s=0.657)
+    rear edge drawn through, palm.sil0 x middle.sil1 at (401,479) (rear palm, s=0.700)
+PASS: the depth break is what makes the test pass
+
+contact negative control (R1 re-target): the lift mutation must still fail the contact check
+test        : TestContact::test_a_digit_that_lifts_off_the_underside_is_caught
+mutation    : scene.FINGER_GEOMETRY["clearance"] 1.5 -> 21.5 px, everything else held fixed
+real build  : index tip 1.74 .. 35.27 px below the dish's underside (rests)
+mutation    : mutation (clearance + 20 px): lowest 21.70 px
+assertion   : heights.min() < clearance + 4.0 = 5.5 px  ->  21.70 is not less than 5.5: it fails
+PASS: the contact check notices a hand that leaves the dish by 20 px
