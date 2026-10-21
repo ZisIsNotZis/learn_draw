@@ -144,10 +144,16 @@ def _fields(parts):
         (P(3, 0.5), H_FOLD),                                   # the fold: R_FOLD - h = 28 px
         (P(4, 0.30), 118.0), (P(4, 0.58), HALF_WIDTH), (P(4, 0.86), 86.0),
         (P(5, 0.30), H_KNOT),                                  # the band, crushed at the knot
-        (P(5, 0.62), 128.0), (P(5, 0.92), H_FOLD),
-        (P(6, 0.5), H_FOLD),
+        # The band's belly, and then NO pinch here: the fold's pinch has one home, the fold
+        # turn's own middle (P(6, 0.5)), the way the left fold's pinch sits at P(3, 0.5).
+        # Stating it a second time at the band's end put the crush and the pinch 15 stations
+        # apart, and two cosine ramps that short turn the width series at
+        # (pi^2/2)(dh/N^2) = 1.9 + 2.1 half-width px per station^2 at their apex - a turn
+        # no cloth makes, which is what the isolation test read as a piece boundary.
+        (P(5, 0.62), 128.0),
+        (P(6, 0.5), H_FOLD),                                   # the right fold's pinch
         (P(7, 0.02), H_FOLD),
-        (P(7, 0.60), 104.0), (P(7, 0.98), 92.0),   # one ramp each way: the part is short   # one ramp each way: the part is short
+        (P(7, 0.60), 104.0), (P(7, 0.98), 92.0),   # one ramp each way: the part is short
         (P(8, 0.12), H_KNOT), (P(8, 0.45), 96.0), (1.0, 122.0),  # lower tail: crushed, then broad
     ])
     # Each swing between two levels sits inside a turn (the fold on the way out of a lobe,
