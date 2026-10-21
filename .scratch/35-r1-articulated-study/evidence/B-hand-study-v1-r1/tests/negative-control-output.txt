@@ -1,0 +1,13 @@
+occlusion-break negative control (P37): the mechanism must be visible as a failure
+real build : 74 occlusions, 0 failures, 6 contacts
+mutation   : --no-depth-break, 74 occlusions, 74 failures, 6 contacts
+  mutation failures (expected, this is the point):
+    rear edge drawn through, dish.sil1 x palm.sil0 at (537,473) (rear palm, s=0.411)
+    rear edge drawn through, dish.sil1 x palm.sil0 at (450,483) (rear palm, s=0.476)
+    rear edge drawn through, dish.sil1 x thumb.sil0 at (363,473) (rear thumb, s=0.278)
+    rear edge drawn through, dish.sil1 x thumb.sil0 at (231,414) (rear dish, s=0.448)
+    rear edge drawn through, dish.sil1 x thumb.sil0 at (231,414) (rear dish, s=0.438)
+    rear edge drawn through, dish.sil1 x thumb.sil0 at (231,414) (rear dish, s=0.459)
+    rear edge drawn through, dish.sil1 x little.sil0 at (620,445) (rear dish, s=0.221)
+    rear edge drawn through, dish.sil1 x little.sil0 at (537,473) (rear little, s=0.820)
+PASS: the depth break is what makes the test pass
