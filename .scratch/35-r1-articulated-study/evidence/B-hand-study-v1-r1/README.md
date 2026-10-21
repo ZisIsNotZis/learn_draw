@@ -236,9 +236,9 @@ scripts/draw check .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1/
   as flat-shaded facets with a serrated silhouette): this pass cured execution blockers on the
   construction, not the picture. `source/contact.py`'s dead `thumb()` - no call site, the thumb is
   built by `finger()` - was deleted in this pass.
-- the contact window is met by every digit but **the middle digit is the tightest at 4.26 px
-  against the 5.5 px bound**; a wider `PAD_RUN` closes that margin further but breaks the palm's
-  rear edge, so the two are in tension and only the occlusion test decides between them;
+- the contact window is met by every digit; the middle digit is the loosest at 3.92 px against the
+  5.5 px bound, and a wider `PAD_RUN` closes that margin further but breaks the palm's rear edge,
+  so the two are in tension and only the occlusion test decides between them;
 - the distal separations grew with the pad straightening (0.82/1.17/1.28 → 1.12/1.65/1.57 of a
   digit's width): the digits are now further apart than the previous revision's, and whether that
   reads as a hand rather than as five prongs is a reviewer's question, not this document's claim;
