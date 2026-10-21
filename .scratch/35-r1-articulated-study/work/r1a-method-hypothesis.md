@@ -26,10 +26,12 @@ verdicts have been re-discovering.
 ## 1. The hypothesis now under test (H1)
 
 > **H1 —** in this project's method a joint is built as *tangency*: each part is solved to terminate
-> **at** the other body's boundary (distance-to-surface, abutting, stacking). A joint built that way can
-> never read, because a drawn joint reads only where **exactly one** of the two contours terminates on
-> the other and the other continues unbroken — a T-junction with a front/rear order. Under H1 no further
-> per-object precision changes the reading, because precision at tangency sharpens the wrong relation.
+> **at** the other body's boundary (distance-to-surface, abutting, stacking), and the pose is chosen so
+> that one order holds across the whole joint. A joint built that way can never read, because a drawn
+> joint reads only where **exactly one** of the two contours terminates on the other, the other continues
+> unbroken, and the two orders are *mixed* across the joint — a T-junction with a front piece and a rear
+> piece at once. Under H1 no further per-object precision changes the reading, because precision at
+> tangency sharpens the wrong relation.
 
 Two species, both observed in the tree, both instances of the one class:
 
@@ -84,9 +86,11 @@ from the thing it judges — extended to the joint: a joint's evidence is now a 
 
 **The hand.** Ranked on the decisive axis — how much of the existing package survives the route change:
 
-- Its contact solver already terminates against a real surface with a measured error (`contact.py`,
-  palm and pads solved against `util.underside_surface`); H1's change for it is *which* surface the
-  digit presses, which is one parameter of one solver, not a new construction.
+- Its contact solver already terminates against a real surface with a measured error: `contact.underside_ring`
+  / `contact.underside_cloud` solve each digit and the palm against the dish's own underside rows, and
+  its own header states the design that H1 targets — *the digits reach the underside from below, so the
+  plate's near rim stays unobstructed*. H1's change for this package is *which* surface one digit
+  presses (the inner surface over the near rim, solved the same way), not a new construction.
 - It has the mature harness: 25/25 suite, a negative-control record that cannot drift, a 1:1 check
   report, a verified manifest, byte-identical rebuild. The new pixel test plugs into it.
 - Its rear piece is one large legible silhouette (the dish) with a wide near-rim band, so a crossing is
