@@ -21,6 +21,7 @@ Both studies' mechanical floor, re-run by me from the checkout before the round 
     # Ran 17 tests … OK
     PYTHONDONTWRITEBYTECODE=1 ../../../../.venv/bin/python source/build.py --out /tmp/a.svg && cmp /tmp/a.svg artwork.svg   # identical
     PYTHONDONTWRITEBYTECODE=1 ../../../../.venv/bin/python source/manifest.py --check   # 17/17 ; sha256sum -c 17/17
+    .venv/bin/python scripts/draw.py render /tmp/fresh.svg   # 800x560 ; then cmp /tmp/_render.png artwork.png -> identical
 
     cd .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1 && \
       PYTHONDONTWRITEBYTECODE=1 ../../../../.venv/bin/python -m unittest discover -s tests -t .
