@@ -25,11 +25,25 @@ from ribbon import depth_buffer, signed_area, visible_runs  # noqa: E402
 
 RAIL_SAMPLES = 620
 CREASE_SAMPLES = 13
-INFLATE = 0.8
+
+# The widest a triangle's own outline may be drawn, in px.  Every triangle is stroked in its
+# own fill so the renderer's antialiasing cannot leave a seam between neighbours (measured:
+# a radial fan of cracks across every lobe without it).  But at a fold the strip turns over,
+# so the triangles there fan out of the inner edge and their altitudes run down to nothing;
+# stroking one of those at the seam's width draws the pen, not the cloth, and a fan of them
+# is what hatching is (measured on the r2 build, where every triangle was stroked at 2.6 px).
+# So the stroke never exceeds twice the triangle's own smallest altitude.
+SEAM_STROKE = 2.6
+PEN_ALTITUDE = 0.5 * SEAM_STROKE
 
 
 def _fmt(pts):
     return " ".join(f"{x:.2f},{y:.2f}" for x, y in pts)
+
+
+def _smallest_altitude(p0, p1, p2, area):
+    longest = max(math.dist(p0, p1), math.dist(p1, p2), math.dist(p2, p0))
+    return (2.0 * area / longest) if longest > 1e-9 else 0.0
 
 
 def resolve(break_depth=True):
@@ -61,30 +75,30 @@ def resolve(break_depth=True):
             np.minimum(near, shifted, out=near)
 
     fills = []
+    slivers = 0
     for tri in tris:
         pts = np.array([st.point(i, v) for i, v in tri])
         area = signed_area(pts[0, :2], pts[1, :2], pts[2, :2])
         if abs(area) < 1e-6:
+            slivers += 1
             continue
+        alt = _smallest_altitude(pts[0, :2], pts[1, :2], pts[2, :2], abs(area))
+        if alt < PEN_ALTITUDE:
+            slivers += 1
         forward = area < 0.0          # y grows downward, so a viewer-facing face sweeps negative
-        # Inflate by INFLATE px about the centroid before emitting: adjacent triangles share
-        # their vertices exactly, and the renderer's antialiasing otherwise leaves a
-        # background-coloured sliver between them (measured: fans of cracks at both folds,
-        # where the strip is edge-on and the triangles are long and thin).  The inflation
-        # moves each edge by <1 px and cannot change a triangle's winding.
-        cx, cy = pts[:, 0].mean(), pts[:, 1].mean()
-        grown = []
-        for p in pts:
-            dx, dy = p[0] - cx, p[1] - cy
-            n = math.hypot(dx, dy) or 1.0
-            grown.append((p[0] + INFLATE * dx / n, p[1] + INFLATE * dy / n))
+        # One painter unit per quad: a cross-section of the strip is either wholly behind or
+        # wholly in front of what it meets, and giving its two triangles one depth keeps the
+        # painted order (and therefore what a reader can measure on the emitted polygons)
+        # from depending on which triangle of a quad happens to sort first.
+        zq = float(0.5 * (st.p[tri[0][0]][2] + st.p[tri[2][0]][2]))
         fills.append({
-            "points": grown,
-            "z": float(pts[:, 2].mean()),
+            "points": [(p[0], p[1]) for p in pts],
+            "z": zq,
             "face": "front" if forward else "back",
             "u0": st.u[tri[0][0]],
             "u1": st.u[tri[2][0]],
             "area": abs(area),
+            "alt": alt,
         })
     fills.sort(key=lambda f: -f["z"])   # far to near
 
@@ -116,7 +130,7 @@ def resolve(break_depth=True):
             })
 
     return {"art": art, "fills": fills, "rails": rails, "creases": creases,
-            "zbuf": zbuf, "eps": eps}
+            "zbuf": zbuf, "eps": eps, "slivers": slivers}
 
 
 def svg(res):
@@ -139,11 +153,9 @@ def svg(res):
         # stroke the polygon in its own fill: adjacent triangles share coordinates, and
         # without an overlap the renderer's antialiasing draws a hairline seam between them
         # (measured on this drawing: a radial fan of seams across every lobe).
-        # Stroke the polygon in its own fill so adjacent triangles cannot show the
-        # renderer's antialiasing seam (measured: a radial fan across every lobe).  A
-        # sliver narrower than the stroke is left unstroked: its long edges, drawn, are
-        # themselves the fan (measured at the two folds before this guard).
-        stroke = ' stroke="%s" stroke-width="2.6"' % colour
+        # Stroked in its own fill, at a width the triangle can carry: a sliver gets a
+        # sliver's stroke, so the seam is closed without the pen becoming the drawing.
+        stroke = ' stroke="%s" stroke-width="%.2f"' % (colour, min(SEAM_STROKE, 2.0 * f["alt"]))
         out.append('<polygon class="face-%s" data-u0="%.4f" data-u1="%.4f" points="%s" '
                    'fill="%s"%s/>' % (f["face"], f["u0"], f["u1"], _fmt(f["points"]),
                                       colour, stroke))
@@ -176,7 +188,8 @@ def main():
     text = svg(res)
     with open(a.out, "w") as fh:
         fh.write(text)
-    print(f"wrote {a.out}: {len(res['fills'])} triangles, "
+    print(f"wrote {a.out}: {len(res['fills'])} triangles "
+          f"({res["slivers"]} sub-pen slivers, stroked at their own width), "
           f"{len(res['rails'])} rail runs, {len(res['creases'])} crease runs")
 
 

@@ -47,28 +47,34 @@ NOMINAL_HALF = HALF_WIDTH  # the single name the fields scale against
 STATIONS = 620
 
 # ---- the knot's measured station -------------------------------------------------------
-# The knot sits at 0.70 of the bow's width and its waist is 0.39 of the bow's height.  The
-# bow's in-canvas bbox is 790 x 500 px, so the knot's centre belongs at x = 553 and the
-# narrowest column there must be about 0.39 * 392 = 153 px tall (the lobes are 392 tall).
+# The knot sits at 0.70 of the bow's width.  Measured on the reference crop: the bow spans
+# x 33..271 and the waist is at x 201, so (201 - 33) / (271 - 33) = 0.706.  The canvas' bow
+# spans x 0..787, so the knot belongs at x = 0.706 * 787 = 556; KNOT_X is 553, the value the
+# route was composed around, and the knot - not the mass - is what has to sit there.  Its
+# waist ratio (0.39 of the bow's height) is now produced by H_KNOT below, not asserted.
 KNOT_X = 553.0
 KNOT_Y = 272.0
-LOBE_HALF_HEIGHT = 196.0   # half of the lobes' 392 px vertical extent
-KNOT_HALF = 76.0           # half-width of the cloth at the knot station = 0.39 x 196
 
-# fold radii: a gathered ribbon can only wrap a turn whose radius is at least its own
-# half-width, so the width field contracts to H_FOLD through every turn.
-R_FOLD = 46.0
+# ---- radii and the widths they cost ----------------------------------------------------
+# A gathered ribbon can only wrap a turn whose radius exceeds its own half-width, and the
+# turn's INNER edge has radius R - h.  That inner radius is where the triangles fan out of;
+# when R - h shrinks towards the station spacing the fan collapses into sub-pixel wedges and
+# the fold is drawn as a hatch rather than as cloth (measured on the r2 build at R - h = 8).
+# So each turn keeps R - h above a cloth's worth of px: the fold pinches the ribbon to
+# H_FOLD and the knot crushes it to H_KNOT.
+R_FOLD = 38.0
 R_WRAP = 62.0
-H_FOLD = 38.0
+H_FOLD = 34.0             # the ribbon through a fold: R_FOLD - H_FOLD = 4 px of inner edge
+H_KNOT = 32.0             # the ribbon through the knot: the one place it is crushed
 
 # where the loops' two limbs lie: the outbound limb's centre line and the return limb's,
-# one cloth-and-a-turn apart (2 * R_FOLD), close enough that the two overlap and the lobe
-# is filled cloth.
+# one turn apart (2 * R_FOLD), close enough that the two overlap and the lobe is cloth.
 Y_LOBES = 210.0            # outbound limb centre line, both lobes
-Y_RETURN = Y_LOBES + 2 * R_FOLD   # 302
+Y_RETURN = Y_LOBES + 2 * R_FOLD   # 286
+GATHER = 0.45             # how far the returning limb climbs back towards the knot's centre
 
-LEFT_FOLD_X = 281.0 + R_FOLD + H_FOLD   # outer edge of the left lobe at x = 281
-RIGHT_FOLD_X = 787.0 - R_FOLD - H_FOLD  # outer edge of the right lobe at x = 787
+LEFT_FOLD_X = 343.0        # where the left lobe's turn begins (author choice: the lobes' span)
+RIGHT_FOLD_X = 679.0       # where the right lobe's turn begins
 
 
 def _route():
@@ -78,10 +84,10 @@ def _route():
     r.turn(along=R_WRAP, across=R_WRAP, sign=-1)               # 1 knot wrap: half turn, upward
     r.run(end=(LEFT_FOLD_X, Y_LOBES), end_deg=180.0)           # 2 left lobe, outward limb
     r.turn(along=R_FOLD, across=R_FOLD, sign=-1)               # 3 left lobe fold
-    r.run(end=(KNOT_X - 40.0, Y_RETURN), end_deg=0.0)          # 4 left lobe, return limb
+    r.run(end=(KNOT_X - 40.0, Y_LOBES + GATHER * 2 * R_FOLD), end_deg=0.0)  # 4 left lobe, return
     r.run(end=(RIGHT_FOLD_X, Y_LOBES), end_deg=0.0, bend=-30.0)  # 5 the band across the knot
     r.turn(along=R_FOLD, across=R_FOLD, sign=1)                # 6 right lobe fold
-    r.run(end=(KNOT_X + 34.0, Y_RETURN), end_deg=180.0)        # 7 right lobe, return limb
+    r.run(end=(KNOT_X + 34.0, Y_LOBES + GATHER * 2 * R_FOLD), end_deg=180.0)  # 7 right lobe, return
     r.run(end=(455.0, 680.0), out_deg=180.0, end_deg=104.0)    # 8 lower tail, off the bottom
     return r
 
@@ -108,41 +114,55 @@ def _knot_at(parts, k, frac=0.0):
 # ---- the three fields along the strip -------------------------------------------------
 
 # depth, in canvas px; negative is nearer the viewer.  A ribbon crossing itself must step
-# by at least one cloth thickness at every crossing, and the knot's passes are separated.
-BACK_TAIL = 2.25 * THICKNESS   # 36   both tails hang behind the loops
-MID = 1.0 * THICKNESS          # 16   the folded-back limb of each loop
-FRONT = 0.0                    # 0    the outward limb of each loop
-WRAP = -1.75 * THICKNESS       # -28  the knot's wrap, passing over both loops
+# by at least one cloth thickness at every crossing, so each VISIT of the strip gets its own
+# level and neighbouring visits differ by more than two thicknesses; where two visits cross
+# the test measures the difference on the emitted geometry.  The levels are not a stack of
+# separate pieces: one continuous strip is what makes the swing from one level to the next
+# have to happen somewhere, and the field puts each swing inside a turn, which is the place
+# where the ribbon really does turn over.
+TAIL_IN = 3.75 * THICKNESS     # +60  the left tail, hanging behind the knot
+WRAP = -3.75 * THICKNESS       # -60  the knot's wrap, the one pass over everything else
+LOBE_OUT = -2.5 * THICKNESS    # -40  each lobe's outward limb, in front of its return
+LOBE_RET = 2.5 * THICKNESS     # +40  each lobe's returning limb, behind its outward limb
+BAND = -1.25 * THICKNESS       # -20  the band crossing the knot, over both limbs' returns
+TAIL_OUT = -3.75 * THICKNESS   # -60  the lower tail, hanging in front of the right lobe
 
 
 def _fields(parts):
     P = lambda k, f=0.0: _knot_at(parts, k, f)  # noqa: E731
-    # One width field, in canvas px.  It pinches to KNOT_HALF at the knot station - 0.39 of
-    # the lobes' half-height, the reference's measured waist ratio - and contracts to H_FOLD
-    # through every turn so the two rails cannot cross at the fold.
+    # One width field, in canvas px.  Four things shape it: the knot is the one place the
+    # ribbon is crushed (H_KNOT), every turn pinches it to H_FOLD, the lobes are at their
+    # fullest through their middle, and the outer ends of the lobes and the tails are
+    # between the two.  Because the limbs of a lobe march up and down across the same x
+    # interval, a lobe is a lens with a waist at each end of it: that lens, not a constant
+    # width, is what leaves the knot narrower than the cloth either side of it.
     half = Field([
-        (0.0, 46.0), (P(0, 0.62), 56.0),
-        (P(1, 0.5), 56.0),
-        (P(2, 0.45), HALF_WIDTH), (P(2, 0.68), 120.0), (P(2, 0.93), 54.0),
-        (P(3, 0.5), H_FOLD),                                   # the fold: h <= R_FOLD
-        (P(4, 0.22), 130.0), (P(4, 0.62), HALF_WIDTH), (P(4, 0.93), 96.0),
-        (P(5, 0.32), KNOT_HALF), (P(5, 0.6), 104.0), (P(5, 0.92), 54.0),
+        (0.0, 46.0), (P(0, 0.55), 54.0), (P(0, 0.90), 46.0),   # left tail: broad, then crushed
+        (P(1, 0.5), H_KNOT),                                   # the wrap, crushed at the knot
+        (P(2, 0.0), H_KNOT),
+        (P(2, 0.30), 118.0), (P(2, 0.55), HALF_WIDTH), (P(2, 0.82), 88.0),
+        (P(3, 0.5), H_FOLD),                                   # the fold: R_FOLD - h = 28 px
+        (P(4, 0.30), 118.0), (P(4, 0.58), HALF_WIDTH), (P(4, 0.86), 86.0),
+        (P(5, 0.30), H_KNOT),                                  # the band, crushed at the knot
+        (P(5, 0.62), 128.0), (P(5, 0.92), H_FOLD),
         (P(6, 0.5), H_FOLD),
-        (P(7, 0.25), 130.0), (P(7, 0.62), HALF_WIDTH), (P(7, 0.92), 126.0),
-        (P(8, 0.22), 130.0), (P(8, 0.7), 126.0),
-        (1.0, 122.0),                                          # broad, barely tapered
+        (P(7, 0.02), H_FOLD),
+        (P(7, 0.60), 104.0), (P(7, 0.98), 92.0),   # one ramp each way: the part is short   # one ramp each way: the part is short
+        (P(8, 0.12), H_KNOT), (P(8, 0.45), 96.0), (1.0, 122.0),  # lower tail: crushed, then broad
     ])
+    # Each swing between two levels sits inside a turn (the fold on the way out of a lobe,
+    # the wrap on the way over the knot, the junction on the way into the lower tail).
     depth = Field([
-        (0.0, BACK_TAIL), (P(0, 0.88), BACK_TAIL),
-        (P(1, 0.45), WRAP),                                   # the wrap climbs over the knot
-        (P(2, 0.30), FRONT), (P(2, 0.85), FRONT),
-        (P(3, 0.55), MID),
-        (P(4, 0.60), MID),
-        (P(5, 0.72), FRONT),                                  # the band rises to the right lobe
-        (P(6, 0.55), MID),
-        (P(7, 0.75), MID),
-        (P(8, 0.20), BACK_TAIL + 4.0),
-        (1.0, BACK_TAIL + 4.0),
+        (0.0, TAIL_IN), (P(0, 0.90), TAIL_IN),
+        (P(1, 0.18), WRAP), (P(1, 0.85), WRAP),                # over the knot
+        (P(2, 0.12), LOBE_OUT), (P(2, 0.92), LOBE_OUT),
+        (P(3, 0.92), LOBE_RET),                                # the left fold: front -> behind
+        (P(4, 0.90), LOBE_RET),
+        (P(5, 0.12), BAND), (P(5, 0.90), BAND),                # over both returns
+        (P(7, 0.10), LOBE_RET),                                # the right fold: band -> behind
+        (P(7, 0.92), LOBE_RET),
+        (P(8, 0.10), TAIL_OUT),                                # the tail, over the right lobe
+        (1.0, TAIL_OUT),
     ])
     # roll: how far the strip is turned about its own axis.  A roll near 90 degrees projects
     # the strip to a line and a line of triangles is a fan of slivers, so the ribbon is kept

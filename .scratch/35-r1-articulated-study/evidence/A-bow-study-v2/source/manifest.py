@@ -47,7 +47,7 @@ def write():
     rows = [{"path": rel, "sha256": digest(rel),
              "bytes": os.path.getsize(os.path.join(EVIDENCE, rel))} for rel in file_set()]
     with open(os.path.join(EVIDENCE, "manifest.json"), "w") as fh:
-        json.dump({"evidence": "A-bow-study-v1", "files": rows}, fh, indent=1, sort_keys=True)
+        json.dump({"evidence": "A-bow-study-v2", "files": rows}, fh, indent=1, sort_keys=True)
         fh.write("\n")
     with open(os.path.join(EVIDENCE, "manifest.sha256"), "w") as fh:
         for r in rows:
