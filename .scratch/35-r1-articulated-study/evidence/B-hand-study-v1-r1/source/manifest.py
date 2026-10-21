@@ -16,6 +16,7 @@ import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 EVIDENCE = os.path.dirname(HERE)
+EVIDENCE_NAME = os.path.basename(EVIDENCE)   # this package, whatever it is called
 SELF = {"manifest.json", "manifest.sha256"}
 TREES = ("source", "tests", "check")
 SINGLES = ("artwork.svg", "artwork.png", "README.md")
@@ -47,7 +48,7 @@ def write():
     rows = [{"path": rel, "sha256": digest(rel),
              "bytes": os.path.getsize(os.path.join(EVIDENCE, rel))} for rel in file_set()]
     with open(os.path.join(EVIDENCE, "manifest.json"), "w") as fh:
-        json.dump({"evidence": "B-hand-study-v1", "files": rows}, fh, indent=1, sort_keys=True)
+        json.dump({"evidence": EVIDENCE_NAME, "files": rows}, fh, indent=1, sort_keys=True)
         fh.write("\n")
     with open(os.path.join(EVIDENCE, "manifest.sha256"), "w") as fh:
         for r in rows:

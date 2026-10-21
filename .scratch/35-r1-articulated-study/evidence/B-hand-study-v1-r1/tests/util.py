@@ -129,26 +129,60 @@ def tip_heights(patch, band):
     return signed_heights(ring, band)
 
 
+def underside_surface(rings, steps=25):
+    """The dish's underside as points with outward normals, re-derived from the emitted mesh.
+
+    The axis ring is not a surface: it collapses to a point and its normals are zero, so the
+    signed distance of every vertex from it is 0 by construction - a null measurement that
+    reads exactly like a perfect contact.  It is dropped, and any *other* sample whose normal
+    has vanished raises instead of reporting a number: a height against a degenerate surface is
+    not a measurement, and no test may read one as a contact.
+    """
+    import contact  # noqa: E402  (source/ is on sys.path above)
+    ts = [t for t in np.linspace(0.0, 1.0, steps) if t > 1e-9]
+    samples, normals = [], []
+    for t in ts:
+        ring = contact.underside_ring(rings, t)
+        samples.append(ring["points"])
+        normals.append(ring["normals"])
+    surf, surf_n = np.vstack(samples), np.vstack(normals)
+    lengths = np.linalg.norm(surf_n, axis=1)
+    dead = int((lengths < 1e-6).sum())
+    if dead or not np.isfinite(lengths).all():
+        raise ValueError(f"{dead} of {len(lengths)} underside samples carry a zero normal: the "
+                         "dish's underside is degenerate and no contact height exists")
+    return surf, surf_n
+
+
+def vertex_heights(patch, rings):
+    """Signed distance of every vertex of `patch` to the dish's underside surface.
+
+    Positive is below the plate (along the nearest sample's outward normal), negative is
+    inside it.  The minimum is the part's closest approach to the surface it is said to meet.
+    """
+    surf, surf_n = underside_surface(rings)
+    v = np.asarray(patch.v, float).reshape(-1, 3)
+    out = np.empty(len(v))
+    for chunk in np.array_split(np.arange(len(v)), max(1, len(v) // 2000)):
+        d = np.linalg.norm(surf[None, :, :] - v[chunk, None, :], axis=2)
+        idx = d.argmin(axis=1)
+        out[chunk] = ((v[chunk] - surf[idx]) * surf_n[idx]).sum(axis=1)
+    return out
+
+
 def underside_heights(patch, rings, reach, station):
     """How far a digit's tip ring sits from the dish's own underside, measured against the surface.
 
     The dish's underside is curved, so a plane tangent at one point is not the surface the pad
     rests on: a tilted pad's far edge is legitimately above that plane while still being under
     the plate.  The distance is therefore taken to the nearest point of the *surface*, which is
-    sampled from the emitted mesh by walking `contact.underside_ring` from the axis to the foot
-    ring around the whole revolution - re-derived, never read from the producer.  The sign is
-    the nearest sample's own outward normal, so a positive height is below the plate and a
+    sampled from the emitted mesh by walking `contact.underside_ring` from near the axis to the
+    foot ring around the whole revolution - re-derived, never read from the producer.  The sign
+    is the nearest sample's own outward normal, so a positive height is below the plate and a
     negative one is inside it.  The minimum is the digit's closest approach: below -1 the digit
     is sunk into the plate, beyond the stated clearance it hovers.
     """
-    import contact  # noqa: E402  (source/ is on sys.path above)
-    samples, normals = [], []
-    for t in np.linspace(0.0, 1.0, 25):
-        ring = contact.underside_ring(rings, t)
-        samples.append(ring["points"])
-        normals.append(ring["normals"])
-    surf = np.vstack(samples)
-    surf_n = np.vstack(normals)
+    surf, surf_n = underside_surface(rings)
     out = []
     for v in patch.v[tip_station(patch)]:
         d = np.linalg.norm(surf - np.asarray(v, float), axis=1)

@@ -72,6 +72,38 @@ def underside_ring(rings, t):
 PAD_RUN = 1.6
 
 
+
+def underside_cloud(rings, steps=25):
+    """The dish's underside as points with outward normals: what a clearance is measured to.
+
+    The axis ring is dropped: it collapses to a point and its normals are zero, so it is not a
+    surface.  (A zero normal would make every signed distance 0 - a null measurement that reads
+    as a perfect contact.)
+    """
+    import numpy as _np
+    pts, nrm = [], []
+    for t in _np.linspace(0.0, 1.0, steps):
+        if t <= 1e-9:
+            continue
+        ring = underside_ring(rings, t)
+        pts.append(ring["points"])
+        nrm.append(ring["normals"])
+    return _np.vstack(pts), _np.vstack(nrm)
+
+
+def nearest_clearance(patch, surface):
+    """The signed distance of a patch's nearest vertex to a surface cloud, along the normal."""
+    import numpy as _np
+    surf, surf_n = surface
+    v = _np.asarray(patch.v, float).reshape(-1, 3)
+    best = _np.inf
+    for chunk in _np.array_split(_np.arange(len(v)), max(1, len(v) // 2000)):
+        d = _np.linalg.norm(surf[None, :, :] - v[chunk, None, :], axis=2)
+        idx = d.argmin(axis=1)
+        best = min(best, float(((v[chunk] - surf[idx]) * surf_n[idx]).sum(axis=1).min()))
+    return best
+
+
 def pad_contact(rings, t, station, radius, clearance):
     """The point a pad of `radius` has to sit at to touch the underside at (t, station)."""
     ring = underside_ring(rings, t)
@@ -122,32 +154,16 @@ def finger(name, rings, *, root, station, reach, radii, clearance, samples=24, t
                        up_hint=(0.0, 0.0, 1.0))
 
 
-def thumb(name, rings, base, *, station, radii, clearance, reach=0.45, samples=22, thin=0.95):
-    """The thumb: rooted on the palm's near flank, its pad pressing the underside on the near side.
-
-    Same primitive as a finger, and the same rule: the pad's place is the dish's underside ring
-    at `reach` plus one tip-radius plus the clearance.  What makes it a thumb is signed in the
-    scene - its root is on the near flank of the palm and its direction opposes the fingers -
-    and it is short, so it lands near the foot ring rather than reaching in toward the axis.
-    """
-    r_knuckle, r_prox, r_tip = radii
-    law = digits.law(((0.0, r_knuckle * 0.88), (0.20, r_knuckle), (0.62, r_prox), (1.0, r_tip)))
-    tip, _p, _n = pad_contact(rings, reach, station, r_tip, clearance)
-    approach_t = min(1.0, reach + (1.0 - reach) * 0.45)
-    approach, _ap, _an = pad_contact(rings, approach_t, station, r_prox, clearance)
-    knots = [np.asarray(base, float), approach, tip]
-    return digits.tube(name, knots, law, samples=samples, angles=20, thin=thin,
-                       up_hint=(0.0, 0.0, 1.0))
-
-
 def palm(name, rings, *, wrist, mid, radii, thin, clearance, reach, samples=28):
     """The palm: a flattened mass from the wrist off the frame to the dish's own underside.
 
-    The distal station is set back by one cap radius along the axis, because the tube's rounded
-    end reaches one radius past its last station; the cap therefore lands on the underside ring
-    at `reach` (0 at the dish's axis, 1 at its foot ring), one cap half-axis plus the clearance
-    below that surface.  So the plate rests on the palm, and the palm is *under* it - the plate's
-    own near rim is nearer to the camera than anything the palm puts there.
+    The distal station is set back from the underside point at `reach` (0 at the dish's axis, 1
+    at its foot ring) by exactly one end radius along the palm's own axis, because the tube's
+    rounded end reaches one radius past its last station: the cap's last vertex therefore lands
+    on that underside point, one stated clearance below the surface.  That is a distance, and
+    `tests/test_hand_construction.py::TestContact::test_the_palm_cap_meets_the_underside`
+    measures it.  So the plate rests on the palm, and the palm is *under* it - the plate's own
+    near rim is nearer to the camera than anything the palm puts there.
 
     `radii` = (wrist, heel, mid, end): the heel is the widest ring of the palm and it sits a fifth
     of the way up the mass, which is what makes the bottom block read as the heel of a hand
@@ -160,13 +176,25 @@ def palm(name, rings, *, wrist, mid, radii, thin, clearance, reach, samples=28):
     law = digits.law(((0.0, r_wrist), (0.18, r_heel), (0.45, r_mid), (1.0, r_end)))
     target_ring = underside_ring(rings, reach)
     target_p, target_n = ring_point(target_ring, 270.0)
-    target = target_p + target_n * (r_end * thin + clearance)
+    surface = underside_cloud(rings)
     wrist = np.asarray(wrist, float)
-    axis = geo.unit(target - wrist)
-    end_station = target - axis * (r_end * 0.92)
-    knots = [wrist, np.asarray(mid, float), end_station]
-    patch = digits.tube(name, knots, law, samples=samples, angles=24, thin=thin,
-                        up_hint=(0.0, 0.0, 1.0))
+    # The cap's tip is one end radius past the last station, but the palm is a mass, not a point:
+    # its shoulder reaches the curved underside before the tip does.  The set-back is therefore
+    # solved - build, measure the nearest vertex against the dish's own underside, move the
+    # station by the error - until the closest vertex sits at the stated clearance.  Nothing
+    # here is a typed coordinate, and the loop's result is what the suite re-measures.
+    offset = 0.0
+    for _ in range(4):
+        target = target_p + target_n * (offset + clearance)
+        axis = geo.unit(target - wrist)
+        end_station = target - axis * r_end
+        knots = [wrist, np.asarray(mid, float), end_station]
+        patch = digits.tube(name, knots, law, samples=samples, angles=24, thin=thin,
+                            up_hint=(0.0, 0.0, 1.0))
+        gap = nearest_clearance(patch, surface)
+        if abs(gap - clearance) < 0.05:
+            break
+        offset += clearance - gap
     lateral = geo.unit(np.cross(axis, np.array([0.0, 0.0, 1.0])))
     if lateral[0] < 0.0:                      # +lateral always points to the drawer's right
         lateral = -lateral

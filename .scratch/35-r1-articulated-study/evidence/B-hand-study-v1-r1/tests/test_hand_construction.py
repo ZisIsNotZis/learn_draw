@@ -172,27 +172,94 @@ class TestContact(unittest.TestCase):
                            "the contact check did not notice the hand leaving the dish")
 
     def test_the_hand_follows_the_dish(self):
-        """Change the underside's own drivers and the fingertip must move with it, not stay put."""
+        """Change the underside's own drivers and the hand must move with it, not stay put.
+
+        Two measurements, and neither is the old revision's: the rebuilt hand rests on the
+        moved surface (the fingerprint of a derived pose), and a hand *held* at the old pose
+        no longer does (the fingerprint of a typed one).  The perturbation has to move the
+        surface rather than degrade it: an underside whose normals have vanished measures 0.0
+        for every vertex, so `util.underside_surface` raises instead of reporting contact.
+        """
         parts_before, rings_before = util.parts()
         before = util.underside_heights(parts_before["index"], rings_before,
                                         util.reach_of("index"), util.station_of("index"))
         saved = (dish.FOOT_RADIUS, dish.AXIS_UNDER_Z)
         try:
-            dish.FOOT_RADIUS = saved[0] + 26.0
-            dish.AXIS_UNDER_Z = saved[1] - 20.0
+            dish.FOOT_RADIUS = saved[0] + 60.0
+            dish.AXIS_UNDER_Z = saved[1] + 30.0
             parts_after, rings_after = util.parts()
             tip_before = parts_before["index"].v[-1].mean(axis=0)
             tip_after = parts_after["index"].v[-1].mean(axis=0)
             after = util.underside_heights(parts_after["index"], rings_after,
                                            util.reach_of("index"), util.station_of("index"))
+            held = util.underside_heights(parts_before["index"], rings_after,
+                                          util.reach_of("index"), util.station_of("index"))
         finally:
             dish.FOOT_RADIUS, dish.AXIS_UNDER_Z = saved
+        clearance = scene.FINGER_GEOMETRY["clearance"]
         moved = float(np.linalg.norm(tip_after - tip_before))
-        print(f"  dish foot +26 px / underside axis -20 px: the fingertip moved {moved:.1f} px; "
-              f"clearance from the new underside {after.min():.2f} (was {before.min():.2f})")
+        print(f"  dish foot +60 px / underside axis +30 px: the fingertip moved {moved:.1f} px; "
+              f"rebuilt hand {after.min():.2f} px from the new underside (was {before.min():.2f}), "
+              f"hand held at the old pose {held.min():.2f} px")
         self.assertGreater(moved, 20.0, "the fingertip did not follow the dish: it is authored")
-        self.assertLess(after.min(), scene.FINGER_GEOMETRY["clearance"] + 4.0,
+        self.assertGreater(after.min(), -1.0, "the rebuilt hand penetrates the moved underside")
+        self.assertLess(after.min(), clearance + 4.0,
                         "after the dish changed the finger stopped resting on it")
+        self.assertGreater(held.min(), clearance + 4.0,
+                           "a hand held at the old pose still looks like contact: the height "
+                           "does not depend on where the dish is")
+
+    def test_the_palm_cap_meets_the_underside(self):
+        """The palm's nearest vertex sits one clearance below the underside it is said to meet.
+
+        The claim the README makes - the palm's distal end meets the dish's underside - was
+        unmeasured, and a probe put the palm's mass 28 px below the surface it was said to
+        touch.  The construction now solves its distal station against the surface, and this
+        measures the result with the test's own sampler.
+        """
+        parts, rings = util.parts()
+        heights = util.vertex_heights(parts["palm"], rings)
+        clearance = scene.PALM["clearance"]
+        print(f"  palm nearest vertex {heights.min():.2f} px from the underside "
+              f"(clearance {clearance:.1f})")
+        self.assertGreater(heights.min(), -1.0, "the palm penetrates the plate's underside")
+        self.assertLess(heights.min(), clearance + 4.0,
+                        f"the palm stops {heights.min():.1f} px below the underside it claims "
+                        "to meet")
+
+
+def contact_negative_control_lines():
+    """The contact half of the negative-control record: the real build, and the lift mutation.
+
+    Computed from the same two measurements the contact tests make, so the record and the tests
+    cannot state different numbers.
+    """
+    parts, rings = util.parts()
+    real = util.underside_heights(parts["index"], rings, util.reach_of("index"),
+                                  util.station_of("index"))
+    saved = scene.FINGER_GEOMETRY
+    try:
+        scene.FINGER_GEOMETRY = dict(saved, clearance=saved["clearance"] + 20.0)
+        lifted, rings_after = util.parts()
+        mut = util.underside_heights(lifted["index"], rings_after, util.reach_of("index"),
+                                     util.station_of("index"))
+    finally:
+        scene.FINGER_GEOMETRY = saved
+    base, bound = saved["clearance"], saved["clearance"] + 4.0
+    caught = bool(mut.min() >= bound)
+    return [
+        "contact negative control (R1 re-target): the lift mutation must still fail the contact check",
+        "test        : TestContact::test_a_digit_that_lifts_off_the_underside_is_caught",
+        f'mutation    : scene.FINGER_GEOMETRY["clearance"] {base:g} -> {base + 20.0:g} px, '
+        "everything else held fixed",
+        f"real build  : index tip {real.min():.2f} .. {real.max():.2f} px below the dish's "
+        "underside (rests)",
+        f"mutation    : mutation (clearance + 20 px): lowest {mut.min():.2f} px",
+        f"assertion   : heights.min() < clearance + 4.0 = {bound:.1f} px  ->  {mut.min():.2f} is "
+        f"{'not ' if caught else ''}less than {bound:.1f}: it {'fails' if caught else 'passes'}",
+        ("PASS: the contact check notices a hand that leaves the dish by 20 px" if caught else
+         "FAIL: the contact check did not notice the hand leaving the dish"),
+    ]
 
 
 class TestDishStructure(unittest.TestCase):

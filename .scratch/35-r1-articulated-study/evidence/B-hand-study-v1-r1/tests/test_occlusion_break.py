@@ -31,6 +31,7 @@ import util  # noqa: E402
 import build  # noqa: E402
 
 SVG = os.path.join(util.EVIDENCE, "artwork.svg")
+RECORD = os.path.join(HERE, "negative-control-output.txt")
 INK = re.compile(r'<polyline class="(\w+)" data-part="(\w+)" data-id="(\w+)" '
                  r'data-s0="([\d.]+)" data-s1="([\d.]+)"')
 MIN_SEP = 6.0          # px of depth: below this a crossing is not an occlusion
@@ -146,8 +147,8 @@ class TestOcclusionIsBrokenByDepth(unittest.TestCase):
         self.assertEqual(failures, [])
 
 
-def negative_control():
-    """The same audit against a build that emits every stroke unbroken."""
+def negative_control_text():
+    """The whole record, both controls, computed from the build on disk - never hand-written."""
     healthy_total, healthy_bad, healthy_contacts, _t = audit()
     res = build.resolve(break_depth=False)
     mutated = os.path.join(HERE, "_negative-control.svg")
@@ -169,12 +170,38 @@ def negative_control():
     if m_bad:
         lines.append("  mutation failures (expected, this is the point):")
         lines += ["    " + f for f in m_bad[:8]]
-    verdict = ("PASS: the depth break is what makes the test pass"
-               if not healthy_bad and m_bad else
-               "FAIL: the mutation did not fail the audit")
-    lines.append(verdict)
-    open(os.path.join(HERE, "negative-control-output.txt"), "w").write("\n".join(lines) + "\n")
-    return not healthy_bad and bool(m_bad)
+    lines.append("PASS: the depth break is what makes the test pass"
+                 if not healthy_bad and m_bad else
+                 "FAIL: the mutation did not fail the audit")
+    import test_hand_construction  # noqa: E402  (same directory; needs source/ on sys.path)
+    return "\n".join(lines + [""] + test_hand_construction.contact_negative_control_lines()) + "\n"
+
+
+def negative_control():
+    """Regenerate the whole record - both controls - from the build on disk.
+
+    It maintains the file: every section it owns is recomputed and rewritten, so the record
+    cannot lose half of itself when the producer runs.  It never appends and never keeps an
+    old section, and `TestNegativeControlRecord` fails when the committed file and a fresh
+    computation disagree, so the record cannot go stale under a green suite either.
+    """
+    text = negative_control_text()
+    open(RECORD, "w").write(text)
+    return "FAIL:" not in text
+
+
+class TestNegativeControlRecord(unittest.TestCase):
+    def test_the_committed_record_is_this_revision(self):
+        """The committed evidence states this build's numbers, or the suite is red."""
+        committed = open(RECORD).read()
+        fresh = negative_control_text()
+        print(f"  negative-control record: {len(committed.splitlines())} lines committed, "
+              f"{'identical' if committed == fresh else 'DIFFERS from this build'}")
+        self.assertEqual(committed, fresh,
+                         "tests/negative-control-output.txt does not state what this build "
+                         "does; regenerate it with: PYTHONPATH=... python -c \"import sys; "
+                         "sys.path[:0]=['tests','source','.']; import test_occlusion_break as t; "
+                         "t.negative_control()\"")
 
 
 if __name__ == "__main__":

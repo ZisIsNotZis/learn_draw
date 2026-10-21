@@ -1,4 +1,4 @@
-# B-hand-study-v1-r1 — repair pass on the failed B hand study (SUITE GREEN, ART VERDICT ABSENT)
+# B-hand-study-v1-r1 — repair pass on the failed B hand study (SUITE GREEN 25/25, ART VERDICT PENDING)
 
 This directory is a copy of `../B-hand-study-v1/` (which stays untouched: it is the revision
 the archived image review is bound to by hash) carrying one repair pass against
@@ -7,13 +7,15 @@ the archived verdict
 [`../../evidence/reviews-r1a/B-hand-study-v1-image-review-1.md`](../reviews-r1a/B-hand-study-v1-image-review-1.md),
 and package E of [`../../work/wave13-contracts.md`](../../work/wave13-contracts.md).
 
-**Read this first: the suite is green, 23 of 23.** Every digit's tip ring now rests on the dish's
-own underside inside the bounds the inherited contact test already states: the closest vertex of
-each pad stands between 1.60 px and 4.26 px off the surface, against the test's window of
-`> −1.0` and `< clearance + 4.0` (5.5 px at the stated 1.5 px clearance). The lift mutation
-(`clearance + 20 px`) still fails the check at 21.77 px. No bound was moved, no assertion was
-edited, no test was added or deleted. This package awards no art verdict and claims none: a fresh
-reviewer decides.
+**Read this first: the suite is green, 25 of 25.** Every digit's tip ring rests on the dish's own
+underside inside the bounds the contact test already states: the closest vertex of each pad stands
+between 1.63 px and 3.92 px off the surface, against the window `> −1.0` and
+`< clearance + 4.0` (5.5 px at the stated 1.5 px clearance). The palm's nearest vertex is 1.50 px
+from the same surface, and a hand held at the old pose no longer meets a moved dish. The lift
+mutation (`clearance + 20 px`) still fails the check at 21.70 px. Two tests were added and none of
+the inherited bounds was moved or weakened: `test_the_palm_cap_meets_the_underside` and
+`test_the_committed_record_is_this_revision`. This package awards no art verdict and claims none: a
+fresh reviewer decides.
 
 ## What changed in the construction
 
@@ -25,8 +27,10 @@ the face that carries the plate's weight, so:
 
 - the plate's near rim is nearer to the camera than any hand surface that overlaps it, so no hand
   quad paints in front of the rim (the v1 inversion is gone by construction, not by paint order);
-- the palm's distal end meets the underside at `PALM["reach"]` and its mass rises to the plate's
-  near contour with no background gap;
+- the palm's distal station is **solved**, not typed: `contact.palm` builds the mass, measures its
+  nearest vertex against the dish's own underside and moves the station by the error until the
+  closest vertex sits one stated clearance below the surface (it reads 1.50 px; the measured truth
+  of the previous revision was 28.05 px, which is what its README wrongly called "meets");
 - the digits reach in under the plate and are **cut off by the plate's near silhouette**.
 
 Two other changes are pose/geometry only, both computed:
@@ -108,12 +112,13 @@ tip ring against the dish's underside, re-derived through `dish.derived_rings()`
 `contact.underside_ring()`. Quoted from the suite, all five digits:
 
 ```
-index    tip   1.60 ..  35.41 px below the dish's underside
-middle   tip   4.26 ..  36.77 px below the dish's underside
-ring     tip   2.86 ..  30.15 px below the dish's underside
-little   tip   1.60 ..  25.40 px below the dish's underside
+index    tip   1.74 ..  35.27 px below the dish's underside
+middle   tip   3.92 ..  37.11 px below the dish's underside
+ring     tip   2.69 ..  30.31 px below the dish's underside
+little   tip   1.68 ..  25.32 px below the dish's underside
 thumb    tip   1.63 ..  53.37 px below the dish's underside
-mutation (clearance + 20 px): lowest 21.77 px
+palm     nearest vertex 1.50 px below the dish's underside
+mutation (clearance + 20 px): lowest 21.70 px
 ```
 
 The stand-off was never the contact point: that point is derived correctly. It was the **arrival
@@ -137,9 +142,10 @@ Measured before → after, minimum stand-off per digit: index 7.05 → 1.60, mid
 ring 13.56 → 2.86, little 6.24 → 1.60, thumb 8.81 → 1.63. Only the index digit was previously
 named because the assertion stops at the first digit it visits; all five were over.
 
-`PAD_RUN` is not free: at 1.7 the thumb's bend into its pad breaks the palm's rear edge
-(`tests/test_occlusion_break.py::test_every_occlusion_has_a_broken_rear_edge`), so the run is as
-long as the frame allows, not as long as the contact bound allows.
+`PAD_RUN` is not free: measured step by step on this construction, `PAD_RUN` = 1.7 gives 95
+occlusions and 0 failures, and the first failure is at 1.8 (the thumb's bend into its pad breaks
+the palm's rear edge, `tests/test_occlusion_break.py::test_every_occlusion_has_a_broken_rear_edge`),
+so the run is as long as the frame allows, not as long as the contact bound allows.
 
 ## The contract conflict the previous pass hit — RESOLVED (kept for the record)
 
@@ -200,7 +206,10 @@ floor was not moved: it reads 0.30 in `tests/test_hand_construction.py` (`DISTAL
 cd .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1
 ../../../../.venv/bin/python source/build.py                 # -> artwork.svg (deterministic)
 ../../../../scripts/draw render artwork.svg -o artwork.png   # the documented render path
-../../../../.venv/bin/python -m unittest discover -s tests -t .   # 23 inherited tests: OK
+../../../../.venv/bin/python -m pytest -q tests/                # 25 tests: 25 passed
+# regenerate the negative-control record after any build (both controls, whole file):
+PYTHONPATH=../../../../.venv/lib/python3.12/site-packages:. ../../../../.venv/bin/python -c \
+  "import sys; sys.path[:0]=['tests','source','.']; import test_occlusion_break as t; t.negative_control()"
 ../../../../.venv/bin/python source/manifest.py --check      # 19/19
 sha256sum -c manifest.sha256                                 # 19/19 OK
 # the review bundle, routed inside this package (no --ref: this stage is reference-free)
@@ -222,7 +231,11 @@ scripts/draw check .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1/
   suite; `tests/negative-control-output.txt` now also carries this revision's contact negative
   control.
 - The rim-band contour, the highlight's hard termination, the stray marks inside the well and the
-  pale tip quads (review items N1–N5) are untouched.
+  pale tip quads (review items N1–N5) are untouched, and so are the image reviewer's blocking
+  findings B1 (the dish reads as an exposed triangle fan with a dither grid) and B2 (the hand reads
+  as flat-shaded facets with a serrated silhouette): this pass cured execution blockers on the
+  construction, not the picture. `source/contact.py`'s dead `thumb()` - no call site, the thumb is
+  built by `finger()` - was deleted in this pass.
 - the contact window is met by every digit but **the middle digit is the tightest at 4.26 px
   against the 5.5 px bound**; a wider `PAD_RUN` closes that margin further but breaks the palm's
   rear edge, so the two are in tension and only the occlusion test decides between them;
@@ -245,9 +258,28 @@ each one measures — the rim band's top plane (retired) became the dish's under
 - `test_a_digit_that_lifts_off_the_rim_is_caught` → `test_a_digit_that_lifts_off_the_underside_is_caught`;
   same mutation (`clearance + 20 px`), same assertion, on the new surface.
   Proof it still bites: `tests/negative-control-output.txt`.
-- `test_the_hand_follows_the_dish`: perturbs the underside's own drivers, `dish.FOOT_RADIUS` (+26)
-  and `dish.AXIS_UNDER_Z` (−20), instead of `RIM_OUTER`/`RIM_INNER`, which no longer drive contact.
-  Same assertions (`moved > 20 px`, `rests on the new surface`).
+- `test_the_hand_follows_the_dish`: perturbs the underside's own drivers,
+  `dish.FOOT_RADIUS` (+60) and `dish.AXIS_UNDER_Z` (+30), instead of `RIM_OUTER`/`RIM_INNER`, which
+  no longer drive contact. The perturbation is one that **bites**: the rebuilt hand rests on the
+  moved surface (1.61 px) and a hand held at the old pose does not (6.88 px, past the 5.5 px bound).
+  The old numbers (+26 / −20) were replaced because at −20 the dish's underside collapses: every
+  sample's normal is zero and every height is 0.00 by construction, a null measurement the test
+  read as a perfect contact. `util.underside_surface` now drops the axis ring and **raises** when
+  any other sample's normal has vanished, so a degenerate dish fails the test instead of passing it.
+
+Two tests were added in this pass:
+
+- `test_the_palm_cap_meets_the_underside` measures the palm's nearest vertex against the underside
+  with the test's own sampler (the claim had no measurement behind it, and the geometry missed the
+  surface by 28.05 px);
+- `test_the_committed_record_is_this_revision` recomputes the whole negative-control record and
+  fails when `tests/negative-control-output.txt` and the build disagree, so the record cannot go
+  stale under a green suite (it was the previous revision's numbers, 74/6 against this build's
+  93/5). `negative_control()` now rewrites **both** sections - occlusion and contact - instead of
+  overwriting the file with one of them.
+
+Every command below was run: `source/build.py` (4030 quads, 27 stroke curves), both renders, the
+record regeneration, `manifest.py --write`, `pytest -q tests/` → 25 passed.
 
 `TestContact::test_the_band_is_a_rim_with_two_edges` and every other test are untouched: the dock
 still has a rim with thickness, and the band is still measured — it is simply no longer the contact
@@ -256,5 +288,5 @@ surface.
 ## Files
 
 `source/` (`geo.py`, `dish.py`, `digits.py`, `contact.py`, `scene.py`, `build.py`, `manifest.py`),
-`tests/` (23 inherited tests, unchanged), `artwork.svg` + `artwork.png` (900×700),
+`tests/` (25 tests: 23 inherited bounds, two added this pass), `artwork.svg` + `artwork.png` (900×700),
 `check/` (1:1 image listed first), `manifest.json` + `manifest.sha256`, this README.
