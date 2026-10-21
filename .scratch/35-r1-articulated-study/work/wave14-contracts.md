@@ -106,3 +106,40 @@ each. Package C (`A-bow-study-v2` image review) waits for F, because F moves the
 image verdict on a revision that is about to change expires the moment it changes. Package D
 (`B-hand-study-v1-r1` structural review) waits for I, not G: D re-runs the suite and the manifest, and
 a package whose tests are still being written is not a package to audit.
+
+## Second round — packages F2 and G2, dispatched after the first round returned
+
+Round one's results are in [`STATUS.md`](../../../STATUS.md) and wave-log rows 28–29. Package F
+returned **17/17** and named a residual defect it would not fix outside its one law: `_knot_at`
+returns `1.0` for `k >= len(parts) - 1`, so the lower tail's three knots collapse to the strip's end
+and the emitted series carries a 90 half-px step at the last station that the continuity test cannot
+see. Package G returned **22/23** with one honest construction failure (the middle lies 10.6 px below
+the underside instead of on it) and **proved one of my directions unreachable**, which is what a
+writer should do with an unsatisfiable direction.
+
+- **Package F2 — `r1a-a-bow-v2-tail`:** kill the off-by-one so the tail's width series is the one the
+  source declares, then rebuild artwork, bundle, manifest and README over the new revision. Payload:
+  [`wave14-a-bow-tail.js`](wave14-a-bow-tail.js). **Accept:** 17/17 with the terminal stations' widths
+  quoted, `cmp` clean on SVG and PNG, bundle regenerated from this revision with `draft.png` equal to
+  `artwork.png`, manifest 17/17, README numbers updated. **Clock:** 20 minutes.
+- **Package G2 — `r1a-b-hand-r1-pad`:** make the pad's axis parallel to the surface it rests on so
+  every digit is inside the contact bounds the tests already use, then rebuild the package. Payload:
+  [`wave14-b-hand-pad.js`](wave14-b-hand-pad.js). **Accept:** 23/23, per-digit stand-off quoted inside
+  `>= -1.0` and `< clearance + 4.0`, separations still quoted, bundle and manifest over this revision.
+  **Clock:** 20 minutes.
+
+**Resolution R3 — R2's means retired, its end kept.** The previous run proved that no resting pad can
+reach past the plate's lower silhouette under an unbroken near rim (the bound is
+`y ≈ 154.5 + 2·r_tip + 1.5 px` against the plate's `209.1 px`), so "pads extend outboard" is
+unsatisfiable by construction and would have sent a second writer into the same wall. The end stands:
+the hand is legible because its shafts and knuckles read against the background below the plate, which
+the delivered revision already does (digits span `y 71 → 382`). What reversing this costs: requiring
+the pads visible would mean giving up the unbroken near rim, i.e. restoring the inversion the review
+blocked — the one thing this repair exists to remove.
+
+## Landing the first round
+
+Round one's two results are landed in the same act as this cut: wave-log rows 28–29 carry the
+outcomes and the hashes, `STATUS.md` carries the current fact, and the tooling defect both writers
+paid for is fixed at its class in `scripts/draw.py::_check_dir` (a package under
+`.scratch/<ex>/evidence/<pkg>/` owns its own `check/`; the old mapping wrote one level above it).
