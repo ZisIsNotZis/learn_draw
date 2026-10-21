@@ -25,6 +25,11 @@ verbatim as the task text of two background children.
 
 ## The decisions this wave takes
 
+- **Run ids, for a later reader who has to find a reaped run:** package A `97d0e1c2-0ef3-410a-8afe-449930bc6c3a` (agent `worker`, fresh,
+  `timeoutMs` 4 500 000, checkpoint steer at 65 min), package B `d5852429-afb3-47ae-b6d8-2cf270ce7655` (agent `reviewer`, fresh,
+  `timeoutMs` 1 500 000, output bound to the archive path). Both launched `async` from the checkout with `worktree: false`,
+  which is what lets package A commit into `evidence/A-bow-study-v2/` directly.
+
 1. **Ordering: the B image review and the v2 repair run concurrently, and neither is a second writer.**
    The reviewer holds no write area in the study tree — it reads two PNGs and writes one report into
    `evidence/reviews-r1a/` — so "one live writer per area" is satisfied with exactly one writer,
