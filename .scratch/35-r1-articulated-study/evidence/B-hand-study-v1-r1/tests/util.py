@@ -127,3 +127,82 @@ def tip_heights(patch, band):
     """
     ring = patch.v[tip_station(patch)]
     return signed_heights(ring, band)
+
+
+def underside_heights(patch, rings, reach, station):
+    """How far a digit's tip ring sits from the dish's own underside, measured against the surface.
+
+    The dish's underside is curved, so a plane tangent at one point is not the surface the pad
+    rests on: a tilted pad's far edge is legitimately above that plane while still being under
+    the plate.  The distance is therefore taken to the nearest point of the *surface*, which is
+    sampled from the emitted mesh by walking `contact.underside_ring` from the axis to the foot
+    ring around the whole revolution - re-derived, never read from the producer.  The sign is
+    the nearest sample's own outward normal, so a positive height is below the plate and a
+    negative one is inside it.  The minimum is the digit's closest approach: below -1 the digit
+    is sunk into the plate, beyond the stated clearance it hovers.
+    """
+    import contact  # noqa: E402  (source/ is on sys.path above)
+    samples, normals = [], []
+    for t in np.linspace(0.0, 1.0, 25):
+        ring = contact.underside_ring(rings, t)
+        samples.append(ring["points"])
+        normals.append(ring["normals"])
+    surf = np.vstack(samples)
+    surf_n = np.vstack(normals)
+    out = []
+    for v in patch.v[tip_station(patch)]:
+        d = np.linalg.norm(surf - np.asarray(v, float), axis=1)
+        i = int(np.argmin(d))
+        out.append(float((np.asarray(v, float) - surf[i]) @ surf_n[i]))
+    return np.array(out)
+
+
+def station_of(name):
+    """The pose's own contact parameter for a digit: the dish station its pad lands on."""
+    if name == "thumb":
+        return scene.THUMB["station"]
+    for finger_name, _off, station, _reach, _radii in scene.FINGERS:
+        if finger_name == name:
+            return station
+    raise KeyError(f"no digit named {name}")
+
+
+def reach_of(name):
+    """The pose's own contact parameter for a digit: how far in toward the axis its pad lands."""
+    if name == "thumb":
+        return scene.THUMB["reach"]
+    for finger_name, _off, _station, reach, _radii in scene.FINGERS:
+        if finger_name == name:
+            return reach
+    raise KeyError(f"no digit named {name}")
+
+
+def plate_bottom_contour(dish_patch, steps=900):
+    """The plate's lower silhouette, as a screen x -> the lowest screen y the plate reaches.
+
+    The rim's own ring is not the silhouette: the outer wall bulges below it, so the boundary
+    a hand has to clear is the lowest point of the whole emitted dish at each screen column.
+    Returned as a dense column table, so a caller can ask whether a point is outside it.
+    """
+    p = geo.project(dish_patch.v.reshape(-1, 3))
+    lo, hi = float(p[:, 0].min()), float(p[:, 0].max())
+    cols = np.full(steps, -np.inf)
+    idx = np.clip(((p[:, 0] - lo) / max(1e-9, hi - lo) * (steps - 1)).round().astype(int),
+                  0, steps - 1)
+    np.maximum.at(cols, idx, p[:, 1])
+    # the mesh is sampled, so a column with no vertex of its own inherits its nearest neighbour
+    known = np.isfinite(cols)
+    if not known.any():
+        raise AssertionError("the dish emitted no screen columns")
+    xs = np.linspace(lo, hi, steps)
+    cols = np.interp(xs, xs[known], cols[known])
+    return xs, cols
+
+
+def outside_plate(points, contour):
+    """Which screen points (x, y, depth) fall below the plate's lower silhouette."""
+    xs, ys = contour
+    p = np.asarray(points, float)
+    below = p[:, 1] > np.interp(np.clip(p[:, 0], xs[0], xs[-1]), xs, ys)
+    beyond = (p[:, 0] < xs[0]) | (p[:, 0] > xs[-1])
+    return below | beyond

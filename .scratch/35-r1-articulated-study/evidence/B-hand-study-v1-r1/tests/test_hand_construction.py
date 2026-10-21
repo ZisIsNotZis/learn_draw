@@ -6,10 +6,10 @@ Six claims, and where each one comes from:
   * the digits are merged at their roots and separated at their distal halves, as fractions of a
     digit's own width - the merge is stated here, not hidden;
   * every digit tapers toward its tip;
-  * every digit's tip rests on the dish's rim, one digit-radius plus one clearance above the
-    rim's own band plane, and nothing of the hand penetrates the band; the band is re-derived
-    here from the mesh rather than read from the producer, and the hand follows the dish when
-    the dish's own size constants change;
+  * every digit's tip rests on the dish's **underside**, one digit-radius plus one clearance
+    below it, and nothing of the hand penetrates it; the surface is re-derived here from the
+    mesh (`dish.derived_rings` -> `contact.underside_ring`) rather than read from the producer,
+    and the hand follows the dish when the underside's own size constants change;
   * the dish has a rim with thickness, an inner wall and an underside;
   * no stroke in the drawing is a drawn-on line: every stroke is either a computed contour or a
     computed fold, and the digits carry no folds at all.
@@ -116,7 +116,14 @@ class TestSeparation(unittest.TestCase):
 
 
 class TestContact(unittest.TestCase):
-    """Contact is a distance from the dish's own band, re-derived here, not a claim."""
+    """Contact is a distance from the dish's own underside, re-derived here, not a claim.
+
+    Re-targeted per resolution R1 of wave 14: the hand is under the plate by the owner's
+    direction, so the rim band's top plane is no longer a contact surface and the law is
+    measured against the surface the construction actually touches - the dish's own underside
+    ring.  The law is unchanged: a digit's pad rests on the contact surface, does not penetrate
+    it, and a digit that lifts off is caught.
+    """
 
     def _band(self):
         parts, _rings = util.parts()
@@ -135,26 +142,29 @@ class TestContact(unittest.TestCase):
         self.assertLess(tilt, 6.0, "the rim's band is not flat: it has no thickness to read")
         self.assertEqual(len(axis.v), len(parts["dish"].v))
 
-    def test_every_digit_rests_on_the_band_and_none_penetrates_it(self):
-        band, parts = self._band()
+    def test_every_digit_rests_on_the_underside_and_none_penetrates_it(self):
+        _band, parts = self._band()
+        _all, rings = util.parts()
         clearance = scene.FINGER_GEOMETRY["clearance"]
         for name in util.DIGITS:
-            heights = util.tip_heights(parts[name], band)
+            heights = util.underside_heights(parts[name], rings, util.reach_of(name),
+                                            util.station_of(name))
             print(f"  {name:8s} tip {heights.min():6.2f} .. {heights.max():6.2f} px "
-                  f"from the band plane")
-            self.assertGreater(heights.min(), -1.0, f"{name} penetrates the rim")
+                  f"below the dish's underside")
+            self.assertGreater(heights.min(), -1.0, f"{name} penetrates the plate's underside")
             self.assertLess(heights.min(), clearance + 4.0,
-                            f"{name} hovers {heights.min():.1f} px above the rim instead of "
-                            f"resting on it")
+                            f"{name} hovers {heights.min():.1f} px below the underside instead "
+                            f"of resting on it")
 
-    def test_a_digit_that_lifts_off_the_rim_is_caught(self):
+    def test_a_digit_that_lifts_off_the_underside_is_caught(self):
         """Mutation: a hand that hovers 20 px clear of the dish must fail the contact check."""
-        band, parts = self._band()
+        _band, parts = self._band()
         saved = scene.FINGER_GEOMETRY
         try:
             scene.FINGER_GEOMETRY = dict(saved, clearance=saved["clearance"] + 20.0)
-            lifted, _rings = util.parts()
-            heights = util.tip_heights(lifted["index"], band)
+            lifted, rings_after = util.parts()
+            heights = util.underside_heights(lifted["index"], rings_after,
+                                             util.reach_of("index"), util.station_of("index"))
         finally:
             scene.FINGER_GEOMETRY = saved
         print(f"  mutation (clearance + 20 px): lowest {heights.min():.2f} px")
@@ -162,23 +172,24 @@ class TestContact(unittest.TestCase):
                            "the contact check did not notice the hand leaving the dish")
 
     def test_the_hand_follows_the_dish(self):
-        """Change the dish's own size and the fingertip must move with it, not stay put."""
-        parts_before, _r = util.parts()
-        before = util.tip_heights(parts_before["index"], util.rim_band(parts_before["dish"]))
-        saved = (dish.RIM_OUTER, dish.RIM_INNER)
+        """Change the underside's own drivers and the fingertip must move with it, not stay put."""
+        parts_before, rings_before = util.parts()
+        before = util.underside_heights(parts_before["index"], rings_before,
+                                        util.reach_of("index"), util.station_of("index"))
+        saved = (dish.FOOT_RADIUS, dish.AXIS_UNDER_Z)
         try:
-            dish.RIM_OUTER = saved[0] + 26.0
-            dish.RIM_INNER = saved[1] + 20.0
-            parts_after, _r = util.parts()
+            dish.FOOT_RADIUS = saved[0] + 26.0
+            dish.AXIS_UNDER_Z = saved[1] - 20.0
+            parts_after, rings_after = util.parts()
             tip_before = parts_before["index"].v[-1].mean(axis=0)
             tip_after = parts_after["index"].v[-1].mean(axis=0)
-            after = util.tip_heights(parts_after["index"],
-                                     util.rim_band(parts_after["dish"]))
+            after = util.underside_heights(parts_after["index"], rings_after,
+                                           util.reach_of("index"), util.station_of("index"))
         finally:
-            dish.RIM_OUTER, dish.RIM_INNER = saved
+            dish.FOOT_RADIUS, dish.AXIS_UNDER_Z = saved
         moved = float(np.linalg.norm(tip_after - tip_before))
-        print(f"  dish rim +26 px: the fingertip moved {moved:.1f} px; "
-              f"height above the new band {after.min():.2f} (was {before.min():.2f})")
+        print(f"  dish foot +26 px / underside axis -20 px: the fingertip moved {moved:.1f} px; "
+              f"clearance from the new underside {after.min():.2f} (was {before.min():.2f})")
         self.assertGreater(moved, 20.0, "the fingertip did not follow the dish: it is authored")
         self.assertLess(after.min(), scene.FINGER_GEOMETRY["clearance"] + 4.0,
                         "after the dish changed the finger stopped resting on it")

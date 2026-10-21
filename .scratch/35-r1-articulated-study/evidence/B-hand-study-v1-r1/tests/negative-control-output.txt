@@ -11,3 +11,11 @@ mutation   : --no-depth-break, 74 occlusions, 74 failures, 6 contacts
     rear edge drawn through, dish.sil1 x little.sil0 at (620,445) (rear dish, s=0.221)
     rear edge drawn through, dish.sil1 x little.sil0 at (537,473) (rear little, s=0.820)
 PASS: the depth break is what makes the test pass
+
+contact negative control (R1 re-target): the lift mutation must still fail the contact check
+test        : TestContact::test_a_digit_that_lifts_off_the_underside_is_caught
+mutation    : scene.FINGER_GEOMETRY["clearance"] 1.5 -> 21.5 px, everything else held fixed
+real build  : index tip 3.60 .. 33.40 px below the dish's underside (rests)
+mutation    : mutation (clearance + 20 px): lowest 23.00 px
+assertion   : heights.min() < clearance + 4.0 = 5.5 px  -> 23.00 is not less than 5.5: it fails
+PASS: the contact check notices a hand that leaves the dish by 20 px

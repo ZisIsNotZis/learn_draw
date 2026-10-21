@@ -25,15 +25,25 @@ DISH_POSE = dict(tilt_deg=12.0, offset=(400.0, 40.0, 0.0))
 # (name, root offset across the palm's knuckle line as a fraction of the palm's end radius,
 #  ring station in degrees around the dish, how far in toward the axis the pad lands on the
 #  underside (0 = the axis, 1 = the foot ring), the digit's (knuckle, proximal, middle, tip)
-#  radii).  The stations are deliberately uneven and the reaches differ by more than a digit's
-#  width: five digits of one radius law on an even fan is the study's "rake tines" failure.
+#  radii).  The stations are spread across the plate's lower silhouette rather than bunched at
+#  its bottom, so each digit reads as its own length below the plate; they are also uneven, and
+#  the reaches differ by more than a digit's width, because five digits of one radius law on an
+#  even fan is the study's "rake tines" failure.
 FINGERS = (
-    ("index", -0.92, 228.0, 0.86, (33.0, 30.0, 27.0, 17.0)),
-    ("middle", -0.30, 254.0, 0.98, (35.0, 32.0, 29.0, 19.0)),
-    ("ring", 0.34, 286.0, 0.94, (30.0, 27.0, 24.0, 15.0)),
-    ("little", 0.96, 316.0, 0.88, (25.0, 22.0, 19.0, 12.0)),
+    ("index", -0.92, 202.0, 0.86, (33.0, 30.0, 27.0, 17.0)),
+    ("middle", -0.30, 240.0, 0.98, (35.0, 32.0, 29.0, 19.0)),
+    ("ring", 0.34, 288.0, 0.94, (30.0, 27.0, 24.0, 15.0)),
+    ("little", 0.96, 330.0, 0.88, (25.0, 22.0, 19.0, 12.0)),
 )
 FINGER_GEOMETRY = dict(clearance=1.5, thin=0.88, samples=24)
+
+# How far back along the palm's own axis the digits are rooted, as a fraction of the palm's
+# length from its distal end toward the wrist.  A knuckle line at the palm's distal end puts
+# every digit behind the plate - the digits then live in the 60 px between the dish's underside
+# and the plate's lower silhouette and are invisible.  Rooted below the plate's own lower
+# contour, each digit's length reads against the background and only its upper end is cut by
+# the near rim.  This is a pose hypothesis, not a coordinate.
+KNUCKLE = dict(back=0.55)
 
 # The thumb opposes on the near flank: its root is placed on the side of the palm's mid mass
 # that faces the camera, its station is 26 degrees past the little finger, and it is short and
@@ -67,8 +77,13 @@ def parts(lift=0.0):
     thumb_base = min(flank, key=lambda p: float(geo.project(p)[2]))
 
     out = [("palm", palm_patch)]
+    # the knuckle line lies back along the palm's own axis, so the digits start below the
+    # plate's lower silhouette instead of against the underside it hides behind
+    wrist = np.asarray(PALM["wrist"], float)
+    reach_px = float(np.linalg.norm(palm_frame["station"] - wrist)) * KNUCKLE["back"]
+    knuckle_line = palm_frame["station"] - palm_frame["axis"] * reach_px
     for name, root_off, station, reach, radii in FINGERS:
-        root = (palm_frame["station"]
+        root = (knuckle_line
                 + palm_frame["lateral"] * (root_off * palm_frame["radius"])
                 + palm_frame["normal"] * (palm_frame["radius"] * 0.10))
         out.append((name, contact.finger(name, rings, root=root, station=station, reach=reach,

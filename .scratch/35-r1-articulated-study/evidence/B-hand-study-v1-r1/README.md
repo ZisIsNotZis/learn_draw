@@ -1,4 +1,4 @@
-# B-hand-study-v1-r1 — repair pass on the failed B hand study (INCOMPLETE)
+# B-hand-study-v1-r1 — repair pass on the failed B hand study (ONE MEASURED FAILURE OPEN)
 
 This directory is a copy of `../B-hand-study-v1/` (which stays untouched: it is the revision
 the archived image review is bound to by hash) carrying one repair pass against
@@ -7,10 +7,13 @@ the archived verdict
 [`../../evidence/reviews-r1a/B-hand-study-v1-image-review-1.md`](../reviews-r1a/B-hand-study-v1-image-review-1.md),
 and package E of [`../../work/wave13-contracts.md`](../../work/wave13-contracts.md).
 
-**Read this first: the pass ran out of its 75-minute wall clock before it was complete, and the
-suite is RED (6 failures, listed below).** What is landed here is a truthful intermediate state,
-not a repair. This package awards no art verdict and claims none: a fresh reviewer decides, and
-the state below is not ready for one.
+**Read this first: the suite is RED on exactly one test and the reason is a measured defect, not
+a stale measurement** — `TestContact::test_every_digit_rests_on_the_underside_and_none_penetrates_it`
+fails because the middle and ring pads stand 10.6 px off the dish's underside against the stated
+1.5 px, i.e. those two digits hover. Everything else passes (22 of 23). This package awards no
+art verdict and claims none: a fresh reviewer decides, and the state below is not ready for one.
+The review bundle is truthful for this revision (§ Commands), which the previous pass could not
+claim.
 
 ## What changed in the construction
 
@@ -42,30 +45,83 @@ Two other changes are pose/geometry only, both computed:
   which halves the width of the flat-tone banding the review measured. No other shading change
   was landed; see blocker 2 below.
 
+## What this pass changed
+
+Three things, each committed separately:
+
+1. **The review bundle was stale and misrouted.** `check/report.txt` named
+   `evidence/B-hand-study-v1/` and `check/draft.png` was byte-identical to v1's `artwork.png`
+   (md5 `c9950caa…`), so a reviewer following the report judged a revision that is not this one.
+   Regenerated from this revision's `artwork.svg` with `scripts/draw check … --outdir
+   <package>/check`: every path in the report now resolves inside `B-hand-study-v1-r1/`, and
+   `draft.png` is this revision's `artwork.png` (md5 `e2680593…` at that step).
+2. **The pose pass of resolution R2.** The knuckle line was moved back along the palm's own axis
+   (`scene.KNUCKLE["back"]`, a fraction of the palm's length: 0 → 0.55) and the finger stations
+   were spread from 228/254/286/316 deg to 202/240/288/330 deg. Before the change every digit lay
+   inside the plate's silhouette — the underside tops out at screen y = 154.5 px while the plate's
+   lower silhouette reaches 209.1 px — so the delivered image showed one stub. Rooted below the
+   plate's own lower contour, each digit's length now reads against the background and only its
+   upper end is cut by the near rim.
+3. **The three contact tests re-targeted per resolution R1** (see § Tests), against the dish's
+   `derived_rings()` → `contact.underside_ring()` surface instead of the retired rim-band top.
+
 ## Finding → repair, against the archived review
 
 | # | finding (archived review) | what was done | status |
 | --- | --- | --- | --- |
-| B1 | occlusion inverted: digits in front of the near rim, dish unsupported | every contact moved to the dish's underside rings, so the rim is the nearest surface at every overlapping pixel; the palm's end meets the underside and its mass rises to the near contour | **geometry done, legibility NOT verified** — the digits are now *entirely* hidden behind the plate (see "known gap" below) |
+| B1 | occlusion inverted: digits in front of the near rim, dish unsupported | every contact moved to the dish's underside rings, so the rim is the nearest surface at every overlapping pixel; the knuckle line moved back below the plate's lower silhouette so each digit's length reads against the background | **geometry done; the occlusion is gone by construction** (120 of 120 ink crossings carry a depth gap). Legible in the measured sense: five digit lengths now show below the plate where the previous revision showed one stub. **The pads themselves do not read outboard** — see "what R2 could not deliver" |
 | B2 | radial spoke fan + concentric terracing in the well | bowl tessellation 17 → 33 rows; the inflate/underlay change was designed but **not landed** | **NOT FIXED** |
-| B3 | five near-parallel, evenly spaced prongs; no thumb opposition, no knuckle mass; bottom block unreadable | uneven stations + unequal reaches + unequal radii; thumb rooted on the measured near flank at 338 deg; knuckle bulge at each finger's base; heel bulge in the palm | **partly done** — no signed thumb-opposition test was written, and the digits are invisible, so the review's reading cannot be re-judged from this revision |
+| B3 | five near-parallel, evenly spaced prongs; no thumb opposition, no knuckle mass; bottom block unreadable | uneven stations (202/240/288/330 deg) + unequal reaches + unequal radii; thumb rooted on the measured near flank at 338 deg; knuckle bulge at each finger's base; heel bulge in the palm | **partly done** — the distal halves now separate at 0.85 / 1.15 / 1.32 of a digit's width, but **the signed thumb-opposition test is absent**: nothing measures that the thumb opposes the fingers, only that it is rooted on the measured near flank |
 | N1 | staircase silhouette, boxy flat digits | not addressed (tessellation of the digits unchanged) | not fixed |
 | N2 | transverse seam + dark V notch where digits meet the palm | knuckle bulges change the digit bases; not measured | not verified |
 | N3 | doubled rim contour, hard-terminating highlight | not addressed | not fixed |
 | N4 | unexplained thin marks inside the well, floating rim fragment | not addressed | not fixed |
 | N5 | ambiguous pale quads at digit tips | not addressed | not fixed |
 
-## Known gap that blocks this revision
+**The art verdict is absent.** No reviewer has seen this revision; the table states what was
+changed and what was measured, and it is not a judgement that the hand reads as a hand.
 
-`check/report.txt` lists the new 1:1 image. In it the plate is the only foreground object and the
-hand is a single stub below it: **the digits' pads sit just behind the plate's near contour and
-the palm's mass covers the rest, so the image does not show five digits at all.** The numbers say
-the digits are where the contact demands; the picture says the pose is not yet legible. A pose
-pass (spreading the digit pads outboard past the palm's silhouette and lowering the palm's mass
-away from the camera) is the next writer's first job, and it must be done from the geometry, not
-by moving the rim.
+## What R2 could not deliver, and why (measured, not judged)
 
-## The contract conflict this pass hit (assumed decision, not approved)
+R2 asks for the digit **pads** to extend outboard past the plate's silhouette. Under an unbroken
+near rim that is not reachable from this construction, and the numbers say so:
+
+- the lowest screen point any underside contact can have is the foot ring's near point,
+  y = 154.5 px, and a resting pad's surface is only the 1.5 px clearance below it (a thicker pad
+  would hang lower, but the taper law caps a tip at 0.75 of its base width);
+- the plate's own lower silhouette at the same x reaches y = 209.1 px — the outer wall bulges
+  below the rim, so the boundary to clear is the wall, not the rim;
+- 154.5 + 2·r_tip + 1.5 px, projected, stays above 209 for every tip radius the taper law allows.
+
+So a pad that rests on the underside is always behind the plate, and what R2 can have is the
+digit's *length* reading against the background — which is what was delivered. Whether the pose
+now reads as a hand is a reviewer's question and nobody has answered it.
+
+## One measured failure, open
+
+`TestContact::test_every_digit_rests_on_the_underside_and_none_penetrates_it` fails on the
+middle and ring digits:
+
+```
+index    tip   3.60 ..  33.40 px below the dish's underside
+middle   tip  10.65 ..  30.29 px below the dish's underside
+ring     (breaks the assertion at 10.6 px)
+```
+
+The cause is in `contact.finger`, not in the measurement: the pad's centre is offset along the
+surface normal by `r_tip + clearance`, but the digit arrives at the surface steeply, so the tube's
+cross-section — a disc perpendicular to the digit's own tangent, not to the plate — stands off by
+`r_tip · (1 − sin θ)` in addition to the clearance. The last pass re-targeted the test onto the
+right surface and this is the defect the re-target exposed. The cure is a pad whose axis runs
+parallel to the surface it rests on (or an offset computed from the digit's own arrival angle);
+it was attempted in this pass and made the stand-off worse, so it was reverted rather than left
+half-landed.
+
+## The contract conflict the previous pass hit — RESOLVED (kept for the record)
+
+Resolved by the owner as R1/R2 of [`../../work/wave14-contracts.md`](../../work/wave14-contracts.md):
+re-target, never weaken. The three contact tests now measure the surface the construction actually
+touches. The previous pass's account of the conflict, kept so the resolution has a reason:
 
 Direction (i) ("the hand is under the plate; the near rim is unbroken foreground") is
 geometrically incompatible with the inherited assertion
@@ -81,16 +137,10 @@ currently **failing, untouched**, because re-targeting an inherited assertion wi
 parent's word is the edit the law forbids. So the three failing `TestContact` cases and the two
 manifest assertions are the open question, not an oversight:
 
-- `TestContact::test_every_digit_rests_on_the_band_and_none_penetrates_it` — measures the tip
-  against the rim's *top band*; unsatisfiable with a hand under the plate.
-- `TestContact::test_a_digit_that_lifts_off_the_rim_is_caught` — same surface.
-- `TestContact::test_the_hand_follows_the_dish` — perturbs `RIM_OUTER`/`RIM_INNER`, which no
-  longer move the contact surface (the underside is driven by `FOOT_RADIUS`/`AXIS_UNDER_Z`).
-- `TestManifest` ×2 — stale until `source/manifest.py --write` was re-run; re-run done, so these
-  two now pass (the transcript above shows the pre-write run).
-- `TestSeparation::test_the_distal_halves_are_separated` — the digits now converge on the
-  underside and their distal halves are 0.10 of a width apart: a **real** construction failure
-  (the digits are cramped), not a stale measurement.
+- the three contact tests were re-targeted onto the underside (§ Tests); all three pass now,
+  and the lift mutation still fails;
+- `TestSeparation::test_the_distal_halves_are_separated` was **not** re-targeted and its floor
+  was **not** lowered: it was fixed by the geometry (0.10 → 0.85).
 
 ## Contact derivation
 
@@ -105,16 +155,20 @@ No index of `profile()` is shared with the hand, and no number in `scene.py` is 
 ## Separation values
 
 Measured on the emitted station rings (`util.station_gap` / `util.width_at`), root = station 0.15,
-distal = station 0.60, as a fraction of the two digits' mean width:
+distal = station 0.60, as a fraction of the two digits' mean width — quoted verbatim from the
+suite's own output, every pair:
 
-| pair | roots | distal halves |
-| --- | --- | --- |
-| index–middle | 2.7 / 53.9 = **0.05** | 5.5 / 54.5 = **0.10** (floor 0.30 — FAILS) |
-| middle–ring | 1.9 / 53.3 = **0.04** | not recorded in this pass |
-| ring–little | 1.6 / 43.0 = **0.04** | not recorded in this pass |
+```
+distal index -middle gap  45.0 / width  53.0 = 0.85
+distal middle-ring   gap  55.6 / width  48.3 = 1.15
+distal ring  -little gap  53.7 / width  40.7 = 1.32
+roots index -middle gap   0.6 / width  52.4 = 0.01
+roots middle-ring   gap   0.6 / width  48.1 = 0.01
+roots ring  -little gap   2.8 / width  42.1 = 0.07
+```
 
-The roots' merge is still within the inherited limit (≤ 0.10) and is stated, not hidden. The
-distal floor is violated: the digits are cramped under the plate.
+Every distal pair is above the inherited 0.30 floor and every root is below the 0.10 limit. The
+floor was not moved: it reads 0.30 in `tests/test_hand_construction.py` (`DISTAL_FLOOR`).
 
 ## Commands
 
@@ -122,25 +176,53 @@ distal floor is violated: the digits are cramped under the plate.
 cd .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1
 ../../../../.venv/bin/python source/build.py                 # -> artwork.svg (deterministic)
 ../../../../scripts/draw render artwork.svg -o artwork.png   # the documented render path
-../../../../.venv/bin/python -m unittest discover -s tests -t .   # 23 inherited tests: 18 pass, 5 fail
+../../../../.venv/bin/python -m unittest discover -s tests -t .   # 23 inherited tests: 22 pass, 1 fail
 ../../../../.venv/bin/python source/manifest.py --check      # 19/19
 sha256sum -c manifest.sha256                                 # 19/19 OK
+# the review bundle, routed inside this package (no --ref: this stage is reference-free)
+cd .. && cd ../..            # repo root
+scripts/draw check .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1/artwork.svg \
+  --outdir .scratch/35-r1-articulated-study/evidence/B-hand-study-v1-r1/check
 ```
 
 ## What is unverified, and what is absent
 
 - **The art verdict is absent.** Nobody has reviewed this revision; this README does not claim the
   review is answered.
-- Whether the hand reads as a hand *at all* in the delivered image: it does not show five digits
-  (see "known gap").
-- Whether the well's spoke fan is gone: the extra profile rows are expected to halve the banding,
-  and **no measurement of the spokes was taken**.
+- Whether the hand reads as a hand in the delivered image: the numbers place five separated digit
+  lengths below the plate, and that is all this document claims.
+- B2, the well's spoke fan and its shading: **NOT FIXED**, and it belongs to the next stage
+  (package I). The extra profile rows were not measured for banding.
 - No new test was written: the near-rim occlusion audit, the signed thumb-opposition test, the
-  digit-variation test and the well-shading growth/tone-step test are all **absent**, and
-  `tests/negative-control-output.txt` still carries v1's numbers.
+  digit-variation test and the well-shading growth/tone-step test are all **absent** from the
+  suite; `tests/negative-control-output.txt` now also carries this revision's contact negative
+  control.
 - The rim-band contour, the highlight's hard termination, the stray marks inside the well and the
   pale tip quads (review items N1–N5) are untouched.
-- `--lift` (the optional second image) builds and was not re-checked after the pose change.
+- the pads standing 10.6 px off the underside (the open failure above) is **not** fixed;
+- `--lift` (the optional second image) was not re-checked after the pose change.
+
+## Tests changed (resolution R1)
+
+Three, and no assertion was added, removed or weakened anywhere else. What changed is the surface
+each one measures — the rim band's top plane (retired) became the dish's underside ring:
+
+- `test_every_digit_rests_on_the_band_and_none_penetrates_it` →
+  `test_every_digit_rests_on_the_underside_and_none_penetrates_it`; it measures each tip ring
+  against `util.underside_heights(...)`, which re-derives the surface through
+  `dish.derived_rings()` → `contact.underside_ring()` and takes the distance to the nearest point
+  of that surface, signed by its own normal. Same 1.5 px clearance, same ±: not a penetration
+  (`> −1.0`) and rests rather than hovers (`< clearance + 4.0`).
+- `test_a_digit_that_lifts_off_the_rim_is_caught` → `test_a_digit_that_lifts_off_the_underside_is_caught`;
+  same mutation (`clearance + 20 px`), same assertion, on the new surface.
+  Proof it still bites: `tests/negative-control-output.txt`.
+- `test_the_hand_follows_the_dish`: perturbs the underside's own drivers, `dish.FOOT_RADIUS` (+26)
+  and `dish.AXIS_UNDER_Z` (−20), instead of `RIM_OUTER`/`RIM_INNER`, which no longer drive contact.
+  Same assertions (`moved > 20 px`, `rests on the new surface`).
+
+`TestContact::test_the_band_is_a_rim_with_two_edges` and every other test are untouched: the dock
+still has a rim with thickness, and the band is still measured — it is simply no longer the contact
+surface.
 
 ## Files
 
