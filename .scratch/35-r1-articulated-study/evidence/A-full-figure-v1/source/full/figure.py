@@ -378,7 +378,7 @@ def inherited():
 
 LAYOUT = dict(
     # the hat: a wide brim seen from below-left, its underside teal, its top face navy
-    brim_centre=(686.0, 150.0), brim_rx=286.0, brim_ry=168.0, brim_rot=20.0,
+    brim_centre=(680.0, 146.0), brim_rx=286.0, brim_ry=168.0, brim_rot=23.0,
     crown_centre=(806.0, 148.0), crown_rx=152.0, crown_ry=134.0,
     puff_top=(658.0, 52.0), puff_top_r=31.0,
     puff_right=(906.0, 190.0), puff_right_r=41.0,
@@ -560,18 +560,20 @@ def eye_parts():
         out[f"A-eye-{side}"] = planar(f"A-eye-{side}", f"the {side} eye's sclera", 0.36,
                                       ellipse(ex, ey, rx * 1.02, ry * 0.88, -6),
                                       fill=EYE_WHITE, authored=((f"eye_{side}", (ex, ey)),))
-        out[f"A-iris-{side}"] = planar(f"A-iris-{side}", f"the {side} iris", 0.365,
-                                       ellipse(ex + 1, ey + 4, rx * 0.80, ry * 0.72, -6),
+        out[f"A-iris-{side}"] = planar(f"A-iris-{side}", f"the {side} iris, set toward her "
+                                                          f"own right as the reference's is",
+                                       0.365,
+                                       ellipse(ex - 5, ey + 4, rx * 0.80, ry * 0.72, -6),
                                        fill=IRIS)
         out[f"A-iris-deep-{side}"] = planar(f"A-iris-deep-{side}",
                                             f"the shade under the {side} iris", 0.37,
-                                            ellipse(ex + 1, ey + 13, rx * 0.52, ry * 0.34, -6),
+                                            ellipse(ex - 5, ey + 13, rx * 0.52, ry * 0.34, -6),
                                             fill=IRIS_DEEP)
         out[f"A-pupil-{side}"] = planar(f"A-pupil-{side}", f"the {side} pupil", 0.372,
-                                        ellipse(ex + 1, ey + 3, rx * 0.22, ry * 0.20, -6),
+                                        ellipse(ex - 5, ey + 3, rx * 0.22, ry * 0.20, -6),
                                         fill=PUPIL_GREEN)
         out[f"A-glint-{side}"] = planar(f"A-glint-{side}", f"the {side} eye's catchlight", 0.375,
-                                        ellipse(ex - 9, ey - 1, rx * 0.19, ry * 0.17, -6),
+                                        ellipse(ex - 13, ey - 1, rx * 0.19, ry * 0.17, -6),
                                         fill=HIGHLIGHT)
     lash_marks = []
     for side, (ex, ey) in (("left", L["eye_left"]), ("right", L["eye_right"])):
@@ -593,7 +595,7 @@ def eye_parts():
                                  catmull(((710.0, 242.0), (736.0, 236.0), (760.0, 244.0)),
                                          steps=8, closed=False), fill=HAIR_INK)
     out["A-mouth"] = planar("A-mouth", "the mouth", 0.35,
-                            ellipse(690.0, 352.0, 8.0, 3.5, 0), fill="#c98a84")
+                            ellipse(694.0, 351.0, 8.0, 3.5, -6), fill="#c98a84")
     return out
 
 

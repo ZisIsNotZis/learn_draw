@@ -339,3 +339,15 @@ the figure did not have it.
    flat oval.
 
 Items 1–3 are identity; none of them is a tuning pass.
+
+## Round 21 — the gaze (a head turn's cheapest half)
+
+The reference's head is turned three-quarters to her left; the figure's is frontal. A full re-cut of
+the face group is a round of its own, but the read of a turn lives mostly in **where the eyes point**,
+and that is cheap: each iris, its shade, its pupil and its catchlight moved 6 px toward her own right
+inside its sclera, and the mouth moved with them. The brim's tilt went 20° → 23° and its centre 6 px
+to her left, so the hat sweeps up on that side as the reference's does.
+
+The read changes: the face stops staring out of the frame and starts looking past it, which is what the
+reference's face does. **The head is still frontal in its construction** — the far eye is not narrower
+and the features are not off the centre line — so this closes half of T6's first entry and no more.
