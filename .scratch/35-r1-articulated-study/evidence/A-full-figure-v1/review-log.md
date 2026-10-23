@@ -214,3 +214,16 @@ advance's work is the six items above, in that order, and T6 is the only one tha
 4. Put a shadow under the brim: a soft band on the hair where the brim's edge crosses it.
 5. Rebuild the hand from the hand study's own mass (the `B-hand-*` packages have the geometry), and
    give the arm a wrist.
+
+## Round 13 — `ff15` (the landing render after two defects a 2× look found)
+
+A 2× crop of the head (`check/head-2x.png`) showed two things the 1:1 view hid:
+
+1. **Three grey lines fanned across the hat brim.** They were the left fall's strand marks: the
+   strands were made by offsetting the curtain's landmarks, which put them *outside* the curtain and
+   in front of the brim (z 0.505 against the brim's 0.20). Strands are now a fraction of the way from
+   the curtain's outer edge to its inner edge at three heights, so they cannot leave the curtain.
+2. **The eyebrows read green.** They were drawn in `HAIR_DEEP`, the darkest teal shade; they are now
+   `HAIR_SHADE`, the hair's own mid tone.
+
+Both are craft, not identity. The six identity items in round 12 stand, and so does its assessment.

@@ -168,6 +168,10 @@ def clover(cx, cy, r, rot=0.0, lobes=3, spread=0.80, n=120):
     return tuple(full(x, y) for x, y in out)
 
 
+def lerp2(a, b, f: float):
+    return (a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f)
+
+
 def flat_mark(points, z: float):
     """Plane points -> the 3D polyline a sheet mark is, sitting just in front of its part."""
     return tuple((p.u, p.v, z) for p in points)
@@ -376,10 +380,10 @@ def eye_parts():
                                         fill=HIGHLIGHT)
     out["A-brow-left"] = planar("A-brow-left", "the left eyebrow", 0.35,
                                 catmull(((614.0, 226.0), (636.0, 218.0), (658.0, 224.0)),
-                                        steps=8, closed=False), fill=HAIR_DEEP)
+                                        steps=8, closed=False), fill=HAIR_SHADE)
     out["A-brow-right"] = planar("A-brow-right", "the right eyebrow", 0.35,
                                  catmull(((712.0, 226.0), (736.0, 220.0), (758.0, 228.0)),
-                                         steps=8, closed=False), fill=HAIR_DEEP)
+                                         steps=8, closed=False), fill=HAIR_SHADE)
     out["A-mouth"] = planar("A-mouth", "the mouth", 0.35,
                             ellipse(690.0, 352.0, 8.0, 3.5, 0), fill="#c98a84")
     return out
@@ -448,15 +452,17 @@ def hair_parts():
                            rows=[("hair_edge", catmull(poly), "the fall's own edge")],
                            fill=fill, authored=(("fall_top", poly[0]), ("fall_outer", poly[3]),
                                                 ("fall_hem", poly[4])))
-        for k, share in enumerate((0.16, 0.34, 0.52)):
+        # Strands run inside the curtain: each one is a fraction of the way from the
+        # outer edge to the inner edge, at three heights, from the parting down.  Offsetting
+        # the landmarks instead put them outside the curtain and across the hat brim.
+        outer = (poly[0], poly[1], poly[2], poly[3])
+        inner = (poly[0], poly[8], poly[7], poly[6])
+        for k, share in enumerate((0.30, 0.55, 0.78)):
             marks.append((f"{name}-strand-{k}", name, "fold_edge",
-                          flat_mark(catmull(((poly[0][0] + 8.0, poly[0][1] + 70.0),
-                                             (poly[1][0] - 6.0 + 22.0 * share,
-                                              poly[1][1] + 40.0),
-                                             (poly[2][0] - 4.0 + 26.0 * share,
-                                              poly[2][1] + 60.0),
-                                             (poly[3][0] + 10.0 + 20.0 * share,
-                                              poly[3][1] - 30.0)),
+                          flat_mark(catmull((lerp2(outer[0], inner[0], share),
+                                             lerp2(outer[1], inner[1], share),
+                                             lerp2(outer[2], inner[2], share),
+                                             lerp2(outer[3], inner[3], share)),
                                             steps=10, closed=False), 0.505),
                           HAIR_INK))
     for name, route, w in (("A-hair-lock-left", L["lock_left"], 13.0),
