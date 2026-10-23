@@ -9,8 +9,9 @@ skirt, lining, arm). `A-cloth-v8` keeps its own bytes and its own verdict.
 
 **The acceptance line is written before the build and lives in [`ACCEPT.md`](ACCEPT.md)** — seven terms,
 each decidable by observation. **The self-review rounds are in [`review-log.md`](review-log.md)**, one
-entry per render, ranked by whether a mismatch changes identity. This revision lands at round 6: a whole
-figure in the frame, identity list open. It is **not** an art pass and no verdict is claimed.
+entry per render, ranked by whether a mismatch changes identity. This revision lands at round 12: a
+whole figure in the frame; T1, T2, T3, T5 and T7 pass, **T4 is partial and T6 is not cleared**. It is
+**not** an art pass and no verdict is claimed — the open list is the last section of `review-log.md`.
 
 ## What the figure is
 
@@ -32,7 +33,7 @@ figure in the frame, identity list open. It is **not** an art pass and no verdic
 | collar, bodice, chest-bow | 8 inherited parts | the sailor collar, the cream blouse and waist, the magenta bow |
 | left-sleeve, right-sleeve | 4 inherited parts | both puff sleeves and their navy cuffs |
 | arm-right, hand-right | `A-arm`, `A-hand` | her right arm out of the cuff, and the hand |
-| skirt-front, skirt-drop, underskirt, lining | 5 parts | the mint skirt, its cream fold, the navy under-layer, the pink and orange lining bands |
+| skirt-front, skirt-drop, underskirt, pleats, lining | 8 parts | the mint skirt, its shaded fold, the navy under-layer, three pleats, the pink and orange lining bands |
 
 Two inherited parts are **dropped**, with the measurement that justifies each: `A-head-face` ends its
 jaw at image y 442 — the crop's chin, 58 px below this frame's — so it drew a second jaw line across

@@ -31,32 +31,32 @@ CAMERA = Camera()
 CROP_SHIFT = (500.0, 224.0)
 
 # ---- palette: inherited values are the A-cloth-v8 ones, unchanged -------------------
-BACKGROUND_SKY = "#cfdade"
-BACKGROUND_TEAL = "#78a49b"
-BACKGROUND_GREEN = "#8fc0a0"
+BACKGROUND_SKY = "#c6d8dc"
+BACKGROUND_TEAL = "#56adb8"
+BACKGROUND_GREEN = "#add5b1"
 HAT_NAVY = "#33405c"
 HAT_CROWN = "#3a4a68"
 HAT_UNDER = "#262f45"
-BRIM_TEAL = "#8cb8bd"
-BRIM_TEAL_DARK = "#5c93a0"
-HAIR_LIT = "#3a72b4"
-HAIR_SHADE = "#2f5f9b"
-HAIR_DEEP = "#24487d"
+BRIM_TEAL = "#569cae"
+BRIM_TEAL_DARK = "#437c8c"
+HAIR_LIT = "#3e73a5"
+HAIR_SHADE = "#2f5f92"
+HAIR_DEEP = "#27606b"
 HAIR_INK = "#233c60"
-SKIN = "#e6c4bd"
-SKIN_SHADE = "#d9aca9"
-CREAM = "#e9ead9"
-CREAM_SHADE = "#dfe2d2"
-MINT = "#d8e6cf"
-MINT_SHADE = "#c9dcc4"
-DEEP_TEAL = "#1f4a55"
+SKIN = "#f2e3d3"
+SKIN_SHADE = "#e3c9bd"
+CREAM = "#e2ebe0"
+CREAM_SHADE = "#d3e0d5"
+MINT = "#cbdfd3"
+MINT_SHADE = "#b9d0c6"
+DEEP_TEAL = "#20505c"
 PALE_BLUE = "#a8c4d4"
-LINING_PINK = "#e8858f"
+LINING_PINK = "#e59295"
 LINING_ORANGE = "#e0a95f"
 BOW_MAGENTA = "#cf4b79"
 BOW_DARK = "#a8405f"
-PUFF_PINK = "#e9a2ae"
-PUFF_PINK_DARK = "#d98b9a"
+PUFF_PINK = "#e0a3ac"
+PUFF_PINK_DARK = "#cf8b96"
 CUFF_NAVY = "#29354d"
 EYE_DARK = "#2c2436"
 IRIS = "#dd7f9b"
@@ -168,6 +168,11 @@ def clover(cx, cy, r, rot=0.0, lobes=3, spread=0.80, n=120):
     return tuple(full(x, y) for x, y in out)
 
 
+def flat_mark(points, z: float):
+    """Plane points -> the 3D polyline a sheet mark is, sitting just in front of its part."""
+    return tuple((p.u, p.v, z) for p in points)
+
+
 def edges(name: str, rows) -> tuple:
     """`rows` = [(class, points, intent)] -> ClothEdges in the part's own coordinates."""
     return tuple(ClothEdge(cls, tuple(points), name, intent) for cls, points, intent in rows)
@@ -246,24 +251,32 @@ LAYOUT = dict(
            (806.0, 216.0), (770.0, 232.0), (740.0, 258.0), (712.0, 226.0), (686.0, 264.0),
            (656.0, 228.0), (626.0, 260.0), (596.0, 230.0), (572.0, 240.0)),
     # the neck
-    neck_q=((656.0, 372.0), (714.0, 372.0), (718.0, 432.0), (652.0, 432.0)),
+    neck_q=((660.0, 372.0), (710.0, 372.0), (714.0, 428.0), (658.0, 428.0)),
     # hair: a mass behind the head, and two falls that hang in front of the shoulders
     hair_back_route=((500.0, 1052.0), (486.0, 640.0), (556.0, 320.0), (686.0, 232.0),
                      (826.0, 340.0), (902.0, 640.0), (930.0, 1052.0)),
-    fall_left=((600.0, 190.0), (520.0, 430.0), (466.0, 742.0), (492.0, 1052.0)),
-    fall_right=((774.0, 188.0), (874.0, 430.0), (950.0, 726.0), (968.0, 1052.0)),
-    lock_left=((616.0, 228.0), (566.0, 470.0), (548.0, 712.0)),
-    lock_right=((742.0, 236.0), (768.0, 480.0), (790.0, 726.0)),
+    fall_left_poly=((598.0, 194.0), (546.0, 300.0), (494.0, 472.0), (452.0, 706.0),
+                    (488.0, 1044.0), (572.0, 1032.0), (566.0, 762.0), (596.0, 470.0),
+                    (616.0, 316.0)),
+    fall_right_poly=((762.0, 192.0), (824.0, 296.0), (890.0, 470.0), (952.0, 704.0),
+                     (968.0, 1044.0), (910.0, 1032.0), (876.0, 700.0), (846.0, 466.0),
+                     (788.0, 310.0)),
+    lock_left=((574.0, 250.0), (528.0, 486.0), (516.0, 736.0)),
+    lock_right=((760.0, 258.0), (786.0, 492.0), (800.0, 740.0)),
+    fall_wave=(9.0, 1.6, 0.4),
     # the seated lower mass: skirt over the knees, under-layer, and the fold bands
     skirt=((610.0, 654.0), (806.0, 666.0), (872.0, 862.0), (742.0, 1006.0),
            (492.0, 1012.0), (446.0, 878.0), (524.0, 736.0)),
     skirt_drop=((528.0, 672.0), (664.0, 800.0), (648.0, 992.0), (486.0, 996.0),
                 (470.0, 828.0)),
     underskirt=((236.0, 846.0), (566.0, 830.0), (724.0, 1000.0), (250.0, 1020.0)),
+    pleat_a=((608.0, 786.0), (734.0, 796.0), (700.0, 1010.0), (582.0, 1006.0)),
+    pleat_b=((536.0, 860.0), (664.0, 874.0), (640.0, 1014.0), (498.0, 1010.0)),
+    pleat_navy=((742.0, 760.0), (872.0, 884.0), (826.0, 1010.0), (722.0, 1000.0)),
     lining_pink=((286.0, 862.0), (438.0, 846.0), (492.0, 976.0), (326.0, 998.0)),
     lining_orange=((430.0, 930.0), (548.0, 906.0), (612.0, 1016.0), (470.0, 1020.0)),
     # her right arm, out of the cuff and down past the skirt
-    arm_route=((856.0, 596.0), (872.0, 716.0), (866.0, 796.0)),
+    arm_route=((860.0, 556.0), (876.0, 700.0), (868.0, 792.0)),
     hand=(864.0, 832.0),
 )
 
@@ -296,8 +309,7 @@ def hat_parts():
                        fill=BRIM_TEAL, authored=(("brim_centre", L["brim_centre"]),))
     top = planar("A-hat-brim-top", "the brim's navy top face on the far side of its axis", 0.21,
                  dome(bx, by, L["brim_rx"], L["brim_ry"], L["brim_rot"]),
-                 rows=[("hat_edge", dome(bx, by, L["brim_rx"], L["brim_ry"], L["brim_rot"]),
-                        "where the top face meets the underside")],
+                 rows=[],
                  fill=HAT_NAVY, authored=(("brim_top_axis", L["brim_centre"]),))
     cx, cy = L["crown_centre"]
     crown = planar("A-hat-crown", "the crown dome standing on the brim's top face", 0.22,
@@ -375,20 +387,37 @@ def eye_parts():
 
 # ---- hair: the mass behind, the two falls in front ---------------------------------
 
-def _strip(route, width, depth, samples=48):
+def _strip(route, width, depth, wave=None, samples=48):
     from ..parts import families as fam
     dense = fam._catmull_open(tuple((x, HEIGHT - y) for x, y in route), 14)
     count = len(dense) - 1
+
+    def _offset(t):
+        if wave is None:
+            return 0.0
+        amplitude, cycles, phase = wave
+        # ramped in over the first quarter, so the attachment at the head is unbroken
+        return amplitude * min(1.0, t / 0.28) * math.sin(2 * math.pi * cycles * t + phase)
 
     def spine(t):
         u = t * count
         i = min(count - 1, int(u))
         f = u - i
         a, b = dense[i], dense[i + 1]
-        return (a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f)
+        x = a[0] + (b[0] - a[0]) * f
+        y = a[1] + (b[1] - a[1]) * f
+        dx, dy = b[0] - a[0], b[1] - a[1]
+        length = math.hypot(dx, dy)
+        if length > 1e-12:
+            off = _offset(t)
+            x += (-dy / length) * off
+            y += (dx / length) * off
+        return (x, y)
 
     def half_width(t):
-        return width(t)
+        # the wave moves the spine and shrinks the width by the same amount, so the
+        # outer edge stays where the route put it and only the inner edge breaks
+        return max(2.0, width(t) - abs(_offset(t)))
 
     def depth_at(t):
         return depth(t)
@@ -407,28 +436,33 @@ def hair_parts():
         front_fill=HAIR_LIT, back_fill=HAIR_SHADE,
         grid=back.grid(samples=56, cols=3), anchors={},
         authored=tuple((f"hair_back_{i}", p) for i, p in enumerate(L["hair_back_route"])))
-    for name, route, widths, z, fill_front, fill_back in (
-            ("A-hair-fall-left", L["fall_left"], (66.0, 44.0, 14.0), 0.50, HAIR_LIT, HAIR_SHADE),
-            ("A-hair-fall-right", L["fall_right"], (70.0, 48.0, 16.0), 0.50,
-             HAIR_SHADE, HAIR_DEEP)):
-        t0, tm, t1 = widths
-        surface = _strip(route,
-                         lambda t, t0=t0, tm=tm, t1=t1:
-                         t0 + (tm - t0) * min(1.0, t / 0.45) + (t1 - tm) * max(0.0, (t - 0.45) / 0.55),
-                         lambda t, z=z: z)
-        out[name] = SheetPart(name=name, intent=f"one long fall of hair hanging in front of the "
-                                                f"shoulder ({name.split('-')[-1]})",
-                              front_fill=fill_front, back_fill=fill_back,
-                              grid=surface.grid(samples=44, cols=3), anchors={},
-                              authored=tuple((f"{name}_{i}", p) for i, p in enumerate(route)))
-        marks.append((f"{name}-edge-front", name, "hair_edge", surface.edge(0, 1, 1.0, 90), HAIR_INK))
-        marks.append((f"{name}-edge-back", name, "hair_edge", surface.edge(0, 1, -1.0, 90), HAIR_INK))
-        marks.append((f"{name}-fold", name, "fold_edge",
-                      tuple(surface.point(0.18 + 0.5 * i / 10, 0.4 - 1.0 * i / 10)
-                            for i in range(11)), HAIR_INK))
+    # The falls are closed curtains, not strips.  A strip's two edges are one generator's
+    # offset, so its inner edge is a straight line however the width is tuned; a fall of
+    # hair needs its outer edge on the figure's silhouette and its inner edge clear of the
+    # bodice.  That is two shapes, so it is two polygons.
+    for name, poly, fill in (
+            ("A-hair-fall-left", L["fall_left_poly"], HAIR_LIT),
+            ("A-hair-fall-right", L["fall_right_poly"], HAIR_SHADE)):
+        out[name] = planar(name, "one long fall of hair hanging in front of the shoulder "
+                                 f"({name.split('-')[-1]})", 0.50, catmull(poly),
+                           rows=[("hair_edge", catmull(poly), "the fall's own edge")],
+                           fill=fill, authored=(("fall_top", poly[0]), ("fall_outer", poly[3]),
+                                                ("fall_hem", poly[4])))
+        for k, share in enumerate((0.16, 0.34, 0.52)):
+            marks.append((f"{name}-strand-{k}", name, "fold_edge",
+                          flat_mark(catmull(((poly[0][0] + 8.0, poly[0][1] + 70.0),
+                                             (poly[1][0] - 6.0 + 22.0 * share,
+                                              poly[1][1] + 40.0),
+                                             (poly[2][0] - 4.0 + 26.0 * share,
+                                              poly[2][1] + 60.0),
+                                             (poly[3][0] + 10.0 + 20.0 * share,
+                                              poly[3][1] - 30.0)),
+                                            steps=10, closed=False), 0.505),
+                          HAIR_INK))
     for name, route, w in (("A-hair-lock-left", L["lock_left"], 13.0),
                            ("A-hair-lock-right", L["lock_right"], 14.0)):
-        surface = _strip(route, lambda t, w=w: w * (1.15 - 0.9 * t), lambda t: 0.52)
+        surface = _strip(route, lambda t, w=w: w * (1.15 - 0.9 * t), lambda t: 0.52,
+                         wave=(4.0, 1.1, 0.9))
         out[name] = SheetPart(name=name, intent="one thin lock of hair in front of the shoulder",
                               front_fill=HAIR_LIT, back_fill=HAIR_DEEP,
                               grid=surface.grid(samples=28, cols=3), anchors={},
@@ -453,32 +487,44 @@ def lower_parts():
                    rows=[("silhouette", catmull(L["skirt"]), "the skirt's own edge")],
                    fill=MINT, authored=(("skirt_seat", L["skirt"][2]),
                                         ("skirt_hem", L["skirt"][4])))
-    drop = planar("A-skirt-drop", "the cream fold running down the skirt's left", 0.25,
-                  catmull(L["skirt_drop"]), fill=CREAM)
+    drop = planar("A-skirt-drop", "the shaded fold running down the skirt's left", 0.25,
+                  catmull(L["skirt_drop"]), fill=MINT_SHADE)
     under = planar("A-underskirt", "the deep-teal under-layer below and left of the skirt", 0.22,
                    catmull(L["underskirt"]),
                    rows=[("silhouette", catmull(L["underskirt"]), "the under-layer's edge")],
                    fill=DEEP_TEAL, authored=(("under_left", L["underskirt"][0]),
                                              ("under_right", L["underskirt"][2])))
+    pleat_a = planar("A-pleat-a", "one cream pleat of the skirt, over the mint", 0.272,
+                     catmull(L["pleat_a"]), fill=CREAM)
+    pleat_b = planar("A-pleat-b", "the next pleat down, in the mint's shade", 0.270,
+                     catmull(L["pleat_b"]), fill=MINT_SHADE)
+    pleat_navy = planar("A-pleat-navy", "the navy pleat running down the skirt's right", 0.278,
+                        catmull(L["pleat_navy"]), fill=DEEP_TEAL)
     pink = planar("A-lining-pink", "the pink lining band showing between the folds", 0.23,
                   catmull(L["lining_pink"]), fill=LINING_PINK)
     orange = planar("A-lining-orange", "the orange lining band below the pink", 0.23,
                     catmull(L["lining_orange"]), fill=LINING_ORANGE)
     return {"A-skirt-front": skirt, "A-skirt-drop": drop, "A-underskirt": under,
+            "A-pleat-a": pleat_a, "A-pleat-b": pleat_b, "A-pleat-navy": pleat_navy,
             "A-lining-pink": pink, "A-lining-orange": orange}
 
 
 def arm_parts():
     L = LAYOUT
-    surface = _strip(L["arm_route"], lambda t: 34.0 - 6.0 * t, lambda t: 0.55)
+    surface = _strip(L["arm_route"], lambda t: 31.0 - 9.0 * t, lambda t: 0.29)
     arm = SheetPart(name="A-arm", intent="her right arm hanging out of the cuff",
                     front_fill=SKIN, back_fill=SKIN_SHADE,
                     grid=surface.grid(samples=30, cols=3), anchors={},
                     authored=tuple((f"arm_{i}", p) for i, p in enumerate(L["arm_route"])))
     hx, hy = L["hand"]
-    hand = planar("A-hand", "her right hand at the end of that arm", 0.56,
-                  ellipse(hx, hy, 28.0, 30.0, 18.0), fill=SKIN,
-                  rows=[("contact", ellipse(hx, hy, 28.0, 30.0, 18.0), "the hand's own edge")])
+    hand = planar("A-hand", "her right hand: a soft mitten mass at the wrist", 0.295,
+                  catmull(((hx - 24.0, hy - 22.0), (hx + 6.0, hy - 34.0), (hx + 28.0, hy - 8.0),
+                           (hx + 24.0, hy + 26.0), (hx - 8.0, hy + 32.0), (hx - 26.0, hy + 6.0))),
+                  rows=[("contact",
+                         catmull(((hx - 24.0, hy - 22.0), (hx + 6.0, hy - 34.0),
+                                  (hx + 28.0, hy - 8.0), (hx + 24.0, hy + 26.0),
+                                  (hx - 8.0, hy + 32.0), (hx - 26.0, hy + 6.0))),
+                         "the hand's own edge")], fill=SKIN)
     marks = [("A-arm-edge-front", "A-arm", "contact", surface.edge(0, 1, 1.0, 50), FOLD_INK),
              ("A-arm-edge-back", "A-arm", "contact", surface.edge(0, 1, -1.0, 50), FOLD_INK)]
     return {"A-arm": arm, "A-hand": hand}, marks
@@ -528,7 +574,7 @@ OBJECTS = {
     "hair-back": (["A-hair-back"], "the hair mass behind the head"),
     "hair-bangs": (["A-hair-bangs"], "the fringe over the forehead"),
     "hair-falls": (["A-hair-fall-left", "A-hair-fall-right"],
-                   "the outer falls hanging past the shoulders"),
+                   "the outer falls: closed curtains from the temple past the shoulders"),
     "hair-locks": (["A-hair-lock-left", "A-hair-lock-right"],
                    "the thin locks in front of each shoulder"),
     "face": (["A-face"], "the face field"),
@@ -549,6 +595,8 @@ OBJECTS = {
     "hand-right": (["A-hand"], "her right hand"),
     "skirt-front": (["A-skirt-front"], "the cream skirt over her knees"),
     "skirt-drop": (["A-skirt-drop"], "the shaded fold down the skirt's left"),
+    "skirt-pleats": (["A-pleat-a", "A-pleat-b", "A-pleat-navy"],
+                     "the pleats crossing the skirt, one of them navy"),
     "underskirt": (["A-underskirt"], "the deep-teal under-layer"),
     "lining": (["A-lining-pink", "A-lining-orange"], "the lining bands between the folds"),
 }

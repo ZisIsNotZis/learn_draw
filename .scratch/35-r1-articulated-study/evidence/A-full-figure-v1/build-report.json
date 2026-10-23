@@ -37,6 +37,9 @@
     "A-lining-pink",
     "A-mouth",
     "A-neck",
+    "A-pleat-a",
+    "A-pleat-b",
+    "A-pleat-navy",
     "A-right-cuff",
     "A-right-sleeve",
     "A-skirt-drop",
@@ -44,11 +47,11 @@
     "A-underskirt",
     "A-visible-neck-skin"
   ],
-  "faces": 4017,
-  "visible_fill_regions": 43,
-  "marks": 56,
-  "mark_paths": 114,
-  "objects": 25,
+  "faces": 4015,
+  "visible_fill_regions": 47,
+  "marks": 58,
+  "mark_paths": 123,
+  "objects": 26,
   "missing_objects": [],
   "undeclared_parts": []
 }

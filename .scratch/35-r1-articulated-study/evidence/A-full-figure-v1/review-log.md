@@ -119,3 +119,98 @@ runs past the bottom edge. Round 6 is a **landing point, not a pass**: T6 is not
 4. Rebuild the arm as a tapered strip with a wrist, and give the hand the study's finger mass.
 5. Bring the collar forward: raise the collar's depth above the bow's chest, or re-cut the bow's
    position so the collar's V shows above it.
+
+## Round 7 — `ff8` (falls pulled out, waves, pleats, tapered arm)
+
+1. The left fall's width and route put it straight across the left eye: the face lost half.
+2. The hand came out cream — `planar()`'s default fill, not skin.
+3. The pleats were invisible: three of them sat *behind* the skirt's own depth.
+4. The brim still carried a thin chord line across it, which read as a scratch.
+
+Changed: the wave ramped in over the first quarter of the route so the attachment stays unbroken;
+the falls' routes moved out to the temple; `fill=SKIN` on the hand; pleats moved in front of the
+skirt; the brim's chord mark deleted.
+
+## Round 8 — `ff9`
+
+1. The falls are two straight vertical slabs with a rectangular notch at the head.
+2. The navy pleat is a dark gulf across the skirt's right.
+3. The skirt is a flat balloon; the cream pleat is a pale blob at the bottom.
+4. The arm is a slab; the hand is a lump with no wrist.
+
+Diagnosed: a strip's two edges are *the same generator's offset*, so no width profile can make an
+inner edge that is clear of the bodice while the outer edge follows the silhouette. The falls were
+converted from strips to closed curtains (`fall_left_poly`, `fall_right_poly`: nine landmarks each,
+catmull, both edges authored) with three strand curves inside each.
+
+## Round 9, 10 — `ff10`, `ff11` (curtains, then clearance)
+
+- `ff10`: the curtains' inner edges still crossed the left sleeve and the bow's left tail; the right
+  fall buried the right sleeve, its cuff and the arm. Navy pleat narrowed to a fold.
+- `ff11`: the right fall's inner edge moved out to x 846 at the shoulder; the arm's depth dropped to
+  0.29 so the inherited cuff (0.30) occludes its top and it emerges from the sleeve instead of
+  starting in mid-air.
+
+## Round 11 — `ff12` (palette measured, not guessed)
+
+Every fill was sampled from the reference at named points and the deltas written down. Eight of the
+ten fills were already within ΔRGB ≤ 20; three were not, and were corrected to the sampled values:
+
+| fill | was | now | reference sample | Δ after |
+| --- | --- | --- | --- | --- |
+| skin | `#e6c4bd` | `#f2e3d3` | (244,231,213) at (660,300) | 2 |
+| brim underside | `#8cb8bd` | `#569cae` | (86,156,174) at (470,150) | 0 |
+| ground teal | `#78a49b` | `#56adb8` | (86,173,184) at (150,760) | 0 |
+| skirt mint | `#d8e6cf` | `#cbdfd3` | (203,223,211) at (620,900) | 0 |
+| hair lit / shade | `#3a72b4` / `#274f85` | `#3e73a5` / `#2f5f92` | (62,115,165) / (55,114,169) | ≤ 8 |
+
+Hat navy, dress cream, bow magenta, cuff navy and puff pink were already within 20 and are unchanged.
+
+## Round 12 — `ff14` (the state this advance lands)
+
+Judged: `check/draft-fullres.png` at `artwork.svg` — this commit. `check/head-2x.png` is the head at
+2×, which is where identity is decided.
+
+Identity list — what still stops T6 from clearing, worst first:
+
+1. **The hair is flat.** The curtains' edges are right, but nothing inside them varies: the reference's
+   hair has a lit face and a shaded face with a soft boundary, and its strand lines curve. Mine is a
+   flat fill with three straight-ish strands.
+2. **The lower mass is a stack of flat panels**, not folds: the skirt, its fold and the pleats meet at
+   hard edges, and the navy pleat reads as a shape laid on the skirt.
+3. **The collar is small.** The reference's light-blue sailor collar is the second-largest shape on
+   the chest; here it is a sliver behind the bow, because the inherited collar was cut for a neck
+   opening 58 px lower.
+4. **The hat/hair relationship is inverted at the top of the head**: in the reference the hair emerges
+   from under the brim with the brim's shadow on it; here the brim's teal underside and the hair meet
+   at a hard line with no shadow.
+5. **The hand is still a mitten blob**; the arm has no wrist.
+6. Craft only: the fringe's points are too regular; the mouth is a flat oval; the bodice has no
+   gathered waist.
+
+**Assessment against `ACCEPT.md`, stated plainly and not rounded up:**
+
+| term | state | evidence |
+| --- | --- | --- |
+| T1 whole figure | **pass** | hat cut by the top edge as the reference's is (crown top at y 0), lower mass runs past the bottom (y 1024); silhouette bbox x 415–968, y 0–1024 against the reference girl's x 420–1020, y 20–1024 |
+| T2 parts present | **pass** | 26 objects, 41 parts, `missing_objects: []`, `undeclared_parts: []` in `build-report.json`; `tests/test_full_figure.py` fails if either list is non-empty |
+| T3 proportions | **pass** — all four within 8 % | head height 214 px vs 210; brim width 534 vs 525; eye line 264 vs 262 (both /1024); face width 166 vs 180 |
+| T4 hat/hair/bow relations | **partial** | brim overhangs the face on both sides ✓; falls in front of the shoulders ✓; bow on the collar's V ✓; the brim/hair junction has no shadow ✗ (item 4) |
+| T5 palette | **pass** | ten fills sampled against the reference; every ΔRGB ≤ 20 except the two the table above corrected |
+| T6 reads as her | **not cleared** | the identity list above has six entries; items 1–5 are visible at a glance |
+| T7 discipline | **pass** | determinism, no image read, inventory, colours, one line policy, manifest |
+
+So: **the figure is whole and the parts are all there; the picture is not yet good.** The next
+advance's work is the six items above, in that order, and T6 is the only one that can clear it.
+
+## What the next advance does, in order
+
+1. Give the hair a light and a shade: split each curtain along its own fold into a lit and a shaded
+   region with a curved boundary, and curve the strand lines (one generator, not typed points).
+2. Turn the lower mass into folds: overlap the pleats with the skirt rather than laying them on it,
+   and give each pleat two edges that are not parallel.
+3. Enlarge the collar: the inherited collar's opening is 58 px below this frame's chin, so the figure
+   needs a collar cut for its own neck — a new part, with the inherited one kept as its inner leaf.
+4. Put a shadow under the brim: a soft band on the hair where the brim's edge crosses it.
+5. Rebuild the hand from the hand study's own mass (the `B-hand-*` packages have the geometry), and
+   give the arm a wrist.
