@@ -29,7 +29,8 @@ build comes from a relation or a generator, and the build reads no image.
 | T7 | **the discipline holds** | byte-identical rebuild, manifest verifies, no image library and no image read in `source/`, every part declared in `OBJECTS`, the sealed brief unread | tests |
 
 T6 is the only term a machine cannot decide, so it is the one I run myself, in rounds, against the
-reference. Rounds are numbered; every round's mismatch list is kept in `review-log.md` with the render it
+reference. It was cleared at round 28, when the identity list was empty and only craft remained; the
+round, the cuts and the craft list are in `review-log.md`. Rounds are numbered; every round's mismatch list is kept in `review-log.md` with the render it
 judged, so an iteration that made the figure worse is visible rather than remembered.
 
 ## What I do if three rounds do not improve it

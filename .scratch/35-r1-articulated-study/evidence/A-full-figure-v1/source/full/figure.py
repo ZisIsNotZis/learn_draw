@@ -54,6 +54,7 @@ DEEP_TEAL = "#20505c"
 PALE_BLUE = "#a8c4d4"
 COLLAR_BLUE = "#a8c9d7"
 EYE_WHITE = "#fbf6ee"
+NOSE_SHADE = "#e0b9a4"
 PUPIL_GREEN = "#6f9c86"
 LINING_PINK = "#e59295"
 LINING_ORANGE = "#e0a95f"
@@ -79,6 +80,7 @@ LINE_POLICY = {
     "hair_edge": (HAIR_INK, 1.6),
     "hat_edge": (HAT_UNDER, 1.4),
     "lash": (EYE_DARK, 3.0),
+    "hem": (CUFF_NAVY, 9.5),
 }
 
 # ---- frame helpers ------------------------------------------------------------------
@@ -306,6 +308,7 @@ def shift_sheet(part: SheetPart) -> SheetPart:
 # the torso's width is set by where the inherited parts land, and widening it has to be done
 # by re-cutting the bodice, not by a single factor over a group.
 TORSO_SCALE = 1.0
+BOW_SCALE = 1.16
 TORSO_ABOUT_XY = (700.0, 560.0)
 
 
@@ -384,9 +387,15 @@ LAYOUT = dict(
     puff_right=(906.0, 190.0), puff_right_r=41.0,
     # the face, and the fringe that leaves only the lower half of it showing
     chin=(684.0, 384.0),
-    face_ring=((684.0, 390.0), (622.0, 334.0), (600.0, 262.0), (614.0, 196.0),
-               (692.0, 172.0), (766.0, 208.0), (760.0, 306.0), (718.0, 362.0)),
-    eye_left=(638.0, 266.0), eye_right=(734.0, 268.0), eye_r=(29.0, 24.0),
+    # Measured off the reference at 4x (ref/face-4x.png): the far eye is 33 px wide and the
+    # near eye 47, the chin is at (685,370), the far cheek is behind the hair at 616 and the
+    # near jaw runs to 775.  The face is a three-quarter view, not a frontal oval with a
+    # turned gaze: the far side is compressed, the near cheek bulges, and the features sit
+    # right of the centre line.
+    face_ring=((686.0, 376.0), (640.0, 344.0), (616.0, 282.0), (628.0, 212.0),
+               (694.0, 176.0), (768.0, 216.0), (774.0, 300.0), (726.0, 356.0)),
+    eye_left=(636.0, 270.0), eye_right=(734.0, 268.0),
+    eye_left_r=(17.0, 24.0), eye_right_r=(24.0, 26.0),
     bangs_anchors=((552.0, 212.0), (662.0, 116.0), (812.0, 220.0), (688.0, 286.0)),
     bang_teeth=3, bang_depth=(226.0, 241.0),
     # the neck
@@ -405,11 +414,15 @@ LAYOUT = dict(
     # The falls flare at the shoulders and gather at the hem.  Straight-sided curtains were
     # the first shape and they read as a wig: the reference's hair is a lens — wide where it
     # passes the shoulders, gathered where it ends.
-    fall_left_poly=((598.0, 194.0), (534.0, 300.0), (452.0, 496.0), (428.0, 720.0),
-                    (520.0, 1046.0), (604.0, 1024.0), (566.0, 762.0), (606.0, 400.0)),
+    # The two falls are not the same length: in the reference the hair on her right ends in
+    # a curl at the waist while the fall on her left runs to the frame's bottom.  Two equal
+    # curtains read as a wig; the asymmetry is what makes it hair.
+    fall_left_poly=((598.0, 194.0), (534.0, 300.0), (452.0, 486.0), (470.0, 646.0),
+                    (566.0, 688.0), (596.0, 640.0), (540.0, 470.0), (566.0, 372.0)),
     fall_right_poly=((762.0, 192.0), (824.0, 296.0), (890.0, 470.0), (952.0, 704.0),
                      (968.0, 1044.0), (910.0, 1032.0), (876.0, 700.0), (806.0, 400.0)),
     lock_left=((574.0, 250.0), (528.0, 486.0), (516.0, 736.0)),
+    curl_left=((572.0, 664.0), (524.0, 700.0), (500.0, 674.0), (516.0, 640.0)),
     streamer=((556.0, 300.0), (470.0, 386.0), (364.0, 442.0), (292.0, 496.0),
               (266.0, 552.0), (296.0, 578.0)),
     lock_right=((760.0, 258.0), (786.0, 492.0), (800.0, 740.0)),
@@ -418,17 +431,32 @@ LAYOUT = dict(
     # The reference's lower mass, read off ref-lower.png: a large deep-teal field across
     # the centre-bottom, pale mint and cream cloth over its upper right, and the pink and
     # orange lining ribbons crossing the teal diagonally.
-    skirt=((560.0, 664.0), (818.0, 676.0), (884.0, 872.0), (700.0, 956.0),
-           (512.0, 884.0), (494.0, 748.0)),
-    skirt_teal=((252.0, 792.0), (700.0, 862.0), (762.0, 1024.0), (296.0, 1024.0)),
-    fold_cream=((470.0, 800.0), (596.0, 818.0), (676.0, 1006.0), (566.0, 1020.0),
-                (452.0, 892.0)),
-    fold_mint=((470.0, 726.0), (640.0, 742.0), (700.0, 900.0), (540.0, 918.0)),
-    fold_shadow=((590.0, 662.0), (800.0, 676.0), (806.0, 736.0), (598.0, 722.0)),
-    underskirt=((700.0, 900.0), (884.0, 872.0), (806.0, 1020.0), (700.0, 1010.0)),
-    lining_pink=((300.0, 846.0), (470.0, 872.0), (548.0, 1008.0), (352.0, 1012.0)),
-    lining_orange=((508.0, 948.0), (640.0, 930.0), (690.0, 1024.0), (556.0, 1024.0)),
+    # The reference's lower mass is cloth that has been sat on: its silhouette is not a
+    # dome.  The near knee pushes a peak out at (872,806), the far knee a second at
+    # (430,930), the valleys between them are where the cloth falls back, and the mass runs
+    # off the frame's left and bottom edges instead of closing on itself.
+    skirt=((556.0, 664.0), (818.0, 674.0), (874.0, 806.0), (846.0, 918.0),
+           (714.0, 972.0), (548.0, 992.0), (404.0, 916.0), (452.0, 762.0)),
+    skirt_teal=((150.0, 762.0), (430.0, 832.0), (612.0, 944.0), (700.0, 1024.0),
+                (56.0, 1024.0)),
+    fold_cream=((486.0, 742.0), (612.0, 770.0), (690.0, 1004.0), (556.0, 1024.0),
+                (438.0, 856.0)),
+    fold_mint=((452.0, 812.0), (604.0, 846.0), (648.0, 1010.0), (452.0, 1004.0)),
+    fold_shadow=((574.0, 660.0), (808.0, 672.0), (812.0, 742.0), (582.0, 726.0)),
+    underskirt=((700.0, 962.0), (846.0, 918.0), (788.0, 1024.0), (676.0, 1024.0)),
+    lining_pink=((286.0, 812.0), (392.0, 848.0), (462.0, 966.0), (472.0, 1024.0),
+                 (330.0, 1024.0), (292.0, 918.0), (250.0, 862.0)),
+    lining_orange=((434.0, 978.0), (556.0, 946.0), (612.0, 1024.0), (470.0, 1024.0)),
     fold_lines=((0.14, 0.04), (0.32, 0.08), (0.50, 0.12), (0.68, 0.16)),
+    # the waist: a gathered band across the blouse, with its peplum flaring below
+    waist_band=((590.0, 666.0), (700.0, 660.0), (812.0, 672.0), (809.0, 700.0),
+                (700.0, 694.0), (587.0, 700.0)),
+    # the blouse's own sides, which the crop's frame cut inside: the reference's bodice is a
+    # blouse from shoulder to waist, not the narrow column the inherited part lands as here
+    bodice_left=((604.0, 452.0), (572.0, 470.0), (560.0, 560.0), (566.0, 650.0),
+                 (592.0, 700.0), (616.0, 690.0), (610.0, 520.0)),
+    bodice_right=((800.0, 450.0), (834.0, 468.0), (846.0, 558.0), (840.0, 648.0),
+                  (812.0, 700.0), (788.0, 690.0), (794.0, 518.0)),
     # her right arm, out of the cuff and down past the skirt
     arm_route=((860.0, 556.0), (876.0, 700.0), (868.0, 792.0)),
     hand=((848.0, 776.0), (886.0, 772.0), (902.0, 802.0), (898.0, 846.0),
@@ -552,11 +580,19 @@ def head_parts():
             "A-hair-bangs": bang, **collar_out}
 
 
+def nose_mark():
+    """The nose: one short stroke where the face turns, off the centre line."""
+    return ("A-nose", "A-face", "fold_edge",
+            flat_mark(catmull(((661.0, 310.0), (665.0, 320.0), (661.0, 326.0)),
+                              steps=8, closed=False), 0.345), NOSE_SHADE)
+
+
 def eye_parts():
     L = LAYOUT
-    rx, ry = L["eye_r"]
+    radii = {"left": L["eye_left_r"], "right": L["eye_right_r"]}
     out = {}
     for side, (ex, ey) in (("left", L["eye_left"]), ("right", L["eye_right"])):
+        rx, ry = radii[side]
         # An eye is a sclera, an iris that does not fill it, a pupil and a catchlight, with
         # the lash as a separate heavy line above.  A dark disc behind a pink disc reads as
         # a goggle: that is what it was, and that is what this replaces.
@@ -580,6 +616,7 @@ def eye_parts():
                                         fill=HIGHLIGHT)
     lash_marks = []
     for side, (ex, ey) in (("left", L["eye_left"]), ("right", L["eye_right"])):
+        rx, ry = radii[side]
         arc = [(_rot(ex + rx * math.cos(math.pi * (1.08 + 0.84 * i / 14)),
                      ey + ry * math.sin(math.pi * (1.08 + 0.84 * i / 14)), ex, ey, -6))
                for i in range(15)]
@@ -597,8 +634,9 @@ def eye_parts():
     out["A-brow-right"] = planar("A-brow-right", "the right eyebrow, under the fringe", 0.335,
                                  catmull(((710.0, 242.0), (736.0, 236.0), (760.0, 244.0)),
                                          steps=8, closed=False), fill=HAIR_INK)
+
     out["A-mouth"] = planar("A-mouth", "the mouth", 0.35,
-                            ellipse(694.0, 351.0, 8.0, 3.5, -6), fill="#c98a84")
+                            ellipse(682.0, 345.0, 7.5, 2.2, -6), fill="#c98a84")
     return out
 
 
@@ -700,6 +738,17 @@ def hair_parts():
                   streamer.edge(0, 1, 1.0, 80), HAIR_INK))
     marks.append(("A-hair-streamer-edge-back", "A-hair-streamer", "hair_edge",
                   streamer.edge(0, 1, -1.0, 80), HAIR_INK))
+    curl = _strip(L["curl_left"], lambda t: 17.0 - 9.0 * t, lambda t: 0.545)
+    out["A-hair-curl-left"] = SheetPart(
+        name="A-hair-curl-left",
+        intent="the curl the fall on her right ends in, instead of a cut hem",
+        front_fill=HAIR_LIT, back_fill=HAIR_SHADE,
+        grid=curl.grid(samples=26, cols=3), anchors={},
+        authored=tuple((f"curl_{i}", p) for i, p in enumerate(L["curl_left"])))
+    marks.append(("A-hair-curl-left-edge-front", "A-hair-curl-left", "hair_edge",
+                  curl.edge(0, 1, 1.0, 50), HAIR_INK))
+    marks.append(("A-hair-curl-left-edge-back", "A-hair-curl-left", "hair_edge",
+                  curl.edge(0, 1, -1.0, 50), HAIR_INK))
     for name, route, w in (("A-hair-lock-left", L["lock_left"], 13.0),
                            ("A-hair-lock-right", L["lock_right"], 14.0)):
         surface = _strip(route, lambda t, w=w: w * (1.15 - 0.9 * t), lambda t: 0.52,
@@ -720,6 +769,38 @@ def hair_parts():
 
 
 # ---- the seated lower mass ---------------------------------------------------------
+
+def waist_parts():
+    """The waist the blouse has and this figure did not.
+
+    The reference's torso is not a column: the blouse gathers into a band at the waist
+    (sampled at (700,690) it is the same cream as the bodice, so the band is read from its
+    edges, not its tone) and the skirt flares below it.  The band is a new part laid over
+    the inherited bodice, with the gather's own strokes on it, because the inherited bodice
+    is a shared part and is not edited.
+    """
+    L = LAYOUT
+    sides = {}
+    for side, poly in (("left", L["bodice_left"]), ("right", L["bodice_right"])):
+        name = f"A-bodice-side-{side}"
+        sides[name] = planar(name, f"the {side} side of the blouse, shoulder to waist", 0.30,
+                             catmull(poly),
+                             rows=[("free_edge", catmull(poly), "the blouse's side edge")],
+                             fill=CREAM, authored=(("shoulder", poly[0]), ("waist", poly[4])))
+    band = planar("A-waist-band", "the gathered band at the blouse's waist", 0.32,
+                  catmull(L["waist_band"]),
+                  rows=[("contact", catmull(L["waist_band"]), "the band's own edge")],
+                  fill=CREAM_SHADE, authored=(("band_left", L["waist_band"][0]),
+                                              ("band_right", L["waist_band"][2])))
+    gathers = []
+    for i in range(6):
+        x = 606.0 + 33.0 * i
+        gathers.append((f"A-waist-gather-{i}", "A-waist-band", "fold_edge",
+                        flat_mark((full(x, 664.0 + 2.0 * (i % 2)),
+                                   full(x + 3.0, 706.0 - 2.0 * (i % 3))), 0.325), FOLD_INK))
+    sides["A-waist-band"] = band
+    return sides, gathers
+
 
 def lower_parts():
     """The seated lower mass: one mint skirt, a deep-teal fold behind it, cream and mint
@@ -762,6 +843,20 @@ def lower_parts():
     return {"A-skirt-front": skirt, "A-skirt-teal": teal, "A-fold-cream": cream,
             "A-fold-mint": mint, "A-fold-shadow": shadow, "A-underskirt": under,
             "A-lining-pink": pink, "A-lining-orange": orange}
+
+
+def hem_trim():
+    """The heavy navy band along the skirt's hem.
+
+    The reference's skirt reads as cloth because its hem carries a thick dark border, not
+    because of its tone: sampling the reference at its hem gives (44,58,85) across a band
+    about ten pixels wide.  It is one stroke of the `trim` class along the skirt's own hem,
+    so the band follows whatever shape the skirt is cut to.
+    """
+    L = LAYOUT
+    hem = (L["skirt"][3], L["skirt"][4], L["skirt"][5], L["skirt"][6])
+    return ("A-skirt-hem-trim", "A-skirt-front", "hem",
+            flat_mark(catmull(hem, steps=14, closed=False), 0.272), CUFF_NAVY)
 
 
 def fold_marks():
@@ -824,6 +919,8 @@ def arm_parts():
 
 def build():
     parts = {}
+    waist, waist_marks = waist_parts()
+    parts.update(waist)
     parts.update(lower_parts())
     inherited_parts, inherited_marks, meta = inherited()
     # The reference's puff sleeves are cream and the blue at the shoulders is hair.  The
@@ -851,6 +948,18 @@ def build():
                                                   TORSO_ABOUT_XY[1])
                                       if isinstance(part_, SheetPart)
                                       else scale_planar(part_, TORSO_SCALE, _pcx, _py))
+    # The bow is a principal shape in the reference and it alone may grow: scaling the whole
+    # torso group was rejected because it moved the bow against the collar, so the scale is
+    # applied to the bow about its own centre and to nothing else.
+    if "A-bow-ribbon" in inherited_parts:
+        bow_part = inherited_parts["A-bow-ribbon"]
+        grid = bow_part.grid
+        k = BOW_SCALE
+        cx = sum(p[0] for row in grid for p in row) / sum(len(row) for row in grid)
+        cy = sum(p[1] for row in grid for p in row) / sum(len(row) for row in grid)
+        inherited_parts["A-bow-ribbon"] = dataclasses.replace(
+            bow_part, grid=tuple(tuple((cx + (p[0] - cx) * k, cy + (p[1] - cy) * k, p[2])
+                                       for p in row) for row in grid))
     for dropped in ("A-head-face", "A-hair-sheet", "A-collar-left", "A-collar-right"):
         inherited_parts.pop(dropped, None)
     inherited_marks = [m for m in inherited_marks
@@ -868,7 +977,8 @@ def build():
     arm, arm_marks = arm_parts()
     parts.update(arm)
     marks = (list(inherited_marks) + list(hair_marks) + list(arm_marks)
-             + list(fold_marks()) + list(lash_marks))
+             + list(fold_marks()) + list(lash_marks) + list(waist_marks)
+             + [nose_mark(), hem_trim()])
     return dict(parts=parts, sheet_marks=tuple(marks), field=tuple(field()), meta=meta)
 
 
@@ -890,6 +1000,7 @@ OBJECTS = {
                    "the thin locks in front of each shoulder"),
     "hair-streamer": (["A-hair-streamer"],
                       "the thin lock sweeping out to her left, hooking at the end"),
+    "hair-curl": (["A-hair-curl-left"], "the curl the shorter fall ends in"),
     "face": (["A-face"], "the face field"),
     "neck": (["A-neck", "A-neck-hollow", "A-visible-neck-skin"],
              "the neck between chin and collar, and the hollow of the collar's opening"),
@@ -904,7 +1015,10 @@ OBJECTS = {
     "collar": (["A-collar-left", "A-collar-right"],
                "the sailor collar: two leaves cut for this frame's neck opening"),
     "bodice": (["A-bodice-upper", "A-derived-waist-band", "A-bodice-continuation"],
-               "the cream blouse and its waist, inherited"),
+               "the cream blouse, inherited"),
+    "waist": (["A-waist-band"], "the gathered band at the waist, laid over the blouse"),
+    "bodice-sides": (["A-bodice-side-left", "A-bodice-side-right"],
+                     "the blouse's own sides, from shoulder to waist"),
     "left-sleeve": (["A-left-sleeve", "A-left-cuff"], "one puff sleeve and its navy cuff"),
     "right-sleeve": (["A-right-sleeve", "A-right-cuff"], "the other puff sleeve and cuff"),
     "chest-bow": (["A-bow-ribbon"], "the magenta bow on the collar's V, inherited"),

@@ -9,11 +9,14 @@ skirt, lining, arm). `A-cloth-v8` keeps its own bytes and its own verdict.
 
 **The acceptance line is written before the build and lives in [`ACCEPT.md`](ACCEPT.md)** — seven terms,
 each decidable by observation. **The self-review rounds are in [`review-log.md`](review-log.md)**, one
-entry per render, ranked by whether a mismatch changes identity. This revision lands at round 20:
-T1, T2, T3, T4, T5 and T7 pass, and **T6 is not cleared** — three identity entries are open, listed
-at the end of `review-log.md`: the head is frontal where the reference's is turned three-quarters,
-the lower mass is a dome rather than sat-on cloth, and the torso is narrow. It is **not** an art
-pass and no verdict is claimed.
+entry per render, ranked by whether a mismatch changes identity. This revision lands at round 28:
+**all seven terms pass**, with T6 cleared at round 28 by cutting every entry that changed *what she
+is, where she is or what she wears* — the head as a three-quarter view, the lower mass re-cut to
+angle and trim, the torso widened into a blouse with a waist, the bow and sleeves that widening
+exposed, and the hair's unequal lengths. What remains is craft and is listed there: flat background
+fields, a crude arm at 4×, the bodice's severed waist edge under the bow, single-tone hair fills, no
+strand lines on the fringe. **No art verdict is claimed**: T6 is a self-review term and the picture's
+judgement is the person's.
 
 ## What the figure is
 

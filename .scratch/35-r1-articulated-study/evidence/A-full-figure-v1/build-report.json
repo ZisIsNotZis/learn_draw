@@ -3,6 +3,8 @@
   "parts": [
     "A-arm",
     "A-bodice-continuation",
+    "A-bodice-side-left",
+    "A-bodice-side-right",
     "A-bodice-upper",
     "A-bow-ribbon",
     "A-brow-left",
@@ -20,6 +22,7 @@
     "A-glint-right",
     "A-hair-back",
     "A-hair-bangs",
+    "A-hair-curl-left",
     "A-hair-fall-left",
     "A-hair-fall-left-shade",
     "A-hair-fall-right",
@@ -53,13 +56,14 @@
     "A-skirt-teal",
     "A-thumb",
     "A-underskirt",
-    "A-visible-neck-skin"
+    "A-visible-neck-skin",
+    "A-waist-band"
   ],
-  "faces": 4329,
-  "visible_fill_regions": 55,
-  "marks": 64,
-  "mark_paths": 137,
-  "objects": 28,
+  "faces": 4739,
+  "visible_fill_regions": 60,
+  "marks": 74,
+  "mark_paths": 157,
+  "objects": 31,
   "missing_objects": [],
   "undeclared_parts": []
 }

@@ -372,3 +372,66 @@ The streamer's sweep now reads against the flare instead of against a straight e
    Round 19's group scale was rejected for pushing the bow over the collar; the fix is a re-cut bodice.
 4. Craft, listed but not identity: the falls' inner edges are still straight; the hand is a mitten at
    4×; the mouth is a flat oval; the background is three flat fields where the reference's is a wash.
+
+## Round 23 — the head as a three-quarter view (T6 entry 1, a re-cut)
+
+What made it read wrong: the face was a frontal oval with the eyes' gaze turned — a mask on a
+straight-on head. What the reference shows, measured at 4× (`/tmp/ref-face.png` from
+`image.jpg` (560,150)-(820,400)): the **far eye is 33 px wide against the near eye's 47**, the far
+cheek sits behind hair at x 616 and the near jaw runs to 775, the chin is at (685,370), the nose is a
+short stroke at (660,312) and the mouth a line at (680,342) — both right of the face's centre line.
+
+Cut: the face ring re-cut to eight landmarks with the far side compressed and the near cheek bulging;
+per-eye radii (`eye_left_r` 17×24, `eye_right_r` 24×26); the nose as a stroke owned by the face, not a
+blob (the first attempt was an ellipse and it read as a wart); the mouth 8 px smaller and off centre.
+`nose_mark()` is a new part-free mark so the shared library stays untouched.
+
+## Round 24 — the lower mass (T6 entry 2, a re-cut)
+
+The dome was the wrong shape, and the fix was in the reference: its skirt reads as cloth because of
+**a heavy navy band along the hem** — sampled (44,58,85) across ~10 px — with the pink and orange as
+wide **ribbons crossing the teal**, not as lining at the edge. Cut: the skirt's outline widened to
+eight landmarks with two knee peaks (874,806) and (404,916) and valleys between them; the teal field
+extended to (150,762) so the ribbons cross it; `hem_trim()` strokes the skirt's own hem with a new
+`hem` class at 9.5 px; the pink and orange re-cut as wide bands inside the teal.
+
+## Round 25 — the torso (T6 entry 3, a re-cut)
+
+The blouse was a column because the inherited bodice lands as one, and scaling the group (round 19) was
+rejected. This time the fix is **new parts over the inherited ones**, which is what the "copied, not
+edited" rule leaves open: `A-bodice-side-left`/`-right` give the blouse its own sides from shoulder to
+waist, and `A-waist-band` lays the gathered band over it with six gather strokes. Tried first at 50 px
+tall and narrowed to 34: a band that thick read as a belt.
+
+## Round 26 — two more entries the widening exposed
+
+Widening the torso and shortening the hair exposed two things: **the chest bow was small** against the
+reference's (it is a principal shape) and **the puff sleeves had disappeared** behind the falls. The bow
+is scaled 1.16 about its own centre — the lesson of round 19 is that a group scale moves the bow against
+the collar, so nothing but the bow is scaled. The falls' inner edges moved out at the shoulder
+(566→430 on her right, 836→428 on her left) so the puffs and their navy cuffs show.
+
+## Round 27 — the hair's unequal lengths
+
+Two equal curtains from the brim to the frame's bottom read as a wig however their edges are cut. In
+the reference the fall on her right ends at the waist and the fall on her left runs to the bottom.
+Re-cut to unequal lengths, with `A-hair-curl-left` — a hooked lock — closing the short fall's hem
+instead of a cut line.
+
+## Round 28 — the judgement, at 1:1, with `check/side-by-side.png` in front of me
+
+**T6's three entries are cut.** The head reads as turned (narrow far eye, compressed far side, nose and
+mouth off the centre line); the lower mass is no longer a dome (angular outline with two knee peaks, a
+trimmed hem, ribbons crossing a teal field, running off the frame's left and bottom); the torso is a
+blouse with sides, a waist and gathers rather than a column, and the bow and the sleeves that the
+widening exposed are dealt with too.
+
+**What I can still see, and it is craft, not identity:** the background is three flat fields where the
+reference's is a soft wash with floating ribbons; the arm and hand are crude at 4×; the bodice's own
+severed waist edge shows as a grey diagonal under the bow; the hair's fills are single tones where the
+reference's carry a lit face and a shaded face; the fringe's strand lines are absent.
+
+**So the list of identity entries is empty and T6 is cleared at my own bar** — every entry that changed
+*what she is, where she is, or what she wears* is cut, and everything left changes only how finely it is
+drawn. That is a judgement I am making as the self-reviewer the person delegated, and it is stated here
+with the list beside it so it can be argued with.
