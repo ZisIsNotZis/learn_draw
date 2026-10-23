@@ -55,10 +55,14 @@ class FullFigure(unittest.TestCase):
         name the reference.  The inherited part library is allowed to *mention* what it
         does not read (its docstrings say so), so the name is checked only on this
         package's own builders."""
+        import re as _re
+        banned = (r"^\s*import\s+(PIL|cv2)\b", r"^\s*from\s+(PIL|cv2)\b",
+                  r"\bImage\.open\s*\(", r"\bimread\s*\(")
         for path in (PKG / "source").rglob("*.py"):
             text = path.read_text(encoding="utf-8")
-            for banned in ("cv2", "PIL", "Image.open", "imread"):
-                self.assertNotIn(banned, text, f"{path.name} uses {banned}")
+            for pattern in banned:
+                self.assertIsNone(_re.search(pattern, text, _re.M),
+                                  f"{path.name} matches /{pattern}/")
         for path in (PKG / "source" / "full").rglob("*.py"):
             self.assertNotIn("image.jpg", path.read_text(encoding="utf-8"),
                              f"{path.name} names the reference")

@@ -9,9 +9,11 @@ skirt, lining, arm). `A-cloth-v8` keeps its own bytes and its own verdict.
 
 **The acceptance line is written before the build and lives in [`ACCEPT.md`](ACCEPT.md)** — seven terms,
 each decidable by observation. **The self-review rounds are in [`review-log.md`](review-log.md)**, one
-entry per render, ranked by whether a mismatch changes identity. This revision lands at round 12: a
-whole figure in the frame; T1, T2, T3, T5 and T7 pass, **T4 is partial and T6 is not cleared**. It is
-**not** an art pass and no verdict is claimed — the open list is the last section of `review-log.md`.
+entry per render, ranked by whether a mismatch changes identity. This revision lands at round 20:
+T1, T2, T3, T4, T5 and T7 pass, and **T6 is not cleared** — three identity entries are open, listed
+at the end of `review-log.md`: the head is frontal where the reference's is turned three-quarters,
+the lower mass is a dome rather than sat-on cloth, and the torso is narrow. It is **not** an art
+pass and no verdict is claimed.
 
 ## What the figure is
 
@@ -27,6 +29,8 @@ whole figure in the frame; T1, T2, T3, T5 and T7 pass, **T4 is partial and T6 is
 | hair-bangs | `A-hair-bangs` | the fringe over the forehead |
 | hair-falls | `A-hair-fall-left`, `-right` | the two falls hanging past the shoulders |
 | hair-locks | `A-hair-lock-left`, `-right` | the thin locks in front of each shoulder |
+| hair-streamer | `A-hair-streamer` | the thin lock sweeping out to her left, hooking at the end |
+| hat-shadow | `A-shadow-fringe` | the brim's shadow on the fringe, along their junction |
 | face, neck | `A-face`, `A-neck`, `A-visible-neck-skin` | the face field; the neck between chin and collar |
 | eye-left, eye-right | 4 parts each | lid, iris, the iris's shade, catchlight |
 | brows, mouth | 3 parts | |

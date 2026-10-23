@@ -53,6 +53,8 @@ MINT_SHADE = "#b9d0c6"
 DEEP_TEAL = "#20505c"
 PALE_BLUE = "#a8c4d4"
 COLLAR_BLUE = "#a8c9d7"
+EYE_WHITE = "#fbf6ee"
+PUPIL_GREEN = "#6f9c86"
 LINING_PINK = "#e59295"
 LINING_ORANGE = "#e0a95f"
 BOW_MAGENTA = "#cf4b79"
@@ -76,6 +78,7 @@ LINE_POLICY = {
     "trim": (CUFF_NAVY, 3.4),
     "hair_edge": (HAIR_INK, 1.6),
     "hat_edge": (HAT_UNDER, 1.4),
+    "lash": (EYE_DARK, 3.0),
 }
 
 # ---- frame helpers ------------------------------------------------------------------
@@ -163,13 +166,23 @@ def fringe(anchors, teeth=3, depth=(232.0, 268.0), arc_samples=10):
         top.append((x, y))
     lower = []
     shallow, deepest = depth
-    for i in range(2 * teeth + 1):
-        f = i / (2 * teeth)
-        x = right[0] + (left[0] - right[0]) * f
-        y = shallow if i % 2 == 0 else deepest      # a notch, then a tooth tip
-        # the two ends of the fringe are shorter: the hair leaves the temples higher up
-        taper = 1.0 - (abs(f - 0.5) * 2.0) ** 2 * 0.30
-        lower.append((x, shallow + (y - shallow) * taper))
+    # Soft scallops, not a saw.  The reference's fringe hangs in rounded waves of unequal
+    # depth: the depth is a raised cosine per tooth, and each tooth's amplitude and centre
+    # come from a fixed irrational pattern, so the comb never repeats and the build is still
+    # identical every time.  A first attempt put sharp V teeth on the brow line and read as
+    # a broken hairline; a second put a single deep tooth between the eyes; this is neither.
+    samples_per_tooth = 6
+    n = teeth * samples_per_tooth
+    for i in range(n + 1):
+        f = i / n
+        tooth = f * teeth
+        phase = tooth % 1.0
+        amplitude = (1.00, 0.66, 0.88, 0.74, 0.92, 0.60)[int(tooth) % 6]
+        wave = (0.5 - 0.5 * math.cos(2 * math.pi * phase)) ** 1.15
+        lean = 7.0 * math.sin(int(tooth) * 2.399963)
+        x = right[0] + (left[0] - right[0]) * f + lean * math.sin(math.pi * phase)
+        taper = 1.0 - (abs(f - 0.5) * 2.0) ** 2 * 0.28
+        lower.append((x, shallow + (deepest - shallow) * wave * amplitude * taper))
     return tuple(full(x, y) for x, y in (top + lower))
 
 
@@ -284,6 +297,53 @@ def shift_sheet(part: SheetPart) -> SheetPart:
     return dataclasses.replace(part, grid=grid, anchors=anchors)
 
 
+# The torso is a composition transform, not an edit: the inherited parts keep their own
+# bytes, and the frame places them.  The reference's shoulder mass is wider than the crop
+# frame's, so the whole torso group is scaled about one point on the body's axis.
+# Tried at 1.10 and rejected: scaling the torso group about the body's axis pushed the
+# chest bow up over the collar and the chin (the bow is a sheet whose own grid carries the
+# knot's place), and the collar disappeared under it.  The figure is composed, not scaled:
+# the torso's width is set by where the inherited parts land, and widening it has to be done
+# by re-cutting the bodice, not by a single factor over a group.
+TORSO_SCALE = 1.0
+TORSO_ABOUT_XY = (700.0, 560.0)
+
+
+def scale_about_xy(points):
+    """Scale authored image-pixel points about the torso's axis."""
+    cx, cy = TORSO_ABOUT_XY
+    return tuple((cx + (x - cx) * TORSO_SCALE, cy + (y - cy) * TORSO_SCALE) for x, y in points)
+
+
+def _scale_local(points, origin, cx, cy, factor):
+    out = []
+    for p in points:
+        lx, ly = p.u - origin.u, p.v - origin.v
+        out.append(Point(origin.u + cx + (lx - cx) * factor,
+                         origin.v + cy + (ly - cy) * factor))
+    return tuple(out)
+
+
+def scale_planar(part: PlanarPart, factor, plane_cx, plane_cy) -> PlanarPart:
+    origin = part.frame.origin
+    cx, cy = plane_cx - origin.u, plane_cy - origin.v
+    edges = tuple(dataclasses.replace(e, points=_scale_local(e.points, origin, cx, cy, factor))
+                  for e in part.edges)
+    anchors = {k: dataclasses.replace(a, point=_scale_local((a.point,), origin, cx, cy, factor)[0])
+               for k, a in part.anchors.items()}
+    return dataclasses.replace(part,
+                               outline=_scale_local(part.outline, origin, cx, cy, factor),
+                               edges=edges, anchors=anchors)
+
+
+def scale_sheet(part: SheetPart, factor, plane_cx, plane_cy, plane_y) -> SheetPart:
+    def f(xyz):
+        return (plane_cx + (xyz[0] - plane_cx) * factor,
+                plane_cy + (xyz[1] - plane_cy) * factor, xyz[2])
+    grid = tuple(tuple(f(p) for p in row) for row in part.grid)
+    return dataclasses.replace(part, grid=grid)
+
+
 def shift_points(points):
     dx, dy = CROP_SHIFT
     return tuple((x + dx, y + dy, z) for (x, y, z) in points)
@@ -326,9 +386,9 @@ LAYOUT = dict(
     chin=(684.0, 384.0),
     face_ring=((684.0, 390.0), (622.0, 334.0), (600.0, 262.0), (614.0, 196.0),
                (692.0, 172.0), (766.0, 208.0), (760.0, 306.0), (718.0, 362.0)),
-    eye_left=(638.0, 264.0), eye_right=(732.0, 268.0), eye_r=(27.0, 30.0),
+    eye_left=(638.0, 266.0), eye_right=(734.0, 268.0), eye_r=(29.0, 24.0),
     bangs_anchors=((552.0, 212.0), (662.0, 116.0), (812.0, 220.0), (688.0, 286.0)),
-    bang_teeth=4, bang_depth=(230.0, 252.0),
+    bang_teeth=3, bang_depth=(226.0, 241.0),
     # the neck
     neck_q=((660.0, 372.0), (710.0, 372.0), (714.0, 428.0), (658.0, 428.0)),
     neck_hollow=((624.0, 398.0), (748.0, 398.0), (756.0, 486.0), (616.0, 486.0)),
@@ -338,6 +398,7 @@ LAYOUT = dict(
                  (614.0, 506.0), (664.0, 470.0), (686.0, 440.0)),
     collar_right=((700.0, 386.0), (766.0, 404.0), (822.0, 452.0), (826.0, 526.0),
                   (766.0, 502.0), (718.0, 466.0), (706.0, 438.0)),
+    _torso_note="the collar, neck and hollow follow TORSO_SCALE, so no seam opens",
     # hair: a mass behind the head, and two falls that hang in front of the shoulders
     hair_back_route=((500.0, 1052.0), (486.0, 640.0), (556.0, 320.0), (686.0, 232.0),
                      (826.0, 340.0), (902.0, 640.0), (930.0, 1052.0)),
@@ -346,6 +407,8 @@ LAYOUT = dict(
     fall_right_poly=((762.0, 192.0), (824.0, 296.0), (890.0, 470.0), (952.0, 704.0),
                      (968.0, 1044.0), (910.0, 1032.0), (876.0, 700.0), (806.0, 400.0)),
     lock_left=((574.0, 250.0), (528.0, 486.0), (516.0, 736.0)),
+    streamer=((556.0, 300.0), (470.0, 386.0), (364.0, 442.0), (292.0, 496.0),
+              (266.0, 552.0), (296.0, 578.0)),
     lock_right=((760.0, 258.0), (786.0, 492.0), (800.0, 740.0)),
     fall_wave=(9.0, 1.6, 0.4),
     # the seated lower mass: skirt over the knees, under-layer, and the fold bands
@@ -355,17 +418,19 @@ LAYOUT = dict(
     skirt=((560.0, 664.0), (818.0, 676.0), (884.0, 872.0), (700.0, 956.0),
            (512.0, 884.0), (494.0, 748.0)),
     skirt_teal=((252.0, 792.0), (700.0, 862.0), (762.0, 1024.0), (296.0, 1024.0)),
-    fold_cream=((430.0, 792.0), (612.0, 812.0), (712.0, 1004.0), (536.0, 1024.0),
-                (416.0, 890.0)),
+    fold_cream=((470.0, 800.0), (596.0, 818.0), (676.0, 1006.0), (566.0, 1020.0),
+                (452.0, 892.0)),
     fold_mint=((470.0, 726.0), (640.0, 742.0), (700.0, 900.0), (540.0, 918.0)),
-    fold_shadow=((600.0, 668.0), (776.0, 690.0), (800.0, 830.0), (652.0, 840.0)),
+    fold_shadow=((590.0, 662.0), (800.0, 676.0), (806.0, 736.0), (598.0, 722.0)),
     underskirt=((700.0, 900.0), (884.0, 872.0), (806.0, 1020.0), (700.0, 1010.0)),
     lining_pink=((300.0, 846.0), (470.0, 872.0), (548.0, 1008.0), (352.0, 1012.0)),
     lining_orange=((508.0, 948.0), (640.0, 930.0), (690.0, 1024.0), (556.0, 1024.0)),
     fold_lines=((0.14, 0.04), (0.32, 0.08), (0.50, 0.12), (0.68, 0.16)),
     # her right arm, out of the cuff and down past the skirt
     arm_route=((860.0, 556.0), (876.0, 700.0), (868.0, 792.0)),
-    hand=(864.0, 832.0),
+    hand=((848.0, 776.0), (886.0, 772.0), (902.0, 802.0), (898.0, 846.0),
+          (878.0, 872.0), (850.0, 864.0), (838.0, 824.0)),
+    thumb=((826.0, 800.0), (848.0, 792.0), (854.0, 818.0), (838.0, 836.0), (822.0, 822.0)),
 )
 
 
@@ -454,7 +519,7 @@ def head_parts():
                   fill=SKIN, authored=tuple((f"face_{i}", p) for i, p in enumerate(ring)))
     neck_q = L["neck_q"]
     neck = planar("A-neck", "the neck between the chin and the collar's opening", 0.315,
-                  catmull(neck_q), fill=SKIN_SHADE,
+                  catmull(scale_about_xy(neck_q)), fill=SKIN_SHADE,
                   rows=[("contact", (full(*neck_q[0]), full(*neck_q[1])), "the jaw's underside")],
                   authored=tuple((f"neck_{i}", p) for i, p in enumerate(neck_q)))
     anchors = L["bangs_anchors"]
@@ -463,10 +528,12 @@ def head_parts():
     # chin 58 px lower, so background showed through the two gaps beside the neck (sampled:
     # #56adb8 at (640,395) and (720,415)).  The hollow fills the opening behind the neck.
     hollow = planar("A-neck-hollow", "the shadowed hollow of the collar's opening, behind the "
-                                     "neck", 0.29, catmull(L["neck_hollow"]), fill=SKIN_SHADE,
+                                     "neck", 0.29, catmull(scale_about_xy(L["neck_hollow"])),
+                    fill=SKIN_SHADE,
                     authored=(("hollow_top", L["neck_hollow"][0]),))
     collar_out = {}
-    for side, poly in (("left", L["collar_left"]), ("right", L["collar_right"])):
+    for side, poly in (("left", scale_about_xy(L["collar_left"])),
+                       ("right", scale_about_xy(L["collar_right"]))):
         name = f"A-collar-{side}"
         collar_out[name] = planar(
             name, f"the {side} leaf of the sailor collar, from the neck opening over the "
@@ -487,25 +554,44 @@ def eye_parts():
     rx, ry = L["eye_r"]
     out = {}
     for side, (ex, ey) in (("left", L["eye_left"]), ("right", L["eye_right"])):
-        out[f"A-eye-{side}"] = planar(f"A-eye-{side}", f"the {side} eye's lid and lash line",
-                                      0.36, ellipse(ex, ey, rx, ry, -6), fill=EYE_DARK,
-                                      authored=((f"eye_{side}", (ex, ey)),))
+        # An eye is a sclera, an iris that does not fill it, a pupil and a catchlight, with
+        # the lash as a separate heavy line above.  A dark disc behind a pink disc reads as
+        # a goggle: that is what it was, and that is what this replaces.
+        out[f"A-eye-{side}"] = planar(f"A-eye-{side}", f"the {side} eye's sclera", 0.36,
+                                      ellipse(ex, ey, rx * 1.02, ry * 0.88, -6),
+                                      fill=EYE_WHITE, authored=((f"eye_{side}", (ex, ey)),))
         out[f"A-iris-{side}"] = planar(f"A-iris-{side}", f"the {side} iris", 0.365,
-                                       ellipse(ex + 1, ey + 3, rx * 0.84, ry * 0.88, -6),
+                                       ellipse(ex + 1, ey + 4, rx * 0.80, ry * 0.72, -6),
                                        fill=IRIS)
         out[f"A-iris-deep-{side}"] = planar(f"A-iris-deep-{side}",
                                             f"the shade under the {side} iris", 0.37,
-                                            ellipse(ex + 1, ey + 13, rx * 0.5, ry * 0.33, -6),
+                                            ellipse(ex + 1, ey + 13, rx * 0.52, ry * 0.34, -6),
                                             fill=IRIS_DEEP)
+        out[f"A-pupil-{side}"] = planar(f"A-pupil-{side}", f"the {side} pupil", 0.372,
+                                        ellipse(ex + 1, ey + 3, rx * 0.22, ry * 0.20, -6),
+                                        fill=PUPIL_GREEN)
         out[f"A-glint-{side}"] = planar(f"A-glint-{side}", f"the {side} eye's catchlight", 0.375,
-                                        ellipse(ex - 8, ey - 9, rx * 0.2, ry * 0.17, -6),
+                                        ellipse(ex - 9, ey - 1, rx * 0.19, ry * 0.17, -6),
                                         fill=HIGHLIGHT)
-    out["A-brow-left"] = planar("A-brow-left", "the left eyebrow", 0.35,
-                                catmull(((614.0, 226.0), (636.0, 218.0), (658.0, 224.0)),
-                                        steps=8, closed=False), fill=HAIR_SHADE)
-    out["A-brow-right"] = planar("A-brow-right", "the right eyebrow", 0.35,
-                                 catmull(((712.0, 226.0), (736.0, 220.0), (758.0, 228.0)),
-                                         steps=8, closed=False), fill=HAIR_SHADE)
+    lash_marks = []
+    for side, (ex, ey) in (("left", L["eye_left"]), ("right", L["eye_right"])):
+        arc = [(_rot(ex + rx * math.cos(math.pi * (1.08 + 0.84 * i / 14)),
+                     ey + ry * math.sin(math.pi * (1.08 + 0.84 * i / 14)), ex, ey, -6))
+               for i in range(15)]
+        lash_marks.append((f"A-lash-{side}", f"A-eye-{side}", "lash",
+                           flat_mark(tuple(full(x, y) for x, y in arc), 0.38), EYE_DARK))
+        under = [(_rot(ex + rx * 0.92 * math.cos(math.pi * (1.94 - 0.78 * i / 12)),
+                       ey + ry * 0.80 * math.sin(math.pi * (1.94 - 0.78 * i / 12)), ex, ey, -6))
+                 for i in range(13)]
+        lash_marks.append((f"A-lid-{side}", f"A-eye-{side}", "fold_edge",
+                           flat_mark(tuple(full(x, y) for x, y in under), 0.38), EYE_DARK))
+    out["_lash_marks"] = lash_marks
+    out["A-brow-left"] = planar("A-brow-left", "the left eyebrow, under the fringe", 0.335,
+                                catmull(((610.0, 244.0), (634.0, 236.0), (658.0, 242.0)),
+                                        steps=8, closed=False), fill=HAIR_INK)
+    out["A-brow-right"] = planar("A-brow-right", "the right eyebrow, under the fringe", 0.335,
+                                 catmull(((710.0, 242.0), (736.0, 236.0), (760.0, 244.0)),
+                                         steps=8, closed=False), fill=HAIR_INK)
     out["A-mouth"] = planar("A-mouth", "the mouth", 0.35,
                             ellipse(690.0, 352.0, 8.0, 3.5, 0), fill="#c98a84")
     return out
@@ -598,6 +684,17 @@ def hair_parts():
                                              lerp2(outer[3], inner[3], share)),
                                             steps=10, closed=False), 0.505),
                           HAIR_INK))
+    streamer = _strip(L["streamer"], lambda t: 21.0 - 14.0 * t ** 1.3, lambda t: 0.53)
+    out["A-hair-streamer"] = SheetPart(
+        name="A-hair-streamer",
+        intent="the thin lock that sweeps out to her left and hooks at the end",
+        front_fill=HAIR_LIT, back_fill=HAIR_SHADE,
+        grid=streamer.grid(samples=44, cols=3), anchors={},
+        authored=tuple((f"streamer_{i}", p) for i, p in enumerate(L["streamer"])))
+    marks.append(("A-hair-streamer-edge-front", "A-hair-streamer", "hair_edge",
+                  streamer.edge(0, 1, 1.0, 80), HAIR_INK))
+    marks.append(("A-hair-streamer-edge-back", "A-hair-streamer", "hair_edge",
+                  streamer.edge(0, 1, -1.0, 80), HAIR_INK))
     for name, route, w in (("A-hair-lock-left", L["lock_left"], 13.0),
                            ("A-hair-lock-right", L["lock_right"], 14.0)):
         surface = _strip(route, lambda t, w=w: w * (1.15 - 0.9 * t), lambda t: 0.52,
@@ -646,7 +743,7 @@ def lower_parts():
                              ("cream_hem", L["fold_cream"][3])))
     mint = planar("A-fold-mint", "the mint wedge below it, its own edge unparallel", 0.272,
                   catmull(L["fold_mint"]), fill=MINT_SHADE)
-    shadow = planar("A-fold-shadow", "the shade where the skirt turns under at the waist", 0.268,
+    shadow = planar("A-fold-shadow", "the shade under the waist where the skirt turns", 0.268,
                     catmull(L["fold_shadow"]), fill=MINT_SHADE)
     under = planar("A-underskirt", "the deep-teal under-layer at the skirt's right hem", 0.24,
                    catmull(L["underskirt"]),
@@ -663,42 +760,59 @@ def lower_parts():
 
 
 def fold_marks():
-    """Fold lines fanning from the waist gather: one origin, a generated spread, curves."""
+    """Fold lines: long curves following the drape, each one offset from the last.
+
+    The first version radiated them from one point at the waist and they read as a fan.
+    Cloth folds run *along* the drape: here three curves leave the waist at intervals and
+    run down-right across the skirt, converging slightly, each with its own sag.
+    """
     L = LAYOUT
-    origin = (L["skirt"][0][0] + 60.0, L["skirt"][0][1] + 26.0)
+    top = L["skirt"][0]
     marks = []
-    for i, (spread, sag) in enumerate(L["fold_lines"]):
-        start = (origin[0] + 18.0 * i, origin[1] - 6.0 * i)
-        end = (470.0 + 300.0 * spread, 1018.0 - 40.0 * spread)
-        mid_a = lerp2(start, end, 0.35)
-        mid_b = lerp2(start, end, 0.70)
+    for i in range(3):
+        start = (top[0] + 26.0 + 74.0 * i, top[1] + 34.0 + 8.0 * i)
+        end = (486.0 + 96.0 * i, 1022.0 - 6.0 * i)
+        a = lerp2(start, end, 0.33)
+        b = lerp2(start, end, 0.68)
+        sag = 26.0 - 7.0 * i
         marks.append((f"A-skirt-foldline-{i}", "A-skirt-front", "fold_edge",
-                      flat_mark(catmull((start, (mid_a[0] + 26.0, mid_a[1] + sag),
-                                         (mid_b[0] - 18.0, mid_b[1] + sag), end),
-                                        steps=12, closed=False), 0.285),
+                      flat_mark(catmull((start, (a[0] + sag, a[1]), (b[0] + sag * 0.55, b[1]), end),
+                                        steps=14, closed=False), 0.285),
                       FOLD_INK))
     return marks
 
 
 def arm_parts():
     L = LAYOUT
-    surface = _strip(L["arm_route"], lambda t: 31.0 - 9.0 * t, lambda t: 0.29)
-    arm = SheetPart(name="A-arm", intent="her right arm hanging out of the cuff",
+    surface = _strip(L["arm_route"], lambda t: 32.0 - 12.0 * t ** 1.6, lambda t: 0.29)
+    arm = SheetPart(name="A-arm", intent="her right arm hanging out of the cuff, "
+                                          "tapering to the wrist",
                     front_fill=SKIN, back_fill=SKIN_SHADE,
                     grid=surface.grid(samples=30, cols=3), anchors={},
                     authored=tuple((f"arm_{i}", p) for i, p in enumerate(L["arm_route"])))
-    hx, hy = L["hand"]
-    hand = planar("A-hand", "her right hand: a soft mitten mass at the wrist", 0.295,
-                  catmull(((hx - 24.0, hy - 22.0), (hx + 6.0, hy - 34.0), (hx + 28.0, hy - 8.0),
-                           (hx + 24.0, hy + 26.0), (hx - 8.0, hy + 32.0), (hx - 26.0, hy + 6.0))),
-                  rows=[("contact",
-                         catmull(((hx - 24.0, hy - 22.0), (hx + 6.0, hy - 34.0),
-                                  (hx + 28.0, hy - 8.0), (hx + 24.0, hy + 26.0),
-                                  (hx - 8.0, hy + 32.0), (hx - 26.0, hy + 6.0))),
-                         "the hand's own edge")], fill=SKIN)
+    hand = planar("A-hand", "her right hand at the end of the arm: palm, heel, and the "
+                            "turn of the fingers", 0.295, catmull(L["hand"]),
+                  rows=[("contact", catmull(L["hand"]), "the hand's own edge")],
+                  fill=SKIN, authored=(("finger_turn", L["hand"][0]),
+                                       ("heel", L["hand"][4])))
+    thumb = planar("A-thumb", "the thumb, folded along the palm's near side", 0.30,
+                   catmull(L["thumb"]), fill=SKIN,
+                   authored=(("thumb_tip", L["thumb"][3]),))
+    marks = []
+    # finger creases: three curves where the folded fingers meet the palm
+    # the crease where the thumb turns off the palm
+    marks.append(("A-hand-thumb-crease", "A-hand", "fold_edge",
+                  flat_mark(catmull(((846.0, 794.0), (852.0, 812.0), (848.0, 832.0)),
+                                    steps=8, closed=False), 0.305), FOLD_INK))
+    for k, (t0, t1) in enumerate(((0.20, 0.42), (0.34, 0.62), (0.48, 0.80))):
+        a = lerp2((846.0, 800.0), (900.0, 806.0), t0)
+        b = lerp2((842.0, 848.0), (896.0, 846.0), t1)
+        marks.append((f"A-hand-crease-{k}", "A-hand", "fold_edge",
+                      flat_mark(catmull((a, lerp2(a, b, 0.5), b), steps=8, closed=False), 0.30),
+                      FOLD_INK))
     marks = [("A-arm-edge-front", "A-arm", "contact", surface.edge(0, 1, 1.0, 50), FOLD_INK),
              ("A-arm-edge-back", "A-arm", "contact", surface.edge(0, 1, -1.0, 50), FOLD_INK)]
-    return {"A-arm": arm, "A-hand": hand}, marks
+    return {"A-arm": arm, "A-hand": hand, "A-thumb": thumb}, marks
 
 
 # ---- the assembly ------------------------------------------------------------------
@@ -721,6 +835,17 @@ def build():
     # the full figure's chin sits, so it drew a second jaw line across the neck; and
     # `A-hair-sheet` crosses in front of what is chest in this frame, which at crop scale
     # was "in front of the face".  Both are replaced by parts authored for this frame.
+    torso = ("A-bodice-upper", "A-derived-waist-band", "A-bodice-continuation",
+             "A-left-sleeve", "A-left-cuff", "A-right-sleeve", "A-right-cuff", "A-bow-ribbon")
+    _pcx, _py = TORSO_ABOUT_XY[0], HEIGHT - TORSO_ABOUT_XY[1]
+    for part_name in torso:
+        if part_name not in inherited_parts:
+            continue
+        part_ = inherited_parts[part_name]
+        inherited_parts[part_name] = (scale_sheet(part_, TORSO_SCALE, _pcx, _py,
+                                                  TORSO_ABOUT_XY[1])
+                                      if isinstance(part_, SheetPart)
+                                      else scale_planar(part_, TORSO_SCALE, _pcx, _py))
     for dropped in ("A-head-face", "A-hair-sheet", "A-collar-left", "A-collar-right"):
         inherited_parts.pop(dropped, None)
     inherited_marks = [m for m in inherited_marks
@@ -730,13 +855,15 @@ def build():
     parts.update(hat_parts())
     parts.update(shadow_parts())
     parts.update(head_parts())
-    parts.update(eye_parts())
+    eyes = eye_parts()
+    lash_marks = eyes.pop("_lash_marks")
+    parts.update(eyes)
     hair, hair_marks = hair_parts()
     parts.update(hair)
     arm, arm_marks = arm_parts()
     parts.update(arm)
     marks = (list(inherited_marks) + list(hair_marks) + list(arm_marks)
-             + list(fold_marks()))
+             + list(fold_marks()) + list(lash_marks))
     return dict(parts=parts, sheet_marks=tuple(marks), field=tuple(field()), meta=meta)
 
 
@@ -756,13 +883,17 @@ OBJECTS = {
                    "along its inner turn"),
     "hair-locks": (["A-hair-lock-left", "A-hair-lock-right"],
                    "the thin locks in front of each shoulder"),
+    "hair-streamer": (["A-hair-streamer"],
+                      "the thin lock sweeping out to her left, hooking at the end"),
     "face": (["A-face"], "the face field"),
     "neck": (["A-neck", "A-neck-hollow", "A-visible-neck-skin"],
              "the neck between chin and collar, and the hollow of the collar's opening"),
-    "eye-left": (["A-eye-left", "A-iris-left", "A-iris-deep-left", "A-glint-left"],
-                 "the left eye: lid, iris, its shade, catchlight"),
-    "eye-right": (["A-eye-right", "A-iris-right", "A-iris-deep-right", "A-glint-right"],
-                  "the right eye: lid, iris, its shade, catchlight"),
+    "eye-left": (["A-eye-left", "A-iris-left", "A-iris-deep-left", "A-pupil-left",
+                  "A-glint-left"],
+                 "the left eye: sclera, iris, its shade, pupil, catchlight, lash and lid"),
+    "eye-right": (["A-eye-right", "A-iris-right", "A-iris-deep-right", "A-pupil-right",
+                   "A-glint-right"],
+                  "the right eye: sclera, iris, its shade, pupil, catchlight, lash and lid"),
     "brows": (["A-brow-left", "A-brow-right"], "the eyebrows"),
     "mouth": (["A-mouth"], "the mouth"),
     "collar": (["A-collar-left", "A-collar-right"],
@@ -773,7 +904,7 @@ OBJECTS = {
     "right-sleeve": (["A-right-sleeve", "A-right-cuff"], "the other puff sleeve and cuff"),
     "chest-bow": (["A-bow-ribbon"], "the magenta bow on the collar's V, inherited"),
     "arm-right": (["A-arm"], "her right arm out of the cuff"),
-    "hand-right": (["A-hand"], "her right hand"),
+    "hand-right": (["A-hand", "A-thumb"], "her right hand and its thumb"),
     "skirt-front": (["A-skirt-front"], "the cream skirt over her knees"),
     "skirt-folds": (["A-fold-cream", "A-fold-mint", "A-fold-shadow"],
                     "the cream and mint wedges crossing the skirt, and its shaded turn"),

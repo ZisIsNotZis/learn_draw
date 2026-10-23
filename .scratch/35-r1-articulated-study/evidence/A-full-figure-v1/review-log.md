@@ -262,3 +262,80 @@ Landed render: `ff19`; `check/draft-fullres.png` and `check/head-2x.png` are its
 still panels rather than folds, the collar is small, the hair has no light/shade split, the hand is a
 mitten. Identity: the figure is whole, all of its parts are hers, and the picture is recognisably the
 reference's girl seated in the same frame — but T6 does not clear yet, and no verdict is claimed.
+
+## Round 15 — T4's gap, and the hole the shadow hunt found
+
+T4's missing relation was "the brim casts no shadow on the hair". The reference answers it narrowly
+and I sampled it before drawing anything: along the junction — (600,215), (720,205), (800,250),
+(840,280), (860,310) — the hair is the *same* lit blue everywhere, and the only dark value is a very
+dark line (0,50,91) exactly at the junction. So the brim's shadow here is a **contact line on the
+hair**, not a band across it.
+
+- A broad band was tried first and deleted: the brim's near edge is at eye height on the falls, where
+  the hair is in front of the brim and cannot be shaded by it, so the band drew two dark crescents
+  across the falls. The band that lands is the fringe's own hairline, 2 → 7 px deep (`band()` on
+  `fringe_arc()`), colour `#16406a`.
+- The same pass found a **hole**: the collar's opening is wider than the neck, and the inherited
+  collar was cut for a chin 58 px lower, so background showed through both sides of the neck —
+  sampled `#56adb8` at (640,395) and (720,415). `A-neck-hollow` fills the opening behind the neck.
+
+## Round 16 — the hair's lit/shade split, and the collar rebuilt
+
+- Each fall is now two tones: the curtain lit, and a **shaded turn** inset along its inner edge by a
+  fraction of the way to its outer edge, so the mass reads as turning away instead of as a flat fill.
+- The sailor collar was rebuilt for this frame's neck (`A-collar-left`/`-right`, light blue, in front
+  of the bodice, behind the bow) and the inherited pair dropped for the same measured reason as the
+  head boundary: at this frame they sit inside the bodice and read as a sliver.
+
+## Round 17 — the lower mass re-cut
+
+The first lower mass was five axis-aligned panels with five parallel strokes on top and read as a
+cushion. Re-read from `ref-lower.png`: a large deep-teal field across the centre-bottom, pale mint and
+cream cloth over its upper right, the pink and orange lining ribbons crossing the teal diagonally.
+Re-cut to exactly that, with the fold lines regenerated as three long curves that leave the waist at
+intervals and run down-right along the drape (the first version radiated them from one point and read
+as a fan).
+
+## Round 18 — the hand, the eyes, the fringe
+
+- **Hand**: a palm, a thumb and three creases at the wrist's end, with the arm's own width profile
+  tapering to a wrist (`32 - 12 t^1.6`). The thumb was first a `SKIN_SHADE` blob floating on the palm
+  — same tone as the palm now, with a crease where it turns off.
+- **Eyes**: a dark disc behind a pink disc reads as a goggle, which is what the 1:1 view said. An eye
+  is now a sclera, an iris that does not fill it, a pupil, a catchlight, a heavy lash arc above and a
+  thin lid below. Iris lowered in the lid so the dark reads as an upper lash rather than a ring.
+- **Fringe**: the teeth were a saw (four sharp V points), then a single deep tooth between the eyes,
+  then a crown of three points over the forehead. It is now soft scallops of unequal depth — a raised
+  cosine per tooth, the amplitude taken from a fixed irrational pattern — ending **above** the eyes
+  (226 → 241), with the brows under it showing only where the scallops leave room.
+
+## Round 19 — a route tried and rejected, recorded with its pixels
+
+The figure's torso is narrower than the reference's shoulder mass. Scaling the whole inherited torso
+group by 1.10 about the body's axis was tried and **rejected**: the chest bow is a sheet whose own grid
+carries the knot's place, so the scale pushed it up over the collar and the chin and the collar
+vanished under it. `TORSO_SCALE` is back at 1.0 with that reason written beside it. Widening the torso
+has to be done by re-cutting the bodice, not by one factor over a group.
+
+## Round 20 — the streamer (the landing render)
+
+The reference's signature is a thin lock that flies out to her left and hooks at the end. Added as
+`A-hair-streamer`, a tapered strip on a route that leaves her hair at the temple and hooks down at
+(296,578), at the hair's own depth order. It is the gesture the reference's silhouette is built on and
+the figure did not have it.
+
+**T6 after this advance — the list, not softened:**
+
+1. **The head is frontal where the reference's is turned three-quarters to her left**, and that is the
+   largest single difference left. It is a re-cut of the face group (the far eye narrower, the features
+   moved off the centre line, the hat's tilt changed), not a tuning pass, and it is the next round's
+   whole job.
+2. **The lower mass is still a dome with wedges on it.** The tones and the fold lines are right; the
+   silhouette is one round shape where the reference's is cloth that has been sat on — angular, with
+   the knees' two peaks.
+3. **The torso is narrow** (round 19's rejected route): the bodice is a cream column where the
+   reference's is a blouse with a waist and a peplum.
+4. Craft: the falls' inner edges are still straight lines; the hand is a mitten at 4×; the mouth is a
+   flat oval.
+
+Items 1–3 are identity; none of them is a tuning pass.
