@@ -42,6 +42,7 @@ BRIM_TEAL_DARK = "#437c8c"
 HAIR_LIT = "#3e73a5"
 HAIR_SHADE = "#2f5f92"
 HAIR_DEEP = "#27606b"
+SHADOW_BLUE = "#16406a"
 HAIR_INK = "#233c60"
 SKIN = "#f2e3d3"
 SKIN_SHADE = "#e3c9bd"
@@ -51,6 +52,7 @@ MINT = "#cbdfd3"
 MINT_SHADE = "#b9d0c6"
 DEEP_TEAL = "#20505c"
 PALE_BLUE = "#a8c4d4"
+COLLAR_BLUE = "#a8c9d7"
 LINING_PINK = "#e59295"
 LINING_ORANGE = "#e0a95f"
 BOW_MAGENTA = "#cf4b79"
@@ -171,6 +173,54 @@ def fringe(anchors, teeth=3, depth=(232.0, 268.0), arc_samples=10):
     return tuple(full(x, y) for x, y in (top + lower))
 
 
+def fringe_arc(anchors, arc_samples=10):
+    """The fringe's hairline: the quadratic the generator draws before the teeth."""
+    left, apex, right, _low = anchors
+    out = []
+    for i in range(arc_samples + 1):
+        f = i / arc_samples
+        x = (1 - f) ** 2 * left[0] + 2 * (1 - f) * f * apex[0] + f * f * right[0]
+        y = (1 - f) ** 2 * left[1] + 2 * (1 - f) * f * apex[1] + f * f * right[1]
+        out.append((x, y))
+    return out
+
+
+def ellipse_arc(cx, cy, rx, ry, rot=0.0, t0=0.06, t1=0.94, n=64):
+    """The near half of an ellipse, in image pixels, from t0 to t1 times pi.
+
+    t runs 0..1 over the *lower* half (image y grows downward), which is the edge of the
+    brim that the hair passes behind.
+    """
+    out = []
+    for i in range(n + 1):
+        th = math.pi * (t0 + (t1 - t0) * i / n)
+        x = cx + rx * math.cos(th)
+        y = cy + ry * math.sin(th)
+        x, y = _rot(x, y, cx, cy, rot)
+        out.append((x, y))
+    return out
+
+
+def band(centreline, deepest, shallow=3.0, power=0.55):
+    """A closed band hanging off a line: the shadow the brim lays where it crosses the hair.
+
+    The centreline is the junction itself, so the band cannot float: one edge is the line
+    the brim's silhouette makes and the other is that line let fall by a generated depth.
+    """
+    n = len(centreline)
+    top, bottom = [], []
+    for i, (x, y) in enumerate(centreline):
+        u = i / max(1, n - 1)
+        d = shallow + (deepest - shallow) * math.sin(math.pi * u) ** power
+        top.append((x, y))
+        bottom.append((x, y + d))
+    return tuple(full(x, y) for x, y in (top + bottom[::-1]))
+
+
+def windowed(points, x0, x1):
+    return [(x, y) for x, y in points if x0 <= x <= x1]
+
+
 def clover(cx, cy, r, rot=0.0, lobes=3, spread=0.80, n=120):
     """The exact boundary of n overlapping circles round a centre, as a polar function.
 
@@ -281,6 +331,13 @@ LAYOUT = dict(
     bang_teeth=4, bang_depth=(230.0, 252.0),
     # the neck
     neck_q=((660.0, 372.0), (710.0, 372.0), (714.0, 428.0), (658.0, 428.0)),
+    neck_hollow=((624.0, 398.0), (748.0, 398.0), (756.0, 486.0), (616.0, 486.0)),
+    # the sailor collar, cut for this frame's neck opening (the inherited pair was cut for a
+    # chin 58 px lower and reads as a sliver here)
+    collar_left=((692.0, 386.0), (628.0, 406.0), (566.0, 456.0), (556.0, 528.0),
+                 (614.0, 506.0), (664.0, 470.0), (686.0, 440.0)),
+    collar_right=((700.0, 386.0), (766.0, 404.0), (822.0, 452.0), (826.0, 526.0),
+                  (766.0, 502.0), (718.0, 466.0), (706.0, 438.0)),
     # hair: a mass behind the head, and two falls that hang in front of the shoulders
     hair_back_route=((500.0, 1052.0), (486.0, 640.0), (556.0, 320.0), (686.0, 232.0),
                      (826.0, 340.0), (902.0, 640.0), (930.0, 1052.0)),
@@ -292,16 +349,20 @@ LAYOUT = dict(
     lock_right=((760.0, 258.0), (786.0, 492.0), (800.0, 740.0)),
     fall_wave=(9.0, 1.6, 0.4),
     # the seated lower mass: skirt over the knees, under-layer, and the fold bands
-    skirt=((610.0, 654.0), (806.0, 666.0), (872.0, 862.0), (742.0, 1006.0),
-           (492.0, 1012.0), (446.0, 878.0), (524.0, 736.0)),
-    skirt_drop=((528.0, 672.0), (664.0, 800.0), (648.0, 992.0), (486.0, 996.0),
-                (470.0, 828.0)),
-    underskirt=((236.0, 846.0), (566.0, 830.0), (724.0, 1000.0), (250.0, 1020.0)),
-    pleat_a=((608.0, 786.0), (734.0, 796.0), (700.0, 1010.0), (582.0, 1006.0)),
-    pleat_b=((536.0, 860.0), (664.0, 874.0), (640.0, 1014.0), (498.0, 1010.0)),
-    pleat_navy=((742.0, 760.0), (872.0, 884.0), (826.0, 1010.0), (722.0, 1000.0)),
-    lining_pink=((286.0, 862.0), (438.0, 846.0), (492.0, 976.0), (326.0, 998.0)),
-    lining_orange=((430.0, 930.0), (548.0, 906.0), (612.0, 1016.0), (470.0, 1020.0)),
+    # The reference's lower mass, read off ref-lower.png: a large deep-teal field across
+    # the centre-bottom, pale mint and cream cloth over its upper right, and the pink and
+    # orange lining ribbons crossing the teal diagonally.
+    skirt=((560.0, 664.0), (818.0, 676.0), (884.0, 872.0), (700.0, 956.0),
+           (512.0, 884.0), (494.0, 748.0)),
+    skirt_teal=((252.0, 792.0), (700.0, 862.0), (762.0, 1024.0), (296.0, 1024.0)),
+    fold_cream=((430.0, 792.0), (612.0, 812.0), (712.0, 1004.0), (536.0, 1024.0),
+                (416.0, 890.0)),
+    fold_mint=((470.0, 726.0), (640.0, 742.0), (700.0, 900.0), (540.0, 918.0)),
+    fold_shadow=((600.0, 668.0), (776.0, 690.0), (800.0, 830.0), (652.0, 840.0)),
+    underskirt=((700.0, 900.0), (884.0, 872.0), (806.0, 1020.0), (700.0, 1010.0)),
+    lining_pink=((300.0, 846.0), (470.0, 872.0), (548.0, 1008.0), (352.0, 1012.0)),
+    lining_orange=((508.0, 948.0), (640.0, 930.0), (690.0, 1024.0), (556.0, 1024.0)),
+    fold_lines=((0.14, 0.04), (0.32, 0.08), (0.50, 0.12), (0.68, 0.16)),
     # her right arm, out of the cuff and down past the skirt
     arm_route=((860.0, 556.0), (876.0, 700.0), (868.0, 792.0)),
     hand=(864.0, 832.0),
@@ -360,6 +421,28 @@ def hat_parts():
             "A-hat-puff-top": puff_top, "A-hat-puff-right": puff_right}
 
 
+def shadow_parts():
+    """T4's missing relation: where the brim crosses the hair, the hair carries its shadow.
+
+    The reference answers this narrowly.  Sampling it along the junction — (600,215),
+    (720,205), (800,250), (840,280), (860,310) — gives the *same* lit blue everywhere,
+    with one very dark line (0,50,91) exactly at the junction.  So the brim's shadow here
+    is a contact line on the hair, not a soft band across it: the hair goes into the
+    brim's shadow at the line and comes out of it as a line's width of dark, which is what
+    the reference draws.  A broad band was tried first and deleted: the brim's near edge
+    is at eye height on the falls, where the hair is in front of the brim and cannot be
+    shaded by it.
+    """
+    L = LAYOUT
+    line = fringe_arc(L["bangs_anchors"])
+    return {
+        "A-shadow-fringe": planar(
+            "A-shadow-fringe", "the brim's shadow on the fringe: a contact line along their "
+                               "junction, as the reference draws it", 0.51,
+            band(line, deepest=7.0, shallow=2.0, power=0.4), fill=SHADOW_BLUE),
+    }
+
+
 # ---- the head ----------------------------------------------------------------------
 
 def head_parts():
@@ -376,11 +459,27 @@ def head_parts():
                   authored=tuple((f"neck_{i}", p) for i, p in enumerate(neck_q)))
     anchors = L["bangs_anchors"]
     edge = fringe(anchors, teeth=L["bang_teeth"], depth=L["bang_depth"])
+    # The collar's opening is wider than the neck, and the inherited collar was cut for a
+    # chin 58 px lower, so background showed through the two gaps beside the neck (sampled:
+    # #56adb8 at (640,395) and (720,415)).  The hollow fills the opening behind the neck.
+    hollow = planar("A-neck-hollow", "the shadowed hollow of the collar's opening, behind the "
+                                     "neck", 0.29, catmull(L["neck_hollow"]), fill=SKIN_SHADE,
+                    authored=(("hollow_top", L["neck_hollow"][0]),))
+    collar_out = {}
+    for side, poly in (("left", L["collar_left"]), ("right", L["collar_right"])):
+        name = f"A-collar-{side}"
+        collar_out[name] = planar(
+            name, f"the {side} leaf of the sailor collar, from the neck opening over the "
+                  f"shoulder", 0.47, catmull(poly),
+            rows=[("free_edge", catmull(poly), "the leaf's own edge")],
+            fill=COLLAR_BLUE, authored=(("neck", poly[0]), ("shoulder", poly[1]),
+                                        ("front", poly[3])))
     bang = planar("A-hair-bangs", "the fringe: hair falling over the forehead in points", 0.34,
                   edge, rows=[("hair_edge", edge, "the fringe's edge")],
                   fill=HAIR_SHADE,
                   authored=tuple((f"bang_{i}", a) for i, a in enumerate(anchors)))
-    return {"A-face": face, "A-neck": neck, "A-hair-bangs": bang}
+    return {"A-face": face, "A-neck": neck, "A-neck-hollow": hollow,
+            "A-hair-bangs": bang, **collar_out}
 
 
 def eye_parts():
@@ -467,19 +566,30 @@ def hair_parts():
     # offset, so its inner edge is a straight line however the width is tuned; a fall of
     # hair needs its outer edge on the figure's silhouette and its inner edge clear of the
     # bodice.  That is two shapes, so it is two polygons.
-    for name, poly, fill in (
-            ("A-hair-fall-left", L["fall_left_poly"], HAIR_LIT),
-            ("A-hair-fall-right", L["fall_right_poly"], HAIR_SHADE)):
+    for name, poly, fill, shade in (
+            ("A-hair-fall-left", L["fall_left_poly"], HAIR_LIT, HAIR_SHADE),
+            ("A-hair-fall-right", L["fall_right_poly"], HAIR_SHADE, HAIR_DEEP)):
+        outer = (poly[0], poly[1], poly[2], poly[3])
+        inner = (poly[0], poly[7], poly[6], poly[5])
         out[name] = planar(name, "one long fall of hair hanging in front of the shoulder "
                                  f"({name.split('-')[-1]})", 0.50, catmull(poly),
                            rows=[("hair_edge", catmull(poly), "the fall's own edge")],
                            fill=fill, authored=(("fall_top", poly[0]), ("fall_outer", poly[3]),
                                                 ("fall_hem", poly[4])))
+        # The fall's rounded read: a shaded band along its inner edge, inset from that edge
+        # by a fraction of the way to the outer edge, so the curtain is lit on the outside
+        # and dark where it turns away.  Two tones on one mass, not a flat fill.
+        turn = 0.42
+        shade_poly = (inner[0], inner[1], inner[2], inner[3],
+                      lerp2(inner[3], outer[3], turn), lerp2(inner[2], outer[2], turn),
+                      lerp2(inner[1], outer[1], turn))
+        out[name + "-shade"] = planar(
+            name + "-shade", "the shaded turn of the same fall, along its inner edge", 0.501,
+            catmull(shade_poly), fill=shade,
+            authored=(("turn", 0.0),))
         # Strands run inside the curtain: each one is a fraction of the way from the
         # outer edge to the inner edge, at three heights, from the parting down.  Offsetting
         # the landmarks instead put them outside the curtain and across the hat brim.
-        outer = (poly[0], poly[1], poly[2], poly[3])
-        inner = (poly[0], poly[7], poly[6], poly[5])
         for k, share in enumerate((0.30, 0.55, 0.78)):
             marks.append((f"{name}-strand-{k}", name, "fold_edge",
                           flat_mark(catmull((lerp2(outer[0], inner[0], share),
@@ -510,32 +620,64 @@ def hair_parts():
 # ---- the seated lower mass ---------------------------------------------------------
 
 def lower_parts():
+    """The seated lower mass: one mint skirt, a deep-teal fold behind it, cream and mint
+    wedges crossing it, and the lining bands inside the teal, with fold lines generated
+    from the waist gather rather than typed as parallel strokes.
+
+    The first version of this was five axis-aligned panels with five parallel strokes on
+    top, which read as a cushion: a fold is a wedge whose two edges are not parallel and
+    whose boundary curves, so each piece here is a catmull with no two edges parallel and
+    the strokes fan from one point at the waist.
+    """
     L = LAYOUT
-    skirt = planar("A-skirt-front", "the cream skirt over her knees", 0.26,
+    skirt = planar("A-skirt-front", "the mint skirt over her knees", 0.262,
                    catmull(L["skirt"]),
                    rows=[("silhouette", catmull(L["skirt"]), "the skirt's own edge")],
                    fill=MINT, authored=(("skirt_seat", L["skirt"][2]),
                                         ("skirt_hem", L["skirt"][4])))
-    drop = planar("A-skirt-drop", "the shaded fold running down the skirt's left", 0.25,
-                  catmull(L["skirt_drop"]), fill=MINT_SHADE)
-    under = planar("A-underskirt", "the deep-teal under-layer below and left of the skirt", 0.22,
+    teal = planar("A-skirt-teal", "the deep-teal cloth below and left of the skirt", 0.22,
+                  catmull(L["skirt_teal"]),
+                  rows=[("free_edge", catmull(L["skirt_teal"]), "the fold's own edge")],
+                  fill=DEEP_TEAL, authored=(("teal_top", L["skirt_teal"][0]),
+                                            ("teal_hem", L["skirt_teal"][2])))
+    cream = planar("A-fold-cream", "the cream wedge crossing the skirt from the waist", 0.274,
+                   catmull(L["fold_cream"]), fill=CREAM,
+                   authored=(("cream_top", L["fold_cream"][0]),
+                             ("cream_hem", L["fold_cream"][3])))
+    mint = planar("A-fold-mint", "the mint wedge below it, its own edge unparallel", 0.272,
+                  catmull(L["fold_mint"]), fill=MINT_SHADE)
+    shadow = planar("A-fold-shadow", "the shade where the skirt turns under at the waist", 0.268,
+                    catmull(L["fold_shadow"]), fill=MINT_SHADE)
+    under = planar("A-underskirt", "the deep-teal under-layer at the skirt's right hem", 0.24,
                    catmull(L["underskirt"]),
                    rows=[("silhouette", catmull(L["underskirt"]), "the under-layer's edge")],
                    fill=DEEP_TEAL, authored=(("under_left", L["underskirt"][0]),
                                              ("under_right", L["underskirt"][2])))
-    pleat_a = planar("A-pleat-a", "one cream pleat of the skirt, over the mint", 0.272,
-                     catmull(L["pleat_a"]), fill=CREAM)
-    pleat_b = planar("A-pleat-b", "the next pleat down, in the mint's shade", 0.270,
-                     catmull(L["pleat_b"]), fill=MINT_SHADE)
-    pleat_navy = planar("A-pleat-navy", "the navy pleat running down the skirt's right", 0.278,
-                        catmull(L["pleat_navy"]), fill=DEEP_TEAL)
-    pink = planar("A-lining-pink", "the pink lining band showing between the folds", 0.23,
+    pink = planar("A-lining-pink", "the pink lining ribbon crossing the teal", 0.235,
                   catmull(L["lining_pink"]), fill=LINING_PINK)
-    orange = planar("A-lining-orange", "the orange lining band below the pink", 0.23,
+    orange = planar("A-lining-orange", "the orange lining band below the pink", 0.236,
                     catmull(L["lining_orange"]), fill=LINING_ORANGE)
-    return {"A-skirt-front": skirt, "A-skirt-drop": drop, "A-underskirt": under,
-            "A-pleat-a": pleat_a, "A-pleat-b": pleat_b, "A-pleat-navy": pleat_navy,
+    return {"A-skirt-front": skirt, "A-skirt-teal": teal, "A-fold-cream": cream,
+            "A-fold-mint": mint, "A-fold-shadow": shadow, "A-underskirt": under,
             "A-lining-pink": pink, "A-lining-orange": orange}
+
+
+def fold_marks():
+    """Fold lines fanning from the waist gather: one origin, a generated spread, curves."""
+    L = LAYOUT
+    origin = (L["skirt"][0][0] + 60.0, L["skirt"][0][1] + 26.0)
+    marks = []
+    for i, (spread, sag) in enumerate(L["fold_lines"]):
+        start = (origin[0] + 18.0 * i, origin[1] - 6.0 * i)
+        end = (470.0 + 300.0 * spread, 1018.0 - 40.0 * spread)
+        mid_a = lerp2(start, end, 0.35)
+        mid_b = lerp2(start, end, 0.70)
+        marks.append((f"A-skirt-foldline-{i}", "A-skirt-front", "fold_edge",
+                      flat_mark(catmull((start, (mid_a[0] + 26.0, mid_a[1] + sag),
+                                         (mid_b[0] - 18.0, mid_b[1] + sag), end),
+                                        steps=12, closed=False), 0.285),
+                      FOLD_INK))
+    return marks
 
 
 def arm_parts():
@@ -579,18 +721,22 @@ def build():
     # the full figure's chin sits, so it drew a second jaw line across the neck; and
     # `A-hair-sheet` crosses in front of what is chest in this frame, which at crop scale
     # was "in front of the face".  Both are replaced by parts authored for this frame.
-    for dropped in ("A-head-face", "A-hair-sheet"):
+    for dropped in ("A-head-face", "A-hair-sheet", "A-collar-left", "A-collar-right"):
         inherited_parts.pop(dropped, None)
-    inherited_marks = [m for m in inherited_marks if m[1] not in ("A-head-face", "A-hair-sheet")]
+    inherited_marks = [m for m in inherited_marks
+                       if m[1] not in ("A-head-face", "A-hair-sheet",
+                                       "A-collar-left", "A-collar-right")]
     parts.update(inherited_parts)
     parts.update(hat_parts())
+    parts.update(shadow_parts())
     parts.update(head_parts())
     parts.update(eye_parts())
     hair, hair_marks = hair_parts()
     parts.update(hair)
     arm, arm_marks = arm_parts()
     parts.update(arm)
-    marks = list(inherited_marks) + list(hair_marks) + list(arm_marks)
+    marks = (list(inherited_marks) + list(hair_marks) + list(arm_marks)
+             + list(fold_marks()))
     return dict(parts=parts, sheet_marks=tuple(marks), field=tuple(field()), meta=meta)
 
 
@@ -598,23 +744,29 @@ OBJECTS = {
     "hat-brim": (["A-hat-brim-under", "A-hat-brim-top"],
                  "the wide brim: teal underside near the camera, navy top face beyond"),
     "hat-crown": (["A-hat-crown"], "the crown standing on the brim"),
+    "hat-shadow": (["A-shadow-fringe"],
+                   "the brim's shadow on the fringe, along the junction between them"),
     "hat-puff-top": (["A-hat-puff-top"], "the pink cluster at the crown's back"),
     "hat-puff-right": (["A-hat-puff-right"], "the pink cluster on the brim's right"),
     "hair-back": (["A-hair-back"], "the hair mass behind the head"),
     "hair-bangs": (["A-hair-bangs"], "the fringe over the forehead"),
-    "hair-falls": (["A-hair-fall-left", "A-hair-fall-right"],
-                   "the outer falls: closed curtains from the temple past the shoulders"),
+    "hair-falls": (["A-hair-fall-left", "A-hair-fall-right",
+                    "A-hair-fall-left-shade", "A-hair-fall-right-shade"],
+                   "the outer falls: closed curtains, each lit on the outside and shaded "
+                   "along its inner turn"),
     "hair-locks": (["A-hair-lock-left", "A-hair-lock-right"],
                    "the thin locks in front of each shoulder"),
     "face": (["A-face"], "the face field"),
-    "neck": (["A-neck", "A-visible-neck-skin"], "the neck between chin and collar"),
+    "neck": (["A-neck", "A-neck-hollow", "A-visible-neck-skin"],
+             "the neck between chin and collar, and the hollow of the collar's opening"),
     "eye-left": (["A-eye-left", "A-iris-left", "A-iris-deep-left", "A-glint-left"],
                  "the left eye: lid, iris, its shade, catchlight"),
     "eye-right": (["A-eye-right", "A-iris-right", "A-iris-deep-right", "A-glint-right"],
                   "the right eye: lid, iris, its shade, catchlight"),
     "brows": (["A-brow-left", "A-brow-right"], "the eyebrows"),
     "mouth": (["A-mouth"], "the mouth"),
-    "collar": (["A-collar-left", "A-collar-right"], "the sailor collar, inherited"),
+    "collar": (["A-collar-left", "A-collar-right"],
+               "the sailor collar: two leaves cut for this frame's neck opening"),
     "bodice": (["A-bodice-upper", "A-derived-waist-band", "A-bodice-continuation"],
                "the cream blouse and its waist, inherited"),
     "left-sleeve": (["A-left-sleeve", "A-left-cuff"], "one puff sleeve and its navy cuff"),
@@ -623,9 +775,9 @@ OBJECTS = {
     "arm-right": (["A-arm"], "her right arm out of the cuff"),
     "hand-right": (["A-hand"], "her right hand"),
     "skirt-front": (["A-skirt-front"], "the cream skirt over her knees"),
-    "skirt-drop": (["A-skirt-drop"], "the shaded fold down the skirt's left"),
-    "skirt-pleats": (["A-pleat-a", "A-pleat-b", "A-pleat-navy"],
-                     "the pleats crossing the skirt, one of them navy"),
+    "skirt-folds": (["A-fold-cream", "A-fold-mint", "A-fold-shadow"],
+                    "the cream and mint wedges crossing the skirt, and its shaded turn"),
+    "skirt-teal": (["A-skirt-teal"], "the deep-teal fold behind the skirt at her left"),
     "underskirt": (["A-underskirt"], "the deep-teal under-layer"),
     "lining": (["A-lining-pink", "A-lining-orange"], "the lining bands between the folds"),
 }
