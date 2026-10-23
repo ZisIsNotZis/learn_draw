@@ -402,8 +402,11 @@ LAYOUT = dict(
     # hair: a mass behind the head, and two falls that hang in front of the shoulders
     hair_back_route=((500.0, 1052.0), (486.0, 640.0), (556.0, 320.0), (686.0, 232.0),
                      (826.0, 340.0), (902.0, 640.0), (930.0, 1052.0)),
-    fall_left_poly=((598.0, 194.0), (546.0, 300.0), (494.0, 472.0), (452.0, 706.0),
-                    (488.0, 1044.0), (572.0, 1032.0), (566.0, 762.0), (606.0, 400.0)),
+    # The falls flare at the shoulders and gather at the hem.  Straight-sided curtains were
+    # the first shape and they read as a wig: the reference's hair is a lens — wide where it
+    # passes the shoulders, gathered where it ends.
+    fall_left_poly=((598.0, 194.0), (534.0, 300.0), (452.0, 496.0), (428.0, 720.0),
+                    (520.0, 1046.0), (604.0, 1024.0), (566.0, 762.0), (606.0, 400.0)),
     fall_right_poly=((762.0, 192.0), (824.0, 296.0), (890.0, 470.0), (952.0, 704.0),
                      (968.0, 1044.0), (910.0, 1032.0), (876.0, 700.0), (806.0, 400.0)),
     lock_left=((574.0, 250.0), (528.0, 486.0), (516.0, 736.0)),

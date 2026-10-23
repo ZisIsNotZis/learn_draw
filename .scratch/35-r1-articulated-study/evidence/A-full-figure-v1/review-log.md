@@ -351,3 +351,24 @@ to her left, so the hat sweeps up on that side as the reference's does.
 The read changes: the face stops staring out of the frame and starts looking past it, which is what the
 reference's face does. **The head is still frontal in its construction** — the far eye is not narrower
 and the features are not off the centre line — so this closes half of T6's first entry and no more.
+
+## Round 22 — the hair's silhouette (the largest entry on the list)
+
+The falls' outer edges were straight lines from the brim to the frame's bottom, which reads as a wig.
+The reference's hair is a **lens**: widest where it passes the shoulders, gathered where it ends.
+The outer edges were re-cut to that profile — (534,300) → (452,496) → (428,720) → (520,1046) on her
+right, mirrored on her left — with the same eight landmarks, so the shape stays inside invariant 5.
+The streamer's sweep now reads against the flare instead of against a straight edge.
+
+**T6 after the advance — three entries, named, none of them a tuning pass:**
+
+1. **The head is still frontal in its construction.** The gaze was set off to her right (round 21) and
+   the hat's tilt follows her, but the far eye is not narrower and the features are not off the centre
+   line. The next round is a re-cut of the face group, not a shift of it.
+2. **The lower mass is still a dome with wedges on it.** Its tones, folds and lining are right; its
+   silhouette is one round shape where the reference's is cloth that has been sat on — angular, with
+   two knee peaks and a hem that runs off the frame's left edge.
+3. **The torso is narrow**: a cream column where the reference's is a blouse with a waist and a peplum.
+   Round 19's group scale was rejected for pushing the bow over the collar; the fix is a re-cut bodice.
+4. Craft, listed but not identity: the falls' inner edges are still straight; the hand is a mitten at
+   4×; the mouth is a flat oval; the background is three flat fields where the reference's is a wash.
