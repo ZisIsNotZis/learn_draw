@@ -3,8 +3,8 @@
 Goal: learn to draw (SVG/CSS programmatic art, never diffusion/pixel) — first by recreating reference images with explainable, readable vector graphics, later without a reference. Reference target: `image.jpg` (anime-style portrait).
 
 Where we are right now: `STATUS.md` (repo root) — current best artifact, milestone, blockers.
-Where the current advance's contracts and run records are: `.scratch/35-r1-articulated-study/work/wave14-contracts.md`
-(wave 13: `wave13-contracts.md`; wave 12: `wave12-contracts.md`) and the wave log beside them; reviews land verbatim in `.scratch/35-r1-articulated-study/evidence/reviews-r1a/`.
+Where the current advance's contracts and run records are: `.scratch/35-r1-articulated-study/work/wave16-contracts.md`
+(earlier: `wave15-`, `wave14-`, `wave13-`, `wave12-contracts.md`) and the wave log beside them; reviews land verbatim in `.scratch/35-r1-articulated-study/evidence/reviews-r1a/`.
 This project's roadmap, its split and its mailbox (`mail/`, below this file — its shape is declared in
 `mail/README.md`) are held by the node that owns the project, not by any package it dispatches; a
 package's answer is its report, and the owner files it.
