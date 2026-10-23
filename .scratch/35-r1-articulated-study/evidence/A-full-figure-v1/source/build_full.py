@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build entry point: write the full figure's SVG from the parts library.
 
-Reference discipline: this program never reads image.jpg or any crop.  The reference
+Reference discipline: this program never reads the reference image or any crop.  The reference
 seeded the landmarks while they were authored; after that it is closed, and the build
 proves it by running with the image absent.
 

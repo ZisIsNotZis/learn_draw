@@ -144,6 +144,33 @@ def puffs(cx, cy, r, n=3, spread=0.78):
         for i in range(n))
 
 
+def fringe(anchors, teeth=3, depth=(232.0, 268.0), arc_samples=10):
+    """A fringe from four landmarks: a hairline arc, then teeth whose points are generated.
+
+    The authored input is where the fringe starts and ends, where it peaks, and how far its
+    lowest tooth reaches.  How many teeth there are, and how deep each one hangs, is the
+    generator's business, so the fringe is not a hand-typed station table.
+    """
+    left, apex, right, low = anchors
+    top = []
+    for i in range(arc_samples + 1):
+        f = i / arc_samples
+        # a quadratic through the two temples with the apex as the control point
+        x = (1 - f) ** 2 * left[0] + 2 * (1 - f) * f * apex[0] + f * f * right[0]
+        y = (1 - f) ** 2 * left[1] + 2 * (1 - f) * f * apex[1] + f * f * right[1]
+        top.append((x, y))
+    lower = []
+    shallow, deepest = depth
+    for i in range(2 * teeth + 1):
+        f = i / (2 * teeth)
+        x = right[0] + (left[0] - right[0]) * f
+        y = shallow if i % 2 == 0 else deepest      # a notch, then a tooth tip
+        # the two ends of the fringe are shorter: the hair leaves the temples higher up
+        taper = 1.0 - (abs(f - 0.5) * 2.0) ** 2 * 0.30
+        lower.append((x, shallow + (y - shallow) * taper))
+    return tuple(full(x, y) for x, y in (top + lower))
+
+
 def clover(cx, cy, r, rot=0.0, lobes=3, spread=0.80, n=120):
     """The exact boundary of n overlapping circles round a centre, as a polar function.
 
@@ -247,24 +274,20 @@ LAYOUT = dict(
     puff_right=(906.0, 190.0), puff_right_r=41.0,
     # the face, and the fringe that leaves only the lower half of it showing
     chin=(684.0, 384.0),
-    face_ring=((684.0, 390.0), (648.0, 366.0), (618.0, 330.0), (600.0, 282.0),
-               (606.0, 214.0), (640.0, 180.0), (700.0, 176.0), (744.0, 206.0),
-               (764.0, 268.0), (752.0, 330.0), (716.0, 364.0)),
+    face_ring=((684.0, 390.0), (622.0, 334.0), (600.0, 262.0), (614.0, 196.0),
+               (692.0, 172.0), (766.0, 208.0), (760.0, 306.0), (718.0, 362.0)),
     eye_left=(638.0, 264.0), eye_right=(732.0, 268.0), eye_r=(27.0, 30.0),
-    bangs=((556.0, 206.0), (592.0, 156.0), (660.0, 132.0), (736.0, 146.0), (794.0, 190.0),
-           (806.0, 216.0), (770.0, 232.0), (740.0, 258.0), (712.0, 226.0), (686.0, 264.0),
-           (656.0, 228.0), (626.0, 260.0), (596.0, 230.0), (572.0, 240.0)),
+    bangs_anchors=((552.0, 212.0), (662.0, 116.0), (812.0, 220.0), (688.0, 286.0)),
+    bang_teeth=4, bang_depth=(230.0, 252.0),
     # the neck
     neck_q=((660.0, 372.0), (710.0, 372.0), (714.0, 428.0), (658.0, 428.0)),
     # hair: a mass behind the head, and two falls that hang in front of the shoulders
     hair_back_route=((500.0, 1052.0), (486.0, 640.0), (556.0, 320.0), (686.0, 232.0),
                      (826.0, 340.0), (902.0, 640.0), (930.0, 1052.0)),
     fall_left_poly=((598.0, 194.0), (546.0, 300.0), (494.0, 472.0), (452.0, 706.0),
-                    (488.0, 1044.0), (572.0, 1032.0), (566.0, 762.0), (596.0, 470.0),
-                    (616.0, 316.0)),
+                    (488.0, 1044.0), (572.0, 1032.0), (566.0, 762.0), (606.0, 400.0)),
     fall_right_poly=((762.0, 192.0), (824.0, 296.0), (890.0, 470.0), (952.0, 704.0),
-                     (968.0, 1044.0), (910.0, 1032.0), (876.0, 700.0), (846.0, 466.0),
-                     (788.0, 310.0)),
+                     (968.0, 1044.0), (910.0, 1032.0), (876.0, 700.0), (806.0, 400.0)),
     lock_left=((574.0, 250.0), (528.0, 486.0), (516.0, 736.0)),
     lock_right=((760.0, 258.0), (786.0, 492.0), (800.0, 740.0)),
     fall_wave=(9.0, 1.6, 0.4),
@@ -351,13 +374,13 @@ def head_parts():
                   catmull(neck_q), fill=SKIN_SHADE,
                   rows=[("contact", (full(*neck_q[0]), full(*neck_q[1])), "the jaw's underside")],
                   authored=tuple((f"neck_{i}", p) for i, p in enumerate(neck_q)))
-    bangs = L["bangs"]
-    fringe = planar("A-hair-bangs", "the fringe: hair falling over the forehead in points", 0.34,
-                    catmull(bangs),
-                    rows=[("hair_edge", catmull(bangs), "the fringe's edge")],
-                    fill=HAIR_SHADE, authored=(("bang_apex", bangs[2]), ("bang_left", bangs[0]),
-                                               ("bang_right", bangs[4])))
-    return {"A-face": face, "A-neck": neck, "A-hair-bangs": fringe}
+    anchors = L["bangs_anchors"]
+    edge = fringe(anchors, teeth=L["bang_teeth"], depth=L["bang_depth"])
+    bang = planar("A-hair-bangs", "the fringe: hair falling over the forehead in points", 0.34,
+                  edge, rows=[("hair_edge", edge, "the fringe's edge")],
+                  fill=HAIR_SHADE,
+                  authored=tuple((f"bang_{i}", a) for i, a in enumerate(anchors)))
+    return {"A-face": face, "A-neck": neck, "A-hair-bangs": bang}
 
 
 def eye_parts():
@@ -456,7 +479,7 @@ def hair_parts():
         # outer edge to the inner edge, at three heights, from the parting down.  Offsetting
         # the landmarks instead put them outside the curtain and across the hat brim.
         outer = (poly[0], poly[1], poly[2], poly[3])
-        inner = (poly[0], poly[8], poly[7], poly[6])
+        inner = (poly[0], poly[7], poly[6], poly[5])
         for k, share in enumerate((0.30, 0.55, 0.78)):
             marks.append((f"{name}-strand-{k}", name, "fold_edge",
                           flat_mark(catmull((lerp2(outer[0], inner[0], share),

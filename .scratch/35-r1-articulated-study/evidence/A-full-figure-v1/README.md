@@ -51,8 +51,10 @@ PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s $PKG/tests -t
 ```
 
 The 1:1 image a reviewer judges is `check/draft-fullres.png`; `check/side-by-side.png` is the reference
-and this render at the same size, left to right. The build takes ~30 s (the depth engine is pairwise
-over ~3.7 k triangles).
+and this render at the same size, left to right, and `check/head-2x.png` is the head at 2×, where
+identity is decided. The build takes ~25 s (the depth engine is pairwise over ~3.8 k triangles) and the
+suite is 9 tests, ~100 s, `OK`. The inherited `A-cloth-v8` suite is deliberately **not** copied here: it
+asserts things about the crop-frame assembly and opens files that live in that package.
 
 ## The discipline it keeps
 

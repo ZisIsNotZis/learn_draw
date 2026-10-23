@@ -227,3 +227,38 @@ A 2× crop of the head (`check/head-2x.png`) showed two things the 1:1 view hid:
    `HAIR_SHADE`, the hair's own mid tone.
 
 Both are craft, not identity. The six identity items in round 12 stand, and so does its assessment.
+
+## Round 14 — `ff19` (the tests found three things the eye did not)
+
+The suite written for the figure (`tests/test_full_figure.py`) failed on its own first run, and each
+failure was a real defect rather than a test to relax:
+
+1. **`A-face` typed eleven coordinates, the fringe fourteen, each fall nine.** Invariant 5 says no
+   shape carries a hand-typed station table. The face ring is now eight landmarks; each fall is eight;
+   and the fringe became a **generator**: four landmarks (where it starts, where it peaks, where it
+   ends, how low it hangs) plus `teeth` and a depth pair, so its points are computed
+   (`figure.py:fringe`). The first two generator attempts were wrong and are recorded here rather than
+   dropped: sampling only at tooth tips gave a flat lower edge, and a 66 px tooth depth put a spike
+   between the eyes. The fringe now hangs to the brow line (230–252) with four shallow teeth.
+2. **The copied `A-cloth-v8` test suite is gone from this package.** Nine of its files assert things
+   about the *crop-frame* assembly and open `artwork-a.png`, which exists in `A-cloth-v8` and not
+   here: three errors and three failures that said nothing about this figure. They stay tested where
+   they belong. What remains here is the figure's own suite.
+3. **The palette test was wrong, not the code**: it looked for every fill among `figure.py`'s own
+   constants, and the inherited parts declare their colours in their own modules. It now gathers the
+   palette from the part modules too.
+4. **The no-image test was too blunt**: it forbade the string `image.jpg` anywhere under `source/`,
+   which the inherited `build_a.py` docstring legitimately contains ("never reads image.jpg"). It now
+   forbids an image *library* everywhere and the reference's *name* only in this package's own
+   builders.
+
+5. **Three of the figure's own tests still read `OBJECTS` the old way** (`for part, why in
+   values():`) after the dict became name -> ([parts], statement); they errored on an unhashable list.
+   Fixed, and the suite is green: **9 tests, OK**.
+
+Landed render: `ff19`; `check/draft-fullres.png` and `check/head-2x.png` are its images.
+
+**Where this leaves the figure.** Craft: the fringe's zigzag is still too regular, the lower mass is
+still panels rather than folds, the collar is small, the hair has no light/shade split, the hand is a
+mitten. Identity: the figure is whole, all of its parts are hers, and the picture is recognisably the
+reference's girl seated in the same frame — but T6 does not clear yet, and no verdict is claimed.
