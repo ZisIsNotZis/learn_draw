@@ -1,0 +1,82 @@
+# Negative controls and mutation demonstrations at this revision (A-cloth-v6-closeout)
+
+Every block below was produced by running the command shown, in this directory, at this
+revision.  `git -C <repo> checkout -- <file>` restores the mutated source, and the
+"restored" block proves the same command passes again.  The in-suite controls (joint
+translation, joint depth, joint tangency, the in-memory unaccounted anchor) run as part
+of `python3 -m unittest discover -s tests -t .`; the transcript here is for the
+source-mutating ones, which must not be left in place.
+
+## In-suite controls (transcript of the first closeout round, kept verbatim below)
+
+intact build: 18 declared joints, 0 failed
+BROKEN: S1-collar-front | boundary gap 4.000000 > 1e-06
+BROKEN: S3-collar-right-root | boundary gap 4.000000 > 1e-06
+BROKEN: S5-skin-right-root | boundary gap 4.000000 > 1e-06
+BROKEN: S10-left-cuff | depth gap 0.500000 > 0.002
+BROKEN: S10-left-cuff-right | depth gap 0.500000 > 0.002
+restored build: 0 failed
+
+## Source mutations, run one at a time and restored
+
+=== M1 unaccounted anchor: build
+ANCHOR UNACCOUNTED A-left-cuff.sleeve_seat: no joint reads it and NON_JOINTS gives no reason
+ANCHOR UNACCOUNTED A-right-cuff.sleeve_seat: no joint reads it and NON_JOINTS gives no reason
+{"anchors_declared": 38, "anchors_joint_endpoints": 34, "anchors_non_joints": 2, "faces": 2018, "parts": ["A-bodice-continuation", "A-bodice-upper", "A-bow-ribbon", "A-collar-left", "A-collar-right", "A-derived-waist-band", "A-hair-sheet", "A-head-face", "A-left-cuff", "A-left-sleeve", "A-right-cuff", "A-right-sleeve", "A-visible-neck-skin"], "seams_failed": 0, "seams_total": 18, "visible_fill_regions": 15}
+exit=1
+=== M1 unaccounted anchor: inventory test
+----------------------------------------------------------------------
+Ran 5 tests in 0.098s
+
+FAILED (failures=2)
+
+anchors declared 38 = joint endpoints 34 + non-joints 2 + unaccounted 2
+=== M1 restored: build
+{"anchors_declared": 36, "anchors_joint_endpoints": 34, "anchors_non_joints": 2, "faces": 2018, "parts": ["A-bodice-continuation", "A-bodice-upper", "A-bow-ribbon", "A-collar-left", "A-collar-right", "A-derived-waist-band", "A-hair-sheet", "A-head-face", "A-left-cuff", "A-left-sleeve", "A-right-cuff", "A-right-sleeve", "A-visible-neck-skin"], "seams_failed": 0, "seams_total": 18, "visible_fill_regions": 15}
+exit=0
+OK
+
+anchors declared 36 = joint endpoints 34 + non-joints 2 + unaccounted 0
+--- restore clean (no output above = clean)
+=== M2 bow width no longer constant (B2 mutation)
+AssertionError: 13.600000000000033 not less than 1e-06 : the strip's measured width varies by 13.600000 between its rows
+
+----------------------------------------------------------------------
+Ran 1 test in 0.091s
+
+FAILED (failures=1)
+=== M2 restored
+Ran 1 test in 0.087s
+
+OK
+=== M2b HALF_WIDTH = nan (the literal the old test asserted on)
+AssertionError: False is not true : an emitted width is not a finite number
+
+----------------------------------------------------------------------
+Ran 1 test in 0.085s
+
+FAILED (failures=1)
+Ran 1 test in 0.088s
+
+OK
+=== M3 second cuff lifted in front of everything (B2 two-sleeve mutation)
+
+----------------------------------------------------------------------
+Ran 1 test in 13.830s
+
+FAILED (failures=1)
+=== M3 restored
+Ran 1 test in 15.954s
+
+OK
+=== M4 both quad triangles share the first triangle's fill (N1 mutation)
+----------------------------------------------------------------------
+Ran 3 tests in 0.078s
+
+FAILED (failures=1)
+
+per-quad fill disagrees with the winding on 48 of 1380 faces
+=== M4 restored
+OK
+
+per-quad fill disagrees with the winding on 48 of 1380 faces
