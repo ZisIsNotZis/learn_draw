@@ -104,3 +104,10 @@ reads.
   package Q, § 5 what the wave does not do.
 - [`evidence/reviews-r1a/B-hand-study-v2-rimwrap-image-review-1.md`](.scratch/35-r1-articulated-study/evidence/reviews-r1a/B-hand-study-v2-rimwrap-image-review-1.md)
   — the verdict H2 is written against, in the reviewer's own words.
+
+---
+
+**Superseded, not answered.** The person's direction of 2026-10-23 moved the advance to the full figure
+(`evidence/A-full-figure-v1/`), so the question this message asks — package P or the person's eye first — no
+longer routes anything: his eye came first by his own instruction, and P stays cut and unlaunched.
+Moved here from `mail/`, where an upward report does not belong. `STATUS.md` carries the fact.

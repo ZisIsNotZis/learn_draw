@@ -24,7 +24,13 @@ Stage names below are new roadmap identifiers; old S0–S3 names are historical 
 
 R1 splits into R1a object studies and R1b articulated composition by the user's approved scope decision ([issue 55](../../.scratch/35-r1-articulated-study/issues/55-r1a-object-study-scope.md)). The four acceptance questions above apply unchanged to both, and R1a passing does not satisfy R1b.
 
-#### R1a — Object studies
+#### R1a — Object studies — suspended by the person's direction of 2026-10-23
+
+The person named the body image (`A-cloth-v8/artwork-a.png`) as the one output that works and ordered it
+continued directly until a full image, self-supervised. That direction replaces the object studies as the
+current advance: the bow study is parked after three failed image verdicts, the hand study after four, and
+neither is resumed or replaced until he says otherwise. The full figure it produced is
+`evidence/A-full-figure-v1/`; R1a's own exit line below is unweakened and unmet.
 
 - **Visible work/capability:** two actual images, each one object filling its own frame: (A) the bow alone, imitating only the reference's observed bow, with no torso/sleeve/hair/collar claim; (B) an original reference-free hand-with-dish, with no head/torso/shoulder-join/arm-connection claim and no panel sheet.
 - **Method and transfer:** computed geometry from relations and vocabulary rather than hand-typed contours; no author-specified visibility cuts, so depth decides; a mechanism claim carries a test that fails when the mechanism is removed; the reference seeds A's parameters and is then closed, so the build reads neither the crop nor any metric at runtime.
