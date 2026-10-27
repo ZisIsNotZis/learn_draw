@@ -601,43 +601,50 @@ def eye_parts():
         # An eye is a sclera, an iris that does not fill it, a pupil and a catchlight, with
         # the lash as a separate heavy line above.  A dark disc behind a pink disc reads as
         # a goggle: that is what it was, and that is what this replaces.
-        out[f"A-eye-{side}"] = planar(f"A-eye-{side}", f"the {side} eye's sclera", 0.36,
-                                      ellipse(ex, ey, rx * 1.02, ry * 0.88, -6),
+        # The downcast eye is a shallow almond, not the inherited full-height disc.  Its
+        # iris sits low and off-centre, so the upper lid covers its top by reading rather
+        # than by an authored visibility cut; every layer remains its own owned shape.
+        sclera_ry = ry * 0.43
+        gaze_x, gaze_y = ex - rx * 0.20, ey + ry * 0.18
+        out[f"A-eye-{side}"] = planar(f"A-eye-{side}", f"the {side} eye's shallow sclera", 0.36,
+                                      ellipse(ex, ey, rx * 1.02, sclera_ry, -6),
                                       fill=EYE_WHITE, authored=((f"eye_{side}", (ex, ey)),))
-        out[f"A-iris-{side}"] = planar(f"A-iris-{side}", f"the {side} iris, set toward her "
-                                                          f"own right as the reference's is",
+        out[f"A-iris-{side}"] = planar(f"A-iris-{side}", f"the {side} iris, down and toward "
+                                                          f"her own right under the lid",
                                        0.365,
-                                       ellipse(ex - 5, ey + 4, rx * 0.80, ry * 0.72, -6),
+                                       ellipse(gaze_x, gaze_y, rx * 0.52, sclera_ry * 0.82, -6),
                                        fill=IRIS)
         out[f"A-iris-deep-{side}"] = planar(f"A-iris-deep-{side}",
-                                            f"the shade under the {side} iris", 0.37,
-                                            ellipse(ex - 5, ey + 13, rx * 0.52, ry * 0.34, -6),
+                                            f"the lower shade of the {side} iris", 0.37,
+                                            ellipse(gaze_x, gaze_y + sclera_ry * 0.28,
+                                                    rx * 0.38, sclera_ry * 0.36, -6),
                                             fill=IRIS_DEEP)
         out[f"A-pupil-{side}"] = planar(f"A-pupil-{side}", f"the {side} pupil", 0.372,
-                                        ellipse(ex - 5, ey + 3, rx * 0.22, ry * 0.20, -6),
+                                        ellipse(gaze_x, gaze_y, rx * 0.16, sclera_ry * 0.28, -6),
                                         fill=PUPIL_GREEN)
         out[f"A-glint-{side}"] = planar(f"A-glint-{side}", f"the {side} eye's catchlight", 0.375,
-                                        ellipse(ex - 13, ey - 1, rx * 0.19, ry * 0.17, -6),
+                                        ellipse(gaze_x - rx * 0.20, gaze_y - sclera_ry * 0.18,
+                                                rx * 0.11, sclera_ry * 0.15, -6),
                                         fill=HIGHLIGHT)
     lash_marks = []
     for side, (ex, ey) in (("left", L["eye_left"]), ("right", L["eye_right"])):
         rx, ry = radii[side]
-        arc = [(_rot(ex + rx * math.cos(math.pi * (1.08 + 0.84 * i / 14)),
-                     ey + ry * math.sin(math.pi * (1.08 + 0.84 * i / 14)), ex, ey, -6))
-               for i in range(15)]
+        # Three anchors describe each generated curve.  The heavy upper lash slopes down
+        # toward the nose; the lighter crease echoes it above, making the shy lowered lid
+        # legible at 1:1 without turning the whole eye into a black outline.
+        lash = ((ex - rx, ey - 1.0), (ex, ey - ry * 0.48), (ex + rx, ey + 1.5))
+        lid = ((ex - rx * 0.82, ey - ry * 0.42),
+               (ex, ey - ry * 0.68), (ex + rx * 0.78, ey - ry * 0.34))
         lash_marks.append((f"A-lash-{side}", f"A-eye-{side}", "lash",
-                           flat_mark(tuple(full(x, y) for x, y in arc), 0.38), EYE_DARK))
-        under = [(_rot(ex + rx * 0.92 * math.cos(math.pi * (1.94 - 0.78 * i / 12)),
-                       ey + ry * 0.80 * math.sin(math.pi * (1.94 - 0.78 * i / 12)), ex, ey, -6))
-                 for i in range(13)]
+                           flat_mark(catmull(lash, steps=10, closed=False), 0.38), EYE_DARK))
         lash_marks.append((f"A-lid-{side}", f"A-eye-{side}", "fold_edge",
-                           flat_mark(tuple(full(x, y) for x, y in under), 0.38), EYE_DARK))
+                           flat_mark(catmull(lid, steps=10, closed=False), 0.38), EYE_DARK))
     out["_lash_marks"] = lash_marks
-    out["A-brow-left"] = planar("A-brow-left", "the left eyebrow, under the fringe", 0.335,
-                                catmull(((610.0, 244.0), (634.0, 236.0), (658.0, 242.0)),
+    out["A-brow-left"] = planar("A-brow-left", "the far eyebrow, softly lowered", 0.335,
+                                catmull(((610.0, 247.0), (634.0, 242.0), (658.0, 247.0)),
                                         steps=8, closed=False), fill=HAIR_INK)
-    out["A-brow-right"] = planar("A-brow-right", "the right eyebrow, under the fringe", 0.335,
-                                 catmull(((710.0, 242.0), (736.0, 236.0), (760.0, 244.0)),
+    out["A-brow-right"] = planar("A-brow-right", "the near eyebrow, softly lowered", 0.335,
+                                 catmull(((710.0, 245.0), (736.0, 240.0), (760.0, 247.0)),
                                          steps=8, closed=False), fill=HAIR_INK)
 
     out["A-mouth"] = planar("A-mouth", "the mouth", 0.35,
