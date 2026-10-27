@@ -57,9 +57,9 @@ numbers and is closed; depth decides visibility.
   point rather than a square cut.
 
 **Current evidence.** `artwork.svg` sha256 is
-`82e5d2d44f58cc35578c1922fec54452ec0ccac7b276d5b8fadeee6370288405`; the judged 1:1 PNG sha256 is
-`23868cd79cebe2a841b97626063e17a834a1b5d5c4c0b79f10def97d6111e355`. The observed build took
-141 seconds on this host; the final 11-test suite took 220.151 seconds and passed.
+`3ace0879bb1aed816c41ab0a246cd564c0924ab2595219ee92fb6c7b08bb918f`; the judged 1:1 PNG sha256 is
+`754c6ad225f0acea176685ef51c19aa6f41076c8f56132c05b78e032b420e845`. The observed final build took
+57.452 seconds on this host; the final 11-test suite took 180.912 seconds and passed.
 
 **Rebuild and verify** (from the repository root):
 
