@@ -312,7 +312,7 @@ def shift_sheet(part: SheetPart) -> SheetPart:
 # the torso's width is set by where the inherited parts land, and widening it has to be done
 # by re-cutting the bodice, not by a single factor over a group.
 TORSO_SCALE = 1.0
-BOW_SCALE = 1.16
+BOW_SCALE = 1.02
 TORSO_ABOUT_XY = (700.0, 560.0)
 
 
@@ -398,11 +398,11 @@ LAYOUT = dict(
     # right of the centre line.
     # Four landmarks drive the whole three-quarter face: chin, compressed far temple,
     # skull top and full near cheek.  The sampled boundary is generated below.
-    face_ring=((686.0, 374.0), (622.0, 276.0), (690.0, 174.0), (766.0, 292.0)),
-    eye_left=(640.0, 286.0), eye_right=(728.0, 282.0),
-    eye_left_r=(16.0, 22.0), eye_right_r=(23.5, 24.0),
-    bangs_anchors=((552.0, 212.0), (662.0, 116.0), (812.0, 220.0), (688.0, 292.0)),
-    bang_teeth=4, bang_depth=(246.0, 286.0),
+    face_ring=((686.0, 370.0), (620.0, 276.0), (690.0, 174.0), (770.0, 290.0)),
+    eye_left=(642.0, 288.0), eye_right=(730.0, 284.0),
+    eye_left_r=(15.0, 20.0), eye_right_r=(22.0, 22.0),
+    bangs_anchors=((552.0, 212.0), (662.0, 116.0), (812.0, 220.0), (688.0, 286.0)),
+    bang_teeth=3, bang_depth=(246.0, 278.0),
     # the neck
     neck_q=((660.0, 372.0), (710.0, 372.0), (714.0, 428.0), (658.0, 428.0)),
     neck_hollow=((624.0, 398.0), (748.0, 398.0), (756.0, 486.0), (616.0, 486.0)),
@@ -427,7 +427,7 @@ LAYOUT = dict(
                      (968.0, 1044.0), (910.0, 1032.0), (876.0, 700.0), (806.0, 400.0)),
     lock_left=((574.0, 250.0), (528.0, 486.0), (516.0, 736.0)),
     curl_left=((572.0, 664.0), (524.0, 700.0), (500.0, 674.0), (516.0, 640.0)),
-    streamer=((556.0, 300.0), (446.0, 402.0), (278.0, 516.0), (300.0, 580.0)),
+    streamer=((556.0, 300.0), (448.0, 392.0), (314.0, 500.0), (282.0, 566.0)),
     lock_right=((760.0, 258.0), (786.0, 492.0), (800.0, 740.0)),
     fall_wave=(9.0, 1.6, 0.4),
     # the seated lower mass: skirt over the knees, under-layer, and the fold bands
@@ -584,7 +584,12 @@ def head_parts():
     chin, far_temple, skull_top, near_cheek = L["face_ring"]
     # A generated asymmetric oval through four measured landmarks.  The far side stays
     # compressed while the near cheek carries the turn, so the head cannot read frontal.
-    ring = catmull((chin, far_temple, skull_top, near_cheek))
+    # Two points derived around the chin turn its single landmark into a soft jaw arc;
+    # the authored ring remains four landmarks, but the generator no longer converges
+    # both cheeks onto a V-shaped tip.
+    chin_left = (chin[0] - 18.0, chin[1] - 5.0)
+    chin_right = (chin[0] + 18.0, chin[1] - 3.0)
+    ring = catmull((chin_left, far_temple, skull_top, near_cheek, chin_right))
     face = planar("A-face", "the narrow three-quarter face: compressed far side and full near cheek", 0.30,
                   ring, rows=[("silhouette", ring, "the face's outer boundary")],
                   fill=SKIN, authored=tuple((f"face_{i}", p) for i, p in enumerate(L["face_ring"])))
@@ -639,8 +644,8 @@ def eye_parts():
         # The downcast eye is a shallow almond, not the inherited full-height disc.  Its
         # iris sits low and off-centre, so the upper lid covers its top by reading rather
         # than by an authored visibility cut; every layer remains its own owned shape.
-        sclera_ry = ry * 0.43
-        gaze_x, gaze_y = ex - rx * 0.20, ey + ry * 0.18
+        sclera_ry = ry * 0.34
+        gaze_x, gaze_y = ex - rx * 0.16, ey + ry * 0.19
         out[f"A-eye-{side}"] = planar(f"A-eye-{side}", f"the {side} eye's shallow sclera", 0.36,
                                       ellipse(ex, ey, rx * 1.02, sclera_ry, -6),
                                       fill=EYE_WHITE, authored=((f"eye_{side}", (ex, ey)),))
@@ -667,7 +672,7 @@ def eye_parts():
         # Three anchors describe each generated curve.  The heavy upper lash slopes down
         # toward the nose; the lighter crease echoes it above, making the shy lowered lid
         # legible at 1:1 without turning the whole eye into a black outline.
-        lash = ((ex - rx, ey - 1.0), (ex, ey - ry * 0.48), (ex + rx, ey + 1.5))
+        lash = ((ex - rx, ey - 0.5), (ex, ey - ry * 0.34), (ex + rx, ey + 2.5))
         lid = ((ex - rx * 0.82, ey - ry * 0.42),
                (ex, ey - ry * 0.68), (ex + rx * 0.78, ey - ry * 0.34))
         lash_marks.append((f"A-lash-{side}", f"A-eye-{side}", "lash",
@@ -683,7 +688,7 @@ def eye_parts():
                                          steps=8, closed=False), fill=HAIR_INK)
 
     out["A-mouth"] = planar("A-mouth", "the small downturned mouth", 0.35,
-                            ellipse(690.0, 348.0, 5.5, 1.7, -8), fill="#c98a84")
+                            ellipse(692.0, 345.0, 6.5, 1.9, -8), fill="#c98a84")
     return out
 
 
@@ -775,7 +780,7 @@ def hair_parts():
                                             steps=10, closed=False), 0.505),
                           HAIR_INK))
     streamer = _strip(L["streamer"],
-                      lambda t: 0.7 + 20.3 * (1.0 - t) ** 1.25, lambda t: 0.53)
+                      lambda t: 2.0 + 27.0 * (1.0 - t) ** 1.15, lambda t: 0.53)
     out["A-hair-streamer"] = SheetPart(
         name="A-hair-streamer",
         intent="the thin lock that sweeps out to her left and hooks at the end",
@@ -784,8 +789,6 @@ def hair_parts():
         authored=tuple((f"streamer_{i}", p) for i, p in enumerate(L["streamer"])))
     marks.append(("A-hair-streamer-edge-front", "A-hair-streamer", "hair_edge",
                   streamer.edge(0, 1, 1.0, 80), HAIR_INK))
-    marks.append(("A-hair-streamer-edge-back", "A-hair-streamer", "hair_edge",
-                  streamer.edge(0, 1, -1.0, 80), HAIR_INK))
     curl = _strip(L["curl_left"], lambda t: 17.0 - 9.0 * t, lambda t: 0.545)
     out["A-hair-curl-left"] = SheetPart(
         name="A-hair-curl-left",
@@ -797,8 +800,8 @@ def hair_parts():
                   curl.edge(0, 1, 1.0, 50), HAIR_INK))
     marks.append(("A-hair-curl-left-edge-back", "A-hair-curl-left", "hair_edge",
                   curl.edge(0, 1, -1.0, 50), HAIR_INK))
-    for name, route, w in (("A-hair-lock-left", L["lock_left"], 13.0),
-                           ("A-hair-lock-right", L["lock_right"], 14.0)):
+    for name, route, w in (("A-hair-lock-left", L["lock_left"], 20.0),
+                           ("A-hair-lock-right", L["lock_right"], 21.0)):
         surface = _strip(route, lambda t, w=w: w * (1.15 - 0.9 * t), lambda t: 0.52,
                          wave=(4.0, 1.1, 0.9))
         out[name] = SheetPart(name=name, intent="one thin lock of hair in front of the shoulder",
@@ -806,8 +809,6 @@ def hair_parts():
                               grid=surface.grid(samples=28, cols=3), anchors={},
                               authored=tuple((f"{name}_{i}", p) for i, p in enumerate(route)))
         marks.append((f"{name}-edge-front", name, "hair_edge", surface.edge(0, 1, 1.0, 60),
-                      HAIR_INK))
-        marks.append((f"{name}-edge-back", name, "hair_edge", surface.edge(0, 1, -1.0, 60),
                       HAIR_INK))
     marks.append(("A-hair-back-edge-front", "A-hair-back", "hair_edge",
                   back.edge(0, 1, 1.0, 100), HAIR_INK))
@@ -1069,7 +1070,7 @@ def build():
     parts.update(arm)
     marks = (list(inherited_marks) + list(hair_marks) + list(arm_marks)
              + list(fold_marks()) + list(lash_marks) + list(waist_marks)
-             + [nose_mark(), hem_trim()])
+             + [nose_mark()])
     return dict(parts=parts, sheet_marks=tuple(marks), field=tuple(field()), meta=meta)
 
 
