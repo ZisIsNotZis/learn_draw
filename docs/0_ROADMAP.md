@@ -14,11 +14,17 @@ body image that works, up to a whole figure, with the supervision of the build l
 agent — *"self-supervise (again, not you, that agent)"* — and with no return to the object studies
 first.
 
+**The 2026-10-27 direction: proceed.** *"Proceed strictly according to AGENTS.md in your system prompt
+with goal in your mind. Redo roadmap if needed (I didn't check)."* The route is handed to the manager
+and no verdict on the figure is given. That is not a pause, and it is not acceptance: the figure's
+judgement remains his alone, and the advance that prepares the next revision does not wait for it.
+
 # CONFIRMED
 
 **The advance's order was agreed:** the object studies, then the articulated composition, then the
 sealed reference-free drawing, then the integrated delivery, then his disposition. The object studies
-are now suspended at his direction (below); the rest of the order stands.
+are suspended at his direction (below), and the figure advance he asked for is a step of that same
+road. The later milestones keep their promises; they are not renumbered to absorb the figure.
 
 # INFERRED
 
@@ -28,6 +34,16 @@ The person judges; nothing else does. A metric, a self-review and an agent revie
 evidence; none of them produces a verdict of his, and no internal check is ever represented as his
 judgement. A picture whose own review rejects it is not put in front of him, and a repair run neither
 awards a verdict of his nor lowers a threshold to make a repair pass.
+
+## A self-review is not a milestone gate
+
+The figure package wrote its own accept line (`A-full-figure-v1/ACCEPT.md`, terms T1–T7) before its
+build, and that was the right discipline for construction. It is not the gate. The milestone gate is
+`2_GOAL.md`'s six-axis rubric, scored by two independent sighted reviewers on the 1:1 image, because a
+term the author writes and clears at his own bar can be honest and still miss what a reader sees. The
+previous "T6 cleared" was exactly that: an author's list that emptied at round 28, and an independent
+pair then found the figure not seated, one-armed and background-deleted. A term is a craft instrument;
+the rubric and the person are the verdict.
 
 ## How his delegation of the drawing judgement is bounded
 
@@ -40,10 +56,68 @@ mechanical signature is reported upward as a contract problem, never absorbed by
 
 ## Milestone path
 
-### R1 — Readable articulated study
+### R1 — The whole figure (current advance)
 
-R1 splits into object studies (R1a) and the articulated composition (R1b). The four acceptance
-questions apply to both; R1a passing does not satisfy R1b.
+R1's visible promise is one artwork: the reference's girl, whole, in her own 1024² frame. The object
+studies (R1a) are suspended at the person's direction; the articulated composition (R1b) remains as the
+original-composition study, but the reference-composition half of it is now delivered by R1c.
+
+#### R1c — The whole figure, drawn — current
+
+**Visible work:** one image, `A-full-figure-v2`, the same girl in the reference's frame, built from the
+project's own parts by the project's own depth engine. It starts from `A-full-figure-v1`, which is
+structurally whole — 31 objects, 57 parts, every one declared, every visible cut computed — and it
+carries the drawing that the two independent reviewers of v1 found missing.
+
+**What the v1 review pair found, and what R1c must make untrue** (records:
+`.scratch/35-r1-articulated-study/evidence/reviews-r1c/`; vector A3 / B3–4 / C2–3 / D0–3 / E4–5 /
+F1–3, with D and F contested):
+
+1. **It does not read as seated.** The torso drops into a symmetrical bell; the dark mass sits detached
+   at the left instead of across the lap. This is the largest single defect and it is identity-level.
+2. **The hand is a mitten** at ~(845, 820): no fingers, no wrist, a circular blob at its top.
+3. **The viewer-left shoulder/arm does not read as attached**; bow, sleeve, hair and torso collide at
+   ~(585, 500).
+4. **The background's composition is deleted**: the sweeping mint wave, the teal field and the floating
+   ribbons are flat angular blocks; the mid-frame motion is gone.
+5. **The face is wide-eyed and frontal** where the reference is shy and downcast; the eyes read as flat
+   pink discs with specks, without lash weight or lid.
+6. **The drawing is unstroked.** Most shapes are flat fills with no contour; the picture reads as
+   stickers rather than as a drawing (`P13`, `P11`). The hair is two flat curtains with a square-cut
+   streamer; the skirt is panels with straight fold lines.
+
+**Method and transfer:** stroke the shape already owned before inventing a new one (`P13`); a hint that
+does not fit the mental model is an upstream error (`invariant 3`), not a stroke to move. Build the
+seated lower mass as a lap plane with the skirt crossing it and the navy underlayer carried beneath, not
+as a separate polygon. Build the hand as a palm with finger masses and a thumb; build the left arm as an
+arm from the sleeve, not as a gap to be covered. Re-cut the eyes as a lid, a lash, an iris under the
+lid, a pupil and a catchlight, with the near/far sizes the three-quarter head already has. Background
+from the observed masses: one sweeping mint wave whose boundary is a curve, the teal ground, and the
+ribbon tails that cross it. Every shape stays a generator with at most about four landmarks; the
+reference seeds the landmarks and is closed; depth decides visibility.
+
+**Independent gates:** the six-axis rubric, two independent sighted reviewers on the 1:1 image, targets
+A≥4, B≥4, C≥4, D≥4, E≥4, F≥4, the whole vector, no axis contested at Δ≥2 left unresolved; each
+reviewer's biggest-defect field naming craft, not identity; the build deterministic, the suite green,
+the manifest verified, no image read, and the similarity alarm recorded and not fallen by more than 0.02
+since the v1 pair. Then the person's judgement.
+
+**Scope/non-goals:** one figure, one frame. No new engine, no pose set, no reference-free task, no
+baseline promotion, no metric tuning, no hand-typed station table, no change to another package's
+bytes.
+
+**Exit:** the vector at target on two independent reviews, alarms green, and the 1:1 image presented to
+the person with what is done and what is not. That is a `need_user_review` milestone: the work that
+does not depend on his eye continues, but the R1c advance closes only on his verdict.
+
+**Risk/alternative:** the seated lower mass is the structural risk. Two distinct lower-mass hypotheses
+are the limit; if both fail the seated read, the evidence is preserved and the gate is reported
+unresolved rather than re-labelled. The hand has the same limit, and the earlier hand studies are the
+record of two failed routes. A contested axis is settled by construction and a further review, never by
+averaging.
+
+**Status:** v1 reviewed by two independent sighted reviewers (records above). v2 is the advance. No art
+verdict is claimed for v1, and none will be claimed for v2 by its author.
 
 #### R1a — Object studies — suspended at the person's direction
 
@@ -137,8 +211,8 @@ the unresolved gates.
 `.scratch/35-r1-articulated-study/work/task-freeze.md`. The freeze's revision is pending independent
 review and integrator approval; that is not art acceptance.
 
-**Status:** starts once both R1a studies pass. Nothing in R1b has started, and no R1a result
-substitutes for any condition above.
+**Status:** its reference-composition half is absorbed by R1c; the original-composition half (B) has
+not started, and no R1c result substitutes for B's conditions.
 
 ### R2 — Responsive components and pose variation
 
@@ -254,12 +328,12 @@ independent structure/geometry/depth proof; (e) visual experience and reproducti
 integration and user-ready delivery. The categories are a coverage checklist, not one-file tasks;
 complete coverage is defined before dispatch.
 
-For each workpackage record objective, source inputs, exact outputs and acceptance, exclusive
-artifact and file ownership, interfaces, dependencies, genuinely parallel seams, exclusions, owner,
-integrator and reviewer. Shared scene contracts and render artifacts have exactly one writer.
-Construction may run alongside source study only on stable interfaces; geometry, depth and experience
-checks consume the same final revision; integrate before the whole-slice review. One writer maintains
-tightly coupled roadmap and coverage facts — never two writers across that seam.
+For each workpackage record objective, source inputs, exact outputs and acceptance, exclusive artifact
+and file ownership, interfaces, dependencies, genuinely parallel seams, exclusions, owner, integrator
+and reviewer. Shared scene contracts and render artifacts have exactly one writer. Construction may run
+alongside source study only on stable interfaces; geometry, depth and experience checks consume the same
+final revision; integrate before the whole-slice review. One writer maintains tightly coupled roadmap
+and coverage facts — never two writers across that seam.
 
 The integration owner binds source, artifact and evidence hashes and commands to the final revision.
 A fresh independent reviewer checks every milestone artifact and its consistency, and a visual reviewer
@@ -279,6 +353,38 @@ the concrete workpackage contract that owns them — the two-track freeze
 (`.scratch/35-r1-articulated-study/work/r1a-object-study-contracts.md`), and each wave's contract file. A limit must be auditable in the
 file that sets it, and no attempt cap turns a failure into a pass.
 
+## The R1c workpackages
+
+**W1 — the figure's drawing, stage 1: contour and face** (owner: one writer, `A-full-figure-v2`).
+Objective: every shape the figure owns is stroked as a drawing, and the face reads as the reference's
+shy three-quarter face. Inputs: v1's source copied to v2, the v1 review pair, the reference crops.
+Outputs: v2 source, rebuilt SVG, 1:1 render, suite, manifest. Do: apply the line policy to every visible
+part edge, with a weight hierarchy (silhouette > free edge > fold/contact) and a declared class per
+mark; re-cut the eye parts as lid/lash/iris-under-lid/pupil/catchlight at the head's own three-quarter
+proportions; give the hand a palm, finger masses and a thumb; route the viewer-left arm from the sleeve.
+Non-do: no coordinate tables, no depth cuts authored by hand, no change to the reference's pose or
+frame. AC: the SVG contains a contour mark for every visible object; the four line classes are present
+with distinct widths; the hand has at least four separated digit masses visible at 1:1; the suite is
+green and the rebuild is byte-identical; a 4× head crop shows a lash, a lid and an iris not filling the
+sclera. Status: dispatched.
+
+**W2 — the figure's drawing, stage 2: the seated lower mass and the field** (owner: one writer, same
+package, after W1 commits). Objective: the figure reads as seated and the background carries the
+reference's composition. Inputs: W1's revision, the reference crops. Outputs: v2 source, render, check
+bundle, manifest. Do: build a lap plane with the skirt crossing it laterally and the navy underlayer
+beneath; re-cut the mint wave as a curve, place the teal ground and the floating ribbon tails behind
+the figure; give the hair's falls a lit/shade boundary that curves and strand lines that follow it.
+Non-do: no detached dark polygon, no flat angular field as the final field, no baseline promotion. AC:
+at 1:1 a reader can point to the lap and the cloth across it, and the dark mass is under the skirt, not
+beside it; the background's mint boundary is a curve from the left edge behind her waist; the falls
+carry at least two tones and a strand line each. Status: queued behind W1.
+
+**W3 — the independent review and the presentation** (owner: manager; two fresh reviewers + one
+execution reviewer). Objective: a verdict on W2's revision by the rubric. Outputs: two review records
+in `evidence/reviews-r1c/` bound to the v2 hashes; a presentation of the 1:1 image to the person with
+what is done, what is not, and what to look at. AC: two sighted reviewers, no unresolved Δ≥2 axis,
+alarms green, the image in front of the person. Status: waits for W2.
+
 ## Historical mapping
 
 The stage names S0–S3 are historical identifiers, not gates and not a binding sequence. Old S0's bounded
@@ -291,28 +397,28 @@ drawing iterations are not repaired.
 
 ## Current state
 
-**The current advance is the full figure**, `evidence/A-full-figure-v1/`: the girl whole in the
-reference's own 1024 frame, composed from `A-cloth-v8`'s part library copied byte-for-byte, every part
-a generator with at most seven authored landmarks, every visible cut decided by the project's depth
-engine, and a self-review line of seven terms written before the build and met — including T6, the
-identity term, which was cleared by cutting every entry that changed what she is, where she is or what
-she wears. Its judgeable artifact is `check/side-by-side.png` (reference left, figure right). The
-craft list its own review keeps — flat background fields, a crude arm at 4×, the inherited bodice's
-severed waist edge showing under the bow, single-tone hair fills, no strand lines on the fringe — is
-recorded in the package's `review-log.md`. **No art verdict is claimed:** the picture's judgement is
-the person's and is now the only thing standing between R1 and what follows it.
+**The current advance is R1c**, the whole figure drawn. `A-full-figure-v1` is structurally whole: 31
+objects, 57 parts, every one declared, 4,739 faces, every visible cut computed by the depth engine, the
+build byte-identical on rebuild, no image read. Its own accept line T1–T3/T5/T7 passes; T4 is partial.
+
+**Its review pair, independent and sighted, put the picture at A3 / B3–4 / C2–3 / D0–3 / E4–5 / F1–3**
+with D and F contested (`evidence/reviews-r1c/`). The pair's agreement, independent of the rubric, is:
+the hand is a mitten; the viewer-left shoulder is unreadable; the background composition is deleted;
+the face is frontal and wide-eyed; and — the strongest — **the figure does not read as seated**, because
+the dark lower mass sits detached at the left of a symmetrical dress bell. That last one is identity,
+not craft, and the v1 self-review's "T6 cleared" missed it. **No art verdict is claimed.**
 
 **The recorded ratchet floor is unchanged** and is a flat-2D artifact
 (`.scratch/00-tooling/baseline/`, recorded from the 2D assembly): the full figure is reference-free and
 does not compare against it, and no structural sketch replaces it.
 
-**Open gates, none closed by the figure:** integrated R1 acceptance; reference-absent reproduction at
-the integrated level; heldout compatibility and release; transfer; and the person's judgement at a real
-gate. The sealed brief
+**Open gates, none closed by the figure:** the R1c rubric gate; integrated R1 acceptance;
+reference-absent reproduction at the integrated level; heldout compatibility and release; transfer; and
+the person's judgement at a real gate. The sealed brief
 (`.scratch/35-r1-articulated-study/work/holdout-brief.sealed.md`) stays unread until he releases it and
 authorizes the creator role.
 
-**Next entry:** the person's reading of the figure. If he names a defect, the next advance is that
-defect's repair on a copy of the package, with the part library still copied byte-for-byte; if he
-accepts or stays silent, the advance is the craft list the figure's own review kept, worked in the
-order that review ranked them.
+**Next entry:** W1 and W2 above, then W3. If the pair's vector does not reach the targets, the next
+advance is the largest remaining defect named by that pair, on v2's source; the person is given the
+image only once its own reviews no longer reject it. If the person names a defect, it becomes the next
+advance on the current package; the part library stays copied byte-for-byte.
