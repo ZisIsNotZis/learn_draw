@@ -72,14 +72,18 @@ CONTOUR_INK = "#2f3d47"
 FOLD_INK = "#5b6a72"
 
 LINE_POLICY = {
-    "silhouette": (CONTOUR_INK, 1.7),
-    "free_edge": (CONTOUR_INK, 1.7),
-    "contact": (FOLD_INK, 1.3),
-    "fold_edge": (FOLD_INK, 1.0),
-    "trim": (CUFF_NAVY, 3.4),
-    "hair_edge": (HAIR_INK, 1.6),
-    "hat_edge": (HAT_UNDER, 1.4),
-    "lash": (EYE_DARK, 3.0),
+    # One readable hierarchy, with no duplicate widths: the outer silhouette carries the
+    # figure, free edges turn inside it, and contact/fold marks recede.  Material-specific
+    # edges keep their own weight rather than making the whole picture uniformly inked.
+    "silhouette": (CONTOUR_INK, 2.4),
+    "free_edge": (CONTOUR_INK, 1.9),
+    "closure": (CONTOUR_INK, 1.6),
+    "contact": (FOLD_INK, 1.35),
+    "fold_edge": (FOLD_INK, 0.95),
+    "trim": (CUFF_NAVY, 3.5),
+    "hair_edge": (HAIR_INK, 2.1),
+    "hat_edge": (HAT_UNDER, 2.7),
+    "lash": (EYE_DARK, 3.1),
     "hem": (CUFF_NAVY, 9.5),
 }
 
@@ -491,15 +495,16 @@ def hat_parts():
                               ellipse(bx, by, L["brim_rx"], L["brim_ry"], L["brim_rot"]),
                               "the brim's outer edge")],
                        fill=BRIM_TEAL, authored=(("brim_centre", L["brim_centre"]),))
+    brim_top = dome(bx, by, L["brim_rx"], L["brim_ry"], L["brim_rot"])
     top = planar("A-hat-brim-top", "the brim's navy top face on the far side of its axis", 0.21,
-                 dome(bx, by, L["brim_rx"], L["brim_ry"], L["brim_rot"]),
-                 rows=[],
+                 brim_top,
+                 rows=[("free_edge", brim_top, "the top face's exposed far edge")],
                  fill=HAT_NAVY, authored=(("brim_top_axis", L["brim_centre"]),))
     cx, cy = L["crown_centre"]
+    crown_shape = dome(cx, cy, L["crown_rx"], L["crown_ry"], L["brim_rot"])
     crown = planar("A-hat-crown", "the crown dome standing on the brim's top face", 0.22,
-                   dome(cx, cy, L["crown_rx"], L["crown_ry"], L["brim_rot"]),
-                   rows=[("hat_edge", dome(cx, cy, L["crown_rx"], L["crown_ry"], L["brim_rot"]),
-                          "the crown meeting the brim")],
+                   crown_shape,
+                   rows=[("hat_edge", crown_shape, "the crown meeting the brim")],
                    fill=HAT_CROWN, authored=(("crown_centre", L["crown_centre"]),))
     px, py = L["puff_top"]
     puff_top = planar("A-hat-puff-top", "the pink cluster at the crown's back", 0.24,
@@ -823,23 +828,32 @@ def lower_parts():
                   rows=[("free_edge", catmull(L["skirt_teal"]), "the fold's own edge")],
                   fill=DEEP_TEAL, authored=(("teal_top", L["skirt_teal"][0]),
                                             ("teal_hem", L["skirt_teal"][2])))
+    cream_shape = catmull(L["fold_cream"])
     cream = planar("A-fold-cream", "the cream wedge crossing the skirt from the waist", 0.274,
-                   catmull(L["fold_cream"]), fill=CREAM,
-                   authored=(("cream_top", L["fold_cream"][0]),
-                             ("cream_hem", L["fold_cream"][3])))
+                   cream_shape, rows=[("free_edge", cream_shape, "the crossing fold's edge")],
+                   fill=CREAM, authored=(("cream_top", L["fold_cream"][0]),
+                                         ("cream_hem", L["fold_cream"][3])))
+    mint_shape = catmull(L["fold_mint"])
     mint = planar("A-fold-mint", "the mint wedge below it, its own edge unparallel", 0.272,
-                  catmull(L["fold_mint"]), fill=MINT_SHADE)
+                  mint_shape, rows=[("contact", mint_shape, "the lower fold boundary")],
+                  fill=MINT_SHADE)
+    shadow_shape = catmull(L["fold_shadow"])
     shadow = planar("A-fold-shadow", "the shade under the waist where the skirt turns", 0.268,
-                    catmull(L["fold_shadow"]), fill=MINT_SHADE)
+                    shadow_shape, rows=[("fold_edge", shadow_shape, "the skirt's shaded turn")],
+                    fill=MINT_SHADE)
     under = planar("A-underskirt", "the deep-teal under-layer at the skirt's right hem", 0.24,
                    catmull(L["underskirt"]),
                    rows=[("silhouette", catmull(L["underskirt"]), "the under-layer's edge")],
                    fill=DEEP_TEAL, authored=(("under_left", L["underskirt"][0]),
                                              ("under_right", L["underskirt"][2])))
+    pink_shape = catmull(L["lining_pink"])
     pink = planar("A-lining-pink", "the pink lining ribbon crossing the teal", 0.235,
-                  catmull(L["lining_pink"]), fill=LINING_PINK)
+                  pink_shape, rows=[("free_edge", pink_shape, "the pink lining's edge")],
+                  fill=LINING_PINK)
+    orange_shape = catmull(L["lining_orange"])
     orange = planar("A-lining-orange", "the orange lining band below the pink", 0.236,
-                    catmull(L["lining_orange"]), fill=LINING_ORANGE)
+                    orange_shape, rows=[("free_edge", orange_shape, "the orange lining's edge")],
+                    fill=LINING_ORANGE)
     return {"A-skirt-front": skirt, "A-skirt-teal": teal, "A-fold-cream": cream,
             "A-fold-mint": mint, "A-fold-shadow": shadow, "A-underskirt": under,
             "A-lining-pink": pink, "A-lining-orange": orange}
