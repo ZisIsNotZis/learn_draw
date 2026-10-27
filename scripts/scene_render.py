@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """scene_render.py — compile a scene.yaml (object-level drawing nodes) to SVG, render to PNG.
 
-Spec: docs/drawing/scene-format.md
+Spec: docs/7_INTERFACE.md (node format and renderer contract); generators: docs/8_DETAIL.md
 """
 import argparse, math, os, re, subprocess, sys
 import yaml

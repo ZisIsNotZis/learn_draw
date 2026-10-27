@@ -13,7 +13,7 @@ depicts, not which pixels coincide. It tracked the project's own history correct
     flat colour             0.484
 
 STATUS: a SECONDARY ALARM, never a gate (roadmap G8 is the rubric). Two reasons, recorded in
-docs/drawing/rubric.md Part III: (1) a scalar is a black box in a project whose method is
+docs/2_GOAL.md §The similarity alarm is an instrument, never a gate: (1) a scalar is a black box in a project whose method is
 explainability, and the rubric's per-axis evidence and free-text "one change" field are worth more than
 a number; (2) a scalar invites optimisation — a CLIP score measures *semantic neighbourhood*, so a
 drawing can drift toward "anime girl with a hat" generally and the number rises while the drawing
