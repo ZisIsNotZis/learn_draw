@@ -440,14 +440,14 @@ LAYOUT = dict(
     # off the frame's left and bottom edges instead of closing on itself.
     # Four landmarks per cloth shape.  `lap_outline` expands the skirt anchors into the
     # two knee peaks, the valley and the off-frame hem; no station table is authored.
-    skirt=((548.0, 666.0), (812.0, 680.0), (872.0, 810.0), (408.0, 916.0)),
-    skirt_teal=((340.0, 704.0), (844.0, 770.0), (902.0, 1050.0), (-36.0, 1050.0)),
-    fold_cream=((520.0, 706.0), (650.0, 772.0), (690.0, 1038.0), (516.0, 1038.0)),
-    fold_mint=((432.0, 814.0), (596.0, 852.0), (642.0, 1038.0), (410.0, 1038.0)),
-    fold_shadow=((558.0, 664.0), (810.0, 680.0), (798.0, 738.0), (570.0, 724.0)),
-    underskirt=((650.0, 936.0), (850.0, 900.0), (812.0, 1040.0), (622.0, 1040.0)),
-    lining_pink=((214.0, 786.0), (354.0, 824.0), (486.0, 1038.0), (330.0, 1038.0)),
-    lining_orange=((360.0, 930.0), (542.0, 900.0), (632.0, 1038.0), (454.0, 1038.0)),
+    skirt=((574.0, 682.0), (810.0, 696.0), (842.0, 820.0), (470.0, 890.0)),
+    skirt_teal=((-44.0, 716.0), (828.0, 700.0), (1010.0, 1050.0), (-44.0, 1050.0)),
+    fold_cream=((564.0, 716.0), (704.0, 744.0), (734.0, 1018.0), (520.0, 1018.0)),
+    fold_mint=((450.0, 812.0), (590.0, 834.0), (622.0, 1018.0), (426.0, 1018.0)),
+    fold_shadow=((574.0, 684.0), (808.0, 698.0), (792.0, 744.0), (584.0, 732.0)),
+    underskirt=((616.0, 914.0), (900.0, 872.0), (944.0, 1040.0), (586.0, 1040.0)),
+    lining_pink=((178.0, 764.0), (338.0, 792.0), (496.0, 1038.0), (310.0, 1038.0)),
+    lining_orange=((318.0, 884.0), (530.0, 858.0), (654.0, 1038.0), (438.0, 1038.0)),
     fold_lines=((0.14, 0.04), (0.32, 0.08), (0.50, 0.12), (0.68, 0.16)),
     # the waist: a gathered band across the blouse, with its peplum flaring below
     waist_band=((590.0, 666.0), (700.0, 660.0), (812.0, 672.0), (809.0, 700.0),
@@ -488,24 +488,31 @@ def field_ribbon(route, half_width):
 
 def field():
     """Curved sky/ground masses and floating ribbons, all behind the figure."""
-    # The teal horizon and mint bank are generated curves, not angular horizontal bands.
-    ground_edge = catmull(((0.0, 354.0), (310.0, 314.0), (650.0, 398.0), (1024.0, 310.0)),
+    # The left field is a crest, not a stack of hills: the mint boundary rises into a
+    # large curl that meets the outgoing hair lock, while broad cloth-like streamers cross
+    # the lower-left field.  Every boundary is still generated from four landmarks.
+    ground_edge = catmull(((0.0, 354.0), (286.0, 300.0), (616.0, 402.0), (1024.0, 310.0)),
                           steps=14, closed=False)
     ground = tuple(ground_edge) + (full(1024, 1024), full(0, 1024))
-    mint_edge = catmull(((0.0, 518.0), (176.0, 592.0), (420.0, 506.0), (574.0, 430.0)),
+    mint_edge = catmull(((0.0, 560.0), (188.0, 654.0), (420.0, 520.0), (590.0, 424.0)),
                         steps=14, closed=False)
-    bank = (full(0, 1024), full(0, 518)) + tuple(mint_edge) + (full(418, 1024),)
+    bank = (full(0, 1024), full(0, 560)) + tuple(mint_edge) + (full(430, 1024),)
+    crest = field_ribbon(((18.0, 406.0), (176.0, 248.0), (330.0, 330.0), (438.0, 430.0)), 34.0)
     return [
         ("A-field-ground", ground, BACKGROUND_TEAL),
         ("A-field-bank", bank, BACKGROUND_GREEN),
-        ("A-field-ribbon-high", field_ribbon(((8.0, 430.0), (116.0, 398.0),
-                                               (244.0, 444.0), (332.0, 410.0)), 5.0),
+        ("A-field-wave-crest", crest, BACKGROUND_GREEN),
+        ("A-field-wave-crest-pink", field_ribbon(((22.0, 422.0), (178.0, 278.0),
+                                                    (320.0, 344.0), (424.0, 430.0)), 13.0),
          LINING_PINK),
-        ("A-field-ribbon-low", field_ribbon(((-8.0, 690.0), (98.0, 650.0),
-                                              (210.0, 706.0), (304.0, 668.0)), 4.0),
+        ("A-field-ribbon-high", field_ribbon(((-20.0, 590.0), (116.0, 540.0),
+                                               (252.0, 626.0), (394.0, 574.0)), 18.0),
+         LINING_PINK),
+        ("A-field-ribbon-low", field_ribbon(((-18.0, 724.0), (102.0, 654.0),
+                                              (226.0, 744.0), (356.0, 682.0)), 15.0),
          CREAM),
-        ("A-field-ribbon-curl", field_ribbon(((46.0, 774.0), (126.0, 730.0),
-                                               (206.0, 782.0), (252.0, 748.0)), 3.2),
+        ("A-field-ribbon-curl", field_ribbon(((32.0, 822.0), (132.0, 740.0),
+                                               (238.0, 834.0), (330.0, 760.0)), 13.0),
          LINING_ORANGE),
     ]
 
@@ -867,13 +874,16 @@ def lower_parts():
     the strokes fan from one point at the waist.
     """
     L = LAYOUT
-    skirt_shape = lap_outline(L["skirt"])
-    skirt = planar("A-skirt-front", "the pale skirt crossing laterally over two seated knees", 0.262,
+    # The dark skirt owns the lap silhouette.  The pale cloth is an apron panel laid on
+    # that lap, so it closes around its four anchors instead of inheriting the off-frame
+    # hem generator that previously made pale cloth the whole lower field.
+    skirt_shape = catmull(L["skirt"])
+    skirt = planar("A-skirt-front", "the pale apron crossing laterally over the dark seated lap", 0.262,
                    skirt_shape,
                    rows=[("silhouette", skirt_shape, "the skirt's outer edge and off-frame hem")],
                    fill=MINT, authored=(("skirt_near_knee", L["skirt"][2]),
                                         ("skirt_far_knee", L["skirt"][3])))
-    teal = planar("A-skirt-teal", "the connected deep-teal cloth beneath the skirt", 0.22,
+    teal = planar("A-skirt-teal", "the dominant connected deep-teal lap and skirt cloth", 0.255,
                   catmull(L["skirt_teal"]), rows=[], fill=DEEP_TEAL,
                   authored=(("teal_top", L["skirt_teal"][0]),
                             ("teal_hem", L["skirt_teal"][2])))
@@ -912,11 +922,8 @@ def hem_trim():
     so the band follows whatever shape the skirt is cut to.
     """
     L = LAYOUT
-    _waist_left, _waist_right, near_knee, far_knee = L["skirt"]
-    valley = lerp2(near_knee, far_knee, 0.46)
-    valley = (valley[0], valley[1] + 58.0)
-    hem = ((near_knee[0] - 116.0, 1050.0), valley, far_knee,
-           (-32.0, min(1010.0, far_knee[1] + 104.0)))
+    waist_left, waist_right, near_knee, far_knee = L["skirt"]
+    hem = (waist_left, waist_right, near_knee, far_knee, waist_left)
     return ("A-skirt-hem-trim", "A-skirt-front", "hem",
             flat_mark(catmull(hem, steps=14, closed=False), 0.272), CUFF_NAVY)
 
