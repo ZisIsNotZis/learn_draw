@@ -384,11 +384,30 @@ strand lines and a non-straight inner edge per fall, a tapered streamer; plus th
 the manifest verified, no image read, the suite green, and no shape over four typed landmarks.
 Status: dispatched.
 
+**W2b — the lap's dark mass, the face, the bow, the hair, the field's curl** (owner: one writer,
+`A-full-figure-v2`, from `90ff009`). The v2 pair is in and short of the targets on A, C and D
+(`evidence/reviews-r1c/`); both reviewers name the same repairs. Do: (a) re-tone the lower mass to the
+reference's truth — the dominant lower field is the dark navy/teal skirt across the lap and bottom, the
+pale mint apron panels sit on top of it, the navy hem borders them and the pink/orange ribbons cross
+the dark; the pale wedge is not the lap; (b) re-cut the face — the gaze down, the upper lash heavy, the
+iris under the lid with little exposed sclera, a soft rounded jaw and chin rather than a V, curved bangs
+with a few points instead of a jagged W, a short readable nose and mouth; (c) make the bow two soft
+loops off a knot with two tapering tails and creases that follow the cloth, not an extruded tube;
+(d) give the hair fewer, broader, curved locks with a lit/shade boundary and tapered ends; (e) restore
+the reference's left wave curl and the mid-frame streamers as masses, not thin noodles. Non-do: no
+new engine, no shape over four typed landmarks, no authored depth cut, no metric tuning, no baseline
+promotion; keep the hand, the far arm, the occlusion and the contour selection. AC: (a) at 1:1 the
+largest lower field is dark, the apron sits on it and the lap reads as a lap; (b) a 4× crop shows a
+downcast lidded eye with a heavy lash and little sclera, a soft chin, curved bangs; (c) the bow reads as
+two loops, a knot and two tails; (d) the hair has broad curved locks, not rails; (e) the left curl and
+the streamers are visible masses; plus the build deterministic, the manifest verified, no image read,
+the suite green, no shape over four typed landmarks. Status: dispatched.
+
 **W3 — the independent review and the presentation** (owner: manager; two fresh image reviewers + one
-execution reviewer). Objective: a verdict on W2's revision by the rubric. Outputs: two review records
-in `evidence/reviews-r1c/` bound to the v2 hashes; a presentation of the 1:1 image to the person with
-what is done, what is not, and what to look at. AC: two sighted reviewers, no unresolved Δ≥2 axis,
-alarms green, the image in front of the person. Status: waits for W2.
+execution reviewer). Objective: a verdict on the repaired revision by the rubric. Outputs: two review
+records in `evidence/reviews-r1c/` bound to the new hashes; a presentation of the 1:1 image to the
+person with what is done, what is not, and what to look at. AC: two sighted reviewers, no unresolved
+Δ≥2 axis, alarms green, the image in front of the person. Status: waits for W2b.
 
 **W3 — the independent review and the presentation** (owner: manager; two fresh reviewers + one
 execution reviewer). Objective: a verdict on W2's revision by the rubric. Outputs: two review records
@@ -424,6 +443,12 @@ finger masses, and her far arm from the cuff. The pass was too broad — same-ga
 and read as a mesh — and the face is still frontal; W2 owns both, with the seated lap, the field and the
 hair.
 
+**W2 has landed** at `90ff009`, and its independent pair puts it at **A3 / B4 / C3 / D1–3 (contested) /
+E4–5 / F3–4** — progress on B, C and F, still short of A, C and D. Both reviewers name the same thing:
+the lower half is a pale wedge, the dark lap mass is a strip, so she still does not read as seated; the
+face is startled, the bow a tube, the hair rails, and the left wave curl is a noodle. W2b is that
+repair.
+
 **The recorded ratchet floor is unchanged** and is a flat-2D artifact
 (`.scratch/00-tooling/baseline/`, recorded from the 2D assembly): the full figure is reference-free and
 does not compare against it, and no structural sketch replaces it.
@@ -434,7 +459,7 @@ the person's judgement at a real gate. The sealed brief
 (`.scratch/35-r1-articulated-study/work/holdout-brief.sealed.md`) stays unread until he releases it and
 authorizes the creator role.
 
-**Next entry:** W2 in flight, then W3. If W2's revision does not reach the targets on the pair, the
+**Next entry:** W2b in flight, then W3. If W2's revision does not reach the targets on the pair, the
 next advance is the largest remaining defect it names, on v2's source; the person is given the image
 only once its own reviews no longer reject it. If the person names a defect, it becomes the next
 advance on the current package; the part library stays copied byte-for-byte.
