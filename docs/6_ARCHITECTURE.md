@@ -2,8 +2,7 @@
 
 This file owns the intended component/depth architecture: what a component is, what the engine
 computes, which subsystem carries which responsibility, the minimum scene schema still to be proved,
-and what remains an open design choice. Decision source: the person's clarification of the target
-architecture, which the person approves.
+and what remains an open design choice. Decision source: the person's clarification of the target architecture.
 
 It does not own formats, algorithms or commands: the compiled node format, the spec fields that cross
 a boundary and the renderer contract are `docs/7_INTERFACE.md`; relation resolution, materialization,

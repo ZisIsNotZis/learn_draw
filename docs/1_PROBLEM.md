@@ -31,9 +31,11 @@ the drawing agent's, not his. The work that carries it starts from `A-cloth-v8` 
 
 ## What he confirms reads correctly
 
-A hand holding a dish reads as holding in both SUPPORT and VARIATION; the CONTROL panel's failure
-reading is unchanged, and it reads as a near miss. SUPPORT, VARIATION and CONTROL are the three panels
-of the B sheet.
+The *hold concept* reads as holding in both SUPPORT and VARIATION of the B sheet, and the CONTROL
+panel's failure reading is unchanged — it reads as a near miss. SUPPORT, VARIATION and CONTROL are that
+sheet's three panels. This is his reading of that sheet at that revision; it is not a verdict on any
+later repair of the hand, and the hand study's later revisions have their own failing image reviews
+(`0_ROADMAP.md`).
 
 # INFERRED
 
@@ -46,15 +48,24 @@ end-goal complexity is a Starry-Night-class scene drawn from intent alone.
 
 ## The scenario: one flat picture, for a viewer who has only the picture
 
-The target of the imitation stage is a picture an outside observer can name from the image alone: a
-person's upper body from below the mouth to the lap, sitting facing the viewer, wearing a white
-sailor-collar blouse with a large magenta bow tied on the chest and hair hanging down both sides past
-the shoulders. The neck and shoulders are one continuous form; a head sits above the shoulder line;
-the shoulders slope away on both sides, round and slightly forward. There is clothing on a body: the
-sleeves end at cuffs on two arms, the blouse has soft width below the bow, and the collar is a garment
-part that wraps the neck. The magenta object is a small tight knot of gathered ribbon with two wide
-lobes spreading from it and two tails leaving the knot, visibly crossed and turned at the knot. The hair is two masses of unequal width hanging from above the frame, narrower at their
-ends than at their tops, each carrying interior strand lines, one of them passing in front of the jaw.
+The target of all learning on a reference is one flat picture, `image.jpg`, and the question asked of
+every drawing of it is what an outside observer can name from the image alone: a seated girl with blue
+hair, a wide-brimmed sun hat carrying pink pom-poms, a pale dress with a large bow at the chest, and a
+dark mass across the lap, held in a soft field of mint and rose with floating ribbons.
+
+Each of those is a *component*, and each component is what a drawing has to get right: the hat's brim
+as one shape seen from slightly above, with a shadow under it and the fringe passing beneath; the hair
+as two masses of unequal width hanging past the shoulders, narrower at their ends than at their tops,
+each carrying interior strand lines and one of them passing in front of the jaw; a sailor collar that
+wraps the neck as a garment part, with the neck and shoulders one continuous form; sleeves that end at
+cuffs on two arms, with an arm inside them; a blouse with soft width below the bow; the bow as one
+small tight knot of gathered ribbon with two wide lobes spreading from it and two tails leaving the
+knot, visibly crossed and turned at the knot; and the lap as cloth and ribbons rather than as limbs.
+The picture is judged at that level — component by component, then as one image.
+
+A study may take a registered crop of the picture as its own target (an earlier object study used the
+upper body from below the mouth to the lap, so its canvas was 400×480); the crop is the study's
+business and its record's, and `image.jpg` is the picture.
 
 ## Readings that make a picture a failure
 
@@ -88,3 +99,10 @@ The project's own code and documentation are free software under the GNU Affero 
 v3.0. The reference, the plates and every render that reproduces them are not covered by that grant:
 they remain the property of their rights holders and are included only as the reference a study of
 this kind requires. That is the constraint on what a picture may reproduce and show.
+
+## What his verdict does and does not decide
+
+A verdict of his is not a gate result by itself: it neither closes a construction, geometry,
+art or cohesion gate nor supersedes the independent image reviews, and it is never an R1 or transfer
+pass. The only independent art disposition on record is a finite one (the A v4 gate), which his own
+review then contradicted; it is not current acceptance.

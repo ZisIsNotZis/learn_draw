@@ -1,4 +1,4 @@
-# 3_REQUIREMENT — the binding rules and constraints: P1–P40 and the invariants they distil
+# 3_REQUIREMENT — the binding rules and constraints: P1–P41 and the invariants they distil
 
 This file owns the rules and what they forbid, not how one is implemented or which command checks it
 (`9_IMPLEMENTATION.md`), not the architecture they constrain (`6_ARCHITECTURE.md`), not the gates that
@@ -455,13 +455,18 @@ needs the target does not, and P18 is the test that separates them. The invarian
 principles into rules an agent must follow are stated once in `AGENTS.md` § Invariant rules; this file
 owns the principles, not the rules.
 
+**A lesson takes the next number and keeps it.** `P`-numbers are append-only: a new lesson takes the
+next unused number — `P42` today — and an existing number is never reused, renumbered or dropped, because the whole repo points
+at lessons by number. A lesson that a later observation overturns is corrected in place and says so;
+its number stays.
+
 ## The numbered invariant rules
 
 The numbered invariant rules 1–8 are stated once in `AGENTS.md` § Invariant rules, and each names the
 principle it distils; this file owns those principles and does not restate the rules. The commands that
 run a gate, and the ratchet procedure, are `docs/9_IMPLEMENTATION.md`.
 
-**Boundary.** This file owns the binding rules and constraints — `P1`–`P40` — and their provenance. It
+**Boundary.** This file owns the binding rules and constraints — `P1`–`P41` — and their provenance. It
 does not own: how a rule is implemented or which command runs it (`docs/9_IMPLEMENTATION.md`); the
 architecture the rules constrain, including the spatial model P29 names as its SSOT
 (`docs/6_ARCHITECTURE.md`); what success means and the gates that decide it (`docs/2_GOAL.md`); the

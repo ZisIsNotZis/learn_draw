@@ -42,8 +42,8 @@ for f in docs/[1-9]_*.md; do
 done
 
 say
-say "== P-numbers: all 40 must be present in 3_REQUIREMENT.md, none duplicated across docs"
-for n in $(seq 1 40); do
+say "== P-numbers: all 41 must be present in 3_REQUIREMENT.md, none duplicated across docs"
+for n in $(seq 1 41); do
   grep -qE "^##+ P$n — " docs/3_REQUIREMENT.md || bad "P$n missing from 3_REQUIREMENT.md"
   others=$(grep -rlE "^##+ P$n — " docs/ | grep -v '^docs/3_REQUIREMENT.md$')
   [ -n "$others" ] && bad "P$n also stated in $others (second home)"
@@ -51,8 +51,8 @@ done
 
 say
 say "== no old path survives in a live doc"
-if grep -rnE 'docs/drawing/(roadmap|method|principles|abstraction|vocabulary|scene-format|spatial-model|rubric|vendor-learning-map)\.md' \
-     AGENTS.md README.md WORKSPACE.md docs/*.md 2>/dev/null; then
+if grep -rnE 'docs/drawing/|STATUS\.md|WORKSPACE\.md' \
+     AGENTS.md README.md docs/*.md 2>/dev/null; then
   bad "live doc still points at docs/drawing/"
 else
   say "ok    none"

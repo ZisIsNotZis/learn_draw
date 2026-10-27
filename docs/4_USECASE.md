@@ -73,7 +73,8 @@ must not override the spatial architecture or the milestone gates.
 1. **An independent reviewer, with no context.** A fresh subagent is given the target and the draft
    and *nothing else*: no history, no intent, no suspected verdict, and no sight of previous scores.
    It reads the rubric only (`2_GOAL.md`).
-2. **Sight is proven before the verdict counts** (D18). The reviewer's first output is **three**
+2. **Sight is proven before the verdict counts** (the retired ledger's D18, still indexed in
+   `.scratch/history/status-before-spatial-model.md`). The reviewer's first output is **three**
    checkable facts, each compared against a measurement already in the repo: the colour of the large
    field shape left of centre and roughly where its right edge stops (mint `#7dccc1`, right edge ≈
    x718); where the subject sits in the frame (seated, right of centre, head upper-right); and one

@@ -117,7 +117,10 @@ scripts/draw freeze <spec.yaml> --ref image.jpg [--outdir DIR]
   a spec with no `region` nodes has nothing to freeze.
 - `relate.py` — resolves a spec to a render; `-o` is required unless `--freeze` is given, and
   `--anchors` prints the resolved anchor table beside the render.
-- `similarity.py` — prints the cosine similarity to the reference.
+- `similarity.py` — prints the cosine similarity to the reference. The instrument is a CLIP image
+  embedding (OpenAI `ViT-B-32`, 151M parameters, cached at `~/.cache/clip`); its first readings, from
+  the retired 2D sequence, are kept as calibration evidence in
+  `.scratch/history/similarity-alarm-readings.md`. It is an alarm, never a gate (`2_GOAL.md`).
 - `spatial_sketch.py` — writes the two projected views of the scaffold.
 
 ### Before a commit that touches code or a drawing
@@ -129,20 +132,22 @@ scripts/draw freeze <spec.yaml> --ref image.jpg [--outdir DIR]
 | determinism | render the same spec twice, compare `sha256` | identical |
 
 Each command and its observed result are recorded in the ticket or commit message (policy R-REP.4).
-The milestone gates G1–G6 are `0_ROADMAP.md`'s; these three rows are the subset that applies to every
-commit.
+The milestone-specific gates are written out with each milestone in `0_ROADMAP.md`; these three rows
+are the subset that applies to every commit.
 
 ## Guardrails that are operational
 
 - A legacy 2D check bundle is compared against `.scratch/00-tooling/baseline/`, and promotion needs
   the applicable gate; those records stay records and waive no gate.
 - Up to ~3 focused fixes per problem is the 2D exercises' rule, not the advance's attempt budget:
-  candidate and repair limits come from the concrete workpackage contract in `0_ROADMAP.md`.
+  candidate and repair limits are written in the workpackage contract that owns them, and
+  `0_ROADMAP.md` says where those contracts are.
 - The A/B mapping is recorded in the log at handover and confirmed by pixel comparison against the
   two source files, never from memory: a swapped pair inverts the verdict.
-- Metrics are a breakage alarm and `coverage` an omission floor (`2_GOAL.md`); never judging your own
-  render, and the sightedness proof a reviewer must give first, are the review protocol's
-  (`4_USECASE.md`).
+- Metrics are a breakage alarm, and `coverage` is the omission floor — the question `color_dist`
+  cannot answer (`P23`).
+- Not judging your own render, and the sightedness proof a reviewer gives first, are the review
+  protocol's (`4_USECASE.md`).
 
 ## The 2D resolver's output conventions
 
@@ -189,7 +194,11 @@ not automatic gates.
 - `.scratch/00-tooling/baseline/` — the two registers of the ratchet.
 - `.scratch/history/` — retired docs as records (`roadmap-before-spatial-model.md`,
   `status-before-spatial-model.md`) and `early-studies/` for the early vendor-smooth and
-  curve-garment studies.
+  curve-garment studies. `status-before-spatial-model.md` is also the index for the `D1`–`D33`
+  decision numbers and the `M1`–`M4` labels that older records cite; `SA1`–`SA3` are the abstraction
+  research exercises under `.scratch/14-abstraction-research/`, and `Ex28`/`Ex29`/`Ex32` are the
+  exercise numbers under `.scratch/`. A number that resolves to nothing is a record's own history,
+  not a live referent.
 - `.scratch/35-r1-articulated-study/work/wave-log.md` — the advance's wave log, with the wave
   contracts beside it and reviews verbatim under `evidence/reviews-r1a/`.
 - `evidence/`, `teaching/` and `mail/` keep their shape; `mail/README.md` is the mailbox protocol's

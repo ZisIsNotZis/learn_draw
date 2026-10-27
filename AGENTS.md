@@ -12,7 +12,7 @@ repo. Everything else lives in `docs/`, one home per meaning, and is reached fro
 | --- | --- |
 | why the work matters, what the person asked for | `docs/1_PROBLEM.md` |
 | what success means, the acceptance questions, the rubric | `docs/2_GOAL.md` |
-| the binding rules — `P1`–`P40` | `docs/3_REQUIREMENT.md` |
+| the binding rules — `P1`–`P41` | `docs/3_REQUIREMENT.md` |
 | who does what: the loop, the review protocol, the person's gate | `docs/4_USECASE.md` |
 | what can be expressed: the authoring language, vocabulary, canons, adopted and rejected directions | `docs/5_PRODUCT.md` |
 | subsystem boundaries, support surfaces, the depth-visibility principle | `docs/6_ARCHITECTURE.md` |

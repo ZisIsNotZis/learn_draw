@@ -42,7 +42,7 @@ determinism, unknown-key refusal).
   figure reads from flat-colour boundaries plus compact dark regions, so structure comes from region
   decomposition and traced boundaries, a stroke on the boundary that matters; XDoG extraction is a
   dead end here (P10: it turns anime interiors into noise). Evidence:
-  `05-portrait-scene/evidence/diagnosis/`.
+  `.scratch/05-portrait-scene/evidence/diagnosis/`.
 - **`T2` flat colour** — `fill` on a shape, swatches from a k-means palette of the reference.
 - **`T3` soft fields** — gradients, blurred blobs, opacity. Available: the layered flat blob under a
   shared silhouette, painted bottom-up, every layer nameable. The clipping-mask idiom — hard

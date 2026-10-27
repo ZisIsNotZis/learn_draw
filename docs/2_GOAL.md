@@ -7,7 +7,7 @@ alarm gates, and the similarity alarm as an instrument.
 
 It does not own how a review is run (see `4_USECASE.md`), how anything is built (`5_PRODUCT.md`
 through `9_IMPLEMENTATION.md`), milestone promises, gate definitions and current state
-(`0_ROADMAP.md`), or the binding rules `P1`–`P40` (`3_REQUIREMENT.md`).
+(`0_ROADMAP.md`), or the binding rules `P1`–`P41` (`3_REQUIREMENT.md`).
 
 # EXPLICIT
 
@@ -66,7 +66,7 @@ Pixel metrics cannot tell whether a drawing **reads**. They measure edge coincid
 distance against a reference, so a traced copy scores well and a good drawing of a *different* subject
 scores badly. `P14` already makes *looking* the primary criterion; the rubric makes that judgement
 specific, actionable and comparable, so it can be done by an independent subagent and used as a gate.
-The pixel metrics remain as alarms (`0_ROADMAP.md` G2): they catch deletion and breakage, and they
+The pixel metrics remain as alarms: they catch deletion and breakage, and they
 never decide what is good. The rubric decides.
 
 ## The six axes (0–5)
@@ -145,11 +145,16 @@ the chair/skirt detail, the field's swirl tails):
 
 ## Milestone exit and the alarm gates
 
-- **Milestone exit** = the milestone's **named axes** reaching their targets, **plus** the alarm gates
-  (G0 admissible, G2 no deletion/breakage, G4 diagnostics, G5 budget, G6 determinism, G7 no traces,
-  and the similarity alarm not having fallen by more than 0.02 since the last review). For example M3
-  (the body) exits when **B ≥ 4** and **E ≥ 4** hold across two independent reviewers.
-- The gates are named and owned in `0_ROADMAP.md`.
+- **Milestone exit** = the milestone's **named axes** reaching their targets, **plus** every applicable
+  alarm passing on its own evidence: the drawing is admissible, nothing was deleted or broken, the
+  diagnostics still parse, the work stayed inside its budget, the build is deterministic, no trace of
+  the target reaches runtime, and the contextual similarity has not fallen by more than 0.02 since the
+  last review. Two independent reviewers, and the whole vector, never a single axis.
+- The retired 2D milestone sequence numbered these checks G0 admissible, G2 no deletion or breakage,
+  G4 diagnostics, G5 budget, G6 determinism, G7 no traces, G8 the rubric itself;
+  those numbers are exercise history, not the current gate set. A milestone's own gates are written out
+  with it in `0_ROADMAP.md`.
+- **Every stage has a vertical visible deliverable**, and the exit is judged on the delivered image.
 
 ## The similarity alarm is an instrument, never a gate
 

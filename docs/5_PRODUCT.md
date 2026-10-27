@@ -6,7 +6,7 @@ name, the teacher role and its withdrawal, how the language grows, the canons, t
 rules for adding a family, the families-vs-relations boundary, and the design directions adopted or
 rejected. It does not own the compiled node format or the traced-data field list (`7_INTERFACE.md`),
 module algorithms and generators (`8_DETAIL.md`), commands and tool usage (`9_IMPLEMENTATION.md`), the
-binding rules `P1`–`P40` (`3_REQUIREMENT.md`), or what good means (`2_GOAL.md`).
+binding rules `P1`–`P41` (`3_REQUIREMENT.md`), or what good means (`2_GOAL.md`).
 
 The language described here is the authoring layer of the current 2D relational front end, resolved by
 `scripts/relate.py` — the single canonical resolver, forks deleted. The component/surface contract and
@@ -44,15 +44,15 @@ the flat single-colour band. "Yes use the curve design. If you can implement blo
 properly, that would be nice."
 
 **B's hand is built at the detailed level** — palm + four fingers + thumb, contact geometry — because
-the project's point is detailed and reasonable drawing. The hold concept is confirmed as readable in
-both SUPPORT and VARIATION; the CONTROL panel's failure reading is unchanged.
+the project's point is detailed and reasonable drawing. His reading of that sheet — the hold reads as holding in both SUPPORT and VARIATION, the CONTROL panel
+unchanged — is `1_PROBLEM.md`'s; what it requires here is the detailed construction.
 
 # INFERRED
 
 ## Why the language exists
 
 The alternative channel is absolute coordinates, and it asks the author for the one thing it cannot
-do. Measured in `05-portrait-scene/evidence/diagnosis/`: 824 hand-typed vertices across 58 polygons
+do. Measured in `.scratch/05-portrait-scene/evidence/diagnosis/`: 824 hand-typed vertices across 58 polygons
 and **zero** uses of the computed `trace` node, while a computed region decomposition of the same
 reference reaches the character in 2.4s and hand-authored iteration does not.
 
@@ -105,6 +105,10 @@ but painted *under* the hair. Keeping them apart is what removes the manual occl
 absolute-coordinate authoring demands: occlusion is the renderer's job, never encoded in a path.
 
 ## Relation taxonomy
+
+A `📋` status names the retired 2D milestone or exercise the relation was planned for — `0_ROADMAP.md`'s
+naming note has a paragraph for those retired letters; it is a plan, not a promise, and the relation is not
+implemented until `scripts/relate.py` resolves it.
 
 Implemented vs needed. The needed rows are not speculation — each names the drawing that demands it.
 
@@ -226,7 +230,7 @@ Head bbox: skull top → chin, H≈228; eye-line width W≈190. Sources: face-ce
 
 ### Anime face canons — Set B, host-relative (what a spec writes)
 
-Source: SA2 face probe, image closed afterwards (`14-abstraction-research/work/face/report.md`).
+Source: SA2 face probe, image closed afterwards (`.scratch/14-abstraction-research/work/face/report.md`).
 Near/far asymmetry is the 3/4 view — the far eye is 0.6× the near eye.
 
 The host must be named with the fraction: these fractions are measured against a **face ellipse**
@@ -282,7 +286,7 @@ taxonomy above points here, and the two statuses must agree.
 | `stars` | 🔬 SA3 probe | region, n, size jitter, seed | region bbox | seeded scatter — jitter-grid made concrete |
 
 The 🔬 families are proven in the SA3 starry-night probe copies at
-`14-abstraction-research/work/starry/`, not yet promoted to `scripts/`, reference-free from a
+`.scratch/14-abstraction-research/work/starry/`, not yet promoted to `scripts/`, reference-free from a
 parameter-only spec and byte-deterministic. Two structural findings from `work/starry/report.md`:
 back-end generators need a spec-level **generator bridge** — today each needs a hand-written
 passthrough family in the resolver; and the three relations under the families — `flow`,
@@ -317,6 +321,16 @@ composition**: placement, spacing, alignment, junctions, occlusion intent. Conse
 taxonomy: a proposed relation should first be asked "is this really intra-family? Should it be a
 parameter instead?" — `inside`, for instance, mostly disappears once a family owns its parts; `mirror`
 survives because faces pair two *instances* of a family.
+
+## Measured targets, where a proportion was the whole argument
+
+Scope decisions above are requirements; where one of them turns on a proportion, the number is the
+requirement and not an impression:
+
+- **Second cuff from depth:** its visible area reaches **10–25 %** of the first cuff's — the reference
+  measures **17 %**, and the accepted `A-cloth-v8` reached **16.4 %**.
+- **Enclosed background islands: zero.** An island of background colour enclosed by the garment is a
+  hole in the cloth; `A-cloth-v8` reduced them from two to zero.
 
 ## What a construction must connect
 
@@ -372,7 +386,7 @@ One rule: **a new relation or vocabulary node is added only when a real drawing 
 No speculative generality. The renderer's `blur`/T3 machinery is the counter-example — built for
 soft-field realism, then pointed at flat cel art, it produced mush.
 
-Second rule (see `14-abstraction-research/spec.md` → Verdict): **a language change is only progress if
+Second rule (see `.scratch/14-abstraction-research/spec.md` → Verdict): **a language change is only progress if
 the artifact does not regress.** Compare the new render against the recorded best — the
 `baseline`/`check` delta prints it, commands in `9_IMPLEMENTATION.md` — because a growing language and
 a shrinking drawing is exactly how a bust gets committed as a final image. Direction and gates:
@@ -380,7 +394,7 @@ a shrinking drawing is exactly how a bust gets committed as a final image. Direc
 
 ## Learning is the repo
 
-The model's drawing knowledge is **this file + the principles `P1`–`P40` (`3_REQUIREMENT.md`) +
+The model's drawing knowledge is **this file + the principles `P1`–`P41` (`3_REQUIREMENT.md`) +
 measured canons**, all committed. Each rung of the ladder appends a family entry, a canon row with
 provenance, and a principle. Nothing needs to survive in model memory or weights — the repository is
 the learned drawing knowledge, which is why docs-first is a hard rule and not a nicety.

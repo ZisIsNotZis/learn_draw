@@ -1,0 +1,61 @@
+I audited read-only. No files were edited; state is unchanged. Evidence is from `git show`/`git log` at `d464eba^` plus read-only `git grep`/`ls` used only to enumerate the retired tree.
+
+## Table 1 — Two homes (a fact in more than one place; one edit leaves the other stale)
+
+| # | Fact duplicated | Where it is stated | Why it is stale / fights | Severity |
+|---|---|---|---|---|
+| 1 | The binding rule set is **`P1`–`P40`** | `AGENTS.md:15`; `docs/2_GOAL.md:10`; `docs/3_REQUIREMENT.md:1` and `:464` (Boundary); `docs/5_PRODUCT.md:9` and `:383` | `P41` was **added in this same commit** (`git show d464eba -- docs/3_REQUIREMENT.md` `+## P41`), so all six statements are already false, and `AGENTS.md`'s map excludes P41 from "the binding rules". | **blocker** |
+| 2 | Whether a hand-with-dish **reads as holding** | `docs/1_PROBLEM.md:32–38` (`# CONFIRMED`: "reads as holding in both SUPPORT and VARIATION") vs `docs/0_ROADMAP.md:71–78` ("The hand's fourth verdict found no depicted grip … reviewer still sees a pasted-on tab") | The two live docs assert opposite current facts about the same artifact class. | **blocker** |
+| 3 | Which alarm gates exist and their range | `docs/2_GOAL.md:149` (`G0`, `G2`, `G4`, `G5`, `G6`, `G7`) vs `docs/9_IMPLEMENTATION.md:132` (`G1–G6`) | Same fact, two different ranges; neither is defined in `0_ROADMAP.md` (see Table 3). | material |
+| 4 | What milestone label **M3** means | `docs/2_GOAL.md:150` ("M3 (the body)") vs `docs/0_ROADMAP.md:134–137` ("M3 the integrated R1 delivery") | A later reader cannot resolve M3; the two homes disagree. `M2` is likewise used as "the face/bust milestone" in `docs/5_PRODUCT.md:121,272` while `0_ROADMAP.md:134` defines M2 as the sealed reference-free drawing. | material |
+| 5 | What `image.jpg` depicts | `docs/1_PROBLEM.md:47–57` scenario (upper body "from below the mouth to the lap", sailor blouse, magenta bow, no hat/blue hair) vs `docs/2_GOAL.md:78–80` identity tokens (blue hair, wide-brimmed sun hat with pom-poms, pale dress) | Both claim to describe the same imitation target; the actual `image.jpg` shows the hat/blue hair/face, so one of the two descriptions must be edited and the other will go stale. | material |
+| 6 | "A milestone is an artwork, never an engine/test/doc" | `AGENTS.md:53`; `docs/0_ROADMAP.md:6–8`; `docs/2_GOAL.md:31–38` | Full statement in three homes with no pointer; editing the definition in one leaves two copies stale. Partly intentional (AGENTS override layer), hence minor. | minor |
+| 7 | "Two distinct structural approaches per milestone" | `docs/0_ROADMAP.md:29–30` (`# CONFIRMED`) and `docs/0_ROADMAP.md:157–159` (workpackage contract) | Same rule stated twice inside one file; editing one leaves the other stale. | minor |
+
+## Table 2 — Provenance check of every `# EXPLICIT` / `# CONFIRMED` claim
+
+Retired sources at `d464eba^`; marker-bearing lines are quoted. "Upgraded" = the retired source does **not** mark the claim as the person's words/direction.
+
+| # | Claim (live location) | Zone | Retired-source line that justifies / fails it | Verdict |
+|---|---|---|---|---|
+| 1 | "The person judges; nothing else does … Visual quality, appropriateness and responsibility are his" (`docs/0_ROADMAP.md:12`) | EXPLICIT | `docs/drawing/roadmap.md:9` — "Never represent internal checks as the user's judgment"; `STATUS.md:26` — "It is user judgement, not an independent review". No user marker for "quality/appropriateness/responsibility are his". | **upgraded (minor)** |
+| 2 | "Self-supervision is allowed for craft, not for identity … on the condition that the review is not the author's own opinion … but a fresh-context reader's" (`docs/0_ROADMAP.md:16–19`) | EXPLICIT | `STATUS.md:135` gives only the person's words "self-supervise (again, not you, that agent)" and "T6 is the self-review term the person delegated". The craft/identity split comes from the agent-written `ACCEPT.md`; the fresh-reader condition is `AGENTS.md` Invariant 7, an agent rule. | **upgraded (material)** |
+| 3 | "The bar for the current advance is 'a full image' … no return to the object studies first" (`docs/0_ROADMAP.md:21–22`) | EXPLICIT | `STATUS.md:135` — "The person's direction of 2026-10-23 … His words — *'… at least until a full image, self-supervise…'*". | justified |
+| 4 | "The advance's order was agreed: object studies, articulated composition, sealed reference-free drawing, integrated delivery, his disposition" (`docs/0_ROADMAP.md:25–27`) | CONFIRMED | `STATUS.md:115` — "R1 advance milestone list … **approved in order**"; `issues/54-…md:14–22` — "The user then gave the advance instruction … The approved milestone list, in order, is…". | justified |
+| 5 | "A milestone may be replanned, never silently reduced. Two distinct structural approaches per milestone…" (`docs/0_ROADMAP.md:29–30`) | CONFIRMED | `docs/drawing/roadmap.md:98` — "Per milestone allow at most two distinct structural approaches … replan … never silently reduce"; `:21` — "Methods/packages may be replanned…". This is the root's workpackage rule, with no user marker. | **upgraded (material)** — a root rule filed as person-confirmed |
+| 6 | "The point is the drawing, at a detailed level" (`docs/1_PROBLEM.md:8–11`) | EXPLICIT | `issues/54-…md:14–16` — user decision 3: "because the project's point is detailed and reasonable drawing". | justified |
+| 7 | "His verdict is on the picture, and it is partial" + quotes (`docs/1_PROBLEM.md:13–20`) | EXPLICIT | `STATUS.md:26` — "The user's own qualified verdict … **'much better, maybe not the best, but at least somewhat acceptable'**"; `13-assembly/log.md:1825–1829` — "USER FEEDBACK … The hair is much better … ribbon ring's POSITION is wrong". | justified |
+| 8 | "The bar is a full image, and the build supervises itself" (`docs/1_PROBLEM.md:22–28`) | EXPLICIT | `STATUS.md:135` — same quote as row 3. | justified |
+| 9 | "What he confirms reads correctly: A hand holding a dish reads as holding in both SUPPORT and VARIATION; the CONTROL panel's failure reading is unchanged" (`docs/1_PROBLEM.md:32–38`) | CONFIRMED | `issues/54-…md:14–16` — "The **hold concept** itself is confirmed as readable in both SUPPORT and VARIATION; the CONTROL panel's failure reading is unchanged." | **upgraded (material)** — "hold concept" → "a hand holding a dish reads as holding"; contradicted by `0_ROADMAP.md:71–78` |
+| 10 | "The rubric's scoring rules … two independent reviewers land within ±1" (`docs/2_GOAL.md:14–17`) | EXPLICIT | `docs/drawing/rubric.md:9` — "**Refined 2026-09-16** (**user direction**): more axes … so that two independent reviewers land within ±1". | justified |
+| 11 | P13 (`docs/3_REQUIREMENT.md:11`) | EXPLICIT | `docs/drawing/principles.md:70` — heading verbatim "(user insight, portrait-face)". | justified |
+| 12 | P14 (`docs/3_REQUIREMENT.md:18`) | EXPLICIT | `docs/drawing/principles.md:75` — "(user insight, 05-portrait-scene reframe)" + "Learned: user reframe …". | justified |
+| 13 | P15 (`docs/3_REQUIREMENT.md:29`) | EXPLICIT | `docs/drawing/principles.md:79` — "(user insight, scene-format design)" + "Learned: user proposing…". | justified |
+| 14 | P18 (`docs/3_REQUIREMENT.md:39`) | EXPLICIT | `docs/drawing/principles.md:96` — "(user constraint, 06-relational-geometry)" + "Learned: user, on accepting the computed-geometry reframe". | justified |
+| 15 | P29 (`docs/3_REQUIREMENT.md:47`) | EXPLICIT | `docs/drawing/principles.md:231` — "(user correction, spatial model)" + "Learned: user's explicit correction after M4j". | justified |
+| 16 | "The judgement gate reads the drawing, not the distance to the reference" (`docs/4_USECASE.md:8–18`) | EXPLICIT | `docs/drawing/principles.md:75` P14 — "user insight … Learned: user reframe …". | justified |
+| 17 | "A review is built to be repeatable (user direction)" (`docs/4_USECASE.md:20–25`) | EXPLICIT | `docs/drawing/rubric.md:9` — "Refined 2026-09-16 (user direction)". | justified |
+| 18 | "North star — humans never talk or think in coordinates" (`docs/5_PRODUCT.md:22–31`) | EXPLICIT | `docs/drawing/abstraction.md:19` — "North star (**user directive, 2026-09-14**)". | justified |
+| 19 | "Scope decisions — what the reviewed artwork must express" (`docs/5_PRODUCT.md:34–50`) | EXPLICIT | `issues/54-…md:10–16` — "## User decisions recorded in this session", decisions 1–3, with the person's quotes. | justified |
+| 20 | "Component = 2D artwork + a support surface in 3D …" (`docs/6_ARCHITECTURE.md:17–30`) | EXPLICIT | `docs/drawing/spatial-model.md:3` — "**Decision source:** user's clarification in the current session"; `handoff-3d.md:3–5` — "The user rejected that interpretation". The added "which the person approves" has no source line. | justified, with **minor** unsourced addition ("approves") |
+| 21 | "Coordination is remote (M2) … on explicit user instruction" (`docs/9_IMPLEMENTATION.md:9–17`) | EXPLICIT | `WORKSPACE.md:3` — "Coordination mode: **M2 (remote)** — set 2026-09-15 on **explicit user instruction**." | justified |
+
+## Table 3 — Dead or wrong pointers
+
+All `docs/N_*.md` file cross-references resolve to an existing file. The three `§` names checked all exist: `AGENTS.md § Invariant rules`, `docs/3_REQUIREMENT.md:447` → `wave14-contracts.md § "What wave 13 proved about sizing"` (line 7 there), and `docs/5_PRODUCT.md §Curriculum coverage` (referenced from the record `rename-map.md`). The actual defects are:
+
+| # | Pointer (location) | Target | Defect | Severity |
+|---|---|---|---|---|
+| 1 | `docs/2_GOAL.md:149–152` — "The gates are named and owned in `0_ROADMAP.md`" | `0_ROADMAP.md` G0/G2/G4/G5/G6/G7 | `0_ROADMAP.md` contains **no** G0–G7 definition (grep of the full file: only the word "gate" in prose). Dead section pointer. | material |
+| 2 | `docs/2_GOAL.md:69` — "(`0_ROADMAP.md` G2)" | `G2` in `0_ROADMAP.md` | Same missing gate; no `G2` anywhere in `0_ROADMAP.md`. | material |
+| 3 | `docs/9_IMPLEMENTATION.md:132` — "The milestone gates **G1–G6** are `0_ROADMAP.md`'s" | `0_ROADMAP.md` | No G1–G6 definitions; also conflicts with the `G0/G2/G4–G7` range in `2_GOAL.md`. | material |
+| 4 | `docs/3_REQUIREMENT.md:1`, `:464`; `AGENTS.md:15`; `docs/2_GOAL.md:10`; `docs/5_PRODUCT.md:9`, `:383` | rule range `P1`–`P40` | Wrong range: `P41` exists at `docs/3_REQUIREMENT.md:473`. The "binding rules" pointer now stops one rule short. | **blocker** |
+| 5 | `scripts/similarity.py:15` — "(roadmap G8 is the rubric)" | retired `roadmap` file + gate `G8` | Live script still names the retired doc and a gate number that never existed; line 16 was repointed to `docs/2_GOAL.md` but line 15 was not. | material |
+| 6 | `scripts/tests/test_scene.py:119,135,355,468` — "STATUS D12 / D16 / D25 / D24" | retired `STATUS.md` | Live test comments still cite retired `STATUS.md` identifiers; `D18` also appears as a bare identifier in `docs/4_USECASE.md:76`. | minor |
+| 7 | `docs/4_USECASE.md:76` — "(D18)" | undefined identifier | No `D18` definition survives in `docs/`; it points at the retired STATUS numbering. | minor |
+| 8 | `docs/9_IMPLEMENTATION.md:131` — "(policy R-REP.4)" | undefined policy id | No definition of `R-REP.4` anywhere in the live tree. | minor |
+| 9 | `docs/9_IMPLEMENTATION.md:205` — "per `S5`" | undefined id | No `S5` definition in the live tree. | minor |
+| 10 | `docs/5_PRODUCT.md:55, 229, 285, 375`; `docs/8_DETAIL.md:45` — e.g. `05-portrait-scene/evidence/diagnosis/`, `14-abstraction-research/work/face/report.md` | `.scratch/…` | Bare paths do not resolve from the repo root; the targets exist only under `.scratch/`. Inherited from the old docs, not repointed. | minor |
+| 11 | `docs/9_IMPLEMENTATION.md:203–204` — `docs/policy/…`, `docs/policy/remote-coordination.md` | absent path | The path does not exist, but the same sentence says so; misleading only if read out of context. | minor |
+
+**No live doc still points at `docs/drawing/*`, `STATUS.md`, `WORKSPACE.md`, `.scratch/active-work.md`, or `handoff-3d.md`** (grep across `docs/`, `AGENTS.md`, `README.md`, `scripts/` returned none). The only retired-name residue is `scripts/similarity.py:15` ("roadmap") and the `STATUS D*` identifiers in `scripts/tests/test_scene.py` comments.

@@ -116,7 +116,7 @@ except SystemExit as e:
 
 # (i) face family: the jaw must extend BELOW the cranium. The first version drew a full-height
 # cranium with the jaw wedge inside it, so the round cranium bottom was the whole silhouette and no
-# chin rendered — two independent reviewers reported "round blob, no chin" (STATUS D12).
+# chin rendered — two independent reviewers reported "round blob, no chin" (retired ledger D12, indexed in `.scratch/history/status-before-spatial-model.md`).
 _fspec = {"frame": {"w": 1000, "h": 1000},
           "draw": [{"face": "head", "at": [500, 400], "rx": 100, "ry": 120,
                     "cheek": 0.68, "jaw": 0.37, "chin-w": 0.035, "fill": "#eeeeee"}]}
@@ -132,7 +132,7 @@ check("i: cheek line matches the jaw param", abs(_fenv["head.cheek-y"] - (400 + 
 # (j) sunhat brim: the two fills must share the fold border and tile the ellipse exactly. The split
 # used to be a straight CHORD across the disc, so the fills met only at the two tips — and the tips
 # and chord are exactly where the hair and crown sit, so the brim read as a detached lozenge
-# (M2 attempt 2, STATUS D16). The fix makes the far slice the rim band along the far edge, folding
+# (the retired 2D M2 attempt 2, D16 in the same index). The fix makes the far slice the rim band along the far edge, folding
 # over (`rim`), sharing every border vertex with the near slice.
 _sspec = {"frame": {"w": 1000, "h": 1000},
           "draw": [{"ellipse": "head", "at": [500, 400], "rx": 90, "ry": 100, "fill": "#eee"},
@@ -352,7 +352,7 @@ check("s: the search improves on its start", _qfit[1] > -1.0)
 # order, not a hard-coded list. Anything painted AFTER the family's shapes occludes it; a node
 # painted before does not; the teacher target mask is never an occluder of itself. This replaced
 # the old `occluders: ['hair-mass']` constant, which was wrong the moment the hat moved under the
-# head (STATUS D25 / M2 attempt 4).
+# head (D25, and the retired 2D M2 attempt 4, in the same index).
 _oc_emit = [
     {"rect": "bg", "full": True, "fill": "#fff"},
     {"ellipse": "below", "at": [50, 50], "rx": 4, "ry": 4, "z": "below", "fill": "#111"},
@@ -397,7 +397,7 @@ check("v: sunhat occluders include the head/hair/features painted above it",
 
 # (w) hair-mass family (the last slice of M2): a gesture spine + width profile -> ONE tapered
 # silhouette, with the bbox/root/tip anchors later nodes hang off. This is the family that
-# replaced the last traced contour (G7): the spec states the gesture and the bulk, not 102 vertices.
+# replaced the last traced contour (the retired 2D gate G7, no traces): the spec states the gesture and the bulk, not 102 vertices.
 _hspec = {"frame": {"w": 1000, "h": 1000},
           "draw": [{"hair-mass": "hair", "spine": [[600, 100], [800, 300], [950, 700]],
                     "w": [80, 150, 10], "fill": "#3974ab"}]}
@@ -465,7 +465,7 @@ check("x: side=left grows the other side of the same spine",
 # (y) the fitter's hair mode: several instances of the family are fitted jointly against the ONE
 # teacher mask, because the reference's visible hair reads as a fringe, a fall and a cheek lock.
 # This is what `fit-family.py --family hair-mass --nodes hair-main,hair-fringe,hair-lock` uses
-# (STATUS D24). The parameter vector is variable-length: it follows each node's own spine.
+# (D24, same index). The parameter vector is variable-length: it follows each node's own spine.
 _hair_fit = _ff.FamilyFit(_asm, _work, "hair-mass", ["hair-main", "hair-fringe", "hair-lock"])
 # the vector's length FOLLOWS the spec's own spines (2 per point + width profile per node), so the
 # expected size is derived, never hardcoded — the artifact's spines change every milestone.

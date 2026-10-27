@@ -1,8 +1,8 @@
 # Rename map of the docs migration
 
 One pass, one commit series. This file exists so a reader who follows a link inside a frozen record
-(under `.scratch/`, `inbox/`, `mail/`, `teaching/`) can find where the target went. It is deleted with
-the rest of `.scratch/36-docs-migration/` once the pass is reviewed and its content is in git history.
+(under `.scratch/`, `inbox/`, `mail/`, `teaching/`) can find where the target went. It is kept as the
+pass's record; the retired doc text is in git at `d464eba^`.
 
 | before | after |
 | --- | --- |

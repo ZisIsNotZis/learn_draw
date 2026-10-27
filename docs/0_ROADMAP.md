@@ -9,16 +9,10 @@ gate.
 
 # EXPLICIT
 
-**The person judges; nothing else does.** Visual quality, appropriateness and responsibility are his.
-Automated metrics, a self-review and an agent reviewer each produce evidence; none of them produces a
-verdict of his. A picture whose own review rejects it is not put in front of him.
-
-**Self-supervision is allowed for craft, not for identity.** He delegated the drawing-internal
-judgement of a full image to a self-review line, written before the build — on the condition that the
-review is not the author's own opinion of the author's own work but a fresh-context reader's.
-
 **The bar for the current advance is "a full image".** His direction is to continue directly from the
-body image that works, up to a whole figure, self-supervised — no return to the object studies first.
+body image that works, up to a whole figure, with the supervision of the build left to the drawing
+agent — *"self-supervise (again, not you, that agent)"* — and with no return to the object studies
+first.
 
 # CONFIRMED
 
@@ -26,10 +20,23 @@ body image that works, up to a whole figure, self-supervised — no return to th
 sealed reference-free drawing, then the integrated delivery, then his disposition. The object studies
 are now suspended at his direction (below); the rest of the order stands.
 
-**A milestone may be replanned, never silently reduced.** Two distinct structural approaches per
-milestone; at the limit, preserve the evidence, say what is unresolved, and replan at the goal level.
-
 # INFERRED
+
+## What the person's judgement is, and is not
+
+The person judges; nothing else does. A metric, a self-review and an agent reviewer each produce
+evidence; none of them produces a verdict of his, and no internal check is ever represented as his
+judgement. A picture whose own review rejects it is not put in front of him, and a repair run neither
+awards a verdict of his nor lowers a threshold to make a repair pass.
+
+## How his delegation of the drawing judgement is bounded
+
+His permission to self-supervise is a permission about craft, not about identity: the self-review of a
+full image is written as a line of terms **before** the build, the terms are decidable by observation,
+and a term that changes *what the figure is, where it is, or what it wears* is not cleared by moving the
+term — it is cleared by changing the drawing. The self-review is never the author's opinion of the
+author's own work: the picture still goes to a fresh-context reader, and a defect with no honest
+mechanical signature is reported upward as a contract problem, never absorbed by weakening a test.
 
 ## Milestone path
 
@@ -51,8 +58,15 @@ that fails when the mechanism is removed; the reference seeds A's parameters and
 **Independent gates:** per study, construction/attachment, physical geometry and depth visibility,
 drawing/art, and object cohesion each judged separately on the actual image.
 
+**User sees:** each study as a real authored image with its own independent verdicts, at its own
+presentation — never a sheet, never a caption standing in for the picture.
+
 **Scope/non-goals:** one object per image; no figure composition, no captions, no panel set, no sealed
 heldout read, no metric tuning, no baseline promotion.
+
+**Risk/alternative:** revise the construction hypothesis inside the study's finite budget; at two failed
+hypotheses, preserve the evidence and report unresolved rather than lower an acceptance question. That
+budget is spent; the suspension itself is the person's direction, above.
 
 **Exit (unweakened, unmet):** both studies' four questions pass on one frozen revision each; a
 reference-free study reproduces reference-free; one manifest binds each revision; each study is
@@ -76,9 +90,10 @@ rim's inner corner, the **two-term order** and a **press** at the junction are v
 rim-wrap has the second alone. The package that would build all four is cut and unlaunched; the floor,
 the mixed-order rule and the joint route do not move for it.
 
-Nothing here resumes until the person says so. The two studies' verdicts, the hypothesis and the cut
-package are records: `.scratch/35-r1-articulated-study/evidence/reviews-r1a/` and
-`.scratch/35-r1-articulated-study/work/r1a-method-hypothesis.md` and `wave16-contracts.md`.
+Nothing here resumes until the person says so. The two studies' contracts — their canvases, artefacts
+and acceptance — are `.scratch/35-r1-articulated-study/work/r1a-object-study-contracts.md`, and their
+verdicts, the hypothesis and the cut package are records: `.scratch/35-r1-articulated-study/evidence/reviews-r1a/` and
+`.scratch/35-r1-articulated-study/work/r1a-method-hypothesis.md` and `.scratch/35-r1-articulated-study/work/wave16-contracts.md`.
 
 #### R1b — Articulated composition (deferred, not deleted)
 
@@ -87,54 +102,149 @@ shoulder/upper-torso clothing and composition, with no hand/pose claim; (B) an o
 upper-body bent arm/hand/prop interaction, with a meaningful variation and a labelled awkward control.
 Not pose imitation; no vendor character reuse.
 
+**Method and transfer:** abstract vendor construction semantics only; build the original B on actual
+support and world binding and let project depth decide visibility; imitate only what is observed in the
+reference. No matching pose photo is required for B, and B is not pose imitation or vendor character
+reuse.
+
 **Independent gates:** observed-part correspondence and visual art review; construction, hand-contact,
 attachment and physical intersection; actual support and depth visibility; reference-absent
 deterministic reproduction; heldout compatibility and distinctness; the person judges the actual
 deliverables.
+
+**User sees:** A and B as real authored images — not code, not parameter tables — including B's
+baseline, variation and control; the heldout image only after its own gates. Each carries a distinct,
+honest learning claim.
+
+**Dependencies and reuse:** the current support/depth architecture and semantic primitives. World and
+support mapping must be implemented rather than tagged, and no inferred 3D truth, no old figure
+scaffold and no claim on old S1a readability or transfer may be carried in.
+
+**Scope/non-goals:** bounded studies, not full anatomy, a finished portrait or infrastructure work; no
+fabricated reference observation, no pixel tracing, no baseline promotion without its own gate.
 
 **Exit:** A visibly imitates only observed features; B is an intentional readable original with a
 meaningful variation and a control; support binding, attachment, contact, collision and depth each pass
 separately; visual review and reproduction pass; evidence hashes bind one revision; then present and
 pause.
 
+**Risk/alternative:** if the hand and its contact stay unreadable or the geometry fails, revise the
+representation inside the two-hypothesis budget; preserve the control and the evidence, and never hide
+an intersection, invent an observation, drop A or B, or lower readability. At the limit, stop and report
+the unresolved gates.
+
+**Contracts:** `.scratch/35-r1-articulated-study/spec.md` and the public two-track freeze
+`.scratch/35-r1-articulated-study/work/task-freeze.md`. The freeze's revision is pending independent
+review and integrator approval; that is not art acceptance.
+
 **Status:** starts once both R1a studies pass. Nothing in R1b has started, and no R1a result
 substitutes for any condition above.
 
 ### R2 — Responsive components and pose variation
 
-A coherent multi-pose illustration or contact sheet of an upper-body figure, showing hand/arm pose and
-hair or clothing response, with stable component identity and plausible attachment. Extends R1's
-accepted construction with continuous-time/response and local-deformation ideas; motion is a
-construction test, not video production. Gates: attachment/pose, non-intersection, depth visibility,
-visual consistency, reproducibility — then the person's feedback. Exit: changed parameters produce
-coherent shape without per-frame hand editing; contact and attachment stay plausible; each gate passes
-separately; images and reproduction evidence are hashed and reviewed.
+**Visible work:** a coherent multi-pose illustration or contact sheet of an upper-body figure, showing
+hand and arm pose and hair or clothing response, with stable component identity and plausible
+attachment.
+
+**Method and transfer:** extend R1's accepted construction with continuous-time/response and
+local-deformation ideas; compare fixed and responsive variants across an awkward contact and changed
+proportions. Motion is a construction test, not video production.
+
+**User sees:** a small set of genuinely varied, readable poses, and one clearly comparable
+success/failure case.
+
+**Independent gates:** attachment/pose, non-intersection, depth visibility, visual consistency and
+reproducibility, each on actual images — then the person's feedback.
+
+**Dependencies and reuse:** accepted R1 rules and the current spatial support/depth model; do not assume
+an arbitrary collision solver or vendor painter-order visibility.
+
+**Scope/non-goals:** a bounded pose set — not a film, not an audio/beat pipeline, not a full animation
+engine, not generated assets.
+
+**Exit:** changed pose or parameters produce coherent shape without per-frame hand editing; contact and
+attachment stay plausible; intersection and occlusion gates each pass; visual identity survives the
+variants; final images and reproduction evidence are hashed and reviewed. Present and pause.
+
+**Risk/alternative:** if the responsive rules create implausible intersections, use a simpler explicitly
+supported motion range, or keep the artwork static while preserving the same pose-variation and
+readability result — a hidden collision is never acceptable. Replan after two distinct rule hypotheses.
 
 ### R3 — Reference-based composition and imitation
 
-A readable composed character illustration modelled from the reference, built from accepted semantic
-components, with a materially varied version beside it. Reference-led construction compared with a
-changed pose/proportion/camera; source attribution and migration evidence retained; no tracing as the
-endpoint. Gates: construction/attachment and collision, depth-derived visibility, whole-image art
-review, reference-free deterministic re-render, component variation, and the person's feedback. Exit:
-independently readable and coherent; variants preserve identity; the four acceptance dimensions
-documented separately; reference absent for reproduction; final review passes; present and pause.
+**Visible work:** a readable, composed character illustration modelled from the designated reference,
+built from accepted semantic components (head, torso, arms and hands, clothing, hair, accessories),
+with front and three-quarter views or another justified view pair.
+
+**Method and transfer:** systematically apply the accepted vendor methods from the curriculum coverage
+(visual grammar and focal hierarchy, scene and pose organization, component renderer and material
+process where the structure supports it, and the review methods that hold up); compare reference-led
+construction with a variation in pose, proportion or camera; keep source attribution and migration
+evidence. No tracing as the endpoint.
+
+**User sees:** the reference-inspired image plus a materially varied version, readable as one
+intentional composition.
+
+**Independent gates:** construction/attachment and collision; depth-derived visibility; whole-image
+visual art review **and a line-versus-colour structure review** (separately); reference-free
+deterministic re-render; component variation. The person's feedback is an explicit gate.
+
+**Dependencies and reuse:** R1 and R2's accepted methods and the spatial architecture. The legacy M4j
+assembly and Ex32 are historical controls, not accepted components and not a required starting
+scaffold.
+
+**Scope/non-goals:** one bounded character or composition; no promise of exact reference
+reconstruction, no hand-entered dense contours, no baseline promotion without its own gate.
+
+**Exit:** the composition is independently readable and coherent; variants preserve identity; the four
+acceptance dimensions are documented separately; the reference is absent for reproduction; the final
+review passes. Present and pause.
+
+**Risk/alternative:** reference ambiguity is recorded and resolved as an explicit plausible
+interpretation, never as recovered 3D truth. If the composition is too complex, reduce secondary detail
+while preserving the core figure, its pose, attachment and art quality.
 
 ### R4 — Transfer to new subjects and original creation
 
-A bounded portfolio of frozen tasks: a held-out reference imitation, a substantial variation/transfer
-to a different subject or proportions, and a reference-free original from a short intent brief —
-culminating in a Starry-Night-class composition only when prior results justify it. Gates per artifact:
-construction/collision, depth visibility, art review, reproducibility; fresh ordinary-model transfer
-only with capability-qualified visual access and a frozen payload. Exit: each predeclared task has an
-inspectable authored output and reproduction record; reviewers can name what transferred and where it
-fails; the reference-free task is independently judged a coherent original image; all presented for
-the person's judgement. Bounded evidence, never proof of universal mastery.
+**Visible work:** a bounded portfolio of frozen tasks — a held-out reference imitation, a substantial
+variation or transfer to a different subject or proportions, and a reference-free original from a short
+intent brief, culminating in a Starry-Night-class composition only when the prior results justify it.
+
+**Method and transfer:** combine methods that show evidence of reuse across distinct cases; compare the
+held-out reference and the original composition; preserve alternatives and failures; avoid target
+leakage and pixel tuning. Vendor dispositions may change, but only against evidence.
+
+**User sees:** the actual task-group artworks, including the reference-free original — never a claim of
+universal mastery.
+
+**Independent gates:** per artifact, construction/collision, depth visibility, art review and
+reproducibility; a fresh ordinary-model transfer may be tested only with capability-qualified visual
+access and a frozen payload and tasks. The person judges the resulting bounded body of work.
+
+**Dependencies and reuse:** only reviewed, reusable rules from earlier slices the person accepted; no
+assertion that old S1a transfer passed.
+
+**Scope/non-goals:** a frozen, finite, representative task set; no claim of universal drawing ability,
+no metric threshold as an art verdict, no image-generation service.
+
+**Exit:** each predeclared task has an inspectable authored output and reproduction record; independent
+reviewers can name what transferred and where it fails; the reference-free task is independently judged
+a coherent original image; all results are presented for the person's judgement. Bounded evidence, never
+proof of universal mastery.
+
+**Risk/alternative:** if transfer fails, diagnose the missing construction or visual rule and return to
+an appropriate slice — never rescue the frozen answer and call it transfer. If the modality or
+capability is unavailable, report it unverified, preserve the artifacts and defer that gate.
 
 **Naming note:** the older labels M2, M3 and M4 name a finer split of this same road — M2 the sealed
 reference-free drawing (inside R4's reference-free task, still unread and still needing the person to
 release it and authorize a creator role), M3 the integrated R1 delivery, M4 the person's recorded
 disposition. Records that use those labels resolve here.
+
+The retired 2D milestone sequence used the same letters for its own slices — M1 the composition, M2 the
+head, M3 body and cloth, M4 the fields, M5 the withdrawal — and those are exercise history: they name no current
+milestone, close no current gate, and do not describe current progress. A rubric example that cites "the
+body milestone" means that retired M3, not this advance's M3.
 
 ## Workpackage and autonomy contract
 
@@ -162,6 +272,22 @@ Workers choose vendor methods, implementation detail, work split and low-level a
 inside this contract; they may not waive the person's feedback gate, redefine art acceptance, claim
 unreviewed visual evidence, change locked architecture, or put runtime work in the product's place.
 Routine internal choices do not go to the person.
+
+**Limits that bind a package.** Candidate and repair limits are not a house number: they are written in
+the concrete workpackage contract that owns them — the two-track freeze
+(`.scratch/35-r1-articulated-study/work/task-freeze.md`), the object-study contracts
+(`.scratch/35-r1-articulated-study/work/r1a-object-study-contracts.md`), and each wave's contract file. A limit must be auditable in the
+file that sets it, and no attempt cap turns a failure into a pass.
+
+## Historical mapping
+
+The stage names S0–S3 are historical identifiers, not gates and not a binding sequence. Old S0's bounded
+visibility work is a technical result, not an artwork milestone. Old S1a's construction teaching
+artifact was accepted only as a code and method artifact: its perception/readability and its
+learner-transfer gates remain open and unrun. `Ex32` is old scaffold pose rotation and local attachment
+repair, not a figure or character pass, and old S1b, S2 and S3 labels map to no passed milestone.
+Records of all of it are preserved under `.scratch/`, with the retired docs in `.scratch/history/`; old
+drawing iterations are not repaired.
 
 ## Current state
 
