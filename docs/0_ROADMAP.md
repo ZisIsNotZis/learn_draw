@@ -99,8 +99,9 @@ reference seeds the landmarks and is closed; depth decides visibility.
 **Independent gates:** the six-axis rubric, two independent sighted reviewers on the 1:1 image, targets
 A≥4, B≥4, C≥4, D≥4, E≥4, F≥4, the whole vector, no axis contested at Δ≥2 left unresolved; each
 reviewer's biggest-defect field naming craft, not identity; the build deterministic, the suite green,
-the manifest verified, no image read, and the similarity alarm recorded and not fallen by more than 0.02
-since the v1 pair. Then the person's judgement.
+the manifest verified, no image read, and the similarity alarm measured if its optional dependencies are
+present, or recorded as unavailable with the reason (it is a secondary alarm, never a gate). Then the
+person's judgement.
 
 **Scope/non-goals:** one figure, one frame. No new engine, no pose set, no reference-free task, no
 baseline promotion, no metric tuning, no hand-typed station table, no change to another package's

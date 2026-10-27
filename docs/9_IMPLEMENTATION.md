@@ -121,6 +121,10 @@ scripts/draw freeze <spec.yaml> --ref image.jpg [--outdir DIR]
   embedding (OpenAI `ViT-B-32`, 151M parameters, cached at `~/.cache/clip`); its first readings, from
   the retired 2D sequence, are kept as calibration evidence in
   `.scratch/history/similarity-alarm-readings.md`. It is an alarm, never a gate (`2_GOAL.md`).
+  **Its optional dependencies (`open_clip`, `torch`) are not declared in `pyproject.toml` and are not in
+  `.venv` as of the R1c advance**, so the command exits with `ModuleNotFoundError`; until they are
+  installed the alarm is recorded as unavailable with that reason, never as a pass and never as a
+  number (`P38`).
 - `spatial_sketch.py` — writes the two projected views of the scaffold.
 
 ### Before a commit that touches code or a drawing

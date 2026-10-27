@@ -6,4 +6,4 @@ this file, not kept as history. This file is not a backlog of work — that is `
 
 ## Waiting to be landed
 
-*(empty)*
+- `README.md` and `README.zh-CN.md` still caption `A-full-figure-v1` as "seven-term acceptance line met" and as the current advance; that line is the author's construction line, not the rubric, and v1 is now under W1/W2 as `A-full-figure-v2`. Refresh both with the v2 1:1 image and an honest state at the R1c release. Owner: README (public cache); facts from `0_ROADMAP.md`.
