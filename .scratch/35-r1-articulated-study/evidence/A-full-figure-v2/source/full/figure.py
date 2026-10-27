@@ -312,7 +312,7 @@ def shift_sheet(part: SheetPart) -> SheetPart:
 # the torso's width is set by where the inherited parts land, and widening it has to be done
 # by re-cutting the bodice, not by a single factor over a group.
 TORSO_SCALE = 1.0
-BOW_SCALE = 1.02
+BOW_SCALE = 1.16
 TORSO_ABOUT_XY = (700.0, 560.0)
 
 
@@ -398,11 +398,11 @@ LAYOUT = dict(
     # right of the centre line.
     # Four landmarks drive the whole three-quarter face: chin, compressed far temple,
     # skull top and full near cheek.  The sampled boundary is generated below.
-    face_ring=((686.0, 370.0), (620.0, 276.0), (690.0, 174.0), (770.0, 290.0)),
-    eye_left=(642.0, 288.0), eye_right=(730.0, 284.0),
-    eye_left_r=(15.0, 20.0), eye_right_r=(22.0, 22.0),
-    bangs_anchors=((552.0, 212.0), (662.0, 116.0), (812.0, 220.0), (688.0, 286.0)),
-    bang_teeth=3, bang_depth=(246.0, 278.0),
+    face_ring=((686.0, 374.0), (622.0, 276.0), (690.0, 174.0), (766.0, 292.0)),
+    eye_left=(640.0, 286.0), eye_right=(728.0, 282.0),
+    eye_left_r=(16.0, 22.0), eye_right_r=(23.5, 24.0),
+    bangs_anchors=((552.0, 212.0), (662.0, 116.0), (812.0, 220.0), (688.0, 292.0)),
+    bang_teeth=4, bang_depth=(246.0, 286.0),
     # the neck
     neck_q=((660.0, 372.0), (710.0, 372.0), (714.0, 428.0), (658.0, 428.0)),
     neck_hollow=((624.0, 398.0), (748.0, 398.0), (756.0, 486.0), (616.0, 486.0)),
@@ -427,7 +427,7 @@ LAYOUT = dict(
                      (968.0, 1044.0), (910.0, 1032.0), (876.0, 700.0), (806.0, 400.0)),
     lock_left=((574.0, 250.0), (528.0, 486.0), (516.0, 736.0)),
     curl_left=((572.0, 664.0), (524.0, 700.0), (500.0, 674.0), (516.0, 640.0)),
-    streamer=((556.0, 300.0), (448.0, 392.0), (314.0, 500.0), (282.0, 566.0)),
+    streamer=((556.0, 300.0), (446.0, 402.0), (278.0, 516.0), (300.0, 580.0)),
     lock_right=((760.0, 258.0), (786.0, 492.0), (800.0, 740.0)),
     fall_wave=(9.0, 1.6, 0.4),
     # the seated lower mass: skirt over the knees, under-layer, and the fold bands
@@ -440,14 +440,14 @@ LAYOUT = dict(
     # off the frame's left and bottom edges instead of closing on itself.
     # Four landmarks per cloth shape.  `lap_outline` expands the skirt anchors into the
     # two knee peaks, the valley and the off-frame hem; no station table is authored.
-    skirt=((574.0, 682.0), (810.0, 696.0), (842.0, 820.0), (470.0, 890.0)),
-    skirt_teal=((-44.0, 716.0), (828.0, 700.0), (1010.0, 1050.0), (-44.0, 1050.0)),
-    fold_cream=((564.0, 716.0), (704.0, 744.0), (734.0, 1018.0), (520.0, 1018.0)),
-    fold_mint=((450.0, 812.0), (590.0, 834.0), (622.0, 1018.0), (426.0, 1018.0)),
-    fold_shadow=((574.0, 684.0), (808.0, 698.0), (792.0, 744.0), (584.0, 732.0)),
-    underskirt=((616.0, 914.0), (900.0, 872.0), (944.0, 1040.0), (586.0, 1040.0)),
-    lining_pink=((178.0, 764.0), (338.0, 792.0), (496.0, 1038.0), (310.0, 1038.0)),
-    lining_orange=((318.0, 884.0), (530.0, 858.0), (654.0, 1038.0), (438.0, 1038.0)),
+    skirt=((548.0, 666.0), (812.0, 680.0), (872.0, 810.0), (408.0, 916.0)),
+    skirt_teal=((340.0, 704.0), (844.0, 770.0), (902.0, 1050.0), (-36.0, 1050.0)),
+    fold_cream=((520.0, 706.0), (650.0, 772.0), (690.0, 1038.0), (516.0, 1038.0)),
+    fold_mint=((432.0, 814.0), (596.0, 852.0), (642.0, 1038.0), (410.0, 1038.0)),
+    fold_shadow=((558.0, 664.0), (810.0, 680.0), (798.0, 738.0), (570.0, 724.0)),
+    underskirt=((650.0, 936.0), (850.0, 900.0), (812.0, 1040.0), (622.0, 1040.0)),
+    lining_pink=((214.0, 786.0), (354.0, 824.0), (486.0, 1038.0), (330.0, 1038.0)),
+    lining_orange=((360.0, 930.0), (542.0, 900.0), (632.0, 1038.0), (454.0, 1038.0)),
     fold_lines=((0.14, 0.04), (0.32, 0.08), (0.50, 0.12), (0.68, 0.16)),
     # the waist: a gathered band across the blouse, with its peplum flaring below
     waist_band=((590.0, 666.0), (700.0, 660.0), (812.0, 672.0), (809.0, 700.0),
@@ -488,31 +488,24 @@ def field_ribbon(route, half_width):
 
 def field():
     """Curved sky/ground masses and floating ribbons, all behind the figure."""
-    # The left field is a crest, not a stack of hills: the mint boundary rises into a
-    # large curl that meets the outgoing hair lock, while broad cloth-like streamers cross
-    # the lower-left field.  Every boundary is still generated from four landmarks.
-    ground_edge = catmull(((0.0, 354.0), (286.0, 300.0), (616.0, 402.0), (1024.0, 310.0)),
+    # The teal horizon and mint bank are generated curves, not angular horizontal bands.
+    ground_edge = catmull(((0.0, 354.0), (310.0, 314.0), (650.0, 398.0), (1024.0, 310.0)),
                           steps=14, closed=False)
     ground = tuple(ground_edge) + (full(1024, 1024), full(0, 1024))
-    mint_edge = catmull(((0.0, 560.0), (188.0, 654.0), (420.0, 520.0), (590.0, 424.0)),
+    mint_edge = catmull(((0.0, 518.0), (176.0, 592.0), (420.0, 506.0), (574.0, 430.0)),
                         steps=14, closed=False)
-    bank = (full(0, 1024), full(0, 560)) + tuple(mint_edge) + (full(430, 1024),)
-    crest = field_ribbon(((18.0, 406.0), (176.0, 248.0), (330.0, 330.0), (438.0, 430.0)), 34.0)
+    bank = (full(0, 1024), full(0, 518)) + tuple(mint_edge) + (full(418, 1024),)
     return [
         ("A-field-ground", ground, BACKGROUND_TEAL),
         ("A-field-bank", bank, BACKGROUND_GREEN),
-        ("A-field-wave-crest", crest, BACKGROUND_GREEN),
-        ("A-field-wave-crest-pink", field_ribbon(((22.0, 422.0), (178.0, 278.0),
-                                                    (320.0, 344.0), (424.0, 430.0)), 13.0),
+        ("A-field-ribbon-high", field_ribbon(((8.0, 430.0), (116.0, 398.0),
+                                               (244.0, 444.0), (332.0, 410.0)), 5.0),
          LINING_PINK),
-        ("A-field-ribbon-high", field_ribbon(((-20.0, 590.0), (116.0, 540.0),
-                                               (252.0, 626.0), (394.0, 574.0)), 18.0),
-         LINING_PINK),
-        ("A-field-ribbon-low", field_ribbon(((-18.0, 724.0), (102.0, 654.0),
-                                              (226.0, 744.0), (356.0, 682.0)), 15.0),
+        ("A-field-ribbon-low", field_ribbon(((-8.0, 690.0), (98.0, 650.0),
+                                              (210.0, 706.0), (304.0, 668.0)), 4.0),
          CREAM),
-        ("A-field-ribbon-curl", field_ribbon(((32.0, 822.0), (132.0, 740.0),
-                                               (238.0, 834.0), (330.0, 760.0)), 13.0),
+        ("A-field-ribbon-curl", field_ribbon(((46.0, 774.0), (126.0, 730.0),
+                                               (206.0, 782.0), (252.0, 748.0)), 3.2),
          LINING_ORANGE),
     ]
 
@@ -584,12 +577,7 @@ def head_parts():
     chin, far_temple, skull_top, near_cheek = L["face_ring"]
     # A generated asymmetric oval through four measured landmarks.  The far side stays
     # compressed while the near cheek carries the turn, so the head cannot read frontal.
-    # Two points derived around the chin turn its single landmark into a soft jaw arc;
-    # the authored ring remains four landmarks, but the generator no longer converges
-    # both cheeks onto a V-shaped tip.
-    chin_left = (chin[0] - 18.0, chin[1] - 5.0)
-    chin_right = (chin[0] + 18.0, chin[1] - 3.0)
-    ring = catmull((chin_left, far_temple, skull_top, near_cheek, chin_right))
+    ring = catmull((chin, far_temple, skull_top, near_cheek))
     face = planar("A-face", "the narrow three-quarter face: compressed far side and full near cheek", 0.30,
                   ring, rows=[("silhouette", ring, "the face's outer boundary")],
                   fill=SKIN, authored=tuple((f"face_{i}", p) for i, p in enumerate(L["face_ring"])))
@@ -644,8 +632,8 @@ def eye_parts():
         # The downcast eye is a shallow almond, not the inherited full-height disc.  Its
         # iris sits low and off-centre, so the upper lid covers its top by reading rather
         # than by an authored visibility cut; every layer remains its own owned shape.
-        sclera_ry = ry * 0.34
-        gaze_x, gaze_y = ex - rx * 0.16, ey + ry * 0.19
+        sclera_ry = ry * 0.43
+        gaze_x, gaze_y = ex - rx * 0.20, ey + ry * 0.18
         out[f"A-eye-{side}"] = planar(f"A-eye-{side}", f"the {side} eye's shallow sclera", 0.36,
                                       ellipse(ex, ey, rx * 1.02, sclera_ry, -6),
                                       fill=EYE_WHITE, authored=((f"eye_{side}", (ex, ey)),))
@@ -672,7 +660,7 @@ def eye_parts():
         # Three anchors describe each generated curve.  The heavy upper lash slopes down
         # toward the nose; the lighter crease echoes it above, making the shy lowered lid
         # legible at 1:1 without turning the whole eye into a black outline.
-        lash = ((ex - rx, ey - 0.5), (ex, ey - ry * 0.34), (ex + rx, ey + 2.5))
+        lash = ((ex - rx, ey - 1.0), (ex, ey - ry * 0.48), (ex + rx, ey + 1.5))
         lid = ((ex - rx * 0.82, ey - ry * 0.42),
                (ex, ey - ry * 0.68), (ex + rx * 0.78, ey - ry * 0.34))
         lash_marks.append((f"A-lash-{side}", f"A-eye-{side}", "lash",
@@ -688,7 +676,7 @@ def eye_parts():
                                          steps=8, closed=False), fill=HAIR_INK)
 
     out["A-mouth"] = planar("A-mouth", "the small downturned mouth", 0.35,
-                            ellipse(692.0, 345.0, 6.5, 1.9, -8), fill="#c98a84")
+                            ellipse(690.0, 348.0, 5.5, 1.7, -8), fill="#c98a84")
     return out
 
 
@@ -780,7 +768,7 @@ def hair_parts():
                                             steps=10, closed=False), 0.505),
                           HAIR_INK))
     streamer = _strip(L["streamer"],
-                      lambda t: 2.0 + 27.0 * (1.0 - t) ** 1.15, lambda t: 0.53)
+                      lambda t: 0.7 + 20.3 * (1.0 - t) ** 1.25, lambda t: 0.53)
     out["A-hair-streamer"] = SheetPart(
         name="A-hair-streamer",
         intent="the thin lock that sweeps out to her left and hooks at the end",
@@ -789,6 +777,8 @@ def hair_parts():
         authored=tuple((f"streamer_{i}", p) for i, p in enumerate(L["streamer"])))
     marks.append(("A-hair-streamer-edge-front", "A-hair-streamer", "hair_edge",
                   streamer.edge(0, 1, 1.0, 80), HAIR_INK))
+    marks.append(("A-hair-streamer-edge-back", "A-hair-streamer", "hair_edge",
+                  streamer.edge(0, 1, -1.0, 80), HAIR_INK))
     curl = _strip(L["curl_left"], lambda t: 17.0 - 9.0 * t, lambda t: 0.545)
     out["A-hair-curl-left"] = SheetPart(
         name="A-hair-curl-left",
@@ -800,8 +790,8 @@ def hair_parts():
                   curl.edge(0, 1, 1.0, 50), HAIR_INK))
     marks.append(("A-hair-curl-left-edge-back", "A-hair-curl-left", "hair_edge",
                   curl.edge(0, 1, -1.0, 50), HAIR_INK))
-    for name, route, w in (("A-hair-lock-left", L["lock_left"], 20.0),
-                           ("A-hair-lock-right", L["lock_right"], 21.0)):
+    for name, route, w in (("A-hair-lock-left", L["lock_left"], 13.0),
+                           ("A-hair-lock-right", L["lock_right"], 14.0)):
         surface = _strip(route, lambda t, w=w: w * (1.15 - 0.9 * t), lambda t: 0.52,
                          wave=(4.0, 1.1, 0.9))
         out[name] = SheetPart(name=name, intent="one thin lock of hair in front of the shoulder",
@@ -809,6 +799,8 @@ def hair_parts():
                               grid=surface.grid(samples=28, cols=3), anchors={},
                               authored=tuple((f"{name}_{i}", p) for i, p in enumerate(route)))
         marks.append((f"{name}-edge-front", name, "hair_edge", surface.edge(0, 1, 1.0, 60),
+                      HAIR_INK))
+        marks.append((f"{name}-edge-back", name, "hair_edge", surface.edge(0, 1, -1.0, 60),
                       HAIR_INK))
     marks.append(("A-hair-back-edge-front", "A-hair-back", "hair_edge",
                   back.edge(0, 1, 1.0, 100), HAIR_INK))
@@ -875,16 +867,13 @@ def lower_parts():
     the strokes fan from one point at the waist.
     """
     L = LAYOUT
-    # The dark skirt owns the lap silhouette.  The pale cloth is an apron panel laid on
-    # that lap, so it closes around its four anchors instead of inheriting the off-frame
-    # hem generator that previously made pale cloth the whole lower field.
-    skirt_shape = catmull(L["skirt"])
-    skirt = planar("A-skirt-front", "the pale apron crossing laterally over the dark seated lap", 0.262,
+    skirt_shape = lap_outline(L["skirt"])
+    skirt = planar("A-skirt-front", "the pale skirt crossing laterally over two seated knees", 0.262,
                    skirt_shape,
                    rows=[("silhouette", skirt_shape, "the skirt's outer edge and off-frame hem")],
                    fill=MINT, authored=(("skirt_near_knee", L["skirt"][2]),
                                         ("skirt_far_knee", L["skirt"][3])))
-    teal = planar("A-skirt-teal", "the dominant connected deep-teal lap and skirt cloth", 0.255,
+    teal = planar("A-skirt-teal", "the connected deep-teal cloth beneath the skirt", 0.22,
                   catmull(L["skirt_teal"]), rows=[], fill=DEEP_TEAL,
                   authored=(("teal_top", L["skirt_teal"][0]),
                             ("teal_hem", L["skirt_teal"][2])))
@@ -923,8 +912,11 @@ def hem_trim():
     so the band follows whatever shape the skirt is cut to.
     """
     L = LAYOUT
-    waist_left, waist_right, near_knee, far_knee = L["skirt"]
-    hem = (waist_left, waist_right, near_knee, far_knee, waist_left)
+    _waist_left, _waist_right, near_knee, far_knee = L["skirt"]
+    valley = lerp2(near_knee, far_knee, 0.46)
+    valley = (valley[0], valley[1] + 58.0)
+    hem = ((near_knee[0] - 116.0, 1050.0), valley, far_knee,
+           (-32.0, min(1010.0, far_knee[1] + 104.0)))
     return ("A-skirt-hem-trim", "A-skirt-front", "hem",
             flat_mark(catmull(hem, steps=14, closed=False), 0.272), CUFF_NAVY)
 
@@ -1070,7 +1062,7 @@ def build():
     parts.update(arm)
     marks = (list(inherited_marks) + list(hair_marks) + list(arm_marks)
              + list(fold_marks()) + list(lash_marks) + list(waist_marks)
-             + [nose_mark()])
+             + [nose_mark(), hem_trim()])
     return dict(parts=parts, sheet_marks=tuple(marks), field=tuple(field()), meta=meta)
 
 

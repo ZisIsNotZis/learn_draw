@@ -27,9 +27,9 @@ LEFT_LOBE_TIP_XY = (122.0, 175.0)
 RIGHT_LOBE_TIP_XY = (262.0, 186.0)
 LEFT_TAIL_EXIT_XY = (20.0, 216.0)
 
-HALF_WIDTH = 14.0         # soft cloth width; the loops no longer read as inflated tubes
-LIMB_SEPARATION = 25.0    # enough fold spread for two soft lobes around the central tie
-FOLD_EXTENSION = 3.0      # a small cloth turn at the loop tip, not an extruded end cap
+HALF_WIDTH = 17.0         # constant: one ribbon, one width, continuous through the knot
+LIMB_SEPARATION = 30.0    # centre-to-centre distance of a lobe's two limbs (< 2*half: solid)
+FOLD_EXTENSION = 6.0      # how far the fold turns past the authored lobe tip
 TAIL_SAG = 105.0           # left tail sag toward the cuff it crosses
 DOWN_LENGTH = 130.0       # down tail length from the knot
 DOWN_DIRECTION_XY = (-0.22, 0.976)   # crop pixels, y down
@@ -215,10 +215,8 @@ def _marks(surface, spans, count):
     each lobe, and across the tie where the ribbon crosses itself.  There is no mark
     that sweeps a whole limb, because a ribbon has no such line.
     """
-    # The fill boundary already owns the bow silhouette.  Inking both strip rails made
-    # every loop read as an extruded hose and drew a racetrack through the knot; retain
-    # only cloth creases, which follow the folds that create the loops and tie.
-    marks = []
+    marks = [("A-bow-ribbon-edge-front", "A-bow-ribbon", "silhouette", surface.edge(0.0, 1.0, 1.0, 120), INK),
+             ("A-bow-ribbon-edge-back", "A-bow-ribbon", "silhouette", surface.edge(0.0, 1.0, -1.0, 120), INK)]
     for name, piece in (("A-bow-left-fold-crease", 3), ("A-bow-right-fold-crease", 7)):
         lo, hi = spans[piece]
         centre = (lo + hi) / 2 / count
