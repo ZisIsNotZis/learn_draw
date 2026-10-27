@@ -384,7 +384,16 @@ strand lines and a non-straight inner edge per fall, a tapered streamer; plus th
 the manifest verified, no image read, the suite green, and no shape over four typed landmarks.
 Status: dispatched.
 
-**W2b — the lap's dark mass, the face, the bow, the hair, the field's curl** (owner: one writer,
+**W2b — tried and reverted.** One writer re-toned the lap dark, broadened the field masses, lowered
+the lids, softened the bow and widened the locks. The result reads as a landscape with pink hills, an
+angry slit-eyed face, a bow blob and a dark disc below the skirt: it is worse than the revision it
+started from, and it has no review. It stays in history (`32eec98`, `f4aba38`, `b3d237b`) and the
+package is restored to the reviewed `90ff009` at `df2c9a4`. The lesson is the route's: the lower mass
+is not fixed by a tone flip plus added masses; it needs one coherent re-cut, and the next attempt must
+show that re-cut on the 1:1 image before it is called an advance. The original contract is kept below
+for that next attempt.
+
+**W2b (original contract) — the lap's dark mass, the face, the bow, the hair, the field's curl** (owner: one writer,
 `A-full-figure-v2`, from `90ff009`). The v2 pair is in and short of the targets on A, C and D
 (`evidence/reviews-r1c/`); both reviewers name the same repairs. Do: (a) re-tone the lower mass to the
 reference's truth — the dominant lower field is the dark navy/teal skirt across the lap and bottom, the
@@ -446,8 +455,9 @@ hair.
 **W2 has landed** at `90ff009`, and its independent pair puts it at **A3 / B4 / C3 / D1–3 (contested) /
 E4–5 / F3–4** — progress on B, C and F, still short of A, C and D. Both reviewers name the same thing:
 the lower half is a pale wedge, the dark lap mass is a strip, so she still does not read as seated; the
-face is startled, the bow a tube, the hair rails, and the left wave curl is a noodle. W2b is that
-repair.
+face is startled, the bow a tube, the hair rails, and the left wave curl is a noodle. **W2b tried that
+repair and was reverted** (above). The package stands at the reviewed `90ff009`; that is the revision
+in front of the person.
 
 **The recorded ratchet floor is unchanged** and is a flat-2D artifact
 (`.scratch/00-tooling/baseline/`, recorded from the 2D assembly): the full figure is reference-free and
@@ -459,7 +469,10 @@ the person's judgement at a real gate. The sealed brief
 (`.scratch/35-r1-articulated-study/work/holdout-brief.sealed.md`) stays unread until he releases it and
 authorizes the creator role.
 
-**Next entry:** W2b in flight, then W3. If W2's revision does not reach the targets on the pair, the
-next advance is the largest remaining defect it names, on v2's source; the person is given the image
-only once its own reviews no longer reject it. If the person names a defect, it becomes the next
-advance on the current package; the part library stays copied byte-for-byte.
+**Next entry:** his reading of `90ff009`. R1c's rubric targets are **not** met, so this is a
+checkpoint, not the milestone close: the picture is whole and reviewed, and which defect matters is his
+perceptual call, not another blind rubric chase. If he names a defect, the next advance is that
+defect's repair on the current package, on the 1:1 image, with the part library still copied
+byte-for-byte; if he accepts the picture as the full image he asked for, R1c closes with the shortfall
+recorded and the release pass runs; if he rejects the whole language, the next advance is a re-cut of
+the figure's construction, not more marks on this one.
