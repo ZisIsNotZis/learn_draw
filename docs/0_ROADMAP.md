@@ -356,29 +356,39 @@ file that sets it, and no attempt cap turns a failure into a pass.
 
 ## The R1c workpackages
 
-**W1 — the figure's drawing, stage 1: contour and face** (owner: one writer, `A-full-figure-v2`).
-Objective: every shape the figure owns is stroked as a drawing, and the face reads as the reference's
-shy three-quarter face. Inputs: v1's source copied to v2, the v1 review pair, the reference crops.
-Outputs: v2 source, rebuilt SVG, 1:1 render, suite, manifest. Do: apply the line policy to every visible
-part edge, with a weight hierarchy (silhouette > free edge > fold/contact) and a declared class per
-mark; re-cut the eye parts as lid/lash/iris-under-lid/pupil/catchlight at the head's own three-quarter
-proportions; give the hand a palm, finger masses and a thumb; route the viewer-left arm from the sleeve.
-Non-do: no coordinate tables, no depth cuts authored by hand, no change to the reference's pose or
-frame. AC: the SVG contains a contour mark for every visible object; the four line classes are present
-with distinct widths; the hand has at least four separated digit masses visible at 1:1; the suite is
-green and the rebuild is byte-identical; a 4× head crop shows a lash, a lid and an iris not filling the
-sclera. Status: dispatched.
+**W1 — contour, hand, far arm — landed at `e974d4e`.** One writer applied the line policy, re-cut the
+eyes as lid/lash/sclera/iris/pupil/catchlight, gave the hand four finger masses and a thumb, and routed
+her right arm from the viewer-left cuff. The contour pass proved too broad: outlining same-garment
+panels turns the torso and skirt into a polygon mesh. Its stage-3 image review is **void as a score**
+(its descriptions of the eyes and bow are not of that revision) but true on three structures: the
+panel seams, the detached lower mass, the flat background
+(`evidence/reviews-r1c/A-full-figure-v2-stage3-image-review-1.md`). No art verdict is claimed for the
+stage.
 
-**W2 — the figure's drawing, stage 2: the seated lower mass and the field** (owner: one writer, same
-package, after W1 commits). Objective: the figure reads as seated and the background carries the
-reference's composition. Inputs: W1's revision, the reference crops. Outputs: v2 source, render, check
-bundle, manifest. Do: build a lap plane with the skirt crossing it laterally and the navy underlayer
-beneath; re-cut the mint wave as a curve, place the teal ground and the floating ribbon tails behind
-the figure; give the hair's falls a lit/shade boundary that curves and strand lines that follow it.
-Non-do: no detached dark polygon, no flat angular field as the final field, no baseline promotion. AC:
-at 1:1 a reader can point to the lap and the cloth across it, and the dark mass is under the skirt, not
-beside it; the background's mint boundary is a curve from the left edge behind her waist; the falls
-carry at least two tones and a strand line each. Status: queued behind W1.
+**W2 — lines that are art lines, the face, the seated lap, the field and the hair** (owner: one writer,
+`A-full-figure-v2`, from `e974d4e`). Objective: the figure reads as a drawn, seated girl in the
+reference's composition. Do, in order: (a) keep contours on the outer silhouette, on boundaries between
+different objects, on the hand's digits and on a few real folds, and remove the strokes that merely
+outline internal same-garment panels; (b) re-cut the face from the reference's measured geometry — the
+far eye smaller, a heavier lash, the iris under the lid, a narrow chin, the fringe over the brow;
+(c) build the lap plane with the skirt crossing it, the deep-teal underlayer connected beneath, the hem
+trim following the skirt, and the lining ribbons crossing the teal; remove the detached slab; (d) make
+the mint field's boundary a sweeping curve, with the teal ground and two or three floating ribbon tails
+behind the figure; (e) give each hair fall a curved lit/shade boundary, strand lines, a broken inner
+edge and a tapered streamer end. Non-do: no coordinate table over four landmarks, no authored depth
+cut, no metric tuning, no baseline promotion. AC: (a) no 1:1 outline seam around same-garment panels;
+(b) at 4× a heavy lash, lid, sclera, iris under the lid, pupil, catchlight, a smaller far eye and a
+narrow chin; at 1:1 a downcast expression; (c) a lap with the skirt across it and the navy layer
+beneath, detached slab gone; (d) a curved mint boundary and two floating ribbon tails; (e) two tones,
+strand lines and a non-straight inner edge per fall, a tapered streamer; plus the build deterministic,
+the manifest verified, no image read, the suite green, and no shape over four typed landmarks.
+Status: dispatched.
+
+**W3 — the independent review and the presentation** (owner: manager; two fresh image reviewers + one
+execution reviewer). Objective: a verdict on W2's revision by the rubric. Outputs: two review records
+in `evidence/reviews-r1c/` bound to the v2 hashes; a presentation of the 1:1 image to the person with
+what is done, what is not, and what to look at. AC: two sighted reviewers, no unresolved Δ≥2 axis,
+alarms green, the image in front of the person. Status: waits for W2.
 
 **W3 — the independent review and the presentation** (owner: manager; two fresh reviewers + one
 execution reviewer). Objective: a verdict on W2's revision by the rubric. Outputs: two review records
@@ -409,6 +419,11 @@ the face is frontal and wide-eyed; and — the strongest — **the figure does n
 the dark lower mass sits detached at the left of a symmetrical dress bell. That last one is identity,
 not craft, and the v1 self-review's "T6 cleared" missed it. **No art verdict is claimed.**
 
+**W1 has landed** at `e974d4e` (`A-full-figure-v2`): a contour pass, layered eyes, a hand with four
+finger masses, and her far arm from the cuff. The pass was too broad — same-garment panels got outlines
+and read as a mesh — and the face is still frontal; W2 owns both, with the seated lap, the field and the
+hair.
+
 **The recorded ratchet floor is unchanged** and is a flat-2D artifact
 (`.scratch/00-tooling/baseline/`, recorded from the 2D assembly): the full figure is reference-free and
 does not compare against it, and no structural sketch replaces it.
@@ -419,7 +434,7 @@ the person's judgement at a real gate. The sealed brief
 (`.scratch/35-r1-articulated-study/work/holdout-brief.sealed.md`) stays unread until he releases it and
 authorizes the creator role.
 
-**Next entry:** W1 and W2 above, then W3. If the pair's vector does not reach the targets, the next
-advance is the largest remaining defect named by that pair, on v2's source; the person is given the
-image only once its own reviews no longer reject it. If the person names a defect, it becomes the next
+**Next entry:** W2 in flight, then W3. If W2's revision does not reach the targets on the pair, the
+next advance is the largest remaining defect it names, on v2's source; the person is given the image
+only once its own reviews no longer reject it. If the person names a defect, it becomes the next
 advance on the current package; the part library stays copied byte-for-byte.
