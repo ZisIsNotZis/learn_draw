@@ -6,11 +6,11 @@
 
 *Learning to draw as a computed skill — every picture built from declared parts, relations and depth, and judged one term at a time.*
 
-**No diffusion, no pixel generation, no traced endpoint: the drawing itself is the deliverable, so each image is assembled from named components whose geometry is computed, whose visible cuts are decided by 3D depth, and whose quality is measured against a written acceptance line before a human ever looks at it.**
+**No diffusion, no pixel generation, no traced endpoint: the drawing itself is the deliverable, so each image is assembled from named components whose geometry is computed, whose visible cuts are decided by 3D depth, and whose quality is read against a written six-axis rubric by independent sighted reviewers before the person whose judgement it awaits ever looks at it.**
 
-![The reference (left) and the project's own render of it (right), 1024×1024 each](.scratch/35-r1-articulated-study/evidence/A-full-figure-v1/check/side-by-side.png)
+![The reference (left) and the project's own render of it (right), 1024×1024 each](.scratch/35-r1-articulated-study/evidence/A-full-figure-v2/check/side-by-side.png)
 
-*The current advance: the reference `image.jpg` (left) beside `A-full-figure-v1` (right) — 25 named parts, every landmark a relation, every visible cut computed by the depth engine, the reference closed after it seeded the layout. Side-by-side produced by `scripts/draw check`.*
+*The current advance: the reference `image.jpg` (left) beside `A-full-figure-v2` (right) — 57 parts in 31 objects, every landmark a relation, every visible cut computed by the depth engine, the reference closed after it seeded the layout. Side-by-side produced by `scripts/draw check`. The picture is whole and unfinished: its own independent review pair scores it A3 / B4 / C3 / D1–3 / E4–5 / F3–4, so it is not yet at the milestone bar, and its remaining defects are the person's reading to rank.*
 
 ## Quick start
 
@@ -25,10 +25,11 @@ Rendering SVG/HTML to PNG goes through a Chrome build: `scripts/renderer.py` tak
 `chromium_headless_shell-*` from the Playwright cache, or whatever `CHROME_HEADLESS_SHELL` points at.
 Everything else — metrics, diffs, the ratchet — runs without it.
 
-Rebuild the figure in the screenshot and its whole check bundle (~25 s):
+Rebuild the figure in the screenshot and its whole check bundle (a few minutes: the depth engine is
+pairwise over ~4.7k faces):
 
 ```bash
-PKG=.scratch/35-r1-articulated-study/evidence/A-full-figure-v1
+PKG=.scratch/35-r1-articulated-study/evidence/A-full-figure-v2
 .venv/bin/python $PKG/source/build_full.py --out $PKG/artwork.svg --report $PKG/build-report.json
 scripts/draw check $PKG/artwork.svg --outdir $PWD/$PKG/check
 ```
@@ -53,9 +54,9 @@ scripts/draw check $PKG/artwork.svg --outdir $PWD/$PKG/check
 - **Articulated construction with a visibility oracle.** `scripts/articulated_construction.py` plus
   `scripts/vector_visibility.py` build a posed figure from joint/taper parameters and check the
   painted result against an exact reference visibility solver.
-- **A whole figure, reference-free at build time.** `A-full-figure-v1` composes 25 parts into the
-  reference's own 1024×1024 frame, reads no image, and binds its bytes with a manifest whose
-  `--check` re-verifies them.
+- **A whole figure, reference-free at build time.** `A-full-figure-v2` composes 57 parts in 31
+  objects into the reference's own 1024×1024 frame, reads no image, and binds its bytes with a manifest
+  whose `--check` re-verifies them.
 
 ## Architecture
 
@@ -128,12 +129,15 @@ by a metric moving.
   and reference-free withdrawals, with their evidence under `.scratch/`.
 - The ribbon engines: continuous strip on a computed support, camber, return bend, depth-visible ink.
 - Articulated construction with an exact vector visibility oracle.
-- `A-full-figure-v1`: the whole figure, reference closed, seven-term acceptance line met at round 28.
+- `A-full-figure-v2`: the whole figure, reference closed, building deterministically from 57 declared
+  parts; its independent review pair scores A3 / B4 / C3 / D1–3 / E4–5 / F3–4, and the picture is with
+  the person whose judgement it awaits.
 
 **Planned**
 
-- The person's reading of the figure, then the craft list its own review kept — flat background fields,
-  a crude arm, the bodice's severed waist edge, single-tone hair fills, no fringe strands.
+- The person's reading of the full figure — which defect matters is his call; then that defect's
+  repair, with the review pair's named five (the seated lap, the face, the bow, the hair, the left
+  field's wave) on the table.
 - The two object studies (a bow, a reference-free hand holding a dish), built, twice failed on their
   images, and now parked at the person's direction rather than deleted.
 - Integrated acceptance of the articulated study: reference-absent reproduction, and the sealed held-out
