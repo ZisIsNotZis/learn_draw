@@ -440,18 +440,16 @@ LAYOUT = dict(
     # dome.  The near knee pushes a peak out at (872,806), the far knee a second at
     # (430,930), the valleys between them are where the cloth falls back, and the mass runs
     # off the frame's left and bottom edges instead of closing on itself.
-    skirt=((556.0, 664.0), (818.0, 674.0), (874.0, 806.0), (846.0, 918.0),
-           (714.0, 972.0), (548.0, 992.0), (404.0, 916.0), (452.0, 762.0)),
-    skirt_teal=((150.0, 762.0), (430.0, 832.0), (612.0, 944.0), (700.0, 1024.0),
-                (56.0, 1024.0)),
-    fold_cream=((486.0, 742.0), (612.0, 770.0), (690.0, 1004.0), (556.0, 1024.0),
-                (438.0, 856.0)),
-    fold_mint=((452.0, 812.0), (604.0, 846.0), (648.0, 1010.0), (452.0, 1004.0)),
-    fold_shadow=((574.0, 660.0), (808.0, 672.0), (812.0, 742.0), (582.0, 726.0)),
-    underskirt=((700.0, 962.0), (846.0, 918.0), (788.0, 1024.0), (676.0, 1024.0)),
-    lining_pink=((286.0, 812.0), (392.0, 848.0), (462.0, 966.0), (472.0, 1024.0),
-                 (330.0, 1024.0), (292.0, 918.0), (250.0, 862.0)),
-    lining_orange=((434.0, 978.0), (556.0, 946.0), (612.0, 1024.0), (470.0, 1024.0)),
+    # Four landmarks per cloth shape.  `lap_outline` expands the skirt anchors into the
+    # two knee peaks, the valley and the off-frame hem; no station table is authored.
+    skirt=((548.0, 666.0), (812.0, 680.0), (872.0, 810.0), (408.0, 916.0)),
+    skirt_teal=((340.0, 704.0), (844.0, 770.0), (902.0, 1050.0), (-36.0, 1050.0)),
+    fold_cream=((520.0, 706.0), (650.0, 772.0), (690.0, 1038.0), (516.0, 1038.0)),
+    fold_mint=((432.0, 814.0), (596.0, 852.0), (642.0, 1038.0), (410.0, 1038.0)),
+    fold_shadow=((558.0, 664.0), (810.0, 680.0), (798.0, 738.0), (570.0, 724.0)),
+    underskirt=((650.0, 936.0), (850.0, 900.0), (812.0, 1040.0), (622.0, 1040.0)),
+    lining_pink=((214.0, 786.0), (354.0, 824.0), (486.0, 1038.0), (330.0, 1038.0)),
+    lining_orange=((360.0, 930.0), (542.0, 900.0), (632.0, 1038.0), (454.0, 1038.0)),
     fold_lines=((0.14, 0.04), (0.32, 0.08), (0.50, 0.12), (0.68, 0.16)),
     # the waist: a gathered band across the blouse, with its peplum flaring below
     waist_band=((590.0, 666.0), (700.0, 660.0), (812.0, 672.0), (809.0, 700.0),
@@ -818,6 +816,21 @@ def waist_parts():
     return sides, gathers
 
 
+def lap_outline(anchors):
+    """Generate a seated skirt from waist-left/right, near knee and far knee.
+
+    The hem exits left and bottom by relation to the two knees; the intermediate valley
+    keeps the cloth lateral rather than closing it into a bell.
+    """
+    waist_left, waist_right, near_knee, far_knee = anchors
+    valley = lerp2(near_knee, far_knee, 0.46)
+    valley = (valley[0], valley[1] + 58.0)
+    left_exit = (-32.0, min(1010.0, far_knee[1] + 104.0))
+    bottom_exit = (near_knee[0] - 116.0, 1050.0)
+    return catmull((waist_left, waist_right, near_knee, bottom_exit,
+                    valley, far_knee, left_exit))
+
+
 def lower_parts():
     """The seated lower mass: one mint skirt, a deep-teal fold behind it, cream and mint
     wedges crossing it, and the lining bands inside the teal, with fold lines generated
@@ -829,11 +842,12 @@ def lower_parts():
     the strokes fan from one point at the waist.
     """
     L = LAYOUT
-    skirt = planar("A-skirt-front", "the mint skirt over her knees", 0.262,
-                   catmull(L["skirt"]),
-                   rows=[("silhouette", catmull(L["skirt"]), "the skirt's own edge")],
-                   fill=MINT, authored=(("skirt_seat", L["skirt"][2]),
-                                        ("skirt_hem", L["skirt"][4])))
+    skirt_shape = lap_outline(L["skirt"])
+    skirt = planar("A-skirt-front", "the pale skirt crossing laterally over two seated knees", 0.262,
+                   skirt_shape,
+                   rows=[("silhouette", skirt_shape, "the skirt's outer edge and off-frame hem")],
+                   fill=MINT, authored=(("skirt_near_knee", L["skirt"][2]),
+                                        ("skirt_far_knee", L["skirt"][3])))
     teal = planar("A-skirt-teal", "the connected deep-teal cloth beneath the skirt", 0.22,
                   catmull(L["skirt_teal"]), rows=[], fill=DEEP_TEAL,
                   authored=(("teal_top", L["skirt_teal"][0]),
@@ -873,7 +887,11 @@ def hem_trim():
     so the band follows whatever shape the skirt is cut to.
     """
     L = LAYOUT
-    hem = (L["skirt"][3], L["skirt"][4], L["skirt"][5], L["skirt"][6])
+    _waist_left, _waist_right, near_knee, far_knee = L["skirt"]
+    valley = lerp2(near_knee, far_knee, 0.46)
+    valley = (valley[0], valley[1] + 58.0)
+    hem = ((near_knee[0] - 116.0, 1050.0), valley, far_knee,
+           (-32.0, min(1010.0, far_knee[1] + 104.0)))
     return ("A-skirt-hem-trim", "A-skirt-front", "hem",
             flat_mark(catmull(hem, steps=14, closed=False), 0.272), CUFF_NAVY)
 
@@ -888,16 +906,16 @@ def fold_marks():
     L = LAYOUT
     top = L["skirt"][0]
     marks = []
-    for i in range(3):
-        start = (top[0] + 26.0 + 74.0 * i, top[1] + 34.0 + 8.0 * i)
-        end = (486.0 + 96.0 * i, 1022.0 - 6.0 * i)
-        a = lerp2(start, end, 0.33)
-        b = lerp2(start, end, 0.68)
-        sag = 26.0 - 7.0 * i
+    for i in range(2):
+        start = (top[0] + 72.0 + 104.0 * i, top[1] + 42.0 + 10.0 * i)
+        end = (448.0 + 174.0 * i, 1018.0)
+        a = lerp2(start, end, 0.38)
+        b = lerp2(start, end, 0.72)
+        bend = 38.0 - 13.0 * i
         marks.append((f"A-skirt-foldline-{i}", "A-skirt-front", "fold_edge",
-                      flat_mark(catmull((start, (a[0] + sag, a[1]), (b[0] + sag * 0.55, b[1]), end),
-                                        steps=14, closed=False), 0.285),
-                      FOLD_INK))
+                      flat_mark(catmull((start, (a[0] + bend, a[1]),
+                                                (b[0] + bend * 0.35, b[1]), end),
+                                        steps=14, closed=False), 0.285), FOLD_INK))
     return marks
 
 
