@@ -64,10 +64,10 @@
     "A-visible-neck-skin",
     "A-waist-band"
   ],
-  "faces": 5075,
+  "faces": 5033,
   "visible_fill_regions": 64,
-  "marks": 89,
-  "mark_paths": 181,
+  "marks": 65,
+  "mark_paths": 140,
   "objects": 32,
   "missing_objects": [],
   "undeclared_parts": []

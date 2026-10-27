@@ -396,12 +396,13 @@ LAYOUT = dict(
     # near jaw runs to 775.  The face is a three-quarter view, not a frontal oval with a
     # turned gaze: the far side is compressed, the near cheek bulges, and the features sit
     # right of the centre line.
-    face_ring=((686.0, 376.0), (640.0, 344.0), (616.0, 282.0), (628.0, 212.0),
-               (694.0, 176.0), (768.0, 216.0), (774.0, 300.0), (726.0, 356.0)),
-    eye_left=(636.0, 270.0), eye_right=(734.0, 268.0),
-    eye_left_r=(17.0, 24.0), eye_right_r=(24.0, 26.0),
-    bangs_anchors=((552.0, 212.0), (662.0, 116.0), (812.0, 220.0), (688.0, 286.0)),
-    bang_teeth=3, bang_depth=(226.0, 241.0),
+    # Four landmarks drive the whole three-quarter face: chin, compressed far temple,
+    # skull top and full near cheek.  The sampled boundary is generated below.
+    face_ring=((686.0, 374.0), (622.0, 276.0), (690.0, 174.0), (766.0, 292.0)),
+    eye_left=(640.0, 286.0), eye_right=(728.0, 282.0),
+    eye_left_r=(16.0, 22.0), eye_right_r=(23.5, 24.0),
+    bangs_anchors=((552.0, 212.0), (662.0, 116.0), (812.0, 220.0), (688.0, 292.0)),
+    bang_teeth=4, bang_depth=(246.0, 286.0),
     # the neck
     neck_q=((660.0, 372.0), (710.0, 372.0), (714.0, 428.0), (658.0, 428.0)),
     neck_hollow=((624.0, 398.0), (748.0, 398.0), (756.0, 486.0), (616.0, 486.0)),
@@ -551,11 +552,13 @@ def shadow_parts():
 
 def head_parts():
     L = LAYOUT
-    ring = L["face_ring"]
-    face = planar("A-face", "the face field: chin, cheeks, temples, under the fringe", 0.30,
-                  catmull(ring),
-                  rows=[("silhouette", catmull(ring), "the face's own boundary")],
-                  fill=SKIN, authored=tuple((f"face_{i}", p) for i, p in enumerate(ring)))
+    chin, far_temple, skull_top, near_cheek = L["face_ring"]
+    # A generated asymmetric oval through four measured landmarks.  The far side stays
+    # compressed while the near cheek carries the turn, so the head cannot read frontal.
+    ring = catmull((chin, far_temple, skull_top, near_cheek))
+    face = planar("A-face", "the narrow three-quarter face: compressed far side and full near cheek", 0.30,
+                  ring, rows=[("silhouette", ring, "the face's outer boundary")],
+                  fill=SKIN, authored=tuple((f"face_{i}", p) for i, p in enumerate(L["face_ring"])))
     neck_q = L["neck_q"]
     neck = planar("A-neck", "the neck between the chin and the collar's opening", 0.315,
                   catmull(scale_about_xy(neck_q)), fill=SKIN_SHADE,
@@ -591,7 +594,7 @@ def head_parts():
 def nose_mark():
     """The nose: one short stroke where the face turns, off the centre line."""
     return ("A-nose", "A-face", "fold_edge",
-            flat_mark(catmull(((661.0, 310.0), (665.0, 320.0), (661.0, 326.0)),
+            flat_mark(catmull(((674.0, 316.0), (678.0, 323.0), (675.0, 328.0)),
                               steps=8, closed=False), 0.345), NOSE_SHADE)
 
 
@@ -650,8 +653,8 @@ def eye_parts():
                                  catmull(((710.0, 245.0), (736.0, 240.0), (760.0, 247.0)),
                                          steps=8, closed=False), fill=HAIR_INK)
 
-    out["A-mouth"] = planar("A-mouth", "the mouth", 0.35,
-                            ellipse(682.0, 345.0, 7.5, 2.2, -6), fill="#c98a84")
+    out["A-mouth"] = planar("A-mouth", "the small downturned mouth", 0.35,
+                            ellipse(690.0, 348.0, 5.5, 1.7, -8), fill="#c98a84")
     return out
 
 
@@ -798,15 +801,13 @@ def waist_parts():
     sides = {}
     for side, poly in (("left", L["bodice_left"]), ("right", L["bodice_right"])):
         name = f"A-bodice-side-{side}"
-        sides[name] = planar(name, f"the {side} side of the blouse, shoulder to waist", 0.30,
-                             catmull(poly),
-                             rows=[("free_edge", catmull(poly), "the blouse's side edge")],
-                             fill=CREAM, authored=(("shoulder", poly[0]), ("waist", poly[4])))
-    band = planar("A-waist-band", "the gathered band at the blouse's waist", 0.32,
-                  catmull(L["waist_band"]),
-                  rows=[("contact", catmull(L["waist_band"]), "the band's own edge")],
-                  fill=CREAM_SHADE, authored=(("band_left", L["waist_band"][0]),
-                                              ("band_right", L["waist_band"][2])))
+        sides[name] = planar(name, f"the {side} tonal continuation of the same blouse", 0.30,
+                             catmull(poly), rows=[], fill=CREAM,
+                             authored=(("shoulder", poly[0]), ("waist", poly[4])))
+    band = planar("A-waist-band", "the gathered waist tone, without a boxed perimeter", 0.32,
+                  catmull(L["waist_band"]), rows=[], fill=CREAM_SHADE,
+                  authored=(("band_left", L["waist_band"][0]),
+                            ("band_right", L["waist_band"][2])))
     gathers = []
     for i in range(6):
         x = 606.0 + 33.0 * i
@@ -833,37 +834,31 @@ def lower_parts():
                    rows=[("silhouette", catmull(L["skirt"]), "the skirt's own edge")],
                    fill=MINT, authored=(("skirt_seat", L["skirt"][2]),
                                         ("skirt_hem", L["skirt"][4])))
-    teal = planar("A-skirt-teal", "the deep-teal cloth below and left of the skirt", 0.22,
-                  catmull(L["skirt_teal"]),
-                  rows=[("free_edge", catmull(L["skirt_teal"]), "the fold's own edge")],
-                  fill=DEEP_TEAL, authored=(("teal_top", L["skirt_teal"][0]),
-                                            ("teal_hem", L["skirt_teal"][2])))
+    teal = planar("A-skirt-teal", "the connected deep-teal cloth beneath the skirt", 0.22,
+                  catmull(L["skirt_teal"]), rows=[], fill=DEEP_TEAL,
+                  authored=(("teal_top", L["skirt_teal"][0]),
+                            ("teal_hem", L["skirt_teal"][2])))
     cream_shape = catmull(L["fold_cream"])
-    cream = planar("A-fold-cream", "the cream wedge crossing the skirt from the waist", 0.274,
-                   cream_shape, rows=[("free_edge", cream_shape, "the crossing fold's edge")],
-                   fill=CREAM, authored=(("cream_top", L["fold_cream"][0]),
-                                         ("cream_hem", L["fold_cream"][3])))
+    cream = planar("A-fold-cream", "a cream tonal plane in the same skirt cloth", 0.274,
+                   cream_shape, rows=[], fill=CREAM,
+                   authored=(("cream_top", L["fold_cream"][0]),
+                             ("cream_hem", L["fold_cream"][3])))
     mint_shape = catmull(L["fold_mint"])
-    mint = planar("A-fold-mint", "the mint wedge below it, its own edge unparallel", 0.272,
-                  mint_shape, rows=[("contact", mint_shape, "the lower fold boundary")],
-                  fill=MINT_SHADE)
+    mint = planar("A-fold-mint", "a mint shaded turn in the same skirt cloth", 0.272,
+                  mint_shape, rows=[], fill=MINT_SHADE)
     shadow_shape = catmull(L["fold_shadow"])
-    shadow = planar("A-fold-shadow", "the shade under the waist where the skirt turns", 0.268,
-                    shadow_shape, rows=[("fold_edge", shadow_shape, "the skirt's shaded turn")],
-                    fill=MINT_SHADE)
-    under = planar("A-underskirt", "the deep-teal under-layer at the skirt's right hem", 0.24,
-                   catmull(L["underskirt"]),
-                   rows=[("silhouette", catmull(L["underskirt"]), "the under-layer's edge")],
-                   fill=DEEP_TEAL, authored=(("under_left", L["underskirt"][0]),
-                                             ("under_right", L["underskirt"][2])))
+    shadow = planar("A-fold-shadow", "the tone under the waist where the skirt turns", 0.268,
+                    shadow_shape, rows=[], fill=MINT_SHADE)
+    under = planar("A-underskirt", "the deep-teal under-layer continuing under the hem", 0.24,
+                   catmull(L["underskirt"]), rows=[], fill=DEEP_TEAL,
+                   authored=(("under_left", L["underskirt"][0]),
+                             ("under_right", L["underskirt"][2])))
     pink_shape = catmull(L["lining_pink"])
     pink = planar("A-lining-pink", "the pink lining ribbon crossing the teal", 0.235,
-                  pink_shape, rows=[("free_edge", pink_shape, "the pink lining's edge")],
-                  fill=LINING_PINK)
+                  pink_shape, rows=[], fill=LINING_PINK)
     orange_shape = catmull(L["lining_orange"])
-    orange = planar("A-lining-orange", "the orange lining band below the pink", 0.236,
-                    orange_shape, rows=[("free_edge", orange_shape, "the orange lining's edge")],
-                    fill=LINING_ORANGE)
+    orange = planar("A-lining-orange", "the orange lining ribbon crossing the teal", 0.236,
+                    orange_shape, rows=[], fill=LINING_ORANGE)
     return {"A-skirt-front": skirt, "A-skirt-teal": teal, "A-fold-cream": cream,
             "A-fold-mint": mint, "A-fold-shadow": shadow, "A-underskirt": under,
             "A-lining-pink": pink, "A-lining-orange": orange}
@@ -1000,9 +995,17 @@ def build():
                                        for p in row) for row in grid))
     for dropped in ("A-head-face", "A-hair-sheet", "A-collar-left", "A-collar-right"):
         inherited_parts.pop(dropped, None)
+    # These are tonal subdivisions of one blouse, not separate objects.  Their inherited
+    # perimeters made a polygon mesh across the torso; keep the fills and omit the seams.
+    same_garment = {"A-bodice-upper", "A-bodice-continuation", "A-derived-waist-band"}
+    for part_name in same_garment:
+        part_ = inherited_parts.get(part_name)
+        if isinstance(part_, PlanarPart):
+            inherited_parts[part_name] = dataclasses.replace(part_, edges=())
     inherited_marks = [m for m in inherited_marks
                        if m[1] not in ("A-head-face", "A-hair-sheet",
-                                       "A-collar-left", "A-collar-right")]
+                                       "A-collar-left", "A-collar-right")
+                       and m[1] not in same_garment]
     parts.update(inherited_parts)
     parts.update(hat_parts())
     parts.update(shadow_parts())
