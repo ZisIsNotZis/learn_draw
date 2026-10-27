@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" width="200" height="40" role="img" aria-labelledby="t">
+  <title id="t">learn_draw</title>
+  <style>
+    /* currentColor-friendly: the mark inherits the surrounding text colour unless a
+       renderer supports prefers-color-scheme, in which case it picks a legible ink. */
+    :root { --ink: currentColor; --accent: #c9457a; }
+    @media (prefers-color-scheme: dark) { :root { --ink: #e8f1f3; --accent: #f06f9d; } }
+  </style>
+  <!-- The mark is the project's recurring object: a ribbon bow, two loops crossing at a knot,
+       with the two tails. The engine's whole subject is one strip whose depth decides what shows. -->
+  <g>
+    <path d="M17.6 20 L6.4 11.8 Q4.2 20 6.4 28.2 Z" fill="var(--ink)"/>
+    <path d="M22.4 20 L33.6 11.8 Q35.8 20 33.6 28.2 Z" fill="var(--ink)"/>
+    <path d="M19.2 23.2 Q18.4 28.4 14.2 31.4" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M20.8 23.2 Q21.6 28.4 25.8 31.4" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linecap="round"/>
+    <circle cx="20" cy="20" r="3.6" fill="var(--accent)"/>
+  </g>
+  <text x="45" y="27.5" fill="var(--ink)"
+        font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace"
+        font-size="19" font-weight="600" letter-spacing="0.6">learn_draw</text>
+</svg>
