@@ -25,9 +25,9 @@ reviewers then put the picture at **A3 / B3–4 / C2–3 / D0–3 / E4–5 / F1�
 hair's volume. Every shape stays a generator with about four landmarks; the reference seeded the
 numbers and is closed; depth decides visibility.
 
-## W1 — contour, face, hand and far arm
+## W1–W2 — articulated full figure
 
-![W1 full figure](check/draft-fullres.png)
+![Current full figure](check/draft-fullres.png)
 
 - **Stage 1 — contour:** existing owned boundaries now carry a declared line class with a distinct
   weight hierarchy: silhouette over free edge, then closure/contact/fold; material trim, hair, hat and
@@ -40,6 +40,27 @@ numbers and is closed; depth decides visibility.
   separately outlined generated finger capsules. The other arm leaves the viewer-left cuff and runs
   behind the skirt; its hand remains hidden rather than invented.
 
+## W2 — line selection, seated mass, field and hair
+
+- **Stage 1 — selected lines and re-cut face:** same-garment tonal panels no longer carry their own
+  perimeter strokes; outer silhouettes, object boundaries, digits and a small set of folds retain the
+  weight hierarchy. The face boundary now derives from four asymmetric three-quarter landmarks; the
+  far eye is smaller, both irises sit low/off-centre under a heavy lash, the fringe overlaps the brow,
+  and the mouth and nose are reduced.
+- **Stage 2 — seated lower mass:** four skirt anchors generate a lateral lap with two knee events and
+  an off-frame hem. The deep-teal cloth continues beneath it, the navy trim follows that generated hem,
+  and the pink/orange lining crosses the teal diagonally. Two curved folds replace the former parallel
+  stripe set.
+- **Stage 3 — field and hair:** the teal/mint field boundaries are generated curves and three tapered
+  ribbon tails float behind the figure. Each principal fall has a separate shaded turn and three
+  following strand marks; the long streamer is generated from four landmarks and tapers to a rounded
+  point rather than a square cut.
+
+**Current evidence.** `artwork.svg` sha256 is
+`82e5d2d44f58cc35578c1922fec54452ec0ccac7b276d5b8fadeee6370288405`; the judged 1:1 PNG sha256 is
+`23868cd79cebe2a841b97626063e17a834a1b5d5c4c0b79f10def97d6111e355`. The observed build took
+141 seconds on this host; the final 11-test suite took 220.151 seconds and passed.
+
 **Rebuild and verify** (from the repository root):
 
 ```
@@ -51,8 +72,7 @@ PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s $PKG/tests -t
 ```
 
 The image a reviewer judges is `check/draft-fullres.png`; `check/draft.png` is the same picture at
-thumbnail scale and is not the one to judge. The build takes ~3 min on a loaded host; the suite is the
-figure's own nine tests.
+thumbnail scale and is not the one to judge. The suite is the figure's own 11 tests.
 
 **Discipline.** No image read in `source/`; one line policy per mark class; every part declared in
 `source/full/figure.py:OBJECTS`; deterministic rebuild; the manifest covers every file a rebuild needs.
