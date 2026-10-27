@@ -414,8 +414,7 @@ LAYOUT = dict(
                   (766.0, 502.0), (718.0, 466.0), (706.0, 438.0)),
     _torso_note="the collar, neck and hollow follow TORSO_SCALE, so no seam opens",
     # hair: a mass behind the head, and two falls that hang in front of the shoulders
-    hair_back_route=((500.0, 1052.0), (486.0, 640.0), (556.0, 320.0), (686.0, 232.0),
-                     (826.0, 340.0), (902.0, 640.0), (930.0, 1052.0)),
+    hair_back_route=((500.0, 1052.0), (548.0, 300.0), (700.0, 214.0), (930.0, 1052.0)),
     # The falls flare at the shoulders and gather at the hem.  Straight-sided curtains were
     # the first shape and they read as a wig: the reference's hair is a lens — wide where it
     # passes the shoulders, gathered where it ends.
@@ -428,8 +427,7 @@ LAYOUT = dict(
                      (968.0, 1044.0), (910.0, 1032.0), (876.0, 700.0), (806.0, 400.0)),
     lock_left=((574.0, 250.0), (528.0, 486.0), (516.0, 736.0)),
     curl_left=((572.0, 664.0), (524.0, 700.0), (500.0, 674.0), (516.0, 640.0)),
-    streamer=((556.0, 300.0), (470.0, 386.0), (364.0, 442.0), (292.0, 496.0),
-              (266.0, 552.0), (296.0, 578.0)),
+    streamer=((556.0, 300.0), (446.0, 402.0), (278.0, 516.0), (300.0, 580.0)),
     lock_right=((760.0, 258.0), (786.0, 492.0), (800.0, 740.0)),
     fall_wave=(9.0, 1.6, 0.4),
     # the seated lower mass: skirt over the knees, under-layer, and the fold bands
@@ -471,18 +469,44 @@ LAYOUT = dict(
 )
 
 
-def field():
-    """The frame's flat field: ground and bank, painted behind every part.
+def field_ribbon(route, half_width):
+    """A thin generated background ribbon from at most four centreline landmarks."""
+    centre = catmull(route, steps=12, closed=False)
+    left, right = [], []
+    for i, p in enumerate(centre):
+        a = centre[max(0, i - 1)]
+        b = centre[min(len(centre) - 1, i + 1)]
+        dx, dy = b.u - a.u, b.v - a.v
+        n = math.hypot(dx, dy) or 1.0
+        nx, ny = -dy / n, dx / n
+        taper = math.sin(math.pi * i / max(1, len(centre) - 1)) ** 0.35
+        w = half_width * taper
+        left.append(Point(p.u + nx * w, p.v + ny * w))
+        right.append(Point(p.u - nx * w, p.v - ny * w))
+    return tuple(left + right[::-1])
 
-    These are not parts: they are the picture's field, drawn as plain paths before the
-    depth engine runs.  A full-frame quad put through the triangle engine would be tested
-    against every face in the scene to decide nothing.
-    """
+
+def field():
+    """Curved sky/ground masses and floating ribbons, all behind the figure."""
+    # The teal horizon and mint bank are generated curves, not angular horizontal bands.
+    ground_edge = catmull(((0.0, 354.0), (310.0, 314.0), (650.0, 398.0), (1024.0, 310.0)),
+                          steps=14, closed=False)
+    ground = tuple(ground_edge) + (full(1024, 1024), full(0, 1024))
+    mint_edge = catmull(((0.0, 518.0), (176.0, 592.0), (420.0, 506.0), (574.0, 430.0)),
+                        steps=14, closed=False)
+    bank = (full(0, 1024), full(0, 518)) + tuple(mint_edge) + (full(418, 1024),)
     return [
-        ("A-field-ground", (full(0, 336), full(360, 320), full(780, 338), full(1024, 318),
-                            full(1024, 1024), full(0, 1024)), BACKGROUND_TEAL),
-        ("A-field-bank", (full(0, 548), full(196, 646), full(238, 868), full(0, 1024)),
-         BACKGROUND_GREEN),
+        ("A-field-ground", ground, BACKGROUND_TEAL),
+        ("A-field-bank", bank, BACKGROUND_GREEN),
+        ("A-field-ribbon-high", field_ribbon(((8.0, 430.0), (116.0, 398.0),
+                                               (244.0, 444.0), (332.0, 410.0)), 5.0),
+         LINING_PINK),
+        ("A-field-ribbon-low", field_ribbon(((-8.0, 690.0), (98.0, 650.0),
+                                              (210.0, 706.0), (304.0, 668.0)), 4.0),
+         CREAM),
+        ("A-field-ribbon-curl", field_ribbon(((46.0, 774.0), (126.0, 730.0),
+                                               (206.0, 782.0), (252.0, 748.0)), 3.2),
+         LINING_ORANGE),
     ]
 
 
@@ -743,7 +767,8 @@ def hair_parts():
                                              lerp2(outer[3], inner[3], share)),
                                             steps=10, closed=False), 0.505),
                           HAIR_INK))
-    streamer = _strip(L["streamer"], lambda t: 21.0 - 14.0 * t ** 1.3, lambda t: 0.53)
+    streamer = _strip(L["streamer"],
+                      lambda t: 0.7 + 20.3 * (1.0 - t) ** 1.25, lambda t: 0.53)
     out["A-hair-streamer"] = SheetPart(
         name="A-hair-streamer",
         intent="the thin lock that sweeps out to her left and hooks at the end",
