@@ -91,6 +91,26 @@ class FullFigure(unittest.TestCase):
             authored = getattr(part, "authored", ())
             self.assertLessEqual(len(authored), 8, f"{part.name} types {len(authored)} coords")
 
+    def test_line_policy_has_a_real_weight_hierarchy(self):
+        widths = [width for _ink, width in figure.LINE_POLICY.values()]
+        self.assertEqual(len(widths), len(set(widths)), "line classes must have distinct widths")
+        self.assertGreater(figure.LINE_POLICY["silhouette"][1],
+                           figure.LINE_POLICY["free_edge"][1])
+        self.assertGreater(figure.LINE_POLICY["free_edge"][1],
+                           figure.LINE_POLICY["contact"][1])
+        self.assertGreater(figure.LINE_POLICY["contact"][1],
+                           figure.LINE_POLICY["fold_edge"][1])
+
+    def test_face_hand_and_far_arm_are_structural_parts(self):
+        required = {"A-eye-left", "A-iris-left", "A-pupil-left", "A-glint-left",
+                    "A-eye-right", "A-iris-right", "A-pupil-right", "A-glint-right",
+                    "A-hand", "A-thumb", "A-finger-1", "A-finger-2", "A-finger-3",
+                    "A-finger-4", "A-far-arm"}
+        self.assertEqual(required - set(self.scene["parts"]), set())
+        classes = {mark[2] for mark in assemble_full.mark_geometry(self.scene)}
+        self.assertIn("lash", classes)
+        self.assertIn("fold_edge", classes)
+
 
 class Report(unittest.TestCase):
     def test_the_committed_report_matches_this_build(self):

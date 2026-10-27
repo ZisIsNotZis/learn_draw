@@ -461,11 +461,14 @@ LAYOUT = dict(
                  (592.0, 700.0), (616.0, 690.0), (610.0, 520.0)),
     bodice_right=((800.0, 450.0), (834.0, 468.0), (846.0, 558.0), (840.0, 648.0),
                   (812.0, 700.0), (788.0, 690.0), (794.0, 518.0)),
-    # her right arm, out of the cuff and down past the skirt
-    arm_route=((860.0, 556.0), (876.0, 700.0), (868.0, 792.0)),
-    hand=((848.0, 776.0), (886.0, 772.0), (902.0, 802.0), (898.0, 846.0),
-          (878.0, 872.0), (850.0, 864.0), (838.0, 824.0)),
-    thumb=((826.0, 800.0), (848.0, 792.0), (854.0, 818.0), (838.0, 836.0), (822.0, 822.0)),
+    # Her left arm carries the visible hand at viewer-right.  Her right arm leaves the
+    # viewer-left cuff and disappears behind the skirt, exactly where the reference hides
+    # the hand; both routes are generated strips from three attachment landmarks.
+    arm_route=((860.0, 556.0), (876.0, 700.0), (866.0, 790.0)),
+    far_arm_route=((588.0, 544.0), (568.0, 630.0), (548.0, 724.0)),
+    palm=((846.0, 786.0), (884.0, 790.0), (888.0, 834.0), (846.0, 842.0)),
+    finger_origin=(850.0, 832.0), finger_step=(9.5, 2.0), finger_r=(6.8, 24.0),
+    thumb=((842.0, 800.0), (830.0, 812.0), (836.0, 838.0), (850.0, 828.0)),
 )
 
 
@@ -905,35 +908,49 @@ def fold_marks():
 
 def arm_parts():
     L = LAYOUT
-    surface = _strip(L["arm_route"], lambda t: 32.0 - 12.0 * t ** 1.6, lambda t: 0.29)
-    arm = SheetPart(name="A-arm", intent="her right arm hanging out of the cuff, "
-                                          "tapering to the wrist",
+    surface = _strip(L["arm_route"], lambda t: 31.0 - 13.0 * t ** 1.6, lambda t: 0.29)
+    arm = SheetPart(name="A-arm", intent="her left arm hanging out of the viewer-right cuff, "
+                                          "tapering into a readable wrist",
                     front_fill=SKIN, back_fill=SKIN_SHADE,
                     grid=surface.grid(samples=30, cols=3), anchors={},
                     authored=tuple((f"arm_{i}", p) for i, p in enumerate(L["arm_route"])))
-    hand = planar("A-hand", "her right hand at the end of the arm: palm, heel, and the "
-                            "turn of the fingers", 0.295, catmull(L["hand"]),
-                  rows=[("contact", catmull(L["hand"]), "the hand's own edge")],
-                  fill=SKIN, authored=(("finger_turn", L["hand"][0]),
-                                       ("heel", L["hand"][4])))
-    thumb = planar("A-thumb", "the thumb, folded along the palm's near side", 0.30,
-                   catmull(L["thumb"]), fill=SKIN,
-                   authored=(("thumb_tip", L["thumb"][3]),))
-    marks = []
-    # finger creases: three curves where the folded fingers meet the palm
-    # the crease where the thumb turns off the palm
-    marks.append(("A-hand-thumb-crease", "A-hand", "fold_edge",
-                  flat_mark(catmull(((846.0, 794.0), (852.0, 812.0), (848.0, 832.0)),
-                                    steps=8, closed=False), 0.305), FOLD_INK))
-    for k, (t0, t1) in enumerate(((0.20, 0.42), (0.34, 0.62), (0.48, 0.80))):
-        a = lerp2((846.0, 800.0), (900.0, 806.0), t0)
-        b = lerp2((842.0, 848.0), (896.0, 846.0), t1)
-        marks.append((f"A-hand-crease-{k}", "A-hand", "fold_edge",
-                      flat_mark(catmull((a, lerp2(a, b, 0.5), b), steps=8, closed=False), 0.30),
-                      FOLD_INK))
+    far_surface = _strip(L["far_arm_route"], lambda t: 24.0 - 9.0 * t,
+                         lambda t: 0.49 - 0.24 * t)
+    far_arm = SheetPart(name="A-far-arm", intent="her right arm attached to the viewer-left "
+                                                   "cuff and passing behind the skirt",
+                        front_fill=SKIN, back_fill=SKIN_SHADE,
+                        grid=far_surface.grid(samples=26, cols=3), anchors={},
+                        authored=tuple((f"far_arm_{i}", p)
+                                       for i, p in enumerate(L["far_arm_route"])))
+    palm_shape = catmull(L["palm"])
+    palm = planar("A-hand", "the visible hand's palm and heel at the wrist", 0.295,
+                  palm_shape, rows=[("contact", palm_shape, "the palm's own edge")],
+                  fill=SKIN, authored=(("wrist", L["palm"][0]),
+                                       ("finger_root", L["palm"][3])))
+    thumb_shape = catmull(L["thumb"])
+    thumb = planar("A-thumb", "the thumb separated from the palm's near side", 0.307,
+                   thumb_shape, rows=[("free_edge", thumb_shape, "the thumb's free edge")],
+                   fill=SKIN, authored=(("thumb_tip", L["thumb"][1]),))
+    parts = {"A-arm": arm, "A-far-arm": far_arm, "A-hand": palm, "A-thumb": thumb}
+    ox, oy = L["finger_origin"]
+    sx, sy = L["finger_step"]
+    frx, fry = L["finger_r"]
+    for i in range(4):
+        # Four overlapping capsules share the palm root but retain four outlined tips.  Their
+        # centres and lengths derive from one origin/step/radius relation, not a station table.
+        name = f"A-finger-{i + 1}"
+        shape = ellipse(ox + sx * i, oy + sy * i, frx - 0.45 * i,
+                        fry - 1.8 * i, -7.0 + 2.0 * i)
+        parts[name] = planar(name, f"visible finger {i + 1}, rooted in the palm", 0.304 + i * 0.0005,
+                             shape, rows=[("free_edge", shape, "the finger's separable edge")],
+                             fill=SKIN, authored=(("finger_index", float(i)),))
     marks = [("A-arm-edge-front", "A-arm", "contact", surface.edge(0, 1, 1.0, 50), FOLD_INK),
-             ("A-arm-edge-back", "A-arm", "contact", surface.edge(0, 1, -1.0, 50), FOLD_INK)]
-    return {"A-arm": arm, "A-hand": hand, "A-thumb": thumb}, marks
+             ("A-arm-edge-back", "A-arm", "contact", surface.edge(0, 1, -1.0, 50), FOLD_INK),
+             ("A-far-arm-edge-front", "A-far-arm", "contact",
+              far_surface.edge(0, 1, 1.0, 50), FOLD_INK),
+             ("A-far-arm-edge-back", "A-far-arm", "contact",
+              far_surface.edge(0, 1, -1.0, 50), FOLD_INK)]
+    return parts, marks
 
 
 # ---- the assembly ------------------------------------------------------------------
@@ -1043,8 +1060,11 @@ OBJECTS = {
     "left-sleeve": (["A-left-sleeve", "A-left-cuff"], "one puff sleeve and its navy cuff"),
     "right-sleeve": (["A-right-sleeve", "A-right-cuff"], "the other puff sleeve and cuff"),
     "chest-bow": (["A-bow-ribbon"], "the magenta bow on the collar's V, inherited"),
-    "arm-right": (["A-arm"], "her right arm out of the cuff"),
-    "hand-right": (["A-hand", "A-thumb"], "her right hand and its thumb"),
+    "arm-left": (["A-arm"], "her left arm out of the viewer-right cuff"),
+    "arm-right": (["A-far-arm"], "her right arm from the viewer-left cuff behind the skirt"),
+    "hand-left": (["A-hand", "A-thumb", "A-finger-1", "A-finger-2", "A-finger-3",
+                   "A-finger-4"],
+                  "her visible left hand: palm, thumb and four separately outlined fingers"),
     "skirt-front": (["A-skirt-front"], "the cream skirt over her knees"),
     "skirt-folds": (["A-fold-cream", "A-fold-mint", "A-fold-shadow"],
                     "the cream and mint wedges crossing the skirt, and its shaded turn"),

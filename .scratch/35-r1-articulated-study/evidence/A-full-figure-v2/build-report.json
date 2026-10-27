@@ -15,6 +15,11 @@
     "A-eye-left",
     "A-eye-right",
     "A-face",
+    "A-far-arm",
+    "A-finger-1",
+    "A-finger-2",
+    "A-finger-3",
+    "A-finger-4",
     "A-fold-cream",
     "A-fold-mint",
     "A-fold-shadow",
@@ -59,11 +64,11 @@
     "A-visible-neck-skin",
     "A-waist-band"
   ],
-  "faces": 4739,
-  "visible_fill_regions": 60,
-  "marks": 84,
-  "mark_paths": 174,
-  "objects": 31,
+  "faces": 5075,
+  "visible_fill_regions": 64,
+  "marks": 89,
+  "mark_paths": 181,
+  "objects": 32,
   "missing_objects": [],
   "undeclared_parts": []
 }

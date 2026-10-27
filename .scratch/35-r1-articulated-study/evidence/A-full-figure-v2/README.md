@@ -25,6 +25,21 @@ reviewers then put the picture at **A3 / B3–4 / C2–3 / D0–3 / E4–5 / F1�
 hair's volume. Every shape stays a generator with about four landmarks; the reference seeded the
 numbers and is closed; depth decides visibility.
 
+## W1 — contour, face, hand and far arm
+
+![W1 full figure](check/draft-fullres.png)
+
+- **Stage 1 — contour:** existing owned boundaries now carry a declared line class with a distinct
+  weight hierarchy: silhouette over free edge, then closure/contact/fold; material trim, hair, hat and
+  lash weights remain deliberately stronger where the drawing calls for them. Adjacent fills remain
+  fills with separately depth-clipped edge marks.
+- **Stage 2 — face:** each eye is a shallow sclera with a smaller off-centre iris, lower iris shade,
+  pupil and catchlight under a heavy upper lash and a lighter lid crease. The lowered, off-centre gaze
+  replaces the frontal full-height discs while preserving the head's near/far eye sizes.
+- **Stage 3 — hand and far arm:** the visible hand is now a wrist/palm, a separate thumb and four
+  separately outlined generated finger capsules. The other arm leaves the viewer-left cuff and runs
+  behind the skirt; its hand remains hidden rather than invented.
+
 **Rebuild and verify** (from the repository root):
 
 ```
