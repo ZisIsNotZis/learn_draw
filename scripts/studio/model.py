@@ -171,6 +171,27 @@ def validate_hand(node,canvas):
     hand_data(node,canvas)
 
 
+def validate_shape(node,canvas):
+    from .shape import SIDES,DEFAULT_LENGTH,shape_data
+    keys(node,('id','kind','intent','at','length','width','angle','depth','depth_slope','profile','rounding','taper','stroke','palette','edits'),'shape')
+    for name,default,lo,hi in [('length',DEFAULT_LENGTH,.005,1.6),('width',.8,.001,6),('angle',0,-180,180),
+                              ('depth',0,-100,100),('depth_slope',0,-10,10),('rounding',.65,0,1),
+                              ('taper',0,-.98,.98),('stroke',.008,0,.1)]:
+        number(node.get(name,default),'shape.'+name,lo,hi)
+    if node.get('profile','block') not in ('block','oval'): raise ValueError('shape.profile: block/oval')
+    validate_placement(node)
+    keys(node.get('palette',{}),('fill','ink'),'shape.palette')
+    for value in node.get('palette',{}).values(): color(value)
+    edits=node.get('edits',[])
+    if not isinstance(edits,list): raise ValueError('shape.edits must be a list')
+    for edit in edits:
+        keys(edit,('side','at','radius','dx','dy','reason'),'shape.edit')
+        if edit.get('side') not in SIDES: raise ValueError('shape.edit.side: top/right/bottom/left')
+        # Reuse the lock's bounded influence and reason validation, not its side enum.
+        validate_edits([dict(edit,side='left')])
+    shape_data(node,canvas)
+
+
 def validate(scene):
     keys(scene, ("format", "canvas", "background", "nodes"), "scene")
     if scene.get("format") != "learn-draw/studio-1":
@@ -196,6 +217,9 @@ def validate(scene):
         if node.get('kind')=='head':
             validate_head(node,canvas)
             continue
+        if node.get('kind')=='shape':
+            validate_shape(node,canvas)
+            continue
         if node.get('kind')=='hand':
             validate_hand(node,canvas)
             continue
@@ -204,7 +228,7 @@ def validate(scene):
             validate_scenery(node,canvas)
             continue
         if node.get("kind") != "hair-lock":
-            raise ValueError(f"{sid}: supported kinds are head/hand/hair-lock/sky/hills/moon/sun")
+            raise ValueError(f"{sid}: supported kinds are shape/head/hand/hair-lock/sky/hills/moon/sun")
         keys(node, ("id", "kind", "intent", "at", "length", "width", "width_side", "angle", "sweep", "depth",
                     "depth_slope", "palette", "edits"), "node")
         if node.get("width_side", "both") not in ("both", "left", "right"):
@@ -255,6 +279,15 @@ def select(scene, sid=None, side="left", at=.55, radius=.30, feature=None):
         from .components import component_data
         data=component_data(node,canvas)
         feature=feature or 'object'
+        if node['kind']=='shape' and feature in ('top','right','bottom','left'):
+            from .shape import edge_selection
+            validate_edits([dict(side='left',at=at,radius=radius,dx=0,dy=0,reason='selection')])
+            f=edge_selection(node,canvas,feature,at,radius)
+            selection.update(kind='feature',feature=feature,interaction='contour-push',side=feature,at=at,radius=radius,
+                             bounds=f['bounds'],object_bounds=bounds(data.outline),focus=f['focus'],locks=f['locks'],
+                             controls=data.features[feature]['controls'],
+                             units='screen-direction push in nominal shorter shape extent; clockwise arc: top left-to-right, right top-to-bottom, bottom right-to-left, left bottom-to-top')
+            return selection
         if feature in data.features:
             f=data.features[feature]
             selection.update(kind='feature',feature=feature,bounds=f['bounds'],object_bounds=bounds(data.outline),
@@ -305,8 +338,9 @@ def preview(scene, selection, direction, amount, reason):
     current_selection(scene,selection)
     object_move=selection.get('kind')=='feature' and selection.get('feature')=='object'
     digit_move=selection.get('kind')=='feature' and selection.get('interaction')=='digit-tip'
-    if selection.get('kind','local')!='local' and not object_move and not digit_move:
-        raise ValueError('use a semantic parameter, or select a lock edge / digit tip for a local move')
+    contour_move=selection.get('kind')=='feature' and selection.get('interaction')=='contour-push'
+    if selection.get('kind','local')!='local' and not object_move and not digit_move and not contour_move:
+        raise ValueError('use a semantic parameter, or select a lock edge, shape contour or digit tip for a local move')
     if direction not in ("left", "right", "up", "down"):
         raise ValueError("direction: left/right/up/down")
     number(amount, "amount", 0, 2)
@@ -319,7 +353,7 @@ def preview(scene, selection, direction, amount, reason):
         canvas=scene.get('canvas',[640,640])
         if node['kind'] in ('sky','hills'):
             raise ValueError('canvas-wide backgrounds use horizon/relief controls; select a movable object')
-        default={'head':{'anchor':'center','offset':[0,-.06]},'hand':{'anchor':'center'},
+        default={'head':{'anchor':'center','offset':[0,-.06]},'hand':{'anchor':'center'},'shape':{'anchor':'center'},
                  'moon':{'anchor':'upper_right','offset':[0,.10]},
                  'sun':{'anchor':'upper_right','offset':[0,.10]}}.get(node['kind'],{})
         placement=node.setdefault('at',copy.deepcopy(default))
@@ -329,6 +363,15 @@ def preview(scene, selection, direction, amount, reason):
         return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
                     selection=selection,operation=dict(object=selection['object'],feature='object',
                     direction=direction,amount=amount,units='shorter canvas dimension',reason=reason))
+    if contour_move:
+        if node['kind']!='shape': raise ValueError('contour push requires a shape')
+        edit={k:selection[k] for k in ('side','at','radius')}
+        a=math.radians(node.get('angle',0))
+        edit.update(dx=dx*math.cos(a)-dy*math.sin(a),dy=dx*math.sin(a)+dy*math.cos(a),reason=reason)
+        node.setdefault('edits',[]).append(edit)
+        validate(candidate)
+        return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
+                    selection=selection,operation=dict(edit,object=selection['object'],units='nominal shorter shape extent'))
     if digit_move:
         if node['kind']!='hand': raise ValueError('digit-tip movement requires a hand')
         from .hand import move_tip
@@ -374,7 +417,7 @@ def parameter_preview(scene,selection,parameter,value,reason):
             except ValueError: raise ValueError('finger control requires a numeric value') from None
         node.setdefault('digits',{}).setdefault(selection['feature'],{})['length' if parameter=='finger_length' else 'lean']=value
     else:
-        if parameter not in ('intent','expression','hair','width_side','style','tree_side','handedness') and isinstance(value,str):
+        if parameter not in ('intent','expression','hair','width_side','style','tree_side','handedness','profile') and isinstance(value,str):
             try:
                 value=float(value)
             except ValueError:

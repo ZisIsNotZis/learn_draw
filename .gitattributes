@@ -1,3 +1,8 @@
 # Study manifests bind the actual bytes, including generated SVG/JSON line endings.
 evidence/** -text whitespace=cr-at-eol
 .scratch/history/roadmap-before-vlm-studio.md -text whitespace=cr-at-eol
+
+# Frozen command logs and operator source retain original whitespace.
+evidence/studio-shape/thin-mark-before.utf8.txt whitespace=cr-at-eol,-blank-at-eol
+evidence/studio-shape/usability/operate.py whitespace=cr-at-eol,-blank-at-eof
+evidence/studio-hand/verification/hand-before-eof-cleanup.py whitespace=cr-at-eol,-blank-at-eof

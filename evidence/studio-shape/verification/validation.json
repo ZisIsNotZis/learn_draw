@@ -1,0 +1,55 @@
+{
+  "engine": "e2e4cab3465f329a4dfdafec3d41984e2c4da1567af5ca155d462bea05701281",
+  "combined_tests": 79,
+  "previous_cpu_smoke_checks": 81,
+  "results": {
+    "default": {
+      "scene": "f77953cf9d4d0f08fd12549b5bf694b8cad6ae37aef999ca9be3b00128927bf0",
+      "svg_sha256": "e702e0c658cc651edd38bc75cce2f873f5e67712e6d4764f17646780978cfb56",
+      "png_sha256": "6993732e6a9662ba209a2c2d0f5a3b51887688f7c1ea1880c427703bba85d855",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "coast": {
+      "scene": "a4ff43d28198434ad90f699aed37039561043f760aaaf5cf76925392d3624e51",
+      "svg_sha256": "a6c3746e9e51a1ac9f606389d2a7b93fd81b8dc689e45af54b6906c7303c0417",
+      "png_sha256": "3479e1ee2f5478cd3ffd4bbae5979ad35f5362a6924e27e623f606ff74d73403",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "head-default": {
+      "scene": "44fe01cc53e9492e9f310d86d694348b483dcf19421006023be78fd1129194e6",
+      "svg_sha256": "1141d11821b6a10f9b5a24f4ad710ba309e4fbc100b6b2cde98473265adaad7a",
+      "png_sha256": "23ad96c4ac624d9dd75b3187d0e56bdb0da4635d774727c4c7022bdbdb8bc48a",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "hand-default": {
+      "scene": "112fac910fd9f239f3c4ad6bb2a46a56b717ac9e029ee61492c21f87738c257b",
+      "svg_sha256": "2834a4c4b6052b2a68337b1d9632dc2eda5c30e96f325d89c9d22fe97612fa17",
+      "png_sha256": "2caeba8d69a6d36074b802b87ad83d9d5421d1a031fac9da1db143d85867bb2c",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "independent-lamp": {
+      "scene": "271c2afa14ba336bcf99ab5e0cb4c00e0762a658b40b4116bc8bf39a0f3027f3",
+      "svg_sha256": "7acf5e2820208b215fe2a056e92fae02ef18afcb153d38736dc375eb5e7cc77b",
+      "png_sha256": "0103f189278697c4bc2f48964f276781a860d1e1a3fc6feaa74bd3ddb9cfbb2b",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "assisted-lamp": {
+      "scene": "c1b0deafca78ff99005a963d16b0798f056e95a2c8604e1f89a12b998bb9b538",
+      "svg_sha256": "0066524cb58f3138c90ea427f8ae510fb02b30e4f1508a73a1b4f6b7f925885c",
+      "png_sha256": "f4aafb7b00bce7525f17f8aee54908cc0707c955bf45e9ac93954226fa09d820",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    }
+  }
+}

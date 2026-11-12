@@ -288,3 +288,17 @@ and print its SHA256. Other formats are actually converted to PNG; checking a bu
 never rewrites its input. Thumbnails remain separate layout-only views. When visual observations
 conflict, compare hashes and decoded content before altering rendering or geometry. See
 ../evidence/studio-hand/inspection-encoding/ for the unresolved viewing-path experiment.
+
+## Generic mass trial
+
+Use python -m scripts.studio new mass.json --kind shape, then inspect mass.json --feature left
+--at .5 --radius .25 --outdir VIEW. Preview --move left --amount .08 and a drawing reason before
+accepting. Object selection exposes profile/rounding/taper/stroke and coherent placement/palette.
+The focused mechanics are scripts.tests.test_studio_shape; actual noncatalog work is indexed at
+../evidence/studio-shape/README.md. A low-level mass is not a complete vector editor.
+
+A study exposed a working-scene/export alias: bundle writes scene.json in its output directory.
+CLI inspect/preview now preflight all generated names against scene/selection inputs (including
+resolved paths and existing samefile aliases), refusing collisions before any write. API script
+callers must use a distinct working filename or export directory. This is covered by an actual
+pre-fix failing input-preservation regression.

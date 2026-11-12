@@ -1,0 +1,83 @@
+{
+  "base": "28426331645939c3a7b1dda70fd57f33ff82b31db8f8e076d49bb90e9d238754",
+  "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+  "result": "84b711ed292b0e04d11d83a7d202dc61d4461b3c382e725dcf1c06124a0456df",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      900,
+      600
+    ],
+    "background": "#f5eddf",
+    "nodes": [
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "the grounded oval foot of a desk lamp",
+        "length": 0.055,
+        "width": 3.5,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.25
+          ]
+        }
+      },
+      {
+        "id": "lamp-stem",
+        "kind": "shape",
+        "intent": "the narrow upright supporting the lamp",
+        "depth": 1.0,
+        "width": 0.09
+      }
+    ]
+  },
+  "selection": {
+    "base": "28426331645939c3a7b1dda70fd57f33ff82b31db8f8e076d49bb90e9d238754",
+    "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+    "object": "lamp-stem",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      372.43200000036364,
+      203.23200000088787,
+      527.5679999996363,
+      396.76799999911213
+    ],
+    "object_bounds": [
+      372.43200000036364,
+      203.23200000088787,
+      527.5679999996363,
+      396.76799999911213
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "lamp-stem",
+    "feature": "object",
+    "parameter": "width",
+    "value": 0.09,
+    "reason": "Keep the lamp stem slender"
+  },
+  "status": "ready"
+}

@@ -1,0 +1,64 @@
+{
+  "base": "f1fa5c9eb4a68493b01390e9f92339c2845d5d31e630d8bf4f12cd501b98700a",
+  "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+  "result": "615e7be11ea9b2021435508d7ef0c12f58754952762e74a5d77d662be4f59445",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      900,
+      600
+    ],
+    "background": "#f5eddf",
+    "nodes": [
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "the grounded oval foot of a desk lamp",
+        "length": 0.055,
+        "width": 3.5
+      }
+    ]
+  },
+  "selection": {
+    "base": "f1fa5c9eb4a68493b01390e9f92339c2845d5d31e630d8bf4f12cd501b98700a",
+    "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+    "object": "lamp-base",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      436.66800000006253,
+      283.3680000001526,
+      463.33199999993747,
+      316.6319999998474
+    ],
+    "object_bounds": [
+      436.66800000006253,
+      283.3680000001526,
+      463.33199999993747,
+      316.6319999998474
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "lamp-base",
+    "feature": "object",
+    "parameter": "width",
+    "value": 3.5,
+    "reason": "Give the foot a stable span"
+  },
+  "status": "ready"
+}

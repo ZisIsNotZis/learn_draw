@@ -1,0 +1,52 @@
+{
+  "base": "a4ff43d28198434ad90f699aed37039561043f760aaaf5cf76925392d3624e51",
+  "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+  "object": "rock-top",
+  "kind": "feature",
+  "feature": "left",
+  "interaction": "contour-push",
+  "side": "left",
+  "at": 0.5,
+  "radius": 0.3,
+  "bounds": [
+    510.65687028505715,
+    459.3345066023981,
+    531.6716117885808,
+    514.9662521382212
+  ],
+  "object_bounds": [
+    510.65687028505715,
+    449.74767796097774,
+    839.7365969267506,
+    551.2123220390224
+  ],
+  "focus": [
+    510.69602000489346,
+    486.7372824835493
+  ],
+  "locks": {
+    "arc-start": [
+      543.0741886116871,
+      525.7081333279824
+    ],
+    "arc-end": [
+      549.5595263308251,
+      451.58038399716384
+    ]
+  },
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "screen-direction push in nominal shorter shape extent; clockwise arc: top left-to-right, right top-to-bottom, bottom right-to-left, left bottom-to-top"
+}

@@ -13,7 +13,9 @@ The independent creator read only the skill/public CLI, made the scene and all a
 without JSON/SVG/source edits, and discarded a finger tweak that did not improve its picture.
 [Its complete command and usability record](usability/REVIEW.md) preserves that judgement.
 The image is separate head and hand stickers, not a connected waving body.
-[Final blind review A](final-review-a.md) and [B](final-review-b.md) both see five fingers and retain
+[Fresh-context review A](fresh-review-a.md) and [B](fresh-review-b.md) independently assess the actual
+images. The earlier final-review-a/b files are repeat observations by the encoding-study reviewers,
+not fresh-context evidence. The reviews see five fingers and retain
 hard thumb/wrist transition, flat volume and rigid hair as limitations. They are critiques, not
 human acceptance or a whole-artwork pass. No baseline was promoted.
 

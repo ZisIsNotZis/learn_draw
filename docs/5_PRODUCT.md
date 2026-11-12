@@ -504,3 +504,12 @@ Knuckle-based smooth fingers solve a different construction problem. The legacy 
 historical and unchanged. Beaded joints and ineffectual web patches are retained as rejected studies,
 not exposed as options. Current proof, commands and limitations are in
 [the hand study](../evidence/studio-hand/README.md); canonical interface is in 7_INTERFACE.
+
+## Adopted generic mass — test subjects beyond the catalog
+
+A shape node defaults to a useful rounded single colour block, with optional oval profile, taper,
+rounding and outline. It can stand for a tower, roof, glass pane, book, rock or other named mass;
+there is no subject-specific lighthouse/lamp generator. The selected arc is shown before a bounded
+push, and its joins are protected. This begins a lower-level creation surface beneath semantic
+presets. It does not yet provide arbitrary paths, compound holes, object booleans or attachment.
+Its actual new-subject studies and operation proof belong to evidence/studio-shape/.

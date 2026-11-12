@@ -1,0 +1,69 @@
+{
+  "base": "bb0d112df67573776eab1127b9decbecb22ed6982d21f16cd1f008dcbbbfd500",
+  "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+  "result": "1b26c546722f766bc1084c68efcf8923822b001d06eff6523e9449f3052e1ce7",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      900,
+      600
+    ],
+    "background": "#f5eddf",
+    "nodes": [
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "the grounded oval foot of a desk lamp",
+        "length": 0.055,
+        "width": 3.5,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "bb0d112df67573776eab1127b9decbecb22ed6982d21f16cd1f008dcbbbfd500",
+    "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+    "object": "lamp-base",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      392.25,
+      283.5,
+      507.75,
+      316.5
+    ],
+    "object_bounds": [
+      392.25,
+      283.5,
+      507.75,
+      316.5
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "lamp-base",
+    "feature": "object",
+    "parameter": "fill_color",
+    "value": "#705448",
+    "reason": "Warm dark metal anchors the lamp"
+  },
+  "status": "ready"
+}

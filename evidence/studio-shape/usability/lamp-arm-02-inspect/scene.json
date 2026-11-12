@@ -1,0 +1,55 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    900,
+    600
+  ],
+  "background": "#f5eddf",
+  "nodes": [
+    {
+      "id": "lamp-base",
+      "kind": "shape",
+      "intent": "the grounded oval foot of a desk lamp",
+      "length": 0.055,
+      "width": 3.5,
+      "profile": "oval",
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#705448"
+      },
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.1866666666666667,
+          0.25
+        ]
+      }
+    },
+    {
+      "id": "lamp-stem",
+      "kind": "shape",
+      "intent": "the narrow upright supporting the lamp",
+      "depth": 1.0,
+      "width": 0.09,
+      "length": 0.32,
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#705448"
+      },
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.1866666666666667,
+          0.09
+        ]
+      }
+    },
+    {
+      "id": "lamp-arm",
+      "kind": "shape",
+      "intent": "the bent upper arm reaching toward the shade",
+      "depth": 2.0,
+      "width": 0.13
+    }
+  ]
+}

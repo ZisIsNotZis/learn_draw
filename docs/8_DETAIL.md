@@ -150,3 +150,19 @@ a local union, producing subpixel contour/antialias differences away from the se
 The regression bounds nonlocal contour displacement by the construction grid; it does not promise
 byte-identical unrelated pixels within the same skin shape. The initial exact-pixel assumption was
 withdrawn after diagnosis, rather than patched with pixel-specific code.
+
+## Generic editable mass
+
+scripts/studio/shape.py constructs a superellipse in a named nominal rectangle, optionally tapered
+by a linear width field. Four named quadrant arcs are resampled by their nominal arc length;
+an angular parameter alone produced a nonuniform edit footprint on square-like forms. Each arc
+has 64 stations, 256 total; the closed mass is computed, not hand-specified contour coordinates.
+Subsequent compact cosine edits retain their nominal arc coordinates instead of moving old handles
+when the bounds change. Screen moves are inverted to shape-local displacement and applied through
+the object's rotation at compile time. Adjacent arc joins and nonselected stations remain exact.
+
+The painted footprint is the filled polygon plus half the explicit outline width. This lets the
+existing depth machinery occlude both fill and ink correctly. Local edits retain one simple
+polygon; self-intersection/collapse refuses the proposal. This contour editor deliberately offers
+fewer degrees of freedom than SVG path editing; it currently has no holes, arbitrary corner
+insertion, booleans between scene objects or articulated attachment.

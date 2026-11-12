@@ -1,0 +1,30 @@
+D:/vibe/learn_draw_studio/.venv/Scripts/python.exe : 
+======================================================================
+所在位置 行:2 字符: 1
++ D:/vibe/learn_draw_studio/.venv/Scripts/python.exe -m unittest script ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (===============...===============:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+ERROR: test_thin_filled_mark_is_valid_without_a_subject_specific_stroke 
+(scripts.tests.test_studio_shape.ColourMass.test_thin_filled_mark_is_valid_without_a_subject_specific_stroke)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\vibe\learn_draw_studio\scripts\tests\test_studio_shape.py", line 87, in 
+test_thin_filled_mark_is_valid_without_a_subject_specific_stroke
+    validate(scene)
+    ~~~~~~~~^^^^^^^
+  File "D:\vibe\learn_draw_studio\scripts\studio\model.py", line 221, in validate
+    validate_shape(node,canvas)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "D:\vibe\learn_draw_studio\scripts\studio\model.py", line 180, in validate_shape
+    number(node.get(name,default),'shape.'+name,lo,hi)
+    ~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\vibe\learn_draw_studio\scripts\studio\model.py", line 50, in number
+    raise ValueError(f"{label}: must be between {low} and {high}")
+ValueError: shape.width: must be between 0.05 and 6
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)

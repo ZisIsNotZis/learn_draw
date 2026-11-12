@@ -1,0 +1,493 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    960,
+    640
+  ],
+  "background": "#f7dfb9",
+  "nodes": [
+    {
+      "id": "evening-sky",
+      "kind": "sky",
+      "intent": "warm late-afternoon sky",
+      "style": "day",
+      "stars": 0,
+      "depth": -20,
+      "palette": {
+        "top": "#9ebbc0",
+        "bottom": "#f7dfb9"
+      }
+    },
+    {
+      "id": "low-sun",
+      "kind": "sun",
+      "intent": "a quiet pale sun balances the tower",
+      "length": 0.16,
+      "at": {
+        "anchor": "upper_left",
+        "offset": [
+          0.01,
+          0.16
+        ]
+      },
+      "rays": 0,
+      "depth": -10,
+      "palette": {
+        "fill": "#f9e7bd"
+      }
+    },
+    {
+      "id": "distant-water",
+      "kind": "shape",
+      "intent": "a calm blue horizon",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.0,
+          0.35
+        ]
+      },
+      "length": 0.68,
+      "width": 4,
+      "palette": {
+        "fill": "#86a8ad",
+        "ink": "#344b57"
+      },
+      "depth": 2,
+      "stroke": 0,
+      "rounding": 0
+    },
+    {
+      "id": "water-light",
+      "kind": "shape",
+      "intent": "a lighter sweep toward the foreground",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.25,
+          0.54
+        ]
+      },
+      "length": 0.7,
+      "width": 3.9,
+      "palette": {
+        "fill": "#b3c8c6",
+        "ink": "#344b57"
+      },
+      "depth": 3,
+      "stroke": 0,
+      "profile": "oval"
+    },
+    {
+      "id": "far-island",
+      "kind": "shape",
+      "intent": "a low distant headland below the sun",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.36,
+          0.026000000000000023
+        ]
+      },
+      "length": 0.036,
+      "width": 5.8,
+      "palette": {
+        "fill": "#739499",
+        "ink": "#344b57"
+      },
+      "depth": 4,
+      "stroke": 0,
+      "rounding": 0.92
+    },
+    {
+      "id": "rock-platform",
+      "kind": "shape",
+      "intent": "dark headland holding the tower",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.21499999999999997,
+          0.45999999999999996
+        ]
+      },
+      "length": 0.34,
+      "width": 2.1,
+      "palette": {
+        "fill": "#536b70",
+        "ink": "#344b57"
+      },
+      "depth": 5,
+      "stroke": 0,
+      "rounding": 0.35,
+      "taper": -0.12,
+      "angle": -5
+    },
+    {
+      "id": "rock-light",
+      "kind": "shape",
+      "intent": "sunward rock plane",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.09999999999999998,
+          0.475
+        ]
+      },
+      "length": 0.27,
+      "width": 0.92,
+      "palette": {
+        "fill": "#6f8580",
+        "ink": "#344b57"
+      },
+      "depth": 6,
+      "stroke": 0,
+      "rounding": 0.28,
+      "taper": -0.35,
+      "angle": -13
+    },
+    {
+      "id": "rock-top",
+      "kind": "shape",
+      "intent": "the illuminated top plane supports the tower",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.20999999999999996,
+          0.28200000000000003
+        ]
+      },
+      "length": 0.135,
+      "width": 3.65,
+      "palette": {
+        "fill": "#929c8d",
+        "ink": "#344b57"
+      },
+      "depth": 7,
+      "stroke": 0,
+      "rounding": 0.88,
+      "angle": -5
+    },
+    {
+      "id": "tower-foot",
+      "kind": "shape",
+      "intent": "a pale footing visibly rests on the rock",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.19999999999999996,
+          0.28800000000000003
+        ]
+      },
+      "length": 0.021,
+      "width": 6,
+      "palette": {
+        "fill": "#e0d5bf",
+        "ink": "#344b57"
+      },
+      "depth": 8,
+      "stroke": 0,
+      "rounding": 0.12
+    },
+    {
+      "id": "tower-body",
+      "kind": "shape",
+      "intent": "ivory tower narrows toward the lantern",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.19999999999999996,
+          0.10000000000000009
+        ]
+      },
+      "length": 0.36,
+      "width": 0.34,
+      "palette": {
+        "fill": "#f5e7ce",
+        "ink": "#344b57"
+      },
+      "depth": 9,
+      "stroke": 0,
+      "rounding": 0.08,
+      "taper": 0.32
+    },
+    {
+      "id": "tower-side",
+      "kind": "shape",
+      "intent": "subordinate shadow plane on the tower right",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.22299999999999998,
+          0.10000000000000009
+        ]
+      },
+      "length": 0.36,
+      "width": 0.09,
+      "palette": {
+        "fill": "#d4cbb6",
+        "ink": "#344b57"
+      },
+      "depth": 10,
+      "stroke": 0,
+      "rounding": 0.08,
+      "taper": 0.32
+    },
+    {
+      "id": "lantern-frame",
+      "kind": "shape",
+      "intent": "dark frame holds the warm glass",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.19999999999999996,
+          -0.12249999999999994
+        ]
+      },
+      "length": 0.085,
+      "width": 1.15,
+      "palette": {
+        "fill": "#3f5c63",
+        "ink": "#344b57"
+      },
+      "depth": 11,
+      "stroke": 0,
+      "rounding": 0.15
+    },
+    {
+      "id": "lantern-glass",
+      "kind": "shape",
+      "intent": "the lit pane is the focal warm note",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.19999999999999996,
+          -0.12249999999999994
+        ]
+      },
+      "length": 0.05865,
+      "width": 1.12,
+      "palette": {
+        "fill": "#f3cb7d",
+        "ink": "#344b57"
+      },
+      "depth": 12,
+      "stroke": 0,
+      "rounding": 0.12
+    },
+    {
+      "id": "lantern-mullion",
+      "kind": "shape",
+      "intent": "a slim upright divides the glass",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.19999999999999996,
+          -0.12249999999999994
+        ]
+      },
+      "length": 0.061200000000000004,
+      "width": 0.1,
+      "palette": {
+        "fill": "#3f5c63",
+        "ink": "#344b57"
+      },
+      "depth": 13,
+      "stroke": 0,
+      "rounding": 0
+    },
+    {
+      "id": "balcony",
+      "kind": "shape",
+      "intent": "one clear dark balcony shelf",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.19999999999999996,
+          -0.07399999999999995
+        ]
+      },
+      "length": 0.018,
+      "width": 5.8,
+      "palette": {
+        "fill": "#3f5c63",
+        "ink": "#344b57"
+      },
+      "depth": 14,
+      "stroke": 0,
+      "rounding": 0.1
+    },
+    {
+      "id": "roof",
+      "kind": "shape",
+      "intent": "coral pitched roof crowns the lamp",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.19999999999999996,
+          -0.18799999999999994
+        ]
+      },
+      "length": 0.06,
+      "width": 2.15,
+      "palette": {
+        "fill": "#ba6550",
+        "ink": "#344b57"
+      },
+      "depth": 15,
+      "stroke": 0,
+      "rounding": 0.03,
+      "taper": 0.96
+    },
+    {
+      "id": "window-1",
+      "kind": "shape",
+      "intent": "a small dark tower opening",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.19499999999999995,
+          0.010000000000000009
+        ]
+      },
+      "length": 0.026,
+      "width": 0.54,
+      "palette": {
+        "fill": "#4e6d76",
+        "ink": "#344b57"
+      },
+      "depth": 16,
+      "stroke": 0,
+      "rounding": 0.72
+    },
+    {
+      "id": "window-2",
+      "kind": "shape",
+      "intent": "a small dark tower opening",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.19499999999999995,
+          0.09999999999999998
+        ]
+      },
+      "length": 0.026,
+      "width": 0.54,
+      "palette": {
+        "fill": "#4e6d76",
+        "ink": "#344b57"
+      },
+      "depth": 17,
+      "stroke": 0,
+      "rounding": 0.72
+    },
+    {
+      "id": "door",
+      "kind": "shape",
+      "intent": "a grounded doorway meets the rocky platform",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.19999999999999996,
+          0.252
+        ]
+      },
+      "length": 0.06,
+      "width": 0.36,
+      "palette": {
+        "fill": "#4e6d76",
+        "ink": "#344b57"
+      },
+      "depth": 18,
+      "stroke": 0,
+      "rounding": 0.65
+    },
+    {
+      "id": "foreground-stone",
+      "kind": "shape",
+      "intent": "a dark rounded stone breaks the near water",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.32999999999999996,
+          0.41000000000000003
+        ]
+      },
+      "length": 0.06,
+      "width": 2,
+      "palette": {
+        "fill": "#6b8586",
+        "ink": "#344b57"
+      },
+      "depth": 19,
+      "stroke": 0,
+      "profile": "oval",
+      "angle": 9
+    },
+    {
+      "id": "water-ripple-a",
+      "kind": "shape",
+      "intent": "a thin pale ripple identifies the open water",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.21000000000000002,
+          0.15000000000000002
+        ]
+      },
+      "length": 0.17,
+      "width": 0.05,
+      "palette": {
+        "fill": "#bfd0ca",
+        "ink": "#344b57"
+      },
+      "depth": 20,
+      "stroke": 0,
+      "profile": "oval",
+      "angle": 90
+    },
+    {
+      "id": "water-ripple-b",
+      "kind": "shape",
+      "intent": "a second shorter ripple sits further out",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.10999999999999999,
+          0.09999999999999998
+        ]
+      },
+      "length": 0.1,
+      "width": 0.05,
+      "palette": {
+        "fill": "#aec4c1",
+        "ink": "#344b57"
+      },
+      "depth": 21,
+      "stroke": 0,
+      "profile": "oval",
+      "angle": 90
+    },
+    {
+      "id": "near-ripple",
+      "kind": "shape",
+      "intent": "a short ripple separates the foreground stone from land",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.22999999999999998,
+          0.42500000000000004
+        ]
+      },
+      "length": 0.14,
+      "width": 0.05,
+      "palette": {
+        "fill": "#d1ddcf",
+        "ink": "#344b57"
+      },
+      "depth": 22,
+      "stroke": 0,
+      "profile": "oval",
+      "angle": 90
+    }
+  ]
+}

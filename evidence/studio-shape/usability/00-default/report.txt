@@ -1,0 +1,4 @@
+D:\vibe\learn_draw_studio\evidence\studio-shape\usability\00-default\artwork.png
+D:\vibe\learn_draw_studio\evidence\studio-shape\usability\00-default\alignment.png
+D:\vibe\learn_draw_studio\evidence\studio-shape\usability\00-default\object-closeup.png
+D:\vibe\learn_draw_studio\evidence\studio-shape\usability\00-default\edit-closeup.png

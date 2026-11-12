@@ -1,0 +1,13 @@
+[
+  {
+    "base": "271c2afa14ba336bcf99ab5e0cb4c00e0762a658b40b4116bc8bf39a0f3027f3",
+    "result": "c1b0deafca78ff99005a963d16b0798f056e95a2c8604e1f89a12b998bb9b538",
+    "operation": {
+      "object": "page-seam",
+      "feature": "object",
+      "parameter": "width",
+      "value": 0.008,
+      "reason": "Keep the page separation fine instead of using a thick stripe forced by the old width floor"
+    }
+  }
+]

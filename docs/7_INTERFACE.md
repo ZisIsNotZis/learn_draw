@@ -269,3 +269,27 @@ though it is machine output; a named `traced` node keeps the generated data clea
 Why a frozen contour is not a canon, how a trace is used to fit a family and then discarded, and
 the honesty hinge that forbids fitting to an evaluation metric are `docs/5_PRODUCT.md`'s — they are
 rules about the language, not about this format.
+
+## Generic colour mass (shape)
+
+new/add --kind shape creates a coordinate-free rounded block. Node fields: id/kind/intent;
+at/length/width/angle/depth/depth_slope as on other parts; profile block|oval; rounding [0,1]
+(default .65; block exponent 2+22*(1-rounding), oval exponent 2); taper [-.98,.98]
+(default 0, positive narrows the top, negative the bottom); stroke [0,.1] (default .008 of height);
+palette fill/ink; edits. Height length is [.005,1.6] of the shorter canvas dimension; width [.001,6]
+is width/height. Rotate a tall thin mass to make a long horizontal mark. This is an editable
+silhouette, not raw SVG, an automatic solid or an attachment rig.
+
+object exposes the shape parameters, intent and palette. left/right/top/bottom expose bounded
+contour pushes with --at/--radius. The four arcs run clockwise with at=0..1 (top left-to-right,
+right top-to-bottom, bottom right-to-left, left bottom-to-top). The interval must remain strictly
+inside its two diagonal joins. Selection lists current focus, protected joins and actual bounds.
+Amount is a fraction of the nominal shorter extent. Edits store side/at/radius/dx/dy/reason;
+dx/dy are in shape-local axes after the preview converts the requested screen motion. Thus later
+whole-object rotation rotates the sculpt too. Invalid self-intersecting/collapsed silhouettes
+are refused before accepting. Existing shape placement defaults to center; insertion is foreground.
+
+Inspection and preview refuse an output file that aliases a working scene or selection input,
+before writing any candidate/report. Choose separate VIEW/TRY directories. The lower-level bundle
+API receives a scene value and cannot know its source filename; script callers must keep input
+paths separate from exported scene.json/candidate.json/report.json and images.

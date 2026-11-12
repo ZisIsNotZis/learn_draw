@@ -1,0 +1,52 @@
+{
+  "base": "1dbac26ab2b7fc9ad93cfebd17b8d6628b370cdafa8ef82b8b1aa97e2b806b11",
+  "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+  "object": "lamp-shade",
+  "kind": "feature",
+  "feature": "bottom",
+  "interaction": "contour-push",
+  "side": "bottom",
+  "at": 0.5,
+  "radius": 0.3,
+  "bounds": [
+    346.55386685530016,
+    272.9997069120344,
+    451.4461331446998,
+    273.0
+  ],
+  "object_bounds": [
+    310.1583277854299,
+    171.0,
+    487.84167221457,
+    273.0
+  ],
+  "focus": [
+    398.99999999999994,
+    273.0
+  ],
+  "locks": {
+    "arc-start": [
+      487.0956001274409,
+      271.43501322889927
+    ],
+    "arc-end": [
+      310.904399872559,
+      271.43501322889927
+    ]
+  },
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "screen-direction push in nominal shorter shape extent; clockwise arc: top left-to-right, right top-to-bottom, bottom right-to-left, left bottom-to-top"
+}

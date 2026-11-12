@@ -1,0 +1,16 @@
+[
+  {
+    "base": "aa06a60e6c981221d0de15ff205960d070295a8ce902c175dbb6096ae592c222",
+    "result": "a4ff43d28198434ad90f699aed37039561043f760aaaf5cf76925392d3624e51",
+    "operation": {
+      "side": "left",
+      "at": 0.5,
+      "radius": 0.3,
+      "dx": -0.1593911516946793,
+      "dy": 0.013944918839625307,
+      "reason": "Extend the exposed left shelf locally while keeping the top and front joins in place",
+      "object": "rock-top",
+      "units": "nominal shorter shape extent"
+    }
+  }
+]

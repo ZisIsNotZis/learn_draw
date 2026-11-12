@@ -7,6 +7,9 @@ def component_data(node,canvas):
     if node['kind']=='head':
         from .head import head_data
         return head_data(node,canvas)
+    if node['kind']=='shape':
+        from .shape import shape_data
+        return shape_data(node,canvas)
     if node['kind']=='hand':
         from .hand import hand_data
         return hand_data(node,canvas)
@@ -21,7 +24,10 @@ def component_outline(node,canvas):
 def support(node,canvas):
     kind=node['kind']
     root_y=lock_rows(node,canvas)[0].left[1] if kind=='hair-lock' else component_data(node,canvas).center[1]
-    if kind=='hand':
+    if kind=='shape':
+        from .shape import DEFAULT_LENGTH as shape_length
+        default_length=shape_length
+    elif kind=='hand':
         from .hand import DEFAULT_LENGTH as hand_length
         default_length=hand_length
     else:

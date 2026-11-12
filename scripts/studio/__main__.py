@@ -11,6 +11,9 @@ from .render import bundle
 
 
 def default_scene(kind='hair-lock'):
+    if kind=='shape':
+        return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
+            dict(id='colour-mass',kind='shape',intent='an editable rounded flat colour mass')])
     if kind=='hand':
         return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
             dict(id='greeting-hand',kind='hand',intent='a front-view flat cartoon open palm with five digits')])
@@ -42,7 +45,7 @@ def canvas_arg(value):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    kinds=('hair-lock','head','hand','sky','hills','moon','sun')
+    kinds=('hair-lock','head','hand','shape','sky','hills','moon','sun')
     p = sub.add_parser("new", help="create a useful preset; no path coordinates needed")
     p.add_argument("scene")
     p.add_argument('--kind',choices=kinds+('landscape',),default='hair-lock')
@@ -59,7 +62,7 @@ def main():
     p.add_argument('--kind',choices=('head','hair-lock'),default='hair-lock')
     p.add_argument("--svg-only", action="store_true")
     for command in ("inspect", "preview"):
-        p = sub.add_parser(command, help="inspect a revision-bound edge" if command == "inspect" else "preview a local push without overwriting the working scene")
+        p = sub.add_parser(command, help="inspect a revision-bound feature or edge" if command == "inspect" else "preview a local push without overwriting the working scene")
         p.add_argument("scene")
         p.add_argument("--outdir", required=True)
         p.add_argument("--svg-only", action="store_true")
@@ -84,6 +87,19 @@ def main():
     p.add_argument("scene")
     args = parser.parse_args()
     try:
+        if args.command in ('inspect','preview'):
+            # A bundle exports scene.json, but a preview must never overwrite its
+            # working source or selection even when the output directory is reused.
+            output=Path(args.outdir)
+            names=['scene.json','selection.json','report.json','report.txt','candidate.json']
+            names += [name+suffix for name in ('artwork','alignment','object-closeup','edit-closeup') for suffix in ('.svg','.png')]
+            inputs=[Path(args.scene)]
+            if args.command=='preview': inputs.append(Path(args.selection))
+            for source in inputs:
+                for name in names:
+                    target=output/name
+                    if source.resolve()==target.resolve() or (source.exists() and target.exists() and source.samefile(target)):
+                        raise ValueError('output would overwrite an input; choose a separate inspection/preview directory')
         if args.command == "demo":
             from .demo import run,run_head
             print(json.dumps((run_head if args.kind=='head' else run)(args.outdir,not args.svg_only)))
@@ -106,7 +122,7 @@ def main():
             if args.id: node['id']=args.id
             if args.depth is not None:
                 node['depth']=args.depth
-            elif args.kind in ('head','hand','hair-lock'):
+            elif args.kind in ('head','hand','hair-lock','shape'):
                 from .components import depth_bounds
                 canvas=scene.get('canvas',[640,640])
                 node['depth']=max(depth_bounds(n,canvas)[1] for n in scene['nodes'])+1

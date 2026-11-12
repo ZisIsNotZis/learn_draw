@@ -143,10 +143,24 @@ The compared files decode to identical complete pictures. The review pack now pr
 PNG bytes and reports their SHA256; this reduces changes in the delivery path, not a proven cure
 for an unidentified viewing problem. Original observations and the correction remain together.
 
-**Next action:** test creation outside the catalog with a small original coastal/lighthouse scene.
-First investigate existing fill/stroke/gesture construction, then expose only the few visible
-semantic handles the new subject needs. Compare a default and a useful local revision before
-adding generality. More presets alone cannot establish open-ended creative capability.
+Generic colour masses now form an editable lower-level surface: block/oval, taper/rounding, fill
+and ink, and four protected arc selections with screen pushes. A root-authored coastal lighthouse
+and a separate independent desk-lamp/book creation test subjects outside the preset catalog. The
+independent creator used seven generic masses through the skill/public CLI and discarded an
+unhelpful local shade edit. It exposed an arbitrary thin-mark width floor, corrected with a
+pre-fix failing regression and a separately labeled fine-line repair. Original actor scene/source
+and workaround remain unchanged. Fresh critics recognize the lamp but retain ambiguous book
+identity; the coastal scene retains schematic cliffs and water/contact ambiguity. No art gate closes.
+79 combined tests pass; current default/head/hand/coast and both lamp versions repeat identical
+SVG/CPU PNG, and earlier default head/hand pixels are preserved. A working-source/export collision
+found during replay also has a pre-fix failing regression and CLI input-preservation guard.
+See evidence/studio-shape/README.md for source bindings, review provenance and exact limitations.
+
+**Next action:** reduce the demonstrated creation overhead with one atomic visible preview for
+a coherent group of semantic parameter changes. Then test relative placement/attachment on a
+subject whose separate parts must meet; the lamp joint and cliff contact make that gap concrete.
+Keep actual drawing decisions visible, including rejecting a mechanically valid but poor edit.
+More presets alone cannot establish open-ended creative capability.
 Do not turn a hand icon or this cover's limited usability into a whole-portrait/illustration pass.
 Preserve the legacy portrait. The development branch is
 `codex/vlm-studio`, pushed through the existing SSH identity; main has not been overwritten.

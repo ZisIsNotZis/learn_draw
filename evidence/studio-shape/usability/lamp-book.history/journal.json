@@ -1,0 +1,704 @@
+[
+  {
+    "base": "d93e20a93145b3f7facc74a1dd4f49f713045a4a0071fb51a8c914eb1259e661",
+    "result": "a2222abcd560514d0a84fe6b6e473a545984b1221446ce5f40e869801062b684",
+    "operation": {
+      "object": "lamp-base",
+      "feature": "object",
+      "parameter": "intent",
+      "value": "the grounded oval foot of a desk lamp",
+      "reason": "Name the supporting lamp foot"
+    }
+  },
+  {
+    "base": "a2222abcd560514d0a84fe6b6e473a545984b1221446ce5f40e869801062b684",
+    "result": "f1fa5c9eb4a68493b01390e9f92339c2845d5d31e630d8bf4f12cd501b98700a",
+    "operation": {
+      "object": "lamp-base",
+      "feature": "object",
+      "parameter": "length",
+      "value": 0.055,
+      "reason": "Make a low heavy foot"
+    }
+  },
+  {
+    "base": "f1fa5c9eb4a68493b01390e9f92339c2845d5d31e630d8bf4f12cd501b98700a",
+    "result": "615e7be11ea9b2021435508d7ef0c12f58754952762e74a5d77d662be4f59445",
+    "operation": {
+      "object": "lamp-base",
+      "feature": "object",
+      "parameter": "width",
+      "value": 3.5,
+      "reason": "Give the foot a stable span"
+    }
+  },
+  {
+    "base": "615e7be11ea9b2021435508d7ef0c12f58754952762e74a5d77d662be4f59445",
+    "result": "a7eea6c24453ebf715dee1e603d61379ae768f0063a7b6f027b4a700a201cd29",
+    "operation": {
+      "object": "lamp-base",
+      "feature": "object",
+      "parameter": "profile",
+      "value": "oval",
+      "reason": "Round the supporting foot"
+    }
+  },
+  {
+    "base": "a7eea6c24453ebf715dee1e603d61379ae768f0063a7b6f027b4a700a201cd29",
+    "result": "bb0d112df67573776eab1127b9decbecb22ed6982d21f16cd1f008dcbbbfd500",
+    "operation": {
+      "object": "lamp-base",
+      "feature": "object",
+      "parameter": "stroke",
+      "value": 0.0,
+      "reason": "Use restrained flat fills"
+    }
+  },
+  {
+    "base": "bb0d112df67573776eab1127b9decbecb22ed6982d21f16cd1f008dcbbbfd500",
+    "result": "1b26c546722f766bc1084c68efcf8923822b001d06eff6523e9449f3052e1ce7",
+    "operation": {
+      "object": "lamp-base",
+      "feature": "object",
+      "parameter": "fill_color",
+      "value": "#705448",
+      "reason": "Warm dark metal anchors the lamp"
+    }
+  },
+  {
+    "base": "1b26c546722f766bc1084c68efcf8923822b001d06eff6523e9449f3052e1ce7",
+    "result": "24a0f5de8fd4319db58a270cd9a553268838b847803a1e694009f8a212857153",
+    "operation": {
+      "object": "lamp-base",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.28,
+      "units": "shorter canvas dimension",
+      "reason": "Reserve room for the book at right"
+    }
+  },
+  {
+    "base": "24a0f5de8fd4319db58a270cd9a553268838b847803a1e694009f8a212857153",
+    "result": "a7ef1b958886b53ab7525acb7116f40569fbe4682a3c93f900c3d9570e1ead1d",
+    "operation": {
+      "object": "lamp-base",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.25,
+      "units": "shorter canvas dimension",
+      "reason": "Place the foot on the shared baseline"
+    }
+  },
+  {
+    "base": "a7ef1b958886b53ab7525acb7116f40569fbe4682a3c93f900c3d9570e1ead1d",
+    "result": "6741bfd95d6d4beff915be3493e43915341755e96bcff630bc0ab12069ffc0e7",
+    "operation": {
+      "action": "add",
+      "object": "lamp-stem",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "6741bfd95d6d4beff915be3493e43915341755e96bcff630bc0ab12069ffc0e7",
+    "result": "28426331645939c3a7b1dda70fd57f33ff82b31db8f8e076d49bb90e9d238754",
+    "operation": {
+      "object": "lamp-stem",
+      "feature": "object",
+      "parameter": "intent",
+      "value": "the narrow upright supporting the lamp",
+      "reason": "Identify the lamp upright"
+    }
+  },
+  {
+    "base": "28426331645939c3a7b1dda70fd57f33ff82b31db8f8e076d49bb90e9d238754",
+    "result": "84b711ed292b0e04d11d83a7d202dc61d4461b3c382e725dcf1c06124a0456df",
+    "operation": {
+      "object": "lamp-stem",
+      "feature": "object",
+      "parameter": "width",
+      "value": 0.09,
+      "reason": "Keep the lamp stem slender"
+    }
+  },
+  {
+    "base": "84b711ed292b0e04d11d83a7d202dc61d4461b3c382e725dcf1c06124a0456df",
+    "result": "5e86d0338228b5b9f268a8686ac637f768c5984a53ae0aa29c4adc9a0ba07797",
+    "operation": {
+      "object": "lamp-stem",
+      "feature": "object",
+      "parameter": "length",
+      "value": 0.32,
+      "reason": "Raise the lamp above the desk"
+    }
+  },
+  {
+    "base": "5e86d0338228b5b9f268a8686ac637f768c5984a53ae0aa29c4adc9a0ba07797",
+    "result": "974c9ba588e94c10e8cbe133e47320c954155bd2f8652c3124dd4fc4b386218f",
+    "operation": {
+      "object": "lamp-stem",
+      "feature": "object",
+      "parameter": "stroke",
+      "value": 0.0,
+      "reason": "Use simple flat metal"
+    }
+  },
+  {
+    "base": "974c9ba588e94c10e8cbe133e47320c954155bd2f8652c3124dd4fc4b386218f",
+    "result": "f86e4fac6ed0a1dad2f2aca252b95d4e01f3ab755bdc44b8311ccc4f13b702be",
+    "operation": {
+      "object": "lamp-stem",
+      "feature": "object",
+      "parameter": "fill_color",
+      "value": "#705448",
+      "reason": "Match the foot metal"
+    }
+  },
+  {
+    "base": "f86e4fac6ed0a1dad2f2aca252b95d4e01f3ab755bdc44b8311ccc4f13b702be",
+    "result": "19f2b64aefe2840907ee524ab43153cb83ef88d1d7da638623e71cc5c13496de",
+    "operation": {
+      "object": "lamp-stem",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.28,
+      "units": "shorter canvas dimension",
+      "reason": "Align upright to the lamp foot"
+    }
+  },
+  {
+    "base": "19f2b64aefe2840907ee524ab43153cb83ef88d1d7da638623e71cc5c13496de",
+    "result": "6e92e722e1160c07ecc839ca299d501da5546c83e9bb7c931bf4883091ef5c6d",
+    "operation": {
+      "object": "lamp-stem",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.09,
+      "units": "shorter canvas dimension",
+      "reason": "Seat upright into foot"
+    }
+  },
+  {
+    "base": "6e92e722e1160c07ecc839ca299d501da5546c83e9bb7c931bf4883091ef5c6d",
+    "result": "d9c422b24f6a4c756f3e5b6a8797206b1a2088665c0ecb4f75b06c3cb3d24334",
+    "operation": {
+      "action": "add",
+      "object": "lamp-arm",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "d9c422b24f6a4c756f3e5b6a8797206b1a2088665c0ecb4f75b06c3cb3d24334",
+    "result": "816258867d30f80e026e71c21292bc5c6aba6e82d0764e828a9ef2d4a66a75e0",
+    "operation": {
+      "object": "lamp-arm",
+      "feature": "object",
+      "parameter": "intent",
+      "value": "the bent upper arm reaching toward the shade",
+      "reason": "Identify the reaching support"
+    }
+  },
+  {
+    "base": "816258867d30f80e026e71c21292bc5c6aba6e82d0764e828a9ef2d4a66a75e0",
+    "result": "e6245b622176c0b063ffb4972674ddae836d64e76391086d231db23166887eef",
+    "operation": {
+      "object": "lamp-arm",
+      "feature": "object",
+      "parameter": "width",
+      "value": 0.13,
+      "reason": "Keep the upper support slender"
+    }
+  },
+  {
+    "base": "e6245b622176c0b063ffb4972674ddae836d64e76391086d231db23166887eef",
+    "result": "7d320d52fb4e7407aebb8f69b1bf495a0b91ab4bf41d732f9160bd02aa9657bf",
+    "operation": {
+      "object": "lamp-arm",
+      "feature": "object",
+      "parameter": "length",
+      "value": 0.22,
+      "reason": "Reach toward the lamp head"
+    }
+  },
+  {
+    "base": "7d320d52fb4e7407aebb8f69b1bf495a0b91ab4bf41d732f9160bd02aa9657bf",
+    "result": "cdcf3b9101e6a6414554488f35fe29b2e075fcd8fab750aedf7ac6ff7e62cd79",
+    "operation": {
+      "object": "lamp-arm",
+      "feature": "object",
+      "parameter": "angle",
+      "value": -55.0,
+      "reason": "Angle the support toward the shade"
+    }
+  },
+  {
+    "base": "cdcf3b9101e6a6414554488f35fe29b2e075fcd8fab750aedf7ac6ff7e62cd79",
+    "result": "66379f42ccedb796543c62065d124c7435a016f53ed0e0e590c45ece08019f71",
+    "operation": {
+      "object": "lamp-arm",
+      "feature": "object",
+      "parameter": "stroke",
+      "value": 0.0,
+      "reason": "Keep the metal silhouette simple"
+    }
+  },
+  {
+    "base": "66379f42ccedb796543c62065d124c7435a016f53ed0e0e590c45ece08019f71",
+    "result": "6211da2ca608a6ad30e4c18df891efb4759bf61cb952d8f3e7d4bd8e8ecfa5dc",
+    "operation": {
+      "object": "lamp-arm",
+      "feature": "object",
+      "parameter": "fill_color",
+      "value": "#705448",
+      "reason": "Match support metal"
+    }
+  },
+  {
+    "base": "6211da2ca608a6ad30e4c18df891efb4759bf61cb952d8f3e7d4bd8e8ecfa5dc",
+    "result": "abd13fb43c5ee0bb9612b0af137ced8d8b9590e332796ea69bee67a444c8903c",
+    "operation": {
+      "object": "lamp-arm",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.19,
+      "units": "shorter canvas dimension",
+      "reason": "Connect the angled arm to the stem"
+    }
+  },
+  {
+    "base": "abd13fb43c5ee0bb9612b0af137ced8d8b9590e332796ea69bee67a444c8903c",
+    "result": "516677ce5ddfc23092554fb984624af42aa49e782cd284ddaf7e6ad9210ba3d4",
+    "operation": {
+      "object": "lamp-arm",
+      "feature": "object",
+      "direction": "up",
+      "amount": 0.13,
+      "units": "shorter canvas dimension",
+      "reason": "Raise the arm above the stem"
+    }
+  },
+  {
+    "base": "516677ce5ddfc23092554fb984624af42aa49e782cd284ddaf7e6ad9210ba3d4",
+    "result": "0ae7d72ddaeccd177b4f912de601e6a23417f3f4f9836e47e19d5b1d498c5762",
+    "operation": {
+      "action": "add",
+      "object": "lamp-shade",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "0ae7d72ddaeccd177b4f912de601e6a23417f3f4f9836e47e19d5b1d498c5762",
+    "result": "d9432320bebbcf1ef89e02d99670b78e09bc09ea1ae9e0d4a4a0a9d9e0215c6b",
+    "operation": {
+      "object": "lamp-shade",
+      "feature": "object",
+      "parameter": "intent",
+      "value": "the warm wide-bottomed shade of the desk lamp",
+      "reason": "Name the light shade"
+    }
+  },
+  {
+    "base": "d9432320bebbcf1ef89e02d99670b78e09bc09ea1ae9e0d4a4a0a9d9e0215c6b",
+    "result": "ac834ed16d0de04e128201268bb918aa1c879ffac1f73f6760ac4cd19cc4eace",
+    "operation": {
+      "object": "lamp-shade",
+      "feature": "object",
+      "parameter": "length",
+      "value": 0.17,
+      "reason": "Make a compact lamp head"
+    }
+  },
+  {
+    "base": "ac834ed16d0de04e128201268bb918aa1c879ffac1f73f6760ac4cd19cc4eace",
+    "result": "679f0d194d3ae3fafc862cfb842599fcded4ab4e58e7f9db8e92132ce2d93a1a",
+    "operation": {
+      "object": "lamp-shade",
+      "feature": "object",
+      "parameter": "width",
+      "value": 1.8,
+      "reason": "Give the shade a broad open lower edge"
+    }
+  },
+  {
+    "base": "679f0d194d3ae3fafc862cfb842599fcded4ab4e58e7f9db8e92132ce2d93a1a",
+    "result": "fcd775489925bcf6840901c4bb59471446dfeb1cb6377d9b5b91239639c20152",
+    "operation": {
+      "object": "lamp-shade",
+      "feature": "object",
+      "parameter": "taper",
+      "value": 0.65,
+      "reason": "Narrow the top of the lampshade"
+    }
+  },
+  {
+    "base": "fcd775489925bcf6840901c4bb59471446dfeb1cb6377d9b5b91239639c20152",
+    "result": "3607ed673a7b8641c50274a2d08163dd3b118f47fc1517c58678821324394b15",
+    "operation": {
+      "object": "lamp-shade",
+      "feature": "object",
+      "parameter": "rounding",
+      "value": 0.08,
+      "reason": "Keep a gentle angular shade silhouette"
+    }
+  },
+  {
+    "base": "3607ed673a7b8641c50274a2d08163dd3b118f47fc1517c58678821324394b15",
+    "result": "09e3628ef218cfc3e0b06752821e51c94c96742f013e8d33d5bdb5a2c3118200",
+    "operation": {
+      "object": "lamp-shade",
+      "feature": "object",
+      "parameter": "stroke",
+      "value": 0.0,
+      "reason": "Keep the shade a calm flat mass"
+    }
+  },
+  {
+    "base": "09e3628ef218cfc3e0b06752821e51c94c96742f013e8d33d5bdb5a2c3118200",
+    "result": "9cc18940ff6ecd70827c70f162f51a19bb48596a46eb1a2a2a748f637a1ed918",
+    "operation": {
+      "object": "lamp-shade",
+      "feature": "object",
+      "parameter": "fill_color",
+      "value": "#c98d4a",
+      "reason": "Use warm amber for the focal shade"
+    }
+  },
+  {
+    "base": "9cc18940ff6ecd70827c70f162f51a19bb48596a46eb1a2a2a748f637a1ed918",
+    "result": "3e22270e12a1976ffd08a4c18de1e80412494a5186ec64b28f6352bd5404fc9d",
+    "operation": {
+      "object": "lamp-shade",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.085,
+      "units": "shorter canvas dimension",
+      "reason": "Seat the shade over the arm endpoint"
+    }
+  },
+  {
+    "base": "3e22270e12a1976ffd08a4c18de1e80412494a5186ec64b28f6352bd5404fc9d",
+    "result": "492aa664bfefa4710a85c0b7bae50a2ba88b0e66e673adbd806cd3df15a6a2a3",
+    "operation": {
+      "object": "lamp-shade",
+      "feature": "object",
+      "direction": "up",
+      "amount": 0.13,
+      "units": "shorter canvas dimension",
+      "reason": "Raise the shade above the book"
+    }
+  },
+  {
+    "base": "492aa664bfefa4710a85c0b7bae50a2ba88b0e66e673adbd806cd3df15a6a2a3",
+    "result": "b824e9c00c7f9369e6c4a8a9e26fe9f7a39d107d4d5467fb07cee588ce252518",
+    "operation": {
+      "action": "add",
+      "object": "book-cover",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "b824e9c00c7f9369e6c4a8a9e26fe9f7a39d107d4d5467fb07cee588ce252518",
+    "result": "d482074fa678658d342369c8ab1d8dd8579dd5f69da86d587895008028614b7b",
+    "operation": {
+      "object": "book-cover",
+      "feature": "object",
+      "parameter": "intent",
+      "value": "the thick closed green book beside the lamp",
+      "reason": "Identify the closed book"
+    }
+  },
+  {
+    "base": "d482074fa678658d342369c8ab1d8dd8579dd5f69da86d587895008028614b7b",
+    "result": "796288cbd9d852b9623003517150c2c6bc3ea92d5d23464bc2a795e80aa40210",
+    "operation": {
+      "object": "book-cover",
+      "feature": "object",
+      "parameter": "length",
+      "value": 0.14,
+      "reason": "Keep the closed book low"
+    }
+  },
+  {
+    "base": "796288cbd9d852b9623003517150c2c6bc3ea92d5d23464bc2a795e80aa40210",
+    "result": "0701ab2ac2014f5e8b09d1bf88c11d0a196f374378a83e31247d1cea60a02ded",
+    "operation": {
+      "object": "book-cover",
+      "feature": "object",
+      "parameter": "width",
+      "value": 2.7,
+      "reason": "Give the book a long horizontal format"
+    }
+  },
+  {
+    "base": "0701ab2ac2014f5e8b09d1bf88c11d0a196f374378a83e31247d1cea60a02ded",
+    "result": "13a0f923f3f6953da69061f55777e1cd19b64f02d227f40197afc3c02ff3a19c",
+    "operation": {
+      "object": "book-cover",
+      "feature": "object",
+      "parameter": "rounding",
+      "value": 0.12,
+      "reason": "Soften the book corners"
+    }
+  },
+  {
+    "base": "13a0f923f3f6953da69061f55777e1cd19b64f02d227f40197afc3c02ff3a19c",
+    "result": "14fec33fb72bba14e2ab4c133e6845aacb27ac0c3d09dbd55ac611c14e10aa00",
+    "operation": {
+      "object": "book-cover",
+      "feature": "object",
+      "parameter": "stroke",
+      "value": 0.0,
+      "reason": "Keep the book flat and restrained"
+    }
+  },
+  {
+    "base": "14fec33fb72bba14e2ab4c133e6845aacb27ac0c3d09dbd55ac611c14e10aa00",
+    "result": "30392a32cd3677d282b730ce6474a35f1a7a79da3d4a006b308324cf4da6de17",
+    "operation": {
+      "object": "book-cover",
+      "feature": "object",
+      "parameter": "fill_color",
+      "value": "#63766b",
+      "reason": "Use muted green to balance amber"
+    }
+  },
+  {
+    "base": "30392a32cd3677d282b730ce6474a35f1a7a79da3d4a006b308324cf4da6de17",
+    "result": "4f1a0ccb0c811a7f450fe647afebeff69a5f3eb3865f952ad367d337f6ca9868",
+    "operation": {
+      "object": "book-cover",
+      "feature": "object",
+      "direction": "right",
+      "amount": 0.28,
+      "units": "shorter canvas dimension",
+      "reason": "Place the book beside the lamp"
+    }
+  },
+  {
+    "base": "4f1a0ccb0c811a7f450fe647afebeff69a5f3eb3865f952ad367d337f6ca9868",
+    "result": "afe8124611ec8ac504c5d027f83b51abff702ab86a4b9be5292e1ca3e15f8c0c",
+    "operation": {
+      "object": "book-cover",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.205,
+      "units": "shorter canvas dimension",
+      "reason": "Put the book on the same baseline"
+    }
+  },
+  {
+    "base": "afe8124611ec8ac504c5d027f83b51abff702ab86a4b9be5292e1ca3e15f8c0c",
+    "result": "2e0d23c5181220f0c3c06b879048dcf84ca47d5e2d41b2db82efe0f5613ff8de",
+    "operation": {
+      "action": "add",
+      "object": "book-pages",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "2e0d23c5181220f0c3c06b879048dcf84ca47d5e2d41b2db82efe0f5613ff8de",
+    "result": "2e56948168043c92d9d5b72f9685559478de52638c5e8ee1b13b36599f26b2cb",
+    "operation": {
+      "object": "book-pages",
+      "feature": "object",
+      "parameter": "intent",
+      "value": "the cream page block inset within the closed book cover",
+      "reason": "Identify the closed page block"
+    }
+  },
+  {
+    "base": "2e56948168043c92d9d5b72f9685559478de52638c5e8ee1b13b36599f26b2cb",
+    "result": "eb7299fd1e3af8b6cb54f4212db347da5d6f389eb9a7c471d6b44669287da5ea",
+    "operation": {
+      "object": "book-pages",
+      "feature": "object",
+      "parameter": "length",
+      "value": 0.075,
+      "reason": "Leave green cover visible above and below"
+    }
+  },
+  {
+    "base": "eb7299fd1e3af8b6cb54f4212db347da5d6f389eb9a7c471d6b44669287da5ea",
+    "result": "c43f58c03340432a48a6e8afeb982439fa4ca611268194458447b98fea269125",
+    "operation": {
+      "object": "book-pages",
+      "feature": "object",
+      "parameter": "width",
+      "value": 4.5,
+      "reason": "Inset the pages from the cover ends"
+    }
+  },
+  {
+    "base": "c43f58c03340432a48a6e8afeb982439fa4ca611268194458447b98fea269125",
+    "result": "bc7a3d11298be70ee93c6353412aeaaddb33e1ff6702504fc281787df8166923",
+    "operation": {
+      "object": "book-pages",
+      "feature": "object",
+      "parameter": "rounding",
+      "value": 0.06,
+      "reason": "Keep the page block quietly rectangular"
+    }
+  },
+  {
+    "base": "bc7a3d11298be70ee93c6353412aeaaddb33e1ff6702504fc281787df8166923",
+    "result": "06f5004ee846d488537800ee5ac685bcc003e5a4e507d835a6171aeb8c320356",
+    "operation": {
+      "object": "book-pages",
+      "feature": "object",
+      "parameter": "stroke",
+      "value": 0.0,
+      "reason": "Use flat pages without fine stripes"
+    }
+  },
+  {
+    "base": "06f5004ee846d488537800ee5ac685bcc003e5a4e507d835a6171aeb8c320356",
+    "result": "2990fed0d2fd40f39a2ea1abb663c8e29b39860641a7ef841ec7a28423d40ae7",
+    "operation": {
+      "object": "book-pages",
+      "feature": "object",
+      "parameter": "fill_color",
+      "value": "#e7d8bb",
+      "reason": "Use warm paper related to the background"
+    }
+  },
+  {
+    "base": "2990fed0d2fd40f39a2ea1abb663c8e29b39860641a7ef841ec7a28423d40ae7",
+    "result": "d9f00b95a293b04b666bde2cc9cb372638dfe1bf005efcc65bbd977666ab18f7",
+    "operation": {
+      "object": "book-pages",
+      "feature": "object",
+      "direction": "right",
+      "amount": 0.29,
+      "units": "shorter canvas dimension",
+      "reason": "Leave a heavier green spine at left"
+    }
+  },
+  {
+    "base": "d9f00b95a293b04b666bde2cc9cb372638dfe1bf005efcc65bbd977666ab18f7",
+    "result": "1dbac26ab2b7fc9ad93cfebd17b8d6628b370cdafa8ef82b8b1aa97e2b806b11",
+    "operation": {
+      "object": "book-pages",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.205,
+      "units": "shorter canvas dimension",
+      "reason": "Center the page block inside the cover"
+    }
+  },
+  {
+    "base": "1dbac26ab2b7fc9ad93cfebd17b8d6628b370cdafa8ef82b8b1aa97e2b806b11",
+    "result": "886e90434c66bf0e638fe62688adcf85caaeb88bc1cfa70b7c41383eabb45333",
+    "operation": {
+      "object": "book-pages",
+      "feature": "object",
+      "direction": "right",
+      "amount": 0.012,
+      "units": "shorter canvas dimension",
+      "reason": "Open the page edge at the right so the cover reads as a closed book instead of a frame"
+    }
+  },
+  {
+    "base": "886e90434c66bf0e638fe62688adcf85caaeb88bc1cfa70b7c41383eabb45333",
+    "result": "2fa55187b53810e26ba60b7f3757692b81e87b6ea886e36dd85001b626d3d036",
+    "operation": {
+      "action": "add",
+      "object": "page-seam",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "2fa55187b53810e26ba60b7f3757692b81e87b6ea886e36dd85001b626d3d036",
+    "result": "7b54d1a44678d93bb595cce55d5c6c5fbc41b8ecc24286ab5d4d5e66705dc56a",
+    "operation": {
+      "object": "page-seam",
+      "feature": "object",
+      "parameter": "intent",
+      "value": "a single restrained page separation in the closed book",
+      "reason": "Name the page separation"
+    }
+  },
+  {
+    "base": "7b54d1a44678d93bb595cce55d5c6c5fbc41b8ecc24286ab5d4d5e66705dc56a",
+    "result": "ba879447dd54668aab8f0e45aa2a5f1f725cce5058fb54b50659b6512cb3db67",
+    "operation": {
+      "object": "page-seam",
+      "feature": "object",
+      "parameter": "width",
+      "value": 0.05,
+      "reason": "Use the thinnest supported page separator"
+    }
+  },
+  {
+    "base": "ba879447dd54668aab8f0e45aa2a5f1f725cce5058fb54b50659b6512cb3db67",
+    "result": "35468c2d6455cbfa179d1c5c06d560384a583e058ed0795b34ba7383ddad12d7",
+    "operation": {
+      "object": "page-seam",
+      "feature": "object",
+      "parameter": "length",
+      "value": 0.2,
+      "reason": "Keep the page separation shorter than the book"
+    }
+  },
+  {
+    "base": "35468c2d6455cbfa179d1c5c06d560384a583e058ed0795b34ba7383ddad12d7",
+    "result": "b92ab62e3a0ed13150028d7da5ada1f58462011e30b5bbbe5889def8a7a721e2",
+    "operation": {
+      "object": "page-seam",
+      "feature": "object",
+      "parameter": "angle",
+      "value": 90.0,
+      "reason": "Make the page seam horizontal"
+    }
+  },
+  {
+    "base": "b92ab62e3a0ed13150028d7da5ada1f58462011e30b5bbbe5889def8a7a721e2",
+    "result": "2c08cc24f8635997b41b9ddc9441991c3a497a794417e7ea8a2ee505b073c0b1",
+    "operation": {
+      "object": "page-seam",
+      "feature": "object",
+      "parameter": "stroke",
+      "value": 0.0,
+      "reason": "Avoid double outlining"
+    }
+  },
+  {
+    "base": "2c08cc24f8635997b41b9ddc9441991c3a497a794417e7ea8a2ee505b073c0b1",
+    "result": "69af1f385a0ceb98a198a1e612ce26c84854a03548e6d7b16c81d5dbd552f09b",
+    "operation": {
+      "object": "page-seam",
+      "feature": "object",
+      "parameter": "fill_color",
+      "value": "#bcae94",
+      "reason": "Use a quiet page shadow"
+    }
+  },
+  {
+    "base": "69af1f385a0ceb98a198a1e612ce26c84854a03548e6d7b16c81d5dbd552f09b",
+    "result": "1e86e04487b294fe41c991f7149e65692cf501de2fee5f811732df1db638ea58",
+    "operation": {
+      "object": "page-seam",
+      "feature": "object",
+      "direction": "right",
+      "amount": 0.34,
+      "units": "shorter canvas dimension",
+      "reason": "Let the page separation approach the fore edge"
+    }
+  },
+  {
+    "base": "1e86e04487b294fe41c991f7149e65692cf501de2fee5f811732df1db638ea58",
+    "result": "271c2afa14ba336bcf99ab5e0cb4c00e0762a658b40b4116bc8bf39a0f3027f3",
+    "operation": {
+      "object": "page-seam",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.205,
+      "units": "shorter canvas dimension",
+      "reason": "Center the seam on the pages"
+    }
+  }
+]

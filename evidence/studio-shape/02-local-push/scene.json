@@ -1,0 +1,25 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "colour-mass",
+      "kind": "shape",
+      "intent": "an editable rounded flat colour mass",
+      "edits": [
+        {
+          "side": "left",
+          "at": 0.5,
+          "radius": 0.3,
+          "dx": -0.1,
+          "dy": 0,
+          "reason": "Ease the left edge outward while preserving the corner joins"
+        }
+      ]
+    }
+  ]
+}

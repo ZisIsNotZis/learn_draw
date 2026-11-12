@@ -1,0 +1,85 @@
+{
+  "base": "5e86d0338228b5b9f268a8686ac637f768c5984a53ae0aa29c4adc9a0ba07797",
+  "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+  "result": "974c9ba588e94c10e8cbe133e47320c954155bd2f8652c3124dd4fc4b386218f",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      900,
+      600
+    ],
+    "background": "#f5eddf",
+    "nodes": [
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "the grounded oval foot of a desk lamp",
+        "length": 0.055,
+        "width": 3.5,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.25
+          ]
+        }
+      },
+      {
+        "id": "lamp-stem",
+        "kind": "shape",
+        "intent": "the narrow upright supporting the lamp",
+        "depth": 1.0,
+        "width": 0.09,
+        "length": 0.32,
+        "stroke": 0.0
+      }
+    ]
+  },
+  "selection": {
+    "base": "5e86d0338228b5b9f268a8686ac637f768c5984a53ae0aa29c4adc9a0ba07797",
+    "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+    "object": "lamp-stem",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      440.5920000000046,
+      203.23200007015203,
+      459.4079999999954,
+      396.767999929848
+    ],
+    "object_bounds": [
+      440.5920000000046,
+      203.23200007015203,
+      459.4079999999954,
+      396.767999929848
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "lamp-stem",
+    "feature": "object",
+    "parameter": "stroke",
+    "value": 0.0,
+    "reason": "Use simple flat metal"
+  },
+  "status": "ready"
+}

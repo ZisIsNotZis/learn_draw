@@ -1,0 +1,7 @@
+{
+  "changed_parameter": "page-seam.width",
+  "before": 0.05,
+  "after": 0.008,
+  "all_other_objects_unchanged": true,
+  "outside_old_mark_pixels_exact": true
+}

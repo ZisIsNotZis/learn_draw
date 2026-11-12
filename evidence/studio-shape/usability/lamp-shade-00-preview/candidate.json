@@ -1,0 +1,121 @@
+{
+  "base": "0ae7d72ddaeccd177b4f912de601e6a23417f3f4f9836e47e19d5b1d498c5762",
+  "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+  "result": "d9432320bebbcf1ef89e02d99670b78e09bc09ea1ae9e0d4a4a0a9d9e0215c6b",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      900,
+      600
+    ],
+    "background": "#f5eddf",
+    "nodes": [
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "the grounded oval foot of a desk lamp",
+        "length": 0.055,
+        "width": 3.5,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.25
+          ]
+        }
+      },
+      {
+        "id": "lamp-stem",
+        "kind": "shape",
+        "intent": "the narrow upright supporting the lamp",
+        "depth": 1.0,
+        "width": 0.09,
+        "length": 0.32,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.09
+          ]
+        }
+      },
+      {
+        "id": "lamp-arm",
+        "kind": "shape",
+        "intent": "the bent upper arm reaching toward the shade",
+        "depth": 2.0,
+        "width": 0.13,
+        "length": 0.22,
+        "angle": -55.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.12666666666666668,
+            -0.13
+          ]
+        }
+      },
+      {
+        "id": "lamp-shade",
+        "kind": "shape",
+        "intent": "the warm wide-bottomed shade of the desk lamp",
+        "depth": 3.0
+      }
+    ]
+  },
+  "selection": {
+    "base": "0ae7d72ddaeccd177b4f912de601e6a23417f3f4f9836e47e19d5b1d498c5762",
+    "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+    "object": "lamp-shade",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      372.43200000036364,
+      203.23200000088787,
+      527.5679999996363,
+      396.76799999911213
+    ],
+    "object_bounds": [
+      372.43200000036364,
+      203.23200000088787,
+      527.5679999996363,
+      396.76799999911213
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "lamp-shade",
+    "feature": "object",
+    "parameter": "intent",
+    "value": "the warm wide-bottomed shade of the desk lamp",
+    "reason": "Name the light shade"
+  },
+  "status": "ready"
+}

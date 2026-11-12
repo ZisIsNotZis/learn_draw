@@ -1,0 +1,272 @@
+{
+  "revision": "f86e4fac6ed0a1dad2f2aca252b95d4e01f3ab755bdc44b8311ccc4f13b702be",
+  "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-shape\\usability\\lamp-stem-04-preview\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-shape\\usability\\lamp-stem-04-preview\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-shape\\usability\\lamp-stem-04-preview\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-shape\\usability\\lamp-stem-04-preview\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-shape\\usability\\lamp-stem-04-preview\\artwork.png": "77ea24e20072bdaf2f416f88b5484642b020f90dd32682f9043155e7291727e3",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-shape\\usability\\lamp-stem-04-preview\\alignment.png": "60d93b20f29dbfbc6bf4826b53bad4f2c31ac2179023284e0c8ce4f865fd277e",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-shape\\usability\\lamp-stem-04-preview\\object-closeup.png": "8a8cf5de77d60c74e3095a860259ea6833e4b2b7153bd618688a5dc3a1ca783a",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-shape\\usability\\lamp-stem-04-preview\\edit-closeup.png": "cf8a0cc4a70e39e35ea7d08a88a6653bbae78f2552de3c84d3ba90f3d3bbd91b"
+  },
+  "nodes": {
+    "lamp-base": {
+      "kind": "shape",
+      "intent": "the grounded oval foot of a desk lamp",
+      "bounds": [
+        224.24999999999994,
+        433.5,
+        339.74999999999994,
+        466.5
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            224.24999999999994,
+            433.5,
+            339.74999999999994,
+            466.5
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            241.16458338647683,
+            433.5,
+            322.8354166135231,
+            438.332738110422
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            322.8354166135231,
+            438.332738110422,
+            339.74999999999994,
+            461.667261889578
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            241.16458338647683,
+            461.667261889578,
+            322.8354166135231,
+            466.5
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            224.24999999999994,
+            438.332738110422,
+            241.16458338647683,
+            461.667261889578
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      }
+    },
+    "lamp-stem": {
+      "kind": "shape",
+      "intent": "the narrow upright supporting the lamp",
+      "bounds": [
+        441.36,
+        204.0,
+        458.64,
+        396.0
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            441.36,
+            204.0,
+            458.64,
+            396.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            441.9558581131835,
+            204.0,
+            458.0441418868165,
+            210.6206457020393
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            458.0441418868165,
+            210.6206457020393,
+            458.64,
+            389.37935429796073
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            441.9558581131835,
+            389.37935429796073,
+            458.0441418868165,
+            396.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            441.36,
+            210.6206457020393,
+            441.9558581131835,
+            389.37935429796073
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      }
+    }
+  },
+  "scope": "editable colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints or knuckle",
+    "white target": "local edge focus or digit-tip handle"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; digit tip: nominal digit span"
+}

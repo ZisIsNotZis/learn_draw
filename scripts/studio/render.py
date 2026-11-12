@@ -26,7 +26,11 @@ def selection_paths(scene,selection):
     if node['kind']!='hair-lock':
         data=component_data(node,canvas)
         if selection['kind']=='feature':
-            feature=data.features.get(selection['feature'])
+            if node['kind']=='shape' and selection.get('interaction')=='contour-push':
+                from .shape import edge_selection
+                feature=edge_selection(node,canvas,selection['feature'],selection['at'],selection['radius'])
+            else:
+                feature=data.features.get(selection['feature'])
             return (feature['paths'],feature.get('focus'),feature.get('locks',{})) if feature else ([],None,{})
         from .head import rotate_point
         child=data.locks[selection['child']]
@@ -233,10 +237,10 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
         node_info[n['id']]=info
     report = dict(revision=revision, engine=engine_fingerprint(), status='ready',renderer=backend, images=images,
                   image_sha256={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images},nodes=node_info,
-                  scope="flat cartoon heads, front-view open hands, editable planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+                  scope="editable colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
                   alignment_legend={'orange':'selected current boundary','pink dashed':'previous boundary',
                                     'green rings':'protected endpoints or knuckle','white target':'local edge focus or digit-tip handle'},
-                  move_units='object: shorter canvas dimension; local edge: nominal lock width; digit tip: nominal digit span')
+                  move_units='object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; digit tip: nominal digit span')
     write(directory / "report.json", report)
     (directory / "report.txt").write_text("\n".join(images) + "\n", encoding="utf-8")
     return report

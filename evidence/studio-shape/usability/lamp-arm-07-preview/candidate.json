@@ -1,0 +1,116 @@
+{
+  "base": "abd13fb43c5ee0bb9612b0af137ced8d8b9590e332796ea69bee67a444c8903c",
+  "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+  "result": "516677ce5ddfc23092554fb984624af42aa49e782cd284ddaf7e6ad9210ba3d4",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      900,
+      600
+    ],
+    "background": "#f5eddf",
+    "nodes": [
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "the grounded oval foot of a desk lamp",
+        "length": 0.055,
+        "width": 3.5,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.25
+          ]
+        }
+      },
+      {
+        "id": "lamp-stem",
+        "kind": "shape",
+        "intent": "the narrow upright supporting the lamp",
+        "depth": 1.0,
+        "width": 0.09,
+        "length": 0.32,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.09
+          ]
+        }
+      },
+      {
+        "id": "lamp-arm",
+        "kind": "shape",
+        "intent": "the bent upper arm reaching toward the shade",
+        "depth": 2.0,
+        "width": 0.13,
+        "length": 0.22,
+        "angle": -55.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.12666666666666668,
+            -0.13
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "abd13fb43c5ee0bb9612b0af137ced8d8b9590e332796ea69bee67a444c8903c",
+    "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+    "object": "lamp-arm",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      278.5965795697556,
+      256.9884705360104,
+      393.4034204302443,
+      343.0115294639896
+    ],
+    "object_bounds": [
+      278.5965795697556,
+      256.9884705360104,
+      393.4034204302443,
+      343.0115294639896
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "lamp-arm",
+    "feature": "object",
+    "direction": "up",
+    "amount": 0.13,
+    "units": "shorter canvas dimension",
+    "reason": "Raise the arm above the stem"
+  },
+  "status": "ready"
+}

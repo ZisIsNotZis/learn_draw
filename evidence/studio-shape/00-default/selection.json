@@ -1,0 +1,52 @@
+{
+  "base": "f77953cf9d4d0f08fd12549b5bf694b8cad6ae37aef999ca9be3b00128927bf0",
+  "engine": "b2e0fe263fe3f80e2166c3379d740439c993b8c729915c02fed1a06cd8424d1c",
+  "object": "colour-mass",
+  "kind": "feature",
+  "feature": "left",
+  "interaction": "contour-push",
+  "side": "left",
+  "at": 0.5,
+  "radius": 0.3,
+  "bounds": [
+    238.07999999999998,
+    233.15996147657066,
+    239.96522788285085,
+    406.84003852342937
+  ],
+  "object_bounds": [
+    237.2608000046642,
+    216.78080001138719,
+    402.7391999953358,
+    423.2191999886128
+  ],
+  "focus": [
+    238.07999999999998,
+    320.0
+  ],
+  "locks": {
+    "arc-start": [
+      243.7296176657402,
+      415.33797791782473
+    ],
+    "arc-end": [
+      243.7296176657402,
+      224.66202208217527
+    ]
+  },
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "screen-direction push in nominal shorter shape extent; clockwise arc: top left-to-right, right top-to-bottom, bottom right-to-left, left bottom-to-top"
+}

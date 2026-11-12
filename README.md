@@ -4,7 +4,7 @@
 
 # learn_draw
 
-**Current direction (2026-11-12): a drawing workbench for VLM creation.** Reference studies develop usable primitives and drawing skill. The studio supports a user-accepted flat-cartoon head preset, standalone locks, semantic eye/face/hair/expression controls and visible local lock pushes with preview, accept and exact undo. Limited independent reuse has been demonstrated; whole-artwork quality and broader creative transfer remain unproven.
+**Current direction (2026-11-12): a drawing workbench for VLM creation.** Reference studies develop usable primitives and drawing skill. The studio supports a user-accepted flat-cartoon head preset, editable open hands, standalone locks and generic colour masses, with visible local selections, preview, accept and exact undo. Limited independent reuse has been demonstrated; whole-artwork quality and broader creative transfer remain unproven.
 
 ```bash
 uv sync
@@ -18,6 +18,9 @@ An editable five-digit open-hand preset also supports visible tip edits around f
 [The independently created greeting](evidence/studio-hand/README.md) demonstrates real CLI use,
 including discarding an unhelpful edit; it does not establish an attached body or general anatomy rig.
 Try `uv run python -m scripts.studio new hand.json --kind hand`, then inspect its index feature.
+Generic `--kind shape` adds editable blocks/ovals/tapers for subjects outside the preset catalog;
+[the actual coastal and independent creation studies](evidence/studio-shape/README.md) retain their
+visual limitations. A working contour tool is not a whole-illustration pass.
 
 Sky, hills, moon and sun presets also support small scenic backgrounds with recoverable placement.
 Their [actual studies and critical reviews](evidence/studio-composition/README.md) remain distinct

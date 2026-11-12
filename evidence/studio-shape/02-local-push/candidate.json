@@ -1,0 +1,93 @@
+{
+  "base": "f77953cf9d4d0f08fd12549b5bf694b8cad6ae37aef999ca9be3b00128927bf0",
+  "engine": "cf5d577738c461cefc794105a8757dc19b1015681b4a96b3a26200bc4ccc78df",
+  "result": "85f4a3b8565bc6da04019c13e57f40e06246e576e6aab1ea8f754bc5bd9d4ec4",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "colour-mass",
+        "kind": "shape",
+        "intent": "an editable rounded flat colour mass",
+        "edits": [
+          {
+            "side": "left",
+            "at": 0.5,
+            "radius": 0.3,
+            "dx": -0.1,
+            "dy": 0,
+            "reason": "Ease the left edge outward while preserving the corner joins"
+          }
+        ]
+      }
+    ]
+  },
+  "selection": {
+    "base": "f77953cf9d4d0f08fd12549b5bf694b8cad6ae37aef999ca9be3b00128927bf0",
+    "engine": "cf5d577738c461cefc794105a8757dc19b1015681b4a96b3a26200bc4ccc78df",
+    "object": "colour-mass",
+    "kind": "feature",
+    "feature": "left",
+    "interaction": "contour-push",
+    "side": "left",
+    "at": 0.5,
+    "radius": 0.3,
+    "bounds": [
+      238.07999999999998,
+      262.8083867337551,
+      238.11006081633894,
+      377.19161326624493
+    ],
+    "object_bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "focus": [
+      238.07999999999998,
+      320.00000000000006
+    ],
+    "locks": {
+      "arc-start": [
+        243.7296176657402,
+        415.33797791782473
+      ],
+      "arc-end": [
+        243.7296176657402,
+        224.66202208217527
+      ]
+    },
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "screen-direction push in nominal shorter shape extent; clockwise arc: top left-to-right, right top-to-bottom, bottom right-to-left, left bottom-to-top"
+  },
+  "operation": {
+    "side": "left",
+    "at": 0.5,
+    "radius": 0.3,
+    "dx": -0.1,
+    "dy": 0,
+    "reason": "Ease the left edge outward while preserving the corner joins",
+    "object": "colour-mass",
+    "units": "nominal shorter shape extent"
+  },
+  "status": "ready"
+}

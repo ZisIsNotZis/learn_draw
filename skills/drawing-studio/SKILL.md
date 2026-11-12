@@ -105,3 +105,30 @@ needed, reopen the original PNG and preserve the conflicting observation. An ide
 evidence that geometry disappeared. draw check preserves source PNG bytes in draft-fullres.png and
 reports their digest. This reduces delivery transformations; it cannot guarantee an external viewing
 surface. Never infer a model or rendering failure solely from a contradictory display.
+
+## Create a subject outside the preset catalog
+
+Use new scene.json --kind shape --id tower for a generic rounded colour mass; add more named shapes
+with explicit intents. Inspect object to change length (height / shorter canvas dimension), width
+(width / height), profile block|oval, rounding (0 sharper, 1 ellipse), taper (-.98 narrower bottom,
++.98 narrower top), stroke (width / height, 0 flat fill), fill_color and ink_color. Block uses a
+superellipse, so sharp is still softly rounded. Oval ignores rounding. This is a silhouette, not a
+3D solid or an attached child. Use screen moves and depth to compose; insertion starts in front.
+
+For a local correction inspect --feature left|right|top|bottom --at .5 --radius .25. The orange
+arc shows the influence; endpoint rings stay fixed. Preview --move left|right|up|down --amount .08
+uses the nominal shorter shape extent and screen directions even under rotation. Arc at runs
+clockwise: top left-to-right, right top-to-bottom, bottom right-to-left, left bottom-to-top.
+The arc parameter follows nominal arc length; edited bounds do not reparameterize prior edits.
+Inspect a new revision before each further operation. Reject an unhelpful preview. Combine these
+shapes for new subjects instead of assuming a subject-specific generator must exist first.
+
+Thin marks can use a tall shape with width .008 and stroke 0, rotated as needed. The initial
+width floor .05 blocked this legitimate use; current minimum is .001. At very small sizes inspect
+the actual raster: nominally thin geometry can be below a pixel. This does not add a centerline
+brush or make a thick workaround aesthetically equivalent to a fine line.
+
+Keep your working scene separate from VIEW/TRY exported scene.json/candidate.json/report files.
+The CLI refuses an output/input path collision before writing. If you write a replay script using
+the lower-level bundle API, it accepts a scene value and exports scene.json; it does not know where
+you read that value. Use e.g. working.json and a different output directory.

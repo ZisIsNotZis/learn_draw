@@ -1,0 +1,125 @@
+{
+  "base": "fcd775489925bcf6840901c4bb59471446dfeb1cb6377d9b5b91239639c20152",
+  "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+  "result": "3607ed673a7b8641c50274a2d08163dd3b118f47fc1517c58678821324394b15",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      900,
+      600
+    ],
+    "background": "#f5eddf",
+    "nodes": [
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "the grounded oval foot of a desk lamp",
+        "length": 0.055,
+        "width": 3.5,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.25
+          ]
+        }
+      },
+      {
+        "id": "lamp-stem",
+        "kind": "shape",
+        "intent": "the narrow upright supporting the lamp",
+        "depth": 1.0,
+        "width": 0.09,
+        "length": 0.32,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.09
+          ]
+        }
+      },
+      {
+        "id": "lamp-arm",
+        "kind": "shape",
+        "intent": "the bent upper arm reaching toward the shade",
+        "depth": 2.0,
+        "width": 0.13,
+        "length": 0.22,
+        "angle": -55.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.12666666666666668,
+            -0.13
+          ]
+        }
+      },
+      {
+        "id": "lamp-shade",
+        "kind": "shape",
+        "intent": "the warm wide-bottomed shade of the desk lamp",
+        "depth": 3.0,
+        "length": 0.17,
+        "width": 1.8,
+        "taper": 0.65,
+        "rounding": 0.08
+      }
+    ]
+  },
+  "selection": {
+    "base": "fcd775489925bcf6840901c4bb59471446dfeb1cb6377d9b5b91239639c20152",
+    "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+    "object": "lamp-shade",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      364.3701597670399,
+      248.59200000076055,
+      535.6298402329601,
+      351.40799999990685
+    ],
+    "object_bounds": [
+      364.3701597670399,
+      248.59200000076055,
+      535.6298402329601,
+      351.40799999990685
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "lamp-shade",
+    "feature": "object",
+    "parameter": "rounding",
+    "value": 0.08,
+    "reason": "Keep a gentle angular shade silhouette"
+  },
+  "status": "ready"
+}

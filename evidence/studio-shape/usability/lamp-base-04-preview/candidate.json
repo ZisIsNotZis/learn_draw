@@ -1,0 +1,66 @@
+{
+  "base": "a7eea6c24453ebf715dee1e603d61379ae768f0063a7b6f027b4a700a201cd29",
+  "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+  "result": "bb0d112df67573776eab1127b9decbecb22ed6982d21f16cd1f008dcbbbfd500",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      900,
+      600
+    ],
+    "background": "#f5eddf",
+    "nodes": [
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "the grounded oval foot of a desk lamp",
+        "length": 0.055,
+        "width": 3.5,
+        "profile": "oval",
+        "stroke": 0.0
+      }
+    ]
+  },
+  "selection": {
+    "base": "a7eea6c24453ebf715dee1e603d61379ae768f0063a7b6f027b4a700a201cd29",
+    "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+    "object": "lamp-base",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      392.11835055356374,
+      283.36800073258166,
+      507.88164944643626,
+      316.63199926741834
+    ],
+    "object_bounds": [
+      392.11835055356374,
+      283.36800073258166,
+      507.88164944643626,
+      316.63199926741834
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "lamp-base",
+    "feature": "object",
+    "parameter": "stroke",
+    "value": 0.0,
+    "reason": "Use restrained flat fills"
+  },
+  "status": "ready"
+}

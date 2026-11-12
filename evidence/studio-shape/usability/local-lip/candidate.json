@@ -1,0 +1,207 @@
+{
+  "base": "1dbac26ab2b7fc9ad93cfebd17b8d6628b370cdafa8ef82b8b1aa97e2b806b11",
+  "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+  "result": "cb5dd22b2d5b60b429e221e06747aaec949f349a047517d53e8a3d7d792aef6b",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      900,
+      600
+    ],
+    "background": "#f5eddf",
+    "nodes": [
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "the grounded oval foot of a desk lamp",
+        "length": 0.055,
+        "width": 3.5,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.25
+          ]
+        }
+      },
+      {
+        "id": "lamp-stem",
+        "kind": "shape",
+        "intent": "the narrow upright supporting the lamp",
+        "depth": 1.0,
+        "width": 0.09,
+        "length": 0.32,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.09
+          ]
+        }
+      },
+      {
+        "id": "lamp-arm",
+        "kind": "shape",
+        "intent": "the bent upper arm reaching toward the shade",
+        "depth": 2.0,
+        "width": 0.13,
+        "length": 0.22,
+        "angle": -55.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.12666666666666668,
+            -0.13
+          ]
+        }
+      },
+      {
+        "id": "lamp-shade",
+        "kind": "shape",
+        "intent": "the warm wide-bottomed shade of the desk lamp",
+        "depth": 3.0,
+        "length": 0.17,
+        "width": 1.8,
+        "taper": 0.65,
+        "rounding": 0.08,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#c98d4a"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.05666666666666668,
+            -0.13
+          ]
+        },
+        "edits": [
+          {
+            "side": "bottom",
+            "at": 0.5,
+            "radius": 0.3,
+            "dx": 0.0,
+            "dy": -0.06,
+            "reason": "Lift the middle of the shade lip into a subtle opening while retaining both corners"
+          }
+        ]
+      },
+      {
+        "id": "book-cover",
+        "kind": "shape",
+        "intent": "the thick closed green book beside the lamp",
+        "depth": 4.0,
+        "length": 0.14,
+        "width": 2.7,
+        "rounding": 0.12,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#63766b"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.1866666666666667,
+            0.205
+          ]
+        }
+      },
+      {
+        "id": "book-pages",
+        "kind": "shape",
+        "intent": "the cream page block inset within the closed book cover",
+        "depth": 5.0,
+        "length": 0.075,
+        "width": 4.5,
+        "rounding": 0.06,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#e7d8bb"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.19333333333333333,
+            0.205
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "1dbac26ab2b7fc9ad93cfebd17b8d6628b370cdafa8ef82b8b1aa97e2b806b11",
+    "engine": "32635f2c63cec2e190bd8e18fe5258eef2c121a0a41381ed4bd38587c5e854dd",
+    "object": "lamp-shade",
+    "kind": "feature",
+    "feature": "bottom",
+    "interaction": "contour-push",
+    "side": "bottom",
+    "at": 0.5,
+    "radius": 0.3,
+    "bounds": [
+      346.55386685530016,
+      272.9997069120344,
+      451.4461331446998,
+      273.0
+    ],
+    "object_bounds": [
+      310.1583277854299,
+      171.0,
+      487.84167221457,
+      273.0
+    ],
+    "focus": [
+      398.99999999999994,
+      273.0
+    ],
+    "locks": {
+      "arc-start": [
+        487.0956001274409,
+        271.43501322889927
+      ],
+      "arc-end": [
+        310.904399872559,
+        271.43501322889927
+      ]
+    },
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "screen-direction push in nominal shorter shape extent; clockwise arc: top left-to-right, right top-to-bottom, bottom right-to-left, left bottom-to-top"
+  },
+  "operation": {
+    "side": "bottom",
+    "at": 0.5,
+    "radius": 0.3,
+    "dx": 0.0,
+    "dy": -0.06,
+    "reason": "Lift the middle of the shade lip into a subtle opening while retaining both corners",
+    "object": "lamp-shade",
+    "units": "nominal shorter shape extent"
+  },
+  "status": "ready"
+}
