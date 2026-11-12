@@ -1,0 +1,34 @@
+{
+  "base": "226e99943723a9426d8d67890f69d3f7634bce8fbcab16fd0210409c2f1ad1e6",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "object": "nose",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    253.6779544931883,
+    262.4,
+    386.3220455068117,
+    377.6
+  ],
+  "object_bounds": [
+    253.6779544931883,
+    262.4,
+    386.3220455068117,
+    377.6
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

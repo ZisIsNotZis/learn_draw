@@ -1,0 +1,150 @@
+{
+  "revision": "f77953cf9d4d0f08fd12549b5bf694b8cad6ae37aef999ca9be3b00128927bf0",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\showcase-before\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\showcase-before\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\showcase-before\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\showcase-before\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\showcase-before\\artwork.png": "6993732e6a9662ba209a2c2d0f5a3b51887688f7c1ea1880c427703bba85d855",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\showcase-before\\alignment.png": "aefcf338eede6ad3d88b89c281fa6f287451bcbb683072f59ee88ff38e000e2c",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\showcase-before\\object-closeup.png": "9bea9e663f2b260a3907a958e84d3a6304566904daf5a851cbfc7120ad53cbaa",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\showcase-before\\edit-closeup.png": "42b5dc8fb430d87dd58de1f161eab39b0447b6cbcdd964dbc5d6a51fa2822632"
+  },
+  "nodes": {
+    "colour-mass": {
+      "kind": "shape",
+      "intent": "an editable rounded flat colour mass",
+      "bounds": [
+        237.2608000003879,
+        216.78080000094704,
+        402.7391999996121,
+        423.21919999905293
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            237.2608000003879,
+            216.78080000094704,
+            402.7391999996121,
+            423.21919999905293
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            243.7296176657402,
+            217.6,
+            396.2703823342598,
+            224.66202208217527
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            396.2703823342598,
+            224.66202208217527,
+            401.92,
+            415.33797791782473
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            243.7296176657402,
+            415.33797791782473,
+            396.2703823342598,
+            422.4
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            238.07999999999998,
+            224.66202208217527,
+            243.7296176657402,
+            415.33797791782473
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      }
+    }
+  },
+  "scope": "editable colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints or knuckle",
+    "white target": "local edge focus or digit-tip handle"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; digit tip: nominal digit span"
+}

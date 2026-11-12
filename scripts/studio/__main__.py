@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import sys
 
-from .model import accept, engine_fingerprint, fingerprint, parameter_preview, preview, read, select, undo, validate, write
+from .model import accept, engine_fingerprint, fingerprint, parameter_preview, parameters_preview, preview, read, select, undo, validate, write
 from .render import bundle
 
 
@@ -77,6 +77,7 @@ def main():
             operation=p.add_mutually_exclusive_group(required=True)
             operation.add_argument("--move", choices=("left", "right", "up", "down"))
             operation.add_argument('--set',dest='parameter',help='a semantic control exposed by inspect')
+            operation.add_argument('--change',action='append',metavar='NAME=VALUE',help='repeat for one coherent multi-control preview; accept/undo as one edit')
             p.add_argument('--value',help='numeric value, hairstyle name or hex colour for --set')
             p.add_argument("--amount", type=float, default=.10, help="edge: lock width; object: shorter canvas dimension; digit tip: nominal digit span (default .10)")
             p.add_argument("--reason", required=True)
@@ -145,7 +146,21 @@ def main():
             write(Path(args.outdir)/'report.json',dict(status='preparing',revision=fingerprint(scene),engine=engine_fingerprint(),images=[]))
             (Path(args.outdir)/'report.txt').write_text('',encoding='utf-8')
             selection=read(args.selection)
-            if args.parameter:
+            if args.change:
+                if args.value is not None:
+                    raise ValueError('--change uses NAME=VALUE; --value is used with --set')
+                changes={}
+                for item in args.change:
+                    if '=' not in item:
+                        raise ValueError('--change requires NAME=VALUE')
+                    name,value=item.split('=',1)
+                    if not name or not value:
+                        raise ValueError('--change requires a nonempty NAME and VALUE')
+                    if name in changes:
+                        raise ValueError('duplicate parameter in --change: '+name)
+                    changes[name]=value
+                candidate=parameters_preview(scene,selection,changes,args.reason)
+            elif args.parameter:
                 if args.value is None:
                     raise ValueError('--set requires --value')
                 candidate=parameter_preview(scene,selection,args.parameter,args.value,args.reason)

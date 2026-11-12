@@ -1,0 +1,77 @@
+{
+  "base": "24a0f5de8fd4319db58a270cd9a553268838b847803a1e694009f8a212857153",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "result": "a7ef1b958886b53ab7525acb7116f40569fbe4682a3c93f900c3d9570e1ead1d",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      900,
+      600
+    ],
+    "background": "#f5eddf",
+    "nodes": [
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "the grounded oval foot of a desk lamp",
+        "length": 0.055,
+        "width": 3.5,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.25
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "24a0f5de8fd4319db58a270cd9a553268838b847803a1e694009f8a212857153",
+    "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+    "object": "lamp-base",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      224.24999999999994,
+      283.5,
+      339.74999999999994,
+      316.5
+    ],
+    "object_bounds": [
+      224.24999999999994,
+      283.5,
+      339.74999999999994,
+      316.5
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "lamp-base",
+    "feature": "object",
+    "direction": "down",
+    "amount": 0.25,
+    "units": "shorter canvas dimension",
+    "reason": "Replay one coherent component decision without changing its final drawing"
+  },
+  "status": "ready"
+}

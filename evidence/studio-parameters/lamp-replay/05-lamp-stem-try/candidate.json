@@ -1,0 +1,96 @@
+{
+  "base": "19f2b64aefe2840907ee524ab43153cb83ef88d1d7da638623e71cc5c13496de",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "result": "6e92e722e1160c07ecc839ca299d501da5546c83e9bb7c931bf4883091ef5c6d",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      900,
+      600
+    ],
+    "background": "#f5eddf",
+    "nodes": [
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "the grounded oval foot of a desk lamp",
+        "length": 0.055,
+        "width": 3.5,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.25
+          ]
+        }
+      },
+      {
+        "id": "lamp-stem",
+        "kind": "shape",
+        "intent": "the narrow upright supporting the lamp",
+        "depth": 1.0,
+        "width": 0.09,
+        "length": 0.32,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.09
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "19f2b64aefe2840907ee524ab43153cb83ef88d1d7da638623e71cc5c13496de",
+    "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+    "object": "lamp-stem",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      273.35999999999996,
+      204.0,
+      290.63999999999993,
+      396.0
+    ],
+    "object_bounds": [
+      273.35999999999996,
+      204.0,
+      290.63999999999993,
+      396.0
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "lamp-stem",
+    "feature": "object",
+    "direction": "down",
+    "amount": 0.09,
+    "units": "shorter canvas dimension",
+    "reason": "Replay one coherent component decision without changing its final drawing"
+  },
+  "status": "ready"
+}

@@ -1,0 +1,11 @@
+{
+  "scene_exact": true,
+  "png_bytes_exact": true,
+  "scene_revision": "271c2afa14ba336bcf99ab5e0cb4c00e0762a658b40b4116bc8bf39a0f3027f3",
+  "png_sha256": "0103f189278697c4bc2f48964f276781a860d1e1a3fc6feaa74bd3ddb9cfbb2b",
+  "original_accepted_edits": 63,
+  "grouped_accepted_edits": 28,
+  "grouped_preview_calls": 22,
+  "cli_calls": 73,
+  "limitation": "controlled existing-plan replay; intermediate SVG-only, not a new creative usability trial or timing benchmark"
+}

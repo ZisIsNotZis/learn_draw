@@ -1,0 +1,137 @@
+{
+  "base": "751044d10900f6a8e2ba5b24732abde1d8aeffda873970c3f43bf414493f3cbc",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "result": "394b74709e9cda559bea87e86561164c71c99c613de6d1610c2cbb3f76d8daae",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f6ecdf",
+    "nodes": [
+      {
+        "id": "body",
+        "kind": "shape",
+        "intent": "the cream main hull of a friendly toy rocket",
+        "length": 0.46,
+        "width": 0.5,
+        "rounding": 0.65,
+        "taper": 0.05,
+        "stroke": 0.012,
+        "palette": {
+          "fill": "#ead8b5",
+          "ink": "#76564a"
+        }
+      },
+      {
+        "id": "nose",
+        "kind": "shape",
+        "intent": "the warm red pointed nose cap of the toy rocket",
+        "depth": 1.0,
+        "length": 0.18,
+        "width": 1.2,
+        "rounding": 0.03,
+        "taper": 0.96,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc6150"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.315
+          ]
+        }
+      },
+      {
+        "id": "left-fin",
+        "kind": "shape",
+        "intent": "the left stabilizing red fin of the toy rocket",
+        "depth": -1.0,
+        "length": 0.22,
+        "width": 0.8,
+        "rounding": 0.03,
+        "taper": 0.9,
+        "angle": -18.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc6150"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.12,
+            0.16
+          ]
+        }
+      },
+      {
+        "id": "right-fin",
+        "kind": "shape",
+        "intent": "the right stabilizing red fin of the toy rocket",
+        "depth": -1.0,
+        "length": 0.22,
+        "width": 0.8,
+        "rounding": 0.03,
+        "taper": 0.9,
+        "angle": 18.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc6150"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.12,
+            0.16
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "751044d10900f6a8e2ba5b24732abde1d8aeffda873970c3f43bf414493f3cbc",
+    "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+    "object": "right-fin",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      365.3837921558141,
+      251.62606963433666,
+      469.2297363262458,
+      402.4429999085311
+    ],
+    "object_bounds": [
+      365.3837921558141,
+      251.62606963433666,
+      469.2297363262458,
+      402.4429999085311
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "right-fin",
+    "feature": "object",
+    "direction": "down",
+    "amount": 0.16,
+    "units": "shorter canvas dimension",
+    "reason": "Place the right-fin into the rocket silhouette"
+  },
+  "status": "ready"
+}

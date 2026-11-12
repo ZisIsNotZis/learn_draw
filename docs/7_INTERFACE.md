@@ -10,14 +10,14 @@ the commands that write it (`9_IMPLEMENTATION.md`).
 
 The current editable slice is `python -m scripts.studio`. Scene `format` is
 `learn-draw/studio-1`; `canvas` defaults to [640,640], `background` to warm paper, `nodes` is required.
-Each node requires `id`, `kind` (`head`, `hand`, `hair-lock`, `sky`, `hills`, `moon`, `sun`), `intent`.
+Each node requires `id`, `kind` (`shape`, `head`, `hand`, `hair-lock`, `sky`, `hills`, `moon`, `sun`), `intent`.
 `new --kind landscape` instantiates sky and hills on a 960×640 canvas; `add --kind moon` adds a
 celestial preset. Insertion is journaled and undoable. Existing names are never overwritten.
 `new --size WIDTHxHEIGHT --background '#rrggbb'` optionally sets the canvas and paper at creation.
 Every object selection exposes `intent` as a text control. Stock intent describes the component's
 purpose without duplicating mutable colour or hairstyle values; custom author intent is never
 silently rewritten when changing a parameter.
-Foreground insertion (`add --kind head|hand|hair-lock`) starts on a plane beyond the existing
+Foreground insertion (`add --kind head|hand|hair-lock|shape`) starts on a plane beyond the existing
 components' maximum support depth. `--depth NUMBER` overrides it. Scenic kinds retain their semantic
 background/celestial defaults. Insertion and explicit depth edits remain undoable; visibility still
 comes from support depth rather than the node list.
@@ -70,7 +70,7 @@ support depth independently of node-list order. A sky is opaque, not a transpare
 Styles supply related defaults; explicit palette/star overrides remain deliberate overrides.
 Sky/hills allow depth_slope; their length unit is one shorter canvas dimension.
 
-On an `object` selection, `preview --move left --amount .1` translates a head, standalone lock,
+On an `object` selection, `preview --move left --amount .1` translates a shape, head, hand, standalone lock,
 moon or sun by .1 of the shorter canvas dimension in screen space. Size, tilt and child edits remain
 unchanged. It uses the same revision guard, preview, accept and undo as local pushes. Sky/hills fill
 the canvas and use horizon/relief controls instead. On a local lock selection, amount still means
@@ -293,3 +293,15 @@ Inspection and preview refuse an output file that aliases a working scene or sel
 before writing any candidate/report. Choose separate VIEW/TRY directories. The lower-level bundle
 API receives a scene value and cannot know its source filename; script callers must keep input
 paths separate from exported scene.json/candidate.json/report.json and images.
+
+## Grouped semantic parameter proposal
+
+preview --change NAME=VALUE accepts repeated changes as one proposal on the selected feature.
+It is mutually exclusive with --set/--value and --move. Split only at the first equals sign,
+so an intent may contain equals signs; duplicate names, empty values and unexposed controls are
+refused. Numbers/colours/enums follow the single-control rules. All assignments are made to an
+isolated candidate, then the completed state is validated. Failure leaves the working scene
+unchanged and invalidates an earlier candidate in the reused TRY directory. Rendering failure
+also leaves no ready candidate. Successful accept journals one operation.parameters object;
+one undo restores the complete prior scene. Model API: parameters_preview(scene,selection,changes,reason).
+Legacy parameter_preview retains its existing operation.parameter/value journal format.

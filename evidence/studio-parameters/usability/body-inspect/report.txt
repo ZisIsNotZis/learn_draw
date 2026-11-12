@@ -1,0 +1,4 @@
+D:\vibe\learn_draw_studio\evidence\studio-parameters\usability\body-inspect\artwork.png
+D:\vibe\learn_draw_studio\evidence\studio-parameters\usability\body-inspect\alignment.png
+D:\vibe\learn_draw_studio\evidence\studio-parameters\usability\body-inspect\object-closeup.png
+D:\vibe\learn_draw_studio\evidence\studio-parameters\usability\body-inspect\edit-closeup.png

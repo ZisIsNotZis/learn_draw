@@ -1,0 +1,221 @@
+[
+  {
+    "base": "095c5ec54fbab2e1d08f3cee67b4543789b1029c475f32e501e581cb19a747a6",
+    "result": "396a8293e169613d8e03d605eac5ffc264e7d23f8295d696c86d2fb72c09c7b5",
+    "operation": {
+      "object": "body",
+      "feature": "object",
+      "parameters": {
+        "intent": "the cream main hull of a friendly toy rocket",
+        "length": 0.46,
+        "width": 0.5,
+        "rounding": 0.65,
+        "taper": 0.05,
+        "stroke": 0.012,
+        "fill_color": "#ead8b5",
+        "ink_color": "#76564a"
+      },
+      "reason": "Configure the complete body as a coherent flat toy rocket part"
+    }
+  },
+  {
+    "base": "396a8293e169613d8e03d605eac5ffc264e7d23f8295d696c86d2fb72c09c7b5",
+    "result": "843933b6aa284a2f5691ef37a9f47e0ed250f91063daf7abcb747690a94fa41b",
+    "operation": {
+      "action": "add",
+      "object": "nose",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "843933b6aa284a2f5691ef37a9f47e0ed250f91063daf7abcb747690a94fa41b",
+    "result": "226e99943723a9426d8d67890f69d3f7634bce8fbcab16fd0210409c2f1ad1e6",
+    "operation": {
+      "object": "nose",
+      "feature": "object",
+      "parameters": {
+        "intent": "the warm red pointed nose cap of the toy rocket",
+        "length": 0.18,
+        "width": 1.2,
+        "rounding": 0.03,
+        "taper": 0.96,
+        "stroke": 0.0,
+        "fill_color": "#bc6150"
+      },
+      "reason": "Configure the complete nose as a coherent flat toy rocket part"
+    }
+  },
+  {
+    "base": "226e99943723a9426d8d67890f69d3f7634bce8fbcab16fd0210409c2f1ad1e6",
+    "result": "3437c6513b4aa93dc54c621a4871f64f561bd328bce189e6a867114d4952e4ad",
+    "operation": {
+      "object": "nose",
+      "feature": "object",
+      "direction": "up",
+      "amount": 0.315,
+      "units": "shorter canvas dimension",
+      "reason": "Place the nose into the rocket silhouette"
+    }
+  },
+  {
+    "base": "3437c6513b4aa93dc54c621a4871f64f561bd328bce189e6a867114d4952e4ad",
+    "result": "9d10e6318c60e49f8940381f244c36ad5d144ee30d1d53821d6b1e2d6f0bbf09",
+    "operation": {
+      "action": "add",
+      "object": "left-fin",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "9d10e6318c60e49f8940381f244c36ad5d144ee30d1d53821d6b1e2d6f0bbf09",
+    "result": "5ad3b6696ca29ee27fe8f9f42ebeba0216139cc2ae1b10cdf7bb5a87939a3fae",
+    "operation": {
+      "object": "left-fin",
+      "feature": "object",
+      "parameters": {
+        "intent": "the left stabilizing red fin of the toy rocket",
+        "length": 0.22,
+        "width": 0.8,
+        "rounding": 0.03,
+        "taper": 0.9,
+        "angle": -18.0,
+        "stroke": 0.0,
+        "fill_color": "#bc6150"
+      },
+      "reason": "Configure the complete left-fin as a coherent flat toy rocket part"
+    }
+  },
+  {
+    "base": "5ad3b6696ca29ee27fe8f9f42ebeba0216139cc2ae1b10cdf7bb5a87939a3fae",
+    "result": "1db5522f12c57d37409ebf2c451e1d92294a5fc2474502b8e5728e0be7a57626",
+    "operation": {
+      "object": "left-fin",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.12,
+      "units": "shorter canvas dimension",
+      "reason": "Place the left-fin into the rocket silhouette"
+    }
+  },
+  {
+    "base": "1db5522f12c57d37409ebf2c451e1d92294a5fc2474502b8e5728e0be7a57626",
+    "result": "7ebed187c584952b3b7c5a853b789736151ec993e0341ea3549895fb09a4656b",
+    "operation": {
+      "object": "left-fin",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.16,
+      "units": "shorter canvas dimension",
+      "reason": "Place the left-fin into the rocket silhouette"
+    }
+  },
+  {
+    "base": "7ebed187c584952b3b7c5a853b789736151ec993e0341ea3549895fb09a4656b",
+    "result": "978cf6d35dc08c0827c1f1830949f7baa1a452aaba3facde0e0d4a2f95322dfa",
+    "operation": {
+      "action": "add",
+      "object": "right-fin",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "978cf6d35dc08c0827c1f1830949f7baa1a452aaba3facde0e0d4a2f95322dfa",
+    "result": "f93ce0b61332e4b5ac9318a9f213317c58cbbeb5e87d91152d53411e4c604983",
+    "operation": {
+      "object": "right-fin",
+      "feature": "object",
+      "parameters": {
+        "intent": "the right stabilizing red fin of the toy rocket",
+        "length": 0.22,
+        "width": 0.8,
+        "rounding": 0.03,
+        "taper": 0.9,
+        "angle": 18.0,
+        "stroke": 0.0,
+        "fill_color": "#bc6150"
+      },
+      "reason": "Configure the complete right-fin as a coherent flat toy rocket part"
+    }
+  },
+  {
+    "base": "f93ce0b61332e4b5ac9318a9f213317c58cbbeb5e87d91152d53411e4c604983",
+    "result": "751044d10900f6a8e2ba5b24732abde1d8aeffda873970c3f43bf414493f3cbc",
+    "operation": {
+      "object": "right-fin",
+      "feature": "object",
+      "direction": "right",
+      "amount": 0.12,
+      "units": "shorter canvas dimension",
+      "reason": "Place the right-fin into the rocket silhouette"
+    }
+  },
+  {
+    "base": "751044d10900f6a8e2ba5b24732abde1d8aeffda873970c3f43bf414493f3cbc",
+    "result": "394b74709e9cda559bea87e86561164c71c99c613de6d1610c2cbb3f76d8daae",
+    "operation": {
+      "object": "right-fin",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.16,
+      "units": "shorter canvas dimension",
+      "reason": "Place the right-fin into the rocket silhouette"
+    }
+  },
+  {
+    "base": "394b74709e9cda559bea87e86561164c71c99c613de6d1610c2cbb3f76d8daae",
+    "result": "85697d0e7abaff7047199da080463c7d794c162d8e16f0444415f57965b350ed",
+    "operation": {
+      "action": "add",
+      "object": "porthole-rim",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "85697d0e7abaff7047199da080463c7d794c162d8e16f0444415f57965b350ed",
+    "result": "b6526173de1926c8960628f09ea5fc599ba4fe8bc149c7cabc3dca490c148215",
+    "operation": {
+      "object": "porthole-rim",
+      "feature": "object",
+      "parameters": {
+        "intent": "the round dark rim of the toy rocket porthole",
+        "length": 0.15,
+        "width": 1.0,
+        "profile": "oval",
+        "stroke": 0.0,
+        "fill_color": "#76564a"
+      },
+      "reason": "Configure the complete porthole-rim as a coherent flat toy rocket part"
+    }
+  },
+  {
+    "base": "b6526173de1926c8960628f09ea5fc599ba4fe8bc149c7cabc3dca490c148215",
+    "result": "4bea203256f135adda718ac70a103c7f68400831c24fb5d3c790f24316f6c093",
+    "operation": {
+      "action": "add",
+      "object": "porthole-glass",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "4bea203256f135adda718ac70a103c7f68400831c24fb5d3c790f24316f6c093",
+    "result": "1806a88c3a98436dec01d8243e7978826f2405d945ab7d53fe73ac779f549bd9",
+    "operation": {
+      "object": "porthole-glass",
+      "feature": "object",
+      "parameters": {
+        "intent": "the blue glass inset within the round porthole rim",
+        "length": 0.112,
+        "width": 1.0,
+        "profile": "oval",
+        "stroke": 0.0,
+        "fill_color": "#82b6bd"
+      },
+      "reason": "Configure the complete porthole-glass as a coherent flat toy rocket part"
+    }
+  }
+]

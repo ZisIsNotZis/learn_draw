@@ -394,14 +394,10 @@ def preview(scene, selection, direction, amount, reason):
                 selection=selection, operation=dict(edit,object=selection['object'],feature=selection.get('feature',selection['side'])))
 
 
-def parameter_preview(scene,selection,parameter,value,reason):
-    current_selection(scene,selection)
+def _set_parameter(node,selection,parameter,value):
+    """Assign one exposed semantic value; validate the complete proposed state later."""
     if selection.get('kind')!='feature' or parameter not in selection.get('controls',[]):
         raise ValueError('parameter is not exposed by the selected feature; inspect the relevant feature first')
-    if not isinstance(reason,str) or not reason.strip():
-        raise ValueError('state a drawing reason')
-    candidate=copy.deepcopy(scene)
-    node=node_by_id(candidate,selection['object'])
     aliases={'hair_color':'hair','skin_color':'skin','iris_color':'iris','ink_color':'ink',
              'fill_color':'fill','shade_color':'shade','light_color':'light',
              'top_color':'top','bottom_color':'bottom','stars_color':'stars','far_color':'far',
@@ -423,9 +419,31 @@ def parameter_preview(scene,selection,parameter,value,reason):
             except ValueError:
                 raise ValueError('parameter requires a numeric value') from None
         node[parameter]=value
+    return value
+
+
+def parameters_preview(scene,selection,changes,reason):
+    """One coherent parameter proposal, one validation, one eventual undo entry."""
+    current_selection(scene,selection)
+    if not isinstance(reason,str) or not reason.strip():
+        raise ValueError('state a drawing reason')
+    if not isinstance(changes,dict) or not changes:
+        raise ValueError('provide a nonempty object of semantic parameter changes')
+    candidate=copy.deepcopy(scene)
+    node=node_by_id(candidate,selection['object'])
+    applied={}
+    for parameter,value in changes.items():
+        applied[parameter]=_set_parameter(node,selection,parameter,copy.deepcopy(value))
     validate(candidate)
     return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
-                selection=selection,operation=dict(object=selection['object'],feature=selection['feature'],parameter=parameter,value=value,reason=reason))
+                selection=selection,operation=dict(object=selection['object'],feature=selection['feature'],parameters=applied,reason=reason))
+
+
+def parameter_preview(scene,selection,parameter,value,reason):
+    candidate=parameters_preview(scene,selection,{parameter:value},reason)
+    applied=candidate['operation'].pop('parameters')
+    candidate['operation'].update(parameter=parameter,value=applied[parameter])
+    return candidate
 
 
 def accept(path, candidate):

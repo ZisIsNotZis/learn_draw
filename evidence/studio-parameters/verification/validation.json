@@ -1,0 +1,63 @@
+{
+  "engine": "86774744cc822a5216848cb43fcbec0f005577a3e1186c2f725a2eae65969ba1",
+  "combined_tests": 85,
+  "defaults": {
+    "head": {
+      "scene": "44fe01cc53e9492e9f310d86d694348b483dcf19421006023be78fd1129194e6",
+      "svg_sha256": "1141d11821b6a10f9b5a24f4ad710ba309e4fbc100b6b2cde98473265adaad7a",
+      "png_sha256": "23ad96c4ac624d9dd75b3187d0e56bdb0da4635d774727c4c7022bdbdb8bc48a",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "prior_default_preserved": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "hand": {
+      "scene": "112fac910fd9f239f3c4ad6bb2a46a56b717ac9e029ee61492c21f87738c257b",
+      "svg_sha256": "2834a4c4b6052b2a68337b1d9632dc2eda5c30e96f325d89c9d22fe97612fa17",
+      "png_sha256": "2caeba8d69a6d36074b802b87ad83d9d5421d1a031fac9da1db143d85867bb2c",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "prior_default_preserved": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "shape": {
+      "scene": "f77953cf9d4d0f08fd12549b5bf694b8cad6ae37aef999ca9be3b00128927bf0",
+      "svg_sha256": "e702e0c658cc651edd38bc75cce2f873f5e67712e6d4764f17646780978cfb56",
+      "png_sha256": "6993732e6a9662ba209a2c2d0f5a3b51887688f7c1ea1880c427703bba85d855",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "prior_default_preserved": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "lamp-after-render-fix": {
+      "scene": "271c2afa14ba336bcf99ab5e0cb4c00e0762a658b40b4116bc8bf39a0f3027f3",
+      "svg_sha256": "7acf5e2820208b215fe2a056e92fae02ef18afcb153d38736dc375eb5e7cc77b",
+      "png_sha256": "0103f189278697c4bc2f48964f276781a860d1e1a3fc6feaa74bd3ddb9cfbb2b",
+      "original_independent_png_preserved": true
+    }
+  },
+  "controlled_lamp_replay": {
+    "scene_exact": true,
+    "png_bytes_exact": true,
+    "scene_revision": "271c2afa14ba336bcf99ab5e0cb4c00e0762a658b40b4116bc8bf39a0f3027f3",
+    "png_sha256": "0103f189278697c4bc2f48964f276781a860d1e1a3fc6feaa74bd3ddb9cfbb2b",
+    "original_accepted_edits": 63,
+    "grouped_accepted_edits": 28,
+    "grouped_preview_calls": 22,
+    "cli_calls": 73,
+    "limitation": "controlled existing-plan replay; intermediate SVG-only, not a new creative usability trial or timing benchmark"
+  },
+  "same_scene_rocket_render_repair": {
+    "scene": "1806a88c3a98436dec01d8243e7978826f2405d945ab7d53fe73ac779f549bd9",
+    "scene_unchanged": true,
+    "engine": "86774744cc822a5216848cb43fcbec0f005577a3e1186c2f725a2eae65969ba1",
+    "source_engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+    "png_sha256": "e0e8e63fbbead611b7ea19e3388894fc48045f2ceeb8d8ecd688e949db0c2ada",
+    "repeat_png_equal": true,
+    "all_pixels_equal_proved_noncrossing_reference": true,
+    "old_unexpected_interior_pixels": 24,
+    "old_interior_defects_cleared": 24,
+    "total_changed_pixels": 1912,
+    "boundary_antialias_can_change": true
+  }
+}

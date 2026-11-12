@@ -5,8 +5,8 @@
 # learn_draw
 
 **当前方向（2026-11-12）：让 VLM 能够创作、逐步修正的绘画工作台。** 临摹同时打磨原语、操作体验与绘画
-skill。当前支持用户认可的简洁平涂头部默认预设、独立发束、眼睛／脸型／发型语义调整，以及图上对准的
-局部发束推拉、神态／视线调整、预览、接受和精确撤销。已展示有限的独立复用；整幅作品质量与跨题材创作仍需验证。
+skill。当前支持用户认可的简洁平涂头部默认预设、可调张手、独立发束和通用色块；可以在图上选中部位，
+预览语义调整或局部推拉，再接受、丢弃或精确撤销。已展示有限的独立复用；整幅作品质量与更广泛的创作能力仍需验证。
 
 ```bash
 uv sync
@@ -17,6 +17,11 @@ uv run python examples/studio/compose.py --theme moonrise --refined --outdir evi
 入口：[当前路线图](docs/0_ROADMAP.md)、[操作 skill](skills/drawing-studio/SKILL.md)、[场景接口](docs/7_INTERFACE.md)。
 PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安装浏览器。下文保留此前人物临摹及工具链的说明；
 历史阶段完成不代表当前产品已经验收。
+
+手部已有可见指尖／固定掌根的编辑回路，见[实际招手组合与限制](evidence/studio-hand/README.md)。
+通用 `--kind shape` 支持圆角块、椭圆、渐窄形和局部轮廓修正，可用于预设之外的物体；
+[灯塔与独立台灯试作](evidence/studio-shape/README.md)同时保留了辨识和接触关系上的不足。
+一组相关参数可以用重复的 `preview --change NAME=VALUE` 放进同一次可见预览，接受后也能整体撤销。
 
 天空、山脊、月亮和太阳预设也已支持小幅背景构图与可撤销移动。[实际研究及批评意见](evidence/studio-composition/README.md)
 保留了当前效果的局限；这些能力不等于整幅作品的美术验收。

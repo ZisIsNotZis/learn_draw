@@ -1,0 +1,34 @@
+{
+  "base": "4bea203256f135adda718ac70a103c7f68400831c24fb5d3c790f24316f6c093",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "object": "porthole-glass",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    237.2608000003879,
+    216.78080000094704,
+    402.7391999996121,
+    423.21919999905293
+  ],
+  "object_bounds": [
+    237.2608000003879,
+    216.78080000094704,
+    402.7391999996121,
+    423.21919999905293
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

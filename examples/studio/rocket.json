@@ -1,0 +1,115 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f6ecdf",
+  "nodes": [
+    {
+      "id": "body",
+      "kind": "shape",
+      "intent": "the cream main hull of a friendly toy rocket",
+      "length": 0.46,
+      "width": 0.5,
+      "rounding": 0.65,
+      "taper": 0.05,
+      "stroke": 0.012,
+      "palette": {
+        "fill": "#ead8b5",
+        "ink": "#76564a"
+      }
+    },
+    {
+      "id": "nose",
+      "kind": "shape",
+      "intent": "the warm red pointed nose cap of the toy rocket",
+      "depth": 1.0,
+      "length": 0.18,
+      "width": 1.2,
+      "rounding": 0.03,
+      "taper": 0.96,
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#bc6150"
+      },
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.0,
+          -0.315
+        ]
+      }
+    },
+    {
+      "id": "left-fin",
+      "kind": "shape",
+      "intent": "the left stabilizing red fin of the toy rocket",
+      "depth": -1.0,
+      "length": 0.22,
+      "width": 0.8,
+      "rounding": 0.03,
+      "taper": 0.9,
+      "angle": -18.0,
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#bc6150"
+      },
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.12,
+          0.16
+        ]
+      }
+    },
+    {
+      "id": "right-fin",
+      "kind": "shape",
+      "intent": "the right stabilizing red fin of the toy rocket",
+      "depth": -1.0,
+      "length": 0.22,
+      "width": 0.8,
+      "rounding": 0.03,
+      "taper": 0.9,
+      "angle": 18.0,
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#bc6150"
+      },
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.12,
+          0.16
+        ]
+      }
+    },
+    {
+      "id": "porthole-rim",
+      "kind": "shape",
+      "intent": "the round dark rim of the toy rocket porthole",
+      "depth": 2.0,
+      "length": 0.15,
+      "width": 1.0,
+      "profile": "oval",
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#76564a"
+      }
+    },
+    {
+      "id": "porthole-glass",
+      "kind": "shape",
+      "intent": "the blue glass inset within the round porthole rim",
+      "depth": 3.0,
+      "length": 0.112,
+      "width": 1.0,
+      "profile": "oval",
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#82b6bd"
+      }
+    }
+  ]
+}

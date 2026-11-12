@@ -1,0 +1,13 @@
+{
+  "scene": "1806a88c3a98436dec01d8243e7978826f2405d945ab7d53fe73ac779f549bd9",
+  "scene_unchanged": true,
+  "engine": "86774744cc822a5216848cb43fcbec0f005577a3e1186c2f725a2eae65969ba1",
+  "source_engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "png_sha256": "e0e8e63fbbead611b7ea19e3388894fc48045f2ceeb8d8ecd688e949db0c2ada",
+  "repeat_png_equal": true,
+  "all_pixels_equal_proved_noncrossing_reference": true,
+  "old_unexpected_interior_pixels": 24,
+  "old_interior_defects_cleared": 24,
+  "total_changed_pixels": 1912,
+  "boundary_antialias_can_change": true
+}

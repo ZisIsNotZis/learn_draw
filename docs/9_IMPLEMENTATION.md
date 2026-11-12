@@ -302,3 +302,13 @@ CLI inspect/preview now preflight all generated names against scene/selection in
 resolved paths and existing samefile aliases), refusing collisions before any write. API script
 callers must use a distinct working filename or export directory. This is covered by an actual
 pre-fix failing input-preservation regression.
+
+## Configure one visible part in one preview
+
+After inspecting object, use preview working.json --selection VIEW/selection.json
+--change length=.17 --change width=1.8 --change taper=.65 --change fill_color=#c98d4a
+--reason "Shape and colour the warm lamp shade together" --outdir TRY (one shell command).
+View the combined result, then accept or discard it. Each accepted group is one undo entry.
+Use the single --set/--value route for a single control or --move for a local/object motion.
+The operation tests are scripts.tests.test_studio_parameters; controlled and independent
+creation evidence belongs to evidence/studio-parameters/.

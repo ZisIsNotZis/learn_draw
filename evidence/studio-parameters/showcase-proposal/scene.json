@@ -1,0 +1,23 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "colour-mass",
+      "kind": "shape",
+      "intent": "an editable rounded flat colour mass",
+      "length": 0.17,
+      "width": 1.8,
+      "taper": 0.65,
+      "rounding": 0.08,
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#c98d4a"
+      }
+    }
+  ]
+}

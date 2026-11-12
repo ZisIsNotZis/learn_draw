@@ -72,17 +72,28 @@ def faces_for(scene):
 def global_depth_order(scene):
     """A conservative planar fast path, proved from depths rather than author order.
 
-    A linear depth field reaches extrema at polygon vertices. Disjoint depth
-    intervals admit one exact back-to-front order; crossing intervals use the
-    existing triangle visibility engine. This is not a curved/wrapping shortcut.
+    A linear depth field reaches extrema at polygon vertices. Overlapping depth
+    intervals can still commute when the actual painted projections are disjoint.
+    Every potentially overlapping pair is checked, including nonadjacent ranges;
+    unresolved crossings retain triangle visibility. No surface is moved.
     """
     canvas=scene.get('canvas',[640,640]);intervals=[]
     for node in scene['nodes']:
         low,high=depth_bounds(node,canvas)
         intervals.append((low,high,node))
     intervals.sort(key=lambda item:item[0])
-    if any(a[1]>=b[0]-1e-7 for a,b in zip(intervals,intervals[1:])):
-        return None
+    from shapely import Polygon
+    projections={}
+    def projected(node):
+        if node['id'] not in projections:
+            projections[node['id']]=Polygon(node_outline(node,canvas))
+        return projections[node['id']]
+    for i,(low,high,node) in enumerate(intervals):
+        for other_low,_other_high,other in intervals[i+1:]:
+            if high<other_low-1e-7:
+                break
+            if not projected(node).disjoint(projected(other)):
+                return None
     return [entry[2] for entry in intervals]
 
 

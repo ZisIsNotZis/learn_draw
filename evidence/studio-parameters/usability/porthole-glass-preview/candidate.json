@@ -1,0 +1,168 @@
+{
+  "base": "4bea203256f135adda718ac70a103c7f68400831c24fb5d3c790f24316f6c093",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "result": "1806a88c3a98436dec01d8243e7978826f2405d945ab7d53fe73ac779f549bd9",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f6ecdf",
+    "nodes": [
+      {
+        "id": "body",
+        "kind": "shape",
+        "intent": "the cream main hull of a friendly toy rocket",
+        "length": 0.46,
+        "width": 0.5,
+        "rounding": 0.65,
+        "taper": 0.05,
+        "stroke": 0.012,
+        "palette": {
+          "fill": "#ead8b5",
+          "ink": "#76564a"
+        }
+      },
+      {
+        "id": "nose",
+        "kind": "shape",
+        "intent": "the warm red pointed nose cap of the toy rocket",
+        "depth": 1.0,
+        "length": 0.18,
+        "width": 1.2,
+        "rounding": 0.03,
+        "taper": 0.96,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc6150"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.315
+          ]
+        }
+      },
+      {
+        "id": "left-fin",
+        "kind": "shape",
+        "intent": "the left stabilizing red fin of the toy rocket",
+        "depth": -1.0,
+        "length": 0.22,
+        "width": 0.8,
+        "rounding": 0.03,
+        "taper": 0.9,
+        "angle": -18.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc6150"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.12,
+            0.16
+          ]
+        }
+      },
+      {
+        "id": "right-fin",
+        "kind": "shape",
+        "intent": "the right stabilizing red fin of the toy rocket",
+        "depth": -1.0,
+        "length": 0.22,
+        "width": 0.8,
+        "rounding": 0.03,
+        "taper": 0.9,
+        "angle": 18.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc6150"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.12,
+            0.16
+          ]
+        }
+      },
+      {
+        "id": "porthole-rim",
+        "kind": "shape",
+        "intent": "the round dark rim of the toy rocket porthole",
+        "depth": 2.0,
+        "length": 0.15,
+        "width": 1.0,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#76564a"
+        }
+      },
+      {
+        "id": "porthole-glass",
+        "kind": "shape",
+        "intent": "the blue glass inset within the round porthole rim",
+        "depth": 3.0,
+        "length": 0.112,
+        "width": 1.0,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#82b6bd"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "4bea203256f135adda718ac70a103c7f68400831c24fb5d3c790f24316f6c093",
+    "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+    "object": "porthole-glass",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "object_bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "porthole-glass",
+    "feature": "object",
+    "parameters": {
+      "intent": "the blue glass inset within the round porthole rim",
+      "length": 0.112,
+      "width": 1.0,
+      "profile": "oval",
+      "stroke": 0.0,
+      "fill_color": "#82b6bd"
+    },
+    "reason": "Configure the complete porthole-glass as a coherent flat toy rocket part"
+  },
+  "status": "ready"
+}

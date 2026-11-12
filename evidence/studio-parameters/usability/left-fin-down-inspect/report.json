@@ -1,0 +1,394 @@
+{
+  "revision": "1db5522f12c57d37409ebf2c451e1d92294a5fc2474502b8e5728e0be7a57626",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\usability\\left-fin-down-inspect\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\usability\\left-fin-down-inspect\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\usability\\left-fin-down-inspect\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\usability\\left-fin-down-inspect\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\usability\\left-fin-down-inspect\\artwork.png": "420d890fb9ad84d8680d489a4fa9a238aa9148d6fdf5bb882c8269e50c068b79",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\usability\\left-fin-down-inspect\\alignment.png": "671beef495fad067b56a27d15b066f8415ae455800612712212d02ce0cf305cd",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\usability\\left-fin-down-inspect\\object-closeup.png": "f76e0b5aa362cbd20f889d0c0d03c9b969092fff9947b07075099aabd52f5bc8",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-parameters\\usability\\left-fin-down-inspect\\edit-closeup.png": "ff46a2d5155fa4f049828d6cfa1890a54c5f77fc216a0b105a65e2167c8aaa99"
+  },
+  "nodes": {
+    "body": {
+      "kind": "shape",
+      "intent": "the cream main hull of a friendly toy rocket",
+      "bounds": [
+        245.39550958812282,
+        171.03360000579247,
+        394.6044904118772,
+        468.9663999947723
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            245.39550958812282,
+            171.03360000579247,
+            394.6044904118772,
+            468.9663999947723
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            254.78389261382443,
+            172.79999999999998,
+            385.21610738617557,
+            182.9516567431269
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            385.21610738617557,
+            182.9516567431269,
+            392.83809069234604,
+            457.04834325687307
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            251.5939727107243,
+            457.04834325687307,
+            388.4060272892757,
+            467.20000000000005
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            247.16190930765396,
+            182.9516567431269,
+            254.78389261382443,
+            457.04834325687307
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      }
+    },
+    "nose": {
+      "kind": "shape",
+      "intent": "the warm red pointed nose cap of the toy rocket",
+      "bounds": [
+        253.6779544931883,
+        60.80000000000001,
+        386.3220455068117,
+        176.0
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            253.6779544931883,
+            60.80000000000001,
+            386.3220455068117,
+            176.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            316.37369292735394,
+            60.80000000000001,
+            323.62630707264606,
+            62.4854437074951
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            323.62630707264606,
+            62.4854437074951,
+            386.3220455068117,
+            174.3145562925049
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            253.84494081959994,
+            174.3145562925049,
+            386.15505918040003,
+            176.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            253.6779544931883,
+            62.4854437074951,
+            316.37369292735394,
+            174.3145562925049
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      }
+    },
+    "left-fin": {
+      "kind": "shape",
+      "intent": "the left stabilizing red fin of the toy rocket",
+      "bounds": [
+        170.7702636737542,
+        251.62606963433666,
+        274.61620784418596,
+        402.442999908531
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            170.7702636737542,
+            251.62606963433666,
+            274.61620784418596,
+            402.442999908531
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            258.4339471951666,
+            251.62606963433666,
+            270.2025037827235,
+            256.9167029940834
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            270.2025037827235,
+            256.9167029940834,
+            274.61620784418596,
+            401.6673354361882
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            170.7702636737542,
+            368.3230944071737,
+            273.39328534835573,
+            402.442999908531
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            170.7702636737542,
+            253.09286716255465,
+            258.4339471951666,
+            368.3230944071737
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      }
+    }
+  },
+  "scope": "editable colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints or knuckle",
+    "white target": "local edge focus or digit-tip handle"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; digit tip: nominal digit span"
+}

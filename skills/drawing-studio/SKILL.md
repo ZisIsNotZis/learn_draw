@@ -1,6 +1,6 @@
 ---
 name: drawing-studio
-description: Create and refine programmatic flat-cartoon heads, front-view open hands, hair locks and small scenic illustrations with learn_draw's revision-bound workbench. Use for scene composition, semantic feature controls, visible object placement, digit-tip moves, local edge pushes, previews and undo. Scenic presets are sky, hills, moon and sun.
+description: Create and refine programmatic vector art with learn_draw's revision-bound workbench, using generic editable colour masses and semantic head, hand, hair and scenic presets. Use for new-subject composition, grouped parameter previews, visible placement, digit-tip moves, local contour pushes, acceptance and undo.
 ---
 
 # Drawing studio
@@ -21,7 +21,11 @@ Run from this repository with `python -m scripts.studio`. Use the current goal a
    --value .92 --reason "Quieter eye proportions" --outdir TRY`. For a selected lock edge use
    `preview scene.json --selection VIEW/selection.json --move right --amount .10
    --reason "the inner edge is too straight" --outdir TRY` (one shell line).
-   Amount is a fraction of nominal object width. Read the resulting normal artwork and overlay;
+   To configure one coherent part, use repeated `--change length=.17 --change width=1.8
+   --change taper=.65 --change fill_color=#c98d4a` instead of --set/--value. Read the complete
+   resulting preview before accepting; the group is one edit and one undo step. Controls must all
+   belong to the inspected feature. Use one drawing reason for the combined decision.
+   A lock-edge amount is a fraction of nominal lock width. Read the resulting normal artwork and overlay;
    compare the local change and whole shape. The preview has not overwritten the scene.
 4. Accept with `accept scene.json TRY/candidate.json` when the change helps the stated issue;
    otherwise discard TRY. Inspect the new revision before the next edit. Use `undo scene.json`

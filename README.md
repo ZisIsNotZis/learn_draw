@@ -19,6 +19,7 @@ An editable five-digit open-hand preset also supports visible tip edits around f
 including discarding an unhelpful edit; it does not establish an attached body or general anatomy rig.
 Try `uv run python -m scripts.studio new hand.json --kind hand`, then inspect its index feature.
 Generic `--kind shape` adds editable blocks/ovals/tapers for subjects outside the preset catalog;
+repeat `preview --change NAME=VALUE` to configure related controls in one visible, undoable proposal.
 [the actual coastal and independent creation studies](evidence/studio-shape/README.md) retain their
 visual limitations. A working contour tool is not a whole-illustration pass.
 

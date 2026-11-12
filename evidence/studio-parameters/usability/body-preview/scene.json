@@ -1,0 +1,24 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f6ecdf",
+  "nodes": [
+    {
+      "id": "body",
+      "kind": "shape",
+      "intent": "the cream main hull of a friendly toy rocket",
+      "length": 0.46,
+      "width": 0.5,
+      "rounding": 0.65,
+      "taper": 0.05,
+      "stroke": 0.012,
+      "palette": {
+        "fill": "#ead8b5",
+        "ink": "#76564a"
+      }
+    }
+  ]
+}

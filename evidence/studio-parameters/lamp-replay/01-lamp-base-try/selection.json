@@ -1,0 +1,34 @@
+{
+  "base": "1b26c546722f766bc1084c68efcf8923822b001d06eff6523e9449f3052e1ce7",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "object": "lamp-base",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    392.25,
+    283.5,
+    507.75,
+    316.5
+  ],
+  "object_bounds": [
+    392.25,
+    283.5,
+    507.75,
+    316.5
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

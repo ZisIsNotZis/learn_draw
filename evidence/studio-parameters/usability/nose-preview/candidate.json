@@ -1,0 +1,92 @@
+{
+  "base": "843933b6aa284a2f5691ef37a9f47e0ed250f91063daf7abcb747690a94fa41b",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "result": "226e99943723a9426d8d67890f69d3f7634bce8fbcab16fd0210409c2f1ad1e6",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f6ecdf",
+    "nodes": [
+      {
+        "id": "body",
+        "kind": "shape",
+        "intent": "the cream main hull of a friendly toy rocket",
+        "length": 0.46,
+        "width": 0.5,
+        "rounding": 0.65,
+        "taper": 0.05,
+        "stroke": 0.012,
+        "palette": {
+          "fill": "#ead8b5",
+          "ink": "#76564a"
+        }
+      },
+      {
+        "id": "nose",
+        "kind": "shape",
+        "intent": "the warm red pointed nose cap of the toy rocket",
+        "depth": 1.0,
+        "length": 0.18,
+        "width": 1.2,
+        "rounding": 0.03,
+        "taper": 0.96,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc6150"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "843933b6aa284a2f5691ef37a9f47e0ed250f91063daf7abcb747690a94fa41b",
+    "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+    "object": "nose",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "object_bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "nose",
+    "feature": "object",
+    "parameters": {
+      "intent": "the warm red pointed nose cap of the toy rocket",
+      "length": 0.18,
+      "width": 1.2,
+      "rounding": 0.03,
+      "taper": 0.96,
+      "stroke": 0.0,
+      "fill_color": "#bc6150"
+    },
+    "reason": "Configure the complete nose as a coherent flat toy rocket part"
+  },
+  "status": "ready"
+}

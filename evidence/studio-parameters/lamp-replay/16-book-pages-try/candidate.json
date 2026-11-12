@@ -1,0 +1,177 @@
+{
+  "base": "2990fed0d2fd40f39a2ea1abb663c8e29b39860641a7ef841ec7a28423d40ae7",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "result": "d9f00b95a293b04b666bde2cc9cb372638dfe1bf005efcc65bbd977666ab18f7",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      900,
+      600
+    ],
+    "background": "#f5eddf",
+    "nodes": [
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "the grounded oval foot of a desk lamp",
+        "length": 0.055,
+        "width": 3.5,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.25
+          ]
+        }
+      },
+      {
+        "id": "lamp-stem",
+        "kind": "shape",
+        "intent": "the narrow upright supporting the lamp",
+        "depth": 1.0,
+        "width": 0.09,
+        "length": 0.32,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.1866666666666667,
+            0.09
+          ]
+        }
+      },
+      {
+        "id": "lamp-arm",
+        "kind": "shape",
+        "intent": "the bent upper arm reaching toward the shade",
+        "depth": 2.0,
+        "width": 0.13,
+        "length": 0.22,
+        "angle": -55.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#705448"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.12666666666666668,
+            -0.13
+          ]
+        }
+      },
+      {
+        "id": "lamp-shade",
+        "kind": "shape",
+        "intent": "the warm wide-bottomed shade of the desk lamp",
+        "depth": 3.0,
+        "length": 0.17,
+        "width": 1.8,
+        "taper": 0.65,
+        "rounding": 0.08,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#c98d4a"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.05666666666666668,
+            -0.13
+          ]
+        }
+      },
+      {
+        "id": "book-cover",
+        "kind": "shape",
+        "intent": "the thick closed green book beside the lamp",
+        "depth": 4.0,
+        "length": 0.14,
+        "width": 2.7,
+        "rounding": 0.12,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#63766b"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.1866666666666667,
+            0.205
+          ]
+        }
+      },
+      {
+        "id": "book-pages",
+        "kind": "shape",
+        "intent": "the cream page block inset within the closed book cover",
+        "depth": 5.0,
+        "length": 0.075,
+        "width": 4.5,
+        "rounding": 0.06,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#e7d8bb"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.19333333333333333,
+            0.0
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "2990fed0d2fd40f39a2ea1abb663c8e29b39860641a7ef841ec7a28423d40ae7",
+    "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+    "object": "book-pages",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      348.75,
+      277.5,
+      551.25,
+      322.5
+    ],
+    "object_bounds": [
+      348.75,
+      277.5,
+      551.25,
+      322.5
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "book-pages",
+    "feature": "object",
+    "direction": "right",
+    "amount": 0.29,
+    "units": "shorter canvas dimension",
+    "reason": "Replay one coherent component decision without changing its final drawing"
+  },
+  "status": "ready"
+}

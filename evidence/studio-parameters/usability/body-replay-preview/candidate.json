@@ -1,0 +1,79 @@
+{
+  "base": "095c5ec54fbab2e1d08f3cee67b4543789b1029c475f32e501e581cb19a747a6",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "result": "396a8293e169613d8e03d605eac5ffc264e7d23f8295d696c86d2fb72c09c7b5",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f6ecdf",
+    "nodes": [
+      {
+        "id": "body",
+        "kind": "shape",
+        "intent": "the cream main hull of a friendly toy rocket",
+        "length": 0.46,
+        "width": 0.5,
+        "rounding": 0.65,
+        "taper": 0.05,
+        "stroke": 0.012,
+        "palette": {
+          "fill": "#ead8b5",
+          "ink": "#76564a"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "095c5ec54fbab2e1d08f3cee67b4543789b1029c475f32e501e581cb19a747a6",
+    "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+    "object": "body",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "object_bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "body",
+    "feature": "object",
+    "parameters": {
+      "intent": "the cream main hull of a friendly toy rocket",
+      "length": 0.46,
+      "width": 0.5,
+      "rounding": 0.65,
+      "taper": 0.05,
+      "stroke": 0.012,
+      "fill_color": "#ead8b5",
+      "ink_color": "#76564a"
+    },
+    "reason": "Configure the complete body as a coherent flat toy rocket part"
+  },
+  "status": "ready"
+}

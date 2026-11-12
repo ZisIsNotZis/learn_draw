@@ -156,10 +156,24 @@ SVG/CPU PNG, and earlier default head/hand pixels are preserved. A working-sourc
 found during replay also has a pre-fix failing regression and CLI input-preservation guard.
 See evidence/studio-shape/README.md for source bindings, review provenance and exact limitations.
 
-**Next action:** reduce the demonstrated creation overhead with one atomic visible preview for
-a coherent group of semantic parameter changes. Then test relative placement/attachment on a
-subject whose separate parts must meet; the lamp joint and cliff contact make that gap concrete.
-Keep actual drawing decisions visible, including rejecting a mechanically valid but poor edit.
+Related semantic settings now form one visible, atomic --change proposal. Controlled public-CLI
+replay of the actual lamp plan reduces accepted records from 63 to 28 while preserving the exact
+scene and PNG. A separate independent six-part toy rocket actually views complete groups, exercises
+one-step undo/replay and rejects/corrects an ill-seated nose. Its fresh image critiques find a
+clearly readable emblem plus minor joint/border issues. They also expose 24 real interior fin flecks:
+disjoint coplanar fins unnecessarily triggered compound triangle clipping. The renderer now proves
+commutativity from disjoint painted projections for every overlapping depth-interval pair; true
+crossings retain the depth solver. The original scene is unchanged, the diagnosed flecks disappear,
+and a second fresh image pair sees no new defect. Raw actor source/artwork remain intact.
+85 combined tests and current default-head/hand/mass byte preservation pass.
+See evidence/studio-parameters/README.md for independent use, exact replay, rendering diagnosis,
+review provenance and the boundary on genuinely intersecting masks.
+
+**Next action:** test visible relative placement/attachment on a subject whose separate parts must
+meet. Inspect the actual joint geometry first: the lamp elbow, rocket nose and cliff contact do not
+automatically share the same cause. Prefer a computed semantic anchor with a real before/after
+assembly over another batch of hand-adjusted coordinates. Keep actual drawing decisions visible,
+including rejecting a mechanically valid but poor edit.
 More presets alone cannot establish open-ended creative capability.
 Do not turn a hand icon or this cover's limited usability into a whole-portrait/illustration pass.
 Preserve the legacy portrait. The development branch is

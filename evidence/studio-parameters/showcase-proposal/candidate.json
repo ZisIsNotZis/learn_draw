@@ -1,0 +1,76 @@
+{
+  "base": "f77953cf9d4d0f08fd12549b5bf694b8cad6ae37aef999ca9be3b00128927bf0",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "result": "ac4c5f19d2086d7b5c95345e2d367971741ae85f800a6965b8a2ff8ae7cc750c",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "colour-mass",
+        "kind": "shape",
+        "intent": "an editable rounded flat colour mass",
+        "length": 0.17,
+        "width": 1.8,
+        "taper": 0.65,
+        "rounding": 0.08,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#c98d4a"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "f77953cf9d4d0f08fd12549b5bf694b8cad6ae37aef999ca9be3b00128927bf0",
+    "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+    "object": "colour-mass",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "object_bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "colour-mass",
+    "feature": "object",
+    "parameters": {
+      "length": 0.17,
+      "width": 1.8,
+      "taper": 0.65,
+      "rounding": 0.08,
+      "stroke": 0.0,
+      "fill_color": "#c98d4a"
+    },
+    "reason": "Shape and colour one coherent warm lamp shade before judging it"
+  },
+  "status": "ready"
+}

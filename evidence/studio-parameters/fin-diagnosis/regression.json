@@ -1,0 +1,14 @@
+{
+  "before_fix": {
+    "tests": 2,
+    "failed": 1,
+    "failure": "a depth tie between disjoint painted parts changed the artwork"
+  },
+  "after_fix": {
+    "tests": 2,
+    "failed": 0
+  },
+  "test_module": "scripts.tests.test_studio_noncrossing",
+  "source_before": "../source-before-noncrossing-fix/",
+  "scene_geometry_changed": false
+}

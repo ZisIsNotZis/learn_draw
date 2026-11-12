@@ -56,10 +56,13 @@ and applies aperture clips. Artwork curves are explicit recipe choices. A sample
 and namespaced SVG form the planar component. Semantic feature paths and child-lock rows provide
 selection locations; parent 2D tilt is inverted when converting a screen-direction child push.
 
-The renderer proves a global order only for the current planar families whose complete linear depth
-intervals do not overlap. Vertex extrema establish that conservative condition. It paints those
-components in derived depth order, preserving ordinary vector antialiasing; no authored order or
-visibility cut is consumed. Crossing intervals use the existing triangle depth engine. Its regions
+The renderer proves a global order for the current planar families by checking complete linear
+depth intervals and painted projections. Vertex extrema bound each depth interval. Every pair with
+overlapping depth intervals must have disjoint painted projections; all potentially overlapping
+pairs are checked, not just neighboring intervals. Disjoint projections commute, so two separate
+parts can share a support plane without unnecessary self-clipping. Components paint in derived
+depth order, preserving ordinary vector antialiasing; no authored order or visibility cut is
+consumed. Unresolved overlapping projections/depths use the existing triangle depth engine. Its regions
 are reused across unchanged full/alignment/crop views. Tests include a crossing-plane negative case,
 two heads with independent clip IDs, and actual raster checks. This shortcut is not used for curved
 or wrapping surfaces. A scene view begins with an empty in-progress report so failed rasterization
@@ -166,3 +169,16 @@ existing depth machinery occlude both fill and ink correctly. Local edits retain
 polygon; self-intersection/collapse refuses the proposal. This contour editor deliberately offers
 fewer degrees of freedom than SVG path editing; it currently has no holes, arbitrary corner
 insertion, booleans between scene objects or articulated attachment.
+
+## Independent flat-fill defect and renderer proof boundary
+
+The grouped-creation rocket exposed 24 nonuniform pixels more than two pixels inside the visible
+right fin, despite an untextured flat fill. Both disjoint fins had depth -1. The previous interval
+check forced all components through a compound triangle clip mask; a separately proved noncrossing
+render removed every diagnosed interior fleck without changing the scene. The conservative order
+proof now admits disjoint projections even when depth intervals overlap. The regression fails
+before this change and passes after it; a second raster case checks a real nonadjacent depth crossing.
+This avoids unnecessary compound-mask raster seams for the proved noncrossing class. It does not
+establish that all genuinely intersecting clip masks are free of numerical/antialias artifacts.
+Original author output, source snapshot, coordinate/color facts and clean-render comparison are
+retained in evidence/studio-parameters/. No geometry, depth or pixel-specific repair is authored.

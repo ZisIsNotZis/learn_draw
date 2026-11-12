@@ -1,0 +1,34 @@
+{
+  "base": "69af1f385a0ceb98a198a1e612ce26c84854a03548e6d7b16c81d5dbd552f09b",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "object": "page-seam",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    390.0,
+    297.0,
+    510.0,
+    303.0
+  ],
+  "object_bounds": [
+    390.0,
+    297.0,
+    510.0,
+    303.0
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

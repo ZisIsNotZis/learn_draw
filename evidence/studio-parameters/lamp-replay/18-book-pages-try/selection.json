@@ -1,0 +1,34 @@
+{
+  "base": "1dbac26ab2b7fc9ad93cfebd17b8d6628b370cdafa8ef82b8b1aa97e2b806b11",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "object": "book-pages",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    522.75,
+    400.5,
+    725.25,
+    445.5
+  ],
+  "object_bounds": [
+    522.75,
+    400.5,
+    725.25,
+    445.5
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

@@ -1,0 +1,34 @@
+{
+  "base": "4f1a0ccb0c811a7f450fe647afebeff69a5f3eb3865f952ad367d337f6ca9868",
+  "engine": "d8fd65d5c5ec971c35ad074cf388706d771d96a893c467a4da7a3c47004c1d6b",
+  "object": "book-cover",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    504.6000000000001,
+    258.0,
+    731.4000000000001,
+    342.0
+  ],
+  "object_bounds": [
+    504.6000000000001,
+    258.0,
+    731.4000000000001,
+    342.0
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}
