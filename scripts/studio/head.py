@@ -27,11 +27,12 @@ from scripts.studio.geometry import bounds, lock_rows, mix, outline, resolve_roo
 from scripts.studio.render import tone_region
 
 
-def build_spec(eye_scale=1, jaw=.42, canvas=(640,640), center=None, length=.55, width=.79):
+def build_spec(eye_scale=1, jaw=.42, canvas=(640,640), center=None, length=.55, width=.79,
+               expression='gentle',gaze=0):
     # Head framing is a composition choice. All face parts derive from this host.
     ink, skin = "#493b40", "#f1d1b9"
     center = center or (canvas[0]*.5,canvas[1]*.44)
-    return dict(frame=dict(w=canvas[0], h=canvas[1]), layers=["paper", "neck", "ears", "face", "features"], vars={
+    spec=dict(frame=dict(w=canvas[0], h=canvas[1]), layers=["paper", "neck", "ears", "face", "features"], vars={
         "head_h": min(canvas)*length, "head_w": f"head_h*{width}"}, draw=[
         {"rect": "paper", "full": True, "fill": "#f5eee4", "z": "paper", "desc": "warm quiet paper field"},
         {"face": "head", "at": list(center), "rx": "head_w*.5", "ry": "head_h*.5",
@@ -46,7 +47,7 @@ def build_spec(eye_scale=1, jaw=.42, canvas=(640,640), center=None, length=.55, 
          "z": "ears", "desc": "right ear partly covered by the face"},
         {"eye": "eye-left", "host": "head", "at": ["head.cx-head.w*.235", "head.cy+head.ry*.12"],
          "w": f"head.w*{.275*eye_scale}", "h": f"head.w*{.17*eye_scale}", "tilt": -3,
-         "gaze": 0, "iris-top-fill": "#68483f", "iris-bot-fill": "#b78767", "lash-fill": ink,
+         "gaze": 2*gaze, "iris-top-fill": "#68483f", "iris-bot-fill": "#b78767", "lash-fill": ink,
          "iris-w": .24, "iris-h": .46,
          "line-w": .035, "glints": 1, "z": "features", "desc": "layered almond left eye"},
         {"eye": "eye-right", "host": "head", "mirror-of": "eye-left", "z": "features", "desc": "matching right eye"},
@@ -67,6 +68,32 @@ def build_spec(eye_scale=1, jaw=.42, canvas=(640,640), center=None, length=.55, 
                                              ["head.cx+head.w*.065", "head.cy+head.ry*.69"]],
          "w": 2.3, "ink": "#a4635e", "z": "features", "desc": "short relaxed closed smile"},
     ])
+    if expression not in ('gentle','neutral','smile','curious'):
+        raise ValueError('expression: gentle/neutral/smile/curious')
+    if expression!='gentle':
+        parts={n.get('stroke'):n for n in spec['draw'] if 'stroke' in n}
+        eyes={n.get('eye'):n for n in spec['draw'] if 'eye' in n}
+        if expression=='smile':
+            eyes['eye-left'].update({'lower-lid':.4})
+        elif expression=='curious':
+            eyes['eye-left'].update({'upper-lid':1.4,'lower-lid':1.2})
+            eyes['eye-right'].update({'upper-lid':.96,'lower-lid':.96})
+        mouth={
+            'neutral':((-.065,.70),(0,.70),(.065,.70)),
+            'smile':((-.105,.655),(0,.76),(.105,.655)),
+            'curious':((-.055,.70),(0,.71),(.065,.675)),
+        }[expression]
+        parts['mouth']['spine']=[[f'head.cx+head.w*{x}',f'head.cy+head.ry*{y}'] for x,y in mouth]
+        parts['mouth']['desc']='a '+expression+' closed-mouth gesture derived from the face ruler'
+        brows={
+            'neutral':((-.075,-.08,-.075),(-.075,-.08,-.075)),
+            'smile':((-.095,-.145,-.095),(-.095,-.145,-.095)),
+            'curious':((-.13,-.22,-.15),(-.055,-.085,-.06)),
+        }[expression]
+        for side,xs,ys in zip(('left','right'),((-.38,-.24,-.12),(.12,.24,.38)),brows):
+            parts['brow-'+side]['spine']=[[f'head.cx+head.w*{x}',f'head.cy+head.ry*{y}'] for x,y in zip(xs,ys)]
+            parts['brow-'+side]['desc']='the '+side+' brow in a '+expression+' expression'
+    return spec
 
 
 def add_bob(nodes, anchors, layers, side_part=False, canvas=(640,640), hair_edits=None):
@@ -158,8 +185,8 @@ def add_bob(nodes, anchors, layers, side_part=False, canvas=(640,640), hair_edit
 
 
 def compile_recipe(eye_scale=1, jaw=.42, hair="side-part", canvas=(640,640), center=None,
-                   length=.55, width=.79, hair_edits=None, palette=None):
-    spec = build_spec(eye_scale, jaw, canvas, center, length, width)
+                   length=.55, width=.79, hair_edits=None, palette=None,expression='gentle',gaze=0):
+    spec = build_spec(eye_scale, jaw, canvas, center, length, width,expression,gaze)
     nodes, anchors, _notes, _layers = relate.resolve(spec)
     # A head-only preset ends at its silhouette. A neck without shoulders made
     # the first probe resemble a mannequin on a capsule pedestal.
@@ -316,7 +343,7 @@ def _head_data(encoded, canvas):
     angle=node.get('angle',0)
     data=compile_recipe(node.get('eye_scale',1),node.get('jaw',.42),node.get('hair','side-part'),
                         canvas,center,node.get('length',.55),node.get('width',.79),
-                        node.get('hair_edits'),node.get('palette'))
+                        node.get('hair_edits'),node.get('palette'),node.get('expression','gentle'),node.get('gaze',0))
     root=data['root']
     by_id={el.get('id'):el for el in root if el.get('id')}
     from shapely import Polygon, union_all
@@ -338,9 +365,12 @@ def _head_data(encoded, canvas):
     outer=tuple(footprint.exterior.coords)[:-1]
     transform=f'rotate({-angle} {center[0]} {center[1]})' if angle else ''
     features={}
-    controls={'eyes':['eye_scale','iris_color'], 'face':['jaw','skin_color'], 'hair':['hair','hair_color'],
-              'object':['intent','eye_scale','jaw','hair','length','width','angle','depth','depth_slope','hair_color','skin_color','iris_color','ink_color']}
-    for name,ids in (('eyes',['eye-left-sclera','eye-right-sclera']),('face',['head-contour']),('hair',['hair-front-union'])):
+    controls={'eyes':['eye_scale','iris_color','gaze'], 'face':['jaw','skin_color'], 'hair':['hair','hair_color'],
+              'expression':['expression'],
+              'object':['intent','expression','gaze','eye_scale','jaw','hair','length','width','angle','depth','depth_slope','hair_color','skin_color','iris_color','ink_color']}
+    eye_marks=['eye-left-sclera','eye-right-sclera','eye-left-lash','eye-right-lash']
+    for name,ids in (('eyes',eye_marks),('face',['head-contour']),('hair',['hair-front-union']),
+                     ('expression',['brow-left','brow-right','mouth']+eye_marks)):
         paths=[];pts=[]
         for sid in ids:
             if sid in by_id:

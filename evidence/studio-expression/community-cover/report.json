@@ -1,0 +1,237 @@
+{
+  "revision": "8acd1a42410e51af1e294d60b94232a4a3115d25bada603c2486362bbe1cae75",
+  "engine": "c7190958d6d9a6ffd0ff3a37bc72748371fedc196d5c39d99974cad4299b1c67",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\community-cover\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\community-cover\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\community-cover\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\community-cover\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\community-cover\\artwork.png": "86ea9ab12685ec3163f03c33a6d8ab3f1bf74d7177ee9e6db6afb64f6b027c79",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\community-cover\\alignment.png": "6bbf7fd5f9ea15d23a95332b78c81f6987cc2f8e1f0464bb5e77c4e7f537cbb5",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\community-cover\\object-closeup.png": "605dd24624b37ddc8595b3a3870c1cbdef37fa85f7695600fbc48b55806f7d46",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\community-cover\\edit-closeup.png": "b275a9e18ebc592a53c4ed92025ced7f1874611bc89018aa54f11c2c4662f712"
+  },
+  "nodes": {
+    "quiet-paper": {
+      "kind": "sky",
+      "intent": "A restrained warm paper atmosphere behind the two community avatars",
+      "bounds": [
+        0,
+        0,
+        960,
+        540
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            0,
+            0,
+            960,
+            540
+          ],
+          "controls": [
+            "intent",
+            "depth",
+            "depth_slope",
+            "style",
+            "stars",
+            "seed",
+            "top_color",
+            "bottom_color",
+            "stars_color"
+          ]
+        }
+      }
+    },
+    "questioning-member": {
+      "kind": "head",
+      "intent": "An inquisitive member turning attention toward a friendly partner",
+      "bounds": [
+        63.79926861279459,
+        86.23985414524913,
+        419.9538399886955,
+        461.7075644918853
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            142.58791512251526,
+            279.92537058604324,
+            344.29721835319225,
+            328.0158763037883
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color",
+            "gaze"
+          ]
+        },
+        "face": {
+          "bounds": [
+            124.19101035766096,
+            135.16514415992387,
+            371.67980015969164,
+            447.0361774312404
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            65.79925709747512,
+            88.23504867117725,
+            417.95385700619977,
+            459.7766084645791
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "expression": {
+          "bounds": [
+            142.58791512251526,
+            256.31572847777727,
+            344.29721835319225,
+            401.21819580443366
+          ],
+          "controls": [
+            "expression"
+          ]
+        },
+        "object": {
+          "bounds": [
+            63.79926861279459,
+            86.23985414524913,
+            419.9538399886955,
+            461.7075644918853
+          ],
+          "controls": [
+            "intent",
+            "expression",
+            "gaze",
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ]
+    },
+    "listening-member": {
+      "kind": "head",
+      "intent": "A copper-haired member returning a calm friendly look",
+      "bounds": [
+        540.0461600113044,
+        86.23586147270402,
+        896.2007313872055,
+        461.7075644918853
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            615.7027816468077,
+            285.1595518121786,
+            817.4120848774846,
+            328.49086595503127
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color",
+            "gaze"
+          ]
+        },
+        "face": {
+          "bounds": [
+            588.3201998403084,
+            135.16514415992387,
+            835.7218338995914,
+            447.0361774312404
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            542.0461429938002,
+            88.23504867117725,
+            894.2007429025249,
+            459.7766084645791
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "expression": {
+          "bounds": [
+            615.7027816468077,
+            272.1049231118481,
+            817.4120848774846,
+            402.2697346524194
+          ],
+          "controls": [
+            "expression"
+          ]
+        },
+        "object": {
+          "bounds": [
+            540.0461600113044,
+            86.23586147270402,
+            896.2007313872055,
+            461.7075644918853
+          ],
+          "controls": [
+            "intent",
+            "expression",
+            "gaze",
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ]
+    }
+  },
+  "scope": "flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints",
+    "white target": "local move focus"
+  },
+  "move_units": "object selection: shorter canvas dimension; local edge: nominal lock width"
+}

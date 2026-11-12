@@ -1,0 +1,58 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    1200,
+    500
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "gentle",
+      "kind": "head",
+      "intent": "A flat cartoon head demonstrating gentle expression",
+      "expression": "gentle",
+      "gaze": 0,
+      "length": 0.55,
+      "depth": 0,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.33333333333333337,
+          0
+        ]
+      }
+    },
+    {
+      "id": "curious",
+      "kind": "head",
+      "intent": "A flat cartoon head demonstrating curious expression",
+      "expression": "curious",
+      "gaze": 1,
+      "length": 0.55,
+      "depth": 1,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "smile",
+      "kind": "head",
+      "intent": "A flat cartoon head demonstrating smile expression",
+      "expression": "smile",
+      "gaze": -1,
+      "length": 0.55,
+      "depth": 2,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.33333333333333337,
+          0
+        ]
+      }
+    }
+  ]
+}

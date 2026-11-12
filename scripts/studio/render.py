@@ -119,8 +119,11 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
     vb = viewbox or [0, 0, width, height]
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="{" ".join(map(str, vb))}">',
            '<title>Drawing studio</title>',
-           '<desc>Authored gesture and local edits; visibility from support depth. Selection aids are separate from artwork.</desc>',
-           f'<rect id="paper" x="0" y="0" width="{width}" height="{height}" fill="{scene.get("background", "#f5eee4")}"/>']
+           '<desc>Authored gesture and local edits; visibility from support depth. Selection aids are separate from artwork.</desc>']
+    if viewbox is not None:
+        out += ['<!-- inspection-workspace: neutral opaque margin outside the document canvas -->',
+                f'<rect id="inspection-workspace" x="{vb[0]}" y="{vb[1]}" width="{vb[2]}" height="{vb[3]}" fill="#dedbd5"/>']
+    out.append(f'<rect id="paper" x="0" y="0" width="{width}" height="{height}" fill="{scene.get("background", "#f5eee4")}"/>')
     ordered=global_depth_order(scene)
     regions=() if ordered is not None else _scene_regions(canonical(scene))
     for node in ordered if ordered is not None else scene['nodes']:

@@ -1,0 +1,206 @@
+{
+  "revision": "283abfa8c60f38915a64fe551d0a08d8f46ef5436df4feb198a274a07e72ef84",
+  "engine": "a405ef2b88bed576b1fa86453cc08cbf51be22ba41d292b83f68b67d6d8a0c73",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\02-attention-right\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\02-attention-right\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\02-attention-right\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\02-attention-right\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\02-attention-right\\artwork.png": "6ce4803a2c65d1a7c93707555d33524a699fdd9f6b6d4a60860bf4c48c7661aa",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\02-attention-right\\alignment.png": "afceccc410e24fd069bacc8fa4e8cb44bdca83c45c66d3aeb24062e5472fff3c",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\02-attention-right\\object-closeup.png": "10365d561087e71a3215595551eb7810bd82738aa3145bbd6d91f0a6e3d9a4f3",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\02-attention-right\\edit-closeup.png": "9fb880a68438ffff5e67fba31921df8067f8ef200a289eb05c716fbb5de0c810"
+  },
+  "nodes": {
+    "portrait": {
+      "kind": "head",
+      "intent": "A cool blue-haired frontal avatar for the friendly science community",
+      "bounds": [
+        38.0,
+        129.84143707891627,
+        301.0,
+        398.4924811763914
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            101.8333,
+            285.8803,
+            237.3667,
+            304.7175
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color",
+            "gaze"
+          ]
+        },
+        "face": {
+          "bounds": [
+            79.0,
+            166.0,
+            261.0,
+            396.5
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            40.0,
+            132.0,
+            299.0,
+            397.0
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "expression": {
+          "bounds": [
+            100.0,
+            259.0,
+            239.0,
+            362.33333333333337
+          ],
+          "controls": [
+            "expression"
+          ]
+        },
+        "object": {
+          "bounds": [
+            38.0,
+            129.84143707891627,
+            301.0,
+            398.4924811763914
+          ],
+          "controls": [
+            "intent",
+            "expression",
+            "gaze",
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ]
+    },
+    "partner": {
+      "kind": "head",
+      "intent": "A warm copper-haired bob avatar for the friendly science community",
+      "bounds": [
+        339.0,
+        129.84143707891627,
+        602.0,
+        398.4924811763914
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            402.6333,
+            285.8803,
+            538.1667,
+            304.7175
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color",
+            "gaze"
+          ]
+        },
+        "face": {
+          "bounds": [
+            379.0,
+            166.0,
+            561.0,
+            396.5
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            341.0,
+            132.0,
+            600.0,
+            397.0
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "expression": {
+          "bounds": [
+            401.0,
+            271.36,
+            540.0,
+            363.22222222222223
+          ],
+          "controls": [
+            "expression"
+          ]
+        },
+        "object": {
+          "bounds": [
+            339.0,
+            129.84143707891627,
+            602.0,
+            398.4924811763914
+          ],
+          "controls": [
+            "intent",
+            "expression",
+            "gaze",
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ]
+    }
+  },
+  "scope": "flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints",
+    "white target": "local move focus"
+  },
+  "move_units": "object selection: shorter canvas dimension; local edge: nominal lock width"
+}

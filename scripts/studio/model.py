@@ -89,13 +89,15 @@ def validate_placement(node):
 
 def validate_head(node, canvas):
     keys(node,('id','kind','intent','at','length','width','angle','depth','depth_slope',
-               'eye_scale','jaw','hair','hair_edits','palette'),'head')
+               'eye_scale','jaw','hair','hair_edits','palette','expression','gaze'),'head')
     for name,default,low,high in (('length',.55,.1,1.2),('width',.79,.5,1.1),('angle',0,-180,180),
                                 ('depth',0,-100,100),('depth_slope',0,-10,10),
-                                ('eye_scale',1,.6,1.4),('jaw',.42,.1,.7)):
+                                ('eye_scale',1,.6,1.4),('jaw',.42,.1,.7),('gaze',0,-1,1)):
         number(node.get(name,default),'head.'+name,low,high)
     if node.get('hair','side-part') not in ('none','bob','side-part'):
         raise ValueError('head.hair: none/bob/side-part')
+    if node.get('expression','gentle') not in ('gentle','neutral','smile','curious'):
+        raise ValueError('head.expression: gentle/neutral/smile/curious')
     validate_placement(node)
     palette=node.get('palette',{})
     keys(palette,('hair','skin','iris','shade','ink'),'head.palette')
@@ -330,7 +332,7 @@ def parameter_preview(scene,selection,parameter,value,reason):
         color(value)
         node.setdefault('palette',{})[aliases[parameter]]=value
     else:
-        if parameter not in ('intent','hair','width_side','style','tree_side') and isinstance(value,str):
+        if parameter not in ('intent','expression','hair','width_side','style','tree_side') and isinstance(value,str):
             try:
                 value=float(value)
             except ValueError:

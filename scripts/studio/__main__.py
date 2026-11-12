@@ -61,7 +61,7 @@ def main():
         p.add_argument("--svg-only", action="store_true")
         if command == "inspect":
             p.add_argument("--object",help='inferred when the scene contains one object')
-            p.add_argument('--feature',help='head: object/eyes/face/hair/left-lock/right-lock; lock: object or an edge')
+            p.add_argument('--feature',help='head: object/eyes/face/hair/expression/left-lock/right-lock; lock: object or an edge')
             p.add_argument("--side", choices=("left", "right"), default="left")
             p.add_argument("--at", type=float, default=.55)
             p.add_argument("--radius", type=float, default=.30)

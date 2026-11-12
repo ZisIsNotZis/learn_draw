@@ -22,6 +22,8 @@ python examples/studio/compose.py --theme daylight --outdir evidence/my-daylight
 python -m scripts.studio new head.json --kind head
 python -m scripts.studio new cover.json --kind head --size 960x540 --background '#f5eee4'
 python -m scripts.studio inspect head.json --feature eyes --outdir evidence/head-view
+python -m scripts.studio inspect head.json --feature expression --outdir evidence/expression-view
+python -m scripts.studio preview head.json --selection evidence/expression-view/selection.json --set expression --value curious --reason "Give the character a questioning brow and eye opening" --outdir evidence/curious-preview
 python -m scripts.studio preview head.json --selection evidence/head-view/selection.json --set eye_scale --value .92 --reason "Quieter eye proportions" --outdir evidence/head-preview
 python -m scripts.studio accept head.json evidence/head-preview/candidate.json
 python -m scripts.studio inspect head.json --feature right-lock --side right --outdir evidence/lock-view

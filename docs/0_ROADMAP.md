@@ -121,9 +121,16 @@ the repair is labeled assisted, with a pre-fix failing regression, 55 combined p
 unchanged default-head PNG and changes confined to the partner's hair. Review still finds similar
 faces/expressions, rigid hair and excess lower whitespace; no whole-cover art pass is claimed.
 
-**Next action:** add a small, visibly useful expression/gaze control to the existing accepted-style
-head, then use it to distinguish characters by intent rather than only colour/fringe. Preserve the
-default's pixels and inspect actual local effects. This addresses an observed creation gap before
-expanding to more subjects. A richer foreground subject remains necessary for an illustration claim.
+Head expression/gaze is now implemented with actual feature selection, coordinated lid/brow/mouth
+changes and conjugate attention. An over-closed prototype was rejected and corrected after image
+and execution review. `evidence/studio-expression/` preserves both failures and a balanced variant.
+60 combined tests and 81 CPU smoke checks pass; the prior default-head PNG is unchanged. A composed
+community-banner candidate has a conditional minimum-usefulness review, with hard hair, simplified
+ears and limited facial acting still criticized. Its human taste question is pending asynchronously.
+
+**Next action:** prototype a recognizable, adjustable open cartoon hand before adding it to the
+studio catalog. Inspect the existing hand generator first; compare its actual default rather than
+assuming it is adequate. Use the component in a small greeting asset to justify the addition.
+Do not turn a hand icon or this cover's limited usability into a whole-portrait/illustration pass.
 Preserve the legacy portrait. The development branch is
 `codex/vlm-studio`, pushed through the existing SSH identity; main has not been overwritten.

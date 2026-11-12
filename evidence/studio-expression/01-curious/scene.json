@@ -1,0 +1,42 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "portrait",
+      "kind": "head",
+      "intent": "A cool blue-haired frontal avatar for the friendly science community",
+      "length": 0.36,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.23499999999999996,
+          -0.06
+        ]
+      },
+      "expression": "curious"
+    },
+    {
+      "id": "partner",
+      "kind": "head",
+      "intent": "A warm copper-haired bob avatar for the friendly science community",
+      "length": 0.36,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.23499999999999996,
+          -0.06
+        ]
+      },
+      "hair": "bob",
+      "palette": {
+        "hair": "#b16e48",
+        "skin": "#c99170"
+      }
+    }
+  ]
+}

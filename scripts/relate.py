@@ -507,7 +507,7 @@ def expand_eye(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
 
     style_keys = ("sclera-fill", "iris-top-fill", "iris-bot-fill", "pupil-fill",
                   "lash-fill", "glint-fill", "iris-w", "iris-h", "lash-w",
-                  "line-w", "glints", "almond", "w", "h", "tilt")
+                  "line-w", "glints", "almond", "w", "h", "tilt", "upper-lid", "lower-lid")
 
     if "mirror-of" in node:
         other = str(node["mirror-of"])
@@ -550,8 +550,14 @@ def expand_eye(node: dict, ctx: Ctx, emit: list[dict]) -> Anchor:
 
     # ---- the aperture: one generated almond curve (two lid arcs sharing the corners) ----
     sharp = 0.35 + 0.65 * almond            # almond=1 -> controls hug corners -> pointed
-    rise = h * (0.50 + 0.14 * almond)       # top-lid arch height
-    drop = h * (0.46 - 0.04 * almond)       # bottom-lid drop
+    upper_lid=float(style.get('upper-lid',1))
+    lower_lid=float(style.get('lower-lid',1))
+    if not math.isfinite(upper_lid) or not math.isfinite(lower_lid) or not .7<=upper_lid<=1.6 or not -.6<=lower_lid<=1.5:
+        raise SpecError(f'relate: {sid} has invalid lid controls')
+    rise = h * (0.50 + 0.14 * almond) * upper_lid
+    drop = h * (0.46 - 0.04 * almond) * lower_lid
+    if drop<0 and -drop*.94>=rise*.55:
+        raise SpecError(f'relate: {sid} raised lower lid would cross the upper lid')
     reach_in = a * 0.55 * sharp
     reach_out = a * 0.50 * sharp
     inner, outer = (-a, 0.0), (a, 0.0)

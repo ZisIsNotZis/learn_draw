@@ -1,0 +1,14 @@
+{
+  "engine": "c7190958d6d9a6ffd0ff3a37bc72748371fedc196d5c39d99974cad4299b1c67",
+  "default_png_unchanged": "23ad96c4ac624d9dd75b3187d0e56bdb0da4635d774727c4c7022bdbdb8bc48a",
+  "repeated_svg_png_bytes_equal": true,
+  "community_cover_sha256": {
+    "svg": "8727493c0f18bfa5aa6df9567457b917dc63899f0225389b04ce39613c977d3d",
+    "png": "86ea9ab12685ec3163f03c33a6d8ab3f1bf74d7177ee9e6db6afb64f6b027c79"
+  },
+  "image_jpg_present": false,
+  "scope": "bounded flat head expression/gaze operation evidence, not natural expression or whole-artwork acceptance",
+  "tests": 60,
+  "cpu_smoke": 81,
+  "wave_strands_assertions": "passed"
+}

@@ -54,6 +54,13 @@ screen space after inspecting the object's outline; local lock shaping retains i
 `examples/studio/compose.py` records intent-led variants through the public CLI. These are deliberately
 small graphic illustrations, not evidence that a general landscape or portrait problem is solved.
 
+The head now offers bounded expression/gaze edits on visible feature groups. Expression coordinates
+the brows, mouth and eyelids; gaze moves both eyes in the head's local direction. Actual study rejected
+an over-closed smile because it left fragmented iris remnants, then chose an open-eye variant.
+This is useful optional refinement of the accepted simple style, not a full facial rig. The actual
+community-banner candidate combines heads, a background, placement and attention; its limited-use
+review and remaining art criticisms are preserved in `evidence/studio-expression/`.
+
 ## North star — humans never talk or think in coordinates
 
 **Humans never talk or think in coordinates.** "The brim is about twice the head wide, tilted a bit

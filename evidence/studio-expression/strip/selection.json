@@ -1,0 +1,23 @@
+{
+  "base": "c47b5cc2f28b17b404a64d67e8001f8665036a75fa445073f658955139e9a520",
+  "engine": "a405ef2b88bed576b1fa86453cc08cbf51be22ba41d292b83f68b67d6d8a0c73",
+  "object": "curious",
+  "kind": "feature",
+  "feature": "expression",
+  "bounds": [
+    517.0,
+    223.55555555555557,
+    683.0,
+    346.77777777777777
+  ],
+  "object_bounds": [
+    443.0,
+    69.0,
+    757.0,
+    388.9798989873223
+  ],
+  "controls": [
+    "expression"
+  ],
+  "units": "semantic parameter values; inspect the actual selected feature"
+}

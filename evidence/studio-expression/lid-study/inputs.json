@@ -1,0 +1,13 @@
+{
+  "values": [
+    null,
+    -0.42,
+    -0.2,
+    0,
+    0.2,
+    0.4
+  ],
+  "engine": "5dccffe058decf40f5eed804a9a622917d3ac640fcb0d3af71f03251334ba380",
+  "scope": "isolated in-process specification parameter study; no frozen product source changed; no acceptance candidate",
+  "source_sha256": "ccf6599363f220e956d71f883bbda7116e7b93238e95de8e711072cd3e7ddba8"
+}

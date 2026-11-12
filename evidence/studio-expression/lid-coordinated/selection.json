@@ -1,0 +1,23 @@
+{
+  "base": "c47b5cc2f28b17b404a64d67e8001f8665036a75fa445073f658955139e9a520",
+  "engine": "5dccffe058decf40f5eed804a9a622917d3ac640fcb0d3af71f03251334ba380",
+  "object": "smile",
+  "kind": "feature",
+  "feature": "expression",
+  "bounds": [
+    911.108,
+    232.55555555555557,
+    1088.892,
+    349.24
+  ],
+  "object_bounds": [
+    843.0,
+    69.0,
+    1157.0,
+    388.9798989873223
+  ],
+  "controls": [
+    "expression"
+  ],
+  "units": "semantic parameter values; inspect the actual selected feature"
+}

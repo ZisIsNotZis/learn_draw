@@ -1,0 +1,23 @@
+{
+  "base": "283abfa8c60f38915a64fe551d0a08d8f46ef5436df4feb198a274a07e72ef84",
+  "engine": "a405ef2b88bed576b1fa86453cc08cbf51be22ba41d292b83f68b67d6d8a0c73",
+  "object": "partner",
+  "kind": "feature",
+  "feature": "expression",
+  "bounds": [
+    401.0,
+    271.36,
+    540.0,
+    363.22222222222223
+  ],
+  "object_bounds": [
+    339.0,
+    129.84143707891627,
+    602.0,
+    398.4924811763914
+  ],
+  "controls": [
+    "expression"
+  ],
+  "units": "semantic parameter values; inspect the actual selected feature"
+}

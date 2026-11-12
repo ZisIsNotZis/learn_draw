@@ -1,0 +1,25 @@
+{
+  "base": "0b14e3666882fce2bad51fde6499deb534aa935ca0123d37aad94a256a26cc6a",
+  "engine": "a405ef2b88bed576b1fa86453cc08cbf51be22ba41d292b83f68b67d6d8a0c73",
+  "object": "partner",
+  "kind": "feature",
+  "feature": "eyes",
+  "bounds": [
+    402.6333,
+    285.8803,
+    538.1667,
+    304.7175
+  ],
+  "object_bounds": [
+    339.0,
+    129.84143707891627,
+    602.0,
+    398.4924811763914
+  ],
+  "controls": [
+    "eye_scale",
+    "iris_color",
+    "gaze"
+  ],
+  "units": "semantic parameter values; inspect the actual selected feature"
+}

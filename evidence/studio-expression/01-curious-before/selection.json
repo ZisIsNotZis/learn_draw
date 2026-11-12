@@ -1,0 +1,23 @@
+{
+  "base": "05c689dbda7983fe35ec75327d80b96a899a4cc7a0993cc1b911de04e688f6ed",
+  "engine": "a405ef2b88bed576b1fa86453cc08cbf51be22ba41d292b83f68b67d6d8a0c73",
+  "object": "portrait",
+  "kind": "feature",
+  "feature": "expression",
+  "bounds": [
+    100.0,
+    271.36,
+    239.0,
+    363.22222222222223
+  ],
+  "object_bounds": [
+    38.0,
+    129.84143707891627,
+    301.0,
+    398.4924811763914
+  ],
+  "controls": [
+    "expression"
+  ],
+  "units": "semantic parameter values; inspect the actual selected feature"
+}

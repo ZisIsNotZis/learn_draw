@@ -49,6 +49,10 @@ a smaller move or a better gesture, not manually corrected generated vertices.
 - Head defaults require no path input. Inspect exposes allowed controls: eyes offer eye_scale/iris_color;
   face offers jaw/skin_color; hair offers hairstyle/hair_color. Object exposes size, tilt and depth.
   Child-lock pushes preserve endpoints and the other lock; screen directions account for head tilt.
+- For a character's intent, inspect `--feature expression` and preview `--set expression --value
+  curious` (or gentle/neutral/smile). The overlay includes brows, mouth and eyelids that move together.
+  Inspect eyes for `--set gaze --value 1` to look toward the head's right, or -1 toward its left.
+  Check the actual reading, especially at small size: a preset name does not establish natural emotion.
 - Choose the canvas when creating a scene with `new cover.json --kind head --size 960x540`;
   `--background '#rrggbb'` sets its paper. Select object and `--set intent --value "..."` when the
   authored purpose changes. Stock descriptions deliberately avoid mutable hairstyle/colour claims.

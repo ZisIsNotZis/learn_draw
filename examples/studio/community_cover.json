@@ -1,0 +1,59 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    960,
+    540
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "quiet-paper",
+      "kind": "sky",
+      "intent": "A restrained warm paper atmosphere behind the two community avatars",
+      "stars": 0,
+      "palette": {
+        "top": "#eee2d2",
+        "bottom": "#fbf5ec"
+      }
+    },
+    {
+      "id": "questioning-member",
+      "kind": "head",
+      "intent": "An inquisitive member turning attention toward a friendly partner",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.245,
+          0.04
+        ]
+      },
+      "length": 0.58,
+      "angle": -5,
+      "depth": 1,
+      "expression": "curious",
+      "gaze": 0.75
+    },
+    {
+      "id": "listening-member",
+      "kind": "head",
+      "intent": "A copper-haired member returning a calm friendly look",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.245,
+          0.04
+        ]
+      },
+      "length": 0.58,
+      "angle": 5,
+      "depth": 2,
+      "hair": "bob",
+      "expression": "gentle",
+      "gaze": -0.75,
+      "palette": {
+        "hair": "#b16e48",
+        "skin": "#c99170"
+      }
+    }
+  ]
+}

@@ -5,6 +5,18 @@ the language they serve (`5_PRODUCT.md`), or the commands that run them (`9_IMPL
 
 # INFERRED
 
+## Head expression and inspection
+
+The head's expression preset changes brows, mouth and optional eye-lid factors in the existing eye
+generator. Gentle keeps its original values; a raised lower lid makes a curved smiling aperture,
+and curiosity coordinates the raised brow with a more open eye. Bounds reject lid crossings. Head
+containment clips iris/pupil/glints to the resulting aperture. Feature guides include the real lash
+band as well as the sclera: the aperture alone omitted the moving outer wing in a locality check.
+Gaze is conjugate in head-local horizontal space. These controls do not change the head support.
+Magnified viewboxes can extend outside the document. A separate neutral opaque workspace fills that
+margin while the original paper rectangle still marks the canvas; transparent pixels previously
+appeared black in the image viewer and obscured that distinction. Normal artwork is unchanged.
+
 ## Scenic support and opaque artwork
 
 `scripts/studio/components.py` dispatches the implemented flat recipes and supplies their depth

@@ -1,0 +1,23 @@
+{
+  "base": "8acd1a42410e51af1e294d60b94232a4a3115d25bada603c2486362bbe1cae75",
+  "engine": "c7190958d6d9a6ffd0ff3a37bc72748371fedc196d5c39d99974cad4299b1c67",
+  "object": "questioning-member",
+  "kind": "feature",
+  "feature": "expression",
+  "bounds": [
+    142.58791512251526,
+    256.31572847777727,
+    344.29721835319225,
+    401.21819580443366
+  ],
+  "object_bounds": [
+    63.79926861279459,
+    86.23985414524913,
+    419.9538399886955,
+    461.7075644918853
+  ],
+  "controls": [
+    "expression"
+  ],
+  "units": "semantic parameter values; inspect the actual selected feature"
+}

@@ -1,0 +1,78 @@
+{
+  "base": "05c689dbda7983fe35ec75327d80b96a899a4cc7a0993cc1b911de04e688f6ed",
+  "engine": "a405ef2b88bed576b1fa86453cc08cbf51be22ba41d292b83f68b67d6d8a0c73",
+  "result": "d708b311770f90b48d094c17954aee6689a484d67f93277541a85b1373e31226",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "portrait",
+        "kind": "head",
+        "intent": "A cool blue-haired frontal avatar for the friendly science community",
+        "length": 0.36,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.23499999999999996,
+            -0.06
+          ]
+        },
+        "expression": "curious"
+      },
+      {
+        "id": "partner",
+        "kind": "head",
+        "intent": "A warm copper-haired bob avatar for the friendly science community",
+        "length": 0.36,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.23499999999999996,
+            -0.06
+          ]
+        },
+        "hair": "bob",
+        "palette": {
+          "hair": "#b16e48",
+          "skin": "#c99170"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "05c689dbda7983fe35ec75327d80b96a899a4cc7a0993cc1b911de04e688f6ed",
+    "engine": "a405ef2b88bed576b1fa86453cc08cbf51be22ba41d292b83f68b67d6d8a0c73",
+    "object": "portrait",
+    "kind": "feature",
+    "feature": "expression",
+    "bounds": [
+      100.0,
+      271.36,
+      239.0,
+      363.22222222222223
+    ],
+    "object_bounds": [
+      38.0,
+      129.84143707891627,
+      301.0,
+      398.4924811763914
+    ],
+    "controls": [
+      "expression"
+    ],
+    "units": "semantic parameter values; inspect the actual selected feature"
+  },
+  "operation": {
+    "object": "portrait",
+    "feature": "expression",
+    "parameter": "expression",
+    "value": "curious",
+    "reason": "Give the first member a questioning raised brow and a slight asymmetric mouth"
+  },
+  "status": "ready"
+}

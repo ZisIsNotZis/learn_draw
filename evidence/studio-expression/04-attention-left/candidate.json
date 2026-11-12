@@ -1,0 +1,83 @@
+{
+  "base": "0b14e3666882fce2bad51fde6499deb534aa935ca0123d37aad94a256a26cc6a",
+  "engine": "a405ef2b88bed576b1fa86453cc08cbf51be22ba41d292b83f68b67d6d8a0c73",
+  "result": "69f4d108da20ff362cae7e2bd9295984e2397fcd884264ff0b8cbbb07db1de06",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "portrait",
+        "kind": "head",
+        "intent": "A cool blue-haired frontal avatar for the friendly science community",
+        "length": 0.36,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.23499999999999996,
+            -0.06
+          ]
+        },
+        "expression": "curious",
+        "gaze": 1.0
+      },
+      {
+        "id": "partner",
+        "kind": "head",
+        "intent": "A warm copper-haired bob avatar for the friendly science community",
+        "length": 0.36,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.23499999999999996,
+            -0.06
+          ]
+        },
+        "hair": "bob",
+        "palette": {
+          "hair": "#b16e48",
+          "skin": "#c99170"
+        },
+        "expression": "smile",
+        "gaze": -1.0
+      }
+    ]
+  },
+  "selection": {
+    "base": "0b14e3666882fce2bad51fde6499deb534aa935ca0123d37aad94a256a26cc6a",
+    "engine": "a405ef2b88bed576b1fa86453cc08cbf51be22ba41d292b83f68b67d6d8a0c73",
+    "object": "partner",
+    "kind": "feature",
+    "feature": "eyes",
+    "bounds": [
+      402.6333,
+      285.8803,
+      538.1667,
+      304.7175
+    ],
+    "object_bounds": [
+      339.0,
+      129.84143707891627,
+      602.0,
+      398.4924811763914
+    ],
+    "controls": [
+      "eye_scale",
+      "iris_color",
+      "gaze"
+    ],
+    "units": "semantic parameter values; inspect the actual selected feature"
+  },
+  "operation": {
+    "object": "partner",
+    "feature": "eyes",
+    "parameter": "gaze",
+    "value": -1.0,
+    "reason": "Direct the partner attention back towards the first member"
+  },
+  "status": "ready"
+}

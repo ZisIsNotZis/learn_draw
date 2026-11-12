@@ -53,17 +53,23 @@ nominal lock widths; semantic eye/face/hair features cannot accidentally transla
 | length / width | .55 of shorter canvas dimension / .79 of that head height |
 | angle | 0; 2D tilt, positive toward screen right along the head's downward axis |
 | eye_scale / jaw | 1 / .42; eye size and cheek-to-jaw station, with the head ruler fixed |
+| expression | gentle (unchanged default), neutral, smile, curious; coordinated brows, mouth and eyelids |
+| gaze | 0; −1..1 looks left/right in the head's local frame; both eyes move together |
 | hair | side-part; alternatives bob / none |
 | palette | optional hair, skin, iris, shade, ink; a new hair/iris colour derives related tones, including bob and side-part internal hair lines |
 | hair_edits | generated left/right child edit lists; root/tip remain protected |
 | depth / depth_slope | 0 / 0; linear support anchored at face center |
 
-Inspect features `object`, `eyes`, `face`, `hair`, `left-lock`, `right-lock`. A single scene object is
+Inspect features `object`, `eyes`, `face`, `hair`, `expression`, `left-lock`, `right-lock`. A single scene object is
 inferred when `--object` is omitted. Semantic features expose their permitted controls in the report.
 `preview ... --set eye_scale --value .92 --reason "..."` sets a selected control. Colour aliases are
 hair_color, skin_color, iris_color, ink_color. Select a child lock for `--move`; its screen direction
 is converted through the parent's tilt before changing local geometry. A bare head retains dormant
 hair edits but exposes no editable lock until a hairstyle is active. Multi-head SVG IDs are namespaced.
+`expression` highlights brows, mouth and the actual eye/lash contours; `eyes` exposes gaze alongside
+eye_scale/iris_color. A smile raises the lower lids; curiosity opens one eye with its raised brow.
+These are small flat-cartoon presets, not a complete facial rig or a guaranteed emotional reading.
+Closeups show neutral opaque workspace outside the document rather than transparent black margins.
 
 The head is one flat artwork component with an opaque support footprint. Internal face/hair drawing
 order is recipe artwork, not a 3D head or a head-turn model. Child geometry remains editable.

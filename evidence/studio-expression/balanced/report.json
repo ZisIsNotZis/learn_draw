@@ -1,0 +1,295 @@
+{
+  "revision": "c47b5cc2f28b17b404a64d67e8001f8665036a75fa445073f658955139e9a520",
+  "engine": "c7190958d6d9a6ffd0ff3a37bc72748371fedc196d5c39d99974cad4299b1c67",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\balanced\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\balanced\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\balanced\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\balanced\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\balanced\\artwork.png": "094a6c43b15f88574a363aa01ee4494477b48bd78a5a35efed431fbffd351878",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\balanced\\alignment.png": "ae3c1e1fee66767cb099163def0157e7ed870db9ebebb05f2fc65eaa597508c8",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\balanced\\object-closeup.png": "e0349d3d10c6953b86a636096d1eb33a2ba8acff695a0abaa015c07b216d77a3",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-expression\\balanced\\edit-closeup.png": "e2ab92487eb43b1b7dd650c660d476238d0ea36a4d26272ac7d6f34b8074c9fb"
+  },
+  "nodes": {
+    "gentle": {
+      "kind": "head",
+      "intent": "A flat cartoon head demonstrating gentle expression",
+      "bounds": [
+        43.0,
+        69.0,
+        357.0,
+        388.9798989873223
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            111.108,
+            249.2008,
+            288.892,
+            277.5924
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color",
+            "gaze"
+          ]
+        },
+        "face": {
+          "bounds": [
+            91.0,
+            112.5,
+            309.0,
+            387.0
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            45.0,
+            71.0,
+            355.0,
+            387.0
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "expression": {
+          "bounds": [
+            111.108,
+            237.55555555555554,
+            288.892,
+            347.22222222222223
+          ],
+          "controls": [
+            "expression"
+          ]
+        },
+        "object": {
+          "bounds": [
+            43.0,
+            69.0,
+            357.0,
+            388.9798989873223
+          ],
+          "controls": [
+            "intent",
+            "expression",
+            "gaze",
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ]
+    },
+    "curious": {
+      "kind": "head",
+      "intent": "A flat cartoon head demonstrating curious expression",
+      "bounds": [
+        443.0,
+        69.0,
+        757.0,
+        388.9798989873223
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            511.108,
+            244.6255,
+            688.892,
+            279.7683
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color",
+            "gaze"
+          ]
+        },
+        "face": {
+          "bounds": [
+            491.0,
+            112.5,
+            709.0,
+            387.0
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            445.0,
+            71.0,
+            755.0,
+            387.0
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "expression": {
+          "bounds": [
+            511.108,
+            223.55555555555557,
+            688.892,
+            346.77777777777777
+          ],
+          "controls": [
+            "expression"
+          ]
+        },
+        "object": {
+          "bounds": [
+            443.0,
+            69.0,
+            757.0,
+            388.9798989873223
+          ],
+          "controls": [
+            "intent",
+            "expression",
+            "gaze",
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ]
+    },
+    "smile": {
+      "kind": "head",
+      "intent": "A flat cartoon head demonstrating smile expression",
+      "bounds": [
+        843.0,
+        69.0,
+        1157.0,
+        388.9798989873223
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            911.108,
+            249.2008,
+            1088.892,
+            271.1112
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color",
+            "gaze"
+          ]
+        },
+        "face": {
+          "bounds": [
+            891.0,
+            112.5,
+            1109.0,
+            387.0
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            845.0,
+            71.0,
+            1155.0,
+            387.0
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "expression": {
+          "bounds": [
+            911.108,
+            232.55555555555557,
+            1088.892,
+            349.24
+          ],
+          "controls": [
+            "expression"
+          ]
+        },
+        "object": {
+          "bounds": [
+            843.0,
+            69.0,
+            1157.0,
+            388.9798989873223
+          ],
+          "controls": [
+            "intent",
+            "expression",
+            "gaze",
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ]
+    }
+  },
+  "scope": "flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints",
+    "white target": "local move focus"
+  },
+  "move_units": "object selection: shorter canvas dimension; local edge: nominal lock width"
+}

@@ -4,7 +4,7 @@
 
 # learn_draw
 
-**Current direction (2026-11-12): a drawing workbench for VLM creation.** Reference studies develop usable primitives and drawing skill. The studio supports a user-accepted flat-cartoon head preset, standalone locks, semantic eye/face/hair controls and visible local lock pushes with preview, accept and exact undo. Whole-artwork quality and broader creative transfer remain unproven.
+**Current direction (2026-11-12): a drawing workbench for VLM creation.** Reference studies develop usable primitives and drawing skill. The studio supports a user-accepted flat-cartoon head preset, standalone locks, semantic eye/face/hair/expression controls and visible local lock pushes with preview, accept and exact undo. Limited independent reuse has been demonstrated; whole-artwork quality and broader creative transfer remain unproven.
 
 ```bash
 uv sync
@@ -17,6 +17,13 @@ Use [the current roadmap](docs/0_ROADMAP.md), [operation skill](skills/drawing-s
 Sky, hills, moon and sun presets also support small scenic backgrounds with recoverable placement.
 Their [actual studies and critical reviews](evidence/studio-composition/README.md) remain distinct
 from an artwork-quality pass.
+
+![A small flat-vector community-cover candidate](evidence/studio-expression/community-cover/artwork.png)
+
+This candidate combines heads, background, placement and attention from
+[compact semantic input](examples/studio/community_cover.json). It has a conditional minimum-usefulness
+review; human taste feedback is pending. [Actual trials and remaining criticism](evidence/studio-expression/README.md)
+distinguish that bounded result from a complete illustration claim.
 
 ## Historical portrait study
 

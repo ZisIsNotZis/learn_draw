@@ -1,0 +1,13 @@
+[
+  {
+    "base": "44fe01cc53e9492e9f310d86d694348b483dcf19421006023be78fd1129194e6",
+    "result": "6f9fd7b9d973b55a15000465765ba3e963cb6f6df2be33f439d1113115186aaf",
+    "operation": {
+      "object": "portrait",
+      "feature": "expression",
+      "parameter": "expression",
+      "value": "smile",
+      "reason": "A happier face should lift the mouth corners and soften the eyelids and brows together"
+    }
+  }
+]
