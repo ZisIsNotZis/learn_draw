@@ -561,3 +561,19 @@ gap; reproducing the same picture does not establish a new style or creative tra
 Replacing a component is still a sequence of recoverable edits. A single atomic semantic replacement
 or a general scene transaction is not implemented. Interface/algorithms are in 7_INTERFACE/8_DETAIL;
 actual revision and independent repotting evidence is indexed at ../evidence/studio-removal/.
+
+## Observed prop interaction — watering illustration
+
+A richer original scene now combines a person, held can, pouring stream and plant beside a window.
+It uses existing semantic heads, generic masses and strokes, not a new watering/fist generator.
+An open palm failed to communicate carrying. A compact hand mass plus a crossing thumb, a fold
+and palm < handle < thumb depth communicate a bounded hooked grip more clearly, but fresh critics
+still find enclosure crowded. This is an experimental recipe, not an accepted general closed-hand
+primitive. The reservoir needed an actual tilt and raised carrying wrist, and the destination
+needed a visible soil opening; recognizable objects alone did not establish a convincing action.
+
+An independent operator moved the figure and used visible free-terminal corrections to restore
+a displaced pour. The connected-source graph worked; automatic far-end attachment did not exist.
+The final root/actor images are coherent flat studies with known grip, pose and finish limits.
+Actual failures/revisions, fresh image pairs and executable reuse live in evidence/studio-watering/.
+The practice is disclosed through the drawing skill's object-interaction reference.

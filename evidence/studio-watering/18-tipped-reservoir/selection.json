@@ -1,0 +1,34 @@
+{
+  "base": "2b299bc2f8f63105b338906da9e7767d8521e3ecd15c31280699a6b622ecadc2",
+  "engine": "0cc7aaea74f48c03ebcbb080d3adf42d3d1de2618d36493e2407c17b8085903b",
+  "object": "can-body",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    499.0021147765094,
+    313.59315202485396,
+    630.1265534077588,
+    437.00684031042385
+  ],
+  "object_bounds": [
+    499.0021147765094,
+    313.59315202485396,
+    630.1265534077588,
+    437.00684031042385
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

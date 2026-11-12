@@ -1,0 +1,49 @@
+{
+  "base": "400c7ae23584752d348f7cce25c35bf8a68c5954a650a022ffad5ea2da603fb1",
+  "engine": "0cc7aaea74f48c03ebcbb080d3adf42d3d1de2618d36493e2407c17b8085903b",
+  "object": "water",
+  "kind": "feature",
+  "feature": "tip",
+  "bounds": [
+    737.0674601127232,
+    423.27927716839724,
+    761.0674601127232,
+    447.27927716839724
+  ],
+  "object_bounds": [
+    645.7248403382918,
+    394.0596049047711,
+    751.5868655224792,
+    437.79868257815326
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "screen terminal movement as fraction of shorter canvas dimension; opposite terminal fixed",
+  "interaction": "stroke-terminal",
+  "locks": {
+    "root": [
+      648.2407740510254,
+      396.5755386175048
+    ]
+  },
+  "focus": [
+    749.0674601127232,
+    435.27927716839724
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "base": "0727f574c925fd49dd8bb71ccabcdaf4c479d6e32bdc7c897cf20b4f6983ab4b",
+  "engine": "0cc7aaea74f48c03ebcbb080d3adf42d3d1de2618d36493e2407c17b8085903b",
+  "object": "spout",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    556.4046265132401,
+    302.43893822379783,
+    673.2135612649469,
+    390.9575629410532
+  ],
+  "object_bounds": [
+    556.4046265132401,
+    302.43893822379783,
+    673.2135612649469,
+    390.9575629410532
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

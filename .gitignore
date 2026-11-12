@@ -25,3 +25,6 @@ worktrees/
 **/train_driver.pid
 **/.smoke_ok
 /cpu.npz
+
+# Frozen independent review records are evidence, not disposable runtime logs.
+!evidence/studio-watering/usability/*.log

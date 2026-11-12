@@ -1,0 +1,19 @@
+art:    evidence/studio-watering/05-water-into-pot/artwork.png
+bundle: evidence/studio-watering/open-hand-check
+
+images (feed these, and nothing else):
+  evidence/studio-watering/open-hand-check\draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale) - judge detail here
+  evidence/studio-watering/open-hand-check\draft.png  -- downscaled preview (width <= 256px) - layout only, never detail
+
+full-resolution image SHA256: e865221df7c393fbde5b91e4472e11d9e961ab0ed6ceed48ddba53e6e751cfd3 (PNG source bytes preserved when available)
+no --ref given: nothing to compare against (reference-free stage)
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Judge detail only on the 1:1 images (draft-fullres.png, region-*.png). Previews and
+  side-by-side panes are downscaled: they show layout, never line weight or separation.
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.

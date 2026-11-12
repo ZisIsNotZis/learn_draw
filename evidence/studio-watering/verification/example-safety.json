@@ -1,0 +1,10 @@
+{
+  "fresh_cwd_picture_preserved": true,
+  "png_sha256": "1af22cc9070713b2cff164bbfe7390828001d13361f67a7d573d9ceec5562512",
+  "existing_directory_refused": true,
+  "existing_working_scene_sha256": "3a3a9b40d2720f75cc916366b5d171c43b60944b4042746dd16082ede1c882dd",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "choose a fresh output directory; existing work is preserved\n",
+  "scope": "helper rebuild/overwrite refusal, not fresh artistic transfer"
+}

@@ -1,0 +1,32 @@
+{
+  "base": "5d1facd802b5124dc786b65ef1d86589390e3af17a238e4e8a2f8264aabd1601",
+  "engine": "0cc7aaea74f48c03ebcbb080d3adf42d3d1de2618d36493e2407c17b8085903b",
+  "object": "reaching-sleeve",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    506.8753955239649,
+    382.4842425258296,
+    538.8753955239649,
+    414.4842425258296
+  ],
+  "object_bounds": [
+    328.3208904906476,
+    366.61439730439645,
+    543.0259800997196,
+    445.0047144617273
+  ],
+  "controls": [],
+  "focus": [
+    522.8753955239649,
+    398.4842425258296
+  ],
+  "locks": {
+    "tip": [
+      522.8753955239649,
+      398.4842425258296
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "tip"
+}

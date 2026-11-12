@@ -216,13 +216,30 @@ stroke/character/cactus, and raw independent repotting. A real impact-view reuse
 obsolete operation guides as new inspections; the original actor source and failing test are kept.
 See evidence/studio-removal/README.md.
 
-**Next action:** attempt a richer intent-led illustration with an actual object interaction: a
-character watering a plant beside a window. Use existing parts first, inspect the emerging image,
-and let failures in pose, grip, clothing or spatial grouping decide the next representation change.
-Do not turn more cactus variants into the objective. The independent repotter also exposed blind
-immediate insertion: an overlapping default is accepted before shaping/placement. A revision-bound
-insertion preview is a concrete candidate if it helps this next illustration; it is not implemented
-or an art outcome by itself. Keep the full VLM-creation goal.
+The original watering illustration now supplies a richer interaction than separate icons. Its
+initial open-palm grasp and upright/upward-spout pour failed critique; actual observed edits replace
+the hand with a compact hook/thumbnail recipe, lift the wrist, tip the can, seat the handle free
+end, expose soil, and thread handle depth between palm and thumb. Both final fresh critics read
+a coherent watering action without a structural blocker. Grip certainty, stiff pose, detailed head
+versus broad unoutlined masses and local window congestion remain open. The optional human taste
+question is pending; no acceptance is inferred. No engine source changed; inherited 113 tests
+remain applicable. The actual current picture repeats from a fresh cwd with no reference image.
+See evidence/studio-watering/README.md and examples/studio/watering.py.
+
+A separate skill/help-only operator reframes the person left. The person/can chain follows, but
+the water free tip leaves the soil. It notices the bad landing, inspects the tip and repairs it
+with rightward then smaller upward moves, keeping the spout/root fixed. Fresh image reviews retain
+grasp and pose limits while finding a coherent pour. This is editing reuse from a supplied scene,
+not independent generation of the complete illustration or validation of the newly written recipe.
+
+**Next action:** prototype a curve whose two ends bind to two independently inspected targets.
+Use the actual person-left and vessel-tilt edits above as controlled regressions: water should
+continue landing on soil, and both handle ends should follow the vessel. Preserve local gesture
+refinement, visible endpoint inspection, acyclic dependencies, deletion release and undo. Test
+the resulting real drawing revisions, not only coordinates. Current one-point/manual editing
+remains available; this is not a general physics or grasp solver. The observed immediate-add
+and long multi-direction-edit loops also remain usability gaps, but the demonstrated far-end
+drift now gives the next change a precise mechanism and acceptance evidence.
 More presets alone cannot establish open-ended creative capability.
 Do not turn a hand icon or this cover's limited usability into a whole-portrait/illustration pass.
 Preserve the legacy portrait. The development branch is

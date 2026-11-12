@@ -1,0 +1,32 @@
+{
+  "base": "ef9a76e915631422e441a69970ed930bf40c32cb0f8da5cac45096560f89995c",
+  "engine": "0cc7aaea74f48c03ebcbb080d3adf42d3d1de2618d36493e2407c17b8085903b",
+  "object": "carrying-hand",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    534.8203955239649,
+    399.08924252582955,
+    566.8203955239649,
+    431.08924252582955
+  ],
+  "object_bounds": [
+    522.8753955264316,
+    381.8792425261249,
+    578.7653955214981,
+    415.08924252553425
+  ],
+  "controls": [],
+  "focus": [
+    550.8203955239649,
+    415.08924252582955
+  ],
+  "locks": {
+    "bottom": [
+      550.8203955239649,
+      415.08924252582955
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "bottom"
+}

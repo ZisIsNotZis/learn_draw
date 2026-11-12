@@ -34,11 +34,13 @@ PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安
 天空、山脊、月亮和太阳预设也已支持小幅背景构图与可撤销移动。[实际研究及批评意见](evidence/studio-composition/README.md)
 保留了当前效果的局限；这些能力不等于整幅作品的美术验收。
 
-![简洁平涂的社群头像封面候选](evidence/studio-expression/community-cover/artwork.png)
+![由程序化部件构成的窗边浇水试作](evidence/studio-watering/27-softer-knuckles/artwork.png)
 
-这张候选由[简短语义输入](examples/studio/community_cover.json)组合头部、背景、位置与视线，
-已通过限定用途的最低可用性审查，人的审美反馈仍待回复。[实际试验与未解决的批评](evidence/studio-expression/README.md)
-保留了这一小幅资产与完整插画能力之间的区别。
+这张[物体互动试作](evidence/studio-watering/README.md)用现有头部、色块与笔画连接人物、握持、壶、水流和土面。
+实际修正了张掌托壶、倾倒方向和提手末端悬空的问题。独立图评认为动作可读；握持确定性、姿态和线条风格
+仍需改善，人的整幅审美反馈尚待回复。运行 python examples/studio/watering.py --outdir FRESH 可得到可编辑副本
+及实际握持局部视图。独立使用者还完成了人物位置调整，并修复随之偏移的水流落点。
+[此前社群封面试作](evidence/studio-expression/README.md)仍保留其限定用途评审与未回复的审美问题。
 
 ## 历史人物临摹
 

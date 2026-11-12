@@ -1,0 +1,204 @@
+[
+  {
+    "base": "0ff90077c2587d1f4595364dcf05a298fd01f93947dcf9ec0a516d4848bed17f",
+    "result": "dc7d7a47840d80b2adfd9f6b13fd41d8f9ea1487960711953171597cf3e6b9ea",
+    "operation": {
+      "object": "spout",
+      "feature": "object",
+      "parameters": {
+        "angle": 125.0
+      },
+      "reason": "Raise the spout mouth above the planter instead of pouring below the sill"
+    }
+  },
+  {
+    "base": "dc7d7a47840d80b2adfd9f6b13fd41d8f9ea1487960711953171597cf3e6b9ea",
+    "result": "56b3b6156ebbbb15ae0540c28de6ed8e93af0b99db1d49beb809e02fb7c9f84c",
+    "operation": {
+      "object": "water",
+      "feature": "object",
+      "parameters": {
+        "length": 0.15,
+        "angle": 69.0,
+        "bend": 0.08
+      },
+      "reason": "Arc the stream forward into the planter instead of down outside its near edge"
+    }
+  },
+  {
+    "base": "56b3b6156ebbbb15ae0540c28de6ed8e93af0b99db1d49beb809e02fb7c9f84c",
+    "result": "285f2911946eebb8d9819611056ba6729cc8794f4ff040ecda90986eeb0b9575",
+    "operation": {
+      "action": "remove",
+      "object": "grip",
+      "removed": [
+        "grip"
+      ],
+      "detached_children": [
+        "can-body"
+      ],
+      "cascade": false,
+      "reason": "Replace the open greeting palm with a compact carrying grip; keep can and water in place"
+    }
+  },
+  {
+    "base": "285f2911946eebb8d9819611056ba6729cc8794f4ff040ecda90986eeb0b9575",
+    "result": "7e5deef9b68565824dbd07d59599488d9d1352344f239f4b4f2f8639c88482d8",
+    "operation": {
+      "action": "add",
+      "object": "carrying-hand",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "7e5deef9b68565824dbd07d59599488d9d1352344f239f4b4f2f8639c88482d8",
+    "result": "5d1facd802b5124dc786b65ef1d86589390e3af17a238e4e8a2f8264aabd1601",
+    "operation": {
+      "object": "carrying-hand",
+      "feature": "object",
+      "parameters": {
+        "length": 0.045,
+        "width": 1.7,
+        "rounding": 0.75,
+        "taper": 0.0,
+        "stroke": 0.025,
+        "fill_color": "#f1d0b8",
+        "ink_color": "#b5836d",
+        "intent": "A compact closed carrying hand will wrap over the top handle"
+      },
+      "reason": "Replace the splayed palm with a compact rounded knuckle mass"
+    }
+  },
+  {
+    "base": "5d1facd802b5124dc786b65ef1d86589390e3af17a238e4e8a2f8264aabd1601",
+    "result": "ef9a76e915631422e441a69970ed930bf40c32cb0f8da5cac45096560f89995c",
+    "operation": {
+      "action": "attach",
+      "object": "carrying-hand",
+      "attachment": {
+        "to": "reaching-sleeve",
+        "self": "left",
+        "target": "tip",
+        "inset": 0
+      },
+      "reason": "Join the compact carrying hand to the sleeve wrist"
+    }
+  },
+  {
+    "base": "ef9a76e915631422e441a69970ed930bf40c32cb0f8da5cac45096560f89995c",
+    "result": "331d9f3f3b5fa9c9d6a95ebb63f3ba058a77cf5e656e81d50d34c706c66c0422",
+    "operation": {
+      "action": "attach",
+      "object": "can-body",
+      "attachment": {
+        "to": "carrying-hand",
+        "self": "top",
+        "target": "bottom",
+        "inset": -0.44
+      },
+      "reason": "Hang the vessel below the closed hand while the arch passes through its grasp"
+    }
+  },
+  {
+    "base": "331d9f3f3b5fa9c9d6a95ebb63f3ba058a77cf5e656e81d50d34c706c66c0422",
+    "result": "32ae36edb4d4a9453c69ae32d03b212f642120bde8f22806e744932bc0f58ed1",
+    "operation": {
+      "action": "insert-authored-group",
+      "objects": [
+        "grip-thumb",
+        "grip-fold"
+      ],
+      "reason": "A crossing thumb and folded-finger crease explain the closed carrying hand"
+    }
+  },
+  {
+    "base": "32ae36edb4d4a9453c69ae32d03b212f642120bde8f22806e744932bc0f58ed1",
+    "result": "2b299bc2f8f63105b338906da9e7767d8521e3ecd15c31280699a6b622ecadc2",
+    "operation": {
+      "object": "reaching-sleeve",
+      "feature": "tip",
+      "direction": "up",
+      "amount": 0.15,
+      "units": "shorter canvas dimension",
+      "reason": "Lift the carrying wrist so the reservoir can pour downward into the higher planter"
+    }
+  },
+  {
+    "base": "2b299bc2f8f63105b338906da9e7767d8521e3ecd15c31280699a6b622ecadc2",
+    "result": "0727f574c925fd49dd8bb71ccabcdaf4c479d6e32bdc7c897cf20b4f6983ab4b",
+    "operation": {
+      "object": "can-body",
+      "feature": "object",
+      "parameters": {
+        "angle": -35.0
+      },
+      "reason": "Tip the reservoir toward its right-hand outlet so gravity explains the pour"
+    }
+  },
+  {
+    "base": "0727f574c925fd49dd8bb71ccabcdaf4c479d6e32bdc7c897cf20b4f6983ab4b",
+    "result": "39a0cb89a1cfe73ad4ac4a8587d4045a9f8fd1656e311e426ecdda996734739d",
+    "operation": {
+      "object": "spout",
+      "feature": "object",
+      "parameters": {
+        "angle": 80.0
+      },
+      "reason": "Turn the tipped can outlet slightly downward instead of lifting the water uphill"
+    }
+  },
+  {
+    "base": "39a0cb89a1cfe73ad4ac4a8587d4045a9f8fd1656e311e426ecdda996734739d",
+    "result": "b89f518e0abb06ba1000ac8da6fb5219937b19306c5a1a7e56400f38eb85aea2",
+    "operation": {
+      "object": "can-handle",
+      "feature": "tip",
+      "direction": "down",
+      "amount": 0.055,
+      "units": "shorter canvas dimension",
+      "reason": "Seat the handle free end on the tipped reservoir while keeping its other end fixed"
+    }
+  },
+  {
+    "base": "b89f518e0abb06ba1000ac8da6fb5219937b19306c5a1a7e56400f38eb85aea2",
+    "result": "6ca44df2c2f52bdb66e8cf113c2e1f87806fa18c4b9f71270f0a78be10c71350",
+    "operation": {
+      "action": "compose-opening",
+      "objects": [
+        "soil",
+        "plant-stem",
+        "leaf-1",
+        "leaf-2",
+        "leaf-3",
+        "leaf-4"
+      ],
+      "reason": "Give the pot a visible soil opening and let the stem emerge in front of it"
+    }
+  },
+  {
+    "base": "6ca44df2c2f52bdb66e8cf113c2e1f87806fa18c4b9f71270f0a78be10c71350",
+    "result": "19881568ff0dff11f74281a68468a9654c228bc0a7d0aeb34579573921367f62",
+    "operation": {
+      "object": "can-handle",
+      "feature": "object",
+      "parameters": {
+        "bend": 0.55,
+        "depth": 31.0
+      },
+      "reason": "Thread the handle in front of the palm but behind the crossing thumb so the grasp is explicit"
+    }
+  },
+  {
+    "base": "19881568ff0dff11f74281a68468a9654c228bc0a7d0aeb34579573921367f62",
+    "result": "9a95ef43d673facc00c3fdbbe2bce1a8c2ec68c47bd59a13e42f1a95deae0d45",
+    "operation": {
+      "object": "carrying-hand",
+      "feature": "object",
+      "parameters": {
+        "rounding": 0.94
+      },
+      "reason": "Soften the rectangular knuckle mass while keeping the wrist and handle placement fixed"
+    }
+  }
+]

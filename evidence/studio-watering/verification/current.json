@@ -1,0 +1,22 @@
+{
+  "engine": "0cc7aaea74f48c03ebcbb080d3adf42d3d1de2618d36493e2407c17b8085903b",
+  "scene": "9a95ef43d673facc00c3fdbbe2bce1a8c2ec68c47bd59a13e42f1a95deae0d45",
+  "nodes": 24,
+  "repeat_svg_equal": true,
+  "repeat_png_equal": true,
+  "png_sha256": "1af22cc9070713b2cff164bbfe7390828001d13361f67a7d573d9ceec5562512",
+  "water_end": [
+    785.067460112723,
+    435.27927716839724
+  ],
+  "water_endpoint_inside_projected_soil": true,
+  "stream_ends_lower_than_outlet": true,
+  "grip_handle_overlap_area": 528.3797728015815,
+  "handle_can_overlap_area": 326.3750589333967,
+  "handle_end_cap_overlap_areas": [
+    79.67335013745084,
+    3.631680066819602
+  ],
+  "palm_handle_thumb_depth_order": true,
+  "scope": "static projected connection/landing checks; not fluid simulation, load-bearing proof or image acceptance"
+}

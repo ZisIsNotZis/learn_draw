@@ -1,0 +1,36 @@
+{
+  "base": "5d1facd802b5124dc786b65ef1d86589390e3af17a238e4e8a2f8264aabd1601",
+  "engine": "0cc7aaea74f48c03ebcbb080d3adf42d3d1de2618d36493e2407c17b8085903b",
+  "object": "carrying-hand",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    436.055,
+    344.0,
+    468.055,
+    376.0
+  ],
+  "object_bounds": [
+    452.0550000024666,
+    343.39500000029534,
+    507.9449999975334,
+    376.60499999970466
+  ],
+  "controls": [],
+  "focus": [
+    452.055,
+    360.0
+  ],
+  "locks": {
+    "left": [
+      452.055,
+      360.0
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "left",
+  "attachment_target": {
+    "object": "reaching-sleeve",
+    "anchor": "tip"
+  }
+}

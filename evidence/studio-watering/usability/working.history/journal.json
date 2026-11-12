@@ -1,0 +1,38 @@
+[
+  {
+    "base": "9a95ef43d673facc00c3fdbbe2bce1a8c2ec68c47bd59a13e42f1a95deae0d45",
+    "result": "400c7ae23584752d348f7cce25c35bf8a68c5954a650a022ffad5ea2da603fb1",
+    "operation": {
+      "object": "gardener",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.05,
+      "units": "shorter canvas dimension",
+      "reason": "Give the window and watering action more room by shifting the connected gardener left"
+    }
+  },
+  {
+    "base": "400c7ae23584752d348f7cce25c35bf8a68c5954a650a022ffad5ea2da603fb1",
+    "result": "5ef5a72a9dee41430c70fcc313ee72de889353d9fdd99b6bd9edef952f5bee05",
+    "operation": {
+      "object": "water",
+      "feature": "tip",
+      "direction": "right",
+      "amount": 0.065,
+      "units": "shorter canvas dimension",
+      "reason": "Return the stream landing into the soil opening after moving the gardener left while keeping its source at the spout"
+    }
+  },
+  {
+    "base": "5ef5a72a9dee41430c70fcc313ee72de889353d9fdd99b6bd9edef952f5bee05",
+    "result": "41794e925d6947c346653f275396a943ee091886cb0fab8d7efa89a5524fab2f",
+    "operation": {
+      "object": "water",
+      "feature": "tip",
+      "direction": "up",
+      "amount": 0.008,
+      "units": "shorter canvas dimension",
+      "reason": "Lift the water landing away from the front rim into the soil opening"
+    }
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "engine": "0cc7aaea74f48c03ebcbb080d3adf42d3d1de2618d36493e2407c17b8085903b",
+  "source": "9a95ef43d673facc00c3fdbbe2bce1a8c2ec68c47bd59a13e42f1a95deae0d45",
+  "result": "41794e925d6947c346653f275396a943ee091886cb0fab8d7efa89a5524fab2f",
+  "unchanged_nodes": [
+    "window-frame",
+    "window-glass",
+    "window-upright",
+    "window-crossbar",
+    "sill",
+    "plant-pot",
+    "plant-stem",
+    "soil",
+    "leaf-1",
+    "leaf-2",
+    "leaf-3",
+    "leaf-4"
+  ],
+  "translated_nodes": [
+    "gardener",
+    "neck",
+    "shirt",
+    "resting-sleeve",
+    "reaching-sleeve",
+    "carrying-hand",
+    "can-body",
+    "can-handle",
+    "spout",
+    "grip-thumb",
+    "grip-fold"
+  ],
+  "translation": [
+    -36,
+    0
+  ],
+  "water_root_coincides_with_spout": true,
+  "water_tip_inside_actual_soil": true,
+  "png_sha256": "50378bed4c26ac234a2ff87c368547c736f3c34c39bcc78a24d8d1cdce6651e0",
+  "actor_png_preserved": true,
+  "scope": "actual bounded reframe and terminal repair corroborated; not new whole-scene creative transfer or aesthetic acceptance"
+}

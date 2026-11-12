@@ -341,3 +341,13 @@ chain. View the clean image and red/blue impact guides before acceptance. Removi
 leaves valid paper; new --kind blank also creates empty paper. Inspect blank paper without a part,
 and add a node before selecting a feature. The seven focused tests are scripts.tests.test_studio_removal;
 actual public-CLI replacement and independent retained-child use live in evidence/studio-removal/.
+
+## Rebuild the richer interaction study
+
+python examples/studio/watering.py --outdir FRESH creates an editable working copy and rendered
+whole/alignment/grip-detail views from examples/studio/watering.json. It works from another current
+directory when invoked by absolute script path; an existing output directory is refused. The
+actual draft/revision/check/review and independent reframe are in evidence/studio-watering/.
+This unit changes artwork/examples/skill, not the Studio engine; inherited 113 passing tests remain
+source-applicable. Current picture identity and actual projected joins/soil landing are verified
+separately and are not substitutes for fresh visual judgment.

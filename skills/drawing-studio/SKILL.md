@@ -137,6 +137,10 @@ The CLI refuses an output/input path collision before writing. If you write a re
 the lower-level bundle API, it accepts a scene value and exports scene.json; it does not know where
 you read that value. Use e.g. working.json and a different output directory.
 
+For carrying/grasping/pouring or a mark connecting movable objects, read
+[object interaction](references/object-interaction.md) before adding detail. It records the actual
+watering failures, depth-based wrap experiment and the current single-endpoint constraint limit.
+
 ## Place connected parts by visible named mounts
 
 Inspect both parts with --feature anchors and separate output directories. Read both alignment

@@ -36,12 +36,16 @@ Sky, hills, moon and sun presets also support small scenic backgrounds with reco
 Their [actual studies and critical reviews](evidence/studio-composition/README.md) remain distinct
 from an artwork-quality pass.
 
-![A small flat-vector community-cover candidate](evidence/studio-expression/community-cover/artwork.png)
+![An original flat watering illustration study](evidence/studio-watering/27-softer-knuckles/artwork.png)
 
-This candidate combines heads, background, placement and attention from
-[compact semantic input](examples/studio/community_cover.json). It has a conditional minimum-usefulness
-review; human taste feedback is pending. [Actual trials and remaining criticism](evidence/studio-expression/README.md)
-distinguish that bounded result from a complete illustration claim.
+This [interaction study](evidence/studio-watering/README.md) uses existing heads, masses and strokes
+to connect person, grasp, can, stream and soil. Actual revisions correct an open-palm grasp, an
+unpersuasive pouring attitude and a floating handle end. Fresh critics find the action readable;
+grip certainty, pose and line-language cohesion remain open. Human scene-level taste is pending.
+Run python examples/studio/watering.py --outdir FRESH for an editable copy and real grip closeups.
+An independent operator also reframed the figure and repaired the displaced water endpoint.
+[The earlier community-cover study](evidence/studio-expression/README.md) remains available with
+its own limited-use review and unanswered human taste question.
 
 ## Historical portrait study
 
