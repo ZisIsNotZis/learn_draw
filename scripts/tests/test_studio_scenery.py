@@ -100,7 +100,12 @@ class ScenicComposition(unittest.TestCase):
 
     def test_cli_insertion_is_undoable_without_touching_original_scene(self):
         with tempfile.TemporaryDirectory() as directory:
-            p=Path(directory)/'scene.json';base=default_scene('landscape');write(p,base)
+            p=Path(directory)/'scene.json'
+            result=subprocess.run([sys.executable,'-m','scripts.studio','new',str(p),'--kind','landscape',
+                                   '--size','960x540','--background','#f4eadb'],capture_output=True,text=True)
+            self.assertEqual(result.returncode,0,result.stderr)
+            base=read(p)
+            self.assertEqual(base['canvas'],[960,540]);self.assertEqual(base['background'],'#f4eadb')
             result=subprocess.run([sys.executable,'-m','scripts.studio','add',str(p),'--kind','moon'],capture_output=True,text=True)
             self.assertEqual(result.returncode,0,result.stderr)
             self.assertEqual(len(read(p)['nodes']),3)

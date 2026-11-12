@@ -1,0 +1,91 @@
+[
+  {
+    "base": "eb147fef4b80b94da4501b71fe001cbc3512cdd416ffcef3ba8acb48dff15d1c",
+    "result": "e4e64b63e115278bc0a274660e9655458924b4a1f95bac1daf6ebb97f7225ccc",
+    "operation": {
+      "object": "portrait",
+      "feature": "object",
+      "parameter": "length",
+      "value": 0.36,
+      "reason": "Make room for two equal avatars and generous paper margins"
+    }
+  },
+  {
+    "base": "e4e64b63e115278bc0a274660e9655458924b4a1f95bac1daf6ebb97f7225ccc",
+    "result": "905db0e02c315a2ac9056b36a90b61ee1f442b776af32eaddc11d0c5725452ac",
+    "operation": {
+      "object": "portrait",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.235,
+      "units": "shorter canvas dimension",
+      "reason": "Place the first avatar in the left half with space for a partner"
+    }
+  },
+  {
+    "base": "905db0e02c315a2ac9056b36a90b61ee1f442b776af32eaddc11d0c5725452ac",
+    "result": "855bd033fddba003fdaa36b66965ac4b88b93dea39a40a302849519c5352e57a",
+    "operation": {
+      "action": "add",
+      "object": "partner",
+      "kind": "head",
+      "reason": "a frontal flat cartoon head with a side-parted short haircut"
+    }
+  },
+  {
+    "base": "855bd033fddba003fdaa36b66965ac4b88b93dea39a40a302849519c5352e57a",
+    "result": "da3f46d92c4a1a91f7611fd09e09fb5f885e053dfffe941ea57c6d5e9898daba",
+    "operation": {
+      "object": "partner",
+      "feature": "object",
+      "parameter": "length",
+      "value": 0.36,
+      "reason": "Match the partner scale to the first equal community member"
+    }
+  },
+  {
+    "base": "da3f46d92c4a1a91f7611fd09e09fb5f885e053dfffe941ea57c6d5e9898daba",
+    "result": "637b22eb16eacdb5c2655c39066c6e530b11086bdbbd94132a8cfd05aa30d530",
+    "operation": {
+      "object": "partner",
+      "feature": "object",
+      "direction": "right",
+      "amount": 0.235,
+      "units": "shorter canvas dimension",
+      "reason": "Separate both silhouettes with a clean central gap"
+    }
+  },
+  {
+    "base": "637b22eb16eacdb5c2655c39066c6e530b11086bdbbd94132a8cfd05aa30d530",
+    "result": "1642fceb8c2ad3482b0d62a72d04f7405228760d59a3e1d309499249b705676d",
+    "operation": {
+      "object": "partner",
+      "feature": "hair",
+      "parameter": "hair",
+      "value": "bob",
+      "reason": "Distinguish the partner through a rounded bob silhouette"
+    }
+  },
+  {
+    "base": "1642fceb8c2ad3482b0d62a72d04f7405228760d59a3e1d309499249b705676d",
+    "result": "a9aaa69afbdeb3830c81e5e788624be6269201f501cb278c8d66fd2e15dd4777",
+    "operation": {
+      "object": "partner",
+      "feature": "hair",
+      "parameter": "hair_color",
+      "value": "#b16e48",
+      "reason": "Give the second avatar warm copper hair against the first cool blue"
+    }
+  },
+  {
+    "base": "a9aaa69afbdeb3830c81e5e788624be6269201f501cb278c8d66fd2e15dd4777",
+    "result": "d28670436a588ace234a792c246bc9d6db8745a9bb4840c26b2106875b529912",
+    "operation": {
+      "object": "partner",
+      "feature": "face",
+      "parameter": "skin_color",
+      "value": "#c99170",
+      "reason": "Distinguish the second member with a warmer deeper skin tone"
+    }
+  }
+]

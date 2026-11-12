@@ -1,0 +1,76 @@
+{
+  "base": "855bd033fddba003fdaa36b66965ac4b88b93dea39a40a302849519c5352e57a",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "result": "da3f46d92c4a1a91f7611fd09e09fb5f885e053dfffe941ea57c6d5e9898daba",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "portrait",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with a side-parted short haircut",
+        "length": 0.36,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.23499999999999996,
+            -0.06
+          ]
+        }
+      },
+      {
+        "id": "partner",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with a side-parted short haircut",
+        "length": 0.36
+      }
+    ]
+  },
+  "selection": {
+    "base": "855bd033fddba003fdaa36b66965ac4b88b93dea39a40a302849519c5352e57a",
+    "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+    "object": "partner",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      120.0,
+      50.801437078916265,
+      520.0,
+      459.42778169380796
+    ],
+    "object_bounds": [
+      120.0,
+      50.801437078916265,
+      520.0,
+      459.42778169380796
+    ],
+    "controls": [
+      "eye_scale",
+      "jaw",
+      "hair",
+      "length",
+      "width",
+      "angle",
+      "depth",
+      "depth_slope",
+      "hair_color",
+      "skin_color",
+      "iris_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "partner",
+    "feature": "object",
+    "parameter": "length",
+    "value": 0.36,
+    "reason": "Match the partner scale to the first equal community member"
+  },
+  "status": "ready"
+}

@@ -1,0 +1,14 @@
+{
+  "tests": 55,
+  "engine": "1ca87189e676d23d885ebdc8563a12912b2ab6060f68ea369f2f4f635f724daf",
+  "default_png_unchanged": "23ad96c4ac624d9dd75b3187d0e56bdb0da4635d774727c4c7022bdbdb8bc48a",
+  "change_bounds": [
+    424,
+    158,
+    525,
+    270
+  ],
+  "changes_confined_to_partner_hair": true,
+  "unrelated_avatar_pixels_identical": true,
+  "scope": "assisted engine correction after an independent raw transfer; not a new unaided creation or artwork pass"
+}

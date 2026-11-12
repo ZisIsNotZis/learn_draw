@@ -183,7 +183,8 @@ def compile_recipe(eye_scale=1, jaw=.42, hair="side-part", canvas=(640,640), cen
         replacements = {}
         if 'hair' in palette:
             replacements.update({'#517f9b':palette['hair'], '#426781':palette.get('shade',darken(palette['hair'],.82)),
-                                 '#36566f':darken(palette['hair'],.65), '#263c50':palette.get('ink',darken(palette['hair'],.50))})
+                                 '#36566f':darken(palette['hair'],.65), '#3e647e':darken(palette['hair'],.78),
+                                 '#263c50':palette.get('ink',darken(palette['hair'],.50))})
         if 'skin' in palette:
             replacements.update({'#f1d1b9':palette['skin'],'#b17a68':darken(palette['skin'],.65)})
         if 'iris' in palette:
@@ -338,7 +339,7 @@ def _head_data(encoded, canvas):
     transform=f'rotate({-angle} {center[0]} {center[1]})' if angle else ''
     features={}
     controls={'eyes':['eye_scale','iris_color'], 'face':['jaw','skin_color'], 'hair':['hair','hair_color'],
-              'object':['eye_scale','jaw','hair','length','width','angle','depth','depth_slope','hair_color','skin_color','iris_color','ink_color']}
+              'object':['intent','eye_scale','jaw','hair','length','width','angle','depth','depth_slope','hair_color','skin_color','iris_color','ink_color']}
     for name,ids in (('eyes',['eye-left-sclera','eye-right-sclera']),('face',['head-contour']),('hair',['hair-front-union'])):
         paths=[];pts=[]
         for sid in ids:

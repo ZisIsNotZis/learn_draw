@@ -9,25 +9,25 @@
     {
       "id": "sky",
       "kind": "sky",
-      "intent": "a quiet dusk gradient with restrained stars",
+      "intent": "a clear daylight atmosphere above warm ridges",
       "style": "day"
     },
     {
       "id": "ridges",
       "kind": "hills",
-      "intent": "three receding smooth ridges beneath the open sky",
+      "intent": "three warm receding ridges with an opposing broad rhythm",
       "palette": {
         "far": "#bda18c",
         "middle": "#b7a077",
         "near": "#92745f"
       },
-      "seed": 2.0,
+      "seed": 2,
       "horizon": 0.54
     },
     {
       "id": "sun",
       "kind": "sun",
-      "intent": "a warm sun with an attached radial crown",
+      "intent": "a low warm sun disc partly behind the distant ridge",
       "at": {
         "anchor": "upper_right",
         "offset": [
@@ -35,7 +35,7 @@
           0.28
         ]
       },
-      "rays": 0.0
+      "rays": 0
     }
   ]
 }

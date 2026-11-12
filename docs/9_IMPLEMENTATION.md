@@ -20,6 +20,7 @@ python -m scripts.studio preview landscape.json --selection evidence/moon-view/s
 python examples/studio/compose.py --theme moonrise --outdir evidence/my-moonrise
 python examples/studio/compose.py --theme daylight --outdir evidence/my-daylight
 python -m scripts.studio new head.json --kind head
+python -m scripts.studio new cover.json --kind head --size 960x540 --background '#f5eee4'
 python -m scripts.studio inspect head.json --feature eyes --outdir evidence/head-view
 python -m scripts.studio preview head.json --selection evidence/head-view/selection.json --set eye_scale --value .92 --reason "Quieter eye proportions" --outdir evidence/head-preview
 python -m scripts.studio accept head.json evidence/head-preview/candidate.json
@@ -55,6 +56,12 @@ or imply that an unrelated study beat the portrait floor. The old universal gate
 the legacy portrait workflow and is applied when that artwork/toolchain is changed.
 
 ## Coordination is remote (M2), because the repository is public
+
+The isolated `codex/vlm-studio` worktree uses non-cone sparse checkout. Its active patterns include
+scripts, docs, skills, examples/studio, evidence, uv.lock, .gitattributes, history and the bounded
+numeric legacy fixtures. Keep these patterns when applying Git updates: tracked files outside the
+sparse set can disappear from disk on merge even though their committed records remain intact.
+The original recovery worktree's pre-existing deletions are not part of studio changes.
 
 The repository is public at `zisisnotzis/learn_draw`, so the baseline in `.scratch/00-tooling/baseline/`
 and the ticket statuses are shared state and a shared floor rather than a local-only one; the

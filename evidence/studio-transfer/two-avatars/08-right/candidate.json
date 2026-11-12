@@ -1,0 +1,84 @@
+{
+  "base": "da3f46d92c4a1a91f7611fd09e09fb5f885e053dfffe941ea57c6d5e9898daba",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "result": "637b22eb16eacdb5c2655c39066c6e530b11086bdbbd94132a8cfd05aa30d530",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "portrait",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with a side-parted short haircut",
+        "length": 0.36,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.23499999999999996,
+            -0.06
+          ]
+        }
+      },
+      {
+        "id": "partner",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with a side-parted short haircut",
+        "length": 0.36,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.23499999999999996,
+            -0.06
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "da3f46d92c4a1a91f7611fd09e09fb5f885e053dfffe941ea57c6d5e9898daba",
+    "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+    "object": "partner",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      188.01544424657266,
+      129.84143707891627,
+      452.0,
+      398.9690136069699
+    ],
+    "object_bounds": [
+      188.01544424657266,
+      129.84143707891627,
+      452.0,
+      398.9690136069699
+    ],
+    "controls": [
+      "eye_scale",
+      "jaw",
+      "hair",
+      "length",
+      "width",
+      "angle",
+      "depth",
+      "depth_slope",
+      "hair_color",
+      "skin_color",
+      "iris_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "partner",
+    "feature": "object",
+    "direction": "right",
+    "amount": 0.235,
+    "units": "shorter canvas dimension",
+    "reason": "Separate both silhouettes with a clean central gap"
+  },
+  "status": "ready"
+}

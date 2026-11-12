@@ -1,0 +1,24 @@
+{
+  "base": "637b22eb16eacdb5c2655c39066c6e530b11086bdbbd94132a8cfd05aa30d530",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "object": "partner",
+  "kind": "feature",
+  "feature": "hair",
+  "bounds": [
+    341.0,
+    132.0,
+    600.0,
+    397.0
+  ],
+  "object_bounds": [
+    339.0,
+    129.84143707891627,
+    602.0,
+    398.4924811763914
+  ],
+  "controls": [
+    "hair",
+    "hair_color"
+  ],
+  "units": "semantic parameter values; inspect the actual selected feature"
+}

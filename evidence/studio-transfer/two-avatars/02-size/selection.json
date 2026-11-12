@@ -1,0 +1,34 @@
+{
+  "base": "eb147fef4b80b94da4501b71fe001cbc3512cdd416ffcef3ba8acb48dff15d1c",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "object": "portrait",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    120.0,
+    50.801437078916265,
+    520.0,
+    459.42778169380796
+  ],
+  "object_bounds": [
+    120.0,
+    50.801437078916265,
+    520.0,
+    459.42778169380796
+  ],
+  "controls": [
+    "eye_scale",
+    "jaw",
+    "hair",
+    "length",
+    "width",
+    "angle",
+    "depth",
+    "depth_slope",
+    "hair_color",
+    "skin_color",
+    "iris_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

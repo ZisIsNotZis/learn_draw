@@ -37,7 +37,7 @@ def _data(encoded,canvas):
     out=[]
     def add(name,intent,markup):
         out.extend([f'<!-- {sid}-{name}: {intent} -->',markup.replace('ID',sid+'-'+name)])
-    controls=['depth','depth_slope']
+    controls=['intent','depth','depth_slope']
     if kind=='sky':
         is_day=node.get('style','dusk')=='day'
         top=palette.get('top','#7ab6c9' if is_day else '#293754')

@@ -13,6 +13,10 @@ The current editable slice is `python -m scripts.studio`. Scene `format` is
 Each node requires `id`, `kind` (`head`, `hair-lock`, `sky`, `hills`, `moon`, `sun`), `intent`.
 `new --kind landscape` instantiates sky and hills on a 960×640 canvas; `add --kind moon` adds a
 celestial preset. Insertion is journaled and undoable. Existing names are never overwritten.
+`new --size WIDTHxHEIGHT --background '#rrggbb'` optionally sets the canvas and paper at creation.
+Every object selection exposes `intent` as a text control. Stock intent describes the component's
+purpose without duplicating mutable colour or hairstyle values; custom author intent is never
+silently rewritten when changing a parameter.
 
 ### Scenic presets and composition
 
@@ -50,7 +54,7 @@ nominal lock widths; semantic eye/face/hair features cannot accidentally transla
 | angle | 0; 2D tilt, positive toward screen right along the head's downward axis |
 | eye_scale / jaw | 1 / .42; eye size and cheek-to-jaw station, with the head ruler fixed |
 | hair | side-part; alternatives bob / none |
-| palette | optional hair, skin, iris, shade, ink; a new hair/iris colour derives related tones |
+| palette | optional hair, skin, iris, shade, ink; a new hair/iris colour derives related tones, including bob and side-part internal hair lines |
 | hair_edits | generated left/right child edit lists; root/tip remain protected |
 | depth / depth_slope | 0 / 0; linear support anchored at face center |
 

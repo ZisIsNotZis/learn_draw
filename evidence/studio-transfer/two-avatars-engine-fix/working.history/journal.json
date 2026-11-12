@@ -1,0 +1,24 @@
+[
+  {
+    "base": "d28670436a588ace234a792c246bc9d6db8745a9bb4840c26b2106875b529912",
+    "result": "dcd14cb6d7c42b4616329ee75c45d05f1b11da87dc830cc0793605a9e8f07c8b",
+    "operation": {
+      "object": "portrait",
+      "feature": "object",
+      "parameter": "intent",
+      "value": "A cool blue-haired frontal avatar for the friendly science community",
+      "reason": "Keep the authored purpose consistent with this avatar instead of retaining a stock hairstyle claim"
+    }
+  },
+  {
+    "base": "dcd14cb6d7c42b4616329ee75c45d05f1b11da87dc830cc0793605a9e8f07c8b",
+    "result": "05c689dbda7983fe35ec75327d80b96a899a4cc7a0993cc1b911de04e688f6ed",
+    "operation": {
+      "object": "partner",
+      "feature": "object",
+      "parameter": "intent",
+      "value": "A warm copper-haired bob avatar for the friendly science community",
+      "reason": "Keep the authored purpose consistent with this avatar instead of retaining a stock hairstyle claim"
+    }
+  }
+]

@@ -1,0 +1,102 @@
+{
+  "revision": "e4e64b63e115278bc0a274660e9655458924b4a1f95bac1daf6ebb97f7225ccc",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-transfer\\two-avatars\\03-before-place\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-transfer\\two-avatars\\03-before-place\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-transfer\\two-avatars\\03-before-place\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-transfer\\two-avatars\\03-before-place\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-transfer\\two-avatars\\03-before-place\\artwork.png": "293c9d04914fc7dae80f4fa14e4c1049829bdcc8e75aafba561beb37cda12db0",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-transfer\\two-avatars\\03-before-place\\alignment.png": "cb0f974d42f8da071dd8297feb050f9ddb17d43920c86ce8eb1a770c2bd4ab6e",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-transfer\\two-avatars\\03-before-place\\object-closeup.png": "c97b3f43e70f6c0afb333478f109f760c28490bfdab99ab88a015b76a2ad18ad",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-transfer\\two-avatars\\03-before-place\\edit-closeup.png": "dcde4903a4c3c223129e5cc40657ea3697d0a21a79265eed1269904bd452c77a"
+  },
+  "nodes": {
+    "portrait": {
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with a side-parted short haircut",
+      "bounds": [
+        188.01544424657266,
+        129.84143707891627,
+        452.0,
+        398.9690136069699
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            252.2333,
+            285.8803,
+            387.7667,
+            304.7175
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color"
+          ]
+        },
+        "face": {
+          "bounds": [
+            229.0,
+            166.0,
+            411.0,
+            396.5
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            190.0,
+            132.0,
+            450.0,
+            397.0
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "object": {
+          "bounds": [
+            188.01544424657266,
+            129.84143707891627,
+            452.0,
+            398.9690136069699
+          ],
+          "controls": [
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ]
+    }
+  },
+  "scope": "flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints",
+    "white target": "local move focus"
+  },
+  "move_units": "object selection: shorter canvas dimension; local edge: nominal lock width"
+}

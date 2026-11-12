@@ -1,0 +1,71 @@
+{
+  "base": "e4e64b63e115278bc0a274660e9655458924b4a1f95bac1daf6ebb97f7225ccc",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "result": "905db0e02c315a2ac9056b36a90b61ee1f442b776af32eaddc11d0c5725452ac",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "portrait",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with a side-parted short haircut",
+        "length": 0.36,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.23499999999999996,
+            -0.06
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "e4e64b63e115278bc0a274660e9655458924b4a1f95bac1daf6ebb97f7225ccc",
+    "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+    "object": "portrait",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      188.01544424657266,
+      129.84143707891627,
+      452.0,
+      398.9690136069699
+    ],
+    "object_bounds": [
+      188.01544424657266,
+      129.84143707891627,
+      452.0,
+      398.9690136069699
+    ],
+    "controls": [
+      "eye_scale",
+      "jaw",
+      "hair",
+      "length",
+      "width",
+      "angle",
+      "depth",
+      "depth_slope",
+      "hair_color",
+      "skin_color",
+      "iris_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "portrait",
+    "feature": "object",
+    "direction": "left",
+    "amount": 0.235,
+    "units": "shorter canvas dimension",
+    "reason": "Place the first avatar in the left half with space for a partner"
+  },
+  "status": "ready"
+}

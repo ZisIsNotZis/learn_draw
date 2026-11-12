@@ -1,0 +1,78 @@
+{
+  "base": "a9aaa69afbdeb3830c81e5e788624be6269201f501cb278c8d66fd2e15dd4777",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "result": "d28670436a588ace234a792c246bc9d6db8745a9bb4840c26b2106875b529912",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "portrait",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with a side-parted short haircut",
+        "length": 0.36,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.23499999999999996,
+            -0.06
+          ]
+        }
+      },
+      {
+        "id": "partner",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with a side-parted short haircut",
+        "length": 0.36,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.23499999999999996,
+            -0.06
+          ]
+        },
+        "hair": "bob",
+        "palette": {
+          "hair": "#b16e48",
+          "skin": "#c99170"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "a9aaa69afbdeb3830c81e5e788624be6269201f501cb278c8d66fd2e15dd4777",
+    "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+    "object": "partner",
+    "kind": "feature",
+    "feature": "face",
+    "bounds": [
+      379.0,
+      166.0,
+      561.0,
+      396.5
+    ],
+    "object_bounds": [
+      339.0,
+      129.84143707891627,
+      602.0,
+      398.4924811763914
+    ],
+    "controls": [
+      "jaw",
+      "skin_color"
+    ],
+    "units": "semantic parameter values; inspect the actual selected feature"
+  },
+  "operation": {
+    "object": "partner",
+    "feature": "face",
+    "parameter": "skin_color",
+    "value": "#c99170",
+    "reason": "Distinguish the second member with a warmer deeper skin tone"
+  },
+  "status": "ready"
+}

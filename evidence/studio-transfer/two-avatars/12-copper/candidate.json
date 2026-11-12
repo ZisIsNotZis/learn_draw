@@ -1,0 +1,77 @@
+{
+  "base": "1642fceb8c2ad3482b0d62a72d04f7405228760d59a3e1d309499249b705676d",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "result": "a9aaa69afbdeb3830c81e5e788624be6269201f501cb278c8d66fd2e15dd4777",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "portrait",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with a side-parted short haircut",
+        "length": 0.36,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.23499999999999996,
+            -0.06
+          ]
+        }
+      },
+      {
+        "id": "partner",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with a side-parted short haircut",
+        "length": 0.36,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.23499999999999996,
+            -0.06
+          ]
+        },
+        "hair": "bob",
+        "palette": {
+          "hair": "#b16e48"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "1642fceb8c2ad3482b0d62a72d04f7405228760d59a3e1d309499249b705676d",
+    "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+    "object": "partner",
+    "kind": "feature",
+    "feature": "hair",
+    "bounds": [
+      341.0,
+      132.0,
+      600.0,
+      397.0
+    ],
+    "object_bounds": [
+      339.0,
+      129.84143707891627,
+      602.0,
+      398.4924811763914
+    ],
+    "controls": [
+      "hair",
+      "hair_color"
+    ],
+    "units": "semantic parameter values; inspect the actual selected feature"
+  },
+  "operation": {
+    "object": "partner",
+    "feature": "hair",
+    "parameter": "hair_color",
+    "value": "#b16e48",
+    "reason": "Give the second avatar warm copper hair against the first cool blue"
+  },
+  "status": "ready"
+}

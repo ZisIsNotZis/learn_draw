@@ -49,6 +49,9 @@ a smaller move or a better gesture, not manually corrected generated vertices.
 - Head defaults require no path input. Inspect exposes allowed controls: eyes offer eye_scale/iris_color;
   face offers jaw/skin_color; hair offers hairstyle/hair_color. Object exposes size, tilt and depth.
   Child-lock pushes preserve endpoints and the other lock; screen directions account for head tilt.
+- Choose the canvas when creating a scene with `new cover.json --kind head --size 960x540`;
+  `--background '#rrggbb'` sets its paper. Select object and `--set intent --value "..."` when the
+  authored purpose changes. Stock descriptions deliberately avoid mutable hairstyle/colour claims.
 
 - `sweep`, `angle` and `length` shape the whole gesture. A local boundary push refines a segment.
 - `width_side: right` grows width to the right of the root-to-tip gesture, keeping its left edge.
@@ -75,3 +78,7 @@ specific and asynchronous; continue independent work while awaiting a reply.
 composition through the public CLI, without a reference. Its choices are a demonstration, not a
 formula for every picture: choose your focal point, negative space and palette for the actual intent.
 Inspect defaults first. Preserve a useful silhouette; additional marks must serve grouping or meaning.
+Changing a seed or palette does not establish a new composition: inspect the actual silhouette and
+focal placement. Simple scenic presets can be useful backgrounds while remaining insufficient as
+finished illustrations. Two differently coloured instances also do not establish new facial anatomy
+or expression; keep that capability boundary explicit.

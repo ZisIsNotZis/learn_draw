@@ -13,19 +13,27 @@ from .render import bundle
 def default_scene(kind='hair-lock'):
     if kind=='landscape':
         return dict(format='learn-draw/studio-1',canvas=[960,640],background='#f5eee4',nodes=[
-            dict(id='sky',kind='sky',intent='a quiet dusk gradient with restrained stars'),
+            dict(id='sky',kind='sky',intent='a quiet atmospheric sky with restrained detail'),
             dict(id='ridges',kind='hills',intent='three receding smooth ridges beneath the open sky')])
     if kind in ('sky','hills','moon','sun'):
         intents={'sky':'a quiet sky with restrained atmospheric detail','hills':'three receding smooth ridges',
-                 'moon':'a warm crescent above the horizon','sun':'a warm sun with an attached radial crown'}
+                 'moon':'a warm moon above the horizon','sun':'a warm editable sun'}
         return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
             dict(id=kind,kind=kind,intent=intents[kind])])
     if kind=='head':
         return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
-            dict(id='portrait',kind='head',intent='a frontal flat cartoon head with a side-parted short haircut')])
+            dict(id='portrait',kind='head',intent='a frontal flat cartoon head with an editable hairstyle')])
     return {"format": "learn-draw/studio-1", "canvas": [640, 640], "background": "#f5eee4",
             "nodes": [{"id": "cheek-lock", "kind": "hair-lock",
-                       "intent": "a soft blue lock swelling below the root and tapering to a pointed end"}]}
+                       "intent": "a soft lock swelling below the root and tapering to a pointed end"}]}
+
+
+def canvas_arg(value):
+    try:
+        width,height=value.lower().split('x')
+        return [int(width),int(height)]
+    except ValueError:
+        raise argparse.ArgumentTypeError('size must be integer WIDTHxHEIGHT') from None
 
 
 def main():
@@ -36,6 +44,8 @@ def main():
     p.add_argument("scene")
     p.add_argument('--kind',choices=kinds+('landscape',),default='hair-lock')
     p.add_argument('--id',help='optional semantic object name')
+    p.add_argument('--size',type=canvas_arg,help='optional canvas WIDTHxHEIGHT, each 64–4096')
+    p.add_argument('--background',help='optional paper colour #rrggbb')
     p = sub.add_parser('add',help='add a named preset object to an existing scene')
     p.add_argument('scene')
     p.add_argument('--kind',choices=kinds,required=True)
@@ -77,6 +87,8 @@ def main():
             if Path(args.scene).exists():
                 raise ValueError("scene already exists; choose a new path")
             scene=default_scene(args.kind)
+            if args.size: scene['canvas']=args.size
+            if args.background: scene['background']=args.background
             if args.id:
                 if len(scene['nodes'])!=1: raise ValueError('--id applies to a single-object preset')
                 scene['nodes'][0]['id']=args.id

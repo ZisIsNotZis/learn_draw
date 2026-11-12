@@ -1,0 +1,41 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "portrait",
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with a side-parted short haircut",
+      "length": 0.36,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.23499999999999996,
+          -0.06
+        ]
+      }
+    },
+    {
+      "id": "partner",
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with a side-parted short haircut",
+      "length": 0.36,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.23499999999999996,
+          -0.06
+        ]
+      },
+      "hair": "bob",
+      "palette": {
+        "hair": "#b16e48",
+        "skin": "#c99170"
+      }
+    }
+  ]
+}

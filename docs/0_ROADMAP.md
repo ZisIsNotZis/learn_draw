@@ -111,10 +111,19 @@ backgrounds. `evidence/studio-composition/` preserves the real edits and both re
 palette-swap approach was too repetitive; revised landform, focal placement and a rooted pine group
 improved the variation. Fresh critics still find sparse scene character, colour-band hills and
 repeated tree icons. These are background/component evidence, not a finished-art gate. 54 combined
-tests and repeated current SVG/PNG bytes pass. The next capability test gives only the skill/public
-commands and a new dual-avatar intent to an independent creator, without source or existing images.
+tests and repeated current SVG/PNG bytes pass.
 
-**Next action:** inspect that independent creation result and any operational gaps before expanding
-the catalog. A richer foreground subject and composition remain necessary for an illustration claim.
+An independent creator, given only the skill/public commands and a new dual-avatar intent, completed
+seven edits without source, existing images or JSON/SVG workarounds. `evidence/studio-transfer/` keeps
+its raw result and critical image-review pair. It exposed a bob-only blue-line palette omission,
+stale stock intent and missing creation-time canvas controls. These operation gaps are corrected;
+the repair is labeled assisted, with a pre-fix failing regression, 55 combined passing checks,
+unchanged default-head PNG and changes confined to the partner's hair. Review still finds similar
+faces/expressions, rigid hair and excess lower whitespace; no whole-cover art pass is claimed.
+
+**Next action:** add a small, visibly useful expression/gaze control to the existing accepted-style
+head, then use it to distinguish characters by intent rather than only colour/fringe. Preserve the
+default's pixels and inspect actual local effects. This addresses an observed creation gap before
+expanding to more subjects. A richer foreground subject remains necessary for an illustration claim.
 Preserve the legacy portrait. The development branch is
 `codex/vlm-studio`, pushed through the existing SSH identity; main has not been overwritten.

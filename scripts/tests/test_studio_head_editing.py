@@ -29,6 +29,26 @@ class HeadEditing(unittest.TestCase):
     def setUp(self):
         self.scene=default_scene('head')
 
+    def test_hair_recolor_covers_internal_marks_in_both_styles(self):
+        from scripts.studio.head import compile_recipe
+        for style in ('side-part','bob'):
+            with self.subTest(style=style):
+                before=compile_recipe(hair=style)['nodes']
+                after=compile_recipe(hair=style,palette={'hair':'#b16e48'})['nodes']
+                for old,new in zip(before,after):
+                    if old['z'] in ('hair-back','hair-front','cap'):
+                        for attr in ('fill','ink','stroke'):
+                            if isinstance(old.get(attr),str) and old[attr].startswith('#'):
+                                self.assertNotEqual(old[attr],new[attr],str((style,old,attr)))
+                scene=copy.deepcopy(self.scene)
+                scene['nodes'][0].update(hair=style,palette={'hair':'#b16e48'})
+                image=pixels(scene)
+                blue=(image[:,:,2]>image[:,:,0]) & (image[:,:,2]>image[:,:,1])
+                # The deliberately purple pupils are a separate eye material.
+                x0,y0,x1,y1=head_data(scene['nodes'][0],scene['canvas']).features['eyes']['bounds']
+                blue[max(0,int(y0)-2):int(y1)+3,max(0,int(x0)-2):int(x1)+3]=False
+                self.assertFalse(blue.any(),'warm hair must not retain default blue marks')
+
     def test_eye_parameter_changes_only_the_selected_eyes_in_actual_raster(self):
         selection=select(self.scene,feature='eyes')
         candidate=parameter_preview(self.scene,selection,'eye_scale',.92,'make the expression quieter')

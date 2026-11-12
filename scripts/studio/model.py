@@ -254,7 +254,7 @@ def select(scene, sid=None, side="left", at=.55, radius=.30, feature=None):
         root=resolve_root(node,canvas)
         if feature=='object':
             selection.update(kind='feature',feature='object',bounds=object_bounds,object_bounds=object_bounds,
-                             controls=['length','width','sweep','angle','width_side','depth','depth_slope',
+                             controls=['intent','length','width','sweep','angle','width_side','depth','depth_slope',
                                        'fill_color','shade_color','light_color','ink_color'],
                              units='semantic values; object move amount is a fraction of the shorter canvas dimension')
             return selection
@@ -330,7 +330,7 @@ def parameter_preview(scene,selection,parameter,value,reason):
         color(value)
         node.setdefault('palette',{})[aliases[parameter]]=value
     else:
-        if parameter not in ('hair','width_side','style','tree_side') and isinstance(value,str):
+        if parameter not in ('intent','hair','width_side','style','tree_side') and isinstance(value,str):
             try:
                 value=float(value)
             except ValueError:
