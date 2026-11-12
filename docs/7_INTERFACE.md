@@ -10,14 +10,14 @@ the commands that write it (`9_IMPLEMENTATION.md`).
 
 The current editable slice is `python -m scripts.studio`. Scene `format` is
 `learn-draw/studio-1`; `canvas` defaults to [640,640], `background` to warm paper, `nodes` is required.
-Each node requires `id`, `kind` (`shape`, `head`, `hand`, `hair-lock`, `sky`, `hills`, `moon`, `sun`), `intent`.
+Each node requires `id`, `kind` (`stroke`, `shape`, `head`, `hand`, `hair-lock`, `sky`, `hills`, `moon`, `sun`), `intent`.
 `new --kind landscape` instantiates sky and hills on a 960×640 canvas; `add --kind moon` adds a
 celestial preset. Insertion is journaled and undoable. Existing names are never overwritten.
 `new --size WIDTHxHEIGHT --background '#rrggbb'` optionally sets the canvas and paper at creation.
 Every object selection exposes `intent` as a text control. Stock intent describes the component's
 purpose without duplicating mutable colour or hairstyle values; custom author intent is never
 silently rewritten when changing a parameter.
-Foreground insertion (`add --kind head|hand|hair-lock|shape`) starts on a plane beyond the existing
+Foreground insertion (`add --kind head|hand|hair-lock|shape|stroke`) starts on a plane beyond the existing
 components' maximum support depth. `--depth NUMBER` overrides it. Scenic kinds retain their semantic
 background/celestial defaults. Insertion and explicit depth edits remain undoable; visibility still
 comes from support depth rather than the node list.
@@ -326,14 +326,52 @@ an ephemeral compiler copy. Rendering, selected feature paths, magnification, de
 use that same resolved placement. Report geometry remains bound to the raw scene revision.
 
 preview --attach TARGET_SELECTION requires current --feature anchors selections for both objects;
---self-anchor/--target-anchor default center and --inset defaults 0. It uses the existing preview,
+--self-anchor/--target-anchor infer a single exact inspected mount, otherwise default center;
+--inset defaults 0. It uses the existing preview,
 accept and undo contract. Target selection inputs join scene/source inputs in output-alias refusal.
 preview --detach requires anchors selection and preserves current placement as a generated free at.
-Object --move on an attached node changes its retained screen offset. A local shape edit whose
-influence includes the pinned side midpoint or its tangent neighbors is refused. Parent edits may
+Object --move on an attached node changes its retained screen offset. A local shape edit that
+changes the actual pinned point or its outward normal is refused. Parent edits may
 move related descendants deliberately; unrelated objects remain independent.
 
 This is one point mount, not an inherited transform, edge-fit, boolean union or full solid rig.
 Depth fields remain independent; attachment never specifies a visibility cut or guarantees a
 pleasing seam. Typed intrinsic geometry is checked before graph resolution; missing targets,
 unknown anchors, illegal inset and cycles refuse the candidate without changing working data.
+
+## Gesture stroke node
+
+kind stroke has id/kind/intent, optional at or attachment, length, thickness, angle, bend,
+start_width/end_width, start_cap/end_cap, shade, ink_width, depth/depth_slope, palette and edits.
+At places the root; absent it, root is canvas center plus [0,-.2]. Length is root-to-tip chord / min
+canvas (default .4, .005..2); thickness / min canvas is independent (default .045, .001..1).
+Angle 0 points down and 90 right. Bend is sideways chord fraction (-1..1), default 0. Width
+multipliers default 1 (0..4); caps round|flat default round. Shade none|left|right defaults none.
+Ink_width is canvas fraction (default 0, 0.. .1). Palette fill/shade/ink; fill defaults #496b73,
+shade derives at .78 value, ink #304950. Edits carry at/radius/dx/dy/reason in material axes and
+nominal thickness units, with the same strict interior influence bounds as lock pushes.
+
+Object exposes those semantic controls; spine exposes a bounded midline push. Root/tip are terminal
+handles using screen movement / min canvas, opposite terminal fixed. Mounted free-terminal moves
+require the opposite terminal as the self pin; center/moving-terminal pins refuse that operation.
+Length/angle updates preserve thickness. A center-pinned spine window cannot displace its midpoint.
+Frame position/depth use the same resolver and visibility contract as other parts. Root/tip mounts
+are cap-center joints, not the outer ink extremes. No target/image/browser is read to compile it.
+
+## Exact inspected mounts and current closeups
+
+Head adds chin at the rendered face's own median-axis lower boundary, including outline half-width;
+hand adds wrist from the shared WRIST_BASE construction value. Other kind-specific mounts remain.
+Shapes additionally address a side position as top|right|bottom|left@fraction, fraction 0..1 along
+its nominal clockwise arc. Point position and adjacent normals interpolate continuously; default
+named side mounts remain exact midpoint values. Inspect anchors --anchor NAME focuses that exact
+point and records anchor in selection. An attachment may infer self/target names from exact
+inspections; without them it defaults center. Explicit positioned addresses require an exact
+matching inspection. Stored relation fields remain the same named strings, not baked coordinates.
+Local contour protection compares the actual pinned point and normal before/after, including
+adjacent-arc corner cases. Single-point mounts do not impose size or angle inheritance.
+
+Edit closeups recompute the selected region at the candidate scene, so a moved endpoint or exact
+mount is magnified where it landed. Original selection/base data remains bound to the prior scene.
+Author text stays unchanged in raw data; SVG comments escape markup and normalize double hyphens.
+That also preserves valid IDs containing double hyphens without creating invalid XML comments.

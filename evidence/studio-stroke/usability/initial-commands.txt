@@ -1,0 +1,7 @@
+Initial read/help commands, before run.py existed:
+Get-Content skills/drawing-studio/SKILL.md
+.venv/Scripts/python.exe -m scripts.studio --help
+.venv/Scripts/python.exe -m scripts.studio new --help
+.venv/Scripts/python.exe -m scripts.studio preview --help
+All exited 0. Tool transcript retains their raw outputs. Subsequent CLI calls are preserved exactly in commands.jsonl. Final check is in check-command.json. Generated artifact/image reads were via view_image; report.txt was read via Get-Content.
+After the artwork run, repeated all three CLI help calls through run.py to preserve their complete raw outputs in commands.jsonl. skill-read-snapshot.md preserves the exact skill text read.

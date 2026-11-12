@@ -1,0 +1,12 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "scripts/draw.py",
+    "check",
+    "evidence\\studio-stroke\\usability\\final\\artwork.png",
+    "--outdir",
+    "evidence\\studio-stroke\\usability\\check"
+  ],
+  "exit_code": 0,
+  "output": "bundle: evidence\\studio-stroke\\usability\\check\n  DRAFT at full resolution (1:1, no downscale) - judge detail here evidence\\studio-stroke\\usability\\check\\draft-fullres.png\n  downscaled preview (width <= 256px) - layout only, never detail evidence\\studio-stroke\\usability\\check\\draft.png\n  report + reviewer protocol                           evidence\\studio-stroke\\usability\\check\\report.txt\n"
+}

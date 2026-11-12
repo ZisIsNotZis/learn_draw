@@ -1,0 +1,32 @@
+{
+  "base": "04d2c8107145e8e554b62b853a2bc8952f3b5fadbeeb12d9a54d70699b8c0bd8",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "object": "sleeve",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    304.0,
+    176.0,
+    336.0,
+    208.0
+  ],
+  "object_bounds": [
+    296.00485282085674,
+    126.04296834444025,
+    476.35152224794984,
+    215.9951471791433
+  ],
+  "controls": [],
+  "focus": [
+    320.0,
+    192.0
+  ],
+  "locks": {
+    "root": [
+      320.0,
+      192.0
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "root"
+}

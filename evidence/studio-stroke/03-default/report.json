@@ -1,0 +1,168 @@
+{
+  "revision": "bc9c1e639273d66b3504096201d98b83261186f4f60a30b64802f33e496a0770",
+  "engine": "0d0b5ca3c318ba080d13b84234aa1d17b561032c815a8015ea54d6eb86794f0e",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\03-default\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\03-default\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\03-default\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\03-default\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\03-default\\artwork.png": "42e9953a9fafb728443fb798e60197c8b1cdf8a47080e537d3bf76b57b6b133c",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\03-default\\alignment.png": "9b47505501c04cb6af54ee37d6c4c83fc4beba2eb576cbb23d36f3646f14309f",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\03-default\\object-closeup.png": "12c633dd398590bf115729eef4204e8cc86a3c15b99c61096fc1c7ed41cb7011",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\03-default\\edit-closeup.png": "dca187335ad2e947ab9e3a1453e2662c9c68fcffd9f087e3cf2d548a187ee8a4"
+  },
+  "nodes": {
+    "gesture": {
+      "kind": "stroke",
+      "intent": "a clean round gesture mark with editable spine and terminals",
+      "bounds": [
+        305.6,
+        177.60000000000002,
+        334.4,
+        462.4
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            305.6,
+            177.60000000000002,
+            334.4,
+            462.4
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            320.0,
+            192.0,
+            320.0,
+            448.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            305.6,
+            177.60000000000002,
+            334.4,
+            462.4
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            305.6,
+            177.60000000000002,
+            334.4,
+            462.4
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            320.0
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            320.0,
+            192.0
+          ],
+          "normal": null
+        },
+        "tip": {
+          "point": [
+            320.0,
+            448.0
+          ],
+          "normal": null
+        }
+      },
+      "attached_children": []
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge focus or digit-tip handle"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; digit tip: nominal digit span"
+}

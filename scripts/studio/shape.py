@@ -5,7 +5,7 @@ import json
 import math
 
 from shapely import Polygon
-from .geometry import bounds,resolve_root,path,window
+from .geometry import xml_comment,bounds,resolve_root,path,window
 
 SIDES=('top','right','bottom','left')
 DEFAULT_LENGTH=.32
@@ -82,7 +82,7 @@ def _data(encoded,canvas):
     for side in SIDES:
         points=[p for q,p in sorted(rows,key=lambda row:local_t(row[0],side)) if 0<=local_t(q,side)<=1]
         features[side]=dict(paths=[dict(d=path(points,False),transform='')],bounds=bounds(points),controls=controls)
-    svg=(f'<!-- {sid}-mass: {node["intent"]} -->\n'
+    svg=(xml_comment(f'{sid}-mass: {node["intent"]}')+'\n'+
          f'<path id="{sid}-mass" d="{d}" fill="{fill}" stroke="{ink}" stroke-width="{stroke:.4f}" stroke-linejoin="round"/>')
     return ShapeData(svg,outline,features,center,node.get('angle',0),tuple(rows))
 

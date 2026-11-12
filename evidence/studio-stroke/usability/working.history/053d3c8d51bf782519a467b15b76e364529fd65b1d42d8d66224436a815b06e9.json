@@ -1,0 +1,23 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f8eedb",
+  "nodes": [
+    {
+      "id": "head",
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with an editable hairstyle",
+      "length": 0.43,
+      "width": 0.92,
+      "expression": "smile",
+      "palette": {
+        "hair": "#493b50",
+        "iris": "#3d7774"
+      },
+      "depth": 5.0
+    }
+  ]
+}

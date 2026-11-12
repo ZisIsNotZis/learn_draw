@@ -1,0 +1,36 @@
+{
+  "base": "8d1956af7e50f1c898eec7b71bd0caba26f3616579895be2873d5358ae90700b",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "object": "resting-sleeve",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    146.79362023358317,
+    501.9450350701095,
+    178.79362023358317,
+    533.9450350701095
+  ],
+  "object_bounds": [
+    91.06068425080629,
+    490.7515665117755,
+    189.98803534345285,
+    862.0283607429678
+  ],
+  "controls": [],
+  "focus": [
+    162.79362023358317,
+    517.9450350701095
+  ],
+  "locks": {
+    "root": [
+      162.79362023358317,
+      517.9450350701095
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "root",
+  "attachment_target": {
+    "object": "blouse",
+    "anchor": "left@.93"
+  }
+}

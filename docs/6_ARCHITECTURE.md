@@ -104,3 +104,16 @@ contract above. Missing targets/cycles are refused, and node-level compilation r
 input to prevent nominal positions masquerading as current geometry. Interface and algorithms are
 owned by 7_INTERFACE and 8_DETAIL. The independent cactus and parent-edit studies are indexed at
 ../evidence/studio-attachment/README.md; their contour/art limitations remain open.
+
+## Editable gesture and feature mounts
+
+Studio stroke construction owns a sampled analytic centerline and a normal-width paint strip,
+with round/flat caps and optional material colour plane. It reuses component depth projection;
+true depth crossings continue through the vector visibility solver. A colour plane is authored
+artwork, not a new illumination solver or an inferred physical fold.
+
+Head chin and hand wrist mounts come from the actual component construction. Shape side@fraction
+mounts interpolate nominal boundary stations and outward normals continuously. The author inspects
+that exact address before pinning a child; the graph still derives placement only. Selection crops
+follow the proposed edited feature while the candidate remains bound to the original selection.
+Detailed schema/algorithms and validity checks remain in 7_INTERFACE and 8_DETAIL.

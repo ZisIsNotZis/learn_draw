@@ -1,0 +1,32 @@
+{
+  "base": "04d2c8107145e8e554b62b853a2bc8952f3b5fadbeeb12d9a54d70699b8c0bd8",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "object": "jacket",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    401.6137828407643,
+    367.7896475121743,
+    460.44872684039206,
+    426.62459151180207
+  ],
+  "object_bounds": [
+    174.1931447375071,
+    344.6272000010903,
+    465.80685526249283,
+    589.7727999995393
+  ],
+  "controls": [],
+  "focus": [
+    431.0312548405782,
+    397.2071195119882
+  ],
+  "locks": {
+    "right@.2": [
+      431.0312548405782,
+      397.2071195119882
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "right@.2"
+}

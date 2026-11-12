@@ -1,0 +1,231 @@
+[
+  {
+    "base": "88efdf37285a385baa3d5ed4435c513065d4731b5d77b40d1623f40574e65022",
+    "result": "053d3c8d51bf782519a467b15b76e364529fd65b1d42d8d66224436a815b06e9",
+    "operation": {
+      "object": "head",
+      "feature": "object",
+      "parameters": {
+        "length": 0.43,
+        "width": 0.92,
+        "expression": "smile",
+        "hair_color": "#493b50",
+        "iris_color": "#3d7774",
+        "depth": 5.0
+      },
+      "reason": "Make a compact smiling head with room for a waving arm and jacket"
+    }
+  },
+  {
+    "base": "053d3c8d51bf782519a467b15b76e364529fd65b1d42d8d66224436a815b06e9",
+    "result": "05f23548cd0d8c5eea0954c6a02adef22cea8c20fd75778ae50045edbde64327",
+    "operation": {
+      "object": "head",
+      "feature": "object",
+      "direction": "up",
+      "amount": 0.07,
+      "units": "shorter canvas dimension",
+      "reason": "Raise the bust while preserving paper above the hair"
+    }
+  },
+  {
+    "base": "05f23548cd0d8c5eea0954c6a02adef22cea8c20fd75778ae50045edbde64327",
+    "result": "bac75d7f1d247ba279741e3d8b73e0f6c7c60b785fb5bc1a4517adb5ce932808",
+    "operation": {
+      "action": "add",
+      "object": "jacket",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "bac75d7f1d247ba279741e3d8b73e0f6c7c60b785fb5bc1a4517adb5ce932808",
+    "result": "84b2e506879c36a9bd7b39d33d9747b69d4fc7d2f304ad6e37e115586bf95f11",
+    "operation": {
+      "object": "jacket",
+      "feature": "object",
+      "parameters": {
+        "length": 0.38,
+        "width": 1.25,
+        "taper": 0.35,
+        "rounding": 0.65,
+        "fill_color": "#428f91",
+        "depth": 1.0
+      },
+      "reason": "Make a broad teal jacket bust behind the head"
+    }
+  },
+  {
+    "base": "84b2e506879c36a9bd7b39d33d9747b69d4fc7d2f304ad6e37e115586bf95f11",
+    "result": "7264d771bcce18ce03614ada2abe433eb05aecc07fe1482e060d26e27c9d7b93",
+    "operation": {
+      "object": "jacket",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.23,
+      "units": "shorter canvas dimension",
+      "reason": "Leave room for the entire rounded jacket hem"
+    }
+  },
+  {
+    "base": "7264d771bcce18ce03614ada2abe433eb05aecc07fe1482e060d26e27c9d7b93",
+    "result": "9b233bf247a63fb790829f22da063f72ab11dd8bfb9c19387446890f838bb3fc",
+    "operation": {
+      "action": "add",
+      "object": "neck",
+      "kind": "stroke",
+      "reason": "a clean round gesture mark with editable spine and terminals"
+    }
+  },
+  {
+    "base": "9b233bf247a63fb790829f22da063f72ab11dd8bfb9c19387446890f838bb3fc",
+    "result": "0972b804644c5c143783bf4ac514c5e84064611e65ea95c125f721bdee71ec5a",
+    "operation": {
+      "object": "neck",
+      "feature": "object",
+      "parameters": {
+        "length": 0.1,
+        "thickness": 0.09,
+        "fill_color": "#f1ceb2",
+        "depth": 3.0
+      },
+      "reason": "Make a short skin-coloured neck behind the chin"
+    }
+  },
+  {
+    "base": "0972b804644c5c143783bf4ac514c5e84064611e65ea95c125f721bdee71ec5a",
+    "result": "7c786ac0271c1fe089d521465d867cc394aa9a262f5bb772f3cea701ae7326d3",
+    "operation": {
+      "action": "attach",
+      "object": "neck",
+      "attachment": {
+        "to": "head",
+        "self": "root",
+        "target": "chin",
+        "inset": 0.04
+      },
+      "reason": "Join the neck root behind the true chin contour"
+    }
+  },
+  {
+    "base": "7c786ac0271c1fe089d521465d867cc394aa9a262f5bb772f3cea701ae7326d3",
+    "result": "a79ac917835a043fe7beb4d7182df9ae33d0c22deb9cbfa62fa79e68397e1b22",
+    "operation": {
+      "action": "add",
+      "object": "wave",
+      "kind": "hand",
+      "reason": "a front-view flat cartoon open palm with five digits"
+    }
+  },
+  {
+    "base": "a79ac917835a043fe7beb4d7182df9ae33d0c22deb9cbfa62fa79e68397e1b22",
+    "result": "d6913a7d8723791354fbd0c98c0723adb7f2d51ad45a91fe684d2bc1e3b66545",
+    "operation": {
+      "object": "wave",
+      "feature": "object",
+      "parameters": {
+        "length": 0.2,
+        "width": 0.85,
+        "angle": -10.0,
+        "depth": 6.0,
+        "skin_color": "#f1ceb2"
+      },
+      "reason": "Keep the wave smaller than the face with a relaxed outward tilt"
+    }
+  },
+  {
+    "base": "d6913a7d8723791354fbd0c98c0723adb7f2d51ad45a91fe684d2bc1e3b66545",
+    "result": "a4fe12ecf02933cd105325d0bacd90aacd0ab99186ed3419f67c8ba69b039c19",
+    "operation": {
+      "object": "wave",
+      "feature": "object",
+      "direction": "right",
+      "amount": 0.33,
+      "units": "shorter canvas dimension",
+      "reason": "Show the open wave beside the face"
+    }
+  },
+  {
+    "base": "a4fe12ecf02933cd105325d0bacd90aacd0ab99186ed3419f67c8ba69b039c19",
+    "result": "3934d19e59c86d3cad0dcadd2cb3a8e91ac3ec35f72c0331d7ffb63f587bd127",
+    "operation": {
+      "action": "add",
+      "object": "sleeve",
+      "kind": "stroke",
+      "reason": "a clean round gesture mark with editable spine and terminals"
+    }
+  },
+  {
+    "base": "3934d19e59c86d3cad0dcadd2cb3a8e91ac3ec35f72c0331d7ffb63f587bd127",
+    "result": "04d2c8107145e8e554b62b853a2bc8952f3b5fadbeeb12d9a54d70699b8c0bd8",
+    "operation": {
+      "object": "sleeve",
+      "feature": "object",
+      "parameters": {
+        "length": 0.21,
+        "thickness": 0.075,
+        "angle": 100.0,
+        "bend": 0.22,
+        "fill_color": "#428f91",
+        "depth": 2.0
+      },
+      "reason": "Use one bowed sleeve to carry the raised hand from the jacket shoulder"
+    }
+  },
+  {
+    "base": "04d2c8107145e8e554b62b853a2bc8952f3b5fadbeeb12d9a54d70699b8c0bd8",
+    "result": "d14f63bba0fb8b823503d213643762fdd6d42ae5975d454b46d7ddf1287693d5",
+    "operation": {
+      "action": "attach",
+      "object": "sleeve",
+      "attachment": {
+        "to": "jacket",
+        "self": "root",
+        "target": "right@.2",
+        "inset": 0.04
+      },
+      "reason": "Grow the waving sleeve from the inspected upper jacket edge"
+    }
+  },
+  {
+    "base": "d14f63bba0fb8b823503d213643762fdd6d42ae5975d454b46d7ddf1287693d5",
+    "result": "4b856df89b6925b652475ad050c9aedd3f05a9a8e40483a2e849bc0fabbb77c6",
+    "operation": {
+      "action": "attach",
+      "object": "wave",
+      "attachment": {
+        "to": "sleeve",
+        "self": "wrist",
+        "target": "tip",
+        "inset": 0
+      },
+      "reason": "Seat the waving hand wrist at the sleeve terminal"
+    }
+  },
+  {
+    "base": "4b856df89b6925b652475ad050c9aedd3f05a9a8e40483a2e849bc0fabbb77c6",
+    "result": "55c5655556f5ccf6930a469a66549d6ec7c7c715c856eee2d007ea476621ff6a",
+    "operation": {
+      "object": "sleeve",
+      "feature": "tip",
+      "direction": "up",
+      "amount": 0.055,
+      "units": "shorter canvas dimension",
+      "reason": "Raise the cuff and attached hand so the gesture reads upward rather than sideways"
+    }
+  },
+  {
+    "base": "55c5655556f5ccf6930a469a66549d6ec7c7c715c856eee2d007ea476621ff6a",
+    "result": "b7eea264b3257d58f273695ba9b2a5842ebfffb43799a54d135787b941e0cd9d",
+    "operation": {
+      "object": "neck",
+      "feature": "object",
+      "parameters": {
+        "length": 0.026,
+        "thickness": 0.11,
+        "end_cap": "flat"
+      },
+      "reason": "Shorten the long skin slot into a shallow jacket neckline"
+    }
+  }
+]

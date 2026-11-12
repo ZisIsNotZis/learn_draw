@@ -1,6 +1,6 @@
 ---
 name: drawing-studio
-description: Create and refine programmatic vector art with learn_draw's revision-bound workbench, using generic editable colour masses and semantic head, hand, hair and scenic presets. Use for new-subject composition, grouped parameter previews, visible placement, digit-tip moves, local contour pushes, acceptance and undo.
+description: Create and refine programmatic vector art with learn_draw's revision-bound workbench, using editable gesture strokes, generic colour masses and semantic head, hand, hair and scenic presets. Use for new-subject composition, grouped parameter previews, visible placement, digit-tip moves, local contour pushes, acceptance and undo.
 ---
 
 # Drawing studio
@@ -164,3 +164,41 @@ accept preserves its current visible placement. A local contour push that would 
 shape anchor/tangent is refused; choose an interval away from it or detach. Other feature controls
 remain on their usual selections. Source and target selections both go stale after any scene or
 implementation change: inspect both again. Cycles and missing/unknown mounts are refused.
+
+## Paint a rounded or curved gesture
+
+new line.json --kind stroke creates a clean round mark without path coordinates. For a composed
+scene add --kind stroke --id NAME. Inspect object for a coherent --change group: length is the
+root-to-tip chord / shorter canvas dimension (.005..2, default .4); thickness is independent
+canvas fraction (.001..1, default .045). Angle points root to tip: 0 down, 90 right, 180 up, -90 left.
+Bend (-1..1, default 0) bows the middle sideways while preserving terminals. Start_width/end_width
+are thickness multipliers (0..4, default 1); start_cap/end_cap are round (default) or flat.
+Ink_width is an independent canvas fraction (0.. .1, default 0). Fill/ink/shade colours are optional.
+Shade none is default; left/right adds a simple material-relative colour plane, not physical
+illumination or a complete paper fold. Use it only when the actual image becomes clearer.
+
+Inspect --feature spine --at .5 --radius .25 before a local --move. The highlighted midline, white
+focus and green terminals show the action; amount is a fraction of nominal thickness. A push keeps
+both terminals and width fixed. Inspect root or tip for a free-terminal move; amount then uses the
+shorter canvas dimension and keeps the opposite end fixed. A pinned terminal cannot move; a free
+terminal can move when the opposite one is pinned. A center pin requires detaching before terminal
+moves, or use object parameters to reshape around the pin. Crossing/collapsed paint is refused.
+
+Stroke root/tip mounts lie at the round-cap centers, so ordinary joined marks overlap naturally.
+A longer mark need not become wider. Try one continuous bowed mark before layering many rounded
+blocks around an elbow. Inspect clean artwork after every proposal; one functioning edit is not
+proof it improved the drawing. The earlier cactus/wheel comparisons retain that distinction.
+
+## Connect real features in a character
+
+The head now exposes chin at its own face-midline contour; a hand exposes wrist at its generated
+wrist joint. Stroke roots/tips can connect neck/sleeve gestures to these actual points. This is
+projected construction with independent depth, not a general 3D anatomy rig.
+
+For an exact shape-edge position, inspect --feature anchors --anchor right@.2 (or left@.8 for the
+upper left side). The fraction follows the existing clockwise arc convention continuously, rather
+than jumping between sampled stations. Read that actual labeled point and closeup before attaching.
+Source and target --self-anchor/--target-anchor can be omitted when each inspected one exact point;
+the preview infers those points. Otherwise defaults are center. A positioned address must have
+been inspected explicitly; a hidden, guessed point cannot be substituted. Parameter changes still
+use object/feature inspections. A local edit that changes a pinned point or its tangent is refused.

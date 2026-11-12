@@ -1,0 +1,38 @@
+{
+  "base": "e9d3a6072af5b159d809e839084c00f474e4cce174d5bb9b7f8b07be63090ade",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "object": "resting-sleeve",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    86.70883127569975,
+    406.0629058008592,
+    196.7700304451764,
+    856.5611455313772
+  ],
+  "object_bounds": [
+    86.70883127569975,
+    406.0629058008592,
+    196.7700304451764,
+    856.5611455313772
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

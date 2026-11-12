@@ -1,0 +1,159 @@
+{
+  "base": "55c5655556f5ccf6930a469a66549d6ec7c7c715c856eee2d007ea476621ff6a",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "result": "b7eea264b3257d58f273695ba9b2a5842ebfffb43799a54d135787b941e0cd9d",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f8eedb",
+    "nodes": [
+      {
+        "id": "head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "length": 0.43,
+        "width": 0.92,
+        "expression": "smile",
+        "palette": {
+          "hair": "#493b50",
+          "iris": "#3d7774"
+        },
+        "depth": 5.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.13
+          ]
+        }
+      },
+      {
+        "id": "jacket",
+        "kind": "shape",
+        "intent": "an editable rounded flat colour mass",
+        "depth": 1.0,
+        "length": 0.38,
+        "width": 1.25,
+        "taper": 0.35,
+        "rounding": 0.65,
+        "palette": {
+          "fill": "#428f91"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.23000000000000004
+          ]
+        }
+      },
+      {
+        "id": "neck",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 3.0,
+        "length": 0.026,
+        "thickness": 0.11,
+        "palette": {
+          "fill": "#f1ceb2"
+        },
+        "attachment": {
+          "to": "head",
+          "self": "root",
+          "target": "chin",
+          "inset": 0.04
+        },
+        "end_cap": "flat"
+      },
+      {
+        "id": "wave",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 6.0,
+        "length": 0.2,
+        "width": 0.85,
+        "angle": -10.0,
+        "palette": {
+          "skin": "#f1ceb2"
+        },
+        "attachment": {
+          "to": "sleeve",
+          "self": "wrist",
+          "target": "tip",
+          "inset": 0
+        }
+      },
+      {
+        "id": "sleeve",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 2.0,
+        "length": 0.22613330781666394,
+        "thickness": 0.075,
+        "angle": 113.85846695786087,
+        "bend": 0.22,
+        "palette": {
+          "fill": "#428f91"
+        },
+        "attachment": {
+          "to": "jacket",
+          "self": "root",
+          "target": "right@.2",
+          "inset": 0.04
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "55c5655556f5ccf6930a469a66549d6ec7c7c715c856eee2d007ea476621ff6a",
+    "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+    "object": "neck",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      291.2,
+      335.7170844444444,
+      348.8,
+      457.31708444444445
+    ],
+    "object_bounds": [
+      291.2,
+      335.7170844444444,
+      348.8,
+      457.31708444444445
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "thickness",
+      "angle",
+      "bend",
+      "start_width",
+      "end_width",
+      "start_cap",
+      "end_cap",
+      "shade",
+      "ink_width",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "shade_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "neck",
+    "feature": "object",
+    "parameters": {
+      "length": 0.026,
+      "thickness": 0.11,
+      "end_cap": "flat"
+    },
+    "reason": "Shorten the long skin slot into a shallow jacket neckline"
+  },
+  "status": "ready"
+}

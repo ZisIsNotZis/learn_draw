@@ -1,0 +1,121 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    800,
+    800
+  ],
+  "background": "#f6ecdf",
+  "nodes": [
+    {
+      "id": "friend",
+      "kind": "head",
+      "intent": "the smiling face in a small original greeting portrait",
+      "length": 0.3,
+      "expression": "smile",
+      "angle": -4,
+      "depth": 10,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.12,
+          -0.2
+        ]
+      }
+    },
+    {
+      "id": "neck",
+      "kind": "stroke",
+      "intent": "a short neck joins the chin and blouse",
+      "length": 0.055,
+      "thickness": 0.045,
+      "depth": 5,
+      "palette": {
+        "fill": "#dfb39c",
+        "ink": "#493b40"
+      },
+      "ink_width": 0.003,
+      "attachment": {
+        "to": "friend",
+        "self": "root",
+        "target": "chin",
+        "inset": 0.025
+      }
+    },
+    {
+      "id": "blouse",
+      "kind": "shape",
+      "intent": "a soft warm blouse continues beyond the portrait crop",
+      "length": 0.49,
+      "width": 0.83,
+      "rounding": 0.94,
+      "taper": -0.16,
+      "stroke": 0.006,
+      "depth": 3,
+      "palette": {
+        "fill": "#cf8c70",
+        "ink": "#493b40"
+      },
+      "attachment": {
+        "to": "neck",
+        "self": "top",
+        "target": "tip"
+      }
+    },
+    {
+      "id": "resting-sleeve",
+      "kind": "stroke",
+      "intent": "the relaxed sleeve descends out of the lower crop",
+      "length": 0.4,
+      "thickness": 0.065,
+      "angle": -8,
+      "bend": 0.03,
+      "ink_width": 0.003,
+      "depth": 2,
+      "palette": {
+        "fill": "#cf8c70",
+        "ink": "#493b40"
+      },
+      "attachment": {
+        "to": "blouse",
+        "self": "root",
+        "target": "left@.8",
+        "inset": 0.06
+      }
+    },
+    {
+      "id": "waving-sleeve",
+      "kind": "stroke",
+      "intent": "one curved long sleeve bends toward the lifted hand",
+      "length": 0.24,
+      "thickness": 0.055,
+      "angle": 111,
+      "bend": -0.6,
+      "shade": "right",
+      "ink_width": 0.003,
+      "depth": 2.5,
+      "palette": {
+        "fill": "#cf8c70",
+        "ink": "#493b40"
+      },
+      "attachment": {
+        "to": "blouse",
+        "self": "root",
+        "target": "right@.2",
+        "inset": 0.06
+      }
+    },
+    {
+      "id": "wave",
+      "kind": "hand",
+      "intent": "the open greeting hand is connected at its wrist",
+      "length": 0.17,
+      "angle": -8,
+      "depth": 7,
+      "attachment": {
+        "to": "waving-sleeve",
+        "self": "wrist",
+        "target": "tip"
+      }
+    }
+  ]
+}

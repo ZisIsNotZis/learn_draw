@@ -1,0 +1,140 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f6ecdf",
+  "nodes": [
+    {
+      "id": "handle",
+      "kind": "shape",
+      "intent": "a slim warm wooden handle below the paper wheel",
+      "length": 0.48,
+      "width": 0.055,
+      "stroke": 0,
+      "palette": {
+        "fill": "#936e54"
+      },
+      "depth": 0,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0,
+          0.15
+        ]
+      },
+      "rounding": 0.8
+    },
+    {
+      "id": "hub",
+      "kind": "shape",
+      "intent": "the small circular pin at the centre of the folded paper",
+      "length": 0.08,
+      "width": 1,
+      "stroke": 0,
+      "palette": {
+        "fill": "#f3dbad"
+      },
+      "depth": 10,
+      "profile": "oval",
+      "attachment": {
+        "to": "handle",
+        "self": "center",
+        "target": "top"
+      }
+    },
+    {
+      "id": "blade-1",
+      "kind": "stroke",
+      "intent": "one curved coloured paper vane turns around the common pin",
+      "length": 0.21,
+      "thickness": 0.05,
+      "start_width": 0.1,
+      "end_width": 2.0,
+      "start_cap": "round",
+      "end_cap": "flat",
+      "bend": 0.34,
+      "shade": "right",
+      "angle": -135,
+      "depth": 2,
+      "palette": {
+        "fill": "#679d9a"
+      },
+      "attachment": {
+        "to": "hub",
+        "self": "root",
+        "target": "center"
+      }
+    },
+    {
+      "id": "blade-2",
+      "kind": "stroke",
+      "intent": "one curved coloured paper vane turns around the common pin",
+      "length": 0.21,
+      "thickness": 0.05,
+      "start_width": 0.1,
+      "end_width": 2.0,
+      "start_cap": "round",
+      "end_cap": "flat",
+      "bend": 0.34,
+      "shade": "right",
+      "angle": -45,
+      "depth": 3,
+      "palette": {
+        "fill": "#d88567"
+      },
+      "attachment": {
+        "to": "hub",
+        "self": "root",
+        "target": "center"
+      }
+    },
+    {
+      "id": "blade-3",
+      "kind": "stroke",
+      "intent": "one curved coloured paper vane turns around the common pin",
+      "length": 0.21,
+      "thickness": 0.05,
+      "start_width": 0.1,
+      "end_width": 2.0,
+      "start_cap": "round",
+      "end_cap": "flat",
+      "bend": 0.34,
+      "shade": "right",
+      "angle": 45,
+      "depth": 4,
+      "palette": {
+        "fill": "#d6b86f"
+      },
+      "attachment": {
+        "to": "hub",
+        "self": "root",
+        "target": "center"
+      }
+    },
+    {
+      "id": "blade-4",
+      "kind": "stroke",
+      "intent": "one curved coloured paper vane turns around the common pin",
+      "length": 0.21,
+      "thickness": 0.05,
+      "start_width": 0.1,
+      "end_width": 2.0,
+      "start_cap": "round",
+      "end_cap": "flat",
+      "bend": 0.34,
+      "shade": "right",
+      "angle": 135,
+      "depth": 5,
+      "palette": {
+        "fill": "#7897aa"
+      },
+      "attachment": {
+        "to": "hub",
+        "self": "root",
+        "target": "center"
+      }
+    }
+  ]
+}

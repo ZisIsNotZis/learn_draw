@@ -1,0 +1,24 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "gesture",
+      "kind": "stroke",
+      "intent": "a clean round gesture mark with editable spine and terminals",
+      "edits": [
+        {
+          "at": 0.5,
+          "radius": 0.3,
+          "dx": -0.6,
+          "dy": 0.0,
+          "reason": "Bow only the middle of the line while preserving both terminals"
+        }
+      ]
+    }
+  ]
+}

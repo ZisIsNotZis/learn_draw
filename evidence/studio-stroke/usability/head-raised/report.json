@@ -1,0 +1,137 @@
+{
+  "revision": "263a5844c4f5bfdfc2b8c297642c496e7def6b7b0232bb9b98ec66c2f06de8d0",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\head-raised\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\head-raised\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\head-raised\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\head-raised\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\head-raised\\artwork.png": "e68751e80bb05162d1df9a8e157efd339be1f6cd2105276cb99ce4be5c4dd7dd",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\head-raised\\alignment.png": "ec2c32547743c8b74fffafbf1b72c91055bbcef986841d0494f3231af854326c",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\head-raised\\object-closeup.png": "464e63e7cc5319fc8352c65b956ccb5372b7ddb150fa0a14e378a5291e17db5f",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\head-raised\\edit-closeup.png": "40a45faaf2eb0ad0303c98d2469a3820e5a697ec108ab897c5c7577b37b57710"
+  },
+  "nodes": {
+    "head": {
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with an editable hairstyle",
+      "bounds": [
+        147.0,
+        -2.0,
+        493.0,
+        318.44444444444446
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            216.4049,
+            175.5514,
+            423.5951,
+            201.0859
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color",
+            "gaze"
+          ]
+        },
+        "face": {
+          "bounds": [
+            193.5,
+            42.0,
+            447.0,
+            316.44444444444446
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            149.0,
+            0.0,
+            491.0,
+            316.5
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "expression": {
+          "bounds": [
+            216.4049,
+            161.59183673469389,
+            423.5951,
+            279.22222222222223
+          ],
+          "controls": [
+            "expression"
+          ]
+        },
+        "object": {
+          "bounds": [
+            147.0,
+            -2.0,
+            493.0,
+            318.44444444444446
+          ],
+          "controls": [
+            "intent",
+            "expression",
+            "gaze",
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ],
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            179.20000000000002
+          ],
+          "normal": null
+        },
+        "chin": {
+          "point": [
+            320.0,
+            317.64444444444445
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "attached_children": []
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge/spine, terminal, digit-tip or exact-mount focus"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span"
+}

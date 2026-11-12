@@ -12,10 +12,11 @@ import math
 from shapely import Point,Polygon,union_all,set_precision
 from shapely.affinity import scale
 
-from .geometry import bounds,resolve_root,path
+from .geometry import xml_comment,bounds,resolve_root,path
 
 DEFAULT_LENGTH=.64
 GEOMETRY_GRID=.0001
+WRIST_BASE=-.28
 DIGITS=("index","middle","ring","little","thumb")
 
 def smooth_finger(points,radius,taper=.16):
@@ -87,7 +88,7 @@ def construct(spread=1,adjustments=None):
     control=adjustments.get('thumb',{})
     thumb=digit_points('thumb',spread,control.get('length',1),control.get('lean',0))
     digits['thumb']=dict(points=thumb,radii=[.12,.108,.096],shape=smooth_finger(thumb,.12,.20))
-    wrist=Polygon([(-.26,-.28),(.26,-.28),(.31,.12),(-.31,.12)]).buffer(.025,quad_segs=8)
+    wrist=Polygon([(-.26,WRIST_BASE),(.26,WRIST_BASE),(.31,.12),(-.31,.12)]).buffer(.025,quad_segs=8)
     host=union_all([palm,thenar,wrist])
     free={name:d['shape'].difference(host.buffer(.04)) for name,d in digits.items()}
     for i,name in enumerate(DIGITS):
@@ -160,6 +161,7 @@ class HandData:
     center: tuple
     angle: float
     digits: dict
+    mounts: dict
 
 
 def hand_data(node,canvas):
@@ -182,14 +184,14 @@ def _hand_data(encoded,canvas):
     crease='#b17a68' if 'skin' not in palette else '#'+''.join(f'{round(int(skin[i:i+2],16)*.70):02x}' for i in (1,3,5))
     crease=palette.get('crease',crease)
     d=path(surface)
-    svg=['<!-- '+sid+'-silhouette: one open palm with four knuckle-based fingers and an opposed thumb -->',
+    svg=[xml_comment(sid+'-silhouette: one open palm with four knuckle-based fingers and an opposed thumb'),
          f'<path id="{sid}--silhouette" d="{d}" fill="{skin}" stroke="{ink}" stroke-width="{ink_width}" stroke-linejoin="round"/>',
-         f'<!-- {sid}-skin-aperture: flexion marks stay on the generated hand surface -->',
+         xml_comment(f'{sid}-skin-aperture: flexion marks stay on the generated hand surface'),
          f'<defs><clipPath id="{sid}--skin-clip" clipPathUnits="userSpaceOnUse"><path id="{sid}--skin-aperture" d="{d}"/></clipPath></defs>',
          f'<g id="{sid}--creases" clip-path="url(#{sid}--skin-clip)">']
     for name,points in crease_lines(digits).items():
         is_digit=name.removesuffix('-crease') in DIGITS
-        svg.extend([f'<!-- {sid}-{name}: a sparse palmar flexion cue, not a skeleton edge -->',
+        svg.extend([xml_comment(f'{sid}-{name}: a sparse palmar flexion cue, not a skeleton edge'),
                     f'<path id="{sid}--{name}" d="{path([project(p) for p in points],False)}" fill="none" stroke="{crease}" opacity="{.7 if is_digit else 1}" stroke-width="{unit*(.007 if is_digit else .009)}" stroke-linecap="round"/>'])
     svg.append('</g>')
     features={'object':dict(paths=[dict(d=path(outer),transform='')],bounds=bounds(outer),
@@ -203,7 +205,7 @@ def _hand_data(encoded,canvas):
                             focus=project(digit['points'][-1]),locks={'knuckle':project(digit['points'][0])},
                             nominal_span=math.dist(project(nominal[0]),project(nominal[-1])),
                             units="tip move amount = fraction of this digit's nominal span; directions are screen directions")
-    return HandData('\n'.join(svg),outer,features,center,node.get('angle',0),digits)
+    return HandData('\n'.join(svg),outer,features,center,node.get('angle',0),digits,{'wrist':dict(point=project((0,WRIST_BASE)),normal=None)})
 
 
 def move_tip(node,canvas,name,direction,amount):

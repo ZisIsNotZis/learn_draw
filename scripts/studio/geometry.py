@@ -8,6 +8,12 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import math
+import html
+
+
+def xml_comment(text):
+    """Free author text and names remain valid XML comment bodies."""
+    return '<!-- '+html.escape(str(text)).replace('--','—')+' -->'
 
 
 def path(points,closed=True):

@@ -1,0 +1,96 @@
+{
+  "base": "bac75d7f1d247ba279741e3d8b73e0f6c7c60b785fb5bc1a4517adb5ce932808",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "result": "84b2e506879c36a9bd7b39d33d9747b69d4fc7d2f304ad6e37e115586bf95f11",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f8eedb",
+    "nodes": [
+      {
+        "id": "head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "length": 0.43,
+        "width": 0.92,
+        "expression": "smile",
+        "palette": {
+          "hair": "#493b50",
+          "iris": "#3d7774"
+        },
+        "depth": 5.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.13
+          ]
+        }
+      },
+      {
+        "id": "jacket",
+        "kind": "shape",
+        "intent": "an editable rounded flat colour mass",
+        "depth": 1.0,
+        "length": 0.38,
+        "width": 1.25,
+        "taper": 0.35,
+        "rounding": 0.65,
+        "palette": {
+          "fill": "#428f91"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "bac75d7f1d247ba279741e3d8b73e0f6c7c60b785fb5bc1a4517adb5ce932808",
+    "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+    "object": "jacket",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "object_bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "jacket",
+    "feature": "object",
+    "parameters": {
+      "length": 0.38,
+      "width": 1.25,
+      "taper": 0.35,
+      "rounding": 0.65,
+      "fill_color": "#428f91",
+      "depth": 1.0
+    },
+    "reason": "Make a broad teal jacket bust behind the head"
+  },
+  "status": "ready"
+}

@@ -1,0 +1,116 @@
+[
+  {
+    "base": "9162e647b01e175be46acccebf9f2e2c130178a10bbd2370b06178e62d9d3220",
+    "result": "88ae0cb843f0c416fcae238dabd2f5b6aa2fdaf81fc17e80e7b52339ad75ece4",
+    "operation": {
+      "object": "neck",
+      "feature": "object",
+      "parameters": {
+        "length": 0.035,
+        "thickness": 0.04
+      },
+      "reason": "Shorten the long exposed neck before refining the cropped bust"
+    }
+  },
+  {
+    "base": "88ae0cb843f0c416fcae238dabd2f5b6aa2fdaf81fc17e80e7b52339ad75ece4",
+    "result": "ae7dbe74e3bbc82ee3051e2742eabc499723d67c8e9ecfd986ee35c4496be99c",
+    "operation": {
+      "object": "blouse",
+      "feature": "object",
+      "parameters": {
+        "length": 0.65,
+        "width": 0.6256923076923075,
+        "stroke": 0.004523076923076923
+      },
+      "reason": "Continue the blouse beyond the portrait crop while preserving its shoulder span and line weight"
+    }
+  },
+  {
+    "base": "ae7dbe74e3bbc82ee3051e2742eabc499723d67c8e9ecfd986ee35c4496be99c",
+    "result": "8d1956af7e50f1c898eec7b71bd0caba26f3616579895be2873d5358ae90700b",
+    "operation": {
+      "action": "attach",
+      "object": "waving-sleeve",
+      "attachment": {
+        "to": "blouse",
+        "self": "root",
+        "target": "right@.07",
+        "inset": 0.06
+      },
+      "reason": "Raise the sleeve root onto the actually inspected shoulder; retain its curved gesture and wrist"
+    }
+  },
+  {
+    "base": "8d1956af7e50f1c898eec7b71bd0caba26f3616579895be2873d5358ae90700b",
+    "result": "f050c56eb68d1a5882aa5bd4883c6ebd01725624067247318a3a8daeee548049",
+    "operation": {
+      "action": "attach",
+      "object": "resting-sleeve",
+      "attachment": {
+        "to": "blouse",
+        "self": "root",
+        "target": "left@.93",
+        "inset": 0.06
+      },
+      "reason": "Seat the relaxed sleeve at the upper side rather than the lower torso"
+    }
+  },
+  {
+    "base": "f050c56eb68d1a5882aa5bd4883c6ebd01725624067247318a3a8daeee548049",
+    "result": "f2fbce1df87c732102206ce37afd53cf1df51116bdc6f10d20cdf0565ee5a436",
+    "operation": {
+      "object": "resting-sleeve",
+      "feature": "object",
+      "parameters": {
+        "length": 0.5
+      },
+      "reason": "Keep the relaxed sleeve continuing past the lower crop instead of ending visibly without a hand; preserve its thickness"
+    }
+  },
+  {
+    "base": "f2fbce1df87c732102206ce37afd53cf1df51116bdc6f10d20cdf0565ee5a436",
+    "result": "d8becf545b5a49bd20188f8ffefe901bac628be0c145644ed1556264e6d2069b",
+    "operation": {
+      "object": "blouse",
+      "feature": "object",
+      "parameters": {
+        "rounding": 0.55,
+        "taper": -0.3,
+        "width": 0.57
+      },
+      "reason": "Give the shirt clearer shoulders and a less swollen body silhouette; keep its neck join and cropped hem"
+    }
+  },
+  {
+    "base": "d8becf545b5a49bd20188f8ffefe901bac628be0c145644ed1556264e6d2069b",
+    "result": "e9d3a6072af5b159d809e839084c00f474e4cce174d5bb9b7f8b07be63090ade",
+    "operation": {
+      "object": "waving-sleeve",
+      "feature": "object",
+      "parameters": {
+        "shade": "none",
+        "thickness": 0.065,
+        "start_width": 1.2,
+        "end_width": 0.8,
+        "bend": -0.4
+      },
+      "reason": "Replace the tubular dark stripe with flat cloth and taper the raised sleeve toward its wrist; ease the deep hose-like bend"
+    }
+  },
+  {
+    "base": "e9d3a6072af5b159d809e839084c00f474e4cce174d5bb9b7f8b07be63090ade",
+    "result": "e7299d4d9d0cb03f0038b89e82f6a8aefd7e11567f82732eedc34f3c209bb6e2",
+    "operation": {
+      "object": "resting-sleeve",
+      "feature": "object",
+      "parameters": {
+        "thickness": 0.09,
+        "start_width": 1.15,
+        "angle": -6,
+        "depth": 4
+      },
+      "reason": "Show the relaxed sleeve as a broad foreground part instead of a narrow unexplained strip behind the shirt"
+    }
+  }
+]

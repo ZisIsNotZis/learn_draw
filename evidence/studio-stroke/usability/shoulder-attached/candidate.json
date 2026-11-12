@@ -1,0 +1,158 @@
+{
+  "base": "04d2c8107145e8e554b62b853a2bc8952f3b5fadbeeb12d9a54d70699b8c0bd8",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "result": "d14f63bba0fb8b823503d213643762fdd6d42ae5975d454b46d7ddf1287693d5",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f8eedb",
+    "nodes": [
+      {
+        "id": "head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "length": 0.43,
+        "width": 0.92,
+        "expression": "smile",
+        "palette": {
+          "hair": "#493b50",
+          "iris": "#3d7774"
+        },
+        "depth": 5.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.13
+          ]
+        }
+      },
+      {
+        "id": "jacket",
+        "kind": "shape",
+        "intent": "an editable rounded flat colour mass",
+        "depth": 1.0,
+        "length": 0.38,
+        "width": 1.25,
+        "taper": 0.35,
+        "rounding": 0.65,
+        "palette": {
+          "fill": "#428f91"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.23000000000000004
+          ]
+        }
+      },
+      {
+        "id": "neck",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 3.0,
+        "length": 0.1,
+        "thickness": 0.09,
+        "palette": {
+          "fill": "#f1ceb2"
+        },
+        "attachment": {
+          "to": "head",
+          "self": "root",
+          "target": "chin",
+          "inset": 0.04
+        }
+      },
+      {
+        "id": "wave",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 6.0,
+        "length": 0.2,
+        "width": 0.85,
+        "angle": -10.0,
+        "palette": {
+          "skin": "#f1ceb2"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.33,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": "sleeve",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 2.0,
+        "length": 0.21,
+        "thickness": 0.075,
+        "angle": 100.0,
+        "bend": 0.22,
+        "palette": {
+          "fill": "#428f91"
+        },
+        "attachment": {
+          "to": "jacket",
+          "self": "root",
+          "target": "right@.2",
+          "inset": 0.04
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "04d2c8107145e8e554b62b853a2bc8952f3b5fadbeeb12d9a54d70699b8c0bd8",
+    "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+    "object": "sleeve",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      304.0,
+      176.0,
+      336.0,
+      208.0
+    ],
+    "object_bounds": [
+      296.00485282085674,
+      126.04296834444025,
+      476.35152224794984,
+      215.9951471791433
+    ],
+    "controls": [],
+    "focus": [
+      320.0,
+      192.0
+    ],
+    "locks": {
+      "root": [
+        320.0,
+        192.0
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "anchor": "root",
+    "attachment_target": {
+      "object": "jacket",
+      "anchor": "right@.2"
+    }
+  },
+  "operation": {
+    "action": "attach",
+    "object": "sleeve",
+    "attachment": {
+      "to": "jacket",
+      "self": "root",
+      "target": "right@.2",
+      "inset": 0.04
+    },
+    "reason": "Grow the waving sleeve from the inspected upper jacket edge"
+  },
+  "status": "ready"
+}

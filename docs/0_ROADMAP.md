@@ -184,11 +184,30 @@ tested, with the original outcome retained. See evidence/studio-attachment/READM
 direction; the cactus has awkward branch contours. Point connectivity does not supply curve shape,
 material or a smooth joint. No whole-art gate closes.
 
-**Next action:** compare existing shape controls and established strip/ribbon implementations with
-a default rounded gesture mark, optional bend/caps and a small derived colour-plane treatment.
-Use actual cactus-joint and pinwheel before/after images to decide whether a new operation earns
-its complexity. Then build a small connected character illustration using the accepted head/hand
-and the improved marks. Keep the full VLM-creation goal; do not stop at a catalog of flat icons.
+An editable rounded stroke now fills the gap between a generic closed mass and raw paths. The
+controlled comparisons retain existing rounding-only tuning, two round segments and one continuous
+curved cactus branch; fresh critics find the continuous icon coherent with no serious join defect.
+Swept wheel vanes communicate direction better but remain ribbons rather than proved paper folds.
+A six-component original waving character uses actual chin/wrist and positioned shoulder mounts.
+First fresh review exposed tube-like arms and an ambiguous sliver sleeve; actual accepted revisions
+change shirt shape, remove the isolated shade stripe and clarify the relaxed arm. The refined fresh
+review finds a usable connected flat character, with rigid torso and line-weight limits remaining.
+It is available as examples/studio/waving_character.json. No human artwork acceptance is inferred.
+
+106 combined operation/checker/visibility tests pass. Seven previous defaults/artworks preserve
+exact PNG bytes; the new default, character and continuous cactus repeat the observed image.
+See evidence/studio-stroke/README.md for comparisons, actual history, review provenance and limits.
+A fresh public-CLI creator completed a separate five-part greeting using only the skill/help,
+with visible chin/shoulder/wrist inspections and a useful pinned-root terminal correction. Its
+report records one selection-view sequencing deviation, two declined clipping proposals and a
+recoverable hand-width refusal. Fresh image critics find a clear greeting avatar, but a compressed
+arm and small pale shoulder notch remain. This is bounded reuse, not human acceptance or full
+anatomy. The many inspect/preview/accept calls remain a practical efficiency limitation.
+
+**Next action:** test composition revision beyond adding nodes: replacing/removing an obsolete part currently requires
+re-authoring or undo, which is a real gap for the requested iterative workbench. Preserve mounted
+children and recoverable history in any removal design. Use a real drawing revision to decide the
+operation rather than adding another subject preset. Keep the full VLM-creation goal.
 More presets alone cannot establish open-ended creative capability.
 Do not turn a hand icon or this cover's limited usability into a whole-portrait/illustration pass.
 Preserve the legacy portrait. The development branch is

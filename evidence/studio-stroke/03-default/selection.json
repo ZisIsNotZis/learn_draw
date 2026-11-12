@@ -1,0 +1,55 @@
+{
+  "base": "bc9c1e639273d66b3504096201d98b83261186f4f60a30b64802f33e496a0770",
+  "engine": "0d0b5ca3c318ba080d13b84234aa1d17b561032c815a8015ea54d6eb86794f0e",
+  "object": "gesture",
+  "kind": "feature",
+  "feature": "spine",
+  "interaction": "spine-push",
+  "at": 0.5,
+  "radius": 0.3,
+  "bounds": [
+    320.0,
+    243.2,
+    320.0,
+    393.6
+  ],
+  "object_bounds": [
+    305.6,
+    177.60000000000002,
+    334.4,
+    462.4
+  ],
+  "focus": [
+    320.0,
+    320.0
+  ],
+  "locks": {
+    "root": [
+      320.0,
+      192.0
+    ],
+    "tip": [
+      320.0,
+      448.0
+    ]
+  },
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "screen push in nominal stroke thickness; root and tip stay fixed"
+}

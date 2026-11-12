@@ -1,0 +1,36 @@
+{
+  "base": "d14f63bba0fb8b823503d213643762fdd6d42ae5975d454b46d7ddf1287693d5",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "object": "wave",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    511.83608652398925,
+    366.98591784231246,
+    543.8360865239893,
+    398.98591784231246
+  ],
+  "object_bounds": [
+    494.03240122020327,
+    256.7483768761077,
+    572.2840165789154,
+    386.9094225128661
+  ],
+  "controls": [],
+  "focus": [
+    527.8360865239893,
+    382.98591784231246
+  ],
+  "locks": {
+    "wrist": [
+      527.8360865239893,
+      382.98591784231246
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "wrist",
+  "attachment_target": {
+    "object": "sleeve",
+    "anchor": "tip"
+  }
+}

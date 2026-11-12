@@ -1,0 +1,179 @@
+{
+  "base": "e9d3a6072af5b159d809e839084c00f474e4cce174d5bb9b7f8b07be63090ade",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "result": "e7299d4d9d0cb03f0038b89e82f6a8aefd7e11567f82732eedc34f3c209bb6e2",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      800,
+      800
+    ],
+    "background": "#f6ecdf",
+    "nodes": [
+      {
+        "id": "friend",
+        "kind": "head",
+        "intent": "the smiling face in a small original greeting portrait",
+        "length": 0.3,
+        "expression": "smile",
+        "angle": -4,
+        "depth": 10,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.12,
+            -0.2
+          ]
+        }
+      },
+      {
+        "id": "neck",
+        "kind": "stroke",
+        "intent": "a short neck joins the chin and blouse",
+        "length": 0.035,
+        "thickness": 0.04,
+        "depth": 5,
+        "palette": {
+          "fill": "#dfb39c",
+          "ink": "#493b40"
+        },
+        "ink_width": 0.003,
+        "attachment": {
+          "to": "friend",
+          "self": "root",
+          "target": "chin",
+          "inset": 0.025
+        }
+      },
+      {
+        "id": "blouse",
+        "kind": "shape",
+        "intent": "a soft warm blouse continues beyond the portrait crop",
+        "length": 0.65,
+        "width": 0.57,
+        "rounding": 0.55,
+        "taper": -0.3,
+        "stroke": 0.004523076923076923,
+        "depth": 3,
+        "palette": {
+          "fill": "#cf8c70",
+          "ink": "#493b40"
+        },
+        "attachment": {
+          "to": "neck",
+          "self": "top",
+          "target": "tip"
+        }
+      },
+      {
+        "id": "resting-sleeve",
+        "kind": "stroke",
+        "intent": "the relaxed sleeve descends out of the lower crop",
+        "length": 0.5,
+        "thickness": 0.09,
+        "angle": -6,
+        "bend": 0.03,
+        "ink_width": 0.003,
+        "depth": 4,
+        "palette": {
+          "fill": "#cf8c70",
+          "ink": "#493b40"
+        },
+        "attachment": {
+          "to": "blouse",
+          "self": "root",
+          "target": "left@.93",
+          "inset": 0.06
+        },
+        "start_width": 1.15
+      },
+      {
+        "id": "waving-sleeve",
+        "kind": "stroke",
+        "intent": "one curved long sleeve bends toward the lifted hand",
+        "length": 0.24,
+        "thickness": 0.065,
+        "angle": 111,
+        "bend": -0.4,
+        "shade": "none",
+        "ink_width": 0.003,
+        "depth": 2.5,
+        "palette": {
+          "fill": "#cf8c70",
+          "ink": "#493b40"
+        },
+        "attachment": {
+          "to": "blouse",
+          "self": "root",
+          "target": "right@.07",
+          "inset": 0.06
+        },
+        "start_width": 1.2,
+        "end_width": 0.8
+      },
+      {
+        "id": "wave",
+        "kind": "hand",
+        "intent": "the open greeting hand is connected at its wrist",
+        "length": 0.17,
+        "angle": -8,
+        "depth": 7,
+        "attachment": {
+          "to": "waving-sleeve",
+          "self": "wrist",
+          "target": "tip"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "e9d3a6072af5b159d809e839084c00f474e4cce174d5bb9b7f8b07be63090ade",
+    "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+    "object": "resting-sleeve",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      86.70883127569975,
+      406.0629058008592,
+      196.7700304451764,
+      856.5611455313772
+    ],
+    "object_bounds": [
+      86.70883127569975,
+      406.0629058008592,
+      196.7700304451764,
+      856.5611455313772
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "thickness",
+      "angle",
+      "bend",
+      "start_width",
+      "end_width",
+      "start_cap",
+      "end_cap",
+      "shade",
+      "ink_width",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "shade_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "resting-sleeve",
+    "feature": "object",
+    "parameters": {
+      "thickness": 0.09,
+      "start_width": 1.15,
+      "angle": -6,
+      "depth": 4
+    },
+    "reason": "Show the relaxed sleeve as a broad foreground part instead of a narrow unexplained strip behind the shirt"
+  },
+  "status": "ready"
+}

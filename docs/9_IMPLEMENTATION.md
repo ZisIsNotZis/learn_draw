@@ -322,3 +322,13 @@ Look at clean artwork/overlay before accepting. For release use a current anchor
 preview --detach, then accept if the current placement is preserved. Graph behavior and contextual
 head/hand/lock editing are covered by scripts.tests.test_studio_attachment. Actual scene studies
 belong to evidence/studio-attachment/. Use current named mounts, not raw SVG/frame coordinates.
+
+## Gesture and character operations
+
+Create a default with python -m scripts.studio new line.json --kind stroke. Inspect object to group
+length/thickness/angle/bend/material changes; inspect spine for a bounded push or root/tip for an
+endpoint operation. Full control units/ranges are in 7_INTERFACE and the drawing skill. Inspect
+anchors --anchor chin, wrist, root or a shape position such as right@.2 for character assembly;
+preview --attach infers exact inspected point names if flags are omitted. See evidence/studio-stroke/
+for actual controlled comparisons and a connected character editing sequence. Geometry/crop/landmark
+checks are scripts.tests.test_studio_stroke. New free-text comment escaping also covers other kinds.

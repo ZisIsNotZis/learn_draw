@@ -1,0 +1,309 @@
+{
+  "revision": "adde69256be795a774f98a045f0955c89bad49ebc29ab20e993d6a2b393fc2da",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\jacket-low\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\jacket-low\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\jacket-low\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\jacket-low\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\jacket-low\\artwork.png": "9ab785c94ef299e3ca9685ddf2f078d1e82565956d0e73f60ed1b2e5739d8e21",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\jacket-low\\alignment.png": "06f9b8fa22360fa0f866f55a22453199cac9dc2d28eb0a342defad90e37bffa3",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\jacket-low\\object-closeup.png": "1df98f2f1e794a58c45c4548fb83d01a68a9e50f2de45c11d4973689800f7fc7",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\usability\\jacket-low\\edit-closeup.png": "4a178255eaa68e503120d938a9ce87198881ab9a5830137f8d1a37146abd6340"
+  },
+  "nodes": {
+    "head": {
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with an editable hairstyle",
+      "bounds": [
+        147.0,
+        55.921059945781835,
+        493.0,
+        375.44444444444446
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            216.4049,
+            233.1514,
+            423.5951,
+            258.6859
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color",
+            "gaze"
+          ]
+        },
+        "face": {
+          "bounds": [
+            193.5,
+            99.0,
+            447.0,
+            373.44444444444446
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            149.0,
+            58.0,
+            491.0,
+            374.0
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "expression": {
+          "bounds": [
+            216.4049,
+            219.10204081632654,
+            423.5951,
+            336.33333333333337
+          ],
+          "controls": [
+            "expression"
+          ]
+        },
+        "object": {
+          "bounds": [
+            147.0,
+            55.921059945781835,
+            493.0,
+            375.44444444444446
+          ],
+          "controls": [
+            "intent",
+            "expression",
+            "gaze",
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ],
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            236.8
+          ],
+          "normal": null
+        },
+        "chin": {
+          "point": [
+            320.0,
+            374.64444444444445
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "attached_children": []
+    },
+    "jacket": {
+      "kind": "shape",
+      "intent": "an editable rounded flat colour mass",
+      "bounds": [
+        174.1931447375071,
+        415.02720000109025,
+        465.80685526249283,
+        660.1727999995394
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            174.1931447375071,
+            415.02720000109025,
+            465.80685526249283,
+            660.1727999995394
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            226.30579166091496,
+            416.0,
+            413.69420833908504,
+            424.3861512225832
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            413.69420833908504,
+            424.3861512225832,
+            464.8340796155442,
+            650.8138487774169
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            180.19064523566274,
+            650.8138487774169,
+            459.8093547643373,
+            659.2
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            175.16592038445572,
+            424.3861512225832,
+            226.30579166091496,
+            650.8138487774169
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            537.6
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            320.0,
+            415.0272
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            446.14465830304766,
+            536.4520656873759
+          ],
+          "normal": [
+            0.9768985892121376,
+            -0.2137034075426391
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0000000000001,
+            660.1728
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            193.8553416969523,
+            536.452065687376
+          ],
+          "normal": [
+            -0.9768985892121383,
+            -0.21370340754263542
+          ]
+        }
+      },
+      "attached_children": []
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge/spine, terminal, digit-tip or exact-mount focus"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span"
+}

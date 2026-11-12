@@ -1,0 +1,133 @@
+{
+  "base": "d6913a7d8723791354fbd0c98c0723adb7f2d51ad45a91fe684d2bc1e3b66545",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "result": "a4fe12ecf02933cd105325d0bacd90aacd0ab99186ed3419f67c8ba69b039c19",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f8eedb",
+    "nodes": [
+      {
+        "id": "head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "length": 0.43,
+        "width": 0.92,
+        "expression": "smile",
+        "palette": {
+          "hair": "#493b50",
+          "iris": "#3d7774"
+        },
+        "depth": 5.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.13
+          ]
+        }
+      },
+      {
+        "id": "jacket",
+        "kind": "shape",
+        "intent": "an editable rounded flat colour mass",
+        "depth": 1.0,
+        "length": 0.38,
+        "width": 1.25,
+        "taper": 0.35,
+        "rounding": 0.65,
+        "palette": {
+          "fill": "#428f91"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.23000000000000004
+          ]
+        }
+      },
+      {
+        "id": "neck",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 3.0,
+        "length": 0.1,
+        "thickness": 0.09,
+        "palette": {
+          "fill": "#f1ceb2"
+        },
+        "attachment": {
+          "to": "head",
+          "self": "root",
+          "target": "chin",
+          "inset": 0.04
+        }
+      },
+      {
+        "id": "wave",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 6.0,
+        "length": 0.2,
+        "width": 0.85,
+        "angle": -10.0,
+        "palette": {
+          "skin": "#f1ceb2"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.33,
+            0.0
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "d6913a7d8723791354fbd0c98c0723adb7f2d51ad45a91fe684d2bc1e3b66545",
+    "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+    "object": "wave",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      282.8324012202032,
+      256.7483768761077,
+      361.08401657891517,
+      386.9094225128661
+    ],
+    "object_bounds": [
+      282.8324012202032,
+      256.7483768761077,
+      361.08401657891517,
+      386.9094225128661
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "depth",
+      "depth_slope",
+      "spread",
+      "handedness",
+      "skin_color",
+      "ink_color",
+      "crease_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "wave",
+    "feature": "object",
+    "direction": "right",
+    "amount": 0.33,
+    "units": "shorter canvas dimension",
+    "reason": "Show the open wave beside the face"
+  },
+  "status": "ready"
+}

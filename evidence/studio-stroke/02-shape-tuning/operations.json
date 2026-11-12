@@ -1,0 +1,19 @@
+[
+  {
+    "object": "arm",
+    "feature": "object",
+    "parameters": {
+      "rounding": 0.95
+    },
+    "reason": "Test whether existing roundness controls soften the angled branch"
+  },
+  {
+    "object": "tip",
+    "feature": "object",
+    "parameters": {
+      "rounding": 0.95,
+      "width": 0.7
+    },
+    "reason": "Test a broader softer terminal using the existing mass controls"
+  }
+]

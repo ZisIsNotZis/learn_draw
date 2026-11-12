@@ -1,0 +1,171 @@
+{
+  "base": "88ae0cb843f0c416fcae238dabd2f5b6aa2fdaf81fc17e80e7b52339ad75ece4",
+  "engine": "302e949a028d527b2771d6d61d635ab5118a031d24f03944ab7fa7a7fa7cc7ce",
+  "result": "ae7dbe74e3bbc82ee3051e2742eabc499723d67c8e9ecfd986ee35c4496be99c",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      800,
+      800
+    ],
+    "background": "#f6ecdf",
+    "nodes": [
+      {
+        "id": "friend",
+        "kind": "head",
+        "intent": "the smiling face in a small original greeting portrait",
+        "length": 0.3,
+        "expression": "smile",
+        "angle": -4,
+        "depth": 10,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.12,
+            -0.2
+          ]
+        }
+      },
+      {
+        "id": "neck",
+        "kind": "stroke",
+        "intent": "a short neck joins the chin and blouse",
+        "length": 0.035,
+        "thickness": 0.04,
+        "depth": 5,
+        "palette": {
+          "fill": "#dfb39c",
+          "ink": "#493b40"
+        },
+        "ink_width": 0.003,
+        "attachment": {
+          "to": "friend",
+          "self": "root",
+          "target": "chin",
+          "inset": 0.025
+        }
+      },
+      {
+        "id": "blouse",
+        "kind": "shape",
+        "intent": "a soft warm blouse continues beyond the portrait crop",
+        "length": 0.65,
+        "width": 0.6256923076923075,
+        "rounding": 0.94,
+        "taper": -0.16,
+        "stroke": 0.004523076923076923,
+        "depth": 3,
+        "palette": {
+          "fill": "#cf8c70",
+          "ink": "#493b40"
+        },
+        "attachment": {
+          "to": "neck",
+          "self": "top",
+          "target": "tip"
+        }
+      },
+      {
+        "id": "resting-sleeve",
+        "kind": "stroke",
+        "intent": "the relaxed sleeve descends out of the lower crop",
+        "length": 0.4,
+        "thickness": 0.065,
+        "angle": -8,
+        "bend": 0.03,
+        "ink_width": 0.003,
+        "depth": 2,
+        "palette": {
+          "fill": "#cf8c70",
+          "ink": "#493b40"
+        },
+        "attachment": {
+          "to": "blouse",
+          "self": "root",
+          "target": "left@.8",
+          "inset": 0.06
+        }
+      },
+      {
+        "id": "waving-sleeve",
+        "kind": "stroke",
+        "intent": "one curved long sleeve bends toward the lifted hand",
+        "length": 0.24,
+        "thickness": 0.055,
+        "angle": 111,
+        "bend": -0.6,
+        "shade": "right",
+        "ink_width": 0.003,
+        "depth": 2.5,
+        "palette": {
+          "fill": "#cf8c70",
+          "ink": "#493b40"
+        },
+        "attachment": {
+          "to": "blouse",
+          "self": "root",
+          "target": "right@.2",
+          "inset": 0.06
+        }
+      },
+      {
+        "id": "wave",
+        "kind": "hand",
+        "intent": "the open greeting hand is connected at its wrist",
+        "length": 0.17,
+        "angle": -8,
+        "depth": 7,
+        "attachment": {
+          "to": "waving-sleeve",
+          "self": "wrist",
+          "target": "tip"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "88ae0cb843f0c416fcae238dabd2f5b6aa2fdaf81fc17e80e7b52339ad75ece4",
+    "engine": "302e949a028d527b2771d6d61d635ab5118a031d24f03944ab7fa7a7fa7cc7ce",
+    "object": "blouse",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      141.95235138142164,
+      383.6775276205983,
+      449.8697272278408,
+      778.0295267686064
+    ],
+    "object_bounds": [
+      141.95235138142164,
+      383.6775276205983,
+      449.8697272278408,
+      778.0295267686064
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "blouse",
+    "feature": "object",
+    "parameters": {
+      "length": 0.65,
+      "width": 0.6256923076923075,
+      "stroke": 0.004523076923076923
+    },
+    "reason": "Continue the blouse beyond the portrait crop while preserving its shoulder span and line weight"
+  },
+  "status": "ready"
+}

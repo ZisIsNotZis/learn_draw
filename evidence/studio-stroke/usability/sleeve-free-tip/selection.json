@@ -1,0 +1,49 @@
+{
+  "base": "4b856df89b6925b652475ad050c9aedd3f05a9a8e40483a2e849bc0fabbb77c6",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "object": "sleeve",
+  "kind": "feature",
+  "feature": "tip",
+  "bounds": [
+    529.901258674361,
+    352.01562499451853,
+    577.901258674361,
+    400.01562499451853
+  ],
+  "object_bounds": [
+    397.54794949037694,
+    333.3969084173942,
+    577.89461891747,
+    423.3490872520972
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "screen terminal movement as fraction of shorter canvas dimension; opposite terminal fixed",
+  "interaction": "stroke-terminal",
+  "locks": {
+    "root": [
+      421.5430966695202,
+      399.35394007295395
+    ]
+  },
+  "focus": [
+    553.901258674361,
+    376.01562499451853
+  ]
+}

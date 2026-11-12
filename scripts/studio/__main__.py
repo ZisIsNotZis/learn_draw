@@ -11,6 +11,9 @@ from .render import bundle
 
 
 def default_scene(kind='hair-lock'):
+    if kind=='stroke':
+        return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
+            dict(id='gesture',kind='stroke',intent='a clean round gesture mark with editable spine and terminals')])
     if kind=='shape':
         return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
             dict(id='colour-mass',kind='shape',intent='an editable rounded flat colour mass')])
@@ -45,7 +48,7 @@ def canvas_arg(value):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    kinds=('hair-lock','head','hand','shape','sky','hills','moon','sun')
+    kinds=('hair-lock','head','hand','shape','stroke','sky','hills','moon','sun')
     p = sub.add_parser("new", help="create a useful preset; no path coordinates needed")
     p.add_argument("scene")
     p.add_argument('--kind',choices=kinds+('landscape',),default='hair-lock')
@@ -67,6 +70,7 @@ def main():
         p.add_argument("--outdir", required=True)
         p.add_argument("--svg-only", action="store_true")
         if command == "inspect":
+            p.add_argument('--anchor',help='one exact mount to inspect, e.g. right@.2 on a generated shape edge')
             p.add_argument("--object",help='inferred when the scene contains one object')
             p.add_argument('--feature',help='head: object/eyes/face/hair/expression/left-lock/right-lock; hand: object/index/middle/ring/little/thumb; lock: object or edge')
             p.add_argument("--side", choices=("left", "right"), default="left")
@@ -80,11 +84,11 @@ def main():
             operation.add_argument('--change',action='append',metavar='NAME=VALUE',help='repeat for one coherent multi-control preview; accept/undo as one edit')
             operation.add_argument('--attach',metavar='TARGET_SELECTION',help='pin to a target inspected with --feature anchors')
             operation.add_argument('--detach',action='store_true',help='release an inspected mount while preserving current placement')
-            p.add_argument('--self-anchor',default='center',help='named mount on this object (default center)')
-            p.add_argument('--target-anchor',default='center',help='named mount on target object (default center)')
+            p.add_argument('--self-anchor',help='named mount on this object (defaults to inspected mount, else center)')
+            p.add_argument('--target-anchor',help='named mount on target object (defaults to inspected mount, else center)')
             p.add_argument('--inset',type=float,default=0,help='-2..2 into target surface, fraction of its nominal shorter extent; negative leaves a gap')
             p.add_argument('--value',help='numeric value, hairstyle name or hex colour for --set')
-            p.add_argument("--amount", type=float, default=.10, help="edge: lock width; object: shorter canvas dimension; digit tip: nominal digit span (default .10)")
+            p.add_argument("--amount", type=float, default=.10, help="lock/spine: nominal width/thickness; object/stroke terminal: shorter canvas; digit tip: nominal span (default .10)")
             p.add_argument("--reason", required=True)
     p = sub.add_parser("accept", help="accept only if the scene still matches the preview base")
     p.add_argument("scene")
@@ -130,7 +134,7 @@ def main():
             if args.id: node['id']=args.id
             if args.depth is not None:
                 node['depth']=args.depth
-            elif args.kind in ('head','hand','hair-lock','shape'):
+            elif args.kind in ('head','hand','hair-lock','shape','stroke'):
                 from .components import depth_bounds
                 from .attachment import resolve_scene
                 canvas=scene.get('canvas',[640,640])
@@ -142,7 +146,7 @@ def main():
             print(json.dumps(dict(scene=args.scene,added=node['id'],revision=fingerprint(scene))))
         elif args.command == "inspect":
             scene = validate(read(args.scene))
-            selection = select(scene, args.object, args.side, args.at, args.radius,args.feature)
+            selection = select(scene, args.object, args.side, args.at, args.radius,args.feature,args.anchor)
             report = bundle(scene, args.outdir, selection, png=not args.svg_only)
             print(json.dumps(report))
         elif args.command == "preview":
@@ -154,7 +158,7 @@ def main():
             write(Path(args.outdir)/'report.json',dict(status='preparing',revision=fingerprint(scene),engine=engine_fingerprint(),images=[]))
             (Path(args.outdir)/'report.txt').write_text('',encoding='utf-8')
             selection=read(args.selection)
-            if not args.attach and (args.self_anchor!='center' or args.target_anchor!='center' or args.inset!=0):
+            if not args.attach and (args.self_anchor is not None or args.target_anchor is not None or args.inset!=0):
                 raise ValueError('--self-anchor, --target-anchor and --inset are used with --attach')
             if args.attach or args.detach:
                 if args.value is not None: raise ValueError('--value is used with --set')

@@ -4,7 +4,7 @@
 
 # learn_draw
 
-**Current direction (2026-11-12): a drawing workbench for VLM creation.** Reference studies develop usable primitives and drawing skill. The studio supports a user-accepted flat-cartoon head preset, editable open hands, standalone locks and generic colour masses, with visible local selections, preview, accept and exact undo. Limited independent reuse has been demonstrated; whole-artwork quality and broader creative transfer remain unproven.
+**Current direction (2026-11-12): a drawing workbench for VLM creation.** Reference studies develop usable primitives and drawing skill. The studio supports a user-accepted flat-cartoon head preset, editable open hands, standalone locks, curved gesture strokes and generic colour masses, with visible local selections, preview, accept and exact undo. Limited independent reuse has been demonstrated; whole-artwork quality and broader creative transfer remain unproven.
 
 ```bash
 uv sync
@@ -22,6 +22,10 @@ Generic `--kind shape` adds editable blocks/ovals/tapers for subjects outside th
 repeat `preview --change NAME=VALUE` to configure related controls in one visible, undoable proposal.
 Named `anchors` inspections also support persistent point mounts; [actual mount studies](evidence/studio-attachment/README.md)
 show parent edits, independent cactus creation and the remaining contour/material limitations.
+A new `--kind stroke` starts as a round mark; bend, taper, local spine pushes and terminal moves
+make it editable without SVG coordinates. Head chin, hand wrist and inspected shape-edge points
+connect components. [Gesture and character studies](evidence/studio-stroke/README.md) preserve
+actual revisions and remaining arm/form limitations.
 [the actual coastal and independent creation studies](evidence/studio-shape/README.md) retain their
 visual limitations. A working contour tool is not a whole-illustration pass.
 

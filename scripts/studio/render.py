@@ -10,10 +10,10 @@ from pathlib import Path
 from scripts.articulated_construction import Point, triangulate_polygon
 from scripts.vector_visibility import visible_regions
 
-from .geometry import bounds, lock_rows, mix, outline, resolve_root, path
-from .model import canonical, engine_fingerprint, fingerprint, node_by_id, validate, write
+from .geometry import xml_comment,bounds, lock_rows, mix, outline, resolve_root, path
+from .model import canonical, engine_fingerprint, fingerprint, node_by_id, select, validate, write
 from .components import component_data, support, component_outline as node_outline, depth_bounds
-from .attachment import resolve_scene,anchors,anchor_view
+from .attachment import resolve_scene,anchors,get_anchor,anchor_view
 
 
 PALETTE = dict(fill="#517f9b", shade="#426781", light="#729eaf", ink="#2e475a")
@@ -26,11 +26,15 @@ def selection_paths(scene,selection):
     canvas=scene.get('canvas',[640,640])
     rotate=lambda p:p
     if selection.get('feature')=='anchors':
-        view=anchor_view(node,canvas)
-        return view['paths'],None,view['locks']
+        view=anchor_view(node,canvas,selection.get('anchor'))
+        return view['paths'],view['focus'],view['locks']
     if node['kind']!='hair-lock':
         data=component_data(node,canvas)
         if selection['kind']=='feature':
+            if node['kind']=='stroke' and selection.get('interaction')=='spine-push':
+                from .stroke import spine_selection
+                feature=spine_selection(node,canvas,selection['at'],selection['radius'])
+                return feature['paths'],feature['focus'],feature['locks']
             if node['kind']=='shape' and selection.get('interaction')=='contour-push':
                 from .shape import edge_selection
                 feature=edge_selection(node,canvas,selection['feature'],selection['at'],selection['radius'])
@@ -123,11 +127,12 @@ def tone_region(rows, start, end, a, b):
     return left + list(reversed(right))
 
 
-def mount_labels(node,canvas):
+def mount_labels(node,canvas,names=None):
     """Callouts keep names readable even on thin or rotated mounted shapes."""
     box=bounds(node_outline(node,canvas));cx=(box[0]+box[2])/2;cy=(box[1]+box[3])/2
     buckets={name:[] for name in ('left','right','top','bottom')}
-    for name,info in anchors(node,canvas).items():
+    chosen={name:get_anchor(node,canvas,name) for name in names} if names is not None else anchors(node,canvas)
+    for name,info in chosen.items():
         x,y=info['point'];normal=info['normal']
         dx,dy=normal if normal else (x-cx,y-cy)
         side=('right' if dx>=0 else 'left') if abs(dx)>=abs(dy) else ('bottom' if dy>=0 else 'top')
@@ -141,7 +146,7 @@ def mount_labels(node,canvas):
         for along,(_desired,name,p) in zip(positions,items):
             along-=shift
             x,y,align=(box[0]-14,along+4,'end') if side=='left' else ((box[2]+14,along+4,'start') if side=='right' else ((along,box[1]-14,'middle') if side=='top' else (along,box[3]+25,'middle')))
-            out.append(f'<!-- mount-callout-{name}: connect this name to its actual geometric mount -->')
+            out.append(xml_comment(f'mount-callout-{name}: connect this name to its actual geometric mount'))
             out.append(f'<path id="mount-callout-{name}" d="M {p[0]} {p[1]} L {x} {y-4}" fill="none" stroke="#506655" stroke-width=".8"/>')
             out.append(f'<text x="{x}" y="{y}" text-anchor="{align}" font-family="sans-serif" font-size="13" fill="#304f44" stroke="#fffaf0" stroke-width="3" paint-order="stroke">{html.escape(name)}</text>')
     return out
@@ -169,24 +174,24 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
             out.append(f'<defs><clipPath id="visible-{sid}" clipPathUnits="userSpaceOnUse"><path d="{visible}"/></clipPath></defs>')
         if node['kind']!='hair-lock':
             clip=f' clip-path="url(#visible-{sid})"' if needs_clip else ''
-            out += [f'<!-- {sid}: {html.escape(node["intent"])} -->',
+            out += [xml_comment(f'{sid}: {node["intent"]}'),
                     f'<g id="{sid}"{clip}>',component_data(node,[width,height]).svg,'</g>']
             continue
         colors = lock_palette(node)
         rows = lock_rows(node, [width, height])
         poly = outline(rows)
-        out += [f'<!-- {sid}: {html.escape(node["intent"])} -->',
+        out += [xml_comment(f'{sid}: {node["intent"]}'),
                 f'<g id="{sid}" clip-path="url(#visible-{sid})">',
                 f'<path id="{sid}-silhouette" d="{path(poly)}" fill="{colors["fill"]}"/>',
-                f'<!-- {sid}-shade: cel shadow following the edited inner side -->',
+                xml_comment(f'{sid}-shade: cel shadow following the edited inner side'),
                 f'<path id="{sid}-shade" d="{path(tone_region(rows, 0, 1, .77, 1))}" fill="{colors["shade"]}"/>',
-                f'<!-- {sid}-light: broad restrained sheen following the lock gesture -->',
+                xml_comment(f'{sid}-light: broad restrained sheen following the lock gesture'),
                 f'<path id="{sid}-light" d="{path(tone_region(rows, .20, .76, .23, .38))}" fill="{colors["light"]}"/>',
-                f'<!-- {sid}-contour: two flowing sides; the root joins the host without a sealed ink cap -->',
+                xml_comment(f'{sid}-contour: two flowing sides; the root joins the host without a sealed ink cap'),
                 f'<path id="{sid}-contour" d="{path([r.left for r in rows], False)} {path([r.right for r in rows], False)}" fill="none" stroke="{colors["ink"]}" stroke-width="3.0" stroke-linejoin="round"/>']
         for k, (share, start, end) in enumerate(((.52, .09, .88), (.73, .27, .96))):
             points = [mix(r.left, r.right, share) for r in rows if start <= r.t <= end]
-            out += [f'<!-- {sid}-strand-{k}: a sparse directional strand following the edited mass -->',
+            out += [xml_comment(f'{sid}-strand-{k}: a sparse directional strand following the edited mass'),
                     f'<path id="{sid}-strand-{k}" d="{path(points, False)}" fill="none" stroke="{colors["ink"]}" opacity=".55" stroke-width=".9"/>']
         out.append('</g>')
     if selection:
@@ -206,10 +211,10 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
         for name,p in locks.items():
             out.append(f'<circle id="locked-{name}" cx="{p[0]}" cy="{p[1]}" r="4" fill="#fffaf0" stroke="#506655" stroke-width="2"/>')
         if selection.get('feature')=='anchors':
-            out.extend(mount_labels(node_by_id(scene,selection['object']),[width,height]))
+            out.extend(mount_labels(node_by_id(scene,selection['object']),[width,height],locks))
         if selection.get('attachment_target'):
             target=selection['attachment_target']
-            point=anchors(node_by_id(scene,target['object']),[width,height])[target['anchor']]['point']
+            point=get_anchor(node_by_id(scene,target['object']),[width,height],target['anchor'])['point']
             label=html.escape(target['object']+'.'+target['anchor'])
             box=bounds(node_outline(node_by_id(scene,selection['object']),[width,height]))
             lx,ly=box[2]+20,max(box[3]+50,point[1]+45)
@@ -271,7 +276,8 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
         views["alignment"] = drawing(scene, selection, previous)
         views["object-closeup"] = drawing(scene, selection, previous, vb)
         # An operation-scale crop shows the selected edge and before/after guides.
-        b = selection["bounds"]
+        current_view=select(scene,selection['object'],selection.get('side','left'),selection.get('at',.55),selection.get('radius',.30),selection.get('feature'),selection.get('anchor'))
+        b = current_view["bounds"]
         span = max(b[2] - b[0], b[3] - b[1], 40) * 1.8
         views["edit-closeup"] = drawing(scene, selection, previous,
                                        [(b[0] + b[2] - span) / 2, (b[1] + b[3] - span) / 2, span, span])
@@ -297,10 +303,10 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
         node_info[n['id']]=info
     report = dict(revision=revision, engine=engine_fingerprint(), status='ready',renderer=backend, images=images,
                   image_sha256={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images},nodes=node_info,
-                  scope="editable colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+                  scope="editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
                   alignment_legend={'orange':'selected current boundary','pink dashed':'previous boundary',
-                                    'green rings':'named mount points or protected endpoints/knuckle','white target':'local edge focus or digit-tip handle'},
-                  move_units='object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; digit tip: nominal digit span')
+                                    'green rings':'named mount points or protected endpoints/knuckle','white target':'local edge/spine, terminal, digit-tip or exact-mount focus'},
+                  move_units='object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span')
     write(directory / "report.json", report)
     (directory / "report.txt").write_text("\n".join(images) + "\n", encoding="utf-8")
     return report

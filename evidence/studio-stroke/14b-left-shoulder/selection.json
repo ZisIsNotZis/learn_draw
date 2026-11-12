@@ -1,0 +1,32 @@
+{
+  "base": "8d1956af7e50f1c898eec7b71bd0caba26f3616579895be2873d5358ae90700b",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "object": "blouse",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    116.04597015256141,
+    424.22327946651745,
+    189.94583128606885,
+    498.1231406000249
+  ],
+  "object_bounds": [
+    141.95299527649073,
+    383.677527888363,
+    449.8690833327718,
+    906.0295263891275
+  ],
+  "controls": [],
+  "focus": [
+    152.99590071931513,
+    461.1732100332712
+  ],
+  "locks": {
+    "left@.93": [
+      152.99590071931513,
+      461.1732100332712
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "left@.93"
+}

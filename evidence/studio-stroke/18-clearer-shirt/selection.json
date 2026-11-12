@@ -1,0 +1,34 @@
+{
+  "base": "f2fbce1df87c732102206ce37afd53cf1df51116bdc6f10d20cdf0565ee5a436",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "object": "blouse",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    141.95299527649073,
+    383.677527888363,
+    449.8690833327718,
+    906.0295263891275
+  ],
+  "object_bounds": [
+    141.95299527649073,
+    383.677527888363,
+    449.8690833327718,
+    906.0295263891275
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

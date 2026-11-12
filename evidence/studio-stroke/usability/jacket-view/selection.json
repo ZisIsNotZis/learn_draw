@@ -1,0 +1,34 @@
+{
+  "base": "bac75d7f1d247ba279741e3d8b73e0f6c7c60b785fb5bc1a4517adb5ce932808",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "object": "jacket",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    237.2608000003879,
+    216.78080000094704,
+    402.7391999996121,
+    423.21919999905293
+  ],
+  "object_bounds": [
+    237.2608000003879,
+    216.78080000094704,
+    402.7391999996121,
+    423.21919999905293
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

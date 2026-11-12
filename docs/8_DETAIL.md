@@ -200,3 +200,26 @@ related descendants; there is no implicit angle/size inheritance or material uni
 measurements show why this boundary matters: the old lamp elbow already overlaps, and the old
 cliff footing already rests on the top patch. Their volume/join critiques are not placement-gap
 proof. Actual figures and images are retained in evidence/studio-attachment/.
+
+## Gesture geometry and a colour plane
+
+stroke.py adapts the established swept-normal strip method (legacy relate.ribbon/taper_band) with
+a quadratic nominal gesture, analytic tangent and analytic compact-cosine edit derivative. This
+keeps both terminals, widths and all stations outside influence fixed during local pushes. It
+uses the existing Row/window/path conventions, not a new coordinate authoring language. Thickness
+is independent of chord length. Smoothstep width interpolation has zero endpoint derivative;
+round semicircular caps therefore join smoothly even under optional taper. Invalid/self-crossing
+paint and ink cavities are refused. The default is an unshaded round capsule.
+
+A side colour plane follows the generated spine, one boundary and matching cap halves over the
+same full fill. It is graphic colour organization, not lighting or a physical fold solver. Ink
+is a separate explicit outer path. Its footprint includes the actual half-ink buffer for depth.
+Endpoint movement solves the new chord while retaining the opposite world endpoint, then writes
+only semantic length/angle and a computed free root or retained attachment. Head chin comes from
+intersection with its semantic face median; choosing an incidental lowest sampled vertex shifted
+that mount off-axis and failed the new check. Hand wrist reuses its existing construction constant.
+
+Positioned shape mounts interpolate between generated arc stations and interpolate the tangent
+normal. This removes hidden quantization without changing default midpoint mounts. Inspecting one
+exact address and candidate-region cropping make its actual action visible. Free-text XML failure
+was reproduced before centralizing safe comment construction; raw author intent remains intact.

@@ -1,0 +1,38 @@
+{
+  "base": "d8becf545b5a49bd20188f8ffefe901bac628be0c145644ed1556264e6d2069b",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "object": "waving-sleeve",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    399.05387180200114,
+    341.25934903314555,
+    624.6844695573925,
+    532.3373237672624
+  ],
+  "object_bounds": [
+    399.05387180200114,
+    341.25934903314555,
+    624.6844695573925,
+    532.3373237672624
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

@@ -1,0 +1,38 @@
+{
+  "base": "55c5655556f5ccf6930a469a66549d6ec7c7c715c856eee2d007ea476621ff6a",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "object": "neck",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    291.2,
+    335.7170844444444,
+    348.8,
+    457.31708444444445
+  ],
+  "object_bounds": [
+    291.2,
+    335.7170844444444,
+    348.8,
+    457.31708444444445
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

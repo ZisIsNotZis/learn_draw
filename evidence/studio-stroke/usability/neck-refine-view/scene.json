@@ -1,0 +1,104 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f8eedb",
+  "nodes": [
+    {
+      "id": "head",
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with an editable hairstyle",
+      "length": 0.43,
+      "width": 0.92,
+      "expression": "smile",
+      "palette": {
+        "hair": "#493b50",
+        "iris": "#3d7774"
+      },
+      "depth": 5.0,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.0,
+          -0.13
+        ]
+      }
+    },
+    {
+      "id": "jacket",
+      "kind": "shape",
+      "intent": "an editable rounded flat colour mass",
+      "depth": 1.0,
+      "length": 0.38,
+      "width": 1.25,
+      "taper": 0.35,
+      "rounding": 0.65,
+      "palette": {
+        "fill": "#428f91"
+      },
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.0,
+          0.23000000000000004
+        ]
+      }
+    },
+    {
+      "id": "neck",
+      "kind": "stroke",
+      "intent": "a clean round gesture mark with editable spine and terminals",
+      "depth": 3.0,
+      "length": 0.1,
+      "thickness": 0.09,
+      "palette": {
+        "fill": "#f1ceb2"
+      },
+      "attachment": {
+        "to": "head",
+        "self": "root",
+        "target": "chin",
+        "inset": 0.04
+      }
+    },
+    {
+      "id": "wave",
+      "kind": "hand",
+      "intent": "a front-view flat cartoon open palm with five digits",
+      "depth": 6.0,
+      "length": 0.2,
+      "width": 0.85,
+      "angle": -10.0,
+      "palette": {
+        "skin": "#f1ceb2"
+      },
+      "attachment": {
+        "to": "sleeve",
+        "self": "wrist",
+        "target": "tip",
+        "inset": 0
+      }
+    },
+    {
+      "id": "sleeve",
+      "kind": "stroke",
+      "intent": "a clean round gesture mark with editable spine and terminals",
+      "depth": 2.0,
+      "length": 0.22613330781666394,
+      "thickness": 0.075,
+      "angle": 113.85846695786087,
+      "bend": 0.22,
+      "palette": {
+        "fill": "#428f91"
+      },
+      "attachment": {
+        "to": "jacket",
+        "self": "root",
+        "target": "right@.2",
+        "inset": 0.04
+      }
+    }
+  ]
+}

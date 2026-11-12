@@ -1,0 +1,32 @@
+{
+  "base": "ae7dbe74e3bbc82ee3051e2742eabc499723d67c8e9ecfd986ee35c4496be99c",
+  "engine": "302e949a028d527b2771d6d61d635ab5118a031d24f03944ab7fa7a7fa7cc7ce",
+  "object": "waving-sleeve",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    406.20437608364614,
+    496.2924355011701,
+    452.06309001983414,
+    542.1511494373581
+  ],
+  "object_bounds": [
+    405.94114157976065,
+    427.2247671432164,
+    631.5717393351521,
+    618.3027418773332
+  ],
+  "controls": [],
+  "focus": [
+    429.13373305174014,
+    519.2217924692641
+  ],
+  "locks": {
+    "root": [
+      429.13373305174014,
+      519.2217924692641
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "root"
+}

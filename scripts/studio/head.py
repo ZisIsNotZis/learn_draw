@@ -328,6 +328,7 @@ class HeadData:
     locks: dict
     center: tuple
     angle: float
+    mounts: dict
 
 
 def head_data(node, canvas):
@@ -364,6 +365,16 @@ def _head_data(encoded, canvas):
         footprint=rotate(footprint,-angle,origin=center)
     outer=tuple(footprint.exterior.coords)[:-1]
     transform=f'rotate({-angle} {center[0]} {center[1]})' if angle else ''
+    face_points=_sample_path(by_id['head-contour'].get('d'))
+    from shapely import LineString
+    median=LineString([center,(center[0],max(p[1] for p in face_points)+1)])
+    segment=Polygon(face_points).intersection(median)
+    pieces=list(segment.geoms) if hasattr(segment,'geoms') else [segment]
+    chin=max((p for part in pieces for p in part.coords),key=lambda p:p[1])
+    ink_half=float(by_id['head-contour'].get('stroke-width',0))/2
+    chin=rotate_point((chin[0],chin[1]+ink_half),center,angle)
+    normal_tip=rotate_point((center[0],center[1]+1),center,angle)
+    mounts={'chin':dict(point=chin,normal=(normal_tip[0]-center[0],normal_tip[1]-center[1]))}
     features={}
     controls={'eyes':['eye_scale','iris_color','gaze'], 'face':['jaw','skin_color'], 'hair':['hair','hair_color'],
               'expression':['expression'],
@@ -400,4 +411,4 @@ def _head_data(encoded, canvas):
         for el in list(root):
             root.remove(el);group.append(el)
         root.append(group)
-    return HeadData(ET.tostring(root,encoding='unicode'),outer,features,locks,center,angle)
+    return HeadData(ET.tostring(root,encoding='unicode'),outer,features,locks,center,angle,mounts)

@@ -1,0 +1,79 @@
+{
+  "base": "88efdf37285a385baa3d5ed4435c513065d4731b5d77b40d1623f40574e65022",
+  "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+  "result": "053d3c8d51bf782519a467b15b76e364529fd65b1d42d8d66224436a815b06e9",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f8eedb",
+    "nodes": [
+      {
+        "id": "head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "length": 0.43,
+        "width": 0.92,
+        "expression": "smile",
+        "palette": {
+          "hair": "#493b50",
+          "iris": "#3d7774"
+        },
+        "depth": 5.0
+      }
+    ]
+  },
+  "selection": {
+    "base": "88efdf37285a385baa3d5ed4435c513065d4731b5d77b40d1623f40574e65022",
+    "engine": "82dabe2b229d2e0350c157949400c5960d09a0d8695c60e5d3b9bb06d892bb26",
+    "object": "head",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      120.0,
+      50.801437078916265,
+      520.0,
+      459.42778169380796
+    ],
+    "object_bounds": [
+      120.0,
+      50.801437078916265,
+      520.0,
+      459.42778169380796
+    ],
+    "controls": [
+      "intent",
+      "expression",
+      "gaze",
+      "eye_scale",
+      "jaw",
+      "hair",
+      "length",
+      "width",
+      "angle",
+      "depth",
+      "depth_slope",
+      "hair_color",
+      "skin_color",
+      "iris_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "head",
+    "feature": "object",
+    "parameters": {
+      "length": 0.43,
+      "width": 0.92,
+      "expression": "smile",
+      "hair_color": "#493b50",
+      "iris_color": "#3d7774",
+      "depth": 5.0
+    },
+    "reason": "Make a compact smiling head with room for a waving arm and jacket"
+  },
+  "status": "ready"
+}

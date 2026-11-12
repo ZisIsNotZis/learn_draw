@@ -5,7 +5,7 @@ import json
 import math
 import random
 
-from .geometry import bounds, resolve_root, path
+from .geometry import xml_comment,bounds, resolve_root, path
 
 
 KINDS=('sky','hills','moon','sun')
@@ -32,7 +32,7 @@ def _data(encoded,canvas):
     w,h=canvas;unit=min(canvas);palette=node.get('palette',{})
     out=[]
     def add(name,intent,markup):
-        out.extend([f'<!-- {sid}-{name}: {intent} -->',markup.replace('ID',sid+'-'+name)])
+        out.extend([xml_comment(f'{sid}-{name}: {intent}'),markup.replace('ID',sid+'-'+name)])
     controls=['intent','depth','depth_slope']
     if kind=='sky':
         is_day=node.get('style','dusk')=='day'

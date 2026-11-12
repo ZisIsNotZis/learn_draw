@@ -1,0 +1,958 @@
+{
+  "revision": "1111cbda42146590ae24b72cd0c47da9bfa0a44bb1100b621248c667485a5231",
+  "engine": "0d0b5ca3c318ba080d13b84234aa1d17b561032c815a8015ea54d6eb86794f0e",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\06-curved-vane-pinwheel\\artwork.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-stroke\\06-curved-vane-pinwheel\\artwork.png": "a486d13235290c6e13535336279e280dc78c88ef951c0b7bfcdc6d6393f87f7f"
+  },
+  "nodes": {
+    "handle": {
+      "kind": "shape",
+      "intent": "a slim warm wooden handle below the paper wheel",
+      "bounds": [
+        311.552,
+        262.4,
+        328.448,
+        569.6
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            311.552,
+            262.4,
+            328.448,
+            569.6
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            312.4191488671869,
+            262.4,
+            327.5808511328131,
+            278.1663430397614
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            327.5808511328131,
+            278.1663430397614,
+            328.448,
+            553.8336569602386
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            312.4191488671869,
+            553.8336569602386,
+            327.5808511328131,
+            569.6
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            311.552,
+            278.1663430397614,
+            312.4191488671869,
+            553.8336569602386
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            416.0
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            320.0,
+            262.4
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            328.448,
+            416.0
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            569.6
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            311.552,
+            416.0
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": [
+        "hub"
+      ]
+    },
+    "hub": {
+      "kind": "shape",
+      "intent": "the small circular pin at the centre of the folded paper",
+      "bounds": [
+        294.4,
+        236.79999999999998,
+        345.6,
+        288.0
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            294.4,
+            236.79999999999998,
+            345.6,
+            288.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            301.89806640162436,
+            236.79999999999998,
+            338.10193359837564,
+            244.29806640162437
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            338.10193359837564,
+            244.29806640162437,
+            345.6,
+            280.5019335983756
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            301.89806640162436,
+            280.5019335983756,
+            338.10193359837564,
+            288.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            294.4,
+            244.29806640162437,
+            301.89806640162436,
+            280.5019335983756
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            262.4
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            320.0,
+            236.79999999999998
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            345.6,
+            262.4
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            288.0
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            294.4,
+            262.4
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": [
+        "blade-1",
+        "blade-2",
+        "blade-3",
+        "blade-4"
+      ],
+      "attachment": {
+        "to": "handle",
+        "self": "center",
+        "target": "top"
+      }
+    },
+    "blade-1": {
+      "kind": "stroke",
+      "intent": "one curved coloured paper vane turns around the common pin",
+      "bounds": [
+        191.66998584004494,
+        162.53931293904287,
+        321.5996646066532,
+        269.11302565374007
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            191.66998584004494,
+            162.53931293904287,
+            321.5996646066532,
+            269.11302565374007
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            222.70419994480338,
+            167.364848608528,
+            320.0,
+            264.6606486637246
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            191.66998584004494,
+            162.53931293904287,
+            321.5996646066532,
+            269.11302565374007
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            191.66998584004494,
+            162.53931293904287,
+            321.5996646066532,
+            269.11302565374007
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            240.17047283116352,
+            247.19437577736446
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            320.0,
+            262.4
+          ],
+          "normal": null
+        },
+        "tip": {
+          "point": [
+            224.964848608528,
+            167.364848608528
+          ],
+          "normal": null
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "hub",
+        "self": "root",
+        "target": "center"
+      }
+    },
+    "blade-2": {
+      "kind": "stroke",
+      "intent": "one curved coloured paper vane turns around the common pin",
+      "bounds": [
+        220.13931293904287,
+        260.80033539334676,
+        326.7130256537401,
+        390.73001415995503
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            220.13931293904287,
+            260.80033539334676,
+            326.7130256537401,
+            390.73001415995503
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            224.964848608528,
+            262.4,
+            322.2606486637246,
+            359.6958000551966
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            220.13931293904287,
+            260.80033539334676,
+            326.7130256537401,
+            390.73001415995503
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            220.13931293904287,
+            260.80033539334676,
+            326.7130256537401,
+            390.73001415995503
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            304.79437577736445,
+            342.22952716883646
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            320.0,
+            262.4
+          ],
+          "normal": null
+        },
+        "tip": {
+          "point": [
+            224.964848608528,
+            357.435151391472
+          ],
+          "normal": null
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "hub",
+        "self": "root",
+        "target": "center"
+      }
+    },
+    "blade-3": {
+      "kind": "stroke",
+      "intent": "one curved coloured paper vane turns around the common pin",
+      "bounds": [
+        318.4003353933468,
+        255.68697434625992,
+        448.33001415995506,
+        362.26068706095714
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            318.4003353933468,
+            255.68697434625992,
+            448.33001415995506,
+            362.26068706095714
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            320.0,
+            260.13935133627535,
+            417.29580005519665,
+            357.435151391472
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            318.4003353933468,
+            255.68697434625992,
+            448.33001415995506,
+            362.26068706095714
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            318.4003353933468,
+            255.68697434625992,
+            448.33001415995506,
+            362.26068706095714
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            399.8295271688365,
+            277.6056242226355
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            320.0,
+            262.4
+          ],
+          "normal": null
+        },
+        "tip": {
+          "point": [
+            415.035151391472,
+            357.435151391472
+          ],
+          "normal": null
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "hub",
+        "self": "root",
+        "target": "center"
+      }
+    },
+    "blade-4": {
+      "kind": "stroke",
+      "intent": "one curved coloured paper vane turns around the common pin",
+      "bounds": [
+        313.2869743462599,
+        134.06998584004492,
+        419.86068706095716,
+        263.9996646066532
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            313.2869743462599,
+            134.06998584004492,
+            419.86068706095716,
+            263.9996646066532
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            317.7393513362754,
+            165.10419994480333,
+            415.035151391472,
+            262.4
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            313.2869743462599,
+            134.06998584004492,
+            419.86068706095716,
+            263.9996646066532
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            313.2869743462599,
+            134.06998584004492,
+            419.86068706095716,
+            263.9996646066532
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            335.20562422263555,
+            182.57047283116353
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            320.0,
+            262.4
+          ],
+          "normal": null
+        },
+        "tip": {
+          "point": [
+            415.035151391472,
+            167.364848608528
+          ],
+          "normal": null
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "hub",
+        "self": "root",
+        "target": "center"
+      }
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge focus or digit-tip handle"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; digit tip: nominal digit span"
+}

@@ -205,6 +205,26 @@ def validate_shape(node,canvas):
     shape_data(node,canvas)
 
 
+def validate_stroke(node,canvas):
+    from .stroke import DEFAULT_LENGTH,DEFAULT_THICKNESS,stroke_data
+    keys(node,('id','kind','intent','attachment','at','length','thickness','angle','bend','start_width','end_width','start_cap','end_cap','shade','ink_width','depth','depth_slope','palette','edits'),'stroke')
+    for name,default,lo,hi in [('length',DEFAULT_LENGTH,.005,2),('thickness',DEFAULT_THICKNESS,.001,1),('angle',0,-180,180),
+                              ('bend',0,-1,1),('start_width',1,0,4),('end_width',1,0,4),('ink_width',0,0,.1),
+                              ('depth',0,-100,100),('depth_slope',0,-10,10)]:
+        number(node.get(name,default),'stroke.'+name,lo,hi)
+    for name in ('start_cap','end_cap'):
+        if node.get(name,'round') not in ('round','flat'): raise ValueError(name+': round/flat')
+    if node.get('shade','none') not in ('none','left','right'): raise ValueError('stroke.shade: none/left/right')
+    validate_placement(node)
+    keys(node.get('palette',{}),('fill','shade','ink'),'stroke.palette')
+    for value in node.get('palette',{}).values(): color(value)
+    if not isinstance(node.get('edits',[]),list): raise ValueError('stroke.edits requires a list')
+    for edit in node.get('edits',[]):
+        keys(edit,('at','radius','dx','dy','reason'),'stroke.edit')
+        validate_edits([dict(edit,side='left')])
+    stroke_data(node,canvas)
+
+
 def validate(scene):
     keys(scene, ("format", "canvas", "background", "nodes"), "scene")
     if scene.get("format") != "learn-draw/studio-1":
@@ -230,6 +250,9 @@ def validate(scene):
         if node.get('kind')=='head':
             validate_head(node,canvas)
             continue
+        if node.get('kind')=='stroke':
+            validate_stroke(node,canvas)
+            continue
         if node.get('kind')=='shape':
             validate_shape(node,canvas)
             continue
@@ -241,7 +264,7 @@ def validate(scene):
             validate_scenery(node,canvas)
             continue
         if node.get("kind") != "hair-lock":
-            raise ValueError(f"{sid}: supported kinds are shape/head/hand/hair-lock/sky/hills/moon/sun")
+            raise ValueError(f"{sid}: supported kinds are stroke/shape/head/hand/hair-lock/sky/hills/moon/sun")
         keys(node, ("id", "kind", "intent", "attachment", "at", "length", "width", "width_side", "angle", "sweep", "depth",
                     "depth_slope", "palette", "edits"), "node")
         if node.get("width_side", "both") not in ("both", "left", "right"):
@@ -280,7 +303,7 @@ def node_by_id(scene, sid):
     raise ValueError(f"unknown object {sid!r}")
 
 
-def select(scene, sid=None, side="left", at=.55, radius=.30, feature=None):
+def select(scene, sid=None, side="left", at=.55, radius=.30, feature=None, anchor=None):
     validate(scene)
     if sid is None:
         if len(scene['nodes'])!=1:
@@ -288,18 +311,29 @@ def select(scene, sid=None, side="left", at=.55, radius=.30, feature=None):
         sid=scene['nodes'][0]['id']
     selection = dict(base=fingerprint(scene), engine=engine_fingerprint(), object=sid)
     from .attachment import resolve_scene,anchor_view
+    from .components import component_outline as component_outline_for_selection
     node = node_by_id(resolve_scene(scene), sid)
     canvas=scene.get('canvas',[640,640])
     rotate=lambda p:p
+    if anchor is not None and feature!='anchors': raise ValueError('choose --feature anchors with a named --anchor')
     if feature=='anchors':
-        f=anchor_view(node,canvas)
-        selection.update(kind='feature',feature='anchors',bounds=f['bounds'],object_bounds=f['bounds'],controls=[],
-                         locks=f['locks'],units='named geometry mounts; attachment pins one point and keeps the child angle in screen space')
+        f=anchor_view(node,canvas,anchor)
+        selection.update(kind='feature',feature='anchors',bounds=f['bounds'],object_bounds=bounds(component_outline_for_selection(node,canvas)),controls=[],
+                         focus=f['focus'],locks=f['locks'],units='named geometry mounts; attachment pins one point and keeps the child angle in screen space')
+        if anchor is not None: selection['anchor']=anchor
         return selection
     if node['kind']!='hair-lock':
         from .components import component_data
         data=component_data(node,canvas)
         feature=feature or 'object'
+        if node['kind']=='stroke' and feature=='spine':
+            from .stroke import spine_selection
+            validate_edits([dict(side='left',at=at,radius=radius,dx=0,dy=0,reason='selection')])
+            f=spine_selection(node,canvas,at,radius)
+            selection.update(kind='feature',feature='spine',interaction='spine-push',at=at,radius=radius,
+                             bounds=f['bounds'],object_bounds=bounds(data.outline),focus=f['focus'],locks=f['locks'],
+                             controls=data.features['spine']['controls'],units='screen push in nominal stroke thickness; root and tip stay fixed')
+            return selection
         if node['kind']=='shape' and feature in ('top','right','bottom','left'):
             from .shape import edge_selection
             validate_edits([dict(side='left',at=at,radius=radius,dx=0,dy=0,reason='selection')])
@@ -360,7 +394,9 @@ def preview(scene, selection, direction, amount, reason):
     object_move=selection.get('kind')=='feature' and selection.get('feature')=='object'
     digit_move=selection.get('kind')=='feature' and selection.get('interaction')=='digit-tip'
     contour_move=selection.get('kind')=='feature' and selection.get('interaction')=='contour-push'
-    if selection.get('kind','local')!='local' and not object_move and not digit_move and not contour_move:
+    spine_move=selection.get('interaction')=='spine-push'
+    terminal_move=selection.get('interaction')=='stroke-terminal'
+    if selection.get('kind','local')!='local' and not object_move and not digit_move and not contour_move and not spine_move and not terminal_move:
         raise ValueError('use a semantic parameter, or select a lock edge, shape contour or digit tip for a local move')
     if direction not in ("left", "right", "up", "down"):
         raise ValueError("direction: left/right/up/down")
@@ -374,7 +410,7 @@ def preview(scene, selection, direction, amount, reason):
         canvas=scene.get('canvas',[640,640])
         if node['kind'] in ('sky','hills'):
             raise ValueError('canvas-wide backgrounds use horizon/relief controls; select a movable object')
-        default={'head':{'anchor':'center','offset':[0,-.06]},'hand':{'anchor':'center'},'shape':{'anchor':'center'},
+        default={'head':{'anchor':'center','offset':[0,-.06]},'hand':{'anchor':'center'},'shape':{'anchor':'center'},'stroke':{'anchor':'center','offset':[0,-.2]},
                  'moon':{'anchor':'upper_right','offset':[0,.10]},
                  'sun':{'anchor':'upper_right','offset':[0,.10]}}.get(node['kind'],{})
         if 'attachment' in node:
@@ -391,15 +427,42 @@ def preview(scene, selection, direction, amount, reason):
         return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
                     selection=selection,operation=dict(object=selection['object'],feature='object',
                     direction=direction,amount=amount,units='shorter canvas dimension',reason=reason))
+    if spine_move or terminal_move:
+        from .attachment import resolve_scene
+        if node['kind']!='stroke': raise ValueError('this gesture operation requires a stroke')
+        pin=node.get('attachment',{}).get('self','center') if 'attachment' in node else None
+        if spine_move:
+            if pin=='center' and abs(selection['at']-.5)<selection['radius']:
+                raise ValueError('this spine interval moves the pinned center; edit outside it or detach')
+            a=math.radians(node.get('angle',0))
+            edit=dict(at=selection['at'],radius=selection['radius'],dx=dx*math.cos(a)-dy*math.sin(a),dy=dx*math.sin(a)+dy*math.cos(a),reason=reason)
+            node.setdefault('edits',[]).append(edit)
+            operation=dict(edit,object=selection['object'],feature='spine',units='nominal stroke thickness')
+        else:
+            other='tip' if selection['feature']=='root' else 'root'
+            if pin is not None and pin!=other: raise ValueError('this terminal operation would move an attached pin; move the free terminal or detach')
+            from .stroke import move_terminal
+            resolved=node_by_id(resolve_scene(scene),selection['object'])
+            changed=move_terminal(resolved,scene.get('canvas',[640,640]),selection['feature'],direction,amount)
+            node.update(length=changed['length'],angle=changed['angle'])
+            if 'attachment' not in node: node['at']=changed['at']
+            operation=dict(object=selection['object'],feature=selection['feature'],direction=direction,amount=amount,units='shorter canvas dimension',reason=reason)
+        validate(candidate)
+        return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,selection=selection,operation=operation)
     if contour_move:
-        from .shape import SAMPLES
-        if node.get('attachment',{}).get('self')==selection.get('feature') and abs(selection['at']-.5)<=selection['radius']+4/SAMPLES:
-            raise ValueError('this contour interval contains the attached anchor; edit outside the pin or detach first')
         if node['kind']!='shape': raise ValueError('contour push requires a shape')
         edit={k:selection[k] for k in ('side','at','radius')}
         a=math.radians(node.get('angle',0))
         edit.update(dx=dx*math.cos(a)-dy*math.sin(a),dy=dx*math.sin(a)+dy*math.cos(a),reason=reason)
         node.setdefault('edits',[]).append(edit)
+        if 'attachment' in node:
+            from .attachment import get_anchor
+            old=copy.deepcopy(node_by_id(scene,selection['object']));old.pop('attachment')
+            new=copy.deepcopy(node);relation=new.pop('attachment');name=relation.get('self','center')
+            a=get_anchor(old,scene.get('canvas',[640,640]),name);b=get_anchor(new,scene.get('canvas',[640,640]),name)
+            normal_changed=a['normal'] is not None and math.dist(a['normal'],b['normal'])>1e-10
+            if math.dist(a['point'],b['point'])>1e-9 or normal_changed:
+                raise ValueError('this contour interval changes the attached anchor or tangent; edit outside the pin or detach first')
         validate(candidate)
         return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
                     selection=selection,operation=dict(edit,object=selection['object'],units='nominal shorter shape extent'))
@@ -433,6 +496,11 @@ def attachment_preview(scene,selection,target_selection,self_anchor,target_ancho
     if selection.get('feature')!='anchors' or target_selection.get('feature')!='anchors':
         raise ValueError('inspect anchors on both objects before attaching')
     if not isinstance(reason,str) or not reason.strip(): raise ValueError('state a drawing reason')
+    self_anchor=self_anchor or selection.get('anchor') or 'center'
+    target_anchor=target_anchor or target_selection.get('anchor') or 'center'
+    for view,name in ((selection,self_anchor),(target_selection,target_anchor)):
+        if (view.get('anchor') is not None and view['anchor']!=name) or ('@' in name and view.get('anchor')!=name):
+            raise ValueError('inspect this exact named/positioned anchor before attaching: '+name)
     candidate=copy.deepcopy(scene)
     node=node_by_id(candidate,selection['object'])
     node.pop('at',None)
@@ -476,7 +544,7 @@ def _set_parameter(node,selection,parameter,value):
             except ValueError: raise ValueError('finger control requires a numeric value') from None
         node.setdefault('digits',{}).setdefault(selection['feature'],{})['length' if parameter=='finger_length' else 'lean']=value
     else:
-        if parameter not in ('intent','expression','hair','width_side','style','tree_side','handedness','profile') and isinstance(value,str):
+        if parameter not in ('intent','expression','hair','width_side','style','tree_side','handedness','profile','start_cap','end_cap','shade') and isinstance(value,str):
             try:
                 value=float(value)
             except ValueError:

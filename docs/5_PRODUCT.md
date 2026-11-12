@@ -511,8 +511,10 @@ A shape node defaults to a useful rounded single colour block, with optional ova
 rounding and outline. It can stand for a tower, roof, glass pane, book, rock or other named mass;
 there is no subject-specific lighthouse/lamp generator. The selected arc is shown before a bounded
 push, and its joins are protected. This begins a lower-level creation surface beneath semantic
-presets. It does not yet provide arbitrary paths, compound holes, object booleans or attachment.
+presets. It does not provide arbitrary paths, compound holes or object booleans. Attachment belongs to the
+separate point-mount graph described below.
 Its actual new-subject studies and operation proof belong to evidence/studio-shape/.
+The later point-mount and editable gesture additions are described below.
 
 ## Adopted visible point mounting — 2026-11-13
 
@@ -527,3 +529,22 @@ reusable curved gesture/rounded mark and a limited colour-plane treatment, rathe
 one defective subject template after another. Actual candidate/default/revision images must decide
 adoption. A connected original character composition will test the accepted head/hand alongside
 those operations; small generic icons are evidence, not the entire intended product outcome.
+
+## Adopted editable gesture mark — 2026-11-13
+
+The stroke is a simple round capsule by default; length and thickness are independent. Optional
+bend, taper, flat ends, ink and a derived material-relative colour plane extend that same mark.
+Visible spine pushes preserve both terminals; terminal moves preserve the opposite end. This
+fills a real gap between a sculptable closed mass and a full SVG path. Existing strip/ribbon code
+was considered: relate.ribbon/taper_band supplies finite-difference strip construction, but not
+round-cap defaults or a revision-bound editable centerline. Studio hair-lock intentionally tapers
+its terminals. Their swept-normal idea is reused, with analytic derivatives, protected controls
+and optional cap/width treatment rather than exposing generated vertices.
+
+Controlled cactus comparisons show that rounding existing blocks helps the tip but does not remove
+the angular assembled elbow; one continuous bowed mark avoids that particular joint. Curved wheel
+vanes communicate a consistent sweep better than the prior petal-like masses. Their colour planes
+do not establish physical folds. Raw comparisons and fresh image criticism live in
+../evidence/studio-stroke/. A connected character now exercises the accepted head/hand, actual
+chin/wrist mounts and continuously positioned shape-edge pins. These are authored projected features,
+not a semantic body rig. Character shoulder/arm quality is still a visual question.
