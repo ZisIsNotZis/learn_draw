@@ -1,0 +1,372 @@
+{
+  "revision": "5acc3b95f9604ecb0db7ec9f2a56f0194e4fd31679fd07170b0993ebe21c0eea",
+  "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\05-body\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\05-body\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\05-body\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\05-body\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\05-body\\artwork.png": "6cbd117eb1bdb18031fc569c3848ecbb52e58a68bcd8d021084c1329c09546c4",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\05-body\\alignment.png": "a867e1704cd7fc6adc9c18a7ba02c69bea04a47195eadd5afe02a2fa145f80d7",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\05-body\\object-closeup.png": "bbfe29f257f3831760cea44e0c6fae33396d95eb753dafa6d9fc1cf0acb022e7",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\05-body\\edit-closeup.png": "d4d03294646b333c4b82f89bfc6c1dad5c7484958dd6565b8b79e4d50ad7e773"
+  },
+  "nodes": {
+    "pot": {
+      "kind": "shape",
+      "intent": "A low terracotta pot anchors the warm cactus emblem",
+      "bounds": [
+        235.1292373032698,
+        390.4,
+        404.8707626967302,
+        518.4
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            235.1292373032698,
+            390.4,
+            404.8707626967302,
+            518.4
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            236.7426896048235,
+            390.4,
+            403.2573103951765,
+            392.4857815936616
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            383.8508725382834,
+            392.4857815936616,
+            404.8707626967302,
+            516.3142184063383
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            256.1491274617166,
+            516.3142184063383,
+            383.8508725382834,
+            518.4
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            235.1292373032698,
+            392.4857815936616,
+            256.1491274617166,
+            516.3142184063383
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            454.4
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            320.0,
+            390.4
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            395.9993455254736,
+            454.6015560755982
+          ],
+          "normal": [
+            0.9871307305661714,
+            0.15991535502226412
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            518.4
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            244.00065447452644,
+            454.60155607559824
+          ],
+          "normal": [
+            -0.9871307305661703,
+            0.15991535502227114
+          ]
+        }
+      },
+      "attached_children": []
+    },
+    "body": {
+      "kind": "shape",
+      "intent": "an editable rounded flat colour mass",
+      "bounds": [
+        237.2608000003879,
+        216.78080000094704,
+        402.7391999996121,
+        423.21919999905293
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            237.2608000003879,
+            216.78080000094704,
+            402.7391999996121,
+            423.21919999905293
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            243.7296176657402,
+            217.6,
+            396.2703823342598,
+            224.66202208217527
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            396.2703823342598,
+            224.66202208217527,
+            401.92,
+            415.33797791782473
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            243.7296176657402,
+            415.33797791782473,
+            396.2703823342598,
+            422.4
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            238.07999999999998,
+            224.66202208217527,
+            243.7296176657402,
+            415.33797791782473
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            320.0
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            320.0,
+            216.7808
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            402.73920000000004,
+            320.0
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            423.2192
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            237.2608,
+            320.00000000000006
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": []
+    }
+  },
+  "scope": "editable colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge focus or digit-tip handle"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; digit tip: nominal digit span"
+}

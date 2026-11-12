@@ -136,3 +136,31 @@ Keep your working scene separate from VIEW/TRY exported scene.json/candidate.jso
 The CLI refuses an output/input path collision before writing. If you write a replay script using
 the lower-level bundle API, it accepts a scene value and exports scene.json; it does not know where
 you read that value. Use e.g. working.json and a different output directory.
+
+## Place connected parts by visible named mounts
+
+Inspect both parts with --feature anchors and separate output directories. Read both alignment
+images: green labeled callouts identify the actual geometry, not guessed canvas coordinates.
+Shapes have center/top/right/bottom/left (shape-local sides under tilt); other current macros have
+center, and a standalone lock also has root/tip. The report lists actual available anchors.
+
+After source CHILD and target PARENT inspections at the same current revision:
+preview scene.json --selection CHILD/selection.json --attach PARENT/selection.json
+--self-anchor bottom --target-anchor top --inset .04 --reason "Seat the support in the pot"
+--outdir TRY (one shell line). Blue marks the target; orange is the proposed source and pink its
+previous boundary. Inspect the clean artwork and overlay before accepting. Positive inset embeds
+into a target shape surface by a fraction of that target's nominal shorter extent (range -2..2); negative leaves
+a gap. Center has no outward surface direction, so use inset 0 for center mounts.
+
+Accepted relations stay semantic. Moving/resizing/sculpting the parent recomputes its child mounts,
+including descendant chains. A pin fixes one point and preserves the child's own screen angle;
+it does not inherit rotation/size, fit two edges, smooth a joint or change depth. Planar overlap
+and art treatment still need visual judgement. Sky/hills may be targets but not mounted children.
+A connected-looking joint is not proof of a 3D solid, and a placement constraint cannot add volume.
+
+To nudge a mounted object, inspect object and use the usual screen --move; it adjusts the retained
+offset from the mount. To release it, inspect anchors then preview --detach with a drawing reason;
+accept preserves its current visible placement. A local contour push that would move a pinned
+shape anchor/tangent is refused; choose an interval away from it or detach. Other feature controls
+remain on their usual selections. Source and target selections both go stale after any scene or
+implementation change: inspect both again. Cycles and missing/unknown mounts are refused.

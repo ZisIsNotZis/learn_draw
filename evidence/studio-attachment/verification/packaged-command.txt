@@ -1,0 +1,2 @@
+python examples/studio/mount_demo.py --outdir .tmp/mount-demo-packaged
+exit 0; same scene revisions and derived shifts as original study

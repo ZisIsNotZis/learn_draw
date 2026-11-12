@@ -169,11 +169,26 @@ and a second fresh image pair sees no new defect. Raw actor source/artwork remai
 See evidence/studio-parameters/README.md for independent use, exact replay, rendering diagnosis,
 review provenance and the boundary on genuinely intersecting masks.
 
-**Next action:** test visible relative placement/attachment on a subject whose separate parts must
-meet. Inspect the actual joint geometry first: the lamp elbow, rocket nose and cliff contact do not
-automatically share the same cause. Prefer a computed semantic anchor with a real before/after
-assembly over another batch of hand-adjusted coordinates. Keep actual drawing decisions visible,
-including rejecting a mechanically valid but poor edit.
+Visible named mounts and an authored parent graph now preserve projected point connections. The
+initial joint measurements show that the old elbow/cap/footing already overlap: placement cannot
+be blamed for every seam/volume critique. An independent four-mass cactus views both mount images,
+rejects a wrong arm tilt and an awkward tip, and moves the full three-link chain by editing only
+the pot. A six-mass pinwheel study changes only handle length; all raw descendants remain identical
+while their resolved centers follow by 32px. Preview, detach, offset nudges, stale/cycle refusal and
+contextual head/hand/lock editing are covered by 94 combined passing tests. Seven current artworks
+repeat, with previous defaults and the raw actor PNG unchanged. A real inset .65 refusal exposed an
+unnecessary half-width bound and missing help range; the corrected -2..2 range is documented and
+tested, with the original outcome retained. See evidence/studio-attachment/README.md.
+
+**Visual limits remain open.** Fresh critics find the pinwheel too petal-like, with no folded
+direction; the cactus has awkward branch contours. Point connectivity does not supply curve shape,
+material or a smooth joint. No whole-art gate closes.
+
+**Next action:** compare existing shape controls and established strip/ribbon implementations with
+a default rounded gesture mark, optional bend/caps and a small derived colour-plane treatment.
+Use actual cactus-joint and pinwheel before/after images to decide whether a new operation earns
+its complexity. Then build a small connected character illustration using the accepted head/hand
+and the improved marks. Keep the full VLM-creation goal; do not stop at a catalog of flat icons.
 More presets alone cannot establish open-ended creative capability.
 Do not turn a hand icon or this cover's limited usability into a whole-portrait/illustration pass.
 Preserve the legacy portrait. The development branch is

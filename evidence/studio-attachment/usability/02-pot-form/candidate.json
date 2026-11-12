@@ -1,0 +1,77 @@
+{
+  "base": "4a48ab36dd9cd86f646a020a2f6aba5fd190699a083470b3e95c2cd06dca21b8",
+  "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+  "result": "d640909377547077383cc7179b11e126fa793ecd29f6c43733bd871072390e44",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#fff0d7",
+    "nodes": [
+      {
+        "id": "pot",
+        "kind": "shape",
+        "intent": "A low terracotta pot anchors the warm cactus emblem",
+        "length": 0.2,
+        "width": 1.35,
+        "taper": -0.24,
+        "rounding": 0.14,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc603c"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "4a48ab36dd9cd86f646a020a2f6aba5fd190699a083470b3e95c2cd06dca21b8",
+    "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+    "object": "pot",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "object_bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "pot",
+    "feature": "object",
+    "parameters": {
+      "length": 0.2,
+      "width": 1.35,
+      "taper": -0.24,
+      "rounding": 0.14,
+      "stroke": 0.0,
+      "fill_color": "#bc603c",
+      "intent": "A low terracotta pot anchors the warm cactus emblem"
+    },
+    "reason": "Give the cactus a broad stable warm pot with a tapered foot"
+  },
+  "status": "ready"
+}

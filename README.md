@@ -20,6 +20,8 @@ including discarding an unhelpful edit; it does not establish an attached body o
 Try `uv run python -m scripts.studio new hand.json --kind hand`, then inspect its index feature.
 Generic `--kind shape` adds editable blocks/ovals/tapers for subjects outside the preset catalog;
 repeat `preview --change NAME=VALUE` to configure related controls in one visible, undoable proposal.
+Named `anchors` inspections also support persistent point mounts; [actual mount studies](evidence/studio-attachment/README.md)
+show parent edits, independent cactus creation and the remaining contour/material limitations.
 [the actual coastal and independent creation studies](evidence/studio-shape/README.md) retain their
 visual limitations. A working contour tool is not a whole-illustration pass.
 

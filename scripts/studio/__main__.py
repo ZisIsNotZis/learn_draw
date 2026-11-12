@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import sys
 
-from .model import accept, engine_fingerprint, fingerprint, parameter_preview, parameters_preview, preview, read, select, undo, validate, write
+from .model import accept, attachment_preview, detach_preview, engine_fingerprint, fingerprint, parameter_preview, parameters_preview, preview, read, select, undo, validate, write
 from .render import bundle
 
 
@@ -78,6 +78,11 @@ def main():
             operation.add_argument("--move", choices=("left", "right", "up", "down"))
             operation.add_argument('--set',dest='parameter',help='a semantic control exposed by inspect')
             operation.add_argument('--change',action='append',metavar='NAME=VALUE',help='repeat for one coherent multi-control preview; accept/undo as one edit')
+            operation.add_argument('--attach',metavar='TARGET_SELECTION',help='pin to a target inspected with --feature anchors')
+            operation.add_argument('--detach',action='store_true',help='release an inspected mount while preserving current placement')
+            p.add_argument('--self-anchor',default='center',help='named mount on this object (default center)')
+            p.add_argument('--target-anchor',default='center',help='named mount on target object (default center)')
+            p.add_argument('--inset',type=float,default=0,help='-2..2 into target surface, fraction of its nominal shorter extent; negative leaves a gap')
             p.add_argument('--value',help='numeric value, hairstyle name or hex colour for --set')
             p.add_argument("--amount", type=float, default=.10, help="edge: lock width; object: shorter canvas dimension; digit tip: nominal digit span (default .10)")
             p.add_argument("--reason", required=True)
@@ -95,7 +100,9 @@ def main():
             names=['scene.json','selection.json','report.json','report.txt','candidate.json']
             names += [name+suffix for name in ('artwork','alignment','object-closeup','edit-closeup') for suffix in ('.svg','.png')]
             inputs=[Path(args.scene)]
-            if args.command=='preview': inputs.append(Path(args.selection))
+            if args.command=='preview':
+                inputs.append(Path(args.selection))
+                if args.attach: inputs.append(Path(args.attach))
             for source in inputs:
                 for name in names:
                     target=output/name
@@ -125,8 +132,9 @@ def main():
                 node['depth']=args.depth
             elif args.kind in ('head','hand','hair-lock','shape'):
                 from .components import depth_bounds
+                from .attachment import resolve_scene
                 canvas=scene.get('canvas',[640,640])
-                node['depth']=max(depth_bounds(n,canvas)[1] for n in scene['nodes'])+1
+                node['depth']=max(depth_bounds(n,canvas)[1] for n in resolve_scene(scene)['nodes'])+1
             scene['nodes'].append(node)
             validate(scene)
             accept(args.scene,dict(base=base,engine=engine_fingerprint(),result=fingerprint(scene),scene=scene,
@@ -146,7 +154,15 @@ def main():
             write(Path(args.outdir)/'report.json',dict(status='preparing',revision=fingerprint(scene),engine=engine_fingerprint(),images=[]))
             (Path(args.outdir)/'report.txt').write_text('',encoding='utf-8')
             selection=read(args.selection)
-            if args.change:
+            if not args.attach and (args.self_anchor!='center' or args.target_anchor!='center' or args.inset!=0):
+                raise ValueError('--self-anchor, --target-anchor and --inset are used with --attach')
+            if args.attach or args.detach:
+                if args.value is not None: raise ValueError('--value is used with --set')
+                if args.attach:
+                    candidate=attachment_preview(scene,selection,read(args.attach),args.self_anchor,args.target_anchor,args.inset,args.reason)
+                else:
+                    candidate=detach_preview(scene,selection,args.reason)
+            elif args.change:
                 if args.value is not None:
                     raise ValueError('--change uses NAME=VALUE; --value is used with --set')
                 changes={}

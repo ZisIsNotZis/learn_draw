@@ -22,6 +22,8 @@ PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安
 通用 `--kind shape` 支持圆角块、椭圆、渐窄形和局部轮廓修正，可用于预设之外的物体；
 [灯塔与独立台灯试作](evidence/studio-shape/README.md)同时保留了辨识和接触关系上的不足。
 一组相关参数可以用重复的 `preview --change NAME=VALUE` 放进同一次可见预览，接受后也能整体撤销。
+`anchors` 检查视图还可建立持续的点连接关系；[实际对准与盆栽试作](evidence/studio-attachment/README.md)
+展示父部件修改后的跟随，也保留了接缝轮廓、折面与体积上未解决的问题。
 
 天空、山脊、月亮和太阳预设也已支持小幅背景构图与可撤销移动。[实际研究及批评意见](evidence/studio-composition/README.md)
 保留了当前效果的局限；这些能力不等于整幅作品的美术验收。

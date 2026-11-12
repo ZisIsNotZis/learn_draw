@@ -1,0 +1,136 @@
+{
+  "base": "233757262930f74c3c10e09dda6b45d809e992e62283f4a59649dbcd9bccdc11",
+  "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+  "result": "63f75af7218c259c3ed98fc4c310d7cd1ae93ee9aa21f53ad74065c9b32dfdc3",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#fff0d7",
+    "nodes": [
+      {
+        "id": "pot",
+        "kind": "shape",
+        "intent": "A low terracotta pot anchors the warm cactus emblem",
+        "length": 0.2,
+        "width": 1.35,
+        "taper": -0.24,
+        "rounding": 0.14,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc603c"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.04,
+            0.21000000000000002
+          ]
+        }
+      },
+      {
+        "id": "body",
+        "kind": "shape",
+        "intent": "The upright rounded cactus trunk emerges from the pot",
+        "depth": -1.0,
+        "length": 0.36,
+        "width": 0.38,
+        "rounding": 1.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#397b59"
+        },
+        "attachment": {
+          "to": "pot",
+          "self": "bottom",
+          "target": "top",
+          "inset": 0.18
+        }
+      },
+      {
+        "id": "arm",
+        "kind": "shape",
+        "intent": "A right rising cactus arm joins the central trunk",
+        "depth": -2.0,
+        "length": 0.17,
+        "width": 0.47,
+        "angle": -55.0,
+        "rounding": 0.65,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#397b59"
+        },
+        "attachment": {
+          "to": "body",
+          "self": "bottom",
+          "target": "right",
+          "inset": 0.15
+        }
+      },
+      {
+        "id": "tip",
+        "kind": "shape",
+        "intent": "The upright rounded tip turns the branch toward sunlight",
+        "depth": -3.0,
+        "length": 0.15,
+        "width": 0.55,
+        "rounding": 0.65,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#397b59"
+        },
+        "attachment": {
+          "to": "arm",
+          "self": "bottom",
+          "target": "top",
+          "inset": 0.5
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "233757262930f74c3c10e09dda6b45d809e992e62283f4a59649dbcd9bccdc11",
+    "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+    "object": "pot",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      235.1292373032698,
+      390.4,
+      404.8707626967302,
+      518.4
+    ],
+    "object_bounds": [
+      235.1292373032698,
+      390.4,
+      404.8707626967302,
+      518.4
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "pot",
+    "feature": "object",
+    "direction": "left",
+    "amount": 0.04,
+    "units": "shorter canvas dimension",
+    "reason": "Center the full asymmetric cactus silhouette by shifting its pot and mounted descendants left"
+  },
+  "status": "ready"
+}

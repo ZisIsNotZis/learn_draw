@@ -1,0 +1,117 @@
+{
+  "base": "78606ddbb8a435447885bcaae059153331e4c7c898c94651b82b08370b90d110",
+  "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+  "result": "6e84e32af361ef516f6dc3e8e2858237180581510dc5bbd6495290b4d0981d01",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#fff0d7",
+    "nodes": [
+      {
+        "id": "pot",
+        "kind": "shape",
+        "intent": "A low terracotta pot anchors the warm cactus emblem",
+        "length": 0.2,
+        "width": 1.35,
+        "taper": -0.24,
+        "rounding": 0.14,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc603c"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.21000000000000002
+          ]
+        }
+      },
+      {
+        "id": "body",
+        "kind": "shape",
+        "intent": "The upright rounded cactus trunk emerges from the pot",
+        "depth": -1.0,
+        "length": 0.36,
+        "width": 0.38,
+        "rounding": 1.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#397b59"
+        },
+        "attachment": {
+          "to": "pot",
+          "self": "bottom",
+          "target": "top",
+          "inset": 0.18
+        }
+      },
+      {
+        "id": "arm",
+        "kind": "shape",
+        "intent": "A right rising cactus arm joins the central trunk",
+        "depth": -2.0,
+        "length": 0.17,
+        "width": 0.47,
+        "angle": -55.0,
+        "rounding": 0.65,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#397b59"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "78606ddbb8a435447885bcaae059153331e4c7c898c94651b82b08370b90d110",
+    "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+    "object": "arm",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "object_bounds": [
+      237.2608000003879,
+      216.78080000094704,
+      402.7391999996121,
+      423.21919999905293
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "arm",
+    "feature": "object",
+    "parameters": {
+      "length": 0.17,
+      "width": 0.47,
+      "angle": -55.0,
+      "rounding": 0.65,
+      "stroke": 0.0,
+      "fill_color": "#397b59",
+      "intent": "A right rising cactus arm joins the central trunk"
+    },
+    "reason": "The first tilt descended rightward; reverse it so the branch rises from its bottom root"
+  },
+  "status": "ready"
+}

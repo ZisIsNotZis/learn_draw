@@ -312,3 +312,13 @@ View the combined result, then accept or discard it. Each accepted group is one 
 Use the single --set/--value route for a single control or --move for a local/object motion.
 The operation tests are scripts.tests.test_studio_parameters; controlled and independent
 creation evidence belongs to evidence/studio-parameters/.
+
+## Visible relative placement
+
+Inspect child and parent with --feature anchors into CHILD/PARENT. Preview with
+--selection CHILD/selection.json --attach PARENT/selection.json --self-anchor bottom
+--target-anchor top --inset .04 --reason "Seat the support in the pot" --outdir TRY.
+Look at clean artwork/overlay before accepting. For release use a current anchors selection with
+preview --detach, then accept if the current placement is preserved. Graph behavior and contextual
+head/hand/lock editing are covered by scripts.tests.test_studio_attachment. Actual scene studies
+belong to evidence/studio-attachment/. Use current named mounts, not raw SVG/frame coordinates.

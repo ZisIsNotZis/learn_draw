@@ -1,0 +1,34 @@
+{
+  "base": "b5f2af9230872e62440f2df626f023242c35652564b16dcdfc44dd64fc4a2121",
+  "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+  "object": "tip",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    237.2608000003879,
+    216.78080000094704,
+    402.7391999996121,
+    423.21919999905293
+  ],
+  "object_bounds": [
+    237.2608000003879,
+    216.78080000094704,
+    402.7391999996121,
+    423.21919999905293
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

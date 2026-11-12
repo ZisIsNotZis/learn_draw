@@ -1,0 +1,23 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#fff0d7",
+  "nodes": [
+    {
+      "id": "pot",
+      "kind": "shape",
+      "intent": "A low terracotta pot anchors the warm cactus emblem",
+      "length": 0.2,
+      "width": 1.35,
+      "taper": -0.24,
+      "rounding": 0.14,
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#bc603c"
+      }
+    }
+  ]
+}

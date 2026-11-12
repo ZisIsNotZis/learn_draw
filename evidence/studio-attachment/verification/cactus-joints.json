@@ -1,0 +1,35 @@
+{
+  "joints": {
+    "body": {
+      "parent": "pot",
+      "projected_paint_overlap_area": 824.0340692692253,
+      "relation": {
+        "to": "pot",
+        "self": "bottom",
+        "target": "top",
+        "inset": 0.18
+      }
+    },
+    "arm": {
+      "parent": "body",
+      "projected_paint_overlap_area": 761.022072916653,
+      "relation": {
+        "to": "body",
+        "self": "bottom",
+        "target": "right",
+        "inset": 0.15
+      }
+    },
+    "tip": {
+      "parent": "arm",
+      "projected_paint_overlap_area": 1160.1485903845453,
+      "relation": {
+        "to": "arm",
+        "self": "bottom",
+        "target": "top",
+        "inset": 0.5
+      }
+    }
+  },
+  "meaning": "projected paint joins overlap; awkward contour criticism is not evidence of a detached mount; depth is independent, not a 3D joint proof"
+}

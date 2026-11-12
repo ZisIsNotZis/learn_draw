@@ -93,3 +93,14 @@ require experiments. Whole-surface painter sorting is insufficient. The current 
 computes vector fragments from triangular depth planes, but does not yet handle every degeneracy,
 intersection or performance case; triangle seam artefacts remain. It is not production-ready, and the
 generic scaffold's ribbon route is not the reference's intended route.
+
+## Adopted projected mount boundary — 2026-11-13
+
+The Studio now resolves an authored single-parent pin graph into an ephemeral placement copy before
+component rendering, selection, crop/depth analysis and report generation. Nodes expose only known
+geometry-derived mounts. The relation preserves one projected point with optional normal inset and
+screen offset; angle, size and depth remain independent. It is not the full spatial joint/solid
+contract above. Missing targets/cycles are refused, and node-level compilation requires resolved
+input to prevent nominal positions masquerading as current geometry. Interface and algorithms are
+owned by 7_INTERFACE and 8_DETAIL. The independent cactus and parent-edit studies are indexed at
+../evidence/studio-attachment/README.md; their contour/art limitations remain open.

@@ -1,0 +1,113 @@
+{
+  "base": "4618dcea3ba62ea254920966e23d86ff1ea1eacec905dbde3612914f4240c232",
+  "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+  "result": "d48cacc661deffb709d594e68435995e245ab0f58065142efdeca937141ea976",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#fff0d7",
+    "nodes": [
+      {
+        "id": "pot",
+        "kind": "shape",
+        "intent": "A low terracotta pot anchors the warm cactus emblem",
+        "length": 0.2,
+        "width": 1.35,
+        "taper": -0.24,
+        "rounding": 0.14,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc603c"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.21000000000000002
+          ]
+        }
+      },
+      {
+        "id": "body",
+        "kind": "shape",
+        "intent": "The upright rounded cactus trunk emerges from the pot",
+        "depth": -1.0,
+        "length": 0.36,
+        "width": 0.38,
+        "rounding": 1.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#397b59"
+        },
+        "attachment": {
+          "to": "pot",
+          "self": "bottom",
+          "target": "top",
+          "inset": 0.18
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "4618dcea3ba62ea254920966e23d86ff1ea1eacec905dbde3612914f4240c232",
+    "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+    "object": "body",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      276.224,
+      204.8,
+      363.776,
+      435.2
+    ],
+    "object_bounds": [
+      276.224,
+      204.8,
+      363.776,
+      435.2
+    ],
+    "controls": [],
+    "locks": {
+      "center": [
+        320.0,
+        320.0
+      ],
+      "top": [
+        320.0,
+        204.8
+      ],
+      "right": [
+        363.776,
+        319.99999999999994
+      ],
+      "bottom": [
+        320.0,
+        435.2
+      ],
+      "left": [
+        276.224,
+        320.00000000000006
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "attachment_target": {
+      "object": "pot",
+      "anchor": "top"
+    }
+  },
+  "operation": {
+    "action": "attach",
+    "object": "body",
+    "attachment": {
+      "to": "pot",
+      "self": "bottom",
+      "target": "top",
+      "inset": 0.18
+    },
+    "reason": "Seat the cactus lower tip inside the pot while leaving its upright crown clear"
+  },
+  "status": "ready"
+}

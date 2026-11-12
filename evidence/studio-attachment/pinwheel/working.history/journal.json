@@ -1,0 +1,14 @@
+[
+  {
+    "base": "53aa05acb1743dd91b3e71b62bae1d06bd44ac920629ce965b2d3a78a3c4921d",
+    "result": "f7f2f7c2923b3287deb81c5feffc8c8d6b8852ccca28e5000bceeb902ab2c56f",
+    "operation": {
+      "object": "handle",
+      "feature": "object",
+      "parameters": {
+        "length": 0.48
+      },
+      "reason": "Lengthen the visible handle; retain the hub mount and all four blade roots"
+    }
+  }
+]

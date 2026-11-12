@@ -1,0 +1,15 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#fff0d7",
+  "nodes": [
+    {
+      "id": "pot",
+      "kind": "shape",
+      "intent": "an editable rounded flat colour mass"
+    }
+  ]
+}

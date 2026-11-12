@@ -1,0 +1,32 @@
+{
+  "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+  "before": "53aa05acb1743dd91b3e71b62bae1d06bd44ac920629ce965b2d3a78a3c4921d",
+  "after": "f7f2f7c2923b3287deb81c5feffc8c8d6b8852ccca28e5000bceeb902ab2c56f",
+  "only_authored_change": "handle.length .38 -> .48",
+  "raw_descendant_nodes_exactly_unchanged": true,
+  "derived_descendant_center_shift": {
+    "hub": [
+      0.0,
+      -32.0
+    ],
+    "blade-1": [
+      0.0,
+      -32.0
+    ],
+    "blade-2": [
+      0.0,
+      -32.0
+    ],
+    "blade-3": [
+      0.0,
+      -32.0
+    ],
+    "blade-4": [
+      0.0,
+      -32.0
+    ]
+  },
+  "undo_exact_scene": true,
+  "replay_exact_scene": true,
+  "scope": "root-authored original six-shape drawing; one-point mount graph, not a rigid rotation or size rig"
+}

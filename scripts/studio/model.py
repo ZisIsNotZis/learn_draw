@@ -76,6 +76,18 @@ def validate_edits(edits):
 
 
 def validate_placement(node):
+    if 'attachment' in node:
+        if 'at' in node: raise ValueError('use attachment or free at placement, not both')
+        if node.get('kind') in ('sky','hills'): raise ValueError('canvas-wide backgrounds cannot be attached children')
+        relation=node['attachment']
+        keys(relation,('to','target','self','inset','offset'),'attachment')
+        for name,default in [('to',None),('target','center'),('self','center')]:
+            value=relation.get(name,default)
+            if not isinstance(value,str) or not value.strip(): raise ValueError('attachment.'+name+' requires a name')
+        number(relation.get('inset',0),'attachment.inset',-2,2)
+        offset=relation.get('offset',[0,0])
+        if not isinstance(offset,list) or len(offset)!=2: raise ValueError('attachment.offset requires two values')
+        for value in offset: number(value,'attachment.offset',-2,2)
     at=node.get('at',{})
     keys(at,('anchor','offset'),'at')
     if at.get('anchor','center') not in ('upper_center','center','upper_left','upper_right'):
@@ -88,7 +100,7 @@ def validate_placement(node):
 
 
 def validate_head(node, canvas):
-    keys(node,('id','kind','intent','at','length','width','angle','depth','depth_slope',
+    keys(node,('id','kind','intent','attachment','at','length','width','angle','depth','depth_slope',
                'eye_scale','jaw','hair','hair_edits','palette','expression','gaze'),'head')
     for name,default,low,high in (('length',.55,.1,1.2),('width',.79,.5,1.1),('angle',0,-180,180),
                                 ('depth',0,-100,100),('depth_slope',0,-10,10),
@@ -121,9 +133,10 @@ def validate_scenery(node,canvas):
             'moon':('at','length','angle','fullness'), 'sun':('at','length','angle','rays')}
     palette_keys={'sky':('top','bottom','stars'),'hills':('far','middle','near'),
                   'moon':('fill',),'sun':('fill','rays')}
-    keys(node,('id','kind','intent','depth','depth_slope','palette')+fields[kind],kind)
+    keys(node,('id','kind','intent','attachment','depth','depth_slope','palette')+fields[kind],kind)
     for name,default,lo,hi in [('depth',0,-100,100),('depth_slope',0,-10,10)]:
         number(node.get(name,default),kind+'.'+name,lo,hi)
+    if 'attachment' in node and kind in ('sky','hills'): validate_placement(node)
     if kind in ('moon','sun'):
         validate_placement(node)
         number(node.get('length',.22),'length',.03,1.2)
@@ -153,7 +166,7 @@ def validate_scenery(node,canvas):
 
 def validate_hand(node,canvas):
     from .hand import DIGITS,DEFAULT_LENGTH,hand_data
-    keys(node,('id','kind','intent','at','length','width','angle','depth','depth_slope','handedness','spread','digits','palette'),'hand')
+    keys(node,('id','kind','intent','attachment','at','length','width','angle','depth','depth_slope','handedness','spread','digits','palette'),'hand')
     for name,default,lo,hi in [('length',DEFAULT_LENGTH,.1,1.2),('width',1,.75,1.3),('angle',0,-180,180),
                                ('depth',0,-100,100),('depth_slope',0,-10,10),('spread',1,.25,1.6)]:
         number(node.get(name,default),'hand.'+name,lo,hi)
@@ -173,7 +186,7 @@ def validate_hand(node,canvas):
 
 def validate_shape(node,canvas):
     from .shape import SIDES,DEFAULT_LENGTH,shape_data
-    keys(node,('id','kind','intent','at','length','width','angle','depth','depth_slope','profile','rounding','taper','stroke','palette','edits'),'shape')
+    keys(node,('id','kind','intent','attachment','at','length','width','angle','depth','depth_slope','profile','rounding','taper','stroke','palette','edits'),'shape')
     for name,default,lo,hi in [('length',DEFAULT_LENGTH,.005,1.6),('width',.8,.001,6),('angle',0,-180,180),
                               ('depth',0,-100,100),('depth_slope',0,-10,10),('rounding',.65,0,1),
                               ('taper',0,-.98,.98),('stroke',.008,0,.1)]:
@@ -229,7 +242,7 @@ def validate(scene):
             continue
         if node.get("kind") != "hair-lock":
             raise ValueError(f"{sid}: supported kinds are shape/head/hand/hair-lock/sky/hills/moon/sun")
-        keys(node, ("id", "kind", "intent", "at", "length", "width", "width_side", "angle", "sweep", "depth",
+        keys(node, ("id", "kind", "intent", "attachment", "at", "length", "width", "width_side", "angle", "sweep", "depth",
                     "depth_slope", "palette", "edits"), "node")
         if node.get("width_side", "both") not in ("both", "left", "right"):
             raise ValueError(f"{sid}.width_side: both/left/right")
@@ -246,6 +259,8 @@ def validate(scene):
         problems = geometry_issues(lock_rows(node, canvas))
         if problems:
             raise ValueError(f"{sid}: " + "; ".join(problems))
+    from .attachment import resolve_scene
+    resolve_scene(scene)
     return scene
 
 
@@ -272,9 +287,15 @@ def select(scene, sid=None, side="left", at=.55, radius=.30, feature=None):
             raise ValueError('select an object: '+', '.join(n['id'] for n in scene['nodes']))
         sid=scene['nodes'][0]['id']
     selection = dict(base=fingerprint(scene), engine=engine_fingerprint(), object=sid)
-    node = node_by_id(scene, sid)
+    from .attachment import resolve_scene,anchor_view
+    node = node_by_id(resolve_scene(scene), sid)
     canvas=scene.get('canvas',[640,640])
     rotate=lambda p:p
+    if feature=='anchors':
+        f=anchor_view(node,canvas)
+        selection.update(kind='feature',feature='anchors',bounds=f['bounds'],object_bounds=f['bounds'],controls=[],
+                         locks=f['locks'],units='named geometry mounts; attachment pins one point and keeps the child angle in screen space')
+        return selection
     if node['kind']!='hair-lock':
         from .components import component_data
         data=component_data(node,canvas)
@@ -356,6 +377,13 @@ def preview(scene, selection, direction, amount, reason):
         default={'head':{'anchor':'center','offset':[0,-.06]},'hand':{'anchor':'center'},'shape':{'anchor':'center'},
                  'moon':{'anchor':'upper_right','offset':[0,.10]},
                  'sun':{'anchor':'upper_right','offset':[0,.10]}}.get(node['kind'],{})
+        if 'attachment' in node:
+            relation=node['attachment'];offset=relation.get('offset',[0,0])
+            relation['offset']=[offset[0]+dx,offset[1]+dy]
+            validate(candidate)
+            return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
+                        selection=selection,operation=dict(object=selection['object'],feature='object',direction=direction,
+                        amount=amount,units='screen offset from attached target, shorter canvas dimension',reason=reason))
         placement=node.setdefault('at',copy.deepcopy(default))
         offset=placement.get('offset',[0,0])
         placement['offset']=[offset[0]+dx*min(canvas)/canvas[0],offset[1]+dy*min(canvas)/canvas[1]]
@@ -364,6 +392,9 @@ def preview(scene, selection, direction, amount, reason):
                     selection=selection,operation=dict(object=selection['object'],feature='object',
                     direction=direction,amount=amount,units='shorter canvas dimension',reason=reason))
     if contour_move:
+        from .shape import SAMPLES
+        if node.get('attachment',{}).get('self')==selection.get('feature') and abs(selection['at']-.5)<=selection['radius']+4/SAMPLES:
+            raise ValueError('this contour interval contains the attached anchor; edit outside the pin or detach first')
         if node['kind']!='shape': raise ValueError('contour push requires a shape')
         edit={k:selection[k] for k in ('side','at','radius')}
         a=math.radians(node.get('angle',0))
@@ -375,8 +406,10 @@ def preview(scene, selection, direction, amount, reason):
     if digit_move:
         if node['kind']!='hand': raise ValueError('digit-tip movement requires a hand')
         from .hand import move_tip
-        changed,derived=move_tip(node,scene.get('canvas',[640,640]),selection['feature'],direction,amount)
-        node.clear();node.update(changed)
+        from .attachment import resolve_scene
+        resolved=node_by_id(resolve_scene(scene),selection['object'])
+        changed,derived=move_tip(resolved,scene.get('canvas',[640,640]),selection['feature'],direction,amount)
+        node['digits']=changed['digits']
         validate(candidate)
         return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
                     selection=selection,operation=dict(object=selection['object'],feature=selection['feature'],
@@ -392,6 +425,36 @@ def preview(scene, selection, direction, amount, reason):
     validate(candidate)
     return dict(base=fingerprint(scene), engine=engine_fingerprint(), result=fingerprint(candidate), scene=candidate,
                 selection=selection, operation=dict(edit,object=selection['object'],feature=selection.get('feature',selection['side'])))
+
+
+def attachment_preview(scene,selection,target_selection,self_anchor,target_anchor,inset,reason):
+    current_selection(scene,selection)
+    current_selection(scene,target_selection)
+    if selection.get('feature')!='anchors' or target_selection.get('feature')!='anchors':
+        raise ValueError('inspect anchors on both objects before attaching')
+    if not isinstance(reason,str) or not reason.strip(): raise ValueError('state a drawing reason')
+    candidate=copy.deepcopy(scene)
+    node=node_by_id(candidate,selection['object'])
+    node.pop('at',None)
+    node['attachment']=dict(to=target_selection['object'],self=self_anchor,target=target_anchor,inset=inset)
+    validate(candidate)
+    view=dict(selection,attachment_target=dict(object=target_selection['object'],anchor=target_anchor))
+    return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
+                selection=view,operation=dict(action='attach',object=selection['object'],attachment=node['attachment'],reason=reason))
+
+
+def detach_preview(scene,selection,reason):
+    current_selection(scene,selection)
+    if selection.get('feature')!='anchors': raise ValueError('inspect anchors before detaching')
+    if not isinstance(reason,str) or not reason.strip(): raise ValueError('state a drawing reason')
+    from .attachment import resolve_scene
+    candidate=copy.deepcopy(scene);node=node_by_id(candidate,selection['object'])
+    if 'attachment' not in node: raise ValueError('this object has no attachment to detach')
+    placed=node_by_id(resolve_scene(scene),selection['object'])
+    node.pop('attachment');node['at']=copy.deepcopy(placed['at'])
+    validate(candidate)
+    return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
+                selection=selection,operation=dict(action='detach',object=selection['object'],reason=reason))
 
 
 def _set_parameter(node,selection,parameter,value):

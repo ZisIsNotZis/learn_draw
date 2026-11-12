@@ -1,0 +1,47 @@
+{
+  "base": "4618dcea3ba62ea254920966e23d86ff1ea1eacec905dbde3612914f4240c232",
+  "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+  "object": "body",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    276.224,
+    204.8,
+    363.776,
+    435.2
+  ],
+  "object_bounds": [
+    276.224,
+    204.8,
+    363.776,
+    435.2
+  ],
+  "controls": [],
+  "locks": {
+    "center": [
+      320.0,
+      320.0
+    ],
+    "top": [
+      320.0,
+      204.8
+    ],
+    "right": [
+      363.776,
+      319.99999999999994
+    ],
+    "bottom": [
+      320.0,
+      435.2
+    ],
+    "left": [
+      276.224,
+      320.00000000000006
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "attachment_target": {
+    "object": "pot",
+    "anchor": "top"
+  }
+}

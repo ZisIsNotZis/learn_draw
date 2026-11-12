@@ -1,0 +1,44 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "base",
+      "kind": "shape",
+      "intent": "an editable rounded flat colour mass",
+      "length": 0.1,
+      "width": 2.2,
+      "depth": 0,
+      "profile": "oval",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0,
+          0.24
+        ]
+      }
+    },
+    {
+      "id": "stem",
+      "kind": "shape",
+      "intent": "a narrow support to seat on the base",
+      "length": 0.32,
+      "width": 0.09,
+      "depth": 1,
+      "palette": {
+        "fill": "#705448"
+      },
+      "stroke": 0,
+      "attachment": {
+        "to": "base",
+        "self": "bottom",
+        "target": "top",
+        "inset": 0.02
+      }
+    }
+  ]
+}

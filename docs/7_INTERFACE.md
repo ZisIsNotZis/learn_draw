@@ -305,3 +305,35 @@ unchanged and invalidates an earlier candidate in the reused TRY directory. Rend
 also leaves no ready candidate. Successful accept journals one operation.parameters object;
 one undo restores the complete prior scene. Model API: parameters_preview(scene,selection,changes,reason).
 Legacy parameter_preview retains its existing operation.parameter/value journal format.
+
+## Geometry-derived attachment pins
+
+A movable node may replace at with attachment. Fields: to (existing object ID), self and target
+(named mounts, both default center), inset (default 0, -2..2 of target nominal shorter extent),
+offset (optional [dx,dy], each -2..2 of shorter canvas dimension in screen axes). at and attachment
+are exclusive. Sky/hills cannot be attached children. Shape mounts are center plus arc-midpoint
+paint edges top/right/bottom/left; side names follow local geometry under rotation. Edge points
+include half the explicit outline width and current sculpt tangent. center has no normal, so nonzero
+inset is refused there. Other current component macros offer center; a standalone lock also offers
+root/tip. Inspect anchors is the authoritative availability surface.
+
+Relations form an acyclic single-parent graph. They translate the child's selected mount onto the
+current target mount, minus outward target normal times inset times target scale, plus the retained
+screen offset. The child retains its own screen angle and size. Changing a parent resolves its
+whole descendant chain; raw authoring data carries relations, not baked per-child frame coordinates.
+Node-level component compilation requires a resolved node; attachment.resolve_scene(scene) supplies
+an ephemeral compiler copy. Rendering, selected feature paths, magnification, depth and reports all
+use that same resolved placement. Report geometry remains bound to the raw scene revision.
+
+preview --attach TARGET_SELECTION requires current --feature anchors selections for both objects;
+--self-anchor/--target-anchor default center and --inset defaults 0. It uses the existing preview,
+accept and undo contract. Target selection inputs join scene/source inputs in output-alias refusal.
+preview --detach requires anchors selection and preserves current placement as a generated free at.
+Object --move on an attached node changes its retained screen offset. A local shape edit whose
+influence includes the pinned side midpoint or its tangent neighbors is refused. Parent edits may
+move related descendants deliberately; unrelated objects remain independent.
+
+This is one point mount, not an inherited transform, edge-fit, boolean union or full solid rig.
+Depth fields remain independent; attachment never specifies a visibility cut or guarantees a
+pleasing seam. Typed intrinsic geometry is checked before graph resolution; missing targets,
+unknown anchors, illegal inset and cycles refuse the candidate without changing working data.

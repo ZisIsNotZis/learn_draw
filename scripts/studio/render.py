@@ -13,6 +13,7 @@ from scripts.vector_visibility import visible_regions
 from .geometry import bounds, lock_rows, mix, outline, resolve_root, path
 from .model import canonical, engine_fingerprint, fingerprint, node_by_id, validate, write
 from .components import component_data, support, component_outline as node_outline, depth_bounds
+from .attachment import resolve_scene,anchors,anchor_view
 
 
 PALETTE = dict(fill="#517f9b", shade="#426781", light="#729eaf", ink="#2e475a")
@@ -20,9 +21,13 @@ PALETTE = dict(fill="#517f9b", shade="#426781", light="#729eaf", ink="#2e475a")
 
 def selection_paths(scene,selection):
     """Alignment always comes from compiled geometry, including parent transforms."""
+    scene=resolve_scene(scene)
     node=node_by_id(scene,selection['object'])
     canvas=scene.get('canvas',[640,640])
     rotate=lambda p:p
+    if selection.get('feature')=='anchors':
+        view=anchor_view(node,canvas)
+        return view['paths'],None,view['locks']
     if node['kind']!='hair-lock':
         data=component_data(node,canvas)
         if selection['kind']=='feature':
@@ -58,6 +63,7 @@ def lock_palette(node):
 
 
 def faces_for(scene):
+    scene=resolve_scene(scene)
     faces = []
     canvas = scene.get("canvas", [640, 640])
     for node in scene["nodes"]:
@@ -77,6 +83,7 @@ def global_depth_order(scene):
     Every potentially overlapping pair is checked, including nonadjacent ranges;
     unresolved crossings retain triangle visibility. No surface is moved.
     """
+    scene=resolve_scene(scene)
     canvas=scene.get('canvas',[640,640]);intervals=[]
     for node in scene['nodes']:
         low,high=depth_bounds(node,canvas)
@@ -116,8 +123,33 @@ def tone_region(rows, start, end, a, b):
     return left + list(reversed(right))
 
 
+def mount_labels(node,canvas):
+    """Callouts keep names readable even on thin or rotated mounted shapes."""
+    box=bounds(node_outline(node,canvas));cx=(box[0]+box[2])/2;cy=(box[1]+box[3])/2
+    buckets={name:[] for name in ('left','right','top','bottom')}
+    for name,info in anchors(node,canvas).items():
+        x,y=info['point'];normal=info['normal']
+        dx,dy=normal if normal else (x-cx,y-cy)
+        side=('right' if dx>=0 else 'left') if abs(dx)>=abs(dy) else ('bottom' if dy>=0 else 'top')
+        buckets[side].append((y if side in ('left','right') else x,name,(x,y)))
+    out=[]
+    for side,items in buckets.items():
+        items.sort();gap=24 if side in ('left','right') else 68;positions=[]
+        for desired,_name,_p in items: positions.append(max(desired,positions[-1]+gap) if positions else desired)
+        if positions:
+            shift=sum(p-i[0] for p,i in zip(positions,items))/len(positions)
+        for along,(_desired,name,p) in zip(positions,items):
+            along-=shift
+            x,y,align=(box[0]-14,along+4,'end') if side=='left' else ((box[2]+14,along+4,'start') if side=='right' else ((along,box[1]-14,'middle') if side=='top' else (along,box[3]+25,'middle')))
+            out.append(f'<!-- mount-callout-{name}: connect this name to its actual geometric mount -->')
+            out.append(f'<path id="mount-callout-{name}" d="M {p[0]} {p[1]} L {x} {y-4}" fill="none" stroke="#506655" stroke-width=".8"/>')
+            out.append(f'<text x="{x}" y="{y}" text-anchor="{align}" font-family="sans-serif" font-size="13" fill="#304f44" stroke="#fffaf0" stroke-width="3" paint-order="stroke">{html.escape(name)}</text>')
+    return out
+
+
 def drawing(scene, selection=None, previous=None, viewbox=None):
     validate(scene)
+    scene=resolve_scene(scene)
     width, height = scene.get("canvas", [640, 640])
     vb = viewbox or [0, 0, width, height]
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="{" ".join(map(str, vb))}">',
@@ -173,6 +205,18 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
             out.append(f'<circle id="edit-focus" cx="{x}" cy="{y}" r="5" fill="#fffaf0" stroke="#bc5128" stroke-width="2"/>')
         for name,p in locks.items():
             out.append(f'<circle id="locked-{name}" cx="{p[0]}" cy="{p[1]}" r="4" fill="#fffaf0" stroke="#506655" stroke-width="2"/>')
+        if selection.get('feature')=='anchors':
+            out.extend(mount_labels(node_by_id(scene,selection['object']),[width,height]))
+        if selection.get('attachment_target'):
+            target=selection['attachment_target']
+            point=anchors(node_by_id(scene,target['object']),[width,height])[target['anchor']]['point']
+            label=html.escape(target['object']+'.'+target['anchor'])
+            box=bounds(node_outline(node_by_id(scene,selection['object']),[width,height]))
+            lx,ly=box[2]+20,max(box[3]+50,point[1]+45)
+            out.append(f'<circle id="mount-target" cx="{point[0]}" cy="{point[1]}" r="7" fill="none" stroke="#3983b9" stroke-width="3"/>')
+            out.append('<!-- mount-target-callout: identify the inspected target mount -->')
+            out.append(f'<path id="mount-target-callout" d="M {point[0]} {point[1]} L {lx} {ly-4}" fill="none" stroke="#3983b9" stroke-width="1"/>')
+            out.append(f'<text x="{lx}" y="{ly}" font-family="sans-serif" font-size="13" fill="#286d9e" stroke="#fffaf0" stroke-width="3" paint-order="stroke">{label}</text>')
     return "\n".join(out + ['</svg>'])
 
 
@@ -214,11 +258,12 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
         write(directory / "selection.json", selection)
     write(directory/'report.json',dict(revision=revision,engine=engine_fingerprint(),status='rendering',images=[]))
     (directory/'report.txt').write_text('',encoding='utf-8')
+    compiled=resolve_scene(scene)
     views = {"artwork": drawing(scene)}
     if selection:
         # Crop around the object, not a guessed image location. Square pixel crop
         # is rendered to the same output dimensions, providing real magnification.
-        box = bounds(node_outline(node_by_id(scene,selection['object']),scene.get('canvas',[640,640])))
+        box = bounds(node_outline(node_by_id(compiled,selection['object']),scene.get('canvas',[640,640])))
         x0, y0, x1, y1 = box
         pad = max(x1 - x0, y1 - y0) * .1
         span = max(x1 - x0, y1 - y0) + 2 * pad
@@ -239,18 +284,22 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
             backend = rasterize(f, directory / (name + ".png"))
             images.append(str((directory / (name + ".png")).resolve()))
     node_info={}
-    for n in scene['nodes']:
+    for n in compiled['nodes']:
         info=dict(kind=n['kind'],intent=n['intent'],bounds=bounds(node_outline(n,scene.get('canvas',[640,640]))))
         if n['kind']!='hair-lock':
             data=component_data(n,scene.get('canvas',[640,640]))
             info['features']={k:dict(bounds=v['bounds'],controls=v['controls']) for k,v in data.features.items()}
             if n['kind']=='head': info['local_locks']=[side+'-lock' for side in data.locks]
+        info['anchors']=anchors(n,scene.get('canvas',[640,640]))
+        info['attached_children']=[child['id'] for child in scene['nodes'] if child.get('attachment',{}).get('to')==n['id']]
+        authored=node_by_id(scene,n['id'])
+        if 'attachment' in authored: info['attachment']=authored['attachment']
         node_info[n['id']]=info
     report = dict(revision=revision, engine=engine_fingerprint(), status='ready',renderer=backend, images=images,
                   image_sha256={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images},nodes=node_info,
                   scope="editable colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
                   alignment_legend={'orange':'selected current boundary','pink dashed':'previous boundary',
-                                    'green rings':'protected endpoints or knuckle','white target':'local edge focus or digit-tip handle'},
+                                    'green rings':'named mount points or protected endpoints/knuckle','white target':'local edge focus or digit-tip handle'},
                   move_units='object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; digit tip: nominal digit span')
     write(directory / "report.json", report)
     (directory / "report.txt").write_text("\n".join(images) + "\n", encoding="utf-8")

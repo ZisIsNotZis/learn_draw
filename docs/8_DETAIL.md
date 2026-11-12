@@ -182,3 +182,21 @@ This avoids unnecessary compound-mask raster seams for the proved noncrossing cl
 establish that all genuinely intersecting clip masks are free of numerical/antialias artifacts.
 Original author output, source snapshot, coordinate/color facts and clean-render comparison are
 retained in evidence/studio-parameters/. No geometry, depth or pixel-specific repair is authored.
+
+## Derived placement without feeding compiler coordinates back into authoring
+
+attachment.py resolves the single-parent graph after intrinsic typed geometry validation. A child
+is compiled at its nominal free placement to locate its self mount, then translated by the target
+mount difference and optional normal inset/screen offset. The relation is removed only from the
+compiler copy and replaced with a computed at. Parent resolution is recursive, cached per traversal,
+order-independent and cycle-checked. Shapes expose nominal-arc midpoint anchors on current sculpted
+boundaries; the local tangent gives an outward normal and the paint point includes half the ink.
+The source midpoint and tangent stations of a pinned edge are protected during local pushes.
+
+Selection, drawing, crop extents, scene faces, depth order and reports resolve the same raw scene.
+Hand-tip inversion uses the resolved hand before writing semantic digits back to the raw node.
+Detaching copies its computed free placement, retaining the rendered image. Parent edits may move
+related descendants; there is no implicit angle/size inheritance or material union. Early joint
+measurements show why this boundary matters: the old lamp elbow already overlaps, and the old
+cliff footing already rests on the top patch. Their volume/join critiques are not placement-gap
+proof. Actual figures and images are retained in evidence/studio-attachment/.

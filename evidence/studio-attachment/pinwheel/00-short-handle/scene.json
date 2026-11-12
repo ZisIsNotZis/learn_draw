@@ -1,0 +1,128 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f6ecdf",
+  "nodes": [
+    {
+      "id": "handle",
+      "kind": "shape",
+      "intent": "a slim warm wooden handle below the paper wheel",
+      "length": 0.38,
+      "width": 0.055,
+      "stroke": 0,
+      "palette": {
+        "fill": "#936e54"
+      },
+      "depth": 0,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0,
+          0.15
+        ]
+      },
+      "rounding": 0.8
+    },
+    {
+      "id": "hub",
+      "kind": "shape",
+      "intent": "the small circular pin at the centre of the folded paper",
+      "length": 0.08,
+      "width": 1,
+      "stroke": 0,
+      "palette": {
+        "fill": "#f3dbad"
+      },
+      "depth": 10,
+      "profile": "oval",
+      "attachment": {
+        "to": "handle",
+        "self": "center",
+        "target": "top"
+      }
+    },
+    {
+      "id": "blade-1",
+      "kind": "shape",
+      "intent": "one tapered folded-paper blade held at the common pin",
+      "length": 0.21,
+      "width": 0.62,
+      "stroke": 0,
+      "palette": {
+        "fill": "#679d9a"
+      },
+      "depth": 2,
+      "angle": 45,
+      "rounding": 0.12,
+      "taper": -0.94,
+      "attachment": {
+        "to": "hub",
+        "self": "bottom",
+        "target": "center"
+      }
+    },
+    {
+      "id": "blade-2",
+      "kind": "shape",
+      "intent": "one tapered folded-paper blade held at the common pin",
+      "length": 0.21,
+      "width": 0.62,
+      "stroke": 0,
+      "palette": {
+        "fill": "#d88567"
+      },
+      "depth": 3,
+      "angle": 135,
+      "rounding": 0.12,
+      "taper": -0.94,
+      "attachment": {
+        "to": "hub",
+        "self": "bottom",
+        "target": "center"
+      }
+    },
+    {
+      "id": "blade-3",
+      "kind": "shape",
+      "intent": "one tapered folded-paper blade held at the common pin",
+      "length": 0.21,
+      "width": 0.62,
+      "stroke": 0,
+      "palette": {
+        "fill": "#d6b86f"
+      },
+      "depth": 4,
+      "angle": -135,
+      "rounding": 0.12,
+      "taper": -0.94,
+      "attachment": {
+        "to": "hub",
+        "self": "bottom",
+        "target": "center"
+      }
+    },
+    {
+      "id": "blade-4",
+      "kind": "shape",
+      "intent": "one tapered folded-paper blade held at the common pin",
+      "length": 0.21,
+      "width": 0.62,
+      "stroke": 0,
+      "palette": {
+        "fill": "#7897aa"
+      },
+      "depth": 5,
+      "angle": -45,
+      "rounding": 0.12,
+      "taper": -0.94,
+      "attachment": {
+        "to": "hub",
+        "self": "bottom",
+        "target": "center"
+      }
+    }
+  ]
+}

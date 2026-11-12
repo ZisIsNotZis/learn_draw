@@ -513,3 +513,17 @@ there is no subject-specific lighthouse/lamp generator. The selected arc is show
 push, and its joins are protected. This begins a lower-level creation surface beneath semantic
 presets. It does not yet provide arbitrary paths, compound holes, object booleans or attachment.
 Its actual new-subject studies and operation proof belong to evidence/studio-shape/.
+
+## Adopted visible point mounting — 2026-11-13
+
+Named projected mounts and semantic parent relations reduce repeated frame placement and preserve
+connections during later edits. The independent cactus uses them through three descendant links;
+all mount decisions are inspected. The pinwheel study tests a parent change with unchanged child
+authoring data. These establish a point-placement workflow, not folded material, smooth cactus
+joints, inherited transforms or solid anatomy. Existing joints were measured before blaming gaps.
+
+Current images identify the next representation question: compare existing shape tuning with a
+reusable curved gesture/rounded mark and a limited colour-plane treatment, rather than introducing
+one defective subject template after another. Actual candidate/default/revision images must decide
+adoption. A connected original character composition will test the accepted head/hand alongside
+those operations; small generic icons are evidence, not the entire intended product outcome.

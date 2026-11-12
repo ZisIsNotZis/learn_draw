@@ -1,0 +1,1092 @@
+{
+  "revision": "53aa05acb1743dd91b3e71b62bae1d06bd44ac920629ce965b2d3a78a3c4921d",
+  "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\pinwheel\\00-short-handle\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\pinwheel\\00-short-handle\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\pinwheel\\00-short-handle\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\pinwheel\\00-short-handle\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\pinwheel\\00-short-handle\\artwork.png": "e7aaf866b230aed11a24dda162773c326fd4fd822b7a0bc97e70483905f8a1bc",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\pinwheel\\00-short-handle\\alignment.png": "a2dd08bba78b2d0f01b01fe72d2e4c1da14e0f52218845e8f4ce9a0c99981e73",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\pinwheel\\00-short-handle\\object-closeup.png": "616823a3a8336e1f85f43eae9655d6a6c4af41b7b3e5c088bf641db02b8e233a",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\pinwheel\\00-short-handle\\edit-closeup.png": "a85b16074b44ccd3c5de70dbd31c90fc536769e4c72316c9be3d2bacf9d2618c"
+  },
+  "nodes": {
+    "handle": {
+      "kind": "shape",
+      "intent": "a slim warm wooden handle below the paper wheel",
+      "bounds": [
+        313.312,
+        294.4,
+        326.688,
+        537.6
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            313.312,
+            294.4,
+            326.688,
+            537.6
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            313.9984928531896,
+            294.4,
+            326.0015071468104,
+            306.88168823981107
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            326.0015071468104,
+            306.88168823981107,
+            326.688,
+            525.1183117601889
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            313.9984928531896,
+            525.1183117601889,
+            326.0015071468104,
+            537.6
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            313.312,
+            306.88168823981107,
+            313.9984928531896,
+            525.1183117601889
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            416.0
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            320.0,
+            294.4
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            326.688,
+            416.0
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            537.6
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            313.312,
+            416.0
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": [
+        "hub"
+      ]
+    },
+    "hub": {
+      "kind": "shape",
+      "intent": "the small circular pin at the centre of the folded paper",
+      "bounds": [
+        294.4,
+        268.79999999999995,
+        345.6,
+        320.0
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            294.4,
+            268.79999999999995,
+            345.6,
+            320.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            301.89806640162436,
+            268.79999999999995,
+            338.10193359837564,
+            276.29806640162434
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            338.10193359837564,
+            276.29806640162434,
+            345.6,
+            312.5019335983756
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            301.89806640162436,
+            312.5019335983756,
+            338.10193359837564,
+            320.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            294.4,
+            276.29806640162434,
+            301.89806640162436,
+            312.5019335983756
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            294.4
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            320.0,
+            268.79999999999995
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            345.6,
+            294.4
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            320.0
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            294.4,
+            294.4
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": [
+        "blade-1",
+        "blade-2",
+        "blade-3",
+        "blade-4"
+      ],
+      "attachment": {
+        "to": "handle",
+        "self": "center",
+        "target": "top"
+      }
+    },
+    "blade-1": {
+      "kind": "shape",
+      "intent": "one tapered folded-paper blade held at the common pin",
+      "bounds": [
+        198.12399872429614,
+        172.52399872429612,
+        321.45217521210037,
+        295.85217521210035
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            198.12399872429614,
+            172.52399872429612,
+            321.45217521210037,
+            295.85217521210035
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            198.12399872429614,
+            172.52399872429612,
+            254.57428880569256,
+            228.97428880569254
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            254.57428880569256,
+            172.7898651947241,
+            320.6219880510608,
+            290.74355516557847
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            316.3435551655785,
+            290.74355516557847,
+            321.45217521210037,
+            295.85217521210035
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            198.3898651947241,
+            228.97428880569254,
+            316.3435551655785,
+            295.0219880510607
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            272.482424304264,
+            246.88242430426396
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            224.96484860852797,
+            199.36484860852795
+          ],
+          "normal": [
+            -0.7071067811865476,
+            -0.7071067811865476
+          ]
+        },
+        "right": {
+          "point": [
+            288.14982806491423,
+            231.36497395955203
+          ],
+          "normal": [
+            0.8766933743090111,
+            -0.4810496101678913
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            294.4
+          ],
+          "normal": [
+            0.7071067811865476,
+            0.7071067811865476
+          ]
+        },
+        "left": {
+          "point": [
+            256.9649739595521,
+            262.5498280649142
+          ],
+          "normal": [
+            -0.4810496101678838,
+            0.8766933743090152
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "hub",
+        "self": "bottom",
+        "target": "center"
+      }
+    },
+    "blade-2": {
+      "kind": "shape",
+      "intent": "one tapered folded-paper blade held at the common pin",
+      "bounds": [
+        198.12399872429617,
+        292.9478247878996,
+        321.45217521210037,
+        416.27600127570383
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            198.12399872429617,
+            292.9478247878996,
+            321.45217521210037,
+            416.27600127570383
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            198.12399872429617,
+            359.8257111943074,
+            254.57428880569256,
+            416.27600127570383
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            198.3898651947241,
+            293.7780119489392,
+            316.3435551655785,
+            359.8257111943074
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            316.3435551655785,
+            292.9478247878996,
+            321.45217521210037,
+            298.0564448344215
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            254.57428880569256,
+            298.0564448344215,
+            320.6219880510608,
+            416.01013480527587
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            272.482424304264,
+            341.917575695736
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            224.964848608528,
+            389.43515139147206
+          ],
+          "normal": [
+            -0.7071067811865419,
+            0.7071067811865531
+          ]
+        },
+        "right": {
+          "point": [
+            256.964973959552,
+            326.2501719350858
+          ],
+          "normal": [
+            -0.4810496101678913,
+            -0.8766933743090111
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            294.4
+          ],
+          "normal": [
+            0.7071067811865475,
+            -0.7071067811865475
+          ]
+        },
+        "left": {
+          "point": [
+            288.14982806491423,
+            357.4350260404479
+          ],
+          "normal": [
+            0.8766933743090111,
+            0.4810496101678913
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "hub",
+        "self": "bottom",
+        "target": "center"
+      }
+    },
+    "blade-3": {
+      "kind": "shape",
+      "intent": "one tapered folded-paper blade held at the common pin",
+      "bounds": [
+        318.54782478789963,
+        292.9478247878996,
+        441.8760012757038,
+        416.2760012757038
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            318.54782478789963,
+            292.9478247878996,
+            441.8760012757038,
+            416.2760012757038
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            385.42571119430744,
+            359.8257111943074,
+            441.8760012757038,
+            416.2760012757038
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            319.3780119489392,
+            298.0564448344215,
+            385.42571119430744,
+            416.01013480527587
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            318.54782478789963,
+            292.9478247878996,
+            323.6564448344215,
+            298.0564448344215
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            323.6564448344215,
+            293.7780119489392,
+            441.6101348052759,
+            359.8257111943074
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            367.517575695736,
+            341.917575695736
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            415.035151391472,
+            389.435151391472
+          ],
+          "normal": [
+            0.7071067811865588,
+            0.7071067811865364
+          ]
+        },
+        "right": {
+          "point": [
+            351.8501719350858,
+            357.43502604044795
+          ],
+          "normal": [
+            -0.8766933743090111,
+            0.4810496101678913
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            294.4
+          ],
+          "normal": [
+            -0.7071067811865475,
+            -0.7071067811865475
+          ]
+        },
+        "left": {
+          "point": [
+            383.0350260404479,
+            326.25017193508575
+          ],
+          "normal": [
+            0.4810496101678913,
+            -0.8766933743090111
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "hub",
+        "self": "bottom",
+        "target": "center"
+      }
+    },
+    "blade-4": {
+      "kind": "shape",
+      "intent": "one tapered folded-paper blade held at the common pin",
+      "bounds": [
+        318.54782478789963,
+        172.52399872429612,
+        441.87600127570386,
+        295.85217521210035
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            318.54782478789963,
+            172.52399872429612,
+            441.87600127570386,
+            295.85217521210035
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            385.42571119430744,
+            172.52399872429612,
+            441.87600127570386,
+            228.97428880569254
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            323.6564448344215,
+            228.97428880569254,
+            441.6101348052759,
+            295.0219880510607
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            318.54782478789963,
+            290.74355516557847,
+            323.6564448344215,
+            295.85217521210035
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            319.3780119489392,
+            172.7898651947241,
+            385.42571119430744,
+            290.74355516557847
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            367.517575695736,
+            246.88242430426396
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            415.035151391472,
+            199.36484860852795
+          ],
+          "normal": [
+            0.7071067811865419,
+            -0.7071067811865532
+          ]
+        },
+        "right": {
+          "point": [
+            383.035026040448,
+            262.54982806491415
+          ],
+          "normal": [
+            0.4810496101678913,
+            0.8766933743090111
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            294.4
+          ],
+          "normal": [
+            -0.7071067811865476,
+            0.7071067811865476
+          ]
+        },
+        "left": {
+          "point": [
+            351.85017193508577,
+            231.36497395955203
+          ],
+          "normal": [
+            -0.8766933743090126,
+            -0.48104961016788844
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "hub",
+        "self": "bottom",
+        "target": "center"
+      }
+    }
+  },
+  "scope": "editable colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge focus or digit-tip handle"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; digit tip: nominal digit span"
+}

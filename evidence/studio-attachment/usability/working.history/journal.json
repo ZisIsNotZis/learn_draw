@@ -1,0 +1,185 @@
+[
+  {
+    "base": "4a48ab36dd9cd86f646a020a2f6aba5fd190699a083470b3e95c2cd06dca21b8",
+    "result": "d640909377547077383cc7179b11e126fa793ecd29f6c43733bd871072390e44",
+    "operation": {
+      "object": "pot",
+      "feature": "object",
+      "parameters": {
+        "length": 0.2,
+        "width": 1.35,
+        "taper": -0.24,
+        "rounding": 0.14,
+        "stroke": 0.0,
+        "fill_color": "#bc603c",
+        "intent": "A low terracotta pot anchors the warm cactus emblem"
+      },
+      "reason": "Give the cactus a broad stable warm pot with a tapered foot"
+    }
+  },
+  {
+    "base": "d640909377547077383cc7179b11e126fa793ecd29f6c43733bd871072390e44",
+    "result": "5373ec21d62518ac74d20095b405449d1dfb0b073c099d15d253d8191447ff0d",
+    "operation": {
+      "object": "pot",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.21,
+      "units": "shorter canvas dimension",
+      "reason": "Set the pot low so a tall cactus has breathing room above"
+    }
+  },
+  {
+    "base": "5373ec21d62518ac74d20095b405449d1dfb0b073c099d15d253d8191447ff0d",
+    "result": "5acc3b95f9604ecb0db7ec9f2a56f0194e4fd31679fd07170b0993ebe21c0eea",
+    "operation": {
+      "action": "add",
+      "object": "body",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "5acc3b95f9604ecb0db7ec9f2a56f0194e4fd31679fd07170b0993ebe21c0eea",
+    "result": "4618dcea3ba62ea254920966e23d86ff1ea1eacec905dbde3612914f4240c232",
+    "operation": {
+      "object": "body",
+      "feature": "object",
+      "parameters": {
+        "length": 0.36,
+        "width": 0.38,
+        "rounding": 1.0,
+        "stroke": 0.0,
+        "fill_color": "#397b59",
+        "intent": "The upright rounded cactus trunk emerges from the pot"
+      },
+      "reason": "A tall dark green rounded trunk gives the emblem its upright gesture"
+    }
+  },
+  {
+    "base": "4618dcea3ba62ea254920966e23d86ff1ea1eacec905dbde3612914f4240c232",
+    "result": "d48cacc661deffb709d594e68435995e245ab0f58065142efdeca937141ea976",
+    "operation": {
+      "action": "attach",
+      "object": "body",
+      "attachment": {
+        "to": "pot",
+        "self": "bottom",
+        "target": "top",
+        "inset": 0.18
+      },
+      "reason": "Seat the cactus lower tip inside the pot while leaving its upright crown clear"
+    }
+  },
+  {
+    "base": "d48cacc661deffb709d594e68435995e245ab0f58065142efdeca937141ea976",
+    "result": "78606ddbb8a435447885bcaae059153331e4c7c898c94651b82b08370b90d110",
+    "operation": {
+      "action": "add",
+      "object": "arm",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "78606ddbb8a435447885bcaae059153331e4c7c898c94651b82b08370b90d110",
+    "result": "6e84e32af361ef516f6dc3e8e2858237180581510dc5bbd6495290b4d0981d01",
+    "operation": {
+      "object": "arm",
+      "feature": "object",
+      "parameters": {
+        "length": 0.17,
+        "width": 0.47,
+        "angle": -55.0,
+        "rounding": 0.65,
+        "stroke": 0.0,
+        "fill_color": "#397b59",
+        "intent": "A right rising cactus arm joins the central trunk"
+      },
+      "reason": "The first tilt descended rightward; reverse it so the branch rises from its bottom root"
+    }
+  },
+  {
+    "base": "6e84e32af361ef516f6dc3e8e2858237180581510dc5bbd6495290b4d0981d01",
+    "result": "76827c718248dbd3d5716065ffd56082129036bce93c7b68625fe27f23f04c07",
+    "operation": {
+      "action": "attach",
+      "object": "arm",
+      "attachment": {
+        "to": "body",
+        "self": "bottom",
+        "target": "right",
+        "inset": 0.15
+      },
+      "reason": "Embed the rising arm root into the right side of the trunk"
+    }
+  },
+  {
+    "base": "76827c718248dbd3d5716065ffd56082129036bce93c7b68625fe27f23f04c07",
+    "result": "b5f2af9230872e62440f2df626f023242c35652564b16dcdfc44dd64fc4a2121",
+    "operation": {
+      "action": "add",
+      "object": "tip",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "b5f2af9230872e62440f2df626f023242c35652564b16dcdfc44dd64fc4a2121",
+    "result": "c1546f247adb2e3d1062119da45d8b48f433be609a9a0f170c4e99505fe14267",
+    "operation": {
+      "object": "tip",
+      "feature": "object",
+      "parameters": {
+        "length": 0.18,
+        "width": 0.46,
+        "rounding": 1.0,
+        "stroke": 0.0,
+        "fill_color": "#397b59",
+        "intent": "The upright rounded tip turns the branch toward sunlight"
+      },
+      "reason": "Turn the rising arm into a recognizable upright cactus tip"
+    }
+  },
+  {
+    "base": "c1546f247adb2e3d1062119da45d8b48f433be609a9a0f170c4e99505fe14267",
+    "result": "bfb4fce7d657ba49e494da4357ab7ce45b242a3db4d038a09401ad7682a6e62a",
+    "operation": {
+      "object": "tip",
+      "feature": "object",
+      "parameters": {
+        "length": 0.15,
+        "width": 0.55,
+        "rounding": 0.65
+      },
+      "reason": "The first mounted tip looked leaflike and pinched; give it a shorter broad rounded column"
+    }
+  },
+  {
+    "base": "bfb4fce7d657ba49e494da4357ab7ce45b242a3db4d038a09401ad7682a6e62a",
+    "result": "233757262930f74c3c10e09dda6b45d809e992e62283f4a59649dbcd9bccdc11",
+    "operation": {
+      "action": "attach",
+      "object": "tip",
+      "attachment": {
+        "to": "arm",
+        "self": "bottom",
+        "target": "top",
+        "inset": 0.5
+      },
+      "reason": "Bury the broad upright tip into the outer elbow for a continuous cactus silhouette"
+    }
+  },
+  {
+    "base": "233757262930f74c3c10e09dda6b45d809e992e62283f4a59649dbcd9bccdc11",
+    "result": "63f75af7218c259c3ed98fc4c310d7cd1ae93ee9aa21f53ad74065c9b32dfdc3",
+    "operation": {
+      "object": "pot",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.04,
+      "units": "shorter canvas dimension",
+      "reason": "Center the full asymmetric cactus silhouette by shifting its pot and mounted descendants left"
+    }
+  }
+]

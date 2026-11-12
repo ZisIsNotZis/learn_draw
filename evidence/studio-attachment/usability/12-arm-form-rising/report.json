@@ -1,0 +1,552 @@
+{
+  "revision": "6e84e32af361ef516f6dc3e8e2858237180581510dc5bbd6495290b4d0981d01",
+  "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\12-arm-form-rising\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\12-arm-form-rising\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\12-arm-form-rising\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\12-arm-form-rising\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\12-arm-form-rising\\artwork.png": "587148052de3f5e03e1aab1971e54a175224f91f4e669df543b5b2ceba244d0f",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\12-arm-form-rising\\alignment.png": "3e53a5150b0880400ff796205c5ebe6d459abf1d51cc5d276f9d2ef4b910c3e7",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\12-arm-form-rising\\object-closeup.png": "618f920653bbbad0af9b6ba03f599b9d7480135e6ad6bd9e9574cf3107e61055",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-attachment\\usability\\12-arm-form-rising\\edit-closeup.png": "2ff51164f68d14de5197424de0e0993e6b59ce6025ba2e21e7906b608f66284c"
+  },
+  "nodes": {
+    "pot": {
+      "kind": "shape",
+      "intent": "A low terracotta pot anchors the warm cactus emblem",
+      "bounds": [
+        235.1292373032698,
+        390.4,
+        404.8707626967302,
+        518.4
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            235.1292373032698,
+            390.4,
+            404.8707626967302,
+            518.4
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            236.7426896048235,
+            390.4,
+            403.2573103951765,
+            392.4857815936616
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            383.8508725382834,
+            392.4857815936616,
+            404.8707626967302,
+            516.3142184063383
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            256.1491274617166,
+            516.3142184063383,
+            383.8508725382834,
+            518.4
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            235.1292373032698,
+            392.4857815936616,
+            256.1491274617166,
+            516.3142184063383
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            454.4
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            320.0,
+            390.4
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            395.9993455254736,
+            454.6015560755982
+          ],
+          "normal": [
+            0.9871307305661714,
+            0.15991535502226412
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            518.4
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            244.00065447452644,
+            454.60155607559824
+          ],
+          "normal": [
+            -0.9871307305661703,
+            0.15991535502227114
+          ]
+        }
+      },
+      "attached_children": [
+        "body"
+      ]
+    },
+    "body": {
+      "kind": "shape",
+      "intent": "The upright rounded cactus trunk emerges from the pot",
+      "bounds": [
+        276.224,
+        183.04000000000002,
+        363.776,
+        413.44
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            276.224,
+            183.04000000000002,
+            363.776,
+            413.44
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            289.0456935467777,
+            183.04000000000002,
+            350.95430645322233,
+            216.78129880730972
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            350.95430645322233,
+            216.78129880730972,
+            363.776,
+            379.6987011926903
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            289.0456935467777,
+            379.6987011926903,
+            350.95430645322233,
+            413.44
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            276.224,
+            216.78129880730972,
+            289.0456935467777,
+            379.6987011926903
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            298.24
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            320.0,
+            183.04000000000002
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            363.776,
+            298.23999999999995
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            413.44
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            276.224,
+            298.24000000000007
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "pot",
+        "self": "bottom",
+        "target": "top",
+        "inset": 0.18
+      }
+    },
+    "arm": {
+      "kind": "shape",
+      "intent": "A right rising cactus arm joins the central trunk",
+      "bounds": [
+        264.020489094871,
+        271.35293878001727,
+        375.979510905129,
+        368.64706121998273
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            264.020489094871,
+            271.35293878001727,
+            375.979510905129,
+            368.64706121998273
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            347.83484333931466,
+            271.35293878001727,
+            375.979510905129,
+            310.4489979216147
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            292.16515666068534,
+            310.4489979216147,
+            375.14247488981056,
+            368.5503416460741
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            264.020489094871,
+            329.5510020783853,
+            292.16515666068534,
+            368.64706121998273
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            264.85752511018944,
+            271.4496583539259,
+            347.83484333931466,
+            329.5510020783853
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            320.0
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            364.56187120932117,
+            288.7974418625031
+          ],
+          "normal": [
+            0.8191520442889837,
+            -0.5735764363510575
+          ]
+        },
+        "right": {
+          "point": [
+            334.6652023246235,
+            340.94407946838095
+          ],
+          "normal": [
+            0.5735764363510507,
+            0.8191520442889885
+          ]
+        },
+        "bottom": {
+          "point": [
+            275.43812879067883,
+            351.2025581374969
+          ],
+          "normal": [
+            -0.8191520442889837,
+            0.5735764363510575
+          ]
+        },
+        "left": {
+          "point": [
+            305.3347976753765,
+            299.05592053161905
+          ],
+          "normal": [
+            -0.5735764363510507,
+            -0.8191520442889885
+          ]
+        }
+      },
+      "attached_children": []
+    }
+  },
+  "scope": "editable colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge focus or digit-tip handle"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; digit tip: nominal digit span"
+}

@@ -1,0 +1,34 @@
+{
+  "base": "233757262930f74c3c10e09dda6b45d809e992e62283f4a59649dbcd9bccdc11",
+  "engine": "fcf26133982a4e5736dc2f4c0efaf72a772a517fb957a445ad73640f3b657238",
+  "object": "pot",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    235.1292373032698,
+    390.4,
+    404.8707626967302,
+    518.4
+  ],
+  "object_bounds": [
+    235.1292373032698,
+    390.4,
+    404.8707626967302,
+    518.4
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

@@ -1,0 +1,33 @@
+{
+  "lamp-elbow": {
+    "parent_anchor": [
+      281.99999999999994,
+      258.0
+    ],
+    "child_anchor": [
+      281.9359650769265,
+      259.85604479916907
+    ],
+    "distance_pixels": 1.857149096840524,
+    "paint_footprints_overlap_area": 42.73457545823049,
+    "meaning": "overlap exists; appearance critique is not proof of a detached geometric joint"
+  },
+  "rocket-cap": {
+    "parent_anchor": [
+      320.0,
+      172.79999999999998
+    ],
+    "child_anchor": [
+      320.0,
+      176.0
+    ],
+    "distance_pixels": 3.200000000000017,
+    "paint_footprints_overlap_area": 558.768172767629,
+    "meaning": "overlap exists; appearance critique is not proof of a detached geometric joint"
+  },
+  "cliff-contact": {
+    "footprint_overlap_area": 1080.0395961481238,
+    "footing_area": 1080.0395961481252,
+    "meaning": "footing is already on the top patch; flatness/contact-cue critique does not establish a placement gap"
+  }
+}
