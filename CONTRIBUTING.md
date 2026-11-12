@@ -45,7 +45,7 @@ scripts/draw check .scratch/00-tooling/baseline/best.png --ref image.jpg    # vs
 A drawing package carries its own suite; run it the way the package's `README.md` says, e.g.
 
 ```bash
-PKG=.scratch/35-r1-articulated-study/evidence/A-full-figure-v1
+PKG=.scratch/35-r1-articulated-study/evidence/A-full-figure-v2
 PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m unittest discover -s $PKG/tests -t $PKG
 .venv/bin/python $PKG/source/manifest_full.py --check
 ```

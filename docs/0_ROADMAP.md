@@ -11,6 +11,11 @@ The sealed brief remains unread and unreleased. Historical images and parts rema
 
 ## Current evidence
 
+- Upstream history through `0a28db7` has been reconciled without replacing the studio direction.
+  The later legacy portrait is `A-full-figure-v2` at reviewed artwork revision `90ff009`, with
+  A3/B4/C3/D1–3/E4–5/F3–4 and no whole-art pass. Its attempted W2b repair was reverted. The complete
+  old plan is `../.scratch/history/roadmap-upstream-0a28db7.md`; original v2 records are retained.
+
 - A full portrait exists; partial historical user acceptance of A-cloth-v8/B-hand-v2-r1 is retained,
   not generalized to later images. Whole-image art and transfer remain unproven.
 - A-full-figure-waist-r1 is a small line/material cleanup. Existing independent review does not claim
