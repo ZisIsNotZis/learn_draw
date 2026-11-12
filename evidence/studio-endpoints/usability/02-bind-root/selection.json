@@ -1,0 +1,59 @@
+{
+  "base": "9a95ef43d673facc00c3fdbbe2bce1a8c2ec68c47bd59a13e42f1a95deae0d45",
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "object": "water",
+  "kind": "feature",
+  "feature": "root",
+  "bounds": [
+    672.2407740510253,
+    384.5755386175048,
+    696.2407740510253,
+    408.5755386175048
+  ],
+  "object_bounds": [
+    681.7248403382916,
+    394.0596049047711,
+    787.586865522479,
+    437.79868257815326
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "screen terminal movement as fraction of shorter canvas dimension; opposite terminal fixed",
+  "interaction": "stroke-terminal",
+  "locks": {
+    "tip": [
+      785.067460112723,
+      435.27927716839724
+    ]
+  },
+  "focus": [
+    684.2407740510253,
+    396.5755386175048
+  ],
+  "endpoint_bindings": {
+    "root": {
+      "to": "spout",
+      "target": "tip"
+    }
+  },
+  "attachment_target": {
+    "object": "spout",
+    "anchor": "tip"
+  }
+}

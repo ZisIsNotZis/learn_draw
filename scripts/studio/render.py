@@ -11,9 +11,9 @@ from scripts.articulated_construction import Point, triangulate_polygon
 from scripts.vector_visibility import visible_regions
 
 from .geometry import xml_comment,bounds, lock_rows, mix, outline, resolve_root, path
-from .model import canonical, engine_fingerprint, fingerprint, node_by_id, select, validate, write
+from .model import canonical, engine_fingerprint, fingerprint, node_by_id, select, exposed_controls, validate, write
 from .components import component_data, support, component_outline as node_outline, depth_bounds
-from .attachment import resolve_scene,anchors,get_anchor,anchor_view
+from .attachment import resolve_scene,anchors,get_anchor,anchor_view,endpoint_relations,dependencies
 
 
 PALETTE = dict(fill="#517f9b", shade="#426781", light="#729eaf", ink="#2e475a")
@@ -169,7 +169,7 @@ def removal_guides(scene,previous,removal):
 
 def drawing(scene, selection=None, previous=None, viewbox=None):
     validate(scene)
-    scene=resolve_scene(scene)
+    authored=scene;scene=resolve_scene(scene)
     width, height = scene.get("canvas", [640, 640])
     vb = viewbox or [0, 0, width, height]
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="{" ".join(map(str, vb))}">',
@@ -228,6 +228,9 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
                 out.append(f'<circle id="edit-focus" cx="{x}" cy="{y}" r="5" fill="#fffaf0" stroke="#bc5128" stroke-width="2"/>')
             for name,p in locks.items():
                 out.append(f'<circle id="locked-{name}" cx="{p[0]}" cy="{p[1]}" r="4" fill="#fffaf0" stroke="#506655" stroke-width="2"/>')
+            for end,relation in endpoint_relations(node_by_id(authored,selection['object'])).items():
+                p=get_anchor(node_by_id(scene,selection['object']),[width,height],end)['point']
+                out.append(f'<circle id="pinned-{end}" cx="{p[0]}" cy="{p[1]}" r="8" fill="none" stroke="#3983b9" stroke-width="2"/>')
             if selection.get('feature')=='anchors':
                 out.extend(mount_labels(node_by_id(scene,selection['object']),[width,height],locks))
             if selection.get('attachment_target'):
@@ -311,13 +314,17 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
             images.append(str((directory / (name + ".png")).resolve()))
     node_info={}
     for n in compiled['nodes']:
+        raw=node_by_id(scene,n['id'])
         info=dict(kind=n['kind'],intent=n['intent'],bounds=bounds(node_outline(n,scene.get('canvas',[640,640]))))
         if n['kind']!='hair-lock':
             data=component_data(n,scene.get('canvas',[640,640]))
-            info['features']={k:dict(bounds=v['bounds'],controls=v['controls']) for k,v in data.features.items()}
+            info['features']={k:dict(bounds=v['bounds'],controls=exposed_controls(raw,v['controls'])) for k,v in data.features.items()}
             if n['kind']=='head': info['local_locks']=[side+'-lock' for side in data.locks]
         info['anchors']=anchors(n,scene.get('canvas',[640,640]))
-        info['attached_children']=[child['id'] for child in scene['nodes'] if child.get('attachment',{}).get('to')==n['id']]
+        info['attached_children']=[child['id'] for child in scene['nodes'] if n['id'] in dependencies(child)]
+        if 'endpoints' in raw:
+            info['endpoints']=raw['endpoints']
+            if len(raw['endpoints'])==2: info['derived_chord']=dict(length=n['length'],angle=n['angle'])
         authored=node_by_id(scene,n['id'])
         if 'attachment' in authored: info['attachment']=authored['attachment']
         node_info[n['id']]=info
@@ -325,7 +332,7 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
                   image_sha256={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images},nodes=node_info,
                   scope="editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
                   removal=selection.get('removal') if selection else None,
-                  alignment_legend={'red dashed':'removed previous paint; removal only','blue':'retained released children; removal only','orange':'selected current boundary','pink dashed':'previous boundary',
+                  alignment_legend={'red dashed':'removed previous paint; removal only','blue':'pinned stroke endpoints / inspected target; removal: retained affected children','orange':'selected current boundary','pink dashed':'previous boundary',
                                     'green rings':'named mount points or protected endpoints/knuckle','white target':'local edge/spine, terminal, digit-tip or exact-mount focus'},
                   move_units='object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span')
     write(directory / "report.json", report)

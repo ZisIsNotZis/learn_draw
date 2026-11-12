@@ -1,0 +1,69 @@
+{
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "combined_tests": 121,
+  "results": {
+    "head": {
+      "scene": "44fe01cc53e9492e9f310d86d694348b483dcf19421006023be78fd1129194e6",
+      "svg_sha256": "1141d11821b6a10f9b5a24f4ad710ba309e4fbc100b6b2cde98473265adaad7a",
+      "png_sha256": "23ad96c4ac624d9dd75b3187d0e56bdb0da4635d774727c4c7022bdbdb8bc48a",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "prior_or_actor_png_preserved": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "hand": {
+      "scene": "112fac910fd9f239f3c4ad6bb2a46a56b717ac9e029ee61492c21f87738c257b",
+      "svg_sha256": "2834a4c4b6052b2a68337b1d9632dc2eda5c30e96f325d89c9d22fe97612fa17",
+      "png_sha256": "2caeba8d69a6d36074b802b87ad83d9d5421d1a031fac9da1db143d85867bb2c",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "prior_or_actor_png_preserved": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "shape": {
+      "scene": "f77953cf9d4d0f08fd12549b5bf694b8cad6ae37aef999ca9be3b00128927bf0",
+      "svg_sha256": "e702e0c658cc651edd38bc75cce2f873f5e67712e6d4764f17646780978cfb56",
+      "png_sha256": "6993732e6a9662ba209a2c2d0f5a3b51887688f7c1ea1880c427703bba85d855",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "prior_or_actor_png_preserved": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "lamp": {
+      "scene": "271c2afa14ba336bcf99ab5e0cb4c00e0762a658b40b4116bc8bf39a0f3027f3",
+      "svg_sha256": "7acf5e2820208b215fe2a056e92fae02ef18afcb153d38736dc375eb5e7cc77b",
+      "png_sha256": "0103f189278697c4bc2f48964f276781a860d1e1a3fc6feaa74bd3ddb9cfbb2b",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "prior_or_actor_png_preserved": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "rocket": {
+      "scene": "1806a88c3a98436dec01d8243e7978826f2405d945ab7d53fe73ac779f549bd9",
+      "svg_sha256": "62217e1608e1eb0a24c7b70c83b960da65552cd6aa26ac0b9f0574bf36c34b78",
+      "png_sha256": "e0e8e63fbbead611b7ea19e3388894fc48045f2ceeb8d8ecd688e949db0c2ada",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "prior_or_actor_png_preserved": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "cactus": {
+      "scene": "63f75af7218c259c3ed98fc4c310d7cd1ae93ee9aa21f53ad74065c9b32dfdc3",
+      "svg_sha256": "65d07b23da9e6f0e7d9305be159d22b68e66719b297cb3e03ac584b81a43c912",
+      "png_sha256": "13635f3bef95cbd48c5c5cad096ecbc5e255115cc9d5e1e96a550eb8cab13e74",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "prior_or_actor_png_preserved": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "pinwheel": {
+      "scene": "f7f2f7c2923b3287deb81c5feffc8c8d6b8852ccca28e5000bceeb902ab2c56f",
+      "svg_sha256": "4bdc411e138d0e1844a5dc08d49e5931c4449cd3dbe158fa720fc837f32c473d",
+      "png_sha256": "5620b08f50ec6b493134435aa54bfc66dba8c89c1888f354799f439ac5723ae0",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "prior_or_actor_png_preserved": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "base": "9a95ef43d673facc00c3fdbbe2bce1a8c2ec68c47bd59a13e42f1a95deae0d45",
+    "result": "02e7e6af6124b3a3603285aca1a5934b4c799ae0fc110938b09d71830124b251",
+    "operation": {
+      "action": "bind-endpoint",
+      "object": "water",
+      "endpoint": "tip",
+      "target": {
+        "to": "soil",
+        "target": "center",
+        "inset": 0
+      },
+      "reason": "Keep the stream landing on soil when person and planter move independently"
+    }
+  },
+  {
+    "base": "02e7e6af6124b3a3603285aca1a5934b4c799ae0fc110938b09d71830124b251",
+    "result": "c2811e5c58010932fbb7d18aadd374888727b116d931428bfd2b15282905140c",
+    "operation": {
+      "object": "gardener",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.05,
+      "units": "shorter canvas dimension",
+      "reason": "Reframe the gardener left while both stream contacts stay attached"
+    }
+  },
+  {
+    "base": "c2811e5c58010932fbb7d18aadd374888727b116d931428bfd2b15282905140c",
+    "result": "227a48e157d199c439c086c9207f0b9353a931ed1bdbdd77e80fa1da027c3df8",
+    "operation": {
+      "action": "bind-endpoint",
+      "object": "water",
+      "endpoint": "tip",
+      "target": {
+        "to": "soil",
+        "target": "top@.25",
+        "inset": 0.35
+      },
+      "reason": "Aim at open soil left of the stem rather than binding the water into the stem junction"
+    }
+  }
+]

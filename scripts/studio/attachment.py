@@ -7,7 +7,7 @@ from .geometry import bounds,lock_rows,resolve_root
 
 
 def anchors(node,canvas):
-    if 'attachment' in node:
+    if 'attachment' in node or 'endpoints' in node:
         raise ValueError('resolve the scene before reading attached anchors')
     if node['kind']=='hair-lock':
         rows=lock_rows(node,canvas)
@@ -76,28 +76,59 @@ def placement_center(node,canvas):
     return resolve_root(node,canvas) if node['kind']=='hair-lock' else component_data(node,canvas).center
 
 
+def endpoint_relations(node):
+    """Explicit stroke endpoint pins; legacy terminal attachments remain compatible."""
+    if node.get('kind')!='stroke': return {}
+    if 'endpoints' in node: return node['endpoints']
+    relation=node.get('attachment',{});end=relation.get('self','center')
+    return {end:{k:v for k,v in relation.items() if k!='self'}} if end in ('root','tip') else {}
+
+
+def dependencies(node):
+    return ([node['attachment']['to']] if 'attachment' in node else [])+[r['to'] for r in node.get('endpoints',{}).values()]
+
+
+def release_endpoints(node,placed,ends=None):
+    """Bake the current chord before releasing pins; surviving pins keep the same paint."""
+    from .stroke import DEFAULT_LENGTH
+    pins=node.pop('endpoints');remaining={k:v for k,v in pins.items() if ends is not None and k not in ends}
+    node['length']=placed.get('length',DEFAULT_LENGTH);node['angle']=placed.get('angle',0)
+    if remaining:
+        node['endpoints']=remaining;node.pop('at',None)
+    else: node['at']=copy.deepcopy(placed['at'])
+
+
 def resolve_scene(scene):
-    """Keep relations in authored data; bake only an ephemeral compiler copy."""
-    if not any('attachment' in n for n in scene['nodes']): return scene
+    """Keep named constraints in authoring; derive the acyclic compiler placement graph."""
+    if not any(dependencies(n) for n in scene['nodes']): return scene
     canvas=scene.get('canvas',[640,640]);by_id={n['id']:n for n in scene['nodes']}
     done={};active=[]
+    def destination(relation):
+        parent=resolve(relation['to']);target=get_anchor(parent,canvas,relation.get('target','center'))
+        inset=relation.get('inset',0);normal=target['normal']
+        if inset and normal is None: raise ValueError('inset requires a target surface anchor with an outward normal')
+        normal=normal or (0,0);offset=relation.get('offset',[0,0]);unit=min(canvas)
+        return tuple(target['point'][k]-normal[k]*inset*mount_scale(parent,canvas)+offset[k]*unit for k in (0,1))
     def resolve(sid):
         if sid in done: return done[sid]
         if sid not in by_id: raise ValueError('unknown attachment target: '+str(sid))
         if sid in active: raise ValueError('attachment cycle: '+' -> '.join(active+[sid]))
-        active.append(sid)
-        node=copy.deepcopy(by_id[sid])
-        relation=node.pop('attachment',None)
-        if relation is not None:
-            parent=resolve(relation['to'])
-            self_name=relation.get('self','center');target_name=relation.get('target','center')
-            own=get_anchor(node,canvas,self_name);target=get_anchor(parent,canvas,target_name)
-            source=own['point'];destination=target['point']
-            inset=relation.get('inset',0);normal=target['normal']
-            if inset and normal is None: raise ValueError('inset requires a target surface anchor with an outward normal')
-            normal=normal or (0,0);offset=relation.get('offset',[0,0]);unit=min(canvas)
-            center=placement_center(node,canvas)
-            shift=[destination[k]-source[k]-normal[k]*inset*mount_scale(parent,canvas)+offset[k]*unit for k in (0,1)]
+        active.append(sid);node=copy.deepcopy(by_id[sid]);relation=node.pop('attachment',None);pins=node.pop('endpoints',None)
+        if pins is not None:
+            targets={end:destination(r) for end,r in pins.items()}
+            if len(targets)==2:
+                a,b=targets['root'],targets['tip'];dx,dy=b[0]-a[0],b[1]-a[1]
+                node.update(length=math.hypot(dx,dy)/min(canvas),angle=math.degrees(math.atan2(dx,dy)))
+                node['at']=dict(anchor='center',offset=[a[0]/canvas[0]-.5,a[1]/canvas[1]-.5])
+            else:
+                end=next(iter(targets));own=get_anchor(node,canvas,end)['point'];center=placement_center(node,canvas)
+                shift=[targets[end][k]-own[k] for k in (0,1)]
+                node['at']=dict(anchor='center',offset=[(center[0]+shift[0])/canvas[0]-.5,(center[1]+shift[1])/canvas[1]-.5])
+            from .model import validate_stroke
+            validate_stroke(node,canvas)
+        elif relation is not None:
+            target=destination(relation);own=get_anchor(node,canvas,relation.get('self','center'))['point'];center=placement_center(node,canvas)
+            shift=[target[k]-own[k] for k in (0,1)]
             node['at']=dict(anchor='center',offset=[(center[0]+shift[0])/canvas[0]-.5,(center[1]+shift[1])/canvas[1]-.5])
         done[sid]=node;active.pop();return node
     return dict(scene,nodes=[resolve(n['id']) for n in scene['nodes']])

@@ -29,6 +29,10 @@ actual revisions and remaining arm/form limitations.
 Start on empty paper with `new scene.json --kind blank`. Inspect a whole object before
 `preview --remove`: direct children stay in place; `--cascade` removes its descendant assembly.
 [Actual replacement and undo studies](evidence/studio-removal/README.md) retain the impact views.
+Stroke root/tip can now bind to two separately inspected targets. Moving person or pot keeps the
+stream connected; releasing a pin preserves its current paint. [The actual endpoint trials](evidence/studio-endpoints/README.md)
+include an independent edit/undo run and the remaining art limits. Try
+`python examples/studio/watering.py --bound --outdir FRESH` for an editable constrained example.
 [the actual coastal and independent creation studies](evidence/studio-shape/README.md) retain their
 visual limitations. A working contour tool is not a whole-illustration pass.
 

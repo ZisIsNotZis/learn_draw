@@ -1,0 +1,36 @@
+{
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "raw_water_unchanged_across_independent_moves": true,
+  "both_contacts_match_actual_targets": true,
+  "landing_inside_soil": true,
+  "release_exact_paint": true,
+  "undo_exact_scene": true,
+  "results": {
+    "independent": {
+      "scene": "0c01e067fc77395c93ad7f463dec2584fa4210a80fc30dd1b59b23a43d9d106b",
+      "png_sha256": "0e760ed10474d90f92731c484cf5e97e1b47054b383d3d09d98867b3a3291001",
+      "observed_png_preserved": true
+    },
+    "released": {
+      "scene": "84a81ac5b406665c841ea09e4c992aea259d4861e4b8c96a66d423daefc322c7",
+      "png_sha256": "0e760ed10474d90f92731c484cf5e97e1b47054b383d3d09d98867b3a3291001",
+      "observed_png_preserved": true
+    },
+    "legacy-watering": {
+      "scene": "9a95ef43d673facc00c3fdbbe2bce1a8c2ec68c47bd59a13e42f1a95deae0d45",
+      "png_sha256": "1af22cc9070713b2cff164bbfe7390828001d13361f67a7d573d9ceec5562512",
+      "observed_png_preserved": true
+    },
+    "legacy-reframe": {
+      "scene": "41794e925d6947c346653f275396a943ee091886cb0fab8d7efa89a5524fab2f",
+      "png_sha256": "50378bed4c26ac234a2ff87c368547c736f3c34c39bcc78a24d8d1cdce6651e0",
+      "observed_png_preserved": true
+    },
+    "default-stroke": {
+      "scene": "bc9c1e639273d66b3504096201d98b83261186f4f60a30b64802f33e496a0770",
+      "png_sha256": "42e9953a9fafb728443fb798e60197c8b1cdf8a47080e537d3bf76b57b6b133c",
+      "observed_png_preserved": true
+    }
+  },
+  "scope": "independent operation corroboration and inherited picture preservation; not a new generation benchmark or artwork verdict"
+}

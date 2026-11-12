@@ -1,0 +1,62 @@
+{
+  "base": "c2811e5c58010932fbb7d18aadd374888727b116d931428bfd2b15282905140c",
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "object": "water",
+  "kind": "feature",
+  "feature": "tip",
+  "bounds": [
+    796.8,
+    416.4,
+    820.8,
+    440.4
+  ],
+  "object_bounds": [
+    645.7211326629913,
+    392.1953665964124,
+    811.3195816435573,
+    430.9195816435573
+  ],
+  "controls": [
+    "intent",
+    "thickness",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "screen terminal movement as fraction of shorter canvas dimension; opposite terminal fixed",
+  "interaction": "stroke-terminal",
+  "locks": {
+    "root": [
+      648.2407740510254,
+      396.5755386175048
+    ]
+  },
+  "focus": [
+    808.8,
+    428.4
+  ],
+  "endpoint_bindings": {
+    "root": {
+      "to": "spout",
+      "target": "tip"
+    },
+    "tip": {
+      "to": "soil",
+      "target": "center",
+      "inset": 0
+    }
+  },
+  "attachment_target": {
+    "object": "soil",
+    "anchor": "top@.25"
+  }
+}

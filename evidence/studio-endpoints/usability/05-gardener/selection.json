@@ -1,0 +1,37 @@
+{
+  "base": "6bb990b0f0d9e89e7929c10aa4527e457ce8336bca414ec681c99aca9278fec2",
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "object": "gardener",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    153.61763773384638,
+    125.79366543145437,
+    360.47518898179607,
+    343.8994422166276
+  ],
+  "object_bounds": [
+    153.61763773384638,
+    125.79366543145437,
+    360.47518898179607,
+    343.8994422166276
+  ],
+  "controls": [
+    "intent",
+    "expression",
+    "gaze",
+    "eye_scale",
+    "jaw",
+    "hair",
+    "length",
+    "width",
+    "angle",
+    "depth",
+    "depth_slope",
+    "hair_color",
+    "skin_color",
+    "iris_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

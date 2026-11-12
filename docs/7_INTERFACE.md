@@ -317,7 +317,8 @@ include half the explicit outline width and current sculpt tangent. center has n
 inset is refused there. Other current component macros offer center; a standalone lock also offers
 root/tip. Inspect anchors is the authoritative availability surface.
 
-Relations form an acyclic single-parent graph. They translate the child's selected mount onto the
+Whole-object relations form an acyclic single-parent graph; stroke endpoint constraints below add
+a second target dependency. Whole-object pins translate the child's selected mount onto the
 current target mount, minus outward target normal times inset times target scale, plus the retained
 screen offset. The child retains its own screen angle and size. Changing a parent resolves its
 whole descendant chain; raw authoring data carries relations, not baked per-child frame coordinates.
@@ -341,7 +342,7 @@ unknown anchors, illegal inset and cycles refuse the candidate without changing 
 
 ## Gesture stroke node
 
-kind stroke has id/kind/intent, optional at or attachment, length, thickness, angle, bend,
+kind stroke has id/kind/intent, optional at or attachment or endpoints (defined below), length, thickness, angle, bend,
 start_width/end_width, start_cap/end_cap, shade, ink_width, depth/depth_slope, palette and edits.
 At places the root; absent it, root is canvas center plus [0,-.2]. Length is root-to-tip chord / min
 canvas (default .4, .005..2); thickness / min canvas is independent (default .045, .001..1).
@@ -400,3 +401,31 @@ A preview selection carrying removal or attachment_target describes an operation
 a new part inspection. Reusing it for another proposal is refused with an explicit re-inspect
 message. Declining a proposal leaves its original inspection usable while that base stays current;
 accepting any edit requires inspecting the new revision.
+
+## Named stroke endpoint constraints
+
+A stroke may use endpoints instead of attachment or free at. endpoints is a nonempty object with
+root and/or tip keys. Each relation has to, target (default center), inset (-2..2 target nominal
+shorter extent, default 0) and offset (two screen/min-canvas values in -2..2, default [0,0]).
+These are projected points; support depth remains independent. Existing attachment forms are valid.
+
+One endpoint pin translates the ordinary authored chord like a legacy root/tip pin. Two endpoint
+pins derive chord length/angle; those fields must be omitted in raw authoring, and disappear from
+exposed controls. The remaining stroke controls and protected spine edits remain available. The
+derived chord must satisfy existing .005..2 length bounds and geometric validity. No clamping or
+silent shape replacement occurs for coincident/crossing/invalid target configurations.
+
+Inspect the source with feature root or tip and the target with feature anchors (optionally one
+exact --anchor). Preview --bind-end TARGET_SELECTION, optional --target-anchor/--inset, and reason.
+It preserves an existing legacy terminal pin and converts it to endpoints; an unrelated center pin
+must be detached first. Exact positioned targets must have been explicitly inspected. A ready
+preview shows both actual pin rings, old/new geometry and target callout. Target inputs join the
+existing output-alias preflight. Reports include endpoints and derived_chord, not false editable
+length/angle controls. Constraints may depend on two parents; all dependencies must be acyclic.
+
+A pinned end refuses terminal dragging; two pins refuse whole-object translation. A single pin
+can retain a screen offset. Preview --unbind-end from a root/tip inspection releases only that pin
+and bakes the current chord so paint stays unchanged. Anchors/--detach releases all pins in place.
+Default deletion releases only affected endpoint links while preserving visible paint and any
+remaining pin; cascade follows either dependency. The removal impact reports released_endpoints
+where relevant. These operations use the existing stale/ready/history/undo contract.

@@ -28,3 +28,6 @@ worktrees/
 
 # Frozen independent review records are evidence, not disposable runtime logs.
 !evidence/studio-watering/usability/*.log
+
+# Frozen endpoint usability command records.
+!evidence/studio-endpoints/usability/*.log

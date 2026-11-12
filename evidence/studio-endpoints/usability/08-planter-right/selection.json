@@ -1,0 +1,34 @@
+{
+  "base": "5ea5388503eee5934ac33764db4c2a74f0a27ec637c2d83a07dd65d9eb1fbdd8",
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "object": "plant-pot",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    745.0166385940362,
+    424.80000000000007,
+    872.5833614059637,
+    518.4000000000001
+  ],
+  "object_bounds": [
+    745.0166385940362,
+    424.80000000000007,
+    872.5833614059637,
+    518.4000000000001
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

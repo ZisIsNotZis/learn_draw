@@ -1,0 +1,47 @@
+{
+  "base": "227a48e157d199c439c086c9207f0b9353a931ed1bdbdd77e80fa1da027c3df8",
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "object": "water",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    645.721363304143,
+    392.54471272575523,
+    792.515547868145,
+    427.89381078918683
+  ],
+  "object_bounds": [
+    645.721363304143,
+    392.54471272575523,
+    792.515547868145,
+    427.89381078918683
+  ],
+  "controls": [
+    "intent",
+    "thickness",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension",
+  "endpoint_bindings": {
+    "root": {
+      "to": "spout",
+      "target": "tip"
+    },
+    "tip": {
+      "to": "soil",
+      "target": "top@.25",
+      "inset": 0.35
+    }
+  }
+}

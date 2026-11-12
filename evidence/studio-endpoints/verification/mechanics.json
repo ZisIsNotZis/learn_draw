@@ -1,0 +1,17 @@
+{
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "scene": "227a48e157d199c439c086c9207f0b9353a931ed1bdbdd77e80fa1da027c3df8",
+  "original_free_stream_drift": [
+    -36,
+    0
+  ],
+  "bound_stream_tip_fixed": true,
+  "stream_raw_node_unchanged_during_parent_move": true,
+  "handle_raw_node_unchanged_during_tilt": true,
+  "handle_free_tip_drift_from_intended_mount": 16.27219561534618,
+  "both_handle_mounts_follow": true,
+  "final_water_tip_inside_soil": true,
+  "repeat_png_equal": true,
+  "png_sha256": "1b40a233132a6f7e9210dc89bde35e91001b3c86d4eb637508aa192281c835cd",
+  "scope": "projected named-target equality and repeatability; not art, fluid dynamics or grasp correctness"
+}

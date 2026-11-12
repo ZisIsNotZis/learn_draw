@@ -207,7 +207,7 @@ def validate_shape(node,canvas):
 
 def validate_stroke(node,canvas):
     from .stroke import DEFAULT_LENGTH,DEFAULT_THICKNESS,stroke_data
-    keys(node,('id','kind','intent','attachment','at','length','thickness','angle','bend','start_width','end_width','start_cap','end_cap','shade','ink_width','depth','depth_slope','palette','edits'),'stroke')
+    keys(node,('id','kind','intent','attachment','endpoints','at','length','thickness','angle','bend','start_width','end_width','start_cap','end_cap','shade','ink_width','depth','depth_slope','palette','edits'),'stroke')
     for name,default,lo,hi in [('length',DEFAULT_LENGTH,.005,2),('thickness',DEFAULT_THICKNESS,.001,1),('angle',0,-180,180),
                               ('bend',0,-1,1),('start_width',1,0,4),('end_width',1,0,4),('ink_width',0,0,.1),
                               ('depth',0,-100,100),('depth_slope',0,-10,10)]:
@@ -222,7 +222,21 @@ def validate_stroke(node,canvas):
     for edit in node.get('edits',[]):
         keys(edit,('at','radius','dx','dy','reason'),'stroke.edit')
         validate_edits([dict(edit,side='left')])
-    stroke_data(node,canvas)
+    if 'endpoints' in node:
+        pins=node['endpoints'];keys(pins,('root','tip'),'stroke.endpoints')
+        if not pins: raise ValueError('stroke.endpoints requires at least one pin')
+        if 'attachment' in node or 'at' in node: raise ValueError('use endpoints or attachment/free at, not both')
+        if len(pins)==2 and any(k in node for k in ('length','angle')):
+            raise ValueError('two endpoint pins derive length/angle; omit these authored fields')
+        for end,r in pins.items():
+            keys(r,('to','target','inset','offset'),'endpoint '+end)
+            for k,default in [('to',None),('target','center')]:
+                if not isinstance(r.get(k,default),str) or not r.get(k,default).strip(): raise ValueError('endpoint '+k+' requires a name')
+            number(r.get('inset',0),'endpoint.inset',-2,2)
+            offset=r.get('offset',[0,0])
+            if not isinstance(offset,list) or len(offset)!=2: raise ValueError('endpoint.offset requires two values')
+            for value in offset: number(value,'endpoint.offset',-2,2)
+    else: stroke_data(node,canvas)
 
 
 def validate(scene):
@@ -303,7 +317,7 @@ def node_by_id(scene, sid):
     raise ValueError(f"unknown object {sid!r}")
 
 
-def select(scene, sid=None, side="left", at=.55, radius=.30, feature=None, anchor=None):
+def _select(scene, sid=None, side="left", at=.55, radius=.30, feature=None, anchor=None):
     validate(scene)
     if not scene['nodes']:
         raise ValueError('empty canvas: add an object before selecting a part')
@@ -383,6 +397,20 @@ def select(scene, sid=None, side="left", at=.55, radius=.30, feature=None, ancho
     return selection
 
 
+def exposed_controls(node,controls):
+    return [k for k in controls if k not in ('length','angle')] if len(node.get('endpoints',{}))==2 else list(controls)
+
+
+def select(scene,sid=None,side='left',at=.55,radius=.30,feature=None,anchor=None):
+    selection=_select(scene,sid,side,at,radius,feature,anchor)
+    node=node_by_id(scene,selection['object'])
+    from .attachment import endpoint_relations
+    pins=endpoint_relations(node)
+    if pins: selection['endpoint_bindings']=copy.deepcopy(pins)
+    if 'controls' in selection: selection['controls']=exposed_controls(node,selection['controls'])
+    return selection
+
+
 def current_selection(scene, selection):
     validate(scene)
     if selection["base"] != fingerprint(scene):
@@ -417,8 +445,10 @@ def preview(scene, selection, direction, amount, reason):
         default={'head':{'anchor':'center','offset':[0,-.06]},'hand':{'anchor':'center'},'shape':{'anchor':'center'},'stroke':{'anchor':'center','offset':[0,-.2]},
                  'moon':{'anchor':'upper_right','offset':[0,.10]},
                  'sun':{'anchor':'upper_right','offset':[0,.10]}}.get(node['kind'],{})
-        if 'attachment' in node:
-            relation=node['attachment'];offset=relation.get('offset',[0,0])
+        if 'endpoints' in node and len(node['endpoints'])==2:
+            raise ValueError('both endpoints are pinned; move the targets or unbind one endpoint')
+        if 'attachment' in node or 'endpoints' in node:
+            relation=node['attachment'] if 'attachment' in node else next(iter(node['endpoints'].values()));offset=relation.get('offset',[0,0])
             relation['offset']=[offset[0]+dx,offset[1]+dy]
             validate(candidate)
             return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
@@ -432,24 +462,26 @@ def preview(scene, selection, direction, amount, reason):
                     selection=selection,operation=dict(object=selection['object'],feature='object',
                     direction=direction,amount=amount,units='shorter canvas dimension',reason=reason))
     if spine_move or terminal_move:
-        from .attachment import resolve_scene
+        from .attachment import resolve_scene,endpoint_relations
         if node['kind']!='stroke': raise ValueError('this gesture operation requires a stroke')
         pin=node.get('attachment',{}).get('self','center') if 'attachment' in node else None
         if spine_move:
             if pin=='center' and abs(selection['at']-.5)<selection['radius']:
                 raise ValueError('this spine interval moves the pinned center; edit outside it or detach')
-            a=math.radians(node.get('angle',0))
+            resolved=node_by_id(resolve_scene(scene),selection['object'])
+            a=math.radians(resolved.get('angle',0))
             edit=dict(at=selection['at'],radius=selection['radius'],dx=dx*math.cos(a)-dy*math.sin(a),dy=dx*math.sin(a)+dy*math.cos(a),reason=reason)
             node.setdefault('edits',[]).append(edit)
             operation=dict(edit,object=selection['object'],feature='spine',units='nominal stroke thickness')
         else:
             other='tip' if selection['feature']=='root' else 'root'
-            if pin is not None and pin!=other: raise ValueError('this terminal operation would move an attached pin; move the free terminal or detach')
+            if selection['feature'] in endpoint_relations(node) or (pin is not None and pin!=other):
+                raise ValueError('this terminal operation would move an attached pin; move the free terminal or unbind it')
             from .stroke import move_terminal
             resolved=node_by_id(resolve_scene(scene),selection['object'])
             changed=move_terminal(resolved,scene.get('canvas',[640,640]),selection['feature'],direction,amount)
             node.update(length=changed['length'],angle=changed['angle'])
-            if 'attachment' not in node: node['at']=changed['at']
+            if 'attachment' not in node and 'endpoints' not in node: node['at']=changed['at']
             operation=dict(object=selection['object'],feature=selection['feature'],direction=direction,amount=amount,units='shorter canvas dimension',reason=reason)
         validate(candidate)
         return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,selection=selection,operation=operation)
@@ -494,6 +526,44 @@ def preview(scene, selection, direction, amount, reason):
                 selection=selection, operation=dict(edit,object=selection['object'],feature=selection.get('feature',selection['side'])))
 
 
+def bind_endpoint_preview(scene,selection,target_selection,target_anchor,inset,reason):
+    current_selection(scene,selection);current_selection(scene,target_selection)
+    if selection.get('interaction')!='stroke-terminal' or selection.get('feature') not in ('root','tip'):
+        raise ValueError('inspect a stroke root or tip before binding its endpoint')
+    if target_selection.get('feature')!='anchors': raise ValueError('inspect the target anchors before binding')
+    if not isinstance(reason,str) or not reason.strip(): raise ValueError('state a drawing reason')
+    target_anchor=target_anchor or target_selection.get('anchor') or 'center'
+    if (target_selection.get('anchor') is not None and target_selection['anchor']!=target_anchor) or ('@' in target_anchor and target_selection.get('anchor')!=target_anchor):
+        raise ValueError('inspect this exact named/positioned anchor before binding: '+target_anchor)
+    from .attachment import endpoint_relations
+    candidate=copy.deepcopy(scene);node=node_by_id(candidate,selection['object']);end=selection['feature']
+    if 'attachment' in node and node['attachment'].get('self','center') not in ('root','tip'):
+        raise ValueError('detach the center/other pin before binding stroke endpoints')
+    pins=copy.deepcopy(endpoint_relations(node));pins[end]=dict(to=target_selection['object'],target=target_anchor,inset=inset)
+    node.pop('attachment',None);node.pop('at',None);node['endpoints']=pins
+    if len(pins)==2:
+        node.pop('length',None);node.pop('angle',None)
+    validate(candidate)
+    view=dict(selection,attachment_target=dict(object=target_selection['object'],anchor=target_anchor))
+    return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,selection=view,
+                operation=dict(action='bind-endpoint',object=node['id'],endpoint=end,target=pins[end],reason=reason))
+
+
+def unbind_endpoint_preview(scene,selection,reason):
+    current_selection(scene,selection)
+    if selection.get('interaction')!='stroke-terminal': raise ValueError('inspect a stroke root or tip before releasing it')
+    if not isinstance(reason,str) or not reason.strip(): raise ValueError('state a drawing reason')
+    from .attachment import endpoint_relations,release_endpoints,resolve_scene
+    candidate=copy.deepcopy(scene);node=node_by_id(candidate,selection['object']);end=selection['feature']
+    pins=copy.deepcopy(endpoint_relations(node))
+    if end not in pins: raise ValueError('this endpoint is not pinned')
+    placed=node_by_id(resolve_scene(scene),node['id'])
+    node.pop('attachment',None);node['endpoints']=pins;release_endpoints(node,placed,[end])
+    validate(candidate)
+    return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,selection=selection,
+                operation=dict(action='unbind-endpoint',object=node['id'],endpoint=end,reason=reason))
+
+
 def attachment_preview(scene,selection,target_selection,self_anchor,target_anchor,inset,reason):
     current_selection(scene,selection)
     current_selection(scene,target_selection)
@@ -507,6 +577,7 @@ def attachment_preview(scene,selection,target_selection,self_anchor,target_ancho
             raise ValueError('inspect this exact named/positioned anchor before attaching: '+name)
     candidate=copy.deepcopy(scene)
     node=node_by_id(candidate,selection['object'])
+    if 'endpoints' in node: raise ValueError('unbind endpoint pins before whole-object attachment')
     node.pop('at',None)
     node['attachment']=dict(to=target_selection['object'],self=self_anchor,target=target_anchor,inset=inset)
     validate(candidate)
@@ -521,9 +592,13 @@ def detach_preview(scene,selection,reason):
     if not isinstance(reason,str) or not reason.strip(): raise ValueError('state a drawing reason')
     from .attachment import resolve_scene
     candidate=copy.deepcopy(scene);node=node_by_id(candidate,selection['object'])
-    if 'attachment' not in node: raise ValueError('this object has no attachment to detach')
+    if 'attachment' not in node and 'endpoints' not in node: raise ValueError('this object has no attachment to detach')
     placed=node_by_id(resolve_scene(scene),selection['object'])
-    node.pop('attachment');node['at']=copy.deepcopy(placed['at'])
+    if 'endpoints' in node:
+        from .attachment import release_endpoints
+        release_endpoints(node,placed)
+    else:
+        node.pop('attachment');node['at']=copy.deepcopy(placed['at'])
     validate(candidate)
     return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
                 selection=selection,operation=dict(action='detach',object=selection['object'],reason=reason))
@@ -536,18 +611,22 @@ def remove_preview(scene,selection,reason,cascade=False):
         raise ValueError('inspect the whole object before removing it')
     if not isinstance(reason,str) or not reason.strip(): raise ValueError('state a drawing reason')
     if not isinstance(cascade,bool): raise ValueError('cascade must be a boolean')
-    from .attachment import resolve_scene
+    from .attachment import resolve_scene,dependencies,release_endpoints
     from .components import component_outline
     placed=resolve_scene(scene);sid=selection['object'];node_by_id(scene,sid)
     removed={sid}
     if cascade:
         while True:
-            expanded=removed|{n['id'] for n in scene['nodes'] if n.get('attachment',{}).get('to') in removed}
+            expanded=removed|{n['id'] for n in scene['nodes'] if any(target in removed for target in dependencies(n))}
             if expanded==removed: break
             removed=expanded
-    candidate=copy.deepcopy(scene);detached=[]
+    candidate=copy.deepcopy(scene);detached=[];released={}
     for node in candidate['nodes']:
-        if node['id'] not in removed and node.get('attachment',{}).get('to') in removed:
+        if node['id'] in removed: continue
+        ends=[end for end,r in node.get('endpoints',{}).items() if r['to'] in removed]
+        if ends:
+            release_endpoints(node,node_by_id(placed,node['id']),ends);released[node['id']]=ends;detached.append(node['id'])
+        elif node.get('attachment',{}).get('to') in removed:
             node.pop('attachment');node['at']=copy.deepcopy(node_by_id(placed,node['id'])['at'])
             detached.append(node['id'])
     candidate['nodes']=[n for n in candidate['nodes'] if n['id'] not in removed]
@@ -555,7 +634,10 @@ def remove_preview(scene,selection,reason,cascade=False):
     ordered=[n['id'] for n in scene['nodes'] if n['id'] in removed]
     operation=dict(action='remove',object=sid,removed=ordered,detached_children=detached,cascade=cascade,reason=reason)
     box=bounds([p for n in placed['nodes'] if n['id'] in removed for p in component_outline(n,scene.get('canvas',[640,640]))])
-    view=dict(selection,removal=dict(removed=ordered,detached_children=detached,cascade=cascade),bounds=box,object_bounds=box)
+    if released: operation['released_endpoints']=released
+    impact=dict(removed=ordered,detached_children=detached,cascade=cascade)
+    if released: impact['released_endpoints']=released
+    view=dict(selection,removal=impact,bounds=box,object_bounds=box)
     return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
                 selection=view,operation=operation)
 

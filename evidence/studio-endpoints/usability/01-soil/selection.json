@@ -1,0 +1,44 @@
+{
+  "base": "9a95ef43d673facc00c3fdbbe2bce1a8c2ec68c47bd59a13e42f1a95deae0d45",
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "object": "soil",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    753.9144536901417,
+    418.50000168685926,
+    863.6855463098582,
+    438.2999983131408
+  ],
+  "object_bounds": [
+    753.9144536901417,
+    418.50000168685926,
+    863.6855463098582,
+    438.2999983131408
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      808.8,
+      428.40000000000003
+    ],
+    "top": [
+      808.8,
+      418.50000000000006
+    ],
+    "right": [
+      863.6999999999999,
+      428.40000000000003
+    ],
+    "bottom": [
+      808.8,
+      438.3
+    ],
+    "left": [
+      753.9,
+      428.40000000000003
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space"
+}

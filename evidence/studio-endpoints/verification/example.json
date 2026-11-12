@@ -1,0 +1,9 @@
+{
+  "fresh_cwd_picture_preserved": true,
+  "both_pin_controls_visible": true,
+  "derived_controls_hidden": true,
+  "existing_output_preserved": true,
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "choose a fresh output directory; existing work is preserved\n"
+}

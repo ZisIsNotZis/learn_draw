@@ -1,0 +1,513 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    960,
+    720
+  ],
+  "background": "#f6ecdf",
+  "nodes": [
+    {
+      "id": "window-frame",
+      "kind": "shape",
+      "intent": "warm wooden frame behind the tending figure",
+      "depth": -30,
+      "palette": {
+        "fill": "#b99a79",
+        "ink": "#493f3b"
+      },
+      "stroke": 0,
+      "length": 0.68,
+      "width": 1.12,
+      "rounding": 0.15,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.17,
+          -0.12
+        ]
+      }
+    },
+    {
+      "id": "window-glass",
+      "kind": "shape",
+      "intent": "quiet pale daylight within the wooden frame",
+      "depth": -29,
+      "palette": {
+        "fill": "#c8e0dc",
+        "ink": "#493f3b"
+      },
+      "stroke": 0,
+      "length": 0.63,
+      "width": 1.12,
+      "rounding": 0.12,
+      "attachment": {
+        "to": "window-frame",
+        "self": "center",
+        "target": "center"
+      }
+    },
+    {
+      "id": "window-upright",
+      "kind": "shape",
+      "intent": "one upright divides the daylight panes",
+      "depth": -28,
+      "palette": {
+        "fill": "#b99a79",
+        "ink": "#493f3b"
+      },
+      "stroke": 0,
+      "length": 0.63,
+      "width": 0.025,
+      "rounding": 0.1,
+      "attachment": {
+        "to": "window-frame",
+        "self": "center",
+        "target": "center"
+      }
+    },
+    {
+      "id": "window-crossbar",
+      "kind": "stroke",
+      "intent": "one crossbar divides the quiet panes",
+      "depth": -27,
+      "palette": {
+        "fill": "#b99a79"
+      },
+      "length": 0.705,
+      "thickness": 0.025,
+      "angle": 90,
+      "start_cap": "flat",
+      "end_cap": "flat",
+      "attachment": {
+        "to": "window-frame",
+        "self": "center",
+        "target": "center"
+      }
+    },
+    {
+      "id": "sill",
+      "kind": "stroke",
+      "intent": "a broad wooden sill supports the plant",
+      "depth": -20,
+      "palette": {
+        "fill": "#967960"
+      },
+      "length": 0.735,
+      "thickness": 0.035,
+      "angle": 90,
+      "start_cap": "flat",
+      "end_cap": "flat",
+      "attachment": {
+        "to": "window-frame",
+        "self": "center",
+        "target": "bottom",
+        "offset": [
+          0,
+          0.0175
+        ]
+      }
+    },
+    {
+      "id": "gardener",
+      "kind": "head",
+      "intent": "a gentle blue-haired gardener looks toward the plant",
+      "depth": 20,
+      "length": 0.25,
+      "angle": -6,
+      "gaze": 0.65,
+      "expression": "gentle",
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.23,
+          -0.16
+        ]
+      }
+    },
+    {
+      "id": "neck",
+      "kind": "stroke",
+      "intent": "short skin bridge from chin into the shirt",
+      "depth": 15,
+      "palette": {
+        "fill": "#e7bda3"
+      },
+      "length": 0.035,
+      "thickness": 0.035,
+      "attachment": {
+        "to": "gardener",
+        "self": "root",
+        "target": "chin",
+        "inset": 0.025
+      }
+    },
+    {
+      "id": "shirt",
+      "kind": "shape",
+      "intent": "soft coral shirt cropped below the waist",
+      "depth": 5,
+      "palette": {
+        "fill": "#c8846c",
+        "ink": "#493f3b"
+      },
+      "stroke": 0,
+      "length": 0.47,
+      "width": 0.73,
+      "rounding": 0.62,
+      "taper": -0.22,
+      "attachment": {
+        "to": "neck",
+        "self": "top",
+        "target": "tip"
+      }
+    },
+    {
+      "id": "resting-sleeve",
+      "kind": "stroke",
+      "intent": "the relaxed sleeve descends out of the crop",
+      "depth": 6,
+      "palette": {
+        "fill": "#c8846c"
+      },
+      "length": 0.45,
+      "thickness": 0.08,
+      "start_width": 1.1,
+      "angle": -9,
+      "bend": 0.02,
+      "attachment": {
+        "to": "shirt",
+        "self": "root",
+        "target": "left@.92",
+        "inset": 0.06
+      }
+    },
+    {
+      "id": "reaching-sleeve",
+      "kind": "stroke",
+      "intent": "one sleeve reaches right toward the watering can",
+      "depth": 8,
+      "palette": {
+        "fill": "#c8846c"
+      },
+      "length": 0.2723890305350555,
+      "thickness": 0.07,
+      "start_width": 1.15,
+      "end_width": 0.8,
+      "angle": 122.40812324609186,
+      "bend": -0.14,
+      "attachment": {
+        "to": "shirt",
+        "self": "root",
+        "target": "right@.09",
+        "inset": 0.05
+      }
+    },
+    {
+      "id": "can-body",
+      "kind": "shape",
+      "intent": "a golden watering vessel hangs below the hand",
+      "depth": 10,
+      "palette": {
+        "fill": "#cfad54",
+        "ink": "#493f3b"
+      },
+      "stroke": 0,
+      "length": 0.15,
+      "width": 1.18,
+      "rounding": 0.35,
+      "taper": 0.16,
+      "angle": -35.0,
+      "attachment": {
+        "to": "carrying-hand",
+        "self": "top",
+        "target": "bottom",
+        "inset": -0.44
+      }
+    },
+    {
+      "id": "can-handle",
+      "kind": "stroke",
+      "intent": "a narrow arched handle rises to the carrying hand",
+      "depth": 31.0,
+      "palette": {
+        "fill": "#b18d3f"
+      },
+      "length": 0.13200378782444083,
+      "thickness": 0.014,
+      "bend": 0.55,
+      "angle": 65.37643521383637,
+      "attachment": {
+        "to": "can-body",
+        "self": "root",
+        "target": "top",
+        "offset": [
+          -0.06,
+          0
+        ]
+      }
+    },
+    {
+      "id": "spout",
+      "kind": "stroke",
+      "intent": "a long tapered spout points above the plant",
+      "depth": 12,
+      "palette": {
+        "fill": "#cfad54"
+      },
+      "length": 0.16,
+      "thickness": 0.032,
+      "start_width": 1.25,
+      "end_width": 0.7,
+      "angle": 80.0,
+      "attachment": {
+        "to": "can-body",
+        "self": "root",
+        "target": "right@.3",
+        "inset": 0.08
+      }
+    },
+    {
+      "id": "water",
+      "kind": "stroke",
+      "intent": "a thin blue stream should land in the pot",
+      "depth": 13,
+      "palette": {
+        "fill": "#669ca8"
+      },
+      "length": 0.15,
+      "thickness": 0.007,
+      "bend": 0.08,
+      "angle": 69.0,
+      "endpoints": {
+        "root": {
+          "to": "spout",
+          "target": "tip",
+          "inset": 0
+        }
+      }
+    },
+    {
+      "id": "plant-pot",
+      "kind": "shape",
+      "intent": "a blue planter rests on the right end of the sill",
+      "depth": 3,
+      "palette": {
+        "fill": "#467e88",
+        "ink": "#493f3b"
+      },
+      "stroke": 0,
+      "length": 0.13,
+      "width": 1.4,
+      "rounding": 0.4,
+      "taper": -0.28,
+      "attachment": {
+        "to": "sill",
+        "self": "bottom",
+        "target": "center",
+        "offset": [
+          0.23,
+          -0.0175
+        ]
+      }
+    },
+    {
+      "id": "plant-stem",
+      "kind": "stroke",
+      "intent": "one upright stem emerges from the planter",
+      "depth": 5,
+      "palette": {
+        "fill": "#426f50"
+      },
+      "length": 0.24,
+      "thickness": 0.012,
+      "angle": 180,
+      "bend": -0.025,
+      "attachment": {
+        "to": "plant-pot",
+        "self": "root",
+        "target": "top",
+        "inset": 0.07
+      }
+    },
+    {
+      "id": "leaf-1",
+      "kind": "shape",
+      "intent": "a broad left leaf opens from the stem",
+      "depth": 6.0,
+      "palette": {
+        "fill": "#5a8760",
+        "ink": "#493f3b"
+      },
+      "stroke": 0,
+      "profile": "oval",
+      "length": 0.11,
+      "width": 0.43,
+      "angle": -35,
+      "attachment": {
+        "to": "plant-stem",
+        "self": "bottom",
+        "target": "root",
+        "offset": [
+          0,
+          -0.05
+        ]
+      }
+    },
+    {
+      "id": "leaf-2",
+      "kind": "shape",
+      "intent": "a broad right leaf opens from the stem",
+      "depth": 6.1,
+      "palette": {
+        "fill": "#5a8760",
+        "ink": "#493f3b"
+      },
+      "stroke": 0,
+      "profile": "oval",
+      "length": 0.11,
+      "width": 0.43,
+      "angle": 38,
+      "attachment": {
+        "to": "plant-stem",
+        "self": "bottom",
+        "target": "root",
+        "offset": [
+          0,
+          -0.09
+        ]
+      }
+    },
+    {
+      "id": "leaf-3",
+      "kind": "shape",
+      "intent": "a broad left leaf opens from the stem",
+      "depth": 6.2,
+      "palette": {
+        "fill": "#5a8760",
+        "ink": "#493f3b"
+      },
+      "stroke": 0,
+      "profile": "oval",
+      "length": 0.11,
+      "width": 0.43,
+      "angle": -42,
+      "attachment": {
+        "to": "plant-stem",
+        "self": "bottom",
+        "target": "root",
+        "offset": [
+          0,
+          -0.15
+        ]
+      }
+    },
+    {
+      "id": "leaf-4",
+      "kind": "shape",
+      "intent": "a broad right leaf opens from the stem",
+      "depth": 6.3,
+      "palette": {
+        "fill": "#5a8760",
+        "ink": "#493f3b"
+      },
+      "stroke": 0,
+      "profile": "oval",
+      "length": 0.11,
+      "width": 0.43,
+      "angle": 44,
+      "attachment": {
+        "to": "plant-stem",
+        "self": "bottom",
+        "target": "root",
+        "offset": [
+          0,
+          -0.19
+        ]
+      }
+    },
+    {
+      "id": "carrying-hand",
+      "kind": "shape",
+      "intent": "A compact closed carrying hand will wrap over the top handle",
+      "depth": 30.0,
+      "length": 0.045,
+      "width": 1.7,
+      "rounding": 0.94,
+      "taper": 0.0,
+      "stroke": 0.025,
+      "palette": {
+        "fill": "#f1d0b8",
+        "ink": "#b5836d"
+      },
+      "attachment": {
+        "to": "reaching-sleeve",
+        "self": "left",
+        "target": "tip",
+        "inset": 0
+      }
+    },
+    {
+      "id": "grip-thumb",
+      "kind": "stroke",
+      "intent": "the thumb crosses the folded fingers over the carrying handle",
+      "length": 0.034,
+      "thickness": 0.013,
+      "angle": 87,
+      "bend": 0.08,
+      "depth": 32,
+      "palette": {
+        "fill": "#f1d0b8",
+        "ink": "#b5836d"
+      },
+      "ink_width": 0.001,
+      "attachment": {
+        "to": "carrying-hand",
+        "self": "root",
+        "target": "left@.35",
+        "inset": 0.1
+      }
+    },
+    {
+      "id": "grip-fold",
+      "kind": "stroke",
+      "intent": "one small crease indicates folded fingers rather than an open palm",
+      "length": 0.017,
+      "thickness": 0.0014,
+      "angle": 0,
+      "bend": 0.08,
+      "depth": 33,
+      "palette": {
+        "fill": "#b5836d"
+      },
+      "attachment": {
+        "to": "carrying-hand",
+        "self": "root",
+        "target": "top@.72",
+        "inset": 0.18
+      }
+    },
+    {
+      "id": "soil",
+      "kind": "shape",
+      "intent": "a dark oval opening explains soil and the landing of the watering stream",
+      "profile": "oval",
+      "length": 0.025,
+      "width": 6,
+      "stroke": 0.1,
+      "depth": 4,
+      "palette": {
+        "fill": "#74674f",
+        "ink": "#467e88"
+      },
+      "attachment": {
+        "to": "plant-pot",
+        "self": "center",
+        "target": "top",
+        "offset": [
+          0,
+          0.005
+        ]
+      }
+    }
+  ]
+}

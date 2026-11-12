@@ -117,3 +117,12 @@ mounts interpolate nominal boundary stations and outward normals continuously. T
 that exact address before pinning a child; the graph still derives placement only. Selection crops
 follow the proposed edited feature while the candidate remains bound to the original selection.
 Detailed schema/algorithms and validity checks remain in 7_INTERFACE and 8_DETAIL.
+
+## Stroke endpoint dependency graph
+
+The legacy mount graph remains one parent per whole-object pin. Stroke endpoints add up to two
+named target dependencies within the same acyclic resolver. Raw constraints remain semantic; the
+compiler derives root placement and the two-target chord without feeding absolute coordinates
+back into authoring. Selection, depth compilation and reports consume that resolved copy.
+Deletion traverses both links and releases only affected endpoints by baking the current chord.
+The source/target visual inspection and optimistic transaction boundary remain unchanged.

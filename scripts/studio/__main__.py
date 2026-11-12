@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 import sys
 
-from .model import accept, attachment_preview, detach_preview, remove_preview, engine_fingerprint, fingerprint, parameter_preview, parameters_preview, preview, read, select, undo, validate, write
+from .model import accept, attachment_preview, detach_preview, remove_preview, bind_endpoint_preview, unbind_endpoint_preview, engine_fingerprint, fingerprint, parameter_preview, parameters_preview, preview, read, select, undo, validate, write
 from .render import bundle
 
 
@@ -86,7 +86,9 @@ def main():
             operation.add_argument('--change',action='append',metavar='NAME=VALUE',help='repeat for one coherent multi-control preview; accept/undo as one edit')
             operation.add_argument('--attach',metavar='TARGET_SELECTION',help='pin to a target inspected with --feature anchors')
             operation.add_argument('--detach',action='store_true',help='release an inspected mount while preserving current placement')
-            operation.add_argument('--remove',action='store_true',help='remove the inspected whole object; direct children stay in place and become free')
+            operation.add_argument('--bind-end',metavar='TARGET_SELECTION',help='bind the inspected stroke root/tip to a separately inspected target mount')
+            operation.add_argument('--unbind-end',action='store_true',help='release the inspected root/tip while preserving the current curve')
+            operation.add_argument('--remove',action='store_true',help='remove the inspected whole object; affected surviving links release in place')
             p.add_argument('--cascade',action='store_true',help='with --remove, also remove all attached descendants')
             p.add_argument('--self-anchor',help='named mount on this object (defaults to inspected mount, else center)')
             p.add_argument('--target-anchor',help='named mount on target object (defaults to inspected mount, else center)')
@@ -111,6 +113,7 @@ def main():
             if args.command=='preview':
                 inputs.append(Path(args.selection))
                 if args.attach: inputs.append(Path(args.attach))
+                if args.bind_end: inputs.append(Path(args.bind_end))
             for source in inputs:
                 for name in names:
                     target=output/name
@@ -163,11 +166,17 @@ def main():
             write(Path(args.outdir)/'report.json',dict(status='preparing',revision=fingerprint(scene),engine=engine_fingerprint(),images=[]))
             (Path(args.outdir)/'report.txt').write_text('',encoding='utf-8')
             selection=read(args.selection)
-            if not args.attach and (args.self_anchor is not None or args.target_anchor is not None or args.inset!=0):
-                raise ValueError('--self-anchor, --target-anchor and --inset are used with --attach')
+            if not args.attach and not args.bind_end and (args.self_anchor is not None or args.target_anchor is not None or args.inset!=0):
+                raise ValueError('mount flags are used with --attach or --bind-end')
+            if args.bind_end and args.self_anchor is not None:
+                raise ValueError('--bind-end uses the inspected root/tip, not --self-anchor')
             if args.cascade and not args.remove:
                 raise ValueError('--cascade is used with --remove')
-            if args.remove:
+            if args.bind_end or args.unbind_end:
+                if args.value is not None: raise ValueError('--value is used with --set')
+                candidate=(bind_endpoint_preview(scene,selection,read(args.bind_end),args.target_anchor,args.inset,args.reason)
+                           if args.bind_end else unbind_endpoint_preview(scene,selection,args.reason))
+            elif args.remove:
                 if args.value is not None: raise ValueError('--value is used with --set')
                 candidate=remove_preview(scene,selection,args.reason,args.cascade)
             elif args.attach or args.detach:

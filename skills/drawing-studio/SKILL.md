@@ -139,7 +139,7 @@ you read that value. Use e.g. working.json and a different output directory.
 
 For carrying/grasping/pouring or a mark connecting movable objects, read
 [object interaction](references/object-interaction.md) before adding detail. It records the actual
-watering failures, depth-based wrap experiment and the current single-endpoint constraint limit.
+watering failures, depth-based wrap experiment and the demonstrated far-end drift and the newer endpoint-binding remedy.
 
 ## Place connected parts by visible named mounts
 
@@ -213,8 +213,9 @@ Start with new scene.json --kind blank for an empty paper, then add named parts.
 paper without an object shows the canvas; add an object before selecting a feature.
 
 To remove a part, inspect --object ID --feature object and read its actual outline and descendants
-in the report. Preview --remove with a drawing reason. By default direct children are released at
-their current visible placements; their children retain their relations. Use --cascade only when
+in the report. Preview --remove with a drawing reason. By default direct legacy children are released at
+their current visible placements; their children retain their relations. A two-ended stroke releases
+only pins whose targets were deleted, retaining its other pin and current paint. Use --cascade only when
 you intend to remove the whole descendant chain. Read clean artwork and alignment: red dashed
 labels are removed old paint; blue labels are retained children released in place. Neither guide
 is part of the clean image. Accept or discard; undo restores the full prior scene and relations.
@@ -223,3 +224,20 @@ For a replacement, remove the old part with the appropriate child policy, add a 
 then inspect/shape/place it and inspect both mounts before reconnecting retained parts. The steps
 are separate recoverable edits, not one atomic replace transaction. Removing the last part leaves
 valid blank paper; add/undo still work. An eyes/edge/anchor selection cannot delete a whole object.
+
+## Keep a gesture connected at both ends
+
+Inspect a stroke with --feature root or tip and separately inspect its destination with --feature
+anchors (optionally --anchor NAME). Read both actual alignment views. Preview --bind-end
+TARGET/selection.json with a drawing reason; --target-anchor and --inset use the inspected mount.
+The source end comes from its inspected root/tip feature. Existing legacy root/tip pins are retained;
+a center pin must be detached first. Read the clean image and blue pinned-end rings before accepting.
+
+One pin keeps a freely editable chord. Two pins derive length/angle from the target geometry, so
+those controls disappear; bend/thickness/colour and protected local spine pushes remain. Do not
+move an entire doubly pinned stroke or drag a pinned end. Move its targets, adjust its gesture, or
+inspect that root/tip and preview --unbind-end. Releasing one/both pins preserves the current paint.
+--detach from an anchors inspection releases all pins. Default deletion of a target releases only
+the affected link in place, retaining the other pin; cascade follows both dependencies. Cycles and
+collapsed/invalid derived gestures are refused. These are projected constraints with independent
+depth, not a fluid simulation or a general grip/physics solver.

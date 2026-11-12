@@ -26,7 +26,9 @@ not an accepted general closed-hand or physical-simulation primitive.
    geometric intersection and correct depth order do not by themselves prove a convincing hand.
 5. Give the receiving surface a readable opening when it matters. The pot's plain top initially
    made the water look as if it hit a solid vessel. A small soil ellipse and deliberate stem/rim
-   depth explain the destination without texture or decorative splash effects.
+   depth explain the destination without texture or decorative splash effects. A center mount can coincide with the stem;
+   choose an actually visible open patch of soil, using an inspected edge and inward inset when
+   appropriate. Automatically preserving the wrong target does not improve the picture.
 
 ## Revise the chain without losing its far end
 
@@ -39,8 +41,10 @@ Inspect root/tip and the intended destination in actual images. Correct the free
 its opposite end is pinned; read the clean result and local overlay before acceptance. Reinspect
 for a further correction. The independent reframe used a rightward move, then a smaller upward
 move after observing that the stream landed too near the front rim. Those amounts are specific
-to that picture, not reusable constants. Current Studio has no automatic second-target endpoint
-constraint; do not claim it keeps both connections when one object moves.
+to that picture, not reusable constants. That study used manual correction. Studio now offers separately inspected endpoint bindings
+(see the main skill): binding both root and tip derives the chord and follows both named targets.
+Use that operation for continuing connections, and inspect the real revised image. It does not
+make a general fluid/grip solver or guarantee a physically plausible bend.
 
 A root-object overlay outlines the selected object, not every descendant that may follow it.
 Read the whole clean preview after a parent edit. Distinguish explicit colour planes and outlines

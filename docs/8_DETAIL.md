@@ -240,3 +240,17 @@ could similarly retain its old target during a different operation. current_sele
 these impact views as new inspections. The original inspected selection remains usable at the same
 base. This is a provenance correction, not a geometric change. The pre-fix failure and the exact
 creator source are retained in evidence/studio-removal/.
+
+## Endpoint graph resolution
+
+The resolver visits both endpoint target dependencies before compiling a stroke, using the same
+cycle stack as legacy attachment. Each target point uses actual generated mount geometry, normal
+inset and retained screen offset. With one pin the intrinsic gesture translates unchanged. With
+two, the endpoint difference yields chord length and atan2(dx,dy) angle; root placement and those
+values exist only in the compiler copy. Geometry validation runs on that resolved stroke. Node-level
+compilation refuses unresolved endpoint input rather than quietly using nominal coordinates.
+
+Screen-direction spine pushes use the resolved chord angle, preserving their material-axis meaning
+under target motion. Release/deletion bake the resolved chord before removing links, so a surviving
+pin reconstructs the same world geometry. Reports and selection filters hide derived controls.
+Depth clipping remains unchanged; projected endpoint equality is not 3D contact or fluid physics.

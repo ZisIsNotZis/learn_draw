@@ -1,0 +1,39 @@
+{
+  "base": "9a95ef43d673facc00c3fdbbe2bce1a8c2ec68c47bd59a13e42f1a95deae0d45",
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "object": "spout",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    668.2407740510253,
+    380.57553861750483,
+    700.2407740510253,
+    412.57553861750483
+  ],
+  "object_bounds": [
+    556.4046265132401,
+    362.1849741594957,
+    692.2970989098613,
+    404.6318634763409
+  ],
+  "controls": [],
+  "focus": [
+    684.2407740510253,
+    396.57553861750483
+  ],
+  "locks": {
+    "tip": [
+      684.2407740510253,
+      396.57553861750483
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "tip",
+  "endpoint_bindings": {
+    "root": {
+      "to": "can-body",
+      "target": "right@.3",
+      "inset": 0.08
+    }
+  }
+}

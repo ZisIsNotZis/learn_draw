@@ -577,3 +577,14 @@ a displaced pour. The connected-source graph worked; automatic far-end attachmen
 The final root/actor images are coherent flat studies with known grip, pose and finish limits.
 Actual failures/revisions, fresh image pairs and executable reuse live in evidence/studio-watering/.
 The practice is disclosed through the drawing skill's object-interaction reference.
+
+## Adopted two-target gesture constraints
+
+A stroke can bind its root and tip to separately inspected named targets. Both targets determine
+the chord while bend, thickness and local spine refinement remain authored. This directly addresses
+the watering study's free-end drift, rather than adding a subject-specific watering generator.
+It also supports a handle whose two ends follow an edited vessel. One/free-ended strokes remain
+available; releasing constraints preserves their visible geometry. These are projected constraints
+with independent support depth, not a general grip solver, 3D contact or fluid simulation.
+Current API and graph behavior belong to 7_INTERFACE/8_DETAIL; actual drawing revisions and
+independent execution are indexed at ../evidence/studio-endpoints/.

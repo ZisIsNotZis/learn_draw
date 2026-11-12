@@ -351,3 +351,13 @@ actual draft/revision/check/review and independent reframe are in evidence/studi
 This unit changes artwork/examples/skill, not the Studio engine; inherited 113 passing tests remain
 source-applicable. Current picture identity and actual projected joins/soil landing are verified
 separately and are not substitutes for fresh visual judgment.
+
+## Bind a stroke endpoint to an inspected target
+
+Inspect scene.json --object water --feature tip --outdir TIP; inspect its destination separately
+with --feature anchors --anchor NAME. View both actual alignment images. Preview --selection
+TIP/selection.json --bind-end TARGET/selection.json --reason ... --outdir TRY, then view/accept.
+Root and tip come from their terminal selections; exact targets and optional inset use the normal
+mount rules. Preview --unbind-end releases that inspected endpoint without moving the paint.
+Two pins derive length/angle and retain width/bend/spine controls. Operation coverage is
+scripts.tests.test_studio_endpoints; real frame and handle revisions are in evidence/studio-endpoints/.

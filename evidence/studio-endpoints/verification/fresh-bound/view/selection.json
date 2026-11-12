@@ -1,0 +1,34 @@
+{
+  "base": "227a48e157d199c439c086c9207f0b9353a931ed1bdbdd77e80fa1da027c3df8",
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "object": "carrying-hand",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    486.87539576563296,
+    273.8792425547645,
+    542.7653952822967,
+    307.0892424968944
+  ],
+  "object_bounds": [
+    486.87539576563296,
+    273.8792425547645,
+    542.7653952822967,
+    307.0892424968944
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

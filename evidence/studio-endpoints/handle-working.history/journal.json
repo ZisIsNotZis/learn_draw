@@ -1,0 +1,44 @@
+[
+  {
+    "base": "c2811e5c58010932fbb7d18aadd374888727b116d931428bfd2b15282905140c",
+    "result": "8d5ee2ef04fe00c4c3cfe31b7f8cce5ed4afcbe85f91b40242cc2f79d1da03c5",
+    "operation": {
+      "action": "bind-endpoint",
+      "object": "can-handle",
+      "endpoint": "root",
+      "target": {
+        "to": "can-body",
+        "target": "top@.2",
+        "inset": 0.08
+      },
+      "reason": "Seat the handle root on a real upper reservoir surface rather than a screen offset"
+    }
+  },
+  {
+    "base": "8d5ee2ef04fe00c4c3cfe31b7f8cce5ed4afcbe85f91b40242cc2f79d1da03c5",
+    "result": "348b43bccc3099a6bfa861356e6161a8fcada162fb6695eaf70915400adbfa2b",
+    "operation": {
+      "action": "bind-endpoint",
+      "object": "can-handle",
+      "endpoint": "tip",
+      "target": {
+        "to": "can-body",
+        "target": "top@.8",
+        "inset": 0.08
+      },
+      "reason": "Pin both handle ends into the upper reservoir surface so a later tilt preserves their joins"
+    }
+  },
+  {
+    "base": "348b43bccc3099a6bfa861356e6161a8fcada162fb6695eaf70915400adbfa2b",
+    "result": "13192ec29d8384fd6d0774bb30467c88c5132114ca99012701517cfc0a2b3410",
+    "operation": {
+      "object": "can-body",
+      "feature": "object",
+      "parameters": {
+        "angle": -50.0
+      },
+      "reason": "Increase the pouring tilt; both handle joins and the stream landing should remain constrained"
+    }
+  }
+]

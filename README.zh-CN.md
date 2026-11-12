@@ -30,6 +30,9 @@ PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安
 也可用 `new scene.json --kind blank` 从空白纸开始。检查整个对象后，用 `preview --remove`
 预览删除；默认让直接子部件留在原位，`--cascade` 则连同后代一起删除。
 [实际替换与撤销记录](evidence/studio-removal/README.md)保存了影响视图和连接保留的验证。
+笔画两端现在可分别绑定检查过的目标；移动人物或花盆时，水流自动保持连接，解除一端也不会跳位。
+[实际双端试验](evidence/studio-endpoints/README.md)包含独立修改／撤销记录与未解决的美术问题。
+可运行 `python examples/studio/watering.py --bound --outdir FRESH` 得到可编辑样例。
 
 天空、山脊、月亮和太阳预设也已支持小幅背景构图与可撤销移动。[实际研究及批评意见](evidence/studio-composition/README.md)
 保留了当前效果的局限；这些能力不等于整幅作品的美术验收。

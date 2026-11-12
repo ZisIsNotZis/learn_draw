@@ -1,246 +1,121 @@
-# 0_ROADMAP ? current product advance
+# Current product advance
 
-## Goal and authority
+## Goal, authority and boundaries
 
-The 2026-11-12 user clarification is authoritative: build a drawing workbench for VLM creation,
-with useful simple defaults, optional refinement and accumulated drawing skill. The purpose is
-`1_PROBLEM.md`; acceptance is `2_GOAL.md`. Reference imitation develops the product and practice.
-The former R1?R4 plan and its failure evidence are preserved in
-`../.scratch/history/roadmap-before-vlm-studio.md`; they are not current execution requirements.
-The sealed brief remains unread and unreleased. Historical images and parts remain unchanged.
+Build a drawing workbench that lets a VLM create and progressively revise programmatic art, with
+useful simple defaults, optional refinement and reusable drawing practice. The user's 2026-11-12
+clarification is authoritative: reference imitation trains both product and skill; it is a means,
+not the endpoint. Purpose is 1_PROBLEM.md; acceptance and claim boundaries are 2_GOAL.md. Keep the
+full intent-led creation goal, rather than redefining success around a catalog or passing tests.
 
-## Current evidence
+Final creation uses authored SVG/CSS geometry and depth, without generated pixels or pixel-metric
+optimization. The engine does not read a reference. Author observation is required during editing;
+fresh image review judges useful checkpoints. Neither tests nor reviewers substitute for human
+judgment. Taste questions are asynchronous; silence is not acceptance or a reason to stop.
 
-- Upstream history through `0a28db7` has been reconciled without replacing the studio direction.
-  The later legacy portrait is `A-full-figure-v2` at reviewed artwork revision `90ff009`, with
-  A3/B4/C3/D1–3/E4–5/F3–4 and no whole-art pass. Its attempted W2b repair was reverted. The complete
-  old plan is `../.scratch/history/roadmap-upstream-0a28db7.md`; original v2 records are retained.
+The user paused local GPU inference/training/benchmarks/GPU-dependent validation on 2026-11-12.
+That pause persists. CPU geometry/native resvg and static image review may continue; browser
+fallbacks must disable GPU. Do not substitute heavy CPU training. The sealed brief stays unread
+and unreleased.
 
-- A full portrait exists; partial historical user acceptance of A-cloth-v8/B-hand-v2-r1 is retained,
-  not generalized to later images. Whole-image art and transfer remain unproven.
-- A-full-figure-waist-r1 is a small line/material cleanup. Existing independent review does not claim
-  a structural or whole-artwork pass. The chest/waist diagnosis identifies a projected gap, not a
-  demonstrated solution. It remains a useful future work item.
-- Current code generates dedicated reference-seeded contours and uses depth visibility. Existing
-  hair-mass is a width band around 2?5 gesture points. It lacks revision-bound selection/local edits.
-- This checkout is an intentionally sparse recovery with pre-existing deletions. Product development
-  uses the isolated codex/vlm-studio worktree; the recovery checkout is left untouched.
+Development uses isolated D:/vibe/learn_draw_studio, branch codex/vlm-studio. The original recovery
+checkout has pre-existing deletions/untracked work and remains untouched. Push completed atomic
+units through the existing SSH identity, preserve records and stop without live processes or
+uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation skill is
+../skills/drawing-studio/SKILL.md.
 
-## Advance A ? a part the VLM can actually revise
+## Current usable capabilities and evidence
 
-**Visible outcome:** a good default hair lock, its alignment/selection view, and a real local edit
-sequence with before/after images. A clean small composition will demonstrate reuse after the part
-is independently reviewed. This is workbench capability, not a finished portrait claim.
+- A small input creates a flat-cartoon head, open hand, lock, generic colour mass, gesture stroke
+  or scenic preset. The user accepted the simple head direction as one default preset only.
+  The open hand is a front-view greeting palm, not a fist or a full hand/body rig.
+- Inspect/preview/accept/undo provides actual alignment and magnified views, protected local edits,
+  grouped semantic parameters, revision/implementation binding, stale/invalid refusal and ready-
+  render acceptance. Source, selection and target inputs cannot be overwritten by output aliases.
+- Named whole-object pins preserve projected connections. Stroke root/tip constraints can instead
+  depend on two independently inspected targets: the compiler derives length/angle, while width,
+  bend and protected spine edits remain authored. Releasing a pin preserves current paint. Target
+  deletion releases only affected links in place; cascade follows both dependencies. Cycles and
+  invalid/collapsed gestures refuse. This is projected placement, with independent support depth.
+- Empty paper, undoable insertion and visible removal support revision beyond adding parts. A
+  replacement remains separate recoverable remove/add/configure/attach edits. Immediate insertion
+  still accepts a default before shaping/placement; atomic insertion/replacement is not claimed.
+- Generic masses/strokes have produced actual new-subject lamps, rockets, cactus and pinwheel
+  studies. A richer original watering illustration connects person, grasp, can, stream and soil.
+  Its actual correction loop changed an open-palm contact, pouring attitude, free handle end,
+  receiving surface and palm/handle/thumb overlap. These are bounded visual outcomes, not a
+  general anatomy or physical-fold capability.
 
-**Required operation:** instantiate from a small gesture; select a semantic edge and bounded influence;
-see where the action lands; preview a screen-direction push measured in object widths; accept or
-undo. Stable endpoints and unrelated objects survive. Stale previews cannot overwrite a newer scene.
+The current combined suite has 121 passing operation/checker/visibility/oracle tests on fixed
+Studio source. The eight endpoint methods were also rerun with explicit new-target input-alias
+coverage. Seven earlier defaults/artworks and newer original stroke/watering images preserve their
+PNG bytes; current examples repeat. These are mechanical/source checks, not an art verdict.
 
-**Implementation:** scripts/studio, using the existing depth engine. JSON scenes remain text-authored;
-SVG paths are compiled output. CPU-only rendering. First validate one well-made primitive; expand the
-catalog only when real drawing requires it.
+Current endpoint evidence is indexed at ../evidence/studio-endpoints/README.md. A fresh skill/help-
+only operator binds both water ends, independently moves person and pot without correcting the
+water node, releases a pin with identical paint, and undoes to the exact bound scene. Its separate
+image pair finds a coherent pour while retaining grip/pose/finish weaknesses. Root handle studies
+keep both joins during a vessel tilt. The older free-ended negative control still drifts, so the
+new result is discriminating rather than a repeated static picture.
 
-**Evidence:** meaningful mechanical checks for edit locality, endpoint protection, stale-state refusal,
-undo, invalid geometry and depth crossings; actual CPU-rendered default and successive-edit images;
-fresh-context image review. Readability and aesthetics require image evidence, not those checks.
+Try python examples/studio/watering.py --bound --outdir FRESH for a current editable example with
+actual stream selection/pin views. The default mode preserves the older free-ended study. The
+helper works from an empty cwd by absolute script path and refuses an existing output directory.
+Exact schema/algorithms are owned by 7_INTERFACE.md/8_DETAIL.md.
 
-**Owner:** main agent integrates code, artifacts and current docs. Fresh-context reviewers see images
-only at checkpoints. Human taste feedback is requested for concrete unresolved choices and remains
-asynchronous; silence is not acceptance and does not stop independent work.
+## What is still weak or unverified
 
-**Checkpoint:** after the first rendered edit sequence, choose between improving default shape,
-changing editing affordances or proceeding to a small composition based on observed outputs.
-If repeated edits do not help, change the mechanism or selection design rather than adding knobs.
+The recurrent visual problem is grasp. The current mass/thumb/fold recipe can imply a hooked hold,
+but fresh critics consistently find it crowded and ambiguous. Contact equality does not explain
+an opposing thumb, curling fingers or weight. The original watering pictures also retain stiff
+arm/torso gesture, outward-facing attention, broad unoutlined body versus detailed head, and
+crowded window contacts. A fixed endpoint does not guarantee a gravity-consistent fluid curve.
 
-## Advance B ? draw with the workbench
+Human scene-level taste feedback on the watering illustration is pending, as is the earlier
+community-cover question. Do not generalize accepted head-preset taste into whole-scene acceptance.
+The newer open-soil landing corrects a center-to-stem junction; the previous center-point image
+reviews are not relabeled as a review of that corrected PNG. The independent final scene separately
+uses and reviews an open-soil landing. No historical baseline has been promoted.
 
-Use accepted part operations in a small original composition and in one bounded area of the portrait.
-This makes easy-default quality, controllability and practical reuse visible. Preserve all old artwork
-versions. Evolve new part versions when needed rather than patching around frozen defective geometry.
-A head or hand primitive is introduced only with its own satisfactory default and useful edits.
+Visibility uses the existing depth engine. Disjoint projected parts can avoid unnecessary compound
+triangle masks; genuine depth crossings remain computed. Seam freedom for all intersecting masks,
+solid physical contact, a closed-hand rig, broad pose/view/style transfer and general drawing
+mastery remain unproven. Tools/skill are product outputs, supported by real images; a milestone
+count or attractive interface alone cannot establish the desired capability.
 
-## Advance C ? broaden creation and externalize the craft
+## Next action and checkpoint
 
-Choose subsequent subjects from actual gaps. Distil demonstrated drawing operations and visual
-failure diagnoses into a concise runnable skill. Test another intent-led work using the workbench and
-that skill. Keep task-specific constants separate from reusable practice. A bounded original body of
-work is evidence of capability; neither a universal creativity claim nor a Starry-Night deadline.
+Develop and visually test a useful closed/carrying grasp, starting from the existing watering
+failure. Compare established articulated/3D hand construction and the current mass recipe before
+choosing a mechanism. Seek a small input with a clear palm/prop/finger enclosure and optional
+refinement, without making the VLM repair generated vertices or a defective default from scratch.
+A general renderer/rig change is not pre-decided; use the actual default picture to choose it.
 
-## Resource boundary
+The main agent owns the first default and one meaningful correction. Fresh image reviewers judge
+whether contact reads, separately from geometry. A skill-only independent operator then reuses
+it with another simple held prop. Check default quality and useful size/rotation/placement edits,
+not a universal anatomy claim. Preserve accepted defaults and prior artworks. The next useful
+checkpoint is that real grip sample, before multiplying presets or implementation infrastructure.
+If the same tiny contour changes keep producing the same critique, change the representation or
+support/occlusion model rather than adding more creases to the ambiguous silhouette.
 
-The user paused all local GPU training/inference/benchmarks/GPU-dependent validation on 2026-11-12.
-No new authorization was given. CPU geometry and static image review may continue; browser rendering
-must disable GPU. Do not substitute heavy CPU training. No generated pixels in authored final work.
+Verbose directional edits, root-only scope overlays and immediate insertion remain observed
+usability gaps. They should earn fixes through an actual composition task. Keep the full VLM-
+creation objective and continue independent work while human taste feedback is absent.
 
-## Active execution
+## History and resources
 
-The first editing prototype is implemented: simple lock, visible selection, compact local pushes,
-preview/accept/undo, one-sided width, independent gesture and thickness, and implementation-bound
-stale-state refusal. 36 operation/visibility/oracle tests and 81 CPU smoke checks pass; current SVG
-rebuild and repeated CPU PNG are identical. `evidence/studio-hair/README.md` indexes actual studies.
+The previous long sequence of studio advances is preserved byte-for-byte in
+../.scratch/history/studio-roadmap-through-watering.md. Its then-current next action and counts
+are history; this file owns current state. Earlier R1-R4 plans remain in
+../.scratch/history/roadmap-before-vlm-studio.md and roadmap-upstream-0a28db7.md. Their goals/failed
+routes are not current execution orders.
 
-**Portrait/hair visual gate remains open.** Both independent reviewers rejected successive legacy portrait
-integrations: roots read as caps, horizontal cuts or insertion near the eye; old face-side strips and
-back curtains compete with the new mass. Shoulder visibility and curvature improved but do not close
-that gate. Those attempts are frozen; no further same-assembly root tweaks are active.
-
-A clean frontal head macro now exists under `examples/studio/head_probe.py`. It reuses legacy
-face/eye construction, contains catchlights in their aperture, fuses same-material front hair,
-and separates exact rear-cut geometry from intentional smooth face/front-hair artwork. The native
-CPU SVG backend rendered one in-process sample in 0.029 s; this excludes process/import startup.
-40 focused/inherited tests pass, including two raster negative controls. A prior claim that generic
-smoothing necessarily bowed below a straight cut was not supported by its negative control and was
-withdrawn; the verified effect is different corner coverage, not that alleged overshoot.
-
-Blind image reviewers still identify cap-like/planar hair, face/ear simplification and rear-cut
-stiffness. A separate execution-capable reviewer, given the explicit flat-cartoon head-component use,
-ran default and 0.92 eye-scale commands without source edits and found minimum practical usability,
-real local eye control and no blocker requiring a redraw. This closes only that bounded usability
-question, not whole-artwork quality or general head/hair mastery. The user explicitly answered
-“可以作为一个默认预设” to the displayed 09 sample. This accepts that simple flat-cartoon preset
-direction; it is not acceptance of the legacy portrait or all future variants.
-
-The head is now a first-class studio node with eye/face/hair selections, semantic parameter previews,
-child-lock screen-direction pushes under parent tilt, accept and exact mixed-edit undo/replay.
-`evidence/studio-head-integrated/` records the actual sequence, 48 passed tests, 81 CPU smoke checks,
-locked environment installation and repeated SVG/PNG byte identity. These are operation evidence,
-not whole-artwork acceptance.
-
-Sky/hills/moon/sun presets and undoable insertion/object moves now compose two distinct small scenic
-backgrounds. `evidence/studio-composition/` preserves the real edits and both review pairs. The first
-palette-swap approach was too repetitive; revised landform, focal placement and a rooted pine group
-improved the variation. Fresh critics still find sparse scene character, colour-band hills and
-repeated tree icons. These are background/component evidence, not a finished-art gate. 54 combined
-tests and repeated current SVG/PNG bytes pass.
-
-An independent creator, given only the skill/public commands and a new dual-avatar intent, completed
-seven edits without source, existing images or JSON/SVG workarounds. `evidence/studio-transfer/` keeps
-its raw result and critical image-review pair. It exposed a bob-only blue-line palette omission,
-stale stock intent and missing creation-time canvas controls. These operation gaps are corrected;
-the repair is labeled assisted, with a pre-fix failing regression, 55 combined passing checks,
-unchanged default-head PNG and changes confined to the partner's hair. Review still finds similar
-faces/expressions, rigid hair and excess lower whitespace; no whole-cover art pass is claimed.
-
-Head expression/gaze is now implemented with actual feature selection, coordinated lid/brow/mouth
-changes and conjugate attention. An over-closed prototype was rejected and corrected after image
-and execution review. `evidence/studio-expression/` preserves both failures and a balanced variant.
-60 combined tests and 81 CPU smoke checks pass; the prior default-head PNG is unchanged. A composed
-community-banner candidate has a conditional minimum-usefulness review, with hard hair, simplified
-ears and limited facial acting still criticized. Its human taste question is pending asynchronously.
-
-The front-view open-hand primitive is integrated after comparing the legacy ellipse generator and
-several knuckle constructions. It has five distinct digits, semantic palette/spread/handedness,
-visible tip handles and bounded screen-direction edits about fixed knuckles. An independent operator
-used only the skill and public commands to compose a head-and-hand greeting; it deliberately
-discarded an unhelpful finger edit. This is a separate-parts greeting asset, not an attached body rig.
-71 operation/checker/visibility tests and 81 CPU smoke checks pass; repeated hand and greeting SVG/PNG
-are identical, and the accepted default-head PNG remains unchanged. See
-`evidence/studio-hand/README.md` for failure contrasts, independent reviews and exact verification.
-Blind critics retain rigid hair, hard thumb-side transitions and limited volume.
-
-A contradictory blank-image observation was investigated rather than used to change the drawing.
-The compared files decode to identical complete pictures. The review pack now preserves original
-PNG bytes and reports their SHA256; this reduces changes in the delivery path, not a proven cure
-for an unidentified viewing problem. Original observations and the correction remain together.
-
-Generic colour masses now form an editable lower-level surface: block/oval, taper/rounding, fill
-and ink, and four protected arc selections with screen pushes. A root-authored coastal lighthouse
-and a separate independent desk-lamp/book creation test subjects outside the preset catalog. The
-independent creator used seven generic masses through the skill/public CLI and discarded an
-unhelpful local shade edit. It exposed an arbitrary thin-mark width floor, corrected with a
-pre-fix failing regression and a separately labeled fine-line repair. Original actor scene/source
-and workaround remain unchanged. Fresh critics recognize the lamp but retain ambiguous book
-identity; the coastal scene retains schematic cliffs and water/contact ambiguity. No art gate closes.
-79 combined tests pass; current default/head/hand/coast and both lamp versions repeat identical
-SVG/CPU PNG, and earlier default head/hand pixels are preserved. A working-source/export collision
-found during replay also has a pre-fix failing regression and CLI input-preservation guard.
-See evidence/studio-shape/README.md for source bindings, review provenance and exact limitations.
-
-Related semantic settings now form one visible, atomic --change proposal. Controlled public-CLI
-replay of the actual lamp plan reduces accepted records from 63 to 28 while preserving the exact
-scene and PNG. A separate independent six-part toy rocket actually views complete groups, exercises
-one-step undo/replay and rejects/corrects an ill-seated nose. Its fresh image critiques find a
-clearly readable emblem plus minor joint/border issues. They also expose 24 real interior fin flecks:
-disjoint coplanar fins unnecessarily triggered compound triangle clipping. The renderer now proves
-commutativity from disjoint painted projections for every overlapping depth-interval pair; true
-crossings retain the depth solver. The original scene is unchanged, the diagnosed flecks disappear,
-and a second fresh image pair sees no new defect. Raw actor source/artwork remain intact.
-85 combined tests and current default-head/hand/mass byte preservation pass.
-See evidence/studio-parameters/README.md for independent use, exact replay, rendering diagnosis,
-review provenance and the boundary on genuinely intersecting masks.
-
-Visible named mounts and an authored parent graph now preserve projected point connections. The
-initial joint measurements show that the old elbow/cap/footing already overlap: placement cannot
-be blamed for every seam/volume critique. An independent four-mass cactus views both mount images,
-rejects a wrong arm tilt and an awkward tip, and moves the full three-link chain by editing only
-the pot. A six-mass pinwheel study changes only handle length; all raw descendants remain identical
-while their resolved centers follow by 32px. Preview, detach, offset nudges, stale/cycle refusal and
-contextual head/hand/lock editing are covered by 94 combined passing tests. Seven current artworks
-repeat, with previous defaults and the raw actor PNG unchanged. A real inset .65 refusal exposed an
-unnecessary half-width bound and missing help range; the corrected -2..2 range is documented and
-tested, with the original outcome retained. See evidence/studio-attachment/README.md.
-
-**Visual limits remain open.** Fresh critics find the pinwheel too petal-like, with no folded
-direction; the cactus has awkward branch contours. Point connectivity does not supply curve shape,
-material or a smooth joint. No whole-art gate closes.
-
-An editable rounded stroke now fills the gap between a generic closed mass and raw paths. The
-controlled comparisons retain existing rounding-only tuning, two round segments and one continuous
-curved cactus branch; fresh critics find the continuous icon coherent with no serious join defect.
-Swept wheel vanes communicate direction better but remain ribbons rather than proved paper folds.
-A six-component original waving character uses actual chin/wrist and positioned shoulder mounts.
-First fresh review exposed tube-like arms and an ambiguous sliver sleeve; actual accepted revisions
-change shirt shape, remove the isolated shade stripe and clarify the relaxed arm. The refined fresh
-review finds a usable connected flat character, with rigid torso and line-weight limits remaining.
-It is available as examples/studio/waving_character.json. No human artwork acceptance is inferred.
-
-106 combined operation/checker/visibility tests pass. Seven previous defaults/artworks preserve
-exact PNG bytes; the new default, character and continuous cactus repeat the observed image.
-See evidence/studio-stroke/README.md for comparisons, actual history, review provenance and limits.
-A fresh public-CLI creator completed a separate five-part greeting using only the skill/help,
-with visible chin/shoulder/wrist inspections and a useful pinned-root terminal correction. Its
-report records one selection-view sequencing deviation, two declined clipping proposals and a
-recoverable hand-width refusal. Fresh image critics find a clear greeting avatar, but a compressed
-arm and small pale shoulder notch remain. This is bounded reuse, not human acceptance or full
-anatomy. The many inspect/preview/accept calls remain a practical efficiency limitation.
-
-Composition revision now includes visible whole-object removal, default child release in place,
-explicit descendant cascade, and valid blank-paper states. The old segmented cactus branch was
-actually removed and replaced through public operations; its pot/trunk inputs remain unchanged,
-and the output matches the already-reviewed continuous branch. An independent creator replaced
-the pot with a blue rounded bowl, preserved the plant exactly, undid to exact original bytes and
-rejected a visibly floating placement. Both fresh image critics see a usable minimal icon, retaining
-leaf-like plant form and schematic vessel depth. This is revision evidence, not a new art milestone.
-113 combined tests pass. Final-source image preservation includes the old seven scenes, newer
-stroke/character/cactus, and raw independent repotting. A real impact-view reuse failure now refuses
-obsolete operation guides as new inspections; the original actor source and failing test are kept.
-See evidence/studio-removal/README.md.
-
-The original watering illustration now supplies a richer interaction than separate icons. Its
-initial open-palm grasp and upright/upward-spout pour failed critique; actual observed edits replace
-the hand with a compact hook/thumbnail recipe, lift the wrist, tip the can, seat the handle free
-end, expose soil, and thread handle depth between palm and thumb. Both final fresh critics read
-a coherent watering action without a structural blocker. Grip certainty, stiff pose, detailed head
-versus broad unoutlined masses and local window congestion remain open. The optional human taste
-question is pending; no acceptance is inferred. No engine source changed; inherited 113 tests
-remain applicable. The actual current picture repeats from a fresh cwd with no reference image.
-See evidence/studio-watering/README.md and examples/studio/watering.py.
-
-A separate skill/help-only operator reframes the person left. The person/can chain follows, but
-the water free tip leaves the soil. It notices the bad landing, inspects the tip and repairs it
-with rightward then smaller upward moves, keeping the spout/root fixed. Fresh image reviews retain
-grasp and pose limits while finding a coherent pour. This is editing reuse from a supplied scene,
-not independent generation of the complete illustration or validation of the newly written recipe.
-
-**Next action:** prototype a curve whose two ends bind to two independently inspected targets.
-Use the actual person-left and vessel-tilt edits above as controlled regressions: water should
-continue landing on soil, and both handle ends should follow the vessel. Preserve local gesture
-refinement, visible endpoint inspection, acyclic dependencies, deletion release and undo. Test
-the resulting real drawing revisions, not only coordinates. Current one-point/manual editing
-remains available; this is not a general physics or grasp solver. The observed immediate-add
-and long multi-direction-edit loops also remain usability gaps, but the demonstrated far-end
-drift now gives the next change a precise mechanism and acceptance evidence.
-More presets alone cannot establish open-ended creative capability.
-Do not turn a hand icon or this cover's limited usability into a whole-portrait/illustration pass.
-Preserve the legacy portrait. The development branch is
-`codex/vlm-studio`, pushed through the existing SSH identity; main has not been overwritten.
+Upstream through 0a28db7 is reconciled without replacing this direction. The legacy full portrait
+at artwork revision 90ff009 has no whole-art pass (A3/B4/C3/D1-3/E4-5/F3-4); W2b was reverted.
+Earlier partial human acceptance of A-cloth-v8/B-hand-v2-r1 is not acceptance of later whole images.
+Hair/portrait integration failures remain frozen rather than silently overwritten. Preserve those
+pictures and their original records; use a versioned new primitive when a different mechanism is
+needed. Study indices in evidence/studio-{hair,head,head-integrated,composition,transfer,expression,
+hand,shape,parameters,attachment,stroke,removal,watering,endpoints}/ own the actual sequences and
+review provenance. Records keep their dates/dead links; current decisions stay in docs.

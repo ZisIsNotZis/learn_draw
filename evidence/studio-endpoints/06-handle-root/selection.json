@@ -1,0 +1,59 @@
+{
+  "base": "c2811e5c58010932fbb7d18aadd374888727b116d931428bfd2b15282905140c",
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "object": "can-handle",
+  "kind": "feature",
+  "feature": "root",
+  "bounds": [
+    459.6203955239649,
+    309.34524252582946,
+    483.6203955239649,
+    333.34524252582946
+  ],
+  "object_bounds": [
+    466.5894370455433,
+    286.52662898742,
+    563.0603707602398,
+    365.9852177621044
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "screen terminal movement as fraction of shorter canvas dimension; opposite terminal fixed",
+  "interaction": "stroke-terminal",
+  "locks": {
+    "tip": [
+      558.0203955239649,
+      360.9452425258295
+    ]
+  },
+  "focus": [
+    471.6203955239649,
+    321.34524252582946
+  ],
+  "endpoint_bindings": {
+    "root": {
+      "to": "can-body",
+      "target": "top",
+      "offset": [
+        -0.06,
+        0
+      ]
+    }
+  }
+}

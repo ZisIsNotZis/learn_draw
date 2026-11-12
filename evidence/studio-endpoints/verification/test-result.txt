@@ -1,0 +1,3 @@
+Observed immutable-source unittest result: 121 tests passed in 178.071s.
+The previous 113 suites plus eight endpoint methods passed. An earlier full run was invalidated when CLI help was edited while tests were live; engine fingerprints correctly refused one stale inspection. The final run held Studio source fixed. This is an observation record, not captured raw console output.
+Focused endpoint rerun after adding explicit --bind-end target-input alias preservation: 8 tests passed in 4.321s; Studio source was unchanged.

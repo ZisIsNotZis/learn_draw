@@ -4,7 +4,7 @@ from .scenery import DEFAULT_DEPTH, DEFAULT_LENGTH, KINDS
 
 
 def component_data(node,canvas):
-    if 'attachment' in node:
+    if 'attachment' in node or 'endpoints' in node:
         raise ValueError('resolve the scene before compiling an attached component')
     if node['kind']=='head':
         from .head import head_data
@@ -23,7 +23,7 @@ def component_data(node,canvas):
 
 
 def component_outline(node,canvas):
-    if 'attachment' in node:
+    if 'attachment' in node or 'endpoints' in node:
         raise ValueError('resolve the scene before compiling an attached outline')
     return outline(lock_rows(node,canvas)) if node['kind']=='hair-lock' else list(component_data(node,canvas).outline)
 

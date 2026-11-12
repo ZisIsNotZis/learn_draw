@@ -37,6 +37,7 @@ def clean(points):
 
 
 def stroke_data(node,canvas):
+    if 'endpoints' in node: raise ValueError('resolve the scene before compiling endpoint-bound stroke geometry')
     return _data(json.dumps(node,sort_keys=True),tuple(canvas))
 
 

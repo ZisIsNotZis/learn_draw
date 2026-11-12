@@ -1,0 +1,60 @@
+{
+  "base": "8d5ee2ef04fe00c4c3cfe31b7f8cce5ed4afcbe85f91b40242cc2f79d1da03c5",
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "object": "can-handle",
+  "kind": "feature",
+  "feature": "tip",
+  "bounds": [
+    558.7342032948457,
+    338.14684474562193,
+    582.7342032948457,
+    362.14684474562193
+  ],
+  "object_bounds": [
+    479.3032448164241,
+    275.72823120721245,
+    575.7741785311206,
+    355.18681998189686
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "screen terminal movement as fraction of shorter canvas dimension; opposite terminal fixed",
+  "interaction": "stroke-terminal",
+  "locks": {
+    "root": [
+      484.3342032948457,
+      310.5468447456219
+    ]
+  },
+  "focus": [
+    570.7342032948457,
+    350.14684474562193
+  ],
+  "endpoint_bindings": {
+    "root": {
+      "to": "can-body",
+      "target": "top@.2",
+      "inset": 0.08
+    }
+  },
+  "attachment_target": {
+    "object": "can-body",
+    "anchor": "top@.8"
+  }
+}
