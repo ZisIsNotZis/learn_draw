@@ -4,20 +4,14 @@
 
 # learn_draw
 
-**Current direction (2026-11-12): a drawing workbench for VLM creation.** Reference studies develop
-both usable procedural primitives and accumulated drawing skill. The first studio prototype offers
-a default hair lock, visible edge selection, local push previews, accept and undo. Its isolated shape
-and portrait-context visual studies remain under review; this is not a finished head/hair system.
+**Current direction (2026-11-12): a drawing workbench for VLM creation.** Reference studies develop usable primitives and drawing skill. The studio supports a user-accepted flat-cartoon head preset, standalone locks, semantic eye/face/hair controls and visible local lock pushes with preview, accept and exact undo. Whole-artwork quality and broader creative transfer remain unproven.
 
 ```bash
-python -m scripts.studio demo --outdir evidence/my-hair-sequence
-python -m unittest scripts.tests.test_studio -v
+uv sync
+uv run python -m scripts.studio demo --kind head --outdir evidence/my-head-sequence
 ```
 
-Use [the current roadmap](docs/0_ROADMAP.md), [operation skill](skills/drawing-studio/SKILL.md), and
-[scene contract](docs/7_INTERFACE.md). PNGs use installed Chromium/Edge with GPU disabled, or CPU
-CairoSVG. The material below documents the earlier portrait and its toolchain; historical completion
-statements do not establish current product acceptance.
+Use [the current roadmap](docs/0_ROADMAP.md), [operation skill](skills/drawing-studio/SKILL.md), and [scene contract](docs/7_INTERFACE.md). PNGs prefer native CPU resvg, with CairoSVG or GPU-disabled installed Chromium/Edge as fallbacks. The material below records the earlier portrait and toolchain; historical completion statements do not establish current product acceptance.
 
 *Learning to draw as a computed skill — every picture built from declared parts, relations and depth, and judged one term at a time.*
 
@@ -32,7 +26,7 @@ statements do not establish current product acceptance.
 ```bash
 git clone --recurse-submodules https://github.com/ZisIsNotZis/learn_draw
 cd learn_draw
-uv venv .venv && uv pip install -e .      # numpy, opencv-python-headless, pillow, pyyaml
+uv sync      # numpy, opencv-python-headless, pillow, pyyaml
 scripts/draw --help                       # the toolchain, no browser needed
 ```
 
@@ -110,7 +104,7 @@ that routes any question to the one document that owns it.
 
 ## How to develop
 
-The environment is `pyproject.toml`'s: `uv venv .venv && uv pip install -e .`, Python ≥ 3.11. Scripts are
+The environment is `pyproject.toml`'s: `uv sync`, Python ≥ 3.11. Scripts are
 run through the `scripts/draw` wrapper, which prefers `.venv/bin/python`.
 
 The three gates before a commit that touches code or a drawing (from `docs/9_IMPLEMENTATION.md`):

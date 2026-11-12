@@ -12,7 +12,8 @@ except ImportError as e:
 import numpy as np
 from renderer import chrome_path
 
-CHROME = chrome_path()
+# Pure geometry imports must also work on native-SVG-only installations.
+CHROME = None  # optional caller override; screenshot resolves a browser when used
 
 # per-type allowed keys; first key listed is the id-bearing type key
 SCHEMA = {

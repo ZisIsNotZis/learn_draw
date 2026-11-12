@@ -11,7 +11,7 @@ import numpy as np
 import cv2
 from renderer import chrome_path, screenshot
 
-CHROME = chrome_path()
+CHROME = None  # PNG inspection needs no browser; resolve only when rendering HTML/SVG
 
 # The recorded best artifact — the floor every new render is measured against (see roadmap M-gates).
 BASELINE_DIR = ".scratch/00-tooling/baseline"
@@ -89,8 +89,9 @@ def render(src: str, out: str, size: tuple[int, int] | None = None) -> tuple[int
     """Rasterize .svg or .html to PNG via headless chromium."""
     src = os.path.abspath(src)
     out = os.path.abspath(out)
-    if not os.path.exists(CHROME):
-        sys.exit(f"renderer not found: {CHROME}")
+    browser = CHROME or chrome_path()
+    if not os.path.exists(browser):
+        sys.exit(f"renderer not found: {browser}")
     tmp: str | None = None
     if src.endswith(".svg"):
         svg = read_text(src)
@@ -114,7 +115,7 @@ def render(src: str, out: str, size: tuple[int, int] | None = None) -> tuple[int
         target = src
     if size is None:
         raise ToolError("draw: cannot infer a size for this source; pass --size WxH")
-    screenshot(target, out, size, CHROME)
+    screenshot(target, out, size, browser)
     if tmp is not None:
         remove_file(tmp)
     return size

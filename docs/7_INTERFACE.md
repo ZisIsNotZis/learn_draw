@@ -10,7 +10,34 @@ the commands that write it (`9_IMPLEMENTATION.md`).
 
 The current editable slice is `python -m scripts.studio`. Scene `format` is
 `learn-draw/studio-1`; `canvas` defaults to [640,640], `background` to warm paper, `nodes` is required.
-Each node requires `id`, `kind: hair-lock`, `intent`. Optional controls:
+Each node requires `id`, `kind` (`head` or `hair-lock`), `intent`.
+
+### Head — simple flat-cartoon preset
+
+`new scene.json --kind head` creates the user-accepted preset direction. No path data is required.
+
+| field | meaning / default |
+| --- | --- |
+| at | face center: {anchor: center, offset: [0,-.06]}; explicit placements use their own offsets |
+| length / width | .55 of shorter canvas dimension / .79 of that head height |
+| angle | 0; 2D tilt, positive toward screen right along the head's downward axis |
+| eye_scale / jaw | 1 / .42; eye size and cheek-to-jaw station, with the head ruler fixed |
+| hair | side-part; alternatives bob / none |
+| palette | optional hair, skin, iris, shade, ink; a new hair/iris colour derives related tones |
+| hair_edits | generated left/right child edit lists; root/tip remain protected |
+| depth / depth_slope | 0 / 0; linear support anchored at face center |
+
+Inspect features `object`, `eyes`, `face`, `hair`, `left-lock`, `right-lock`. A single scene object is
+inferred when `--object` is omitted. Semantic features expose their permitted controls in the report.
+`preview ... --set eye_scale --value .92 --reason "..."` sets a selected control. Colour aliases are
+hair_color, skin_color, iris_color, ink_color. Select a child lock for `--move`; its screen direction
+is converted through the parent's tilt before changing local geometry. A bare head retains dormant
+hair edits but exposes no editable lock until a hairstyle is active. Multi-head SVG IDs are namespaced.
+
+The head is one flat artwork component with an opaque support footprint. Internal face/hair drawing
+order is recipe artwork, not a 3D head or a head-turn model. Child geometry remains editable.
+
+### Hair-lock controls
 
 | field | meaning / default |
 | --- | --- |
@@ -40,8 +67,10 @@ edit. Current geometric checks are sampled, not a proof for all continuous defor
 `report.txt` lists actual PNGs; `report.json` binds them to the canonical scene revision, implementation
 fingerprint and renderer. The implementation hash covers the studio sources and depth/renderer
 dependencies. Undo restores input data; visual identity across implementation upgrades is not promised.
-Alignment and closeups are author aids; `artwork` contains no handles. No reference image is read.
-No head attachment, curved support or universal high-level object capability is implied by studio-1.
+Image SHA256 values and a `ready` status distinguish completed views from failed/in-progress rendering.
+An unfinished CLI preview cannot be accepted. Alignment and closeups are author aids; `artwork`
+contains no handles. No reference image is read.
+No articulated head attachment, curved support or universal object capability is implied by studio-1.
 The explicit portrait context adapter is a bounded existing-scene integration experiment.
 
 

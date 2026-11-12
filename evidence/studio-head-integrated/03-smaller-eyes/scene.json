@@ -1,0 +1,16 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "portrait",
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with a side-parted short haircut",
+      "eye_scale": 0.92
+    }
+  ]
+}

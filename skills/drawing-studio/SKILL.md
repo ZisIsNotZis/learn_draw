@@ -1,6 +1,6 @@
 ---
 name: drawing-studio
-description: Create and locally refine programmatic hair locks with learn_draw's revision-bound drawing workbench. Use for studio scene authoring, edge alignment, previewed contour edits, or restoring accepted edits. Other object families are not implemented by this slice.
+description: Create and refine programmatic flat-cartoon heads and hair locks with learn_draw's revision-bound drawing workbench. Use for studio scene authoring, edge alignment, previewed contour edits, or restoring accepted edits. Use semantic eye, face and hair controls or local child-lock edits; other families are not implemented.
 ---
 
 # Drawing studio
@@ -10,12 +10,16 @@ Run from this repository with `python -m scripts.studio`. Use the current goal a
 
 ## Work one visible issue
 
-1. State a drawing issue and what must stay fixed. Start from a useful default (`new scene.json`)
+1. State a drawing issue and what must stay fixed. Start from a useful default (`new scene.json --kind head`, or omit kind for a standalone lock)
    or an existing scene; optional shape controls are in the interface document.
-2. `inspect scene.json --object ID --side left --at .55 --radius .30 --outdir VIEW`.
+2. `inspect scene.json --feature eyes --outdir VIEW` for a head. Choose face, hair, object,
+   left-lock or right-lock for other features; standalone locks use `--side left --at .55 --radius .30`.
+   Add `--object ID` when several objects exist.
    Read artwork, alignment and edit-closeup. Confirm the highlighted edge is the intended edge.
    Left/right edge names follow root-to-tip travel; movement directions refer to the screen.
-3. `preview scene.json --selection VIEW/selection.json --move right --amount .10
+3. For a semantic feature use `preview scene.json --selection VIEW/selection.json --set eye_scale
+   --value .92 --reason "Quieter eye proportions" --outdir TRY`. For a selected lock edge use
+   `preview scene.json --selection VIEW/selection.json --move right --amount .10
    --reason "the inner edge is too straight" --outdir TRY` (one shell line).
    Amount is a fraction of nominal object width. Read the resulting normal artwork and overlay;
    compare the local change and whole shape. The preview has not overwritten the scene.
@@ -27,10 +31,15 @@ Run from this repository with `python -m scripts.studio`. Use the current goal a
    bindings; mechanical correctness and author judgment do not establish artwork acceptance.
 
 Stale selections/previews are refused after scene or implementation changes; inspect again.
+Only a successfully rendered ready candidate can be accepted. A failed render supplies no image list.
 Root and tip are protected by an interior influence interval. A crossing/collapse refusal asks for
 a smaller move or a better gesture, not manually corrected generated vertices.
 
 ## Choose the right operation
+
+- Head defaults require no path input. Inspect exposes allowed controls: eyes offer eye_scale/iris_color;
+  face offers jaw/skin_color; hair offers hairstyle/hair_color. Object exposes size, tilt and depth.
+  Child-lock pushes preserve endpoints and the other lock; screen directions account for head tilt.
 
 - `sweep`, `angle` and `length` shape the whole gesture. A local boundary push refines a segment.
 - `width_side: right` grows width to the right of the root-to-tip gesture, keeping its left edge.
@@ -47,6 +56,8 @@ a smaller move or a better gesture, not manually corrected generated vertices.
 
 `evidence/studio-hair/` preserves rejected early studies, real edit sequences and context experiments.
 Their SVGs are frozen historical inputs; current defaults may differ. Review dispositions belong to
-the study README, never inferred from the existence of an image. This skill documents a prototype
-operation loop, not a passed head/hair system or general drawing mastery. Human taste questions are
+the study README, never inferred from the existence of an image. `evidence/studio-head/` preserves
+head studies and bounded usability review; the user accepted the simple flat-cartoon default preset.
+`evidence/studio-head-integrated/` demonstrates semantic/local edits and exact undo/replay.
+This establishes a bounded head-component operation loop, not general drawing mastery. Human taste questions are
 specific and asynchronous; continue independent work while awaiting a reply.

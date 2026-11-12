@@ -1,0 +1,34 @@
+{
+  "base": "9d98e68c43ecd266dc254c276ed0bd55255cb51c90e92a0d4ccf914f3016dd4c",
+  "engine": "b10cb13c660712f4d18e317c1fd64344a189350e13e5f9a8b5644eab53f279ce",
+  "object": "portrait",
+  "feature": "left-lock",
+  "child": "left",
+  "kind": "local",
+  "side": "left",
+  "at": 0.55,
+  "radius": 0.3,
+  "bounds": [
+    118.12670488878106,
+    279.034000245309,
+    149.48380055374085,
+    422.481466464042
+  ],
+  "object_bounds": [
+    116.0,
+    50.801437078916265,
+    520.0,
+    459.42778169380796
+  ],
+  "locks": {
+    "root": [
+      193.47359999999998,
+      225.28000000000003
+    ],
+    "tip": [
+      160.65101586957815,
+      458.824821332012
+    ]
+  },
+  "units": "push amount = fraction of this object's nominal full width; directions are screen directions"
+}

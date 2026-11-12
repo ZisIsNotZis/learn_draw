@@ -1,0 +1,13 @@
+[
+  {
+    "base": "eb147fef4b80b94da4501b71fe001cbc3512cdd416ffcef3ba8acb48dff15d1c",
+    "result": "52c760268dc438111bd3aa22772deb4465b0192e733d8cf4a08cf9788fb1a8e0",
+    "operation": {
+      "object": "portrait",
+      "feature": "eyes",
+      "parameter": "eye_scale",
+      "value": 0.92,
+      "reason": "Quieter eye proportions while keeping the face ruler and hair fixed"
+    }
+  }
+]

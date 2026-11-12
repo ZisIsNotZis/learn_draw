@@ -2,13 +2,16 @@
 from __future__ import annotations
 
 import html
+import hashlib
+import json
+from functools import lru_cache
 from pathlib import Path
 
 from scripts.articulated_construction import Point, triangulate_polygon
 from scripts.vector_visibility import visible_regions
 
 from .geometry import bounds, lock_rows, mix, outline, resolve_root
-from .model import engine_fingerprint, fingerprint, node_by_id, validate, write
+from .model import canonical, engine_fingerprint, fingerprint, node_by_id, validate, write
 
 
 PALETTE = dict(fill="#517f9b", shade="#426781", light="#729eaf", ink="#2e475a")
@@ -18,17 +21,94 @@ def path(points, closed=True):
     return "M " + " L ".join(f"{x:.4f},{y:.4f}" for x, y in points) + (" Z" if closed else "")
 
 
+def node_outline(node, canvas):
+    if node['kind']=='head':
+        from .head import head_data
+        return list(head_data(node,canvas).outline)
+    return outline(lock_rows(node,canvas))
+
+
+def selection_paths(scene,selection):
+    """Alignment always comes from compiled geometry, including parent transforms."""
+    node=node_by_id(scene,selection['object'])
+    canvas=scene.get('canvas',[640,640])
+    rotate=lambda p:p
+    if node['kind']=='head':
+        from .head import head_data, rotate_point
+        data=head_data(node,canvas)
+        if selection['kind']=='feature':
+            feature=data.features.get(selection['feature'])
+            return feature['paths'] if feature else [],None,{}
+        child=data.locks[selection['child']]
+        rows=child['rows'];root=resolve_root(child['node'],canvas)
+        rotate=lambda p:rotate_point(p,data.center,data.angle)
+    else:
+        rows=lock_rows(node,canvas);root=resolve_root(node,canvas)
+        if selection.get('kind')=='feature':
+            return [dict(d=path(outline(rows)),transform='')],None,{}
+    points=[rotate(getattr(r,selection['side'])) for r in rows if abs(r.t-selection['at'])<=selection['radius']]
+    target=min(rows,key=lambda r:abs(r.t-selection['at']))
+    return [dict(d=path(points,False),transform='')],rotate(getattr(target,selection['side'])),{
+        'root':rotate(root),'tip':rotate(rows[-1].left)}
+
+
+def lock_palette(node):
+    palette=node.get('palette',{})
+    colors=dict(PALETTE)
+    if 'fill' in palette:
+        rgb=[int(palette['fill'][i:i+2],16) for i in (1,3,5)]
+        def shade(factor,white=0):
+            return '#'+''.join(f'{round(v*factor+255*white):02x}' for v in rgb)
+        colors.update(fill=palette['fill'],shade=shade(.81),light=shade(.72,.28),ink=shade(.50))
+    return colors|palette
+
+
 def faces_for(scene):
     faces = []
     canvas = scene.get("canvas", [640, 640])
     for node in scene["nodes"]:
-        poly = outline(lock_rows(node, canvas))
-        root_y = lock_rows(node, canvas)[0].left[1]
-        scale = node.get("length", .68) * min(canvas)
+        poly = node_outline(node,canvas)
+        if node['kind']=='head':
+            from .head import head_data
+            root_y=head_data(node,canvas).center[1]
+        else:
+            root_y=lock_rows(node,canvas)[0].left[1]
+        scale = node.get("length", .55 if node['kind']=='head' else .68) * min(canvas)
         for triangle in triangulate_polygon(tuple(Point(*p) for p in poly)):
             tri = tuple((p.u, p.v, node.get("depth", 0) + node.get("depth_slope", 0) * (p.v - root_y) / scale) for p in triangle)
             faces.append((tri, PALETTE["fill"], node["id"]))
     return faces
+
+
+def global_depth_order(scene):
+    """A conservative planar fast path, proved from depths rather than author order.
+
+    A linear depth field reaches extrema at polygon vertices. Disjoint depth
+    intervals admit one exact back-to-front order; crossing intervals use the
+    existing triangle visibility engine. This is not a curved/wrapping shortcut.
+    """
+    canvas=scene.get('canvas',[640,640]);intervals=[]
+    for node in scene['nodes']:
+        if node['kind'] not in ('head','hair-lock'):
+            return None
+        poly=node_outline(node,canvas)
+        if node['kind']=='head':
+            from .head import head_data
+            root_y=head_data(node,canvas).center[1]
+        else:
+            root_y=lock_rows(node,canvas)[0].left[1]
+        scale=node.get('length',.55 if node['kind']=='head' else .68)*min(canvas)
+        depths=[node.get('depth',0)+node.get('depth_slope',0)*(p[1]-root_y)/scale for p in poly]
+        intervals.append((min(depths),max(depths),node))
+    intervals.sort(key=lambda item:item[0])
+    if any(a[1]>=b[0]-1e-7 for a,b in zip(intervals,intervals[1:])):
+        return None
+    return [entry[2] for entry in intervals]
+
+
+@lru_cache(maxsize=16)
+def _scene_regions(encoded):
+    return tuple(visible_regions(faces_for(json.loads(encoded))))
 
 
 def tone_region(rows, start, end, a, b):
@@ -50,15 +130,24 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
     width, height = scene.get("canvas", [640, 640])
     vb = viewbox or [0, 0, width, height]
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="{" ".join(map(str, vb))}">',
-           '<title>Editable hair lock study</title>',
+           '<title>Drawing studio</title>',
            '<desc>Authored gesture and local edits; visibility from support depth. Selection aids are separate from artwork.</desc>',
            f'<rect id="paper" x="0" y="0" width="{width}" height="{height}" fill="{scene.get("background", "#f5eee4")}"/>']
-    regions = list(visible_regions(faces_for(scene)))
-    for node in scene["nodes"]:
+    ordered=global_depth_order(scene)
+    regions=() if ordered is not None else _scene_regions(canonical(scene))
+    for node in ordered if ordered is not None else scene['nodes']:
         sid = node["id"]
-        visible = " ".join(p for p, _color, name in regions if name == sid)
-        out.append(f'<defs><clipPath id="visible-{sid}" clipPathUnits="userSpaceOnUse"><path d="{visible}"/></clipPath></defs>')
-        colors = PALETTE | node.get("palette", {})
+        needs_clip=ordered is None or node['kind']=='hair-lock'
+        if needs_clip:
+            visible=path(node_outline(node,[width,height])) if ordered is not None else " ".join(p for p, _color, name in regions if name == sid)
+            out.append(f'<defs><clipPath id="visible-{sid}" clipPathUnits="userSpaceOnUse"><path d="{visible}"/></clipPath></defs>')
+        if node['kind']=='head':
+            from .head import head_data
+            clip=f' clip-path="url(#visible-{sid})"' if needs_clip else ''
+            out += [f'<!-- {sid}: {html.escape(node["intent"])} -->',
+                    f'<g id="{sid}"{clip}>',head_data(node,[width,height]).svg,'</g>']
+            continue
+        colors = lock_palette(node)
         rows = lock_rows(node, [width, height])
         poly = outline(rows)
         out += [f'<!-- {sid}: {html.escape(node["intent"])} -->',
@@ -78,20 +167,18 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
     if selection:
         if selection.get("engine") != engine_fingerprint():
             raise ValueError("stale selection: implementation changed; inspect again")
-        node = node_by_id(scene, selection["object"])
-        rows = lock_rows(node, [width, height])
-        pts = [getattr(r, selection["side"]) for r in rows if abs(r.t - selection["at"]) <= selection["radius"]]
+        paths,focus,locks=selection_paths(scene,selection)
         if previous:
-            old = lock_rows(node_by_id(previous, node["id"]), [width, height])
-            old_pts = [getattr(r, selection["side"]) for r in old if abs(r.t - selection["at"]) <= selection["radius"]]
-            out += ['<!-- edit-before: dashed alignment guide, never part of artwork -->',
-                    f'<path id="edit-before" d="{path(old_pts, False)}" fill="none" stroke="#ba6884" stroke-width="2" stroke-dasharray="5 4"/>']
-        out += ['<!-- selected-edge: author alignment aid, never a decorative art line -->',
-                f'<path id="selected-edge" d="{path(pts, False)}" fill="none" stroke="#e27d39" stroke-width="3"/>']
-        target = min(rows, key=lambda r: abs(r.t - selection["at"]))
-        x, y = getattr(target, selection["side"])
-        out.append(f'<circle id="edit-focus" cx="{x}" cy="{y}" r="5" fill="#fffaf0" stroke="#bc5128" stroke-width="2"/>')
-        for name, p in (("root", resolve_root(node, [width, height])), ("tip", rows[-1].left)):
+            old_paths,_,_=selection_paths(previous,selection)
+            for i,guide in enumerate(old_paths):
+                out.append(f'<path id="edit-before-{i}" d="{guide["d"]}" transform="{guide["transform"]}" fill="none" stroke="#ba6884" stroke-width="2" stroke-dasharray="5 4"/>')
+        for i,guide in enumerate(paths):
+            ident='selected-edge' if i==0 else f'selected-edge-{i}'
+            out.append(f'<path id="{ident}" d="{guide["d"]}" transform="{guide["transform"]}" fill="none" stroke="#e27d39" stroke-width="3"/>')
+        if focus:
+            x,y=focus
+            out.append(f'<circle id="edit-focus" cx="{x}" cy="{y}" r="5" fill="#fffaf0" stroke="#bc5128" stroke-width="2"/>')
+        for name,p in locks.items():
             out.append(f'<circle id="locked-{name}" cx="{p[0]}" cy="{p[1]}" r="4" fill="#fffaf0" stroke="#506655" stroke-width="2"/>')
     return "\n".join(out + ['</svg>'])
 
@@ -132,11 +219,13 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
         if previous is not None and selection["base"] != fingerprint(previous):
             raise ValueError("preview alignment base mismatch")
         write(directory / "selection.json", selection)
+    write(directory/'report.json',dict(revision=revision,engine=engine_fingerprint(),status='rendering',images=[]))
+    (directory/'report.txt').write_text('',encoding='utf-8')
     views = {"artwork": drawing(scene)}
     if selection:
         # Crop around the object, not a guessed image location. Square pixel crop
         # is rendered to the same output dimensions, providing real magnification.
-        box = bounds(outline(lock_rows(node_by_id(scene, selection["object"]), scene.get("canvas", [640, 640]))))
+        box = bounds(node_outline(node_by_id(scene,selection['object']),scene.get('canvas',[640,640])))
         x0, y0, x1, y1 = box
         pad = max(x1 - x0, y1 - y0) * .1
         span = max(x1 - x0, y1 - y0) + 2 * pad
@@ -156,9 +245,18 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
         if png:
             backend = rasterize(f, directory / (name + ".png"))
             images.append(str((directory / (name + ".png")).resolve()))
-    report = dict(revision=revision, engine=engine_fingerprint(), renderer=backend, images=images,
-                  nodes={n["id"]: dict(intent=n["intent"], bounds=bounds(outline(lock_rows(n, scene.get("canvas", [640, 640]))))) for n in scene["nodes"]},
-                  scope="editable planar hair locks; no head, attachment, curved support or whole-artwork acceptance claim")
+    node_info={}
+    for n in scene['nodes']:
+        info=dict(kind=n['kind'],intent=n['intent'],bounds=bounds(node_outline(n,scene.get('canvas',[640,640]))))
+        if n['kind']=='head':
+            from .head import head_data
+            data=head_data(n,scene.get('canvas',[640,640]))
+            info['features']={k:dict(bounds=v['bounds'],controls=v['controls']) for k,v in data.features.items()}
+            info['local_locks']=[side+'-lock' for side in data.locks]
+        node_info[n['id']]=info
+    report = dict(revision=revision, engine=engine_fingerprint(), status='ready',renderer=backend, images=images,
+                  image_sha256={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images},nodes=node_info,
+                  scope="flat frontal head preset and editable planar locks; no 3D head rotation or whole-artwork acceptance claim")
     write(directory / "report.json", report)
     (directory / "report.txt").write_text("\n".join(images) + "\n", encoding="utf-8")
     return report

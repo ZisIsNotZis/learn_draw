@@ -91,10 +91,16 @@ Blind image reviewers still identify cap-like/planar hair, face/ear simplificati
 stiffness. A separate execution-capable reviewer, given the explicit flat-cartoon head-component use,
 ran default and 0.92 eye-scale commands without source edits and found minimum practical usability,
 real local eye control and no blocker requiring a redraw. This closes only that bounded usability
-question, not whole-artwork quality or general head/hair mastery. Human taste feedback on this preset
-was requested asynchronously; no response or acceptance is inferred.
+question, not whole-artwork quality or general head/hair mastery. The user explicitly answered
+“可以作为一个默认预设” to the displayed 09 sample. This accepts that simple flat-cartoon preset
+direction; it is not acceptance of the legacy portrait or all future variants.
 
-**Next action:** bring the demonstrated head recipe into the same revision-bound inspect/preview/
-accept/undo interface, retaining its simple default and optional eye/face/hair controls. Then use it
-in a small intent-led composition. Preserve the legacy portrait. The development branch is
+The head is now a first-class studio node with eye/face/hair selections, semantic parameter previews,
+child-lock screen-direction pushes under parent tilt, accept and exact mixed-edit undo/replay.
+`evidence/studio-head-integrated/` records the actual sequence, 48 passed tests, 81 CPU smoke checks,
+locked environment installation and repeated SVG/PNG byte identity. These are operation evidence,
+not whole-artwork acceptance.
+
+**Next action:** use the workbench in a small intent-led composition, adding a useful background or
+celestial preset only where that composition needs it. Preserve the legacy portrait. The development branch is
 `codex/vlm-studio`, pushed through the existing SSH identity; main has not been overwritten.

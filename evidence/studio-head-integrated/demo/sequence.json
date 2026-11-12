@@ -1,0 +1,12 @@
+{
+  "revisions": [
+    "eb147fef4b80b94da4501b71fe001cbc3512cdd416ffcef3ba8acb48dff15d1c",
+    "52c760268dc438111bd3aa22772deb4465b0192e733d8cf4a08cf9788fb1a8e0",
+    "dae0c615d6281791c9414138c61e3c5a1d158766e56cf4e3d4ca856436180742",
+    "14cef08429e818281bfe3e189c445c31e09ffaf707e778e3fa50f832c9242fb9"
+  ],
+  "undo_replay_verified": true,
+  "reference": null,
+  "default": "user accepted the simple flat-cartoon preset direction",
+  "limits": "variants and complete artwork are not human-approved; no 3D head rotation claim"
+}

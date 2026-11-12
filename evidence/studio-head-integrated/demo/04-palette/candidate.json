@@ -1,0 +1,68 @@
+{
+  "base": "dae0c615d6281791c9414138c61e3c5a1d158766e56cf4e3d4ca856436180742",
+  "engine": "b10cb13c660712f4d18e317c1fd64344a189350e13e5f9a8b5644eab53f279ce",
+  "result": "14cef08429e818281bfe3e189c445c31e09ffaf707e778e3fa50f832c9242fb9",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "portrait",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with a side-parted short haircut",
+        "eye_scale": 0.92,
+        "hair_edits": {
+          "right": [
+            {
+              "side": "right",
+              "at": 0.55,
+              "radius": 0.3,
+              "dx": -0.12,
+              "dy": 0.0,
+              "reason": "Reduce the right outer lock fullness; retain its root and tip"
+            }
+          ]
+        },
+        "palette": {
+          "hair": "#7c5369"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "dae0c615d6281791c9414138c61e3c5a1d158766e56cf4e3d4ca856436180742",
+    "engine": "b10cb13c660712f4d18e317c1fd64344a189350e13e5f9a8b5644eab53f279ce",
+    "object": "portrait",
+    "kind": "feature",
+    "feature": "hair",
+    "bounds": [
+      122.0,
+      53.0,
+      515.0,
+      457.5
+    ],
+    "object_bounds": [
+      120.0,
+      50.801437078916265,
+      517.0,
+      459.42778169380796
+    ],
+    "controls": [
+      "hair",
+      "hair_color"
+    ],
+    "units": "semantic parameter values; inspect the actual selected feature"
+  },
+  "operation": {
+    "object": "portrait",
+    "feature": "hair",
+    "parameter": "hair_color",
+    "value": "#7c5369",
+    "reason": "Try a warm plum hair palette without changing its contours"
+  },
+  "status": "ready"
+}

@@ -5,16 +5,16 @@
 # learn_draw
 
 **当前方向（2026-11-12）：让 VLM 能够创作、逐步修正的绘画工作台。** 临摹同时打磨原语、操作体验与绘画
-skill。第一个 studio 原型提供默认发束、图上选边、局部推拉预览、接受和撤回。独立形状及整图上下文的视觉
-研究仍在评审中；尚未形成通过验收的头部／头发系统。
+skill。当前支持用户认可的简洁平涂头部默认预设、独立发束、眼睛／脸型／发型语义调整，以及图上对准的
+局部发束推拉、预览、接受和精确撤销。整幅作品质量与跨题材创作仍需验证。
 
 ```bash
-python -m scripts.studio demo --outdir evidence/my-hair-sequence
-python -m unittest scripts.tests.test_studio -v
+uv sync
+uv run python -m scripts.studio demo --kind head --outdir evidence/my-head-sequence
 ```
 
 入口：[当前路线图](docs/0_ROADMAP.md)、[操作 skill](skills/drawing-studio/SKILL.md)、[场景接口](docs/7_INTERFACE.md)。
-PNG 使用已安装的 Chromium/Edge 并禁用 GPU，或使用 CPU CairoSVG。下文保留此前人物临摹及工具链的说明；
+PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安装浏览器。下文保留此前人物临摹及工具链的说明；
 历史阶段完成不代表当前产品已经验收。
 
 *把绘画当作一项可计算的手艺来学——每张图都由声明的部件、关系和深度构成，并按照事先写好的验收线逐条评判。*
@@ -30,7 +30,7 @@ PNG 使用已安装的 Chromium/Edge 并禁用 GPU，或使用 CPU CairoSVG。�
 ```bash
 git clone --recurse-submodules https://github.com/ZisIsNotZis/learn_draw
 cd learn_draw
-uv venv .venv && uv pip install -e .      # numpy、opencv-python-headless、pillow、pyyaml
+uv sync                                  # 依赖版本见 uv.lock
 scripts/draw --help                       # 整个工具链，不需要浏览器
 ```
 
@@ -97,7 +97,7 @@ image.jpg,     参考目标图与从它裁出的部件图版（研究材料，�
 
 ## 如何开发
 
-环境由 `pyproject.toml` 声明：`uv venv .venv && uv pip install -e .`，Python ≥ 3.11。脚本通过 `scripts/draw`
+环境由 `pyproject.toml` 声明并由 `uv.lock` 锁定：`uv sync`，Python ≥ 3.11。脚本通过 `scripts/draw`
 包装器运行，它优先使用 `.venv/bin/python`。
 
 改动代码或画作时的三道提交前关卡（出自 `docs/9_IMPLEMENTATION.md`）：

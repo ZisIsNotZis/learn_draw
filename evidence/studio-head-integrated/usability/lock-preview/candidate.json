@@ -1,0 +1,78 @@
+{
+  "base": "52c760268dc438111bd3aa22772deb4465b0192e733d8cf4a08cf9788fb1a8e0",
+  "engine": "b10cb13c660712f4d18e317c1fd64344a189350e13e5f9a8b5644eab53f279ce",
+  "result": "9d98e68c43ecd266dc254c276ed0bd55255cb51c90e92a0d4ccf914f3016dd4c",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "portrait",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with a side-parted short haircut",
+        "eye_scale": 0.92,
+        "hair_edits": {
+          "left": [
+            {
+              "side": "left",
+              "at": 0.55,
+              "radius": 0.3,
+              "dx": -0.1,
+              "dy": 0.0,
+              "reason": "Give the screen-left outer hair edge a slightly fuller middle while preserving both tips and the opposite lock"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "52c760268dc438111bd3aa22772deb4465b0192e733d8cf4a08cf9788fb1a8e0",
+    "engine": "b10cb13c660712f4d18e317c1fd64344a189350e13e5f9a8b5644eab53f279ce",
+    "object": "portrait",
+    "feature": "left-lock",
+    "child": "left",
+    "kind": "local",
+    "side": "left",
+    "at": 0.55,
+    "radius": 0.3,
+    "bounds": [
+      121.92155105848747,
+      279.034000245309,
+      149.48380055374085,
+      422.481466464042
+    ],
+    "object_bounds": [
+      120.0,
+      50.801437078916265,
+      520.0,
+      459.42778169380796
+    ],
+    "locks": {
+      "root": [
+        193.47359999999998,
+        225.28000000000003
+      ],
+      "tip": [
+        160.65101586957815,
+        458.824821332012
+      ]
+    },
+    "units": "push amount = fraction of this object's nominal full width; directions are screen directions"
+  },
+  "operation": {
+    "side": "left",
+    "at": 0.55,
+    "radius": 0.3,
+    "dx": -0.1,
+    "dy": 0.0,
+    "reason": "Give the screen-left outer hair edge a slightly fuller middle while preserving both tips and the opposite lock",
+    "object": "portrait",
+    "feature": "left-lock"
+  },
+  "status": "ready"
+}

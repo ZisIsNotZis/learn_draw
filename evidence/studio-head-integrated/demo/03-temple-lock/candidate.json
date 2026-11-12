@@ -1,0 +1,78 @@
+{
+  "base": "52c760268dc438111bd3aa22772deb4465b0192e733d8cf4a08cf9788fb1a8e0",
+  "engine": "b10cb13c660712f4d18e317c1fd64344a189350e13e5f9a8b5644eab53f279ce",
+  "result": "dae0c615d6281791c9414138c61e3c5a1d158766e56cf4e3d4ca856436180742",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "portrait",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with a side-parted short haircut",
+        "eye_scale": 0.92,
+        "hair_edits": {
+          "right": [
+            {
+              "side": "right",
+              "at": 0.55,
+              "radius": 0.3,
+              "dx": -0.12,
+              "dy": 0.0,
+              "reason": "Reduce the right outer lock fullness; retain its root and tip"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "52c760268dc438111bd3aa22772deb4465b0192e733d8cf4a08cf9788fb1a8e0",
+    "engine": "b10cb13c660712f4d18e317c1fd64344a189350e13e5f9a8b5644eab53f279ce",
+    "object": "portrait",
+    "feature": "right-lock",
+    "child": "right",
+    "kind": "local",
+    "side": "right",
+    "at": 0.55,
+    "radius": 0.3,
+    "bounds": [
+      490.51619944625816,
+      279.03400024533914,
+      518.0784489415173,
+      422.4814664640259
+    ],
+    "object_bounds": [
+      120.0,
+      50.801437078916265,
+      520.0,
+      459.42778169380796
+    ],
+    "locks": {
+      "root": [
+        446.5264000000001,
+        225.28000000000003
+      ],
+      "tip": [
+        479.3489841304219,
+        458.824821332012
+      ]
+    },
+    "units": "push amount = fraction of this object's nominal full width; directions are screen directions"
+  },
+  "operation": {
+    "side": "right",
+    "at": 0.55,
+    "radius": 0.3,
+    "dx": -0.12,
+    "dy": 0.0,
+    "reason": "Reduce the right outer lock fullness; retain its root and tip",
+    "object": "portrait",
+    "feature": "right-lock"
+  },
+  "status": "ready"
+}

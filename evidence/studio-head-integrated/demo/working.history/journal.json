@@ -1,0 +1,38 @@
+[
+  {
+    "base": "eb147fef4b80b94da4501b71fe001cbc3512cdd416ffcef3ba8acb48dff15d1c",
+    "result": "52c760268dc438111bd3aa22772deb4465b0192e733d8cf4a08cf9788fb1a8e0",
+    "operation": {
+      "object": "portrait",
+      "feature": "eyes",
+      "parameter": "eye_scale",
+      "value": 0.92,
+      "reason": "Use quieter eye proportions while preserving face and haircut"
+    }
+  },
+  {
+    "base": "52c760268dc438111bd3aa22772deb4465b0192e733d8cf4a08cf9788fb1a8e0",
+    "result": "dae0c615d6281791c9414138c61e3c5a1d158766e56cf4e3d4ca856436180742",
+    "operation": {
+      "side": "right",
+      "at": 0.55,
+      "radius": 0.3,
+      "dx": -0.12,
+      "dy": 0.0,
+      "reason": "Reduce the right outer lock fullness; retain its root and tip",
+      "object": "portrait",
+      "feature": "right-lock"
+    }
+  },
+  {
+    "base": "dae0c615d6281791c9414138c61e3c5a1d158766e56cf4e3d4ca856436180742",
+    "result": "14cef08429e818281bfe3e189c445c31e09ffaf707e778e3fa50f832c9242fb9",
+    "operation": {
+      "object": "portrait",
+      "feature": "hair",
+      "parameter": "hair_color",
+      "value": "#7c5369",
+      "reason": "Try a warm plum hair palette without changing its contours"
+    }
+  }
+]

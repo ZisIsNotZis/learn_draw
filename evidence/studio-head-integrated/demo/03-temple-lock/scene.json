@@ -1,0 +1,28 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "portrait",
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with a side-parted short haircut",
+      "eye_scale": 0.92,
+      "hair_edits": {
+        "right": [
+          {
+            "side": "right",
+            "at": 0.55,
+            "radius": 0.3,
+            "dx": -0.12,
+            "dy": 0.0,
+            "reason": "Reduce the right outer lock fullness; retain its root and tip"
+          }
+        ]
+      }
+    }
+  ]
+}

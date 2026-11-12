@@ -8,9 +8,18 @@ milestones are `0_ROADMAP.md`.
 
 ## Current studio commands and evidence
 
-From the development worktree, with Python 3.11+ (geometry uses the standard library):
+From the development worktree, with Python 3.11+ and the dependencies in `pyproject.toml`
+(`uv sync`, then activate `.venv`; the studio uses Shapely and a native CPU SVG rasterizer):
 
 ```powershell
+python -m scripts.studio demo --kind head --outdir evidence/my-head-sequence
+python -m scripts.studio new head.json --kind head
+python -m scripts.studio inspect head.json --feature eyes --outdir evidence/head-view
+python -m scripts.studio preview head.json --selection evidence/head-view/selection.json --set eye_scale --value .92 --reason "Quieter eye proportions" --outdir evidence/head-preview
+python -m scripts.studio accept head.json evidence/head-preview/candidate.json
+python -m scripts.studio inspect head.json --feature right-lock --side right --outdir evidence/lock-view
+python -m scripts.studio preview head.json --selection evidence/lock-view/selection.json --move left --amount .12 --reason "Reduce outer lock fullness" --outdir evidence/lock-preview
+python -m scripts.studio undo head.json
 python -m scripts.studio demo --outdir evidence/my-hair-sequence
 python -m scripts.studio new my-lock.json
 python -m scripts.studio inspect my-lock.json --object cheek-lock --outdir evidence/inspect

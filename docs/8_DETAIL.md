@@ -25,6 +25,21 @@ previous scene under `<scene-stem>.history/` and appends the operation journal. 
 replace a temporary file atomically. Multi-file accept/undo is not crash-transactional; no claim of
 process-kill recovery is made yet. Undo detects external scene edits and hash damage.
 
+`head.py` is the sole frontal-head recipe; the old example script is a thin reproduction wrapper.
+It reuses legacy face/eye generation, preserves the accepted style, unions same-material front hair,
+and applies aperture clips. Artwork curves are explicit recipe choices. A sampled opaque footprint
+and namespaced SVG form the planar component. Semantic feature paths and child-lock rows provide
+selection locations; parent 2D tilt is inverted when converting a screen-direction child push.
+
+The renderer proves a global order only for the current planar families whose complete linear depth
+intervals do not overlap. Vertex extrema establish that conservative condition. It paints those
+components in derived depth order, preserving ordinary vector antialiasing; no authored order or
+visibility cut is consumed. Crossing intervals use the existing triangle depth engine. Its regions
+are reused across unchanged full/alignment/crop views. Tests include a crossing-plane negative case,
+two heads with independent clip IDs, and actual raster checks. This shortcut is not used for curved
+or wrapping surfaces. A scene view begins with an empty in-progress report so failed rasterization
+cannot advertise a stale image list as current.
+
 ## Coordinate and transform conventions
 
 `frame.w`/`frame.h` size the canvas and the resolver's SVG is `viewBox="0 0 w h"`: a coordinate is a

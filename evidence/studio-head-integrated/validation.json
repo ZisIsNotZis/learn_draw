@@ -1,0 +1,10 @@
+{
+  "svg": "241d04f319e4f76e4aff98644c78f016cedfc8b6df30c9f89e1abb016e94bbb0",
+  "png": "23ad96c4ac624d9dd75b3187d0e56bdb0da4635d774727c4c7022bdbdb8bc48a",
+  "engine": "b10cb13c660712f4d18e317c1fd64344a189350e13e5f9a8b5644eab53f279ce",
+  "repeated_bytes_equal": true,
+  "tests": 48,
+  "cpu_smoke": 81,
+  "uv_sync_locked": "passed",
+  "old_portrait_baseline": "not available in sparse checkout; not modified or promoted"
+}
