@@ -1,0 +1,11 @@
+{
+  "engine": "0cc7aaea74f48c03ebcbb080d3adf42d3d1de2618d36493e2407c17b8085903b",
+  "scene": "6c2ec2ec7d19ee6dd01e56a44389bfb4d5cfbc797873c9135d031e1bf47db056",
+  "plant_components_exactly_preserved": [
+    "body",
+    "arm"
+  ],
+  "actor_png_preserved": true,
+  "png_sha256": "02d3d9482dd0059239dfde97541147db055ec819e53e15ce4055b85fea728b02",
+  "scope": "small provenance guard does not change independent author result; not a second independent transfer run"
+}

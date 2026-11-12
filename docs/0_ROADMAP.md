@@ -204,10 +204,25 @@ recoverable hand-width refusal. Fresh image critics find a clear greeting avatar
 arm and small pale shoulder notch remain. This is bounded reuse, not human acceptance or full
 anatomy. The many inspect/preview/accept calls remain a practical efficiency limitation.
 
-**Next action:** test composition revision beyond adding nodes: replacing/removing an obsolete part currently requires
-re-authoring or undo, which is a real gap for the requested iterative workbench. Preserve mounted
-children and recoverable history in any removal design. Use a real drawing revision to decide the
-operation rather than adding another subject preset. Keep the full VLM-creation goal.
+Composition revision now includes visible whole-object removal, default child release in place,
+explicit descendant cascade, and valid blank-paper states. The old segmented cactus branch was
+actually removed and replaced through public operations; its pot/trunk inputs remain unchanged,
+and the output matches the already-reviewed continuous branch. An independent creator replaced
+the pot with a blue rounded bowl, preserved the plant exactly, undid to exact original bytes and
+rejected a visibly floating placement. Both fresh image critics see a usable minimal icon, retaining
+leaf-like plant form and schematic vessel depth. This is revision evidence, not a new art milestone.
+113 combined tests pass. Final-source image preservation includes the old seven scenes, newer
+stroke/character/cactus, and raw independent repotting. A real impact-view reuse failure now refuses
+obsolete operation guides as new inspections; the original actor source and failing test are kept.
+See evidence/studio-removal/README.md.
+
+**Next action:** attempt a richer intent-led illustration with an actual object interaction: a
+character watering a plant beside a window. Use existing parts first, inspect the emerging image,
+and let failures in pose, grip, clothing or spatial grouping decide the next representation change.
+Do not turn more cactus variants into the objective. The independent repotter also exposed blind
+immediate insertion: an overlapping default is accepted before shaping/placement. A revision-bound
+insertion preview is a concrete candidate if it helps this next illustration; it is not implemented
+or an art outcome by itself. Keep the full VLM-creation goal.
 More presets alone cannot establish open-ended creative capability.
 Do not turn a hand icon or this cover's limited usability into a whole-portrait/illustration pass.
 Preserve the legacy portrait. The development branch is

@@ -1,0 +1,122 @@
+{
+  "base": "596413dcaddeac5e8804d29341a88cc0d5ce0e9bd22f3bd087cfcdcd45074258",
+  "engine": "81a9831a12992c9ef3f3ebf3ec33a9f6f822f1d3de1837e8d90c3b70f603587b",
+  "result": "906ada58f542b12b797d002b26d17feed7e314acdf9579a6d6c7a900b6d1aff6",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#fff0d7",
+    "nodes": [
+      {
+        "id": "pot",
+        "kind": "shape",
+        "intent": "A low terracotta pot anchors the warm cactus emblem",
+        "length": 0.2,
+        "width": 1.35,
+        "taper": -0.24,
+        "rounding": 0.14,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc603c"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.04,
+            0.21000000000000002
+          ]
+        }
+      },
+      {
+        "id": "body",
+        "kind": "shape",
+        "intent": "The upright rounded cactus trunk emerges from the pot",
+        "depth": -1.0,
+        "length": 0.36,
+        "width": 0.38,
+        "rounding": 1.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#397b59"
+        },
+        "attachment": {
+          "to": "pot",
+          "self": "bottom",
+          "target": "top",
+          "inset": 0.18
+        }
+      },
+      {
+        "id": "arm",
+        "kind": "stroke",
+        "intent": "One continuous branch replaces the old angular elbow and tip",
+        "depth": -2.0,
+        "length": 0.24,
+        "thickness": 0.065,
+        "angle": 135.0,
+        "bend": -0.25,
+        "end_width": 0.85,
+        "palette": {
+          "fill": "#397b59"
+        },
+        "attachment": {
+          "to": "body",
+          "self": "root",
+          "target": "right",
+          "inset": 0.18
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "596413dcaddeac5e8804d29341a88cc0d5ce0e9bd22f3bd087cfcdcd45074258",
+    "engine": "81a9831a12992c9ef3f3ebf3ec33a9f6f822f1d3de1837e8d90c3b70f603587b",
+    "object": "arm",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      302.34900780916956,
+      174.34900780916956,
+      337.65099219083044,
+      209.65099219083044
+    ],
+    "object_bounds": [
+      299.2,
+      65.70839840974631,
+      446.2916015902537,
+      212.8
+    ],
+    "controls": [],
+    "focus": [
+      320.0,
+      192.0
+    ],
+    "locks": {
+      "root": [
+        320.0,
+        192.0
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "anchor": "root",
+    "attachment_target": {
+      "object": "body",
+      "anchor": "right"
+    }
+  },
+  "operation": {
+    "action": "attach",
+    "object": "arm",
+    "attachment": {
+      "to": "body",
+      "self": "root",
+      "target": "right",
+      "inset": 0.18
+    },
+    "reason": "Seat the continuous branch inside the trunk without an assembled elbow"
+  },
+  "status": "ready"
+}

@@ -1,0 +1,29 @@
+{
+  "engine": "0cc7aaea74f48c03ebcbb080d3adf42d3d1de2618d36493e2407c17b8085903b",
+  "results": {
+    "stroke": {
+      "scene": "bc9c1e639273d66b3504096201d98b83261186f4f60a30b64802f33e496a0770",
+      "svg_sha256": "2191f41959e6b9a7da7eca6e320b076d1a74e71dceb65a22c37e133007bc8a07",
+      "png_sha256": "42e9953a9fafb728443fb798e60197c8b1cdf8a47080e537d3bf76b57b6b133c",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "observed_picture_preserved": true
+    },
+    "character": {
+      "scene": "e7299d4d9d0cb03f0038b89e82f6a8aefd7e11567f82732eedc34f3c209bb6e2",
+      "svg_sha256": "55d541245efa5de7c346f8133a6a39b64231ee3459f8cc1461a93a0fe47f21f6",
+      "png_sha256": "ffabf3ab1b9814f736d5c642d36cb88179377f9872594bf65f65e476da29e4bb",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "observed_picture_preserved": true
+    },
+    "single-cactus": {
+      "scene": "26a8e0eb01106f8bbc5c1948e404b184fdad3ec268ffa6629881f09c473e44ce",
+      "svg_sha256": "61ae8bc905cbf27b8c02f5210f17e096f877cf9893efd6a480dbd48f3fdbcaa9",
+      "png_sha256": "e6fc12759dbbfb6c0630d95df1736c1e7fec686206bf1dfd1d519a2f9648428f",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "observed_picture_preserved": true
+    }
+  }
+}

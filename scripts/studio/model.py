@@ -235,8 +235,8 @@ def validate(scene):
     for n in canvas:
         number(n, "canvas", 64, 4096)
     color(scene.get("background", "#f5eee4"))
-    if not isinstance(scene.get("nodes"), list) or not 1 <= len(scene["nodes"]) <= 24:
-        raise ValueError("scene: needs 1–24 nodes")
+    if not isinstance(scene.get("nodes"), list) or not 0 <= len(scene["nodes"]) <= 24:
+        raise ValueError("scene: needs 0–24 nodes")
     ids = set()
     for node in scene["nodes"]:
         if not isinstance(node,dict):
@@ -305,6 +305,8 @@ def node_by_id(scene, sid):
 
 def select(scene, sid=None, side="left", at=.55, radius=.30, feature=None, anchor=None):
     validate(scene)
+    if not scene['nodes']:
+        raise ValueError('empty canvas: add an object before selecting a part')
     if sid is None:
         if len(scene['nodes'])!=1:
             raise ValueError('select an object: '+', '.join(n['id'] for n in scene['nodes']))
@@ -387,6 +389,8 @@ def current_selection(scene, selection):
         raise ValueError("stale selection: inspect the current scene again")
     if selection.get("engine") != engine_fingerprint():
         raise ValueError("stale selection: primitive implementation changed; inspect again")
+    if any(name in selection for name in ("removal","attachment_target")):
+        raise ValueError("operation impact view is not a part inspection; inspect the scene again")
 
 
 def preview(scene, selection, direction, amount, reason):
@@ -523,6 +527,37 @@ def detach_preview(scene,selection,reason):
     validate(candidate)
     return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
                 selection=selection,operation=dict(action='detach',object=selection['object'],reason=reason))
+
+
+def remove_preview(scene,selection,reason,cascade=False):
+    """Remove inspected paint, releasing surviving direct children in place by default."""
+    current_selection(scene,selection)
+    if selection.get('kind')!='feature' or selection.get('feature')!='object':
+        raise ValueError('inspect the whole object before removing it')
+    if not isinstance(reason,str) or not reason.strip(): raise ValueError('state a drawing reason')
+    if not isinstance(cascade,bool): raise ValueError('cascade must be a boolean')
+    from .attachment import resolve_scene
+    from .components import component_outline
+    placed=resolve_scene(scene);sid=selection['object'];node_by_id(scene,sid)
+    removed={sid}
+    if cascade:
+        while True:
+            expanded=removed|{n['id'] for n in scene['nodes'] if n.get('attachment',{}).get('to') in removed}
+            if expanded==removed: break
+            removed=expanded
+    candidate=copy.deepcopy(scene);detached=[]
+    for node in candidate['nodes']:
+        if node['id'] not in removed and node.get('attachment',{}).get('to') in removed:
+            node.pop('attachment');node['at']=copy.deepcopy(node_by_id(placed,node['id'])['at'])
+            detached.append(node['id'])
+    candidate['nodes']=[n for n in candidate['nodes'] if n['id'] not in removed]
+    validate(candidate)
+    ordered=[n['id'] for n in scene['nodes'] if n['id'] in removed]
+    operation=dict(action='remove',object=sid,removed=ordered,detached_children=detached,cascade=cascade,reason=reason)
+    box=bounds([p for n in placed['nodes'] if n['id'] in removed for p in component_outline(n,scene.get('canvas',[640,640]))])
+    view=dict(selection,removal=dict(removed=ordered,detached_children=detached,cascade=cascade),bounds=box,object_bounds=box)
+    return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
+                selection=view,operation=operation)
 
 
 def _set_parameter(node,selection,parameter,value):

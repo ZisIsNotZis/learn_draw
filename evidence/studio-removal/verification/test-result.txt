@@ -1,0 +1,3 @@
+Observed unittest terminal result: 112 tests passed in 23.749s.
+Includes previous 106 plus six recoverable-removal cases (retained chains, cascade, empty canvas/history, stale/refusal, visible bundle, public CLI).
+This is an observation record, not a captured raw test log.

@@ -1,0 +1,25 @@
+{
+  "body bounds unchanged after removal": true,
+  "body bounds unchanged finally": true,
+  "body anchors unchanged after removal": true,
+  "body anchors unchanged finally": true,
+  "body features unchanged after removal": true,
+  "body features unchanged finally": true,
+  "arm bounds unchanged after removal": true,
+  "arm bounds unchanged finally": true,
+  "arm anchors unchanged after removal": true,
+  "arm anchors unchanged finally": true,
+  "arm features unchanged after removal": true,
+  "arm features unchanged finally": true,
+  "removal replay same revision": true,
+  "undo restored original render revision": true,
+  "undo restored original artwork bytes": true,
+  "source sha256": "9fd6a48d147305c3abc88375d5f4983105ddb5233a739204379d1afbbcc88b92",
+  "observed undo byte hash from shell": "9fd6a48d147305c3abc88375d5f4983105ddb5233a739204379d1afbbcc88b92",
+  "final bowl attachment": {
+    "to": "body",
+    "self": "top",
+    "target": "bottom",
+    "inset": 0.26
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "base": "cab06c2b742106c0ef800a1beb0dcb2b62073813f14e8a2eb485c1637cfa3d04",
+  "engine": "81a9831a12992c9ef3f3ebf3ec33a9f6f822f1d3de1837e8d90c3b70f603587b",
+  "result": "a8cd08441dfdbb76fd2d37fa275049e37e2ee6fdc28c51adb0d3a611fd631b10",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#fff0d7",
+    "nodes": [
+      {
+        "id": "body",
+        "kind": "shape",
+        "intent": "The upright rounded cactus trunk emerges from the pot",
+        "depth": -1.0,
+        "length": 0.36,
+        "width": 0.38,
+        "rounding": 1.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#397b59"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.040000000000000036,
+            -0.033999999999999975
+          ]
+        }
+      },
+      {
+        "id": "arm",
+        "kind": "stroke",
+        "intent": "one continuous round branch turns upward",
+        "length": 0.24,
+        "thickness": 0.065,
+        "angle": 135,
+        "bend": -0.25,
+        "end_width": 0.85,
+        "depth": -2,
+        "palette": {
+          "fill": "#397b59"
+        },
+        "attachment": {
+          "to": "body",
+          "self": "root",
+          "target": "right",
+          "inset": 0.18
+        }
+      },
+      {
+        "id": "bowl",
+        "kind": "shape",
+        "intent": "A broad rounded blue bowl supports the unchanged cactus",
+        "depth": 0.0,
+        "length": 0.16,
+        "width": 1.9,
+        "rounding": 0.85,
+        "taper": -0.35,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#397f94"
+        },
+        "attachment": {
+          "to": "body",
+          "self": "top",
+          "target": "bottom",
+          "inset": -0.15
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "cab06c2b742106c0ef800a1beb0dcb2b62073813f14e8a2eb485c1637cfa3d04",
+    "engine": "81a9831a12992c9ef3f3ebf3ec33a9f6f822f1d3de1837e8d90c3b70f603587b",
+    "object": "bowl",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      230.52047243918065,
+      268.8,
+      409.47952756081935,
+      371.2
+    ],
+    "object_bounds": [
+      230.52047243918065,
+      268.8,
+      409.47952756081935,
+      371.2
+    ],
+    "controls": [],
+    "focus": null,
+    "locks": {
+      "center": [
+        320.0,
+        320.0
+      ],
+      "top": [
+        320.00000000000006,
+        268.8
+      ],
+      "right": [
+        399.77900632861616,
+        321.4335976086774
+      ],
+      "bottom": [
+        320.0,
+        371.2
+      ],
+      "left": [
+        240.2209936713838,
+        321.43359760867736
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "attachment_target": {
+      "object": "body",
+      "anchor": "bottom"
+    }
+  },
+  "operation": {
+    "action": "attach",
+    "object": "bowl",
+    "attachment": {
+      "to": "body",
+      "self": "top",
+      "target": "bottom",
+      "inset": -0.15
+    },
+    "reason": "Place the bowl below the preserved trunk"
+  },
+  "status": "ready"
+}

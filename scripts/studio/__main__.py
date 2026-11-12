@@ -6,11 +6,13 @@ import json
 from pathlib import Path
 import sys
 
-from .model import accept, attachment_preview, detach_preview, engine_fingerprint, fingerprint, parameter_preview, parameters_preview, preview, read, select, undo, validate, write
+from .model import accept, attachment_preview, detach_preview, remove_preview, engine_fingerprint, fingerprint, parameter_preview, parameters_preview, preview, read, select, undo, validate, write
 from .render import bundle
 
 
 def default_scene(kind='hair-lock'):
+    if kind=='blank':
+        return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[])
     if kind=='stroke':
         return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
             dict(id='gesture',kind='stroke',intent='a clean round gesture mark with editable spine and terminals')])
@@ -51,7 +53,7 @@ def main():
     kinds=('hair-lock','head','hand','shape','stroke','sky','hills','moon','sun')
     p = sub.add_parser("new", help="create a useful preset; no path coordinates needed")
     p.add_argument("scene")
-    p.add_argument('--kind',choices=kinds+('landscape',),default='hair-lock')
+    p.add_argument('--kind',choices=kinds+('landscape','blank'),default='hair-lock')
     p.add_argument('--id',help='optional semantic object name')
     p.add_argument('--size',type=canvas_arg,help='optional canvas WIDTHxHEIGHT, each 64–4096')
     p.add_argument('--background',help='optional paper colour #rrggbb')
@@ -84,6 +86,8 @@ def main():
             operation.add_argument('--change',action='append',metavar='NAME=VALUE',help='repeat for one coherent multi-control preview; accept/undo as one edit')
             operation.add_argument('--attach',metavar='TARGET_SELECTION',help='pin to a target inspected with --feature anchors')
             operation.add_argument('--detach',action='store_true',help='release an inspected mount while preserving current placement')
+            operation.add_argument('--remove',action='store_true',help='remove the inspected whole object; direct children stay in place and become free')
+            p.add_argument('--cascade',action='store_true',help='with --remove, also remove all attached descendants')
             p.add_argument('--self-anchor',help='named mount on this object (defaults to inspected mount, else center)')
             p.add_argument('--target-anchor',help='named mount on target object (defaults to inspected mount, else center)')
             p.add_argument('--inset',type=float,default=0,help='-2..2 into target surface, fraction of its nominal shorter extent; negative leaves a gap')
@@ -138,7 +142,7 @@ def main():
                 from .components import depth_bounds
                 from .attachment import resolve_scene
                 canvas=scene.get('canvas',[640,640])
-                node['depth']=max(depth_bounds(n,canvas)[1] for n in resolve_scene(scene)['nodes'])+1
+                node['depth']=max((depth_bounds(n,canvas)[1] for n in resolve_scene(scene)['nodes']),default=0)+1
             scene['nodes'].append(node)
             validate(scene)
             accept(args.scene,dict(base=base,engine=engine_fingerprint(),result=fingerprint(scene),scene=scene,
@@ -146,7 +150,8 @@ def main():
             print(json.dumps(dict(scene=args.scene,added=node['id'],revision=fingerprint(scene))))
         elif args.command == "inspect":
             scene = validate(read(args.scene))
-            selection = select(scene, args.object, args.side, args.at, args.radius,args.feature,args.anchor)
+            selection = (None if not scene['nodes'] and not any((args.object,args.feature,args.anchor)) else
+                         select(scene, args.object, args.side, args.at, args.radius,args.feature,args.anchor))
             report = bundle(scene, args.outdir, selection, png=not args.svg_only)
             print(json.dumps(report))
         elif args.command == "preview":
@@ -160,7 +165,12 @@ def main():
             selection=read(args.selection)
             if not args.attach and (args.self_anchor is not None or args.target_anchor is not None or args.inset!=0):
                 raise ValueError('--self-anchor, --target-anchor and --inset are used with --attach')
-            if args.attach or args.detach:
+            if args.cascade and not args.remove:
+                raise ValueError('--cascade is used with --remove')
+            if args.remove:
+                if args.value is not None: raise ValueError('--value is used with --set')
+                candidate=remove_preview(scene,selection,args.reason,args.cascade)
+            elif args.attach or args.detach:
                 if args.value is not None: raise ValueError('--value is used with --set')
                 if args.attach:
                     candidate=attachment_preview(scene,selection,read(args.attach),args.self_anchor,args.target_anchor,args.inset,args.reason)

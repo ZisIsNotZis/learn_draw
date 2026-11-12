@@ -375,3 +375,28 @@ Edit closeups recompute the selected region at the candidate scene, so a moved e
 mount is magnified where it landed. Original selection/base data remains bound to the prior scene.
 Author text stays unchanged in raw data; SVG comments escape markup and normalize double hyphens.
 That also preserves valid IDs containing double hyphens without creating invalid XML comments.
+
+## Remove an inspected component
+
+Scene nodes now accepts 0..24 entries. An empty scene is valid paper; new --kind blank creates it.
+Inspect without an object/feature on empty paper exports a canvas bundle; selecting a part requires
+an added node. Adding a foreground part to empty paper starts at depth 1 and remains undoable.
+
+preview --remove requires a current whole-object selection and a drawing reason. Default deletion
+removes only that node. Each surviving direct child loses attachment and receives the old resolved
+free at, preserving its projected geometry. Further descendants retain their original relations.
+--cascade removes the selected node and all transitive descendants; unrelated nodes/order remain.
+It is refused with other operations. Removing the last node is valid; accept/undo restore the whole
+scene and graph through the normal revision-bound journal. No work is silently discarded.
+
+Operation records action remove, object, ordered removed IDs, detached_children, cascade and reason.
+The candidate selection carries removal impact metadata. Clean artwork shows only surviving paint;
+alignment/closeups use the previous geometry for red dashed removed outlines and blue current
+retained-child outlines/labels. Reports list those affected IDs and current surviving nodes.
+Removal alignment needs the original scene; it never treats a missing current object as selectable.
+Replacing a part is currently separate remove/add/configure/attach edits, not an atomic transaction.
+
+A preview selection carrying removal or attachment_target describes an operation impact view, not
+a new part inspection. Reusing it for another proposal is refused with an explicit re-inspect
+message. Declining a proposal leaves its original inspection usable while that base stays current;
+accepting any edit requires inspecting the new revision.

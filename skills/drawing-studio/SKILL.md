@@ -202,3 +202,20 @@ Source and target --self-anchor/--target-anchor can be omitted when each inspect
 the preview infers those points. Otherwise defaults are center. A positioned address must have
 been inspected explicitly; a hidden, guessed point cannot be substituted. Parameter changes still
 use object/feature inspections. A local edit that changes a pinned point or its tangent is refused.
+
+## Replace obsolete parts without rebuilding the scene
+
+Start with new scene.json --kind blank for an empty paper, then add named parts. Inspecting blank
+paper without an object shows the canvas; add an object before selecting a feature.
+
+To remove a part, inspect --object ID --feature object and read its actual outline and descendants
+in the report. Preview --remove with a drawing reason. By default direct children are released at
+their current visible placements; their children retain their relations. Use --cascade only when
+you intend to remove the whole descendant chain. Read clean artwork and alignment: red dashed
+labels are removed old paint; blue labels are retained children released in place. Neither guide
+is part of the clean image. Accept or discard; undo restores the full prior scene and relations.
+
+For a replacement, remove the old part with the appropriate child policy, add a new named preset,
+then inspect/shape/place it and inspect both mounts before reconnecting retained parts. The steps
+are separate recoverable edits, not one atomic replace transaction. Removing the last part leaves
+valid blank paper; add/undo still work. An eyes/edge/anchor selection cannot delete a whole object.

@@ -332,3 +332,12 @@ anchors --anchor chin, wrist, root or a shape position such as right@.2 for char
 preview --attach infers exact inspected point names if flags are omitted. See evidence/studio-stroke/
 for actual controlled comparisons and a connected character editing sequence. Geometry/crop/landmark
 checks are scripts.tests.test_studio_stroke. New free-text comment escaping also covers other kinds.
+
+## Clear or replace obsolete parts
+
+Inspect working.json --object ID --feature object, view its actual selection, then preview with
+--remove and a reason. Default keeps direct children in place; --cascade removes the descendant
+chain. View the clean image and red/blue impact guides before acceptance. Removing every part
+leaves valid paper; new --kind blank also creates empty paper. Inspect blank paper without a part,
+and add a node before selecting a feature. The seven focused tests are scripts.tests.test_studio_removal;
+actual public-CLI replacement and independent retained-child use live in evidence/studio-removal/.

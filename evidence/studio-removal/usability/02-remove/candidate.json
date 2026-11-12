@@ -1,0 +1,111 @@
+{
+  "base": "26a8e0eb01106f8bbc5c1948e404b184fdad3ec268ffa6629881f09c473e44ce",
+  "engine": "81a9831a12992c9ef3f3ebf3ec33a9f6f822f1d3de1837e8d90c3b70f603587b",
+  "result": "b083086a7fdd24c8a7800e84b992420b319155a7b91b6d7d4e4817c304678251",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#fff0d7",
+    "nodes": [
+      {
+        "id": "body",
+        "kind": "shape",
+        "intent": "The upright rounded cactus trunk emerges from the pot",
+        "depth": -1.0,
+        "length": 0.36,
+        "width": 0.38,
+        "rounding": 1.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#397b59"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.040000000000000036,
+            -0.033999999999999975
+          ]
+        }
+      },
+      {
+        "id": "arm",
+        "kind": "stroke",
+        "intent": "one continuous round branch turns upward",
+        "length": 0.24,
+        "thickness": 0.065,
+        "angle": 135,
+        "bend": -0.25,
+        "end_width": 0.85,
+        "depth": -2,
+        "palette": {
+          "fill": "#397b59"
+        },
+        "attachment": {
+          "to": "body",
+          "self": "root",
+          "target": "right",
+          "inset": 0.18
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "26a8e0eb01106f8bbc5c1948e404b184fdad3ec268ffa6629881f09c473e44ce",
+    "engine": "81a9831a12992c9ef3f3ebf3ec33a9f6f822f1d3de1837e8d90c3b70f603587b",
+    "object": "pot",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      209.52923730326984,
+      390.4,
+      379.27076269673023,
+      518.4
+    ],
+    "object_bounds": [
+      209.52923730326984,
+      390.4,
+      379.27076269673023,
+      518.4
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "profile",
+      "rounding",
+      "taper",
+      "stroke",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension",
+    "removal": {
+      "removed": [
+        "pot"
+      ],
+      "detached_children": [
+        "body"
+      ],
+      "cascade": false
+    }
+  },
+  "operation": {
+    "action": "remove",
+    "object": "pot",
+    "removed": [
+      "pot"
+    ],
+    "detached_children": [
+      "body"
+    ],
+    "cascade": false,
+    "reason": "Replace the angular terracotta pot while retaining the cactus pose"
+  },
+  "status": "ready"
+}

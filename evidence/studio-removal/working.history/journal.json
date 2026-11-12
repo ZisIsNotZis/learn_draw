@@ -1,0 +1,60 @@
+[
+  {
+    "base": "63f75af7218c259c3ed98fc4c310d7cd1ae93ee9aa21f53ad74065c9b32dfdc3",
+    "result": "6433c4c61c64d1a5637fda3f4391204e5c6aa70e88e4a9dbd9e5fa1d1cd8c7f0",
+    "operation": {
+      "action": "remove",
+      "object": "arm",
+      "removed": [
+        "arm",
+        "tip"
+      ],
+      "detached_children": [],
+      "cascade": true,
+      "reason": "Replace the assembled branch and its tip with one continuous gesture"
+    }
+  },
+  {
+    "base": "6433c4c61c64d1a5637fda3f4391204e5c6aa70e88e4a9dbd9e5fa1d1cd8c7f0",
+    "result": "5bcecca880f3bc22ac8a5f91a8ebc90ac58dfc2a396eab31da41c2a5f4dddacc",
+    "operation": {
+      "action": "add",
+      "object": "arm",
+      "kind": "stroke",
+      "reason": "a clean round gesture mark with editable spine and terminals"
+    }
+  },
+  {
+    "base": "5bcecca880f3bc22ac8a5f91a8ebc90ac58dfc2a396eab31da41c2a5f4dddacc",
+    "result": "596413dcaddeac5e8804d29341a88cc0d5ce0e9bd22f3bd087cfcdcd45074258",
+    "operation": {
+      "object": "arm",
+      "feature": "object",
+      "parameters": {
+        "length": 0.24,
+        "thickness": 0.065,
+        "angle": 135.0,
+        "bend": -0.25,
+        "end_width": 0.85,
+        "fill_color": "#397b59",
+        "intent": "One continuous branch replaces the old angular elbow and tip"
+      },
+      "reason": "Use one rounded upward gesture instead of the assembled branch"
+    }
+  },
+  {
+    "base": "596413dcaddeac5e8804d29341a88cc0d5ce0e9bd22f3bd087cfcdcd45074258",
+    "result": "906ada58f542b12b797d002b26d17feed7e314acdf9579a6d6c7a900b6d1aff6",
+    "operation": {
+      "action": "attach",
+      "object": "arm",
+      "attachment": {
+        "to": "body",
+        "self": "root",
+        "target": "right",
+        "inset": 0.18
+      },
+      "reason": "Seat the continuous branch inside the trunk without an assembled elbow"
+    }
+  }
+]

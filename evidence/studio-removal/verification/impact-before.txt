@@ -1,0 +1,13 @@
+======================================================================
+FAIL: test_impact_view_cannot_be_reused_as_a_new_part_inspection (scripts.tests.test_studio_removal.RecoverableRemoval.test_impact_view_cannot_be_reused_as_a_new_part_inspection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\vibe\learn_draw_studio\scripts\tests\test_studio_removal.py", line 91, in test_impact_view_cannot_be_reused_as_a_new_part_inspection
+    with self.assertRaisesRegex(ValueError,'impact'):
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.031s
+
+FAILED (failures=1)

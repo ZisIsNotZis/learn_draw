@@ -1,0 +1,61 @@
+[
+  {
+    "base": "26a8e0eb01106f8bbc5c1948e404b184fdad3ec268ffa6629881f09c473e44ce",
+    "result": "b083086a7fdd24c8a7800e84b992420b319155a7b91b6d7d4e4817c304678251",
+    "operation": {
+      "action": "remove",
+      "object": "pot",
+      "removed": [
+        "pot"
+      ],
+      "detached_children": [
+        "body"
+      ],
+      "cascade": false,
+      "reason": "Replace the angular terracotta pot while retaining the cactus pose"
+    }
+  },
+  {
+    "base": "b083086a7fdd24c8a7800e84b992420b319155a7b91b6d7d4e4817c304678251",
+    "result": "e57e36879733077ccc6e7b27641ae48567dc5baef9bad06b93b40f869abacb51",
+    "operation": {
+      "action": "add",
+      "object": "bowl",
+      "kind": "shape",
+      "reason": "an editable rounded flat colour mass"
+    }
+  },
+  {
+    "base": "e57e36879733077ccc6e7b27641ae48567dc5baef9bad06b93b40f869abacb51",
+    "result": "cab06c2b742106c0ef800a1beb0dcb2b62073813f14e8a2eb485c1637cfa3d04",
+    "operation": {
+      "object": "bowl",
+      "feature": "object",
+      "parameters": {
+        "length": 0.16,
+        "width": 1.9,
+        "rounding": 0.85,
+        "taper": -0.35,
+        "stroke": 0.0,
+        "fill_color": "#397f94",
+        "intent": "A broad rounded blue bowl supports the unchanged cactus"
+      },
+      "reason": "Replace the tall default mass with a low rounded ceramic bowl"
+    }
+  },
+  {
+    "base": "cab06c2b742106c0ef800a1beb0dcb2b62073813f14e8a2eb485c1637cfa3d04",
+    "result": "6c2ec2ec7d19ee6dd01e56a44389bfb4d5cfbc797873c9135d031e1bf47db056",
+    "operation": {
+      "action": "attach",
+      "object": "bowl",
+      "attachment": {
+        "to": "body",
+        "self": "top",
+        "target": "bottom",
+        "inset": 0.26
+      },
+      "reason": "Embed the unchanged trunk tip into the rounded blue bowl rather than leaving a gap"
+    }
+  }
+]

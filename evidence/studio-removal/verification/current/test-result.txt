@@ -1,0 +1,3 @@
+Observed unittest result: 113 tests passed in 70.092s.
+Command: python -m unittest scripts.tests.test_studio scripts.tests.test_studio_head scripts.tests.test_studio_head_editing scripts.tests.test_studio_scenery scripts.tests.test_studio_expression scripts.tests.test_studio_hand scripts.tests.test_studio_shape scripts.tests.test_studio_parameters scripts.tests.test_studio_noncrossing scripts.tests.test_studio_attachment scripts.tests.test_studio_stroke scripts.tests.test_studio_removal scripts.tests.test_draw_review_bundle scripts.tests.test_vector_visibility scripts.tests.test_vector_visibility_oracle -q
+This records observed output, not a captured raw log.

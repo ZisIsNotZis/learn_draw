@@ -548,3 +548,16 @@ do not establish physical folds. Raw comparisons and fresh image criticism live 
 ../evidence/studio-stroke/. A connected character now exercises the accepted head/hand, actual
 chin/wrist mounts and continuously positioned shape-edge pins. These are authored projected features,
 not a semantic body rig. Character shoulder/arm quality is still a visual question.
+
+## Adopted visible component removal
+
+A composition can begin on blank paper and can return to it. Removing an inspected whole component
+previews actual disappearance, with explicit impact on its mounted children. The default keeps the
+children in place and releases their direct pins; cascade removes the complete descendant assembly.
+The old cactus can now be revised into the already-reviewed continuous branch through public
+delete/add/shape/attach operations while retaining its pot and trunk data. This closes a real editing
+gap; reproducing the same picture does not establish a new style or creative transfer.
+
+Replacing a component is still a sequence of recoverable edits. A single atomic semantic replacement
+or a general scene transaction is not implemented. Interface/algorithms are in 7_INTERFACE/8_DETAIL;
+actual revision and independent repotting evidence is indexed at ../evidence/studio-removal/.

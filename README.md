@@ -26,6 +26,9 @@ A new `--kind stroke` starts as a round mark; bend, taper, local spine pushes an
 make it editable without SVG coordinates. Head chin, hand wrist and inspected shape-edge points
 connect components. [Gesture and character studies](evidence/studio-stroke/README.md) preserve
 actual revisions and remaining arm/form limitations.
+Start on empty paper with `new scene.json --kind blank`. Inspect a whole object before
+`preview --remove`: direct children stay in place; `--cascade` removes its descendant assembly.
+[Actual replacement and undo studies](evidence/studio-removal/README.md) retain the impact views.
 [the actual coastal and independent creation studies](evidence/studio-shape/README.md) retain their
 visual limitations. A working contour tool is not a whole-illustration pass.
 

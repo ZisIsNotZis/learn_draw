@@ -1,0 +1,121 @@
+{
+  "base": "5bcecca880f3bc22ac8a5f91a8ebc90ac58dfc2a396eab31da41c2a5f4dddacc",
+  "engine": "81a9831a12992c9ef3f3ebf3ec33a9f6f822f1d3de1837e8d90c3b70f603587b",
+  "result": "596413dcaddeac5e8804d29341a88cc0d5ce0e9bd22f3bd087cfcdcd45074258",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#fff0d7",
+    "nodes": [
+      {
+        "id": "pot",
+        "kind": "shape",
+        "intent": "A low terracotta pot anchors the warm cactus emblem",
+        "length": 0.2,
+        "width": 1.35,
+        "taper": -0.24,
+        "rounding": 0.14,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#bc603c"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.04,
+            0.21000000000000002
+          ]
+        }
+      },
+      {
+        "id": "body",
+        "kind": "shape",
+        "intent": "The upright rounded cactus trunk emerges from the pot",
+        "depth": -1.0,
+        "length": 0.36,
+        "width": 0.38,
+        "rounding": 1.0,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#397b59"
+        },
+        "attachment": {
+          "to": "pot",
+          "self": "bottom",
+          "target": "top",
+          "inset": 0.18
+        }
+      },
+      {
+        "id": "arm",
+        "kind": "stroke",
+        "intent": "One continuous branch replaces the old angular elbow and tip",
+        "depth": -2.0,
+        "length": 0.24,
+        "thickness": 0.065,
+        "angle": 135.0,
+        "bend": -0.25,
+        "end_width": 0.85,
+        "palette": {
+          "fill": "#397b59"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "5bcecca880f3bc22ac8a5f91a8ebc90ac58dfc2a396eab31da41c2a5f4dddacc",
+    "engine": "81a9831a12992c9ef3f3ebf3ec33a9f6f822f1d3de1837e8d90c3b70f603587b",
+    "object": "arm",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      305.6,
+      177.60000000000002,
+      334.4,
+      462.4
+    ],
+    "object_bounds": [
+      305.6,
+      177.60000000000002,
+      334.4,
+      462.4
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "thickness",
+      "angle",
+      "bend",
+      "start_width",
+      "end_width",
+      "start_cap",
+      "end_cap",
+      "shade",
+      "ink_width",
+      "depth",
+      "depth_slope",
+      "fill_color",
+      "shade_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "arm",
+    "feature": "object",
+    "parameters": {
+      "length": 0.24,
+      "thickness": 0.065,
+      "angle": 135.0,
+      "bend": -0.25,
+      "end_width": 0.85,
+      "fill_color": "#397b59",
+      "intent": "One continuous branch replaces the old angular elbow and tip"
+    },
+    "reason": "Use one rounded upward gesture instead of the assembled branch"
+  },
+  "status": "ready"
+}

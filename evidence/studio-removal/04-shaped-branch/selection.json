@@ -1,0 +1,38 @@
+{
+  "base": "5bcecca880f3bc22ac8a5f91a8ebc90ac58dfc2a396eab31da41c2a5f4dddacc",
+  "engine": "81a9831a12992c9ef3f3ebf3ec33a9f6f822f1d3de1837e8d90c3b70f603587b",
+  "object": "arm",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    305.6,
+    177.60000000000002,
+    334.4,
+    462.4
+  ],
+  "object_bounds": [
+    305.6,
+    177.60000000000002,
+    334.4,
+    462.4
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

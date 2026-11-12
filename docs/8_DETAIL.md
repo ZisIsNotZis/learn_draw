@@ -223,3 +223,20 @@ Positioned shape mounts interpolate between generated arc stations and interpola
 normal. This removes hidden quantization without changing default midpoint mounts. Inspecting one
 exact address and candidate-region cropping make its actual action visible. Free-text XML failure
 was reproduced before centralizing safe comment construction; raw author intent remains intact.
+
+## Removal with retained descendant placement
+
+The compiler resolves the complete old graph before deletion. Default removal bakes only surviving
+direct children's derived free placements; their intrinsic geometry and deeper raw relations remain
+unchanged. Cascade computes the transitive closure independently of author order. The operation
+keeps the original inspection binding, plus ordered impact IDs and union bounds of removed paint.
+Preview guides read removed outlines from the original resolved scene and retained children from
+the new resolved scene, while clean artwork compiles only the candidate. Empty node lists take the
+normal background-only depth fast path, requiring no synthetic invisible placeholder object.
+
+An actual reuse probe exposed operation-only guide metadata leaking into a later proposal: after
+declining removal, parameter editing could retain the old deletion labels; an attachment preview
+could similarly retain its old target during a different operation. current_selection now rejects
+these impact views as new inspections. The original inspected selection remains usable at the same
+base. This is a provenance correction, not a geometric change. The pre-fix failure and the exact
+creator source are retained in evidence/studio-removal/.

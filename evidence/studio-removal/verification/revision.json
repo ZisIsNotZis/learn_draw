@@ -1,0 +1,17 @@
+{
+  "engine": "81a9831a12992c9ef3f3ebf3ec33a9f6f822f1d3de1837e8d90c3b70f603587b",
+  "before": "63f75af7218c259c3ed98fc4c310d7cd1ae93ee9aa21f53ad74065c9b32dfdc3",
+  "after": "906ada58f542b12b797d002b26d17feed7e314acdf9579a6d6c7a900b6d1aff6",
+  "pot_and_trunk_raw_nodes_exactly_unchanged": true,
+  "old_branch_and_tip_removed": true,
+  "new_continuous_branch": true,
+  "public_cli_journal_actions": [
+    "remove",
+    "add",
+    "parameters",
+    "attach"
+  ],
+  "png_sha256": "e6fc12759dbbfb6c0630d95df1736c1e7fec686206bf1dfd1d519a2f9648428f",
+  "previously_reviewed_picture_exactly_preserved": "evidence/studio-stroke/07-single-gesture-cactus/artwork.png",
+  "scope": "actual editing workflow closes former re-authoring gap; same picture means prior image review remains applicable, not new creative-transfer evidence"
+}

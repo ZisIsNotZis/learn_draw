@@ -152,6 +152,21 @@ def mount_labels(node,canvas,names=None):
     return out
 
 
+def removal_guides(scene,previous,removal):
+    """Deletion outlines describe old paint; detached children are current retained paint."""
+    if previous is None: raise ValueError('removal alignment requires its previous scene')
+    old=resolve_scene(previous);current=resolve_scene(scene);canvas=scene.get('canvas',[640,640]);out=[]
+    for name,ids,source,color,dash in [('remove',removal['removed'],old,'#ba4261','6 4'),
+                                      ('keep',removal['detached_children'],current,'#3983b9','')]:
+        for sid in ids:
+            poly=node_outline(node_by_id(source,sid),canvas);box=bounds(poly);cx=(box[0]+box[2])/2;cy=(box[1]+box[3])/2
+            label=html.escape(name+': '+sid)
+            out.extend([xml_comment(f'{name}-{sid}: '+('previous paint will be removed' if name=='remove' else 'retained child released at its current placement')),
+                        f'<path id="{name}-{sid}" d="{path(poly)}" fill="none" stroke="{color}" stroke-width="2.5" stroke-dasharray="{dash}"/>',
+                        f'<text x="{cx}" y="{cy}" text-anchor="middle" font-family="sans-serif" font-size="14" fill="{color}" stroke="#fffaf0" stroke-width="3" paint-order="stroke">{label}</text>'])
+    return out
+
+
 def drawing(scene, selection=None, previous=None, viewbox=None):
     validate(scene)
     scene=resolve_scene(scene)
@@ -197,31 +212,34 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
     if selection:
         if selection.get("engine") != engine_fingerprint():
             raise ValueError("stale selection: implementation changed; inspect again")
-        paths,focus,locks=selection_paths(scene,selection)
-        if previous:
-            old_paths,_,_=selection_paths(previous,selection)
-            for i,guide in enumerate(old_paths):
-                out.append(f'<path id="edit-before-{i}" d="{guide["d"]}" transform="{guide["transform"]}" fill="none" stroke="#ba6884" stroke-width="2" stroke-dasharray="5 4"/>')
-        for i,guide in enumerate(paths):
-            ident='selected-edge' if i==0 else f'selected-edge-{i}'
-            out.append(f'<path id="{ident}" d="{guide["d"]}" transform="{guide["transform"]}" fill="none" stroke="#e27d39" stroke-width="3"/>')
-        if focus:
-            x,y=focus
-            out.append(f'<circle id="edit-focus" cx="{x}" cy="{y}" r="5" fill="#fffaf0" stroke="#bc5128" stroke-width="2"/>')
-        for name,p in locks.items():
-            out.append(f'<circle id="locked-{name}" cx="{p[0]}" cy="{p[1]}" r="4" fill="#fffaf0" stroke="#506655" stroke-width="2"/>')
-        if selection.get('feature')=='anchors':
-            out.extend(mount_labels(node_by_id(scene,selection['object']),[width,height],locks))
-        if selection.get('attachment_target'):
-            target=selection['attachment_target']
-            point=get_anchor(node_by_id(scene,target['object']),[width,height],target['anchor'])['point']
-            label=html.escape(target['object']+'.'+target['anchor'])
-            box=bounds(node_outline(node_by_id(scene,selection['object']),[width,height]))
-            lx,ly=box[2]+20,max(box[3]+50,point[1]+45)
-            out.append(f'<circle id="mount-target" cx="{point[0]}" cy="{point[1]}" r="7" fill="none" stroke="#3983b9" stroke-width="3"/>')
-            out.append('<!-- mount-target-callout: identify the inspected target mount -->')
-            out.append(f'<path id="mount-target-callout" d="M {point[0]} {point[1]} L {lx} {ly-4}" fill="none" stroke="#3983b9" stroke-width="1"/>')
-            out.append(f'<text x="{lx}" y="{ly}" font-family="sans-serif" font-size="13" fill="#286d9e" stroke="#fffaf0" stroke-width="3" paint-order="stroke">{label}</text>')
+        if selection.get('removal'):
+            out.extend(removal_guides(scene,previous,selection['removal']))
+        else:
+            paths,focus,locks=selection_paths(scene,selection)
+            if previous:
+                old_paths,_,_=selection_paths(previous,selection)
+                for i,guide in enumerate(old_paths):
+                    out.append(f'<path id="edit-before-{i}" d="{guide["d"]}" transform="{guide["transform"]}" fill="none" stroke="#ba6884" stroke-width="2" stroke-dasharray="5 4"/>')
+            for i,guide in enumerate(paths):
+                ident='selected-edge' if i==0 else f'selected-edge-{i}'
+                out.append(f'<path id="{ident}" d="{guide["d"]}" transform="{guide["transform"]}" fill="none" stroke="#e27d39" stroke-width="3"/>')
+            if focus:
+                x,y=focus
+                out.append(f'<circle id="edit-focus" cx="{x}" cy="{y}" r="5" fill="#fffaf0" stroke="#bc5128" stroke-width="2"/>')
+            for name,p in locks.items():
+                out.append(f'<circle id="locked-{name}" cx="{p[0]}" cy="{p[1]}" r="4" fill="#fffaf0" stroke="#506655" stroke-width="2"/>')
+            if selection.get('feature')=='anchors':
+                out.extend(mount_labels(node_by_id(scene,selection['object']),[width,height],locks))
+            if selection.get('attachment_target'):
+                target=selection['attachment_target']
+                point=get_anchor(node_by_id(scene,target['object']),[width,height],target['anchor'])['point']
+                label=html.escape(target['object']+'.'+target['anchor'])
+                box=bounds(node_outline(node_by_id(scene,selection['object']),[width,height]))
+                lx,ly=box[2]+20,max(box[3]+50,point[1]+45)
+                out.append(f'<circle id="mount-target" cx="{point[0]}" cy="{point[1]}" r="7" fill="none" stroke="#3983b9" stroke-width="3"/>')
+                out.append('<!-- mount-target-callout: identify the inspected target mount -->')
+                out.append(f'<path id="mount-target-callout" d="M {point[0]} {point[1]} L {lx} {ly-4}" fill="none" stroke="#3983b9" stroke-width="1"/>')
+                out.append(f'<text x="{lx}" y="{ly}" font-family="sans-serif" font-size="13" fill="#286d9e" stroke="#fffaf0" stroke-width="3" paint-order="stroke">{label}</text>')
     return "\n".join(out + ['</svg>'])
 
 
@@ -268,7 +286,8 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
     if selection:
         # Crop around the object, not a guessed image location. Square pixel crop
         # is rendered to the same output dimensions, providing real magnification.
-        box = bounds(node_outline(node_by_id(compiled,selection['object']),scene.get('canvas',[640,640])))
+        box = (selection['object_bounds'] if selection.get('removal') else
+               bounds(node_outline(node_by_id(compiled,selection['object']),scene.get('canvas',[640,640]))))
         x0, y0, x1, y1 = box
         pad = max(x1 - x0, y1 - y0) * .1
         span = max(x1 - x0, y1 - y0) + 2 * pad
@@ -276,7 +295,8 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
         views["alignment"] = drawing(scene, selection, previous)
         views["object-closeup"] = drawing(scene, selection, previous, vb)
         # An operation-scale crop shows the selected edge and before/after guides.
-        current_view=select(scene,selection['object'],selection.get('side','left'),selection.get('at',.55),selection.get('radius',.30),selection.get('feature'),selection.get('anchor'))
+        current_view=(selection if selection.get('removal') else
+                      select(scene,selection['object'],selection.get('side','left'),selection.get('at',.55),selection.get('radius',.30),selection.get('feature'),selection.get('anchor')))
         b = current_view["bounds"]
         span = max(b[2] - b[0], b[3] - b[1], 40) * 1.8
         views["edit-closeup"] = drawing(scene, selection, previous,
@@ -304,7 +324,8 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
     report = dict(revision=revision, engine=engine_fingerprint(), status='ready',renderer=backend, images=images,
                   image_sha256={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images},nodes=node_info,
                   scope="editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
-                  alignment_legend={'orange':'selected current boundary','pink dashed':'previous boundary',
+                  removal=selection.get('removal') if selection else None,
+                  alignment_legend={'red dashed':'removed previous paint; removal only','blue':'retained released children; removal only','orange':'selected current boundary','pink dashed':'previous boundary',
                                     'green rings':'named mount points or protected endpoints/knuckle','white target':'local edge/spine, terminal, digit-tip or exact-mount focus'},
                   move_units='object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span')
     write(directory / "report.json", report)

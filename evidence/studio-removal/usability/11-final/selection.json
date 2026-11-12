@@ -1,0 +1,44 @@
+{
+  "base": "6c2ec2ec7d19ee6dd01e56a44389bfb4d5cfbc797873c9135d031e1bf47db056",
+  "engine": "81a9831a12992c9ef3f3ebf3ec33a9f6f822f1d3de1837e8d90c3b70f603587b",
+  "object": "bowl",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    204.92047243918057,
+    390.67648,
+    383.87952756081927,
+    493.07648
+  ],
+  "object_bounds": [
+    204.92047243918057,
+    390.67648,
+    383.87952756081927,
+    493.07648
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      294.3999999999999,
+      441.87648
+    ],
+    "top": [
+      294.3999999999999,
+      390.67648
+    ],
+    "right": [
+      374.17900632861614,
+      443.3100776086774
+    ],
+    "bottom": [
+      294.3999999999999,
+      493.07648
+    ],
+    "left": [
+      214.62099367138373,
+      443.3100776086774
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space"
+}

@@ -27,6 +27,9 @@ PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安
 新增 `--kind stroke` 默认为圆头笔画，可调弯曲、渐细，也能在可见中线或端点上修正，无须写 SVG 坐标。
 头部下巴、手腕和明确检查过的色块边缘点可用于连接组件；[笔画与人物试作](evidence/studio-stroke/README.md)
 保存了实际修正过程，以及手臂形态等尚未解决的限制。
+也可用 `new scene.json --kind blank` 从空白纸开始。检查整个对象后，用 `preview --remove`
+预览删除；默认让直接子部件留在原位，`--cascade` 则连同后代一起删除。
+[实际替换与撤销记录](evidence/studio-removal/README.md)保存了影响视图和连接保留的验证。
 
 天空、山脊、月亮和太阳预设也已支持小幅背景构图与可撤销移动。[实际研究及批评意见](evidence/studio-composition/README.md)
 保留了当前效果的局限；这些能力不等于整幅作品的美术验收。
