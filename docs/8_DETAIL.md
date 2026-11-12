@@ -5,6 +5,26 @@ the language they serve (`5_PRODUCT.md`), or the commands that run them (`9_IMPL
 
 # INFERRED
 
+## Editable lock implementation
+
+`scripts/studio/geometry.py` sweeps a smooth gesture from a semantic frame anchor. A continuous
+root/fullness/tip width field gives a rounded narrow root, broad upper-middle and convergent tip.
+Generated boundary samples support compact cosine-window pushes. Both the push and its first
+derivative vanish at the influence boundary; endpoints remain outside the interval. Tone regions
+interpolate the edited left/right boundaries, so they follow local changes without separate patching.
+Sampled section orientation and proper segment-intersection checks reject clear collapses/crossings.
+
+`render.py` triangulates the generated outline with the existing articulated-construction utility.
+It assigns planar depth and calls the existing `vector_visibility.visible_regions`; visible union
+paths become clips for fill, designed tonal regions and contour ink. Mesh diagonals are never ink.
+Larger depth is closer. Coplanar overlaps retain the existing engine's deterministic tie behavior;
+avoid relying on ties to describe spatial order. Finite stroke width is clipped within its owner.
+
+`model.py` validates inputs and binds selection/preview to canonical JSON SHA256. Accept stores the
+previous scene under `<scene-stem>.history/` and appends the operation journal. Individual file writes
+replace a temporary file atomically. Multi-file accept/undo is not crash-transactional; no claim of
+process-kill recovery is made yet. Undo detects external scene edits and hash damage.
+
 ## Coordinate and transform conventions
 
 `frame.w`/`frame.h` size the canvas and the resolver's SVG is `viewBox="0 0 w h"`: a coordinate is a

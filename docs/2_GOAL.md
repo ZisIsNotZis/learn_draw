@@ -11,6 +11,28 @@ through `9_IMPLEMENTATION.md`), milestone promises, gate definitions and current
 
 # EXPLICIT
 
+## Current product acceptance — 2026-11-12
+
+Deliver a usable VLM drawing workbench and reusable drawing practice, demonstrated by authored images.
+A useful slice must show all of the following on actual outputs:
+
+1. A small required input creates a usable default shape without repairing the primitive from scratch.
+2. The author can identify the target part/edge in an actual image before editing it; selection,
+   coordinates and magnified views refer to the same revision.
+3. Optional local controls predictably refine shape while preserving locked endpoints and unrelated
+   objects. Preview, acceptance and undo preserve a recoverable working state.
+4. Successive edits address a stated drawing issue and inspect their visual consequences. Fresh-image
+   review separates visual quality from deterministic, geometric or source checks.
+5. The improved primitive/practice is reused in another instance or small intent-led composition.
+   Whole-figure pose automation and universal drawing mastery are not entry requirements.
+
+The workbench, its operable interface and accumulated skill are product outputs. Each capability claim
+requires a rendered demonstration; a tool count, test suite or document alone cannot close it. Human
+judgment remains human judgment. Request it for concrete unresolved taste decisions; continue other
+work while awaiting a reply. The four quality questions below remain diagnostic dimensions, applied
+to the claim actually made. The old six-axis portrait rubric assesses that portrait, not every tool
+or original subject.
+
 ## The rubric's scoring rules are explicit and checkable, so two independent reviewers land within ±1
 
 The axes of the rubric each carry explicit and checkable scoring rules, so that two independent
@@ -28,14 +50,13 @@ with existing primitives, 3D support surfaces and depth visibility. Vendor conte
 correct or already learned. Models may inspect references but author text/code only; no generated
 images, sprites or pixel-metric optimisation. A reference teaches, it is not runtime geometry.
 
-## A milestone is an artwork, not an engine
+## Artwork evidence for a product milestone
 
-A milestone is a user-perceivable artwork or newly demonstrated visual capability, not an engine, test
-suite or document. The artifact must be current, reviewable, and ready for the user's judgment. After
-each delivery, stop dependent work at the user feedback gate. Internal study, methods, work-package
-sequencing and technical replanning are project-autonomous; the user is not asked to decide internal
-plans. Internal checks are never represented as the user's judgment, and art success is never promised
-in advance.
+A product milestone combines a user-perceivable artwork or newly demonstrated visual capability with
+the usable operation that produced it. Its artifacts must be current and reviewable. Human feedback
+is asynchronous under the current user instruction: preserve unknown dispositions and continue
+independent work. Internal checks are never represented as human judgment, and art success is never
+promised in advance.
 
 ## Four acceptance questions, kept distinct
 

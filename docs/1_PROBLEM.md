@@ -5,6 +5,33 @@ made of is `5_PRODUCT.md`; milestones and the current advance are `0_ROADMAP.md`
 
 # EXPLICIT
 
+## Current purpose — user's clarification, 2026-11-12
+
+The product is a drawing workbench for VLMs, analogous to Photoshop but designed for a model that is
+not a professional painter. The decomposition into separately editable layers and spatial support
+surfaces was the user's response to failed attempts at drawing a whole complex image. Preserve that
+reason: first make a part easy to draw and revise; automatic whole-figure variation is not a prerequisite.
+
+Reference imitation is a means of developing both the workbench and accumulated drawing skill.
+The user wants defaults simple enough to use immediately and good enough to retain, with optional
+controls or more advanced primitives for refinement. High-level objects (sun, moon, background, head,
+hand) and useful assistance (depth, continuity, colour masses, thickness, curve cleanliness,
+perspective guides) are welcome when their actual outputs justify them. Retire ineffective or unused
+tools after diagnosing whether their design is responsible; an inventory is not progress.
+
+The desired author watches where the next action will land, aligns it, makes a local change, observes
+the result and keeps refining. Repeated small left/right adjustments are normal creation. Reduce the
+cost of this loop rather than demanding a perfect one-shot description. Three failure causes must be
+distinguished: visual understanding, editing affordances, and sustained goal-directed execution.
+
+The user delegates implementation and routine design decisions and will often be absent. Human
+aesthetic help may be requested asynchronously while other work proceeds. Final creation cannot be
+outsourced to an image-generation model. The ambiguous remark about possible teaching-time generated
+material grants no new generation workflow; authored vector studies suffice for the current work.
+
+Older figure-specific requests below remain provenance for those studies, not the definition of the
+whole product. Acceptance is owned by `2_GOAL.md`; the current sequence is `0_ROADMAP.md`.
+
 ## The point is the drawing, at a detailed level
 
 The project exists to learn to draw, and its point is detailed and reasonable drawing. That is the

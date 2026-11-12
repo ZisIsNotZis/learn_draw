@@ -1,0 +1,38 @@
+{
+  "base_package": "D:\\vibe\\learn_draw\\.scratch\\35-r1-articulated-study\\evidence\\A-full-figure-waist-r1",
+  "engine": "b42e14ec60747eda5d91e54a2668361bf95c2a8922759263f5d566007a7a6469",
+  "adapter_sha256": "0ee93dea11fed49a6693ec1b07af1a293e95f5f887a092228429e5e732e66985",
+  "base_source_sha256": {
+    "source\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source\\assemble.py": "0044460bafc1d5f31296f5d110aa32a3213a937e7aaccf1d56e65de3938ebb50",
+    "source\\authored.py": "43f78911d55c3d64464239cb82a69bfaff767abbc8d9251f105d815be52f107d",
+    "source\\build_a.py": "b1b2e1036598b645ff79f874c52556a53d52cc56dda902843df1d0a233bf31c3",
+    "source\\build_full.py": "2454995a49313db67ac10273440c52ac1bc75112f9b50215851afce02fdaf8a7",
+    "source\\full\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source\\full\\assemble_full.py": "a59afc8df33d0ef0c7eae1768255eb35669e081f551c96ddbf709a60396a5eb0",
+    "source\\full\\figure.py": "41086f75ab718f1eac6d4b9f9fdc87d70e66bc1914ba5acfc8578e8b8a691513",
+    "source\\lines.py": "9a8b10de717f326698d7e2cee3990f386b54fc39030839f50cad32158f6cbee5",
+    "source\\manifest_full.py": "b3a7d26386f0b77fc2efbc53e73cafdb4cb6831249a8fcbb107ac1c1f5edd3a8",
+    "source\\parts\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source\\parts\\bodice.py": "272e338b9ba05cdaba0c8038a645630556b8aba428ec8c0d69805a332df7c87d",
+    "source\\parts\\bow.py": "e74704624c40121064798beb580b4d57826f51146e1186e5fced685bef58959e",
+    "source\\parts\\collar.py": "c13d6b126277649bf2898dc3fc994c043811b7ebf0508e2deca17145162755ff",
+    "source\\parts\\families.py": "008a43da6a6333aa986e81ee0ac8f21acebe87070b9467458e12ad1f73230fb0",
+    "source\\parts\\frames.py": "8a93d7aca13b73a3f142782fcc07abb9ca783c0f676be2ad49554f7776db502d",
+    "source\\parts\\hair.py": "7e976a51e0cefdbeb530f1f45932e0c7cb8b68ab825d2b3e24af19e43c7cfd65",
+    "source\\parts\\head.py": "459f0a7564bedcd099cd297615411a6e2cabab5299a9213c4545d47b3750a582",
+    "source\\parts\\skin.py": "a3487f07d72bbafe398f74409a237106602115155b7ef0c5619c5c953282021d",
+    "source\\parts\\sleeve.py": "6c4d7e952f4edef319853bcf3a2340cca0b8e243c6ca6e45768351711ec1ae34",
+    "source\\seam_contract.py": "a87b15ccf3d60c9355cfd499a4320467d455d8bd8da9a4085b2bff366452602c"
+  },
+  "reused_before": "evidence/studio-hair/portrait-context-v4",
+  "changed_parts": [
+    "A-hair-fall-right",
+    "A-hair-fall-right-shade"
+  ],
+  "added_parts": [
+    "A-hair-fall-right-light"
+  ],
+  "unchanged_part_count": 55,
+  "scope": "right fall context experiment; no whole-artwork PASS"
+}

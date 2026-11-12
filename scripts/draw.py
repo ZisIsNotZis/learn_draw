@@ -9,7 +9,7 @@ so a drawing that regresses is visible as a regression instead of being called p
 import argparse, hashlib, json, os, re, shutil, subprocess, sys, datetime
 import numpy as np
 import cv2
-from renderer import chrome_path
+from renderer import chrome_path, screenshot
 
 CHROME = chrome_path()
 
@@ -39,14 +39,15 @@ def whole(value: object, what: str = "value") -> int:
 
 def read_text(path: str) -> str:
     try:
-        return open(path).read()
+        with open(path, encoding="utf-8") as fh:
+            return fh.read()
     except OSError as exc:
         raise ToolError(f"draw: cannot read {path}: {exc}") from exc
 
 
 def write_text(path: str, text: str) -> None:
     try:
-        with open(path, "w") as fh:
+        with open(path, "w", encoding="utf-8") as fh:
             fh.write(text)
     except OSError as exc:
         raise ToolError(f"draw: cannot write {path}: {exc}") from exc
@@ -54,7 +55,7 @@ def write_text(path: str, text: str) -> None:
 
 def append_text(path: str, text: str) -> None:
     try:
-        with open(path, "a") as fh:
+        with open(path, "a", encoding="utf-8") as fh:
             fh.write(text)
     except OSError as exc:
         raise ToolError(f"draw: cannot append to {path}: {exc}") from exc
@@ -102,7 +103,10 @@ def render(src: str, out: str, size: tuple[int, int] | None = None) -> tuple[int
                 if not m:
                     sys.exit("cannot infer SVG size; pass --size WxH")
                 size = (whole(num(m.group(1))), whole(num(m.group(2))))
-        html = f'<html><body style="margin:0;overflow:hidden">{svg}</body></html>'
+        # Windows Chromium can lay out a minimum 500px viewport while returning
+        # a smaller screenshot. Give percentage-sized SVGs the requested canvas.
+        html = (f'<html><body style="margin:0;overflow:hidden;width:{size[0]}px;'
+                f'height:{size[1]}px">{svg}</body></html>')
         tmp = out + ".wrap.html"
         write_text(tmp, html)
         target = tmp
@@ -110,9 +114,7 @@ def render(src: str, out: str, size: tuple[int, int] | None = None) -> tuple[int
         target = src
     if size is None:
         raise ToolError("draw: cannot infer a size for this source; pass --size WxH")
-    subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-sandbox",
-                    f"--screenshot={out}", f"--window-size={size[0]},{size[1]}",
-                    "file://" + target], check=True, capture_output=True, timeout=60)
+    screenshot(target, out, size, CHROME)
     if tmp is not None:
         remove_file(tmp)
     return size

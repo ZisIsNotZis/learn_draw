@@ -1,0 +1,75 @@
+{
+  "base": "652223121c7aec16c5f66ee843182fd10c2c2fa00f424477c26873c0498c07b9",
+  "result": "a96601324770014f87c0de60034a757fe550f6e0603760f9931c299dd7f38b07",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "cheek-lock",
+        "kind": "hair-lock",
+        "intent": "a soft blue lock swelling below the root and tapering to a pointed end",
+        "edits": [
+          {
+            "side": "left",
+            "at": 0.55,
+            "radius": 0.2,
+            "dx": 0.18,
+            "dy": 0,
+            "reason": "The inner edge is too straight through the middle; tuck it inward while preserving the root and tip"
+          },
+          {
+            "side": "left",
+            "at": 0.55,
+            "radius": 0.2,
+            "dx": -0.06,
+            "dy": 0,
+            "reason": "The first tuck makes the middle slightly pinched; ease the inner curve back without restoring its original straight edge"
+          }
+        ]
+      }
+    ]
+  },
+  "selection": {
+    "base": "652223121c7aec16c5f66ee843182fd10c2c2fa00f424477c26873c0498c07b9",
+    "object": "cheek-lock",
+    "side": "left",
+    "at": 0.55,
+    "radius": 0.2,
+    "bounds": [
+      304.29186439999995,
+      249.8939866852662,
+      331.3484935150713,
+      396.688293476332
+    ],
+    "object_bounds": [
+      259.4318664621795,
+      67.1290129828482,
+      408.5540481771932,
+      507.7646635163315
+    ],
+    "locks": {
+      "root": [
+        320.0,
+        76.8
+      ],
+      "tip": [
+        259.4318664621795,
+        507.7646635163315
+      ]
+    },
+    "units": "push amount = fraction of this object's nominal full width; directions are screen directions"
+  },
+  "operation": {
+    "side": "left",
+    "at": 0.55,
+    "radius": 0.2,
+    "dx": -0.06,
+    "dy": 0,
+    "reason": "The first tuck makes the middle slightly pinched; ease the inner curve back without restoring its original straight edge"
+  }
+}

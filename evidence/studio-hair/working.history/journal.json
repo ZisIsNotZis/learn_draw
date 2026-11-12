@@ -1,0 +1,26 @@
+[
+  {
+    "base": "3d383540a38d4fb68bb2ddaa3c927c075ca973f6b5cd15de537a2d1ff656633b",
+    "result": "652223121c7aec16c5f66ee843182fd10c2c2fa00f424477c26873c0498c07b9",
+    "operation": {
+      "side": "left",
+      "at": 0.55,
+      "radius": 0.2,
+      "dx": 0.18,
+      "dy": 0,
+      "reason": "The inner edge is too straight through the middle; tuck it inward while preserving the root and tip"
+    }
+  },
+  {
+    "base": "652223121c7aec16c5f66ee843182fd10c2c2fa00f424477c26873c0498c07b9",
+    "result": "a96601324770014f87c0de60034a757fe550f6e0603760f9931c299dd7f38b07",
+    "operation": {
+      "side": "left",
+      "at": 0.55,
+      "radius": 0.2,
+      "dx": -0.06,
+      "dy": 0,
+      "reason": "The first tuck makes the middle slightly pinched; ease the inner curve back without restoring its original straight edge"
+    }
+  }
+]

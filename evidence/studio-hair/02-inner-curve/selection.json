@@ -1,0 +1,30 @@
+{
+  "base": "3d383540a38d4fb68bb2ddaa3c927c075ca973f6b5cd15de537a2d1ff656633b",
+  "object": "cheek-lock",
+  "side": "left",
+  "at": 0.55,
+  "radius": 0.2,
+  "bounds": [
+    304.29186439999995,
+    249.8939866852662,
+    316.7540336109818,
+    396.688293476332
+  ],
+  "object_bounds": [
+    259.4318664621795,
+    67.1290129828482,
+    408.5540481771932,
+    507.7646635163315
+  ],
+  "locks": {
+    "root": [
+      320.0,
+      76.8
+    ],
+    "tip": [
+      259.4318664621795,
+      507.7646635163315
+    ]
+  },
+  "units": "push amount = fraction of this object's nominal full width; directions are screen directions"
+}

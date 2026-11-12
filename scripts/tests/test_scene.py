@@ -579,19 +579,20 @@ def _cos(a, b):
     import scripts_similarity as S
     return S.cosine(a, b)
 
-import importlib.util as _ilu, os as _os, sys as _sys
-_spec = _ilu.spec_from_file_location("scripts_similarity",
-                                     _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "similarity.py"))
-_S = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_S)
-_m, _pre = _S._load_model()
-_ref = _S.embed(_m, _pre, _S.D_read("image.jpg"))
-_m1 = _S.embed(_m, _pre, _S.D_read(os.path.join(".scratch/13-assembly/evidence/m1-final.png")))
-_rng = np.random.default_rng(0)
-_noise = _S.embed(_m, _pre, _rng.integers(0, 255, (1024, 1024, 3), np.uint8))
-check("k: similarity separates a drawing from noise", _S.cosine(_ref, _m1) > _S.cosine(_ref, _noise))
-check("k: similarity is bounded and sane", -1.0 <= _S.cosine(_ref, _m1) <= 1.0)
-
-print(f"\n{PASS}/{TOTAL} smoke tests passed")
+if "--with-similarity" in sys.argv:
+    import importlib.util as _ilu, os as _os, sys as _sys
+    _spec = _ilu.spec_from_file_location("scripts_similarity",
+                                         _os.path.join(_os.path.dirname(_os.path.dirname(_os.path.abspath(__file__))), "similarity.py"))
+    _S = _ilu.module_from_spec(_spec); _spec.loader.exec_module(_S)
+    _m, _pre = _S._load_model()
+    _ref = _S.embed(_m, _pre, _S.D_read("image.jpg"))
+    _m1 = _S.embed(_m, _pre, _S.D_read(os.path.join(".scratch/13-assembly/evidence/m1-final.png")))
+    _rng = np.random.default_rng(0)
+    _noise = _S.embed(_m, _pre, _rng.integers(0, 255, (1024, 1024, 3), np.uint8))
+    check("k: similarity separates a drawing from noise", _S.cosine(_ref, _m1) > _S.cosine(_ref, _noise))
+    check("k: similarity is bounded and sane", -1.0 <= _S.cosine(_ref, _m1) <= 1.0)
+else:
+    print("SKIP contextual model alarm (explicit --with-similarity only; not a CPU geometry smoke check)")
 
 # --- wave + strands generator tests ---
 import hashlib, subprocess as sp
@@ -599,15 +600,19 @@ scene = '''- {rect: bg, at: [0,0], w: 1024, h: 1024, fill: "#ffffff"}
 - {wave: r, spine: [[100,300],[500,280],[900,320]], w: 60, amp: 25, len: 300, sag: 0.2, taper: end, fill: "#4ba7b1"}
 - {strands: h, region: [100,600,400,800], n: 10, dir: 100, spread: 15, w: 3, len: 80, ink: ["#3d73a7","#3974ab"], seed: 42}
 '''
-open('/tmp/tg.yaml','w').write(scene)
-sp.run([sys.executable, 'scripts/scene_render.py', '/tmp/tg.yaml', '-o', '/tmp/tg.png'], check=True, capture_output=True)
-img = cv2.imread('/tmp/tg.png')
+_wave_yaml = os.path.join(OUT, 'wave.yaml')
+_wave_png = os.path.join(OUT, 'wave.png')
+_wave_png2 = os.path.join(OUT, 'wave2.png')
+with open(_wave_yaml, 'w', encoding='utf-8') as _fh:
+    _fh.write(scene)
+sp.run([sys.executable, 'scripts/scene_render.py', _wave_yaml, '-o', _wave_png], check=True, capture_output=True)
+img = cv2.imread(_wave_png)
 mid = img[300, 500]  # teal ribbon body (BGR: 177,167,75)
 assert abs(int(mid[0])-177) < 30 and int(mid[1]) > 120, f"wave ribbon not at spine: {mid}"
 blue = ((np.abs(img[560:840, 60:440].astype(int) - np.array([167,115,103])).sum(axis=2) < 60).sum())
 assert blue > 300, f"strands not rendered: {blue} blue px"
-sp.run([sys.executable, 'scripts/scene_render.py', '/tmp/tg.yaml', '-o', '/tmp/tg2.png'], check=True, capture_output=True)
-assert hashlib.md5(open('/tmp/tg.png','rb').read()).hexdigest() == hashlib.md5(open('/tmp/tg2.png','rb').read()).hexdigest(), "wave/strands nondeterministic"
+sp.run([sys.executable, 'scripts/scene_render.py', _wave_yaml, '-o', _wave_png2], check=True, capture_output=True)
+assert hashlib.md5(pathlib.Path(_wave_png).read_bytes()).hexdigest() == hashlib.md5(pathlib.Path(_wave_png2).read_bytes()).hexdigest(), "wave/strands nondeterministic"
 print("PASS wave: ribbon body at spine with sag")
 print("PASS strands: n strands rendered in region")
 print("PASS wave/strands: deterministic")
@@ -640,3 +645,5 @@ try:
 except ET.ParseError as e:
     check("i: ring -> valid XML + hue walk + deterministic", False)
     print("   parse error:", e)
+
+print(f"\n{PASS}/{TOTAL} CPU smoke checks passed; wave/strands assertions also passed")

@@ -53,7 +53,12 @@ import sys
 # same directory as scene_render.py when installed in scripts/; the path insert covers the
 # .scratch prototype locations this file historically lived in.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-sys.path.insert(0, str(Path(__file__).resolve().parents[4] / "scripts"))
+# Installed scripts are siblings. A prototype location may have a deeper repo
+# root; shallow Windows checkouts do not even have parents[4].
+if len(Path(__file__).resolve().parents) > 4:
+    prototype_scripts = Path(__file__).resolve().parents[4] / "scripts"
+    if prototype_scripts.is_dir():
+        sys.path.insert(0, str(prototype_scripts))
 from scene_render import chrome, smooth_path, flood_region  # noqa: E402
 
 # --------------------------------------------------------------------------------------
@@ -79,14 +84,14 @@ def whole(value: object, what: str = "value") -> int:
 
 def read_text(path: Path) -> str:
     try:
-        return path.read_text()
+        return path.read_text(encoding="utf-8")
     except OSError as exc:
         raise SpecError(f"relate: cannot read {path}: {exc}") from exc
 
 
 def write_text(path: Path, text: str) -> None:
     try:
-        path.write_text(text)
+        path.write_text(text, encoding="utf-8")
     except OSError as exc:
         raise SpecError(f"relate: cannot write {path}: {exc}") from exc
 

@@ -1,0 +1,11 @@
+{
+  "revisions": [
+    "3d383540a38d4fb68bb2ddaa3c927c075ca973f6b5cd15de537a2d1ff656633b",
+    "913fc9add8cc29b8723efc6158d26e77286883fc36cf8f6e8419e07ecd0986c7",
+    "8b7c54306fe359d7bbffde5a8504e0e22d23b8a6842a268c685065603f6c3dce"
+  ],
+  "undo_reaccept_verified": true,
+  "reference": null,
+  "metrics": "edge-F1/colour-distance: not applicable to an original primitive study",
+  "visual_acceptance": "unverified; inspect the images independently"
+}

@@ -1,0 +1,23 @@
+{
+  "revision": "3d383540a38d4fb68bb2ddaa3c927c075ca973f6b5cd15de537a2d1ff656633b",
+  "engine": "325efd4a78a31d0bf49732edd442026a4b05dc72fc9b2517c6432f08b336de3c",
+  "renderer": "chromium-disable-gpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hair\\v2\\01-default\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hair\\v2\\01-default\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hair\\v2\\01-default\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hair\\v2\\01-default\\edit-closeup.png"
+  ],
+  "nodes": {
+    "cheek-lock": {
+      "intent": "a soft blue lock swelling below the root and tapering to a pointed end",
+      "bounds": [
+        259.4318664621795,
+        67.1290129828482,
+        408.5540481771932,
+        507.7646635163315
+      ]
+    }
+  },
+  "scope": "editable planar hair locks; no head, attachment, curved support or whole-artwork acceptance claim"
+}

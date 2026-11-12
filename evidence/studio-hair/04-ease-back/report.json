@@ -1,0 +1,22 @@
+{
+  "revision": "a96601324770014f87c0de60034a757fe550f6e0603760f9931c299dd7f38b07",
+  "renderer": "chromium-disable-gpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hair\\04-ease-back\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hair\\04-ease-back\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hair\\04-ease-back\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hair\\04-ease-back\\edit-closeup.png"
+  ],
+  "nodes": {
+    "cheek-lock": {
+      "intent": "a soft blue lock swelling below the root and tapering to a pointed end",
+      "bounds": [
+        259.4318664621795,
+        67.1290129828482,
+        408.5540481771932,
+        507.7646635163315
+      ]
+    }
+  },
+  "scope": "editable planar hair locks; no head, attachment, curved support or whole-artwork acceptance claim"
+}

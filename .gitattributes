@@ -1,0 +1,3 @@
+# Study manifests bind the actual bytes, including generated SVG/JSON line endings.
+evidence/** -text
+.scratch/history/roadmap-before-vlm-studio.md -text

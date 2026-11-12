@@ -1,0 +1,77 @@
+{
+  "base": "913fc9add8cc29b8723efc6158d26e77286883fc36cf8f6e8419e07ecd0986c7",
+  "engine": "325efd4a78a31d0bf49732edd442026a4b05dc72fc9b2517c6432f08b336de3c",
+  "result": "8b7c54306fe359d7bbffde5a8504e0e22d23b8a6842a268c685065603f6c3dce",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "cheek-lock",
+        "kind": "hair-lock",
+        "intent": "a soft blue lock swelling below the root and tapering to a pointed end",
+        "edits": [
+          {
+            "side": "left",
+            "at": 0.55,
+            "radius": 0.3,
+            "dx": 0.18,
+            "dy": 0,
+            "reason": "The inner edge is too straight through the middle; tuck it inward while preserving root and tip"
+          },
+          {
+            "side": "left",
+            "at": 0.55,
+            "radius": 0.3,
+            "dx": -0.06,
+            "dy": 0,
+            "reason": "The tuck makes the middle slightly pinched; ease the inner arc back while keeping some curvature"
+          }
+        ]
+      }
+    ]
+  },
+  "selection": {
+    "base": "913fc9add8cc29b8723efc6158d26e77286883fc36cf8f6e8419e07ecd0986c7",
+    "engine": "325efd4a78a31d0bf49732edd442026a4b05dc72fc9b2517c6432f08b336de3c",
+    "object": "cheek-lock",
+    "side": "left",
+    "at": 0.55,
+    "radius": 0.3,
+    "bounds": [
+      290.1362264494712,
+      210.85093972191532,
+      331.3484935150713,
+      441.2459676776741
+    ],
+    "object_bounds": [
+      259.4318664621795,
+      67.1290129828482,
+      408.5540481771932,
+      507.7646635163315
+    ],
+    "locks": {
+      "root": [
+        320.0,
+        76.8
+      ],
+      "tip": [
+        259.4318664621795,
+        507.7646635163315
+      ]
+    },
+    "units": "push amount = fraction of this object's nominal full width; directions are screen directions"
+  },
+  "operation": {
+    "side": "left",
+    "at": 0.55,
+    "radius": 0.3,
+    "dx": -0.06,
+    "dy": 0,
+    "reason": "The tuck makes the middle slightly pinched; ease the inner arc back while keeping some curvature"
+  }
+}

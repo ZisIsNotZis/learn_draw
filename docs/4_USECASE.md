@@ -5,6 +5,18 @@ follows are `3_REQUIREMENT.md`.
 
 # EXPLICIT
 
+## Current studio loop — 2026-11-12
+
+The author chooses one visible drawing problem, inspects the selected part and region, aligns the
+operation using its actual outline/handles, previews a bounded edit, inspects the resulting local and
+whole views, and accepts or discards it. Keep a short working intent: issue, proposed action, what to
+preserve, observed result. The author may view its own work throughout; fresh-context review is a
+checkpoint on the image, not a replacement for the author's visual control loop.
+
+Use independent image reviewers at useful checkpoints as required below. Their failures guide further
+work; human taste requests are asynchronous and do not stop unrelated progress. Old fixed study freezes
+preserve historical evidence; new versioned primitives may evolve where the new task requires it.
+
 ## The judgement gate reads the drawing, not the distance to the reference
 
 The person's reframe (P14) is the primary criterion: the goal is a proper drawing in a similar

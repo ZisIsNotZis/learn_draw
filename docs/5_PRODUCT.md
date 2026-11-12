@@ -19,6 +19,22 @@ verify an implemented family against `scripts/relate.py` before relying on the c
 
 # EXPLICIT
 
+## Current workbench direction — 2026-11-12
+
+Authoring offers high-level, useful defaults with progressively disclosed controls. Start with a
+well-made part rather than a universal figure generator. Direct local sculpting is a first-class
+operation alongside semantic attachment. An object's stable ID and semantic edge selection must map
+to a visible alignment overlay; a local edit has explicit influence, protected endpoints, preview
+and undo. Generated samples are compiler output. Small semantic landmarks and relative editing
+amounts remain legitimate input; hiding a large coordinate dump behind metadata is not abstraction.
+
+The first workbench slice is a tapered hair lock with a simple gesture, width and sweep; inspect,
+locally push a boundary, preview, accept and undo. Reuse existing depth visibility rather than building
+another renderer. Existing hair-mass offers width bands but needs per-spine widths and lacks this
+editing loop; compare it before adopting a new default. High-level head/hand, assistance diagnostics
+and optional 3D guidance are candidate branches, introduced only through actual drawing need and
+output evidence. No broad new catalog is promised before the first slice is usable.
+
 ## North star — humans never talk or think in coordinates
 
 **Humans never talk or think in coordinates.** "The brim is about twice the head wide, tilted a bit

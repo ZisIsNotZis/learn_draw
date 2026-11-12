@@ -1,9 +1,10 @@
 # learn_draw — rule overrides and the few things that must be known immediately
 
-Learn to draw by authoring programmatic art: SVG/CSS built from computed relations and depth, never
-diffusion or pixel generation — first by recreating the reference `image.jpg` (an anime-style
-portrait), later with the reference closed, and at the end from intent alone. The drawing *skill* is
-the deliverable; a picture is how it is judged.
+Build a drawing workbench that lets a VLM create and progressively revise programmatic art, together
+with reusable drawing skill. The user's 2026-11-12 clarification in `docs/1_PROBLEM.md` and
+`docs/2_GOAL.md` is the current scope. Simple defaults must produce useful shapes; optional controls
+allow refinement. Reference studies develop both the product and its drawing practice. SVG is output,
+not the everyday authoring interface. Final creation uses authored geometry, not generated pixels.
 
 Everything below is a rule that overrides habit, or a fact a newcomer must have before touching the
 repo. Everything else lives in `docs/`, one home per meaning, and is reached from this list.
@@ -21,6 +22,7 @@ repo. Everything else lives in `docs/`, one home per meaning, and is reached fro
 | commands, gates to run, environment, where the records live | `docs/9_IMPLEMENTATION.md` |
 | milestones, gates, the current advance and the next entry | `docs/0_ROADMAP.md` |
 | a fact worth keeping that has no home yet | `docs/0_STAGING.md` |
+| author or locally revise a studio scene | `skills/drawing-studio/SKILL.md` |
 
 ## Invariant rules
 
@@ -41,9 +43,10 @@ repo. Everything else lives in `docs/`, one home per meaning, and is reached fro
 6. **The engine never sees the target** (`P18`). A reference may seed the values in a spec, and then it
    is closed: every addition is tested with the image deleted. Tracing is a teacher, never the engine.
    For spatial work, never hand-specify visibility cuts — component depth decides occlusion.
-7. **Never judge your own render.** Run `draw check`, then give `report.txt`'s image list — and nothing
-   else — to a fresh-context reviewer, asking "what is wrong here?". Verify a reviewer's spatial claims
-   against the bundle's region coordinates (`P7`: observations are reliable, locations are not).
+7. **Observe while drawing; review independently at checkpoints.** The author inspects selected
+   geometry, alignment overlays and each edit's real result, then revises. Whole-artwork acceptance
+   needs a fresh-context image reviewer: give the check bundle's image list and ask "what is wrong
+   here?". Verify spatial claims against region coordinates. Author observation is not acceptance.
 8. **Never regress the recorded best.** `check` prints `vs recorded best:`; structural sketches are not
    comparable finished drawings and must not replace the baseline. "Final", "readable" and "done"
    require the applicable gate in `docs/0_ROADMAP.md`. Promote a new best only through
@@ -51,9 +54,10 @@ repo. Everything else lives in `docs/`, one home per meaning, and is reached fro
 
 ## Facts that must not be re-derived
 
-- **The person judges the picture.** No metric, self-review or agent verdict substitutes for his; a
-  picture its own review rejected is not put in front of him.
-- **A milestone is an artwork**, never an engine, a test suite or a document.
+- **Human taste feedback is asynchronous.** Ask a concrete question when needed and continue
+  independent work; silence is neither acceptance nor a reason to stop. Failed studies stay labelled.
+- **A milestone demonstrates creation.** Tools and skill are product deliverables, supported by real
+  artwork and observed edits; passing tests or adding controls alone does not establish usefulness.
 - **A record is not a fact document.** `.scratch/`, `inbox/`, `mail/` and `teaching/` hold records, which
   keep their dates and their dead links. State and decisions live in `docs/`. See `.scratch/README.md`.
 - **`mail/` is read before any other work in a session.** Reading a message means landing it — the fact

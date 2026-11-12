@@ -4,6 +4,21 @@
 
 # learn_draw
 
+**Current direction (2026-11-12): a drawing workbench for VLM creation.** Reference studies develop
+both usable procedural primitives and accumulated drawing skill. The first studio prototype offers
+a default hair lock, visible edge selection, local push previews, accept and undo. Its isolated shape
+and portrait-context visual studies remain under review; this is not a finished head/hair system.
+
+```bash
+python -m scripts.studio demo --outdir evidence/my-hair-sequence
+python -m unittest scripts.tests.test_studio -v
+```
+
+Use [the current roadmap](docs/0_ROADMAP.md), [operation skill](skills/drawing-studio/SKILL.md), and
+[scene contract](docs/7_INTERFACE.md). PNGs use installed Chromium/Edge with GPU disabled, or CPU
+CairoSVG. The material below documents the earlier portrait and its toolchain; historical completion
+statements do not establish current product acceptance.
+
 *Learning to draw as a computed skill — every picture built from declared parts, relations and depth, and judged one term at a time.*
 
 **No diffusion, no pixel generation, no traced endpoint: the drawing itself is the deliverable, so each image is assembled from named components whose geometry is computed, whose visible cuts are decided by 3D depth, and whose quality is measured against a written acceptance line before a human ever looks at it.**

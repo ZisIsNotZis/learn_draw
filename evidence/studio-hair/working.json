@@ -1,0 +1,33 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "cheek-lock",
+      "kind": "hair-lock",
+      "intent": "a soft blue lock swelling below the root and tapering to a pointed end",
+      "edits": [
+        {
+          "side": "left",
+          "at": 0.55,
+          "radius": 0.2,
+          "dx": 0.18,
+          "dy": 0,
+          "reason": "The inner edge is too straight through the middle; tuck it inward while preserving the root and tip"
+        },
+        {
+          "side": "left",
+          "at": 0.55,
+          "radius": 0.2,
+          "dx": -0.06,
+          "dy": 0,
+          "reason": "The first tuck makes the middle slightly pinched; ease the inner curve back without restoring its original straight edge"
+        }
+      ]
+    }
+  ]
+}

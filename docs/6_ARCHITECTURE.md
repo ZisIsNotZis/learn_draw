@@ -13,6 +13,16 @@ current 2D resolver and renderer are not this architecture.
 
 # EXPLICIT
 
+## Current editing boundary — 2026-11-12
+
+Keep component artwork, support/depth, line selection and colour distinct. Add an author-facing
+editing layer that selects stable semantic features, exposes compiled geometry in an alignment view,
+applies local operations and binds preview/accept/undo to exact scene revisions. Direct 2D contour
+editing and spatial routing are different operations. A simple planar support is sufficient for the
+first editable part; it does not establish curved support, attachment or whole-figure capability.
+Existing `vector_visibility.py` remains the depth authority. Optional 3D construction guides are a
+future drawing aid, not an immediate replacement for authored vector shapes.
+
 ## Component, support surface, engine
 
 **Component = 2D artwork + a support surface in 3D.** The artwork has its own local 2D coordinates

@@ -1,0 +1,17 @@
+{
+  "id": "temple-lock",
+  "kind": "hair-lock",
+  "intent": "a temple-rooted long lock, swelling over the shoulder and tapering below",
+  "at": {
+    "anchor": "upper_right",
+    "offset": [
+      -0.103515625,
+      -0.0067187499999999956
+    ]
+  },
+  "length": 0.9542469862624747,
+  "width": 0.1,
+  "width_side": "right",
+  "angle": 18.24952623557808,
+  "sweep": 0.08
+}

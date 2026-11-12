@@ -502,11 +502,8 @@ def compile_scene(nodes, size, ref_path=None):
 
 
 def chrome(svg_path, png_path, size):
-    subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-sandbox",
-                    f"--screenshot={os.path.abspath(png_path)}",
-                    f"--window-size={size[0]},{size[1]}",
-                    "file://" + os.path.abspath(svg_path)],
-                   check=True, capture_output=True, timeout=60)
+    from renderer import screenshot
+    screenshot(svg_path, png_path, size, CHROME)
 
 
 def main():

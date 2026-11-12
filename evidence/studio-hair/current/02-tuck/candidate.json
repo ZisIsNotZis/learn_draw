@@ -1,0 +1,69 @@
+{
+  "base": "3d383540a38d4fb68bb2ddaa3c927c075ca973f6b5cd15de537a2d1ff656633b",
+  "engine": "b42e14ec60747eda5d91e54a2668361bf95c2a8922759263f5d566007a7a6469",
+  "result": "913fc9add8cc29b8723efc6158d26e77286883fc36cf8f6e8419e07ecd0986c7",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "cheek-lock",
+        "kind": "hair-lock",
+        "intent": "a soft blue lock swelling below the root and tapering to a pointed end",
+        "edits": [
+          {
+            "side": "left",
+            "at": 0.55,
+            "radius": 0.3,
+            "dx": 0.18,
+            "dy": 0,
+            "reason": "The inner edge is too straight through the middle; tuck it inward while preserving root and tip"
+          }
+        ]
+      }
+    ]
+  },
+  "selection": {
+    "base": "3d383540a38d4fb68bb2ddaa3c927c075ca973f6b5cd15de537a2d1ff656633b",
+    "engine": "b42e14ec60747eda5d91e54a2668361bf95c2a8922759263f5d566007a7a6469",
+    "object": "cheek-lock",
+    "side": "left",
+    "at": 0.55,
+    "radius": 0.3,
+    "bounds": [
+      289.82075656137664,
+      210.65793323602097,
+      316.1075866157073,
+      441.2396044165953
+    ],
+    "object_bounds": [
+      259.4318664621795,
+      67.14945702168653,
+      407.9402460974919,
+      507.7646635163315
+    ],
+    "locks": {
+      "root": [
+        320.0,
+        76.8
+      ],
+      "tip": [
+        259.4318664621795,
+        507.7646635163315
+      ]
+    },
+    "units": "push amount = fraction of this object's nominal full width; directions are screen directions"
+  },
+  "operation": {
+    "side": "left",
+    "at": 0.55,
+    "radius": 0.3,
+    "dx": 0.18,
+    "dy": 0,
+    "reason": "The inner edge is too straight through the middle; tuck it inward while preserving root and tip"
+  }
+}

@@ -6,6 +6,39 @@ milestones are `0_ROADMAP.md`.
 
 # EXPLICIT
 
+## Current studio commands and evidence
+
+From the development worktree, with Python 3.11+ (geometry uses the standard library):
+
+```powershell
+python -m scripts.studio demo --outdir evidence/my-hair-sequence
+python -m scripts.studio new my-lock.json
+python -m scripts.studio inspect my-lock.json --object cheek-lock --outdir evidence/inspect
+python -m scripts.studio preview my-lock.json --selection evidence/inspect/selection.json --move right --amount .18 --reason "Tuck the straight inner edge" --outdir evidence/preview
+python -m scripts.studio accept my-lock.json evidence/preview/candidate.json
+python -m scripts.studio undo my-lock.json
+python -m unittest scripts.tests.test_studio -v
+```
+
+The portable CPU smoke command is `python -X utf8 scripts/tests/test_scene.py`. Its optional contextual
+model alarm requires `--with-similarity`; do not invoke that option under the current resource pause.
+
+PNG rendering uses CairoSVG if its native CPU Cairo is available, otherwise installed Edge/Chromium
+with an isolated profile and `--disable-gpu`. No browser download is required. `--svg-only` omits PNGs
+and therefore supplies no visual acceptance evidence. Demo requires a fresh output directory.
+The full environment in pyproject.toml supports legacy draw/check and smoke tests. Browser resolution
+uses the override, cached headless shell, then installed Chromium/Edge. The shared screenshot helper
+uses an isolated CPU profile. Legacy SVG wrappers fix the requested canvas size explicitly because
+Windows Chromium otherwise lays out a minimum-width viewport while cropping a smaller screenshot.
+
+Studio study records live under `evidence/studio-hair/`; reusable input is `examples/studio/`.
+New studies do not overwrite old .scratch packages or promote the portrait baseline. Portrait edge-F1
+and colour distance are not applicable to an original hair primitive. For code commits run the
+focused operation tests, existing affected depth tests, legacy smoke where available, and repeated
+SVG/CPU-PNG hashes. Record unavailable old baseline checks explicitly; do not fetch historical images
+or imply that an unrelated study beat the portrait floor. The old universal gate table below describes
+the legacy portrait workflow and is applied when that artwork/toolchain is changed.
+
 ## Coordination is remote (M2), because the repository is public
 
 The repository is public at `zisisnotzis/learn_draw`, so the baseline in `.scratch/00-tooling/baseline/`
