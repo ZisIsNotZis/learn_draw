@@ -34,7 +34,7 @@ class ScenicComposition(unittest.TestCase):
             self.assertEqual(data.svg.count('a tapered evergreen rooted on the near ridge'),5)
 
     def test_object_movement_uses_screen_space_and_preserves_others_and_undo(self):
-        for kind in ('head','moon','sun','hair-lock'):
+        for kind in ('head','hand','moon','sun','hair-lock'):
             with self.subTest(kind=kind),tempfile.TemporaryDirectory() as directory:
                 scene=default_scene(kind);scene['canvas']=[960,640]
                 scene['nodes'].append(dict(id='backdrop',kind='sky',intent='an unchanged background'))

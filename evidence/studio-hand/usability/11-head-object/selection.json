@@ -1,0 +1,37 @@
+{
+  "base": "8477a906558d87098f6b1308b490529a5ea2b668e77e72bb9833cb4e54aa3107",
+  "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+  "object": "friend",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    110.0,
+    50.801437078916265,
+    510.0,
+    458.88888888888897
+  ],
+  "object_bounds": [
+    110.0,
+    50.801437078916265,
+    510.0,
+    458.88888888888897
+  ],
+  "controls": [
+    "intent",
+    "expression",
+    "gaze",
+    "eye_scale",
+    "jaw",
+    "hair",
+    "length",
+    "width",
+    "angle",
+    "depth",
+    "depth_slope",
+    "hair_color",
+    "skin_color",
+    "iris_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

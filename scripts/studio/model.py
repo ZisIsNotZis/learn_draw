@@ -151,6 +151,26 @@ def validate_scenery(node,canvas):
         raise ValueError(kind+': invalid silhouette')
 
 
+def validate_hand(node,canvas):
+    from .hand import DIGITS,DEFAULT_LENGTH,hand_data
+    keys(node,('id','kind','intent','at','length','width','angle','depth','depth_slope','handedness','spread','digits','palette'),'hand')
+    for name,default,lo,hi in [('length',DEFAULT_LENGTH,.1,1.2),('width',1,.75,1.3),('angle',0,-180,180),
+                               ('depth',0,-100,100),('depth_slope',0,-10,10),('spread',1,.25,1.6)]:
+        number(node.get(name,default),'hand.'+name,lo,hi)
+    if node.get('handedness','right') not in ('right','left'):
+        raise ValueError('hand.handedness: right/left')
+    validate_placement(node)
+    adjustments=node.get('digits',{})
+    keys(adjustments,DIGITS,'hand.digits')
+    for name,control in adjustments.items():
+        keys(control,('length','lean'),'hand.digits.'+name)
+        number(control.get('length',1),name+'.length',.7,1.25)
+        number(control.get('lean',0),name+'.lean',-12,12)
+    keys(node.get('palette',{}),('skin','ink','crease'),'hand.palette')
+    for value in node.get('palette',{}).values(): color(value)
+    hand_data(node,canvas)
+
+
 def validate(scene):
     keys(scene, ("format", "canvas", "background", "nodes"), "scene")
     if scene.get("format") != "learn-draw/studio-1":
@@ -176,12 +196,15 @@ def validate(scene):
         if node.get('kind')=='head':
             validate_head(node,canvas)
             continue
+        if node.get('kind')=='hand':
+            validate_hand(node,canvas)
+            continue
         from .scenery import KINDS
         if node.get('kind') in KINDS:
             validate_scenery(node,canvas)
             continue
         if node.get("kind") != "hair-lock":
-            raise ValueError(f"{sid}: supported kinds are head/hair-lock/sky/hills/moon/sun")
+            raise ValueError(f"{sid}: supported kinds are head/hand/hair-lock/sky/hills/moon/sun")
         keys(node, ("id", "kind", "intent", "at", "length", "width", "width_side", "angle", "sweep", "depth",
                     "depth_slope", "palette", "edits"), "node")
         if node.get("width_side", "both") not in ("both", "left", "right"):
@@ -230,18 +253,20 @@ def select(scene, sid=None, side="left", at=.55, radius=.30, feature=None):
     rotate=lambda p:p
     if node['kind']!='hair-lock':
         from .components import component_data
-        from .head import rotate_point
         data=component_data(node,canvas)
         feature=feature or 'object'
         if feature in data.features:
             f=data.features[feature]
             selection.update(kind='feature',feature=feature,bounds=f['bounds'],object_bounds=bounds(data.outline),
-                             controls=f['controls'],units=('semantic values; object move amount is a fraction of the shorter canvas dimension'
-                             if feature=='object' else 'semantic parameter values; inspect the actual selected feature'))
+                             controls=f['controls'],units=f.get('units',('semantic values; object move amount is a fraction of the shorter canvas dimension'
+                             if feature=='object' else 'semantic parameter values; inspect the actual selected feature')))
+            for key in ('interaction','locks','focus','nominal_span'):
+                if key in f: selection[key]=f[key]
             return selection
         if node['kind']!='head' or feature not in ('left-lock','right-lock') or feature.split('-')[0] not in data.locks:
-            raise ValueError('unavailable head feature: '+str(feature))
+            raise ValueError('unavailable '+node['kind']+' feature: '+str(feature))
         child=feature.split('-')[0]
+        from .head import rotate_point
         lock=data.locks[child]
         rows=lock['rows']
         rotate=lambda p:rotate_point(p,data.center,data.angle)
@@ -279,8 +304,9 @@ def current_selection(scene, selection):
 def preview(scene, selection, direction, amount, reason):
     current_selection(scene,selection)
     object_move=selection.get('kind')=='feature' and selection.get('feature')=='object'
-    if selection.get('kind','local')!='local' and not object_move:
-        raise ValueError('use a semantic parameter for this feature, or inspect a temple lock for local pushes')
+    digit_move=selection.get('kind')=='feature' and selection.get('interaction')=='digit-tip'
+    if selection.get('kind','local')!='local' and not object_move and not digit_move:
+        raise ValueError('use a semantic parameter, or select a lock edge / digit tip for a local move')
     if direction not in ("left", "right", "up", "down"):
         raise ValueError("direction: left/right/up/down")
     number(amount, "amount", 0, 2)
@@ -293,7 +319,7 @@ def preview(scene, selection, direction, amount, reason):
         canvas=scene.get('canvas',[640,640])
         if node['kind'] in ('sky','hills'):
             raise ValueError('canvas-wide backgrounds use horizon/relief controls; select a movable object')
-        default={'head':{'anchor':'center','offset':[0,-.06]},
+        default={'head':{'anchor':'center','offset':[0,-.06]},'hand':{'anchor':'center'},
                  'moon':{'anchor':'upper_right','offset':[0,.10]},
                  'sun':{'anchor':'upper_right','offset':[0,.10]}}.get(node['kind'],{})
         placement=node.setdefault('at',copy.deepcopy(default))
@@ -303,6 +329,15 @@ def preview(scene, selection, direction, amount, reason):
         return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
                     selection=selection,operation=dict(object=selection['object'],feature='object',
                     direction=direction,amount=amount,units='shorter canvas dimension',reason=reason))
+    if digit_move:
+        if node['kind']!='hand': raise ValueError('digit-tip movement requires a hand')
+        from .hand import move_tip
+        changed,derived=move_tip(node,scene.get('canvas',[640,640]),selection['feature'],direction,amount)
+        node.clear();node.update(changed)
+        validate(candidate)
+        return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
+                    selection=selection,operation=dict(object=selection['object'],feature=selection['feature'],
+                    direction=direction,amount=amount,units='nominal digit span',derived=derived,reason=reason))
     edit = {k: selection[k] for k in ("side", "at", "radius")}
     edit.update(dx=dx, dy=dy, reason=reason)
     if node['kind']=='head':
@@ -327,12 +362,19 @@ def parameter_preview(scene,selection,parameter,value,reason):
     aliases={'hair_color':'hair','skin_color':'skin','iris_color':'iris','ink_color':'ink',
              'fill_color':'fill','shade_color':'shade','light_color':'light',
              'top_color':'top','bottom_color':'bottom','stars_color':'stars','far_color':'far',
-             'middle_color':'middle','near_color':'near','rays_color':'rays'}
+             'middle_color':'middle','near_color':'near','rays_color':'rays','crease_color':'crease'}
     if parameter in aliases:
         color(value)
         node.setdefault('palette',{})[aliases[parameter]]=value
+    elif node['kind']=='hand' and parameter in ('finger_length','finger_lean'):
+        from .hand import DIGITS
+        if selection['feature'] not in DIGITS: raise ValueError('select a named digit')
+        if isinstance(value,str):
+            try: value=float(value)
+            except ValueError: raise ValueError('finger control requires a numeric value') from None
+        node.setdefault('digits',{}).setdefault(selection['feature'],{})['length' if parameter=='finger_length' else 'lean']=value
     else:
-        if parameter not in ('intent','expression','hair','width_side','style','tree_side') and isinstance(value,str):
+        if parameter not in ('intent','expression','hair','width_side','style','tree_side','handedness') and isinstance(value,str):
             try:
                 value=float(value)
             except ValueError:
@@ -344,7 +386,7 @@ def parameter_preview(scene,selection,parameter,value,reason):
 
 
 def accept(path, candidate):
-    if candidate.get('status')=='rendering':
+    if candidate.get('status') not in (None,'ready'):
         raise ValueError('preview has not completed; no working scene change was made')
     scene = validate(read(path))
     if candidate["base"] != fingerprint(scene):

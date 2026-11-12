@@ -386,6 +386,20 @@ def _find_relate(art: str) -> str | None:
     return None
 
 
+def _review_fullres(source: str, target: str, decoded: np.ndarray) -> str:
+    """Preserve a rendered PNG's bytes instead of making a needless new encoding."""
+    same = os.path.exists(target) and os.path.samefile(source, target)
+    if not same:
+        with open(source, "rb") as fh:
+            is_png = fh.read(8) == b"\x89PNG\r\n\x1a\n"
+        if is_png:
+            shutil.copyfile(source, target)
+        else:
+            imwrite(target, decoded)
+    with open(target, "rb") as fh:
+        return hashlib.sha256(fh.read()).hexdigest()
+
+
 def cmd_check(a):
     """Emit the visual feedback bundle: images + numbers, and never a verdict."""
     outdir = a.outdir or _check_dir(a.art)
@@ -405,7 +419,8 @@ def cmd_check(a):
         # must judge (glints, lash taper, marks, hat tilt). The 1:1 draft is written and listed
         # first, so a reviewer's first drawing image is never a downscale.
         fp = os.path.join(outdir, "draft-fullres.png")
-        imwrite(fp, draft)
+        digest = _review_fullres(draft_path, fp, draft)
+        lines.append(f"full-resolution image SHA256: {digest} (PNG source bytes preserved when available)")
         written.append((fp, "DRAFT at full resolution (1:1, no downscale) - judge detail here"))
 
         p = os.path.join(outdir, "side-by-side.png")
@@ -448,8 +463,8 @@ def cmd_check(a):
         # at 256px and line separations were judged from a thumbnail. The 1:1 image is therefore
         # mandatory here, named, and listed first; the preview stays as a layout convenience.
         full = os.path.join(outdir, "draft-fullres.png")
-        if os.path.abspath(full) != os.path.abspath(draft_path):
-            imwrite(full, draft)
+        digest = _review_fullres(draft_path, full, draft)
+        lines.append(f"full-resolution image SHA256: {digest} (PNG source bytes preserved when available)")
         written.append((full, "DRAFT at full resolution (1:1, no downscale) - judge detail here"))
         p = os.path.join(outdir, "draft.png")
         if os.path.abspath(p) == os.path.abspath(draft_path):

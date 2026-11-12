@@ -1,6 +1,6 @@
 ---
 name: drawing-studio
-description: Create and refine programmatic flat-cartoon heads, hair locks and small scenic illustrations with learn_draw's revision-bound workbench. Use for scene composition, semantic feature controls, visible object placement, local edge pushes, previews and undo. Supported scenic presets are sky, hills, moon and sun.
+description: Create and refine programmatic flat-cartoon heads, front-view open hands, hair locks and small scenic illustrations with learn_draw's revision-bound workbench. Use for scene composition, semantic feature controls, visible object placement, digit-tip moves, local edge pushes, previews and undo. Scenic presets are sky, hills, moon and sun.
 ---
 
 # Drawing studio
@@ -32,16 +32,26 @@ Run from this repository with `python -m scripts.studio`. Use the current goal a
 
 Stale selections/previews are refused after scene or implementation changes; inspect again.
 Only a successfully rendered ready candidate can be accepted. A failed render supplies no image list.
-Root and tip are protected by an interior influence interval. A crossing/collapse refusal asks for
+Lock-edge pushes protect root and tip with an interior influence interval. A crossing/collapse refusal asks for
 a smaller move or a better gesture, not manually corrected generated vertices.
 
 ## Choose the right operation
+
+- `new hand.json --kind hand` creates a front-view open palm. Inspect index, middle, ring, little
+  or thumb before moving it: orange is the selected digit, white its movable tip-pad handle, green
+  the fixed knuckle. `preview ... --move left --amount .04` moves that handle in screen space by
+  .04 of its nominal digit span. Tilt and handedness are handled automatically. Accept or discard
+  after reading both clean artwork and overlay. Other digits stay fixed; this does not curl fingers
+  in 3D. Free-finger collisions are refused. Semantic finger_length / finger_lean are optional.
+- Select hand object for handedness, spread, size, skin/ink/crease colour and depth. The default
+  is a graphic hand icon; it is not a hand-turn, closed-fist or full anatomical rig. The old relational
+  hand-lobe family is historical and is not the current hand authoring route.
 
 - For a landscape, `new scene.json --kind landscape`, then `add scene.json --kind moon` or sun.
   Insertion is undoable. Inspect the named object before revising it. Try `--set fullness --value .28`
   for a slimmer crescent, `--set style --value day` on sky, or horizon/relief on hills. Inspect lists
   the controls of the actual selected object; exact fields are in the interface document.
-- To place an entire head, lock, moon or sun, inspect `--feature object` and use `--move`.
+- To place an entire head, hand, lock, moon or sun, inspect `--feature object` and use `--move`.
   Object-move amount is a fraction of the shorter canvas dimension; a local lock push uses lock width.
   Movement is in screen space even for tilted parts. Canvas-wide sky/hills use their semantic controls.
   Compare the clean image and orange current / pink dashed previous boundary before accepting.
@@ -86,3 +96,12 @@ Changing a seed or palette does not establish a new composition: inspect the act
 focal placement. Simple scenic presets can be useful backgrounds while remaining insufficient as
 finished illustrations. Two differently coloured instances also do not establish new facial anatomy
 or expression; keep that capability boundary explicit.
+
+## Contradictory image observations
+
+If a full-resolution image appears blank but another view of the same scene was visible, verify
+report image SHA256 and scene revision before changing art. Compare decoded dimensions/pixels if
+needed, reopen the original PNG and preserve the conflicting observation. An identical file is not
+evidence that geometry disappeared. draw check preserves source PNG bytes in draft-fullres.png and
+reports their digest. This reduces delivery transformations; it cannot guarantee an external viewing
+surface. Never infer a model or rendering failure solely from a contradictory display.

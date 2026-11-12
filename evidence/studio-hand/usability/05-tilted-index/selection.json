@@ -1,0 +1,36 @@
+{
+  "base": "ecb63e9e695e65a24b0544688527db216d57aee90f4a3c97f83cf8928cd2e8e0",
+  "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+  "object": "wave",
+  "kind": "feature",
+  "feature": "index",
+  "bounds": [
+    370.7714946648526,
+    201.8326919472014,
+    407.2943416777713,
+    320.79224166581366
+  ],
+  "object_bounds": [
+    308.637546877867,
+    190.4982437040645,
+    504.3419107194238,
+    463.7668606943176
+  ],
+  "controls": [
+    "finger_length",
+    "finger_lean"
+  ],
+  "units": "tip move amount = fraction of this digit's nominal span; directions are screen directions",
+  "interaction": "digit-tip",
+  "locks": {
+    "knuckle": [
+      382.8361243622185,
+      308.7276119684478
+    ]
+  },
+  "focus": [
+    397.1177639533377,
+    212.00926967163485
+  ],
+  "nominal_span": 97.76708528975432
+}

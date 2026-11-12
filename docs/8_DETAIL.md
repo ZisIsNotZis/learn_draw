@@ -129,3 +129,24 @@ A model cannot check whether a number is off-canvas, so the resolver reports fac
 - anchor table (`--anchors`) — every resolved handle.
 
 Silence is the informative case: no note means intent and paint order agree.
+
+## Studio hand construction and numerical scope
+
+scripts/studio/hand.py uses separate knuckle locations and computed phalanges. A C1 Hermite
+centerline carries a continuous width field and rounded terminal cap. Palm, short wrist, opposed
+thumb and fingers form one union with small soft-tissue closing; creases are intentional clipped
+art lines, not mesh edges. Collision above the palm host refuses a pose that would fuse free fingers.
+Disconnected polygons/holes are refused; choosing the largest component is not a repair.
+
+All construction inputs use a 0.0001 palm-unit precision grid before union/closing. This removes
+subgrid numerical chips, not real gaps. The mechanism follows the official
+[Shapely set_precision contract](https://shapely.readthedocs.io/en/stable/reference/shapely.set_precision.html).
+A fixed nominal ruler prevents edited extents from changing every other feature's placement.
+Screen tip motion is inverted through handedness, tilt and anisotropic width; a similarity about
+the selected knuckle yields length and lean, which are validated before rendering.
+
+Untouched digit geometry/knuckles are exact invariants. A shared outline can be re-tessellated after
+a local union, producing subpixel contour/antialias differences away from the selected finger.
+The regression bounds nonlocal contour displacement by the construction grid; it does not promise
+byte-identical unrelated pixels within the same skin shape. The initial exact-pixel assumption was
+withdrawn after diagnosis, rather than patched with pixel-specific code.

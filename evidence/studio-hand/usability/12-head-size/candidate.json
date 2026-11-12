@@ -1,0 +1,88 @@
+{
+  "base": "8477a906558d87098f6b1308b490529a5ea2b668e77e72bb9833cb4e54aa3107",
+  "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+  "result": "2b702ff5a53e8547952a8f577fa818b20bae63ebb19ce69ba437c4e84f5e5753",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      800,
+      640
+    ],
+    "background": "#eef3f1",
+    "nodes": [
+      {
+        "id": "wave",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "length": 0.42,
+        "angle": -16.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.21600000000000003,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": "friend",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "depth": 1.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.11200000000000002,
+            -0.06
+          ]
+        },
+        "length": 0.46
+      }
+    ]
+  },
+  "selection": {
+    "base": "8477a906558d87098f6b1308b490529a5ea2b668e77e72bb9833cb4e54aa3107",
+    "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+    "object": "friend",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      110.0,
+      50.801437078916265,
+      510.0,
+      458.88888888888897
+    ],
+    "object_bounds": [
+      110.0,
+      50.801437078916265,
+      510.0,
+      458.88888888888897
+    ],
+    "controls": [
+      "intent",
+      "expression",
+      "gaze",
+      "eye_scale",
+      "jaw",
+      "hair",
+      "length",
+      "width",
+      "angle",
+      "depth",
+      "depth_slope",
+      "hair_color",
+      "skin_color",
+      "iris_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "friend",
+    "feature": "object",
+    "parameter": "length",
+    "value": 0.46,
+    "reason": "Reduce the avatar mass to clear the thumb and let both stickers breathe"
+  },
+  "status": "ready"
+}

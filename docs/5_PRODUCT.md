@@ -489,3 +489,18 @@ It is recorded here as a considered and undecided branch rather than filed as a 
 cohesion dimension it proposes is already one of the four acceptance questions (`2_GOAL.md`), and
 whether the rest becomes scope is `0_ROADMAP.md`'s question. Source:
 `.scratch/35-r1-articulated-study/issues/54-user-review-scope-hair-and-hand.md`.
+
+## Adopted studio open hand — bounded icon scope (2026-11-13)
+
+The default is a five-digit front-view flat open palm, with one connected painted skin silhouette,
+intentional palm/finger creases, handedness, spread, palette and individual length/lean controls.
+Selection shows the movable pad center and fixed knuckle before an edit. A screen-direction tip
+move is solved around that knuckle; changing one digit does not rescale/recenter the others.
+The nominal ruler is fixed at construction time. This is not a 3D hand, curl/fist rig or body attachment.
+
+The legacy ellipse hand was investigated rather than silently replaced: its major-axis orientation
+was inconsistent with its placement direction, and merely correcting rotation left a radial flower.
+Knuckle-based smooth fingers solve a different construction problem. The legacy generator remains
+historical and unchanged. Beaded joints and ineffectual web patches are retained as rejected studies,
+not exposed as options. Current proof, commands and limitations are in
+[the hand study](../evidence/studio-hand/README.md); canonical interface is in 7_INTERFACE.

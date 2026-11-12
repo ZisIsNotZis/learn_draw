@@ -14,6 +14,11 @@ uv run python examples/studio/compose.py --theme moonrise --refined --outdir evi
 
 Use [the current roadmap](docs/0_ROADMAP.md), [operation skill](skills/drawing-studio/SKILL.md), and [scene contract](docs/7_INTERFACE.md). PNGs prefer native CPU resvg, with CairoSVG or GPU-disabled installed Chromium/Edge as fallbacks. The material below records the earlier portrait and toolchain; historical completion statements do not establish current product acceptance.
 
+An editable five-digit open-hand preset also supports visible tip edits around fixed knuckles.
+[The independently created greeting](evidence/studio-hand/README.md) demonstrates real CLI use,
+including discarding an unhelpful edit; it does not establish an attached body or general anatomy rig.
+Try `uv run python -m scripts.studio new hand.json --kind hand`, then inspect its index feature.
+
 Sky, hills, moon and sun presets also support small scenic backgrounds with recoverable placement.
 Their [actual studies and critical reviews](evidence/studio-composition/README.md) remain distinct
 from an artwork-quality pass.

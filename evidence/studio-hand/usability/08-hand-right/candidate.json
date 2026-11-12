@@ -1,0 +1,71 @@
+{
+  "base": "ecb63e9e695e65a24b0544688527db216d57aee90f4a3c97f83cf8928cd2e8e0",
+  "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+  "result": "c22c2f1af96db330896cbb4edd2cb9cfd16ee244efba2a6dafa0dfaf9403f22d",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      800,
+      640
+    ],
+    "background": "#eef3f1",
+    "nodes": [
+      {
+        "id": "wave",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "length": 0.42,
+        "angle": -16.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.21600000000000003,
+            0.0
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "ecb63e9e695e65a24b0544688527db216d57aee90f4a3c97f83cf8928cd2e8e0",
+    "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+    "object": "wave",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      308.637546877867,
+      190.4982437040645,
+      504.3419107194238,
+      463.7668606943176
+    ],
+    "object_bounds": [
+      308.637546877867,
+      190.4982437040645,
+      504.3419107194238,
+      463.7668606943176
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "depth",
+      "depth_slope",
+      "spread",
+      "handedness",
+      "skin_color",
+      "ink_color",
+      "crease_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "wave",
+    "feature": "object",
+    "direction": "right",
+    "amount": 0.27,
+    "units": "shorter canvas dimension",
+    "reason": "Reserve the left area for the avatar and keep the hand as a separate greeting sticker"
+  },
+  "status": "ready"
+}

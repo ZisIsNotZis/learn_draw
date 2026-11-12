@@ -11,6 +11,9 @@ from .render import bundle
 
 
 def default_scene(kind='hair-lock'):
+    if kind=='hand':
+        return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
+            dict(id='greeting-hand',kind='hand',intent='a front-view flat cartoon open palm with five digits')])
     if kind=='landscape':
         return dict(format='learn-draw/studio-1',canvas=[960,640],background='#f5eee4',nodes=[
             dict(id='sky',kind='sky',intent='a quiet atmospheric sky with restrained detail'),
@@ -39,7 +42,7 @@ def canvas_arg(value):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    kinds=('hair-lock','head','sky','hills','moon','sun')
+    kinds=('hair-lock','head','hand','sky','hills','moon','sun')
     p = sub.add_parser("new", help="create a useful preset; no path coordinates needed")
     p.add_argument("scene")
     p.add_argument('--kind',choices=kinds+('landscape',),default='hair-lock')
@@ -50,6 +53,7 @@ def main():
     p.add_argument('scene')
     p.add_argument('--kind',choices=kinds,required=True)
     p.add_argument('--id',help='defaults to the preset object name; must be unique')
+    p.add_argument('--depth',type=float,help='optional explicit support depth; foreground parts otherwise start in front')
     p = sub.add_parser("demo", help="render a reproducible tuck/ease-back/undo sequence")
     p.add_argument("--outdir", required=True)
     p.add_argument('--kind',choices=('head','hair-lock'),default='hair-lock')
@@ -61,7 +65,7 @@ def main():
         p.add_argument("--svg-only", action="store_true")
         if command == "inspect":
             p.add_argument("--object",help='inferred when the scene contains one object')
-            p.add_argument('--feature',help='head: object/eyes/face/hair/expression/left-lock/right-lock; lock: object or an edge')
+            p.add_argument('--feature',help='head: object/eyes/face/hair/expression/left-lock/right-lock; hand: object/index/middle/ring/little/thumb; lock: object or edge')
             p.add_argument("--side", choices=("left", "right"), default="left")
             p.add_argument("--at", type=float, default=.55)
             p.add_argument("--radius", type=float, default=.30)
@@ -71,7 +75,7 @@ def main():
             operation.add_argument("--move", choices=("left", "right", "up", "down"))
             operation.add_argument('--set',dest='parameter',help='a semantic control exposed by inspect')
             p.add_argument('--value',help='numeric value, hairstyle name or hex colour for --set')
-            p.add_argument("--amount", type=float, default=.10, help="local edge: fraction of lock width; object move: fraction of shorter canvas dimension (default .10)")
+            p.add_argument("--amount", type=float, default=.10, help="edge: lock width; object: shorter canvas dimension; digit tip: nominal digit span (default .10)")
             p.add_argument("--reason", required=True)
     p = sub.add_parser("accept", help="accept only if the scene still matches the preview base")
     p.add_argument("scene")
@@ -100,6 +104,12 @@ def main():
             base=fingerprint(scene)
             node=default_scene(args.kind)['nodes'][0]
             if args.id: node['id']=args.id
+            if args.depth is not None:
+                node['depth']=args.depth
+            elif args.kind in ('head','hand','hair-lock'):
+                from .components import depth_bounds
+                canvas=scene.get('canvas',[640,640])
+                node['depth']=max(depth_bounds(n,canvas)[1] for n in scene['nodes'])+1
             scene['nodes'].append(node)
             validate(scene)
             accept(args.scene,dict(base=base,engine=engine_fingerprint(),result=fingerprint(scene),scene=scene,
@@ -112,6 +122,12 @@ def main():
             print(json.dumps(report))
         elif args.command == "preview":
             scene = validate(read(args.scene))
+            # A new request supersedes the previous proposal even if its pose
+            # proves invalid before rendering. Never leave an old ready edit
+            # acceptable under the same preview-directory name.
+            write(Path(args.outdir)/'candidate.json',dict(status='preparing',base=fingerprint(scene),engine=engine_fingerprint()))
+            write(Path(args.outdir)/'report.json',dict(status='preparing',revision=fingerprint(scene),engine=engine_fingerprint(),images=[]))
+            (Path(args.outdir)/'report.txt').write_text('',encoding='utf-8')
             selection=read(args.selection)
             if args.parameter:
                 if args.value is None:

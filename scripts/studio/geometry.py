@@ -10,6 +10,11 @@ from dataclasses import dataclass
 import math
 
 
+def path(points,closed=True):
+    """Serialize compiled coordinates; paths are never the authoring interface."""
+    return 'M '+' L '.join(f'{x:.4f},{y:.4f}' for x,y in points)+(' Z' if closed else '')
+
+
 @dataclass(frozen=True)
 class Row:
     t: float

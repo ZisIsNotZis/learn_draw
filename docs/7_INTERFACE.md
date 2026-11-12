@@ -10,13 +10,47 @@ the commands that write it (`9_IMPLEMENTATION.md`).
 
 The current editable slice is `python -m scripts.studio`. Scene `format` is
 `learn-draw/studio-1`; `canvas` defaults to [640,640], `background` to warm paper, `nodes` is required.
-Each node requires `id`, `kind` (`head`, `hair-lock`, `sky`, `hills`, `moon`, `sun`), `intent`.
+Each node requires `id`, `kind` (`head`, `hand`, `hair-lock`, `sky`, `hills`, `moon`, `sun`), `intent`.
 `new --kind landscape` instantiates sky and hills on a 960×640 canvas; `add --kind moon` adds a
 celestial preset. Insertion is journaled and undoable. Existing names are never overwritten.
 `new --size WIDTHxHEIGHT --background '#rrggbb'` optionally sets the canvas and paper at creation.
 Every object selection exposes `intent` as a text control. Stock intent describes the component's
 purpose without duplicating mutable colour or hairstyle values; custom author intent is never
 silently rewritten when changing a parameter.
+Foreground insertion (`add --kind head|hand|hair-lock`) starts on a plane beyond the existing
+components' maximum support depth. `--depth NUMBER` overrides it. Scenic kinds retain their semantic
+background/celestial defaults. Insertion and explicit depth edits remain undoable; visibility still
+comes from support depth rather than the node list.
+
+### Hand — front-view open-palm preset
+
+`new hand.json --kind hand` requires no path points. This is a simple flat cartoon palm with four
+knuckle-based long fingers and an opposed thumb; it is not a general 3D hand/closed-grip model.
+
+| field | meaning / default |
+| --- | --- |
+| at | nominal open-hand box center: {anchor: center, offset: [0,0]} |
+| length / width | .64 of shorter canvas dimension / 1 horizontal proportion |
+| angle | 0; same 2D tilt convention as the head, positive toward right along the downward axis |
+| handedness | right (thumb on the viewer's left before tilt); alternative left |
+| spread | 1; long-finger fan, .25–1.6 |
+| digits | optional index/middle/ring/little/thumb objects with length multiplier (.7–1.25) and lean (−12..12°) |
+| palette | optional skin, ink, crease; skin changes derive a related crease tone |
+| depth / depth_slope | 0 / 0, linear support anchored at nominal center |
+
+Inspect `object` for placement, scale, handedness, spread, palette and depth. Inspect a named digit
+for `finger_length` / `finger_lean`, or simply use `preview --move left --amount .04` on that digit.
+The white handle is the center of its fingertip pad; the green knuckle remains fixed. Amount is a
+fraction of the selected digit's nominal span. Screen-direction moves are inverted through tilt,
+mirror and width before computing length/lean, so the author need not calculate joint angles.
+Digit numeric lean is head-on hand-local; screen moves are preferable when that distinction matters.
+
+The nominal ruler does not recenter when a finger changes. Other digits' compiled geometry stays
+fixed. The shared skin contour uses a declared construction precision; exact pixel identity of
+its antialiasing is not promised across an edit. Intersecting free fingers are refused for this open
+pose rather than merged into a misleading shape. Root/tip protection of lock-edge pushes is a
+different operation: a hand's tip handle is deliberately movable, with its knuckle protected.
+The orange isolated-digit guide includes its buried root; it is not an extra line in clean artwork.
 
 ### Scenic presets and composition
 
@@ -105,7 +139,9 @@ edit. Current geometric checks are sampled, not a proof for all continuous defor
 fingerprint and renderer. The implementation hash covers the studio sources and depth/renderer
 dependencies. Undo restores input data; visual identity across implementation upgrades is not promised.
 Image SHA256 values and a `ready` status distinguish completed views from failed/in-progress rendering.
-An unfinished CLI preview cannot be accepted. Alignment and closeups are author aids; `artwork`
+An unfinished CLI preview cannot be accepted. A new request first marks its proposal `preparing`,
+clearing the image list; even a pre-render pose refusal cannot leave an old candidate acceptable.
+Alignment and closeups are author aids; `artwork`
 contains no handles. No reference image is read.
 No articulated head attachment, curved support or universal object capability is implied by studio-1.
 The explicit portrait context adapter is a bounded existing-scene integration experiment.

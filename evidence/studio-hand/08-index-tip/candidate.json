@@ -1,0 +1,75 @@
+{
+  "base": "112fac910fd9f239f3c4ad6bb2a46a56b717ac9e029ee61492c21f87738c257b",
+  "engine": "9f68fe0714896515f8e42f3abe16ab87352fe83be660970a390e2895077cda18",
+  "result": "e17f9dbb3e2a2e5521999bccf8e3dbdf3b0fa7ae5a12a7b13384c54b30efadc7",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "greeting-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "digits": {
+          "index": {
+            "length": 1.0060720145530275,
+            "lean": -2.258571559680348
+          }
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "112fac910fd9f239f3c4ad6bb2a46a56b717ac9e029ee61492c21f87738c257b",
+    "engine": "9f68fe0714896515f8e42f3abe16ab87352fe83be660970a390e2895077cda18",
+    "object": "greeting-hand",
+    "kind": "feature",
+    "feature": "index",
+    "bounds": [
+      254.9493022991722,
+      147.55724410861495,
+      308.58133992042735,
+      329.1548376653319
+    ],
+    "object_bounds": [
+      185.33697875861324,
+      113.77987345063707,
+      454.6629207544918,
+      526.2201265493628
+    ],
+    "controls": [
+      "finger_length",
+      "finger_lean"
+    ],
+    "units": "tip move amount = fraction of this digit's nominal span; directions are screen directions",
+    "interaction": "digit-tip",
+    "locks": {
+      "knuckle": [
+        290.12408771777757,
+        310.6975854626822
+      ]
+    },
+    "focus": [
+      270.42001909216566,
+      163.02796090160842
+    ],
+    "nominal_span": 148.97841567962556
+  },
+  "operation": {
+    "object": "greeting-hand",
+    "feature": "index",
+    "direction": "left",
+    "amount": 0.04,
+    "units": "nominal digit span",
+    "derived": {
+      "length": 1.0060720145530275,
+      "lean": -2.258571559680348
+    },
+    "reason": "Ease the index finger outward while keeping its knuckle attached"
+  },
+  "status": "ready"
+}

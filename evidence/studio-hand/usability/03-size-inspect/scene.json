@@ -1,0 +1,16 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    800,
+    640
+  ],
+  "background": "#eef3f1",
+  "nodes": [
+    {
+      "id": "wave",
+      "kind": "hand",
+      "intent": "a front-view flat cartoon open palm with five digits",
+      "length": 0.42
+    }
+  ]
+}

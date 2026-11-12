@@ -10,22 +10,12 @@ from pathlib import Path
 from scripts.articulated_construction import Point, triangulate_polygon
 from scripts.vector_visibility import visible_regions
 
-from .geometry import bounds, lock_rows, mix, outline, resolve_root
+from .geometry import bounds, lock_rows, mix, outline, resolve_root, path
 from .model import canonical, engine_fingerprint, fingerprint, node_by_id, validate, write
-from .components import component_data, support
+from .components import component_data, support, component_outline as node_outline, depth_bounds
 
 
 PALETTE = dict(fill="#517f9b", shade="#426781", light="#729eaf", ink="#2e475a")
-
-
-def path(points, closed=True):
-    return "M " + " L ".join(f"{x:.4f},{y:.4f}" for x, y in points) + (" Z" if closed else "")
-
-
-def node_outline(node, canvas):
-    if node['kind']!='hair-lock':
-        return list(component_data(node,canvas).outline)
-    return outline(lock_rows(node,canvas))
 
 
 def selection_paths(scene,selection):
@@ -34,11 +24,11 @@ def selection_paths(scene,selection):
     canvas=scene.get('canvas',[640,640])
     rotate=lambda p:p
     if node['kind']!='hair-lock':
-        from .head import rotate_point
         data=component_data(node,canvas)
         if selection['kind']=='feature':
             feature=data.features.get(selection['feature'])
-            return feature['paths'] if feature else [],None,{}
+            return (feature['paths'],feature.get('focus'),feature.get('locks',{})) if feature else ([],None,{})
+        from .head import rotate_point
         child=data.locks[selection['child']]
         rows=child['rows'];root=resolve_root(child['node'],canvas)
         rotate=lambda p:rotate_point(p,data.center,data.angle)
@@ -84,10 +74,8 @@ def global_depth_order(scene):
     """
     canvas=scene.get('canvas',[640,640]);intervals=[]
     for node in scene['nodes']:
-        poly=node_outline(node,canvas)
-        root_y,scale,depth=support(node,canvas)
-        depths=[depth+node.get('depth_slope',0)*(p[1]-root_y)/scale for p in poly]
-        intervals.append((min(depths),max(depths),node))
+        low,high=depth_bounds(node,canvas)
+        intervals.append((low,high,node))
     intervals.sort(key=lambda item:item[0])
     if any(a[1]>=b[0]-1e-7 for a,b in zip(intervals,intervals[1:])):
         return None
@@ -245,10 +233,10 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
         node_info[n['id']]=info
     report = dict(revision=revision, engine=engine_fingerprint(), status='ready',renderer=backend, images=images,
                   image_sha256={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images},nodes=node_info,
-                  scope="flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim",
+                  scope="flat cartoon heads, front-view open hands, editable planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
                   alignment_legend={'orange':'selected current boundary','pink dashed':'previous boundary',
-                                    'green rings':'protected endpoints','white target':'local move focus'},
-                  move_units='object selection: shorter canvas dimension; local edge: nominal lock width')
+                                    'green rings':'protected endpoints or knuckle','white target':'local edge focus or digit-tip handle'},
+                  move_units='object: shorter canvas dimension; local edge: nominal lock width; digit tip: nominal digit span')
     write(directory / "report.json", report)
     (directory / "report.txt").write_text("\n".join(images) + "\n", encoding="utf-8")
     return report

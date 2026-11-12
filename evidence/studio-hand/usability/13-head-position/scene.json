@@ -1,0 +1,38 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    800,
+    640
+  ],
+  "background": "#eef3f1",
+  "nodes": [
+    {
+      "id": "wave",
+      "kind": "hand",
+      "intent": "a front-view flat cartoon open palm with five digits",
+      "length": 0.42,
+      "angle": -16.0,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.21600000000000003,
+          0.0
+        ]
+      }
+    },
+    {
+      "id": "friend",
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with an editable hairstyle",
+      "depth": 1.0,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.11200000000000002,
+          -0.06
+        ]
+      },
+      "length": 0.46
+    }
+  ]
+}

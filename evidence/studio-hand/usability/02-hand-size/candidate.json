@@ -1,0 +1,62 @@
+{
+  "base": "eb01933e68356ad4a814c2e51e3c9065f9dc9fe909b8188eb9134f52203bf7d1",
+  "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+  "result": "e30b0c6c8091aca28215146870d1d4b62247b6af3cee4d6af986f4a9cb5bd6f6",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      800,
+      640
+    ],
+    "background": "#eef3f1",
+    "nodes": [
+      {
+        "id": "wave",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "length": 0.42
+      }
+    ]
+  },
+  "selection": {
+    "base": "eb01933e68356ad4a814c2e51e3c9065f9dc9fe909b8188eb9134f52203bf7d1",
+    "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+    "object": "wave",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      265.33697875861327,
+      113.77987345063707,
+      534.6629207544918,
+      526.2201265493628
+    ],
+    "object_bounds": [
+      265.33697875861327,
+      113.77987345063707,
+      534.6629207544918,
+      526.2201265493628
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "depth",
+      "depth_slope",
+      "spread",
+      "handedness",
+      "skin_color",
+      "ink_color",
+      "crease_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "wave",
+    "feature": "object",
+    "parameter": "length",
+    "value": 0.42,
+    "reason": "Let the greeting hand accompany the portrait instead of dominating it"
+  },
+  "status": "ready"
+}

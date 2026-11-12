@@ -128,9 +128,25 @@ and execution review. `evidence/studio-expression/` preserves both failures and 
 community-banner candidate has a conditional minimum-usefulness review, with hard hair, simplified
 ears and limited facial acting still criticized. Its human taste question is pending asynchronously.
 
-**Next action:** prototype a recognizable, adjustable open cartoon hand before adding it to the
-studio catalog. Inspect the existing hand generator first; compare its actual default rather than
-assuming it is adequate. Use the component in a small greeting asset to justify the addition.
+The front-view open-hand primitive is integrated after comparing the legacy ellipse generator and
+several knuckle constructions. It has five distinct digits, semantic palette/spread/handedness,
+visible tip handles and bounded screen-direction edits about fixed knuckles. An independent operator
+used only the skill and public commands to compose a head-and-hand greeting; it deliberately
+discarded an unhelpful finger edit. This is a separate-parts greeting asset, not an attached body rig.
+71 operation/checker/visibility tests and 81 CPU smoke checks pass; repeated hand and greeting SVG/PNG
+are identical, and the accepted default-head PNG remains unchanged. See
+`evidence/studio-hand/README.md` for failure contrasts, independent reviews and exact verification.
+Blind critics retain rigid hair, hard thumb-side transitions and limited volume.
+
+A contradictory blank-image observation was investigated rather than used to change the drawing.
+The compared files decode to identical complete pictures. The review pack now preserves original
+PNG bytes and reports their SHA256; this reduces changes in the delivery path, not a proven cure
+for an unidentified viewing problem. Original observations and the correction remain together.
+
+**Next action:** test creation outside the catalog with a small original coastal/lighthouse scene.
+First investigate existing fill/stroke/gesture construction, then expose only the few visible
+semantic handles the new subject needs. Compare a default and a useful local revision before
+adding generality. More presets alone cannot establish open-ended creative capability.
 Do not turn a hand icon or this cover's limited usability into a whole-portrait/illustration pass.
 Preserve the legacy portrait. The development branch is
 `codex/vlm-studio`, pushed through the existing SSH identity; main has not been overwritten.

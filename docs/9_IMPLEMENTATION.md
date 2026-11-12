@@ -20,6 +20,11 @@ python -m scripts.studio preview landscape.json --selection evidence/moon-view/s
 python examples/studio/compose.py --theme moonrise --outdir evidence/my-moonrise
 python examples/studio/compose.py --theme daylight --outdir evidence/my-daylight
 python -m scripts.studio new head.json --kind head
+python -m scripts.studio new hand.json --kind hand
+python -m scripts.studio inspect hand.json --feature index --outdir evidence/index-view
+python -m scripts.studio preview hand.json --selection evidence/index-view/selection.json --move left --amount .04 --reason "Ease the index outward while keeping its knuckle attached" --outdir evidence/index-preview
+python -m scripts.studio accept hand.json evidence/index-preview/candidate.json
+python -m scripts.studio undo hand.json
 python -m scripts.studio new cover.json --kind head --size 960x540 --background '#f5eee4'
 python -m scripts.studio inspect head.json --feature eyes --outdir evidence/head-view
 python -m scripts.studio inspect head.json --feature expression --outdir evidence/expression-view
@@ -275,3 +280,11 @@ third-party and is never edited.
   and per `S5` nothing is blocked for lack of it.
 - The reference imagery is third-party study material and is not covered by the AGPL grant
   (`1_PROBLEM.md`).
+
+## Review-pack image identity
+
+Both reference and reference-free draw check preserve an input PNG byte-for-byte as draft-fullres.png
+and print its SHA256. Other formats are actually converted to PNG; checking a bundle's own image
+never rewrites its input. Thumbnails remain separate layout-only views. When visual observations
+conflict, compare hashes and decoded content before altering rendering or geometry. See
+../evidence/studio-hand/inspection-encoding/ for the unresolved viewing-path experiment.

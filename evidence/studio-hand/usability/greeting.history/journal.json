@@ -1,0 +1,92 @@
+[
+  {
+    "base": "eb01933e68356ad4a814c2e51e3c9065f9dc9fe909b8188eb9134f52203bf7d1",
+    "result": "e30b0c6c8091aca28215146870d1d4b62247b6af3cee4d6af986f4a9cb5bd6f6",
+    "operation": {
+      "object": "wave",
+      "feature": "object",
+      "parameter": "length",
+      "value": 0.42,
+      "reason": "Let the greeting hand accompany the portrait instead of dominating it"
+    }
+  },
+  {
+    "base": "e30b0c6c8091aca28215146870d1d4b62247b6af3cee4d6af986f4a9cb5bd6f6",
+    "result": "ecb63e9e695e65a24b0544688527db216d57aee90f4a3c97f83cf8928cd2e8e0",
+    "operation": {
+      "object": "wave",
+      "feature": "object",
+      "parameter": "angle",
+      "value": -16.0,
+      "reason": "Open the fingers outward to make the raised hand feel like a wave"
+    }
+  },
+  {
+    "base": "ecb63e9e695e65a24b0544688527db216d57aee90f4a3c97f83cf8928cd2e8e0",
+    "result": "c22c2f1af96db330896cbb4edd2cb9cfd16ee244efba2a6dafa0dfaf9403f22d",
+    "operation": {
+      "object": "wave",
+      "feature": "object",
+      "direction": "right",
+      "amount": 0.27,
+      "units": "shorter canvas dimension",
+      "reason": "Reserve the left area for the avatar and keep the hand as a separate greeting sticker"
+    }
+  },
+  {
+    "base": "c22c2f1af96db330896cbb4edd2cb9cfd16ee244efba2a6dafa0dfaf9403f22d",
+    "result": "898b75e83a4a1e26febfb178c607ba267c7e40359e78cdaa2a94426896041e6f",
+    "operation": {
+      "action": "add",
+      "object": "friend",
+      "kind": "head",
+      "reason": "a frontal flat cartoon head with an editable hairstyle"
+    }
+  },
+  {
+    "base": "898b75e83a4a1e26febfb178c607ba267c7e40359e78cdaa2a94426896041e6f",
+    "result": "8477a906558d87098f6b1308b490529a5ea2b668e77e72bb9833cb4e54aa3107",
+    "operation": {
+      "object": "friend",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.14,
+      "units": "shorter canvas dimension",
+      "reason": "Separate the face and waving hand with clear paper between the sticker silhouettes"
+    }
+  },
+  {
+    "base": "8477a906558d87098f6b1308b490529a5ea2b668e77e72bb9833cb4e54aa3107",
+    "result": "2b702ff5a53e8547952a8f577fa818b20bae63ebb19ce69ba437c4e84f5e5753",
+    "operation": {
+      "object": "friend",
+      "feature": "object",
+      "parameter": "length",
+      "value": 0.46,
+      "reason": "Reduce the avatar mass to clear the thumb and let both stickers breathe"
+    }
+  },
+  {
+    "base": "2b702ff5a53e8547952a8f577fa818b20bae63ebb19ce69ba437c4e84f5e5753",
+    "result": "5cd4652ef2c8f25220e4450e011e9c4208ee9f39b4ed6eb9bc34a38d1e35b7de",
+    "operation": {
+      "object": "friend",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.06,
+      "units": "shorter canvas dimension",
+      "reason": "Align the two cutout bottoms and bring the face beside the lifted palm"
+    }
+  },
+  {
+    "base": "5cd4652ef2c8f25220e4450e011e9c4208ee9f39b4ed6eb9bc34a38d1e35b7de",
+    "result": "5148750bfb5b5115e98b242d2d16a3d8381d8de526c926e56244aecf1f53046f",
+    "operation": {
+      "object": "friend",
+      "feature": "expression",
+      "parameter": "expression",
+      "value": "smile",
+      "reason": "Give the greeting face a more legible welcoming smile"
+    }
+  }
+]

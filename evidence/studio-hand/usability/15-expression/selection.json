@@ -1,0 +1,23 @@
+{
+  "base": "5cd4652ef2c8f25220e4450e011e9c4208ee9f39b4ed6eb9bc34a38d1e35b7de",
+  "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+  "object": "friend",
+  "kind": "feature",
+  "feature": "expression",
+  "bounds": [
+    215.2371,
+    306.55555555555554,
+    405.5629,
+    423.7777777777778
+  ],
+  "object_bounds": [
+    143.0,
+    126.64143707891625,
+    478.0,
+    468.49491739966146
+  ],
+  "controls": [
+    "expression"
+  ],
+  "units": "semantic parameter values; inspect the actual selected feature"
+}

@@ -1,0 +1,121 @@
+{
+  "revision": "ecb63e9e695e65a24b0544688527db216d57aee90f4a3c97f83cf8928cd2e8e0",
+  "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\04-hand-tilt\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\04-hand-tilt\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\04-hand-tilt\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\04-hand-tilt\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\04-hand-tilt\\artwork.png": "0987e78f7db4f06de3dcba5685b55af60f51f2c0d144049137130f34b854c240",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\04-hand-tilt\\alignment.png": "176627616bc0ffd05578f612b03371663a2f3b27a0eea45e2dff59613abfedc7",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\04-hand-tilt\\object-closeup.png": "7a8b8e59c2ba256fd100c20ba9f139ba1ea1b663e9051e70c2bd4ce07010d8e9",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\04-hand-tilt\\edit-closeup.png": "c177d46f34ce2ca52d4bf15019f2d7e4b14b14f7c6d980c758a1ed17a77959b4"
+  },
+  "nodes": {
+    "wave": {
+      "kind": "hand",
+      "intent": "a front-view flat cartoon open palm with five digits",
+      "bounds": [
+        308.637546877867,
+        190.4982437040645,
+        504.3419107194238,
+        463.7668606943176
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            308.637546877867,
+            190.4982437040645,
+            504.3419107194238,
+            463.7668606943176
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "spread",
+            "handedness",
+            "skin_color",
+            "ink_color",
+            "crease_color"
+          ]
+        },
+        "index": {
+          "bounds": [
+            370.7714946648526,
+            201.8326919472014,
+            407.2943416777713,
+            320.79224166581366
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "middle": {
+          "bounds": [
+            396.25840356745,
+            191.41969301196124,
+            448.35058533309007,
+            323.0607953148549
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "ring": {
+          "bounds": [
+            420.916803256974,
+            215.25488846481102,
+            483.5862327464079,
+            331.75928831895186
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "little": {
+          "bounds": [
+            444.28096431129137,
+            267.05291796429054,
+            503.4089957290377,
+            348.7733903706692
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "thumb": {
+          "bounds": [
+            309.5664660275339,
+            308.44274143671583,
+            383.7530585722653,
+            389.38344789406284
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        }
+      }
+    }
+  },
+  "scope": "flat cartoon heads, front-view open hands, editable planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints or knuckle",
+    "white target": "local edge focus or digit-tip handle"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; digit tip: nominal digit span"
+}

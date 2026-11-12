@@ -1,0 +1,33 @@
+{
+  "base": "5148750bfb5b5115e98b242d2d16a3d8381d8de526c926e56244aecf1f53046f",
+  "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+  "object": "wave",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    481.43754687786696,
+    190.4982437040645,
+    677.1419107194238,
+    463.7668606943176
+  ],
+  "object_bounds": [
+    481.43754687786696,
+    190.4982437040645,
+    677.1419107194238,
+    463.7668606943176
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "depth",
+    "depth_slope",
+    "spread",
+    "handedness",
+    "skin_color",
+    "ink_color",
+    "crease_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

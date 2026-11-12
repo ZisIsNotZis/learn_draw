@@ -1,0 +1,210 @@
+{
+  "revision": "8477a906558d87098f6b1308b490529a5ea2b668e77e72bb9833cb4e54aa3107",
+  "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\11-head-object\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\11-head-object\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\11-head-object\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\11-head-object\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\11-head-object\\artwork.png": "02164f9fc89574e19ffce106b6935e612cf5fe9167fe2baaf12f8fe87a81b8a1",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\11-head-object\\alignment.png": "5f89ed2ef75b43b265de23010da7e19a466c141cf6a279a7936d9f1b488456a3",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\11-head-object\\object-closeup.png": "e3ddb247238cbcca6a7407a4d7c9e6b54fa63149c686454a3194aa551a68f1d8",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\usability\\11-head-object\\edit-closeup.png": "d78ff8e257a7747a09613979afad168eb765adf8c16dbd7cd0f3e0c6535dd5cb"
+  },
+  "nodes": {
+    "wave": {
+      "kind": "hand",
+      "intent": "a front-view flat cartoon open palm with five digits",
+      "bounds": [
+        481.43754687786696,
+        190.4982437040645,
+        677.1419107194238,
+        463.7668606943176
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            481.43754687786696,
+            190.4982437040645,
+            677.1419107194238,
+            463.7668606943176
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "spread",
+            "handedness",
+            "skin_color",
+            "ink_color",
+            "crease_color"
+          ]
+        },
+        "index": {
+          "bounds": [
+            543.5714946648525,
+            201.8326919472014,
+            580.0943416777712,
+            320.79224166581366
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "middle": {
+          "bounds": [
+            569.0584035674499,
+            191.41969301196124,
+            621.15058533309,
+            323.0607953148549
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "ring": {
+          "bounds": [
+            593.716803256974,
+            215.25488846481102,
+            656.3862327464079,
+            331.75928831895186
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "little": {
+          "bounds": [
+            617.0809643112913,
+            267.05291796429054,
+            676.2089957290376,
+            348.7733903706692
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "thumb": {
+          "bounds": [
+            482.3664660275339,
+            308.44274143671583,
+            556.5530585722653,
+            389.38344789406284
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        }
+      }
+    },
+    "friend": {
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with an editable hairstyle",
+      "bounds": [
+        110.0,
+        50.801437078916265,
+        510.0,
+        458.88888888888897
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            196.6182,
+            280.577,
+            424.1818,
+            316.9183
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color",
+            "gaze"
+          ]
+        },
+        "face": {
+          "bounds": [
+            171.5,
+            106.0,
+            449.0,
+            456.88888888888897
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            112.0,
+            53.0,
+            508.0,
+            457.5
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "expression": {
+          "bounds": [
+            196.6182,
+            266.1020408163265,
+            424.1818,
+            405.625
+          ],
+          "controls": [
+            "expression"
+          ]
+        },
+        "object": {
+          "bounds": [
+            110.0,
+            50.801437078916265,
+            510.0,
+            458.88888888888897
+          ],
+          "controls": [
+            "intent",
+            "expression",
+            "gaze",
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ]
+    }
+  },
+  "scope": "flat cartoon heads, front-view open hands, editable planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints or knuckle",
+    "white target": "local edge focus or digit-tip handle"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; digit tip: nominal digit span"
+}

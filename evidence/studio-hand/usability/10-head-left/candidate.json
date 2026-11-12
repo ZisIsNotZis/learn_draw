@@ -1,0 +1,88 @@
+{
+  "base": "898b75e83a4a1e26febfb178c607ba267c7e40359e78cdaa2a94426896041e6f",
+  "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+  "result": "8477a906558d87098f6b1308b490529a5ea2b668e77e72bb9833cb4e54aa3107",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      800,
+      640
+    ],
+    "background": "#eef3f1",
+    "nodes": [
+      {
+        "id": "wave",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "length": 0.42,
+        "angle": -16.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.21600000000000003,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": "friend",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "depth": 1.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.11200000000000002,
+            -0.06
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "898b75e83a4a1e26febfb178c607ba267c7e40359e78cdaa2a94426896041e6f",
+    "engine": "e70aab5f818eac7be1b95af6f6fa8e3e20fe0978cd39beb835951ad1f801df36",
+    "object": "friend",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      200.0,
+      50.801437078916265,
+      600.0,
+      459.427781693808
+    ],
+    "object_bounds": [
+      200.0,
+      50.801437078916265,
+      600.0,
+      459.427781693808
+    ],
+    "controls": [
+      "intent",
+      "expression",
+      "gaze",
+      "eye_scale",
+      "jaw",
+      "hair",
+      "length",
+      "width",
+      "angle",
+      "depth",
+      "depth_slope",
+      "hair_color",
+      "skin_color",
+      "iris_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "friend",
+    "feature": "object",
+    "direction": "left",
+    "amount": 0.14,
+    "units": "shorter canvas dimension",
+    "reason": "Separate the face and waving hand with clear paper between the sticker silhouettes"
+  },
+  "status": "ready"
+}

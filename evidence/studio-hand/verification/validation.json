@@ -1,0 +1,32 @@
+{
+  "engine": "812adaae195ec738dafa630078d084911fc136cad8b7425c2a988c8f9f7b87fb",
+  "unit_tests": 71,
+  "cpu_smoke_checks": 81,
+  "art_gate": "not a whole-artwork pass",
+  "results": {
+    "default": {
+      "scene": "112fac910fd9f239f3c4ad6bb2a46a56b717ac9e029ee61492c21f87738c257b",
+      "svg_sha256": "2834a4c4b6052b2a68337b1d9632dc2eda5c30e96f325d89c9d22fe97612fa17",
+      "png_sha256": "2caeba8d69a6d36074b802b87ad83d9d5421d1a031fac9da1db143d85867bb2c",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "greeting": {
+      "scene": "5148750bfb5b5115e98b242d2d16a3d8381d8de526c926e56244aecf1f53046f",
+      "svg_sha256": "f78e57f6e70bcf32bd57bc04f471683a6bf4b025262e46e42a5f5927745a7ef9",
+      "png_sha256": "d88368fef8f18b41345c01564d0655130a51c84ce578c967cc1f460c06defa92",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    "head-default": {
+      "scene": "44fe01cc53e9492e9f310d86d694348b483dcf19421006023be78fd1129194e6",
+      "svg_sha256": "1141d11821b6a10f9b5a24f4ad710ba309e4fbc100b6b2cde98473265adaad7a",
+      "png_sha256": "23ad96c4ac624d9dd75b3187d0e56bdb0da4635d774727c4c7022bdbdb8bc48a",
+      "repeat_svg_equal": true,
+      "repeat_png_equal": true,
+      "renderer": "resvg-py-0.5.0-cpu"
+    }
+  }
+}

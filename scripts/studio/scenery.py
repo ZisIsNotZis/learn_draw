@@ -5,16 +5,12 @@ import json
 import math
 import random
 
-from .geometry import bounds, resolve_root
+from .geometry import bounds, resolve_root, path
 
 
 KINDS=('sky','hills','moon','sun')
 DEFAULT_DEPTH={'sky':-20,'hills':10,'moon':0,'sun':0}
 DEFAULT_LENGTH={'sky':1,'hills':1,'moon':.22,'sun':.20}
-
-
-def path(points):
-    return 'M '+' L '.join(f'{x:.4f},{y:.4f}' for x,y in points)+' Z'
 
 
 @dataclass(frozen=True)

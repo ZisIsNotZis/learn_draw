@@ -1,0 +1,121 @@
+{
+  "revision": "112fac910fd9f239f3c4ad6bb2a46a56b717ac9e029ee61492c21f87738c257b",
+  "engine": "9f68fe0714896515f8e42f3abe16ab87352fe83be660970a390e2895077cda18",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\07-integrated\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\07-integrated\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\07-integrated\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\07-integrated\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\07-integrated\\artwork.png": "e449600bd292b8395968fd72bff44b24cbc10b010e8084d449944ea38b6155f8",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\07-integrated\\alignment.png": "f5dd82b0300d1320dcce59d1302b22eb43db3c91f8e544e99a8ea2766d534f75",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\07-integrated\\object-closeup.png": "982f26b1bd42d7da2725684b47bdf58dad4e3f6d17733f3ce582869ed87386c3",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-hand\\07-integrated\\edit-closeup.png": "a1387ccd12c866b455f979ce2be6dad761f0a4b24b3b01e720290ad6af40fa61"
+  },
+  "nodes": {
+    "greeting-hand": {
+      "kind": "hand",
+      "intent": "a front-view flat cartoon open palm with five digits",
+      "bounds": [
+        185.33697875861324,
+        113.77987345063707,
+        454.6629207544918,
+        526.2201265493628
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            185.33697875861324,
+            113.77987345063707,
+            454.6629207544918,
+            526.2201265493628
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "spread",
+            "handedness",
+            "skin_color",
+            "ink_color",
+            "crease_color"
+          ]
+        },
+        "index": {
+          "bounds": [
+            254.9493022991722,
+            147.55724410861495,
+            308.58133992042735,
+            329.1548376653319
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "middle": {
+          "bounds": [
+            307.79116635162563,
+            115.16624010622525,
+            348.6924131738721,
+            321.4449848689623
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "ring": {
+          "bounds": [
+            349.7990947665184,
+            135.20196913814382,
+            403.2513390895432,
+            324.04390225899016
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "little": {
+          "bounds": [
+            392.2100443366075,
+            201.94211585810552,
+            453.25633047059966,
+            339.9733346599223
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "thumb": {
+          "bounds": [
+            186.74845265238463,
+            335.7351065343593,
+            320.2037076747385,
+            435.0564423544646
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        }
+      }
+    }
+  },
+  "scope": "flat cartoon heads, front-view open hands, editable planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints or knuckle",
+    "white target": "local edge focus or digit-tip handle"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; digit tip: nominal digit span"
+}

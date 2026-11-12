@@ -1,0 +1,15 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "greeting-hand",
+      "kind": "hand",
+      "intent": "a front-view flat cartoon open palm with five digits"
+    }
+  ]
+}

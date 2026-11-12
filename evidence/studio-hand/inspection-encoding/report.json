@@ -1,0 +1,148 @@
+[
+  {
+    "path": "evidence\\studio-hand\\usability\\17-final\\artwork.png",
+    "chunks": [
+      [
+        "IHDR",
+        13
+      ],
+      [
+        "IDAT",
+        40962
+      ],
+      [
+        "IEND",
+        0
+      ]
+    ],
+    "decoded_pixels_identical": true
+  },
+  {
+    "path": "evidence\\studio-hand\\usability\\check\\draft-fullres.png",
+    "chunks": [
+      [
+        "IHDR",
+        13
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        2307
+      ],
+      [
+        "IEND",
+        0
+      ]
+    ],
+    "decoded_pixels_identical": true
+  },
+  {
+    "path": "evidence\\studio-hand\\inspection-encoding\\opencv-rgba.png",
+    "chunks": [
+      [
+        "IHDR",
+        13
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        8192
+      ],
+      [
+        "IDAT",
+        7670
+      ],
+      [
+        "IEND",
+        0
+      ]
+    ],
+    "decoded_pixels_identical": true
+  },
+  {
+    "path": "evidence\\studio-hand\\inspection-encoding\\pillow-rgb.png",
+    "chunks": [
+      [
+        "IHDR",
+        13
+      ],
+      [
+        "IDAT",
+        39811
+      ],
+      [
+        "IEND",
+        0
+      ]
+    ],
+    "decoded_pixels_identical": true
+  },
+  {
+    "path": "evidence\\studio-hand\\inspection-encoding\\pillow-rgba.png",
+    "chunks": [
+      [
+        "IHDR",
+        13
+      ],
+      [
+        "IDAT",
+        40192
+      ],
+      [
+        "IEND",
+        0
+      ]
+    ],
+    "decoded_pixels_identical": true
+  }
+]
