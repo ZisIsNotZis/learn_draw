@@ -101,6 +101,15 @@ child-lock screen-direction pushes under parent tilt, accept and exact mixed-edi
 locked environment installation and repeated SVG/PNG byte identity. These are operation evidence,
 not whole-artwork acceptance.
 
-**Next action:** use the workbench in a small intent-led composition, adding a useful background or
-celestial preset only where that composition needs it. Preserve the legacy portrait. The development branch is
+Sky/hills/moon/sun presets and undoable insertion/object moves now compose two distinct small scenic
+backgrounds. `evidence/studio-composition/` preserves the real edits and both review pairs. The first
+palette-swap approach was too repetitive; revised landform, focal placement and a rooted pine group
+improved the variation. Fresh critics still find sparse scene character, colour-band hills and
+repeated tree icons. These are background/component evidence, not a finished-art gate. 54 combined
+tests and repeated current SVG/PNG bytes pass. The next capability test gives only the skill/public
+commands and a new dual-avatar intent to an independent creator, without source or existing images.
+
+**Next action:** inspect that independent creation result and any operational gaps before expanding
+the catalog. A richer foreground subject and composition remain necessary for an illustration claim.
+Preserve the legacy portrait. The development branch is
 `codex/vlm-studio`, pushed through the existing SSH identity; main has not been overwritten.

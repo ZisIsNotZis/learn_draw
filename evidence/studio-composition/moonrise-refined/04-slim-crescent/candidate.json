@@ -1,0 +1,74 @@
+{
+  "base": "884892a015b576207bafd6720fdeb1ee9fa81662cf9faca74bb3637092c1dac2",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "result": "196f759a191bc0b4add33df20caf09748825aa078c4040bfbc9c681bc4c56e65",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      960,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "sky",
+        "kind": "sky",
+        "intent": "a quiet dusk gradient with restrained stars"
+      },
+      {
+        "id": "ridges",
+        "kind": "hills",
+        "intent": "three receding smooth ridges beneath the open sky"
+      },
+      {
+        "id": "moon",
+        "kind": "moon",
+        "intent": "a warm crescent above the horizon",
+        "at": {
+          "anchor": "upper_right",
+          "offset": [
+            -0.05333333333333334,
+            0.37
+          ]
+        },
+        "fullness": 0.28
+      }
+    ]
+  },
+  "selection": {
+    "base": "884892a015b576207bafd6720fdeb1ee9fa81662cf9faca74bb3637092c1dac2",
+    "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+    "object": "moon",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      598.4041884479894,
+      243.20418844798945,
+      718.4337558068503,
+      383.9958115520106
+    ],
+    "object_bounds": [
+      598.4041884479894,
+      243.20418844798945,
+      718.4337558068503,
+      383.9958115520106
+    ],
+    "controls": [
+      "depth",
+      "depth_slope",
+      "length",
+      "angle",
+      "fullness",
+      "fill_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "moon",
+    "feature": "object",
+    "parameter": "fullness",
+    "value": 0.28,
+    "reason": "Use a quieter slender crescent instead of the broad default"
+  },
+  "status": "ready"
+}

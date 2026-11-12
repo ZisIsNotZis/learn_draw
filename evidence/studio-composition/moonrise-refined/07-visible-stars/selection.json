@@ -1,0 +1,30 @@
+{
+  "base": "1009a9b09ecdd59faf4e41137346d971a074c9c1bb46841540515f1315ac4cfa",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "object": "sky",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    0,
+    0,
+    960,
+    640
+  ],
+  "object_bounds": [
+    0,
+    0,
+    960,
+    640
+  ],
+  "controls": [
+    "depth",
+    "depth_slope",
+    "style",
+    "stars",
+    "seed",
+    "top_color",
+    "bottom_color",
+    "stars_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

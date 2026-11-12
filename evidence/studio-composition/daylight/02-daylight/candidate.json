@@ -1,0 +1,69 @@
+{
+  "base": "e084aa39e83a3d87aa257f00bc14ed039324fe36fccba02aa2ba6f91b7722809",
+  "engine": "3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291",
+  "result": "ac721fedf413e3b52a301f834f1dde331153c2837df75df974f59be933527c51",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      960,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "sky",
+        "kind": "sky",
+        "intent": "a quiet dusk gradient with restrained stars",
+        "style": "day"
+      },
+      {
+        "id": "ridges",
+        "kind": "hills",
+        "intent": "three receding smooth ridges beneath the open sky"
+      },
+      {
+        "id": "sun",
+        "kind": "sun",
+        "intent": "a warm sun with an attached radial crown"
+      }
+    ]
+  },
+  "selection": {
+    "base": "e084aa39e83a3d87aa257f00bc14ed039324fe36fccba02aa2ba6f91b7722809",
+    "engine": "3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291",
+    "object": "sky",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      0,
+      0,
+      960,
+      640
+    ],
+    "object_bounds": [
+      0,
+      0,
+      960,
+      640
+    ],
+    "controls": [
+      "depth",
+      "depth_slope",
+      "style",
+      "stars",
+      "seed",
+      "top_color",
+      "bottom_color",
+      "stars_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "sky",
+    "feature": "object",
+    "parameter": "style",
+    "value": "day",
+    "reason": "Choose an open daylight atmosphere; default dusk stars should disappear"
+  },
+  "status": "ready"
+}

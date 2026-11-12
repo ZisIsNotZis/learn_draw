@@ -13,6 +13,12 @@ From the development worktree, with Python 3.11+ and the dependencies in `pyproj
 
 ```powershell
 python -m scripts.studio demo --kind head --outdir evidence/my-head-sequence
+python -m scripts.studio new landscape.json --kind landscape
+python -m scripts.studio add landscape.json --kind moon
+python -m scripts.studio inspect landscape.json --object moon --outdir evidence/moon-view
+python -m scripts.studio preview landscape.json --selection evidence/moon-view/selection.json --move down --amount .2 --reason "Bring the moon towards the horizon" --outdir evidence/moon-move
+python examples/studio/compose.py --theme moonrise --outdir evidence/my-moonrise
+python examples/studio/compose.py --theme daylight --outdir evidence/my-daylight
 python -m scripts.studio new head.json --kind head
 python -m scripts.studio inspect head.json --feature eyes --outdir evidence/head-view
 python -m scripts.studio preview head.json --selection evidence/head-view/selection.json --set eye_scale --value .92 --reason "Quieter eye proportions" --outdir evidence/head-preview

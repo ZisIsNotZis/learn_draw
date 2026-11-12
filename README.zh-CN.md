@@ -11,11 +11,15 @@ skill。当前支持用户认可的简洁平涂头部默认预设、独立发束
 ```bash
 uv sync
 uv run python -m scripts.studio demo --kind head --outdir evidence/my-head-sequence
+uv run python examples/studio/compose.py --theme moonrise --refined --outdir evidence/my-moonrise
 ```
 
 入口：[当前路线图](docs/0_ROADMAP.md)、[操作 skill](skills/drawing-studio/SKILL.md)、[场景接口](docs/7_INTERFACE.md)。
 PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安装浏览器。下文保留此前人物临摹及工具链的说明；
 历史阶段完成不代表当前产品已经验收。
+
+天空、山脊、月亮和太阳预设也已支持小幅背景构图与可撤销移动。[实际研究及批评意见](evidence/studio-composition/README.md)
+保留了当前效果的局限；这些能力不等于整幅作品的美术验收。
 
 *把绘画当作一项可计算的手艺来学——每张图都由声明的部件、关系和深度构成，并按照事先写好的验收线逐条评判。*
 

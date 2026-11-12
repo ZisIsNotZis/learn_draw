@@ -12,6 +12,7 @@ from scripts.vector_visibility import visible_regions
 
 from .geometry import bounds, lock_rows, mix, outline, resolve_root
 from .model import canonical, engine_fingerprint, fingerprint, node_by_id, validate, write
+from .components import component_data, support
 
 
 PALETTE = dict(fill="#517f9b", shade="#426781", light="#729eaf", ink="#2e475a")
@@ -22,9 +23,8 @@ def path(points, closed=True):
 
 
 def node_outline(node, canvas):
-    if node['kind']=='head':
-        from .head import head_data
-        return list(head_data(node,canvas).outline)
+    if node['kind']!='hair-lock':
+        return list(component_data(node,canvas).outline)
     return outline(lock_rows(node,canvas))
 
 
@@ -33,9 +33,9 @@ def selection_paths(scene,selection):
     node=node_by_id(scene,selection['object'])
     canvas=scene.get('canvas',[640,640])
     rotate=lambda p:p
-    if node['kind']=='head':
-        from .head import head_data, rotate_point
-        data=head_data(node,canvas)
+    if node['kind']!='hair-lock':
+        from .head import rotate_point
+        data=component_data(node,canvas)
         if selection['kind']=='feature':
             feature=data.features.get(selection['feature'])
             return feature['paths'] if feature else [],None,{}
@@ -68,14 +68,9 @@ def faces_for(scene):
     canvas = scene.get("canvas", [640, 640])
     for node in scene["nodes"]:
         poly = node_outline(node,canvas)
-        if node['kind']=='head':
-            from .head import head_data
-            root_y=head_data(node,canvas).center[1]
-        else:
-            root_y=lock_rows(node,canvas)[0].left[1]
-        scale = node.get("length", .55 if node['kind']=='head' else .68) * min(canvas)
+        root_y,scale,depth=support(node,canvas)
         for triangle in triangulate_polygon(tuple(Point(*p) for p in poly)):
-            tri = tuple((p.u, p.v, node.get("depth", 0) + node.get("depth_slope", 0) * (p.v - root_y) / scale) for p in triangle)
+            tri = tuple((p.u, p.v, depth + node.get("depth_slope", 0) * (p.v - root_y) / scale) for p in triangle)
             faces.append((tri, PALETTE["fill"], node["id"]))
     return faces
 
@@ -89,16 +84,9 @@ def global_depth_order(scene):
     """
     canvas=scene.get('canvas',[640,640]);intervals=[]
     for node in scene['nodes']:
-        if node['kind'] not in ('head','hair-lock'):
-            return None
         poly=node_outline(node,canvas)
-        if node['kind']=='head':
-            from .head import head_data
-            root_y=head_data(node,canvas).center[1]
-        else:
-            root_y=lock_rows(node,canvas)[0].left[1]
-        scale=node.get('length',.55 if node['kind']=='head' else .68)*min(canvas)
-        depths=[node.get('depth',0)+node.get('depth_slope',0)*(p[1]-root_y)/scale for p in poly]
+        root_y,scale,depth=support(node,canvas)
+        depths=[depth+node.get('depth_slope',0)*(p[1]-root_y)/scale for p in poly]
         intervals.append((min(depths),max(depths),node))
     intervals.sort(key=lambda item:item[0])
     if any(a[1]>=b[0]-1e-7 for a,b in zip(intervals,intervals[1:])):
@@ -141,11 +129,10 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
         if needs_clip:
             visible=path(node_outline(node,[width,height])) if ordered is not None else " ".join(p for p, _color, name in regions if name == sid)
             out.append(f'<defs><clipPath id="visible-{sid}" clipPathUnits="userSpaceOnUse"><path d="{visible}"/></clipPath></defs>')
-        if node['kind']=='head':
-            from .head import head_data
+        if node['kind']!='hair-lock':
             clip=f' clip-path="url(#visible-{sid})"' if needs_clip else ''
             out += [f'<!-- {sid}: {html.escape(node["intent"])} -->',
-                    f'<g id="{sid}"{clip}>',head_data(node,[width,height]).svg,'</g>']
+                    f'<g id="{sid}"{clip}>',component_data(node,[width,height]).svg,'</g>']
             continue
         colors = lock_palette(node)
         rows = lock_rows(node, [width, height])
@@ -248,15 +235,17 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
     node_info={}
     for n in scene['nodes']:
         info=dict(kind=n['kind'],intent=n['intent'],bounds=bounds(node_outline(n,scene.get('canvas',[640,640]))))
-        if n['kind']=='head':
-            from .head import head_data
-            data=head_data(n,scene.get('canvas',[640,640]))
+        if n['kind']!='hair-lock':
+            data=component_data(n,scene.get('canvas',[640,640]))
             info['features']={k:dict(bounds=v['bounds'],controls=v['controls']) for k,v in data.features.items()}
-            info['local_locks']=[side+'-lock' for side in data.locks]
+            if n['kind']=='head': info['local_locks']=[side+'-lock' for side in data.locks]
         node_info[n['id']]=info
     report = dict(revision=revision, engine=engine_fingerprint(), status='ready',renderer=backend, images=images,
                   image_sha256={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images},nodes=node_info,
-                  scope="flat frontal head preset and editable planar locks; no 3D head rotation or whole-artwork acceptance claim")
+                  scope="flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim",
+                  alignment_legend={'orange':'selected current boundary','pink dashed':'previous boundary',
+                                    'green rings':'protected endpoints','white target':'local move focus'},
+                  move_units='object selection: shorter canvas dimension; local edge: nominal lock width')
     write(directory / "report.json", report)
     (directory / "report.txt").write_text("\n".join(images) + "\n", encoding="utf-8")
     return report

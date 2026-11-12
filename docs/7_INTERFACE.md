@@ -10,7 +10,34 @@ the commands that write it (`9_IMPLEMENTATION.md`).
 
 The current editable slice is `python -m scripts.studio`. Scene `format` is
 `learn-draw/studio-1`; `canvas` defaults to [640,640], `background` to warm paper, `nodes` is required.
-Each node requires `id`, `kind` (`head` or `hair-lock`), `intent`.
+Each node requires `id`, `kind` (`head`, `hair-lock`, `sky`, `hills`, `moon`, `sun`), `intent`.
+`new --kind landscape` instantiates sky and hills on a 960×640 canvas; `add --kind moon` adds a
+celestial preset. Insertion is journaled and undoable. Existing names are never overwritten.
+
+### Scenic presets and composition
+
+All scenic objects select `object`; they expose semantic controls rather than editable path points.
+
+| kind | defaults and optional controls |
+| --- | --- |
+| sky | dusk (or day); seeded stars, seed, top_color, bottom_color, stars_color; depth −20 |
+| hills | three smooth receding ridges; horizon .64, relief .11, seed 4, far/middle/near_color; optional trees (0–5), tree_scale .18, tree_side left/right; depth 10 |
+| moon | upper_right plus [0,.10], diameter .22 of shorter canvas dimension, angle −20, fullness .42, fill_color; depth 0 |
+| sun | same placement, diameter .20, angle 0, 12 attached rays, fill_color/rays_color; depth 0 |
+
+Fullness is a graphic crescent-width control (.08–1), not an astronomical phase model. Sun rays
+belong to its actual connected opaque silhouette; no invisible bounding disc masks their gaps.
+Hills' support is the union of actual ridge polygons. Celestial visibility behind hills follows
+support depth independently of node-list order. A sky is opaque, not a transparent gradient overlay.
+Styles supply related defaults; explicit palette/star overrides remain deliberate overrides.
+Sky/hills allow depth_slope; their length unit is one shorter canvas dimension.
+
+On an `object` selection, `preview --move left --amount .1` translates a head, standalone lock,
+moon or sun by .1 of the shorter canvas dimension in screen space. Size, tilt and child edits remain
+unchanged. It uses the same revision guard, preview, accept and undo as local pushes. Sky/hills fill
+the canvas and use horizon/relief controls instead. On a local lock selection, amount still means
+nominal lock widths; semantic eye/face/hair features cannot accidentally translate an object.
+`report.json` includes alignment colour meanings and movement units.
 
 ### Head — simple flat-cartoon preset
 

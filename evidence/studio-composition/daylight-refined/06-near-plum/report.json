@@ -1,0 +1,120 @@
+{
+  "revision": "8037096ba675707b431c3228323d61e5bb40480a3dea73a7e3756efcd3144a75",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\daylight-refined\\06-near-plum\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\daylight-refined\\06-near-plum\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\daylight-refined\\06-near-plum\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\daylight-refined\\06-near-plum\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\daylight-refined\\06-near-plum\\artwork.png": "8bf2bc7160124b2e92840988f5c83c2fc4f7eeb7684fed7fbc3459b7b53c9c86",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\daylight-refined\\06-near-plum\\alignment.png": "6283fc9f00b78c297af01b41434de6c637efd78246b673c9797be37259fc445f",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\daylight-refined\\06-near-plum\\object-closeup.png": "340241b852ecf9cadfff0148d037a15d537478e5b4e3fb3b2e37a2e52d4e65dd",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\daylight-refined\\06-near-plum\\edit-closeup.png": "61fbba39b9dc803a9aeb8c8e3dd882c5e0585a72b5400d5206af3c0d208c780c"
+  },
+  "nodes": {
+    "sky": {
+      "kind": "sky",
+      "intent": "a quiet dusk gradient with restrained stars",
+      "bounds": [
+        0,
+        0,
+        960,
+        640
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            0,
+            0,
+            960,
+            640
+          ],
+          "controls": [
+            "depth",
+            "depth_slope",
+            "style",
+            "stars",
+            "seed",
+            "top_color",
+            "bottom_color",
+            "stars_color"
+          ]
+        }
+      }
+    },
+    "ridges": {
+      "kind": "hills",
+      "intent": "three receding smooth ridges beneath the open sky",
+      "bounds": [
+        0.0,
+        354.04490197928993,
+        960.0,
+        640.0
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            0.0,
+            354.04490197928993,
+            960.0,
+            640.0
+          ],
+          "controls": [
+            "depth",
+            "depth_slope",
+            "horizon",
+            "relief",
+            "seed",
+            "trees",
+            "tree_scale",
+            "tree_side",
+            "far_color",
+            "middle_color",
+            "near_color"
+          ]
+        }
+      }
+    },
+    "sun": {
+      "kind": "sun",
+      "intent": "a warm sun with an attached radial crown",
+      "bounds": [
+        643.3441264256995,
+        179.34412642569953,
+        796.6558735743005,
+        332.6558735743005
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            643.3441264256995,
+            179.34412642569953,
+            796.6558735743005,
+            332.6558735743005
+          ],
+          "controls": [
+            "depth",
+            "depth_slope",
+            "length",
+            "angle",
+            "rays",
+            "fill_color",
+            "rays_color"
+          ]
+        }
+      }
+    }
+  },
+  "scope": "flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints",
+    "white target": "local move focus"
+  },
+  "move_units": "object selection: shorter canvas dimension; local edge: nominal lock width"
+}

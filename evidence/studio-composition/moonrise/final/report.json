@@ -1,0 +1,116 @@
+{
+  "revision": "196f759a191bc0b4add33df20caf09748825aa078c4040bfbc9c681bc4c56e65",
+  "engine": "3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise\\final\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise\\final\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise\\final\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise\\final\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise\\final\\artwork.png": "5dbae87e7a2c10b8ef54494bcc4e7623eb395a0f3f391161ccd524a8806574db",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise\\final\\alignment.png": "393c5b8e0c0673ca2534937f37f749fdec34a8b2f7175b3959be4f7ee70e9632",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise\\final\\object-closeup.png": "6c0fb9bf2a90829ae833ed49aefa6c7ed57797ae023dd36ba89b7f89de10313e",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise\\final\\edit-closeup.png": "dadeca528647828c4e919a3a4cf2f2dd6d74d0af935c1683116813c8fda7768a"
+  },
+  "nodes": {
+    "sky": {
+      "kind": "sky",
+      "intent": "a quiet dusk gradient with restrained stars",
+      "bounds": [
+        0,
+        0,
+        960,
+        640
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            0,
+            0,
+            960,
+            640
+          ],
+          "controls": [
+            "depth",
+            "depth_slope",
+            "style",
+            "stars",
+            "seed",
+            "top_color",
+            "bottom_color",
+            "stars_color"
+          ]
+        }
+      }
+    },
+    "ridges": {
+      "kind": "hills",
+      "intent": "three receding smooth ridges beneath the open sky",
+      "bounds": [
+        0.0,
+        354.04490197928993,
+        960.0,
+        640.0
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            0.0,
+            354.04490197928993,
+            960.0,
+            640.0
+          ],
+          "controls": [
+            "depth",
+            "depth_slope",
+            "horizon",
+            "relief",
+            "seed",
+            "far_color",
+            "middle_color",
+            "near_color"
+          ]
+        }
+      }
+    },
+    "moon": {
+      "kind": "moon",
+      "intent": "a warm crescent above the horizon",
+      "bounds": [
+        598.4041884479894,
+        243.20418844798945,
+        710.4353554762562,
+        383.8419688164367
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            598.4041884479894,
+            243.20418844798945,
+            710.4353554762562,
+            383.8419688164367
+          ],
+          "controls": [
+            "depth",
+            "depth_slope",
+            "length",
+            "angle",
+            "fullness",
+            "fill_color"
+          ]
+        }
+      }
+    }
+  },
+  "scope": "flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints",
+    "white target": "local move focus"
+  },
+  "move_units": "object selection: shorter canvas dimension; local edge: nominal lock width"
+}

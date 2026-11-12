@@ -1,0 +1,119 @@
+{
+  "revision": "1009a9b09ecdd59faf4e41137346d971a074c9c1bb46841540515f1315ac4cfa",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise-refined\\06-tree-height\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise-refined\\06-tree-height\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise-refined\\06-tree-height\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise-refined\\06-tree-height\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise-refined\\06-tree-height\\artwork.png": "190eddc8f96cddafb1a15688c2ccd8694c5dd61df8e3cd7ee8c4dcfeb532425f",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise-refined\\06-tree-height\\alignment.png": "b6ac02f6d47ef2d6fdae33d187038f0b817fb3b3112f0f7175f6c106f12fe9ba",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise-refined\\06-tree-height\\object-closeup.png": "53c24b8c5c991b5821f332dc2bc3d86f22f9786639a9648f1f5d61fae7b2bbf5",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-composition\\moonrise-refined\\06-tree-height\\edit-closeup.png": "5af5e7de3821b95a15ca43e5768017e60f0016507161e0cc5bf1edcb0475487f"
+  },
+  "nodes": {
+    "sky": {
+      "kind": "sky",
+      "intent": "a quiet dusk gradient with restrained stars",
+      "bounds": [
+        0,
+        0,
+        960,
+        640
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            0,
+            0,
+            960,
+            640
+          ],
+          "controls": [
+            "depth",
+            "depth_slope",
+            "style",
+            "stars",
+            "seed",
+            "top_color",
+            "bottom_color",
+            "stars_color"
+          ]
+        }
+      }
+    },
+    "ridges": {
+      "kind": "hills",
+      "intent": "three receding smooth ridges beneath the open sky",
+      "bounds": [
+        0.0,
+        354.04490197928993,
+        960.0,
+        640.0
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            0.0,
+            354.04490197928993,
+            960.0,
+            640.0
+          ],
+          "controls": [
+            "depth",
+            "depth_slope",
+            "horizon",
+            "relief",
+            "seed",
+            "trees",
+            "tree_scale",
+            "tree_side",
+            "far_color",
+            "middle_color",
+            "near_color"
+          ]
+        }
+      }
+    },
+    "moon": {
+      "kind": "moon",
+      "intent": "a warm crescent above the horizon",
+      "bounds": [
+        598.4041884479894,
+        243.20418844798945,
+        710.4353554762562,
+        383.8419688164367
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            598.4041884479894,
+            243.20418844798945,
+            710.4353554762562,
+            383.8419688164367
+          ],
+          "controls": [
+            "depth",
+            "depth_slope",
+            "length",
+            "angle",
+            "fullness",
+            "fill_color"
+          ]
+        }
+      }
+    }
+  },
+  "scope": "flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim",
+  "alignment_legend": {
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "protected endpoints",
+    "white target": "local move focus"
+  },
+  "move_units": "object selection: shorter canvas dimension; local edge: nominal lock width"
+}

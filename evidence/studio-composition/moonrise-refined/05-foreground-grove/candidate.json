@@ -1,0 +1,80 @@
+{
+  "base": "196f759a191bc0b4add33df20caf09748825aa078c4040bfbc9c681bc4c56e65",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "result": "5512d1c1604220b7faef57ae31d1882a0499106fb2b04ca8905750ad0a1e1174",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      960,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "sky",
+        "kind": "sky",
+        "intent": "a quiet dusk gradient with restrained stars"
+      },
+      {
+        "id": "ridges",
+        "kind": "hills",
+        "intent": "three receding smooth ridges beneath the open sky",
+        "trees": 3.0
+      },
+      {
+        "id": "moon",
+        "kind": "moon",
+        "intent": "a warm crescent above the horizon",
+        "at": {
+          "anchor": "upper_right",
+          "offset": [
+            -0.05333333333333334,
+            0.37
+          ]
+        },
+        "fullness": 0.28
+      }
+    ]
+  },
+  "selection": {
+    "base": "196f759a191bc0b4add33df20caf09748825aa078c4040bfbc9c681bc4c56e65",
+    "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+    "object": "ridges",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      0.0,
+      354.04490197928993,
+      960.0,
+      640.0
+    ],
+    "object_bounds": [
+      0.0,
+      354.04490197928993,
+      960.0,
+      640.0
+    ],
+    "controls": [
+      "depth",
+      "depth_slope",
+      "horizon",
+      "relief",
+      "seed",
+      "trees",
+      "tree_scale",
+      "tree_side",
+      "far_color",
+      "middle_color",
+      "near_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "ridges",
+    "feature": "object",
+    "parameter": "trees",
+    "value": 3.0,
+    "reason": "Give the empty left side a subordinate group and a scale cue rooted on the ridge"
+  },
+  "status": "ready"
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "base": "060a8f395b7d2fc2071b64888b69a2be99925aad19a8165166fe4a4c1c378eab",
+    "result": "e084aa39e83a3d87aa257f00bc14ed039324fe36fccba02aa2ba6f91b7722809",
+    "operation": {
+      "action": "add",
+      "object": "sun",
+      "kind": "sun",
+      "reason": "a warm sun with an attached radial crown"
+    }
+  },
+  {
+    "base": "e084aa39e83a3d87aa257f00bc14ed039324fe36fccba02aa2ba6f91b7722809",
+    "result": "ac721fedf413e3b52a301f834f1dde331153c2837df75df974f59be933527c51",
+    "operation": {
+      "object": "sky",
+      "feature": "object",
+      "parameter": "style",
+      "value": "day",
+      "reason": "Choose an open daylight atmosphere; default dusk stars should disappear"
+    }
+  },
+  {
+    "base": "ac721fedf413e3b52a301f834f1dde331153c2837df75df974f59be933527c51",
+    "result": "dc4112b1971dc9907a3be5719236a3402a0154067197eb1c2437cb95ae74311c",
+    "operation": {
+      "object": "sun",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.18,
+      "units": "shorter canvas dimension",
+      "reason": "Bring the sun towards the horizon while keeping it fully readable"
+    }
+  },
+  {
+    "base": "dc4112b1971dc9907a3be5719236a3402a0154067197eb1c2437cb95ae74311c",
+    "result": "1219ccae64447efda15e318e331746e0da8c3a097c2a215a83fc5502f5a414c0",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "far_color",
+      "value": "#bda18c",
+      "reason": "Warm the distant ridge to match the clear daylight"
+    }
+  },
+  {
+    "base": "1219ccae64447efda15e318e331746e0da8c3a097c2a215a83fc5502f5a414c0",
+    "result": "0859be7f122805a65f88069a74f2f2a6f5fc227c38c99adba9b24e0f441746f1",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "middle_color",
+      "value": "#aa7970",
+      "reason": "Separate the middle ridge with muted terracotta"
+    }
+  },
+  {
+    "base": "0859be7f122805a65f88069a74f2f2a6f5fc227c38c99adba9b24e0f441746f1",
+    "result": "8037096ba675707b431c3228323d61e5bb40480a3dea73a7e3756efcd3144a75",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "near_color",
+      "value": "#66576a",
+      "reason": "Give the near ridge a firm muted plum silhouette"
+    }
+  },
+  {
+    "base": "8037096ba675707b431c3228323d61e5bb40480a3dea73a7e3756efcd3144a75",
+    "result": "a3766e6d40b2cb4b2e536fd58d28fc8f74f6a7f9ee07fea0701951185c9b0b13",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "seed",
+      "value": 13.0,
+      "reason": "Make daylight a different landform rather than a palette swap"
+    }
+  },
+  {
+    "base": "a3766e6d40b2cb4b2e536fd58d28fc8f74f6a7f9ee07fea0701951185c9b0b13",
+    "result": "3d172b94cb01cfdeca19b5f75c6012bd0a9043d1261a0b09df7162f0b299b85b",
+    "operation": {
+      "object": "sun",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.65,
+      "units": "shorter canvas dimension",
+      "reason": "Balance the rising terrain with a sun on the left"
+    }
+  },
+  {
+    "base": "3d172b94cb01cfdeca19b5f75c6012bd0a9043d1261a0b09df7162f0b299b85b",
+    "result": "0174f9f988a4d793086e86973ceac0d204654ef86cadcc65fd7af36eee3e901b",
+    "operation": {
+      "object": "sun",
+      "feature": "object",
+      "parameter": "rays",
+      "value": 0.0,
+      "reason": "Use a quiet disc instead of a gear-like crown in this soft landscape"
+    }
+  },
+  {
+    "base": "0174f9f988a4d793086e86973ceac0d204654ef86cadcc65fd7af36eee3e901b",
+    "result": "277443d71705031478973c1ccc4fd93dd48706bf7825e95e5c7ef72cb8a5cba5",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "near_color",
+      "value": "#92745f",
+      "reason": "Lighten the near ground into warm earth appropriate to daylight"
+    }
+  },
+  {
+    "base": "277443d71705031478973c1ccc4fd93dd48706bf7825e95e5c7ef72cb8a5cba5",
+    "result": "095df238cfef83758639560d13eb5e0894c859fb8fa5cecf764ac092ddc4faea",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "middle_color",
+      "value": "#b7a077",
+      "reason": "Give the middle distance a warmer grassy tone"
+    }
+  },
+  {
+    "base": "095df238cfef83758639560d13eb5e0894c859fb8fa5cecf764ac092ddc4faea",
+    "result": "2e7870e3a06f514f2ea6169eaeb62f54b092851903540d6375c159b69befe90b",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "horizon",
+      "value": 0.54,
+      "reason": "Reduce empty sky and let the changing landform occupy more of the composition"
+    }
+  },
+  {
+    "base": "2e7870e3a06f514f2ea6169eaeb62f54b092851903540d6375c159b69befe90b",
+    "result": "81db739654eb6c9b4a3badb74dc82005790c99b6875f5ef5a82c0b4780f25d33",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "seed",
+      "value": 2.0,
+      "reason": "The previous seed retained nearly the same slope; use a landform with an opposing large-scale rhythm"
+    }
+  }
+]

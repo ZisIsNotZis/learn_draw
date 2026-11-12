@@ -1,0 +1,32 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    960,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "sky",
+      "kind": "sky",
+      "intent": "a quiet dusk gradient with restrained stars"
+    },
+    {
+      "id": "ridges",
+      "kind": "hills",
+      "intent": "three receding smooth ridges beneath the open sky"
+    },
+    {
+      "id": "moon",
+      "kind": "moon",
+      "intent": "a warm crescent above the horizon",
+      "at": {
+        "anchor": "upper_right",
+        "offset": [
+          0.0,
+          0.37
+        ]
+      }
+    }
+  ]
+}

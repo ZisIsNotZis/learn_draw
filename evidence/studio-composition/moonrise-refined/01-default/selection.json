@@ -1,0 +1,28 @@
+{
+  "base": "3aaf59513786dbb96c9fe7f643dbc2aad58dc197c9532b341d53e6f91dcd5279",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "object": "moon",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    649.6041884479894,
+    70.40418844798944,
+    769.6337558068503,
+    211.19581155201058
+  ],
+  "object_bounds": [
+    649.6041884479894,
+    70.40418844798944,
+    769.6337558068503,
+    211.19581155201058
+  ],
+  "controls": [
+    "depth",
+    "depth_slope",
+    "length",
+    "angle",
+    "fullness",
+    "fill_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

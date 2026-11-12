@@ -1,0 +1,41 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    960,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "sky",
+      "kind": "sky",
+      "intent": "a quiet dusk gradient with restrained stars",
+      "style": "day"
+    },
+    {
+      "id": "ridges",
+      "kind": "hills",
+      "intent": "three receding smooth ridges beneath the open sky",
+      "palette": {
+        "far": "#bda18c",
+        "middle": "#b7a077",
+        "near": "#92745f"
+      },
+      "seed": 2.0,
+      "horizon": 0.54
+    },
+    {
+      "id": "sun",
+      "kind": "sun",
+      "intent": "a warm sun with an attached radial crown",
+      "at": {
+        "anchor": "upper_right",
+        "offset": [
+          -0.43333333333333335,
+          0.28
+        ]
+      },
+      "rays": 0.0
+    }
+  ]
+}

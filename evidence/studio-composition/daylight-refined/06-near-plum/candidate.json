@@ -1,0 +1,84 @@
+{
+  "base": "0859be7f122805a65f88069a74f2f2a6f5fc227c38c99adba9b24e0f441746f1",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "result": "8037096ba675707b431c3228323d61e5bb40480a3dea73a7e3756efcd3144a75",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      960,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "sky",
+        "kind": "sky",
+        "intent": "a quiet dusk gradient with restrained stars",
+        "style": "day"
+      },
+      {
+        "id": "ridges",
+        "kind": "hills",
+        "intent": "three receding smooth ridges beneath the open sky",
+        "palette": {
+          "far": "#bda18c",
+          "middle": "#aa7970",
+          "near": "#66576a"
+        }
+      },
+      {
+        "id": "sun",
+        "kind": "sun",
+        "intent": "a warm sun with an attached radial crown",
+        "at": {
+          "anchor": "upper_right",
+          "offset": [
+            0.0,
+            0.28
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "0859be7f122805a65f88069a74f2f2a6f5fc227c38c99adba9b24e0f441746f1",
+    "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+    "object": "ridges",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      0.0,
+      354.04490197928993,
+      960.0,
+      640.0
+    ],
+    "object_bounds": [
+      0.0,
+      354.04490197928993,
+      960.0,
+      640.0
+    ],
+    "controls": [
+      "depth",
+      "depth_slope",
+      "horizon",
+      "relief",
+      "seed",
+      "trees",
+      "tree_scale",
+      "tree_side",
+      "far_color",
+      "middle_color",
+      "near_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "ridges",
+    "feature": "object",
+    "parameter": "near_color",
+    "value": "#66576a",
+    "reason": "Give the near ridge a firm muted plum silhouette"
+  },
+  "status": "ready"
+}

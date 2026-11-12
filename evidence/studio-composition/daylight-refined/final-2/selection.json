@@ -1,0 +1,29 @@
+{
+  "base": "81db739654eb6c9b4a3badb74dc82005790c99b6875f5ef5a82c0b4780f25d33",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "object": "sun",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    240.0,
+    192.0,
+    368.0,
+    320.0
+  ],
+  "object_bounds": [
+    240.0,
+    192.0,
+    368.0,
+    320.0
+  ],
+  "controls": [
+    "depth",
+    "depth_slope",
+    "length",
+    "angle",
+    "rays",
+    "fill_color",
+    "rays_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

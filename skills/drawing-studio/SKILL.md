@@ -1,6 +1,6 @@
 ---
 name: drawing-studio
-description: Create and refine programmatic flat-cartoon heads and hair locks with learn_draw's revision-bound drawing workbench. Use for studio scene authoring, edge alignment, previewed contour edits, or restoring accepted edits. Use semantic eye, face and hair controls or local child-lock edits; other families are not implemented.
+description: Create and refine programmatic flat-cartoon heads, hair locks and small scenic illustrations with learn_draw's revision-bound workbench. Use for scene composition, semantic feature controls, visible object placement, local edge pushes, previews and undo. Supported scenic presets are sky, hills, moon and sun.
 ---
 
 # Drawing studio
@@ -37,6 +37,15 @@ a smaller move or a better gesture, not manually corrected generated vertices.
 
 ## Choose the right operation
 
+- For a landscape, `new scene.json --kind landscape`, then `add scene.json --kind moon` or sun.
+  Insertion is undoable. Inspect the named object before revising it. Try `--set fullness --value .28`
+  for a slimmer crescent, `--set style --value day` on sky, or horizon/relief on hills. Inspect lists
+  the controls of the actual selected object; exact fields are in the interface document.
+- To place an entire head, lock, moon or sun, inspect `--feature object` and use `--move`.
+  Object-move amount is a fraction of the shorter canvas dimension; a local lock push uses lock width.
+  Movement is in screen space even for tilted parts. Canvas-wide sky/hills use their semantic controls.
+  Compare the clean image and orange current / pink dashed previous boundary before accepting.
+
 - Head defaults require no path input. Inspect exposes allowed controls: eyes offer eye_scale/iris_color;
   face offers jaw/skin_color; hair offers hairstyle/hair_color. Object exposes size, tilt and depth.
   Child-lock pushes preserve endpoints and the other lock; screen directions account for head tilt.
@@ -61,3 +70,8 @@ head studies and bounded usability review; the user accepted the simple flat-car
 `evidence/studio-head-integrated/` demonstrates semantic/local edits and exact undo/replay.
 This establishes a bounded head-component operation loop, not general drawing mastery. Human taste questions are
 specific and asynchronous; continue independent work while awaiting a reply.
+
+`examples/studio/compose.py --theme moonrise|daylight --outdir FRESH` replays a documented original
+composition through the public CLI, without a reference. Its choices are a demonstration, not a
+formula for every picture: choose your focal point, negative space and palette for the actual intent.
+Inspect defaults first. Preserve a useful silhouette; additional marks must serve grouping or meaning.

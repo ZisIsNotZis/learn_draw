@@ -1,0 +1,29 @@
+{
+  "tests": 54,
+  "repeated_svg_png_bytes_equal": true,
+  "sha256": {
+    "moonrise": {
+      "svg": [
+        "3f3f2b1b407daa7b4e63440ad5f269ed8c1cde94af46b60e2f82098af2654862",
+        "3f3f2b1b407daa7b4e63440ad5f269ed8c1cde94af46b60e2f82098af2654862"
+      ],
+      "png": [
+        "5103acccc3c777ab5f912c5230d64a3a9017123eac0024475f1cb9fba8b245c4",
+        "5103acccc3c777ab5f912c5230d64a3a9017123eac0024475f1cb9fba8b245c4"
+      ]
+    },
+    "daylight": {
+      "svg": [
+        "54f7f078aac448a171ac22d0a9d72e9234797ca8da3df7dbfae13f66c7d32ea0",
+        "54f7f078aac448a171ac22d0a9d72e9234797ca8da3df7dbfae13f66c7d32ea0"
+      ],
+      "png": [
+        "4bb3ffd72fb246fe00de7945cc639eb269ef943fa206de69758ac08f220a493d",
+        "4bb3ffd72fb246fe00de7945cc639eb269ef943fa206de69758ac08f220a493d"
+      ]
+    }
+  },
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "CPU_smoke": "81 checks and wave assertions passed in the preceding head integration; legacy code unchanged in this unit",
+  "limitations": "art reviews remain critical; scenic defaults are background-scale components, not finished illustrative mastery"
+}

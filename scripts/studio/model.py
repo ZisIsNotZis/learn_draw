@@ -113,6 +113,42 @@ def validate_head(node, canvas):
             raise ValueError('head lock: '+'; '.join(problems))
 
 
+def validate_scenery(node,canvas):
+    kind=node['kind']
+    fields={'sky':('style','stars','seed'), 'hills':('horizon','relief','seed','trees','tree_scale','tree_side'),
+            'moon':('at','length','angle','fullness'), 'sun':('at','length','angle','rays')}
+    palette_keys={'sky':('top','bottom','stars'),'hills':('far','middle','near'),
+                  'moon':('fill',),'sun':('fill','rays')}
+    keys(node,('id','kind','intent','depth','depth_slope','palette')+fields[kind],kind)
+    for name,default,lo,hi in [('depth',0,-100,100),('depth_slope',0,-10,10)]:
+        number(node.get(name,default),kind+'.'+name,lo,hi)
+    if kind in ('moon','sun'):
+        validate_placement(node)
+        number(node.get('length',.22),'length',.03,1.2)
+        number(node.get('angle',0),'angle',-180,180)
+    if kind=='moon': number(node.get('fullness',.42),'fullness',.08,1)
+    if kind=='hills':
+        number(node.get('horizon',.64),'horizon',.3,.75)
+        number(node.get('relief',.11),'relief',.02,.12)
+        number(node.get('tree_scale',.18),'tree_scale',.06,.35)
+        if node.get('tree_side','left') not in ('left','right'): raise ValueError('tree_side: left/right')
+    for key,default,lo,hi in [('seed',4,0,100000),('stars',28,0,120),('rays',12,0,32),('trees',0,0,5)]:
+        if key in fields[kind]:
+            value=node.get(key,default)
+            number(value,key,lo,hi)
+            if value!=int(value): raise ValueError(key+': expected a whole number')
+    if kind=='sun' and 0<node.get('rays',12)<3:
+        raise ValueError('rays: use 0 or at least 3')
+    if kind=='sky' and node.get('style','dusk') not in ('dusk','day'):
+        raise ValueError('sky.style: dusk/day')
+    keys(node.get('palette',{}),palette_keys[kind],kind+'.palette')
+    for value in node.get('palette',{}).values(): color(value)
+    from .scenery import scenery_data
+    from shapely import Polygon
+    if not Polygon(scenery_data(node,canvas).outline).is_valid:
+        raise ValueError(kind+': invalid silhouette')
+
+
 def validate(scene):
     keys(scene, ("format", "canvas", "background", "nodes"), "scene")
     if scene.get("format") != "learn-draw/studio-1":
@@ -138,8 +174,12 @@ def validate(scene):
         if node.get('kind')=='head':
             validate_head(node,canvas)
             continue
+        from .scenery import KINDS
+        if node.get('kind') in KINDS:
+            validate_scenery(node,canvas)
+            continue
         if node.get("kind") != "hair-lock":
-            raise ValueError(f"{sid}: supported kinds are head/hair-lock")
+            raise ValueError(f"{sid}: supported kinds are head/hair-lock/sky/hills/moon/sun")
         keys(node, ("id", "kind", "intent", "at", "length", "width", "width_side", "angle", "sweep", "depth",
                     "depth_slope", "palette", "edits"), "node")
         if node.get("width_side", "both") not in ("both", "left", "right"):
@@ -186,16 +226,18 @@ def select(scene, sid=None, side="left", at=.55, radius=.30, feature=None):
     node = node_by_id(scene, sid)
     canvas=scene.get('canvas',[640,640])
     rotate=lambda p:p
-    if node['kind']=='head':
-        from .head import head_data, rotate_point
-        data=head_data(node,canvas)
+    if node['kind']!='hair-lock':
+        from .components import component_data
+        from .head import rotate_point
+        data=component_data(node,canvas)
         feature=feature or 'object'
         if feature in data.features:
             f=data.features[feature]
             selection.update(kind='feature',feature=feature,bounds=f['bounds'],object_bounds=bounds(data.outline),
-                             controls=f['controls'],units='semantic parameter values; inspect the actual selected feature')
+                             controls=f['controls'],units=('semantic values; object move amount is a fraction of the shorter canvas dimension'
+                             if feature=='object' else 'semantic parameter values; inspect the actual selected feature'))
             return selection
-        if feature not in ('left-lock','right-lock') or feature.split('-')[0] not in data.locks:
+        if node['kind']!='head' or feature not in ('left-lock','right-lock') or feature.split('-')[0] not in data.locks:
             raise ValueError('unavailable head feature: '+str(feature))
         child=feature.split('-')[0]
         lock=data.locks[child]
@@ -214,7 +256,7 @@ def select(scene, sid=None, side="left", at=.55, radius=.30, feature=None):
             selection.update(kind='feature',feature='object',bounds=object_bounds,object_bounds=object_bounds,
                              controls=['length','width','sweep','angle','width_side','depth','depth_slope',
                                        'fill_color','shade_color','light_color','ink_color'],
-                             units='semantic parameter values; directions/depth are described in the scene contract')
+                             units='semantic values; object move amount is a fraction of the shorter canvas dimension')
             return selection
     validate_edits([dict(side=side,at=at,radius=radius,dx=0,dy=0,reason='selection')])
     region = [rotate(getattr(r, side)) for r in rows if abs(r.t - at) <= radius]
@@ -234,14 +276,31 @@ def current_selection(scene, selection):
 
 def preview(scene, selection, direction, amount, reason):
     current_selection(scene,selection)
-    if selection.get('kind','local')!='local':
+    object_move=selection.get('kind')=='feature' and selection.get('feature')=='object'
+    if selection.get('kind','local')!='local' and not object_move:
         raise ValueError('use a semantic parameter for this feature, or inspect a temple lock for local pushes')
     if direction not in ("left", "right", "up", "down"):
         raise ValueError("direction: left/right/up/down")
     number(amount, "amount", 0, 2)
+    if not isinstance(reason,str) or not reason.strip():
+        raise ValueError('state a drawing reason')
     dx, dy = {"left": (-amount, 0), "right": (amount, 0), "up": (0, -amount), "down": (0, amount)}[direction]
     candidate = copy.deepcopy(scene)
     node = node_by_id(candidate, selection["object"])
+    if object_move:
+        canvas=scene.get('canvas',[640,640])
+        if node['kind'] in ('sky','hills'):
+            raise ValueError('canvas-wide backgrounds use horizon/relief controls; select a movable object')
+        default={'head':{'anchor':'center','offset':[0,-.06]},
+                 'moon':{'anchor':'upper_right','offset':[0,.10]},
+                 'sun':{'anchor':'upper_right','offset':[0,.10]}}.get(node['kind'],{})
+        placement=node.setdefault('at',copy.deepcopy(default))
+        offset=placement.get('offset',[0,0])
+        placement['offset']=[offset[0]+dx*min(canvas)/canvas[0],offset[1]+dy*min(canvas)/canvas[1]]
+        validate(candidate)
+        return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
+                    selection=selection,operation=dict(object=selection['object'],feature='object',
+                    direction=direction,amount=amount,units='shorter canvas dimension',reason=reason))
     edit = {k: selection[k] for k in ("side", "at", "radius")}
     edit.update(dx=dx, dy=dy, reason=reason)
     if node['kind']=='head':
@@ -264,12 +323,14 @@ def parameter_preview(scene,selection,parameter,value,reason):
     candidate=copy.deepcopy(scene)
     node=node_by_id(candidate,selection['object'])
     aliases={'hair_color':'hair','skin_color':'skin','iris_color':'iris','ink_color':'ink',
-             'fill_color':'fill','shade_color':'shade','light_color':'light'}
+             'fill_color':'fill','shade_color':'shade','light_color':'light',
+             'top_color':'top','bottom_color':'bottom','stars_color':'stars','far_color':'far',
+             'middle_color':'middle','near_color':'near','rays_color':'rays'}
     if parameter in aliases:
         color(value)
         node.setdefault('palette',{})[aliases[parameter]]=value
     else:
-        if parameter not in ('hair','width_side') and isinstance(value,str):
+        if parameter not in ('hair','width_side','style','tree_side') and isinstance(value,str):
             try:
                 value=float(value)
             except ValueError:

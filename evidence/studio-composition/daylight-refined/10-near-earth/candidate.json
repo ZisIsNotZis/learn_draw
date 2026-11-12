@@ -1,0 +1,86 @@
+{
+  "base": "0174f9f988a4d793086e86973ceac0d204654ef86cadcc65fd7af36eee3e901b",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "result": "277443d71705031478973c1ccc4fd93dd48706bf7825e95e5c7ef72cb8a5cba5",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      960,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "sky",
+        "kind": "sky",
+        "intent": "a quiet dusk gradient with restrained stars",
+        "style": "day"
+      },
+      {
+        "id": "ridges",
+        "kind": "hills",
+        "intent": "three receding smooth ridges beneath the open sky",
+        "palette": {
+          "far": "#bda18c",
+          "middle": "#aa7970",
+          "near": "#92745f"
+        },
+        "seed": 13.0
+      },
+      {
+        "id": "sun",
+        "kind": "sun",
+        "intent": "a warm sun with an attached radial crown",
+        "at": {
+          "anchor": "upper_right",
+          "offset": [
+            -0.43333333333333335,
+            0.28
+          ]
+        },
+        "rays": 0.0
+      }
+    ]
+  },
+  "selection": {
+    "base": "0174f9f988a4d793086e86973ceac0d204654ef86cadcc65fd7af36eee3e901b",
+    "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+    "object": "ridges",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      0.0,
+      354.69486383526345,
+      960.0,
+      640.0
+    ],
+    "object_bounds": [
+      0.0,
+      354.69486383526345,
+      960.0,
+      640.0
+    ],
+    "controls": [
+      "depth",
+      "depth_slope",
+      "horizon",
+      "relief",
+      "seed",
+      "trees",
+      "tree_scale",
+      "tree_side",
+      "far_color",
+      "middle_color",
+      "near_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "ridges",
+    "feature": "object",
+    "parameter": "near_color",
+    "value": "#92745f",
+    "reason": "Lighten the near ground into warm earth appropriate to daylight"
+  },
+  "status": "ready"
+}

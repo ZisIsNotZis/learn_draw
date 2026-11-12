@@ -1,0 +1,33 @@
+{
+  "base": "1219ccae64447efda15e318e331746e0da8c3a097c2a215a83fc5502f5a414c0",
+  "engine": "8220a432d4a0a72583bc85ba4ef21ea9b72573f396a683a4100855ec4d948381",
+  "object": "ridges",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    0.0,
+    354.04490197928993,
+    960.0,
+    640.0
+  ],
+  "object_bounds": [
+    0.0,
+    354.04490197928993,
+    960.0,
+    640.0
+  ],
+  "controls": [
+    "depth",
+    "depth_slope",
+    "horizon",
+    "relief",
+    "seed",
+    "trees",
+    "tree_scale",
+    "tree_side",
+    "far_color",
+    "middle_color",
+    "near_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "base": "060a8f395b7d2fc2071b64888b69a2be99925aad19a8165166fe4a4c1c378eab",
+    "result": "e084aa39e83a3d87aa257f00bc14ed039324fe36fccba02aa2ba6f91b7722809",
+    "operation": {
+      "action": "add",
+      "object": "sun",
+      "kind": "sun",
+      "reason": "a warm sun with an attached radial crown"
+    }
+  },
+  {
+    "base": "e084aa39e83a3d87aa257f00bc14ed039324fe36fccba02aa2ba6f91b7722809",
+    "result": "ac721fedf413e3b52a301f834f1dde331153c2837df75df974f59be933527c51",
+    "operation": {
+      "object": "sky",
+      "feature": "object",
+      "parameter": "style",
+      "value": "day",
+      "reason": "Choose an open daylight atmosphere; default dusk stars should disappear"
+    }
+  },
+  {
+    "base": "ac721fedf413e3b52a301f834f1dde331153c2837df75df974f59be933527c51",
+    "result": "dc4112b1971dc9907a3be5719236a3402a0154067197eb1c2437cb95ae74311c",
+    "operation": {
+      "object": "sun",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.18,
+      "units": "shorter canvas dimension",
+      "reason": "Bring the sun towards the horizon while keeping it fully readable"
+    }
+  },
+  {
+    "base": "dc4112b1971dc9907a3be5719236a3402a0154067197eb1c2437cb95ae74311c",
+    "result": "1219ccae64447efda15e318e331746e0da8c3a097c2a215a83fc5502f5a414c0",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "far_color",
+      "value": "#bda18c",
+      "reason": "Warm the distant ridge to match the clear daylight"
+    }
+  },
+  {
+    "base": "1219ccae64447efda15e318e331746e0da8c3a097c2a215a83fc5502f5a414c0",
+    "result": "0859be7f122805a65f88069a74f2f2a6f5fc227c38c99adba9b24e0f441746f1",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "middle_color",
+      "value": "#aa7970",
+      "reason": "Separate the middle ridge with muted terracotta"
+    }
+  },
+  {
+    "base": "0859be7f122805a65f88069a74f2f2a6f5fc227c38c99adba9b24e0f441746f1",
+    "result": "8037096ba675707b431c3228323d61e5bb40480a3dea73a7e3756efcd3144a75",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "near_color",
+      "value": "#66576a",
+      "reason": "Give the near ridge a firm muted plum silhouette"
+    }
+  }
+]

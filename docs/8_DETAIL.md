@@ -5,6 +5,19 @@ the language they serve (`5_PRODUCT.md`), or the commands that run them (`9_IMPL
 
 # INFERRED
 
+## Scenic support and opaque artwork
+
+`scripts/studio/components.py` dispatches the implemented flat recipes and supplies their depth
+anchor/scale. `scenery.py` creates a sky gradient and deterministic subordinate stars; hills sample
+two low-frequency harmonics into three filled ridges. Their support is the union of those polygons.
+Optional foreground pines derive their feet from the actual near ridge, so horizon/relief changes
+cannot detach them. Their crown/trunk unions join the hill's opaque support.
+The crescent is a circle minus an offset circle, then tilted about its center; fullness changes the
+offset. A sun unions its attached ray crown with the disc. Its support follows the actual outline,
+preserving transparent space between tips under exact visibility clipping. Geometry is computed from
+semantic controls, never seeded by a reference or hidden bitmap. These recipes are replaceable art
+choices, not universal physical models. Object moves alter relative placement and preserve shape.
+
 ## Editable lock implementation
 
 `scripts/studio/geometry.py` sweeps a smooth gesture from a semantic frame anchor. A continuous

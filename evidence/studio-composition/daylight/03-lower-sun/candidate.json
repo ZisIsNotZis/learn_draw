@@ -1,0 +1,76 @@
+{
+  "base": "ac721fedf413e3b52a301f834f1dde331153c2837df75df974f59be933527c51",
+  "engine": "3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291",
+  "result": "dc4112b1971dc9907a3be5719236a3402a0154067197eb1c2437cb95ae74311c",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      960,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "sky",
+        "kind": "sky",
+        "intent": "a quiet dusk gradient with restrained stars",
+        "style": "day"
+      },
+      {
+        "id": "ridges",
+        "kind": "hills",
+        "intent": "three receding smooth ridges beneath the open sky"
+      },
+      {
+        "id": "sun",
+        "kind": "sun",
+        "intent": "a warm sun with an attached radial crown",
+        "at": {
+          "anchor": "upper_right",
+          "offset": [
+            0.0,
+            0.28
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "ac721fedf413e3b52a301f834f1dde331153c2837df75df974f59be933527c51",
+    "engine": "3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291",
+    "object": "sun",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      643.3441264256995,
+      64.14412642569954,
+      796.6558735743005,
+      217.45587357430048
+    ],
+    "object_bounds": [
+      643.3441264256995,
+      64.14412642569954,
+      796.6558735743005,
+      217.45587357430048
+    ],
+    "controls": [
+      "depth",
+      "depth_slope",
+      "length",
+      "angle",
+      "rays",
+      "fill_color",
+      "rays_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "sun",
+    "feature": "object",
+    "direction": "down",
+    "amount": 0.18,
+    "units": "shorter canvas dimension",
+    "reason": "Bring the sun towards the horizon while keeping it fully readable"
+  },
+  "status": "ready"
+}

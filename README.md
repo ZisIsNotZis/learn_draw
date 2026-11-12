@@ -9,9 +9,14 @@
 ```bash
 uv sync
 uv run python -m scripts.studio demo --kind head --outdir evidence/my-head-sequence
+uv run python examples/studio/compose.py --theme moonrise --refined --outdir evidence/my-moonrise
 ```
 
 Use [the current roadmap](docs/0_ROADMAP.md), [operation skill](skills/drawing-studio/SKILL.md), and [scene contract](docs/7_INTERFACE.md). PNGs prefer native CPU resvg, with CairoSVG or GPU-disabled installed Chromium/Edge as fallbacks. The material below records the earlier portrait and toolchain; historical completion statements do not establish current product acceptance.
+
+Sky, hills, moon and sun presets also support small scenic backgrounds with recoverable placement.
+Their [actual studies and critical reviews](evidence/studio-composition/README.md) remain distinct
+from an artwork-quality pass.
 
 *Learning to draw as a computed skill — every picture built from declared parts, relations and depth, and judged one term at a time.*
 

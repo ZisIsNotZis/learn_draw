@@ -1,0 +1,80 @@
+[
+  {
+    "base": "060a8f395b7d2fc2071b64888b69a2be99925aad19a8165166fe4a4c1c378eab",
+    "result": "3aaf59513786dbb96c9fe7f643dbc2aad58dc197c9532b341d53e6f91dcd5279",
+    "operation": {
+      "action": "add",
+      "object": "moon",
+      "kind": "moon",
+      "reason": "a warm crescent above the horizon"
+    }
+  },
+  {
+    "base": "3aaf59513786dbb96c9fe7f643dbc2aad58dc197c9532b341d53e6f91dcd5279",
+    "result": "5accca94c4939dfd4262553050db8df458f61adc787a9aa1d7bbe4a3b4eb5be8",
+    "operation": {
+      "object": "moon",
+      "feature": "object",
+      "direction": "down",
+      "amount": 0.27,
+      "units": "shorter canvas dimension",
+      "reason": "Bring the moon closer to the ridges so it belongs to the landscape"
+    }
+  },
+  {
+    "base": "5accca94c4939dfd4262553050db8df458f61adc787a9aa1d7bbe4a3b4eb5be8",
+    "result": "884892a015b576207bafd6720fdeb1ee9fa81662cf9faca74bb3637092c1dac2",
+    "operation": {
+      "object": "moon",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.08,
+      "units": "shorter canvas dimension",
+      "reason": "Leave more breathing room on the right and bring the focal point inward"
+    }
+  },
+  {
+    "base": "884892a015b576207bafd6720fdeb1ee9fa81662cf9faca74bb3637092c1dac2",
+    "result": "196f759a191bc0b4add33df20caf09748825aa078c4040bfbc9c681bc4c56e65",
+    "operation": {
+      "object": "moon",
+      "feature": "object",
+      "parameter": "fullness",
+      "value": 0.28,
+      "reason": "Use a quieter slender crescent instead of the broad default"
+    }
+  },
+  {
+    "base": "196f759a191bc0b4add33df20caf09748825aa078c4040bfbc9c681bc4c56e65",
+    "result": "5512d1c1604220b7faef57ae31d1882a0499106fb2b04ca8905750ad0a1e1174",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "trees",
+      "value": 3.0,
+      "reason": "Give the empty left side a subordinate group and a scale cue rooted on the ridge"
+    }
+  },
+  {
+    "base": "5512d1c1604220b7faef57ae31d1882a0499106fb2b04ca8905750ad0a1e1174",
+    "result": "1009a9b09ecdd59faf4e41137346d971a074c9c1bb46841540515f1315ac4cfa",
+    "operation": {
+      "object": "ridges",
+      "feature": "object",
+      "parameter": "tree_scale",
+      "value": 0.21,
+      "reason": "Let the foreground grove read clearly against the middle ridge"
+    }
+  },
+  {
+    "base": "1009a9b09ecdd59faf4e41137346d971a074c9c1bb46841540515f1315ac4cfa",
+    "result": "93913aec5ac7b0130d1ffed0adac65e9d26ca1c23dcc67446f8d8e5e7f4c118a",
+    "operation": {
+      "object": "sky",
+      "feature": "object",
+      "parameter": "stars_color",
+      "value": "#ffecc7",
+      "reason": "Make the restrained star field survive the dark sky without competing with the moon"
+    }
+  }
+]

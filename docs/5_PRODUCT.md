@@ -47,6 +47,13 @@ The user explicitly accepted the displayed simple flat-cartoon head as one defau
 (2026-11-12: “可以作为一个默认预设”). Preserve its usable default while integrating controls. More detailed
 anime presets remain a separate possible style; that acceptance does not generalize to all subjects.
 
+The first composition-driven additions are sky, hills, moon and sun presets. A landscape starts
+with two useful objects; a celestial object adds a focal point. Controls express atmosphere, horizon,
+ridge relief, crescent fullness, attached sun rays and related colours. Object movement works in
+screen space after inspecting the object's outline; local lock shaping retains its smaller units.
+`examples/studio/compose.py` records intent-led variants through the public CLI. These are deliberately
+small graphic illustrations, not evidence that a general landscape or portrait problem is solved.
+
 ## North star — humans never talk or think in coordinates
 
 **Humans never talk or think in coordinates.** "The brim is about twice the head wide, tilted a bit

@@ -1,0 +1,176 @@
+[
+  {
+    "args": [
+      "new",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "--kind",
+      "landscape"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"scene\": \"evidence\\\\studio-composition\\\\moonrise\\\\working.json\", \"revision\": \"060a8f395b7d2fc2071b64888b69a2be99925aad19a8165166fe4a4c1c378eab\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "add",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "--kind",
+      "moon"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"scene\": \"evidence\\\\studio-composition\\\\moonrise\\\\working.json\", \"added\": \"moon\", \"revision\": \"3aaf59513786dbb96c9fe7f643dbc2aad58dc197c9532b341d53e6f91dcd5279\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "inspect",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "--object",
+      "moon",
+      "--outdir",
+      "evidence\\studio-composition\\moonrise\\01-default"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"revision\": \"3aaf59513786dbb96c9fe7f643dbc2aad58dc197c9532b341d53e6f91dcd5279\", \"engine\": \"3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291\", \"status\": \"ready\", \"renderer\": \"resvg-py-0.5.0-cpu\", \"images\": [\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\01-default\\\\artwork.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\01-default\\\\alignment.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\01-default\\\\object-closeup.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\01-default\\\\edit-closeup.png\"], \"image_sha256\": {\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\01-default\\\\artwork.png\": \"8e2571d6bb469a73a676e3f59a8e57118bfc8e202481d0f6f1a5eb85b70c130c\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\01-default\\\\alignment.png\": \"fe93084f7786c823f8e93d49ef4fa8bc23dec7709e2c284e920ff651485cd7d5\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\01-default\\\\object-closeup.png\": \"7265d691f3a664fecc2cdea2c987e67e05deaedbf69fece2844731b93ebb0a66\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\01-default\\\\edit-closeup.png\": \"f3f3d4696bf2bc3c91927305d57a277496d902024129b59bd4c6f2859833c80c\"}, \"nodes\": {\"sky\": {\"kind\": \"sky\", \"intent\": \"a quiet dusk gradient with restrained stars\", \"bounds\": [0, 0, 960, 640], \"features\": {\"object\": {\"bounds\": [0, 0, 960, 640], \"controls\": [\"depth\", \"depth_slope\", \"style\", \"stars\", \"seed\", \"top_color\", \"bottom_color\", \"stars_color\"]}}}, \"ridges\": {\"kind\": \"hills\", \"intent\": \"three receding smooth ridges beneath the open sky\", \"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"features\": {\"object\": {\"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"controls\": [\"depth\", \"depth_slope\", \"horizon\", \"relief\", \"seed\", \"far_color\", \"middle_color\", \"near_color\"]}}}, \"moon\": {\"kind\": \"moon\", \"intent\": \"a warm crescent above the horizon\", \"bounds\": [649.6041884479894, 70.40418844798944, 769.6337558068503, 211.19581155201058], \"features\": {\"object\": {\"bounds\": [649.6041884479894, 70.40418844798944, 769.6337558068503, 211.19581155201058], \"controls\": [\"depth\", \"depth_slope\", \"length\", \"angle\", \"fullness\", \"fill_color\"]}}}}, \"scope\": \"flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim\", \"alignment_legend\": {\"orange\": \"selected current boundary\", \"pink dashed\": \"previous boundary\", \"green rings\": \"protected endpoints\", \"white target\": \"local move focus\"}, \"move_units\": \"object selection: shorter canvas dimension; local edge: nominal lock width\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "inspect",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "--object",
+      "moon",
+      "--outdir",
+      "evidence\\studio-composition\\moonrise\\02-lower-moon-before"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"revision\": \"3aaf59513786dbb96c9fe7f643dbc2aad58dc197c9532b341d53e6f91dcd5279\", \"engine\": \"3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291\", \"status\": \"ready\", \"renderer\": \"resvg-py-0.5.0-cpu\", \"images\": [\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon-before\\\\artwork.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon-before\\\\alignment.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon-before\\\\object-closeup.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon-before\\\\edit-closeup.png\"], \"image_sha256\": {\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon-before\\\\artwork.png\": \"8e2571d6bb469a73a676e3f59a8e57118bfc8e202481d0f6f1a5eb85b70c130c\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon-before\\\\alignment.png\": \"fe93084f7786c823f8e93d49ef4fa8bc23dec7709e2c284e920ff651485cd7d5\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon-before\\\\object-closeup.png\": \"7265d691f3a664fecc2cdea2c987e67e05deaedbf69fece2844731b93ebb0a66\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon-before\\\\edit-closeup.png\": \"f3f3d4696bf2bc3c91927305d57a277496d902024129b59bd4c6f2859833c80c\"}, \"nodes\": {\"sky\": {\"kind\": \"sky\", \"intent\": \"a quiet dusk gradient with restrained stars\", \"bounds\": [0, 0, 960, 640], \"features\": {\"object\": {\"bounds\": [0, 0, 960, 640], \"controls\": [\"depth\", \"depth_slope\", \"style\", \"stars\", \"seed\", \"top_color\", \"bottom_color\", \"stars_color\"]}}}, \"ridges\": {\"kind\": \"hills\", \"intent\": \"three receding smooth ridges beneath the open sky\", \"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"features\": {\"object\": {\"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"controls\": [\"depth\", \"depth_slope\", \"horizon\", \"relief\", \"seed\", \"far_color\", \"middle_color\", \"near_color\"]}}}, \"moon\": {\"kind\": \"moon\", \"intent\": \"a warm crescent above the horizon\", \"bounds\": [649.6041884479894, 70.40418844798944, 769.6337558068503, 211.19581155201058], \"features\": {\"object\": {\"bounds\": [649.6041884479894, 70.40418844798944, 769.6337558068503, 211.19581155201058], \"controls\": [\"depth\", \"depth_slope\", \"length\", \"angle\", \"fullness\", \"fill_color\"]}}}}, \"scope\": \"flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim\", \"alignment_legend\": {\"orange\": \"selected current boundary\", \"pink dashed\": \"previous boundary\", \"green rings\": \"protected endpoints\", \"white target\": \"local move focus\"}, \"move_units\": \"object selection: shorter canvas dimension; local edge: nominal lock width\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "preview",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "--selection",
+      "evidence\\studio-composition\\moonrise\\02-lower-moon-before\\selection.json",
+      "--reason",
+      "Bring the moon closer to the ridges so it belongs to the landscape",
+      "--outdir",
+      "evidence\\studio-composition\\moonrise\\02-lower-moon",
+      "--move",
+      "down",
+      "--amount",
+      "0.27"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"revision\": \"5accca94c4939dfd4262553050db8df458f61adc787a9aa1d7bbe4a3b4eb5be8\", \"engine\": \"3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291\", \"status\": \"ready\", \"renderer\": \"resvg-py-0.5.0-cpu\", \"images\": [\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon\\\\artwork.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon\\\\alignment.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon\\\\object-closeup.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon\\\\edit-closeup.png\"], \"image_sha256\": {\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon\\\\artwork.png\": \"d83a2f8a7619edbf8114fc95f6700f72f05ae1b5def8cfb8042b9d480294d7dd\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon\\\\alignment.png\": \"29c503537de78543878db0b40d7d7c5f4d3b82156aa8fdc46d596e842a86af66\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon\\\\object-closeup.png\": \"8ebe98f705d86eaeb420c97f734636734271ce41d076dd47e94b8e34b6084eef\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\02-lower-moon\\\\edit-closeup.png\": \"9de6914b00cd7bde61032007e9078a4c86cdc3b3fa5da1037aaae926b85354aa\"}, \"nodes\": {\"sky\": {\"kind\": \"sky\", \"intent\": \"a quiet dusk gradient with restrained stars\", \"bounds\": [0, 0, 960, 640], \"features\": {\"object\": {\"bounds\": [0, 0, 960, 640], \"controls\": [\"depth\", \"depth_slope\", \"style\", \"stars\", \"seed\", \"top_color\", \"bottom_color\", \"stars_color\"]}}}, \"ridges\": {\"kind\": \"hills\", \"intent\": \"three receding smooth ridges beneath the open sky\", \"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"features\": {\"object\": {\"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"controls\": [\"depth\", \"depth_slope\", \"horizon\", \"relief\", \"seed\", \"far_color\", \"middle_color\", \"near_color\"]}}}, \"moon\": {\"kind\": \"moon\", \"intent\": \"a warm crescent above the horizon\", \"bounds\": [649.6041884479894, 243.20418844798948, 769.6337558068503, 383.99581155201054], \"features\": {\"object\": {\"bounds\": [649.6041884479894, 243.20418844798948, 769.6337558068503, 383.99581155201054], \"controls\": [\"depth\", \"depth_slope\", \"length\", \"angle\", \"fullness\", \"fill_color\"]}}}}, \"scope\": \"flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim\", \"alignment_legend\": {\"orange\": \"selected current boundary\", \"pink dashed\": \"previous boundary\", \"green rings\": \"protected endpoints\", \"white target\": \"local move focus\"}, \"move_units\": \"object selection: shorter canvas dimension; local edge: nominal lock width\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "accept",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "evidence\\studio-composition\\moonrise\\02-lower-moon\\candidate.json"
+    ],
+    "exit_code": 0,
+    "stdout": "5accca94c4939dfd4262553050db8df458f61adc787a9aa1d7bbe4a3b4eb5be8\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "inspect",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "--object",
+      "moon",
+      "--outdir",
+      "evidence\\studio-composition\\moonrise\\03-shift-moon-before"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"revision\": \"5accca94c4939dfd4262553050db8df458f61adc787a9aa1d7bbe4a3b4eb5be8\", \"engine\": \"3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291\", \"status\": \"ready\", \"renderer\": \"resvg-py-0.5.0-cpu\", \"images\": [\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon-before\\\\artwork.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon-before\\\\alignment.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon-before\\\\object-closeup.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon-before\\\\edit-closeup.png\"], \"image_sha256\": {\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon-before\\\\artwork.png\": \"d83a2f8a7619edbf8114fc95f6700f72f05ae1b5def8cfb8042b9d480294d7dd\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon-before\\\\alignment.png\": \"5767f1b698e60186cb7aa2adcc59fbbf3a2865edbe0d9c77db80687af048d058\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon-before\\\\object-closeup.png\": \"8ebe98f705d86eaeb420c97f734636734271ce41d076dd47e94b8e34b6084eef\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon-before\\\\edit-closeup.png\": \"10c60d550a16f2064c5c907dd0b2e5d9135d33d459e96bcebd7bccf27987b2fe\"}, \"nodes\": {\"sky\": {\"kind\": \"sky\", \"intent\": \"a quiet dusk gradient with restrained stars\", \"bounds\": [0, 0, 960, 640], \"features\": {\"object\": {\"bounds\": [0, 0, 960, 640], \"controls\": [\"depth\", \"depth_slope\", \"style\", \"stars\", \"seed\", \"top_color\", \"bottom_color\", \"stars_color\"]}}}, \"ridges\": {\"kind\": \"hills\", \"intent\": \"three receding smooth ridges beneath the open sky\", \"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"features\": {\"object\": {\"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"controls\": [\"depth\", \"depth_slope\", \"horizon\", \"relief\", \"seed\", \"far_color\", \"middle_color\", \"near_color\"]}}}, \"moon\": {\"kind\": \"moon\", \"intent\": \"a warm crescent above the horizon\", \"bounds\": [649.6041884479894, 243.20418844798948, 769.6337558068503, 383.99581155201054], \"features\": {\"object\": {\"bounds\": [649.6041884479894, 243.20418844798948, 769.6337558068503, 383.99581155201054], \"controls\": [\"depth\", \"depth_slope\", \"length\", \"angle\", \"fullness\", \"fill_color\"]}}}}, \"scope\": \"flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim\", \"alignment_legend\": {\"orange\": \"selected current boundary\", \"pink dashed\": \"previous boundary\", \"green rings\": \"protected endpoints\", \"white target\": \"local move focus\"}, \"move_units\": \"object selection: shorter canvas dimension; local edge: nominal lock width\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "preview",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "--selection",
+      "evidence\\studio-composition\\moonrise\\03-shift-moon-before\\selection.json",
+      "--reason",
+      "Leave more breathing room on the right and bring the focal point inward",
+      "--outdir",
+      "evidence\\studio-composition\\moonrise\\03-shift-moon",
+      "--move",
+      "left",
+      "--amount",
+      "0.08"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"revision\": \"884892a015b576207bafd6720fdeb1ee9fa81662cf9faca74bb3637092c1dac2\", \"engine\": \"3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291\", \"status\": \"ready\", \"renderer\": \"resvg-py-0.5.0-cpu\", \"images\": [\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon\\\\artwork.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon\\\\alignment.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon\\\\object-closeup.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon\\\\edit-closeup.png\"], \"image_sha256\": {\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon\\\\artwork.png\": \"dfc52b2440b7c5f18128e7f6156954bb2c50f8005bedd5c99ff0966b1e00fb15\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon\\\\alignment.png\": \"773fecbd7b6acf3ee7404f087c3085026a099acc9d836c44d71c5ccbe766d0ef\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon\\\\object-closeup.png\": \"f3054139d32819b6c0e424a51a00c94b80883c737f29da90e53f31f2bc41504d\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\03-shift-moon\\\\edit-closeup.png\": \"22c22b206635489f255a4c680eac4b79d8bd935f98ec1d3c9065f27f00ea769b\"}, \"nodes\": {\"sky\": {\"kind\": \"sky\", \"intent\": \"a quiet dusk gradient with restrained stars\", \"bounds\": [0, 0, 960, 640], \"features\": {\"object\": {\"bounds\": [0, 0, 960, 640], \"controls\": [\"depth\", \"depth_slope\", \"style\", \"stars\", \"seed\", \"top_color\", \"bottom_color\", \"stars_color\"]}}}, \"ridges\": {\"kind\": \"hills\", \"intent\": \"three receding smooth ridges beneath the open sky\", \"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"features\": {\"object\": {\"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"controls\": [\"depth\", \"depth_slope\", \"horizon\", \"relief\", \"seed\", \"far_color\", \"middle_color\", \"near_color\"]}}}, \"moon\": {\"kind\": \"moon\", \"intent\": \"a warm crescent above the horizon\", \"bounds\": [598.4041884479894, 243.20418844798945, 718.4337558068503, 383.9958115520106], \"features\": {\"object\": {\"bounds\": [598.4041884479894, 243.20418844798945, 718.4337558068503, 383.9958115520106], \"controls\": [\"depth\", \"depth_slope\", \"length\", \"angle\", \"fullness\", \"fill_color\"]}}}}, \"scope\": \"flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim\", \"alignment_legend\": {\"orange\": \"selected current boundary\", \"pink dashed\": \"previous boundary\", \"green rings\": \"protected endpoints\", \"white target\": \"local move focus\"}, \"move_units\": \"object selection: shorter canvas dimension; local edge: nominal lock width\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "accept",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "evidence\\studio-composition\\moonrise\\03-shift-moon\\candidate.json"
+    ],
+    "exit_code": 0,
+    "stdout": "884892a015b576207bafd6720fdeb1ee9fa81662cf9faca74bb3637092c1dac2\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "inspect",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "--object",
+      "moon",
+      "--outdir",
+      "evidence\\studio-composition\\moonrise\\04-slim-crescent-before"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"revision\": \"884892a015b576207bafd6720fdeb1ee9fa81662cf9faca74bb3637092c1dac2\", \"engine\": \"3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291\", \"status\": \"ready\", \"renderer\": \"resvg-py-0.5.0-cpu\", \"images\": [\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent-before\\\\artwork.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent-before\\\\alignment.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent-before\\\\object-closeup.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent-before\\\\edit-closeup.png\"], \"image_sha256\": {\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent-before\\\\artwork.png\": \"dfc52b2440b7c5f18128e7f6156954bb2c50f8005bedd5c99ff0966b1e00fb15\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent-before\\\\alignment.png\": \"ed007588e0a0c557523205f122d9f9ba402cf8d0bdd115febfe74eab61ce4d58\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent-before\\\\object-closeup.png\": \"112f1d30a16231adce8560ebc0dfcc8d9dddd09a8616f7e0fbf88e07f70910f5\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent-before\\\\edit-closeup.png\": \"ee8ee987f59a176d1dc0a9d058049f32dd1feb9b6dd64dbf27e22d233a88c9f1\"}, \"nodes\": {\"sky\": {\"kind\": \"sky\", \"intent\": \"a quiet dusk gradient with restrained stars\", \"bounds\": [0, 0, 960, 640], \"features\": {\"object\": {\"bounds\": [0, 0, 960, 640], \"controls\": [\"depth\", \"depth_slope\", \"style\", \"stars\", \"seed\", \"top_color\", \"bottom_color\", \"stars_color\"]}}}, \"ridges\": {\"kind\": \"hills\", \"intent\": \"three receding smooth ridges beneath the open sky\", \"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"features\": {\"object\": {\"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"controls\": [\"depth\", \"depth_slope\", \"horizon\", \"relief\", \"seed\", \"far_color\", \"middle_color\", \"near_color\"]}}}, \"moon\": {\"kind\": \"moon\", \"intent\": \"a warm crescent above the horizon\", \"bounds\": [598.4041884479894, 243.20418844798945, 718.4337558068503, 383.9958115520106], \"features\": {\"object\": {\"bounds\": [598.4041884479894, 243.20418844798945, 718.4337558068503, 383.9958115520106], \"controls\": [\"depth\", \"depth_slope\", \"length\", \"angle\", \"fullness\", \"fill_color\"]}}}}, \"scope\": \"flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim\", \"alignment_legend\": {\"orange\": \"selected current boundary\", \"pink dashed\": \"previous boundary\", \"green rings\": \"protected endpoints\", \"white target\": \"local move focus\"}, \"move_units\": \"object selection: shorter canvas dimension; local edge: nominal lock width\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "preview",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "--selection",
+      "evidence\\studio-composition\\moonrise\\04-slim-crescent-before\\selection.json",
+      "--reason",
+      "Use a quieter slender crescent instead of the broad default",
+      "--outdir",
+      "evidence\\studio-composition\\moonrise\\04-slim-crescent",
+      "--set",
+      "fullness",
+      "--value",
+      "0.28"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"revision\": \"196f759a191bc0b4add33df20caf09748825aa078c4040bfbc9c681bc4c56e65\", \"engine\": \"3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291\", \"status\": \"ready\", \"renderer\": \"resvg-py-0.5.0-cpu\", \"images\": [\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent\\\\artwork.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent\\\\alignment.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent\\\\object-closeup.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent\\\\edit-closeup.png\"], \"image_sha256\": {\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent\\\\artwork.png\": \"5dbae87e7a2c10b8ef54494bcc4e7623eb395a0f3f391161ccd524a8806574db\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent\\\\alignment.png\": \"cd566cba9c739308f0cdce7d520b3fac59000abc93ef82f3cd77e7fb48885c4b\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent\\\\object-closeup.png\": \"f4819b521ab2641389285a32d8bab637d959fea0ed2d3dea8531ab9c9ce0ef5c\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\04-slim-crescent\\\\edit-closeup.png\": \"f164b21e023571e2d4152b6250d159245aa5df1ae39b838fcc314151655fd8b6\"}, \"nodes\": {\"sky\": {\"kind\": \"sky\", \"intent\": \"a quiet dusk gradient with restrained stars\", \"bounds\": [0, 0, 960, 640], \"features\": {\"object\": {\"bounds\": [0, 0, 960, 640], \"controls\": [\"depth\", \"depth_slope\", \"style\", \"stars\", \"seed\", \"top_color\", \"bottom_color\", \"stars_color\"]}}}, \"ridges\": {\"kind\": \"hills\", \"intent\": \"three receding smooth ridges beneath the open sky\", \"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"features\": {\"object\": {\"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"controls\": [\"depth\", \"depth_slope\", \"horizon\", \"relief\", \"seed\", \"far_color\", \"middle_color\", \"near_color\"]}}}, \"moon\": {\"kind\": \"moon\", \"intent\": \"a warm crescent above the horizon\", \"bounds\": [598.4041884479894, 243.20418844798945, 710.4353554762562, 383.8419688164367], \"features\": {\"object\": {\"bounds\": [598.4041884479894, 243.20418844798945, 710.4353554762562, 383.8419688164367], \"controls\": [\"depth\", \"depth_slope\", \"length\", \"angle\", \"fullness\", \"fill_color\"]}}}}, \"scope\": \"flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim\", \"alignment_legend\": {\"orange\": \"selected current boundary\", \"pink dashed\": \"previous boundary\", \"green rings\": \"protected endpoints\", \"white target\": \"local move focus\"}, \"move_units\": \"object selection: shorter canvas dimension; local edge: nominal lock width\"}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "accept",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "evidence\\studio-composition\\moonrise\\04-slim-crescent\\candidate.json"
+    ],
+    "exit_code": 0,
+    "stdout": "196f759a191bc0b4add33df20caf09748825aa078c4040bfbc9c681bc4c56e65\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "inspect",
+      "evidence\\studio-composition\\moonrise\\working.json",
+      "--object",
+      "moon",
+      "--outdir",
+      "evidence\\studio-composition\\moonrise\\final"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"revision\": \"196f759a191bc0b4add33df20caf09748825aa078c4040bfbc9c681bc4c56e65\", \"engine\": \"3fb0c493e3dd8bfa59b41eec2cc89472fa9073346324183429bab099deacc291\", \"status\": \"ready\", \"renderer\": \"resvg-py-0.5.0-cpu\", \"images\": [\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\final\\\\artwork.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\final\\\\alignment.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\final\\\\object-closeup.png\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\final\\\\edit-closeup.png\"], \"image_sha256\": {\"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\final\\\\artwork.png\": \"5dbae87e7a2c10b8ef54494bcc4e7623eb395a0f3f391161ccd524a8806574db\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\final\\\\alignment.png\": \"393c5b8e0c0673ca2534937f37f749fdec34a8b2f7175b3959be4f7ee70e9632\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\final\\\\object-closeup.png\": \"6c0fb9bf2a90829ae833ed49aefa6c7ed57797ae023dd36ba89b7f89de10313e\", \"D:\\\\vibe\\\\learn_draw_studio\\\\evidence\\\\studio-composition\\\\moonrise\\\\final\\\\edit-closeup.png\": \"dadeca528647828c4e919a3a4cf2f2dd6d74d0af935c1683116813c8fda7768a\"}, \"nodes\": {\"sky\": {\"kind\": \"sky\", \"intent\": \"a quiet dusk gradient with restrained stars\", \"bounds\": [0, 0, 960, 640], \"features\": {\"object\": {\"bounds\": [0, 0, 960, 640], \"controls\": [\"depth\", \"depth_slope\", \"style\", \"stars\", \"seed\", \"top_color\", \"bottom_color\", \"stars_color\"]}}}, \"ridges\": {\"kind\": \"hills\", \"intent\": \"three receding smooth ridges beneath the open sky\", \"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"features\": {\"object\": {\"bounds\": [0.0, 354.04490197928993, 960.0, 640.0], \"controls\": [\"depth\", \"depth_slope\", \"horizon\", \"relief\", \"seed\", \"far_color\", \"middle_color\", \"near_color\"]}}}, \"moon\": {\"kind\": \"moon\", \"intent\": \"a warm crescent above the horizon\", \"bounds\": [598.4041884479894, 243.20418844798945, 710.4353554762562, 383.8419688164367], \"features\": {\"object\": {\"bounds\": [598.4041884479894, 243.20418844798945, 710.4353554762562, 383.8419688164367], \"controls\": [\"depth\", \"depth_slope\", \"length\", \"angle\", \"fullness\", \"fill_color\"]}}}}, \"scope\": \"flat cartoon heads, editable planar locks and scenic recipes; no 3D head rotation or whole-artwork acceptance claim\", \"alignment_legend\": {\"orange\": \"selected current boundary\", \"pink dashed\": \"previous boundary\", \"green rings\": \"protected endpoints\", \"white target\": \"local move focus\"}, \"move_units\": \"object selection: shorter canvas dimension; local edge: nominal lock width\"}\n",
+    "stderr": ""
+  }
+]
