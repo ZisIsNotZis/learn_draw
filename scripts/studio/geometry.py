@@ -15,6 +15,7 @@ class Row:
     t: float
     left: tuple[float, float]
     right: tuple[float, float]
+    spine: tuple[float, float]
 
 
 def mix(a, b, t):
@@ -81,7 +82,7 @@ def lock_rows(node, canvas, samples=40):
             p = edges[edit["side"]]
             edges[edit["side"]] = (p[0] + edit["dx"] * width * weight,
                                     p[1] + edit["dy"] * width * weight)
-        rows.append(Row(t, edges["left"], edges["right"]))
+        rows.append(Row(t, edges["left"], edges["right"], c))
     return rows
 
 
@@ -89,8 +90,10 @@ def outline(rows):
     # One shared tip, plus a curved root cap generated from the first section.
     left, right = rows[0].left, rows[0].right
     c = mix(left, right, .5)
-    tangent = mix(rows[1].left, rows[1].right, .5)
-    dx, dy = tangent[0] - c[0], tangent[1] - c[1]
+    # One-sided widening moves the section midpoint. That is NOT the gesture
+    # tangent: using it rotates the cap when only thickness changes.
+    dx = rows[1].spine[0] - rows[0].spine[0]
+    dy = rows[1].spine[1] - rows[0].spine[1]
     length = math.hypot(dx, dy)
     radius = math.dist(left, right) / 2
     cap = []
@@ -99,7 +102,14 @@ def outline(rows):
         p = mix(right, left, (1 - math.cos(th)) / 2)
         cap.append((p[0] - dx / length * radius * math.sin(th) * .65,
                     p[1] - dy / length * radius * math.sin(th) * .65))
-    return [r.left for r in rows] + [r.right for r in reversed(rows[:-1])] + cap
+    raw = [r.left for r in rows] + [r.right for r in reversed(rows[:-1])] + cap
+    clean = [raw[0]]
+    for p in raw[1:]:
+        if math.dist(p, clean[-1]) > 1e-8:
+            clean.append(p)
+    if math.dist(clean[0], clean[-1]) <= 1e-8:
+        clean.pop()
+    return clean
 
 
 def bounds(points):
@@ -122,12 +132,8 @@ def geometry_issues(rows):
         if tangent[0] * w[1] - tangent[1] * w[0] >= -1e-8:
             problems.append(f"section crossed or collapsed near t={r.t:.3f}")
     poly = outline(rows)
-    edges = list(zip(poly, poly[1:] + poly[:1]))
-    for i, (a, b) in enumerate(edges):
-        for j in range(i + 2, len(edges)):
-            if i == 0 and j == len(edges) - 1:
-                continue
-            c, d = edges[j]
-            if cross(a, b, c) * cross(a, b, d) < -1e-8 and cross(c, d, a) * cross(c, d, b) < -1e-8:
-                problems.append(f"contour self-intersection at segments {i}/{j}")
+    from shapely import Polygon, is_valid_reason
+    ring = Polygon(poly)
+    if not ring.is_valid:
+        problems.append("contour self-intersection/invalidity: " + is_valid_reason(ring))
     return problems

@@ -97,7 +97,14 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
 
 
 def rasterize(svg, target):
-    """CPU Cairo first; isolated GPU-disabled Edge is a platform fallback."""
+    """Native CPU SVG first; Cairo or isolated CPU browser are fallbacks."""
+    try:
+        import resvg_py
+    except ImportError:
+        pass
+    else:
+        Path(target).write_bytes(resvg_py.svg_to_bytes(svg_path=str(Path(svg).resolve())))
+        return f"resvg-py-{resvg_py.__version__}-cpu"
     try:
         import cairosvg
         cairosvg.svg2png(url=str(Path(svg).resolve()), write_to=str(target))

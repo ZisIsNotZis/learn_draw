@@ -17,6 +17,16 @@ Use independent image reviewers at useful checkpoints as required below. Their f
 work; human taste requests are asynchronous and do not stop unrelated progress. Old fixed study freezes
 preserve historical evidence; new versioned primitives may evolve where the new task requires it.
 
+## Component usability is a separate review claim
+
+Keep the blind image critique below to expose unprompted visual failures. In addition, a workbench
+usability reviewer receives the frozen intended use, scope and supported commands, operates the tool
+without source edits, and inspects real outputs. It distinguishes blockers that require rebuilding a
+primitive from optional finishing or style choices. A flat frontal head component is not required to
+include shoulders or realistic illumination to establish that bounded use. Preserve the blind
+criticisms alongside the purpose-aware result. Neither review is human acceptance, a whole-artwork
+pass, an automatic threshold reduction, or a sealed/held-out transfer result.
+
 ## The judgement gate reads the drawing, not the distance to the reference
 
 The person's reframe (P14) is the primary criterion: the goal is a proper drawing in a similar

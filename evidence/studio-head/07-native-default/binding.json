@@ -1,0 +1,7 @@
+{
+  "source_sha256": "f92beeb6df8022d5538e701e33b7c9f30ade76383f5fb8904cb796409c72210a",
+  "scope": "frontal head macro probe; no 3D or default-quality pass",
+  "status": "rendered-unreviewed",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "png_sha256": "310c601bae1a9d670c4314b2bab13507b3359320076d094ee6e3f0fe94f165a2"
+}

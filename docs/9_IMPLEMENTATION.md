@@ -23,7 +23,7 @@ python -m unittest scripts.tests.test_studio -v
 The portable CPU smoke command is `python -X utf8 scripts/tests/test_scene.py`. Its optional contextual
 model alarm requires `--with-similarity`; do not invoke that option under the current resource pause.
 
-PNG rendering uses CairoSVG if its native CPU Cairo is available, otherwise installed Edge/Chromium
+PNG rendering prefers `resvg_py` native CPU SVG, then CairoSVG if native Cairo is available, otherwise installed Edge/Chromium
 with an isolated profile and `--disable-gpu`. No browser download is required. `--svg-only` omits PNGs
 and therefore supplies no visual acceptance evidence. Demo requires a fresh output directory.
 The full environment in pyproject.toml supports legacy draw/check and smoke tests. Browser resolution

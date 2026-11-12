@@ -35,6 +35,14 @@ editing loop; compare it before adopting a new default. High-level head/hand, as
 and optional 3D guidance are candidate branches, introduced only through actual drawing need and
 output evidence. No broad new catalog is promised before the first slice is usable.
 
+The next demonstrated recipe is a flat frontal head (`examples/studio/head_probe.py`), currently a
+probe rather than a production studio node. One `--hair side-part` option produces it; optional
+`--eye-scale` changes the eyes without redrawing paths. Its purpose-aware usability result and blind
+art criticisms are both preserved in `evidence/studio-head/`. Same-material shape union joins the
+front cap and short locks before choosing an outer contour; it is a planar topology/artwork operation,
+never a replacement for depth visibility. Eye containment is internal to the recipe. Exact versus
+smooth boundary treatment is chosen by drawing intent, not one automatic operation for every polygon.
+
 ## North star — humans never talk or think in coordinates
 
 **Humans never talk or think in coordinates.** "The brim is about twice the head wide, tilted a bit

@@ -12,6 +12,8 @@ dependencies = [
     "opencv-python-headless",
     "pillow",
     "pyyaml",
+    "shapely>=2.0",
+    "resvg_py>=0.5,<0.6",
 ]
 
 [tool.uv]

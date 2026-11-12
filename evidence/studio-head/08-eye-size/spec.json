@@ -1,0 +1,201 @@
+{
+  "frame": {
+    "w": 640,
+    "h": 640
+  },
+  "layers": [
+    "paper",
+    "hair-back",
+    "neck",
+    "ears",
+    "face",
+    "features",
+    "hair-front",
+    "cap"
+  ],
+  "vars": {
+    "head_h": "frame.h*.55",
+    "head_w": "head_h*.79"
+  },
+  "draw": [
+    {
+      "rect": "paper",
+      "full": true,
+      "fill": "#f5eee4",
+      "z": "paper",
+      "desc": "warm quiet paper field"
+    },
+    {
+      "face": "head",
+      "at": [
+        "frame.w*.5",
+        "frame.h*.44"
+      ],
+      "rx": "head_w*.5",
+      "ry": "head_h*.5",
+      "cheek": 0.78,
+      "jaw": 0.42,
+      "chin-w": 0.12,
+      "fill": "#f1d1b9",
+      "z": "face",
+      "desc": "one stylized skull and tapered jaw"
+    },
+    {
+      "blob": "neck",
+      "spine": [
+        [
+          "head.cx",
+          "head.cy+head.ry*.76"
+        ],
+        [
+          "head.cx",
+          "head.bottom+head.h*.20"
+        ]
+      ],
+      "w": "head.w*.26",
+      "fill": "#dfb39c",
+      "z": "neck",
+      "desc": "neck continuous behind the jaw"
+    },
+    {
+      "ellipse": "ear-left",
+      "at": [
+        "head.cx-head.rx*.96",
+        "head.cy+head.ry*.13"
+      ],
+      "rx": "head.w*.065",
+      "ry": "head.h*.09",
+      "fill": "#f1d1b9",
+      "stroke": "#493b40",
+      "sw": 2,
+      "z": "ears",
+      "desc": "left ear partly covered by the face"
+    },
+    {
+      "ellipse": "ear-right",
+      "at": [
+        "head.cx+head.rx*.96",
+        "head.cy+head.ry*.13"
+      ],
+      "rx": "head.w*.065",
+      "ry": "head.h*.09",
+      "fill": "#f1d1b9",
+      "stroke": "#493b40",
+      "sw": 2,
+      "z": "ears",
+      "desc": "right ear partly covered by the face"
+    },
+    {
+      "eye": "eye-left",
+      "host": "head",
+      "at": [
+        "head.cx-head.w*.235",
+        "head.cy+head.ry*.12"
+      ],
+      "w": "head.w*0.30800000000000005",
+      "h": "head.w*0.19040000000000004",
+      "tilt": -3,
+      "gaze": 0,
+      "iris-top-fill": "#68483f",
+      "iris-bot-fill": "#b78767",
+      "lash-fill": "#493b40",
+      "iris-w": 0.24,
+      "iris-h": 0.46,
+      "line-w": 0.035,
+      "glints": 1,
+      "z": "features",
+      "desc": "layered almond left eye"
+    },
+    {
+      "eye": "eye-right",
+      "host": "head",
+      "mirror-of": "eye-left",
+      "z": "features",
+      "desc": "matching right eye"
+    },
+    {
+      "stroke": "brow-left",
+      "spine": [
+        [
+          "head.cx-head.w*.38",
+          "head.cy-head.ry*.06"
+        ],
+        [
+          "head.cx-head.w*.24",
+          "head.cy-head.ry*.10"
+        ],
+        [
+          "head.cx-head.w*.12",
+          "head.cy-head.ry*.07"
+        ]
+      ],
+      "w": 3,
+      "ink": "#493b40",
+      "z": "features",
+      "desc": "soft left eyebrow following brow ridge"
+    },
+    {
+      "stroke": "brow-right",
+      "spine": [
+        [
+          "head.cx+head.w*.12",
+          "head.cy-head.ry*.07"
+        ],
+        [
+          "head.cx+head.w*.24",
+          "head.cy-head.ry*.10"
+        ],
+        [
+          "head.cx+head.w*.38",
+          "head.cy-head.ry*.06"
+        ]
+      ],
+      "w": 3,
+      "ink": "#493b40",
+      "z": "features",
+      "desc": "soft right eyebrow"
+    },
+    {
+      "stroke": "nose",
+      "spine": [
+        [
+          "head.cx",
+          "head.cy+head.ry*.27"
+        ],
+        [
+          "head.cx-head.w*.025",
+          "head.cy+head.ry*.46"
+        ],
+        [
+          "head.cx+head.w*.023",
+          "head.cy+head.ry*.48"
+        ]
+      ],
+      "w": 2.2,
+      "ink": "#b17a68",
+      "z": "features",
+      "desc": "small nose plane turn and underside"
+    },
+    {
+      "stroke": "mouth",
+      "spine": [
+        [
+          "head.cx-head.w*.065",
+          "head.cy+head.ry*.69"
+        ],
+        [
+          "head.cx",
+          "head.cy+head.ry*.715"
+        ],
+        [
+          "head.cx+head.w*.065",
+          "head.cy+head.ry*.69"
+        ]
+      ],
+      "w": 2.3,
+      "ink": "#a4635e",
+      "z": "features",
+      "desc": "short relaxed closed smile"
+    }
+  ]
+}

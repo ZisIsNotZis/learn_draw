@@ -1,0 +1,36 @@
+[
+  {
+    "id": "bob-left",
+    "kind": "hair-lock",
+    "intent": "a short temple lock emerging under the shared cap",
+    "at": {
+      "anchor": "upper_center",
+      "offset": [
+        -0.19769750000000003,
+        0.23200000000000004
+      ]
+    },
+    "length": 0.3685,
+    "width": 0.2,
+    "angle": -8,
+    "sweep": -0.025,
+    "width_side": "left"
+  },
+  {
+    "id": "bob-right",
+    "kind": "hair-lock",
+    "intent": "a short temple lock emerging under the shared cap",
+    "at": {
+      "anchor": "upper_center",
+      "offset": [
+        0.19769750000000008,
+        0.23200000000000004
+      ]
+    },
+    "length": 0.3685,
+    "width": 0.2,
+    "angle": 8,
+    "sweep": 0.025,
+    "width_side": "right"
+  }
+]

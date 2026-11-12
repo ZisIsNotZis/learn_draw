@@ -121,6 +121,15 @@ class LocalEditing(unittest.TestCase):
         self.assertEqual([r.left for r in a], [r.left for r in b])
         self.assertNotEqual([r.right for r in a], [r.right for r in b])
 
+    def test_one_sided_root_caps_are_valid_rings(self):
+        from shapely import Polygon
+        from scripts.studio.geometry import outline
+        for side in ('left','right','both'):
+            for angle in (-100,-8,8,100):
+                node = self.scene['nodes'][0] | dict(width_side=side, angle=angle, width=.20, sweep=.025)
+                self.assertTrue(Polygon(outline(lock_rows(node, self.scene['canvas']))).is_valid,
+                                (side,angle))
+
     def test_overlay_and_art_are_distinct(self):
         self.assertNotIn('id="selected-edge"', drawing(self.scene))
         self.assertIn('id="selected-edge"', drawing(self.scene, self.selection))

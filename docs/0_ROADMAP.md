@@ -74,9 +74,27 @@ preview/accept/undo, one-sided width, independent gesture and thickness, and imp
 stale-state refusal. 36 operation/visibility/oracle tests and 81 CPU smoke checks pass; current SVG
 rebuild and repeated CPU PNG are identical. `evidence/studio-hair/README.md` indexes actual studies.
 
-**Visual gate remains open.** Both independent reviewers rejected successive legacy portrait
+**Portrait/hair visual gate remains open.** Both independent reviewers rejected successive legacy portrait
 integrations: roots read as caps, horizontal cuts or insertion near the eye; old face-side strips and
 back curtains compete with the new mass. Shoulder visibility and curvature improved but do not close
-that gate. Pause further same-assembly root tweaks. Next action: build a clean head/hairstyle context
-with a common root/main-mass organization, then test the editable part there. Keep the existing
-portrait and all failed studies unchanged. No new image is presented as accepted.
+that gate. Those attempts are frozen; no further same-assembly root tweaks are active.
+
+A clean frontal head macro now exists under `examples/studio/head_probe.py`. It reuses legacy
+face/eye construction, contains catchlights in their aperture, fuses same-material front hair,
+and separates exact rear-cut geometry from intentional smooth face/front-hair artwork. The native
+CPU SVG backend rendered one in-process sample in 0.029 s; this excludes process/import startup.
+40 focused/inherited tests pass, including two raster negative controls. A prior claim that generic
+smoothing necessarily bowed below a straight cut was not supported by its negative control and was
+withdrawn; the verified effect is different corner coverage, not that alleged overshoot.
+
+Blind image reviewers still identify cap-like/planar hair, face/ear simplification and rear-cut
+stiffness. A separate execution-capable reviewer, given the explicit flat-cartoon head-component use,
+ran default and 0.92 eye-scale commands without source edits and found minimum practical usability,
+real local eye control and no blocker requiring a redraw. This closes only that bounded usability
+question, not whole-artwork quality or general head/hair mastery. Human taste feedback on this preset
+was requested asynchronously; no response or acceptance is inferred.
+
+**Next action:** bring the demonstrated head recipe into the same revision-bound inspect/preview/
+accept/undo interface, retaining its simple default and optional eye/face/hair controls. Then use it
+in a small intent-led composition. Preserve the legacy portrait. The development branch is
+`codex/vlm-studio`, pushed through the existing SSH identity; main has not been overwritten.
