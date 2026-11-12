@@ -289,7 +289,42 @@ repair, not a figure or character pass, and old S1b, S2 and S3 labels map to no 
 Records of all of it are preserved under `.scratch/`, with the retired docs in `.scratch/history/`; old
 drawing iterations are not repaired.
 
-## Current state
+## Current execution — 2026-11-12
+
+**Resource stop (user instruction 09:31, relayed by root 09:33):** all local GPU training,
+inference, benchmarks, validation and GPU-dependent workflows are paused until the user explicitly
+reauthorizes them. No queued or timed GPU retries. CPU drawing and static image review may continue;
+do not substitute large CPU training. Browser rasterization must use a GPU-disabled CPU path.
+
+**Resume scope:** continue the full image, not tool development or object-study diversion. The
+checkout handover at 09:20 preserves sparse exclusion of `.scratch`; missing blobs are retrieved only
+for bounded required source dependencies, not historical images or the sealed brief. The frozen base
+is commit `1a72fe43393ba85abed46fc600c0ff9ad4bdc76e`, `A-full-figure-v1/artwork.png`, SHA256
+`89133fe4bda3d5b839a277bf3b3c6ad437356052fb4121016b9b14b6e25b5707`.
+
+**Active candidate:** `evidence/A-full-figure-waist-r1/` under the same study, owned by the repair
+worker. First reproduce the base from minimal source; then address the blouse's severed waist edge
+and continuity in full-figure assembly only. Preserve inherited `source/parts/` byte-for-byte and
+leave the old package unchanged. A fresh independent image review observed flat torso/arm connections,
+ambiguous capsule-like bow loops, and rigid hair bands. The base's round-28 review also names the
+severed waist edge. These observations justify a bounded repair, not a geometry failure claim or a
+new realism requirement. A CPU-only base reproduction and one repaired full image now exist. A fresh image-only review found a small improvement in reducing the extra hard diagonal waist division, with no visible new contour damage; pale section traces and unclear garment volume remain. This is not a torso-structure fix, whole-image art pass, or user acceptance.
+
+**Verified bounded result:** the worker ran all 12 mechanical tests (3 new and 9 inherited),
+with repeated SVG and GPU-disabled PNG builds byte-identical. The manager independently reran the 3
+new tests, compared all 10 inherited part files against HEAD, and verified the 69-file manifest.
+These checks preserve geometry and source integrity; they do not establish art success. Inspect
+`artwork.png`, `check/whole-before-after.png` and `check/waist-before-after.png` in the active package.
+The CPU base reproduction differs slightly from the historical PNG (54 pixels, maximum channel
+difference 11), so pixel identity is not claimed. `REVIEW.md` and `VALIDATION.md` bind the limited
+visual and mechanical conclusions. This sole candidate is frozen; no second candidate is active.
+
+**Next useful question:** before another garment edit, inspect chest/shoulder-to-waist support and
+adjacent surface connections. Determine whether a real shape/connection change is justified rather
+than continue same-colour line suppression. Preserve real depth/folds and accepted parts. No local
+user approval is needed to investigate; the genuine whole-artwork feedback gate remains unchanged.
+
+## Previous recorded figure state (retained; not new acceptance)
 
 **The current advance is the full figure**, `evidence/A-full-figure-v1/`: the girl whole in the
 reference's own 1024 frame, composed from `A-cloth-v8`'s part library copied byte-for-byte, every part
