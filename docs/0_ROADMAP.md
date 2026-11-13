@@ -52,9 +52,9 @@ uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation ski
   receiving surface and palm/handle/thumb overlap. These are bounded visual outcomes, not a
   general anatomy or physical-fold capability.
 
-The current stable-frame/directional-joint advance passes 138 studio-family tests; ten earlier/default
-PNGs remain exact. Ten targeted tests also pass after public example updates. Current source-bound
-evidence is ../evidence/studio-joints/README.md. The earlier native-body advance passed128 tests
+The current paired-join/local-cuff advance passes144 studio-family tests; ten earlier/default
+PNGs remain exact. Source-bound evidence is ../evidence/studio-join-preview/README.md. The earlier
+stable-frame/directional-joint advance passed138 tests (../evidence/studio-joints/README.md). The earlier native-body advance passed128 tests
 (../evidence/studio-body/README.md). The focused
 response advance passed122 tests (../evidence/studio-feedback/README.md). The earlier
 direction advance passed 118 tests, including eight direction/guide tests. A fresh operator repairs a cuff, raises the
@@ -103,82 +103,24 @@ count or attractive interface alone cannot establish the desired capability.
 
 ## Next action and checkpoint
 
-Current endpoint-direction tooling is usable for its bounded claim. The original person-with-flower
-study and independent operation show visible cuff fitting and exact recovery. An initial same-plane
-petal construction was diagnosed and deliberately canceled before authoring its layer order; the
-failed candidate and actual terminal result remain recorded. A wrong lower-left sleeve address
-was corrected through exact-anchor inspection. Follow-up critics recognize that hanging sleeve and
-find arrow contrast resolved, while full tiny-part marker clusters still require a closeup.
+The paired join replaces repeated endpoint inspections with one visible proposal. A pending new
+component remains uncommitted; both ports and the before/after cameras are explicit. Cuff width
+changes independently of the hand and protected joints. The public greeting now has a high wave,
+separately tapered cuffs and a rising upper sleeve after image-only critics identified the former
+horizontal tube. Follow-up critics recognize the gesture while retaining flat garment/detail
+imbalance, a pinched shoulder and heavy eyes. No finished-art verdict or human acceptance follows.
+Evidence: ../evidence/studio-join-preview/README.md. Earlier engine epochs remain frozen.
 
-The representation comparison is now concrete: explicit shoulder/elbow/wrist joints improve the
-bend, but assembling an independent sleeve and generic torso still produces shoulder seams. The
-owned-garment study joins a computed collar/shoulder pattern to its sleeves; cases23/24 remove the
-previous shoulder steps. A separate crossed-arm failure shows that material union must retain
-internal arm surfaces and deliberate overlap ink. Fresh critics still see thick elbows, a narrow
-armpit gap and abrupt hand/cuff scale. Evidence and frozen source history are in
-../evidence/studio-arm/README.md. That frozen comparison remains a process-local study. Its selected design now has a separate native
-body implementation with local elbow/wrist moves, named ports and full preview/accept/undo.
-Compiled sleeve/torso surfaces participate independently in global depth; a pole between chest and
-forearm and a genuine sloping crossing are verified. Current native evidence is ../evidence/studio-body/README.md.
-
-Native body defaults require no vertices. Named relaxed/offering/folded poses, optional semantic
-controls and visible joint pushes support ordinary revisions. Elbow edits protect shoulder/wrist;
-wrist edits preserve shoulder and bend ratios. Default point pins keep angle explicit; observed
-chin/wrist/neck/stroke joints can now keep opposed directions persistently. Two connected flower poses remain art studies: critics retain unclear grip anatomy,
-tube-like elbows, straight hanging arms, internal-line flatness and flower/neck crowding. This is
-bounded graphic garment capability, not a general figure rig or a finished illustration.
-
-Independent operation completed34 terminal CLI runs without full-report data: elbow/wrist edits,
-exact scene/PNG undo/reaccept, then a greeting figure composed from blank through staged public
-insertion. Its engine was8970df, before shared-material repairs. Source reconstruction in current
-verification proves only body coverage/rendering changed afterward; old operations and critiques
-keep their original identity. A root follow-up adds the missing hanging hand; fresh image follow-up
-finds both hands/joins readable but retains long fingers, planar garment and narrow eyes.
-
-A real sloping-depth image exposed two related failures: per-surface mask antialias cracks, and
-cloth rounding added at an armpit outside all local surfaces. Exact visible-material underpaint
-fixes the first; local surfaces use the same closing radius as the sewn cloth to cover the second.
-The current depth fixture and interior-paper regression check verify both without moving a
-visibility boundary for the underpaint. Raw earlier failures remain in evidence/studio-body.
-
-The old greeting had a .2936px chin-pin deviation because head construction rounded absolute
-coordinates again after placement. New heads retain a semantic recipe frame; actual paint,
-footprint, mounts, selections and hair locks translate together. Observed legacy reattachment fixes
-the original pin without counter-offsets. Legacy attached heads require that explicit migration
-before ordinary edits, so a hidden pin correction cannot move protected lock ends. Release remains
-paint-preserving. Frozen earlier records keep their old unresolved status.
-
-Persistent opposed-direction pins now resolve the complete demonstrated chain. Root reattached
-head, neck and both hands, then leaned the greeting figure through one body angle. An independent
-operator fitted the grip and both stem legs, raised the wrist and verified exact byte-for-byte
-scene/PNG undo and reaccept. Its28 terminal CLI runs use pre-legacy-guard engine58b302; current
-verification reconstructs that source boundary and confirms its final PNG is exact on current
-source. An early asynchronous-wrapper ordering lapse needed execution coaching and repeated
-observations; do not call the whole run strictly serial or uncoached. Current skill includes a
-concrete one-launch/poll-to-terminal pattern. No picture/creation mastery follows from these facts.
-
-Current public greeting and flower helpers use directional joins by default. Stem width is computed
-from the included handle in the new flower examples. The fresh image pair still sees long soft
-fingers, ambiguous graphic grip, tubular elbows and flat clothing; the chosen simple style does
-not need realistic anatomy, but readable grasp and intentional shape remain work to improve.
-
-Next address the real interface cost: source/target inspections repeat after each revision, local
-handle names need visual mapping, and cuff-width transitions still require decisions. Compare a
-single semantic connection preview (both endpoints visible before acceptance) with the current
-multi-step workflow, keeping real mount validation and recoverable edits. Investigate actual port
-spans before choosing automatic width/seat fitting; do not blindly scale hands to loose clothing.
-Use the greeting and held flower for the next small artwork revision. Main agent owns implementation
-and art; retain simple good defaults, meaningful optional controls and the full intent-led creation
-goal. Natural pose, fine anime style and broad creative transfer remain open.
-
-Focused CLI output is now shipped: selected geometry/configuration plus image/file handles,
-complete report on disk and --full-report opt-in. The same inspection is 2,550 versus35,371
-characters. An independent operator refines hand and cuff and verifies exact undo/reaccept without
-reading full report data. Its first acceptance was mistakenly grouped with image loading; it undid,
-observed and reaccepted separately. The same sequencing error affected the root's earlier cuff-refit
-acceptance. ../evidence/studio-feedback/visual-sequencing-audit.json preserves both limitations;
-current workflow requires returned image observation before a separate accept call. Old evidence
-is not relabelled as proof of prior sight.
+Next put the current tools into one small original narrative composition, rather than expanding the
+catalog preemptively. Main agent owns the image, meaningful correction loop and clean editable
+source. Use current presets plus generic masses/strokes, compare normal-size and closeup views,
+and add engine capability only for a demonstrated obstacle. Checkpoint is a coherent image with
+its independent critique and a recoverable local revision, not another feature count. A fresh
+operator separately completed17 public CLI calls: pose/cuff edits, pending accessory join, stale
+refusal and five exact scene/PNG recovery comparisons. It reports clear endpoint roles but remaining
+file-path bookkeeping and no inferred fastening. This checks usability, not creative transfer.
+Natural pose, fine anime style and broad intent-led creation remain open. Preserve ambition while
+using the next actual artwork to choose the next representation change.
 
 Keep sealed brief and portrait baseline unchanged; GPU pause remains in force.
 

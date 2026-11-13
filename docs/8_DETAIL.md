@@ -324,3 +324,20 @@ An old attached, unframed head refuses ordinary edits until observed reattachmen
 its previous fractional pin during an unrelated local edit would move protected lock endpoints.
 Release captures the current frame without correcting the released pin, preserving paint. The
 frame wrapper also sanitizes comments for legal double-hyphen IDs; SVG IDs themselves stay intact.
+
+## Paired join and local cuff construction
+
+join.py resolves the two requested semantic mounts and routes through the existing attachment or
+pending-placement contract. Auto opposition uses the shared source-port whitelist plus real outward
+directions. For pending sources, the selection is rebound to the exact requested source mount while
+keeping the working base and insertion metadata. This prevents an all-mount view from losing its
+source arrow and operation crop. Rendering requires the exact before_revision; both before ports
+are framed together, then the after source mount is magnified. Labels fit the actual viewBox.
+
+Cuff width changes the terminal radius while the elbow reference radius remains the default sleeve
+width, so the skeleton, shoulder and proximal sleeve do not shrink. The cuff colour field is clipped
+to sewn cloth rather than allowed to protrude through the padded ink aperture. Construction spans
+report terminal sleeve width, actual open-hand wrist section or owned grip/handle width; they do not
+automatically fit material, infer anatomy or judge visual quality. Wave is a computed right-arm
+preset. Applying a pose through the tool clears gesture overrides, preserving cuff/style/relations;
+reading raw scenes still applies explicit overrides after defaults.

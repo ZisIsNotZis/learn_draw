@@ -1,0 +1,44 @@
+{
+  "scope": "Parent-captured fresh image-only review summaries; no human whole-artwork acceptance.",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "checks": [
+    {
+      "bundle": "check-greeting",
+      "sha256": "c64cadecfb3cf1cb977ba89bdde7fa35d97cad6df34e46d577f0717dee48b192",
+      "reviewers": [
+        {
+          "agent": "wave_image_a",
+          "observations": "Greeting clear; raised sleeve broad/nearly rectangular, inflated elbow, shoulder hard to distinguish. Flat shirt, thin prong fingers, small lowered hand, stiff hair.",
+          "biggest": "Raised shoulder–upper arm–elbow construction.",
+          "suggestion": "Slightly rising upper arm and compact elbow."
+        },
+        {
+          "agent": "wave_image_b",
+          "observations": "Greeting clear; horizontal sleeve into narrow upright forearm looks rubbery. Uniform fingers, uneven eyes, flat cutout torso.",
+          "biggest": "Raised arm structure.",
+          "suggestion": "Legible shoulder–elbow–wrist chain and consistent sleeve volume."
+        }
+      ],
+      "disposition": "Actual joints confirmed nearly horizontal upper arm. Applied local right_elbow_bend -.3, preserving shoulder and wrist centers; directional hand follows."
+    },
+    {
+      "bundle": "check-greeting-revised",
+      "reviewers": [
+        {
+          "agent": "wave_revised_a",
+          "observations": "Wave clear. Flat red torso, pinched raised shoulder valley, sleepy heavy eyes.",
+          "biggest": "Detail imbalance between body and head/hands.",
+          "suggestion": "Shoulder volume and a small coherent set of fabric folds."
+        },
+        {
+          "agent": "wave_revised_b",
+          "observations": "Greeting clear at thumbnail. Strained heavy lids, stiff parallel hanging fingers, uninterrupted shirt field.",
+          "biggest": "Eyes weaken friendly expression.",
+          "suggestion": "Soften eye corners and give irises more room."
+        }
+      ],
+      "disposition": "Remaining finish/detail issues retained. Revised gesture is an editable component study, not a finished accepted artwork.",
+      "sha256": "193c2dea6f603e9dc0514cf3971684f9c0ae2cb3be473157d2acf7b958764bb0"
+    }
+  ]
+}

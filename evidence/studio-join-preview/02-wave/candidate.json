@@ -1,0 +1,154 @@
+{
+  "base": "480f8c8b42207300542e4f5a29939efd37f092ae0a1d16a39d31a53aa6dc59a9",
+  "engine": "dc7bdb2791795db53fa1d286b51f2eb2be4d48d896abe579dd5ce5abc441b646",
+  "result": "7beb64194242b3e1d4243e3ef9109f869b6e9b8c8d33ad64b7365bb437e44aa5",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "greeter-shirt",
+        "kind": "body",
+        "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+        "depth": 1,
+        "length": 0.42,
+        "pose": "wave",
+        "palette": {
+          "fill": "#b85f52"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.1
+          ]
+        },
+        "angle": -6.0
+      },
+      {
+        "id": "greeter-neck",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 0.0,
+        "length": 0.045,
+        "thickness": 0.055,
+        "palette": {
+          "fill": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "root",
+          "target": "neck",
+          "inset": 0,
+          "orient": "opposed"
+        },
+        "start_cap": "round"
+      },
+      {
+        "id": "greeter-head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "depth": 3.0,
+        "length": 0.26,
+        "expression": "smile",
+        "palette": {
+          "hair": "#614b40"
+        },
+        "attachment": {
+          "to": "greeter-neck",
+          "self": "chin",
+          "target": "tip",
+          "inset": 0,
+          "orient": "opposed"
+        },
+        "frame": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.28766625
+          ]
+        }
+      },
+      {
+        "id": "wave-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 4.0,
+        "length": 0.17,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "right-wrist",
+          "inset": 0,
+          "orient": "opposed"
+        }
+      },
+      {
+        "id": "resting-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 5.0,
+        "length": 0.13,
+        "spread": 0.7,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "left-wrist",
+          "inset": 0,
+          "orient": "opposed"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "480f8c8b42207300542e4f5a29939efd37f092ae0a1d16a39d31a53aa6dc59a9",
+    "engine": "dc7bdb2791795db53fa1d286b51f2eb2be4d48d896abe579dd5ce5abc441b646",
+    "object": "greeter-shirt",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      143.6998765431961,
+      246.025412417105,
+      545.6906416491836,
+      527.3575880236181
+    ],
+    "object_bounds": [
+      143.6998765431961,
+      246.025412417105,
+      545.6906416491836,
+      527.3575880236181
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "depth",
+      "depth_slope",
+      "pose",
+      "sleeve_width",
+      "cuff",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "greeter-shirt",
+    "feature": "object",
+    "reason": "Raise the palm near the face for a clearer greeting gesture",
+    "parameter": "pose",
+    "value": "wave"
+  },
+  "status": "ready"
+}

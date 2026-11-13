@@ -1,0 +1,168 @@
+{
+  "base": "7beb64194242b3e1d4243e3ef9109f869b6e9b8c8d33ad64b7365bb437e44aa5",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "result": "d1029a196d21a1f0826ada11f9d64b48c7130b0d10e1b5c5ae2814c82a25a1c4",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "greeter-shirt",
+        "kind": "body",
+        "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+        "depth": 1,
+        "length": 0.42,
+        "pose": "wave",
+        "palette": {
+          "fill": "#b85f52"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.1
+          ]
+        },
+        "angle": -6.0,
+        "arms": {
+          "right": {
+            "cuff_width": 0.8
+          }
+        }
+      },
+      {
+        "id": "greeter-neck",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 0.0,
+        "length": 0.045,
+        "thickness": 0.055,
+        "palette": {
+          "fill": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "root",
+          "target": "neck",
+          "inset": 0,
+          "orient": "opposed"
+        },
+        "start_cap": "round"
+      },
+      {
+        "id": "greeter-head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "depth": 3.0,
+        "length": 0.26,
+        "expression": "smile",
+        "palette": {
+          "hair": "#614b40"
+        },
+        "attachment": {
+          "to": "greeter-neck",
+          "self": "chin",
+          "target": "tip",
+          "inset": 0,
+          "orient": "opposed"
+        },
+        "frame": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.28766625
+          ]
+        }
+      },
+      {
+        "id": "wave-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 4.0,
+        "length": 0.17,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "right-wrist",
+          "inset": 0,
+          "orient": "opposed"
+        }
+      },
+      {
+        "id": "resting-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 5.0,
+        "length": 0.13,
+        "spread": 0.7,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "left-wrist",
+          "inset": 0,
+          "orient": "opposed"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "7beb64194242b3e1d4243e3ef9109f869b6e9b8c8d33ad64b7365bb437e44aa5",
+    "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+    "object": "greeter-shirt",
+    "kind": "feature",
+    "feature": "right-wrist",
+    "bounds": [
+      526.9684814285413,
+      155.96005184848607,
+      569.9764814285413,
+      198.96805184848606
+    ],
+    "object_bounds": [
+      143.6998765431961,
+      175.30992213320923,
+      578.1690352462683,
+      527.3575880236181
+    ],
+    "controls": [
+      "right_wrist_spread",
+      "right_wrist_height",
+      "right_elbow_at",
+      "right_elbow_bend",
+      "right_cuff_width"
+    ],
+    "units": "screen move in torso height; elbow preserves shoulder/wrist; wrist preserves shoulder and bend ratios",
+    "interaction": "body-joint",
+    "locks": {
+      "neck": [
+        334.13291721595164,
+        249.53427480607908
+      ],
+      "shoulder": [
+        419.286004178255,
+        317.5405415737117
+      ]
+    },
+    "focus": [
+      548.4724814285413,
+      177.46405184848606
+    ]
+  },
+  "operation": {
+    "object": "greeter-shirt",
+    "feature": "right-wrist",
+    "reason": "Taper the loose raised cuff while preserving the palm and arm pose",
+    "parameter": "right_cuff_width",
+    "value": 0.8
+  },
+  "status": "ready"
+}

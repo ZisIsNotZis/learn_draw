@@ -75,12 +75,38 @@ removes the entire insertion. Discarding a proposal requires no scene mutation. 
 A stale/failed candidate cannot be revised or accepted. `add` is the older immediate convenience
 for scripted replays; use `place` for this observe-before-insertion workflow.
 
+## Connect two named mounts visibly
+
+Use one proposal instead of separately inspecting both endpoints:
+
+`python -m scripts.studio join work.json --source palm.wrist --target shirt.right-wrist --reason "Seat the palm at the cuff" --outdir FIT`
+
+For a component still pending insertion, add `--pending NEW/candidate.json`. This requires a
+ready place proposal and preserves every working node. The result remains a pending insertion,
+so another join or place --revise may adjust it before acceptance. Use fresh output directories.
+
+Join itself inspects both exact named ports and proposes a fit. Read before-alignment and
+before-closeup (orange source, blue target), then artwork/alignment/edit-closeup showing the
+proposed result. Both endpoints are labeled inside the camera. Accept only in a later tool call
+with `accept work.json FIT/candidate.json`; undo recovers the previous working scene.
+
+Default --mode auto keeps supported directional joints opposed; otherwise it makes a point pin.
+--mode point retains current angle; --mode opposed requires real outward directions and a supported
+source port. Auto never resizes a hand or sleeve. Optional span in join feedback is a nominal
+construction cross-section, not an aesthetic score or proof of exact painted contact. Inspect and
+adjust cuff width, depth or hand proportions separately when the picture calls for it.
+
+A join moves the whole component. Independent stroke endpoint pins remain a distinct operation;
+unbind those constraints before using a whole-component join. Cycles, stale pending proposals,
+invalid ports and unfinished renders refuse. The working scene stays unchanged until acceptance.
+
 ## Editable upper body
 
 Use --kind body for a simple long-sleeved upper body. It owns collar, torso and sleeves; head,
-neck skin and hands remain separate components. Object offers pose=relaxed|offering|folded,
+neck skin and hands remain separate components. Object offers pose=relaxed|offering|folded|wave,
 length, width, sleeve_width, cuff, angle, fill/ink colour and support depth. A pose supplies defaults;
-explicit arms overrides persist when pose changes. Start a fresh body for an unmodified pose.
+setting pose through the tool reapplies the gesture, clearing wrist/elbow overrides on both arms.
+Cuff widths, colours and all attached nodes remain. Raw scene arms fields still override pose defaults.
 
 Inspect right-elbow or left-elbow, then preview --move left/right/up/down --amount .03. The amount
 is a fraction of torso height, in screen space even when rotated. The elbow moves while shoulder
@@ -89,6 +115,9 @@ stay fixed, so the elbow can move too. Observe clean, alignment and closeup befo
 Overfolded, too-thick, disconnected or collapsed geometry refuses; reduce the move or unfold it.
 The shoulder feature exposes controls but is not a draggable joint. Optional side-prefixed controls
 are wrist_spread, wrist_height, elbow_at and elbow_bend; ordinary work should use visible joint moves.
+At a wrist, left_cuff_width/right_cuff_width (.5–1.4, default1) tapers only the cuff, preserving
+shoulder/elbow/wrist locations and attached hand size. wrist_height supports -.8–1.6 torso heights;
+negative is above the neckline. Geometry may refuse impossible folds within these bounds.
 
 Named ports are neck and left/right shoulder, elbow and wrist (e.g. right-wrist). Inspect the exact
 ports before attaching a hand's wrist or a neck. Default pins maintain point contact; child angle stays explicit. Optional --orient opposed

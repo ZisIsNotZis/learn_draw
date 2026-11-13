@@ -1,0 +1,47 @@
+{
+  "undo_json": {
+    "left": "pre-prop.json",
+    "right": "undone.json",
+    "byte_equal": true,
+    "left_bytes": 2515,
+    "right_bytes": 2515,
+    "left_sha256": "10e259afe03d47addffd673fca217545adf2d8ba86b972675ee7cd09ea021d91",
+    "right_sha256": "10e259afe03d47addffd673fca217545adf2d8ba86b972675ee7cd09ea021d91"
+  },
+  "undo_png": {
+    "left": "06-taper/artwork.png",
+    "right": "14-undone/artwork.png",
+    "byte_equal": true,
+    "left_bytes": 38220,
+    "right_bytes": 38220,
+    "left_sha256": "f46b43d3a62df37026e84adf054e5cdb59486d3e32426060292328a1b160ebab",
+    "right_sha256": "f46b43d3a62df37026e84adf054e5cdb59486d3e32426060292328a1b160ebab"
+  },
+  "reaccept_json": {
+    "left": "accepted-prop.json",
+    "right": "working.json",
+    "byte_equal": true,
+    "left_bytes": 2974,
+    "right_bytes": 2974,
+    "left_sha256": "9be68f1911b2cbbd0682a202abbee8695203bbf55a3ebd66628271457014cce1",
+    "right_sha256": "9be68f1911b2cbbd0682a202abbee8695203bbf55a3ebd66628271457014cce1"
+  },
+  "reaccept_png": {
+    "left": "12-accepted/artwork.png",
+    "right": "16-reaccepted/artwork.png",
+    "byte_equal": true,
+    "left_bytes": 39118,
+    "right_bytes": 39118,
+    "left_sha256": "bcb6f5896b95037057a3186b727cff0ff4416781dc469ca12cfba64a15f830c5",
+    "right_sha256": "bcb6f5896b95037057a3186b727cff0ff4416781dc469ca12cfba64a15f830c5"
+  },
+  "preview_accept_png": {
+    "left": "10-joined/artwork.png",
+    "right": "12-accepted/artwork.png",
+    "byte_equal": true,
+    "left_bytes": 39118,
+    "right_bytes": 39118,
+    "left_sha256": "bcb6f5896b95037057a3186b727cff0ff4416781dc469ca12cfba64a15f830c5",
+    "right_sha256": "bcb6f5896b95037057a3186b727cff0ff4416781dc469ca12cfba64a15f830c5"
+  }
+}

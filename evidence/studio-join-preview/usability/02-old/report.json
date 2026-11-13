@@ -1,0 +1,744 @@
+{
+  "revision": "480f8c8b42207300542e4f5a29939efd37f092ae0a1d16a39d31a53aa6dc59a9",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-join-preview\\usability\\02-old\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-join-preview\\usability\\02-old\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-join-preview\\usability\\02-old\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-join-preview\\usability\\02-old\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-join-preview\\usability\\02-old\\artwork.png": "92c989e1932b28a92ded1dd3cf663736bb737f782a014f07bf500a3210a5f3fa",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-join-preview\\usability\\02-old\\alignment.png": "75436b935645736bd8daf83b6bddaf4044872bed06be92690e5999082b09ad35",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-join-preview\\usability\\02-old\\object-closeup.png": "38035510e0033e4b618efe7dbe801cacc34d7f9becb93017c1d631bb6e9f449d",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-join-preview\\usability\\02-old\\edit-closeup.png": "2804b606377de98ec37ecc5da846c2134809e96f963f4c1ab9e7d09a104d6cb2"
+  },
+  "nodes": {
+    "greeter-shirt": {
+      "kind": "body",
+      "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+      "bounds": [
+        143.6998765431961,
+        246.025412417105,
+        545.6906416491836,
+        527.3575880236181
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            143.6998765431961,
+            246.025412417105,
+            545.6906416491836,
+            527.3575880236181
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "pose",
+            "sleeve_width",
+            "cuff",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left-shoulder": {
+          "bounds": [
+            215.1973315988355,
+            276.8461191910179,
+            258.20533159883547,
+            319.85411919101796
+          ],
+          "controls": [
+            "left_wrist_spread",
+            "left_wrist_height",
+            "left_elbow_at",
+            "left_elbow_bend"
+          ]
+        },
+        "left-elbow": {
+          "bounds": [
+            164.56735227830373,
+            383.5235795470469,
+            207.5753522783037,
+            426.53157954704693
+          ],
+          "controls": [
+            "left_wrist_spread",
+            "left_wrist_height",
+            "left_elbow_at",
+            "left_elbow_bend"
+          ]
+        },
+        "left-wrist": {
+          "bounds": [
+            140.61396393754157,
+            499.15104402243105,
+            183.62196393754155,
+            542.1590440224311
+          ],
+          "controls": [
+            "left_wrist_spread",
+            "left_wrist_height",
+            "left_elbow_at",
+            "left_elbow_bend",
+            "left_cuff_width"
+          ]
+        },
+        "right-shoulder": {
+          "bounds": [
+            397.78200417825497,
+            296.0365415737117,
+            440.790004178255,
+            339.04454157371174
+          ],
+          "controls": [
+            "right_wrist_spread",
+            "right_wrist_height",
+            "right_elbow_at",
+            "right_elbow_bend"
+          ]
+        },
+        "right-elbow": {
+          "bounds": [
+            476.72646308733755,
+            354.77506029846137,
+            519.7344630873375,
+            397.7830602984614
+          ],
+          "controls": [
+            "right_wrist_spread",
+            "right_wrist_height",
+            "right_elbow_at",
+            "right_elbow_bend"
+          ]
+        },
+        "right-wrist": {
+          "bounds": [
+            507.10687640386107,
+            275.49879453722104,
+            550.1148764038611,
+            318.5067945372211
+          ],
+          "controls": [
+            "right_wrist_spread",
+            "right_wrist_height",
+            "right_elbow_at",
+            "right_elbow_bend",
+            "right_cuff_width"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            384.0
+          ],
+          "normal": null
+        },
+        "neck": {
+          "point": [
+            334.13291721595164,
+            249.53427480607908
+          ],
+          "normal": null,
+          "direction": [
+            0.10452846326765347,
+            -0.9945218953682733
+          ]
+        },
+        "left-shoulder": {
+          "point": [
+            236.70133159883548,
+            298.35011919101794
+          ],
+          "normal": null
+        },
+        "left-elbow": {
+          "point": [
+            186.07135227830372,
+            405.0275795470469
+          ],
+          "normal": null
+        },
+        "left-wrist": {
+          "point": [
+            162.11796393754156,
+            520.6550440224311
+          ],
+          "normal": null,
+          "direction": [
+            -0.20285300182633675,
+            0.9792092011669642
+          ],
+          "span": 37.63200000000002
+        },
+        "right-shoulder": {
+          "point": [
+            419.286004178255,
+            317.5405415737117
+          ],
+          "normal": null
+        },
+        "right-elbow": {
+          "point": [
+            498.23046308733757,
+            376.2790602984614
+          ],
+          "normal": null
+        },
+        "right-wrist": {
+          "point": [
+            528.6108764038611,
+            297.00279453722106
+          ],
+          "normal": null,
+          "direction": [
+            0.35784541142264914,
+            -0.9337808423413682
+          ],
+          "span": 37.63200000000003
+        }
+      },
+      "attached_children": [
+        "greeter-neck",
+        "wave-hand",
+        "resting-hand"
+      ]
+    },
+    "greeter-neck": {
+      "kind": "stroke",
+      "intent": "a clean round gesture mark with editable spine and terminals",
+      "bounds": [
+        316.5389482963819,
+        203.298075299903,
+        354.7373058776298,
+        267.1282437256488
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            316.5389482963819,
+            203.298075299903,
+            354.7373058776298,
+            267.1282437256488
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            334.13291721595164,
+            220.89204421947278,
+            337.14333695806005,
+            249.53427480607905
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            316.5329172159516,
+            231.93427480607906,
+            351.73291721595166,
+            267.1342748060791
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            319.54333695806,
+            203.29204421947279,
+            354.74333695806007,
+            238.49204421947277
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            335.63812708700584,
+            235.21315951277592
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            334.13291721595164,
+            249.53427480607905
+          ],
+          "normal": null,
+          "direction": [
+            -0.10452846326765373,
+            0.9945218953682733
+          ]
+        },
+        "tip": {
+          "point": [
+            337.14333695806005,
+            220.89204421947278
+          ],
+          "normal": null,
+          "direction": [
+            0.10452846326765373,
+            -0.9945218953682733
+          ]
+        }
+      },
+      "attached_children": [
+        "greeter-head"
+      ],
+      "attachment": {
+        "to": "greeter-shirt",
+        "self": "root",
+        "target": "neck",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "derived_angle": 174.0
+    },
+    "greeter-head": {
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with an editable hairstyle",
+      "bounds": [
+        248.32769811285536,
+        27.521453843764704,
+        439.9030728031698,
+        230.05653027384156
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            291.5455041355535,
+            133.49314828317034,
+            398.53159483855353,
+            154.3534362486642
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color",
+            "gaze"
+          ]
+        },
+        "face": {
+          "bounds": [
+            282.0309081148068,
+            54.43925068183175,
+            413.7259121564894,
+            219.6986179450309
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            250.31674190359195,
+            29.510497634501235,
+            437.9140290124332,
+            228.061645753606
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "expression": {
+          "bounds": [
+            291.5455041355535,
+            123.6018496930474,
+            398.53159483855353,
+            197.82846657338348
+          ],
+          "controls": [
+            "expression"
+          ]
+        },
+        "object": {
+          "bounds": [
+            248.32769811285536,
+            27.521453843764704,
+            439.9030728031698,
+            230.05653027384156
+          ],
+          "controls": [
+            "intent",
+            "expression",
+            "gaze",
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ],
+      "anchors": {
+        "center": {
+          "point": [
+            345.90349116205437,
+            137.54474444748115
+          ],
+          "normal": null
+        },
+        "chin": {
+          "point": [
+            337.14333695806005,
+            220.8920442194728
+          ],
+          "normal": [
+            -0.1045284632676271,
+            0.9945218953682797
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "greeter-neck",
+        "self": "chin",
+        "target": "tip",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "derived_angle": -6.000000000000028
+    },
+    "wave-hand": {
+      "kind": "hand",
+      "intent": "a front-view flat cartoon open palm with five digits",
+      "bounds": [
+        503.69334504785655,
+        193.65038872059426,
+        584.1990001240586,
+        302.9328582669531
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            503.69334504785655,
+            193.65038872059426,
+            584.1990001240586,
+            302.9328582669531
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "depth",
+            "depth_slope",
+            "spread",
+            "handedness",
+            "skin_color",
+            "ink_color",
+            "crease_color"
+          ]
+        },
+        "index": {
+          "bounds": [
+            529.1062608933295,
+            196.82983937825514,
+            547.2594187029969,
+            244.33415094364014
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "middle": {
+          "bounds": [
+            539.35315823837,
+            194.01758275021785,
+            564.193749367614,
+            246.144773858973
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "ring": {
+          "bounds": [
+            548.9799770100126,
+            204.90989119391412,
+            577.5594489350661,
+            250.4799979222608
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "little": {
+          "bounds": [
+            557.7221061495969,
+            226.53365697900992,
+            583.8283651848203,
+            258.0872230926787
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "thumb": {
+          "bounds": [
+            504.0675984615388,
+            237.12356760010647,
+            532.0511785109458,
+            271.5048696883349
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            540.5361444973328,
+            244.5774508916379
+          ],
+          "normal": null
+        },
+        "wrist": {
+          "point": [
+            528.6108764038611,
+            297.0027945372211
+          ],
+          "normal": null,
+          "direction": [
+            -0.35784541142264925,
+            0.933780842341368
+          ],
+          "span": 26.895865476293665
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "greeter-shirt",
+        "self": "wrist",
+        "target": "right-wrist",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "derived_angle": -20.967934187368286
+    },
+    "resting-hand": {
+      "kind": "hand",
+      "intent": "a front-view flat cartoon open palm with five digits",
+      "bounds": [
+        130.6186016964535,
+        517.5720300359693,
+        187.77380316964104,
+        602.4832108087062
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            130.6186016964535,
+            517.5720300359693,
+            187.77380316964104,
+            602.4832108087062
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "depth",
+            "depth_slope",
+            "spread",
+            "handedness",
+            "skin_color",
+            "ink_color",
+            "crease_color"
+          ]
+        },
+        "index": {
+          "bounds": [
+            158.23833193722953,
+            561.0340870864657,
+            168.86794544149853,
+            597.9504610551028
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "middle": {
+          "bounds": [
+            147.00428262003524,
+            560.9403316118735,
+            160.96731400407597,
+            602.2016583211341
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "ring": {
+          "bounds": [
+            137.22988286894923,
+            558.8300504718266,
+            153.11999359072152,
+            596.1275417959587
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "little": {
+          "bounds": [
+            130.89016655789155,
+            554.0591496526347,
+            145.4724111090213,
+            581.3029530337346
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        },
+        "thumb": {
+          "bounds": [
+            163.30711979237452,
+            539.5795518550686,
+            187.49374432708183,
+            563.4203549309741
+          ],
+          "controls": [
+            "finger_length",
+            "finger_lean"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            159.57148088142662,
+            561.6901882014229
+          ],
+          "normal": null
+        },
+        "wrist": {
+          "point": [
+            162.1179639375416,
+            520.6550440224311
+          ],
+          "normal": null,
+          "direction": [
+            0.20285300182633678,
+            -0.9792092011669642
+          ],
+          "span": 20.567426540695152
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "greeter-shirt",
+        "self": "wrist",
+        "target": "left-wrist",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "derived_angle": 168.29615539024735
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips, owned upper bodies, persistent directional joints, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "removal": null,
+  "insertion": null,
+  "direction_fit": null,
+  "alignment_legend": {
+    "red dashed": "removed previous paint; removal only",
+    "blue": "pinned stroke endpoints / inspected target; removal: retained affected children",
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "teal arrows": "outward join direction where defined; center mounts can be directionless",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge/spine, terminal, digit-tip or exact-mount focus"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span"
+}

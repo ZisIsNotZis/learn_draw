@@ -6,6 +6,9 @@ from .components import component_data,component_outline,support
 from .geometry import bounds,lock_rows,resolve_root
 
 
+ORIENTABLE_PORTS={'head':('chin',),'hand':('wrist',),'grip':('wrist',),'body':('neck',),'stroke':('root','tip')}
+
+
 def anchors(node,canvas):
     if 'attachment' in node or 'endpoints' in node:
         raise ValueError('resolve the scene before reading attached anchors')

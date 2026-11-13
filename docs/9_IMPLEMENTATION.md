@@ -8,7 +8,7 @@ milestones are `0_ROADMAP.md`.
 
 ## Current studio commands and evidence
 
-Current verification is indexed at evidence/studio-joints/README.md: run_tests.py --outdir FRESH,
+Current verification is indexed at evidence/studio-join-preview/README.md: run_tests.py --outdir FRESH,
 verify_preservation.py --outdir FRESH and verify_delivery.py --outdir FRESH in that directory.
 Earlier feature sections below retain revision-specific evidence links/counts; their frozen
 source-bound verifiers may correctly refuse a newer engine. Use this current entry for delivery.
@@ -463,5 +463,5 @@ skill owns the complete recipe and 7_INTERFACE the supported ports/constraint co
 
 New heads have stable recipe frames. To correct an old chin pin, observe and reattach the same
 chin/target: the tool captures its existing frame automatically. Do not add fractional counter-
-offsets. Current studio-family coverage is138 tests; current verification commands/evidence are
-in evidence/studio-joints/README.md. Earlier body records keep their original128-test/source scope.
+offsets. Current studio-family coverage is144 tests; current verification commands/evidence are
+in evidence/studio-join-preview/README.md. Earlier body records keep their original128-test/source scope.

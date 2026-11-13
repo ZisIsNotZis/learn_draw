@@ -1,0 +1,15 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "accept",
+    "evidence/studio-join-preview/working.json",
+    "evidence/studio-join-preview/11-resting-taper/candidate.json"
+  ],
+  "started": "2026-11-13T09:57:27.393798+00:00",
+  "state": "terminal",
+  "pid": 12544,
+  "exit_code": 0,
+  "terminal": "2026-11-13T09:57:28.018940+00:00"
+}

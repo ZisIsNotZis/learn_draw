@@ -205,8 +205,10 @@ def _hand_data(encoded,canvas):
                             focus=project(digit['points'][-1]),locks={'knuckle':project(digit['points'][0])},
                             nominal_span=math.dist(project(nominal[0]),project(nominal[-1])),
                             units="tip move amount = fraction of this digit's nominal span; directions are screen directions")
+    from shapely import LineString
+    wrist_span=shape.intersection(LineString([(shape.bounds[0]-1,WRIST_BASE),(shape.bounds[2]+1,WRIST_BASE)])).length*unit*node.get('width',1)
     angle=math.radians(node.get('angle',0))
-    return HandData('\n'.join(svg),outer,features,center,node.get('angle',0),digits,{'wrist':dict(point=project((0,WRIST_BASE)),normal=None,direction=(math.sin(angle),math.cos(angle)))})
+    return HandData('\n'.join(svg),outer,features,center,node.get('angle',0),digits,{'wrist':dict(point=project((0,WRIST_BASE)),normal=None,direction=(math.sin(angle),math.cos(angle)),span=wrist_span)})
 
 
 def move_tip(node,canvas,name,direction,amount):

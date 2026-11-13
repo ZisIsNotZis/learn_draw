@@ -1,0 +1,53 @@
+{
+  "base": "4f693ccdf0250b972354d2f0649cb6d71e365b54930712bc3cc8242e7518624e",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "object": "gold-charm",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    146.1179639375416,
+    504.65504402243107,
+    178.1179639375416,
+    536.6550440224311
+  ],
+  "object_bounds": [
+    106.11800631805265,
+    487.85513578834644,
+    162.1179215570305,
+    553.4549522565158
+  ],
+  "controls": [],
+  "focus": [
+    162.1179639375416,
+    520.6550440224311
+  ],
+  "locks": {
+    "right": [
+      162.1179639375416,
+      520.6550440224311
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "insertion": {
+    "object": "gold-charm"
+  },
+  "attachment_target": {
+    "object": "resting-hand",
+    "anchor": "wrist"
+  },
+  "anchor": "right",
+  "join": {
+    "source": {
+      "object": "gold-charm",
+      "anchor": "right"
+    },
+    "target": {
+      "object": "resting-hand",
+      "anchor": "wrist"
+    },
+    "requested_mode": "auto",
+    "mode": "point",
+    "before_revision": "7c39043870db5066bc4a2fb5d8748574c5bba464dfa4dd53a468611b0335a64e",
+    "pending": true
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "base": "4f693ccdf0250b972354d2f0649cb6d71e365b54930712bc3cc8242e7518624e",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "object": "gold-charm",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    132.00004238051108,
+    44.000091765915364,
+    187.99995761948892,
+    109.59990823408464
+  ],
+  "object_bounds": [
+    132.00004238051108,
+    44.000091765915364,
+    187.99995761948892,
+    109.59990823408464
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      160.0,
+      76.8
+    ],
+    "top": [
+      160.0,
+      44.0
+    ],
+    "right": [
+      188.0,
+      76.8
+    ],
+    "bottom": [
+      160.0,
+      109.6
+    ],
+    "left": [
+      132.0,
+      76.80000000000001
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "insertion": {
+    "object": "gold-charm"
+  }
+}

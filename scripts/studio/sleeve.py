@@ -12,7 +12,7 @@ def unit(v):
  if size<1e-10:raise ValueError('arm segment collapses')
  return np.asarray(v)/size
 
-def arm_data(node,canvas,*,mode='default',elbow_at=.5,elbow_bend=-.30,rounding=1.3,wrist_direction=None):
+def arm_data(node,canvas,*,mode='default',elbow_at=.5,elbow_bend=-.30,rounding=1.3,wrist_direction=None,elbow_reference_width=None):
  scale=min(canvas);length=node.get('length',DEFAULT_LENGTH)*scale
  angle=math.radians(node.get('angle',0));c=np.array([math.sin(angle),math.cos(angle)]);right=np.array([c[1],-c[0]])
  p=np.array(root_position(node,canvas));q=p+length*c
@@ -27,7 +27,8 @@ def arm_data(node,canvas,*,mode='default',elbow_at=.5,elbow_bend=-.30,rounding=1
  turn=math.atan2(float(u[0]*v[1]-u[1]*v[0]),float(u@v))
  thickness=node.get('thickness',DEFAULT_THICKNESS)*scale
  r0=thickness*node.get('start_width',1.55)/2;r1=thickness*node.get('end_width',1)/2
- re=math.sqrt(r0*r1)*.90
+ reference=r1 if elbow_reference_width is None else thickness*elbow_reference_width/2
+ re=math.sqrt(r0*reference)*.90
  samples=[]
  if abs(turn)<1e-5:
   for t in np.linspace(0,1,81):samples.append((p+t*(q-p),c,t*length))

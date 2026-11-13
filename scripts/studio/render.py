@@ -191,6 +191,18 @@ def mount_labels(node,canvas,names=None,scale=1):
     return out
 
 
+def join_labels(source,target,source_name,target_name,vb,scale):
+    """Keep both endpoint names inside every actual camera, including closeups."""
+    result=[]
+    for role,info,name,color,y in [('source',source,source_name,'#bc5128',vb[1]+20*scale),('target',target,target_name,'#286d9e',vb[1]+vb[3]-14*scale)]:
+        x=vb[0]+12*scale;label=role+': '+name
+        size=min(13*scale,(vb[2]-24*scale)/max(len(label)*.62,1))
+        result.extend([xml_comment('join-'+role+'-label: identify the actual requested mount inside this camera'),
+            f'<path id="join-{role}-leader" d="M {info["point"][0]} {info["point"][1]} L {x} {y}" fill="none" stroke="{color}" stroke-width="{.8*scale}"/>',
+            f'<text id="join-{role}-label" x="{x}" y="{y}" font-family="sans-serif" font-size="{size}" fill="{color}" stroke="#fffaf0" stroke-width="{3*scale}" paint-order="stroke">{html.escape(label)}</text>'])
+    return result
+
+
 def removal_guides(scene,previous,removal):
     """Deletion outlines describe old paint; detached children are current retained paint."""
     if previous is None: raise ValueError('removal alignment requires its previous scene')
@@ -280,7 +292,10 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
             for end,relation in endpoint_relations(node_by_id(authored,selection['object'])).items():
                 p=get_anchor(node_by_id(scene,selection['object']),[width,height],end)['point']
                 out.append(f'<circle id="pinned-{end}" cx="{p[0]}" cy="{p[1]}" r="{8*guide_scale}" fill="none" stroke="#3983b9" stroke-width="{2*guide_scale}"/>')
-            if selection.get('feature')=='anchors':
+            pair=bool(selection.get('join') or selection.get('join_pair'))
+            if pair:
+                out.extend(direction_guide(get_anchor(node_by_id(scene,selection['object']),[width,height],selection['anchor']),'source',guide_scale,'#bc5128','join-source-direction'))
+            elif selection.get('feature')=='anchors':
                 out.extend(mount_labels(node_by_id(scene,selection['object']),[width,height],locks,guide_scale))
             elif selection.get('interaction')=='stroke-terminal':
                 out.extend(mount_labels(node_by_id(scene,selection['object']),[width,height],[selection['feature']],guide_scale))
@@ -290,12 +305,16 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
                 point=target_mount['point']
                 out.extend(direction_guide(target_mount,target['anchor'],guide_scale,'#3983b9','target-direction'))
                 label=html.escape(target['object']+'.'+target['anchor'])
+                if pair:
+                    info=get_anchor(node_by_id(scene,selection['object']),[width,height],selection['anchor'])
+                    out.extend(join_labels(info,target_mount,selection['object']+'.'+selection['anchor'],target['object']+'.'+target['anchor'],vb,guide_scale))
                 box=bounds(node_outline(node_by_id(scene,selection['object']),[width,height]))
                 lx,ly=box[2]+20*guide_scale,max(box[3]+50*guide_scale,point[1]+45*guide_scale)
                 out.append(f'<circle id="mount-target" cx="{point[0]}" cy="{point[1]}" r="{7*guide_scale}" fill="none" stroke="#3983b9" stroke-width="{3*guide_scale}"/>')
-                out.append('<!-- mount-target-callout: identify the inspected target mount -->')
-                out.append(f'<path id="mount-target-callout" d="M {point[0]} {point[1]} L {lx} {ly-4*guide_scale}" fill="none" stroke="#3983b9" stroke-width="{guide_scale}"/>')
-                out.append(f'<text x="{lx}" y="{ly}" font-family="sans-serif" font-size="{13*guide_scale}" fill="#286d9e" stroke="#fffaf0" stroke-width="{3*guide_scale}" paint-order="stroke">{label}</text>')
+                if not pair:
+                    out.append('<!-- mount-target-callout: identify the inspected target mount -->')
+                    out.append(f'<path id="mount-target-callout" d="M {point[0]} {point[1]} L {lx} {ly-4*guide_scale}" fill="none" stroke="#3983b9" stroke-width="{guide_scale}"/>')
+                    out.append(f'<text x="{lx}" y="{ly}" font-family="sans-serif" font-size="{13*guide_scale}" fill="#286d9e" stroke="#fffaf0" stroke-width="{3*guide_scale}" paint-order="stroke">{label}</text>')
     return "\n".join(out + ['</svg>'])
 
 
@@ -322,7 +341,7 @@ def rasterize(svg, target):
     return "chromium-disable-gpu"
 
 
-def bundle(scene, directory, selection=None, previous=None, png=True):
+def bundle(scene, directory, selection=None, previous=None, png=True, join_before=None):
     """Scene, inspection and image list are bound to one exact canonical revision."""
     directory = Path(directory)
     directory.mkdir(parents=True, exist_ok=True)
@@ -339,6 +358,17 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
     (directory/'report.txt').write_text('',encoding='utf-8')
     compiled=resolve_scene(scene)
     views = {"artwork": drawing(scene)}
+    if selection and selection.get('join'):
+        joint=selection['join']
+        if join_before is None or fingerprint(join_before)!=joint['before_revision']:raise ValueError('join comparison requires its exact before scene')
+        source=joint['source'];target=joint['target']
+        before_view=select(join_before,source['object'],feature='anchors',anchor=source['anchor'])
+        target_view=select(join_before,target['object'],feature='anchors',anchor=target['anchor'])
+        before_view['attachment_target']=target;before_view['join_pair']=True
+        boxes=[before_view['bounds'],target_view['bounds']]
+        x0=min(b[0] for b in boxes);y0=min(b[1] for b in boxes);x1=max(b[2] for b in boxes);y1=max(b[3] for b in boxes)
+        span=max(x1-x0,y1-y0,40)*1.4;vb=[(x0+x1-span)/2,(y0+y1-span)/2,span,span]
+        views={'before-alignment':drawing(join_before,before_view),'before-closeup':drawing(join_before,before_view,viewbox=vb)}|views
     if selection:
         # Crop around the object, not a guessed image location. Square pixel crop
         # is rendered to the same output dimensions, providing real magnification.
@@ -395,6 +425,10 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
                   alignment_legend={'red dashed':'removed previous paint; removal only','blue':'pinned stroke endpoints / inspected target; removal: retained affected children','orange':'selected current boundary','pink dashed':'previous boundary',
                                     'teal arrows':'outward join direction where defined; center mounts can be directionless','green rings':'named mount points or protected endpoints/knuckle','white target':'local edge/spine, terminal, digit-tip or exact-mount focus'},
                   move_units='object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span')
+    if selection and selection.get('join'):
+        joint=selection['join'];old=resolve_scene(join_before);canvas=scene.get('canvas',[640,640])
+        def pair(s):return {role:get_anchor(node_by_id(s,joint[role]['object']),canvas,joint[role]['anchor']) for role in ('source','target')}
+        report['join']=dict(joint,before=pair(old),after=pair(compiled))
     write(directory / "report.json", report)
     (directory / "report.txt").write_text("\n".join(images) + "\n", encoding="utf-8")
     return report

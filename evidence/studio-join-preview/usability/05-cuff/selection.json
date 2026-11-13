@@ -1,0 +1,42 @@
+{
+  "base": "7beb64194242b3e1d4243e3ef9109f869b6e9b8c8d33ad64b7365bb437e44aa5",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "object": "greeter-shirt",
+  "kind": "feature",
+  "feature": "right-wrist",
+  "bounds": [
+    526.9684814285413,
+    155.96005184848607,
+    569.9764814285413,
+    198.96805184848606
+  ],
+  "object_bounds": [
+    143.6998765431961,
+    175.30992213320923,
+    578.1690352462683,
+    527.3575880236181
+  ],
+  "controls": [
+    "right_wrist_spread",
+    "right_wrist_height",
+    "right_elbow_at",
+    "right_elbow_bend",
+    "right_cuff_width"
+  ],
+  "units": "screen move in torso height; elbow preserves shoulder/wrist; wrist preserves shoulder and bend ratios",
+  "interaction": "body-joint",
+  "locks": {
+    "neck": [
+      334.13291721595164,
+      249.53427480607908
+    ],
+    "shoulder": [
+      419.286004178255,
+      317.5405415737117
+    ]
+  },
+  "focus": [
+    548.4724814285413,
+    177.46405184848606
+  ]
+}

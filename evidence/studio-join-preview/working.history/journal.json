@@ -1,0 +1,46 @@
+[
+  {
+    "base": "480f8c8b42207300542e4f5a29939efd37f092ae0a1d16a39d31a53aa6dc59a9",
+    "result": "7beb64194242b3e1d4243e3ef9109f869b6e9b8c8d33ad64b7365bb437e44aa5",
+    "operation": {
+      "object": "greeter-shirt",
+      "feature": "object",
+      "reason": "Raise the palm near the face for a clearer greeting gesture",
+      "parameter": "pose",
+      "value": "wave"
+    }
+  },
+  {
+    "base": "7beb64194242b3e1d4243e3ef9109f869b6e9b8c8d33ad64b7365bb437e44aa5",
+    "result": "d1029a196d21a1f0826ada11f9d64b48c7130b0d10e1b5c5ae2814c82a25a1c4",
+    "operation": {
+      "object": "greeter-shirt",
+      "feature": "right-wrist",
+      "reason": "Taper the loose raised cuff while preserving the palm and arm pose",
+      "parameter": "right_cuff_width",
+      "value": 0.8
+    }
+  },
+  {
+    "base": "d1029a196d21a1f0826ada11f9d64b48c7130b0d10e1b5c5ae2814c82a25a1c4",
+    "result": "47e1eee995fa51493abf83e8ed8f86757151023f6bf587704cd197fb6b1ec622",
+    "operation": {
+      "object": "greeter-shirt",
+      "feature": "left-wrist",
+      "reason": "Taper the hanging sleeve cuff around its smaller wrist while retaining the hand and elbow",
+      "parameter": "left_cuff_width",
+      "value": 0.74
+    }
+  },
+  {
+    "base": "47e1eee995fa51493abf83e8ed8f86757151023f6bf587704cd197fb6b1ec622",
+    "result": "c85dac582c3c2ba52127c528c2470730aa5617b3889663327f75be75f7be33c2",
+    "operation": {
+      "object": "greeter-shirt",
+      "feature": "right-elbow",
+      "reason": "Bring the elbow inward and upward so the upper sleeve rises clearly from the shoulder, preserving shoulder and wrist",
+      "parameter": "right_elbow_bend",
+      "value": -0.3
+    }
+  }
+]

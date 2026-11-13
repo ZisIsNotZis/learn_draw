@@ -84,7 +84,7 @@ def validate_placement(node):
         if 'orient' in relation:
             if relation['orient']!='opposed':raise ValueError('attachment.orient: opposed')
             if 'angle' in node:raise ValueError('angle is derived by the oriented attachment; remove angle or use a point-only pin')
-            ports={'head':('chin',),'hand':('wrist',),'grip':('wrist',),'body':('neck',),'stroke':('root','tip')}
+            from .attachment import ORIENTABLE_PORTS as ports
             if node.get('kind') not in ports or relation.get('self','center') not in ports[node['kind']]:raise ValueError('orientation fitting requires a head chin, hand/grip wrist, body neck or stroke terminal')
         for name,default in [('to',None),('target','center'),('self','center')]:
             value=relation.get(name,default)
@@ -174,11 +174,11 @@ def validate_body(node,canvas):
     from .body import DEFAULT_LENGTH,body_data
     keys(node,('id','kind','intent','attachment','at','length','width','angle','depth','depth_slope','pose','arms','sleeve_width','cuff','palette'),'body')
     for name,default,lo,hi in [('length',DEFAULT_LENGTH,.08,1.2),('width',.9,.65,1.2),('angle',0,-180,180),('depth',0,-100,100),('depth_slope',0,-10,10),('sleeve_width',.14,.07,.22),('cuff',.055,0,.16)]:number(node.get(name,default),'body.'+name,lo,hi)
-    if node.get('pose','relaxed') not in ('relaxed','offering','folded'):raise ValueError('body.pose: relaxed/offering/folded')
+    if node.get('pose','relaxed') not in ('relaxed','offering','folded','wave'):raise ValueError('body.pose: relaxed/offering/folded/wave')
     keys(node.get('arms',{}),('left','right'),'body.arms')
     for side,config in node.get('arms',{}).items():
-        keys(config,('wrist_spread','wrist_height','elbow_at','elbow_bend'),'body.arms.'+side)
-        for name,lo,hi in [('wrist_spread',-1.5,1.5),('wrist_height',.1,1.6),('elbow_at',.2,.8),('elbow_bend',-.9,.9)]:
+        keys(config,('wrist_spread','wrist_height','elbow_at','elbow_bend','cuff_width'),'body.arms.'+side)
+        for name,lo,hi in [('wrist_spread',-1.5,1.5),('wrist_height',-.8,1.6),('elbow_at',.2,.8),('elbow_bend',-.9,.9),('cuff_width',.5,1.4)]:
             if name in config:number(config[name],'body.arms.'+side+'.'+name,lo,hi)
     validate_placement(node)
     keys(node.get('palette',{}),('fill','ink'),'body.palette')
@@ -731,6 +731,12 @@ def _set_parameter(node,selection,parameter,value):
     if parameter in aliases:
         color(value)
         node.setdefault('palette',{})[aliases[parameter]]=value
+    elif node['kind']=='body' and parameter=='pose':
+        for config in node.get('arms',{}).values():
+            for name in ('wrist_spread','wrist_height','elbow_at','elbow_bend'):config.pop(name,None)
+        node['arms']={side:config for side,config in node.get('arms',{}).items() if config}
+        if not node['arms']:node.pop('arms')
+        node['pose']=value
     elif node['kind']=='body' and parameter.startswith(('left_','right_')):
         side,name=parameter.split('_',1)
         if isinstance(value,str):

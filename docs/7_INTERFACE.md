@@ -534,10 +534,13 @@ inspection marks its prior candidate inspection-only; a failed part inspection e
 
 kind: body owns a graphic long-sleeved garment. Defaults: length .40 of shorter canvas dimension,
 width .9 of torso height, sleeve_width .14 of torso height, cuff .055 of sleeve arc, angle0,
-pose relaxed. pose also accepts offering/folded. palette permits fill/ink. arms optionally maps
-left/right to wrist_spread (-1.5..1.5 torso widths from neckline), wrist_height (.1..1.6 torso
+pose relaxed. pose also accepts offering/folded/wave. palette permits fill/ink. arms optionally maps
+left/right to wrist_spread (-1.5..1.5 torso widths from neckline), wrist_height (-.8..1.6 torso
 heights below neckline), elbow_at (.2.. .8 of shoulder-wrist chord), elbow_bend (-.9.. .9 chord
-lengths along its right normal). Overrides survive pose changes. Geometry can refuse additional
+lengths along its right normal), cuff_width (.5..1.4, default1). Raw arms overrides apply after pose
+defaults. Setting pose through a tool clears wrist/elbow gesture overrides on both sides while
+preserving cuff widths, colours and relations. Wrist features expose side_cuff_width; this tapers
+the distal sleeve without resizing the hand or moving joints/upper sleeve. Geometry can refuse additional
 fold/intersection limits inside these numeric bounds. No authored vertices or manual visibility cuts.
 
 Features object, left/right-shoulder, left/right-elbow, left/right-wrist expose actual controls.
@@ -582,3 +585,32 @@ refuses. Reattach without it to return to a point pin; detach/deleting parent ba
 angle and placement. Oriented strokes cannot also receive free terminal drags, endpoint pins or
 one-shot aim. Size/cuff-width fitting, roll, physical hand contact and full 3D joint rigs are not
 implemented by this option. Input-alias guards include attachment/aim/endpoint target selections.
+
+## Connect two named mounts visibly
+
+Use one proposal instead of separately inspecting both endpoints:
+
+`python -m scripts.studio join work.json --source palm.wrist --target shirt.right-wrist --reason "Seat the palm at the cuff" --outdir FIT`
+
+For a component still pending insertion, add `--pending NEW/candidate.json`. This requires a
+ready place proposal and preserves every working node. The result remains a pending insertion,
+so another join or place --revise may adjust it before acceptance. Use fresh output directories.
+
+Join itself inspects both exact named ports and proposes a fit. Read before-alignment and
+before-closeup (orange source, blue target), then artwork/alignment/edit-closeup showing the
+proposed result. Both endpoints are labeled inside the camera. Accept only in a later tool call
+with `accept work.json FIT/candidate.json`; undo recovers the previous working scene.
+
+Default --mode auto keeps supported directional joints opposed; otherwise it makes a point pin.
+--mode point retains current angle; --mode opposed requires real outward directions and a supported
+source port. Auto never resizes a hand or sleeve. Optional span in join feedback is a nominal
+construction cross-section, not an aesthetic score or proof of exact painted contact. Inspect and
+adjust cuff width, depth or hand proportions separately when the picture calls for it.
+
+A join moves the whole component. Independent stroke endpoint pins remain a distinct operation;
+unbind those constraints before using a whole-component join. Cycles, stale pending proposals,
+invalid ports and unfinished renders refuse. The working scene stays unchanged until acceptance.
+
+The report contains join.source/target names, requested_mode, resolved mode, before_revision,
+pending, and before/after anchor geometry. Six PNGs bind the exact working/pending before scene
+and proposed after scene. --svg-only supplies SVGs without a PNG image list.

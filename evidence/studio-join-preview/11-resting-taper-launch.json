@@ -1,0 +1,24 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-join-preview/working.json",
+    "--selection",
+    "evidence/studio-join-preview/10-resting-cuff/selection.json",
+    "--set",
+    "left_cuff_width",
+    "--value",
+    ".74",
+    "--reason",
+    "Taper the hanging sleeve cuff around its smaller wrist while retaining the hand and elbow",
+    "--outdir",
+    "evidence/studio-join-preview/11-resting-taper"
+  ],
+  "started": "2026-11-13T09:56:57.498677+00:00",
+  "state": "terminal",
+  "pid": 36828,
+  "exit_code": 0,
+  "terminal": "2026-11-13T09:56:58.298834+00:00"
+}

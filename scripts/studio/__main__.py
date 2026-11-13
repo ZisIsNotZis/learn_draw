@@ -100,6 +100,17 @@ def main():
     p.add_argument('--outdir',required=True)
     p.add_argument('--svg-only',action='store_true')
     p.add_argument('--full-report',action='store_true',help='print the complete scene report instead of focused feedback')
+    p = sub.add_parser('join',help='preview both named mounts and their connection before acceptance')
+    p.add_argument('scene')
+    p.add_argument('--source',required=True,metavar='OBJECT.MOUNT')
+    p.add_argument('--target',required=True,metavar='OBJECT.MOUNT')
+    p.add_argument('--pending',help='ready placement candidate whose new component is the source')
+    p.add_argument('--mode',choices=('auto','point','opposed'),default='auto',help='auto fits supported directional joints; point preserves current angle')
+    p.add_argument('--inset',type=float,default=0)
+    p.add_argument('--reason',required=True)
+    p.add_argument('--outdir',required=True)
+    p.add_argument('--svg-only',action='store_true')
+    p.add_argument('--full-report',action='store_true')
     p = sub.add_parser("demo", help="render a reproducible tuck/ease-back/undo sequence")
     p.add_argument("--outdir", required=True)
     p.add_argument('--kind',choices=('head','hair-lock'),default='hair-lock')
@@ -144,22 +155,22 @@ def main():
     p.add_argument("scene")
     args = parser.parse_args()
     try:
-        if args.command in ('inspect','preview','place'):
+        if args.command in ('inspect','preview','place','join'):
             # A bundle exports scene.json, but a preview must never overwrite its
             # working source or selection even when the output directory is reused.
             output=Path(args.outdir)
             names=['scene.json','selection.json','report.json','report.txt','candidate.json']
-            names += [name+suffix for name in ('artwork','alignment','object-closeup','edit-closeup') for suffix in ('.svg','.png')]
+            names += [name+suffix for name in ('artwork','alignment','object-closeup','edit-closeup','before-alignment','before-closeup') for suffix in ('.svg','.png')]
             inputs=[Path(args.scene)]
             if args.command=='preview':
                 inputs.append(Path(args.selection))
-                inputs.extend(Path(p) for p in (args.attach,args.aim,args.bind_end) if p)
                 if args.attach: inputs.append(Path(args.attach))
                 if args.bind_end: inputs.append(Path(args.bind_end))
                 if args.aim: inputs.append(Path(args.aim))
             if args.command=='place':
                 if args.revise: inputs.append(Path(args.revise))
                 if args.attach: inputs.append(Path(args.attach))
+            if args.command=='join' and args.pending:inputs.append(Path(args.pending))
             for source in inputs:
                 for name in names:
                     target=output/name
@@ -180,6 +191,17 @@ def main():
             validate(scene)
             write(args.scene, scene)
             print(json.dumps(dict(scene=args.scene, revision=fingerprint(scene))))
+        elif args.command=='join':
+            from .join import join_preview
+            scene=validate(read(args.scene));pending=read(args.pending) if args.pending else None
+            write(Path(args.outdir)/'candidate.json',dict(status='preparing',base=fingerprint(scene),engine=engine_fingerprint()))
+            write(Path(args.outdir)/'report.json',dict(status='preparing',revision=fingerprint(scene),engine=engine_fingerprint(),images=[]))
+            (Path(args.outdir)/'report.txt').write_text('',encoding='utf-8')
+            candidate=join_preview(scene,args.source,args.target,mode=args.mode,inset=args.inset,pending=pending,reason=args.reason)
+            write(Path(args.outdir)/'candidate.json',dict(status='rendering',base=candidate['base'],engine=candidate['engine']))
+            report=bundle(candidate['scene'],args.outdir,candidate['selection'],previous=scene,png=not args.svg_only,join_before=pending['scene'] if pending else scene)
+            feedback=response(report,candidate['scene'],args.outdir,candidate['selection'],candidate,full=args.full_report)
+            write(Path(args.outdir)/'candidate.json',candidate|dict(status='ready'));print(json.dumps(feedback))
         elif args.command=='place':
             from .placement import placement_preview
             scene=validate(read(args.scene))

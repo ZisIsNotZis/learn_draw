@@ -1,0 +1,33 @@
+01: .venv/Scripts/python.exe -m scripts.studio --help
+
+02: .venv/Scripts/python.exe -m scripts.studio inspect evidence/studio-join-preview/usability/working.json --object greeter-shirt --feature object --outdir evidence/studio-join-preview/usability/02-old
+
+03: .venv/Scripts/python.exe -m scripts.studio preview evidence/studio-join-preview/usability/working.json --selection evidence/studio-join-preview/usability/02-old/selection.json --set pose --value wave --reason "Raise the open palm into a clear high greeting while keeping the character and clothing" --outdir evidence/studio-join-preview/usability/03-wave
+
+04: .venv/Scripts/python.exe -m scripts.studio accept evidence/studio-join-preview/usability/working.json evidence/studio-join-preview/usability/03-wave/candidate.json
+
+05: .venv/Scripts/python.exe -m scripts.studio inspect evidence/studio-join-preview/usability/working.json --object greeter-shirt --feature right-wrist --outdir evidence/studio-join-preview/usability/05-cuff
+
+06: .venv/Scripts/python.exe -m scripts.studio preview evidence/studio-join-preview/usability/working.json --selection evidence/studio-join-preview/usability/05-cuff/selection.json --set right_cuff_width --value .9 --reason "Taper the high cuff slightly so its rim sits closer to the narrower wrist" --outdir evidence/studio-join-preview/usability/06-taper
+
+07: .venv/Scripts/python.exe -m scripts.studio accept evidence/studio-join-preview/usability/working.json evidence/studio-join-preview/usability/06-taper/candidate.json
+
+08: .venv/Scripts/python.exe -m scripts.studio join --help
+
+09: .venv/Scripts/python.exe -m scripts.studio place evidence/studio-join-preview/usability/working.json --kind shape --id gold-charm --change length=.10 --change width=.85 --change profile=oval --change fill_color=#dfb84f --change ink_color=#735c32 --change stroke=.025 --at upper_left --reason "A small gold round charm beside the hanging wrist adds a playful accessory without hiding the high wave" --outdir evidence/studio-join-preview/usability/09-charm
+
+10: .venv/Scripts/python.exe -m scripts.studio join evidence/studio-join-preview/usability/working.json --pending evidence/studio-join-preview/usability/09-charm/candidate.json --source gold-charm.right --target resting-hand.wrist --reason "Seat the gold charm beside the hanging wrist, leaving the open fingers and high wave visible" --outdir evidence/studio-join-preview/usability/10-joined
+
+11: .venv/Scripts/python.exe -m scripts.studio accept evidence/studio-join-preview/usability/working.json evidence/studio-join-preview/usability/10-joined/candidate.json
+
+12: .venv/Scripts/python.exe -m scripts.studio inspect evidence/studio-join-preview/usability/working.json --object gold-charm --feature object --outdir evidence/studio-join-preview/usability/12-accepted
+
+13: .venv/Scripts/python.exe -m scripts.studio undo evidence/studio-join-preview/usability/working.json
+
+14: .venv/Scripts/python.exe -m scripts.studio inspect evidence/studio-join-preview/usability/working.json --object greeter-shirt --feature right-wrist --outdir evidence/studio-join-preview/usability/14-undone
+
+15: .venv/Scripts/python.exe -m scripts.studio accept evidence/studio-join-preview/usability/working.json evidence/studio-join-preview/usability/10-joined/candidate.json
+
+16: .venv/Scripts/python.exe -m scripts.studio inspect evidence/studio-join-preview/usability/working.json --object gold-charm --feature object --outdir evidence/studio-join-preview/usability/16-reaccepted
+
+17: .venv/Scripts/python.exe -m scripts.studio join evidence/studio-join-preview/usability/working.json --pending evidence/studio-join-preview/usability/09-charm/candidate.json --source gold-charm.right --target resting-hand.wrist --reason "Verify an old pending insertion refuses after acceptance rather than duplicating the charm" --outdir evidence/studio-join-preview/usability/17-stale

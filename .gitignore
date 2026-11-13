@@ -31,3 +31,6 @@ worktrees/
 
 # Frozen endpoint usability command records.
 !evidence/studio-endpoints/usability/*.log
+
+# Frozen paired-join operator command records.
+!evidence/studio-join-preview/usability/*.log

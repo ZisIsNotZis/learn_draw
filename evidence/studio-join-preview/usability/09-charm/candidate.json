@@ -1,0 +1,190 @@
+{
+  "base": "4f693ccdf0250b972354d2f0649cb6d71e365b54930712bc3cc8242e7518624e",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "result": "7c39043870db5066bc4a2fb5d8748574c5bba464dfa4dd53a468611b0335a64e",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "greeter-shirt",
+        "kind": "body",
+        "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+        "depth": 1,
+        "length": 0.42,
+        "pose": "wave",
+        "palette": {
+          "fill": "#b85f52"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.1
+          ]
+        },
+        "angle": -6.0,
+        "arms": {
+          "right": {
+            "cuff_width": 0.9
+          }
+        }
+      },
+      {
+        "id": "greeter-neck",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 0.0,
+        "length": 0.045,
+        "thickness": 0.055,
+        "palette": {
+          "fill": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "root",
+          "target": "neck",
+          "inset": 0,
+          "orient": "opposed"
+        },
+        "start_cap": "round"
+      },
+      {
+        "id": "greeter-head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "depth": 3.0,
+        "length": 0.26,
+        "expression": "smile",
+        "palette": {
+          "hair": "#614b40"
+        },
+        "attachment": {
+          "to": "greeter-neck",
+          "self": "chin",
+          "target": "tip",
+          "inset": 0,
+          "orient": "opposed"
+        },
+        "frame": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.28766625
+          ]
+        }
+      },
+      {
+        "id": "wave-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 4.0,
+        "length": 0.17,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "right-wrist",
+          "inset": 0,
+          "orient": "opposed"
+        }
+      },
+      {
+        "id": "resting-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 5.0,
+        "length": 0.13,
+        "spread": 0.7,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "left-wrist",
+          "inset": 0,
+          "orient": "opposed"
+        }
+      },
+      {
+        "id": "gold-charm",
+        "kind": "shape",
+        "intent": "an editable rounded flat colour mass",
+        "depth": 6.0,
+        "at": {
+          "anchor": "upper_left"
+        },
+        "length": 0.1,
+        "width": 0.85,
+        "profile": "oval",
+        "palette": {
+          "fill": "#dfb84f",
+          "ink": "#735c32"
+        },
+        "stroke": 0.025
+      }
+    ]
+  },
+  "selection": {
+    "base": "4f693ccdf0250b972354d2f0649cb6d71e365b54930712bc3cc8242e7518624e",
+    "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+    "object": "gold-charm",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      132.00004238051108,
+      44.000091765915364,
+      187.99995761948892,
+      109.59990823408464
+    ],
+    "object_bounds": [
+      132.00004238051108,
+      44.000091765915364,
+      187.99995761948892,
+      109.59990823408464
+    ],
+    "controls": [],
+    "focus": null,
+    "locks": {
+      "center": [
+        160.0,
+        76.8
+      ],
+      "top": [
+        160.0,
+        44.0
+      ],
+      "right": [
+        188.0,
+        76.8
+      ],
+      "bottom": [
+        160.0,
+        109.6
+      ],
+      "left": [
+        132.0,
+        76.80000000000001
+      ]
+    },
+    "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+    "insertion": {
+      "object": "gold-charm"
+    }
+  },
+  "operation": {
+    "action": "place",
+    "object": "gold-charm",
+    "kind": "shape",
+    "reason": "A small gold round charm beside the hanging wrist adds a playful accessory without hiding the high wave",
+    "revised_from": null
+  },
+  "status": "ready"
+}

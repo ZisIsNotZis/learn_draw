@@ -1,0 +1,49 @@
+[
+  {
+    "base": "480f8c8b42207300542e4f5a29939efd37f092ae0a1d16a39d31a53aa6dc59a9",
+    "result": "7beb64194242b3e1d4243e3ef9109f869b6e9b8c8d33ad64b7365bb437e44aa5",
+    "operation": {
+      "object": "greeter-shirt",
+      "feature": "object",
+      "reason": "Raise the open palm into a clear high greeting while keeping the character and clothing",
+      "parameter": "pose",
+      "value": "wave"
+    }
+  },
+  {
+    "base": "7beb64194242b3e1d4243e3ef9109f869b6e9b8c8d33ad64b7365bb437e44aa5",
+    "result": "4f693ccdf0250b972354d2f0649cb6d71e365b54930712bc3cc8242e7518624e",
+    "operation": {
+      "object": "greeter-shirt",
+      "feature": "right-wrist",
+      "reason": "Taper the high cuff slightly so its rim sits closer to the narrower wrist",
+      "parameter": "right_cuff_width",
+      "value": 0.9
+    }
+  },
+  {
+    "base": "4f693ccdf0250b972354d2f0649cb6d71e365b54930712bc3cc8242e7518624e",
+    "result": "69903c67596f50277cbd402e112df95230a66ca7a970027a64de2499b5fd0c34",
+    "operation": {
+      "action": "place",
+      "object": "gold-charm",
+      "kind": "shape",
+      "reason": "Seat the gold charm beside the hanging wrist, leaving the open fingers and high wave visible",
+      "revised_from": "7c39043870db5066bc4a2fb5d8748574c5bba464dfa4dd53a468611b0335a64e",
+      "join": {
+        "source": {
+          "object": "gold-charm",
+          "anchor": "right"
+        },
+        "target": {
+          "object": "resting-hand",
+          "anchor": "wrist"
+        },
+        "requested_mode": "auto",
+        "mode": "point",
+        "before_revision": "7c39043870db5066bc4a2fb5d8748574c5bba464dfa4dd53a468611b0335a64e",
+        "pending": true
+      }
+    }
+  }
+]

@@ -35,8 +35,8 @@ def _construct(node,canvas):
   q=origin+np.array([w*config['wrist_spread'],h*config['wrist_height']])
   delta=q-p;length=float(np.linalg.norm(delta));angle=math.degrees(math.atan2(delta[0],delta[1]))
   arm=dict(id=node['id']+'-'+side,kind='stroke',intent=side+' owned sleeve',length=length/min(canvas),thickness=wrist_width,
-      start_width=1.55,end_width=1,angle=angle,start_cap='flat',ink_width=0,at=dict(anchor='center',offset=[p[0]/canvas[0]-.5,p[1]/canvas[1]-.5]),palette=node.get('palette',{}))
-  data=arm_data(arm,canvas,elbow_at=config['elbow_at'],elbow_bend=config['elbow_bend'],rounding=2)
+      start_width=1.55,end_width=config.get('cuff_width',1),angle=angle,start_cap='flat',ink_width=0,at=dict(anchor='center',offset=[p[0]/canvas[0]-.5,p[1]/canvas[1]-.5]),palette=node.get('palette',{}))
+  data=arm_data(arm,canvas,elbow_at=config['elbow_at'],elbow_bend=config['elbow_bend'],rounding=2,elbow_reference_width=1)
   arms.append(data.material);joints[side]=data.joints;arm_data_by_side[side]=data
  bridges=[]
  for side,data in arm_data_by_side.items():
@@ -62,7 +62,9 @@ def _construct(node,canvas):
  for side,j in joints.items():
   for name in ('shoulder','elbow','wrist'):
    p=j[name];key=side+'-'+name;mounts[key]=dict(point=p,normal=None)
-   if name=='wrist':mounts[key]['direction']=arm_data_by_side[side].mounts['wrist']['direction']
+   if name=='wrist':
+    mounts[key]['direction']=arm_data_by_side[side].mounts['wrist']['direction']
+    mounts[key]['span']=math.dist(arm_data_by_side[side].rows[-1].left,arm_data_by_side[side].rows[-1].right)
    features[key]=dict(paths=[dict(d=path([j['shoulder'],j['elbow'],j['wrist']],False),transform='')],bounds=[p[0]-20,p[1]-20,p[0]+20,p[1]+20],controls=[],focus=p,locks={'neck':tuple(origin)},units='computed garment joint')
  # Each surface carries its own exterior/overlap ink. Global depth also sees these
  # surfaces, allowing an external object between torso and front sleeve.
@@ -78,7 +80,9 @@ def _construct(node,canvas):
    band=[r for r in rows if r.t>=1-node.get('cuff',.055)]
    if node.get('cuff',.055) and len(band)<2:band=list(rows[-2:])
    if node.get('cuff',.055):
-    bandshape=Polygon([r.left for r in band]+[r.right for r in reversed(band)])
+    # Sewn cuffs have rounded corners; a rectangular colour field must not
+    # protrude beyond the garment into the inspection/paint aperture.
+    bandshape=Polygon([r.left for r in band]+[r.right for r in reversed(band)]).intersection(cloth)
     dark='#'+''.join(f'{round(int(colour[i:i+2],16)*.86):02x}' for i in (1,3,5))
     extra=[xml_comment(sid+'-'+name+'-cuff: colour follows owned sleeve'),f'<path id="{sid}--{name}-band" d="{polygon_path(bandshape)}" fill="{dark}"/>']
    # Only the front forearm needs a deliberate internal side contour.
@@ -101,6 +105,7 @@ def arm_configuration(node,side):
  config=dict(wrist_spread=(-.59 if side=='left' else .59),wrist_height=1.07,elbow_at=.5,elbow_bend=(-.06 if side=='left' else .06))
  if side=='right' and node.get('pose','relaxed')=='offering':config.update(wrist_spread=.95,wrist_height=.50,elbow_at=.6,elbow_bend=-.4)
  if side=='right' and node.get('pose','relaxed')=='folded':config.update(wrist_spread=.05,wrist_height=.65,elbow_at=.6,elbow_bend=.5)
+ if side=='right' and node.get('pose','relaxed')=='wave':config.update(wrist_spread=.85,wrist_height=-.35,elbow_at=.55,elbow_bend=-.5)
  return config|node.get('arms',{}).get(side,{})
 
 def body_data(node,canvas):return _data(json.dumps(node,sort_keys=True),tuple(canvas))
@@ -130,6 +135,7 @@ def _data(encoded,canvas):
    f=data.features[side+'-'+name];p=j[name];pad=max(12,base['length']*min(canvas)*.08)
    f.update(bounds=[p[0]-pad,p[1]-pad,p[0]+pad,p[1]+pad],focus=p,locks={'neck':data.mounts['neck']['point'],'shoulder':j['shoulder'],**({'wrist':j['wrist']} if name=='elbow' else {})},controls=[side+'_'+k for k in ('wrist_spread','wrist_height','elbow_at','elbow_bend')],units='screen move in torso height; elbow preserves shoulder/wrist; wrist preserves shoulder and bend ratios')
    for pathinfo in f['paths']:pathinfo['transform']=transform
+   if name=='wrist':f['controls'].append(side+'_cuff_width')
    if name in ('elbow','wrist'):f['interaction']='body-joint'
  return data
 

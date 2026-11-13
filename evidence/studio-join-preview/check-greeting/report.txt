@@ -1,0 +1,19 @@
+art:    evidence/studio-join-preview/11-resting-taper/artwork.png
+bundle: evidence/studio-join-preview/check-greeting
+
+images (feed these, and nothing else):
+  evidence/studio-join-preview/check-greeting\draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale) - judge detail here
+  evidence/studio-join-preview/check-greeting\draft.png  -- downscaled preview (width <= 256px) - layout only, never detail
+
+full-resolution image SHA256: c64cadecfb3cf1cb977ba89bdde7fa35d97cad6df34e46d577f0717dee48b192 (PNG source bytes preserved when available)
+no --ref given: nothing to compare against (reference-free stage)
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Judge detail only on the 1:1 images (draft-fullres.png, region-*.png). Previews and
+  side-by-side panes are downscaled: they show layout, never line weight or separation.
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.

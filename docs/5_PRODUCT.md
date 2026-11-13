@@ -660,3 +660,16 @@ pole legs follow a turned hand. Parent pose edits resolve the whole dependency c
 derived, and release preserves current paint. Width, depth and physical contact remain separate.
 This reduces angle bookkeeping in real revision, rather than adding another subject preset.
 Actual root/independent editing and remaining art limits are indexed in ../evidence/studio-joints/.
+
+## Adopted paired connection preview and local sleeve refinement
+
+A named join combines inspection of both endpoints with a recoverable connection proposal. Its
+before/after cameras retain exact source/target identity, including a pending component that has
+not landed. Auto mode uses existing directional joints where supported; point mode preserves angle.
+Neither mode invents a width fit or hides the before image. Accept remains a separate observed step.
+
+A wrist exposes optional cuff width independently of hand size and arm joints. A high-wave preset
+removes an artificial reach restriction; local elbow edits still refine its gesture. Setting a pose
+through tools reapplies gesture defaults while keeping style and connections. The revised greeting
+remains a graphic study with finish/detail weaknesses, not a finished-art acceptance. Current
+evidence and operational limits are in ../evidence/studio-join-preview/README.md.

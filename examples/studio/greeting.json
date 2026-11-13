@@ -12,7 +12,7 @@
       "intent": "a simple long-sleeved upper body with editable elbows and wrists",
       "depth": 1,
       "length": 0.42,
-      "pose": "offering",
+      "pose": "wave",
       "palette": {
         "fill": "#b85f52"
       },
@@ -23,14 +23,16 @@
           0.1
         ]
       },
+      "angle": -6.0,
       "arms": {
         "right": {
-          "wrist_height": 0.1,
-          "wrist_spread": 0.82,
-          "elbow_bend": -0.65
+          "cuff_width": 0.8,
+          "elbow_bend": -0.3
+        },
+        "left": {
+          "cuff_width": 0.74
         }
-      },
-      "angle": -6.0
+      }
     },
     {
       "id": "greeter-neck",

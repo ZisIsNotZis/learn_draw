@@ -1,0 +1,108 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "greeter-shirt",
+      "kind": "body",
+      "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+      "depth": 1,
+      "length": 0.42,
+      "pose": "wave",
+      "palette": {
+        "fill": "#b85f52"
+      },
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.0,
+          0.1
+        ]
+      },
+      "angle": -6.0
+    },
+    {
+      "id": "greeter-neck",
+      "kind": "stroke",
+      "intent": "a clean round gesture mark with editable spine and terminals",
+      "depth": 0.0,
+      "length": 0.045,
+      "thickness": 0.055,
+      "palette": {
+        "fill": "#efd0b5"
+      },
+      "attachment": {
+        "to": "greeter-shirt",
+        "self": "root",
+        "target": "neck",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "start_cap": "round"
+    },
+    {
+      "id": "greeter-head",
+      "kind": "head",
+      "intent": "a frontal flat cartoon head with an editable hairstyle",
+      "depth": 3.0,
+      "length": 0.26,
+      "expression": "smile",
+      "palette": {
+        "hair": "#614b40"
+      },
+      "attachment": {
+        "to": "greeter-neck",
+        "self": "chin",
+        "target": "tip",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "frame": {
+        "anchor": "center",
+        "offset": [
+          0.0,
+          -0.28766625
+        ]
+      }
+    },
+    {
+      "id": "wave-hand",
+      "kind": "hand",
+      "intent": "a front-view flat cartoon open palm with five digits",
+      "depth": 4.0,
+      "length": 0.17,
+      "palette": {
+        "skin": "#efd0b5"
+      },
+      "attachment": {
+        "to": "greeter-shirt",
+        "self": "wrist",
+        "target": "right-wrist",
+        "inset": 0,
+        "orient": "opposed"
+      }
+    },
+    {
+      "id": "resting-hand",
+      "kind": "hand",
+      "intent": "a front-view flat cartoon open palm with five digits",
+      "depth": 5.0,
+      "length": 0.13,
+      "spread": 0.7,
+      "palette": {
+        "skin": "#efd0b5"
+      },
+      "attachment": {
+        "to": "greeter-shirt",
+        "self": "wrist",
+        "target": "left-wrist",
+        "inset": 0,
+        "orient": "opposed"
+      }
+    }
+  ]
+}

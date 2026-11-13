@@ -11,6 +11,7 @@ def response(report,scene,directory,selection=None,candidate=None,configure=None
     result=dict(format='learn-draw/studio-response-1',status=report['status'],revision=report['revision'],
                 engine=report['engine'],renderer=report['renderer'],images=report['images'],files=files,
                 object_count=len(scene['nodes']))
+    if report.get('join'):result['join']=report['join']
     if selection:
         files['selection']=str(d/'selection.json');result['selection']=selection
         sid=selection['object'];info=report['nodes'].get(sid)

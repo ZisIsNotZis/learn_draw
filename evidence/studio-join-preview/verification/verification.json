@@ -1,0 +1,57 @@
+{
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "digests": 386,
+  "studio_tests": 144,
+  "preserved_pngs": 10,
+  "greeting_joins": [
+    {
+      "object": "greeter-neck",
+      "point_error_pixels": 2.842170943040401e-14,
+      "direction_dot": -0.9999999999999999
+    },
+    {
+      "object": "greeter-head",
+      "point_error_pixels": 2.842170943040401e-14,
+      "direction_dot": -1.0
+    },
+    {
+      "object": "wave-hand",
+      "point_error_pixels": 1.1368683772161603e-13,
+      "direction_dot": -1.0
+    },
+    {
+      "object": "resting-hand",
+      "point_error_pixels": 2.842170943040401e-14,
+      "direction_dot": -0.9999999999999999
+    }
+  ],
+  "operator_joins": [
+    {
+      "object": "greeter-neck",
+      "point_error_pixels": 2.842170943040401e-14,
+      "direction_dot": -0.9999999999999999
+    },
+    {
+      "object": "greeter-head",
+      "point_error_pixels": 2.842170943040401e-14,
+      "direction_dot": -1.0
+    },
+    {
+      "object": "wave-hand",
+      "point_error_pixels": 1.1368683772161603e-13,
+      "direction_dot": -1.0
+    },
+    {
+      "object": "resting-hand",
+      "point_error_pixels": 2.842170943040401e-14,
+      "direction_dot": -0.9999999999999999
+    },
+    {
+      "object": "gold-charm",
+      "point_error_pixels": 0.0
+    }
+  ],
+  "operator_recovery_byte_comparisons": 5,
+  "current_public_png_exact": true,
+  "scope": "Current code/artifacts only. Earlier source-bound studies keep their original epochs; no whole-artwork or human acceptance claim."
+}

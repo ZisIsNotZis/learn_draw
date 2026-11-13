@@ -1,0 +1,24 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-join-preview/working.json",
+    "--selection",
+    "evidence/studio-join-preview/07-current-cuff/selection.json",
+    "--set",
+    "right_cuff_width",
+    "--value",
+    ".8",
+    "--reason",
+    "Taper the loose raised cuff while preserving the palm and arm pose",
+    "--outdir",
+    "evidence/studio-join-preview/08-narrow"
+  ],
+  "started": "2026-11-13T09:56:12.782226+00:00",
+  "state": "terminal",
+  "pid": 47864,
+  "exit_code": 0,
+  "terminal": "2026-11-13T09:56:13.824771+00:00"
+}

@@ -1,0 +1,24 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-join-preview/working.json",
+    "--selection",
+    "evidence/studio-join-preview/03-current-body/selection.json",
+    "--set",
+    "pose",
+    "--value",
+    "wave",
+    "--reason",
+    "Raise the palm near the face for a clearer greeting gesture",
+    "--outdir",
+    "evidence/studio-join-preview/04-wave"
+  ],
+  "started": "2026-11-13T09:51:19.187588+00:00",
+  "state": "terminal",
+  "pid": 35700,
+  "exit_code": 0,
+  "terminal": "2026-11-13T09:51:20.044003+00:00"
+}

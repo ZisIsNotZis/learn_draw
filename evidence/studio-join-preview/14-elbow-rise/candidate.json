@@ -1,0 +1,175 @@
+{
+  "base": "47e1eee995fa51493abf83e8ed8f86757151023f6bf587704cd197fb6b1ec622",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "result": "c85dac582c3c2ba52127c528c2470730aa5617b3889663327f75be75f7be33c2",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "greeter-shirt",
+        "kind": "body",
+        "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+        "depth": 1,
+        "length": 0.42,
+        "pose": "wave",
+        "palette": {
+          "fill": "#b85f52"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.1
+          ]
+        },
+        "angle": -6.0,
+        "arms": {
+          "right": {
+            "cuff_width": 0.8,
+            "elbow_bend": -0.3
+          },
+          "left": {
+            "cuff_width": 0.74
+          }
+        }
+      },
+      {
+        "id": "greeter-neck",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 0.0,
+        "length": 0.045,
+        "thickness": 0.055,
+        "palette": {
+          "fill": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "root",
+          "target": "neck",
+          "inset": 0,
+          "orient": "opposed"
+        },
+        "start_cap": "round"
+      },
+      {
+        "id": "greeter-head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "depth": 3.0,
+        "length": 0.26,
+        "expression": "smile",
+        "palette": {
+          "hair": "#614b40"
+        },
+        "attachment": {
+          "to": "greeter-neck",
+          "self": "chin",
+          "target": "tip",
+          "inset": 0,
+          "orient": "opposed"
+        },
+        "frame": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.28766625
+          ]
+        }
+      },
+      {
+        "id": "wave-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 4.0,
+        "length": 0.17,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "right-wrist",
+          "inset": 0,
+          "orient": "opposed"
+        }
+      },
+      {
+        "id": "resting-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 5.0,
+        "length": 0.13,
+        "spread": 0.7,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "left-wrist",
+          "inset": 0,
+          "orient": "opposed"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "47e1eee995fa51493abf83e8ed8f86757151023f6bf587704cd197fb6b1ec622",
+    "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+    "object": "greeter-shirt",
+    "kind": "feature",
+    "feature": "right-elbow",
+    "bounds": [
+      538.8728115285253,
+      283.5877108499808,
+      581.8808115285253,
+      326.59571084998083
+    ],
+    "object_bounds": [
+      148.4691631554947,
+      175.65780388981756,
+      577.6330181686997,
+      527.3575880236181
+    ],
+    "controls": [
+      "right_wrist_spread",
+      "right_wrist_height",
+      "right_elbow_at",
+      "right_elbow_bend"
+    ],
+    "units": "screen move in torso height; elbow preserves shoulder/wrist; wrist preserves shoulder and bend ratios",
+    "interaction": "body-joint",
+    "locks": {
+      "neck": [
+        334.13291721595164,
+        249.53427480607908
+      ],
+      "shoulder": [
+        419.286004178255,
+        317.5405415737117
+      ],
+      "wrist": [
+        548.4724814285413,
+        177.46405184848606
+      ]
+    },
+    "focus": [
+      560.3768115285253,
+      305.0917108499808
+    ]
+  },
+  "operation": {
+    "object": "greeter-shirt",
+    "feature": "right-elbow",
+    "reason": "Bring the elbow inward and upward so the upper sleeve rises clearly from the shoulder, preserving shoulder and wrist",
+    "parameter": "right_elbow_bend",
+    "value": -0.3
+  },
+  "status": "ready"
+}

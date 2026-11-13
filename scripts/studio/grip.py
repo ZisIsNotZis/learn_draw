@@ -137,6 +137,8 @@ def _data(encoded,canvas):
         ('wrist',(0,HAND_HEIGHT),None),('grip',(0,.25),None),('handle_left',(-span/2,.25),None),('handle_right',(span/2,.25),None),
         ('handle_top',(0,.25-h/2),(0,-1)),('handle_bottom',(0,.25+h/2),(0,1))]}
     mounts['wrist']['direction']=normal((0,1))
+    mounts['wrist']['span']=.44*node.get('width',1)*unit
+    for name in ('handle_left','handle_right'):mounts[name]['span']=h*unit
     mounts['handle_left']['direction']=normal((-1,0))
     mounts['handle_right']['direction']=normal((1,0))
     return GripData('\n'.join(svg),outer,features,center,node.get('angle',0),mounts,
