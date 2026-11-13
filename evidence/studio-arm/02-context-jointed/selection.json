@@ -1,0 +1,53 @@
+{
+  "base": "8abd161147cfd30728a753f50a0286f067e78e88bef8cb3adf8976802add4b9f",
+  "engine": "study:ef01938b9e97aecadc0c38a4cd7ee92264f077bcfa9006400c16fe5fd3e1db3d",
+  "object": "reaching-sleeve",
+  "kind": "feature",
+  "feature": "elbow",
+  "bounds": [
+    377.05764455231554,
+    342.3504372548039,
+    430.5478406307469,
+    395.8406333332353
+  ],
+  "object_bounds": [
+    307.4802436212888,
+    301.3115482608822,
+    482.54513859354006,
+    385.05209061813486
+  ],
+  "controls": [],
+  "units": "study-only computed joints; not a public editable arm kind",
+  "locks": {
+    "shoulder": [
+      334.22418138407966,
+      328.05548602367304
+    ],
+    "wrist": [
+      472.75740310416717,
+      327.0156515323137
+    ]
+  },
+  "focus": [
+    403.8027425915312,
+    369.0955352940196
+  ],
+  "endpoint_bindings": {
+    "root": {
+      "to": "shirt",
+      "target": "right@.27",
+      "inset": 0.03
+    },
+    "tip": {
+      "to": "flower-hand",
+      "target": "wrist"
+    }
+  },
+  "study": {
+    "mode": "default",
+    "host_engine": "1a2928e9568b9ce3f5598b8ab36f18d2c802c604f1682002a52ff290aa3ff10c",
+    "source_sha256": "ef01938b9e97aecadc0c38a4cd7ee92264f077bcfa9006400c16fe5fd3e1db3d",
+    "adapter": "process-local component_data replacement; real depth visibility",
+    "direction_from_named_wrist": null
+  }
+}

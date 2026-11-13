@@ -1,0 +1,42 @@
+{
+  "base": "bce4260ecb7364cb847a572a5cbf06efd2574a44134f28bb5ac7dfb17c34822b",
+  "engine": "study:ef01938b9e97aecadc0c38a4cd7ee92264f077bcfa9006400c16fe5fd3e1db3d",
+  "object": "sleeve-probe",
+  "kind": "feature",
+  "feature": "elbow",
+  "bounds": [
+    278.74,
+    240.66,
+    319.65999999999997,
+    281.58
+  ],
+  "object_bounds": [
+    139.54289437499932,
+    157.14289437499932,
+    445.79064691318223,
+    273.31053779120833
+  ],
+  "controls": [],
+  "units": "study-only computed joints; not a public editable arm kind",
+  "locks": {
+    "shoulder": [
+      160.0,
+      177.6
+    ],
+    "wrist": [
+      438.4,
+      177.60000000000002
+    ]
+  },
+  "focus": [
+    299.2,
+    261.12
+  ],
+  "study": {
+    "mode": "default",
+    "host_engine": "1a2928e9568b9ce3f5598b8ab36f18d2c802c604f1682002a52ff290aa3ff10c",
+    "source_sha256": "ef01938b9e97aecadc0c38a4cd7ee92264f077bcfa9006400c16fe5fd3e1db3d",
+    "adapter": "process-local component_data replacement; real depth visibility",
+    "direction_from_named_wrist": null
+  }
+}

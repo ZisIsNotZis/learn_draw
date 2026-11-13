@@ -1,0 +1,18 @@
+{
+  "tag": "reaccept-hand",
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "accept",
+    "evidence/studio-feedback/usability/working.json",
+    "evidence/studio-feedback/usability/hand-refined/candidate.json"
+  ],
+  "intent_utc": "2026-11-13T05:25:18.033060+00:00",
+  "state": "terminal",
+  "pid": 44452,
+  "exit_code": 0,
+  "terminal_utc": "2026-11-13T05:25:18.737098+00:00",
+  "stdout_bytes": 66,
+  "stdout_chars": 66
+}

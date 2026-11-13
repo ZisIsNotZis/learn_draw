@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-13",
+  "intended": "The author sees the actual result before accepting.",
+  "actual_cases": [
+    {
+      "owner": "independent feedback operator",
+      "case": "First accepted hand refinement was grouped with image loading in one tool execution.",
+      "correction": "Operator immediately undid it, reviewed returned images and reaccepted; later cuff acceptance used a separate call.",
+      "evidence": "usability/REPORT.txt"
+    },
+    {
+      "owner": "main author in previous direction advance",
+      "case": "The 11-cuff-refit image was emitted and accept-refit executed inside the same functions.exec call, before the model could inspect the returned image.",
+      "qualification": "That initial acceptance does not establish prior visual observation. Later images and independent reviews do establish the rendered outcome; exact recovery checks remain mechanical facts.",
+      "evidence": "Previous thread tool history; frozen studio-direction artifacts are not relabeled."
+    }
+  ],
+  "cause": "Treating completion of a tool image load as completion of model observation; batching crossed a perceptual dependency.",
+  "durable_change": "Separate the image-return call from scene acceptance. docs/4_USECASE.md and drawing-studio SKILL now state this boundary. Keep raw lapse/correction evidence; no runtime flag can prove sight.",
+  "scope": "No whole-artwork acceptance was claimed. New instruction effectiveness beyond the corrected run remains to be observed."
+}

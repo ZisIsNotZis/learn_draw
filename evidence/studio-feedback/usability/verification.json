@@ -1,0 +1,60 @@
+{
+  "checks": {
+    "source_matches_initial_export": true,
+    "undo_canonical_scene_recovered": true,
+    "undo_png_recovered": true,
+    "reaccept_canonical_scene_recovered": true,
+    "reaccept_png_recovered": true,
+    "final_preview_scene_matches_working": true,
+    "final_preview_png_recovered": true,
+    "all_cli_launches_observed_terminal": true
+  },
+  "full_report_data_used": false,
+  "full_report_flag_used": false,
+  "source_sha256": "a4617228bc46c2b2a29512a310d19497b7951b0387bf44736f44ad3209e6d3f9",
+  "cli_runs": 12,
+  "responses": [
+    {
+      "tag": "cuff-refined",
+      "revision": "137dd1e786b9706a03d88a03ec234cb4bcf32882599d8a4498b58f476313c379",
+      "engine": "48efa2441b1b275d6d58f93c1064dff8b39fc5e49d2ac22bdaa5e0a6601d0f07",
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    {
+      "tag": "final",
+      "revision": "137dd1e786b9706a03d88a03ec234cb4bcf32882599d8a4498b58f476313c379",
+      "engine": "48efa2441b1b275d6d58f93c1064dff8b39fc5e49d2ac22bdaa5e0a6601d0f07",
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    {
+      "tag": "hand-refined",
+      "revision": "6a21272ee8c2d4672872e57979154ab2b76a043718dd2098469495fffdfaae83",
+      "engine": "48efa2441b1b275d6d58f93c1064dff8b39fc5e49d2ac22bdaa5e0a6601d0f07",
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    {
+      "tag": "initial",
+      "revision": "8abd161147cfd30728a753f50a0286f067e78e88bef8cb3adf8976802add4b9f",
+      "engine": "48efa2441b1b275d6d58f93c1064dff8b39fc5e49d2ac22bdaa5e0a6601d0f07",
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    {
+      "tag": "sleeve-inspect",
+      "revision": "6a21272ee8c2d4672872e57979154ab2b76a043718dd2098469495fffdfaae83",
+      "engine": "48efa2441b1b275d6d58f93c1064dff8b39fc5e49d2ac22bdaa5e0a6601d0f07",
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    {
+      "tag": "smaller",
+      "revision": "c14d9f0997a0fa2760f74730328cba2a64630512929c7f7ad0ab776f230c7890",
+      "engine": "48efa2441b1b275d6d58f93c1064dff8b39fc5e49d2ac22bdaa5e0a6601d0f07",
+      "renderer": "resvg-py-0.5.0-cpu"
+    },
+    {
+      "tag": "undo-view",
+      "revision": "8abd161147cfd30728a753f50a0286f067e78e88bef8cb3adf8976802add4b9f",
+      "engine": "48efa2441b1b275d6d58f93c1064dff8b39fc5e49d2ac22bdaa5e0a6601d0f07",
+      "renderer": "resvg-py-0.5.0-cpu"
+    }
+  ]
+}

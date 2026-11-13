@@ -1,0 +1,18 @@
+{
+  "tag": "accept-cuff",
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "accept",
+    "evidence/studio-feedback/usability/working.json",
+    "evidence/studio-feedback/usability/cuff-refined/candidate.json"
+  ],
+  "intent_utc": "2026-11-13T05:25:53.803009+00:00",
+  "state": "terminal",
+  "pid": 33936,
+  "exit_code": 0,
+  "terminal_utc": "2026-11-13T05:25:54.489934+00:00",
+  "stdout_bytes": 66,
+  "stdout_chars": 66
+}

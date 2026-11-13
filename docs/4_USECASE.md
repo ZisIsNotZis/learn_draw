@@ -10,7 +10,10 @@ follows are `3_REQUIREMENT.md`.
 The author chooses one visible drawing problem, inspects the selected part and region, aligns the
 operation using its actual outline/handles, previews a bounded edit, inspects the resulting local and
 whole views, and accepts or discards it. Keep a short working intent: issue, proposed action, what to
-preserve, observed result. The author may view its own work throughout; fresh-context review is a
+preserve, observed result. Image-loading results must return to the model before a separate acceptance call. A script that
+loads/emits images and then accepts before returning has loaded pixels, not established author
+observation; automated mechanical tests cannot substitute for that missing experience.
+The author may view its own work throughout; fresh-context review is a
 checkpoint on the image, not a replacement for the author's visual control loop.
 
 Use independent image reviewers at useful checkpoints as required below. Their failures guide further

@@ -415,3 +415,16 @@ local fallback, set GIT_SSH_COMMAND to `ssh -o BatchMode=yes -o ConnectTimeout=1
 existing GitHub host-key check; do not disable verification or change global SSH configuration.
 Verify the specific branch with ls-remote after an ambiguous push result before retrying.
 Source: https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port
+
+## Current focused feedback checks
+
+Inspect/preview/place print the focused response by default. Use --full-report only when the full
+node report is needed; files.report always points to it. Reusing a preview directory for inspect
+invalidates its old candidate because inspection replaces images. Image results must return to the
+model before acceptance in a separate tool call; loading and accepting in one script proves no sight.
+
+Current complete studio run: python evidence/studio-feedback/run_tests.py --outdir FRESH (122
+tests at the recorded revision). verify_preservation.py --outdir FRESH in that directory checks ten
+old/default PNGs. verify_delivery.py checks frozen response/operation evidence. Older counts above
+are revision-specific. R&D body replay/verification is documented in evidence/studio-arm/README.md;
+it is CPU study code and is not an installed native component.

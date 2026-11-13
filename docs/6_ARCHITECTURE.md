@@ -149,3 +149,12 @@ join by editing bend only and reuses normal validation/preview/undo. It introduc
 edge or orientation state. This keeps a directionless center honest and leaves depth independent.
 The real person-with-flower study exposes the next representation gap: one quadratic gesture
 cannot provide both a localized elbow and independently controlled cuff direction.
+
+## Selected body-study boundary, not native integration
+
+The owned-garment renderer prototype shares cloth across collar, torso and computed sleeves while
+retaining local arm/torso surfaces and intentional overlap ink. A pure silhouette union loses a
+crossed forearm; separate generic torso/sleeve plates leave shoulder seams. The selected native
+integration must retain both material continuity and independent visibility. The study adapter
+does not handle external props interposed inside those local planes. It is evidence for a design
+decision, not an implementation of the native component contract. See evidence/studio-arm.

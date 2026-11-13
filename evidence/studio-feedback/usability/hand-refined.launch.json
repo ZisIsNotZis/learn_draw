@@ -1,0 +1,27 @@
+{
+  "tag": "hand-refined",
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-feedback/usability/working.json",
+    "--selection",
+    "evidence/studio-feedback/usability/initial/selection.json",
+    "--change",
+    "length=.11",
+    "--change",
+    "handle_thickness=.09090909090909091",
+    "--reason",
+    "Make the fist lighter beside the face while keeping a continuous green stem through its hold",
+    "--outdir",
+    "evidence/studio-feedback/usability/hand-refined"
+  ],
+  "intent_utc": "2026-11-13T05:24:35.818941+00:00",
+  "state": "terminal",
+  "pid": 50784,
+  "exit_code": 0,
+  "terminal_utc": "2026-11-13T05:24:36.905981+00:00",
+  "stdout_bytes": 3084,
+  "stdout_chars": 3084
+}

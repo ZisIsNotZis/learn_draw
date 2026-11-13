@@ -1,0 +1,328 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    800,
+    640
+  ],
+  "background": "#f3ead9",
+  "nodes": [
+    {
+      "id": "head",
+      "kind": "head",
+      "intent": "a gentle young person looks toward the flower at the right",
+      "length": 0.23,
+      "angle": -4,
+      "hair": "side-part",
+      "expression": "gentle",
+      "gaze": 1,
+      "eye_scale": 0.87,
+      "depth": 7,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.2,
+          -0.27
+        ]
+      },
+      "palette": {
+        "hair": "#4c5965",
+        "skin": "#efd0b5",
+        "iris": "#7c6f53",
+        "ink": "#4a4448"
+      }
+    },
+    {
+      "id": "neck",
+      "kind": "stroke",
+      "intent": "a short neck joins chin to shirt beneath the head",
+      "length": 0.043,
+      "thickness": 0.055,
+      "angle": 0,
+      "depth": 2,
+      "attachment": {
+        "to": "head",
+        "self": "root",
+        "target": "chin"
+      },
+      "palette": {
+        "fill": "#efd0b5"
+      }
+    },
+    {
+      "id": "shirt",
+      "kind": "shape",
+      "intent": "a soft blue shirt reaches the foreground table",
+      "length": 0.4,
+      "width": 0.9,
+      "rounding": 0.92,
+      "taper": -0.25,
+      "stroke": 0.006,
+      "depth": 4,
+      "attachment": {
+        "to": "neck",
+        "self": "top",
+        "target": "tip"
+      },
+      "palette": {
+        "fill": "#6c8d98",
+        "ink": "#445b63"
+      }
+    },
+    {
+      "id": "flower-hand",
+      "kind": "grip",
+      "intent": "a small illustrated fist holds the green flower stem",
+      "length": 0.125,
+      "angle": 90,
+      "depth": 8,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.24307646377428427,
+          0.14912269022555757
+        ]
+      },
+      "palette": {
+        "skin": "#efd0b5",
+        "ink": "#946d59",
+        "handle": "#668367",
+        "handle_ink": "#668367"
+      }
+    },
+    {
+      "id": "upper-stem",
+      "kind": "stroke",
+      "intent": "the stem continues upward from the held segment to the blossom",
+      "length": 0.155,
+      "thickness": 0.00980392156862745,
+      "angle": 180,
+      "depth": 6,
+      "attachment": {
+        "to": "flower-hand",
+        "self": "root",
+        "target": "handle_right"
+      },
+      "palette": {
+        "fill": "#668367"
+      }
+    },
+    {
+      "id": "lower-stem",
+      "kind": "stroke",
+      "intent": "a short free stem end continues below the gripping hand",
+      "length": 0.06,
+      "thickness": 0.00980392156862745,
+      "angle": 0,
+      "depth": 6,
+      "attachment": {
+        "to": "flower-hand",
+        "self": "root",
+        "target": "handle_left"
+      },
+      "palette": {
+        "fill": "#668367"
+      }
+    },
+    {
+      "id": "flower-heart",
+      "kind": "shape",
+      "intent": "a warm golden center joins the five pale petals",
+      "profile": "oval",
+      "length": 0.039,
+      "width": 1,
+      "stroke": 0.012,
+      "depth": 10,
+      "attachment": {
+        "to": "upper-stem",
+        "self": "center",
+        "target": "tip"
+      },
+      "palette": {
+        "fill": "#d4a34e",
+        "ink": "#ae823e"
+      }
+    },
+    {
+      "id": "petal-1",
+      "kind": "shape",
+      "intent": "rounded daisy petal radiates from the actual blossom center",
+      "profile": "oval",
+      "length": 0.067,
+      "width": 0.53,
+      "angle": 36.0,
+      "stroke": 0.018,
+      "depth": 9.0,
+      "attachment": {
+        "to": "flower-heart",
+        "self": "center",
+        "target": "center",
+        "offset": [
+          0.017633557568774192,
+          0.024270509831248423
+        ]
+      },
+      "palette": {
+        "fill": "#fff7df",
+        "ink": "#baa58b"
+      }
+    },
+    {
+      "id": "petal-2",
+      "kind": "shape",
+      "intent": "rounded daisy petal radiates from the actual blossom center",
+      "profile": "oval",
+      "length": 0.067,
+      "width": 0.53,
+      "angle": 108.0,
+      "stroke": 0.018,
+      "depth": 9.05,
+      "attachment": {
+        "to": "flower-heart",
+        "self": "center",
+        "target": "center",
+        "offset": [
+          0.02853169548885461,
+          -0.00927050983124842
+        ]
+      },
+      "palette": {
+        "fill": "#fff7df",
+        "ink": "#baa58b"
+      }
+    },
+    {
+      "id": "petal-3",
+      "kind": "shape",
+      "intent": "rounded daisy petal radiates from the actual blossom center",
+      "profile": "oval",
+      "length": 0.067,
+      "width": 0.53,
+      "angle": -180.0,
+      "stroke": 0.018,
+      "depth": 9.1,
+      "attachment": {
+        "to": "flower-heart",
+        "self": "center",
+        "target": "center",
+        "offset": [
+          3.673940397442059e-18,
+          -0.03
+        ]
+      },
+      "palette": {
+        "fill": "#fff7df",
+        "ink": "#baa58b"
+      }
+    },
+    {
+      "id": "petal-4",
+      "kind": "shape",
+      "intent": "rounded daisy petal radiates from the actual blossom center",
+      "profile": "oval",
+      "length": 0.067,
+      "width": 0.53,
+      "angle": -108.0,
+      "stroke": 0.018,
+      "depth": 9.15,
+      "attachment": {
+        "to": "flower-heart",
+        "self": "center",
+        "target": "center",
+        "offset": [
+          -0.028531695488854605,
+          -0.009270509831248426
+        ]
+      },
+      "palette": {
+        "fill": "#fff7df",
+        "ink": "#baa58b"
+      }
+    },
+    {
+      "id": "petal-5",
+      "kind": "shape",
+      "intent": "rounded daisy petal radiates from the actual blossom center",
+      "profile": "oval",
+      "length": 0.067,
+      "width": 0.53,
+      "angle": -36.0,
+      "stroke": 0.018,
+      "depth": 9.2,
+      "attachment": {
+        "to": "flower-heart",
+        "self": "center",
+        "target": "center",
+        "offset": [
+          -0.0176335575687742,
+          0.02427050983124842
+        ]
+      },
+      "palette": {
+        "fill": "#fff7df",
+        "ink": "#baa58b"
+      }
+    },
+    {
+      "id": "stem-leaf",
+      "kind": "shape",
+      "intent": "one small leaf grows from the upper stem",
+      "profile": "oval",
+      "length": 0.06,
+      "width": 0.42,
+      "angle": -75,
+      "stroke": 0,
+      "depth": 6.5,
+      "attachment": {
+        "to": "upper-stem",
+        "self": "bottom",
+        "target": "center"
+      },
+      "palette": {
+        "fill": "#668367"
+      }
+    },
+    {
+      "id": "table-front",
+      "kind": "shape",
+      "intent": "the foreground table continues out of frame and hides the lower body",
+      "length": 0.25,
+      "width": 6,
+      "rounding": 0,
+      "stroke": 0,
+      "depth": 20,
+      "attachment": {
+        "to": "table-top",
+        "self": "top",
+        "target": "center",
+        "offset": [
+          0,
+          -0.0125
+        ]
+      },
+      "palette": {
+        "fill": "#d9c7aa"
+      }
+    },
+    {
+      "id": "table-top",
+      "kind": "stroke",
+      "intent": "a quiet horizontal table edge grounds the person",
+      "length": 1.3,
+      "thickness": 0.025,
+      "angle": 90,
+      "start_cap": "flat",
+      "end_cap": "flat",
+      "depth": 21,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.52,
+          0.28
+        ]
+      },
+      "palette": {
+        "fill": "#9a8066"
+      }
+    }
+  ]
+}

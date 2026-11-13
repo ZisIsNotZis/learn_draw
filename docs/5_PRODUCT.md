@@ -634,5 +634,9 @@ Evidence is in ../evidence/studio-direction/, including independent pose correct
 The original figure study improves its cuff and silhouette but remains an unaccepted artwork.
 The single-curve sleeve still reads as a tube and the generic torso lacks shoulder/neckline structure.
 These are missing useful body/arm primitives, not proof that more connection controls will yield
-a natural figure. Preserve existing general strokes for gestures/flow; next compare a high-level
-elbow/shoulder/wrist representation with simple defaults and optional local refinement.
+a natural figure. Preserve existing general strokes for gestures/flow. A concrete comparison now selects an owned
+upper-body garment with computed shoulder/elbow/wrist joints, collar/shoulder pattern and internal
+arm surfaces. Cases23/24 remove the assembled shoulder step; crossing failures show why shared
+material must not erase front-arm ink/depth. Thick elbows and cuff/hand scale remain weaknesses.
+This study is not a native kind or editable rig yet; native adoption and independent operation are
+the next checkpoint. Source-bound comparisons and limits are in ../evidence/studio-arm/README.md.

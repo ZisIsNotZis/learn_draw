@@ -1,0 +1,16 @@
+{
+  "tag": "help",
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "--help"
+  ],
+  "intent_utc": "2026-11-13T05:23:36.888215+00:00",
+  "state": "terminal",
+  "pid": 40496,
+  "exit_code": 0,
+  "terminal_utc": "2026-11-13T05:23:37.204866+00:00",
+  "stdout_bytes": 1115,
+  "stdout_chars": 1115
+}

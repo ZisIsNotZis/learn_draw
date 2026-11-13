@@ -1,0 +1,31 @@
+{
+  "base": "d88114d0c69b27ff518b36f584bd36928c98cd2ddc6ce3f25df31ea7018dcbc0",
+  "engine": "study:98a29febc52c7a76cb527554abce3277259e9c44b81416b1a86e473343a73356",
+  "object": "shirt",
+  "kind": "feature",
+  "feature": "right-elbow",
+  "bounds": [
+    370.0725869032113,
+    299.23199999999997,
+    410.0725869032113,
+    339.23199999999997
+  ],
+  "object_bounds": [
+    166.47994498416523,
+    190.505312780017,
+    435.9644749453459,
+    467.1700051844151
+  ],
+  "controls": [],
+  "units": "study-only garment pose port",
+  "locks": {
+    "neck": [
+      320.0,
+      191.232
+    ]
+  },
+  "focus": [
+    390.0725869032113,
+    319.23199999999997
+  ]
+}

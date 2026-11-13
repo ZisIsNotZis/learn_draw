@@ -1,0 +1,74 @@
+{
+  "observation": "Specific build_body replay processes absent at follow-up process inspection; all three final study reports and PNGs present. Original exec terminal handle unavailable after truncation; no exit-code claim.",
+  "results": [
+    {
+      "mode": "default",
+      "reference": "24-sewn-default",
+      "exact_png": true,
+      "png_sha256": "52dd14ea68e4a269e709805afcc2cd94cea4c7296a142cbab75c1e789d9638d4",
+      "study": {
+        "source_sha256": "104b54b61c68b2f6a7e18c56cd889f9e58dc5af03f6a9b9e9adad75a0115b0a9",
+        "input_sha256": "a4617228bc46c2b2a29512a310d19497b7951b0387bf44736f44ad3209e6d3f9",
+        "pose": "default",
+        "scope": "owned garment renderer study; no native body API/editing claim",
+        "owned_cloth": true,
+        "internal_front_contours": false,
+        "local_surface_depths": {
+          "left_arm": -1,
+          "torso": 0,
+          "right_arm": 1
+        },
+        "external_interposed_prop_support": "not implemented/verified by this study",
+        "host_engine": "48efa2441b1b275d6d58f93c1064dff8b39fc5e49d2ac22bdaa5e0a6601d0f07"
+      },
+      "engine": "study:c1847a0201c8b12164f482e97ebd8c233c6c7c66417bc62695da0c7d952fcc0c",
+      "comparison": "Exact historical clean PNG reproduction."
+    },
+    {
+      "mode": "offering",
+      "reference": "23-sewn-garment",
+      "exact_png": true,
+      "png_sha256": "cc1fa369736fa1702c5096583d122c7be423b16d32f2f7f062a06607498317ed",
+      "study": {
+        "source_sha256": "104b54b61c68b2f6a7e18c56cd889f9e58dc5af03f6a9b9e9adad75a0115b0a9",
+        "input_sha256": "a4617228bc46c2b2a29512a310d19497b7951b0387bf44736f44ad3209e6d3f9",
+        "pose": "offering",
+        "scope": "owned garment renderer study; no native body API/editing claim",
+        "owned_cloth": true,
+        "internal_front_contours": false,
+        "local_surface_depths": {
+          "left_arm": -1,
+          "torso": 0,
+          "right_arm": 1
+        },
+        "external_interposed_prop_support": "not implemented/verified by this study",
+        "host_engine": "48efa2441b1b275d6d58f93c1064dff8b39fc5e49d2ac22bdaa5e0a6601d0f07"
+      },
+      "engine": "study:3e3fc6574db2b3a56d9a6c341e20007892f67fa1439148284144ba016c267f7f",
+      "comparison": "Exact historical clean PNG reproduction."
+    },
+    {
+      "mode": "crossed",
+      "reference": "25-sewn-crossed-person",
+      "exact_png": true,
+      "png_sha256": "8b57ed9aad21850c478304122ed31da62f930c6fa42e2e9b634a8a35424a98af",
+      "study": {
+        "source_sha256": "104b54b61c68b2f6a7e18c56cd889f9e58dc5af03f6a9b9e9adad75a0115b0a9",
+        "input_sha256": "a4617228bc46c2b2a29512a310d19497b7951b0387bf44736f44ad3209e6d3f9",
+        "pose": "cross-person-corrected",
+        "scope": "owned garment renderer study; no native body API/editing claim",
+        "owned_cloth": true,
+        "internal_front_contours": true,
+        "local_surface_depths": {
+          "left_arm": -1,
+          "torso": 0,
+          "right_arm": 1
+        },
+        "external_interposed_prop_support": "not implemented/verified by this study",
+        "host_engine": "48efa2441b1b275d6d58f93c1064dff8b39fc5e49d2ac22bdaa5e0a6601d0f07"
+      },
+      "engine": "study:cdd7d5596aafb74c190d6317b3e7e8486dc0a26ef415af2acbe3ab1db02641d0",
+      "comparison": "Retained new replay, not an independent second run; differs from20 because shoulder pattern implementation evolved."
+    }
+  ]
+}

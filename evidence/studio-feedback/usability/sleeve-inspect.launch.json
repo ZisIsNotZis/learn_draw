@@ -1,0 +1,23 @@
+{
+  "tag": "sleeve-inspect",
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "inspect",
+    "evidence/studio-feedback/usability/working.json",
+    "--object",
+    "reaching-sleeve",
+    "--feature",
+    "object",
+    "--outdir",
+    "evidence/studio-feedback/usability/sleeve-inspect"
+  ],
+  "intent_utc": "2026-11-13T05:25:22.354366+00:00",
+  "state": "terminal",
+  "pid": 18224,
+  "exit_code": 0,
+  "terminal_utc": "2026-11-13T05:25:23.331709+00:00",
+  "stdout_bytes": 2740,
+  "stdout_chars": 2740
+}

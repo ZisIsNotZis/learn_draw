@@ -1,0 +1,117 @@
+{
+  "provenance": "Parent-captured summaries of actual image-only reviewers; not verbatim transcripts. Followups targeted selected changes, not independent whole-art gates. Case25 observed by author only, no fresh image review claim.",
+  "phases": [
+    {
+      "phase": "initial fresh image critics",
+      "cases": [
+        "01-context-baseline",
+        "02-context-jointed",
+        "03-context-wristfit",
+        "04-default-stroke",
+        "05-default-jointed",
+        "06-context-finished",
+        "07-default-finished"
+      ],
+      "observations": "Quadratic baseline reads as hose; jointed elbow clearer but rigid V/rounded outer strip. Isolated crease stray; cuff helps recognition. Shoulder and hand junction remain weak.",
+      "images": [
+        {
+          "path": "01-context-baseline/artwork.png",
+          "sha256": "c9c1fcc9d0fde9b80f741d41fcec9f4c767fc3c4c5eab99239b07a25f835d5a1"
+        },
+        {
+          "path": "02-context-jointed/artwork.png",
+          "sha256": "ccb930df370a34d5ed50b24fd0f1ac00342b948a636227ae69dcf207804e62aa"
+        },
+        {
+          "path": "03-context-wristfit/artwork.png",
+          "sha256": "98322214ed159d7afd31108a21a1135b58ecbd67423a8d13d901f59597a3b73b"
+        },
+        {
+          "path": "04-default-stroke/artwork.png",
+          "sha256": "170817abc09182f9a88163d31ba5303ce40a069f8cb07106925dca60c897658a"
+        },
+        {
+          "path": "05-default-jointed/artwork.png",
+          "sha256": "6768325a268f4cd491f91141665447991b978058bde0b0f90fca5e3774e340fe"
+        },
+        {
+          "path": "06-context-finished/artwork.png",
+          "sha256": "a51ca7bc158236e5454274fff8a5d3aa03a108813d0d7d962ec6d188801ab1e6"
+        },
+        {
+          "path": "07-default-finished/artwork.png",
+          "sha256": "12a525ec52dbcfc9d7f6f1c915995ef905819e575e24b4f01c990b37376955e5"
+        }
+      ]
+    },
+    {
+      "phase": "targeted follow-up",
+      "cases": [
+        "08-context-soft",
+        "11-owned-garment-inset-joints",
+        "12-default-garment"
+      ],
+      "observations": "Softer elbow helps; owned cloth removes intervening torso seam. Shoulder steps and deep armpit slots persist.",
+      "images": [
+        {
+          "path": "08-context-soft/artwork.png",
+          "sha256": "5c47172b69c49f3811269a5038866d72e34a8b97537994b3a7b951ab30b2b049"
+        },
+        {
+          "path": "11-owned-garment-inset-joints/artwork.png",
+          "sha256": "7826b3e4d69b1be1a3b005f9843d55a3635c8d2c9e02de778da9e9a1bfb8b4eb"
+        },
+        {
+          "path": "12-default-garment/artwork.png",
+          "sha256": "1521420636c85b3ca758e3a7637cbf00f2de2cbc05a3bef9af1c39196184bcda"
+        }
+      ]
+    },
+    {
+      "phase": "targeted crossing comparison",
+      "cases": [
+        "16-default-garment-rounded",
+        "17-crossed-union",
+        "18-crossed-front-surfaces",
+        "20-crossed-person-intent"
+      ],
+      "observations": "Pure union hides forearm. Internal contour restores it but line endpoint can look pocket-like. Real hand/stem improves crossing; thick elbow, cuff ledge and flower near face remain.",
+      "images": [
+        {
+          "path": "16-default-garment-rounded/artwork.png",
+          "sha256": "f0949c43f218401ffbf7c0118e64e64ae1fe51d75c9af819a1e78107ba6ec771"
+        },
+        {
+          "path": "17-crossed-union/artwork.png",
+          "sha256": "282f17668c4e0d0a9a6ebafd96ce50a0fb9e5bfcc93edac89348f156753b8b61"
+        },
+        {
+          "path": "18-crossed-front-surfaces/artwork.png",
+          "sha256": "73ec9a6a1f62b245098d9b4de753d402b4b94043fa695408bbdc6845c9c6b168"
+        },
+        {
+          "path": "20-crossed-person-intent/artwork.png",
+          "sha256": "c89e523897740fc1b08cd9f696321d161ad9cccad757f63c38d99afc1e7993fa"
+        }
+      ]
+    },
+    {
+      "phase": "final targeted image critic /root/arm_images_a",
+      "cases": [
+        "23-sewn-garment",
+        "24-sewn-default"
+      ],
+      "observations": "Shoulder steps/disconnection no longer obvious. Both read as simple long-sleeve tops. Person shoulder/elbow/cuff recognizable; elbow thick/round, narrow hanging armpit gap and large hand transition remain. Standalone elbow less explicit, sleeves asymmetric and right lower sleeve straighter/wider.",
+      "images": [
+        {
+          "path": "23-sewn-garment/artwork.png",
+          "sha256": "cc1fa369736fa1702c5096583d122c7be423b16d32f2f7f062a06607498317ed"
+        },
+        {
+          "path": "24-sewn-default/artwork.png",
+          "sha256": "52dd14ea68e4a269e709805afcc2cd94cea4c7296a142cbab75c1e789d9638d4"
+        }
+      ]
+    }
+  ]
+}

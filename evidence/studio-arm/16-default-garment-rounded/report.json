@@ -1,0 +1,214 @@
+{
+  "revision": "d88114d0c69b27ff518b36f584bd36928c98cd2ddc6ce3f25df31ea7018dcbc0",
+  "engine": "study:e61d81a65399c59ff68c6b723cad0baba7563ac866a3fcca3475e369d7004f36",
+  "status": "study-only",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-arm\\16-default-garment-rounded\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-arm\\16-default-garment-rounded\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-arm\\16-default-garment-rounded\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-arm\\16-default-garment-rounded\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-arm\\16-default-garment-rounded\\artwork.png": "f0949c43f218401ffbf7c0118e64e64ae1fe51d75c9af819a1e78107ba6ec771",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-arm\\16-default-garment-rounded\\alignment.png": "4038637409cc8ffb132ca554f23a5e8f82898baf23767e2c44c037a334349d5c",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-arm\\16-default-garment-rounded\\object-closeup.png": "f65d4c4518da36ec708540f06dafce2ecde157c79827d76294a868f02c606601",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-arm\\16-default-garment-rounded\\edit-closeup.png": "0680de735d74fde944c87d2c9209a292d1b9b466f637f9af82c68ce6b65ea0a2"
+  },
+  "nodes": {
+    "shirt": {
+      "kind": "shape",
+      "intent": "a plain long-sleeved shirt with a collar and owned sleeves",
+      "bounds": [
+        166.47994498416523,
+        190.505312780017,
+        476.00478875879537,
+        467.1700051844151
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            166.47994498416523,
+            190.505312780017,
+            476.00478875879537,
+            467.1700051844151
+          ],
+          "controls": []
+        },
+        "left-shoulder": {
+          "bounds": [
+            211.5450980392157,
+            226.1370980392157,
+            251.5450980392157,
+            266.1370980392157
+          ],
+          "controls": []
+        },
+        "left-elbow": {
+          "bounds": [
+            174.6636549019608,
+            332.7956831372549,
+            214.6636549019608,
+            372.7956831372549
+          ],
+          "controls": []
+        },
+        "left-wrist": {
+          "bounds": [
+            164.064,
+            445.15200000000004,
+            204.064,
+            485.15200000000004
+          ],
+          "controls": []
+        },
+        "right-shoulder": {
+          "bounds": [
+            388.4549019607843,
+            226.1370980392157,
+            428.4549019607843,
+            266.1370980392157
+          ],
+          "controls": []
+        },
+        "right-elbow": {
+          "bounds": [
+            435.93600000000004,
+            353.4285939627358,
+            475.93600000000004,
+            393.4285939627358
+          ],
+          "controls": []
+        },
+        "right-wrist": {
+          "bounds": [
+            435.93600000000004,
+            445.15200000000004,
+            475.93600000000004,
+            485.15200000000004
+          ],
+          "controls": []
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            320.0
+          ],
+          "normal": null
+        },
+        "neck": {
+          "point": [
+            320.0,
+            191.232
+          ],
+          "normal": null
+        },
+        "left-shoulder": {
+          "point": [
+            231.5450980392157,
+            246.1370980392157
+          ],
+          "normal": null
+        },
+        "left-elbow": {
+          "point": [
+            194.6636549019608,
+            352.7956831372549
+          ],
+          "normal": null
+        },
+        "left-wrist": {
+          "point": [
+            184.064,
+            465.15200000000004
+          ],
+          "normal": null
+        },
+        "right-shoulder": {
+          "point": [
+            408.4549019607843,
+            246.1370980392157
+          ],
+          "normal": null
+        },
+        "right-elbow": {
+          "point": [
+            455.93600000000004,
+            373.4285939627358
+          ],
+          "normal": null
+        },
+        "right-wrist": {
+          "point": [
+            455.93600000000004,
+            465.15200000000004
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            320.0,
+            191.232
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            435.96799999999996,
+            320.0
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            448.768
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            204.032,
+            320.0
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": []
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips with an owned handle segment, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "removal": null,
+  "insertion": null,
+  "direction_fit": null,
+  "alignment_legend": {
+    "red dashed": "removed previous paint; removal only",
+    "blue": "pinned stroke endpoints / inspected target; removal: retained affected children",
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "teal arrows": "outward join direction where defined; center mounts can be directionless",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge/spine, terminal, digit-tip or exact-mount focus"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span",
+  "host_engine": "48efa2441b1b275d6d58f93c1064dff8b39fc5e49d2ac22bdaa5e0a6601d0f07",
+  "study": {
+    "source_sha256": "e61d81a65399c59ff68c6b723cad0baba7563ac866a3fcca3475e369d7004f36",
+    "scope": "single offering pose; no native upper-body API or editing claim",
+    "owned_cloth": true
+  }
+}

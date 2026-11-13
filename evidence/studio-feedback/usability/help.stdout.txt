@@ -1,0 +1,23 @@
+usage: python.exe -m scripts.studio [-h]
+                                    {new,add,place,demo,inspect,preview,accept,undo} ...
+
+python -m scripts.studio: inspect, preview, accept and undo semantic part
+edits.
+
+positional arguments:
+  {new,add,place,demo,inspect,preview,accept,undo}
+    new                 create a useful preset; no path coordinates needed
+    add                 legacy immediate preset insertion; use place for
+                        visible proposals
+    place               preview one new component before inserting it; revise
+                        the pending proposal visibly
+    demo                render a reproducible tuck/ease-back/undo sequence
+    inspect             inspect a revision-bound feature or edge
+    preview             preview a local push without overwriting the working
+                        scene
+    accept              accept only if the scene still matches the preview
+                        base
+    undo                restore the previous accepted scene exactly
+
+options:
+  -h, --help            show this help message and exit

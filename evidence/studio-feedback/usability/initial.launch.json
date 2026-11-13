@@ -1,0 +1,23 @@
+{
+  "tag": "initial",
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "inspect",
+    "evidence/studio-feedback/usability/working.json",
+    "--object",
+    "flower-hand",
+    "--feature",
+    "object",
+    "--outdir",
+    "evidence/studio-feedback/usability/initial"
+  ],
+  "intent_utc": "2026-11-13T05:23:48.431161+00:00",
+  "state": "terminal",
+  "pid": 15012,
+  "exit_code": 0,
+  "terminal_utc": "2026-11-13T05:23:49.508421+00:00",
+  "stdout_bytes": 2639,
+  "stdout_chars": 2639
+}

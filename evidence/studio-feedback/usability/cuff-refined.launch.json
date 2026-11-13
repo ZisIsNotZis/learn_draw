@@ -1,0 +1,27 @@
+{
+  "tag": "cuff-refined",
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-feedback/usability/working.json",
+    "--selection",
+    "evidence/studio-feedback/usability/sleeve-inspect/selection.json",
+    "--set",
+    "end_width",
+    "--value",
+    ".88",
+    "--reason",
+    "The cuff extends past the smaller wrist; taper its end to meet the hand",
+    "--outdir",
+    "evidence/studio-feedback/usability/cuff-refined"
+  ],
+  "intent_utc": "2026-11-13T05:25:37.275452+00:00",
+  "state": "terminal",
+  "pid": 46376,
+  "exit_code": 0,
+  "terminal_utc": "2026-11-13T05:25:38.367672+00:00",
+  "stdout_bytes": 3030,
+  "stdout_chars": 3030
+}

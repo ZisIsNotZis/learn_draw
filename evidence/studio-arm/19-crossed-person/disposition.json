@@ -1,0 +1,5 @@
+{
+  "scope": "pose study; superseded metadata-only",
+  "problem": "The inherited head intent still describes a flower at the right, although this pose moves it left. No whole-artwork acceptance.",
+  "replacement": "20-crossed-person-intent; same visible image, corrected authored intent and fresh revision/source binding."
+}

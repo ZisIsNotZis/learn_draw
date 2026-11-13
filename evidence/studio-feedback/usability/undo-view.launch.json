@@ -1,0 +1,23 @@
+{
+  "tag": "undo-view",
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "inspect",
+    "evidence/studio-feedback/usability/working.json",
+    "--object",
+    "flower-hand",
+    "--feature",
+    "object",
+    "--outdir",
+    "evidence/studio-feedback/usability/undo-view"
+  ],
+  "intent_utc": "2026-11-13T05:25:03.205548+00:00",
+  "state": "terminal",
+  "pid": 36164,
+  "exit_code": 0,
+  "terminal_utc": "2026-11-13T05:25:04.298964+00:00",
+  "stdout_bytes": 2655,
+  "stdout_chars": 2655
+}

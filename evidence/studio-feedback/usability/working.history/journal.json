@@ -1,0 +1,26 @@
+[
+  {
+    "base": "8abd161147cfd30728a753f50a0286f067e78e88bef8cb3adf8976802add4b9f",
+    "result": "6a21272ee8c2d4672872e57979154ab2b76a043718dd2098469495fffdfaae83",
+    "operation": {
+      "object": "flower-hand",
+      "feature": "object",
+      "parameters": {
+        "length": 0.11,
+        "handle_thickness": 0.09090909090909091
+      },
+      "reason": "Make the fist lighter beside the face while keeping a continuous green stem through its hold"
+    }
+  },
+  {
+    "base": "6a21272ee8c2d4672872e57979154ab2b76a043718dd2098469495fffdfaae83",
+    "result": "137dd1e786b9706a03d88a03ec234cb4bcf32882599d8a4498b58f476313c379",
+    "operation": {
+      "object": "reaching-sleeve",
+      "feature": "object",
+      "reason": "The cuff extends past the smaller wrist; taper its end to meet the hand",
+      "parameter": "end_width",
+      "value": 0.88
+    }
+  }
+]

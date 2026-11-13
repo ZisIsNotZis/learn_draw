@@ -52,8 +52,9 @@ uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation ski
   receiving surface and palm/handle/thumb overlap. These are bounded visual outcomes, not a
   general anatomy or physical-fold capability.
 
-The current direction advance passes 118 studio-family tests, including eight direction/guide
-tests; ten earlier/default PNGs remain exact. A fresh operator repairs a cuff, raises the
+The current focused-response advance passes 122 studio-family tests; ten earlier/default PNGs
+remain exact. Current source-bound evidence is ../evidence/studio-feedback/README.md. The earlier
+direction advance passed 118 tests, including eight direction/guide tests. A fresh operator repairs a cuff, raises the
 hand/flower assembly, observes a new cuff mismatch, re-aims and verifies exact undo/reaccept.
 Its 152-file operation evidence binds the pre-halo source; a verified inspection-only transition,
 16-file current-guide supplement plus two external guide-image digests and a fresh current aim
@@ -105,27 +106,33 @@ failed candidate and actual terminal result remain recorded. A wrong lower-left 
 was corrected through exact-anchor inspection. Follow-up critics recognize that hanging sleeve and
 find arrow contrast resolved, while full tiny-part marker clusters still require a closeup.
 
-The picture points back to component design. A generic torso and a single quadratic gesture do not
-supply useful shoulders, collar, upper arm, elbow and forearm by themselves. Fitting its end direction
-bows the entire sleeve; correct contact does not give it an elbow. Next compare a simple semantic
-upper-body/arm representation against this actual image. Investigate existing local joint/contour
-implementations before adding another mechanism. Test a small default with recognizable shoulder,
-elbow and wrist; optional local controls should refine it without reconstructing it from generic
-masses or a list of vertices. Provide meaningful body ports so a shoulder is not a remembered edge
-fraction. Keep line art distinct from material/depth and retain general strokes for flow/gesture.
-Do not repeat the failed detailed mesh route merely because it supplies more anatomy data.
+The representation comparison is now concrete: explicit shoulder/elbow/wrist joints improve the
+bend, but assembling an independent sleeve and generic torso still produces shoulder seams. The
+owned-garment study joins a computed collar/shoulder pattern to its sleeves; cases23/24 remove the
+previous shoulder steps. A separate crossed-arm failure shows that material union must retain
+internal arm surfaces and deliberate overlap ink. Fresh critics still see thick elbows, a narrow
+armpit gap and abrupt hand/cuff scale. Evidence and frozen source history are in
+../evidence/studio-arm/README.md. This is a process-local renderer study, NOT a shipped native body
+kind or editable rig. External props between its internal planes are not implemented/verified.
 
-Use an early actual component sample plus this connected composition to decide the representation,
-then demonstrate another modest pose/intent and observed local correction. The next checkpoint is
-that useful body/arm slice and real artwork comparison in the next substantive unit, not an engine
-or documentation milestone. Main agent owns implementation/art; fresh operation/image review checks
-its own scope. Broader natural pose, refined anime style and full VLM creation remain open.
+Next implement the selected owned upper-body representation as a native editable component, with
+simple defaults and optional shoulder/elbow/wrist refinement. Preserve named ports, independent
+surface visibility and intentional ink; do not expose a vertex list. Demonstrate the default,
+connected offering and a different pose through ordinary preview/accept/undo, then require an
+independent skill/help-only operator to revise it without reconstructing the primitive. Main agent
+owns implementation/art. The next checkpoint is this usable body slice with real picture comparison,
+not a catalog, architecture document or a whole-artwork claim. Fine anime style and broad creation
+remain open. Avoid repeating the detailed mesh route merely to obtain more anatomy data.
 
-There is also a concrete interface cost: the independent run's selected-part inspection returned up
-to 35,593 characters by serializing all 17 scene nodes. Keep full report files, but make ordinary CLI
-responses focus on the selected part, actual controls and image/report handles before multiplying
-body-edit operations. Use disclosed skill branches where they reduce irrelevant context. This is
-VLM authoring experience, not another drawing metric to optimize. The evidence owns raw counts.
+Focused CLI output is now shipped: selected geometry/configuration plus image/file handles,
+complete report on disk and --full-report opt-in. The same inspection is 2,550 versus35,371
+characters. An independent operator refines hand and cuff and verifies exact undo/reaccept without
+reading full report data. Its first acceptance was mistakenly grouped with image loading; it undid,
+observed and reaccepted separately. The same sequencing error affected the root's earlier cuff-refit
+acceptance. ../evidence/studio-feedback/visual-sequencing-audit.json preserves both limitations;
+current workflow requires returned image observation before a separate accept call. Old evidence
+is not relabelled as proof of prior sight.
+
 Keep sealed brief and portrait baseline unchanged; GPU pause remains in force.
 
 ## History and resources

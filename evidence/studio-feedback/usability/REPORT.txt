@@ -1,0 +1,72 @@
+Independent bounded execution-capable usability review, 2026-11-13
+
+Outcome: the focused CLI supports a modest hand/held-flower proportion refinement
+without loading the full scene report. The smaller fist remains a recognizable
+closed hold; stem continuity and cuff width were corrected through public controls.
+This is an interface usability result, not whole-artwork or anatomical approval.
+
+Only supplied SKILL.md, 7_INTERFACE.md, object-interaction.md, initial.json, CLI
+help and my own generated outputs were read. The initial scene was copied unchanged
+to working.json before editing. No production code/tests/examples/roadmap/other
+review evidence was consulted. No scene-node/SVG authoring, generation, GPU work,
+source edits or commits occurred. Scripts here only launch/log commands and verify
+artifacts. Full reports were generated normally and hashed as opaque files; their
+data was never loaded and --full-report was never requested.
+
+Visual decisions:
+- Initial clean image: fist looked heavy next to the face. Orange object overlay
+  correctly selected the hand and its owned handle, not the extended flower stem.
+- smaller/ (preserved unaccepted): length .125 -> .11 improved proportion but
+  narrowed the owned handle relative to its external green stem sections. The
+  closeup also exposed a cuff projecting beyond the smaller wrist.
+- hand-refined/: grouped length=.11 and handle_thickness=.09090909090909091
+  kept the original .009803921568627453 canvas handle thickness. This figure was
+  computed from the prior/current nominal scale, not tuned to a pixel metric.
+  Clean, alignment and magnified images showed the continuous stem and readable hold.
+- sleeve-inspect/ exposed both endpoint bindings, editable end_width and absence
+  of editable length/angle for the two-pinned sleeve. cuff-refined/ end_width=.88
+  reduced the projecting cuff while keeping the broader upper sleeve and both pins.
+  Clean, alignment and closeup were observed before its accept. The unchanged
+  shoulder/body/head/table remain recognizable, and final clean/alignment were read.
+
+Feedback utility:
+initial stdout (2639 bytes) directly supplied controls, authored values, current
+bounds, available features/anchors, attached children, wrist and handle dimensions,
+renderer/revision/engine and image/file handles. No broad report search was needed.
+The authored object omitted default handle_thickness; the supplied interface's
+default .08 and emitted dimensions were sufficient to compute the matched thickness.
+Image hashes are in SHA256.json, rather than the default stdout. That did not block
+the operation: local file hashing verified delivery and undo/reaccept identity.
+Focused JSON is still one long line, but small enough to read in a single response.
+
+Recovery and operator sequencing:
+The first hand accept was mistakenly in the same tool invocation as loading its
+images, so model observation of those returned images happened after that accept.
+I immediately undid, confirmed restored revision and PNG, reviewed the returned
+candidate clean/alignment/closeup, and reaccepted the same candidate. This lapse is
+an operator sequencing error, not evidence of a CLI defect. No proposed artwork
+was sent for whole-drawing approval. Verification proves:
+- initial/scene.json == undo-view/scene.json as parsed canonical scene data;
+- initial/artwork.png == undo-view/artwork.png byte-for-byte by SHA256;
+- hand-refined/scene.json == sleeve-inspect/scene.json after reaccept;
+- hand-refined/artwork.png == sleeve-inspect/artwork.png after reaccept;
+- cuff-refined scene == final working scene and final PNG == cuff preview PNG.
+All checks are true in verification.json.
+
+Execution evidence:
+Every CLI launch has TAG.launch.json with command, persisted intent timestamp,
+spawned PID, terminal timestamp, exit code, stdout bytes/chars; exact stdout and
+stderr are retained. subprocess.Popen wrote its PID before process.wait; no timeout,
+restart, kill or missing-output inference was used. Each outer tool returned an
+actual exit code 0, no pending tool/session handle. All 12 CLI children were waited
+to terminal and no owned live process remains. No nested observation/kill deadlines.
+All used resvg-py-0.5.0-cpu and engine
+48efa2441b1b275d6d58f93c1064dff8b39fc5e49d2ac22bdaa5e0a6601d0f07.
+Initial revision: 8abd161147cfd30728a753f50a0286f067e78e88bef8cb3adf8976802add4b9f
+Final revision: 137dd1e786b9706a03d88a03ec234cb4bcf32882599d8a4498b58f476313c379
+All source/image artifact digests are in SHA256.json; semantic revision bindings
+and source digest are in verification.json. Command lengths below are stdout bytes
+(ASCII, so equal to character counts); exact commands are in the launch records:
+help 1115; initial 2639; smaller 2948; hand-refined 3084; accept-hand 66;
+undo-hand 66; undo-view 2655; reaccept-hand 66; sleeve-inspect 2740;
+cuff-refined 3030; accept-cuff 66; final 2674.

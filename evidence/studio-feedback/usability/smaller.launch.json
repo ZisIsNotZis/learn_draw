@@ -1,0 +1,27 @@
+{
+  "tag": "smaller",
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-feedback/usability/working.json",
+    "--selection",
+    "evidence/studio-feedback/usability/initial/selection.json",
+    "--set",
+    "length",
+    "--value",
+    ".11",
+    "--reason",
+    "The fist is heavy beside the face; reduce it while retaining its closed hold",
+    "--outdir",
+    "evidence/studio-feedback/usability/smaller"
+  ],
+  "intent_utc": "2026-11-13T05:24:18.405230+00:00",
+  "state": "terminal",
+  "pid": 37408,
+  "exit_code": 0,
+  "terminal_utc": "2026-11-13T05:24:19.469836+00:00",
+  "stdout_bytes": 2948,
+  "stdout_chars": 2948
+}

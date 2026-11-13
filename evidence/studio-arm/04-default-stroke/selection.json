@@ -1,0 +1,56 @@
+{
+  "base": "bce4260ecb7364cb847a572a5cbf06efd2574a44134f28bb5ac7dfb17c34822b",
+  "engine": "study:ef01938b9e97aecadc0c38a4cd7ee92264f077bcfa9006400c16fe5fd3e1db3d",
+  "object": "sleeve-probe",
+  "kind": "feature",
+  "feature": "tip",
+  "bounds": [
+    417.94,
+    157.14000000000001,
+    458.85999999999996,
+    198.06000000000003
+  ],
+  "object_bounds": [
+    138.9567532647553,
+    156.5567532647553,
+    452.18912379076585,
+    278.62623108957797
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "screen terminal movement as fraction of shorter canvas dimension; opposite terminal fixed",
+  "interaction": "stroke-terminal",
+  "locks": {
+    "root": [
+      160.0,
+      177.6
+    ]
+  },
+  "focus": [
+    438.4,
+    177.60000000000002
+  ],
+  "study": {
+    "mode": "baseline",
+    "host_engine": "1a2928e9568b9ce3f5598b8ab36f18d2c802c604f1682002a52ff290aa3ff10c",
+    "source_sha256": "ef01938b9e97aecadc0c38a4cd7ee92264f077bcfa9006400c16fe5fd3e1db3d",
+    "adapter": "process-local component_data replacement; real depth visibility",
+    "direction_from_named_wrist": null
+  }
+}

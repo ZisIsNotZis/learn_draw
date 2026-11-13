@@ -27,12 +27,19 @@ Run from this repository with `python -m scripts.studio`. Use the current goal a
    belong to the inspected feature. Use one drawing reason for the combined decision.
    A lock-edge amount is a fraction of nominal lock width. Read the resulting normal artwork and overlay;
    compare the local change and whole shape. The preview has not overwritten the scene.
-4. Accept with `accept scene.json TRY/candidate.json` when the change helps the stated issue;
+4. Let image-tool results return to the model before a separate acceptance call; loading an image
+   and accepting inside the same script is not visual observation.
+   Accept with `accept scene.json TRY/candidate.json` when the change helps the stated issue;
    otherwise discard TRY. Inspect the new revision before the next edit. Use `undo scene.json`
    to recover the previous accepted input exactly. Opposite small corrections are normal work.
 5. At a useful visual checkpoint run `python scripts/draw.py check TRY/artwork.png --outdir CHECK`.
    Give the listed images alone to fresh-context reviewers. Record actual observations and revision
    bindings; mechanical correctness and author judgment do not establish artwork acceptance.
+
+Default CLI feedback focuses on the selected part, controls, operation and file/image handles.
+The complete scene report remains at files.report; use --full-report only when that broader data is
+needed. Read actual images before acting. Reusing a preview directory for inspection invalidates
+its old candidate because those preview images have been replaced.
 
 Stale selections/previews are refused after scene or implementation changes; inspect again.
 Only a successfully rendered ready candidate can be accepted. A failed render supplies no image list.

@@ -513,3 +513,18 @@ independent two-end tangent fit is introduced. Existing endpoints/attachment/dep
 Inspection arrows show actual outward directions. Anchor callouts, rings and local edit guides
 retain screen size under viewBox magnification, and minimum label rails separate small-component callouts. These are
 inspection-only geometry; clean artwork and its layering are unchanged by guides.
+
+## Focused CLI response
+
+inspect, preview and place emit learn-draw/studio-response-1 by default: status, revision/engine,
+renderer, actual images and explicit file handles. Selected context contains its authored overrides,
+current bounds, available feature/mount names, children and applicable dimensions/anchor geometry;
+the exact selection retains its base and locks. Place also lists the chosen configuration controls;
+a vanished/unavailable configuration feature is explicit. Preview/place include operation and current
+candidate handle. Removed objects are labeled removed; blank inspection supplies no stale selection
+or candidate path. Omitted authored properties still use preset defaults, not zero/null values.
+
+The unchanged full scene report is saved at report.json. --full-report opts into printing that
+complete report, retaining the prior stdout shape. A response is computed before stamping candidate
+ready; a feedback failure cannot leave an acceptable new proposal. Reusing a preview directory for
+inspection marks its prior candidate inspection-only; a failed part inspection exposes no image list.

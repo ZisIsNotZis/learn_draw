@@ -8,6 +8,7 @@ import sys
 
 from .model import accept, attachment_preview, detach_preview, remove_preview, bind_endpoint_preview, unbind_endpoint_preview, engine_fingerprint, fingerprint, parameter_preview, parameters_preview, preview, read, select, undo, validate, write
 from .render import bundle
+from .response import response
 
 
 def default_scene(kind='hair-lock'):
@@ -95,6 +96,7 @@ def main():
     p.add_argument('--reason',required=True)
     p.add_argument('--outdir',required=True)
     p.add_argument('--svg-only',action='store_true')
+    p.add_argument('--full-report',action='store_true',help='print the complete scene report instead of focused feedback')
     p = sub.add_parser("demo", help="render a reproducible tuck/ease-back/undo sequence")
     p.add_argument("--outdir", required=True)
     p.add_argument('--kind',choices=('head','hair-lock'),default='hair-lock')
@@ -104,6 +106,7 @@ def main():
         p.add_argument("scene")
         p.add_argument("--outdir", required=True)
         p.add_argument("--svg-only", action="store_true")
+        p.add_argument("--full-report",action="store_true",help="print the complete scene report instead of focused feedback")
         if command == "inspect":
             p.add_argument('--anchor',help='one exact mount to inspect, e.g. right@.2 on a generated shape edge')
             p.add_argument("--object",help='inferred when the scene contains one object')
@@ -187,8 +190,9 @@ def main():
                 self_anchor=args.self_anchor,target_anchor=args.target_anchor,inset=args.inset,reason=args.reason)
             write(Path(args.outdir)/'candidate.json',dict(status='rendering',base=candidate['base'],engine=candidate['engine']))
             report=bundle(candidate['scene'],args.outdir,candidate['selection'],previous=scene,png=not args.svg_only)
+            feedback=response(report,candidate['scene'],args.outdir,candidate['selection'],candidate,configure=args.feature,full=args.full_report)
             write(Path(args.outdir)/'candidate.json',candidate|dict(status='ready'))
-            print(json.dumps(report))
+            print(json.dumps(feedback))
         elif args.command=='add':
             scene=validate(read(args.scene))
             base=fingerprint(scene)
@@ -207,11 +211,17 @@ def main():
                                    operation=dict(action='add',object=node['id'],kind=node['kind'],reason=node['intent'])))
             print(json.dumps(dict(scene=args.scene,added=node['id'],revision=fingerprint(scene))))
         elif args.command == "inspect":
+            # Inspection overwrites bundle images, so an earlier proposal in this
+            # directory no longer has its own ready preview here.
+            if (Path(args.outdir)/'candidate.json').exists():
+                write(Path(args.outdir)/'candidate.json',dict(status='inspection-only',engine=engine_fingerprint()))
             scene = validate(read(args.scene))
+            write(Path(args.outdir)/'report.json',dict(status='preparing',revision=fingerprint(scene),engine=engine_fingerprint(),images=[]))
+            (Path(args.outdir)/'report.txt').write_text('',encoding='utf-8')
             selection = (None if not scene['nodes'] and not any((args.object,args.feature,args.anchor)) else
                          select(scene, args.object, args.side, args.at, args.radius,args.feature,args.anchor))
             report = bundle(scene, args.outdir, selection, png=not args.svg_only)
-            print(json.dumps(report))
+            print(json.dumps(response(report,scene,args.outdir,selection,full=args.full_report)))
         elif args.command == "preview":
             scene = validate(read(args.scene))
             # A new request supersedes the previous proposal even if its pose
@@ -260,8 +270,9 @@ def main():
                 candidate = preview(scene,selection, args.move, args.amount, args.reason)
             write(Path(args.outdir)/'candidate.json',dict(status='rendering',base=candidate['base'],engine=candidate['engine']))
             report = bundle(candidate["scene"], args.outdir, candidate["selection"], previous=scene, png=not args.svg_only)
+            feedback=response(report,candidate['scene'],args.outdir,candidate['selection'],candidate,full=args.full_report)
             write(Path(args.outdir) / "candidate.json",candidate|dict(status='ready'))
-            print(json.dumps(report))
+            print(json.dumps(feedback))
         elif args.command == "accept":
             print(accept(args.scene, read(args.candidate)))
         elif args.command == "undo":

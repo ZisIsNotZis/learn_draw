@@ -38,6 +38,10 @@ PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安
 [实际放置与独立相机创作](evidence/studio-placement/README.md)保留操作记录；
 [相机可编辑场景](examples/studio/camera.json)由七个通用色块组成。
 
+日常 inspect／preview／place 现在只返回所选部位、可用控制与看图入口，完整报告仍在文件中，
+可用 --full-report 输出。[实际操作验证](evidence/studio-feedback/README.md)包含独立完成的手形／袖口修改和精确撤销。
+[上半身原型比较](evidence/studio-arm/README.md)已选出一体衣服与关节的方向；尚未接入正式可编辑原语。
+
 连接好的笔画端点也能用 `preview --aim TARGET/selection.json` 按已观察的方向接顺，保持两端位置。
 [实际袖口／姿态修正与限制](evidence/studio-direction/README.md)同时记录了尚未解决的身体、手臂造型问题；
 一次方向拟合不等于自动姿态或自然人体原语。
