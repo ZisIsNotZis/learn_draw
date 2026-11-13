@@ -1,0 +1,21 @@
+{
+  "repository": "https://github.com/hfg-gmuend/openmoji",
+  "commit": "3e01de523ddefe9c5e46a7765b15efef04bf9002",
+  "asset": "Raised fist, U+270A",
+  "license": "CC-BY-SA-4.0; unchanged original teaching/reuse source, not AGPL",
+  "attribution": "OpenMoji – the open-source emoji and icon project. License: CC BY-SA 4.0.",
+  "files": [
+    {
+      "file": "270A.svg",
+      "url": "https://raw.githubusercontent.com/hfg-gmuend/openmoji/3e01de523ddefe9c5e46a7765b15efef04bf9002/color/svg/270A.svg",
+      "bytes": 3972,
+      "sha256": "b63e68fb39f04a21e68548599ef099bde56ff502c21113fd129320039c377ac8"
+    },
+    {
+      "file": "LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/hfg-gmuend/openmoji/3e01de523ddefe9c5e46a7765b15efef04bf9002/LICENSE.txt",
+      "bytes": 20137,
+      "sha256": "5e436ff8ffbb77d8607220e9bce20c8915d860010feeb6c1ebef5a85688e9b39"
+    }
+  ]
+}

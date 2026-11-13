@@ -429,3 +429,36 @@ and bakes the current chord so paint stays unchanged. Anchors/--detach releases 
 Default deletion releases only affected endpoint links while preserving visible paint and any
 remaining pin; cascade follows either dependency. The removal impact reports released_endpoints
 where relevant. These operations use the existing stale/ready/history/undo contract.
+# Compact grip vocabulary — candidate scope, 2026-11-13
+
+`kind: "grip"` is a compact flat illustrated closed hand with an owned handle segment. It is
+separate from the open `hand` preset and does not solve arbitrary 3D hand/prop contact. It uses
+the same placement/attachment, support depth, revision-bound inspect/preview/accept/undo contract.
+No runtime teaching SVG, mesh or image is loaded.
+
+Required node fields are id/kind/intent. Defaults: length .38 (nominal hand height / shorter
+canvas), width 1, angle/depth/depth_slope 0, thumb_side "right", fold_length 1, thumb_reach .9,
+thumb_thickness .10, handle_span 1.8, handle_thickness .08. Thumb thickness, handle span and
+handle thickness are hand-ruler values; thumb_reach and fold_length are factors. Handle span is full end-centre span.
+Bounds: length .04–1.2, width .75–1.25, fold_length .8–1.15, thumb_reach .55–1.1,
+thumb_thickness .08–.13, handle_span 1.2–3, handle_thickness .04–.18. Angle/depth/slope follow
+the other movable components. Combinations that conceal either handle end or break the single
+solid projection are refused. Palette keys are skin/ink/handle/handle_ink.
+
+Features: object (all controls); thumb (reach/thickness/skin/ink); fingers (fold_length/skin/ink);
+palm (width/skin/ink); handle (span/thickness/handle colours). Colours use skin_color, ink_color,
+handle_color, handle_ink_color aliases. These features use semantic --set/--change, not a free
+digit-tip or contour drag. thumb_side is left/right in the unrotated preset. The component centre
+is a stable host point, distinct from its grip mount.
+
+Mounts: wrist, grip, handle_left, handle_right, handle_top, handle_bottom. Names follow the
+component through angle/mirror changes; inspect actual positions. Top/bottom carry outward normals;
+centre/end/wrist pins carry no normal. Attachments translate one pin and keep authored angle;
+external two-target strokes can follow both a grip endpoint and a separate vessel/flag support.
+`report.nodes[ID].dimensions_pixels` and `.dimensions_canvas` expose wrist_width,
+handle_thickness and nominal_hand_height; the latter values divide by the shorter canvas extent.
+
+The internal palm, handle, pads and thumb have declared constant depths. Visibility comes from
+those planes; intentional fold/exterior ink is separate and clipped by that visibility. The whole
+compound has the normal component support depth when meeting other scene objects. Blind image
+criticisms and purpose-aware operational review remain separate claims (4_USECASE).

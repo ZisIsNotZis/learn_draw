@@ -1,0 +1,45 @@
+{
+  "base": "eafe8baa881e617452b27976d9b27dd0099cbb771543488551ed334eee1a62fd",
+  "engine": "7e6b1a1d61cf8f2395ef547cb20d2cebd690627feb5415054d586189639f8648",
+  "object": "reaching-sleeve",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    292.33274834663445,
+    366.6262551603831,
+    495.86456445844505,
+    446.8468125459662
+  ],
+  "object_bounds": [
+    292.33274834663445,
+    366.6262551603831,
+    495.86456445844505,
+    446.8468125459662
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension",
+  "endpoint_bindings": {
+    "root": {
+      "to": "shirt",
+      "target": "right@.09",
+      "inset": 0.05
+    }
+  }
+}

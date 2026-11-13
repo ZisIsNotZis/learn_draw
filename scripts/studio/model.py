@@ -164,6 +164,22 @@ def validate_scenery(node,canvas):
         raise ValueError(kind+': invalid silhouette')
 
 
+def validate_grip(node,canvas):
+    from .grip import DEFAULT_LENGTH,grip_data
+    keys(node,('id','kind','intent','attachment','at','length','width','angle','depth','depth_slope',
+        'thumb_side','fold_length','thumb_reach','thumb_thickness','handle_span','handle_thickness','palette'),'grip')
+    for name,default,lo,hi in [('length',DEFAULT_LENGTH,.04,1.2),('width',1,.75,1.25),('angle',0,-180,180),
+        ('depth',0,-100,100),('depth_slope',0,-10,10),('fold_length',1,.8,1.15),('thumb_reach',.9,.55,1.1),
+        ('thumb_thickness',.10,.08,.13),('handle_span',1.8,1.2,3),('handle_thickness',.08,.04,.18)]:
+        number(node.get(name,default),'grip.'+name,lo,hi)
+    if node.get('thumb_side','right') not in ('left','right'):
+        raise ValueError('grip.thumb_side: left/right in the unrotated preset')
+    validate_placement(node)
+    keys(node.get('palette',{}),('skin','ink','handle','handle_ink'),'grip.palette')
+    for value in node.get('palette',{}).values():color(value)
+    grip_data(node,canvas)
+
+
 def validate_hand(node,canvas):
     from .hand import DIGITS,DEFAULT_LENGTH,hand_data
     keys(node,('id','kind','intent','attachment','at','length','width','angle','depth','depth_slope','handedness','spread','digits','palette'),'hand')
@@ -273,12 +289,15 @@ def validate(scene):
         if node.get('kind')=='hand':
             validate_hand(node,canvas)
             continue
+        if node.get('kind')=='grip':
+            validate_grip(node,canvas)
+            continue
         from .scenery import KINDS
         if node.get('kind') in KINDS:
             validate_scenery(node,canvas)
             continue
         if node.get("kind") != "hair-lock":
-            raise ValueError(f"{sid}: supported kinds are stroke/shape/head/hand/hair-lock/sky/hills/moon/sun")
+            raise ValueError(f"{sid}: supported kinds are stroke/shape/head/hand/grip/hair-lock/sky/hills/moon/sun")
         keys(node, ("id", "kind", "intent", "attachment", "at", "length", "width", "width_side", "angle", "sweep", "depth",
                     "depth_slope", "palette", "edits"), "node")
         if node.get("width_side", "both") not in ("both", "left", "right"):
@@ -442,7 +461,7 @@ def preview(scene, selection, direction, amount, reason):
         canvas=scene.get('canvas',[640,640])
         if node['kind'] in ('sky','hills'):
             raise ValueError('canvas-wide backgrounds use horizon/relief controls; select a movable object')
-        default={'head':{'anchor':'center','offset':[0,-.06]},'hand':{'anchor':'center'},'shape':{'anchor':'center'},'stroke':{'anchor':'center','offset':[0,-.2]},
+        default={'head':{'anchor':'center','offset':[0,-.06]},'hand':{'anchor':'center'},'grip':{'anchor':'center'},'shape':{'anchor':'center'},'stroke':{'anchor':'center','offset':[0,-.2]},
                  'moon':{'anchor':'upper_right','offset':[0,.10]},
                  'sun':{'anchor':'upper_right','offset':[0,.10]}}.get(node['kind'],{})
         if 'endpoints' in node and len(node['endpoints'])==2:
@@ -649,7 +668,8 @@ def _set_parameter(node,selection,parameter,value):
     aliases={'hair_color':'hair','skin_color':'skin','iris_color':'iris','ink_color':'ink',
              'fill_color':'fill','shade_color':'shade','light_color':'light',
              'top_color':'top','bottom_color':'bottom','stars_color':'stars','far_color':'far',
-             'middle_color':'middle','near_color':'near','rays_color':'rays','crease_color':'crease'}
+             'middle_color':'middle','near_color':'near','rays_color':'rays','crease_color':'crease',
+             'handle_color':'handle','handle_ink_color':'handle_ink'}
     if parameter in aliases:
         color(value)
         node.setdefault('palette',{})[aliases[parameter]]=value
@@ -661,7 +681,7 @@ def _set_parameter(node,selection,parameter,value):
             except ValueError: raise ValueError('finger control requires a numeric value') from None
         node.setdefault('digits',{}).setdefault(selection['feature'],{})['length' if parameter=='finger_length' else 'lean']=value
     else:
-        if parameter not in ('intent','expression','hair','width_side','style','tree_side','handedness','profile','start_cap','end_cap','shade') and isinstance(value,str):
+        if parameter not in ('intent','expression','hair','width_side','style','tree_side','handedness','thumb_side','profile','start_cap','end_cap','shade') and isinstance(value,str):
             try:
                 value=float(value)
             except ValueError:

@@ -1,0 +1,117 @@
+{
+  "date": "2026-11-13",
+  "method": "Parent-written summaries of fresh-context image-only qualitative critiques. Image hashes bind the actual supplied clean review bundle; agents did not independently print revision/hash bindings. No formal whole-artwork/rubric pass is claimed.",
+  "purpose_aware_operation": {
+    "report": "usability/REPORT.txt",
+    "frozen_inputs": "usability-inputs/manifest.json",
+    "result": "Fresh skill-only actor created original held-flag scene, used native default without reconstruction, refined thumb and verified undo/reaccept. Parent pole-material finishing is separate."
+  },
+  "human_feedback": {
+    "question": "上面这种图形化手形，可以保留为一个简洁预设方向吗？它经过了拇指和杆色的局部调整；自然手形与复杂姿态仍需另行打磨。",
+    "answer": "可以保留这一方向",
+    "scope": "Retain graphic hand as a simple preset direction. Does not accept natural anatomy, general poses or a whole artwork.",
+    "timing": "After delivery verification; its frozen human_acceptance unknown records the earlier run state."
+  },
+  "whole_artwork_pass": false,
+  "reviews": [
+    {
+      "reviewer": "compact_grip_review",
+      "bundle": "check-01",
+      "image_sha256": {
+        "draft-fullres.png": "d448611e938751e4c57eb88fcbf24cbe85d1ad742703d27feea5356d591c64cc",
+        "draft.png": "a882ef908d568ce47fdd1999bb65dbe5965399111e48fca7573dc83670811ebf"
+      },
+      "observations": "Fist/rod recognizable small; broad capsule thumb, triangular notch, rounded pad lobes and mechanical wrist."
+    },
+    {
+      "reviewer": "compact_context_review",
+      "bundle": "check-02",
+      "image_sha256": {
+        "draft-fullres.png": "7243a45409ac226c3cc4696e0575570286a99b84fd6f5f3f6777296b4c9ccf27",
+        "draft.png": "317a32908ade311ad589a3efcb0df007b95165f98564e390b36aa12ea9ee1639"
+      },
+      "observations": "Grip loop cluster unclear, handle meets finger tops; angular can, wire-like stream, cropped arm and mixed detail."
+    },
+    {
+      "reviewer": "grasp_review_calibration",
+      "bundle": "check-teacher",
+      "image_sha256": {
+        "draft-fullres.png": "ff5111fd52bee97e479e918ed617984e29f1bcee2e3d6a90ea30d40587f740f1",
+        "draft.png": "386c3d45312cd001511252f771dafa22d3d228b0632bebbafeffa9517cf744ea"
+      },
+      "observations": "Published OpenMoji fist also receives diagrammatic-thumb, mitten/no-wrist, outline gap, scallop and edge-kink criticism. This calibrates what an unprompted fault list establishes; it does not invalidate criticism."
+    },
+    {
+      "reviewer": "native_grip_blind_a",
+      "bundle": "check-native-default",
+      "image_sha256": {
+        "draft-fullres.png": "823240384f7835b89a85161c9ceca9055655eee71d5a1dc0cfd30453d7f0e8d4",
+        "draft.png": "4c90c6f21b681656f12269f00cec6b8f48df5cffdb35acf2dd16d79e28037e85"
+      },
+      "observations": "Grip reads small; crease-end tick, stacked pads and square wrist remain."
+    },
+    {
+      "reviewer": "native_grip_blind_b",
+      "bundle": "check-native-default",
+      "image_sha256": {
+        "draft-fullres.png": "823240384f7835b89a85161c9ceca9055655eee71d5a1dc0cfd30453d7f0e8d4",
+        "draft.png": "4c90c6f21b681656f12269f00cec6b8f48df5cffdb35acf2dd16d79e28037e85"
+      },
+      "observations": "Grip understandable but contact weak; thumb tick, pinched joins and diagrammatic palm/wrist."
+    },
+    {
+      "reviewer": "native_grip_blind_a",
+      "bundle": "usability/08-check",
+      "image_sha256": {
+        "draft-fullres.png": "196634bb0929daf6d795fb0fdffb5f8d00d866fab2c5fc0165ad7fc1ce461ccd",
+        "draft.png": "4298b835c5a7393c37e72cb1e8ff83c0f1c5c879233c879106d50a59700db05e"
+      },
+      "observations": "Flag held by fist recognizable at thumbnail; outlined pole seams, abrupt thumb, finger loops and blunt sleeve."
+    },
+    {
+      "reviewer": "native_grip_blind_b",
+      "bundle": "usability/08-check",
+      "image_sha256": {
+        "draft-fullres.png": "196634bb0929daf6d795fb0fdffb5f8d00d866fab2c5fc0165ad7fc1ce461ccd",
+        "draft.png": "4298b835c5a7393c37e72cb1e8ff83c0f1c5c879233c879106d50a59700db05e"
+      },
+      "observations": "Flag/grip clear; exposed pole transitions, thumb droop and schematic lobes."
+    },
+    {
+      "reviewer": "held_props_final_a",
+      "bundle": "check-flag-finished",
+      "image_sha256": {
+        "draft-fullres.png": "e8e195a8998113074e973f14bd249bdee9b5e152d75dcf0ebb247abd97548cee",
+        "draft.png": "49b0bf6c04e3cb69dc57f1dfc139b72d650c4ff125bf5186f086b76871bed4bc"
+      },
+      "observations": "Flag reads clearly at both sizes; no obvious pole visibility error. Stacked pads, long thumb and abrupt wrist remain."
+    },
+    {
+      "reviewer": "held_props_final_b",
+      "bundle": "check-flag-finished",
+      "image_sha256": {
+        "draft-fullres.png": "e8e195a8998113074e973f14bd249bdee9b5e152d75dcf0ebb247abd97548cee",
+        "draft.png": "49b0bf6c04e3cb69dc57f1dfc139b72d650c4ff125bf5186f086b76871bed4bc"
+      },
+      "observations": "Grip clear, no obvious broken pole contact; rounded pads/palm remain schematic."
+    },
+    {
+      "reviewer": "held_props_final_a",
+      "bundle": "check-watering-current",
+      "image_sha256": {
+        "draft-fullres.png": "05830e421a4f967708953a3f4b463bad48b5fadf77d2b34396349950086cc30a",
+        "draft.png": "182cca082b41ccc472f5487cfa227a6e7d876f80f41143079db1f48f7f854eac"
+      },
+      "observations": "Watering action clear small; scalloped fingers make firm hold ambiguous. Abrupt cuff, coarse elbow and wire-like arc/outlet."
+    },
+    {
+      "reviewer": "held_props_final_b",
+      "bundle": "check-watering-current",
+      "image_sha256": {
+        "draft-fullres.png": "05830e421a4f967708953a3f4b463bad48b5fadf77d2b34396349950086cc30a",
+        "draft.png": "182cca082b41ccc472f5487cfa227a6e7d876f80f41143079db1f48f7f854eac"
+      },
+      "observations": "Fingers crowd handle; water perceived wire-like/uniform, details disappear small. Measurement note: authored stroke widths actually taper .85 to .45; preserve the visual criticism separately from that factual description."
+    }
+  ]
+}

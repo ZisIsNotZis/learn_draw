@@ -1,0 +1,38 @@
+{
+  "base": "2cb0b7764f6a616b681458496e39547debb41c50cd790e96a0ea1dec4d96bde8",
+  "engine": "7e6b1a1d61cf8f2395ef547cb20d2cebd690627feb5415054d586189639f8648",
+  "object": "carrying-grip",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    95.87450980392157,
+    200.78431372549022,
+    544.1254901960784,
+    443.9843137254902
+  ],
+  "object_bounds": [
+    95.87450980392157,
+    200.78431372549022,
+    544.1254901960784,
+    443.9843137254902
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "depth",
+    "depth_slope",
+    "thumb_side",
+    "fold_length",
+    "thumb_reach",
+    "thumb_thickness",
+    "handle_span",
+    "handle_thickness",
+    "skin_color",
+    "ink_color",
+    "handle_color",
+    "handle_ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

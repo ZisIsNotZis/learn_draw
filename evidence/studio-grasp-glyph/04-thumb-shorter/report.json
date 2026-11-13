@@ -1,0 +1,191 @@
+{
+  "revision": "e5605ab41f3c1e2ef7eaaf8d9aff9d51bb15b5eefd54b44516a8abb8e979aa64",
+  "engine": "7e6b1a1d61cf8f2395ef547cb20d2cebd690627feb5415054d586189639f8648",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-grasp-glyph\\04-thumb-shorter\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-grasp-glyph\\04-thumb-shorter\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-grasp-glyph\\04-thumb-shorter\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-grasp-glyph\\04-thumb-shorter\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-grasp-glyph\\04-thumb-shorter\\artwork.png": "f9e945d38bcacc81c57888fbe127f44da61f9f3748bd846940918fcb70c83342",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-grasp-glyph\\04-thumb-shorter\\alignment.png": "64625e346668d46c5f4487d29f98ad0a3e2196b42447d186552d25161879935a",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-grasp-glyph\\04-thumb-shorter\\object-closeup.png": "897abac74dce2cccfa1278418412cff899d7e07fa3f1103d85c25eae5f7ee46e",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-grasp-glyph\\04-thumb-shorter\\edit-closeup.png": "39feafa20d76a1605960fb8af1d23b2437da40f5a11b39ffa76dde0ed88673eb"
+  },
+  "nodes": {
+    "carrying-grip": {
+      "kind": "grip",
+      "intent": "a compact flat illustrative hand closes around its included handle segment",
+      "bounds": [
+        95.87450980392157,
+        200.78431372549022,
+        544.1254901960784,
+        443.9843137254902
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            95.87450980392157,
+            200.78431372549022,
+            544.1254901960784,
+            443.9843137254902
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "thumb_side",
+            "fold_length",
+            "thumb_reach",
+            "thumb_thickness",
+            "handle_span",
+            "handle_thickness",
+            "skin_color",
+            "ink_color",
+            "handle_color",
+            "handle_ink_color"
+          ]
+        },
+        "thumb": {
+          "bounds": [
+            341.93660548344394,
+            245.68831164533816,
+            458.7605434178664,
+            386.74089642361525
+          ],
+          "controls": [
+            "thumb_reach",
+            "thumb_thickness",
+            "skin_color",
+            "ink_color"
+          ]
+        },
+        "fingers": {
+          "bounds": [
+            215.09019607843138,
+            200.78431372549022,
+            424.9098039215686,
+            315.2313725490196
+          ],
+          "controls": [
+            "fold_length",
+            "skin_color",
+            "ink_color"
+          ]
+        },
+        "palm": {
+          "bounds": [
+            207.93725490196078,
+            248.47058823529414,
+            432.0627450980392,
+            443.9843137254902
+          ],
+          "controls": [
+            "width",
+            "skin_color",
+            "ink_color"
+          ]
+        },
+        "handle": {
+          "bounds": [
+            95.87450980392157,
+            250.85490196078433,
+            544.1254901960784,
+            269.9294117647059
+          ],
+          "controls": [
+            "handle_span",
+            "handle_thickness",
+            "handle_color",
+            "handle_ink_color"
+          ]
+        }
+      },
+      "dimensions_pixels": {
+        "wrist_width": 104.90980392156862,
+        "handle_thickness": 19.07450980392157,
+        "nominal_hand_height": 243.2
+      },
+      "dimensions_canvas": {
+        "wrist_width": 0.16392156862745097,
+        "handle_thickness": 0.02980392156862745,
+        "nominal_hand_height": 0.38
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            320.0
+          ],
+          "normal": null
+        },
+        "wrist": {
+          "point": [
+            320.0,
+            443.9843137254902
+          ],
+          "normal": null
+        },
+        "grip": {
+          "point": [
+            320.0,
+            260.3921568627451
+          ],
+          "normal": null
+        },
+        "handle_left": {
+          "point": [
+            105.41176470588238,
+            260.3921568627451
+          ],
+          "normal": null
+        },
+        "handle_right": {
+          "point": [
+            534.5882352941176,
+            260.3921568627451
+          ],
+          "normal": null
+        },
+        "handle_top": {
+          "point": [
+            320.0,
+            250.85490196078433
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "handle_bottom": {
+          "point": [
+            320.0,
+            269.9294117647059
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "attached_children": []
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips with an owned handle segment, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "removal": null,
+  "alignment_legend": {
+    "red dashed": "removed previous paint; removal only",
+    "blue": "pinned stroke endpoints / inspected target; removal: retained affected children",
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge/spine, terminal, digit-tip or exact-mount focus"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span"
+}

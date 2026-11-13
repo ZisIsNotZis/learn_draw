@@ -1,0 +1,11 @@
+{
+  "status": "view-selection proxy; not a preset/quality pass",
+  "diagnostic": {
+    "minimum_radial_clearance_in_slab": 9.363527265889883e-06,
+    "intersecting_triangles": 0,
+    "skin_vertices_inside": 0,
+    "triangle_ids": [],
+    "collisions": [],
+    "note": "Strict rod-volume/skin-surface intersection in the finite axial slab; radial clearance is not a full finite-cylinder signed distance. Hand self-contact and thumb opposition are not certified."
+  }
+}

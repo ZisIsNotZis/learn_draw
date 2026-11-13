@@ -26,8 +26,8 @@ uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation ski
 
 ## Current usable capabilities and evidence
 
-- A small input creates a flat-cartoon head, open hand, lock, generic colour mass, gesture stroke
-  or scenic preset. The user accepted the simple head direction as one default preset only.
+- A small input creates a flat-cartoon head, open hand, compact illustrated grip, lock, generic
+  colour mass, gesture stroke or scenic preset. The user accepted the simple head direction as one default preset only.
   The open hand is a front-view greeting palm, not a fist or a full hand/body rig.
 - Inspect/preview/accept/undo provides actual alignment and magnified views, protected local edits,
   grouped semantic parameters, revision/implementation binding, stale/invalid refusal and ready-
@@ -46,10 +46,12 @@ uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation ski
   receiving surface and palm/handle/thumb overlap. These are bounded visual outcomes, not a
   general anatomy or physical-fold capability.
 
-The current combined suite has 121 passing operation/checker/visibility/oracle tests on fixed
-Studio source. The eight endpoint methods were also rerun with explicit new-target input-alias
-coverage. Seven earlier defaults/artworks and newer original stroke/watering images preserve their
-PNG bytes; current examples repeat. These are mechanical/source checks, not an art verdict.
+The current grip advance passes 103 studio-family tests, including seven focused grip tests;
+seven earlier/default PNGs remain exact. The two preferred native examples reproduce from a fresh
+cwd and refuse existing outputs. Parent verification rechecks 126 independent-operator artifact
+hashes, real thumb undo/reaccept, stable connections and sleeve/nozzle tangents. These are scoped
+mechanical/operational checks, not art or human verdicts. The prior endpoint advance's mixed-suite
+counts stay in its historical evidence and are not presented as this unit's run.
 
 Current endpoint evidence is indexed at ../evidence/studio-endpoints/README.md. A fresh skill/help-
 only operator binds both water ends, independently moves person and pot without correcting the
@@ -65,9 +67,10 @@ Exact schema/algorithms are owned by 7_INTERFACE.md/8_DETAIL.md.
 
 ## What is still weak or unverified
 
-The recurrent visual problem is grasp. The current mass/thumb/fold recipe can imply a hooked hold,
-but fresh critics consistently find it crowded and ambiguous. Contact equality does not explain
-an opposing thumb, curling fingers or weight. The original watering pictures also retain stiff
+The older mass/thumb/fold and mesh routes remain ambiguous. The compact graphic grip now works
+for one independent symbolic flag composition without reconstruction, but it retains schematic
+pads/thumb and a small crease-end tick. Watering still crowds those fingers at its smaller scale.
+Neither the symbolic use result nor contact equality establishes natural anatomy or weight. The original watering pictures also retain stiff
 arm/torso gesture, outward-facing attention, broad unoutlined body versus detailed head, and
 crowded window contacts. A fixed endpoint does not guarantee a gravity-consistent fluid curve.
 
@@ -85,34 +88,34 @@ count or attractive interface alone cannot establish the desired capability.
 
 ## Next action and checkpoint
 
-The first grasp investigation is preserved in ../evidence/studio-grasp/. Independent
-curved 3D tubes provide correct depth but remain inflated/mitten-like after proportion,
-contour and view corrections. Do not ship them as a default. An unmodified MIT-licensed
-WebXR hand asset now imports, poses and renders on CPU; bind matrices and bone lengths
-are checked. That also is not a grasp solution: its arbitrary flexions leave 83 sampled
-skin vertices inside the test rod, and fresh image review finds loose draped fingers
-and an unopposed thumb. This is investigation evidence, not a delivered artwork milestone.
+The native compact grip slice is verified for bounded symbolic use. A fresh skill-only operator
+authored a flag from intent, connected pole and sleeve through actual mounts, refined the thumb,
+and recovered exact scene/render state through undo/reaccept. Two blind reviewers recognize
+the flag/grip clearly while retaining anatomy/style limits; parent finishing removes pole seams.
+The same primitive is integrated into a native watering example, with cuff/stream tangent edits.
+Detailed records, failed attempts and claim limits are in ../evidence/studio-grasp-glyph/. The
+mesh/contact route remains rejected as a drawing default in ../evidence/studio-grasp-contact/.
+The person accepted retaining this graphic hand as a simple preset direction (2026-11-13).
+This is direction-level taste feedback, not natural-hand or whole-artwork acceptance.
 
-Next, test an actual hand-space contact pose before more line polish or interface work.
-Recover phalanx/pad geometry from the established rig, fit a declared cylindrical grip
-with meaningful clearance and thumb opposition, and inspect the computed 3D relations
-alongside the flat-vector image. Vertex clearance alone is insufficient: check surface
-intersection and enclosure too. A useful first hypothesis is tangent phalanx placement
-around the cylinder with preserved bone lengths, followed by thumb contact; compare it
-with the current rejected pose. If that fails, reconsider the contact/representation
-mechanism rather than adding creases or repeating small view changes. GPU pause remains.
+Next, make insertion observable before it changes the working scene. Both independent composition
+and the parent's discarded can-opening trial still relied on initial JSON/model authoring for
+configured insertion. Existing add immediately accepts its default. Implement one public staged
+add/placement path that renders a configured new object against the existing scene, exposes its
+actual boundary/mounts, accepts only after a ready preview and supports exact undo. Use an actual
+small composition insertion/correction/discard sequence, not a renderer-only or UI-only demo.
+Recheck aliases, stale/failed candidate refusal and retained unrelated objects. A fresh skill-only
+operator should then use the operation with another subject. Main agent owns code/art correction;
+independent operators and image reviewers own their separate reports. The next checkpoint is that
+real insertion slice in the next substantive work unit; this is a checkpoint estimate, not an art deadline.
 
-The main agent owns that pose and one observed correction. Fresh image reviewers judge
-contact; a real watering-scene replacement and fresh skill-only reuse with another held
-prop remain required before declaring a useful default. No grasp kind, compiled vector
-template, broad 3D rig API or automatic contact promise has been adopted. Preserve the
-human-accepted head preset and existing open-hand default. The next checkpoint is the corrected contact sample
-and its independent image verdict, within the next substantive work unit; it is a
-checkpoint estimate, not an art-pass deadline. Human taste feedback remains asynchronous.
-
-Verbose directional edits, root-only scope overlays and immediate insertion remain observed
-usability gaps. They should earn fixes through an actual composition task. Keep the full VLM-
-creation objective and continue independent work while human taste feedback is absent.
+Connection orientation is the other observed gap: the parent and independent operator both had
+to seat a sleeve at a wrist manually, and the stream needed its nozzle tangent. Projected point
+coincidence does not fit two edges or inherit orientation. Preserve this evidence for a narrow
+normal/tangent guide or alignment operation after the insertion path; do not turn it into a
+speculative whole-body/physical rig. Verbose directional edits and root-only scope overlays also
+remain observed limits. Keep the full VLM creation/skill objective and continue while additional taste feedback
+is absent. GPU pause and the untouched portrait baseline remain in force.
 
 ## History and resources
 

@@ -1,0 +1,220 @@
+{
+  "pads": {
+    "1": {
+      "radius": 0.018784141760116634,
+      "minimum": 0.012315706207110307,
+      "maximum": 0.029495953556220925,
+      "samples": 34,
+      "length": 0.03251291041160362
+    },
+    "2": {
+      "radius": 0.010355945793626828,
+      "minimum": 0.006137376361287956,
+      "maximum": 0.013878824947954258,
+      "samples": 34,
+      "length": 0.03379306930455861
+    },
+    "3": {
+      "radius": 0.009237405772962495,
+      "minimum": 0.005087224310601585,
+      "maximum": 0.01145085102828775,
+      "samples": 23,
+      "length": 0.014863393802954277
+    },
+    "6": {
+      "radius": 0.010001934242768391,
+      "minimum": 0.008219751681751522,
+      "maximum": 0.016577634679977353,
+      "samples": 46,
+      "length": 0.045347095699079416
+    },
+    "7": {
+      "radius": 0.008238704543266084,
+      "minimum": 0.007157545511474562,
+      "maximum": 0.008891168113018894,
+      "samples": 20,
+      "length": 0.02430359521237029
+    },
+    "8": {
+      "radius": 0.00721104749108847,
+      "minimum": 0.006433560570077317,
+      "maximum": 0.00762824057469385,
+      "samples": 10,
+      "length": 0.01158303136399492
+    },
+    "11": {
+      "radius": 0.009624651684146394,
+      "minimum": 0.007726995623099234,
+      "maximum": 0.018264315865142013,
+      "samples": 44,
+      "length": 0.046887870020316275
+    },
+    "12": {
+      "radius": 0.008269446720455783,
+      "minimum": 0.0070255884113053614,
+      "maximum": 0.009143037480778654,
+      "samples": 20,
+      "length": 0.02754962750926489
+    },
+    "13": {
+      "radius": 0.0075603204548868284,
+      "minimum": 0.006474216940479667,
+      "maximum": 0.007986225355528084,
+      "samples": 10,
+      "length": 0.012203482569029344
+    },
+    "16": {
+      "radius": 0.008742307832306305,
+      "minimum": 0.0067926892178763595,
+      "maximum": 0.01610217743220369,
+      "samples": 40,
+      "length": 0.04286796753341004
+    },
+    "17": {
+      "radius": 0.007757948530985695,
+      "minimum": 0.006621177567073671,
+      "maximum": 0.008757232886962391,
+      "samples": 20,
+      "length": 0.02657334650073661
+    },
+    "18": {
+      "radius": 0.006998693238394974,
+      "minimum": 0.006183059081230023,
+      "maximum": 0.007121867079957975,
+      "samples": 10,
+      "length": 0.011939481002490506
+    },
+    "21": {
+      "radius": 0.008172984320281008,
+      "minimum": 0.006880459555563834,
+      "maximum": 0.015090012721946306,
+      "samples": 43,
+      "length": 0.03458033562076577
+    },
+    "22": {
+      "radius": 0.0068503784173362435,
+      "minimum": 0.006285928888481116,
+      "maximum": 0.007265822445633566,
+      "samples": 20,
+      "length": 0.020311435773624046
+    },
+    "23": {
+      "radius": 0.006322521436090484,
+      "minimum": 0.0057501138874590345,
+      "maximum": 0.00682558603769338,
+      "samples": 10,
+      "length": 0.011908707829878013
+    }
+  },
+  "tangents": {
+    "index-finger-phalanx-proximal": {
+      "angle_degrees": -47.63374690987797,
+      "distance_to_contact": 0.023135942041119937,
+      "bone_length": 0.045347095699079416,
+      "pad_radius": 0.010001934242768391,
+      "offset_radius": 0.02200193424276839
+    },
+    "index-finger-phalanx-intermediate": {
+      "angle_degrees": 47.29495989863004,
+      "distance_to_contact": 0.02382887524938957,
+      "bone_length": 0.02430359521237029,
+      "pad_radius": 0.008238704543266084,
+      "offset_radius": 0.020238704543266085
+    },
+    "index-finger-phalanx-distal": {
+      "angle_degrees": 67.0230014460423,
+      "distance_to_contact": 0.006384839459846646,
+      "bone_length": 0.01158303136399492,
+      "pad_radius": 0.00721104749108847,
+      "offset_radius": 0.01921104749108847
+    },
+    "middle-finger-phalanx-proximal": {
+      "angle_degrees": -24.93045435215088,
+      "distance_to_contact": 0.0331732653097482,
+      "bone_length": 0.046887870020316275,
+      "pad_radius": 0.009624651684146394,
+      "offset_radius": 0.021624651684146394
+    },
+    "middle-finger-phalanx-intermediate": {
+      "angle_degrees": 45.12132242048759,
+      "distance_to_contact": 0.015648177928257206,
+      "bone_length": 0.02754962750926489,
+      "pad_radius": 0.008269446720455783,
+      "offset_radius": 0.020269446720455782
+    },
+    "middle-finger-phalanx-distal": {
+      "angle_degrees": 109.21891214923602,
+      "distance_to_contact": 0.013034141175574228,
+      "bone_length": 0.012203482569029344,
+      "pad_radius": 0.0075603204548868284,
+      "offset_radius": 0.01956032045488683
+    },
+    "ring-finger-phalanx-proximal": {
+      "angle_degrees": -28.069651305574567,
+      "distance_to_contact": 0.031152290685911677,
+      "bone_length": 0.04286796753341004,
+      "pad_radius": 0.008742307832306305,
+      "offset_radius": 0.020742307832306305
+    },
+    "ring-finger-phalanx-intermediate": {
+      "angle_degrees": 35.35287268073504,
+      "distance_to_contact": 0.01330878987932731,
+      "bone_length": 0.02657334650073661,
+      "pad_radius": 0.007757948530985695,
+      "offset_radius": 0.019757948530985697
+    },
+    "ring-finger-phalanx-distal": {
+      "angle_degrees": 106.25602933450838,
+      "distance_to_contact": 0.014330898358059002,
+      "bone_length": 0.011939481002490506,
+      "pad_radius": 0.006998693238394974,
+      "offset_radius": 0.018998693238394974
+    },
+    "pinky-finger-phalanx-proximal": {
+      "angle_degrees": -43.25889141923059,
+      "distance_to_contact": 0.024746871078317394,
+      "bone_length": 0.03458033562076577,
+      "pad_radius": 0.008172984320281008,
+      "offset_radius": 0.020172984320281008
+    },
+    "pinky-finger-phalanx-intermediate": {
+      "angle_degrees": 15.592739150214497,
+      "distance_to_contact": 0.012178241039539194,
+      "bone_length": 0.020311435773624046,
+      "pad_radius": 0.0068503784173362435,
+      "offset_radius": 0.018850378417336243
+    },
+    "pinky-finger-phalanx-distal": {
+      "angle_degrees": 65.74568572785721,
+      "distance_to_contact": 0.009261254303998254,
+      "bone_length": 0.011908707829878013,
+      "pad_radius": 0.006322521436090484,
+      "offset_radius": 0.018322521436090485
+    }
+  },
+  "thumb": {
+    "target": [
+      -0.008932368857337353,
+      0.0857859291018846,
+      0.07713942726021299
+    ],
+    "middle_index_tip_contact": true,
+    "reach": 0.0648299878401639,
+    "maximum_reach": 0.06630597971616223,
+    "contact_solved": false
+  },
+  "diagnostic": {
+    "minimum_surface_clearance": -0.0008100476730268143,
+    "intersecting_triangles": 6,
+    "skin_vertices_inside": 1,
+    "triangle_ids": [
+      930,
+      942,
+      943,
+      1028,
+      1029,
+      1039
+    ],
+    "note": "Surface test covers the finite rod axial slab; it does not certify hand self-contact or thumb opposition."
+  }
+}

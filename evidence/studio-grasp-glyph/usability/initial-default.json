@@ -1,0 +1,15 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f7efdf",
+  "nodes": [
+    {
+      "id": "carrying-grip",
+      "kind": "grip",
+      "intent": "a compact flat illustrative hand closes around its included handle segment"
+    }
+  ]
+}

@@ -4,19 +4,25 @@
 
 # learn_draw
 
-**当前方向（2026-11-12）：让 VLM 能够创作、逐步修正的绘画工作台。** 临摹同时打磨原语、操作体验与绘画
-skill。当前支持用户认可的简洁平涂头部默认预设、可调张手、独立发束、可弯曲笔画和通用色块；可以在图上选中部位，
+**当前方向（2026-11-13）：让 VLM 能够创作、逐步修正的绘画工作台。** 临摹同时打磨原语、操作体验与绘画
+skill。当前支持用户认可的简洁平涂头部默认预设、可调张手、紧凑图形化抓握、独立发束、可弯曲笔画和通用色块；可以在图上选中部位，
 预览语义调整或局部推拉，再接受、丢弃或精确撤销。已展示有限的独立复用；整幅作品质量与更广泛的创作能力仍需验证。
 
 ```bash
 uv sync
 uv run python -m scripts.studio demo --kind head --outdir evidence/my-head-sequence
 uv run python examples/studio/compose.py --theme moonrise --refined --outdir evidence/my-moonrise
+uv run python examples/studio/held_props.py --scene flag --outdir evidence/my-held-flag
 ```
 
 入口：[当前路线图](docs/0_ROADMAP.md)、[操作 skill](skills/drawing-studio/SKILL.md)、[场景接口](docs/7_INTERFACE.md)。
 PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安装浏览器。下文保留此前人物临摹及工具链的说明；
 历史阶段完成不代表当前产品已经验收。
+
+`--kind grip` 提供自带握柄的紧凑图形化闭手，能选中拇指、卷指或握柄来预览和修改，也能通过腕部与两端挂点连接袖子和杆件。
+[实际样张与独立操作验证](evidence/studio-grasp-glyph/README.md)保留了从空场景画旗帜、缩短拇指、接受与撤销的过程，以及盲评中的造型限制。
+它是一个符号化绘画候选，不是自然手形或任意三维抓握的验收；用户已认可保留这一简洁预设方向，整幅作品与自然手形仍需另行验证。
+用 `python examples/studio/held_props.py --scene watering --outdir FRESH` 打开原生浇水样例，选 flag 则打开旗帜样例。
 
 手部已有可见指尖／固定掌根的编辑回路，见[实际招手组合与限制](evidence/studio-hand/README.md)。
 通用 `--kind shape` 支持圆角块、椭圆、渐窄形和局部轮廓修正，可用于预设之外的物体；
@@ -196,3 +202,7 @@ scripts/tests/test_ribbon_family.py`；每个画作包把自己的一套测试�
 
 这些文件仍归其原始权利人所有，收录进来仅因为这类研究需要一张参考。上述 AGPL 授权适用于本项目自己的代码、
 文档与产出，不适用于它们。`vendor/` 存放第三方学习材料，遵循各自的许可。
+
+第三方教学素材保留各自许可：`evidence/studio-grasp/third-party/` 的 WebXR 手模型采用 MIT；
+`evidence/studio-grasp-glyph/third-party/` 的 OpenMoji 拳头 SVG 及其教学预览采用 CC BY-SA 4.0。
+对应许可和来源随文件保存。原生抓握生成器使用自行计算的关系几何，不加载这些教学素材。

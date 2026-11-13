@@ -1,0 +1,13 @@
+[
+  {
+    "base": "e907181d19fff3eda1b9baf0448cf2877891fb4bf2998abe74dfb24134842d98",
+    "result": "59048a6dff4144d04587c953455e534b5e43b9dbcfaa36d2b3766523cc78b4a6",
+    "operation": {
+      "object": "carrying-grip",
+      "feature": "thumb",
+      "reason": "Shorten the long thumb crossbar so the stacked finger pads stay more legible in the raised-hand symbol; keep the wrist and pole mounts fixed",
+      "parameter": "thumb_reach",
+      "value": 0.72
+    }
+  }
+]

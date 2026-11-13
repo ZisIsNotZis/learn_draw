@@ -1,0 +1,13 @@
+[
+  {
+    "base": "59048a6dff4144d04587c953455e534b5e43b9dbcfaa36d2b3766523cc78b4a6",
+    "result": "f9145ad2d443b4cdf30fe1165aa9a610fcf91951fb9933ddc50793f17cb12845",
+    "operation": {
+      "object": "carrying-grip",
+      "feature": "handle",
+      "reason": "The pole changes outline treatment at the held segment; match its visible material to the plain extensions",
+      "parameter": "handle_ink_color",
+      "value": "#705041"
+    }
+  }
+]

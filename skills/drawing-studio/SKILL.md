@@ -1,6 +1,6 @@
 ---
 name: drawing-studio
-description: Create and refine programmatic vector art with learn_draw's revision-bound workbench, using editable gesture strokes, generic colour masses and semantic head, hand, hair and scenic presets. Use for new-subject composition, grouped parameter previews, visible placement, digit-tip moves, local contour pushes, acceptance and undo.
+description: Create and refine programmatic vector art with learn_draw's revision-bound workbench, using editable gesture strokes, generic colour masses and semantic head, hand, compact grip, hair and scenic presets. Use for new-subject composition, grouped parameter previews, visible placement, digit-tip moves, local contour pushes, acceptance and undo.
 ---
 
 # Drawing studio
@@ -50,6 +50,23 @@ a smaller move or a better gesture, not manually corrected generated vertices.
 - Select hand object for handedness, spread, size, skin/ink/crease colour and depth. The default
   is a graphic hand icon; it is not a hand-turn, closed-fist or full anatomical rig. The old relational
   hand-lobe family is historical and is not the current hand authoring route.
+
+- `new grip.json --kind grip` creates a compact flat illustrated closed hand **with its own handle
+  segment**. Use this candidate vocabulary for simple held handles/poles, not a physical 3D hand
+  that can enclose any existing object. Inspect object, palm, fingers, thumb or handle. Thumb offers
+  thumb_reach / thumb_thickness; fingers offer fold_length; handle offers handle_span /
+  handle_thickness / handle_color / handle_ink_color. These are bounded semantic parameters, not
+  digit-tip drags. Inspect the selected shape before a --set or grouped --change, then read the
+  clean preview and overlay, accept or undo. Preserve the known blind-image criticisms; detailed
+  anatomy and whole-illustration finish are not established by this symbolic component.
+- Grip mounts are wrist, grip, handle_left, handle_right, handle_top and handle_bottom. Inspect
+  anchors before attaching a sleeve or extending a pole. The end names follow the preset through
+  rotation/mirroring; they are not screen left/right. Connect external handle legs or pole sections
+  to the included segment using the ordinary stroke attachment/endpoint operations below. A 90-degree
+  grip angle turns its handle vertical. thumb_side chooses the thumb's side in the unrotated preset.
+  Whole-object length/width/angle/colour and normal preview/accept/undo are available.
+  The report's dimensions_canvas gives wrist_width and handle_thickness in shorter-canvas units;
+  these can set a matching sleeve/pole thickness. Observe continuity rather than relying on names.
 
 - For a landscape, `new scene.json --kind landscape`, then `add scene.json --kind moon` or sun.
   Insertion is undoable. Inspect the named object before revising it. Try `--set fullness --value .28`

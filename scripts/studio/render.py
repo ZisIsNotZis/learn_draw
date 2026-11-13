@@ -320,6 +320,9 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
             data=component_data(n,scene.get('canvas',[640,640]))
             info['features']={k:dict(bounds=v['bounds'],controls=exposed_controls(raw,v['controls'])) for k,v in data.features.items()}
             if n['kind']=='head': info['local_locks']=[side+'-lock' for side in data.locks]
+            if getattr(data,'dimensions',None):
+                info['dimensions_pixels']=data.dimensions
+                info['dimensions_canvas']={k:v/min(scene.get('canvas',[640,640])) for k,v in data.dimensions.items()}
         info['anchors']=anchors(n,scene.get('canvas',[640,640]))
         info['attached_children']=[child['id'] for child in scene['nodes'] if n['id'] in dependencies(child)]
         if 'endpoints' in raw:
@@ -330,7 +333,7 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
         node_info[n['id']]=info
     report = dict(revision=revision, engine=engine_fingerprint(), status='ready',renderer=backend, images=images,
                   image_sha256={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images},nodes=node_info,
-                  scope="editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+                  scope="editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips with an owned handle segment, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
                   removal=selection.get('removal') if selection else None,
                   alignment_legend={'red dashed':'removed previous paint; removal only','blue':'pinned stroke endpoints / inspected target; removal: retained affected children','orange':'selected current boundary','pink dashed':'previous boundary',
                                     'green rings':'named mount points or protected endpoints/knuckle','white target':'local edge/spine, terminal, digit-tip or exact-mount focus'},

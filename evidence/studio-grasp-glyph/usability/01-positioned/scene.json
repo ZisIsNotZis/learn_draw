@@ -1,0 +1,30 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f7efdf",
+  "nodes": [
+    {
+      "id": "carrying-grip",
+      "kind": "grip",
+      "intent": "a raised closed hand gripping the flagpole through its owned handle",
+      "length": 0.24,
+      "angle": 90,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.08,
+          0.13
+        ]
+      },
+      "palette": {
+        "skin": "#edbd91",
+        "ink": "#4f3e37",
+        "handle": "#705041",
+        "handle_ink": "#4f3e37"
+      }
+    }
+  ]
+}

@@ -4,12 +4,13 @@
 
 # learn_draw
 
-**Current direction (2026-11-12): a drawing workbench for VLM creation.** Reference studies develop usable primitives and drawing skill. The studio supports a user-accepted flat-cartoon head preset, editable open hands, standalone locks, curved gesture strokes and generic colour masses, with visible local selections, preview, accept and exact undo. Limited independent reuse has been demonstrated; whole-artwork quality and broader creative transfer remain unproven.
+**Current direction (2026-11-13): a drawing workbench for VLM creation.** Reference studies develop usable primitives and drawing skill. The studio supports a user-accepted flat-cartoon head preset, editable open hands, compact illustrated grips, standalone locks, curved gesture strokes and generic colour masses, with visible local selections, preview, accept and exact undo. Limited independent reuse has been demonstrated; whole-artwork quality and broader creative transfer remain unproven.
 
 ```bash
 uv sync
 uv run python -m scripts.studio demo --kind head --outdir evidence/my-head-sequence
 uv run python examples/studio/compose.py --theme moonrise --refined --outdir evidence/my-moonrise
+uv run python examples/studio/held_props.py --scene flag --outdir evidence/my-held-flag
 ```
 
 Use [the current roadmap](docs/0_ROADMAP.md), [operation skill](skills/drawing-studio/SKILL.md), and [scene contract](docs/7_INTERFACE.md). PNGs prefer native CPU resvg, with CairoSVG or GPU-disabled installed Chromium/Edge as fallbacks. The material below records the earlier portrait and toolchain; historical completion statements do not establish current product acceptance.
@@ -40,9 +41,17 @@ Sky, hills, moon and sun presets also support small scenic backgrounds with reco
 Their [actual studies and critical reviews](evidence/studio-composition/README.md) remain distinct
 from an artwork-quality pass.
 
-![An original flat watering illustration study](evidence/studio-watering/27-softer-knuckles/artwork.png)
+![Native compact grip used in an independently authored flag illustration](evidence/studio-grasp-glyph/11-flag-continuous-pole/artwork.png)
 
-This [interaction study](evidence/studio-watering/README.md) uses existing heads, masses and strokes
+`--kind grip` supplies a compact flat hand with its own handle segment. Inspect thumb, fingers,
+handle or named wrist/end mounts before refining or connecting a pole. A fresh skill-only operator
+created this original flag composition, refined its thumb and verified accept/undo; parent finishing
+then matched the pole material. [Actual operations, blind critiques and bounded usability report](evidence/studio-grasp-glyph/README.md)
+remain separate from whole-artwork acceptance and anatomical realism. The person accepted
+retaining this graphic hand as a simple preset direction (2026-11-13). The native watering variant
+is available through `python examples/studio/held_props.py --scene watering --outdir FRESH`.
+
+The earlier [interaction study](evidence/studio-watering/README.md) uses existing heads, masses and strokes
 to connect person, grasp, can, stream and soil. Actual revisions correct an open-palm grasp, an
 unpersuasive pouring attitude and a floating handle end. Fresh critics find the action readable;
 grip certainty, pose and line-language cohesion remain open. Human scene-level taste is pending.
@@ -224,3 +233,8 @@ target imagery used as study material:
 Those files remain the property of their original rights holders and are included only as the
 reference a study of this kind requires. The AGPL grant above applies to the project's own code, docs
 and outputs, not to them. `vendor/` holds third-party learning material under its own licences.
+
+Other third-party study assets retain their bundled licenses and provenance: the WebXR generic
+hand under `evidence/studio-grasp/third-party/` is MIT-licensed; OpenMoji's raised-fist SVG under
+`evidence/studio-grasp-glyph/third-party/` and its teaching preview are CC BY-SA 4.0.
+The native grip generator computes its own relational geometry and does not load those assets.

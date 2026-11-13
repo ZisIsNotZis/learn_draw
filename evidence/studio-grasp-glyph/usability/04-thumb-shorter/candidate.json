@@ -1,0 +1,161 @@
+{
+  "base": "e907181d19fff3eda1b9baf0448cf2877891fb4bf2998abe74dfb24134842d98",
+  "engine": "7e6b1a1d61cf8f2395ef547cb20d2cebd690627feb5415054d586189639f8648",
+  "result": "59048a6dff4144d04587c953455e534b5e43b9dbcfaa36d2b3766523cc78b4a6",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f7efdf",
+    "nodes": [
+      {
+        "id": "carrying-grip",
+        "kind": "grip",
+        "intent": "a raised closed hand gripping the flagpole through its owned handle",
+        "length": 0.24,
+        "angle": 90,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.08,
+            0.13
+          ]
+        },
+        "palette": {
+          "skin": "#edbd91",
+          "ink": "#4f3e37",
+          "handle": "#705041",
+          "handle_ink": "#4f3e37"
+        },
+        "thumb_reach": 0.72
+      },
+      {
+        "id": "upper-pole",
+        "kind": "stroke",
+        "intent": "the upper flagpole continues the included gripped segment",
+        "length": 0.28,
+        "angle": 180,
+        "thickness": 0.018823529411764704,
+        "ink_width": 0,
+        "palette": {
+          "fill": "#705041"
+        },
+        "depth": -1,
+        "attachment": {
+          "to": "carrying-grip",
+          "self": "root",
+          "target": "handle_right"
+        }
+      },
+      {
+        "id": "lower-pole",
+        "kind": "stroke",
+        "intent": "the lower flagpole continues below the gripping hand",
+        "length": 0.08,
+        "angle": 0,
+        "thickness": 0.018823529411764704,
+        "ink_width": 0,
+        "palette": {
+          "fill": "#705041"
+        },
+        "depth": -1,
+        "attachment": {
+          "to": "carrying-grip",
+          "self": "root",
+          "target": "handle_left"
+        }
+      },
+      {
+        "id": "sleeve",
+        "kind": "stroke",
+        "intent": "a blue forearm enters the raised wrist",
+        "length": 0.32,
+        "angle": 90,
+        "thickness": 0.1035294117647059,
+        "start_cap": "flat",
+        "end_cap": "flat",
+        "palette": {
+          "fill": "#284d68"
+        },
+        "depth": -1,
+        "attachment": {
+          "to": "carrying-grip",
+          "self": "root",
+          "target": "wrist"
+        }
+      },
+      {
+        "id": "flag",
+        "kind": "shape",
+        "intent": "a bright coral rectangular banner extends right from the pole",
+        "length": 0.19,
+        "width": 1.8,
+        "rounding": 0,
+        "stroke": 0,
+        "palette": {
+          "fill": "#d84e43"
+        },
+        "depth": -2,
+        "attachment": {
+          "to": "upper-pole",
+          "self": "left",
+          "target": "tip",
+          "offset": [
+            0,
+            0.085
+          ]
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "e907181d19fff3eda1b9baf0448cf2877891fb4bf2998abe74dfb24134842d98",
+    "engine": "7e6b1a1d61cf8f2395ef547cb20d2cebd690627feb5415054d586189639f8648",
+    "object": "carrying-grip",
+    "kind": "feature",
+    "feature": "thumb",
+    "bounds": [
+      221.43743158609442,
+      315.23878718380985,
+      310.95055530179843,
+      400.1837124371569
+    ],
+    "object_bounds": [
+      193.50588235294117,
+      261.6470588235294,
+      347.1058823529412,
+      544.7529411764706
+    ],
+    "controls": [
+      "thumb_reach",
+      "thumb_thickness",
+      "skin_color",
+      "ink_color"
+    ],
+    "units": "semantic parameter values; inspect the actual selected feature",
+    "locks": {
+      "wrist": [
+        347.1058823529412,
+        403.2
+      ],
+      "grip": [
+        231.1529411764706,
+        403.2
+      ]
+    },
+    "focus": [
+      237.1764705882353,
+      385.1294117647059
+    ]
+  },
+  "operation": {
+    "object": "carrying-grip",
+    "feature": "thumb",
+    "reason": "Shorten the long thumb crossbar so the stacked finger pads stay more legible in the raised-hand symbol; keep the wrist and pole mounts fixed",
+    "parameter": "thumb_reach",
+    "value": 0.72
+  },
+  "status": "ready"
+}

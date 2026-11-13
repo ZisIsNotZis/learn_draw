@@ -1,0 +1,40 @@
+{
+  "diagnostic": {
+    "minimum_surface_clearance": 0.0003148722941508234,
+    "intersecting_triangles": 0,
+    "skin_vertices_inside": 0,
+    "triangle_ids": [],
+    "collisions": [],
+    "note": "Surface test covers the finite rod axial slab; it does not certify hand self-contact or thumb opposition."
+  },
+  "thumb": {
+    "target": [
+      -0.010326991369483573,
+      0.08052709522841829,
+      0.05946415105832285
+    ],
+    "contact": [
+      -0.013733476665728274,
+      0.07854866801389816,
+      0.05737500614614761
+    ],
+    "middle_index_tip_contact": true,
+    "reach": 0.04853966891486267,
+    "maximum_reach": 0.06630597971616223,
+    "contact_solved": false
+  },
+  "iterations": [
+    {
+      "step": 0,
+      "reserves": {},
+      "diagnostic": {
+        "minimum_surface_clearance": 0.0003148722941508234,
+        "intersecting_triangles": 0,
+        "skin_vertices_inside": 0,
+        "triangle_ids": [],
+        "collisions": [],
+        "note": "Surface test covers the finite rod axial slab; it does not certify hand self-contact or thumb opposition."
+      }
+    }
+  ]
+}

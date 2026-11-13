@@ -1,0 +1,62 @@
+"""Verify only artifacts produced by this independent review and write its report."""
+import hashlib,json,pathlib
+P=pathlib.Path(__file__).resolve().parent
+read=lambda name: json.loads((P/name).read_text())
+before=read('03b-thumb-before/report.json'); final=read('07-final/report.json'); undone=read('06-undone/report.json')
+assert all(read(str(p.relative_to(P)))['engine']=='7e6b1a1d61cf8f2395ef547cb20d2cebd690627feb5415054d586189639f8648' for p in P.glob('*/report.json') if 'engine' in read(str(p.relative_to(P))))
+same_input=read('before-refinement.json')==read('undo-restored.json')
+assert same_input
+for name in ['carrying-grip','upper-pole','lower-pole','sleeve','flag']:
+    assert before['nodes'][name]['anchors']==final['nodes'][name]['anchors'],name
+for name in ['upper-pole','lower-pole','sleeve','flag']:
+    assert before['nodes'][name]['bounds']==final['nodes'][name]['bounds'],name
+art=lambda directory: hashlib.sha256((P/directory/'artwork.png').read_bytes()).hexdigest()
+assert art('03b-thumb-before')==art('06-undone')
+assert art('04-thumb-shorter')==art('05-accepted')==art('07-final')
+def point(obj,anchor): return final['nodes'][obj]['anchors'][anchor]['point']
+connections={'upper pole root to included handle_right':[point('upper-pole','root'),point('carrying-grip','handle_right')], 'lower pole root to included handle_left':[point('lower-pole','root'),point('carrying-grip','handle_left')], 'sleeve root to wrist':[point('sleeve','root'),point('carrying-grip','wrist')]}
+connection_residuals={name:sum((a-b)**2 for a,b in zip(pair[0],pair[1]))**.5 for name,pair in connections.items()}
+assert max(connection_residuals.values())<1e-10,connection_residuals
+(P/'verification.json').write_text(json.dumps(dict(engine=final['engine'],before_revision=before['revision'],final_revision=final['revision'],undo_revision=undone['revision'],undo_semantic_input_equal=same_input,anchors_unchanged=True,external_bounds_unchanged=True,connections=connections,connection_residuals_pixels=connection_residuals,artwork_hashes={d:art(d) for d in ['03b-thumb-before','04-thumb-shorter','05-accepted','06-undone','07-final']}),indent=2)+'\n')
+(P/'REPORT.txt').write_text('''Independent purpose-aware usability review — 2026-11-13
+
+Question: can the native compact flat grip WITH its included handle be used for a new symbolic hand-holding-flag illustration without rebuilding the primitive?
+Result: yes for this bounded study. This is an execution/authoring result, not human aesthetic acceptance, a blind image verdict, anatomical realism, arbitrary prop contact, or universal transfer.
+
+Procedure and source boundary
+Read only skills/drawing-studio/SKILL.md, its object-interaction reference, and docs/7_INTERFACE.md. No engine source, tests, examples, prior studies or other reviewers' artifacts were read. No private SVG, mesh, image generation or GPU was used. Own semantic scene JSON supplies the design; public CLI inspect/preview/accept/undo/check supplies all rendering and refinement. The replay helper authors semantic parameters and named attachments, never generated vertices. It does not implement an alternate hand. Scene composition insertion was direct JSON authoring (allowed in this review), not a claim of an atomic public CLI composition transaction.
+
+All inspect/preview reports used engine 7e6b1a1d61cf8f2395ef547cb20d2cebd690627feb5415054d586189639f8648 and CPU renderer resvg-py-0.5.0-cpu. No source/skill changes were made. Per-command stdout/stderr is in commands.jsonl. The first new/inspect commands and final check were invoked directly; their commands are recorded below, and inspect output survives in 00-default/report.json. CLI was sometimes slow to return but no command or render failed.
+
+Fresh design and actual observations
+Designed cream paper, a coral rectangular flag, brown vertical pole, warm flat hand and blue horizontal sleeve. Started from new --kind grip, then selected 90-degree orientation and .24 height. Read the initial native clean render and alignment, then the rotated mount alignment before connecting anything. handle_right was visibly the upper endpoint [231.15294117647062,267.6705882352941], handle_left the lower [231.1529411764706,538.7294117647059], and wrist [347.1058823529412,403.2]. These names follow the component rather than the screen. Pole extensions use ordinary stroke roots attached at those end-centres; the owned segment remains the part behind the fingers. Sleeve attaches to wrist. Thicknesses came from dimensions_canvas, not guessed outlines.
+
+The first sloping blue sleeve met the wrist at its root but its oblique flat cap left a visible triangular gap. This was a composition/contact-treatment failure, not a reason to replace the grip. Reading the clean image exposed it; turning that ordinary sleeve to 90 degrees seated its flat cap along the wrist. Both the failed first composition (first-composition.json, 02-composition/) and the corrected composition (03b-thumb-before/) remain. This confirms the documented limit: a one-point mount preserves position, not edge fit or inherited orientation.
+
+Grip refinement
+The native long thumb read as a long vertical bar through the finger stack in this rotated composition. Inspected thumb and read clean/alignment images before proposing thumb_reach .90 → .72, with reason to shorten that crossing bar and leave the finger pads more legible. Read 04-thumb-shorter/artwork.png and alignment.png before accepting. The lower thumb tip visibly shortened while the exterior hand silhouette, wrist and pole position stayed in place. This was a modest local illustration choice; it does not settle anatomical criticisms.
+
+Accepted the ready candidate, inspected it, undid and rendered the restoration, then reaccepted the same revision-bound candidate and inspected the final. Undo restored semantic scene input exactly (JSON value equality); file-byte equality is not claimed because formatting can differ. Before and undone artwork hashes match exactly. Preview, accepted and reaccepted artwork hashes match exactly. verification.json records actual revisions, file hashes and coordinate equalities. Every named anchor on the grip and all four other nodes stayed identical through thumb refinement. The pole and sleeve endpoints meet their grip target mounts within 1e-10 pixels; every external object bound stayed identical. Thus the refinement preserved wrist/handle connections both visually and operationally.
+
+What works and what remains
+No reconstruction was required to obtain the intended flat hand/pole arrangement. Useful defaults, rotation, dimensions, named mounts, semantic thumb change, ready candidate acceptance and undo all operated successfully. No operational blocker was encountered.
+
+Visible finish limits remain: the owned handle's dark outline and rounded terminal produce short visible seams against plain pole extensions; sleeve is a simple graphic bar; finger pads and thumb remain a stylized symbol. Material/line treatment could be matched with ordinary stroke controls, but this study did not invent a repair for the hand or imply whole-illustration polish. Arbitrary 3D grip/contact and detailed anatomy were outside the frozen scope. A blind reviewer may still reject the image; that separate verdict is owned by the parent and is not replaced by these purpose-aware observations.
+
+Key outputs
+working.json: final editable semantic scene.
+operate.py: own semantic authoring/CLI replay helper (stages place, compose, thumb, seat-sleeve, refine, accept, undo, reaccept; run in that order from the initial new scene).
+07-final/artwork.png: final normal clean render, SHA256 196634bb0929daf6d795fb0fdffb5f8d00d866fab2c5fc0165ad7fc1ce461ccd.
+08-check/report.txt: image-only bundle handoff for separate blind review; no verdict claimed here.
+verification.json and artifact-hashes.json: operation evidence and actual artifact hashes.
+
+Direct commands not captured by helper
+.venv/Scripts/python.exe -m scripts.studio new evidence/studio-grasp-glyph/usability/working.json --kind grip --size 640x640 --background #f7efdf
+.venv/Scripts/python.exe -m scripts.studio inspect evidence/studio-grasp-glyph/usability/working.json --feature object --outdir evidence/studio-grasp-glyph/usability/00-default
+.venv/Scripts/python.exe scripts/draw.py check evidence/studio-grasp-glyph/usability/07-final/artwork.png --outdir evidence/studio-grasp-glyph/usability/08-check
+
+No commit or push was made. Parent owns the shared unit and separate blind review.
+''',encoding='utf8')
+hashes={str(p.relative_to(P)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(P.rglob('*')) if p.is_file() and p.name!='artifact-hashes.json'}
+(P/'artifact-hashes.json').write_text(json.dumps(hashes,indent=2)+'\n')
+print(json.dumps({'report':str(P/'REPORT.txt'),'verified_connections':connections,'artifacts_hashed':len(hashes)},indent=2))

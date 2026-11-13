@@ -22,6 +22,9 @@ def default_scene(kind='hair-lock'):
     if kind=='hand':
         return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
             dict(id='greeting-hand',kind='hand',intent='a front-view flat cartoon open palm with five digits')])
+    if kind=='grip':
+        return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
+            dict(id='carrying-grip',kind='grip',intent='a compact flat illustrative hand closes around its included handle segment')])
     if kind=='landscape':
         return dict(format='learn-draw/studio-1',canvas=[960,640],background='#f5eee4',nodes=[
             dict(id='sky',kind='sky',intent='a quiet atmospheric sky with restrained detail'),
@@ -50,7 +53,7 @@ def canvas_arg(value):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    kinds=('hair-lock','head','hand','shape','stroke','sky','hills','moon','sun')
+    kinds=('hair-lock','head','hand','grip','shape','stroke','sky','hills','moon','sun')
     p = sub.add_parser("new", help="create a useful preset; no path coordinates needed")
     p.add_argument("scene")
     p.add_argument('--kind',choices=kinds+('landscape','blank'),default='hair-lock')
@@ -74,7 +77,7 @@ def main():
         if command == "inspect":
             p.add_argument('--anchor',help='one exact mount to inspect, e.g. right@.2 on a generated shape edge')
             p.add_argument("--object",help='inferred when the scene contains one object')
-            p.add_argument('--feature',help='head: object/eyes/face/hair/expression/left-lock/right-lock; hand: object/index/middle/ring/little/thumb; lock: object or edge')
+            p.add_argument('--feature',help='head: object/eyes/face/hair/expression/left-lock/right-lock; hand: object/index/middle/ring/little/thumb; grip: object/palm/fingers/thumb/handle/anchors; lock: object or edge')
             p.add_argument("--side", choices=("left", "right"), default="left")
             p.add_argument("--at", type=float, default=.55)
             p.add_argument("--radius", type=float, default=.30)
@@ -141,7 +144,7 @@ def main():
             if args.id: node['id']=args.id
             if args.depth is not None:
                 node['depth']=args.depth
-            elif args.kind in ('head','hand','hair-lock','shape','stroke'):
+            elif args.kind in ('head','hand','grip','hair-lock','shape','stroke'):
                 from .components import depth_bounds
                 from .attachment import resolve_scene
                 canvas=scene.get('canvas',[640,640])

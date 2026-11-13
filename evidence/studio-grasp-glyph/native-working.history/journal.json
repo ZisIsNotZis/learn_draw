@@ -1,0 +1,24 @@
+[
+  {
+    "base": "a79402eec97ca523d50f43c67eb96b4000ac7cad6a023bc2a693df02cffe6f1d",
+    "result": "e5605ab41f3c1e2ef7eaaf8d9aff9d51bb15b5eefd54b44516a8abb8e979aa64",
+    "operation": {
+      "object": "carrying-grip",
+      "feature": "thumb",
+      "reason": "The horizontal thumb pad is too broad; tuck its tip in while preserving the wrist and handle",
+      "parameter": "thumb_reach",
+      "value": 0.72
+    }
+  },
+  {
+    "base": "e5605ab41f3c1e2ef7eaaf8d9aff9d51bb15b5eefd54b44516a8abb8e979aa64",
+    "result": "2b211fc3b0a034094ff7c35af1c31e296fe2612a1ce4541dcfc08a1e925952b9",
+    "operation": {
+      "object": "carrying-grip",
+      "feature": "thumb",
+      "reason": "The tucked thumb ends too far over the middle pad; extend it back a little while keeping the wrist and handle fixed",
+      "parameter": "thumb_reach",
+      "value": 0.8
+    }
+  }
+]

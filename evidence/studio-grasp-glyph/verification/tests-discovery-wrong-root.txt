@@ -1,0 +1,158 @@
+test_crossing_depth_changes_visible_owner_without_author_cuts (test_studio.DepthAuthority.test_crossing_depth_changes_visible_owner_without_author_cuts) ... ok
+test_accept_undo_and_stale_preview (test_studio.LocalEditing.test_accept_undo_and_stale_preview) ... ok
+test_external_change_prevents_undo (test_studio.LocalEditing.test_external_change_prevents_undo) ... ok
+test_implementation_changes_invalidate_alignment_and_preview (test_studio.LocalEditing.test_implementation_changes_invalidate_alignment_and_preview) ... ok
+test_invalid_push_is_refused_instead_of_drawing_a_crossed_lock (test_studio.LocalEditing.test_invalid_push_is_refused_instead_of_drawing_a_crossed_lock) ... ok
+test_one_sided_root_caps_are_valid_rings (test_studio.LocalEditing.test_one_sided_root_caps_are_valid_rings) ... ok
+test_one_sided_width_keeps_the_protected_edge_in_place (test_studio.LocalEditing.test_one_sided_width_keeps_the_protected_edge_in_place) ... ok
+test_overlay_and_art_are_distinct (test_studio.LocalEditing.test_overlay_and_art_are_distinct) ... ok
+test_presets_have_simple_uncrossed_contours_across_supported_gestures (test_studio.LocalEditing.test_presets_have_simple_uncrossed_contours_across_supported_gestures) ... ok
+test_push_lands_on_selected_edge_and_preserves_everything_else (test_studio.LocalEditing.test_push_lands_on_selected_edge_and_preserves_everything_else) ... ok
+test_reversal_can_recover_the_same_boundary (test_studio.LocalEditing.test_reversal_can_recover_the_same_boundary) ... ok
+test_selection_cannot_move_a_locked_terminal (test_studio.LocalEditing.test_selection_cannot_move_a_locked_terminal) ... ok
+test_stale_selection_is_refused (test_studio.LocalEditing.test_stale_selection_is_refused) ... ok
+test_unknown_fields_and_nonfinite_values_are_errors (test_studio.LocalEditing.test_unknown_fields_and_nonfinite_values_are_errors) ... ok
+test_studio_attachment (unittest.loader._FailedTest.test_studio_attachment) ... ERROR
+test_studio_endpoints (unittest.loader._FailedTest.test_studio_endpoints) ... ERROR
+test_default_is_unchanged_and_expression_controls_cannot_leak_to_other_features (test_studio_expression.ExpressionControls.test_default_is_unchanged_and_expression_controls_cannot_leak_to_other_features) ... ok
+test_expression_changes_only_the_actual_selected_feature_guides (test_studio_expression.ExpressionControls.test_expression_changes_only_the_actual_selected_feature_guides) ... ok
+test_gaze_moves_both_pupils_the_same_way_and_stays_in_the_eyelids (test_studio_expression.ExpressionControls.test_gaze_moves_both_pupils_the_same_way_and_stays_in_the_eyelids) ... ok
+test_open_eye_smile_does_not_clip_away_the_pupil_centers (test_studio_expression.ExpressionControls.test_open_eye_smile_does_not_clip_away_the_pupil_centers) ... ok
+test_zoom_margin_is_opaque_and_visibly_separate_from_document_paper (test_studio_expression.ExpressionControls.test_zoom_margin_is_opaque_and_visibly_separate_from_document_paper) ... ok
+test_invalid_controls_refuse_without_mutating_work (test_studio_grip.IllustrativeGrip.test_invalid_controls_refuse_without_mutating_work) ... ok
+test_palette_ids_and_depth_do_not_depend_on_author_order (test_studio_grip.IllustrativeGrip.test_palette_ids_and_depth_do_not_depend_on_author_order) ... ok
+test_public_cli_preview_accept_undo_and_dimensions (test_studio_grip.IllustrativeGrip.test_public_cli_preview_accept_undo_and_dimensions) ... ok
+test_reference_free_in_fresh_directory (test_studio_grip.IllustrativeGrip.test_reference_free_in_fresh_directory) ... ok
+test_rotation_mirror_and_real_footprint (test_studio_grip.IllustrativeGrip.test_rotation_mirror_and_real_footprint) ... ok
+test_thumb_refinement_preserves_mounts_materials_and_other_object (test_studio_grip.IllustrativeGrip.test_thumb_refinement_preserves_mounts_materials_and_other_object) ... ok
+test_two_target_connection_follows_span_and_undo_restores_pixels (test_studio_grip.IllustrativeGrip.test_two_target_connection_follows_span_and_undo_restores_pixels) ... ok
+test_a_failed_new_request_cannot_leave_an_old_candidate_acceptable (test_studio_hand.OpenHand.test_a_failed_new_request_cannot_leave_an_old_candidate_acceptable) ... ok
+test_connected_five_digit_default_and_mirrored_handles (test_studio_hand.OpenHand.test_connected_five_digit_default_and_mirrored_handles) ... ok
+test_foreground_insertion_has_a_strict_depth_order_and_is_undoable (test_studio_hand.OpenHand.test_foreground_insertion_has_a_strict_depth_order_and_is_undoable) ... ok
+test_hand_compiles_without_a_browser_or_reference_in_a_fresh_directory (test_studio_hand.OpenHand.test_hand_compiles_without_a_browser_or_reference_in_a_fresh_directory) ... ok
+test_invalid_poses_are_refused_before_merging_away_a_finger (test_studio_hand.OpenHand.test_invalid_poses_are_refused_before_merging_away_a_finger) ... ok
+test_multiple_hands_keep_their_own_clip_ids_and_visible_colours (test_studio_hand.OpenHand.test_multiple_hands_keep_their_own_clip_ids_and_visible_colours) ... ok
+test_scoped_length_and_tip_edits_accept_and_undo_exactly (test_studio_hand.OpenHand.test_scoped_length_and_tip_edits_accept_and_undo_exactly) ... ok
+test_screen_tip_target_is_exact_under_mirror_tilt_and_anisotropic_width (test_studio_hand.OpenHand.test_screen_tip_target_is_exact_under_mirror_tilt_and_anisotropic_width) ... ok
+test_tip_edit_is_visible_and_other_contours_stay_within_construction_precision (test_studio_hand.OpenHand.test_tip_edit_is_visible_and_other_contours_stay_within_construction_precision) ... ok
+test_aperture_clip_really_prevents_escaped_catchlights (test_studio_head.HeadProbe.test_aperture_clip_really_prevents_escaped_catchlights) ... ok
+test_exact_hair_polygon_preserves_its_computed_corner_coverage (test_studio_head.HeadProbe.test_exact_hair_polygon_preserves_its_computed_corner_coverage) ... ok
+test_eye_scale_preserves_head_hair_and_other_features (test_studio_head.HeadProbe.test_eye_scale_preserves_head_hair_and_other_features) ... ok
+test_alignment_scope_refuses_an_unrelated_action (test_studio_head_editing.HeadEditing.test_alignment_scope_refuses_an_unrelated_action) ... ok
+test_crossing_planes_refuse_the_global_order_shortcut (test_studio_head_editing.HeadEditing.test_crossing_planes_refuse_the_global_order_shortcut) ... ok
+test_eye_parameter_changes_only_the_selected_eyes_in_actual_raster (test_studio_head_editing.HeadEditing.test_eye_parameter_changes_only_the_selected_eyes_in_actual_raster) ... ok
+test_failed_render_cannot_advertise_stale_images_as_ready (test_studio_head_editing.HeadEditing.test_failed_render_cannot_advertise_stale_images_as_ready) ... ok
+test_geometry_import_and_head_compile_do_not_discover_a_browser (test_studio_head_editing.HeadEditing.test_geometry_import_and_head_compile_do_not_discover_a_browser) ... ok
+test_hair_recolor_covers_internal_marks_in_both_styles (test_studio_head_editing.HeadEditing.test_hair_recolor_covers_internal_marks_in_both_styles) ... ok
+test_mixed_parameter_and_local_edits_undo_to_exact_input (test_studio_head_editing.HeadEditing.test_mixed_parameter_and_local_edits_undo_to_exact_input) ... ok
+test_multiple_heads_have_unique_clip_ids_and_depth_still_wins (test_studio_head_editing.HeadEditing.test_multiple_heads_have_unique_clip_ids_and_depth_still_wins) ... ok
+test_screen_push_respects_parent_tilt_and_protected_other_parts (test_studio_head_editing.HeadEditing.test_screen_push_respects_parent_tilt_and_protected_other_parts) ... ok
+test_studio_noncrossing (unittest.loader._FailedTest.test_studio_noncrossing) ... ERROR
+test_bad_group_preserves_inputs_and_feature_scope (test_studio_parameters.ParameterGroups.test_bad_group_preserves_inputs_and_feature_scope) ... ok
+test_group_cli_ready_failure_invalidation_and_duplicate_refusal (test_studio_parameters.ParameterGroups.test_group_cli_ready_failure_invalidation_and_duplicate_refusal) ... ok
+test_group_matches_separate_changes_but_accepts_and_undoes_once (test_studio_parameters.ParameterGroups.test_group_matches_separate_changes_but_accepts_and_undoes_once) ... ok
+test_single_control_api_keeps_its_existing_operation_record (test_studio_parameters.ParameterGroups.test_single_control_api_keeps_its_existing_operation_record) ... ok
+test_studio_removal (unittest.loader._FailedTest.test_studio_removal) ... ERROR
+test_cli_insertion_is_undoable_without_touching_original_scene (test_studio_scenery.ScenicComposition.test_cli_insertion_is_undoable_without_touching_original_scene) ... ok
+test_crescent_hole_reveals_sky_and_ridge_depth_really_occludes (test_studio_scenery.ScenicComposition.test_crescent_hole_reveals_sky_and_ridge_depth_really_occludes) ... ok
+test_foreground_trees_remain_connected_to_the_changed_ridge (test_studio_scenery.ScenicComposition.test_foreground_trees_remain_connected_to_the_changed_ridge) ... ok
+test_object_movement_uses_screen_space_and_preserves_others_and_undo (test_studio_scenery.ScenicComposition.test_object_movement_uses_screen_space_and_preserves_others_and_undo) ... ok
+test_semantic_controls_are_scoped_and_background_move_is_explicitly_refused (test_studio_scenery.ScenicComposition.test_semantic_controls_are_scoped_and_background_move_is_explicitly_refused) ... ok
+test_sun_support_has_no_invisible_ray_gap_occluder (test_studio_scenery.ScenicComposition.test_sun_support_has_no_invisible_ray_gap_occluder) ... ok
+test_cli_refuses_inspection_output_that_would_overwrite_an_input (test_studio_shape.ColourMass.test_cli_refuses_inspection_output_that_would_overwrite_an_input) ... ok
+test_every_side_moves_in_screen_space_only_inside_its_visible_interval (test_studio_shape.ColourMass.test_every_side_moves_in_screen_space_only_inside_its_visible_interval) ... ok
+test_fill_ink_and_ids_are_separate_and_repeatable (test_studio_shape.ColourMass.test_fill_ink_and_ids_are_separate_and_repeatable) ... ok
+test_no_subject_or_pixel_input_required (test_studio_shape.ColourMass.test_no_subject_or_pixel_input_required) ... ok
+test_preview_accept_undo_and_parameter_edits_keep_the_original_scene (test_studio_shape.ColourMass.test_preview_accept_undo_and_parameter_edits_keep_the_original_scene) ... ok
+test_refuses_crossing_edits_invalid_parameters_and_unknown_fields (test_studio_shape.ColourMass.test_refuses_crossing_edits_invalid_parameters_and_unknown_fields) ... ok
+test_rotating_a_sculpted_mass_rotates_the_edit_with_its_material (test_studio_shape.ColourMass.test_rotating_a_sculpted_mass_rotates_the_edit_with_its_material) ... ok
+test_thin_filled_mark_is_valid_without_a_subject_specific_stroke (test_studio_shape.ColourMass.test_thin_filled_mark_is_valid_without_a_subject_specific_stroke) ... ERROR
+test_studio_stroke (unittest.loader._FailedTest.test_studio_stroke) ... ERROR
+
+======================================================================
+ERROR: test_studio_attachment (unittest.loader._FailedTest.test_studio_attachment)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_studio_attachment
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\unittest\loader.py", line 433, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Users\Administrator\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\unittest\loader.py", line 374, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "D:\vibe\learn_draw_studio\scripts\tests\test_studio_attachment.py", line 15, in <module>
+    from .test_studio_hand import pixels
+ImportError: attempted relative import with no known parent package
+
+
+======================================================================
+ERROR: test_studio_endpoints (unittest.loader._FailedTest.test_studio_endpoints)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_studio_endpoints
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\unittest\loader.py", line 433, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Users\Administrator\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\unittest\loader.py", line 374, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "D:\vibe\learn_draw_studio\scripts\tests\test_studio_endpoints.py", line 10, in <module>
+    from .test_studio_hand import pixels
+ImportError: attempted relative import with no known parent package
+
+
+======================================================================
+ERROR: test_studio_noncrossing (unittest.loader._FailedTest.test_studio_noncrossing)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_studio_noncrossing
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\unittest\loader.py", line 433, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Users\Administrator\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\unittest\loader.py", line 374, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "D:\vibe\learn_draw_studio\scripts\tests\test_studio_noncrossing.py", line 5, in <module>
+    from .test_studio_hand import pixels
+ImportError: attempted relative import with no known parent package
+
+
+======================================================================
+ERROR: test_studio_removal (unittest.loader._FailedTest.test_studio_removal)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_studio_removal
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\unittest\loader.py", line 433, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Users\Administrator\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\unittest\loader.py", line 374, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "D:\vibe\learn_draw_studio\scripts\tests\test_studio_removal.py", line 15, in <module>
+    from .test_studio_hand import pixels
+ImportError: attempted relative import with no known parent package
+
+
+======================================================================
+ERROR: test_thin_filled_mark_is_valid_without_a_subject_specific_stroke (test_studio_shape.ColourMass.test_thin_filled_mark_is_valid_without_a_subject_specific_stroke)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\vibe\learn_draw_studio\scripts\tests\test_studio_shape.py", line 89, in test_thin_filled_mark_is_valid_without_a_subject_specific_stroke
+    from .test_studio_hand import pixels
+ImportError: attempted relative import with no known parent package
+
+======================================================================
+ERROR: test_studio_stroke (unittest.loader._FailedTest.test_studio_stroke)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_studio_stroke
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\unittest\loader.py", line 433, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "C:\Users\Administrator\AppData\Roaming\uv\python\cpython-3.14-windows-x86_64-none\Lib\unittest\loader.py", line 374, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "D:\vibe\learn_draw_studio\scripts\tests\test_studio_stroke.py", line 18, in <module>
+    from .test_studio_hand import pixels
+ImportError: attempted relative import with no known parent package
+
+
+----------------------------------------------------------------------
+Ran 70 tests in 14.907s
+
+FAILED (errors=6)

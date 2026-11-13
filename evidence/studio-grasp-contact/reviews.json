@@ -1,0 +1,61 @@
+{
+  "date": "2026-11-13",
+  "method": "Parent-written summaries of fresh-context image-only qualitative critiques. Image hashes bind the actual supplied clean review bundle; agents did not independently print revision/hash bindings. No formal whole-artwork/rubric pass is claimed.",
+  "disposition": "Mesh/contact study not adopted as a drawing default, despite reduced rod penetration.",
+  "reviews": [
+    {
+      "reviewer": "contact_image_a",
+      "bundle": "check-04",
+      "image_sha256": {
+        "draft-fullres.png": "b5ad2c0a24593bb56a202aecf734ae701e5413d301232ee23a41989986a9728b",
+        "draft.png": "fdf5c94a61ac1afb1600e47ecdad5bf9c730b8ae6c6ecc4b516e746b0d0a200d"
+      },
+      "observations": "Broad flap-like thumb, loose contact and pointed gaps, hanging digit, triangular ink/dot and long flat palm."
+    },
+    {
+      "reviewer": "contact_image_b",
+      "bundle": "check-04",
+      "image_sha256": {
+        "draft-fullres.png": "b5ad2c0a24593bb56a202aecf734ae701e5413d301232ee23a41989986a9728b",
+        "draft.png": "fdf5c94a61ac1afb1600e47ecdad5bf9c730b8ae6c6ecc4b516e746b0d0a200d"
+      },
+      "observations": "Loose fingertips/opposition, triangular fragments, angular pads and long empty palm."
+    },
+    {
+      "reviewer": "grip_component_review",
+      "bundle": "check-09",
+      "image_sha256": {
+        "draft-fullres.png": "b0b468a52d1f51ff6d55eadcecb3fdae0e06d5be12f44f7b1c291c15d77a5540",
+        "draft.png": "27e33dbcb10e7e81dae6a15f17322bec5ce060f78162bef3406f064a375ff74f"
+      },
+      "observations": "Draped strip-like fingers, broad unopposed thumb, gold slots, competing root lines and closed wrist stump."
+    },
+    {
+      "reviewer": "grip_context_review",
+      "bundle": "check-12",
+      "image_sha256": {
+        "draft-fullres.png": "771d02281115c9dd2009d7ec6673ed4e5a0387eb512ca5b90858b123290456fc",
+        "draft.png": "3f3e6ed29af21360376562aed1a410022816154714f9ecfdb4ec6313f9544561"
+      },
+      "observations": "Knotted loops obscure finger/thumb identity and enclosure, pinched wrist, pale can gap; grip cluster unclear at thumbnail."
+    },
+    {
+      "reviewer": "back_grip_review",
+      "bundle": "check-14",
+      "image_sha256": {
+        "draft-fullres.png": "be47f761396ea9f82a473bcbdd60cf1da0e7dcee6922c63d4e326badbdaaafe6",
+        "draft.png": "34fc2c734f7e16a4dcf402950bfe839ff23296ec43ca88e6d5d667356ef5afd5"
+      },
+      "observations": "Mitten silhouette, dangling thumb loop, ambiguous knuckle lobes, wrist kinks and uneven cap."
+    },
+    {
+      "reviewer": "back_context_review",
+      "bundle": "check-15",
+      "image_sha256": {
+        "draft-fullres.png": "f7b028dbb1b35b83454e9fc2da27054a4d2e005ba0b3d99bffef436740b83041",
+        "draft.png": "abd8ca564ca8dcf5efaadc3dfb116643417f93fa0e978cf2491d85847de11c9c"
+      },
+      "observations": "Action legible at thumbnail, but mitten bumps, loop flap, sharp cloth join, angular can and wire-like water."
+    }
+  ]
+}

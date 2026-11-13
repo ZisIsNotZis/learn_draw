@@ -1,9 +1,12 @@
 # Drawing an action between a person and a prop
 
 Use this branch for carrying, grasping, pouring or a mark connecting two separately movable objects.
-Actual demonstrated scope is the flat watering illustration in examples/studio/watering.json;
-evidence/studio-watering/README.md owns its review dispositions. This is a diagnostic practice,
-not an accepted general closed-hand or physical-simulation primitive.
+Current demonstrated scope includes the native compact grip in examples/studio/held_flag.json
+and watering_grip.json. A fresh skill-only operator created the original flag, used its named
+mounts and refined the thumb without reconstructing the primitive. The person accepted retaining
+this graphic hand as a simple preset direction; natural anatomy and arbitrary contact remain
+unproven. evidence/studio-grasp-glyph/README.md owns the current sequence. Earlier watering
+and rejected mesh studies below retain their diagnostic lessons.
 
 ## Establish the action before finish
 
@@ -69,3 +72,23 @@ read draped fingers with an unopposed thumb. These are rejected studies, not com
 or a new grasp primitive. Check contact/enclosure and the actual picture before
 polishing folds or treating an imported rig as solved anatomy. Keep line art separate
 from visibility: numerical fragment boundaries and every mesh edge are not art lines.
+
+## Use the compact native grip for graphic holding
+
+Start with `kind: grip`; its palm, folded pads, opposed thumb and owned handle are computed
+together. Use the main skill and scene contract for actual controls and bounds. Inspect wrist,
+handle_left/right and dimensions before connecting a sleeve or extending a pole. Rotation can
+reverse which named endpoint appears higher: read the actual overlay. The flag operator used
+the default shape, then shortened thumb_reach from .90 to .72 through a visible proposal; these
+are picture-specific values, not a mandatory recipe. Keep all independent mounts stable.
+
+One-point attachment seats a point, not a cuff edge. Inspect the sleeve tangent and width at
+the wrist; a slanted sleeve left a triangular gap in the independent flag. In watering, changing
+the sleeve bend aligned its terminal tangent while both endpoints stayed pinned. Match a
+continuous pole material across the grip-owned segment and external extensions when the
+style calls for one rod; their independent ink colours otherwise create artificial seams.
+
+A two-pinned stream still needs a deliberate curve and taper: align its start tangent to the
+nozzle and inspect the soil landing. A can-opening oval was discarded because the arm hid it
+into two stray patches. Inspect actual visibility before adding explanatory detail. These are
+observed drawing corrections, not automatic contact, orientation-fit or fluid solvers.

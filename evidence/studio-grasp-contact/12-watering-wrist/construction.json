@@ -1,0 +1,39 @@
+{
+  "status": "composition prototype; macro not a shipped studio kind",
+  "asset": "09-thinner-handle",
+  "hand_height": 64.8,
+  "hand_width": 51.9897779091465,
+  "ports": {
+    "wrist": [
+      487.9632138269537,
+      381.9785880505672
+    ],
+    "grip": [
+      514.8203955239649,
+      362.4842425258295
+    ],
+    "handle_left": [
+      480.62326056676545,
+      338.5391508436237
+    ],
+    "handle_right": [
+      549.0175304811643,
+      386.42933420803524
+    ]
+  },
+  "body_top": [
+    480.0055674931001,
+    412.2049697831799
+  ],
+  "hand_matrix": {
+    "scale": 0.2436839599546026,
+    "rotation_degrees": 39.591684416319964,
+    "translation": [
+      496.239556458229,
+      265.13280259598514
+    ]
+  },
+  "native_node_count": 22,
+  "base_scene_alone_is_incomplete": true,
+  "handle_pairing_reversed": false
+}

@@ -1,0 +1,10 @@
+{
+  "status": "canceled before paint completion after a verified structural defect",
+  "handle_chords_cross": true,
+  "handle_painted_overlap_area": 55.88156323086186,
+  "reason": "Rotating the hand by pi reverses source bar endpoint order; body target ports were not reversed. Same-depth crossing also defeats the renderer planar fast path.",
+  "process": "compose_watering.py",
+  "original_session": 80695,
+  "terminal_exit_code": 1,
+  "timeout_was_not_treated_as_terminal": true
+}

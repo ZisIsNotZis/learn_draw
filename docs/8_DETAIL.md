@@ -254,3 +254,14 @@ Screen-direction spine pushes use the resolved chord angle, preserving their mat
 under target motion. Release/deletion bake the resolved chord before removing links, so a surviving
 pin reconstructs the same world geometry. Reports and selection filters hide derived controls.
 Depth clipping remains unchanged; projected endpoint equality is not 3D contact or fluid physics.
+
+## Compact illustrative grip construction
+
+scripts/studio/grip.py builds a rounded palm/wrist, four short capsule pads and a bent thumb from
+a hand ruler. A three-joint Hermite gesture supplies the thumb; no generated vertices are author
+inputs. Width changes skin, while handle span/thickness remain separate controls. Constant-depth
+surface subtraction decides internal visibility. Fold ink drops isolated sub-pad fragments and
+omits the tissue-root seam; the exterior obeys the same visibility as fills. Placement, mirror
+and screen angle transform shapes, focus, mounts and normals together about a stable host point.
+The actual union must stay one valid solid polygon and both handle ends must remain exposed.
+Compiled dimensions report wrist/handle widths for matching adjacent authored strokes.

@@ -1,0 +1,53 @@
+{
+  "engine": "7e6b1a1d61cf8f2395ef547cb20d2cebd690627feb5415054d586189639f8648",
+  "before_revision": "e907181d19fff3eda1b9baf0448cf2877891fb4bf2998abe74dfb24134842d98",
+  "final_revision": "59048a6dff4144d04587c953455e534b5e43b9dbcfaa36d2b3766523cc78b4a6",
+  "undo_revision": "e907181d19fff3eda1b9baf0448cf2877891fb4bf2998abe74dfb24134842d98",
+  "undo_semantic_input_equal": true,
+  "anchors_unchanged": true,
+  "external_bounds_unchanged": true,
+  "connections": {
+    "upper pole root to included handle_right": [
+      [
+        231.15294117647062,
+        267.6705882352941
+      ],
+      [
+        231.15294117647062,
+        267.6705882352941
+      ]
+    ],
+    "lower pole root to included handle_left": [
+      [
+        231.15294117647062,
+        538.7294117647059
+      ],
+      [
+        231.1529411764706,
+        538.7294117647059
+      ]
+    ],
+    "sleeve root to wrist": [
+      [
+        347.1058823529412,
+        403.2
+      ],
+      [
+        347.1058823529412,
+        403.2
+      ]
+    ]
+  },
+  "connection_residuals_pixels": {
+    "upper pole root to included handle_right": 0.0,
+    "lower pole root to included handle_left": 2.842170943040401e-14,
+    "sleeve root to wrist": 0.0
+  },
+  "artwork_hashes": {
+    "03b-thumb-before": "00d2f8900a0a8dd8450a252f0e985f177e28abc5dc7c5ed5e9d1c2bd09e367a2",
+    "04-thumb-shorter": "196634bb0929daf6d795fb0fdffb5f8d00d866fab2c5fc0165ad7fc1ce461ccd",
+    "05-accepted": "196634bb0929daf6d795fb0fdffb5f8d00d866fab2c5fc0165ad7fc1ce461ccd",
+    "06-undone": "00d2f8900a0a8dd8450a252f0e985f177e28abc5dc7c5ed5e9d1c2bd09e367a2",
+    "07-final": "196634bb0929daf6d795fb0fdffb5f8d00d866fab2c5fc0165ad7fc1ce461ccd"
+  }
+}

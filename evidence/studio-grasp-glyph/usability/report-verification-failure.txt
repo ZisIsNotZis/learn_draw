@@ -1,0 +1,1 @@
+First report verification attempt refused exact Python list equality for an attached endpoint due to floating-point roundoff. No scene was changed. Verification now checks numeric distance < 1e-10 pixels and records the actual residuals in verification.json. Original failure: AssertionError at for pair in connections.values(): assert pair[0]==pair[1].

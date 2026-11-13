@@ -1,0 +1,40 @@
+{
+  "base": "191149775c3599391877c1bcf3b449d424a5c33fce190235b6529ded5e3b9357",
+  "engine": "7e6b1a1d61cf8f2395ef547cb20d2cebd690627feb5415054d586189639f8648",
+  "object": "carrying-grip",
+  "kind": "feature",
+  "feature": "thumb",
+  "bounds": [
+    221.43743158609442,
+    315.23878718380985,
+    310.95055530179843,
+    400.1837124371569
+  ],
+  "object_bounds": [
+    193.50588235294117,
+    261.6470588235294,
+    347.1058823529412,
+    544.7529411764706
+  ],
+  "controls": [
+    "thumb_reach",
+    "thumb_thickness",
+    "skin_color",
+    "ink_color"
+  ],
+  "units": "semantic parameter values; inspect the actual selected feature",
+  "locks": {
+    "wrist": [
+      347.1058823529412,
+      403.2
+    ],
+    "grip": [
+      231.1529411764706,
+      403.2
+    ]
+  },
+  "focus": [
+    237.1764705882353,
+    385.1294117647059
+  ]
+}

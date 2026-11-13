@@ -1,0 +1,39 @@
+{
+  "status": "composition prototype; macro not a shipped studio kind",
+  "asset": "14-back-grip",
+  "hand_height": 64.8,
+  "hand_width": 42.36618949001938,
+  "ports": {
+    "wrist": [
+      494.7951745612352,
+      393.5391114543243
+    ],
+    "grip": [
+      514.8203955239649,
+      362.4842425258295
+    ],
+    "handle_left": [
+      542.8939508760009,
+      382.14155760767255
+    ],
+    "handle_right": [
+      486.7468401719289,
+      342.82692744398634
+    ]
+  },
+  "body_top": [
+    481.1240517571781,
+    410.6076087108644
+  ],
+  "hand_matrix": {
+    "scale": 0.1985767440891242,
+    "rotation_degrees": 43.32661321082878,
+    "translation": [
+      501.1878449976209,
+      282.40733378679494
+    ]
+  },
+  "native_node_count": 22,
+  "base_scene_alone_is_incomplete": true,
+  "handle_pairing_reversed": true
+}

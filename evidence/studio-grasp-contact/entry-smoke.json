@@ -1,0 +1,7 @@
+﻿{
+    "scope":  "CLI smoke and frozen-output protection, not art acceptance",
+    "renderer_existing_output_exit":  1,
+    "contact_existing_output_exit":  1,
+    "render":  "CPU renderer produced grasp.svg/png and metadata: 1360 vertices, 2410 faces",
+    "pose":  "CPU contact entry produced pose.npz and diagnostic.json"
+}

@@ -1,0 +1,6 @@
+{
+  "status": "discarded",
+  "reason": "The correctly attached dark oval is mostly hidden by the foreground sleeve, leaving two stray dark patches instead of a readable opening. Do not force an occluded feature into the picture.",
+  "working_scene_was_not_changed": true,
+  "authoring_surface": "model/bundle API initial insertion; not a public CLI atomic-insertion claim"
+}

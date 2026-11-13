@@ -1,0 +1,39 @@
+{
+  "status": "composition prototype; macro not a shipped studio kind",
+  "asset": "../studio-grasp-glyph/01-compact",
+  "hand_height": 64.8,
+  "hand_width": 67.68976828420746,
+  "ports": {
+    "wrist": [
+      486.76238584928666,
+      402.55523311587217
+    ],
+    "grip": [
+      514.8203955239649,
+      362.4842425258295
+    ],
+    "handle_left": [
+      467.9841727563825,
+      329.6891662826991
+    ],
+    "handle_right": [
+      561.6566182915473,
+      395.27931876895985
+    ]
+  },
+  "body_top": [
+    478.2208295139126,
+    414.7538397707135
+  ],
+  "hand_matrix": {
+    "scale": 0.15126050420168066,
+    "rotation_degrees": 34.99999999999999,
+    "translation": [
+      523.9301389248344,
+      349.47418064594547
+    ]
+  },
+  "native_node_count": 22,
+  "base_scene_alone_is_incomplete": true,
+  "handle_pairing_reversed": false
+}

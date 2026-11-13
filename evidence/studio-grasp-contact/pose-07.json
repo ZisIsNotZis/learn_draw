@@ -1,0 +1,334 @@
+{
+  "refinement": {
+    "method": "trimesh.remesh.subdivide_loop",
+    "version": "5.2.0",
+    "iterations": 1,
+    "original_vertices": 1360,
+    "welded_vertices": 1159,
+    "vertices": 4630,
+    "faces": 9256,
+    "maximum_weight_sum_error": 8.245115168392658e-08,
+    "all_25_weights_preserved": true
+  },
+  "diagnostic": {
+    "minimum_surface_clearance": 0.00022408915382365543,
+    "intersecting_triangles": 0,
+    "skin_vertices_inside": 0,
+    "triangle_ids": [],
+    "collisions": [],
+    "note": "Surface test covers the finite rod axial slab; it does not certify hand self-contact or thumb opposition."
+  },
+  "thumb": {
+    "target": [
+      -0.00901454448248067,
+      0.08547606176695113,
+      0.0773155026414067
+    ],
+    "contact": [
+      -0.01242102977872537,
+      0.083497634552431,
+      0.07522635772923145
+    ],
+    "middle_index_tip_contact": true,
+    "reach": 0.0647563045539673,
+    "maximum_reach": 0.06630597971616223,
+    "contact_solved": false
+  },
+  "iterations": [
+    {
+      "step": 0,
+      "reserves": {},
+      "diagnostic": {
+        "minimum_surface_clearance": 0.00022408915382365543,
+        "intersecting_triangles": 0,
+        "skin_vertices_inside": 0,
+        "triangle_ids": [],
+        "collisions": [],
+        "note": "Surface test covers the finite rod axial slab; it does not certify hand self-contact or thumb opposition."
+      }
+    }
+  ],
+  "self_contact": {
+    "transverse_pairs": [
+      [
+        256,
+        1293
+      ],
+      [
+        256,
+        1294
+      ],
+      [
+        256,
+        1295
+      ],
+      [
+        1282,
+        9013
+      ],
+      [
+        1282,
+        9015
+      ],
+      [
+        1284,
+        2561
+      ],
+      [
+        1284,
+        9014
+      ],
+      [
+        1284,
+        9015
+      ],
+      [
+        1289,
+        9009
+      ],
+      [
+        1289,
+        9013
+      ],
+      [
+        1293,
+        9009
+      ],
+      [
+        1294,
+        2789
+      ],
+      [
+        1304,
+        7050
+      ],
+      [
+        1306,
+        7050
+      ],
+      [
+        1306,
+        7051
+      ],
+      [
+        1307,
+        7050
+      ],
+      [
+        1308,
+        7051
+      ],
+      [
+        1309,
+        2561
+      ],
+      [
+        1309,
+        2565
+      ],
+      [
+        1309,
+        7048
+      ],
+      [
+        1311,
+        7048
+      ],
+      [
+        1311,
+        7051
+      ],
+      [
+        1318,
+        2785
+      ],
+      [
+        1318,
+        2789
+      ],
+      [
+        1376,
+        1650
+      ],
+      [
+        1376,
+        1651
+      ],
+      [
+        1377,
+        1649
+      ],
+      [
+        1379,
+        1649
+      ],
+      [
+        1379,
+        1651
+      ],
+      [
+        1381,
+        1649
+      ],
+      [
+        1382,
+        7454
+      ],
+      [
+        1383,
+        1649
+      ],
+      [
+        1383,
+        7409
+      ],
+      [
+        1383,
+        7413
+      ],
+      [
+        1383,
+        7454
+      ],
+      [
+        1392,
+        1699
+      ],
+      [
+        1394,
+        7454
+      ],
+      [
+        1395,
+        1696
+      ],
+      [
+        1395,
+        1699
+      ],
+      [
+        1395,
+        7454
+      ],
+      [
+        1408,
+        2785
+      ],
+      [
+        1409,
+        2785
+      ],
+      [
+        1409,
+        9016
+      ],
+      [
+        1409,
+        9017
+      ],
+      [
+        1409,
+        9019
+      ],
+      [
+        1409,
+        9021
+      ],
+      [
+        1411,
+        2785
+      ],
+      [
+        1413,
+        9021
+      ],
+      [
+        1413,
+        9023
+      ],
+      [
+        1422,
+        7050
+      ],
+      [
+        1422,
+        7052
+      ],
+      [
+        1422,
+        7053
+      ],
+      [
+        1422,
+        7055
+      ],
+      [
+        1425,
+        9022
+      ],
+      [
+        1425,
+        9023
+      ],
+      [
+        1429,
+        7049
+      ],
+      [
+        1429,
+        9022
+      ],
+      [
+        1430,
+        7049
+      ],
+      [
+        1430,
+        7053
+      ],
+      [
+        1431,
+        7049
+      ],
+      [
+        1496,
+        1650
+      ],
+      [
+        1499,
+        1650
+      ],
+      [
+        1499,
+        1652
+      ],
+      [
+        1545,
+        1699
+      ],
+      [
+        1546,
+        1703
+      ],
+      [
+        1547,
+        1698
+      ],
+      [
+        1547,
+        1699
+      ],
+      [
+        1547,
+        1700
+      ],
+      [
+        1547,
+        1703
+      ]
+    ],
+    "candidate_pairs": 2647,
+    "tolerance_metres": 1e-07,
+    "scope": "Non-neighbor transverse skin-surface crossings only; coplanar/grazing contact and enclosed volumes are not certified."
+  }
+}

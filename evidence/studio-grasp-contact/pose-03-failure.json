@@ -1,0 +1,6 @@
+{
+  "status": "failed before pose/export",
+  "hypothesis": "Use whole-ring maximum inward support for every tangent phalanx.",
+  "observed_error": "thumb target is outside the two-link reach",
+  "interpretation": "A uniform support envelope overstates the pad near the actual tangent point; test local real-surface collision response rather than accepting an unreachable pose."
+}

@@ -126,3 +126,13 @@ compiler derives root placement and the two-target chord without feeding absolut
 back into authoring. Selection, depth compilation and reports consume that resolved copy.
 Deletion traverses both links and releases only affected endpoints by baking the current chord.
 The source/target visual inspection and optimistic transaction boundary remain unchanged.
+
+## Compact grip compound
+
+The illustrative grip is one scene node with the ordinary external support field. Internally,
+palm, owned handle, short folded pads and thumb have declared constant depths; their actual
+projections determine visibility and intentional ink is clipped separately. Its footprint is the
+real solid union, not a hull over gaps; invalid disconnected/holed configurations are refused.
+External objects connect to wrist and exposed handle ports. They do not enter arbitrary depths
+inside the hand: the owned contact segment is the supported boundary. No teaching image/mesh
+or general physical hand solver belongs to runtime compilation.

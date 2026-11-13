@@ -1,0 +1,24 @@
+{
+  "engine": "7e6b1a1d61cf8f2395ef547cb20d2cebd690627feb5415054d586189639f8648",
+  "scope": "Actual allowed inputs, captured after the run before any subsequent edits; source and these inputs were frozen throughout independent operation.",
+  "files": [
+    {
+      "source": "skills/drawing-studio/SKILL.md",
+      "snapshot": "SKILL.md",
+      "bytes": 20407,
+      "sha256": "42ec20d31cb5fc459f1d69cf39df5ebb52312c06372e761b04ad669e203bb48b"
+    },
+    {
+      "source": "skills/drawing-studio/references/object-interaction.md",
+      "snapshot": "object-interaction.md",
+      "bytes": 5400,
+      "sha256": "b383aeb49de5b2b392486f58b95bd122f18c05eff4b70c69d859db71f38a4c75"
+    },
+    {
+      "source": "docs/7_INTERFACE.md",
+      "snapshot": "7_INTERFACE.md",
+      "bytes": 33837,
+      "sha256": "6a980c490b63b970791169bf13acfb97a2a57c7e099a994157d7f798262162f8"
+    }
+  ]
+}

@@ -589,14 +589,25 @@ with independent support depth, not a general grip solver, 3D contact or fluid s
 Current API and graph behavior belong to 7_INTERFACE/8_DETAIL; actual drawing revisions and
 independent execution are indexed at ../evidence/studio-endpoints/.
 
-## Grasp investigation: no new default adopted
+## Grasp investigation and compact candidate
 
 The independent tube/palm construction was rejected as a default: correct self-occlusion
 did not establish useful thumb anatomy or finger articulation. Merely importing an
 established articulated hand also did not solve contact. The current CPU mesh study
 has measured skin/rod penetration and a matching fresh critique of loose draped fingers.
 Do not turn either study into a preset catalog or claim a general physical hand rig.
-Test a hand-space contact pose first; only then choose a small authoring interface. A
-short owned grip segment with wrist/prop ports remains a hypothesis, not a shipped kind.
-Exact plates, source provenance, asset-specific MIT license and rejected reviews are
-in ../evidence/studio-grasp/. No existing default or portrait baseline changed.
+The hand-space contact follow-up reduces rod penetration but remains visually ambiguous;
+those mesh studies are not adopted. Exact plates and licensed source provenance are in
+../evidence/studio-grasp/ and ../evidence/studio-grasp-contact/.
+
+A separate `grip` candidate now implements a compact 2.5D illustrated hand with an owned
+handle, short folded pads and a bent opposed thumb. Its generated geometry reads no teaching
+SVG, external mesh or picture. Named wrist/handle ports use the existing attachment and
+two-target stroke graph; bounded thumb, fold and handle controls use normal inspect,
+preview, acceptance and undo. It is a symbolic drawing vocabulary, not general physical
+contact. Blind critiques retain thumb/overlap/style limits. Purpose-aware independent
+operation is a separate required claim (4_USECASE). A fresh skill-only operator created an
+original flag and verified local editing/recovery without reconstructing the primitive. The
+person accepted keeping this graphic hand as a simple preset direction (2026-11-13); this is
+not natural anatomy, broad pose transfer or a whole-artwork pass. Current evidence is indexed at ../evidence/studio-grasp-glyph/.
+Existing head/open-hand defaults and the portrait baseline are preserved.

@@ -348,9 +348,10 @@ python examples/studio/watering.py --outdir FRESH creates an editable working co
 whole/alignment/grip-detail views from examples/studio/watering.json. It works from another current
 directory when invoked by absolute script path; an existing output directory is refused. The
 actual draft/revision/check/review and independent reframe are in evidence/studio-watering/.
-This unit changes artwork/examples/skill, not the Studio engine; inherited 113 passing tests remain
-source-applicable. Current picture identity and actual projected joins/soil landing are verified
-separately and are not substitutes for fresh visual judgment.
+That original watering advance changed artwork/examples/skill. Its test counts are historical;
+current verification is indexed in 0_ROADMAP and evidence/studio-grasp-glyph/verification/.
+Picture identity and actual projected joins/soil landing are verified separately and do not
+substitute for fresh visual judgment.
 
 ## Bind a stroke endpoint to an inspected target
 
@@ -361,3 +362,20 @@ Root and tip come from their terminal selections; exact targets and optional ins
 mount rules. Preview --unbind-end releases that inspected endpoint without moving the paint.
 Two pins derive length/angle and retain width/bend/spine controls. Operation coverage is
 scripts.tests.test_studio_endpoints; real frame and handle revisions are in evidence/studio-endpoints/.
+
+## Use the compact native grip
+
+`python -m scripts.studio new grip.json --kind grip` creates the illustrative closed hand with
+its included handle. Inspect thumb/fingers/handle/object, or exact named anchors; the controls
+and bounds are in 7_INTERFACE. This is separate from the open-hand preset and a physical rig.
+`python examples/studio/held_props.py --scene flag --outdir FRESH` opens a complete native example;
+choose watering for the revised can/stream composition. The helper works from a fresh cwd by
+absolute script path and refuses existing output. No teaching SVG, mesh, target or browser is needed.
+
+Focused tests: `python -m unittest scripts.tests.test_studio_grip -v`. The complete studio-family
+run is `python evidence/studio-grasp-glyph/run_tests.py` (103 tests); it uses package names because
+this namespace test directory's relative imports do not work with bare `unittest discover -s`.
+`verify_preservation.py` in the same evidence directory checks seven old/default PNGs without
+rewriting their old evidence. `verify_delivery.py` checks the actual independent flag run,
+preferred examples, stable connections and recoverable visual edits. Study-only physical geometry
+checks remain in evidence/studio-grasp-contact and are not drawing-quality gates.

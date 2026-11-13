@@ -1,0 +1,28 @@
+[
+  {
+    "base": "eafe8baa881e617452b27976d9b27dd0099cbb771543488551ed334eee1a62fd",
+    "result": "568763c39ee13f5b8af7ba5f905ac6e92fbbde7dca86793f7fc5fc45b82e83b5",
+    "operation": {
+      "object": "reaching-sleeve",
+      "feature": "object",
+      "reason": "The cuff cuts across the wrist; turn the sleeve tangent into the hand while keeping both terminals fixed",
+      "parameter": "bend",
+      "value": -0.3910503065588981
+    }
+  },
+  {
+    "base": "568763c39ee13f5b8af7ba5f905ac6e92fbbde7dca86793f7fc5fc45b82e83b5",
+    "result": "e4ca4ba6a771acb42e20f7f45ea756afaa075650535a62ee024d3f92a3285e69",
+    "operation": {
+      "object": "water",
+      "feature": "object",
+      "parameters": {
+        "bend": 0.21921608423796685,
+        "start_width": 0.85,
+        "end_width": 0.45,
+        "fill_color": "#78a9b5"
+      },
+      "reason": "The stream should leave along the spout and narrow as it falls into the soil"
+    }
+  }
+]

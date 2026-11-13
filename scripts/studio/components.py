@@ -18,6 +18,9 @@ def component_data(node,canvas):
     if node['kind']=='hand':
         from .hand import hand_data
         return hand_data(node,canvas)
+    if node['kind']=='grip':
+        from .grip import grip_data
+        return grip_data(node,canvas)
     from .scenery import scenery_data
     return scenery_data(node,canvas)
 
@@ -40,6 +43,9 @@ def support(node,canvas):
     elif kind=='hand':
         from .hand import DEFAULT_LENGTH as hand_length
         default_length=hand_length
+    elif kind=='grip':
+        from .grip import DEFAULT_LENGTH as grip_length
+        default_length=grip_length
     else:
         default_length=DEFAULT_LENGTH.get(kind,.55 if kind=='head' else .68)
     scale=node.get('length',default_length)*min(canvas)

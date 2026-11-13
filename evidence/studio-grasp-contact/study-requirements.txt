@@ -1,0 +1,1 @@
+trimesh==5.2.0 --hash=sha256:04db2c7ec62afdd7763fb04c82bb5f257ddd984993a19ee83697f475fc58fd29
