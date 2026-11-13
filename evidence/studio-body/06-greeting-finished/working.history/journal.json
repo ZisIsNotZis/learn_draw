@@ -1,0 +1,13 @@
+[
+  {
+    "base": "278f020468d6cc24a2be34d374b5be51c52e245c1a3f37ddd9ef579c754a00b3",
+    "result": "b3961294d814bd5a227a66f080bbd79b1442fde623b3b49758baa6c7e309f102",
+    "operation": {
+      "action": "place",
+      "object": "resting-hand",
+      "kind": "hand",
+      "reason": "Seat the hanging hand at the observed cuff and oppose its direction",
+      "revised_from": "cdcdc23935ba8562c0bba26a92ae88023c26bdc4a27d6038600e786db810f5db"
+    }
+  }
+]

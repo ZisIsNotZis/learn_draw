@@ -428,3 +428,18 @@ tests at the recorded revision). verify_preservation.py --outdir FRESH in that d
 old/default PNGs. verify_delivery.py checks frozen response/operation evidence. Older counts above
 are revision-specific. R&D body replay/verification is documented in evidence/studio-arm/README.md;
 it is CPU study code and is not an installed native component.
+
+## Use the native upper body
+
+python -m scripts.studio new body.json --kind body supplies the simple garment. Inspect
+--feature right-elbow, preview --move up --amount .03, observe returned clean/alignment images,
+then accept in a separate tool call. Named ports and limits are in 7_INTERFACE; the skill owns the
+recipe. python examples/studio/upper_body.py --pose offering --outdir FRESH opens a native
+connected figure; folded is another pose. It works by absolute script path from an empty cwd
+and refuses existing output. Use --scene greeting for the independent composition after finishing.
+Initial hand angle is computed once; later point pins do not rotate it.
+
+Current studio-family coverage is 128 tests; use python evidence/studio-body/run_tests.py
+--outdir FRESH. Its preservation helper checks ten earlier/default PNGs. The depth fixture includes
+an external pole between chest and forearm plus a genuine sloping-depth crossing; full evidence
+and scoped image critiques are indexed at evidence/studio-body/README.md.

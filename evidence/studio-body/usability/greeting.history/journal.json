@@ -1,0 +1,60 @@
+[
+  {
+    "base": "001da70ec2723c2b5500e66e2b60c25c1fe865cc5d935147656d95b413be18dd",
+    "result": "ba2b2ef6359d2e46d78a94c2ec089fe24009adec47a075f457cf579d1ccda1bb",
+    "operation": {
+      "action": "place",
+      "object": "greeter-shirt",
+      "kind": "body",
+      "reason": "Leave headroom above the shoulders for a new greeting portrait",
+      "revised_from": "400d571500b724c5b8751bb419e6782f7778430c58e429468566a7c6dda8f16b"
+    }
+  },
+  {
+    "base": "ba2b2ef6359d2e46d78a94c2ec089fe24009adec47a075f457cf579d1ccda1bb",
+    "result": "58cf0dc162e4634b914d5953fd536a034c1c67e0a8374707ab80369c3370e457",
+    "operation": {
+      "object": "greeter-shirt",
+      "feature": "right-wrist",
+      "parameters": {
+        "right_wrist_height": 0.1,
+        "right_wrist_spread": 0.82,
+        "right_elbow_bend": -0.65
+      },
+      "reason": "Raise the open hand above the elbow for a greeting"
+    }
+  },
+  {
+    "base": "58cf0dc162e4634b914d5953fd536a034c1c67e0a8374707ab80369c3370e457",
+    "result": "5b11cd0aaa6d95260d7f286cb952ba5e4f8bed4aea2ecda4624a5d0f01a07b9c",
+    "operation": {
+      "action": "place",
+      "object": "greeter-neck",
+      "kind": "stroke",
+      "reason": "Fill the collar opening with skin behind the garment",
+      "revised_from": "b08b6e1a5a71c282702515bdd221e0e0341350daa262605c0e7825f3859b35d8"
+    }
+  },
+  {
+    "base": "5b11cd0aaa6d95260d7f286cb952ba5e4f8bed4aea2ecda4624a5d0f01a07b9c",
+    "result": "6a7cd750575c99245f95c5f86056eefa50c3703a446b2781949dff4f5e432c16",
+    "operation": {
+      "action": "place",
+      "object": "greeter-head",
+      "kind": "head",
+      "reason": "Set the smiling head on its neck above the shirt",
+      "revised_from": "5f0623ad906e72ff06b7dc76ddca7195cc6af77a45c4a8686345cf08296eec00"
+    }
+  },
+  {
+    "base": "6a7cd750575c99245f95c5f86056eefa50c3703a446b2781949dff4f5e432c16",
+    "result": "278f020468d6cc24a2be34d374b5be51c52e245c1a3f37ddd9ef579c754a00b3",
+    "operation": {
+      "action": "place",
+      "object": "wave-hand",
+      "kind": "hand",
+      "reason": "Connect the visible open palm to the raised cuff",
+      "revised_from": "01381a556a7b8140e3df0336a5df53316eb694fe273440f93090f1cd2d9670f0"
+    }
+  }
+]

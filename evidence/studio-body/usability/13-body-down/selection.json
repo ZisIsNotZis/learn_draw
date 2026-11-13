@@ -1,0 +1,59 @@
+{
+  "base": "001da70ec2723c2b5500e66e2b60c25c1fe865cc5d935147656d95b413be18dd",
+  "engine": "8970df156e3b747080205b59bcc5aca804f0192f852e71b514971735160858e8",
+  "object": "greeter-shirt",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    158.15530431459868,
+    248.0345464173996,
+    554.821793631362,
+    538.6596895376134
+  ],
+  "object_bounds": [
+    158.15530431459868,
+    248.0345464173996,
+    554.821793631362,
+    538.6596895376134
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      320.0,
+      384.0
+    ],
+    "neck": [
+      320.0,
+      248.7936
+    ],
+    "left-shoulder": [
+      228.20479999999998,
+      307.5264
+    ],
+    "left-elbow": [
+      189.003008,
+      418.91174400000006
+    ],
+    "left-wrist": [
+      177.2672,
+      536.4096000000001
+    ],
+    "right-shoulder": [
+      411.7952,
+      307.5264
+    ],
+    "right-elbow": [
+      464.3456000000001,
+      408.13824
+    ],
+    "right-wrist": [
+      549.8240000000001,
+      383.1936
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "insertion": {
+    "object": "greeter-shirt"
+  }
+}

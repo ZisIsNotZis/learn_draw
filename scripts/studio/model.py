@@ -164,6 +164,22 @@ def validate_scenery(node,canvas):
         raise ValueError(kind+': invalid silhouette')
 
 
+def validate_body(node,canvas):
+    from .body import DEFAULT_LENGTH,body_data
+    keys(node,('id','kind','intent','attachment','at','length','width','angle','depth','depth_slope','pose','arms','sleeve_width','cuff','palette'),'body')
+    for name,default,lo,hi in [('length',DEFAULT_LENGTH,.08,1.2),('width',.9,.65,1.2),('angle',0,-180,180),('depth',0,-100,100),('depth_slope',0,-10,10),('sleeve_width',.14,.07,.22),('cuff',.055,0,.16)]:number(node.get(name,default),'body.'+name,lo,hi)
+    if node.get('pose','relaxed') not in ('relaxed','offering','folded'):raise ValueError('body.pose: relaxed/offering/folded')
+    keys(node.get('arms',{}),('left','right'),'body.arms')
+    for side,config in node.get('arms',{}).items():
+        keys(config,('wrist_spread','wrist_height','elbow_at','elbow_bend'),'body.arms.'+side)
+        for name,lo,hi in [('wrist_spread',-1.5,1.5),('wrist_height',.1,1.6),('elbow_at',.2,.8),('elbow_bend',-.9,.9)]:
+            if name in config:number(config[name],'body.arms.'+side+'.'+name,lo,hi)
+    validate_placement(node)
+    keys(node.get('palette',{}),('fill','ink'),'body.palette')
+    for value in node.get('palette',{}).values():color(value)
+    body_data(node,canvas)
+
+
 def validate_grip(node,canvas):
     from .grip import DEFAULT_LENGTH,grip_data
     keys(node,('id','kind','intent','attachment','at','length','width','angle','depth','depth_slope',
@@ -289,6 +305,9 @@ def validate(scene):
         if node.get('kind')=='hand':
             validate_hand(node,canvas)
             continue
+        if node.get('kind')=='body':
+            validate_body(node,canvas)
+            continue
         if node.get('kind')=='grip':
             validate_grip(node,canvas)
             continue
@@ -297,7 +316,7 @@ def validate(scene):
             validate_scenery(node,canvas)
             continue
         if node.get("kind") != "hair-lock":
-            raise ValueError(f"{sid}: supported kinds are stroke/shape/head/hand/grip/hair-lock/sky/hills/moon/sun")
+            raise ValueError(f"{sid}: supported kinds are body/stroke/shape/head/hand/grip/hair-lock/sky/hills/moon/sun")
         keys(node, ("id", "kind", "intent", "attachment", "at", "length", "width", "width_side", "angle", "sweep", "depth",
                     "depth_slope", "palette", "edits"), "node")
         if node.get("width_side", "both") not in ("both", "left", "right"):
@@ -447,7 +466,8 @@ def preview(scene, selection, direction, amount, reason):
     contour_move=selection.get('kind')=='feature' and selection.get('interaction')=='contour-push'
     spine_move=selection.get('interaction')=='spine-push'
     terminal_move=selection.get('interaction')=='stroke-terminal'
-    if selection.get('kind','local')!='local' and not object_move and not digit_move and not contour_move and not spine_move and not terminal_move:
+    joint_move=selection.get('interaction')=='body-joint'
+    if selection.get('kind','local')!='local' and not object_move and not digit_move and not contour_move and not spine_move and not terminal_move and not joint_move:
         raise ValueError('use a semantic parameter, or select a lock edge, shape contour or digit tip for a local move')
     if direction not in ("left", "right", "up", "down"):
         raise ValueError("direction: left/right/up/down")
@@ -461,7 +481,7 @@ def preview(scene, selection, direction, amount, reason):
         canvas=scene.get('canvas',[640,640])
         if node['kind'] in ('sky','hills'):
             raise ValueError('canvas-wide backgrounds use horizon/relief controls; select a movable object')
-        default={'head':{'anchor':'center','offset':[0,-.06]},'hand':{'anchor':'center'},'grip':{'anchor':'center'},'shape':{'anchor':'center'},'stroke':{'anchor':'center','offset':[0,-.2]},
+        default={'head':{'anchor':'center','offset':[0,-.06]},'hand':{'anchor':'center'},'grip':{'anchor':'center'},'body':{'anchor':'center'},'shape':{'anchor':'center'},'stroke':{'anchor':'center','offset':[0,-.2]},
                  'moon':{'anchor':'upper_right','offset':[0,.10]},
                  'sun':{'anchor':'upper_right','offset':[0,.10]}}.get(node['kind'],{})
         if 'endpoints' in node and len(node['endpoints'])==2:
@@ -480,6 +500,15 @@ def preview(scene, selection, direction, amount, reason):
         return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
                     selection=selection,operation=dict(object=selection['object'],feature='object',
                     direction=direction,amount=amount,units='shorter canvas dimension',reason=reason))
+    if joint_move:
+        from .body import move_joint
+        from .attachment import resolve_scene
+        if node['kind']!='body':raise ValueError('joint move requires a body')
+        if node.get('attachment',{}).get('self','center') not in ('center','neck'):raise ValueError('joint editing requires a free body or stable neck/center mount')
+        resolved=node_by_id(resolve_scene(scene),selection['object'])
+        node['arms']=move_joint(resolved,scene.get('canvas',[640,640]),selection['feature'],direction,amount)['arms']
+        validate(candidate)
+        return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,selection=selection,operation=dict(object=node['id'],feature=selection['feature'],direction=direction,amount=amount,units='torso height',reason=reason))
     if spine_move or terminal_move:
         from .attachment import resolve_scene,endpoint_relations
         if node['kind']!='stroke': raise ValueError('this gesture operation requires a stroke')
@@ -673,6 +702,12 @@ def _set_parameter(node,selection,parameter,value):
     if parameter in aliases:
         color(value)
         node.setdefault('palette',{})[aliases[parameter]]=value
+    elif node['kind']=='body' and parameter.startswith(('left_','right_')):
+        side,name=parameter.split('_',1)
+        if isinstance(value,str):
+            try:value=float(value)
+            except ValueError:raise ValueError('body joint control requires a numeric value') from None
+        node.setdefault('arms',{}).setdefault(side,{})[name]=value
     elif node['kind']=='hand' and parameter in ('finger_length','finger_lean'):
         from .hand import DIGITS
         if selection['feature'] not in DIGITS: raise ValueError('select a named digit')
@@ -681,7 +716,7 @@ def _set_parameter(node,selection,parameter,value):
             except ValueError: raise ValueError('finger control requires a numeric value') from None
         node.setdefault('digits',{}).setdefault(selection['feature'],{})['length' if parameter=='finger_length' else 'lean']=value
     else:
-        if parameter not in ('intent','expression','hair','width_side','style','tree_side','handedness','thumb_side','profile','start_cap','end_cap','shade') and isinstance(value,str):
+        if parameter not in ('intent','expression','hair','pose','width_side','style','tree_side','handedness','thumb_side','profile','start_cap','end_cap','shade') and isinstance(value,str):
             try:
                 value=float(value)
             except ValueError:

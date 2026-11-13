@@ -27,7 +27,7 @@ uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation ski
 ## Current usable capabilities and evidence
 
 - A small input creates a flat-cartoon head, open hand, compact illustrated grip, lock, generic
-  colour mass, gesture stroke or scenic preset. The user accepted the simple head direction as one default preset only.
+  colour mass, gesture stroke, owned upper body or scenic preset. The user accepted the simple head direction as one default preset only.
   The graphic grip direction is also accepted as a simple preset; it does not establish natural anatomy.
   The open hand is a front-view greeting palm, not a fist or a full hand/body rig.
 - Inspect/preview/accept/undo provides actual alignment and magnified views, protected local edits,
@@ -52,8 +52,9 @@ uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation ski
   receiving surface and palm/handle/thumb overlap. These are bounded visual outcomes, not a
   general anatomy or physical-fold capability.
 
-The current focused-response advance passes 122 studio-family tests; ten earlier/default PNGs
-remain exact. Current source-bound evidence is ../evidence/studio-feedback/README.md. The earlier
+The current native-body advance passes 128 studio-family tests; ten earlier/default PNGs
+remain exact. Current source-bound evidence is ../evidence/studio-body/README.md. The focused
+response advance passed122 tests (../evidence/studio-feedback/README.md). The earlier
 direction advance passed 118 tests, including eight direction/guide tests. A fresh operator repairs a cuff, raises the
 hand/flower assembly, observes a new cuff mismatch, re-aims and verifies exact undo/reaccept.
 Its 152-file operation evidence binds the pre-halo source; a verified inspection-only transition,
@@ -76,9 +77,10 @@ Exact schema/algorithms are owned by 7_INTERFACE.md/8_DETAIL.md.
 
 ## What is still weak or unverified
 
-The new figure study still has a tube-like elbow, assembled shoulder boundary, flat neckline,
-unengaged face, detail imbalance and ambiguous grip. Its initial generic-body/arm representation
-is not adopted as a polished body vocabulary. The older mass/thumb/fold and mesh routes remain ambiguous. The compact graphic grip now works
+The earlier generic figure study has an assembled shoulder boundary and tube-like elbow; that
+representation was not adopted. The native body removes the assembled seam and exposes local
+joints, but fresh images still show tube-like elbows, straight hanging sleeves, frontal attention,
+detail imbalance and ambiguous grip. The older mass/thumb/fold and mesh routes remain ambiguous. The compact graphic grip now works
 for one independent symbolic flag composition without reconstruction, but it retains schematic
 pads/thumb and a small crease-end tick. Watering still crowds those fingers at its smaller scale.
 Neither the symbolic use result nor contact equality establishes natural anatomy or weight. The original watering pictures also retain stiff
@@ -112,17 +114,44 @@ owned-garment study joins a computed collar/shoulder pattern to its sleeves; cas
 previous shoulder steps. A separate crossed-arm failure shows that material union must retain
 internal arm surfaces and deliberate overlap ink. Fresh critics still see thick elbows, a narrow
 armpit gap and abrupt hand/cuff scale. Evidence and frozen source history are in
-../evidence/studio-arm/README.md. This is a process-local renderer study, NOT a shipped native body
-kind or editable rig. External props between its internal planes are not implemented/verified.
+../evidence/studio-arm/README.md. That frozen comparison remains a process-local study. Its selected design now has a separate native
+body implementation with local elbow/wrist moves, named ports and full preview/accept/undo.
+Compiled sleeve/torso surfaces participate independently in global depth; a pole between chest and
+forearm and a genuine sloping crossing are verified. Current native evidence is ../evidence/studio-body/README.md.
 
-Next implement the selected owned upper-body representation as a native editable component, with
-simple defaults and optional shoulder/elbow/wrist refinement. Preserve named ports, independent
-surface visibility and intentional ink; do not expose a vertex list. Demonstrate the default,
-connected offering and a different pose through ordinary preview/accept/undo, then require an
-independent skill/help-only operator to revise it without reconstructing the primitive. Main agent
-owns implementation/art. The next checkpoint is this usable body slice with real picture comparison,
-not a catalog, architecture document or a whole-artwork claim. Fine anime style and broad creation
-remain open. Avoid repeating the detailed mesh route merely to obtain more anatomy data.
+Native body defaults require no vertices. Named relaxed/offering/folded poses, optional semantic
+controls and visible joint pushes support ordinary revisions. Elbow edits protect shoulder/wrist;
+wrist edits preserve shoulder and bend ratios, and point-linked hands follow. Child orientation is
+still explicit. Two connected flower poses remain art studies: critics retain unclear grip anatomy,
+tube-like elbows, straight hanging arms, internal-line flatness and flower/neck crowding. This is
+bounded graphic garment capability, not a general figure rig or a finished illustration.
+
+Independent operation completed34 terminal CLI runs without full-report data: elbow/wrist edits,
+exact scene/PNG undo/reaccept, then a greeting figure composed from blank through staged public
+insertion. Its engine was8970df, before shared-material repairs. Source reconstruction in current
+verification proves only body coverage/rendering changed afterward; old operations and critiques
+keep their original identity. A root follow-up adds the missing hanging hand; fresh image follow-up
+finds both hands/joins readable but retains long fingers, planar garment and narrow eyes.
+
+A real sloping-depth image exposed two related failures: per-surface mask antialias cracks, and
+cloth rounding added at an armpit outside all local surfaces. Exact visible-material underpaint
+fixes the first; local surfaces use the same closing radius as the sewn cloth to cover the second.
+The current depth fixture and interior-paper regression check verify both without moving a
+visibility boundary for the underpaint. Raw earlier failures remain in evidence/studio-body.
+
+The current verifier also found a .2936px chin-pin deviation in the greeting. Legacy head emission
+rounds absolute SVG points, so re-authoring its placement is not translation-invariant. The failed
+first verification is retained; the corrected verifier reports this head constraint as unresolved
+while still asserting exact body/hand pins. Fix the local-frame/placement cause, not counter-offsets
+or a broad tolerance, before claiming exact head assembly.
+
+Next reduce the concrete assembly burden revealed by this artwork: neck seating, cuff width and
+hand orientation still require repeated manual decisions; point pins alone do not preserve a useful
+join after pose changes. Compare a semantic join-fit mechanism against current explicit placement,
+using this greeting and an offered/held prop, and require actual local correction without breaking
+other parts. Keep picture quality central: remaining soft elbow/grip/style problems need art-driven
+experiments, not a larger catalog or a generic rig for its own sake. Main agent owns implementation
+and art. Natural pose, fine anime style and broad intent-led creation remain open.
 
 Focused CLI output is now shipped: selected geometry/configuration plus image/file handles,
 complete report on disk and --full-report opt-in. The same inspection is 2,550 versus35,371

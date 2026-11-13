@@ -23,6 +23,8 @@ def default_scene(kind='hair-lock'):
     if kind=='hand':
         return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
             dict(id='greeting-hand',kind='hand',intent='a front-view flat cartoon open palm with five digits')])
+    if kind=='body':
+        return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[dict(id='upper-body',kind='body',intent='a simple long-sleeved upper body with editable elbows and wrists')])
     if kind=='grip':
         return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
             dict(id='carrying-grip',kind='grip',intent='a compact flat illustrative hand closes around its included handle segment')])
@@ -65,7 +67,7 @@ def parse_changes(items):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
-    kinds=('hair-lock','head','hand','grip','shape','stroke','sky','hills','moon','sun')
+    kinds=('hair-lock','head','hand','grip','body','shape','stroke','sky','hills','moon','sun')
     p = sub.add_parser("new", help="create a useful preset; no path coordinates needed")
     p.add_argument("scene")
     p.add_argument('--kind',choices=kinds+('landscape','blank'),default='hair-lock')
@@ -200,7 +202,7 @@ def main():
             if args.id: node['id']=args.id
             if args.depth is not None:
                 node['depth']=args.depth
-            elif args.kind in ('head','hand','grip','hair-lock','shape','stroke'):
+            elif args.kind in ('head','hand','grip','body','hair-lock','shape','stroke'):
                 from .components import depth_bounds
                 from .attachment import resolve_scene
                 canvas=scene.get('canvas',[640,640])

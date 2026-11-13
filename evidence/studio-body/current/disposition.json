@@ -1,0 +1,5 @@
+{
+  "status": "verification-failed-preserved",
+  "cause": "Verifier requested exact point equality for every legacy component. Greeting head chin differs from neck tip by .2936px because its legacy absolute SVG recipe quantizes placement. Native body/hand/neck pins are exact; this head precision defect remains unresolved.",
+  "change": "Do not relax all pin tolerances or claim this head pin passed. Re-run verifier reports unresolved head separately, asserts exact native body/hand pins, and retains full objective as incomplete."
+}

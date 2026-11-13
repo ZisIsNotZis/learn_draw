@@ -1,0 +1,65 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "greeter-shirt",
+      "kind": "body",
+      "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+      "depth": 1,
+      "length": 0.42,
+      "pose": "offering",
+      "palette": {
+        "fill": "#b85f52"
+      },
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.0,
+          0.1
+        ]
+      },
+      "arms": {
+        "right": {
+          "wrist_height": 0.1,
+          "wrist_spread": 0.82,
+          "elbow_bend": -0.65
+        }
+      }
+    },
+    {
+      "id": "greeter-neck",
+      "kind": "stroke",
+      "intent": "a clean round gesture mark with editable spine and terminals",
+      "depth": 0.0,
+      "length": 0.045,
+      "thickness": 0.055,
+      "angle": 180.0,
+      "palette": {
+        "fill": "#efd0b5"
+      },
+      "attachment": {
+        "to": "greeter-shirt",
+        "self": "root",
+        "target": "neck",
+        "inset": 0
+      },
+      "start_cap": "round"
+    },
+    {
+      "id": "wave-hand",
+      "kind": "hand",
+      "intent": "a front-view flat cartoon open palm with five digits",
+      "depth": 3.0,
+      "length": 0.17,
+      "angle": -15.0,
+      "palette": {
+        "skin": "#efd0b5"
+      }
+    }
+  ]
+}

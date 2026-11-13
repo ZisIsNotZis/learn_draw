@@ -1,0 +1,26 @@
+[
+  {
+    "base": "73a56cb7a520bf0bfbc20e47605e8eccc60fefbe3fde2b9acf9c5211e8b4c26b",
+    "result": "805f500b60b355fc65e66047e1d4206f062c7c159c02fdbc0a2f5e03b4065a81",
+    "operation": {
+      "object": "shirt",
+      "feature": "right-elbow",
+      "direction": "up",
+      "amount": 0.04,
+      "units": "torso height",
+      "reason": "Lift the low hanging elbow while keeping shoulder and hand stationary"
+    }
+  },
+  {
+    "base": "805f500b60b355fc65e66047e1d4206f062c7c159c02fdbc0a2f5e03b4065a81",
+    "result": "256c2dd4625f21df83a69e80c67c320ca9d0404d64744085886ff0c9b506bb23",
+    "operation": {
+      "object": "shirt",
+      "feature": "right-wrist",
+      "direction": "up",
+      "amount": 0.04,
+      "units": "torso height",
+      "reason": "Raise the offering slightly so the forearm has a clearer upward gesture"
+    }
+  }
+]

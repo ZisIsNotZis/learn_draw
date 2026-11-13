@@ -1,0 +1,16 @@
+{
+  "first_body_test_run": {
+    "terminal_exit_code": 0,
+    "tests": 6,
+    "elapsed_seconds": 122.378,
+    "notes": "Full process completed before a subsequently issued specific-PID stop inspection; no process was restarted merely because observation expired."
+  },
+  "cause": "Dense buffered outlines supplied 527/842/527 vertices to triangulation and pairwise visibility.",
+  "change": "Simplify only compiled visibility apertures by .0003 of torso height, preserving topology. Paint paths stay dense; selection and authoring remain semantic.",
+  "after": {
+    "tests": 6,
+    "elapsed_seconds": 4.501,
+    "terminal_exit_code": 0
+  },
+  "scope": "Comparable six-test suite before later added true sloping crossing assertions; this is runtime evidence, not image-quality evidence."
+}

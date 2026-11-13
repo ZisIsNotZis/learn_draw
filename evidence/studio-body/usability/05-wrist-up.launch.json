@@ -1,0 +1,25 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-body/usability/working.json",
+    "--selection",
+    "evidence/studio-body/usability/04-wrist/selection.json",
+    "--move",
+    "up",
+    "--amount",
+    ".04",
+    "--reason",
+    "Raise the offering slightly so the forearm has a clearer upward gesture",
+    "--outdir",
+    "evidence/studio-body/usability/05-wrist-up"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:05:27.784276+00:00",
+  "pid": 48384,
+  "exit": 0,
+  "terminal": "2026-11-13T07:05:28.610905+00:00",
+  "stdout_bytes": 3078
+}

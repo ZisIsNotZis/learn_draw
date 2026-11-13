@@ -38,9 +38,13 @@ PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安
 [实际放置与独立相机创作](evidence/studio-placement/README.md)保留操作记录；
 [相机可编辑场景](examples/studio/camera.json)由七个通用色块组成。
 
+--kind body 现已提供一体构造的简洁上半身，可选姿态并直接推拉肘、腕。
+[原生人物样例与操作限制](evidence/studio-body/README.md)包含手部连接和杆件穿插遮挡。
+可运行 python examples/studio/upper_body.py --pose offering --outdir FRESH；这些仍是可编辑试作，尚未通过整画验收。
+
 日常 inspect／preview／place 现在只返回所选部位、可用控制与看图入口，完整报告仍在文件中，
 可用 --full-report 输出。[实际操作验证](evidence/studio-feedback/README.md)包含独立完成的手形／袖口修改和精确撤销。
-[上半身原型比较](evidence/studio-arm/README.md)已选出一体衣服与关节的方向；尚未接入正式可编辑原语。
+[上半身原型比较](evidence/studio-arm/README.md)保留一体衣服与关节方向的原型比较；正式原语的当前证据另见上方入口。
 
 连接好的笔画端点也能用 `preview --aim TARGET/selection.json` 按已观察的方向接顺，保持两端位置。
 [实际袖口／姿态修正与限制](evidence/studio-direction/README.md)同时记录了尚未解决的身体、手臂造型问题；

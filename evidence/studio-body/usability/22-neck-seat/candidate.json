@@ -1,0 +1,113 @@
+{
+  "base": "58cf0dc162e4634b914d5953fd536a034c1c67e0a8374707ab80369c3370e457",
+  "engine": "8970df156e3b747080205b59bcc5aca804f0192f852e71b514971735160858e8",
+  "result": "5b11cd0aaa6d95260d7f286cb952ba5e4f8bed4aea2ecda4624a5d0f01a07b9c",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "greeter-shirt",
+        "kind": "body",
+        "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+        "depth": 1,
+        "length": 0.42,
+        "pose": "offering",
+        "palette": {
+          "fill": "#b85f52"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.1
+          ]
+        },
+        "arms": {
+          "right": {
+            "wrist_height": 0.1,
+            "wrist_spread": 0.82,
+            "elbow_bend": -0.65
+          }
+        }
+      },
+      {
+        "id": "greeter-neck",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 0.0,
+        "length": 0.045,
+        "thickness": 0.055,
+        "angle": 180.0,
+        "palette": {
+          "fill": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "root",
+          "target": "neck",
+          "inset": 0
+        },
+        "start_cap": "round"
+      }
+    ]
+  },
+  "selection": {
+    "base": "58cf0dc162e4634b914d5953fd536a034c1c67e0a8374707ab80369c3370e457",
+    "engine": "8970df156e3b747080205b59bcc5aca804f0192f852e71b514971735160858e8",
+    "object": "greeter-neck",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      302.4,
+      202.39359999999994,
+      337.6,
+      266.3936
+    ],
+    "object_bounds": [
+      302.4,
+      202.39359999999994,
+      337.6,
+      266.3936
+    ],
+    "controls": [],
+    "focus": null,
+    "locks": {
+      "center": [
+        320.0,
+        234.39359999999996
+      ],
+      "root": [
+        320.0,
+        248.79359999999997
+      ],
+      "tip": [
+        320.0,
+        219.99359999999996
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "endpoint_bindings": {
+      "root": {
+        "to": "greeter-shirt",
+        "target": "neck",
+        "inset": 0
+      }
+    },
+    "insertion": {
+      "object": "greeter-neck"
+    }
+  },
+  "operation": {
+    "action": "place",
+    "object": "greeter-neck",
+    "kind": "stroke",
+    "reason": "Fill the collar opening with skin behind the garment",
+    "revised_from": "b08b6e1a5a71c282702515bdd221e0e0341350daa262605c0e7825f3859b35d8"
+  },
+  "status": "ready"
+}

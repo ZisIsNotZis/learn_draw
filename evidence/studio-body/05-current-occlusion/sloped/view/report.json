@@ -1,0 +1,370 @@
+{
+  "revision": "eda96b6e76e34c3197f6d516f2ebd0bc92ab758da7b6d5851f3ed5ceb13095f1",
+  "engine": "4f02e7e193cdb2cefbeadfafe761232e601ad00e19a5903ef0097e54ce61dcde",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\05-current-occlusion\\sloped\\view\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\05-current-occlusion\\sloped\\view\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\05-current-occlusion\\sloped\\view\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\05-current-occlusion\\sloped\\view\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\05-current-occlusion\\sloped\\view\\artwork.png": "1a7ea74fd0ea55ba3be2cb910ba529d754a2bd16d96da5ae9c73cebd2e16c22d",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\05-current-occlusion\\sloped\\view\\alignment.png": "2f8d6c140bdb9418478ba6259f1b9843444490a89e11566b34ed7ee218950000",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\05-current-occlusion\\sloped\\view\\object-closeup.png": "7e72b2f3a628c36f8c5e08029c05a633a2314318080b2b2ef20e0ec5cffeed0a",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\05-current-occlusion\\sloped\\view\\edit-closeup.png": "90474a51b16ac7cab1ab17d3bf0537bfc2dfb3a530980bd4eff56e1673fccaee"
+  },
+  "nodes": {
+    "upper-body": {
+      "kind": "body",
+      "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+      "bounds": [
+        165.86219458533205,
+        190.50909182609493,
+        436.8862704477176,
+        467.29494241677475
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            165.86219458533205,
+            190.50909182609493,
+            436.8862704477176,
+            467.29494241677475
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "pose",
+            "sleeve_width",
+            "cuff",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left-shoulder": {
+          "bounds": [
+            212.096,
+            226.68800000000002,
+            253.05599999999998,
+            267.648
+          ],
+          "controls": [
+            "left_wrist_spread",
+            "left_wrist_height",
+            "left_elbow_at",
+            "left_elbow_bend"
+          ]
+        },
+        "left-elbow": {
+          "bounds": [
+            174.76095999999998,
+            332.76928,
+            215.72095999999996,
+            373.72928
+          ],
+          "controls": [
+            "left_wrist_spread",
+            "left_wrist_height",
+            "left_elbow_at",
+            "left_elbow_bend"
+          ]
+        },
+        "left-wrist": {
+          "bounds": [
+            163.584,
+            444.672,
+            204.54399999999998,
+            485.63200000000006
+          ],
+          "controls": [
+            "left_wrist_spread",
+            "left_wrist_height",
+            "left_elbow_at",
+            "left_elbow_bend"
+          ]
+        },
+        "right-shoulder": {
+          "bounds": [
+            386.94399999999996,
+            226.68800000000002,
+            427.904,
+            267.648
+          ],
+          "controls": [
+            "right_wrist_spread",
+            "right_wrist_height",
+            "right_elbow_at",
+            "right_elbow_bend"
+          ]
+        },
+        "right-elbow": {
+          "bounds": [
+            396.63359999999994,
+            330.91839999999996,
+            437.5936,
+            371.8784
+          ],
+          "controls": [
+            "right_wrist_spread",
+            "right_wrist_height",
+            "right_elbow_at",
+            "right_elbow_bend"
+          ]
+        },
+        "right-wrist": {
+          "bounds": [
+            311.03999999999996,
+            337.152,
+            352.0,
+            378.112
+          ],
+          "controls": [
+            "right_wrist_spread",
+            "right_wrist_height",
+            "right_elbow_at",
+            "right_elbow_bend"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            320.0
+          ],
+          "normal": null
+        },
+        "neck": {
+          "point": [
+            320.0,
+            191.232
+          ],
+          "normal": null,
+          "direction": [
+            0.0,
+            -1.0
+          ]
+        },
+        "left-shoulder": {
+          "point": [
+            232.576,
+            247.168
+          ],
+          "normal": null
+        },
+        "left-elbow": {
+          "point": [
+            195.24095999999997,
+            353.24928
+          ],
+          "normal": null
+        },
+        "left-wrist": {
+          "point": [
+            184.064,
+            465.15200000000004
+          ],
+          "normal": null,
+          "direction": [
+            -0.09938651884194277,
+            0.9950489032567595
+          ]
+        },
+        "right-shoulder": {
+          "point": [
+            407.424,
+            247.168
+          ],
+          "normal": null
+        },
+        "right-elbow": {
+          "point": [
+            417.11359999999996,
+            351.3984
+          ],
+          "normal": null
+        },
+        "right-wrist": {
+          "point": [
+            331.52,
+            357.632
+          ],
+          "normal": null,
+          "direction": [
+            -0.9973585531571056,
+            0.07263550402086323
+          ]
+        }
+      },
+      "attached_children": []
+    },
+    "pole": {
+      "kind": "stroke",
+      "intent": "an upright red pole passes between chest and nearer forearm",
+      "bounds": [
+        340.8,
+        203.2,
+        356.8,
+        488.0
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            340.8,
+            203.2,
+            356.8,
+            488.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            348.8,
+            211.2,
+            348.8,
+            480.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            336.8,
+            199.2,
+            360.8,
+            223.2
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            336.8,
+            468.0,
+            360.8,
+            492.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            348.8,
+            345.6
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            348.8,
+            211.2
+          ],
+          "normal": null,
+          "direction": [
+            -0.0,
+            -1.0
+          ]
+        },
+        "tip": {
+          "point": [
+            348.8,
+            480.0
+          ],
+          "normal": null,
+          "direction": [
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "attached_children": []
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips with an owned handle segment, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "removal": null,
+  "insertion": null,
+  "direction_fit": null,
+  "alignment_legend": {
+    "red dashed": "removed previous paint; removal only",
+    "blue": "pinned stroke endpoints / inspected target; removal: retained affected children",
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "teal arrows": "outward join direction where defined; center mounts can be directionless",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge/spine, terminal, digit-tip or exact-mount focus"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span"
+}

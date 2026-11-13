@@ -1,0 +1,6 @@
+{
+  "independent_run": "usability/REPORT.txt retains overlapping dependent head-accept/port-inspection/hand-place launches. Output files/partial tool results were mistaken for terminal completion. Operator waited all exact handles, reinspected and replaced the old proposal; no stale acceptance.",
+  "durable_change": "Current drawing skill and docs4 explicitly require terminal completion before dependent operations. Frozen usability-inputs precede that addition and keep their bytes.",
+  "root_finishing": "Root inspected actual target and pending hand alignment in one tool result, then revised in a later call; read returned clean/closeup, then accepted in a separate call. Root CLI child commands were sequential terminal exit0. Individual PID logs were not captured for these root calls; do not infer them from generated files.",
+  "scope": "This is a sequence audit, not aesthetic approval."
+}

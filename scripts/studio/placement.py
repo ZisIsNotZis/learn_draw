@@ -35,7 +35,7 @@ def placement_preview(scene,node=None,*,prior=None,changes=None,feature='object'
             # Preserve each preset's default origin when only offset is requested.
             if 'at' not in node:
                 default={'head':{'anchor':'center','offset':[0,-.06]},'hand':{'anchor':'center'},'grip':{'anchor':'center'},
-                         'shape':{'anchor':'center'},'stroke':{'anchor':'center','offset':[0,-.2]},
+                         'body':{'anchor':'center'},'shape':{'anchor':'center'},'stroke':{'anchor':'center','offset':[0,-.2]},
                          'moon':{'anchor':'upper_right','offset':[0,.10]},'sun':{'anchor':'upper_right','offset':[0,.10]}}
                 node['at']=copy.deepcopy(default.get(node['kind'],{'anchor':'upper_center'}))
             if at is not None:node['at']=dict(anchor=at)

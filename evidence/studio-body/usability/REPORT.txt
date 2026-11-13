@@ -1,0 +1,67 @@
+Independent operator usability review, 2026-11-13
+
+Scope: only supplied usability-inputs/SKILL.md and 7_INTERFACE.md, CLI outputs,
+own generated evidence, and the authorized copied 01-offering/working.json were
+used. initial-frozen.json preserves that supplied input. No product source/tests,
+examples implementation or research records were read or edited. No direct SVG,
+scene JSON authoring, GPU work or commits. Full report data and --full-report were
+never used. Generated report files are hashed as opaque artifacts only.
+
+Part one (10 CLI operations):
+01-inspect showed the right elbow noticeably low. 02-elbow moves it up .04 torso
+height. Clean/alignment/closeup returned to the model before 03-accept. Shoulder
+and wrist remained fixed, verified from the focused selections. 04-wrist showed
+the connected grip; 05-wrist-up moves it up .04 torso height for a slightly more
+upward offering. Clean/alignment/closeup were observed before 06-accept-wrist.
+07-undo and 08-restored recover the earlier canonical scene and identical PNG.
+09-reaccept and 10-final recover the wrist proposal canonical scene and PNG.
+All checks pass in verification.json. The hand relation and angle are unchanged;
+point contact follows the wrist, but angle does not automatically fit the changed
+cuff tangent. At this small move a narrow uneven cuff/hand seam remains visible
+in the closeup. This is bounded editing usability, not anatomical/whole-art approval.
+Final edit path: working.json and 10-final/artwork.png.
+
+Part two (24 more CLI operations; 34 total, stopped below the ~40 checkpoint):
+Started blank with CLI new, placed the native body in a warm rust shirt and lowered
+the pending placement to leave headroom. The offering pose was revised through
+right-wrist controls to height .1, spread .82 and elbow_bend -.65. It visibly gives
+a bent raised forearm, suitable for a greeting. Added a short skin stroke neck,
+native head and native open hand. All four insertions used place, image-tool
+results returned to the model, then a separate accept call. No add command used.
+Neck root binds shirt neck; head chin binds neck tip; hand wrist binds right-wrist.
+Head smile/brown hair and hand angle -15 were explicit semantic choices. Hand
+angle was chosen using the observed cuff direction; point attachment alone does
+not inherit orientation. Final clean image communicates an open-palmed greeting.
+The far sleeve remains empty and the body is a schematic garment, not a finished
+anatomical figure. Head/body proportion and sparse facial treatment remain taste
+judgments outside this test. Final: greeting.json and 34-greeting-final/artwork.png.
+
+Actual difficulties and preserved evidence:
+- 20-neck-attached placed skin in front of the collar, making a bulb. I tried a
+  flat root behind the shirt in 21-neck-behind, but it left a paper gap in the
+  curved collar. 22-neck-seat restored a round cap at depth0 behind the garment,
+  filling the collar. These proposals remain preserved; only 22 was accepted.
+- During slow outer exec reporting, I mistakenly let a script launch dependent
+  commands after a preceding exec had returned a live session. 27-head-accept,
+  28-wave-port and 29-open-hand overlapped. Actual logs show 28/29 read the older
+  revision before the head accept landed. No working scene was overwritten by
+  these previews. I retained the obsolete 29 candidate, polled every session to
+  actual terminal, then explicitly re-inspected at 30-current-port and made a
+  fresh 31-current-hand before attachment. This was my orchestration error, not
+  a product defect. Later dependent launches waited for terminal status. No stale
+  candidate was accepted and no missing output was treated as process death.
+- Focused stdout supplied controls, locks, anchors/directions, children and image
+  handles throughout. No need to load full reports. Public semantic controls were
+  enough; fixed minimum wrist_height limits how high this garment can wave.
+
+Execution/identity:
+Every launch has persisted command/start intent before spawn, PID, terminal time,
+exit code, stdout byte length and raw stdout/stderr. All 34 CLI children actually
+terminated with exit0. Parent wrappers were also polled to terminal; no owned live
+process remains. No kill, timeout restart or nested kill deadline was used.
+Rendering engine throughout:
+8970df156e3b747080205b59bcc5aca804f0192f852e71b514971735160858e8
+Renderer: resvg-py-0.5.0-cpu. Revisions are preserved in focused stdout; source,
+scene, candidate and image hashes are in SHA256.json. verification.json records
+canonical-scene/PNG recovery and final greeting insertion/contact checks.
+This evidence belongs to this engine boundary, before later renderer changes.

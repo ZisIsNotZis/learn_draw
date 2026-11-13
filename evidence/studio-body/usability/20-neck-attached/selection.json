@@ -1,0 +1,50 @@
+{
+  "base": "58cf0dc162e4634b914d5953fd536a034c1c67e0a8374707ab80369c3370e457",
+  "engine": "8970df156e3b747080205b59bcc5aca804f0192f852e71b514971735160858e8",
+  "object": "greeter-neck",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    302.4,
+    202.39359999999994,
+    337.6,
+    266.3936
+  ],
+  "object_bounds": [
+    302.4,
+    202.39359999999994,
+    337.6,
+    266.3936
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      320.0,
+      234.39359999999996
+    ],
+    "root": [
+      320.0,
+      248.79359999999997
+    ],
+    "tip": [
+      320.0,
+      219.99359999999996
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "endpoint_bindings": {
+    "root": {
+      "to": "greeter-shirt",
+      "target": "neck",
+      "inset": 0
+    }
+  },
+  "insertion": {
+    "object": "greeter-neck"
+  },
+  "attachment_target": {
+    "object": "greeter-shirt",
+    "anchor": "neck"
+  }
+}

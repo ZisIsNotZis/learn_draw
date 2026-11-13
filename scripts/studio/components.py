@@ -6,6 +6,9 @@ from .scenery import DEFAULT_DEPTH, DEFAULT_LENGTH, KINDS
 def component_data(node,canvas):
     if 'attachment' in node or 'endpoints' in node:
         raise ValueError('resolve the scene before compiling an attached component')
+    if node['kind']=='body':
+        from .body import body_data
+        return body_data(node,canvas)
     if node['kind']=='head':
         from .head import head_data
         return head_data(node,canvas)
@@ -34,7 +37,10 @@ def component_outline(node,canvas):
 def support(node,canvas):
     kind=node['kind']
     root_y=lock_rows(node,canvas)[0].left[1] if kind=='hair-lock' else component_data(node,canvas).center[1]
-    if kind=='stroke':
+    if kind=='body':
+        from .body import DEFAULT_LENGTH as body_length
+        default_length=body_length
+    elif kind=='stroke':
         from .stroke import DEFAULT_LENGTH as stroke_length
         default_length=stroke_length
     elif kind=='shape':
@@ -55,4 +61,7 @@ def support(node,canvas):
 def depth_bounds(node,canvas):
     root_y,scale,depth=support(node,canvas)
     values=[depth+node.get('depth_slope',0)*(p[1]-root_y)/scale for p in component_outline(node,canvas)]
+    if node['kind']=='body':
+        offsets=[s.depth for s in component_data(node,canvas).surfaces]
+        return min(values)+min(offsets),max(values)+max(offsets)
     return min(values),max(values)

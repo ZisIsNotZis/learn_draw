@@ -1,0 +1,109 @@
+{
+  "base": "5b11cd0aaa6d95260d7f286cb952ba5e4f8bed4aea2ecda4624a5d0f01a07b9c",
+  "engine": "8970df156e3b747080205b59bcc5aca804f0192f852e71b514971735160858e8",
+  "result": "5f0623ad906e72ff06b7dc76ddca7195cc6af77a45c4a8686345cf08296eec00",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "greeter-shirt",
+        "kind": "body",
+        "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+        "depth": 1,
+        "length": 0.42,
+        "pose": "offering",
+        "palette": {
+          "fill": "#b85f52"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.1
+          ]
+        },
+        "arms": {
+          "right": {
+            "wrist_height": 0.1,
+            "wrist_spread": 0.82,
+            "elbow_bend": -0.65
+          }
+        }
+      },
+      {
+        "id": "greeter-neck",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 0.0,
+        "length": 0.045,
+        "thickness": 0.055,
+        "angle": 180.0,
+        "palette": {
+          "fill": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "root",
+          "target": "neck",
+          "inset": 0
+        },
+        "start_cap": "round"
+      },
+      {
+        "id": "greeter-head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "depth": 3.0,
+        "length": 0.26
+      }
+    ]
+  },
+  "selection": {
+    "base": "5b11cd0aaa6d95260d7f286cb952ba5e4f8bed4aea2ecda4624a5d0f01a07b9c",
+    "engine": "8970df156e3b747080205b59bcc5aca804f0192f852e71b514971735160858e8",
+    "object": "greeter-head",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      224.0,
+      171.44143707891627,
+      416.0,
+      366.48455575342734
+    ],
+    "object_bounds": [
+      224.0,
+      171.44143707891627,
+      416.0,
+      366.48455575342734
+    ],
+    "controls": [],
+    "focus": null,
+    "locks": {
+      "center": [
+        320.0,
+        281.6
+      ],
+      "chin": [
+        320.0,
+        365.7
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "insertion": {
+      "object": "greeter-head"
+    }
+  },
+  "operation": {
+    "action": "place",
+    "object": "greeter-head",
+    "kind": "head",
+    "reason": "A compact friendly face looks toward the viewer",
+    "revised_from": null
+  },
+  "status": "ready"
+}

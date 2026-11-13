@@ -1,0 +1,16 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "accept",
+    "evidence/studio-body/usability/working.json",
+    "evidence/studio-body/usability/05-wrist-up/candidate.json"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:05:44.881063+00:00",
+  "pid": 49248,
+  "exit": 0,
+  "terminal": "2026-11-13T07:05:45.417679+00:00",
+  "stdout_bytes": 66
+}

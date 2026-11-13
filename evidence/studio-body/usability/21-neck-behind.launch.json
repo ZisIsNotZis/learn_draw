@@ -1,0 +1,25 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "place",
+    "evidence/studio-body/usability/greeting.json",
+    "--revise",
+    "evidence/studio-body/usability/20-neck-attached/candidate.json",
+    "--change",
+    "depth=0",
+    "--change",
+    "start_cap=flat",
+    "--reason",
+    "Let the collar cover the neck base rather than a skin bulb covering the shirt",
+    "--outdir",
+    "evidence/studio-body/usability/21-neck-behind"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:09:27.523478+00:00",
+  "pid": 34472,
+  "exit": 0,
+  "terminal": "2026-11-13T07:09:28.134423+00:00",
+  "stdout_bytes": 3427
+}

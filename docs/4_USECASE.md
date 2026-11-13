@@ -192,3 +192,9 @@ whether a dispatch can do anything at all.
 - **The run that carries a repair neither awards the art verdict itself nor lowers a threshold to
   make the repair pass.** A defect with no honest mechanical signature is reported upward as a
   contract problem, not met with a weakened test.
+
+A dependent operation waits for the actual terminal result of the preceding CLI process. A live
+exec session, partial stdout or output directory is not completion. Poll the same handle; do not
+launch inspection/insertion while acceptance is still live, and do not restart solely because an
+observation timed out. The body operator's preserved stale proposal demonstrates this failure
+class; it recovered by waiting, re-inspecting and re-proposing on the current revision.

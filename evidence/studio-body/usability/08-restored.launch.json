@@ -1,0 +1,21 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "inspect",
+    "evidence/studio-body/usability/working.json",
+    "--object",
+    "shirt",
+    "--feature",
+    "right-wrist",
+    "--outdir",
+    "evidence/studio-body/usability/08-restored"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:05:51.210224+00:00",
+  "pid": 39420,
+  "exit": 0,
+  "terminal": "2026-11-13T07:05:51.930138+00:00",
+  "stdout_bytes": 2765
+}

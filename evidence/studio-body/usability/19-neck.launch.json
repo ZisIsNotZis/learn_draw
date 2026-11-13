@@ -1,0 +1,31 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "place",
+    "evidence/studio-body/usability/greeting.json",
+    "--kind",
+    "stroke",
+    "--id",
+    "greeter-neck",
+    "--change",
+    "length=.045",
+    "--change",
+    "thickness=.055",
+    "--change",
+    "angle=180",
+    "--change",
+    "fill_color=#efd0b5",
+    "--reason",
+    "A short skin neck joins the shirt to the new head",
+    "--outdir",
+    "evidence/studio-body/usability/19-neck"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:08:37.627332+00:00",
+  "pid": 18020,
+  "exit": 0,
+  "terminal": "2026-11-13T07:08:38.293383+00:00",
+  "stdout_bytes": 3004
+}

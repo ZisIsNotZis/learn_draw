@@ -1,0 +1,45 @@
+{
+  "base": "349adebeca89ead6dceefd5e3e7d2dd198d4658bb147aad448a1565858dedc20",
+  "engine": "21518446e9ddb18ca7fe0a90a543428a76f6a6e9a7ba372cacb61fcd59832536",
+  "object": "upper-body",
+  "kind": "feature",
+  "feature": "right-elbow",
+  "bounds": [
+    396.63359999999994,
+    330.91839999999996,
+    437.5936,
+    371.8784
+  ],
+  "object_bounds": [
+    165.86219458533205,
+    190.50909182609493,
+    436.8862704477176,
+    467.29494241677475
+  ],
+  "controls": [
+    "right_wrist_spread",
+    "right_wrist_height",
+    "right_elbow_at",
+    "right_elbow_bend"
+  ],
+  "units": "screen move in torso height; elbow preserves shoulder/wrist; wrist preserves shoulder and bend ratios",
+  "interaction": "body-joint",
+  "locks": {
+    "neck": [
+      320.0,
+      191.232
+    ],
+    "shoulder": [
+      407.424,
+      247.168
+    ],
+    "wrist": [
+      331.52,
+      357.632
+    ]
+  },
+  "focus": [
+    417.11359999999996,
+    351.3984
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "scope": "No whole-artwork pass or human acceptance. Parent-captured summaries, not verbatim transcripts.",
+  "reviews": [
+    {
+      "agent": "body_images_a",
+      "context": "Fresh image-only critic; open question, no source/intent/history supplied",
+      "observation": "Grip reads as rounded stacked pads; offering elbow tube-like, folded shoulder straighter with a bulbous elbow/internal plate-like line; hanging arm a straight column; flat hair/face/material; small folded hand crowded.",
+      "images": [
+        {
+          "path": "check-offering/draft-fullres.png",
+          "sha256": "053670fada1506f0acb4fd05f7652c2e94a57b90bb8ef4c4c2b13e639ecd191f"
+        },
+        {
+          "path": "check-offering/draft.png",
+          "sha256": "39f67250a4190fc05e3dfbab752b8c2023bbe56e41016610e75065252dc02b1b"
+        },
+        {
+          "path": "check-folded/draft-fullres.png",
+          "sha256": "1d64d457f9e0697518e4cc6d753ce2ea0c97787c9cbee5a131b68ce1a59c030e"
+        },
+        {
+          "path": "check-folded/draft.png",
+          "sha256": "20b1f5ab4a6763c7edcdc2ba98a451a18e6a47f7c8808a330491739de2f97d9a"
+        }
+      ]
+    },
+    {
+      "agent": "body_images_b",
+      "context": "Fresh image-only critic; open question, no source/intent/history supplied",
+      "observation": "Grip thumb/palm/fingers and held stem remain unclear. Offering elbow volume weak and cuff abruptly narrow; frontal gaze disconnected from flower. Folded arm relies on internal line; flower crowds chin/neck/shoulder and composition leaves right side empty.",
+      "images": [
+        {
+          "path": "check-offering/draft-fullres.png",
+          "sha256": "053670fada1506f0acb4fd05f7652c2e94a57b90bb8ef4c4c2b13e639ecd191f"
+        },
+        {
+          "path": "check-offering/draft.png",
+          "sha256": "39f67250a4190fc05e3dfbab752b8c2023bbe56e41016610e75065252dc02b1b"
+        },
+        {
+          "path": "check-folded/draft-fullres.png",
+          "sha256": "1d64d457f9e0697518e4cc6d753ce2ea0c97787c9cbee5a131b68ce1a59c030e"
+        },
+        {
+          "path": "check-folded/draft.png",
+          "sha256": "20b1f5ab4a6763c7edcdc2ba98a451a18e6a47f7c8808a330491739de2f97d9a"
+        }
+      ]
+    },
+    {
+      "agent": "body_greeting_a",
+      "context": "Fresh image-only pair on independent operator outcomes",
+      "observation": "Before finishing: tubular shoulder/arm, armpit paper spike, missing hanging hand, narrow eyes, hard hair silhouette; ambiguous flower grip.",
+      "images": [
+        {
+          "path": "check-greeting/draft-fullres.png",
+          "sha256": "bf09ba1b23e814eafd9820dced9d8c60f37a9bd91ac986c88e84cfbd569cd90c"
+        },
+        {
+          "path": "check-greeting/draft.png",
+          "sha256": "36352e195a811a14a11e1f8b8b3e617a1a0a72a17bfc19fcac34c71af31b5a3c"
+        },
+        {
+          "path": "check-operator-edit/draft-fullres.png",
+          "sha256": "36f4637f587c0723138e4fcdea8036ff6e74f33aa3013f82d32298d0e407e7e7"
+        },
+        {
+          "path": "check-operator-edit/draft.png",
+          "sha256": "a11777360e2f2311398b1a85eeab0494321dfb6c5022f423d5a2ad224af004a6"
+        }
+      ]
+    },
+    {
+      "agent": "body_greeting_b",
+      "context": "Fresh image-only pair on independent operator outcomes",
+      "observation": "Before finishing: missing hanging hand; hand palm/thumb proportions, planar garment/body vs detailed head, unclear flower grip and left-heavy composition.",
+      "images": [
+        {
+          "path": "check-greeting/draft-fullres.png",
+          "sha256": "bf09ba1b23e814eafd9820dced9d8c60f37a9bd91ac986c88e84cfbd569cd90c"
+        },
+        {
+          "path": "check-greeting/draft.png",
+          "sha256": "36352e195a811a14a11e1f8b8b3e617a1a0a72a17bfc19fcac34c71af31b5a3c"
+        },
+        {
+          "path": "check-operator-edit/draft-fullres.png",
+          "sha256": "36f4637f587c0723138e4fcdea8036ff6e74f33aa3013f82d32298d0e407e7e7"
+        },
+        {
+          "path": "check-operator-edit/draft.png",
+          "sha256": "a11777360e2f2311398b1a85eeab0494321dfb6c5022f423d5a2ad224af004a6"
+        }
+      ]
+    },
+    {
+      "agent": "body_images_a",
+      "context": "Targeted seam study follow-up",
+      "observation": "Before has pale shoulder/inner sleeve/cuff lines; after no obvious pale seams; red pole remains in front of the sleeve.",
+      "images": [
+        {
+          "path": "seam-study/before.png",
+          "sha256": "079d07d921b101469163fb8c010004defacda370dab626e01ae4ae4774eef328"
+        },
+        {
+          "path": "seam-study/after.png",
+          "sha256": "1a7ea74fd0ea55ba3be2cb910ba529d754a2bd16d96da5ae9c73cebd2e16c22d"
+        }
+      ]
+    },
+    {
+      "agent": "body_greeting_b",
+      "context": "Targeted root finishing follow-up, engine4f02",
+      "observation": "Both hands and cuff joins readable; hanging fingers long/rigid; planar body, thin armpit gap, narrow eyes remain.",
+      "images": [
+        {
+          "path": "check-greeting-finished/draft-fullres.png",
+          "sha256": "3ac6722f750f19eb1d4225b4c08e0fe9857af5f02b4c01eb2b808ba86ac6b479"
+        },
+        {
+          "path": "check-greeting-finished/draft.png",
+          "sha256": "a71844bf0359e7c52eecf138495abe2137e8d0a0d0278947047c0e78d76ca0fc"
+        }
+      ]
+    },
+    {
+      "agent": "body_greeting_a",
+      "context": "Targeted current engine2151 coverage/depth follow-up",
+      "observation": "No earlier pale internal armpit spike or depth seam visible; hanging hand now present. Bent sleeve still tubular, eyes narrow, hair hard-edged, long rigid hanging fingers. Sloped fixture forearm/cuff still flat; pole remains in front.",
+      "images": [
+        {
+          "path": "current-verified/greeting/view/artwork.png",
+          "sha256": "459134d220d31e94449dbef9305749c1280ecff72ae4714839374f2f114de48f"
+        },
+        {
+          "path": "07-covered-occlusion/sloped/view/artwork.png",
+          "sha256": "0fddf37fac384d1a66a13ae3cebce7f0ddde830dea658337b4793d33312700d9"
+        }
+      ]
+    }
+  ]
+}

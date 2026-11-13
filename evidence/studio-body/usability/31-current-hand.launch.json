@@ -1,0 +1,29 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "place",
+    "evidence/studio-body/usability/greeting.json",
+    "--kind",
+    "hand",
+    "--id",
+    "wave-hand",
+    "--change",
+    "length=.17",
+    "--change",
+    "angle=-15",
+    "--change",
+    "skin_color=#efd0b5",
+    "--reason",
+    "An open palm with spread fingers makes the greeting explicit",
+    "--outdir",
+    "evidence/studio-body/usability/31-current-hand"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:14:58.209757+00:00",
+  "pid": 47376,
+  "exit": 0,
+  "terminal": "2026-11-13T07:14:58.973007+00:00",
+  "stdout_bytes": 3010
+}

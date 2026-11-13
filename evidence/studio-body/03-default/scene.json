@@ -1,0 +1,15 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "upper-body",
+      "kind": "body",
+      "intent": "a simple long-sleeved upper body with editable elbows and wrists"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "greeter-shirt",
+      "kind": "body",
+      "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+      "depth": 1,
+      "length": 0.42,
+      "pose": "offering",
+      "palette": {
+        "fill": "#b85f52"
+      },
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.0,
+          0.1
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "base": "278f020468d6cc24a2be34d374b5be51c52e245c1a3f37ddd9ef579c754a00b3",
+  "engine": "4f02e7e193cdb2cefbeadfafe761232e601ad00e19a5903ef0097e54ce61dcde",
+  "object": "resting-hand",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    151.66498089928567,
+    534.2500168045484,
+    206.7352824972673,
+    619.0198005902113
+  ],
+  "object_bounds": [
+    151.66498089928567,
+    534.2500168045484,
+    206.7352824972673,
+    619.0198005902113
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      178.8116649579781,
+      577.4946612965261
+    ],
+    "wrist": [
+      177.2672,
+      536.4096000000001
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "insertion": {
+    "object": "resting-hand"
+  },
+  "attachment_target": {
+    "object": "greeter-shirt",
+    "anchor": "left-wrist"
+  }
+}

@@ -638,5 +638,8 @@ a natural figure. Preserve existing general strokes for gestures/flow. A concret
 upper-body garment with computed shoulder/elbow/wrist joints, collar/shoulder pattern and internal
 arm surfaces. Cases23/24 remove the assembled shoulder step; crossing failures show why shared
 material must not erase front-arm ink/depth. Thick elbows and cuff/hand scale remain weaknesses.
-This study is not a native kind or editable rig yet; native adoption and independent operation are
-the next checkpoint. Source-bound comparisons and limits are in ../evidence/studio-arm/README.md.
+That study remains frozen as evidence (../evidence/studio-arm/README.md). Its selected design now
+has a native body kind: small relaxed/offering/folded defaults, local elbow/wrist screen moves,
+semantic ports and ordinary staged edits/recovery. Separate compiled planes support external
+interposed props. It remains a graphic garment; child orientation is explicit and natural anatomy
+or broad pose transfer is not claimed. Current operation and real images are in ../evidence/studio-body/README.md.

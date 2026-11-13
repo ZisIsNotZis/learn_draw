@@ -32,10 +32,15 @@ a new component before insertion. Read clean/alignment, revise the pending candi
 or discard it. [Actual placement and independent camera creation](evidence/studio-placement/README.md)
 show the operation; [camera.json](examples/studio/camera.json) is the editable seven-part example.
 
+Use --kind body for an owned graphic upper body with simple pose defaults and visible elbow/wrist
+correction. [Native figure examples and operation limits](evidence/studio-body/README.md) include
+connected hands and external depth crossings. Try python examples/studio/upper_body.py --pose offering
+--outdir FRESH; these are editable studies, not a finished-illustration pass.
+
 Ordinary inspect/preview/place responses now focus on the selected part and useful image/control
 handles; full report data stays on disk (--full-report opts in). [Actual focused-response operation](evidence/studio-feedback/README.md)
 includes independent hand/cuff refinement and recovery. The [owned upper-body comparison](evidence/studio-arm/README.md)
-selects the next representation; it remains a renderer prototype, not a native editable body kind.
+records the renderer prototypes behind the adopted native component.
 
 Connected stroke ends can also preview `--aim TARGET/selection.json`: fit an observed wrist or
 terminal direction while keeping both ends fixed. [Actual cuff/pose corrections and limits](evidence/studio-direction/README.md)

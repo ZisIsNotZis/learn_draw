@@ -1,0 +1,27 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "place",
+    "evidence/studio-body/usability/greeting.json",
+    "--revise",
+    "evidence/studio-body/usability/19-neck/candidate.json",
+    "--attach",
+    "evidence/studio-body/usability/18-neck-port/selection.json",
+    "--self-anchor",
+    "root",
+    "--target-anchor",
+    "neck",
+    "--reason",
+    "Seat the neck root in the shirt neckline",
+    "--outdir",
+    "evidence/studio-body/usability/20-neck-attached"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:09:07.803654+00:00",
+  "pid": 10180,
+  "exit": 0,
+  "terminal": "2026-11-13T07:09:08.321904+00:00",
+  "stdout_bytes": 3425
+}

@@ -1,0 +1,25 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "place",
+    "evidence/studio-body/usability/greeting.json",
+    "--revise",
+    "evidence/studio-body/usability/12-body/candidate.json",
+    "--move",
+    "down",
+    "--amount",
+    ".10",
+    "--reason",
+    "Leave headroom above the shoulders for a new greeting portrait",
+    "--outdir",
+    "evidence/studio-body/usability/13-body-down"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:07:14.941164+00:00",
+  "pid": 41604,
+  "exit": 0,
+  "terminal": "2026-11-13T07:07:15.435217+00:00",
+  "stdout_bytes": 4005
+}

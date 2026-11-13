@@ -1,0 +1,35 @@
+{
+  "base": "6a7cd750575c99245f95c5f86056eefa50c3703a446b2781949dff4f5e432c16",
+  "engine": "8970df156e3b747080205b59bcc5aca804f0192f852e71b514971735160858e8",
+  "object": "wave-hand",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    283.0355535036897,
+    267.3199019827817,
+    361.90718705247434,
+    378.1053658152595
+  ],
+  "object_bounds": [
+    283.0355535036897,
+    267.3199019827817,
+    361.90718705247434,
+    378.1053658152595
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      320.0,
+      320.0
+    ],
+    "wrist": [
+      313.5901244298888,
+      373.3811031230561
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "insertion": {
+    "object": "wave-hand"
+  }
+}

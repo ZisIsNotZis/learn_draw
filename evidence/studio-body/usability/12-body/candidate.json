@@ -1,0 +1,93 @@
+{
+  "base": "001da70ec2723c2b5500e66e2b60c25c1fe865cc5d935147656d95b413be18dd",
+  "engine": "8970df156e3b747080205b59bcc5aca804f0192f852e71b514971735160858e8",
+  "result": "400d571500b724c5b8751bb419e6782f7778430c58e429468566a7c6dda8f16b",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "greeter-shirt",
+        "kind": "body",
+        "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+        "depth": 1,
+        "length": 0.42,
+        "pose": "offering",
+        "palette": {
+          "fill": "#b85f52"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "001da70ec2723c2b5500e66e2b60c25c1fe865cc5d935147656d95b413be18dd",
+    "engine": "8970df156e3b747080205b59bcc5aca804f0192f852e71b514971735160858e8",
+    "object": "greeter-shirt",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      158.15530431459865,
+      184.0345464173996,
+      554.821793631362,
+      474.6596895376135
+    ],
+    "object_bounds": [
+      158.15530431459865,
+      184.0345464173996,
+      554.821793631362,
+      474.6596895376135
+    ],
+    "controls": [],
+    "focus": null,
+    "locks": {
+      "center": [
+        320.0,
+        320.0
+      ],
+      "neck": [
+        320.0,
+        184.7936
+      ],
+      "left-shoulder": [
+        228.20479999999998,
+        243.52640000000002
+      ],
+      "left-elbow": [
+        189.00300799999997,
+        354.9117440000001
+      ],
+      "left-wrist": [
+        177.2672,
+        472.4096000000001
+      ],
+      "right-shoulder": [
+        411.7952,
+        243.52640000000002
+      ],
+      "right-elbow": [
+        464.34560000000005,
+        344.13824000000005
+      ],
+      "right-wrist": [
+        549.8240000000001,
+        319.19360000000006
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "insertion": {
+      "object": "greeter-shirt"
+    }
+  },
+  "operation": {
+    "action": "place",
+    "object": "greeter-shirt",
+    "kind": "body",
+    "reason": "A warm rust shirt gives the greeting figure a clear central silhouette",
+    "revised_from": null
+  },
+  "status": "ready"
+}

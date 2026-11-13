@@ -150,11 +150,14 @@ edge or orientation state. This keeps a directionless center honest and leaves d
 The real person-with-flower study exposes the next representation gap: one quadratic gesture
 cannot provide both a localized elbow and independently controlled cuff direction.
 
-## Selected body-study boundary, not native integration
+## Owned upper-body compilation
 
 The owned-garment renderer prototype shares cloth across collar, torso and computed sleeves while
 retaining local arm/torso surfaces and intentional overlap ink. A pure silhouette union loses a
-crossed forearm; separate generic torso/sleeve plates leave shoulder seams. The selected native
-integration must retain both material continuity and independent visibility. The study adapter
-does not handle external props interposed inside those local planes. It is evidence for a design
-decision, not an implementation of the native component contract. See evidence/studio-arm.
+crossed forearm; separate generic torso/sleeve plates leave shoulder seams. Native compilation now retains both material continuity and independent visibility. One authored
+body expands into left sleeve/torso/right sleeve paint items with local depths -1/0/+1 plus the
+body support field. Global ordering and triangle visibility consume these items, so external props
+can pass between them. Point selection, dependencies, staged transactions and scene serialization
+still see one semantic node. Visibility outlines are topology-preserving simplified approximations
+at .0003 torso height; dense paint paths retain the authored contour. Frozen study limitations are
+in evidence/studio-arm; native operation and depth evidence are in evidence/studio-body.

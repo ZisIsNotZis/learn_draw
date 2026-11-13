@@ -1,0 +1,37 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    640
+  ],
+  "background": "#f5eee4",
+  "nodes": [
+    {
+      "id": "upper-body",
+      "kind": "body",
+      "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+      "pose": "folded",
+      "depth": 0
+    },
+    {
+      "id": "pole",
+      "kind": "stroke",
+      "intent": "an upright red pole passes between chest and nearer forearm",
+      "length": 0.42,
+      "thickness": 0.025,
+      "depth": 0.5,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.045,
+          -0.17
+        ]
+      },
+      "palette": {
+        "fill": "#d2593d",
+        "ink": "#d2593d"
+      },
+      "ink_width": 0
+    }
+  ]
+}

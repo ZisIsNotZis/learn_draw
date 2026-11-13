@@ -1,0 +1,27 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "place",
+    "evidence/studio-body/usability/greeting.json",
+    "--revise",
+    "evidence/studio-body/usability/31-current-hand/candidate.json",
+    "--attach",
+    "evidence/studio-body/usability/30-current-port/selection.json",
+    "--self-anchor",
+    "wrist",
+    "--target-anchor",
+    "right-wrist",
+    "--reason",
+    "Connect the visible open palm to the raised cuff",
+    "--outdir",
+    "evidence/studio-body/usability/32-wave-seat"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:15:16.464611+00:00",
+  "pid": 44384,
+  "exit": 0,
+  "terminal": "2026-11-13T07:15:17.337425+00:00",
+  "stdout_bytes": 3251
+}

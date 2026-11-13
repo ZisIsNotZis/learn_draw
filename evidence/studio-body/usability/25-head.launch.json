@@ -1,0 +1,25 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "place",
+    "evidence/studio-body/usability/greeting.json",
+    "--kind",
+    "head",
+    "--id",
+    "greeter-head",
+    "--change",
+    "length=.26",
+    "--reason",
+    "A compact friendly face looks toward the viewer",
+    "--outdir",
+    "evidence/studio-body/usability/25-head"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:10:16.247824+00:00",
+  "pid": 51148,
+  "exit": 0,
+  "terminal": "2026-11-13T07:10:17.017265+00:00",
+  "stdout_bytes": 2750
+}

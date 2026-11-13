@@ -1,0 +1,15 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "D:\\vibe\\learn_draw_studio\\examples\\studio\\upper_body.py",
+    "--pose",
+    "folded",
+    "--outdir",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\current-verified\\folded"
+  ],
+  "cwd": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmpldf2zkl7",
+  "started": "2026-11-13T07:42:04.505695+00:00",
+  "pid": 10868,
+  "exit_code": 0,
+  "terminal": "2026-11-13T07:42:05.393900+00:00"
+}

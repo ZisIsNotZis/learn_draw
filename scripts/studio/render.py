@@ -66,13 +66,34 @@ def lock_palette(node):
     return colors|palette
 
 
+def paint_items(scene):
+    """Expand only compiled compound surfaces; authoring remains one semantic node."""
+    scene=resolve_scene(scene);canvas=scene.get('canvas',[640,640]);items=[]
+    for node in scene['nodes']:
+        if node['kind']!='body':items.append(node);continue
+        data=component_data(node,canvas);root,scale,depth=support(node,canvas)
+        for surface in data.surfaces:
+            items.append(dict(node,id=node['id']+'.plane-'+surface.name,kind='body-plane',depth=depth+surface.depth,_surface=surface,_root=root,_scale=scale))
+    return items
+
+
+def paint_data(node,canvas):return node['_surface'] if '_surface' in node else component_data(node,canvas)
+def paint_outline(node,canvas):return node['_surface'].outline if '_surface' in node else node_outline(node,canvas)
+def paint_support(node,canvas):return (node['_root'],node['_scale'],node['depth']) if '_surface' in node else support(node,canvas)
+def paint_depth_bounds(node,canvas):
+    if '_surface' not in node:return depth_bounds(node,canvas)
+    root,scale,depth=paint_support(node,canvas)
+    values=[depth+node.get('depth_slope',0)*(p[1]-root)/scale for p in paint_outline(node,canvas)]
+    return min(values),max(values)
+
+
 def faces_for(scene):
     scene=resolve_scene(scene)
     faces = []
     canvas = scene.get("canvas", [640, 640])
-    for node in scene["nodes"]:
-        poly = node_outline(node,canvas)
-        root_y,scale,depth=support(node,canvas)
+    for node in paint_items(scene):
+        poly = paint_outline(node,canvas)
+        root_y,scale,depth=paint_support(node,canvas)
         for triangle in triangulate_polygon(tuple(Point(*p) for p in poly)):
             tri = tuple((p.u, p.v, depth + node.get("depth_slope", 0) * (p.v - root_y) / scale) for p in triangle)
             faces.append((tri, PALETTE["fill"], node["id"]))
@@ -89,15 +110,15 @@ def global_depth_order(scene):
     """
     scene=resolve_scene(scene)
     canvas=scene.get('canvas',[640,640]);intervals=[]
-    for node in scene['nodes']:
-        low,high=depth_bounds(node,canvas)
+    for node in paint_items(scene):
+        low,high=paint_depth_bounds(node,canvas)
         intervals.append((low,high,node))
     intervals.sort(key=lambda item:item[0])
     from shapely import Polygon
     projections={}
     def projected(node):
         if node['id'] not in projections:
-            projections[node['id']]=Polygon(node_outline(node,canvas))
+            projections[node['id']]=Polygon(paint_outline(node,canvas))
         return projections[node['id']]
     for i,(low,high,node) in enumerate(intervals):
         for other_low,_other_high,other in intervals[i+1:]:
@@ -200,16 +221,25 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
     out.append(f'<rect id="paper" x="0" y="0" width="{width}" height="{height}" fill="{scene.get("background", "#f5eee4")}"/>')
     ordered=global_depth_order(scene)
     regions=() if ordered is not None else _scene_regions(canonical(scene))
-    for node in ordered if ordered is not None else scene['nodes']:
+    if ordered is None:
+        # A shared material is one fill even when its surfaces have different depths.
+        # Combine their exact winner polygons before rasterization, without dilation
+        # or changing any occlusion boundary. Surface ink/colour fields stay clipped.
+        for body in (n for n in scene['nodes'] if n['kind']=='body'):
+            d=' '.join(p for p,_colour,name in regions if name.startswith(body['id']+'.plane-'))
+            colour=body.get('palette',{}).get('fill','#6c8d98')
+            out.extend([xml_comment(body['id']+'-shared-material: one cloth fill across computed visible surfaces'),
+                        f'<path id="{body["id"]}.shared-material" d="{d}" fill="{colour}"/>'])
+    for node in ordered if ordered is not None else paint_items(scene):
         sid = node["id"]
         needs_clip=ordered is None or node['kind']=='hair-lock'
         if needs_clip:
-            visible=path(node_outline(node,[width,height])) if ordered is not None else " ".join(p for p, _color, name in regions if name == sid)
+            visible=path(paint_outline(node,[width,height])) if ordered is not None else " ".join(p for p, _color, name in regions if name == sid)
             out.append(f'<defs><clipPath id="visible-{sid}" clipPathUnits="userSpaceOnUse"><path d="{visible}"/></clipPath></defs>')
         if node['kind']!='hair-lock':
             clip=f' clip-path="url(#visible-{sid})"' if needs_clip else ''
             out += [xml_comment(f'{sid}: {node["intent"]}'),
-                    f'<g id="{sid}"{clip}>',component_data(node,[width,height]).svg,'</g>']
+                    f'<g id="{sid}"{clip}>',paint_data(node,[width,height]).svg,'</g>']
             continue
         colors = lock_palette(node)
         rows = lock_rows(node, [width, height])

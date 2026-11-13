@@ -528,3 +528,31 @@ The unchanged full scene report is saved at report.json. --full-report opts into
 complete report, retaining the prior stdout shape. A response is computed before stamping candidate
 ready; a feedback failure cannot leave an acceptable new proposal. Reusing a preview directory for
 inspection marks its prior candidate inspection-only; a failed part inspection exposes no image list.
+
+## Native owned upper body
+
+kind: body owns a graphic long-sleeved garment. Defaults: length .40 of shorter canvas dimension,
+width .9 of torso height, sleeve_width .14 of torso height, cuff .055 of sleeve arc, angle0,
+pose relaxed. pose also accepts offering/folded. palette permits fill/ink. arms optionally maps
+left/right to wrist_spread (-1.5..1.5 torso widths from neckline), wrist_height (.1..1.6 torso
+heights below neckline), elbow_at (.2.. .8 of shoulder-wrist chord), elbow_bend (-.9.. .9 chord
+lengths along its right normal). Overrides survive pose changes. Geometry can refuse additional
+fold/intersection limits inside these numeric bounds. No authored vertices or manual visibility cuts.
+
+Features object, left/right-shoulder, left/right-elbow, left/right-wrist expose actual controls.
+Elbow/wrist use interaction body-joint: screen moves are torso-height fractions; elbow preserves
+shoulder and wrist, wrist preserves shoulder and bend ratios. Neck and the six joints are named
+mounts; wrist/neck expose outward directions. Child point pins use the ordinary graph; angle remains
+explicit. Local moves require a free body or a center/neck self mount.
+
+Compilation emits left sleeve -1, torso0, right sleeve+1 support offsets with a shared linear slope.
+These are independent paint/visibility surfaces, with computed shoulder material bridges and
+intentional overlap ink. External objects participate in the same depth solver and can be interposed.
+Private plane IDs include a dot, outside authored node-ID syntax. They are compiler output, not
+authorable nodes. The scene and selection remain one native body.
+
+Known legacy precision gap: a head pinned through chin can miss its target by a fraction of a pixel
+(.2936px in the native greeting example). Its legacy absolute SVG recipe rounds coordinates, so
+recompilation after placement is not translation-invariant. This is unresolved, not an exact-pin
+pass; do not hide it with authored counter-offsets. Current body/hand pins remain exact in tested
+examples. A principled local-frame or compiler-placement correction is the next work.

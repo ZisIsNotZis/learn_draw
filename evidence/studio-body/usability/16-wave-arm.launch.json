@@ -1,0 +1,27 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-body/usability/greeting.json",
+    "--selection",
+    "evidence/studio-body/usability/15-wave-wrist/selection.json",
+    "--change",
+    "right_wrist_height=.1",
+    "--change",
+    "right_wrist_spread=.82",
+    "--change",
+    "right_elbow_bend=-.65",
+    "--reason",
+    "Raise the open hand above the elbow for a greeting",
+    "--outdir",
+    "evidence/studio-body/usability/16-wave-arm"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:07:37.929501+00:00",
+  "pid": 50856,
+  "exit": 0,
+  "terminal": "2026-11-13T07:07:38.412685+00:00",
+  "stdout_bytes": 2906
+}

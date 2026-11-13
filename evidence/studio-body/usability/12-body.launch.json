@@ -1,0 +1,29 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "place",
+    "evidence/studio-body/usability/greeting.json",
+    "--kind",
+    "body",
+    "--id",
+    "greeter-shirt",
+    "--change",
+    "length=.42",
+    "--change",
+    "pose=offering",
+    "--change",
+    "fill_color=#b85f52",
+    "--reason",
+    "A warm rust shirt gives the greeting figure a clear central silhouette",
+    "--outdir",
+    "evidence/studio-body/usability/12-body"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:06:53.347215+00:00",
+  "pid": 22868,
+  "exit": 0,
+  "terminal": "2026-11-13T07:06:53.854281+00:00",
+  "stdout_bytes": 3951
+}

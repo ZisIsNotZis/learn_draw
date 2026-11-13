@@ -1,0 +1,45 @@
+{
+  "base": "73a56cb7a520bf0bfbc20e47605e8eccc60fefbe3fde2b9acf9c5211e8b4c26b",
+  "engine": "8970df156e3b747080205b59bcc5aca804f0192f852e71b514971735160858e8",
+  "object": "shirt",
+  "kind": "feature",
+  "feature": "right-elbow",
+  "bounds": [
+    351.7951427060626,
+    375.5537217443569,
+    392.75514270606266,
+    416.5137217443569
+  ],
+  "object_bounds": [
+    84.27099419177716,
+    248.297112554401,
+    456.9713386103418,
+    524.4643978260304
+  ],
+  "controls": [
+    "right_wrist_spread",
+    "right_wrist_height",
+    "right_elbow_at",
+    "right_elbow_bend"
+  ],
+  "units": "screen move in torso height; elbow preserves shoulder/wrist; wrist preserves shoulder and bend ratios",
+  "interaction": "body-joint",
+  "locks": {
+    "neck": [
+      234.80314270606266,
+      249.03852174435693
+    ],
+    "shoulder": [
+      328.17914270606263,
+      299.02252174435694
+    ],
+    "wrist": [
+      453.68314270606265,
+      377.0385217443569
+    ]
+  },
+  "focus": [
+    372.27514270606264,
+    396.0337217443569
+  ]
+}

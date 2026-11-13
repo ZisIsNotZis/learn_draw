@@ -287,3 +287,23 @@ Anchor/edit inspection guides use scale=max(viewBox.width/canvas.width, viewBox.
 to keep rings, text and arrows at screen size under SVG meet scaling. Label rails have minimum
 span and name-length spacing; arrow halos maintain contrast. Full tiny-object guide clusters still
 need exact-anchor or magnified views. This overlay does not change clean geometry or art ink.
+
+## Native body construction and joint editing
+
+body.py computes a neckline, torso contour, two shoulder pattern bridges and two rounded
+three-joint sleeves from a shared torso frame. sleeve.py fillets the elbow between straight upper
+arm/forearm tangents, interpolates cloth radii by arc length and rejects collapsed or over-thick
+folds. A flat internal sleeve root meets a tangent-matched shoulder bridge; shared material union
+suppresses a sealed shoulder seam. Local surface material is expanded by the same morphological closing radius as the shared cloth,
+then clipped to that cloth: their union therefore covers the newly sewn junctions. Exterior cloth ink and deliberate crossing-arm ink are generated separately from fill.
+
+Elbow screen pushes project the moved joint onto the unchanged shoulder-wrist chord and its right
+normal, deriving elbow_at/bend. Wrist pushes derive local torso-relative spread/height while
+preserving the current bend ratios. Rotated bodies transform these operations back to their frame.
+Only semantic values enter authoring; current point mounts and attached children are re-resolved.
+Compiled surface IDs use dots outside author ID syntax and never enter the scene schema.
+
+In genuine depth crossings, exact winner regions of one body also supply a single shared-material
+underpaint. Consistently wound subpaths cancel internal raster edges without dilating any visibility
+boundary. Individual surface ink and cuff fields remain depth-clipped afterward. This is separate
+from the construction coverage rule above; each addressed a distinct actual seam in the fixture.

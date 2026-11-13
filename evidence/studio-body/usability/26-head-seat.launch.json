@@ -1,0 +1,31 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "place",
+    "evidence/studio-body/usability/greeting.json",
+    "--revise",
+    "evidence/studio-body/usability/25-head/candidate.json",
+    "--attach",
+    "evidence/studio-body/usability/24-neck-tip/selection.json",
+    "--self-anchor",
+    "chin",
+    "--target-anchor",
+    "tip",
+    "--change",
+    "expression=smile",
+    "--change",
+    "hair_color=#614b40",
+    "--reason",
+    "Set the smiling head on its neck above the shirt",
+    "--outdir",
+    "evidence/studio-body/usability/26-head-seat"
+  ],
+  "state": "terminal",
+  "start": "2026-11-13T07:10:34.972808+00:00",
+  "pid": 48932,
+  "exit": 0,
+  "terminal": "2026-11-13T07:10:35.635121+00:00",
+  "stdout_bytes": 3068
+}

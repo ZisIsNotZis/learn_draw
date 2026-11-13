@@ -1,0 +1,372 @@
+{
+  "revision": "7cd0331400d66e7e9fc70510be14484eb5c18601d196de07d75f7a5350cdeca4",
+  "engine": "8970df156e3b747080205b59bcc5aca804f0192f852e71b514971735160858e8",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\usability\\19-neck\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\usability\\19-neck\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\usability\\19-neck\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\usability\\19-neck\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\usability\\19-neck\\artwork.png": "1b4b742adaba06ccbaebde52158b17eaf51b20917c2062f81fce56fa01bb1c00",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\usability\\19-neck\\alignment.png": "7a882229946d2e0fb8037615bfbcb1d00647ff78d34f0661b546f90c95922438",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\usability\\19-neck\\object-closeup.png": "85e40b0d994db276d68feb0911f2d33919ad372d54ae22ac2c8b46d73eee09ab",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-body\\usability\\19-neck\\edit-closeup.png": "95c3ecd16e62b806a4953c406de1387d8efb85bad70b1a7d78b84d7b6366515a"
+  },
+  "nodes": {
+    "greeter-shirt": {
+      "kind": "body",
+      "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+      "bounds": [
+        158.15530431459868,
+        248.0345464173996,
+        536.3651124416754,
+        538.6596895376134
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            158.15530431459868,
+            248.0345464173996,
+            536.3651124416754,
+            538.6596895376134
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "pose",
+            "sleeve_width",
+            "cuff",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left-shoulder": {
+          "bounds": [
+            206.7008,
+            286.0224,
+            249.70879999999997,
+            329.03040000000004
+          ],
+          "controls": [
+            "left_wrist_spread",
+            "left_wrist_height",
+            "left_elbow_at",
+            "left_elbow_bend"
+          ]
+        },
+        "left-elbow": {
+          "bounds": [
+            167.499008,
+            397.40774400000004,
+            210.50700799999998,
+            440.4157440000001
+          ],
+          "controls": [
+            "left_wrist_spread",
+            "left_wrist_height",
+            "left_elbow_at",
+            "left_elbow_bend"
+          ]
+        },
+        "left-wrist": {
+          "bounds": [
+            155.7632,
+            514.9056,
+            198.7712,
+            557.9136000000001
+          ],
+          "controls": [
+            "left_wrist_spread",
+            "left_wrist_height",
+            "left_elbow_at",
+            "left_elbow_bend"
+          ]
+        },
+        "right-shoulder": {
+          "bounds": [
+            390.2912,
+            286.0224,
+            433.29920000000004,
+            329.03040000000004
+          ],
+          "controls": [
+            "right_wrist_spread",
+            "right_wrist_height",
+            "right_elbow_at",
+            "right_elbow_bend"
+          ]
+        },
+        "right-elbow": {
+          "bounds": [
+            474.94304,
+            336.1872,
+            517.95104,
+            379.19520000000006
+          ],
+          "controls": [
+            "right_wrist_spread",
+            "right_wrist_height",
+            "right_elbow_at",
+            "right_elbow_bend"
+          ]
+        },
+        "right-wrist": {
+          "bounds": [
+            496.8704,
+            254.16960000000003,
+            539.8784,
+            297.17760000000004
+          ],
+          "controls": [
+            "right_wrist_spread",
+            "right_wrist_height",
+            "right_elbow_at",
+            "right_elbow_bend"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            384.0
+          ],
+          "normal": null
+        },
+        "neck": {
+          "point": [
+            320.0,
+            248.7936
+          ],
+          "normal": null,
+          "direction": [
+            0.0,
+            -1.0
+          ]
+        },
+        "left-shoulder": {
+          "point": [
+            228.20479999999998,
+            307.5264
+          ],
+          "normal": null
+        },
+        "left-elbow": {
+          "point": [
+            189.003008,
+            418.91174400000006
+          ],
+          "normal": null
+        },
+        "left-wrist": {
+          "point": [
+            177.2672,
+            536.4096000000001
+          ],
+          "normal": null,
+          "direction": [
+            -0.09938651884194293,
+            0.9950489032567597
+          ]
+        },
+        "right-shoulder": {
+          "point": [
+            411.7952,
+            307.5264
+          ],
+          "normal": null
+        },
+        "right-elbow": {
+          "point": [
+            496.44704,
+            357.69120000000004
+          ],
+          "normal": null
+        },
+        "right-wrist": {
+          "point": [
+            518.3744,
+            275.6736
+          ],
+          "normal": null,
+          "direction": [
+            0.2582784203381744,
+            -0.966070524127311
+          ]
+        }
+      },
+      "attached_children": []
+    },
+    "greeter-neck": {
+      "kind": "stroke",
+      "intent": "a clean round gesture mark with editable spine and terminals",
+      "bounds": [
+        302.4,
+        145.59999999999997,
+        337.6,
+        209.60000000000002
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            302.4,
+            145.59999999999997,
+            337.6,
+            209.60000000000002
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            320.0,
+            163.2,
+            320.0,
+            192.0
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            302.4,
+            174.4,
+            337.6,
+            209.6
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            302.4,
+            145.6,
+            337.6,
+            180.79999999999998
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            177.6
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            320.0,
+            192.0
+          ],
+          "normal": null,
+          "direction": [
+            -1.2246467991473532e-16,
+            1.0
+          ]
+        },
+        "tip": {
+          "point": [
+            320.0,
+            163.2
+          ],
+          "normal": null,
+          "direction": [
+            1.2246467991473532e-16,
+            -1.0
+          ]
+        }
+      },
+      "attached_children": []
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips with an owned handle segment, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "removal": null,
+  "insertion": {
+    "object": "greeter-neck"
+  },
+  "direction_fit": null,
+  "alignment_legend": {
+    "red dashed": "removed previous paint; removal only",
+    "blue": "pinned stroke endpoints / inspected target; removal: retained affected children",
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "teal arrows": "outward join direction where defined; center mounts can be directionless",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge/spine, terminal, digit-tip or exact-mount focus"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span"
+}

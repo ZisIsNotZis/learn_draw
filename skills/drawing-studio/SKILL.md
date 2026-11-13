@@ -41,6 +41,10 @@ The complete scene report remains at files.report; use --full-report only when t
 needed. Read actual images before acting. Reusing a preview directory for inspection invalidates
 its old candidate because those preview images have been replaced.
 
+If a CLI tool returns a live session handle, poll that same handle to a terminal result before
+starting the next dependent inspection, edit or acceptance. Partial stdout and output files alone
+do not prove completion. Do not restart on an observation timeout.
+
 Stale selections/previews are refused after scene or implementation changes; inspect again.
 Only a successfully rendered ready candidate can be accepted. A failed render supplies no image list.
 Lock-edge pushes protect root and tip with an interior influence interval. A crossing/collapse refusal asks for
@@ -66,6 +70,29 @@ Accept with `accept scene.json TRY2/candidate.json` only after reading the resul
 removes the entire insertion. Discarding a proposal requires no scene mutation. Reinspect after acceptance.
 A stale/failed candidate cannot be revised or accepted. `add` is the older immediate convenience
 for scripted replays; use `place` for this observe-before-insertion workflow.
+
+## Editable upper body
+
+Use --kind body for a simple long-sleeved upper body. It owns collar, torso and sleeves; head,
+neck skin and hands remain separate components. Object offers pose=relaxed|offering|folded,
+length, width, sleeve_width, cuff, angle, fill/ink colour and support depth. A pose supplies defaults;
+explicit arms overrides persist when pose changes. Start a fresh body for an unmodified pose.
+
+Inspect right-elbow or left-elbow, then preview --move left/right/up/down --amount .03. The amount
+is a fraction of torso height, in screen space even when rotated. The elbow moves while shoulder
+and wrist stay fixed. Inspect right-wrist/left-wrist to move a cuff; shoulder and relative bend ratios
+stay fixed, so the elbow can move too. Observe clean, alignment and closeup before accepting.
+Overfolded, too-thick, disconnected or collapsed geometry refuses; reduce the move or unfold it.
+The shoulder feature exposes controls but is not a draggable joint. Optional side-prefixed controls
+are wrist_spread, wrist_height, elbow_at and elbow_bend; ordinary work should use visible joint moves.
+
+Named ports are neck and left/right shoulder, elbow and wrist (e.g. right-wrist). Inspect the exact
+ports before attaching a hand's wrist or a neck. Pins maintain point contact; child angle remains
+explicit, so check cuff/hand direction after wrist edits. A neck/center-pinned body permits local
+joint moves; a body pinned through a moving arm port must first detach. Material is continuous
+across the shoulders. Internal left sleeve/torso/right sleeve depths are -1/0/+1 added to body depth;
+an external prop at body depth+.5 can pass in front of chest and behind the nearer sleeve.
+This is a bounded graphic garment, not general anatomy, inverse kinematics or cloth simulation.
 
 ## Choose the right operation
 
