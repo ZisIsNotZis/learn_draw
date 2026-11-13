@@ -1,0 +1,32 @@
+{
+  "base": "a9fbbe52f196c1d6d6bd3ab679d423a979809fc09f5a004c3eab2b8284ef48b9",
+  "engine": "58b302be5e3866dd5569788756fbe387a1b1909292fd6b93330295c65a927548",
+  "object": "greeter-shirt",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    483.4993828255744,
+    240.79858282557436,
+    553.2494171744257,
+    310.54861717442566
+  ],
+  "object_bounds": [
+    158.15530431459868,
+    248.0345464173996,
+    536.3651124416754,
+    538.6596895376134
+  ],
+  "controls": [],
+  "focus": [
+    518.3744,
+    275.6736
+  ],
+  "locks": {
+    "right-wrist": [
+      518.3744,
+      275.6736
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "anchor": "right-wrist"
+}

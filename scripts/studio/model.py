@@ -80,7 +80,12 @@ def validate_placement(node):
         if 'at' in node: raise ValueError('use attachment or free at placement, not both')
         if node.get('kind') in ('sky','hills'): raise ValueError('canvas-wide backgrounds cannot be attached children')
         relation=node['attachment']
-        keys(relation,('to','target','self','inset','offset'),'attachment')
+        keys(relation,('to','target','self','inset','offset','orient'),'attachment')
+        if 'orient' in relation:
+            if relation['orient']!='opposed':raise ValueError('attachment.orient: opposed')
+            if 'angle' in node:raise ValueError('angle is derived by the oriented attachment; remove angle or use a point-only pin')
+            ports={'head':('chin',),'hand':('wrist',),'grip':('wrist',),'body':('neck',),'stroke':('root','tip')}
+            if node.get('kind') not in ports or relation.get('self','center') not in ports[node['kind']]:raise ValueError('orientation fitting requires a head chin, hand/grip wrist, body neck or stroke terminal')
         for name,default in [('to',None),('target','center'),('self','center')]:
             value=relation.get(name,default)
             if not isinstance(value,str) or not value.strip(): raise ValueError('attachment.'+name+' requires a name')
@@ -101,11 +106,12 @@ def validate_placement(node):
 
 def validate_head(node, canvas):
     keys(node,('id','kind','intent','attachment','at','length','width','angle','depth','depth_slope',
-               'eye_scale','jaw','hair','hair_edits','palette','expression','gaze'),'head')
+               'eye_scale','jaw','hair','hair_edits','palette','expression','gaze','frame'),'head')
     for name,default,low,high in (('length',.55,.1,1.2),('width',.79,.5,1.1),('angle',0,-180,180),
                                 ('depth',0,-100,100),('depth_slope',0,-10,10),
                                 ('eye_scale',1,.6,1.4),('jaw',.42,.1,.7),('gaze',0,-1,1)):
         number(node.get(name,default),'head.'+name,low,high)
+    if 'frame' in node:validate_placement({'at':node['frame']})
     if node.get('hair','side-part') not in ('none','bob','side-part'):
         raise ValueError('head.hair: none/bob/side-part')
     if node.get('expression','gentle') not in ('gentle','neutral','smile','curious'):
@@ -373,7 +379,7 @@ def _select(scene, sid=None, side="left", at=.55, radius=.30, feature=None, anch
     if feature=='anchors':
         f=anchor_view(node,canvas,anchor)
         selection.update(kind='feature',feature='anchors',bounds=f['bounds'],object_bounds=bounds(component_outline_for_selection(node,canvas)),controls=[],
-                         focus=f['focus'],locks=f['locks'],units='named geometry mounts; attachment pins one point and keeps the child angle in screen space')
+                         focus=f['focus'],locks=f['locks'],units='named geometry mounts; default point pin, optional opposed direction on semantic joints')
         if anchor is not None: selection['anchor']=anchor
         return selection
     if node['kind']!='hair-lock':
@@ -436,7 +442,9 @@ def _select(scene, sid=None, side="left", at=.55, radius=.30, feature=None, anch
 
 
 def exposed_controls(node,controls):
-    return [k for k in controls if k not in ('length','angle')] if len(node.get('endpoints',{}))==2 else list(controls)
+    derived={'length','angle'} if len(node.get('endpoints',{}))==2 else set()
+    if node.get('attachment',{}).get('orient'):derived.add('angle')
+    return [k for k in controls if k not in derived]
 
 
 def select(scene,sid=None,side='left',at=.55,radius=.30,feature=None,anchor=None):
@@ -459,6 +467,14 @@ def current_selection(scene, selection):
         raise ValueError("operation impact view is not a part inspection; inspect the scene again")
 
 
+def _freeze_head(node,scene,allow_attached=False):
+    if node.get('kind')=='head' and 'frame' not in node:
+        if 'attachment' in node and not allow_attached:raise ValueError('reattach this legacy head through observed mounts before editing; stabilizing its old pin would otherwise move protected geometry')
+        from .head import freeze_frame
+        from .attachment import resolve_scene
+        freeze_frame(node,node_by_id(resolve_scene(scene),node['id']))
+
+
 def preview(scene, selection, direction, amount, reason):
     current_selection(scene,selection)
     object_move=selection.get('kind')=='feature' and selection.get('feature')=='object'
@@ -477,6 +493,7 @@ def preview(scene, selection, direction, amount, reason):
     dx, dy = {"left": (-amount, 0), "right": (amount, 0), "up": (0, -amount), "down": (0, amount)}[direction]
     candidate = copy.deepcopy(scene)
     node = node_by_id(candidate, selection["object"])
+    _freeze_head(node,scene)
     if object_move:
         canvas=scene.get('canvas',[640,640])
         if node['kind'] in ('sky','hills'):
@@ -509,6 +526,7 @@ def preview(scene, selection, direction, amount, reason):
         node['arms']=move_joint(resolved,scene.get('canvas',[640,640]),selection['feature'],direction,amount)['arms']
         validate(candidate)
         return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,selection=selection,operation=dict(object=node['id'],feature=selection['feature'],direction=direction,amount=amount,units='torso height',reason=reason))
+    if terminal_move and node.get('attachment',{}).get('orient'):raise ValueError('this stroke direction is attached; detach it before moving a free terminal')
     if spine_move or terminal_move:
         from .attachment import resolve_scene,endpoint_relations
         if node['kind']!='stroke': raise ValueError('this gesture operation requires a stroke')
@@ -576,6 +594,7 @@ def preview(scene, selection, direction, amount, reason):
 
 def bind_endpoint_preview(scene,selection,target_selection,target_anchor,inset,reason):
     current_selection(scene,selection);current_selection(scene,target_selection)
+    if node_by_id(scene,selection['object']).get('attachment',{}).get('orient'):raise ValueError('detach the oriented stroke before binding endpoint constraints')
     if selection.get('interaction')!='stroke-terminal' or selection.get('feature') not in ('root','tip'):
         raise ValueError('inspect a stroke root or tip before binding its endpoint')
     if target_selection.get('feature')!='anchors': raise ValueError('inspect the target anchors before binding')
@@ -612,7 +631,7 @@ def unbind_endpoint_preview(scene,selection,reason):
                 operation=dict(action='unbind-endpoint',object=node['id'],endpoint=end,reason=reason))
 
 
-def attachment_preview(scene,selection,target_selection,self_anchor,target_anchor,inset,reason):
+def attachment_preview(scene,selection,target_selection,self_anchor,target_anchor,inset,reason,orient=None):
     current_selection(scene,selection)
     current_selection(scene,target_selection)
     if selection.get('feature')!='anchors' or target_selection.get('feature')!='anchors':
@@ -626,8 +645,14 @@ def attachment_preview(scene,selection,target_selection,self_anchor,target_ancho
     candidate=copy.deepcopy(scene)
     node=node_by_id(candidate,selection['object'])
     if 'endpoints' in node: raise ValueError('unbind endpoint pins before whole-object attachment')
+    _freeze_head(node,scene,allow_attached=True)
     node.pop('at',None)
+    if node.get('attachment',{}).get('orient'):
+        from .attachment import resolve_scene
+        node['angle']=node_by_id(resolve_scene(scene),node['id'])['angle']
     node['attachment']=dict(to=target_selection['object'],self=self_anchor,target=target_anchor,inset=inset)
+    if orient is not None:
+        node['attachment']['orient']=orient;node.pop('angle',None)
     validate(candidate)
     view=dict(selection,attachment_target=dict(object=target_selection['object'],anchor=target_anchor))
     return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
@@ -642,10 +667,12 @@ def detach_preview(scene,selection,reason):
     candidate=copy.deepcopy(scene);node=node_by_id(candidate,selection['object'])
     if 'attachment' not in node and 'endpoints' not in node: raise ValueError('this object has no attachment to detach')
     placed=node_by_id(resolve_scene(scene),selection['object'])
+    _freeze_head(node,scene,allow_attached=True)
     if 'endpoints' in node:
         from .attachment import release_endpoints
         release_endpoints(node,placed)
     else:
+        if node['attachment'].get('orient'):node['angle']=placed['angle']
         node.pop('attachment');node['at']=copy.deepcopy(placed['at'])
     validate(candidate)
     return dict(base=fingerprint(scene),engine=engine_fingerprint(),result=fingerprint(candidate),scene=candidate,
@@ -675,6 +702,8 @@ def remove_preview(scene,selection,reason,cascade=False):
         if ends:
             release_endpoints(node,node_by_id(placed,node['id']),ends);released[node['id']]=ends;detached.append(node['id'])
         elif node.get('attachment',{}).get('to') in removed:
+            _freeze_head(node,scene,allow_attached=True)
+            if node['attachment'].get('orient'):node['angle']=node_by_id(placed,node['id'])['angle']
             node.pop('attachment');node['at']=copy.deepcopy(node_by_id(placed,node['id'])['at'])
             detached.append(node['id'])
     candidate['nodes']=[n for n in candidate['nodes'] if n['id'] not in removed]
@@ -734,6 +763,7 @@ def parameters_preview(scene,selection,changes,reason):
         raise ValueError('provide a nonempty object of semantic parameter changes')
     candidate=copy.deepcopy(scene)
     node=node_by_id(candidate,selection['object'])
+    _freeze_head(node,scene)
     applied={}
     for parameter,value in changes.items():
         applied[parameter]=_set_parameter(node,selection,parameter,copy.deepcopy(value))

@@ -21,6 +21,7 @@ def response(report,scene,directory,selection=None,candidate=None,configure=None
             result['selected']=dict(authored=node,bounds=info['bounds'],
                 available_features=list(info.get('features',{})),available_anchors=list(info['anchors']),
                 attached_children=info['attached_children'])
+            if 'derived_angle' in info:result['selected']['derived_angle']=info['derived_angle']
             if 'dimensions_canvas' in info:result['selected']['dimensions_canvas']=info['dimensions_canvas']
             if selection.get('feature')=='anchors' or selection.get('interaction')=='stroke-terminal':
                 placed=node_by_id(resolve_scene(scene),sid);canvas=scene.get('canvas',[640,640])

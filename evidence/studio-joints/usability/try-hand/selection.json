@@ -1,0 +1,36 @@
+{
+  "base": "73a56cb7a520bf0bfbc20e47605e8eccc60fefbe3fde2b9acf9c5211e8b4c26b",
+  "engine": "58b302be5e3866dd5569788756fbe387a1b1909292fd6b93330295c65a927548",
+  "object": "flower-hand",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    437.68314270606265,
+    361.0385217443569,
+    469.68314270606265,
+    393.0385217443569
+  ],
+  "object_bounds": [
+    450.49381101307307,
+    307.1887501041947,
+    519.43034843934,
+    424.4925424703505
+  ],
+  "controls": [],
+  "focus": [
+    453.68314270606265,
+    377.0385217443569
+  ],
+  "locks": {
+    "wrist": [
+      453.68314270606265,
+      377.0385217443569
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "anchor": "wrist",
+  "attachment_target": {
+    "object": "shirt",
+    "anchor": "right-wrist"
+  }
+}

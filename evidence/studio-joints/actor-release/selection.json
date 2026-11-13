@@ -1,0 +1,32 @@
+{
+  "base": "ca66e880a9f0eb3e03741a28fea511228ba45835266343341436d91f668baa71",
+  "engine": "0a18d3827b496b45d6ac3d166e69d226f392b8ecc9033289e9752374dffd6529",
+  "object": "flower-hand",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    437.68314270606265,
+    345.67852174435694,
+    469.68314270606265,
+    377.67852174435694
+  ],
+  "object_bounds": [
+    449.2330795490931,
+    288.87411759299266,
+    521.2319598028989,
+    403.25828854669277
+  ],
+  "controls": [],
+  "focus": [
+    453.68314270606265,
+    361.67852174435694
+  ],
+  "locks": {
+    "wrist": [
+      453.68314270606265,
+      361.67852174435694
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "anchor": "wrist"
+}

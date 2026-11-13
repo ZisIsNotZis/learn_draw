@@ -39,7 +39,7 @@ def default_scene(kind='hair-lock'):
             dict(id=kind,kind=kind,intent=intents[kind])])
     if kind=='head':
         return dict(format='learn-draw/studio-1',canvas=[640,640],background='#f5eee4',nodes=[
-            dict(id='portrait',kind='head',intent='a frontal flat cartoon head with an editable hairstyle')])
+            dict(id='portrait',kind='head',intent='a frontal flat cartoon head with an editable hairstyle',frame=dict(anchor='center',offset=[0,-.06]))])
     return {"format": "learn-draw/studio-1", "canvas": [640, 640], "background": "#f5eee4",
             "nodes": [{"id": "cheek-lock", "kind": "hair-lock",
                        "intent": "a soft lock swelling below the root and tapering to a pointed end"}]}
@@ -92,6 +92,7 @@ def main():
     p.add_argument('--move',choices=('left','right','up','down'),help='screen correction, preserving the rest of the pending shape')
     p.add_argument('--amount',type=float,default=.05,help='screen correction in shorter-canvas units')
     p.add_argument('--attach',metavar='TARGET_SELECTION',help='on revision, pin to a separately inspected working-scene mount')
+    p.add_argument('--orient',choices=('opposed',),help='keep a semantic joint opposed to the inspected target direction')
     p.add_argument('--self-anchor')
     p.add_argument('--target-anchor')
     p.add_argument('--inset',type=float,default=0)
@@ -112,7 +113,7 @@ def main():
         if command == "inspect":
             p.add_argument('--anchor',help='one exact mount to inspect, e.g. right@.2 on a generated shape edge')
             p.add_argument("--object",help='inferred when the scene contains one object')
-            p.add_argument('--feature',help='head: object/eyes/face/hair/expression/left-lock/right-lock; hand: object/index/middle/ring/little/thumb; grip: object/palm/fingers/thumb/handle/anchors; lock: object or edge')
+            p.add_argument('--feature',help='head: object/eyes/face/hair/expression/left-lock/right-lock; body: object/left-elbow/right-elbow/left-wrist/right-wrist; hand: object/index/middle/ring/little/thumb; grip: object/palm/fingers/thumb/handle/anchors; lock: object or edge')
             p.add_argument("--side", choices=("left", "right"), default="left")
             p.add_argument("--at", type=float, default=.55)
             p.add_argument("--radius", type=float, default=.30)
@@ -129,6 +130,7 @@ def main():
             operation.add_argument('--unbind-end',action='store_true',help='release the inspected root/tip while preserving the current curve')
             operation.add_argument('--remove',action='store_true',help='remove the inspected whole object; affected surviving links release in place')
             p.add_argument('--cascade',action='store_true',help='with --remove, also remove all attached descendants')
+            p.add_argument('--orient',choices=('opposed',),help='with --attach, persistently oppose a directional joint to its target')
             p.add_argument('--self-anchor',help='named mount on this object (defaults to inspected mount, else center)')
             p.add_argument('--target-anchor',help='named mount on target object (defaults to inspected mount, else center)')
             p.add_argument('--inset',type=float,default=0,help='-2..2 into target surface, fraction of its nominal shorter extent; negative leaves a gap')
@@ -151,6 +153,7 @@ def main():
             inputs=[Path(args.scene)]
             if args.command=='preview':
                 inputs.append(Path(args.selection))
+                inputs.extend(Path(p) for p in (args.attach,args.aim,args.bind_end) if p)
                 if args.attach: inputs.append(Path(args.attach))
                 if args.bind_end: inputs.append(Path(args.bind_end))
                 if args.aim: inputs.append(Path(args.aim))
@@ -189,7 +192,7 @@ def main():
             candidate=placement_preview(scene,node,prior=read(args.revise) if args.revise else None,
                 changes=parse_changes(args.change),feature=args.feature,at=args.at,offset=args.offset,
                 direction=args.move,amount=args.amount,target=read(args.attach) if args.attach else None,
-                self_anchor=args.self_anchor,target_anchor=args.target_anchor,inset=args.inset,reason=args.reason)
+                self_anchor=args.self_anchor,target_anchor=args.target_anchor,inset=args.inset,orient=args.orient,reason=args.reason)
             write(Path(args.outdir)/'candidate.json',dict(status='rendering',base=candidate['base'],engine=candidate['engine']))
             report=bundle(candidate['scene'],args.outdir,candidate['selection'],previous=scene,png=not args.svg_only)
             feedback=response(report,candidate['scene'],args.outdir,candidate['selection'],candidate,configure=args.feature,full=args.full_report)
@@ -235,6 +238,7 @@ def main():
             selection=read(args.selection)
             if not args.attach and not args.bind_end and not args.aim and (args.self_anchor is not None or args.target_anchor is not None or args.inset!=0):
                 raise ValueError('mount flags are used with --attach, --bind-end or --aim')
+            if args.orient is not None and not args.attach:raise ValueError('--orient is used with --attach')
             if args.bind_end and args.self_anchor is not None:
                 raise ValueError('--bind-end uses the inspected root/tip, not --self-anchor')
             if args.cascade and not args.remove:
@@ -254,7 +258,7 @@ def main():
             elif args.attach or args.detach:
                 if args.value is not None: raise ValueError('--value is used with --set')
                 if args.attach:
-                    candidate=attachment_preview(scene,selection,read(args.attach),args.self_anchor,args.target_anchor,args.inset,args.reason)
+                    candidate=attachment_preview(scene,selection,read(args.attach),args.self_anchor,args.target_anchor,args.inset,args.reason,args.orient)
                 else:
                     candidate=detach_preview(scene,selection,args.reason)
             elif args.change:

@@ -1,0 +1,19 @@
+art:    evidence/studio-joints/24-final/artwork.png
+bundle: evidence/studio-joints/check-greeting
+
+images (feed these, and nothing else):
+  evidence/studio-joints/check-greeting\draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale) - judge detail here
+  evidence/studio-joints/check-greeting\draft.png  -- downscaled preview (width <= 256px) - layout only, never detail
+
+full-resolution image SHA256: a1258c7946944c4b76853e1c5205a631394ae5db4896c5b25543d9a26d867358 (PNG source bytes preserved when available)
+no --ref given: nothing to compare against (reference-free stage)
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Judge detail only on the 1:1 images (draft-fullres.png, region-*.png). Previews and
+  side-by-side panes are downscaled: they show layout, never line weight or separation.
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.

@@ -1,0 +1,6 @@
+{
+  "initial_log": "targeted-after-examples.txt",
+  "encoding": "PowerShell UTF-16 stderr redirection",
+  "observation": "All ten tests printed OK, but the PowerShell wrapper returned exit1 after turning native stderr into error records. This is not used as authoritative child exit-code evidence.",
+  "replacement": "targeted/ captures actual child raw streams, PID and exit code directly."
+}

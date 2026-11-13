@@ -1,0 +1,32 @@
+{
+  "base": "b3961294d814bd5a227a66f080bbd79b1442fde623b3b49758baa6c7e309f102",
+  "engine": "fb839161a044e6e137f0110dfb18495ea914eaba267b59406ce0ea1d8260e81e",
+  "object": "greeter-head",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    296.96,
+    196.66,
+    343.04,
+    242.73999999999998
+  ],
+  "object_bounds": [
+    224.0,
+    25.735037078916267,
+    416.0,
+    220.96901360696987
+  ],
+  "controls": [],
+  "focus": [
+    320.0,
+    219.7
+  ],
+  "locks": {
+    "chin": [
+      320.0,
+      219.7
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "chin"
+}

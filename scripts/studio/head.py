@@ -5,7 +5,8 @@ hair is fused; its child gestures remain editable. No image is opened.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass,replace
+import copy
 from functools import lru_cache
 import hashlib
 import json
@@ -331,8 +332,49 @@ class HeadData:
     mounts: dict
 
 
+DEFAULT_PLACEMENT={'anchor':'center','offset':[0,-.06]}
+
+
+def freeze_frame(node,placed=None):
+    """Capture a semantic recipe frame once; placement then translates rigid geometry."""
+    if node.get('kind')=='head' and 'frame' not in node:
+        node['frame']=copy.deepcopy((placed or node).get('at',DEFAULT_PLACEMENT))
+
+
 def head_data(node, canvas):
-    return _head_data(json.dumps(node,sort_keys=True),tuple(canvas))
+    return _positioned_head_data(json.dumps(node,sort_keys=True),tuple(canvas))
+
+
+@lru_cache(maxsize=32)
+def _positioned_head_data(encoded,canvas):
+    node=json.loads(encoded)
+    if 'frame' not in node:return _head_data(encoded,canvas)
+    placement={'anchor':'center'}|node.get('at',DEFAULT_PLACEMENT)
+    desired=resolve_root({'at':placement},canvas)
+    base=copy.deepcopy(node);base['at']=base.pop('frame')
+    data=_head_data(json.dumps(base,sort_keys=True),canvas)
+    dx,dy=desired[0]-data.center[0],desired[1]-data.center[1]
+    if dx==0 and dy==0:return data
+    point=lambda p:(p[0]+dx,p[1]+dy)
+    shift=f'translate({dx} {dy})'
+    features=copy.deepcopy(data.features)
+    for f in features.values():
+        box=f['bounds'];f['bounds']=[box[0]+dx,box[1]+dy,box[2]+dx,box[3]+dy]
+        for p in f['paths']:p['transform']=shift+' '+p.get('transform','')
+        if f.get('focus') is not None:f['focus']=point(f['focus'])
+        if 'locks' in f:f['locks']={name:point(p) for name,p in f['locks'].items()}
+    locks=copy.deepcopy(data.locks)
+    for lock in locks.values():
+        n=lock['node'];offset=n['at'].get('offset',[0,0]);n['at']['offset']=[offset[0]+dx/canvas[0],offset[1]+dy/canvas[1]]
+        lock['rows']=tuple(replace(row,left=point(row.left),right=point(row.right),spine=point(row.spine)) for row in lock['rows'])
+    mounts=copy.deepcopy(data.mounts)
+    for m in mounts.values():m['point']=point(m['point'])
+    parser=ET.XMLParser(target=ET.TreeBuilder(insert_comments=True));root=ET.fromstring(data.svg,parser=parser)
+    group=ET.Element('{http://www.w3.org/2000/svg}g',id=node['id']+'.frame',transform=shift)
+    for child in list(root):root.remove(child);group.append(child)
+    root.append(ET.Comment((' '+node['id']+'-frame: rigid placement of the computed head, without absolute-coordinate resampling ').replace('--','—')));root.append(group)
+    return replace(data,svg=ET.tostring(root,encoding='unicode'),outline=tuple(point(p) for p in data.outline),
+                   features=features,locks=locks,center=desired,mounts=mounts)
 
 
 @lru_cache(maxsize=32)

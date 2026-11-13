@@ -1,0 +1,168 @@
+{
+  "base": "26f98d1d77981889224c717a6edd036dae776896f754dada414d2e4a84bdb1c3",
+  "engine": "58b302be5e3866dd5569788756fbe387a1b1909292fd6b93330295c65a927548",
+  "result": "0eabbf7853f10d344f0bebaf6a21252a3c5c3bea79ac518576d9a38fc7831644",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "greeter-shirt",
+        "kind": "body",
+        "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+        "depth": 1,
+        "length": 0.42,
+        "pose": "offering",
+        "palette": {
+          "fill": "#b85f52"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.1
+          ]
+        },
+        "arms": {
+          "right": {
+            "wrist_height": 0.1,
+            "wrist_spread": 0.82,
+            "elbow_bend": -0.65
+          }
+        }
+      },
+      {
+        "id": "greeter-neck",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 0.0,
+        "length": 0.045,
+        "thickness": 0.055,
+        "angle": 180.0,
+        "palette": {
+          "fill": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "root",
+          "target": "neck",
+          "inset": 0
+        },
+        "start_cap": "round"
+      },
+      {
+        "id": "greeter-head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "depth": 3.0,
+        "length": 0.26,
+        "expression": "smile",
+        "palette": {
+          "hair": "#614b40"
+        },
+        "attachment": {
+          "to": "greeter-neck",
+          "self": "chin",
+          "target": "tip",
+          "inset": 0,
+          "orient": "opposed"
+        },
+        "frame": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.28766625
+          ]
+        }
+      },
+      {
+        "id": "wave-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 4.0,
+        "length": 0.17,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "right-wrist",
+          "inset": 0,
+          "orient": "opposed"
+        }
+      },
+      {
+        "id": "resting-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 5.0,
+        "length": 0.13,
+        "spread": 0.7,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "left-wrist",
+          "inset": 0,
+          "orient": "opposed"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "26f98d1d77981889224c717a6edd036dae776896f754dada414d2e4a84bdb1c3",
+    "engine": "58b302be5e3866dd5569788756fbe387a1b1909292fd6b93330295c65a927548",
+    "object": "resting-hand",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      161.2672,
+      520.4096000000001,
+      193.2672,
+      552.4096000000001
+    ],
+    "object_bounds": [
+      151.66498089928567,
+      534.2500168045484,
+      206.7352824972673,
+      619.0198005902113
+    ],
+    "controls": [],
+    "focus": [
+      177.2672,
+      536.4096000000001
+    ],
+    "locks": {
+      "wrist": [
+        177.2672,
+        536.4096000000001
+      ]
+    },
+    "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+    "anchor": "wrist",
+    "attachment_target": {
+      "object": "greeter-shirt",
+      "anchor": "left-wrist"
+    }
+  },
+  "operation": {
+    "action": "attach",
+    "object": "resting-hand",
+    "attachment": {
+      "to": "greeter-shirt",
+      "self": "wrist",
+      "target": "left-wrist",
+      "inset": 0,
+      "orient": "opposed"
+    },
+    "reason": "Let the hanging palm follow the sleeve direction without hand-entered angles"
+  },
+  "status": "ready"
+}

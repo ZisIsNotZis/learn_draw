@@ -1,0 +1,24 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-joints/working.json",
+    "--selection",
+    "evidence/studio-joints/21-body/selection.json",
+    "--set",
+    "angle",
+    "--value",
+    "-6",
+    "--reason",
+    "Let the complete greeting figure lean gently toward the raised palm",
+    "--outdir",
+    "evidence/studio-joints/22-lean"
+  ],
+  "started": "2026-11-13T08:34:34.404545+00:00",
+  "state": "terminal",
+  "pid": 35424,
+  "exit_code": 0,
+  "terminal": "2026-11-13T08:34:35.249155+00:00"
+}

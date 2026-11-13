@@ -1,0 +1,161 @@
+{
+  "base": "9ae194d8721d4b295e4d1475d7437df23d6906d795b816890ec4d6432e2a92ab",
+  "engine": "44a0803cbce094ef14ddd8b298b0d1797b4544498b2891066d085e3d2c68770f",
+  "result": "480f8c8b42207300542e4f5a29939efd37f092ae0a1d16a39d31a53aa6dc59a9",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "greeter-shirt",
+        "kind": "body",
+        "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+        "depth": 1,
+        "length": 0.42,
+        "pose": "offering",
+        "palette": {
+          "fill": "#b85f52"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.1
+          ]
+        },
+        "arms": {
+          "right": {
+            "wrist_height": 0.1,
+            "wrist_spread": 0.82,
+            "elbow_bend": -0.65
+          }
+        },
+        "angle": -6.0
+      },
+      {
+        "id": "greeter-neck",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 0.0,
+        "length": 0.045,
+        "thickness": 0.055,
+        "palette": {
+          "fill": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "root",
+          "target": "neck",
+          "inset": 0,
+          "orient": "opposed"
+        },
+        "start_cap": "round"
+      },
+      {
+        "id": "greeter-head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "depth": 3.0,
+        "length": 0.26,
+        "expression": "smile",
+        "palette": {
+          "hair": "#614b40"
+        },
+        "attachment": {
+          "to": "greeter-neck",
+          "self": "chin",
+          "target": "tip",
+          "inset": 0,
+          "orient": "opposed"
+        },
+        "frame": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.28766625
+          ]
+        }
+      },
+      {
+        "id": "wave-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 4.0,
+        "length": 0.17,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "right-wrist",
+          "inset": 0,
+          "orient": "opposed"
+        }
+      },
+      {
+        "id": "resting-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 5.0,
+        "length": 0.13,
+        "spread": 0.7,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "left-wrist",
+          "inset": 0,
+          "orient": "opposed"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "9ae194d8721d4b295e4d1475d7437df23d6906d795b816890ec4d6432e2a92ab",
+    "engine": "44a0803cbce094ef14ddd8b298b0d1797b4544498b2891066d085e3d2c68770f",
+    "object": "greeter-shirt",
+    "kind": "feature",
+    "feature": "object",
+    "bounds": [
+      158.15530431459868,
+      248.0345464173996,
+      536.3651124416754,
+      538.6596895376134
+    ],
+    "object_bounds": [
+      158.15530431459868,
+      248.0345464173996,
+      536.3651124416754,
+      538.6596895376134
+    ],
+    "controls": [
+      "intent",
+      "length",
+      "width",
+      "angle",
+      "depth",
+      "depth_slope",
+      "pose",
+      "sleeve_width",
+      "cuff",
+      "fill_color",
+      "ink_color"
+    ],
+    "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+  },
+  "operation": {
+    "object": "greeter-shirt",
+    "feature": "object",
+    "reason": "Let the complete greeting figure lean gently toward the raised palm",
+    "parameter": "angle",
+    "value": -6.0
+  },
+  "status": "ready"
+}

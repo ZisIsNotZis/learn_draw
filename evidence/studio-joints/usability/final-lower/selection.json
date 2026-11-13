@@ -1,0 +1,40 @@
+{
+  "base": "ca66e880a9f0eb3e03741a28fea511228ba45835266343341436d91f668baa71",
+  "engine": "58b302be5e3866dd5569788756fbe387a1b1909292fd6b93330295c65a927548",
+  "object": "lower-stem",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    502.67287246497096,
+    384.69920120876486,
+    534.672872464971,
+    416.69920120876486
+  ],
+  "object_bounds": [
+    515.5413693915231,
+    397.56769813531696,
+    533.969818661417,
+    440.2527030414942
+  ],
+  "controls": [],
+  "focus": [
+    518.672872464971,
+    400.69920120876486
+  ],
+  "locks": {
+    "root": [
+      518.672872464971,
+      400.69920120876486
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "anchor": "root",
+  "endpoint_bindings": {
+    "root": {
+      "to": "flower-hand",
+      "target": "handle_right",
+      "inset": 0,
+      "orient": "opposed"
+    }
+  }
+}

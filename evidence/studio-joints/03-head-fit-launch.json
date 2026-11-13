@@ -1,0 +1,28 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-joints/working.json",
+    "--selection",
+    "evidence/studio-joints/01-head/selection.json",
+    "--attach",
+    "evidence/studio-joints/02-neck/selection.json",
+    "--self-anchor",
+    "chin",
+    "--target-anchor",
+    "tip",
+    "--orient",
+    "opposed",
+    "--reason",
+    "Seat the chin exactly and keep it aligned with the neck",
+    "--outdir",
+    "evidence/studio-joints/03-head-fit"
+  ],
+  "started": "2026-11-13T08:05:18.021903+00:00",
+  "state": "terminal",
+  "pid": 2152,
+  "exit_code": 0,
+  "terminal": "2026-11-13T08:05:29.746959+00:00"
+}

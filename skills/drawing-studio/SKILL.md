@@ -42,7 +42,10 @@ needed. Read actual images before acting. Reusing a preview directory for inspec
 its old candidate because those preview images have been replaced.
 
 If a CLI tool returns a live session handle, poll that same handle to a terminal result before
-starting the next dependent inspection, edit or acceptance. Partial stdout and output files alone
+starting the next dependent inspection, edit or acceptance. Use one process-launch call per tool
+invocation for dependent work. Awaiting a launch tool can return a session rather than process
+completion: do not put a second launch after that await in the same orchestration script. Partial
+stdout and output files alone
 do not prove completion. Do not restart on an observation timeout.
 
 Stale selections/previews are refused after scene or implementation changes; inspect again.
@@ -65,7 +68,8 @@ retained. Screen moves use the shorter canvas dimension. Add optional --change c
 same proposal; use a different output directory from the candidate being read. Nothing has landed.
 To connect it after observing its own mounts, separately inspect the working target's anchors, then
 revise with --attach TARGET/selection.json, --self-anchor NAME and --target-anchor NAME. Existing
-point-attachment limits and exact positioned-anchor inspection rules apply; orientation stays explicit.
+point-attachment limits and exact positioned-anchor inspection rules apply. Default pins keep angle
+explicit; use optional --orient opposed for a persistent directional joint after inspecting both mounts.
 Accept with `accept scene.json TRY2/candidate.json` only after reading the resulting image; undo
 removes the entire insertion. Discarding a proposal requires no scene mutation. Reinspect after acceptance.
 A stale/failed candidate cannot be revised or accepted. `add` is the older immediate convenience
@@ -87,12 +91,33 @@ The shoulder feature exposes controls but is not a draggable joint. Optional sid
 are wrist_spread, wrist_height, elbow_at and elbow_bend; ordinary work should use visible joint moves.
 
 Named ports are neck and left/right shoulder, elbow and wrist (e.g. right-wrist). Inspect the exact
-ports before attaching a hand's wrist or a neck. Pins maintain point contact; child angle remains
-explicit, so check cuff/hand direction after wrist edits. A neck/center-pinned body permits local
+ports before attaching a hand's wrist or a neck. Default pins maintain point contact; child angle stays explicit. Optional --orient opposed
+keeps an inspected wrist opposed to the cuff direction after pose edits. A neck/center-pinned body permits local
 joint moves; a body pinned through a moving arm port must first detach. Material is continuous
 across the shoulders. Internal left sleeve/torso/right sleeve depths are -1/0/+1 added to body depth;
 an external prop at body depth+.5 can pass in front of chest and behind the nearer sleeve.
 This is a bounded graphic garment, not general anatomy, inverse kinematics or cloth simulation.
+
+## Keep a joint fitted during pose changes
+
+Inspect exact source/target mounts and view both alignments. Preview --attach TARGET/selection.json
+--orient opposed with the usual self/target anchors. This persists both point and opposed outward
+direction: use hand/grip wrist, head chin, body neck or stroke root/tip as the source. A directionless
+center refuses. Grip handle_left/right now expose outward handle axes; fitting a stroke root to
+those ends lets external pole sections follow a turned hand. Fit each intended relation once, then
+inspect and edit the parent elbow/wrist. Observe the whole chain, not only the joint marker.
+
+With direction bound, angle is derived and omitted from exposed controls; focused feedback supplies
+derived_angle. Detach bakes current angle/placement, preserving paint. Reattach without --orient to
+return to a point-only pin while keeping the current orientation. An oriented stroke refuses free
+terminal drags, two-endpoint binding and one-shot --aim; detach before choosing another constraint.
+Depth, size and cuff width stay independent. Direction fit is not anatomy, pressure or physical contact.
+
+New heads use a stable recipe frame automatically. Moving changes placement, not rounded facial
+shape. Old free heads capture their frame on edit. An old attached, unframed head requires observed
+reattachment before ordinary editing, so a pin repair cannot silently move protected lock ends.
+Reattachment captures the old frame and fixes its fractional chin-pin error. Frame values are tool-managed, not controls
+to tune against the picture. Hair selections, endpoint locks, detachment and undo use the same frame.
 
 ## Choose the right operation
 
@@ -319,7 +344,7 @@ depth, not a fluid simulation or a general grip/physics solver.
 Inspect the source stroke with --feature root or tip. Separately inspect the target with
 --feature anchors --anchor NAME and read both images. Teal arrows show outward join direction
 where it exists: a surface edge normal, stroke terminal tangent or hand/grip wrist direction.
-Centers and handle-end mounts may be directionless; the report keeps direction separate from
+Centers can be directionless; grip handle ends expose their own transformed axes. The report keeps direction separate from
 surface normal, so a directional wrist is still not an inset surface.
 
 Use `preview scene.json --selection END/selection.json --aim TARGET/selection.json --reason

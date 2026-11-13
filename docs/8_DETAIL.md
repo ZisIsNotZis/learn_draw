@@ -307,3 +307,20 @@ In genuine depth crossings, exact winner regions of one body also supply a singl
 underpaint. Consistently wound subpaths cancel internal raster edges without dilating any visibility
 boundary. Individual surface ink and cuff fields remain depth-clipped afterward. This is separate
 from the construction coverage rule above; each addressed a distinct actual seam in the fixture.
+
+## Head frame and directional resolution
+
+head.freeze_frame captures an old head's semantic placement as its stable recipe frame. head_data
+compiles at that frame and translates the resulting SVG/outline/mounts/features/locks together.
+The recipe's existing angle acts around the frame center before translation, so both rotation
+and subsequent local lock edits stay coherent. Zero translation returns the old SVG unchanged.
+
+For an oriented relation, derive the angle delta from atan2(x,y) of the opposite target vector and
+the current outward source vector; normalize the resulting angle to [-180,180). Recompile that
+child pose before computing point translation. Depth uses the existing support field. Endpoints
+and one-shot aim remain separate constraint modes; conflicting terminal operations refuse.
+
+An old attached, unframed head refuses ordinary edits until observed reattachment. Otherwise fixing
+its previous fractional pin during an unrelated local edit would move protected lock endpoints.
+Release captures the current frame without correcting the released pin, preserving paint. The
+frame wrapper also sanitizes comments for legal double-hyphen IDs; SVG IDs themselves stay intact.

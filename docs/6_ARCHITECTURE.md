@@ -161,3 +161,17 @@ can pass between them. Point selection, dependencies, staged transactions and sc
 still see one semantic node. Visibility outlines are topology-preserving simplified approximations
 at .0003 torso height; dense paint paths retain the authored contour. Frozen study limitations are
 in evidence/studio-arm; native operation and depth evidence are in evidence/studio-body.
+
+## Stable head frame and opposed-direction dependency
+
+Head recipes retain a semantic construction frame. Head SVG, footprint, mounts,
+feature paths/bounds and local lock geometry translate together into current placement. Old
+unframed scenes are unchanged on read. Free-head edits and attach/release paths capture their
+current frame; an old attached head must first reattach through observed mounts before normal
+edits, protecting local lock endpoints from a hidden pin correction. This keeps rigid placement independent of the legacy emitter's integer sampling.
+
+An optional joint direction uses the same attachment DAG. Resolve parent direction, rotate the
+child's outward source axis to its opposite, recompute the rotated source mount, then translate
+to the target point. Raw angle is incompatible with this derived pose. Release/deletion bakes the
+resolved angle and position. Support depth and scale remain independent. This is projected
+articulation, not an inverse-kinematics or physical-contact solver.

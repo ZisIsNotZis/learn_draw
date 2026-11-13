@@ -9,6 +9,7 @@ def aim_preview(scene,selection,target_selection,target_anchor,reason):
     current_selection(scene,selection);current_selection(scene,target_selection)
     if not isinstance(reason,str) or not reason.strip():raise ValueError('state a drawing reason')
     end=selection.get('feature');source=node_by_id(scene,selection['object'])
+    if source.get('attachment',{}).get('orient'):raise ValueError('this join direction is already attached; detach before a one-shot aim')
     if source['kind']!='stroke' or end not in ('root','tip'):
         raise ValueError('aim uses an inspected stroke root or tip')
     if target_selection.get('feature')!='anchors':raise ValueError('inspect the target anchors before aiming')

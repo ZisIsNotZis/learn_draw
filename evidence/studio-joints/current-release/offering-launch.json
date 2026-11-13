@@ -1,0 +1,15 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "D:\\vibe\\learn_draw_studio\\examples\\studio\\upper_body.py",
+    "--pose",
+    "offering",
+    "--outdir",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-joints\\current-release\\offering"
+  ],
+  "cwd": "C:\\Users\\ADMINI~1\\AppData\\Local\\Temp\\tmpsvefai4f",
+  "started": "2026-11-13T08:59:20.162839+00:00",
+  "pid": 39444,
+  "exit_code": 0,
+  "terminal": "2026-11-13T08:59:20.978944+00:00"
+}

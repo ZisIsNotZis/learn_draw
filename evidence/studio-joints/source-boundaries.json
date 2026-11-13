@@ -1,0 +1,21 @@
+{
+  "epochs": [
+    {
+      "engine": "fb839161a044e6e137f0110dfb18495ea914eaba267b59406ce0ea1d8260e81e",
+      "scope": "Root initial inspections/proposal, superseded before acceptance. Snapshots of model/main/render before final feedback reconstruct this source."
+    },
+    {
+      "engine": "58b302be5e3866dd5569788756fbe387a1b1909292fd6b93330295c65a927548",
+      "scope": "Root chin/hands fits; independent28 CLI operation. Later model guard requires explicit migration of attached legacy heads before ordinary edits."
+    },
+    {
+      "engine": "44a0803cbce094ef14ddd8b298b0d1797b4544498b2891066d085e3d2c68770f",
+      "scope": "Root neck/body fit and lean; guarded legacy migration. Final XML comment sanitation is the only later head change."
+    },
+    {
+      "engine": "0a18d3827b496b45d6ac3d166e69d226f392b8ecc9033289e9752374dffd6529",
+      "scope": "Release source: 138 tests, ten prior/default PNGs exact, current public replays and actor PNG parity. Legal double-hyphen IDs now stay valid when framed heads translate."
+    }
+  ],
+  "scope": "Current verify_delivery reconstructs old code hashes from snapshots and verifies current image parity; it never relabels old operations as execution of the release source. Public helper defaults changed outside engine fingerprint and received ten targeted tests plus actual fresh-cwd replays."
+}

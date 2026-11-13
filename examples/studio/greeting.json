@@ -29,7 +29,8 @@
           "wrist_spread": 0.82,
           "elbow_bend": -0.65
         }
-      }
+      },
+      "angle": -6.0
     },
     {
       "id": "greeter-neck",
@@ -38,7 +39,6 @@
       "depth": 0.0,
       "length": 0.045,
       "thickness": 0.055,
-      "angle": 180.0,
       "palette": {
         "fill": "#efd0b5"
       },
@@ -46,7 +46,8 @@
         "to": "greeter-shirt",
         "self": "root",
         "target": "neck",
-        "inset": 0
+        "inset": 0,
+        "orient": "opposed"
       },
       "start_cap": "round"
     },
@@ -64,7 +65,15 @@
         "to": "greeter-neck",
         "self": "chin",
         "target": "tip",
-        "inset": 0
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "frame": {
+        "anchor": "center",
+        "offset": [
+          0.0,
+          -0.28766625
+        ]
       }
     },
     {
@@ -73,7 +82,6 @@
       "intent": "a front-view flat cartoon open palm with five digits",
       "depth": 4.0,
       "length": 0.17,
-      "angle": -15.0,
       "palette": {
         "skin": "#efd0b5"
       },
@@ -81,7 +89,8 @@
         "to": "greeter-shirt",
         "self": "wrist",
         "target": "right-wrist",
-        "inset": 0
+        "inset": 0,
+        "orient": "opposed"
       }
     },
     {
@@ -90,7 +99,6 @@
       "intent": "a front-view flat cartoon open palm with five digits",
       "depth": 5.0,
       "length": 0.13,
-      "angle": 174.0,
       "spread": 0.7,
       "palette": {
         "skin": "#efd0b5"
@@ -99,7 +107,8 @@
         "to": "greeter-shirt",
         "self": "wrist",
         "target": "left-wrist",
-        "inset": 0
+        "inset": 0,
+        "orient": "opposed"
       }
     }
   ]

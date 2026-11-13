@@ -138,7 +138,14 @@ def resolve_scene(scene):
             from .model import validate_stroke
             validate_stroke(node,canvas)
         elif relation is not None:
-            target=destination(relation);own=get_anchor(node,canvas,relation.get('self','center'))['point'];center=placement_center(node,canvas)
+            target=destination(relation)
+            if relation.get('orient'):
+                parent=resolve(relation['to']);direction=anchor_direction(get_anchor(parent,canvas,relation.get('target','center')))
+                own_direction=anchor_direction(get_anchor(node,canvas,relation.get('self','center')))
+                if direction is None or own_direction is None:raise ValueError('oriented attachment requires two inspected directional mounts')
+                delta=math.degrees(math.atan2(-direction[0],-direction[1])-math.atan2(own_direction[0],own_direction[1]))
+                node['angle']=(node.get('angle',0)+delta+180)%360-180
+            own=get_anchor(node,canvas,relation.get('self','center'))['point'];center=placement_center(node,canvas)
             shift=[target[k]-own[k] for k in (0,1)]
             node['at']=dict(anchor='center',offset=[(center[0]+shift[0])/canvas[0]-.5,(center[1]+shift[1])/canvas[1]-.5])
         done[sid]=node;active.pop();return node

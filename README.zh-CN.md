@@ -38,6 +38,10 @@ PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安
 [实际放置与独立相机创作](evidence/studio-placement/README.md)保留操作记录；
 [相机可编辑场景](examples/studio/camera.json)由七个通用色块组成。
 
+新头部移动时会保留原有形状；可选 --orient opposed 让下巴、手腕、脖子或笔画端点持续接顺。
+[实际姿态修改与恢复验证](evidence/studio-joints/README.md)展示头、双手随身体倾斜，以及抬腕时手与整枝花一起跟随。
+招手／递花样例已采用这些连接；造型质量仍需继续打磨。
+
 --kind body 现已提供一体构造的简洁上半身，可选姿态并直接推拉肘、腕。
 [原生人物样例与操作限制](evidence/studio-body/README.md)包含手部连接和杆件穿插遮挡。
 可运行 python examples/studio/upper_body.py --pose offering --outdir FRESH；这些仍是可编辑试作，尚未通过整画验收。

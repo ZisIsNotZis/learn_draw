@@ -620,7 +620,8 @@ retains the pending shape while screen moves, controls or an observed mount conn
 A discarded proposal changes no working state. One acceptance inserts the configured component,
 and one undo removes it exactly. The public path closes the JSON/model-only insertion gap observed
 in the previous flag and can-opening studies. Real operation/recovery evidence is in
-../evidence/studio-placement/; general atomic replacement and automatic edge/orientation fit remain open.
+../evidence/studio-placement/; general atomic replacement and automatic edge/width fit remain open.
+Semantic opposed-direction joints are now adopted separately below.
 
 ## Adopted observed endpoint direction fitting
 
@@ -641,5 +642,21 @@ material must not erase front-arm ink/depth. Thick elbows and cuff/hand scale re
 That study remains frozen as evidence (../evidence/studio-arm/README.md). Its selected design now
 has a native body kind: small relaxed/offering/folded defaults, local elbow/wrist screen moves,
 semantic ports and ordinary staged edits/recovery. Separate compiled planes support external
-interposed props. It remains a graphic garment; child orientation is explicit and natural anatomy
+interposed props. It remains a graphic garment; default point pins keep orientation explicit,
+while optional directional joints can now follow a pose. Natural anatomy
 or broad pose transfer is not claimed. Current operation and real images are in ../evidence/studio-body/README.md.
+
+## Adopted stable placement and directional joints
+
+New heads separate recipe construction from placement, so moving them does not redraw rounded
+absolute facial coordinates. Existing old scenes retain their paint. Free-head edits capture their
+frame; observed reattachment of an old attached head gives actual exact chin attachment before
+ordinary edits. This fixes the measured greeting
+precision gap without target counter-offsets or changing old free-head artwork.
+
+An observed semantic joint can preserve opposed directions as well as point contact. Head chin,
+hand/grip wrist, body neck and stroke terminals are supported; exposed grip ends let connected
+pole legs follow a turned hand. Parent pose edits resolve the whole dependency chain; angle is
+derived, and release preserves current paint. Width, depth and physical contact remain separate.
+This reduces angle bookkeeping in real revision, rather than adding another subject preset.
+Actual root/independent editing and remaining art limits are indexed in ../evidence/studio-joints/.

@@ -1,0 +1,168 @@
+{
+  "engine": "44a0803cbce094ef14ddd8b298b0d1797b4544498b2891066d085e3d2c68770f",
+  "operator_engine": "58b302be5e3866dd5569788756fbe387a1b1909292fd6b93330295c65a927548",
+  "operator_digests": 259,
+  "actor_current_png_exact": true,
+  "actor_joins": [
+    {
+      "object": "neck",
+      "point_error_pixels": 0.0
+    },
+    {
+      "object": "shirt",
+      "point_error_pixels": 2.842170943040401e-14
+    },
+    {
+      "object": "flower-hand",
+      "point_error_pixels": 0.0,
+      "direction_dot": -1.0
+    },
+    {
+      "object": "upper-stem",
+      "point_error_pixels": 0.0,
+      "direction_dot": -1.0
+    },
+    {
+      "object": "lower-stem",
+      "point_error_pixels": 5.684341886080802e-14,
+      "direction_dot": -1.0
+    },
+    {
+      "object": "flower-heart",
+      "point_error_pixels": 0.0
+    },
+    {
+      "object": "stem-leaf",
+      "point_error_pixels": 5.684341886080802e-14
+    }
+  ],
+  "greeting_joins": [
+    {
+      "object": "greeter-neck",
+      "point_error_pixels": 2.842170943040401e-14,
+      "direction_dot": -0.9999999999999999
+    },
+    {
+      "object": "greeter-head",
+      "point_error_pixels": 2.842170943040401e-14,
+      "direction_dot": -1.0
+    },
+    {
+      "object": "wave-hand",
+      "point_error_pixels": 5.684341886080802e-14,
+      "direction_dot": -1.0
+    },
+    {
+      "object": "resting-hand",
+      "point_error_pixels": 2.842170943040401e-14,
+      "direction_dot": -0.9999999999999999
+    }
+  ],
+  "protocol_exception": "Before polling live wrappers 57225, 41676, 47569, two inspections were started. All were then polled to terminal exit 0. Inspect source/target repeated serially in view-upper-serial and view-handle-left-serial. Duplicate number 7 is preserved in original log; identify records by PID/start or line index.",
+  "scope": "Old operator facts remain pre-guard; current source reconstruction changes only legacy attached-head edit refusal. Root repairs and current public replays are separately bound.",
+  "public_examples": [
+    {
+      "name": "offering",
+      "revision": "622fdfaf53d96339838095368f1ecae7ce0b8bd44e1a0d17b3e5fc24e0148508",
+      "joins": [
+        {
+          "object": "neck",
+          "point_error_pixels": 0.0
+        },
+        {
+          "object": "shirt",
+          "point_error_pixels": 2.842170943040401e-14
+        },
+        {
+          "object": "flower-hand",
+          "point_error_pixels": 0.0,
+          "direction_dot": -1.0
+        },
+        {
+          "object": "upper-stem",
+          "point_error_pixels": 0.0,
+          "direction_dot": -1.0
+        },
+        {
+          "object": "lower-stem",
+          "point_error_pixels": 0.0,
+          "direction_dot": -1.0
+        },
+        {
+          "object": "flower-heart",
+          "point_error_pixels": 6.355287432313019e-14
+        },
+        {
+          "object": "stem-leaf",
+          "point_error_pixels": 0.0
+        }
+      ],
+      "png_sha256": "aa840d16c5d8ba0b11b550438c3a9fcdd5fd80e4b6519b6b1c1072b581da34b3"
+    },
+    {
+      "name": "folded",
+      "revision": "32cbb6d24022724499f35742665b1ed0516fd4db5ad1ec467db49e0d64e5fd14",
+      "joins": [
+        {
+          "object": "neck",
+          "point_error_pixels": 0.0
+        },
+        {
+          "object": "shirt",
+          "point_error_pixels": 2.842170943040401e-14
+        },
+        {
+          "object": "flower-hand",
+          "point_error_pixels": 2.842170943040401e-14,
+          "direction_dot": -1.0
+        },
+        {
+          "object": "upper-stem",
+          "point_error_pixels": 0.0,
+          "direction_dot": -1.0
+        },
+        {
+          "object": "lower-stem",
+          "point_error_pixels": 2.842170943040401e-14,
+          "direction_dot": -1.0
+        },
+        {
+          "object": "flower-heart",
+          "point_error_pixels": 0.0
+        },
+        {
+          "object": "stem-leaf",
+          "point_error_pixels": 0.0
+        }
+      ],
+      "png_sha256": "035877f367c66ecece0c7f2b1061aeb8f9f9d2eba966321013a29b73ef2d5474"
+    },
+    {
+      "name": "greeting",
+      "revision": "480f8c8b42207300542e4f5a29939efd37f092ae0a1d16a39d31a53aa6dc59a9",
+      "joins": [
+        {
+          "object": "greeter-neck",
+          "point_error_pixels": 2.842170943040401e-14,
+          "direction_dot": -0.9999999999999999
+        },
+        {
+          "object": "greeter-head",
+          "point_error_pixels": 2.842170943040401e-14,
+          "direction_dot": -1.0
+        },
+        {
+          "object": "wave-hand",
+          "point_error_pixels": 5.684341886080802e-14,
+          "direction_dot": -1.0
+        },
+        {
+          "object": "resting-hand",
+          "point_error_pixels": 2.842170943040401e-14,
+          "direction_dot": -0.9999999999999999
+        }
+      ],
+      "png_sha256": "a1258c7946944c4b76853e1c5205a631394ae5db4896c5b25543d9a26d867358"
+    }
+  ]
+}

@@ -198,3 +198,10 @@ exec session, partial stdout or output directory is not completion. Poll the sam
 launch inspection/insertion while acceptance is still live, and do not restart solely because an
 observation timed out. The body operator's preserved stale proposal demonstrates this failure
 class; it recovered by waiting, re-inspecting and re-proposing on the current revision.
+
+Awaiting a process-launch tool can return a live session, not process completion. The concrete
+agent recipe is one launch per orchestration invocation for dependent work, then polling the same
+handle to a terminal result before another launch. A synchronous shell sequence is different: it
+may chain actions that need no intervening visual judgment, guarded by the previous exit code.
+Preview observation and acceptance always remain separate tool calls. The joint operator required
+this execution coaching; its earlier segment is retained as an exception, not a compliant run.

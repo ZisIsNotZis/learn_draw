@@ -32,6 +32,11 @@ a new component before insertion. Read clean/alignment, revise the pending candi
 or discard it. [Actual placement and independent camera creation](evidence/studio-placement/README.md)
 show the operation; [camera.json](examples/studio/camera.json) is the editable seven-part example.
 
+New heads preserve their painted shape while moving. Optional --orient opposed keeps an observed
+chin/wrist/neck or stroke joint aligned through parent edits, including a hand and both held pole
+legs. [Actual coherent pose changes and recovery](evidence/studio-joints/README.md) retain the
+remaining art limits. The greeting/flower examples now include these relations.
+
 Use --kind body for an owned graphic upper body with simple pose defaults and visible elbow/wrist
 correction. [Native figure examples and operation limits](evidence/studio-body/README.md) include
 connected hands and external depth crossings. Try python examples/studio/upper_body.py --pose offering

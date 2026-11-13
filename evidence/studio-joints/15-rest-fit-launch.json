@@ -1,0 +1,28 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-joints/working.json",
+    "--selection",
+    "evidence/studio-joints/13-rest/selection.json",
+    "--attach",
+    "evidence/studio-joints/14-left-cuff/selection.json",
+    "--self-anchor",
+    "wrist",
+    "--target-anchor",
+    "left-wrist",
+    "--orient",
+    "opposed",
+    "--reason",
+    "Let the hanging palm follow the sleeve direction without hand-entered angles",
+    "--outdir",
+    "evidence/studio-joints/15-rest-fit"
+  ],
+  "started": "2026-11-13T08:24:31.475732+00:00",
+  "state": "terminal",
+  "pid": 47496,
+  "exit_code": 0,
+  "terminal": "2026-11-13T08:24:32.385369+00:00"
+}

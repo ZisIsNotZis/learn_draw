@@ -1,0 +1,15 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "accept",
+    "evidence/studio-joints/working.json",
+    "evidence/studio-joints/06-head-fit/candidate.json"
+  ],
+  "started": "2026-11-13T08:13:47.498527+00:00",
+  "state": "terminal",
+  "pid": 51188,
+  "exit_code": 0,
+  "terminal": "2026-11-13T08:13:48.207692+00:00"
+}

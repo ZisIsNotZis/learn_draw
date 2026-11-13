@@ -1,0 +1,14 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "unittest",
+    "scripts.tests.test_studio_orientation",
+    "scripts.tests.test_studio_head_frame",
+    "-v"
+  ],
+  "started": "2026-11-13T08:40:24.354602+00:00",
+  "pid": 47008,
+  "exit_code": 0,
+  "terminal": "2026-11-13T08:40:27.506467+00:00"
+}

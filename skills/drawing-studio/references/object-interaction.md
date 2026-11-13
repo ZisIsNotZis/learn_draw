@@ -101,3 +101,17 @@ torso. A direction-correct stroke is not automatically a convincing arm; use the
 and anatomy to judge the representation. The far sleeve was first pinned at left@.23, which is
 lower left under the documented clockwise convention; inspecting left@.77 exposed the shoulder
 and corrected the hanging sleeve. Prefer an actual exact-anchor view to remembered fractions.
+
+## Persistent joins in later pose revision
+
+The newer opposed-direction joint can carry wrist -> owned handle -> both external pole legs
+through an elbow/wrist edit. Observe the complete held object after changing its parent; a point
+match alone does not ensure a continuous pole. The current drawing skill owns the operation recipe.
+
+Preserving those joins does not establish a readable grasp. The actual flower critique still finds
+ambiguous folded pads/thumb, while the waving figure keeps long soft fingers and a tube-like elbow.
+Treat these as drawing-shape questions; adding geometric constraints is not a substitute for
+choosing a clear silhouette and intentional overlap lines. Flat styling can remain simple. Also
+inspect cuff/skin width and pole/owned-handle width separately: direction fitting does not rescale
+them. Public flower defaults now compute initial pole width from their handle; this is not a
+persistent pressure/contact or whole-bouquet solver. Evidence is in evidence/studio-joints/.

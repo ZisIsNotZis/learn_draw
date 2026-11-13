@@ -1,0 +1,15 @@
+test_derived_angle_conflicts_directionless_targets_and_unsupported_operations_refuse (scripts.tests.test_studio_orientation.OrientedMounts.test_derived_angle_conflicts_directionless_targets_and_unsupported_operations_refuse) ... ok
+test_elbow_and_wrist_edits_reorient_hand_and_both_held_stem_legs (scripts.tests.test_studio_orientation.OrientedMounts.test_elbow_and_wrist_edits_reorient_hand_and_both_held_stem_legs) ... ok
+test_oriented_head_uses_rigid_frame_and_follows_neck_angle (scripts.tests.test_studio_orientation.OrientedMounts.test_oriented_head_uses_rigid_frame_and_follows_neck_angle) ... ok
+test_public_pending_joint_fit_and_current_feedback (scripts.tests.test_studio_orientation.OrientedMounts.test_public_pending_joint_fit_and_current_feedback) ... ok
+test_release_and_parent_deletion_bake_current_direction_without_paint_change (scripts.tests.test_studio_orientation.OrientedMounts.test_release_and_parent_deletion_bake_current_direction_without_paint_change) ... ok
+test_detach_and_parent_removal_preserve_paint_for_legacy_and_stable_heads (scripts.tests.test_studio_head_frame.StableHeadFrame.test_detach_and_parent_removal_preserve_paint_for_legacy_and_stable_heads) ... ok
+test_frame_validation_and_local_hair_edit_after_translation (scripts.tests.test_studio_head_frame.StableHeadFrame.test_frame_validation_and_local_hair_edit_after_translation) ... ok
+test_legacy_attached_head_requires_observed_migration_before_protected_edits (scripts.tests.test_studio_head_frame.StableHeadFrame.test_legacy_attached_head_requires_observed_migration_before_protected_edits) ... ok
+test_legacy_reattachment_and_parent_changes_keep_exact_actual_chin (scripts.tests.test_studio_head_frame.StableHeadFrame.test_legacy_reattachment_and_parent_changes_keep_exact_actual_chin) ... ok
+test_new_head_placement_translates_paint_mounts_selections_and_locks (scripts.tests.test_studio_head_frame.StableHeadFrame.test_new_head_placement_translates_paint_mounts_selections_and_locks) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.575s
+
+OK

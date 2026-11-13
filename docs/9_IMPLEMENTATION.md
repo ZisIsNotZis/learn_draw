@@ -8,13 +8,22 @@ milestones are `0_ROADMAP.md`.
 
 ## Current studio commands and evidence
 
+Current verification is indexed at evidence/studio-joints/README.md: run_tests.py --outdir FRESH,
+verify_preservation.py --outdir FRESH and verify_delivery.py --outdir FRESH in that directory.
+Earlier feature sections below retain revision-specific evidence links/counts; their frozen
+source-bound verifiers may correctly refuse a newer engine. Use this current entry for delivery.
+The command block is a menu of examples, not a batch script: return actual inspection/preview
+images to the model before each dependent drawing decision and before a separate acceptance call.
+
 From the development worktree, with Python 3.11+ and the dependencies in `pyproject.toml`
 (`uv sync`, then activate `.venv`; the studio uses Shapely and a native CPU SVG rasterizer):
 
 ```powershell
 python -m scripts.studio demo --kind head --outdir evidence/my-head-sequence
 python -m scripts.studio new landscape.json --kind landscape
-python -m scripts.studio add landscape.json --kind moon
+python -m scripts.studio place landscape.json --kind moon --reason "One quiet focal moon" --outdir evidence/moon-placement
+# View placement images before accepting in a separate call.
+python -m scripts.studio accept landscape.json evidence/moon-placement/candidate.json
 python -m scripts.studio inspect landscape.json --object moon --outdir evidence/moon-view
 python -m scripts.studio preview landscape.json --selection evidence/moon-view/selection.json --move down --amount .2 --reason "Bring the moon towards the horizon" --outdir evidence/moon-move
 python examples/studio/compose.py --theme moonrise --outdir evidence/my-moonrise
@@ -349,7 +358,8 @@ whole/alignment/grip-detail views from examples/studio/watering.json. It works f
 directory when invoked by absolute script path; an existing output directory is refused. The
 actual draft/revision/check/review and independent reframe are in evidence/studio-watering/.
 That original watering advance changed artwork/examples/skill. Its test counts are historical;
-current verification is indexed in 0_ROADMAP and evidence/studio-grasp-glyph/verification/.
+revision-specific verification is archived in evidence/studio-grasp-glyph/verification/; use the
+current entry above for delivery.
 Picture identity and actual projected joins/soil landing are verified separately and do not
 substitute for fresh visual judgment.
 
@@ -373,7 +383,7 @@ choose watering for the revised can/stream composition. The helper works from a 
 absolute script path and refuses existing output. No teaching SVG, mesh, target or browser is needed.
 
 Focused tests: `python -m unittest scripts.tests.test_studio_grip -v`. The complete studio-family
-run is `python evidence/studio-grasp-glyph/run_tests.py` (103 tests); it uses package names because
+run uses package names (current runner above) because
 this namespace test directory's relative imports do not work with bare `unittest discover -s`.
 `verify_preservation.py` in the same evidence directory checks seven old/default PNGs without
 rewriting their old evidence. `verify_delivery.py` checks the actual independent flag run,
@@ -400,8 +410,8 @@ Inspect a source stroke root/tip and an exact target anchor on the same scene re
 actual images, then preview --aim TARGET/selection.json with a drawing reason. Read the result
 before accept. The drawing skill owns the recipe and 7_INTERFACE.md owns its one-shot limits.
 
-The current direction study in evidence/studio-direction/ records 118 studio tests and ten exact
-prior/default PNGs on current source. Its initial independent operation run binds the pre-halo
+The earlier direction study in evidence/studio-direction/ records118 studio tests and ten exact
+prior/default PNGs at its recorded source. Its initial independent operation run binds the pre-halo
 engine; a verified guide-only source transition, current guide supplement and fresh current aim
 proposal keep that scope explicit. verify_delivery.py checks actual recovery and the shipped
 person_flower.json study. Earlier records remain unmodified. The live renderer/fingerprint is
@@ -423,8 +433,8 @@ node report is needed; files.report always points to it. Reusing a preview direc
 invalidates its old candidate because inspection replaces images. Image results must return to the
 model before acceptance in a separate tool call; loading and accepting in one script proves no sight.
 
-Current complete studio run: python evidence/studio-feedback/run_tests.py --outdir FRESH (122
-tests at the recorded revision). verify_preservation.py --outdir FRESH in that directory checks ten
+The focused-feedback phase recorded122 tests using its package-named runner. Use the current
+complete studio runner above. verify_preservation.py --outdir FRESH in that directory checks ten
 old/default PNGs. verify_delivery.py checks frozen response/operation evidence. Older counts above
 are revision-specific. R&D body replay/verification is documented in evidence/studio-arm/README.md;
 it is CPU study code and is not an installed native component.
@@ -437,9 +447,21 @@ then accept in a separate tool call. Named ports and limits are in 7_INTERFACE; 
 recipe. python examples/studio/upper_body.py --pose offering --outdir FRESH opens a native
 connected figure; folded is another pose. It works by absolute script path from an empty cwd
 and refuses existing output. Use --scene greeting for the independent composition after finishing.
-Initial hand angle is computed once; later point pins do not rotate it.
+The current helper uses persistent directional hand/stem joints; explicit point-only scenes
+retain their old orientation behavior.
 
-Current studio-family coverage is 128 tests; use python evidence/studio-body/run_tests.py
---outdir FRESH. Its preservation helper checks ten earlier/default PNGs. The depth fixture includes
+The body delivery recorded128 studio-family tests; use the current runner above for this source. Its preservation helper checks ten earlier/default PNGs. The depth fixture includes
 an external pole between chest and forearm plus a genuine sloping-depth crossing; full evidence
 and scoped image critiques are indexed at evidence/studio-body/README.md.
+
+## Persistent joint direction and stable heads
+
+Inspect the exact two mounts and view their images. Add --orient opposed to preview --attach or
+place --revise --attach. This keeps joint direction through later pose edits; derived_angle appears
+in focused feedback and angle leaves exposed controls. Detach keeps current paint. The drawing
+skill owns the complete recipe and 7_INTERFACE the supported ports/constraint conflicts.
+
+New heads have stable recipe frames. To correct an old chin pin, observe and reattach the same
+chin/target: the tool captures its existing frame automatically. Do not add fractional counter-
+offsets. Current studio-family coverage is138 tests; current verification commands/evidence are
+in evidence/studio-joints/README.md. Earlier body records keep their original128-test/source scope.

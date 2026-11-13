@@ -1,0 +1,33 @@
+{
+  "base": "9ae194d8721d4b295e4d1475d7437df23d6906d795b816890ec4d6432e2a92ab",
+  "engine": "44a0803cbce094ef14ddd8b298b0d1797b4544498b2891066d085e3d2c68770f",
+  "object": "greeter-shirt",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    158.15530431459868,
+    248.0345464173996,
+    536.3651124416754,
+    538.6596895376134
+  ],
+  "object_bounds": [
+    158.15530431459868,
+    248.0345464173996,
+    536.3651124416754,
+    538.6596895376134
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "depth",
+    "depth_slope",
+    "pose",
+    "sleeve_width",
+    "cuff",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

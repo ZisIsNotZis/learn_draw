@@ -1,0 +1,32 @@
+{
+  "base": "ca66e880a9f0eb3e03741a28fea511228ba45835266343341436d91f668baa71",
+  "engine": "58b302be5e3866dd5569788756fbe387a1b1909292fd6b93330295c65a927548",
+  "object": "shirt",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    420.5430470407132,
+    328.5384260790075,
+    486.8232383714121,
+    394.8186174097064
+  ],
+  "object_bounds": [
+    84.27099419177716,
+    248.29693394811818,
+    458.01721076413946,
+    524.4643978260304
+  ],
+  "controls": [],
+  "focus": [
+    453.68314270606265,
+    361.67852174435694
+  ],
+  "locks": {
+    "right-wrist": [
+      453.68314270606265,
+      361.67852174435694
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "anchor": "right-wrist"
+}

@@ -1,0 +1,28 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-joints/working.json",
+    "--selection",
+    "evidence/studio-joints/17-neck-root/selection.json",
+    "--attach",
+    "evidence/studio-joints/18-body-neck/selection.json",
+    "--self-anchor",
+    "root",
+    "--target-anchor",
+    "neck",
+    "--orient",
+    "opposed",
+    "--reason",
+    "Keep the neck and head aligned when the whole greeting figure leans",
+    "--outdir",
+    "evidence/studio-joints/19-neck-fit"
+  ],
+  "started": "2026-11-13T08:30:39.670963+00:00",
+  "state": "terminal",
+  "pid": 36852,
+  "exit_code": 0,
+  "terminal": "2026-11-13T08:30:40.659488+00:00"
+}

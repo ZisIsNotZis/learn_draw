@@ -7,7 +7,7 @@ from .components import depth_bounds
 
 
 def placement_preview(scene,node=None,*,prior=None,changes=None,feature='object',at=None,offset=None,
-                      direction=None,amount=.05,target=None,self_anchor=None,target_anchor=None,inset=0,reason):
+                      direction=None,amount=.05,target=None,self_anchor=None,target_anchor=None,inset=0,orient=None,reason):
     validate(scene)
     if not isinstance(reason,str) or not reason.strip():raise ValueError('state a drawing reason')
     if (node is None)==(prior is None):raise ValueError('choose a new preset or revise one pending placement')
@@ -55,9 +55,9 @@ def placement_preview(scene,node=None,*,prior=None,changes=None,feature='object'
         # after verifying the pending scene preserves all of that target's input.
         target=copy.deepcopy(target);target['base']=fingerprint(staged)
         source=select(staged,sid,feature='anchors')
-        result=attachment_preview(staged,source,target,self_anchor,target_anchor,inset,reason)
+        result=attachment_preview(staged,source,target,self_anchor,target_anchor,inset,reason,orient)
         staged=result['scene'];attachment_target=result['selection']['attachment_target']
-    elif self_anchor is not None or target_anchor is not None or inset!=0:
+    elif self_anchor is not None or target_anchor is not None or inset!=0 or orient is not None:
         raise ValueError('mount flags require --attach')
     validate(staged)
     view=select(staged,sid,feature='anchors')

@@ -480,7 +480,8 @@ Revision retains all current optional controls, name and attachment. It requires
 a ready placement candidate, matching result hash, exactly one added node and byte-equivalent
 canonical inputs for all existing nodes/canvas settings. It cannot disguise an existing-scene edit.
 After seeing its own mounts, --revise may --attach a separately inspected working-scene target.
-The existing one-point graph/normal inset rules apply; it does not inherit orientation or fit edges.
+The default one-point graph/normal inset rules apply. Optional --orient opposed extends named
+directional joints as specified below; automatic edge/width fitting remains separate.
 
 The insertion impact selection draws the new boundary/mounts without inventing a prior contour for
 a nonexistent old object. Its report has insertion.object; normal artwork contains no guides.
@@ -542,8 +543,8 @@ fold/intersection limits inside these numeric bounds. No authored vertices or ma
 Features object, left/right-shoulder, left/right-elbow, left/right-wrist expose actual controls.
 Elbow/wrist use interaction body-joint: screen moves are torso-height fractions; elbow preserves
 shoulder and wrist, wrist preserves shoulder and bend ratios. Neck and the six joints are named
-mounts; wrist/neck expose outward directions. Child point pins use the ordinary graph; angle remains
-explicit. Local moves require a free body or a center/neck self mount.
+mounts; wrist/neck expose outward directions. Default child point pins keep angle explicit;
+optional opposed direction bindings are defined below. Local moves require a free body or a center/neck self mount.
 
 Compilation emits left sleeve -1, torso0, right sleeve+1 support offsets with a shared linear slope.
 These are independent paint/visibility surfaces, with computed shoulder material bridges and
@@ -551,8 +552,33 @@ intentional overlap ink. External objects participate in the same depth solver a
 Private plane IDs include a dot, outside authored node-ID syntax. They are compiler output, not
 authorable nodes. The scene and selection remain one native body.
 
-Known legacy precision gap: a head pinned through chin can miss its target by a fraction of a pixel
-(.2936px in the native greeting example). Its legacy absolute SVG recipe rounds coordinates, so
-recompilation after placement is not translation-invariant. This is unresolved, not an exact-pin
-pass; do not hide it with authored counter-offsets. Current body/hand pins remain exact in tested
-examples. A principled local-frame or compiler-placement correction is the next work.
+Legacy unframed heads can retain the old fractional chin-pin deviation (.2936px in the original
+greeting). Inspection preserves their old paint. New heads and old heads captured by edit/reattach
+use the stable frame below; observed reattachment corrects the actual boundary without authored
+counter-offsets. Old frozen evidence retains its original unresolved status.
+
+## Stable head frames and directional joint pins
+
+A head optionally stores frame as a semantic placement object (anchor/offset with the same schema
+as at). It is the recipe reference frame, separate from current placement. New head presets include
+it. Free-head edits and attach/detach/release operations capture an old head frame. An attached
+unframed head must first reattach through observed mounts before ordinary edits; this protects
+local lock endpoints from a hidden fractional pin correction. The recipe is compiled
+there once per semantic state, then its SVG, real footprint, mounts, feature bounds/paths and local
+hair locks translate together. This preserves old unframed scenes/default pixels and makes edited
+heads translation-invariant. Frame is managed by tools, not an exposed artistic control. Legacy
+unframed scenes are not silently rewritten by inspection; reattach through observed chin/target
+mounts to repair the old fractional pin error.
+
+attachment gains optional orient: opposed. Source ports are head.chin, hand/grip.wrist, body.neck
+and stroke.root/tip. Target must expose a real outward direction/normal. Resolver derives child
+angle to oppose the target vector, recomputes its own mount, then translates to the ordinary target
+point/inset/offset. Dependencies remain the same DAG; depth and scale remain independent. Raw angle
+and oriented attachment are incompatible. Controls omit angle; report/focused selected data includes
+derived_angle. Grip handle_left/right expose their transformed outward handle axes.
+
+Use preview --attach ... --orient opposed or the same flags on place --revise. Unused --orient
+refuses. Reattach without it to return to a point pin; detach/deleting parent bakes current derived
+angle and placement. Oriented strokes cannot also receive free terminal drags, endpoint pins or
+one-shot aim. Size/cuff-width fitting, roll, physical hand contact and full 3D joint rigs are not
+implemented by this option. Input-alias guards include attachment/aim/endpoint target selections.

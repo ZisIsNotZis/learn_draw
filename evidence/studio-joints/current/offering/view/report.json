@@ -1,0 +1,2577 @@
+{
+  "revision": "622fdfaf53d96339838095368f1ecae7ce0b8bd44e1a0d17b3e5fc24e0148508",
+  "engine": "44a0803cbce094ef14ddd8b298b0d1797b4544498b2891066d085e3d2c68770f",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-joints\\current\\offering\\view\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-joints\\current\\offering\\view\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-joints\\current\\offering\\view\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-joints\\current\\offering\\view\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-joints\\current\\offering\\view\\artwork.png": "aa840d16c5d8ba0b11b550438c3a9fcdd5fd80e4b6519b6b1c1072b581da34b3",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-joints\\current\\offering\\view\\alignment.png": "c8d6711ccc3f53709868703eeda297614fe0d9f38261e29b6a1b4c2e806b2848",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-joints\\current\\offering\\view\\object-closeup.png": "308c28f09271526d9b65f1226632f47b4d59b346fdaf0dca58a0d49e93de03d9",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-joints\\current\\offering\\view\\edit-closeup.png": "11e583011f821f7c50123c9c250c417e71a69483bbcbad71ee668d16ccf192da"
+  },
+  "nodes": {
+    "head": {
+      "kind": "head",
+      "intent": "a gentle front-facing person presents a flower",
+      "bounds": [
+        153.75612107403714,
+        49.610856504006165,
+        324.10933082939266,
+        226.46937638989917
+      ],
+      "features": {
+        "eyes": {
+          "bounds": [
+            194.63666775199857,
+            145.93118151161048,
+            284.314683178206,
+            163.22308032971887
+          ],
+          "controls": [
+            "eye_scale",
+            "iris_color",
+            "gaze"
+          ]
+        },
+        "face": {
+          "bounds": [
+            182.9225575908644,
+            73.55050325728375,
+            299.40730863218937,
+            220.3214448840451
+          ],
+          "controls": [
+            "jaw",
+            "skin_color"
+          ]
+        },
+        "hair": {
+          "bounds": [
+            155.7512491745568,
+            51.813363572799986,
+            322.11420272887295,
+            224.9951286249015
+          ],
+          "controls": [
+            "hair",
+            "hair_color"
+          ]
+        },
+        "expression": {
+          "bounds": [
+            194.63666775199857,
+            138.9332493551547,
+            284.314683178206,
+            199.1528436984354
+          ],
+          "controls": [
+            "expression"
+          ]
+        },
+        "object": {
+          "bounds": [
+            153.75612107403714,
+            49.610856504006165,
+            324.10933082939266,
+            226.46937638989917
+          ],
+          "controls": [
+            "intent",
+            "expression",
+            "gaze",
+            "eye_scale",
+            "jaw",
+            "hair",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "hair_color",
+            "skin_color",
+            "iris_color",
+            "ink_color"
+          ]
+        }
+      },
+      "local_locks": [
+        "left-lock",
+        "right-lock"
+      ],
+      "anchors": {
+        "center": {
+          "point": [
+            240.0,
+            147.2
+          ],
+          "normal": null
+        },
+        "chin": {
+          "point": [
+            234.80314270606266,
+            221.5185217443569
+          ],
+          "normal": [
+            -0.0697564737441212,
+            0.9975640502598253
+          ]
+        }
+      },
+      "attached_children": [
+        "neck"
+      ]
+    },
+    "neck": {
+      "kind": "stroke",
+      "intent": "a short neck joins chin to shirt beneath the head",
+      "bounds": [
+        217.20314270606266,
+        203.9185217443569,
+        252.40314270606265,
+        266.6385217443569
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            217.20314270606266,
+            203.9185217443569,
+            252.40314270606265,
+            266.6385217443569
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            234.80314270606266,
+            221.5185217443569,
+            234.80314270606266,
+            249.0385217443569
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            217.20314270606266,
+            203.9185217443569,
+            252.40314270606265,
+            239.11852174435688
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            217.20314270606266,
+            231.4385217443569,
+            252.40314270606265,
+            266.6385217443569
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            234.80314270606266,
+            235.27852174435688
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            234.80314270606266,
+            221.5185217443569
+          ],
+          "normal": null,
+          "direction": [
+            -0.0,
+            -1.0
+          ]
+        },
+        "tip": {
+          "point": [
+            234.80314270606266,
+            249.0385217443569
+          ],
+          "normal": null,
+          "direction": [
+            0.0,
+            1.0
+          ]
+        }
+      },
+      "attached_children": [
+        "shirt"
+      ],
+      "attachment": {
+        "to": "head",
+        "self": "root",
+        "target": "chin"
+      }
+    },
+    "shirt": {
+      "kind": "body",
+      "intent": "a continuous long-sleeved shirt supports the offered flower hand",
+      "bounds": [
+        84.27099419177716,
+        248.297112554401,
+        456.9713386103418,
+        524.4643978260304
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            84.27099419177716,
+            248.297112554401,
+            456.9713386103418,
+            524.4643978260304
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "pose",
+            "sleeve_width",
+            "cuff",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left-shoulder": {
+          "bounds": [
+            120.94714270606262,
+            278.5425217443569,
+            161.90714270606261,
+            319.50252174435695
+          ],
+          "controls": [
+            "left_wrist_spread",
+            "left_wrist_height",
+            "left_elbow_at",
+            "left_elbow_bend"
+          ]
+        },
+        "left-elbow": {
+          "bounds": [
+            86.23098270606262,
+            387.9569217443569,
+            127.19098270606263,
+            428.91692174435696
+          ],
+          "controls": [
+            "left_wrist_spread",
+            "left_wrist_height",
+            "left_elbow_at",
+            "left_elbow_bend"
+          ]
+        },
+        "left-wrist": {
+          "bounds": [
+            78.38714270606262,
+            502.47852174435695,
+            119.34714270606263,
+            543.438521744357
+          ],
+          "controls": [
+            "left_wrist_spread",
+            "left_wrist_height",
+            "left_elbow_at",
+            "left_elbow_bend"
+          ]
+        },
+        "right-shoulder": {
+          "bounds": [
+            307.6991427060626,
+            278.5425217443569,
+            348.65914270606265,
+            319.50252174435695
+          ],
+          "controls": [
+            "right_wrist_spread",
+            "right_wrist_height",
+            "right_elbow_at",
+            "right_elbow_bend"
+          ]
+        },
+        "right-elbow": {
+          "bounds": [
+            351.7951427060626,
+            375.5537217443569,
+            392.75514270606266,
+            416.5137217443569
+          ],
+          "controls": [
+            "right_wrist_spread",
+            "right_wrist_height",
+            "right_elbow_at",
+            "right_elbow_bend"
+          ]
+        },
+        "right-wrist": {
+          "bounds": [
+            433.20314270606264,
+            356.5585217443569,
+            474.1631427060627,
+            397.5185217443569
+          ],
+          "controls": [
+            "right_wrist_spread",
+            "right_wrist_height",
+            "right_elbow_at",
+            "right_elbow_bend"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            234.80314270606266,
+            377.8065217443569
+          ],
+          "normal": null
+        },
+        "neck": {
+          "point": [
+            234.80314270606266,
+            249.03852174435693
+          ],
+          "normal": null,
+          "direction": [
+            0.0,
+            -1.0
+          ]
+        },
+        "left-shoulder": {
+          "point": [
+            141.42714270606263,
+            299.02252174435694
+          ],
+          "normal": null
+        },
+        "left-elbow": {
+          "point": [
+            106.71098270606262,
+            408.43692174435694
+          ],
+          "normal": null
+        },
+        "left-wrist": {
+          "point": [
+            98.86714270606262,
+            522.958521744357
+          ],
+          "normal": null,
+          "direction": [
+            -0.06833214018402702,
+            0.9976626276541937
+          ]
+        },
+        "right-shoulder": {
+          "point": [
+            328.17914270606263,
+            299.02252174435694
+          ],
+          "normal": null
+        },
+        "right-elbow": {
+          "point": [
+            372.27514270606264,
+            396.0337217443569
+          ],
+          "normal": null
+        },
+        "right-wrist": {
+          "point": [
+            453.68314270606265,
+            377.0385217443569
+          ],
+          "normal": null,
+          "direction": [
+            0.9738412097417932,
+            -0.22722961560641852
+          ]
+        }
+      },
+      "attached_children": [
+        "flower-hand"
+      ],
+      "attachment": {
+        "to": "neck",
+        "self": "neck",
+        "target": "tip"
+      }
+    },
+    "flower-hand": {
+      "kind": "grip",
+      "intent": "a small illustrated fist holds the green flower stem",
+      "bounds": [
+        450.49381101307307,
+        307.1887501041947,
+        519.43034843934,
+        424.4925424703505
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            450.49381101307307,
+            307.1887501041947,
+            519.43034843934,
+            424.4925424703505
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "depth",
+            "depth_slope",
+            "thumb_side",
+            "fold_length",
+            "thumb_reach",
+            "thumb_thickness",
+            "handle_span",
+            "handle_thickness",
+            "skin_color",
+            "ink_color",
+            "handle_color",
+            "handle_ink_color"
+          ]
+        },
+        "thumb": {
+          "bounds": [
+            472.83710844356176,
+            367.5016623641815,
+            511.77200261019294,
+            403.89265218793076
+          ],
+          "controls": [
+            "thumb_reach",
+            "thumb_thickness",
+            "skin_color",
+            "ink_color"
+          ]
+        },
+        "fingers": {
+          "bounds": [
+            484.85261416628856,
+            337.9459991491855,
+            519.43034843934,
+            394.46242819530016
+          ],
+          "controls": [
+            "fold_length",
+            "skin_color",
+            "ink_color"
+          ]
+        },
+        "palm": {
+          "bounds": [
+            450.49381101307307,
+            338.40186641991386,
+            509.0438977391381,
+            402.0050433939178
+          ],
+          "controls": [
+            "width",
+            "skin_color",
+            "ink_color"
+          ]
+        },
+        "handle": {
+          "bounds": [
+            486.02696916125797,
+            307.1887501041947,
+            517.3211058830186,
+            424.4925424703505
+          ],
+          "controls": [
+            "handle_span",
+            "handle_thickness",
+            "handle_color",
+            "handle_ink_color"
+          ]
+        }
+      },
+      "dimensions_pixels": {
+        "wrist_width": 28.16,
+        "handle_thickness": 5.12,
+        "nominal_hand_height": 65.28
+      },
+      "dimensions_canvas": {
+        "wrist_width": 0.044,
+        "handle_thickness": 0.008,
+        "nominal_hand_height": 0.10200000000000001
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            486.09257816626956,
+            369.4763201369753
+          ],
+          "normal": null
+        },
+        "wrist": {
+          "point": [
+            453.68314270606265,
+            377.0385217443569
+          ],
+          "normal": null,
+          "direction": [
+            -0.9738412097417932,
+            0.22722961560641858
+          ]
+        },
+        "grip": {
+          "point": [
+            501.67403752213824,
+            365.8406462872726
+          ],
+          "normal": null
+        },
+        "handle_left": {
+          "point": [
+            488.58561166320857,
+            309.7473926061453
+          ],
+          "normal": null,
+          "direction": [
+            -0.22722961560641858,
+            -0.9738412097417932
+          ]
+        },
+        "handle_right": {
+          "point": [
+            514.762463381068,
+            421.9338999683999
+          ],
+          "normal": null,
+          "direction": [
+            0.22722961560641858,
+            0.9738412097417932
+          ]
+        },
+        "handle_top": {
+          "point": [
+            504.16707101907724,
+            365.25893847132016
+          ],
+          "normal": [
+            0.9738412097417932,
+            -0.22722961560641858
+          ]
+        },
+        "handle_bottom": {
+          "point": [
+            499.1810040251993,
+            366.422354103225
+          ],
+          "normal": [
+            -0.9738412097417932,
+            0.22722961560641858
+          ]
+        }
+      },
+      "attached_children": [
+        "upper-stem",
+        "lower-stem"
+      ],
+      "attachment": {
+        "to": "shirt",
+        "self": "wrist",
+        "target": "right-wrist",
+        "orient": "opposed"
+      },
+      "derived_angle": -76.86597769360367
+    },
+    "upper-stem": {
+      "kind": "stroke",
+      "intent": "the stem continues upward from the held segment to the blossom",
+      "bounds": [
+        463.4857912931013,
+        210.58370209780878,
+        491.14425416515917,
+        312.3060351080959
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            463.4857912931013,
+            210.58370209780878,
+            491.14425416515917,
+            312.3060351080959
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            466.0444337950519,
+            213.1423445997594,
+            488.58561166320857,
+            309.7473926061453
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            476.58561166320857,
+            297.7473926061453,
+            500.58561166320857,
+            321.7473926061453
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            454.0444337950519,
+            201.1423445997594,
+            478.0444337950519,
+            225.1423445997594
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            477.3150227291302,
+            261.44486860295234
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            488.58561166320857,
+            309.7473926061453
+          ],
+          "normal": null,
+          "direction": [
+            0.22722961560641844,
+            0.9738412097417932
+          ]
+        },
+        "tip": {
+          "point": [
+            466.0444337950519,
+            213.1423445997594
+          ],
+          "normal": null,
+          "direction": [
+            -0.22722961560641844,
+            -0.9738412097417932
+          ]
+        }
+      },
+      "attached_children": [
+        "flower-heart",
+        "stem-leaf"
+      ],
+      "attachment": {
+        "to": "flower-hand",
+        "self": "root",
+        "target": "handle_left",
+        "orient": "opposed"
+      },
+      "derived_angle": -166.86597769360367
+    },
+    "lower-stem": {
+      "kind": "stroke",
+      "intent": "a short free stem end continues below the gripping hand",
+      "bounds": [
+        512.2038208791173,
+        419.3752574664493,
+        526.046723122305,
+        461.88804492443535
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            512.2038208791173,
+            419.3752574664493,
+            526.046723122305,
+            461.88804492443535
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            514.762463381068,
+            421.9338999683999,
+            523.4880806203544,
+            459.32940242248475
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            502.76246338106796,
+            409.9338999683999,
+            526.762463381068,
+            433.9338999683999
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            511.48808062035437,
+            447.32940242248475,
+            535.4880806203544,
+            471.32940242248475
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            519.1252720007112,
+            440.6316511954423
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            514.762463381068,
+            421.9338999683999
+          ],
+          "normal": null,
+          "direction": [
+            -0.2272296156064181,
+            -0.9738412097417933
+          ]
+        },
+        "tip": {
+          "point": [
+            523.4880806203544,
+            459.32940242248475
+          ],
+          "normal": null,
+          "direction": [
+            0.2272296156064181,
+            0.9738412097417933
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "flower-hand",
+        "self": "root",
+        "target": "handle_right",
+        "orient": "opposed"
+      },
+      "derived_angle": 13.134022306396304
+    },
+    "flower-heart": {
+      "kind": "shape",
+      "intent": "a warm golden center joins the five pale petals",
+      "bounds": [
+        453.41468507170447,
+        200.512595876412,
+        478.6741825183994,
+        225.77209332310687
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            453.41468507170447,
+            200.512595876412,
+            478.6741825183994,
+            225.77209332310687
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            457.2197411658438,
+            200.66234459975945,
+            474.86912642426006,
+            204.31765197055134
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            474.86912642426006,
+            204.31765197055134,
+            478.52443379505195,
+            221.96703722896754
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            457.2197411658438,
+            221.96703722896754,
+            474.86912642426006,
+            225.62234459975943
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            453.5644337950519,
+            204.31765197055134,
+            457.2197411658438,
+            221.96703722896754
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            466.04443379505193,
+            213.14234459975944
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            466.04443379505193,
+            200.51258459975946
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            478.67419379505196,
+            213.14234459975944
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            466.04443379505193,
+            225.77210459975942
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            453.4146737950519,
+            213.14234459975944
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": [
+        "petal-1",
+        "petal-2",
+        "petal-3",
+        "petal-4",
+        "petal-5"
+      ],
+      "attachment": {
+        "to": "upper-stem",
+        "self": "center",
+        "target": "tip"
+      }
+    },
+    "petal-1": {
+      "kind": "shape",
+      "intent": "rounded daisy petal radiates from the actual blossom center",
+      "bounds": [
+        461.34595089980195,
+        209.70319460199562,
+        493.31387037833287,
+        247.64774718152125
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            461.34595089980195,
+            209.70319460199562,
+            493.31387037833287,
+            247.64774718152125
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            461.7318699844539,
+            210.0890852131816,
+            474.91931722561674,
+            221.13332643470005
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            474.91931722561674,
+            211.68762239599454,
+            492.7414003175139,
+            236.21761534881682
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            479.7405040525181,
+            236.21761534881682,
+            492.9279512936809,
+            247.26185657033528
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            461.9184209606209,
+            221.13332643470005,
+            479.7405040525181,
+            245.66331938752234
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            477.3299106390674,
+            228.67547089175844
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            464.5009567453521,
+            211.01793069389038
+          ],
+          "normal": [
+            -0.5877852522924905,
+            -0.8090169943749348
+          ]
+        },
+        "right": {
+          "point": [
+            486.83514838801796,
+            221.76951142834392
+          ],
+          "normal": [
+            0.8090169943749289,
+            -0.5877852522924986
+          ]
+        },
+        "bottom": {
+          "point": [
+            490.15886453278273,
+            246.3330110896265
+          ],
+          "normal": [
+            0.5877852522924905,
+            0.8090169943749348
+          ]
+        },
+        "left": {
+          "point": [
+            467.82467289011686,
+            235.58143035517296
+          ],
+          "normal": [
+            -0.8090169943749289,
+            0.5877852522924986
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "flower-heart",
+        "self": "center",
+        "target": "center",
+        "offset": [
+          0.017633557568774192,
+          0.024270509831248423
+        ]
+      }
+    },
+    "petal-2": {
+      "kind": "shape",
+      "intent": "rounded daisy petal radiates from the actual blossom center",
+      "bounds": [
+        463.22849426633513,
+        194.14749527561477,
+        505.3809435495027,
+        220.27094133990605
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            463.22849426633513,
+            194.14749527561477,
+            505.3809435495027,
+            220.27094133990605
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            463.61435235590733,
+            204.25229499870295,
+            472.36930105592006,
+            219.5357651810006
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            467.40340056690326,
+            194.53341130072675,
+            496.2401367599178,
+            204.25229499870295
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            496.2401367599178,
+            194.8826714345202,
+            504.9950854599305,
+            210.16614161681787
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            472.36930105592006,
+            210.16614161681787,
+            501.2060372489346,
+            219.88502531479406
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            484.3047189079189,
+            207.2092183077604
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            463.54703546778217,
+            213.95379850562844
+          ],
+          "normal": [
+            -0.9510565162951539,
+            0.3090169943749463
+          ]
+        },
+        "right": {
+          "point": [
+            480.6740411589684,
+            196.03514117102668
+          ],
+          "normal": [
+            -0.30901699437490354,
+            -0.9510565162951679
+          ]
+        },
+        "bottom": {
+          "point": [
+            505.0624023480557,
+            200.46463810989238
+          ],
+          "normal": [
+            0.9510565162951539,
+            -0.3090169943749463
+          ]
+        },
+        "left": {
+          "point": [
+            487.93539665686944,
+            218.38329544449414
+          ],
+          "normal": [
+            0.30901699437490354,
+            0.9510565162951679
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "flower-heart",
+        "self": "center",
+        "target": "center",
+        "offset": [
+          0.02853169548885461,
+          -0.00927050983124842
+        ]
+      }
+    },
+    "petal-3": {
+      "kind": "shape",
+      "intent": "rounded daisy petal radiates from the actual blossom center",
+      "bounds": [
+        454.2953213598507,
+        172.11658597992613,
+        477.7935462302532,
+        215.76810321959277
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            454.2953213598507,
+            172.11658597992613,
+            477.7935462302532,
+            215.76810321959277
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            458.00943801907295,
+            209.10271398839905,
+            474.0794295710309,
+            215.38234459975945
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            454.6812337950519,
+            178.78197521111986,
+            458.00943801907295,
+            209.10271398839905
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            458.00943801907295,
+            172.50234459975945,
+            474.0794295710309,
+            178.78197521111986
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            474.0794295710309,
+            178.78197521111986,
+            477.40763379505194,
+            209.10271398839905
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            466.04443379505193,
+            193.94234459975945
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            466.04443379505193,
+            215.76826459975945
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "right": {
+          "point": [
+            454.2953137950519,
+            193.94234459975945
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            466.04443379505193,
+            172.11642459975945
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "left": {
+          "point": [
+            477.79355379505193,
+            193.94234459975945
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "flower-heart",
+        "self": "center",
+        "target": "center",
+        "offset": [
+          3.673940397442059e-18,
+          -0.03
+        ]
+      }
+    },
+    "petal-4": {
+      "kind": "shape",
+      "intent": "rounded daisy petal radiates from the actual blossom center",
+      "bounds": [
+        426.7079240406012,
+        194.14749527561477,
+        468.8603733237688,
+        220.27094133990605
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            426.7079240406012,
+            194.14749527561477,
+            468.8603733237688,
+            220.27094133990605
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            459.71956653418385,
+            204.25229499870295,
+            468.4745152341966,
+            219.5357651810006
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            430.8828303411693,
+            210.16614161681787,
+            459.71956653418385,
+            219.88502531479406
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            427.0937821301734,
+            194.8826714345202,
+            435.8487308301861,
+            210.16614161681787
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            435.8487308301861,
+            194.53341130072675,
+            464.68546702320066,
+            204.25229499870295
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            447.784148682185,
+            207.2092183077604
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            468.54183212232175,
+            213.95379850562844
+          ],
+          "normal": [
+            0.9510565162951539,
+            0.3090169943749463
+          ]
+        },
+        "right": {
+          "point": [
+            444.1534709332345,
+            218.38329544449414
+          ],
+          "normal": [
+            -0.30901699437490354,
+            0.9510565162951679
+          ]
+        },
+        "bottom": {
+          "point": [
+            427.02646524204823,
+            200.46463810989238
+          ],
+          "normal": [
+            -0.9510565162951539,
+            -0.3090169943749463
+          ]
+        },
+        "left": {
+          "point": [
+            451.4148264311355,
+            196.03514117102668
+          ],
+          "normal": [
+            0.30901699437490354,
+            -0.9510565162951679
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "flower-heart",
+        "self": "center",
+        "target": "center",
+        "offset": [
+          -0.028531695488854605,
+          -0.009270509831248426
+        ]
+      }
+    },
+    "petal-5": {
+      "kind": "shape",
+      "intent": "rounded daisy petal radiates from the actual blossom center",
+      "bounds": [
+        438.774997211771,
+        209.70319460199562,
+        470.7429166903019,
+        247.64774718152125
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            438.774997211771,
+            209.70319460199562,
+            470.7429166903019,
+            247.64774718152125
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            457.1695503644871,
+            210.0890852131816,
+            470.35699760564995,
+            221.13332643470005
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            452.3483635375858,
+            221.13332643470005,
+            470.17044662948297,
+            245.66331938752234
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            439.16091629642295,
+            236.21761534881682,
+            452.3483635375858,
+            247.26185657033528
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            439.34746727258994,
+            211.68762239599454,
+            457.1695503644871,
+            236.21761534881682
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            454.75895695103645,
+            228.67547089175844
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            467.5879108447518,
+            211.01793069389038
+          ],
+          "normal": [
+            0.5877852522924905,
+            -0.8090169943749348
+          ]
+        },
+        "right": {
+          "point": [
+            464.264194699987,
+            235.58143035517296
+          ],
+          "normal": [
+            0.8090169943749289,
+            0.5877852522924986
+          ]
+        },
+        "bottom": {
+          "point": [
+            441.93000305732113,
+            246.3330110896265
+          ],
+          "normal": [
+            -0.5877852522924905,
+            0.8090169943749348
+          ]
+        },
+        "left": {
+          "point": [
+            445.2537192020859,
+            221.76951142834392
+          ],
+          "normal": [
+            -0.8090169943749289,
+            -0.5877852522924986
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "flower-heart",
+        "self": "center",
+        "target": "center",
+        "offset": [
+          -0.0176335575687742,
+          0.02427050983124842
+        ]
+      }
+    },
+    "stem-leaf": {
+      "kind": "shape",
+      "intent": "one small leaf grows from the upper stem",
+      "bounds": [
+        477.1999926626584,
+        247.2362448948303,
+        514.5216045251021,
+        265.71484097913753
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            477.1999926626584,
+            247.2362448948303,
+            514.5216045251021,
+            265.71484097913753
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            507.49882804215207,
+            247.45388463259445,
+            514.5216045251021,
+            258.46951348871215
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            484.22276914560854,
+            258.46951348871215,
+            510.4504568982698,
+            265.71484097913753
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            477.1999926626584,
+            254.48157238525567,
+            484.22276914560854,
+            265.4972012413734
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            481.2711402894908,
+            247.2362448948303,
+            507.49882804215207,
+            254.48157238525567
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            495.8607985938803,
+            256.4755429369839
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            514.4065744586304,
+            251.50621727101552
+          ],
+          "normal": [
+            0.9659258262890701,
+            -0.25881904510251424
+          ]
+        },
+        "right": {
+          "point": [
+            497.947915373587,
+            264.26476880017896
+          ],
+          "normal": [
+            0.2588190451024961,
+            0.965925826289075
+          ]
+        },
+        "bottom": {
+          "point": [
+            477.3150227291302,
+            261.44486860295234
+          ],
+          "normal": [
+            -0.9659258262890396,
+            0.25881904510262826
+          ]
+        },
+        "left": {
+          "point": [
+            493.7736818141736,
+            248.68631707378887
+          ],
+          "normal": [
+            -0.2588190451025267,
+            -0.9659258262890668
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "upper-stem",
+        "self": "bottom",
+        "target": "center"
+      }
+    },
+    "table-front": {
+      "kind": "shape",
+      "intent": "the foreground table continues out of frame and hides the lower body",
+      "bounds": [
+        -80.00000000000006,
+        491.20000000000005,
+        880.0,
+        651.2
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            -80.00000000000006,
+            491.20000000000005,
+            880.0,
+            651.2
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            -66.33533175373088,
+            491.20000000000005,
+            866.3353317537308,
+            493.4774447077116
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            866.3353317537308,
+            493.4774447077116,
+            880.0,
+            648.9225552922885
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            -66.33533175373088,
+            648.9225552922885,
+            866.3353317537308,
+            651.2
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            -80.00000000000006,
+            493.4774447077116,
+            -66.33533175373088,
+            648.9225552922885
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            399.99999999999994,
+            571.2
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            400.00000000000006,
+            491.20000000000005
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            880.0,
+            571.2
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            399.9999999999999,
+            651.2
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            -80.00000000000006,
+            571.2000000000002
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "table-top",
+        "self": "top",
+        "target": "center",
+        "offset": [
+          0,
+          -0.0125
+        ]
+      }
+    },
+    "table-top": {
+      "kind": "stroke",
+      "intent": "a quiet horizontal table edge grounds the person",
+      "bounds": [
+        -16.000000000000014,
+        491.20000000000005,
+        816.0,
+        507.2000000000001
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            -16.000000000000014,
+            491.20000000000005,
+            816.0,
+            507.2000000000001
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            -16.000000000000014,
+            499.20000000000005,
+            816.0,
+            499.2000000000001
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            -28.000000000000014,
+            487.20000000000005,
+            -4.000000000000014,
+            511.20000000000005
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            804.0,
+            487.2000000000001,
+            828.0,
+            511.2000000000001
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            400.0,
+            499.20000000000005
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            -16.000000000000014,
+            499.20000000000005
+          ],
+          "normal": null,
+          "direction": [
+            -1.0,
+            -6.123233995736766e-17
+          ]
+        },
+        "tip": {
+          "point": [
+            816.0,
+            499.2000000000001
+          ],
+          "normal": null,
+          "direction": [
+            1.0,
+            6.123233995736766e-17
+          ]
+        }
+      },
+      "attached_children": [
+        "table-front"
+      ]
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips, owned upper bodies, persistent directional joints, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "removal": null,
+  "insertion": null,
+  "direction_fit": null,
+  "alignment_legend": {
+    "red dashed": "removed previous paint; removal only",
+    "blue": "pinned stroke endpoints / inspected target; removal: retained affected children",
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "teal arrows": "outward join direction where defined; center mounts can be directionless",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge/spine, terminal, digit-tip or exact-mount focus"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span"
+}

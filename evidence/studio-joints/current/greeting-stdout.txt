@@ -1,0 +1,1 @@
+Native upper-body example: 480f8c8b42207300542e4f5a29939efd37f092ae0a1d16a39d31a53aa6dc59a9 resvg-py-0.5.0-cpu

@@ -1,0 +1,36 @@
+{
+  "base": "26f98d1d77981889224c717a6edd036dae776896f754dada414d2e4a84bdb1c3",
+  "engine": "58b302be5e3866dd5569788756fbe387a1b1909292fd6b93330295c65a927548",
+  "object": "resting-hand",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    161.2672,
+    520.4096000000001,
+    193.2672,
+    552.4096000000001
+  ],
+  "object_bounds": [
+    151.66498089928567,
+    534.2500168045484,
+    206.7352824972673,
+    619.0198005902113
+  ],
+  "controls": [],
+  "focus": [
+    177.2672,
+    536.4096000000001
+  ],
+  "locks": {
+    "wrist": [
+      177.2672,
+      536.4096000000001
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "anchor": "wrist",
+  "attachment_target": {
+    "object": "greeter-shirt",
+    "anchor": "left-wrist"
+  }
+}

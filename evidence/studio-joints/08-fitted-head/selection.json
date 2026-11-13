@@ -1,0 +1,32 @@
+{
+  "base": "a9fbbe52f196c1d6d6bd3ab679d423a979809fc09f5a004c3eab2b8284ef48b9",
+  "engine": "58b302be5e3866dd5569788756fbe387a1b1909292fd6b93330295c65a927548",
+  "object": "greeter-head",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    296.96,
+    196.95359999999997,
+    343.04,
+    243.03359999999995
+  ],
+  "object_bounds": [
+    224.0,
+    26.028637078916237,
+    416.0,
+    221.26261360696984
+  ],
+  "controls": [],
+  "focus": [
+    320.0,
+    219.99359999999996
+  ],
+  "locks": {
+    "chin": [
+      320.0,
+      219.99359999999996
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "anchor": "chin"
+}

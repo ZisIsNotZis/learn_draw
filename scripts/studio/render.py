@@ -382,11 +382,13 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
             info['endpoints']=raw['endpoints']
             if len(raw['endpoints'])==2: info['derived_chord']=dict(length=n['length'],angle=n['angle'])
         authored=node_by_id(scene,n['id'])
-        if 'attachment' in authored: info['attachment']=authored['attachment']
+        if 'attachment' in authored:
+            info['attachment']=authored['attachment']
+            if authored['attachment'].get('orient'):info['derived_angle']=n['angle']
         node_info[n['id']]=info
     report = dict(revision=revision, engine=engine_fingerprint(), status='ready',renderer=backend, images=images,
                   image_sha256={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images},nodes=node_info,
-                  scope="editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips with an owned handle segment, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+                  scope="editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips, owned upper bodies, persistent directional joints, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
                   removal=selection.get('removal') if selection else None,
                   insertion=selection.get('insertion') if selection else None,
                   direction_fit=selection.get('direction_fit') if selection else None,

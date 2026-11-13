@@ -1,0 +1,32 @@
+{
+  "base": "a9fbbe52f196c1d6d6bd3ab679d423a979809fc09f5a004c3eab2b8284ef48b9",
+  "engine": "58b302be5e3866dd5569788756fbe387a1b1909292fd6b93330295c65a927548",
+  "object": "wave-hand",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    502.37440000000015,
+    259.6736000000001,
+    534.3744000000002,
+    291.6736000000001
+  ],
+  "object_bounds": [
+    487.819829073801,
+    169.61239885972554,
+    566.6914626225857,
+    280.39786269220343
+  ],
+  "controls": [],
+  "focus": [
+    518.3744000000002,
+    275.6736000000001
+  ],
+  "locks": {
+    "wrist": [
+      518.3744000000002,
+      275.6736000000001
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "anchor": "wrist"
+}

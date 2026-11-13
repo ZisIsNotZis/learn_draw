@@ -1,0 +1,51 @@
+{
+  "provenance": "Parent-captured summaries, not verbatim transcripts or whole-artwork verdicts. Public flower helper later computes matching stem width; do not relabel these actor-image reviews as reviews of changed helper PNGs.",
+  "reviews": [
+    {
+      "agent": "joint_images_a",
+      "context": "Fresh image-only context; open question, full resolution for detail, no source/intent/history provided",
+      "observations": "Greeting: long narrow wrists/palms and soft equal-thickness fingers, weak thumb/palm structure, continuous tube elbow. Flower: round-pad grasp/thumb/stem containment ambiguous, stiff/narrow cuff, pasted flower head. Flat clothes and limited folds/volume.",
+      "images": [
+        {
+          "path": "check-greeting/draft-fullres.png",
+          "sha256": "a1258c7946944c4b76853e1c5205a631394ae5db4896c5b25543d9a26d867358"
+        },
+        {
+          "path": "check-greeting/draft.png",
+          "sha256": "073c1363d3ad9dc08b64728b73e1cde4a63be58c81c2d17a94260a6a5df5e1ce"
+        },
+        {
+          "path": "check-flower/draft-fullres.png",
+          "sha256": "d2996b6dcffb24c5bf85a4df6ed7a7bcc02717309eae94444d1fc2c7cd48d98a"
+        },
+        {
+          "path": "check-flower/draft.png",
+          "sha256": "97e672dc3d15d12f14e81390fa32e54ad574570c986027a0d7154b68808dd66a"
+        }
+      ]
+    },
+    {
+      "agent": "joint_images_b",
+      "context": "Fresh image-only context; open question, full resolution for detail, no source/intent/history provided",
+      "observations": "Greeting action readable; large flat red torso and soft tubular sleeve; long similar fingers, abrupt wrist taper, soft hanging hand, head/body detail imbalance. Flower holding readable in small image but grip loose/ambiguous, heavy table line and flat material/detail mismatch.",
+      "images": [
+        {
+          "path": "check-greeting/draft-fullres.png",
+          "sha256": "a1258c7946944c4b76853e1c5205a631394ae5db4896c5b25543d9a26d867358"
+        },
+        {
+          "path": "check-greeting/draft.png",
+          "sha256": "073c1363d3ad9dc08b64728b73e1cde4a63be58c81c2d17a94260a6a5df5e1ce"
+        },
+        {
+          "path": "check-flower/draft-fullres.png",
+          "sha256": "d2996b6dcffb24c5bf85a4df6ed7a7bcc02717309eae94444d1fc2c7cd48d98a"
+        },
+        {
+          "path": "check-flower/draft.png",
+          "sha256": "97e672dc3d15d12f14e81390fa32e54ad574570c986027a0d7154b68808dd66a"
+        }
+      ]
+    }
+  ]
+}

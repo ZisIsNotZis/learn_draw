@@ -1,0 +1,168 @@
+{
+  "base": "b3961294d814bd5a227a66f080bbd79b1442fde623b3b49758baa6c7e309f102",
+  "engine": "fb839161a044e6e137f0110dfb18495ea914eaba267b59406ce0ea1d8260e81e",
+  "result": "a9fbbe52f196c1d6d6bd3ab679d423a979809fc09f5a004c3eab2b8284ef48b9",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f5eee4",
+    "nodes": [
+      {
+        "id": "greeter-shirt",
+        "kind": "body",
+        "intent": "a simple long-sleeved upper body with editable elbows and wrists",
+        "depth": 1,
+        "length": 0.42,
+        "pose": "offering",
+        "palette": {
+          "fill": "#b85f52"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.1
+          ]
+        },
+        "arms": {
+          "right": {
+            "wrist_height": 0.1,
+            "wrist_spread": 0.82,
+            "elbow_bend": -0.65
+          }
+        }
+      },
+      {
+        "id": "greeter-neck",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 0.0,
+        "length": 0.045,
+        "thickness": 0.055,
+        "angle": 180.0,
+        "palette": {
+          "fill": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "root",
+          "target": "neck",
+          "inset": 0
+        },
+        "start_cap": "round"
+      },
+      {
+        "id": "greeter-head",
+        "kind": "head",
+        "intent": "a frontal flat cartoon head with an editable hairstyle",
+        "depth": 3.0,
+        "length": 0.26,
+        "expression": "smile",
+        "palette": {
+          "hair": "#614b40"
+        },
+        "attachment": {
+          "to": "greeter-neck",
+          "self": "chin",
+          "target": "tip",
+          "inset": 0,
+          "orient": "opposed"
+        },
+        "frame": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            -0.28766625
+          ]
+        }
+      },
+      {
+        "id": "wave-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 4.0,
+        "length": 0.17,
+        "angle": -15.0,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "right-wrist",
+          "inset": 0
+        }
+      },
+      {
+        "id": "resting-hand",
+        "kind": "hand",
+        "intent": "a front-view flat cartoon open palm with five digits",
+        "depth": 5.0,
+        "length": 0.13,
+        "angle": 174.0,
+        "spread": 0.7,
+        "palette": {
+          "skin": "#efd0b5"
+        },
+        "attachment": {
+          "to": "greeter-shirt",
+          "self": "wrist",
+          "target": "left-wrist",
+          "inset": 0
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "b3961294d814bd5a227a66f080bbd79b1442fde623b3b49758baa6c7e309f102",
+    "engine": "fb839161a044e6e137f0110dfb18495ea914eaba267b59406ce0ea1d8260e81e",
+    "object": "greeter-head",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      296.96,
+      196.66,
+      343.04,
+      242.73999999999998
+    ],
+    "object_bounds": [
+      224.0,
+      25.735037078916267,
+      416.0,
+      220.96901360696987
+    ],
+    "controls": [],
+    "focus": [
+      320.0,
+      219.7
+    ],
+    "locks": {
+      "chin": [
+        320.0,
+        219.7
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "anchor": "chin",
+    "attachment_target": {
+      "object": "greeter-neck",
+      "anchor": "tip"
+    }
+  },
+  "operation": {
+    "action": "attach",
+    "object": "greeter-head",
+    "attachment": {
+      "to": "greeter-neck",
+      "self": "chin",
+      "target": "tip",
+      "inset": 0,
+      "orient": "opposed"
+    },
+    "reason": "Seat the chin exactly and keep it aligned with the neck"
+  },
+  "status": "ready"
+}

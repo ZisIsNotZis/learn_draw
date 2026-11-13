@@ -52,8 +52,10 @@ uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation ski
   receiving surface and palm/handle/thumb overlap. These are bounded visual outcomes, not a
   general anatomy or physical-fold capability.
 
-The current native-body advance passes 128 studio-family tests; ten earlier/default PNGs
-remain exact. Current source-bound evidence is ../evidence/studio-body/README.md. The focused
+The current stable-frame/directional-joint advance passes 138 studio-family tests; ten earlier/default
+PNGs remain exact. Ten targeted tests also pass after public example updates. Current source-bound
+evidence is ../evidence/studio-joints/README.md. The earlier native-body advance passed128 tests
+(../evidence/studio-body/README.md). The focused
 response advance passed122 tests (../evidence/studio-feedback/README.md). The earlier
 direction advance passed 118 tests, including eight direction/guide tests. A fresh operator repairs a cuff, raises the
 hand/flower assembly, observes a new cuff mismatch, re-aims and verifies exact undo/reaccept.
@@ -121,8 +123,8 @@ forearm and a genuine sloping crossing are verified. Current native evidence is 
 
 Native body defaults require no vertices. Named relaxed/offering/folded poses, optional semantic
 controls and visible joint pushes support ordinary revisions. Elbow edits protect shoulder/wrist;
-wrist edits preserve shoulder and bend ratios, and point-linked hands follow. Child orientation is
-still explicit. Two connected flower poses remain art studies: critics retain unclear grip anatomy,
+wrist edits preserve shoulder and bend ratios. Default point pins keep angle explicit; observed
+chin/wrist/neck/stroke joints can now keep opposed directions persistently. Two connected flower poses remain art studies: critics retain unclear grip anatomy,
 tube-like elbows, straight hanging arms, internal-line flatness and flower/neck crowding. This is
 bounded graphic garment capability, not a general figure rig or a finished illustration.
 
@@ -139,19 +141,35 @@ fixes the first; local surfaces use the same closing radius as the sewn cloth to
 The current depth fixture and interior-paper regression check verify both without moving a
 visibility boundary for the underpaint. Raw earlier failures remain in evidence/studio-body.
 
-The current verifier also found a .2936px chin-pin deviation in the greeting. Legacy head emission
-rounds absolute SVG points, so re-authoring its placement is not translation-invariant. The failed
-first verification is retained; the corrected verifier reports this head constraint as unresolved
-while still asserting exact body/hand pins. Fix the local-frame/placement cause, not counter-offsets
-or a broad tolerance, before claiming exact head assembly.
+The old greeting had a .2936px chin-pin deviation because head construction rounded absolute
+coordinates again after placement. New heads retain a semantic recipe frame; actual paint,
+footprint, mounts, selections and hair locks translate together. Observed legacy reattachment fixes
+the original pin without counter-offsets. Legacy attached heads require that explicit migration
+before ordinary edits, so a hidden pin correction cannot move protected lock ends. Release remains
+paint-preserving. Frozen earlier records keep their old unresolved status.
 
-Next reduce the concrete assembly burden revealed by this artwork: neck seating, cuff width and
-hand orientation still require repeated manual decisions; point pins alone do not preserve a useful
-join after pose changes. Compare a semantic join-fit mechanism against current explicit placement,
-using this greeting and an offered/held prop, and require actual local correction without breaking
-other parts. Keep picture quality central: remaining soft elbow/grip/style problems need art-driven
-experiments, not a larger catalog or a generic rig for its own sake. Main agent owns implementation
-and art. Natural pose, fine anime style and broad intent-led creation remain open.
+Persistent opposed-direction pins now resolve the complete demonstrated chain. Root reattached
+head, neck and both hands, then leaned the greeting figure through one body angle. An independent
+operator fitted the grip and both stem legs, raised the wrist and verified exact byte-for-byte
+scene/PNG undo and reaccept. Its28 terminal CLI runs use pre-legacy-guard engine58b302; current
+verification reconstructs that source boundary and confirms its final PNG is exact on current
+source. An early asynchronous-wrapper ordering lapse needed execution coaching and repeated
+observations; do not call the whole run strictly serial or uncoached. Current skill includes a
+concrete one-launch/poll-to-terminal pattern. No picture/creation mastery follows from these facts.
+
+Current public greeting and flower helpers use directional joins by default. Stem width is computed
+from the included handle in the new flower examples. The fresh image pair still sees long soft
+fingers, ambiguous graphic grip, tubular elbows and flat clothing; the chosen simple style does
+not need realistic anatomy, but readable grasp and intentional shape remain work to improve.
+
+Next address the real interface cost: source/target inspections repeat after each revision, local
+handle names need visual mapping, and cuff-width transitions still require decisions. Compare a
+single semantic connection preview (both endpoints visible before acceptance) with the current
+multi-step workflow, keeping real mount validation and recoverable edits. Investigate actual port
+spans before choosing automatic width/seat fitting; do not blindly scale hands to loose clothing.
+Use the greeting and held flower for the next small artwork revision. Main agent owns implementation
+and art; retain simple good defaults, meaningful optional controls and the full intent-led creation
+goal. Natural pose, fine anime style and broad creative transfer remain open.
 
 Focused CLI output is now shipped: selected geometry/configuration plus image/file handles,
 complete report on disk and --full-report opt-in. The same inspection is 2,550 versus35,371

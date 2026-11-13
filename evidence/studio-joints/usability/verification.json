@@ -1,0 +1,203 @@
+{
+  "checks": {
+    "undo_scene_bytes_equal_pre_move": true,
+    "reaccept_scene_bytes_equal_accepted": true,
+    "undo_png_bytes_equal_before": true,
+    "reaccept_png_bytes_equal_accepted": true,
+    "preview_png_bytes_equal_accepted": true,
+    "pose_png_differs": true,
+    "all_cli_terminal_exit_0": true,
+    "three_persistent_opposed_relations": true
+  },
+  "joins": [
+    {
+      "join": "final-hand.wrist -> final-cuff.right-wrist",
+      "point_distance_pixels": 0.0,
+      "direction_dot": -1.0
+    },
+    {
+      "join": "final-upper.root -> final-hand.handle_left",
+      "point_distance_pixels": 0.0,
+      "direction_dot": -1.0
+    },
+    {
+      "join": "final-lower.root -> final-hand.handle_right",
+      "point_distance_pixels": 5.684341886080802e-14,
+      "direction_dot": -1.0
+    }
+  ],
+  "cli_count": 28,
+  "engine": "58b302be5e3866dd5569788756fbe387a1b1909292fd6b93330295c65a927548",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "processes": [
+    {
+      "pid": 43256,
+      "start": "2026-11-13T08:16:35.487962+00:00",
+      "terminal": "2026-11-13T08:16:35.674350+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 5700,
+      "start": "2026-11-13T08:16:38.881162+00:00",
+      "terminal": "2026-11-13T08:16:39.139580+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 6160,
+      "start": "2026-11-13T08:16:49.773241+00:00",
+      "terminal": "2026-11-13T08:16:50.672573+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 41048,
+      "start": "2026-11-13T08:17:03.391436+00:00",
+      "terminal": "2026-11-13T08:17:04.448233+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 34460,
+      "start": "2026-11-13T08:17:16.090894+00:00",
+      "terminal": "2026-11-13T08:17:17.083801+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 39224,
+      "start": "2026-11-13T08:17:54.323463+00:00",
+      "terminal": "2026-11-13T08:17:54.997016+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 8092,
+      "start": "2026-11-13T08:18:21.589841+00:00",
+      "terminal": "2026-11-13T08:18:22.595290+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 36828,
+      "start": "2026-11-13T08:17:57.936696+00:00",
+      "terminal": "2026-11-13T08:18:24.549855+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 48076,
+      "start": "2026-11-13T08:18:44.289112+00:00",
+      "terminal": "2026-11-13T08:18:45.170992+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 29784,
+      "start": "2026-11-13T08:18:54.980223+00:00",
+      "terminal": "2026-11-13T08:18:55.833440+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 47412,
+      "start": "2026-11-13T08:19:05.592224+00:00",
+      "terminal": "2026-11-13T08:19:06.590600+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 35324,
+      "start": "2026-11-13T08:19:20.570697+00:00",
+      "terminal": "2026-11-13T08:19:21.097462+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 17368,
+      "start": "2026-11-13T08:19:34.961171+00:00",
+      "terminal": "2026-11-13T08:19:35.815222+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 33596,
+      "start": "2026-11-13T08:19:44.002766+00:00",
+      "terminal": "2026-11-13T08:19:44.909579+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 14884,
+      "start": "2026-11-13T08:20:01.281045+00:00",
+      "terminal": "2026-11-13T08:20:02.263394+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 44192,
+      "start": "2026-11-13T08:20:18.941330+00:00",
+      "terminal": "2026-11-13T08:20:19.651012+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 16620,
+      "start": "2026-11-13T08:20:30.569495+00:00",
+      "terminal": "2026-11-13T08:20:31.533718+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 42800,
+      "start": "2026-11-13T08:20:53.535964+00:00",
+      "terminal": "2026-11-13T08:20:54.588850+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 50708,
+      "start": "2026-11-13T08:21:09.452799+00:00",
+      "terminal": "2026-11-13T08:21:10.118025+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 46472,
+      "start": "2026-11-13T08:21:17.796103+00:00",
+      "terminal": "2026-11-13T08:21:18.782230+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 28264,
+      "start": "2026-11-13T08:21:35.435948+00:00",
+      "terminal": "2026-11-13T08:21:36.101740+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 23532,
+      "start": "2026-11-13T08:21:45.039018+00:00",
+      "terminal": "2026-11-13T08:21:45.941530+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 10980,
+      "start": "2026-11-13T08:22:07.206048+00:00",
+      "terminal": "2026-11-13T08:22:07.883679+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 50188,
+      "start": "2026-11-13T08:22:21.855510+00:00",
+      "terminal": "2026-11-13T08:22:22.731628+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 46940,
+      "start": "2026-11-13T08:22:30.945383+00:00",
+      "terminal": "2026-11-13T08:22:31.879064+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 47692,
+      "start": "2026-11-13T08:22:40.868030+00:00",
+      "terminal": "2026-11-13T08:22:41.834306+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 23660,
+      "start": "2026-11-13T08:22:50.305513+00:00",
+      "terminal": "2026-11-13T08:22:51.255143+00:00",
+      "exit": 0
+    },
+    {
+      "pid": 22564,
+      "start": "2026-11-13T08:22:59.665856+00:00",
+      "terminal": "2026-11-13T08:23:00.540524+00:00",
+      "exit": 0
+    }
+  ],
+  "protocol_exception": "Before polling live wrappers 57225, 41676, 47569, two inspections were started. All were then polled to terminal exit 0. Inspect source/target repeated serially in view-upper-serial and view-handle-left-serial. Duplicate number 7 is preserved in original log; identify records by PID/start or line index."
+}

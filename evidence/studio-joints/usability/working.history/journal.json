@@ -1,0 +1,62 @@
+[
+  {
+    "base": "73a56cb7a520bf0bfbc20e47605e8eccc60fefbe3fde2b9acf9c5211e8b4c26b",
+    "result": "ab806093bc7f1f7a4df9a42776f6ca7e9bd5a1b4346585248ac15a7955a4a315",
+    "operation": {
+      "action": "attach",
+      "object": "flower-hand",
+      "attachment": {
+        "to": "shirt",
+        "self": "wrist",
+        "target": "right-wrist",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "reason": "Keep the flower hand fitted along the sleeve cuff as the arm changes"
+    }
+  },
+  {
+    "base": "ab806093bc7f1f7a4df9a42776f6ca7e9bd5a1b4346585248ac15a7955a4a315",
+    "result": "92ec8e71123b525a1935b8c6646dbf25f44acec6c131d096cee77534f3b67673",
+    "operation": {
+      "action": "attach",
+      "object": "upper-stem",
+      "attachment": {
+        "to": "flower-hand",
+        "self": "root",
+        "target": "handle_left",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "reason": "Keep the upper stem growing straight from the held segment when the wrist turns"
+    }
+  },
+  {
+    "base": "92ec8e71123b525a1935b8c6646dbf25f44acec6c131d096cee77534f3b67673",
+    "result": "2e2a6429dea5b9110844959dbbe81f8dbb55717e2e07a594e3475980dcbeb1fe",
+    "operation": {
+      "action": "attach",
+      "object": "lower-stem",
+      "attachment": {
+        "to": "flower-hand",
+        "self": "root",
+        "target": "handle_right",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "reason": "Keep the free stem end continuous with the held segment as the hand turns"
+    }
+  },
+  {
+    "base": "2e2a6429dea5b9110844959dbbe81f8dbb55717e2e07a594e3475980dcbeb1fe",
+    "result": "ca66e880a9f0eb3e03741a28fea511228ba45835266343341436d91f668baa71",
+    "operation": {
+      "object": "shirt",
+      "feature": "right-wrist",
+      "direction": "up",
+      "amount": 0.06,
+      "units": "torso height",
+      "reason": "Lift the offered flower slightly to make the presenting gesture more active while keeping shoulder and torso fixed"
+    }
+  }
+]

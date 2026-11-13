@@ -1,0 +1,28 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-joints/working.json",
+    "--selection",
+    "evidence/studio-joints/09-wave/selection.json",
+    "--attach",
+    "evidence/studio-joints/10-right-cuff/selection.json",
+    "--self-anchor",
+    "wrist",
+    "--target-anchor",
+    "right-wrist",
+    "--orient",
+    "opposed",
+    "--reason",
+    "Keep the greeting palm seated as the forearm pose changes",
+    "--outdir",
+    "evidence/studio-joints/11-wave-fit"
+  ],
+  "started": "2026-11-13T08:17:42.555349+00:00",
+  "state": "terminal",
+  "pid": 15116,
+  "exit_code": 0,
+  "terminal": "2026-11-13T08:17:45.567583+00:00"
+}

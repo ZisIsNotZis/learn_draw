@@ -1,0 +1,77 @@
+[
+  {
+    "base": "b3961294d814bd5a227a66f080bbd79b1442fde623b3b49758baa6c7e309f102",
+    "result": "a9fbbe52f196c1d6d6bd3ab679d423a979809fc09f5a004c3eab2b8284ef48b9",
+    "operation": {
+      "action": "attach",
+      "object": "greeter-head",
+      "attachment": {
+        "to": "greeter-neck",
+        "self": "chin",
+        "target": "tip",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "reason": "Seat the chin exactly and keep the head aligned with the neck"
+    }
+  },
+  {
+    "base": "a9fbbe52f196c1d6d6bd3ab679d423a979809fc09f5a004c3eab2b8284ef48b9",
+    "result": "26f98d1d77981889224c717a6edd036dae776896f754dada414d2e4a84bdb1c3",
+    "operation": {
+      "action": "attach",
+      "object": "wave-hand",
+      "attachment": {
+        "to": "greeter-shirt",
+        "self": "wrist",
+        "target": "right-wrist",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "reason": "Keep the greeting palm seated as the forearm pose changes"
+    }
+  },
+  {
+    "base": "26f98d1d77981889224c717a6edd036dae776896f754dada414d2e4a84bdb1c3",
+    "result": "0eabbf7853f10d344f0bebaf6a21252a3c5c3bea79ac518576d9a38fc7831644",
+    "operation": {
+      "action": "attach",
+      "object": "resting-hand",
+      "attachment": {
+        "to": "greeter-shirt",
+        "self": "wrist",
+        "target": "left-wrist",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "reason": "Let the hanging palm follow the sleeve direction without hand-entered angles"
+    }
+  },
+  {
+    "base": "0eabbf7853f10d344f0bebaf6a21252a3c5c3bea79ac518576d9a38fc7831644",
+    "result": "9ae194d8721d4b295e4d1475d7437df23d6906d795b816890ec4d6432e2a92ab",
+    "operation": {
+      "action": "attach",
+      "object": "greeter-neck",
+      "attachment": {
+        "to": "greeter-shirt",
+        "self": "root",
+        "target": "neck",
+        "inset": 0,
+        "orient": "opposed"
+      },
+      "reason": "Keep the neck and head aligned when the whole greeting figure leans"
+    }
+  },
+  {
+    "base": "9ae194d8721d4b295e4d1475d7437df23d6906d795b816890ec4d6432e2a92ab",
+    "result": "480f8c8b42207300542e4f5a29939efd37f092ae0a1d16a39d31a53aa6dc59a9",
+    "operation": {
+      "object": "greeter-shirt",
+      "feature": "object",
+      "reason": "Let the complete greeting figure lean gently toward the raised palm",
+      "parameter": "angle",
+      "value": -6.0
+    }
+  }
+]

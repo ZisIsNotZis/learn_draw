@@ -1,0 +1,39 @@
+{
+  "base": "0eabbf7853f10d344f0bebaf6a21252a3c5c3bea79ac518576d9a38fc7831644",
+  "engine": "44a0803cbce094ef14ddd8b298b0d1797b4544498b2891066d085e3d2c68770f",
+  "object": "greeter-neck",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    304.0,
+    232.79359999999997,
+    336.0,
+    264.79359999999997
+  ],
+  "object_bounds": [
+    302.4,
+    202.39359999999994,
+    337.6,
+    266.3936
+  ],
+  "controls": [],
+  "focus": [
+    320.0,
+    248.79359999999997
+  ],
+  "locks": {
+    "root": [
+      320.0,
+      248.79359999999997
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "anchor": "root",
+  "endpoint_bindings": {
+    "root": {
+      "to": "greeter-shirt",
+      "target": "neck",
+      "inset": 0
+    }
+  }
+}
