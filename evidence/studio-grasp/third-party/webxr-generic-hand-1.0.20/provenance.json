@@ -1,0 +1,25 @@
+{
+  "package": "@webxr-input-profiles/assets",
+  "version": "1.0.20",
+  "license": "MIT (package-specific LICENSE.md)",
+  "files": [
+    {
+      "file": "right.glb",
+      "url": "https://cdn.jsdelivr.net/npm/@webxr-input-profiles/assets@1.0.20/dist/profiles/generic-hand/right.glb",
+      "bytes": 94004,
+      "sha256": "291790c14f7f88a7f9bd35330c47392ed8e8d395ae6728f4bb7089f1bc1f2b96"
+    },
+    {
+      "file": "profile.json",
+      "url": "https://cdn.jsdelivr.net/npm/@webxr-input-profiles/assets@1.0.20/dist/profiles/generic-hand/profile.json",
+      "bytes": 1942,
+      "sha256": "749bb0624eb032d1e726e87dad398e6729020f35d62d2e9b431d4202e4c656fc"
+    },
+    {
+      "file": "LICENSE.md",
+      "url": "https://cdn.jsdelivr.net/npm/@webxr-input-profiles/assets@1.0.20/LICENSE.md",
+      "bytes": 1094,
+      "sha256": "0ef0c87e8ffdd0681f332dc3b39f284dee2166d1f853fabc3853884fe81a6f30"
+    }
+  ]
+}

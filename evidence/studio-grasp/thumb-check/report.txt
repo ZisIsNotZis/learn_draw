@@ -1,0 +1,19 @@
+art:    evidence/studio-grasp/09-thumb-side-camera/thumb-palm.png
+bundle: evidence/studio-grasp/thumb-check
+
+images (feed these, and nothing else):
+  evidence/studio-grasp/thumb-check\draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale) - judge detail here
+  evidence/studio-grasp/thumb-check\draft.png  -- downscaled preview (width <= 256px) - layout only, never detail
+
+full-resolution image SHA256: f7b83c105f04b4c14b662b1641cc58b2e8a8687be34efaf3b32943678e387bff (PNG source bytes preserved when available)
+no --ref given: nothing to compare against (reference-free stage)
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Judge detail only on the 1:1 images (draft-fullres.png, region-*.png). Previews and
+  side-by-side panes are downscaled: they show layout, never line weight or separation.
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.

@@ -85,19 +85,30 @@ count or attractive interface alone cannot establish the desired capability.
 
 ## Next action and checkpoint
 
-Develop and visually test a useful closed/carrying grasp, starting from the existing watering
-failure. Compare established articulated/3D hand construction and the current mass recipe before
-choosing a mechanism. Seek a small input with a clear palm/prop/finger enclosure and optional
-refinement, without making the VLM repair generated vertices or a defective default from scratch.
-A general renderer/rig change is not pre-decided; use the actual default picture to choose it.
+The first grasp investigation is preserved in ../evidence/studio-grasp/. Independent
+curved 3D tubes provide correct depth but remain inflated/mitten-like after proportion,
+contour and view corrections. Do not ship them as a default. An unmodified MIT-licensed
+WebXR hand asset now imports, poses and renders on CPU; bind matrices and bone lengths
+are checked. That also is not a grasp solution: its arbitrary flexions leave 83 sampled
+skin vertices inside the test rod, and fresh image review finds loose draped fingers
+and an unopposed thumb. This is investigation evidence, not a delivered artwork milestone.
 
-The main agent owns the first default and one meaningful correction. Fresh image reviewers judge
-whether contact reads, separately from geometry. A skill-only independent operator then reuses
-it with another simple held prop. Check default quality and useful size/rotation/placement edits,
-not a universal anatomy claim. Preserve accepted defaults and prior artworks. The next useful
-checkpoint is that real grip sample, before multiplying presets or implementation infrastructure.
-If the same tiny contour changes keep producing the same critique, change the representation or
-support/occlusion model rather than adding more creases to the ambiguous silhouette.
+Next, test an actual hand-space contact pose before more line polish or interface work.
+Recover phalanx/pad geometry from the established rig, fit a declared cylindrical grip
+with meaningful clearance and thumb opposition, and inspect the computed 3D relations
+alongside the flat-vector image. Vertex clearance alone is insufficient: check surface
+intersection and enclosure too. A useful first hypothesis is tangent phalanx placement
+around the cylinder with preserved bone lengths, followed by thumb contact; compare it
+with the current rejected pose. If that fails, reconsider the contact/representation
+mechanism rather than adding creases or repeating small view changes. GPU pause remains.
+
+The main agent owns that pose and one observed correction. Fresh image reviewers judge
+contact; a real watering-scene replacement and fresh skill-only reuse with another held
+prop remain required before declaring a useful default. No grasp kind, compiled vector
+template, broad 3D rig API or automatic contact promise has been adopted. Preserve the
+human-accepted head preset and existing open-hand default. The next checkpoint is the corrected contact sample
+and its independent image verdict, within the next substantive work unit; it is a
+checkpoint estimate, not an art-pass deadline. Human taste feedback remains asynchronous.
 
 Verbose directional edits, root-only scope overlays and immediate insertion remain observed
 usability gaps. They should earn fixes through an actual composition task. Keep the full VLM-

@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-13",
+  "protocol": "Fresh agents with fork_turns=none. Each received only the two indicated bundle images and the open question 'What is wrong here?', plus full-resolution detail instructions. No project/context files, intent, suspected verdict, or history. The observations below are condensed records, not verbatim transcripts.",
+  "reviews": [
+    {
+      "agent": "/root/grasp_image_a",
+      "bundle": "palm-check",
+      "images": ["draft-fullres.png", "draft.png"],
+      "observations": ["Grip readable but large empty palm feels mitten-like.", "Thumb tip and joint unclear; diagonal boundary fades into palm.", "Finger tops feel scalloped, with little bending articulation.", "Gold gaps vary, with a broad rightmost slit.", "Angular thumb-side notch and abrupt wrist feel cut out.", "Sparse flat treatment gives little contact evidence."]
+    },
+    {
+      "agent": "/root/grasp_image_b",
+      "bundle": "back-check",
+      "images": ["draft-fullres.png", "draft.png"],
+      "observations": ["Hand reads as mitten or hanging blob; no clear joints or palm landmarks.", "Thumb merges with hand and rod.", "Lower scallops resemble toes rather than explained finger curls.", "Rod vanishes behind flat silhouette without clear enclosure.", "Angular wrist/rod intersections and narrow stump feel accidental.", "Ambiguity persists at thumbnail size."]
+    },
+    {
+      "agent": "/root/grasp_image_c",
+      "bundle": "palm-07-check",
+      "images": ["draft-fullres.png", "draft.png"],
+      "observations": ["Angular lower-left lobe and central rounded flap compete as thumbs.", "Fingers look like parallel soft tubes, without convincing joints or compression.", "Rightmost finger bulb and rod-crossing kink obscure wrapping direction.", "Lower scallops do not explain pads, thumb overlap, and palm.", "Bulging palm narrows sharply to wrist.", "Full-resolution contours are faceted; faint creases do not clarify anatomy."]
+    },
+    {
+      "agent": "/root/grasp_image_d",
+      "bundle": "palm-07-check",
+      "images": ["draft-fullres.png", "draft.png"],
+      "observations": ["Thumb reads as a pointed palm flap; its joint/contact unclear.", "Fingers look like long flat ribbons over rod.", "Small crease hooks and angular spurs appear accidental.", "Palm/wrist distinction weak and mitten-like.", "Rod and overall grasp read at thumbnail size, but construction remains ambiguous enlarged."]
+    },
+    {
+      "agent": "/root/grasp_image_e",
+      "bundle": "thumb-check",
+      "images": ["draft-fullres.png", "draft.png"],
+      "observations": ["Thumb is a broad flap; root/bend and pressure unclear.", "Parallel inflated finger loops lack knuckle variation and compression.", "Fading contours at thumb make palm/finger assembly ambiguous.", "Rod looks like a flat strip rather than cylindrical contact.", "Recognizable grasp at thumbnail, but anatomy collapses into mitten-like projection."]
+    },
+    {
+      "agent": "/root/grasp_image_f",
+      "bundle": "thumb-check",
+      "images": ["draft-fullres.png", "draft.png"],
+      "observations": ["Long thumb flap seems to rest on fingers, not clamp them.", "Fingers resemble inflated tubes; bends and compression weak.", "Scalloped junction under thumb feels assembled.", "Abrupt pointed bar disappearance looks like a notch.", "Rectangular wrist/forearm and pinched transitions.", "Recognizable thumbnail grasp with mitten-like internal anatomy."]
+    },
+    {
+      "agent": "/root/grasp_mesh_review",
+      "bundle": "mesh-check",
+      "images": ["draft-fullres.png", "draft.png"],
+      "observations": ["Fingers drape loosely over rod, thumb projects sideways without opposition.", "Thumb is a rounded mitten-like bulge, with unclear joint/tip/root.", "Angular knuckles meet nearly straight hanging finger segments with uneven bends.", "Triangular slivers and abrupt endings near rod look like clipping artifacts.", "Palm/wrist feel flat; creases do not establish gripping pressure.", "Isolated white wrist spot reads as accidental without coherent shading."]
+    }
+  ],
+  "root_assessment": "No candidate adopted. Thumb attachment/view corrections improved recognition but did not settle the recurring tube-hand critique. The mesh's contact defect is independently corroborated by geometry: 83 skin vertices inside the declared rod. The white wrist spot is not an intentional highlight: the study uses flat materials, and vector visibility tolerances can leave tiny gaps. Do not promote a tube/mesh preset, solve contact first, and treat line/visibility cleanup separately. Human aesthetic approval was neither requested for these rejected plates nor received."
+}

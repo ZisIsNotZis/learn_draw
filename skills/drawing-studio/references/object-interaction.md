@@ -58,3 +58,14 @@ not establish a public atomic insertion/replace transaction. The separate operat
 previous skill, the supplied scene and public commands to reframe and repair the pour. This proves
 a bounded editing loop, not independent generation of the entire illustration from this recipe.
 Fresh image review still retains grip ambiguity, stiff pose and inconsistent head/body detail.
+
+## A depth-correct hand can still fail to grasp
+
+The subsequent grasp study tested curved finger tubes, a palm and an opposed thumb,
+then an established continuous articulated mesh. More contour detail and different
+views did not make the tube hand a useful default. The imported mesh also failed when
+posed with arbitrary flexions: skin vertices penetrated the rod, and fresh reviewers
+read draped fingers with an unopposed thumb. These are rejected studies, not commands
+or a new grasp primitive. Check contact/enclosure and the actual picture before
+polishing folds or treating an imported rig as solved anatomy. Keep line art separate
+from visibility: numerical fragment boundaries and every mesh edge are not art lines.

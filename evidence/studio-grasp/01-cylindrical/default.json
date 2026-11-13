@@ -1,0 +1,16 @@
+{
+  "faces": 1376,
+  "visibility_seconds": 2.6833493000012822,
+  "yaw": 22,
+  "pitch": 15,
+  "parts": [
+    "palm",
+    "wrist",
+    "index",
+    "middle",
+    "ring",
+    "little",
+    "thumb",
+    "bar"
+  ]
+}

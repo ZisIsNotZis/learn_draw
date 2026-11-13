@@ -527,7 +527,7 @@ joints, inherited transforms or solid anatomy. Existing joints were measured bef
 Current images identify the next representation question: compare existing shape tuning with a
 reusable curved gesture/rounded mark and a limited colour-plane treatment, rather than introducing
 one defective subject template after another. Actual candidate/default/revision images must decide
-adoption. A connected original character composition will test the accepted head/hand alongside
+adoption. A connected original character composition will test the human-accepted head and existing open hand alongside
 those operations; small generic icons are evidence, not the entire intended product outcome.
 
 ## Adopted editable gesture mark — 2026-11-13
@@ -545,7 +545,7 @@ Controlled cactus comparisons show that rounding existing blocks helps the tip b
 the angular assembled elbow; one continuous bowed mark avoids that particular joint. Curved wheel
 vanes communicate a consistent sweep better than the prior petal-like masses. Their colour planes
 do not establish physical folds. Raw comparisons and fresh image criticism live in
-../evidence/studio-stroke/. A connected character now exercises the accepted head/hand, actual
+../evidence/studio-stroke/. A connected character now exercises the human-accepted head, existing open hand, actual
 chin/wrist mounts and continuously positioned shape-edge pins. These are authored projected features,
 not a semantic body rig. Character shoulder/arm quality is still a visual question.
 
@@ -588,3 +588,15 @@ available; releasing constraints preserves their visible geometry. These are pro
 with independent support depth, not a general grip solver, 3D contact or fluid simulation.
 Current API and graph behavior belong to 7_INTERFACE/8_DETAIL; actual drawing revisions and
 independent execution are indexed at ../evidence/studio-endpoints/.
+
+## Grasp investigation: no new default adopted
+
+The independent tube/palm construction was rejected as a default: correct self-occlusion
+did not establish useful thumb anatomy or finger articulation. Merely importing an
+established articulated hand also did not solve contact. The current CPU mesh study
+has measured skin/rod penetration and a matching fresh critique of loose draped fingers.
+Do not turn either study into a preset catalog or claim a general physical hand rig.
+Test a hand-space contact pose first; only then choose a small authoring interface. A
+short owned grip segment with wrist/prop ports remains a hypothesis, not a shipped kind.
+Exact plates, source provenance, asset-specific MIT license and rejected reviews are
+in ../evidence/studio-grasp/. No existing default or portrait baseline changed.

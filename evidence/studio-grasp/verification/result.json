@@ -1,0 +1,13 @@
+{
+  "production_engine_unchanged": true,
+  "engine": "4e070f369e44fec419b2be5b1bcb71094a1da3b83da8475e3baaafa9caa4c4b9",
+  "preserved_check_images": 5,
+  "parsed_svgs": 24,
+  "licensed_asset_bytes_verified": true,
+  "bind_matrix_error": 2.541596583108246e-7,
+  "articulated_bone_lengths_preserved": true,
+  "grasp_default_ready": false,
+  "sampled_skin_vertices_inside_rod": 83,
+  "command": "python evidence/studio-grasp/verify_study.py",
+  "exit_code": 0
+}
