@@ -406,3 +406,12 @@ engine; a verified guide-only source transition, current guide supplement and fr
 proposal keep that scope explicit. verify_delivery.py checks actual recovery and the shipped
 person_flower.json study. Earlier records remain unmodified. The live renderer/fingerprint is
 reported by each new bundle; do not accept old-engine candidates after code changes.
+
+### Verified SSH fallback for interrupted pushes
+
+On 2026-11-13 the ordinary port-22 push disconnected during transfer. The same repository/SSH
+identity successfully pushed through GitHub's official ssh.github.com:443 endpoint. For a command-
+local fallback, set GIT_SSH_COMMAND to `ssh -o BatchMode=yes -o ConnectTimeout=10 -o HostName=ssh.github.com -o HostKeyAlias=github.com -p 443`, then use the existing Git remote. HostKeyAlias keeps the
+existing GitHub host-key check; do not disable verification or change global SSH configuration.
+Verify the specific branch with ls-remote after an ambiguous push result before retrying.
+Source: https://docs.github.com/en/authentication/troubleshooting-ssh/using-ssh-over-the-https-port
