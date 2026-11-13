@@ -1,0 +1,28 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-window-cat/working.json",
+    "--selection",
+    "evidence/studio-window-cat/18-far-ear/selection.json",
+    "--change",
+    "length=.055",
+    "--change",
+    "width=.85",
+    "--change",
+    "taper=.80",
+    "--change",
+    "rounding=.55",
+    "--reason",
+    "Shorten and soften the rear ear to match a compact sleeping cat silhouette",
+    "--outdir",
+    "evidence/studio-window-cat/19-far-soft"
+  ],
+  "started": "2026-11-13T10:36:56.452365+00:00",
+  "state": "terminal",
+  "pid": 49484,
+  "exit_code": 0,
+  "terminal": "2026-11-13T10:36:57.449520+00:00"
+}

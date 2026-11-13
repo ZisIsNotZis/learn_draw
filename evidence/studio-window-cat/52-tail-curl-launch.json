@@ -1,0 +1,20 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "inspect",
+    "evidence/studio-window-cat/working.json",
+    "--object",
+    "tucked-tail",
+    "--feature",
+    "object",
+    "--outdir",
+    "evidence/studio-window-cat/52-tail-curl"
+  ],
+  "started": "2026-11-13T11:22:44.957224+00:00",
+  "state": "terminal",
+  "pid": 45620,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:22:45.828351+00:00"
+}

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-window-cat\\verify_delivery.py",
+    "--outdir",
+    "D:\\vibe\\learn_draw_studio\\.tmp\\window-cat-independent-delivery"
+  ],
+  "cwd": "D:\\vibe\\learn_draw_studio",
+  "started": "2026-11-13T11:40:17.037384+00:00",
+  "pid": 41144,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:40:19.193866+00:00"
+}

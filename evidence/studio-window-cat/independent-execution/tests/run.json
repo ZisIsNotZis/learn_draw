@@ -1,0 +1,14 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "unittest",
+    "scripts.tests.test_studio_pending_endpoints",
+    "-v"
+  ],
+  "cwd": "D:\\vibe\\learn_draw_studio",
+  "started": "2026-11-13T11:40:26.610874+00:00",
+  "pid": 44172,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:40:29.675890+00:00"
+}

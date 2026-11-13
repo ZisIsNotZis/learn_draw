@@ -1,0 +1,21 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-window-cat/working.json",
+    "--selection",
+    "evidence/studio-window-cat/21-pool/selection.json",
+    "--remove",
+    "--reason",
+    "The tiny supposed light pool reads as an extension of the muzzle and crowds the lamp; remove that ambiguous cue",
+    "--outdir",
+    "evidence/studio-window-cat/22-remove-pool"
+  ],
+  "started": "2026-11-13T10:45:28.682288+00:00",
+  "state": "terminal",
+  "pid": 46276,
+  "exit_code": 0,
+  "terminal": "2026-11-13T10:46:11.573577+00:00"
+}

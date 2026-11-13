@@ -1,0 +1,46 @@
+{
+  "base": "661a92c974fcc743f375f7333a9b6f5425150eb4ce8ffc07b960549c9fc4c05e",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "object": "tucked-tail",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    405.4177167252449,
+    483.86303787998975,
+    633.0578398824191,
+    584.1893600680022
+  ],
+  "object_bounds": [
+    405.4177167252449,
+    483.86303787998975,
+    633.0578398824191,
+    584.1893600680022
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      518.6958124996696,
+      548.4808591305944
+    ],
+    "root": [
+      416.19970040972703,
+      494.6450215644719
+    ],
+    "tip": [
+      629.8228605019149,
+      580.954380687498
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "endpoint_bindings": {
+    "root": {
+      "to": "sleeping-body",
+      "target": "left",
+      "inset": 0
+    }
+  },
+  "insertion": {
+    "object": "tucked-tail"
+  }
+}

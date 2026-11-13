@@ -1,0 +1,26 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "join",
+    "evidence/studio-window-cat/working.json",
+    "--pending",
+    "evidence/studio-window-cat/10-new-tail/candidate.json",
+    "--source",
+    "tucked-tail.root",
+    "--target",
+    "sleeping-body.left",
+    "--mode",
+    "point",
+    "--reason",
+    "Seat the tail at the rear of the body, retaining its authored curl toward the head rather than extending out along the surface normal",
+    "--outdir",
+    "evidence/studio-window-cat/11-tail-seat"
+  ],
+  "started": "2026-11-13T10:31:54.397257+00:00",
+  "state": "terminal",
+  "pid": 46096,
+  "exit_code": 0,
+  "terminal": "2026-11-13T10:32:01.897793+00:00"
+}

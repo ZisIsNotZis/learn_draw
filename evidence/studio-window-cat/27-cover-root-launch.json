@@ -1,0 +1,24 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "place",
+    "evidence/studio-window-cat/working.json",
+    "--revise",
+    "evidence/studio-window-cat/24-cover-edges/candidate.json",
+    "--feature",
+    "root",
+    "--bind-end",
+    "evidence/studio-window-cat/25-page-bottom/selection.json",
+    "--reason",
+    "Seat the thin cover on the actual left page underside instead of burying it in the side edge",
+    "--outdir",
+    "evidence/studio-window-cat/27-cover-root"
+  ],
+  "started": "2026-11-13T11:01:52.962873+00:00",
+  "state": "terminal",
+  "pid": 26728,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:01:54.018040+00:00"
+}

@@ -1,0 +1,26 @@
+{
+  "intent": "A quiet original night reading nook: a sleeping cat by an open book and warm lamp, with a crescent beyond the window.",
+  "reference": null,
+  "authoring": "Initial artwork recipe uses semantic shape/stroke/moon nodes and computed attachment relations. Later corrections are observed CLI proposals with separate acceptance; do not describe initial recipe iterations as public-CLI editing.",
+  "stages": [
+    {
+      "stage": "01-sketch",
+      "disposition": "Author deliberately canceled before any artwork returned, after confirming global_depth_order=None and no image files. Two matching owned Python processes43436/46868 were stopped; exact exec session53273 drained to exit1. This is a canceled coplanar-layer experiment, not a completed rendering failure or a timed-out retry."
+    },
+    {
+      "stage": "02-ordered-sketch",
+      "disposition": "Distinct explicit support planes derived from intended paint order; terminal0. Render exposed an undersized sill and misplaced supports."
+    },
+    {
+      "stage": "03-supported-sketch",
+      "disposition": "Rotated tall masses express a thin wide horizontal rail within the shape aspect contract; local right is screen top. Head raised into the supported silhouette. Terminal0."
+    }
+  ],
+  "engine_boundary": {
+    "earlier": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+    "current": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+    "first_current_root_operation": "21-pool",
+    "change": "Only pending endpoint authoring/CLI; drawing geometry unchanged. Actual prior placement.py and __main__.py preserved from commit14e379b in source-history."
+  },
+  "limits": "This is one flat authored composition and a new local operational capability; not general cat anatomy, broad creative mastery, a finished-art verdict or human acceptance. No target/GPU/generated raster/pixel optimization work; portrait baseline untouched."
+}

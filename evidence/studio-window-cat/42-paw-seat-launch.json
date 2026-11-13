@@ -1,0 +1,26 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "join",
+    "evidence/studio-window-cat/working.json",
+    "--pending",
+    "evidence/studio-window-cat/41-new-paw/candidate.json",
+    "--source",
+    "tucked-paw.top",
+    "--target",
+    "sleeping-head.bottom",
+    "--mode",
+    "point",
+    "--reason",
+    "Tuck the paw beneath the actual chin, with the head's higher depth hiding its upper edge",
+    "--outdir",
+    "evidence/studio-window-cat/42-paw-seat"
+  ],
+  "started": "2026-11-13T11:11:55.953790+00:00",
+  "state": "terminal",
+  "pid": 16120,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:11:57.504498+00:00"
+}

@@ -1,0 +1,48 @@
+{
+  "base": "6e78b7f59ca2f743860762d0367564ee7e69a4e63f6a81043147c5936ee8cfac",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "object": "curling-tail",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    449.1641018254827,
+    498.3538596308856,
+    660.5532442715814,
+    588.6070065084863
+  ],
+  "object_bounds": [
+    449.1641018254827,
+    498.3538596308856,
+    660.5532442715814,
+    588.6070065084863
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension",
+  "endpoint_bindings": {
+    "root": {
+      "to": "sleeping-body",
+      "target": "right",
+      "offset": [
+        -0.018,
+        0.005
+      ]
+    }
+  }
+}

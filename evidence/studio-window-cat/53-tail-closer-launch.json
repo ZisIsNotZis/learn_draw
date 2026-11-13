@@ -1,0 +1,24 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-window-cat/working.json",
+    "--selection",
+    "evidence/studio-window-cat/52-tail-curl/selection.json",
+    "--set",
+    "bend",
+    "--value",
+    "-.23",
+    "--reason",
+    "Bring the separated tail curl closer to the now-grounded belly while retaining its rear occlusion and fixed endpoints",
+    "--outdir",
+    "evidence/studio-window-cat/53-tail-closer"
+  ],
+  "started": "2026-11-13T11:23:06.493260+00:00",
+  "state": "terminal",
+  "pid": 44984,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:23:07.358774+00:00"
+}

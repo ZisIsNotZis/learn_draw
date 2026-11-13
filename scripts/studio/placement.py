@@ -1,15 +1,16 @@
 """Observe and revise one pending component before inserting it into the working scene."""
 import copy
 from .model import (validate,fingerprint,engine_fingerprint,node_by_id,select,current_selection,
-                    _set_parameter,preview,attachment_preview)
+                    _set_parameter,preview,attachment_preview,bind_endpoint_preview)
 from .attachment import resolve_scene
 from .components import depth_bounds
 
 
 def placement_preview(scene,node=None,*,prior=None,changes=None,feature='object',at=None,offset=None,
-                      direction=None,amount=.05,target=None,self_anchor=None,target_anchor=None,inset=0,orient=None,reason):
+                      direction=None,amount=.05,target=None,endpoint_target=None,self_anchor=None,target_anchor=None,inset=0,orient=None,reason):
     validate(scene)
     if not isinstance(reason,str) or not reason.strip():raise ValueError('state a drawing reason')
+    if target is not None and endpoint_target is not None:raise ValueError('choose whole-object attachment or endpoint binding')
     if (node is None)==(prior is None):raise ValueError('choose a new preset or revise one pending placement')
     base=fingerprint(scene);engine=engine_fingerprint()
     if prior is not None:
@@ -26,7 +27,7 @@ def placement_preview(scene,node=None,*,prior=None,changes=None,feature='object'
             raise ValueError('placement must preserve every existing object and scene setting')
         if at is not None or offset is not None:raise ValueError('revise placement with a screen move; initial --at/--offset only')
     else:
-        if target is not None:raise ValueError('preview the new shape and mounts first; then revise with --attach')
+        if target is not None or endpoint_target is not None:raise ValueError('preview the new shape and mounts first; then revise with --attach or --bind-end')
         staged=copy.deepcopy(scene);node=copy.deepcopy(node);sid=node['id']
         if node['kind'] not in ('sky','hills'):
             canvas=scene.get('canvas',[640,640])
@@ -49,7 +50,15 @@ def placement_preview(scene,node=None,*,prior=None,changes=None,feature='object'
     if direction is not None:
         staged=preview(staged,select(staged,sid,feature='object'),direction,amount,reason)['scene']
     attachment_target=None
-    if target is not None:
+    if endpoint_target is not None:
+        if feature not in ('root','tip') or node_by_id(staged,sid)['kind']!='stroke':
+            raise ValueError('pending endpoint binding requires --feature root or tip on a stroke')
+        if self_anchor is not None or orient is not None:raise ValueError('endpoint binding cannot use whole-object self/orient flags')
+        current_selection(scene,endpoint_target)
+        endpoint_target=copy.deepcopy(endpoint_target);endpoint_target['base']=fingerprint(staged)
+        result=bind_endpoint_preview(staged,select(staged,sid,feature=feature),endpoint_target,target_anchor,inset,reason)
+        staged=result['scene'];attachment_target=result['selection']['attachment_target']
+    elif target is not None:
         current_selection(scene,target)
         # Target was inspected on the unchanged working scene; rebind only its revision
         # after verifying the pending scene preserves all of that target's input.
@@ -58,9 +67,10 @@ def placement_preview(scene,node=None,*,prior=None,changes=None,feature='object'
         result=attachment_preview(staged,source,target,self_anchor,target_anchor,inset,reason,orient)
         staged=result['scene'];attachment_target=result['selection']['attachment_target']
     elif self_anchor is not None or target_anchor is not None or inset!=0 or orient is not None:
-        raise ValueError('mount flags require --attach')
+        raise ValueError('mount flags require --attach or --bind-end')
     validate(staged)
-    view=select(staged,sid,feature='anchors')
+    view=select(staged,sid,feature='anchors',anchor=feature if endpoint_target is not None else None)
+    if endpoint_target is not None:view['join_pair']=True
     view.update(base=base,insertion=dict(object=sid))
     if attachment_target:view['attachment_target']=attachment_target
     return dict(base=base,engine=engine,result=fingerprint(staged),scene=staged,selection=view,

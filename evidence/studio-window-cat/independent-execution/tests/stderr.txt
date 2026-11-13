@@ -1,0 +1,9 @@
+test_aliases_and_failed_render_do_not_commit (scripts.tests.test_studio_pending_endpoints.PendingEndpointContacts.test_aliases_and_failed_render_do_not_commit) ... ok
+test_invalid_modes_and_stale_targets_refuse (scripts.tests.test_studio_pending_endpoints.PendingEndpointContacts.test_invalid_modes_and_stale_targets_refuse) ... ok
+test_public_pending_render_accept_and_exact_undo (scripts.tests.test_studio_pending_endpoints.PendingEndpointContacts.test_public_pending_render_accept_and_exact_undo) ... ok
+test_two_pending_contacts_preserve_inputs_then_derive_and_follow_both (scripts.tests.test_studio_pending_endpoints.PendingEndpointContacts.test_two_pending_contacts_preserve_inputs_then_derive_and_follow_both) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 2.401s
+
+OK

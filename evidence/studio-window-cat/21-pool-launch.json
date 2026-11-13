@@ -1,0 +1,20 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "inspect",
+    "evidence/studio-window-cat/working.json",
+    "--object",
+    "warm-pool",
+    "--feature",
+    "object",
+    "--outdir",
+    "evidence/studio-window-cat/21-pool"
+  ],
+  "started": "2026-11-13T10:44:16.958961+00:00",
+  "state": "terminal",
+  "pid": 43016,
+  "exit_code": 0,
+  "terminal": "2026-11-13T10:44:17.821422+00:00"
+}

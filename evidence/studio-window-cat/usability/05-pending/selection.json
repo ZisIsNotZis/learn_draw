@@ -1,0 +1,39 @@
+{
+  "base": "5770caaa0df432fd41ae9e42adfad40c26aaf803d72adb96a5036ee6a55c84e6",
+  "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+  "object": "book-cover",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    474.96037462371265,
+    210.96037462371265,
+    629.0396253762874,
+    235.44
+  ],
+  "object_bounds": [
+    474.96037462371265,
+    210.96037462371265,
+    629.0396253762874,
+    235.44
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      552.0,
+      230.4
+    ],
+    "root": [
+      480.0,
+      216.0
+    ],
+    "tip": [
+      624.0,
+      216.0
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "insertion": {
+    "object": "book-cover"
+  }
+}

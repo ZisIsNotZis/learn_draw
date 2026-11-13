@@ -91,7 +91,9 @@ def main():
     p.add_argument('--offset',type=float,nargs=2,metavar=('X','Y'),help='initial offset as canvas width/height fractions')
     p.add_argument('--move',choices=('left','right','up','down'),help='screen correction, preserving the rest of the pending shape')
     p.add_argument('--amount',type=float,default=.05,help='screen correction in shorter-canvas units')
-    p.add_argument('--attach',metavar='TARGET_SELECTION',help='on revision, pin to a separately inspected working-scene mount')
+    mount=p.add_mutually_exclusive_group()
+    mount.add_argument('--attach',metavar='TARGET_SELECTION',help='on revision, pin to a separately inspected working-scene mount')
+    mount.add_argument('--bind-end',metavar='TARGET_SELECTION',help='on revision, bind stroke --feature root or tip without inserting it')
     p.add_argument('--orient',choices=('opposed',),help='keep a semantic joint opposed to the inspected target direction')
     p.add_argument('--self-anchor')
     p.add_argument('--target-anchor')
@@ -170,6 +172,7 @@ def main():
             if args.command=='place':
                 if args.revise: inputs.append(Path(args.revise))
                 if args.attach: inputs.append(Path(args.attach))
+                if args.bind_end:inputs.append(Path(args.bind_end))
             if args.command=='join' and args.pending:inputs.append(Path(args.pending))
             for source in inputs:
                 for name in names:
@@ -214,6 +217,7 @@ def main():
             candidate=placement_preview(scene,node,prior=read(args.revise) if args.revise else None,
                 changes=parse_changes(args.change),feature=args.feature,at=args.at,offset=args.offset,
                 direction=args.move,amount=args.amount,target=read(args.attach) if args.attach else None,
+                endpoint_target=read(args.bind_end) if args.bind_end else None,
                 self_anchor=args.self_anchor,target_anchor=args.target_anchor,inset=args.inset,orient=args.orient,reason=args.reason)
             write(Path(args.outdir)/'candidate.json',dict(status='rendering',base=candidate['base'],engine=candidate['engine']))
             report=bundle(candidate['scene'],args.outdir,candidate['selection'],previous=scene,png=not args.svg_only)

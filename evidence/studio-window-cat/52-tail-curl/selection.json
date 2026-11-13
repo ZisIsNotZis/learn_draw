@@ -1,0 +1,45 @@
+{
+  "base": "3a09f71fcb45d0a7fc32796883180bb417969af224a6bfd7f91606771a27befe",
+  "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+  "object": "tucked-tail",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    418.6913943808946,
+    480.66436072761326,
+    635.1509570870048,
+    601.8274009495162
+  ],
+  "object_bounds": [
+    418.6913943808946,
+    480.66436072761326,
+    635.1509570870048,
+    601.8274009495162
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension",
+  "endpoint_bindings": {
+    "root": {
+      "to": "sleeping-body",
+      "target": "left",
+      "inset": 0
+    }
+  }
+}

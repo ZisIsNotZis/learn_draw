@@ -1,0 +1,24 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-window-cat/working.json",
+    "--selection",
+    "evidence/studio-window-cat/45-coat/selection.json",
+    "--set",
+    "fill_color",
+    "--value",
+    "#c27b55",
+    "--reason",
+    "Give head and body one continuous coat material instead of implying an unexplained circular seam through a colour change",
+    "--outdir",
+    "evidence/studio-window-cat/46-shared-coat"
+  ],
+  "started": "2026-11-13T11:14:47.281283+00:00",
+  "state": "terminal",
+  "pid": 43384,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:14:48.234231+00:00"
+}

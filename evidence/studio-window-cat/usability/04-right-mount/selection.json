@@ -1,0 +1,32 @@
+{
+  "base": "5770caaa0df432fd41ae9e42adfad40c26aaf803d72adb96a5036ee6a55c84e6",
+  "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+  "object": "book-right",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    355.93632654676264,
+    541.3913149130125,
+    387.93632654676264,
+    573.3913149130125
+  ],
+  "object_bounds": [
+    295.895120887241,
+    490.2834246484105,
+    379.32617738705767,
+    563.7072044971358
+  ],
+  "controls": [],
+  "focus": [
+    371.93632654676264,
+    557.3913149130125
+  ],
+  "locks": {
+    "right@.9": [
+      371.93632654676264,
+      557.3913149130125
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "anchor": "right@.9"
+}

@@ -1,0 +1,53 @@
+{
+  "base": "ddfa0f5d2db4fd1af8b1422b8ffa9625c9808b2f1020d3e6fb9cf62286ef2472",
+  "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+  "object": "tucked-paw",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    602.9012116317924,
+    548.2626759920603,
+    634.9012116317924,
+    580.2626759920603
+  ],
+  "object_bounds": [
+    595.503587906845,
+    564.2626759920603,
+    642.2988353567398,
+    589.4626759920603
+  ],
+  "controls": [],
+  "focus": [
+    618.9012116317924,
+    564.2626759920603
+  ],
+  "locks": {
+    "top": [
+      618.9012116317924,
+      564.2626759920603
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "insertion": {
+    "object": "tucked-paw"
+  },
+  "attachment_target": {
+    "object": "sleeping-head",
+    "anchor": "bottom"
+  },
+  "anchor": "top",
+  "join": {
+    "source": {
+      "object": "tucked-paw",
+      "anchor": "top"
+    },
+    "target": {
+      "object": "sleeping-head",
+      "anchor": "bottom"
+    },
+    "requested_mode": "point",
+    "mode": "point",
+    "before_revision": "902185d3e356aad8253b5b51f1d5e9594bc3f7cd107d5624f154df9dc48eae5d",
+    "pending": true
+  }
+}

@@ -1,0 +1,602 @@
+{
+  "base": "5770caaa0df432fd41ae9e42adfad40c26aaf803d72adb96a5036ee6a55c84e6",
+  "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+  "result": "20ef75fb2b56784f43c4ce0480ffa4df94c94ffb22afb668cac8818daf6701e9",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      960,
+      720
+    ],
+    "background": "#e6d6bd",
+    "nodes": [
+      {
+        "id": "window-frame",
+        "kind": "shape",
+        "intent": "a deep blue timber frame holds the night beyond the room",
+        "length": 0.66,
+        "width": 1.12,
+        "stroke": 0,
+        "palette": {
+          "fill": "#40515a"
+        },
+        "depth": 0,
+        "rounding": 0.1,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.13,
+            -0.11
+          ]
+        }
+      },
+      {
+        "id": "night-pane",
+        "kind": "shape",
+        "intent": "one quiet dark pane, inset evenly inside its timber frame",
+        "length": 0.61,
+        "width": 1.1298360655737705,
+        "stroke": 0,
+        "palette": {
+          "fill": "#253e55"
+        },
+        "depth": 1,
+        "rounding": 0.08,
+        "attachment": {
+          "to": "window-frame",
+          "self": "center",
+          "target": "center",
+          "offset": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "id": "outside-moon",
+        "kind": "moon",
+        "intent": "a small crescent makes the window unmistakably nocturnal",
+        "length": 0.11,
+        "fullness": 0.32,
+        "angle": -20,
+        "depth": 2,
+        "palette": {
+          "fill": "#f3d8a4"
+        },
+        "attachment": {
+          "to": "night-pane",
+          "self": "center",
+          "target": "center",
+          "offset": [
+            0.158516,
+            -0.1525
+          ]
+        }
+      },
+      {
+        "id": "high-star",
+        "kind": "shape",
+        "intent": "a restrained distant star subordinate to the crescent",
+        "length": 0.008,
+        "width": 1,
+        "stroke": 0,
+        "palette": {
+          "fill": "#d7cfad"
+        },
+        "depth": 3,
+        "profile": "oval",
+        "attachment": {
+          "to": "night-pane",
+          "self": "center",
+          "target": "center",
+          "offset": [
+            -0.122,
+            -0.1708
+          ]
+        }
+      },
+      {
+        "id": "low-star",
+        "kind": "shape",
+        "intent": "a restrained distant star subordinate to the crescent",
+        "length": 0.005,
+        "width": 1,
+        "stroke": 0,
+        "palette": {
+          "fill": "#d7cfad"
+        },
+        "depth": 4,
+        "profile": "oval",
+        "attachment": {
+          "to": "night-pane",
+          "self": "center",
+          "target": "center",
+          "offset": [
+            0.0122,
+            -0.0366
+          ]
+        }
+      },
+      {
+        "id": "window-mullion",
+        "kind": "stroke",
+        "intent": "a slim timber division keeps the view domestic",
+        "length": 0.61,
+        "thickness": 0.012,
+        "palette": {
+          "fill": "#40515a"
+        },
+        "depth": 5,
+        "attachment": {
+          "to": "night-pane",
+          "self": "root",
+          "target": "top",
+          "offset": [
+            -0.0976,
+            0
+          ]
+        },
+        "angle": 0,
+        "start_cap": "flat",
+        "end_cap": "flat"
+      },
+      {
+        "id": "window-sill",
+        "kind": "shape",
+        "intent": "a broad warm sill supports the book and sleeping cat",
+        "length": 1.08,
+        "width": 0.05092592592592592,
+        "stroke": 0,
+        "palette": {
+          "fill": "#a67c5f"
+        },
+        "depth": 6,
+        "angle": 90,
+        "rounding": 0.28,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.02,
+            0.31
+          ]
+        }
+      },
+      {
+        "id": "sill-apron",
+        "kind": "shape",
+        "intent": "a dark front lip gives the resting surface a visible thickness",
+        "length": 1.08,
+        "width": 0.02037037037037037,
+        "stroke": 0,
+        "palette": {
+          "fill": "#7d5c4d"
+        },
+        "depth": 7,
+        "angle": 90,
+        "rounding": 0.2,
+        "attachment": {
+          "to": "window-sill",
+          "self": "right",
+          "target": "left",
+          "offset": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "id": "lamp-base",
+        "kind": "shape",
+        "intent": "a weighted shallow foot rests beside the cat",
+        "length": 0.027,
+        "width": 4.2,
+        "stroke": 0,
+        "palette": {
+          "fill": "#596568"
+        },
+        "depth": 8,
+        "profile": "oval",
+        "attachment": {
+          "to": "window-sill",
+          "self": "bottom",
+          "target": "right",
+          "offset": [
+            0.43,
+            0
+          ]
+        }
+      },
+      {
+        "id": "lamp-stem",
+        "kind": "stroke",
+        "intent": "a slender upright joins the lamp base and shade",
+        "length": 0.42,
+        "thickness": 0.012,
+        "palette": {
+          "fill": "#596568"
+        },
+        "depth": 9,
+        "angle": 180,
+        "attachment": {
+          "to": "lamp-base",
+          "self": "root",
+          "target": "top",
+          "offset": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "id": "lamp-shade",
+        "kind": "shape",
+        "intent": "a broad golden shade opens toward the sleeping cat and book",
+        "length": 0.17,
+        "width": 1.45,
+        "stroke": 0,
+        "palette": {
+          "fill": "#dca64f"
+        },
+        "depth": 13,
+        "taper": 0.52,
+        "rounding": 0.3,
+        "attachment": {
+          "to": "lamp-stem",
+          "self": "center",
+          "target": "tip",
+          "offset": [
+            0,
+            0.025
+          ]
+        }
+      },
+      {
+        "id": "lamp-rim",
+        "kind": "shape",
+        "intent": "a warm lower rim suggests the lit underside of the shade",
+        "length": 0.018,
+        "width": 6,
+        "stroke": 0,
+        "palette": {
+          "fill": "#f4d891"
+        },
+        "depth": 16,
+        "profile": "oval",
+        "attachment": {
+          "to": "lamp-shade",
+          "self": "center",
+          "target": "bottom",
+          "offset": [
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "id": "sleeping-body",
+        "kind": "shape",
+        "intent": "a low oval back curls into a comfortable sleeping silhouette",
+        "length": 0.17,
+        "width": 2.0,
+        "stroke": 0,
+        "palette": {
+          "fill": "#ba6f4d"
+        },
+        "depth": 14,
+        "profile": "oval",
+        "angle": -5,
+        "attachment": {
+          "to": "window-sill",
+          "self": "bottom",
+          "target": "right",
+          "offset": [
+            0.1,
+            0.004
+          ]
+        }
+      },
+      {
+        "id": "far-ear",
+        "kind": "shape",
+        "intent": "the farther tapered ear breaks the round feline head silhouette",
+        "length": 0.055,
+        "width": 0.85,
+        "stroke": 0,
+        "palette": {
+          "fill": "#9a563e"
+        },
+        "depth": 17,
+        "taper": 0.8,
+        "rounding": 0.55,
+        "angle": -18,
+        "attachment": {
+          "to": "sleeping-head",
+          "self": "bottom",
+          "target": "top",
+          "offset": [
+            -0.025,
+            0.015
+          ]
+        }
+      },
+      {
+        "id": "near-ear",
+        "kind": "shape",
+        "intent": "a forward ear gives the resting face a recognisable cat profile",
+        "length": 0.055,
+        "width": 0.9,
+        "stroke": 0,
+        "palette": {
+          "fill": "#c27b55"
+        },
+        "depth": 18,
+        "taper": 0.8,
+        "rounding": 0.55,
+        "angle": -8.0,
+        "attachment": {
+          "to": "sleeping-head",
+          "self": "bottom",
+          "target": "top",
+          "offset": [
+            0.035,
+            0.018
+          ]
+        }
+      },
+      {
+        "id": "sleeping-head",
+        "kind": "shape",
+        "intent": "a rounded head settles low beside the curled body",
+        "length": 0.13,
+        "width": 1.08,
+        "stroke": 0,
+        "palette": {
+          "fill": "#c27b55"
+        },
+        "depth": 19,
+        "profile": "oval",
+        "angle": -12,
+        "attachment": {
+          "to": "sleeping-body",
+          "self": "left",
+          "target": "right",
+          "offset": [
+            -0.1,
+            0
+          ]
+        }
+      },
+      {
+        "id": "cat-muzzle",
+        "kind": "shape",
+        "intent": "a small pale muzzle separates the face from the orange coat",
+        "length": 0.044,
+        "width": 1.35,
+        "stroke": 0,
+        "palette": {
+          "fill": "#e4b487"
+        },
+        "depth": 20,
+        "profile": "oval",
+        "attachment": {
+          "to": "sleeping-head",
+          "self": "center",
+          "target": "right",
+          "offset": [
+            -0.027,
+            0.023
+          ]
+        }
+      },
+      {
+        "id": "cat-nose",
+        "kind": "shape",
+        "intent": "a tiny dark nose finishes the quiet right-facing profile",
+        "length": 0.01,
+        "width": 1.25,
+        "stroke": 0,
+        "palette": {
+          "fill": "#774735"
+        },
+        "depth": 22,
+        "profile": "oval",
+        "attachment": {
+          "to": "cat-muzzle",
+          "self": "center",
+          "target": "right",
+          "offset": [
+            -0.003,
+            -0.006
+          ]
+        }
+      },
+      {
+        "id": "closed-eye",
+        "kind": "stroke",
+        "intent": "one softly arched lid communicates sleep rather than a blank face",
+        "length": 0.038,
+        "thickness": 0.004,
+        "palette": {
+          "fill": "#714633"
+        },
+        "depth": 23,
+        "angle": 90,
+        "bend": -0.2,
+        "start_width": 0.65,
+        "end_width": 0.65,
+        "attachment": {
+          "to": "sleeping-head",
+          "self": "root",
+          "target": "center",
+          "offset": [
+            0.002,
+            -0.012
+          ]
+        }
+      },
+      {
+        "id": "book-left",
+        "kind": "shape",
+        "intent": "the left cream page tilts upward from the resting book gutter",
+        "length": 0.09,
+        "width": 1.18,
+        "stroke": 0,
+        "palette": {
+          "fill": "#f4e9cf"
+        },
+        "depth": 11,
+        "rounding": 0.12,
+        "angle": 8,
+        "attachment": {
+          "to": "window-sill",
+          "self": "bottom",
+          "target": "right",
+          "offset": [
+            -0.27,
+            -0.01
+          ]
+        }
+      },
+      {
+        "id": "book-right",
+        "kind": "shape",
+        "intent": "the second page mirrors its partner around an open gutter",
+        "length": 0.09,
+        "width": 1.18,
+        "stroke": 0,
+        "palette": {
+          "fill": "#d9c6a5"
+        },
+        "depth": 12,
+        "rounding": 0.12,
+        "angle": -8,
+        "attachment": {
+          "to": "book-left",
+          "self": "left",
+          "target": "right",
+          "offset": [
+            0,
+            0.004
+          ]
+        }
+      },
+      {
+        "id": "book-gutter",
+        "kind": "stroke",
+        "intent": "a slim dark gutter identifies the two planes as one open book",
+        "length": 0.085,
+        "thickness": 0.003,
+        "palette": {
+          "fill": "#9b805f"
+        },
+        "depth": 15,
+        "angle": 0,
+        "attachment": {
+          "to": "book-left",
+          "self": "root",
+          "target": "right",
+          "offset": [
+            0,
+            -0.038
+          ]
+        }
+      },
+      {
+        "id": "tucked-tail",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 24.0,
+        "length": 0.3,
+        "thickness": 0.03,
+        "angle": 70.0,
+        "bend": -0.2,
+        "start_width": 1.0,
+        "end_width": 0.65,
+        "palette": {
+          "fill": "#cc865b"
+        },
+        "attachment": {
+          "to": "sleeping-body",
+          "self": "root",
+          "target": "left",
+          "inset": 0
+        }
+      },
+      {
+        "id": "book-cover",
+        "kind": "stroke",
+        "intent": "a clean round gesture mark with editable spine and terminals",
+        "depth": 10.0,
+        "length": 0.2,
+        "angle": 90.0,
+        "thickness": 0.014,
+        "bend": -0.1,
+        "palette": {
+          "fill": "#685044"
+        },
+        "endpoints": {
+          "root": {
+            "to": "book-left",
+            "target": "left@.1",
+            "inset": 0
+          }
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "5770caaa0df432fd41ae9e42adfad40c26aaf803d72adb96a5036ee6a55c84e6",
+    "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+    "object": "book-cover",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      211.56511411928062,
+      538.5113149130125,
+      243.56511411928062,
+      570.5113149130125
+    ],
+    "object_bounds": [
+      222.5254887429933,
+      549.4716895367252,
+      376.60473949556797,
+      573.9513149130124
+    ],
+    "controls": [],
+    "focus": [
+      227.56511411928062,
+      554.5113149130125
+    ],
+    "locks": {
+      "root": [
+        227.56511411928062,
+        554.5113149130125
+      ]
+    },
+    "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+    "anchor": "root",
+    "endpoint_bindings": {
+      "root": {
+        "to": "book-left",
+        "target": "left@.1",
+        "inset": 0
+      }
+    },
+    "join_pair": true,
+    "insertion": {
+      "object": "book-cover"
+    },
+    "attachment_target": {
+      "object": "book-left",
+      "anchor": "left@.1"
+    }
+  },
+  "operation": {
+    "action": "place",
+    "object": "book-cover",
+    "kind": "stroke",
+    "reason": "Seat the cover root on the observed lower outer left page edge",
+    "revised_from": "b14aad2dc1d3b88c3a09fbc0cf5e83cbfb67f18187435b2040fb955418f17110"
+  },
+  "status": "ready"
+}

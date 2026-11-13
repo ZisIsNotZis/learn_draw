@@ -1,0 +1,41 @@
+{
+  "base": "93286023dce83b3b8abae0c7b890c5d04bbdf165f1cbd590974b41367d6311e1",
+  "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+  "object": "warm-pool",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    637.1999999999999,
+    551.5200000000001,
+    745.1999999999999,
+    569.5200000000001
+  ],
+  "object_bounds": [
+    637.1999999999999,
+    551.5200000000001,
+    745.1999999999999,
+    569.5200000000001
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension",
+  "removal": {
+    "removed": [
+      "warm-pool"
+    ],
+    "detached_children": [],
+    "cascade": false
+  }
+}

@@ -15,6 +15,11 @@ uv run python examples/studio/compose.py --theme moonrise --refined --outdir evi
 uv run python examples/studio/held_props.py --scene flag --outdir evidence/my-held-flag
 ```
 
+新笔触可以在尚未插入时完成两端绑定：用 `place --revise --feature root|tip
+--bind-end TARGET/selection.json` 分别对准已观察的挂点，预览弯曲和线宽，再一次接受。
+[独立操作及当前验证记录](evidence/studio-window-cat/README.md)也保留了夜窗原创试作的失败：
+猫的承重与收拢前腿结构仍未成立，这张研究图不作为可用猫预设。
+
 入口：[当前路线图](docs/0_ROADMAP.md)、[操作 skill](skills/drawing-studio/SKILL.md)、[场景接口](docs/7_INTERFACE.md)。
 PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安装浏览器。下文保留此前人物临摹及工具链的说明；
 历史阶段完成不代表当前产品已经验收。

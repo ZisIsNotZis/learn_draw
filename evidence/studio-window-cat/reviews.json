@@ -1,0 +1,85 @@
+{
+  "scope": "Parent-captured summaries of eight fresh image-only reviews. No human or finished-art acceptance.",
+  "checks": [
+    {
+      "bundle": "check-initial",
+      "revision": "03-supported-sketch",
+      "reviews": [
+        {
+          "agent": "window_initial_a",
+          "findings": "Scene reads as sleeping cat/window/book/lamp and quiet night. Tail crosses body like a bent limb; oval torso/small head separate. Abrupt ears, card-like pages, crowded lamp/muzzle and paper seam.",
+          "biggest": "Cat pose / tail-body relationship.",
+          "change": "Curl the tail along the lower body, tucked near paws."
+        },
+        {
+          "agent": "window_initial_b",
+          "findings": "Cat body/head assembled, U-tail ribbon ambiguous, foxlike ears, stiff book blocks. Moon/window/lamp legible and coherent colours.",
+          "biggest": "Curled sleeping silhouette unclear.",
+          "change": "Rebuild body-head-tail as a coherent pose."
+        }
+      ],
+      "disposition": "Observed head inset, rear-root pending tail replacement, shorter ears, removal of misleading light ellipse, cover and seated sill joint.",
+      "png_sha256": "00353bfca3f632a1ac3f24c02078499c149b04fb2deeb5c4558a923afbbbb25e"
+    },
+    {
+      "bundle": "check-revised",
+      "revision": "33-compact-body",
+      "reviews": [
+        {
+          "agent": "window_revised_a",
+          "findings": "Tail still a band tracing belly, oval body and round head assembled. Lamp light limited to rim. Window/moon/book/lamp legible, quiet focal area.",
+          "biggest": "Tail-body anatomy.",
+          "change": "Clear rear attachment and some tail/belly separation."
+        },
+        {
+          "agent": "window_revised_b",
+          "findings": "Cat readable as sleeping but featureless oval/cushion without paw or haunch. Book remains card-like. Balanced composition and clean edges.",
+          "biggest": "Cat body lacks structure.",
+          "change": "Add a tucked forepaw beneath cheek with separation contour."
+        }
+      ],
+      "disposition": "Tail moved behind the haunch and bowed below belly; forepaw added after freeing one decorative node; shared coat material removes unexplained circular colour seam.",
+      "png_sha256": "47c1e53a6f3bb6508eb002eb0f8542028e331f9f832796cdaac0ce40d26bc21c"
+    },
+    {
+      "bundle": "check-occlusion",
+      "revision": "46-shared-coat",
+      "reviews": [
+        {
+          "agent": "window_occlusion_a",
+          "findings": "Oval body dominates face; tail becomes hanging loop/hammock, ears seem separated. Window/moon/book/lamp clear, coherent subdued palette.",
+          "biggest": "Curled silhouette unclear.",
+          "change": "Tail should follow lower body more closely."
+        },
+        {
+          "agent": "window_occlusion_b",
+          "findings": "Cat body suspended above pale wedge, tail like sling, tiny paw only contact. Head/closed eye readable; room objects recognizable. Sharp ear notch.",
+          "biggest": "Resting support unclear.",
+          "change": "Compressed resting haunch with clear shelf contact, then tail curl."
+        }
+      ],
+      "disposition": "Verified actual arc coordinates before acting: front focus already y565.157 near the y563.4 sill; rear focus y555.322 was the unsupported region. Rear bottom contour pushed down .06 nominal extent while protected mounts stayed fixed; tail bow tightened with rear occlusion retained.",
+      "png_sha256": "8850a853a7717eb148d78192087ed617d83030c45304c1ec94b006a85fac153d"
+    },
+    {
+      "bundle": "check-contact",
+      "revision": "53-tail-closer",
+      "reviews": [
+        {
+          "agent": "window_contact_a",
+          "findings": "Sleeping cat/book/lamp/night reads clearly. Underside still overlapping shapes; tail vs belly crescent ambiguous, resting weight weak, no cast light, large empty window; book lower edge partly detached.",
+          "biggest": "Resting anatomy remains ambiguous.",
+          "change": "Coherent curled silhouette, wrapped tail and broad contact."
+        },
+        {
+          "agent": "window_contact_b",
+          "findings": "Room objects and resting cat clear. Oval body directly into face lacks neck/shoulder/tucked foreleg. Peach paw/muzzle ambiguous; tail partly extra belly contour. Book division and closed eye survive small size.",
+          "biggest": "Cat resting anatomy.",
+          "change": "Distinct shoulder-to-paw contour and meaningful support overlap."
+        }
+      ],
+      "disposition": "Art gate remains open. Scalar proportions, local contour and registration fixes did not establish anatomical structure. Do not productize this as a finished cat preset or repeat an uninformative cosmetic loop; next use explicit body/haunch/foreleg/support construction.",
+      "png_sha256": "95728c9e78abef7b820412583ae3ff133dad40238b6daa20715539a19bd92700"
+    }
+  ]
+}

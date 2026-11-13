@@ -75,6 +75,17 @@ removes the entire insertion. Discarding a proposal requires no scene mutation. 
 A stale/failed candidate cannot be revised or accepted. `add` is the older immediate convenience
 for scripted replays; use `place` for this observe-before-insertion workflow.
 
+For a new stroke that must touch two objects, configure both endpoints while it is still pending.
+First inspect each exact working target with --feature anchors --anchor NAME, and observe the
+initial stroke placement. Then use `place work.json --revise NEW/candidate.json --feature root
+--bind-end LEFT/selection.json --reason "Seat the first end" --outdir ROOT`. Observe ROOT, then
+revise ROOT/candidate.json with --feature tip --bind-end RIGHT/selection.json. Each step preserves
+all working paint. Once both are bound, length/angle are derived; use an object revision for bend,
+thickness or colour before accepting. The other end stays bound. Source and target labels stay
+inside the focused camera. --target-anchor and --inset follow normal endpoint binding rules;
+--self-anchor/--orient belong to whole-object joins and refuse here. Target selections must still
+be current on the unchanged working scene. A new preset must be previewed before endpoint binding.
+
 ## Connect two named mounts visibly
 
 Use one proposal instead of separately inspecting both endpoints:
@@ -243,7 +254,8 @@ with explicit intents. Inspect object to change length (height / shorter canvas 
 (width / height), profile block|oval, rounding (0 sharper, 1 ellipse), taper (-.98 narrower bottom,
 +.98 narrower top), stroke (width / height, 0 flat fill), fill_color and ink_color. Block uses a
 superellipse, so sharp is still softly rounded. Oval ignores rounding. This is a silhouette, not a
-3D solid or an attached child. Use screen moves and depth to compose; insertion starts in front.
+3D solid. Named mounts support projected attachment; use screen moves and depth to compose.
+Insertion starts in front.
 
 For a local correction inspect --feature left|right|top|bottom --at .5 --radius .25. The orange
 arc shows the influence; endpoint rings stay fixed. Preview --move left|right|up|down --amount .08
@@ -252,6 +264,19 @@ clockwise: top left-to-right, right top-to-bottom, bottom right-to-left, left bo
 The arc parameter follows nominal arc length; edited bounds do not reparameterize prior edits.
 Inspect a new revision before each further operation. Reject an unhelpful preview. Combine these
 shapes for new subjects instead of assuming a subject-specific generator must exist first.
+
+Prove an unfamiliar subject component in an isolated structural plate before decorating a scene.
+A named paw needs a visible foreleg connection and support; another oval with a correct pin does
+not establish that anatomy. If the same pose defect survives proportion/colour edits, revisit the
+volume and limb model instead of continuing cosmetic trials. Establish supporting surfaces and
+the main connected silhouette before decorative cues. A small
+light-coloured mass beside a face can read as anatomy instead of illumination; remove a misleading
+cue rather than explaining it in the prompt. Explicitly order overlapping flat paint layers; touching
+book pages on one identical plane need an authored front/back decision.
+
+For a long thin horizontal rail, rotate a tall mass90 degrees: length sets span, width remains
+width/height, and its local right mount becomes screen top. Inspect the actual named ports before
+attaching supported objects. Do not mistake an aspect ratio for an absolute horizontal width.
 
 Thin marks can use a tall shape with width .008 and stroke 0, rotated as needed. The initial
 width floor .05 blocked this legitimate use; current minimum is .001. At very small sizes inspect

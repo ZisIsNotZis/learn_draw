@@ -673,3 +673,10 @@ removes an artificial reach restriction; local elbow edits still refine its gest
 through tools reapplies gesture defaults while keeping style and connections. The revised greeting
 remains a graphic study with finish/detail weaknesses, not a finished-art acceptance. Current
 evidence and operational limits are in ../evidence/studio-join-preview/README.md.
+
+Pending strokes now support both independently inspected endpoint bindings before insertion, with
+curve/cap/material refinement still pending. This reuses the existing two-end constraint model;
+there is no new geometry primitive or automatic art-quality claim. Actual book operation is in
+../evidence/studio-window-cat/README.md. Its original room study remains unresolved: generic ellipse
+assembly plus pins failed to establish a sleeping cat's haunch/foreleg/support structure. A cat
+preset is not adopted. The next component experiment must prove that structure before scene finish.

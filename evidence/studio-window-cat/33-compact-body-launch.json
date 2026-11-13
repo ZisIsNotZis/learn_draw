@@ -1,0 +1,24 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-window-cat/working.json",
+    "--selection",
+    "evidence/studio-window-cat/32-body/selection.json",
+    "--change",
+    "length=.19",
+    "--change",
+    "width=1.65",
+    "--reason",
+    "Make the oversized horizontal back more compact and rounded while the head and rear tail remain attached",
+    "--outdir",
+    "evidence/studio-window-cat/33-compact-body"
+  ],
+  "started": "2026-11-13T11:04:03.904126+00:00",
+  "state": "terminal",
+  "pid": 35532,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:04:04.821298+00:00"
+}

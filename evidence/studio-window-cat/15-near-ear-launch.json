@@ -1,0 +1,20 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "inspect",
+    "evidence/studio-window-cat/working.json",
+    "--object",
+    "near-ear",
+    "--feature",
+    "object",
+    "--outdir",
+    "evidence/studio-window-cat/15-near-ear"
+  ],
+  "started": "2026-11-13T10:34:59.930357+00:00",
+  "state": "terminal",
+  "pid": 48176,
+  "exit_code": 0,
+  "terminal": "2026-11-13T10:35:00.824912+00:00"
+}

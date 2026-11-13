@@ -8,7 +8,7 @@ milestones are `0_ROADMAP.md`.
 
 ## Current studio commands and evidence
 
-Current verification is indexed at evidence/studio-join-preview/README.md: run_tests.py --outdir FRESH,
+Current verification is indexed at evidence/studio-window-cat/README.md: run_tests.py --outdir FRESH,
 verify_preservation.py --outdir FRESH and verify_delivery.py --outdir FRESH in that directory.
 Earlier feature sections below retain revision-specific evidence links/counts; their frozen
 source-bound verifiers may correctly refuse a newer engine. Use this current entry for delivery.
@@ -463,5 +463,16 @@ skill owns the complete recipe and 7_INTERFACE the supported ports/constraint co
 
 New heads have stable recipe frames. To correct an old chin pin, observe and reattach the same
 chin/target: the tool captures its existing frame automatically. Do not add fractional counter-
-offsets. Current studio-family coverage is144 tests; current verification commands/evidence are
-in evidence/studio-join-preview/README.md. Earlier body records keep their original128-test/source scope.
+offsets. Current studio-family coverage is148 tests; current verification commands/evidence are
+in evidence/studio-window-cat/README.md. Earlier body records keep their original128-test/source scope.
+
+## Pending two-contact strokes and the current original study
+
+After observing an initial stroke placement, revise with --feature root|tip --bind-end an independently
+inspected target selection. Both bindings and object curve refinements can finish before insertion.
+The current drawing skill owns the full recipe. A documented public example is
+python examples/studio/window_cat.py --outdir FRESH; it opens an editable unresolved study, not an
+accepted cat preset. --initial-sketch reproduces its explicitly historical supported recipe.
+Current replay/digests/source/geometry checks are in evidence/studio-window-cat/README.md; use fresh
+verification outputs outside that frozen evidence tree. The four image-review pairs retain anatomy
+failures. Do not interpret mechanical148-test success as whole-image quality.

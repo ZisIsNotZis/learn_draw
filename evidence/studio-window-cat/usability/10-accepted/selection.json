@@ -1,0 +1,59 @@
+{
+  "base": "6710283e9c72173d86045fc37cd6af7a13977018df48cf783bcabc63e1937cde",
+  "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+  "object": "book-cover",
+  "kind": "feature",
+  "feature": "root",
+  "bounds": [
+    215.56511411928062,
+    542.5113149130125,
+    239.56511411928062,
+    566.5113149130125
+  ],
+  "object_bounds": [
+    221.08556141243642,
+    544.3160183866355,
+    378.413760693959,
+    563.8687490602088
+  ],
+  "controls": [
+    "intent",
+    "thickness",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "screen terminal movement as fraction of shorter canvas dimension; opposite terminal fixed",
+  "interaction": "stroke-terminal",
+  "locks": {
+    "tip": [
+      371.93632654676264,
+      557.3913149130125
+    ]
+  },
+  "focus": [
+    227.56511411928062,
+    554.5113149130125
+  ],
+  "endpoint_bindings": {
+    "root": {
+      "to": "book-left",
+      "target": "left@.1",
+      "inset": 0
+    },
+    "tip": {
+      "to": "book-right",
+      "target": "right@.9",
+      "inset": 0
+    }
+  }
+}

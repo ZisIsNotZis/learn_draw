@@ -1,0 +1,34 @@
+{
+  "base": "ff8f93122007ab108831df4f189dcf8358f4dd5e8b01274ec69e6eaaa23443f6",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "object": "far-ear",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    613.9268483614323,
+    440.0075066348225,
+    646.5412067593127,
+    496.04122217851483
+  ],
+  "object_bounds": [
+    613.9268483614323,
+    440.0075066348225,
+    646.5412067593127,
+    496.04122217851483
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

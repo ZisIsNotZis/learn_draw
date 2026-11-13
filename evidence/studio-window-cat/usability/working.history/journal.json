@@ -1,0 +1,13 @@
+[
+  {
+    "base": "5770caaa0df432fd41ae9e42adfad40c26aaf803d72adb96a5036ee6a55c84e6",
+    "result": "6710283e9c72173d86045fc37cd6af7a13977018df48cf783bcabc63e1937cde",
+    "operation": {
+      "action": "place",
+      "object": "book-cover",
+      "kind": "stroke",
+      "reason": "The cover must rise toward the gutter with the page bottoms instead of sagging into a detached bowl",
+      "revised_from": "5751342c49172d49878114970668b5b1c97891f8f49cfdb780853b1ab6ad7343"
+    }
+  }
+]

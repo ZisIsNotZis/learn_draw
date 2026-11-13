@@ -341,3 +341,9 @@ report terminal sleeve width, actual open-hand wrist section or owned grip/handl
 automatically fit material, infer anatomy or judge visual quality. Wave is a computed right-arm
 preset. Applying a pose through the tool clears gesture overrides, preserving cuff/style/relations;
 reading raw scenes still applies explicit overrides after defaults.
+
+Pending endpoint revision reuses bind_endpoint_preview after validating the prior placement's exact
+working remainder. It verifies the working target selection before rebinding that selection to the
+unchanged staged copy. A second binding derives the chord through the existing endpoint solver.
+The final exact anchor view retains insertion metadata and marks the source/target pair for fixed-
+camera labels, so configuring a new two-contact stroke needs no provisional working acceptance.

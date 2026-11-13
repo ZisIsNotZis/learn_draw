@@ -1,0 +1,50 @@
+{
+  "base": "c911037528686613a14402b5826ab16e27d9ff3bfccb6c8a7e24608278b3311b",
+  "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+  "object": "sill-apron",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    444.7999999999999,
+    587.0000000000001,
+    476.7999999999999,
+    619.0000000000001
+  ],
+  "object_bounds": [
+    71.99999999999977,
+    603.0000000000001,
+    849.5999999999998,
+    618.84
+  ],
+  "controls": [],
+  "focus": [
+    460.7999999999999,
+    603.0000000000001
+  ],
+  "locks": {
+    "right": [
+      460.7999999999999,
+      603.0000000000001
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "anchor": "right",
+  "attachment_target": {
+    "object": "window-sill",
+    "anchor": "left"
+  },
+  "join": {
+    "source": {
+      "object": "sill-apron",
+      "anchor": "right"
+    },
+    "target": {
+      "object": "window-sill",
+      "anchor": "left"
+    },
+    "requested_mode": "point",
+    "mode": "point",
+    "before_revision": "c911037528686613a14402b5826ab16e27d9ff3bfccb6c8a7e24608278b3311b",
+    "pending": false
+  }
+}

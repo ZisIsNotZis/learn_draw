@@ -1,0 +1,28 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-window-cat/working.json",
+    "--selection",
+    "evidence/studio-window-cat/35-tail-depth/selection.json",
+    "--change",
+    "depth=12.5",
+    "--change",
+    "bend=-.32",
+    "--change",
+    "thickness=.025",
+    "--change",
+    "start_width=.85",
+    "--reason",
+    "Let the haunch hide the tail root, and let the lower curl separate from the belly rather than paint a broad band across it",
+    "--outdir",
+    "evidence/studio-window-cat/36-tail-behind"
+  ],
+  "started": "2026-11-13T11:09:23.776214+00:00",
+  "state": "terminal",
+  "pid": 35628,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:09:24.675957+00:00"
+}

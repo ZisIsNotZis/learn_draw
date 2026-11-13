@@ -1,0 +1,21 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-window-cat/working.json",
+    "--selection",
+    "evidence/studio-window-cat/38-star/selection.json",
+    "--remove",
+    "--reason",
+    "Prioritize a readable tucked paw over a tiny background star within the current scene budget",
+    "--outdir",
+    "evidence/studio-window-cat/39-remove-star"
+  ],
+  "started": "2026-11-13T11:11:04.618903+00:00",
+  "state": "terminal",
+  "pid": 3484,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:11:05.608439+00:00"
+}

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-window-cat/working.json",
+    "--selection",
+    "evidence/studio-window-cat/07-tail/selection.json",
+    "--remove",
+    "--reason",
+    "Replace the cheek-crossing ribbon with a tail that starts at the rear and tucks below the head",
+    "--outdir",
+    "evidence/studio-window-cat/08-remove-tail"
+  ],
+  "started": "2026-11-13T10:30:28.687892+00:00",
+  "state": "terminal",
+  "pid": 15044,
+  "exit_code": 0,
+  "terminal": "2026-11-13T10:30:29.584863+00:00"
+}

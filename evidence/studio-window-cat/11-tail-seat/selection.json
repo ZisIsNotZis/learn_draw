@@ -1,0 +1,60 @@
+{
+  "base": "661a92c974fcc743f375f7333a9b6f5425150eb4ce8ffc07b960549c9fc4c05e",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "object": "tucked-tail",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    400.19970040972703,
+    478.6450215644719,
+    432.19970040972703,
+    510.6450215644719
+  ],
+  "object_bounds": [
+    405.4061123536399,
+    483.8514335083848,
+    644.8047965442535,
+    557.821095546681
+  ],
+  "controls": [],
+  "focus": [
+    416.19970040972703,
+    494.6450215644719
+  ],
+  "locks": {
+    "root": [
+      416.19970040972703,
+      494.6450215644719
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "endpoint_bindings": {
+    "root": {
+      "to": "sleeping-body",
+      "target": "left",
+      "inset": 0
+    }
+  },
+  "insertion": {
+    "object": "tucked-tail"
+  },
+  "attachment_target": {
+    "object": "sleeping-body",
+    "anchor": "left"
+  },
+  "anchor": "root",
+  "join": {
+    "source": {
+      "object": "tucked-tail",
+      "anchor": "root"
+    },
+    "target": {
+      "object": "sleeping-body",
+      "anchor": "left"
+    },
+    "requested_mode": "point",
+    "mode": "point",
+    "before_revision": "83799c2a6fc90f5f80f4338e4ba60eb52072cbc1721d09a03e34b27ba32de2de",
+    "pending": true
+  }
+}

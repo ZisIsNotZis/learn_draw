@@ -1,0 +1,26 @@
+{
+  "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+  "old_engine_reconstructed": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "digests": 892,
+  "studio_tests": 148,
+  "preserved_pngs": 10,
+  "book_contacts": [
+    {
+      "end": "root",
+      "parent": "book-left",
+      "port": "bottom@.95",
+      "error_pixels": 0.0
+    },
+    {
+      "end": "tip",
+      "parent": "book-right",
+      "port": "bottom@.05",
+      "error_pixels": 0.0
+    }
+  ],
+  "operator_recovery_byte_pairs": 4,
+  "protected_haunch_mounts": true,
+  "scope": "Mechanical/artifact capability only. Four image-review pairs retain unresolved cat anatomy; no whole-artwork/human acceptance.",
+  "fresh_cwd_png_exact": true,
+  "visual_input_audit_passed": true
+}

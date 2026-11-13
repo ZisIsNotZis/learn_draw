@@ -1,0 +1,52 @@
+{
+  "base": "5770caaa0df432fd41ae9e42adfad40c26aaf803d72adb96a5036ee6a55c84e6",
+  "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+  "object": "book-cover",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    355.93632654676264,
+    541.3913149130125,
+    387.93632654676264,
+    573.3913149130125
+  ],
+  "object_bounds": [
+    222.5252656020235,
+    549.4714663957553,
+    376.9737238834151,
+    575.464343345995
+  ],
+  "controls": [],
+  "focus": [
+    371.93632654676264,
+    557.3913149130125
+  ],
+  "locks": {
+    "tip": [
+      371.93632654676264,
+      557.3913149130125
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "anchor": "tip",
+  "endpoint_bindings": {
+    "root": {
+      "to": "book-left",
+      "target": "left@.1",
+      "inset": 0
+    },
+    "tip": {
+      "to": "book-right",
+      "target": "right@.9",
+      "inset": 0
+    }
+  },
+  "join_pair": true,
+  "insertion": {
+    "object": "book-cover"
+  },
+  "attachment_target": {
+    "object": "book-right",
+    "anchor": "right@.9"
+  }
+}

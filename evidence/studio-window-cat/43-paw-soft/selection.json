@@ -1,0 +1,47 @@
+{
+  "base": "ddfa0f5d2db4fd1af8b1422b8ffa9625c9808b2f1020d3e6fb9cf62286ef2472",
+  "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+  "object": "tucked-paw",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    599.1772487531016,
+    560.6626759920603,
+    638.6251745104832,
+    577.9426759920602
+  ],
+  "object_bounds": [
+    599.1772487531016,
+    560.6626759920603,
+    638.6251745104832,
+    577.9426759920602
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      618.9012116317924,
+      569.3026759920602
+    ],
+    "top": [
+      618.9012116317924,
+      560.6626759920603
+    ],
+    "right": [
+      638.561464728955,
+      569.0507177636688
+    ],
+    "bottom": [
+      618.9012116317924,
+      577.9426759920602
+    ],
+    "left": [
+      599.2409585346298,
+      569.0507177636688
+    ]
+  },
+  "units": "named geometry mounts; default point pin, optional opposed direction on semantic joints",
+  "insertion": {
+    "object": "tucked-paw"
+  }
+}

@@ -13,6 +13,11 @@ uv run python examples/studio/compose.py --theme moonrise --refined --outdir evi
 uv run python examples/studio/held_props.py --scene flag --outdir evidence/my-held-flag
 ```
 
+A new stroke can now bind both ends while it is still pending: revise with `--feature root|tip
+--bind-end TARGET/selection.json`, inspect each proposal, then refine and accept once.
+[Actual independent operation and source-bound checks](evidence/studio-window-cat/README.md) also
+record the unresolved cat anatomy in an original night-room study; the study is not a cat preset.
+
 Use [the current roadmap](docs/0_ROADMAP.md), [operation skill](skills/drawing-studio/SKILL.md), and [scene contract](docs/7_INTERFACE.md). PNGs prefer native CPU resvg, with CairoSVG or GPU-disabled installed Chromium/Edge as fallbacks. The material below records the earlier portrait and toolchain; historical completion statements do not establish current product acceptance.
 
 An editable five-digit open-hand preset also supports visible tip edits around fixed knuckles.

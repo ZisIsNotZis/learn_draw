@@ -1,0 +1,26 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "join",
+    "evidence/studio-window-cat/working.json",
+    "--source",
+    "sill-apron.right",
+    "--target",
+    "window-sill.left",
+    "--mode",
+    "point",
+    "--inset",
+    ".04",
+    "--reason",
+    "Seat the front lip slightly beneath the broad sill board instead of leaving an exposed paper joint",
+    "--outdir",
+    "evidence/studio-window-cat/30-sill-seat"
+  ],
+  "started": "2026-11-13T11:02:47.734283+00:00",
+  "state": "terminal",
+  "pid": 38788,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:02:48.899187+00:00"
+}

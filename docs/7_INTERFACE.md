@@ -614,3 +614,22 @@ invalid ports and unfinished renders refuse. The working scene stays unchanged u
 The report contains join.source/target names, requested_mode, resolved mode, before_revision,
 pending, and before/after anchor geometry. Six PNGs bind the exact working/pending before scene
 and proposed after scene. --svg-only supplies SVGs without a PNG image list.
+
+## Pending stroke endpoint binding
+
+For a new stroke that must touch two objects, configure both endpoints while it is still pending.
+First inspect each exact working target with --feature anchors --anchor NAME, and observe the
+initial stroke placement. Then use `place work.json --revise NEW/candidate.json --feature root
+--bind-end LEFT/selection.json --reason "Seat the first end" --outdir ROOT`. Observe ROOT, then
+revise ROOT/candidate.json with --feature tip --bind-end RIGHT/selection.json. Each step preserves
+all working paint. Once both are bound, length/angle are derived; use an object revision for bend,
+thickness or colour before accepting. The other end stays bound. Source and target labels stay
+inside the focused camera. --target-anchor and --inset follow normal endpoint binding rules;
+--self-anchor/--orient belong to whole-object joins and refuse here. Target selections must still
+be current on the unchanged working scene. A new preset must be previewed before endpoint binding.
+
+--attach and --bind-end are mutually exclusive placement operations. --bind-end requires a ready
+--revise candidate, kind stroke, and --feature root|tip. The result remains action place, with an
+exact endpoint anchor view, insertion metadata and current target geometry. Every old raw node
+remains unchanged. Binding, parameter revision, acceptance and undo use the same engine/base/result
+and ready-render checks; output alias guards include the target selection.

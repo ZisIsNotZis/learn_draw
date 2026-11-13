@@ -1,0 +1,213 @@
+[
+  {
+    "base": "26208690f8025d35f21732e9862e1cba06d0ebdeb2c7cd4fd6e9d8a348a15f8a",
+    "result": "c4d5c869810b59b73470dd4d103dedd0ed2bbcc14e958790fb7b2850e3365878",
+    "operation": {
+      "object": "sleeping-head",
+      "feature": "object",
+      "direction": "left",
+      "amount": 0.045,
+      "units": "screen offset from attached target, shorter canvas dimension",
+      "reason": "Nest the sleeping head into the curled body and leave breathing room before the lamp base"
+    }
+  },
+  {
+    "base": "c4d5c869810b59b73470dd4d103dedd0ed2bbcc14e958790fb7b2850e3365878",
+    "result": "661a92c974fcc743f375f7333a9b6f5425150eb4ce8ffc07b960549c9fc4c05e",
+    "operation": {
+      "action": "remove",
+      "object": "curling-tail",
+      "removed": [
+        "curling-tail"
+      ],
+      "detached_children": [],
+      "cascade": false,
+      "reason": "Replace the cheek-crossing ribbon with a tail that starts at the rear and tucks below the head"
+    }
+  },
+  {
+    "base": "661a92c974fcc743f375f7333a9b6f5425150eb4ce8ffc07b960549c9fc4c05e",
+    "result": "d6946238fbe315a1ae356fb5842ff24d4e5619b166774945d622fed082d1c918",
+    "operation": {
+      "action": "place",
+      "object": "tucked-tail",
+      "kind": "stroke",
+      "reason": "Retain a rounded tail tip and a visible low curl; the previous lowered-tip trial became a straight diagonal stripe",
+      "revised_from": "aa5ad8808c0aa9dac8d267e504b590ade86418790e6f6f085fd88b0bc1f7f1d6"
+    }
+  },
+  {
+    "base": "d6946238fbe315a1ae356fb5842ff24d4e5619b166774945d622fed082d1c918",
+    "result": "ff8f93122007ab108831df4f189dcf8358f4dd5e8b01274ec69e6eaaa23443f6",
+    "operation": {
+      "object": "near-ear",
+      "feature": "object",
+      "parameters": {
+        "length": 0.055,
+        "width": 0.9,
+        "taper": 0.8,
+        "rounding": 0.55,
+        "angle": -8.0
+      },
+      "reason": "Make the near ear shorter and broader so the sleeping head reads as a cat rather than a fox"
+    }
+  },
+  {
+    "base": "ff8f93122007ab108831df4f189dcf8358f4dd5e8b01274ec69e6eaaa23443f6",
+    "result": "93286023dce83b3b8abae0c7b890c5d04bbdf165f1cbd590974b41367d6311e1",
+    "operation": {
+      "object": "far-ear",
+      "feature": "object",
+      "parameters": {
+        "length": 0.055,
+        "width": 0.85,
+        "taper": 0.8,
+        "rounding": 0.55
+      },
+      "reason": "Shorten and soften the rear ear to match a compact sleeping cat silhouette"
+    }
+  },
+  {
+    "base": "93286023dce83b3b8abae0c7b890c5d04bbdf165f1cbd590974b41367d6311e1",
+    "result": "5770caaa0df432fd41ae9e42adfad40c26aaf803d72adb96a5036ee6a55c84e6",
+    "operation": {
+      "action": "remove",
+      "object": "warm-pool",
+      "removed": [
+        "warm-pool"
+      ],
+      "detached_children": [],
+      "cascade": false,
+      "reason": "The tiny supposed light pool reads as an extension of the muzzle and crowds the lamp; remove that ambiguous cue"
+    }
+  },
+  {
+    "base": "5770caaa0df432fd41ae9e42adfad40c26aaf803d72adb96a5036ee6a55c84e6",
+    "result": "c911037528686613a14402b5826ab16e27d9ff3bfccb6c8a7e24608278b3311b",
+    "operation": {
+      "action": "place",
+      "object": "book-cover",
+      "kind": "stroke",
+      "reason": "Match the other underside contact so the cover visibly supports both pages",
+      "revised_from": "3c84b968e6be1d78161f15c58e6b810f0cdf3bd582196bead05038acd2eabf2c"
+    }
+  },
+  {
+    "base": "c911037528686613a14402b5826ab16e27d9ff3bfccb6c8a7e24608278b3311b",
+    "result": "a303a39126918898cb3516a317ca503384bd9397785a0a535e0909e1fbce416d",
+    "operation": {
+      "action": "join",
+      "object": "sill-apron",
+      "attachment": {
+        "to": "window-sill",
+        "self": "right",
+        "target": "left",
+        "inset": 0.04
+      },
+      "reason": "Seat the front lip slightly beneath the broad sill board instead of leaving an exposed paper joint",
+      "join": {
+        "source": {
+          "object": "sill-apron",
+          "anchor": "right"
+        },
+        "target": {
+          "object": "window-sill",
+          "anchor": "left"
+        },
+        "requested_mode": "point",
+        "mode": "point",
+        "before_revision": "c911037528686613a14402b5826ab16e27d9ff3bfccb6c8a7e24608278b3311b",
+        "pending": false
+      }
+    }
+  },
+  {
+    "base": "a303a39126918898cb3516a317ca503384bd9397785a0a535e0909e1fbce416d",
+    "result": "88c2e0453b10e6c87de771294a362b4d81559371a33443c22784a53080e5504b",
+    "operation": {
+      "object": "sleeping-body",
+      "feature": "object",
+      "parameters": {
+        "length": 0.19,
+        "width": 1.65
+      },
+      "reason": "Make the oversized horizontal back more compact and rounded while the head and rear tail remain attached"
+    }
+  },
+  {
+    "base": "88c2e0453b10e6c87de771294a362b4d81559371a33443c22784a53080e5504b",
+    "result": "2630a7f4d3037c6d0ea1055c68f7f809b4b6c0bf5d45fa7aae080a825e57710c",
+    "operation": {
+      "object": "tucked-tail",
+      "feature": "object",
+      "parameters": {
+        "depth": 12.5,
+        "bend": -0.32,
+        "thickness": 0.025,
+        "start_width": 0.85
+      },
+      "reason": "Let the haunch hide the tail root, and let the lower curl separate from the belly rather than paint a broad band across it"
+    }
+  },
+  {
+    "base": "2630a7f4d3037c6d0ea1055c68f7f809b4b6c0bf5d45fa7aae080a825e57710c",
+    "result": "ddfa0f5d2db4fd1af8b1422b8ffa9625c9808b2f1020d3e6fb9cf62286ef2472",
+    "operation": {
+      "action": "remove",
+      "object": "high-star",
+      "removed": [
+        "high-star"
+      ],
+      "detached_children": [],
+      "cascade": false,
+      "reason": "Prioritize a readable tucked paw over a tiny background star within the current scene budget"
+    }
+  },
+  {
+    "base": "ddfa0f5d2db4fd1af8b1422b8ffa9625c9808b2f1020d3e6fb9cf62286ef2472",
+    "result": "05cf583659a64a0a920634eff1e578a529374b92df7f20b665fe788ce2c4ac69",
+    "operation": {
+      "action": "place",
+      "object": "tucked-paw",
+      "kind": "shape",
+      "reason": "Soften the block-like paw into a low rounded forefoot and nest its upper edge behind the cheek",
+      "revised_from": "43cfd8eb08c59a959abdab6d7ef157f780fd4df9a33cc431aab0f29bdbe5a378"
+    }
+  },
+  {
+    "base": "05cf583659a64a0a920634eff1e578a529374b92df7f20b665fe788ce2c4ac69",
+    "result": "9c8fe3d7be94706350caa3e8106e72f10bf762d9a0a32c68b3539b4a9d8adfb8",
+    "operation": {
+      "object": "sleeping-body",
+      "feature": "object",
+      "reason": "Give head and body one continuous coat material instead of implying an unexplained circular seam through a colour change",
+      "parameter": "fill_color",
+      "value": "#c27b55"
+    }
+  },
+  {
+    "base": "9c8fe3d7be94706350caa3e8106e72f10bf762d9a0a32c68b3539b4a9d8adfb8",
+    "result": "3a09f71fcb45d0a7fc32796883180bb417969af224a6bfd7f91606771a27befe",
+    "operation": {
+      "side": "bottom",
+      "at": 0.8,
+      "radius": 0.18,
+      "dx": 0.005229344564859489,
+      "dy": 0.05977168188550473,
+      "reason": "Broaden the resting rear haunch onto the sill; the inspected rear belly sits above the supporting surface while its bottom pin and head/tail mounts must stay fixed",
+      "object": "sleeping-body",
+      "units": "nominal shorter shape extent"
+    }
+  },
+  {
+    "base": "3a09f71fcb45d0a7fc32796883180bb417969af224a6bfd7f91606771a27befe",
+    "result": "349118e53d33a039c605a7ef49ae437e7c6d4455fe536450653ad41d37772832",
+    "operation": {
+      "object": "tucked-tail",
+      "feature": "object",
+      "reason": "Bring the separated tail curl closer to the now-grounded belly while retaining its rear occlusion and fixed endpoints",
+      "parameter": "bend",
+      "value": -0.23
+    }
+  }
+]

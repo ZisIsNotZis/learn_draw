@@ -1,0 +1,24 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-window-cat/working.json",
+    "--selection",
+    "evidence/studio-window-cat/04-head/selection.json",
+    "--move",
+    "left",
+    "--amount",
+    ".045",
+    "--reason",
+    "Nest the sleeping head into the curled body and leave breathing room before the lamp base",
+    "--outdir",
+    "evidence/studio-window-cat/05-head-nest"
+  ],
+  "started": "2026-11-13T10:28:54.638594+00:00",
+  "state": "terminal",
+  "pid": 47376,
+  "exit_code": 0,
+  "terminal": "2026-11-13T10:28:55.554889+00:00"
+}

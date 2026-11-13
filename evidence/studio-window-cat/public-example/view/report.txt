@@ -1,0 +1,4 @@
+D:\vibe\learn_draw_studio\evidence\studio-window-cat\public-example\view\artwork.png
+D:\vibe\learn_draw_studio\evidence\studio-window-cat\public-example\view\alignment.png
+D:\vibe\learn_draw_studio\evidence\studio-window-cat\public-example\view\object-closeup.png
+D:\vibe\learn_draw_studio\evidence\studio-window-cat\public-example\view\edit-closeup.png

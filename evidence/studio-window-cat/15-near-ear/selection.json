@@ -1,0 +1,34 @@
+{
+  "base": "d6946238fbe315a1ae356fb5842ff24d4e5619b166774945d622fed082d1c918",
+  "engine": "5d491f0d1630c7b1b84a2a657661e4450d548982b153759bbb6cba206e85a006",
+  "object": "near-ear",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    652.9433773342876,
+    433.69628173263783,
+    690.9884158375139,
+    497.1585442564518
+  ],
+  "object_bounds": [
+    652.9433773342876,
+    433.69628173263783,
+    690.9884158375139,
+    497.1585442564518
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

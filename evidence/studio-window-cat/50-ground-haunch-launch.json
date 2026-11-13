@@ -1,0 +1,24 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-window-cat/working.json",
+    "--selection",
+    "evidence/studio-window-cat/49-belly-rear/selection.json",
+    "--move",
+    "down",
+    "--amount",
+    ".06",
+    "--reason",
+    "Broaden the resting rear haunch onto the sill; the inspected rear belly sits above the supporting surface while its bottom pin and head/tail mounts must stay fixed",
+    "--outdir",
+    "evidence/studio-window-cat/50-ground-haunch"
+  ],
+  "started": "2026-11-13T11:22:04.083456+00:00",
+  "state": "terminal",
+  "pid": 28396,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:22:04.949077+00:00"
+}

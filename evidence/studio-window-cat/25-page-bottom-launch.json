@@ -1,0 +1,22 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "inspect",
+    "evidence/studio-window-cat/working.json",
+    "--object",
+    "book-left",
+    "--feature",
+    "anchors",
+    "--anchor",
+    "bottom@.95",
+    "--outdir",
+    "evidence/studio-window-cat/25-page-bottom"
+  ],
+  "started": "2026-11-13T11:00:47.236159+00:00",
+  "state": "terminal",
+  "pid": 16020,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:00:48.452641+00:00"
+}

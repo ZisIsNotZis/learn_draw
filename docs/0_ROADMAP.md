@@ -52,8 +52,12 @@ uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation ski
   receiving surface and palm/handle/thumb overlap. These are bounded visual outcomes, not a
   general anatomy or physical-fold capability.
 
-The current paired-join/local-cuff advance passes144 studio-family tests; ten earlier/default
-PNGs remain exact. Source-bound evidence is ../evidence/studio-join-preview/README.md. The earlier
+The current pending-endpoint advance passes148 studio-family tests; ten earlier/default PNGs
+remain exact. Current source-bound evidence is ../evidence/studio-window-cat/README.md. A fresh
+operator binds both ends of a new book cover while it remains pending, refines it, and verifies
+recovery/refusal. The original night-room study remains unresolved after four fresh image-review
+pairs: object recognition is clear, but cat anatomy/support is not. This is not an adopted cat preset.
+The paired-join/local-cuff advance passed144 tests (../evidence/studio-join-preview/README.md). The earlier
 stable-frame/directional-joint advance passed138 tests (../evidence/studio-joints/README.md). The earlier native-body advance passed128 tests
 (../evidence/studio-body/README.md). The focused
 response advance passed122 tests (../evidence/studio-feedback/README.md). The earlier
@@ -79,6 +83,11 @@ Exact schema/algorithms are owned by 7_INTERFACE.md/8_DETAIL.md.
 
 ## What is still weak or unverified
 
+The new night-room study is recognizable but its cat remains anatomically unresolved. The first
+failed assumption was author-side: scene decoration preceded proof of the component. Correct
+registration and a paw-shaped cue did not replace a real tucked foreleg and grounded haunch.
+Repeated fresh reviews changed the next action to structural construction, not further polish.
+
 The earlier generic figure study has an assembled shoulder boundary and tube-like elbow; that
 representation was not adopted. The native body removes the assembled seam and exposes local
 joints, but fresh images still show tube-like elbows, straight hanging sleeves, frontal attention,
@@ -103,24 +112,32 @@ count or attractive interface alone cannot establish the desired capability.
 
 ## Next action and checkpoint
 
-The paired join replaces repeated endpoint inspections with one visible proposal. A pending new
-component remains uncommitted; both ports and the before/after cameras are explicit. Cuff width
-changes independently of the hand and protected joints. The public greeting now has a high wave,
-separately tapered cuffs and a rising upper sleeve after image-only critics identified the former
-horizontal tube. Follow-up critics recognize the gesture while retaining flat garment/detail
-imbalance, a pinched shoulder and heavy eyes. No finished-art verdict or human acceptance follows.
-Evidence: ../evidence/studio-join-preview/README.md. Earlier engine epochs remain frozen.
+The pending two-contact gap is closed through ordinary placement revision. Both exact mounts,
+source binding, derived chord and visible curve refinements finish before any working insertion.
+The independent book operator demonstrates the workflow; root then corrects side-edge contacts to
+actual undersides. Source guards, actual contacts, exact recovery and fresh-cwd reference-free
+replay pass. Evidence: ../evidence/studio-window-cat/README.md.
 
-Next put the current tools into one small original narrative composition, rather than expanding the
-catalog preemptively. Main agent owns the image, meaningful correction loop and clean editable
-source. Use current presets plus generic masses/strokes, compare normal-size and closeup views,
-and add engine capability only for a demonstrated obstacle. Checkpoint is a coherent image with
-its independent critique and a recoverable local revision, not another feature count. A fresh
-operator separately completed17 public CLI calls: pose/cuff edits, pending accessory join, stale
-refusal and five exact scene/PNG recovery comparisons. It reports clear endpoint roles but remaining
-file-path bookkeeping and no inferred fastening. This checks usability, not creative transfer.
-Natural pose, fine anime style and broad intent-led creation remain open. Preserve ambition while
-using the next actual artwork to choose the next representation change.
+The artwork did not meet its intended visual quality. Root started the full room before proving
+an unfamiliar sleeping-cat component. An ellipse assembly, isolated paw and correct pins do not
+supply a thorax/haunch/tucked-foreleg/support model. Scalar/colour edits and local contour fixes
+improve registration but leave the same major anatomical critique. Preserve those experiments;
+stop the cosmetic loop rather than declaring recognition or green checks to be drawing mastery.
+The current public window_cat example is explicitly an unresolved study, not a usable cat preset.
+
+Next, main agent owns an isolated resting-cat structural plate: establish thorax, haunch, head,
+shoulder-to-paw chain and support plane before room decoration. Use computed volumes, attachments
+and depth; inspect silhouette and contact without labels explaining away missing form. Design
+intentional art lines separately from material/lighting. The checkpoint is a coherent resting pose
+and an independently observed useful structural correction. Only then reuse it in the room or
+consider a higher-level preset. Teaching references or established non-generative components may
+help construction; the engine still receives no target and final creation remains authored geometry.
+The pause on local model inference/training/GPU work continues; CPU geometry and image review remain available.
+
+The24-node authoring bound also made decorative-versus-structural tradeoffs awkward. Keep that
+as a product constraint to investigate after the component is sound, not a reason to omit anatomy
+or raise the bound without examining rendering cost. Natural pose, fine anime style and broad
+intent-led creation remain open; this sequence does not replace those ambitions.
 
 Keep sealed brief and portrait baseline unchanged; GPU pause remains in force.
 

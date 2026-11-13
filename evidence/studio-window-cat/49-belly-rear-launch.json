@@ -1,0 +1,24 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "inspect",
+    "evidence/studio-window-cat/working.json",
+    "--object",
+    "sleeping-body",
+    "--feature",
+    "bottom",
+    "--at",
+    ".80",
+    "--radius",
+    ".18",
+    "--outdir",
+    "evidence/studio-window-cat/49-belly-rear"
+  ],
+  "started": "2026-11-13T11:21:25.737108+00:00",
+  "state": "terminal",
+  "pid": 23492,
+  "exit_code": 0,
+  "terminal": "2026-11-13T11:21:26.556748+00:00"
+}

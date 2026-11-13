@@ -1,0 +1,34 @@
+{
+  "base": "a303a39126918898cb3516a317ca503384bd9397785a0a535e0909e1fbce416d",
+  "engine": "9a610ba4951fd3dca30c01c4a05a23bb36d52e1d2b96555cafeb64b2090ab305",
+  "object": "sleeping-body",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    416.0965842581556,
+    443.42276648632475,
+    660.1712786541578,
+    567.2030024672457
+  ],
+  "object_bounds": [
+    416.0965842581556,
+    443.42276648632475,
+    660.1712786541578,
+    567.2030024672457
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

@@ -1,0 +1,30 @@
+{
+  "command": [
+    "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe",
+    "-m",
+    "scripts.studio",
+    "preview",
+    "evidence/studio-window-cat/working.json",
+    "--selection",
+    "evidence/studio-window-cat/15-near-ear/selection.json",
+    "--change",
+    "length=.055",
+    "--change",
+    "width=.90",
+    "--change",
+    "taper=.80",
+    "--change",
+    "rounding=.55",
+    "--change",
+    "angle=-8",
+    "--reason",
+    "Make the near ear shorter and broader so the sleeping head reads as a cat rather than a fox",
+    "--outdir",
+    "evidence/studio-window-cat/16-near-soft"
+  ],
+  "started": "2026-11-13T10:36:01.685407+00:00",
+  "state": "terminal",
+  "pid": 33564,
+  "exit_code": 0,
+  "terminal": "2026-11-13T10:36:02.653634+00:00"
+}
