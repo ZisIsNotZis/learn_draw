@@ -265,3 +265,10 @@ omits the tissue-root seam; the exterior obeys the same visibility as fills. Pla
 and screen angle transform shapes, focus, mounts and normals together about a stable host point.
 The actual union must stay one valid solid polygon and both handle ends must remain exposed.
 Compiled dimensions report wrist/handle widths for matching adjacent authored strokes.
+
+Pending placement (studio/placement.py) copies the validated base, appends exactly one preset,
+applies exposed semantic changes together, then resolves optional screen correction or observed
+mount attachment. Revision validates readiness, engine/base/result and an exact canonical remainder
+after removing the added id. The final anchor impact view is bound to the working base for rendering
+and acceptance. It has no old contour because that object is absent from the working base; compare
+separate pending previews to inspect successive corrections. Rendering completion precedes ready.

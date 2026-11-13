@@ -436,7 +436,7 @@ def current_selection(scene, selection):
         raise ValueError("stale selection: inspect the current scene again")
     if selection.get("engine") != engine_fingerprint():
         raise ValueError("stale selection: primitive implementation changed; inspect again")
-    if any(name in selection for name in ("removal","attachment_target")):
+    if any(name in selection for name in ("removal","attachment_target","insertion")):
         raise ValueError("operation impact view is not a part inspection; inspect the scene again")
 
 

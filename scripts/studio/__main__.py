@@ -50,6 +50,17 @@ def canvas_arg(value):
         raise argparse.ArgumentTypeError('size must be integer WIDTHxHEIGHT') from None
 
 
+def parse_changes(items):
+    changes={}
+    for item in items or []:
+        if '=' not in item:raise ValueError('--change requires NAME=VALUE')
+        name,value=item.split('=',1)
+        if not name or not value:raise ValueError('--change requires a nonempty NAME and VALUE')
+        if name in changes:raise ValueError('duplicate parameter in --change: '+name)
+        changes[name]=value
+    return changes
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -60,11 +71,30 @@ def main():
     p.add_argument('--id',help='optional semantic object name')
     p.add_argument('--size',type=canvas_arg,help='optional canvas WIDTHxHEIGHT, each 64–4096')
     p.add_argument('--background',help='optional paper colour #rrggbb')
-    p = sub.add_parser('add',help='add a named preset object to an existing scene')
+    p = sub.add_parser('add',help='legacy immediate preset insertion; use place for visible proposals')
     p.add_argument('scene')
     p.add_argument('--kind',choices=kinds,required=True)
     p.add_argument('--id',help='defaults to the preset object name; must be unique')
     p.add_argument('--depth',type=float,help='optional explicit support depth; foreground parts otherwise start in front')
+    p = sub.add_parser('place',help='preview one new component before inserting it; revise the pending proposal visibly')
+    p.add_argument('scene')
+    source=p.add_mutually_exclusive_group(required=True)
+    source.add_argument('--kind',choices=kinds)
+    source.add_argument('--revise',metavar='CANDIDATE',help='ready placement candidate to adjust without inserting it')
+    p.add_argument('--id',help='semantic name for a new preset; retained when revising')
+    p.add_argument('--feature',default='object',help='feature whose optional --change controls to use')
+    p.add_argument('--change',action='append',metavar='NAME=VALUE')
+    p.add_argument('--at',choices=('center','upper_center','upper_left','upper_right'),help='initial semantic canvas anchor')
+    p.add_argument('--offset',type=float,nargs=2,metavar=('X','Y'),help='initial offset as canvas width/height fractions')
+    p.add_argument('--move',choices=('left','right','up','down'),help='screen correction, preserving the rest of the pending shape')
+    p.add_argument('--amount',type=float,default=.05,help='screen correction in shorter-canvas units')
+    p.add_argument('--attach',metavar='TARGET_SELECTION',help='on revision, pin to a separately inspected working-scene mount')
+    p.add_argument('--self-anchor')
+    p.add_argument('--target-anchor')
+    p.add_argument('--inset',type=float,default=0)
+    p.add_argument('--reason',required=True)
+    p.add_argument('--outdir',required=True)
+    p.add_argument('--svg-only',action='store_true')
     p = sub.add_parser("demo", help="render a reproducible tuck/ease-back/undo sequence")
     p.add_argument("--outdir", required=True)
     p.add_argument('--kind',choices=('head','hair-lock'),default='hair-lock')
@@ -106,7 +136,7 @@ def main():
     p.add_argument("scene")
     args = parser.parse_args()
     try:
-        if args.command in ('inspect','preview'):
+        if args.command in ('inspect','preview','place'):
             # A bundle exports scene.json, but a preview must never overwrite its
             # working source or selection even when the output directory is reused.
             output=Path(args.outdir)
@@ -117,6 +147,9 @@ def main():
                 inputs.append(Path(args.selection))
                 if args.attach: inputs.append(Path(args.attach))
                 if args.bind_end: inputs.append(Path(args.bind_end))
+            if args.command=='place':
+                if args.revise: inputs.append(Path(args.revise))
+                if args.attach: inputs.append(Path(args.attach))
             for source in inputs:
                 for name in names:
                     target=output/name
@@ -137,6 +170,23 @@ def main():
             validate(scene)
             write(args.scene, scene)
             print(json.dumps(dict(scene=args.scene, revision=fingerprint(scene))))
+        elif args.command=='place':
+            from .placement import placement_preview
+            scene=validate(read(args.scene))
+            write(Path(args.outdir)/'candidate.json',dict(status='preparing',base=fingerprint(scene),engine=engine_fingerprint()))
+            write(Path(args.outdir)/'report.json',dict(status='preparing',revision=fingerprint(scene),engine=engine_fingerprint(),images=[]))
+            (Path(args.outdir)/'report.txt').write_text('',encoding='utf-8')
+            if args.revise and args.id:raise ValueError('--id applies to a new preset; revision retains its name')
+            node=None if args.revise else default_scene(args.kind)['nodes'][0]
+            if args.id:node['id']=args.id
+            candidate=placement_preview(scene,node,prior=read(args.revise) if args.revise else None,
+                changes=parse_changes(args.change),feature=args.feature,at=args.at,offset=args.offset,
+                direction=args.move,amount=args.amount,target=read(args.attach) if args.attach else None,
+                self_anchor=args.self_anchor,target_anchor=args.target_anchor,inset=args.inset,reason=args.reason)
+            write(Path(args.outdir)/'candidate.json',dict(status='rendering',base=candidate['base'],engine=candidate['engine']))
+            report=bundle(candidate['scene'],args.outdir,candidate['selection'],previous=scene,png=not args.svg_only)
+            write(Path(args.outdir)/'candidate.json',candidate|dict(status='ready'))
+            print(json.dumps(report))
         elif args.command=='add':
             scene=validate(read(args.scene))
             base=fingerprint(scene)
@@ -191,16 +241,7 @@ def main():
             elif args.change:
                 if args.value is not None:
                     raise ValueError('--change uses NAME=VALUE; --value is used with --set')
-                changes={}
-                for item in args.change:
-                    if '=' not in item:
-                        raise ValueError('--change requires NAME=VALUE')
-                    name,value=item.split('=',1)
-                    if not name or not value:
-                        raise ValueError('--change requires a nonempty NAME and VALUE')
-                    if name in changes:
-                        raise ValueError('duplicate parameter in --change: '+name)
-                    changes[name]=value
+                changes=parse_changes(args.change)
                 candidate=parameters_preview(scene,selection,changes,args.reason)
             elif args.parameter:
                 if args.value is None:

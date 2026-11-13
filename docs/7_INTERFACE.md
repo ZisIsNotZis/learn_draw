@@ -11,15 +11,17 @@ the commands that write it (`9_IMPLEMENTATION.md`).
 The current editable slice is `python -m scripts.studio`. Scene `format` is
 `learn-draw/studio-1`; `canvas` defaults to [640,640], `background` to warm paper, `nodes` is required.
 Each node requires `id`, `kind` (`stroke`, `shape`, `head`, `hand`, `hair-lock`, `sky`, `hills`, `moon`, `sun`), `intent`.
-`new --kind landscape` instantiates sky and hills on a 960×640 canvas; `add --kind moon` adds a
-celestial preset. Insertion is journaled and undoable. Existing names are never overwritten.
+`new --kind landscape` instantiates sky and hills on a 960×640 canvas; `place --kind moon`
+previews a celestial preset before acceptance (see pending placement below). Accepted insertion is
+journaled and undoable. Existing names are never overwritten.
 `new --size WIDTHxHEIGHT --background '#rrggbb'` optionally sets the canvas and paper at creation.
 Every object selection exposes `intent` as a text control. Stock intent describes the component's
 purpose without duplicating mutable colour or hairstyle values; custom author intent is never
 silently rewritten when changing a parameter.
-Foreground insertion (`add --kind head|hand|hair-lock|shape|stroke`) starts on a plane beyond the existing
-components' maximum support depth. `--depth NUMBER` overrides it. Scenic kinds retain their semantic
-background/celestial defaults. Insertion and explicit depth edits remain undoable; visibility still
+Foreground placement (`place --kind head|hand|grip|hair-lock|shape|stroke|moon|sun`) starts on a plane
+beyond existing components' maximum support depth. Optional `--change depth=NUMBER` overrides it.
+Sky/hills retain their semantic background defaults. Legacy immediate add retains its earlier
+foreground-kind list and --depth override. Insertion and explicit depth edits remain undoable; visibility still
 comes from support depth rather than the node list.
 
 ### Hand — front-view open-palm preset
@@ -395,7 +397,9 @@ The candidate selection carries removal impact metadata. Clean artwork shows onl
 alignment/closeups use the previous geometry for red dashed removed outlines and blue current
 retained-child outlines/labels. Reports list those affected IDs and current surviving nodes.
 Removal alignment needs the original scene; it never treats a missing current object as selectable.
-Replacing a part is currently separate remove/add/configure/attach edits, not an atomic transaction.
+Replacement remains separate removal and insertion transactions. The new part can now be
+configured, visibly revised and attached before its insertion is accepted; whole replacement
+is not atomic.
 
 A preview selection carrying removal or attachment_target describes an operation impact view, not
 a new part inspection. Reusing it for another proposal is refused with an explicit re-inspect
@@ -462,3 +466,26 @@ The internal palm, handle, pads and thumb have declared constant depths. Visibil
 those planes; intentional fold/exterior ink is separate and clipped by that visibility. The whole
 compound has the normal component support depth when meeting other scene objects. Blind image
 criticisms and purpose-aware operational review remain separate claims (4_USECASE).
+
+## Pending component placement
+
+Public `place` creates a ready rendered insertion proposal, never immediately changes the working
+scene. Required inputs are scene, kind (or a prior ready placement through --revise), drawing reason
+and a separate output directory. Presets need no geometry inputs. Optional initial --at/--offset
+place the preset relative to semantic canvas anchors; offset fractions use canvas width/height.
+Repeated --change uses the chosen feature's exposed semantic controls (object by default).
+--move/--amount corrects the pending object's placement in shorter-canvas screen units.
+
+Revision retains all current optional controls, name and attachment. It requires current engine/base,
+a ready placement candidate, matching result hash, exactly one added node and byte-equivalent
+canonical inputs for all existing nodes/canvas settings. It cannot disguise an existing-scene edit.
+After seeing its own mounts, --revise may --attach a separately inspected working-scene target.
+The existing one-point graph/normal inset rules apply; it does not inherit orientation or fit edges.
+
+The insertion impact selection draws the new boundary/mounts without inventing a prior contour for
+a nonexistent old object. Its report has insertion.object; normal artwork contains no guides.
+Preparing/rendering status supersedes an older proposal before a failed request can leave it usable.
+The output may not alias working scene, source candidate or target selection, including hard links.
+Only a ready rendered candidate is emitted by the CLI; accept uses the normal engine/base/result
+checks, history and exact undo. Discard is leaving the candidate unaccepted. The older immediate
+add command remains for existing scripted replays; it is not the observe-before-insertion route.

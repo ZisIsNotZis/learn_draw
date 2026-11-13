@@ -1,0 +1,167 @@
+{
+  "base": "f9145ad2d443b4cdf30fe1165aa9a610fcf91951fb9933ddc50793f17cb12845",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "result": "c7b3778e4323ed881c745e95fed2cad5330033b37ec17d20b4d9eae5c59d20ea",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f7efdf",
+    "nodes": [
+      {
+        "id": "carrying-grip",
+        "kind": "grip",
+        "intent": "a raised closed hand gripping the flagpole through its owned handle",
+        "length": 0.24,
+        "angle": 90,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.08,
+            0.13
+          ]
+        },
+        "palette": {
+          "skin": "#edbd91",
+          "ink": "#4f3e37",
+          "handle": "#705041",
+          "handle_ink": "#705041"
+        },
+        "thumb_reach": 0.72
+      },
+      {
+        "id": "upper-pole",
+        "kind": "stroke",
+        "intent": "the upper flagpole continues the included gripped segment",
+        "length": 0.28,
+        "angle": 180,
+        "thickness": 0.018823529411764704,
+        "ink_width": 0,
+        "palette": {
+          "fill": "#705041"
+        },
+        "depth": -1,
+        "attachment": {
+          "to": "carrying-grip",
+          "self": "root",
+          "target": "handle_right"
+        }
+      },
+      {
+        "id": "lower-pole",
+        "kind": "stroke",
+        "intent": "the lower flagpole continues below the gripping hand",
+        "length": 0.08,
+        "angle": 0,
+        "thickness": 0.018823529411764704,
+        "ink_width": 0,
+        "palette": {
+          "fill": "#705041"
+        },
+        "depth": -1,
+        "attachment": {
+          "to": "carrying-grip",
+          "self": "root",
+          "target": "handle_left"
+        }
+      },
+      {
+        "id": "sleeve",
+        "kind": "stroke",
+        "intent": "a blue forearm enters the raised wrist",
+        "length": 0.32,
+        "angle": 90,
+        "thickness": 0.1035294117647059,
+        "start_cap": "flat",
+        "end_cap": "flat",
+        "palette": {
+          "fill": "#284d68"
+        },
+        "depth": -1,
+        "attachment": {
+          "to": "carrying-grip",
+          "self": "root",
+          "target": "wrist"
+        }
+      },
+      {
+        "id": "flag",
+        "kind": "shape",
+        "intent": "a bright coral rectangular banner extends right from the pole",
+        "length": 0.19,
+        "width": 1.8,
+        "rounding": 0,
+        "stroke": 0,
+        "palette": {
+          "fill": "#d84e43"
+        },
+        "depth": -2,
+        "attachment": {
+          "to": "upper-pole",
+          "self": "left",
+          "target": "tip",
+          "offset": [
+            0,
+            0.085
+          ]
+        }
+      },
+      {
+        "id": "sun-badge",
+        "kind": "sun",
+        "intent": "A warm sun emblem centered on the signal banner",
+        "depth": 1.0,
+        "at": {
+          "anchor": "upper_center",
+          "offset": [
+            0.03,
+            0.1
+          ]
+        },
+        "length": 0.095,
+        "rays": 0.0
+      }
+    ]
+  },
+  "selection": {
+    "base": "f9145ad2d443b4cdf30fe1165aa9a610fcf91951fb9933ddc50793f17cb12845",
+    "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+    "object": "sun-badge",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      308.80000000000007,
+      110.4,
+      369.6,
+      171.20000000000002
+    ],
+    "object_bounds": [
+      308.80000000000007,
+      110.4,
+      369.6,
+      171.20000000000002
+    ],
+    "controls": [],
+    "focus": null,
+    "locks": {
+      "center": [
+        339.20000000000005,
+        140.8
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "insertion": {
+      "object": "sun-badge"
+    }
+  },
+  "operation": {
+    "action": "place",
+    "object": "sun-badge",
+    "kind": "sun",
+    "reason": "The sun crown crowds the banner; use a quieter smaller disc",
+    "revised_from": "ce47f76669e83fad56762af31fc5da4cc05fd54b85f2322bd7c9aabcc5636f14"
+  },
+  "status": "ready"
+}

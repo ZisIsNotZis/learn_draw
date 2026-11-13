@@ -216,7 +216,7 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
             out.extend(removal_guides(scene,previous,selection['removal']))
         else:
             paths,focus,locks=selection_paths(scene,selection)
-            if previous:
+            if previous and not selection.get('insertion'):
                 old_paths,_,_=selection_paths(previous,selection)
                 for i,guide in enumerate(old_paths):
                     out.append(f'<path id="edit-before-{i}" d="{guide["d"]}" transform="{guide["transform"]}" fill="none" stroke="#ba6884" stroke-width="2" stroke-dasharray="5 4"/>')
@@ -335,6 +335,7 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
                   image_sha256={p:hashlib.sha256(Path(p).read_bytes()).hexdigest() for p in images},nodes=node_info,
                   scope="editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips with an owned handle segment, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
                   removal=selection.get('removal') if selection else None,
+                  insertion=selection.get('insertion') if selection else None,
                   alignment_legend={'red dashed':'removed previous paint; removal only','blue':'pinned stroke endpoints / inspected target; removal: retained affected children','orange':'selected current boundary','pink dashed':'previous boundary',
                                     'green rings':'named mount points or protected endpoints/knuckle','white target':'local edge/spine, terminal, digit-tip or exact-mount focus'},
                   move_units='object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span')

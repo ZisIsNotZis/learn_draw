@@ -1,0 +1,9 @@
+Audit of interrupted first bezel proposal
+
+Exact behavior from own tool history: the execFile wrapper was util.promisify(child_process.execFile) with timeout:120000, cwd worktree, maxBuffer:500000. The enclosing Node invocation timeout_ms was also 120000. A successful lens accept callback was persisted. The following rim place callback was not persisted. The enclosing tool returned: js execution timed out; kernel reset, rerun your request. The old promise/process handle was unavailable after reset. No child PID or terminal callback was captured. The execFile timeout was configured to request child termination if its timer ran, but actual timer execution/termination was not observed.
+
+A later read found no 05-rim directory. That is an artifact observation only. My retry as 05b-rim was premature because I had not verified the first child was terminal. All later successful commands have ordinary exit0 callbacks and logs. Future runner calls should persist start arguments, retain the child PID/handle and use an execution timeout below a longer observation timeout, or use a session handle that can be polled to actual termination.
+
+Current process state: see process-audit.json for my timestamped specific CIM query. Parent independently reports the same targeted query exited0 with no matches. No child PID was identified as live by these present-time observations; they cannot reconstruct the historical termination mechanism. No process was killed.
+
+Wording correction: initial placements included two coarse --offset numeric fractions. This was semantic-anchor/short-offset placement and screen movement, with no direct scene/SVG vertex authoring; it was not coordinate-free positioning. Report updated accordingly.

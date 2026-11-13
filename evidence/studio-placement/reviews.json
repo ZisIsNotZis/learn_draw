@@ -1,0 +1,43 @@
+{
+  "date": "2026-11-13",
+  "method": "Parent-written summaries of two fresh-context image-only qualitative critiques. Reviewers saw only full/thumbnail check images, no intent/history/source. Hash bindings here are parent supplied, not independently printed formal rubric bindings.",
+  "whole_artwork_pass": false,
+  "reviews": [
+    {
+      "reviewer": "placement_images_a",
+      "bundle": "check-flag",
+      "image_sha256": {
+        "draft-fullres.png": "554a8ad5648dd56ebcb11ee0f56b39822c308a87c298b9f7e861c4c6196cc7c0",
+        "draft.png": "9ce6718695c7e91458460cc4ac5e17404fdcc548be46ee462cedcf2994d91f64"
+      },
+      "observations": "Action recognizable at both sizes; thumb/index overlap and contact pressure ambiguous, mitten-like small grip and visually heavy sleeve."
+    },
+    {
+      "reviewer": "placement_images_b",
+      "bundle": "check-flag",
+      "image_sha256": {
+        "draft-fullres.png": "554a8ad5648dd56ebcb11ee0f56b39822c308a87c298b9f7e861c4c6196cc7c0",
+        "draft.png": "9ce6718695c7e91458460cc4ac5e17404fdcc548be46ee462cedcf2994d91f64"
+      },
+      "observations": "Long thumb feels separate; stacked rounded pads obscure curling/pressure, stiff rectangular sleeve. Hand holding flag action still clear."
+    },
+    {
+      "reviewer": "placement_images_a",
+      "bundle": "check-camera",
+      "image_sha256": {
+        "draft-fullres.png": "5a0ee3bb027209d3f291b0a0b556c7904ffd6e4377497a64ee6cdef41168f87c",
+        "draft.png": "8f8392fc08a8ba0bbe22bd58fc8d3e31949d1fae2a0ac5482fa99678a4fdcb5e"
+      },
+      "observations": "Recognizable at both sizes, clean rings and no obvious broken overlap/contour. Top tab function ambiguous; pale inset generic; small highlight becomes a dot."
+    },
+    {
+      "reviewer": "placement_images_b",
+      "bundle": "check-camera",
+      "image_sha256": {
+        "draft-fullres.png": "5a0ee3bb027209d3f291b0a0b556c7904ffd6e4377497a64ee6cdef41168f87c",
+        "draft.png": "8f8392fc08a8ba0bbe22bd58fc8d3e31949d1fae2a0ac5482fa99678a4fdcb5e"
+      },
+      "observations": "Recognizable camera and no obvious contact/composition failure. Lens reads flat disks; top block/base and flash rectangle schematic/ambiguous."
+    }
+  ]
+}

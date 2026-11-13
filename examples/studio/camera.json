@@ -1,0 +1,151 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    480
+  ],
+  "background": "#f3ead8",
+  "nodes": [
+    {
+      "id": "camera-body",
+      "kind": "shape",
+      "intent": "Amber rounded camera housing",
+      "depth": 1,
+      "length": 0.42,
+      "width": 1.65,
+      "rounding": 0.65,
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#d58a4c"
+      },
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.0,
+          0.04
+        ]
+      }
+    },
+    {
+      "id": "lens-ring",
+      "kind": "shape",
+      "intent": "Dark round lens surround",
+      "depth": 2.0,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.04,
+          0.05
+        ]
+      },
+      "length": 0.29,
+      "width": 1.0,
+      "profile": "oval",
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#294650"
+      }
+    },
+    {
+      "id": "lens-rim",
+      "kind": "shape",
+      "intent": "Cream inset lens bezel",
+      "depth": 3.0,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.04,
+          0.05
+        ]
+      },
+      "length": 0.235,
+      "width": 1.0,
+      "profile": "oval",
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#f1d39b"
+      }
+    },
+    {
+      "id": "lens-glass",
+      "kind": "shape",
+      "intent": "Muted blue optical glass",
+      "depth": 4.0,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.04,
+          0.05
+        ]
+      },
+      "length": 0.18,
+      "width": 1.0,
+      "profile": "oval",
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#497d8b"
+      }
+    },
+    {
+      "id": "flash",
+      "kind": "shape",
+      "intent": "Small pale rectangular flash window",
+      "depth": 5.0,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.175,
+          -0.09
+        ]
+      },
+      "length": 0.065,
+      "width": 2.0,
+      "rounding": 0.4,
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#f1d39b"
+      }
+    },
+    {
+      "id": "shutter",
+      "kind": "shape",
+      "intent": "Top shutter button",
+      "depth": 6.0,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          -0.15,
+          -0.178
+        ]
+      },
+      "length": 0.045,
+      "width": 2.0,
+      "rounding": 0.4,
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#294650"
+      }
+    },
+    {
+      "id": "glass-glint",
+      "kind": "shape",
+      "intent": "Small soft glass reflection",
+      "depth": 7.0,
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.017,
+          0.02
+        ]
+      },
+      "length": 0.04,
+      "width": 0.7,
+      "angle": 35.0,
+      "profile": "oval",
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#acd2cc"
+      }
+    }
+  ]
+}

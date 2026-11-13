@@ -1,0 +1,83 @@
+{
+  "base": "553640c7ce7fbcd68a2c2116ad549b32d7e72553f3d009230ad7a2a6e802da0a",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "result": "99a1d756e8ad090283731dd1a1fcc94c0872cc1bb8ba3bb0fb317c517b8176f0",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      480
+    ],
+    "background": "#f3ead8",
+    "nodes": [
+      {
+        "id": "camera-body",
+        "kind": "shape",
+        "intent": "an editable rounded flat colour mass",
+        "depth": 1,
+        "length": 0.42,
+        "width": 1.65,
+        "rounding": 0.25,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#d58a4c"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "553640c7ce7fbcd68a2c2116ad549b32d7e72553f3d009230ad7a2a6e802da0a",
+    "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+    "object": "camera-body",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      153.68,
+      139.2,
+      486.32,
+      340.8
+    ],
+    "object_bounds": [
+      153.68,
+      139.2,
+      486.32,
+      340.8
+    ],
+    "controls": [],
+    "focus": null,
+    "locks": {
+      "center": [
+        320.0,
+        240.0
+      ],
+      "top": [
+        320.0,
+        139.2
+      ],
+      "right": [
+        486.32,
+        240.0
+      ],
+      "bottom": [
+        320.0000000000001,
+        340.8
+      ],
+      "left": [
+        153.68,
+        240.0
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "insertion": {
+      "object": "camera-body"
+    }
+  },
+  "operation": {
+    "action": "place",
+    "object": "camera-body",
+    "kind": "shape",
+    "reason": "A broad amber camera body is the main still-life mass",
+    "revised_from": null
+  },
+  "status": "ready"
+}

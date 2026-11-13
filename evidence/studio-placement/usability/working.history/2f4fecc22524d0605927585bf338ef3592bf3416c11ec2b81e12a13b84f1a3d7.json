@@ -1,0 +1,30 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    480
+  ],
+  "background": "#f3ead8",
+  "nodes": [
+    {
+      "id": "camera-body",
+      "kind": "shape",
+      "intent": "Amber rounded camera housing",
+      "depth": 1,
+      "length": 0.42,
+      "width": 1.65,
+      "rounding": 0.65,
+      "stroke": 0.0,
+      "palette": {
+        "fill": "#d58a4c"
+      },
+      "at": {
+        "anchor": "center",
+        "offset": [
+          0.0,
+          0.04
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "base": "e79d87f61e6c9487e1dcfd1809c0665153071939f5afecda9e6d649d2fbc4e9c",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "object": "camera-body",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    153.68,
+    158.40000000000003,
+    486.32,
+    360.00000000000006
+  ],
+  "object_bounds": [
+    153.68,
+    158.40000000000003,
+    486.32,
+    360.00000000000006
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "profile",
+    "rounding",
+    "taper",
+    "stroke",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

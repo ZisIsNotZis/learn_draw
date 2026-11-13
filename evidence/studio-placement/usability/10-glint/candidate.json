@@ -1,0 +1,211 @@
+{
+  "base": "36e112bc513ceb962fd387acd81ef9fc1573ffb249e28432947cd77ba21001e9",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "result": "e79d87f61e6c9487e1dcfd1809c0665153071939f5afecda9e6d649d2fbc4e9c",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      480
+    ],
+    "background": "#f3ead8",
+    "nodes": [
+      {
+        "id": "camera-body",
+        "kind": "shape",
+        "intent": "Amber rounded camera housing",
+        "depth": 1,
+        "length": 0.42,
+        "width": 1.65,
+        "rounding": 0.65,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#d58a4c"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.04
+          ]
+        }
+      },
+      {
+        "id": "lens-ring",
+        "kind": "shape",
+        "intent": "Dark round lens surround",
+        "depth": 2.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.04,
+            0.05
+          ]
+        },
+        "length": 0.29,
+        "width": 1.0,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#294650"
+        }
+      },
+      {
+        "id": "lens-rim",
+        "kind": "shape",
+        "intent": "Cream inset lens bezel",
+        "depth": 3.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.04,
+            0.05
+          ]
+        },
+        "length": 0.235,
+        "width": 1.0,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#f1d39b"
+        }
+      },
+      {
+        "id": "lens-glass",
+        "kind": "shape",
+        "intent": "Muted blue optical glass",
+        "depth": 4.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.04,
+            0.05
+          ]
+        },
+        "length": 0.18,
+        "width": 1.0,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#497d8b"
+        }
+      },
+      {
+        "id": "flash",
+        "kind": "shape",
+        "intent": "Small pale rectangular flash window",
+        "depth": 5.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.175,
+            -0.09
+          ]
+        },
+        "length": 0.065,
+        "width": 2.0,
+        "rounding": 0.4,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#f1d39b"
+        }
+      },
+      {
+        "id": "shutter",
+        "kind": "shape",
+        "intent": "Top shutter button",
+        "depth": 6.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.15,
+            -0.178
+          ]
+        },
+        "length": 0.045,
+        "width": 2.0,
+        "rounding": 0.4,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#294650"
+        }
+      },
+      {
+        "id": "glass-glint",
+        "kind": "shape",
+        "intent": "Small soft glass reflection",
+        "depth": 7.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.017,
+            0.02
+          ]
+        },
+        "length": 0.04,
+        "width": 0.7,
+        "angle": 35.0,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#acd2cc"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "36e112bc513ceb962fd387acd81ef9fc1573ffb249e28432947cd77ba21001e9",
+    "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+    "object": "glass-glint",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      323.09402211126076,
+      240.84274177404413,
+      338.66597788873923,
+      258.35725822595595
+    ],
+    "object_bounds": [
+      323.09402211126076,
+      240.84274177404413,
+      338.66597788873923,
+      258.35725822595595
+    ],
+    "controls": [],
+    "focus": null,
+    "locks": {
+      "center": [
+        330.88,
+        249.60000000000002
+      ],
+      "top": [
+        325.37366621102996,
+        241.7361403748257
+      ],
+      "right": [
+        336.38470173762204,
+        245.745566347721
+      ],
+      "bottom": [
+        336.38633378897003,
+        257.46385962517434
+      ],
+      "left": [
+        325.37529826237795,
+        253.45443365227905
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "insertion": {
+      "object": "glass-glint"
+    }
+  },
+  "operation": {
+    "action": "place",
+    "object": "glass-glint",
+    "kind": "shape",
+    "reason": "A small restrained glint gives the lens a material cue",
+    "revised_from": null
+  },
+  "status": "ready"
+}

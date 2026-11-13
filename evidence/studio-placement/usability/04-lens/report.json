@@ -1,0 +1,378 @@
+{
+  "revision": "33e6e67c6171fc3b244f2cac64ef9a1b1da6863cf2083f063a628ed332135a50",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\04-lens\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\04-lens\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\04-lens\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\04-lens\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\04-lens\\artwork.png": "791ec910fc775685ffebf553bebdea3c2330a7d1e8d21ffafae82871a318d109",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\04-lens\\alignment.png": "dd1dc34ab0a08e0413557e69a79a1e7345a36a3283f21b552666dc3ef5d11e38",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\04-lens\\object-closeup.png": "369c0ac39acf6cf77d28549a7b86d90b999823e017e9cb00a93efc9c53273e43",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\04-lens\\edit-closeup.png": "e5e858a8f4898074f30e4cfac7c4d4f1ae70027f74177a422c5d1f5474a2183f"
+  },
+  "nodes": {
+    "camera-body": {
+      "kind": "shape",
+      "intent": "Amber rounded camera housing",
+      "bounds": [
+        153.68,
+        158.40000000000003,
+        486.32,
+        360.00000000000006
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            153.68,
+            158.40000000000003,
+            486.32,
+            360.00000000000006
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            165.1502686787831,
+            158.40000000000003,
+            474.8497313212169,
+            165.35167798714133
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            474.8497313212169,
+            165.35167798714133,
+            486.32,
+            353.04832201285876
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            165.1502686787831,
+            353.04832201285876,
+            474.8497313212169,
+            360.00000000000006
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            153.68,
+            165.35167798714133,
+            165.1502686787831,
+            353.04832201285876
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            259.20000000000005
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            320.00000000000006,
+            158.40000000000003
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            486.32,
+            259.20000000000005
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            360.00000000000006
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            153.68,
+            259.20000000000005
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": []
+    },
+    "lens-ring": {
+      "kind": "shape",
+      "intent": "Dark round lens surround",
+      "bounds": [
+        276.0,
+        194.4,
+        415.20000000000005,
+        333.6
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            276.0,
+            194.4,
+            415.20000000000005,
+            333.6
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            296.3853680294163,
+            194.4,
+            394.8146319705837,
+            214.7853680294163
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            394.8146319705837,
+            214.7853680294163,
+            415.20000000000005,
+            313.2146319705837
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            296.3853680294163,
+            313.2146319705837,
+            394.8146319705837,
+            333.6
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            276.0,
+            214.7853680294163,
+            296.3853680294163,
+            313.2146319705837
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            345.6,
+            264.0
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            345.6,
+            194.4
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            415.20000000000005,
+            264.0
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            345.6,
+            333.6
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            276.0,
+            264.0
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": []
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips with an owned handle segment, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "removal": null,
+  "insertion": {
+    "object": "lens-ring"
+  },
+  "alignment_legend": {
+    "red dashed": "removed previous paint; removal only",
+    "blue": "pinned stroke endpoints / inspected target; removal: retained affected children",
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge/spine, terminal, digit-tip or exact-mount focus"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span"
+}

@@ -136,3 +136,9 @@ real solid union, not a hull over gaps; invalid disconnected/holed configuration
 External objects connect to wrist and exposed handle ports. They do not enter arbitrary depths
 inside the hand: the owned contact segment is the supported boundary. No teaching image/mesh
 or general physical hand solver belongs to runtime compilation.
+
+Pending placement stages one native node outside the working scene. It reuses normal feature
+controls, attachment resolution and the renderer; an impact selection distinguishes new paint
+from an old object being edited. Revision checks preserve all existing authored inputs before
+rebinding an inspected target to the staged scene. Acceptance/undo use the existing transaction
+store. Initial authoring convenience remains replaceable; no target image or pixel optimizer enters it.

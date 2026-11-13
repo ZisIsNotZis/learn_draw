@@ -1,0 +1,47 @@
+{
+  "base": "553640c7ce7fbcd68a2c2116ad549b32d7e72553f3d009230ad7a2a6e802da0a",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "object": "camera-body",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    153.68,
+    158.40000000000003,
+    486.32,
+    360.00000000000006
+  ],
+  "object_bounds": [
+    153.68,
+    158.40000000000003,
+    486.32,
+    360.00000000000006
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      320.0,
+      259.20000000000005
+    ],
+    "top": [
+      320.00000000000006,
+      158.40000000000003
+    ],
+    "right": [
+      486.32,
+      259.20000000000005
+    ],
+    "bottom": [
+      320.0,
+      360.00000000000006
+    ],
+    "left": [
+      153.68,
+      259.20000000000005
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "insertion": {
+    "object": "camera-body"
+  }
+}

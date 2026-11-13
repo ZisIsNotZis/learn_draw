@@ -379,3 +379,17 @@ this namespace test directory's relative imports do not work with bare `unittest
 rewriting their old evidence. `verify_delivery.py` checks the actual independent flag run,
 preferred examples, stable connections and recoverable visual edits. Study-only physical geometry
 checks remain in evidence/studio-grasp-contact and are not drawing-quality gates.
+
+## Observe before insertion
+
+Use the drawing skill's place workflow for current composition. For example:
+
+```
+python -m scripts.studio place working.json --kind shape --id petal --reason "Establish the flower mass" --outdir TRY
+python -m scripts.studio place working.json --revise TRY/candidate.json --move left --amount .05 --reason "Leave room beside the stem" --outdir TRY2
+python -m scripts.studio accept working.json TRY2/candidate.json
+```
+
+Inspect actual clean/alignment images between these commands. Existing scripts using immediate
+add remain replays of their earlier behavior. Current insertion evidence is evidence/studio-placement/,
+with original frozen operator inputs; its test/preservation records own this revision's counts.

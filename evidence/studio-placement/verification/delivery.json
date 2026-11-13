@@ -1,0 +1,25 @@
+{
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "studio_tests": 110,
+  "prior_pngs_preserved": 10,
+  "actual_added_node": "sun-badge",
+  "previews_before_accept": [
+    "01-badge-default",
+    "02-badge-quiet",
+    "03-badge-seated"
+  ],
+  "existing_authored_and_resolved_nodes_exact": true,
+  "paint_difference_confined_to_badge": true,
+  "actual_undo_scene_and_png_exact": true,
+  "reaccept_png_exact": true,
+  "extra_emblem_discarded_without_scene_mutation": true,
+  "accepted_scene": "7e968fcabce3bae53b1c0b68aa703f4687266acb15a8b4c0ac15b11207339c29",
+  "png_sha256": "554a8ad5648dd56ebcb11ee0f56b39822c308a87c298b9f7e861c4c6196cc7c0",
+  "actor_artifacts_checked": 155,
+  "actor_original_camera_scene": "e79d87f61e6c9487e1dcfd1809c0665153071939f5afecda9e6d649d2fbc4e9c",
+  "actor_camera_png_sha256": "5a0ee3bb027209d3f291b0a0b556c7904ffd6e4377497a64ee6cdef41168f87c",
+  "actor_blank_undo_scene_and_png_exact": true,
+  "shipped_camera_png_exact": true,
+  "actor_interrupted_attempt_historical_termination": "unverified; operational audit retained; current process query empty",
+  "whole_artwork_pass": false
+}

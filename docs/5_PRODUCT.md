@@ -611,3 +611,13 @@ original flag and verified local editing/recovery without reconstructing the pri
 person accepted keeping this graphic hand as a simple preset direction (2026-11-13); this is
 not natural anatomy, broad pose transfer or a whole-artwork pass. Current evidence is indexed at ../evidence/studio-grasp-glyph/.
 Existing head/open-hand defaults and the portrait baseline are preserved.
+
+## Adopted pending component placement
+
+New components can be rendered and progressively corrected before they enter the working scene.
+The place operation uses small preset defaults and optional existing semantic controls; --revise
+retains the pending shape while screen moves, controls or an observed mount connection change it.
+A discarded proposal changes no working state. One acceptance inserts the configured component,
+and one undo removes it exactly. The public path closes the JSON/model-only insertion gap observed
+in the previous flag and can-opening studies. Real operation/recovery evidence is in
+../evidence/studio-placement/; general atomic replacement and automatic edge/orientation fit remain open.

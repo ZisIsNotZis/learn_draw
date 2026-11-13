@@ -1,0 +1,47 @@
+{
+  "base": "33e6e67c6171fc3b244f2cac64ef9a1b1da6863cf2083f063a628ed332135a50",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "object": "lens-rim",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    289.20000000000005,
+    207.6,
+    402.0,
+    320.4
+  ],
+  "object_bounds": [
+    289.20000000000005,
+    207.6,
+    402.0,
+    320.4
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      345.6,
+      264.0
+    ],
+    "top": [
+      345.6,
+      207.6
+    ],
+    "right": [
+      402.0,
+      264.0
+    ],
+    "bottom": [
+      345.6000000000001,
+      320.4
+    ],
+    "left": [
+      289.20000000000005,
+      264.0
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "insertion": {
+    "object": "lens-rim"
+  }
+}

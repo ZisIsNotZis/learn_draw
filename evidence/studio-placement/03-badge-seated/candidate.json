@@ -1,0 +1,170 @@
+{
+  "base": "f9145ad2d443b4cdf30fe1165aa9a610fcf91951fb9933ddc50793f17cb12845",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "result": "7e968fcabce3bae53b1c0b68aa703f4687266acb15a8b4c0ac15b11207339c29",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      640
+    ],
+    "background": "#f7efdf",
+    "nodes": [
+      {
+        "id": "carrying-grip",
+        "kind": "grip",
+        "intent": "a raised closed hand gripping the flagpole through its owned handle",
+        "length": 0.24,
+        "angle": 90,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            -0.08,
+            0.13
+          ]
+        },
+        "palette": {
+          "skin": "#edbd91",
+          "ink": "#4f3e37",
+          "handle": "#705041",
+          "handle_ink": "#705041"
+        },
+        "thumb_reach": 0.72
+      },
+      {
+        "id": "upper-pole",
+        "kind": "stroke",
+        "intent": "the upper flagpole continues the included gripped segment",
+        "length": 0.28,
+        "angle": 180,
+        "thickness": 0.018823529411764704,
+        "ink_width": 0,
+        "palette": {
+          "fill": "#705041"
+        },
+        "depth": -1,
+        "attachment": {
+          "to": "carrying-grip",
+          "self": "root",
+          "target": "handle_right"
+        }
+      },
+      {
+        "id": "lower-pole",
+        "kind": "stroke",
+        "intent": "the lower flagpole continues below the gripping hand",
+        "length": 0.08,
+        "angle": 0,
+        "thickness": 0.018823529411764704,
+        "ink_width": 0,
+        "palette": {
+          "fill": "#705041"
+        },
+        "depth": -1,
+        "attachment": {
+          "to": "carrying-grip",
+          "self": "root",
+          "target": "handle_left"
+        }
+      },
+      {
+        "id": "sleeve",
+        "kind": "stroke",
+        "intent": "a blue forearm enters the raised wrist",
+        "length": 0.32,
+        "angle": 90,
+        "thickness": 0.1035294117647059,
+        "start_cap": "flat",
+        "end_cap": "flat",
+        "palette": {
+          "fill": "#284d68"
+        },
+        "depth": -1,
+        "attachment": {
+          "to": "carrying-grip",
+          "self": "root",
+          "target": "wrist"
+        }
+      },
+      {
+        "id": "flag",
+        "kind": "shape",
+        "intent": "a bright coral rectangular banner extends right from the pole",
+        "length": 0.19,
+        "width": 1.8,
+        "rounding": 0,
+        "stroke": 0,
+        "palette": {
+          "fill": "#d84e43"
+        },
+        "depth": -2,
+        "attachment": {
+          "to": "upper-pole",
+          "self": "left",
+          "target": "tip",
+          "offset": [
+            0,
+            0.085
+          ]
+        }
+      },
+      {
+        "id": "sun-badge",
+        "kind": "sun",
+        "intent": "A warm sun emblem centered on the signal banner",
+        "depth": 1.0,
+        "length": 0.095,
+        "rays": 0.0,
+        "attachment": {
+          "to": "flag",
+          "self": "center",
+          "target": "center",
+          "inset": 0
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "f9145ad2d443b4cdf30fe1165aa9a610fcf91951fb9933ddc50793f17cb12845",
+    "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+    "object": "sun-badge",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      310.19294117647064,
+      112.470588235294,
+      370.9929411764706,
+      173.270588235294
+    ],
+    "object_bounds": [
+      310.19294117647064,
+      112.470588235294,
+      370.9929411764706,
+      173.270588235294
+    ],
+    "controls": [],
+    "focus": null,
+    "locks": {
+      "center": [
+        340.5929411764706,
+        142.870588235294
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "insertion": {
+      "object": "sun-badge"
+    },
+    "attachment_target": {
+      "object": "flag",
+      "anchor": "center"
+    }
+  },
+  "operation": {
+    "action": "place",
+    "object": "sun-badge",
+    "kind": "sun",
+    "reason": "Center the observed disc on the actual banner so it follows the flag",
+    "revised_from": "c7b3778e4323ed881c745e95fed2cad5330033b37ec17d20b4d9eae5c59d20ea"
+  },
+  "status": "ready"
+}

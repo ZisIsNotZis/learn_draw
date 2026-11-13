@@ -1,0 +1,47 @@
+{
+  "base": "2856ba6fea60f2b014e9571989df0bd8b9bdb0986207e17206e416c9424e2451",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "object": "flash",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    176.8,
+    181.20000000000002,
+    239.2,
+    212.4
+  ],
+  "object_bounds": [
+    176.8,
+    181.20000000000002,
+    239.2,
+    212.4
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      208.0,
+      196.8
+    ],
+    "top": [
+      208.00000000000003,
+      181.20000000000002
+    ],
+    "right": [
+      239.2,
+      196.8
+    ],
+    "bottom": [
+      207.99999999999997,
+      212.4
+    ],
+    "left": [
+      176.8,
+      196.8
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "insertion": {
+    "object": "flash"
+  }
+}

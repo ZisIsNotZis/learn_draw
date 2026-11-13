@@ -1,0 +1,130 @@
+{
+  "base": "33e6e67c6171fc3b244f2cac64ef9a1b1da6863cf2083f063a628ed332135a50",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "result": "4f3113dcde2cc45a8574af8ace55276d4c69e4602a3ff9f6592eddd12033edbd",
+  "scene": {
+    "format": "learn-draw/studio-1",
+    "canvas": [
+      640,
+      480
+    ],
+    "background": "#f3ead8",
+    "nodes": [
+      {
+        "id": "camera-body",
+        "kind": "shape",
+        "intent": "Amber rounded camera housing",
+        "depth": 1,
+        "length": 0.42,
+        "width": 1.65,
+        "rounding": 0.65,
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#d58a4c"
+        },
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.0,
+            0.04
+          ]
+        }
+      },
+      {
+        "id": "lens-ring",
+        "kind": "shape",
+        "intent": "Dark round lens surround",
+        "depth": 2.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.04,
+            0.05
+          ]
+        },
+        "length": 0.29,
+        "width": 1.0,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#294650"
+        }
+      },
+      {
+        "id": "lens-rim",
+        "kind": "shape",
+        "intent": "Cream inset lens bezel",
+        "depth": 3.0,
+        "at": {
+          "anchor": "center",
+          "offset": [
+            0.04,
+            0.05
+          ]
+        },
+        "length": 0.235,
+        "width": 1.0,
+        "profile": "oval",
+        "stroke": 0.0,
+        "palette": {
+          "fill": "#f1d39b"
+        }
+      }
+    ]
+  },
+  "selection": {
+    "base": "33e6e67c6171fc3b244f2cac64ef9a1b1da6863cf2083f063a628ed332135a50",
+    "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+    "object": "lens-rim",
+    "kind": "feature",
+    "feature": "anchors",
+    "bounds": [
+      289.20000000000005,
+      207.6,
+      402.0,
+      320.4
+    ],
+    "object_bounds": [
+      289.20000000000005,
+      207.6,
+      402.0,
+      320.4
+    ],
+    "controls": [],
+    "focus": null,
+    "locks": {
+      "center": [
+        345.6,
+        264.0
+      ],
+      "top": [
+        345.6,
+        207.6
+      ],
+      "right": [
+        402.0,
+        264.0
+      ],
+      "bottom": [
+        345.6000000000001,
+        320.4
+      ],
+      "left": [
+        289.20000000000005,
+        264.0
+      ]
+    },
+    "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+    "insertion": {
+      "object": "lens-rim"
+    }
+  },
+  "operation": {
+    "action": "place",
+    "object": "lens-rim",
+    "kind": "shape",
+    "reason": "A pale concentric bezel separates glass from the dark surround",
+    "revised_from": null
+  },
+  "status": "ready"
+}

@@ -27,6 +27,13 @@ include shoulders or realistic illumination to establish that bounded use. Prese
 criticisms alongside the purpose-aware result. Neither review is human acceptance, a whole-artwork
 pass, an automatic threshold reduction, or a sealed/held-out transfer result.
 
+Independent execution tasks must carry the active resource/authority limits and process-observation
+rule in their dispatch. A tool observation timeout is not a terminal child result; retain/re-poll
+the live handle or inspect the matching process before retrying. Missing output alone proves no
+observed artifact, not termination. Persist command intent before launch and terminal outcome after
+completion; keep an unobserved outcome explicit. Avoid equal nested execution/observation deadlines
+that erase the terminal callback. This applies to usability actors as well as the main author.
+
 ## The judgement gate reads the drawing, not the distance to the reference
 
 The person's reframe (P14) is the primary criterion: the goal is a proper drawing in a similar

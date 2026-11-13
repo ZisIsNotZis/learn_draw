@@ -10,3 +10,5 @@ evidence/studio-hand/verification/hand-before-eof-cleanup.py whitespace=cr-at-eo
 .scratch/history/studio-roadmap-through-watering.md -text whitespace=cr-at-eol
 
 evidence/studio-grasp-glyph/usability-inputs/7_INTERFACE.md whitespace=cr-at-eol,-blank-at-eof
+
+evidence/studio-placement/tests.txt whitespace=cr-at-eol,-blank-at-eol

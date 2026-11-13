@@ -1,0 +1,19 @@
+art:    evidence/studio-placement/06-restored/artwork.png
+bundle: evidence/studio-placement/check-flag
+
+images (feed these, and nothing else):
+  evidence/studio-placement/check-flag\draft-fullres.png  -- DRAFT at full resolution (1:1, no downscale) - judge detail here
+  evidence/studio-placement/check-flag\draft.png  -- downscaled preview (width <= 256px) - layout only, never detail
+
+full-resolution image SHA256: 554a8ad5648dd56ebcb11ee0f56b39822c308a87c298b9f7e861c4c6196cc7c0 (PNG source bytes preserved when available)
+no --ref given: nothing to compare against (reference-free stage)
+
+reviewer protocol - do not skip:
+  Give ONLY the images above to a FRESH-context reviewer with no other context.
+  Ask the open question: 'what is wrong here?'
+  Judge detail only on the 1:1 images (draft-fullres.png, region-*.png). Previews and
+  side-by-side panes are downscaled: they show layout, never line weight or separation.
+  Never leak your intent, your history, or a suspected verdict.
+  Verify every claim against a measurement before acting on it (P7).
+
+This bundle carries no verdict by design - judging is the reviewer's job, not the tool's.

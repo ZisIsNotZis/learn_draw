@@ -1,0 +1,79 @@
+[
+  {
+    "base": "553640c7ce7fbcd68a2c2116ad549b32d7e72553f3d009230ad7a2a6e802da0a",
+    "result": "2f4fecc22524d0605927585bf338ef3592bf3416c11ec2b81e12a13b84f1a3d7",
+    "operation": {
+      "action": "place",
+      "object": "camera-body",
+      "kind": "shape",
+      "reason": "Soften the stiff slab and leave more room for a top shutter",
+      "revised_from": "99a1d756e8ad090283731dd1a1fcc94c0872cc1bb8ba3bb0fb317c517b8176f0"
+    }
+  },
+  {
+    "base": "2f4fecc22524d0605927585bf338ef3592bf3416c11ec2b81e12a13b84f1a3d7",
+    "result": "33e6e67c6171fc3b244f2cac64ef9a1b1da6863cf2083f063a628ed332135a50",
+    "operation": {
+      "action": "place",
+      "object": "lens-ring",
+      "kind": "shape",
+      "reason": "The circular dark lens gives the housing a camera identity",
+      "revised_from": null
+    }
+  },
+  {
+    "base": "33e6e67c6171fc3b244f2cac64ef9a1b1da6863cf2083f063a628ed332135a50",
+    "result": "4f3113dcde2cc45a8574af8ace55276d4c69e4602a3ff9f6592eddd12033edbd",
+    "operation": {
+      "action": "place",
+      "object": "lens-rim",
+      "kind": "shape",
+      "reason": "A pale concentric bezel separates glass from the dark surround",
+      "revised_from": null
+    }
+  },
+  {
+    "base": "4f3113dcde2cc45a8574af8ace55276d4c69e4602a3ff9f6592eddd12033edbd",
+    "result": "2856ba6fea60f2b014e9571989df0bd8b9bdb0986207e17206e416c9424e2451",
+    "operation": {
+      "action": "place",
+      "object": "lens-glass",
+      "kind": "shape",
+      "reason": "A blue glass disk completes the concentric lens",
+      "revised_from": null
+    }
+  },
+  {
+    "base": "2856ba6fea60f2b014e9571989df0bd8b9bdb0986207e17206e416c9424e2451",
+    "result": "f3524e61e887f7402545e3110df039c59cc6a5309519c60b548c274b56897af4",
+    "operation": {
+      "action": "place",
+      "object": "flash",
+      "kind": "shape",
+      "reason": "A small upper-left flash balances the large offset lens",
+      "revised_from": null
+    }
+  },
+  {
+    "base": "f3524e61e887f7402545e3110df039c59cc6a5309519c60b548c274b56897af4",
+    "result": "36e112bc513ceb962fd387acd81ef9fc1573ffb249e28432947cd77ba21001e9",
+    "operation": {
+      "action": "place",
+      "object": "shutter",
+      "kind": "shape",
+      "reason": "A dark shutter protrudes from the top and clarifies the camera silhouette",
+      "revised_from": null
+    }
+  },
+  {
+    "base": "36e112bc513ceb962fd387acd81ef9fc1573ffb249e28432947cd77ba21001e9",
+    "result": "e79d87f61e6c9487e1dcfd1809c0665153071939f5afecda9e6d649d2fbc4e9c",
+    "operation": {
+      "action": "place",
+      "object": "glass-glint",
+      "kind": "shape",
+      "reason": "A small restrained glint gives the lens a material cue",
+      "revised_from": null
+    }
+  }
+]

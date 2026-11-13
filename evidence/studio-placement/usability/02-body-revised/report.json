@@ -1,0 +1,206 @@
+{
+  "revision": "2f4fecc22524d0605927585bf338ef3592bf3416c11ec2b81e12a13b84f1a3d7",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\02-body-revised\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\02-body-revised\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\02-body-revised\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\02-body-revised\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\02-body-revised\\artwork.png": "d32ba2263b65403cf9653252ef52d277f4f1ffba2be6835ef3fd76eebfd0ed17",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\02-body-revised\\alignment.png": "a43549d75ac477c7c4f2a2c14499d2651caac766f689ebedc8a7a86de2c07117",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\02-body-revised\\object-closeup.png": "cbb09de0b026d8ba097ffc2d4ba626530c1193eea73879e404012bf9aadfa376",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\usability\\02-body-revised\\edit-closeup.png": "aeed8f8d6e586fb0a9d1e071720d41c1bf43cbf698ca465cde0565be02829e75"
+  },
+  "nodes": {
+    "camera-body": {
+      "kind": "shape",
+      "intent": "Amber rounded camera housing",
+      "bounds": [
+        153.68,
+        158.40000000000003,
+        486.32,
+        360.00000000000006
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            153.68,
+            158.40000000000003,
+            486.32,
+            360.00000000000006
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            165.1502686787831,
+            158.40000000000003,
+            474.8497313212169,
+            165.35167798714133
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            474.8497313212169,
+            165.35167798714133,
+            486.32,
+            353.04832201285876
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            165.1502686787831,
+            353.04832201285876,
+            474.8497313212169,
+            360.00000000000006
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            153.68,
+            165.35167798714133,
+            165.1502686787831,
+            353.04832201285876
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            320.0,
+            259.20000000000005
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            320.00000000000006,
+            158.40000000000003
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            486.32,
+            259.20000000000005
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            320.0,
+            360.00000000000006
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            153.68,
+            259.20000000000005
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": []
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips with an owned handle segment, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "removal": null,
+  "insertion": {
+    "object": "camera-body"
+  },
+  "alignment_legend": {
+    "red dashed": "removed previous paint; removal only",
+    "blue": "pinned stroke endpoints / inspected target; removal: retained affected children",
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge/spine, terminal, digit-tip or exact-mount focus"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span"
+}

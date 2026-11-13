@@ -28,6 +28,7 @@ uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation ski
 
 - A small input creates a flat-cartoon head, open hand, compact illustrated grip, lock, generic
   colour mass, gesture stroke or scenic preset. The user accepted the simple head direction as one default preset only.
+  The graphic grip direction is also accepted as a simple preset; it does not establish natural anatomy.
   The open hand is a front-view greeting palm, not a fist or a full hand/body rig.
 - Inspect/preview/accept/undo provides actual alignment and magnified views, protected local edits,
   grouped semantic parameters, revision/implementation binding, stale/invalid refusal and ready-
@@ -37,21 +38,25 @@ uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation ski
   bend and protected spine edits remain authored. Releasing a pin preserves current paint. Target
   deletion releases only affected links in place; cascade follows both dependencies. Cycles and
   invalid/collapsed gestures refuse. This is projected placement, with independent support depth.
-- Empty paper, undoable insertion and visible removal support revision beyond adding parts. A
-  replacement remains separate recoverable remove/add/configure/attach edits. Immediate insertion
-  still accepts a default before shaping/placement; atomic insertion/replacement is not claimed.
+- Pending place previews new components before insertion. Ready proposals can be revised with
+  screen moves, semantic controls and observed mount attachment, then accepted or discarded.
+  Acceptance/undo includes the complete configured node; existing authored inputs are retained.
+  Empty paper and visible removal remain available. Whole replacement is still separate removal
+  and insertion transactions; legacy immediate add remains for older scripted replays.
 - Generic masses/strokes have produced actual new-subject lamps, rockets, cactus and pinwheel
   studies. A richer original watering illustration connects person, grasp, can, stream and soil.
   Its actual correction loop changed an open-palm contact, pouring attitude, free handle end,
   receiving surface and palm/handle/thumb overlap. These are bounded visual outcomes, not a
   general anatomy or physical-fold capability.
 
-The current grip advance passes 103 studio-family tests, including seven focused grip tests;
-seven earlier/default PNGs remain exact. The two preferred native examples reproduce from a fresh
-cwd and refuse existing outputs. Parent verification rechecks 126 independent-operator artifact
-hashes, real thumb undo/reaccept, stable connections and sleeve/nozzle tangents. These are scoped
-mechanical/operational checks, not art or human verdicts. The prior endpoint advance's mixed-suite
-counts stay in its historical evidence and are not presented as this unit's run.
+The current placement advance passes 110 studio-family tests, including seven focused placement
+tests; ten earlier/default PNGs remain exact. A fresh frozen-guide-only operator creates an original
+seven-part camera from blank paper, corrects its pending body, discards an obstructive strap and
+verifies exact blank-state/PNG undo recovery. Parent verification rechecks 155 actor artifact hashes,
+the shipped camera PNG, actual badge insertion/undo/reaccept and unchanged existing geometry/paint
+outside that badge. Two blind reviewers recognize the camera while retaining schematic-depth/detail
+limits. These mechanical, operational and visual observations establish separate bounded claims;
+none is whole-artwork or human acceptance. Older counts remain historical evidence.
 
 Current endpoint evidence is indexed at ../evidence/studio-endpoints/README.md. A fresh skill/help-
 only operator binds both water ends, independently moves person and pot without correcting the
@@ -88,34 +93,32 @@ count or attractive interface alone cannot establish the desired capability.
 
 ## Next action and checkpoint
 
-The native compact grip slice is verified for bounded symbolic use. A fresh skill-only operator
-authored a flag from intent, connected pole and sleeve through actual mounts, refined the thumb,
-and recovered exact scene/render state through undo/reaccept. Two blind reviewers recognize
-the flag/grip clearly while retaining anatomy/style limits; parent finishing removes pole seams.
-The same primitive is integrated into a native watering example, with cuff/stream tangent edits.
-Detailed records, failed attempts and claim limits are in ../evidence/studio-grasp-glyph/. The
-mesh/contact route remains rejected as a drawing default in ../evidence/studio-grasp-contact/.
-The person accepted retaining this graphic hand as a simple preset direction (2026-11-13).
-This is direction-level taste feedback, not natural-hand or whole-artwork acceptance.
+The pre-insertion observation gap is closed for one public component workflow. Actual parent
+badge proposals remain uncommitted until viewed, refined and connected; an extra emblem is visibly
+discarded. The fresh actor independently creates the camera rather than replaying that subject.
+Evidence, frozen inputs, raw commands and claim limits are in ../evidence/studio-placement/.
+The operator's equal nested timeouts lost one bezel callback; retrying before confirming termination
+was an execution error. Its historical termination stays unknown, current targeted processes are
+absent, and docs/4_USECASE.md now explicitly carries observation rules in independent-task dispatch.
+This does not recast the interrupted attempt as successful.
 
-Next, make insertion observable before it changes the working scene. Both independent composition
-and the parent's discarded can-opening trial still relied on initial JSON/model authoring for
-configured insertion. Existing add immediately accepts its default. Implement one public staged
-add/placement path that renders a configured new object against the existing scene, exposes its
-actual boundary/mounts, accepts only after a ready preview and supports exact undo. Use an actual
-small composition insertion/correction/discard sequence, not a renderer-only or UI-only demo.
-Recheck aliases, stale/failed candidate refusal and retained unrelated objects. A fresh skill-only
-operator should then use the operation with another subject. Main agent owns code/art correction;
-independent operators and image reviewers own their separate reports. The next checkpoint is that
-real insertion slice in the next substantive work unit; this is a checkpoint estimate, not an art deadline.
+Next, return to connected drawing quality rather than enlarging the preset catalog. A point pin
+still does not aim a sleeve into the wrist or a stream out of a nozzle: both parent and previous
+independent use needed manual orientation/tangent corrections. Inspect existing port normals and
+stroke tangents, expose a clear visible direction guide, and test a narrow recoverable alignment
+operation only where geometry determines it. Preserve independent depth and explicit free choices;
+ambiguous center mounts must not invent a direction. Small-component label crowding is another
+observed guide defect; correct it without cluttering clean artwork.
 
-Connection orientation is the other observed gap: the parent and independent operator both had
-to seat a sleeve at a wrist manually, and the stream needed its nozzle tangent. Projected point
-coincidence does not fit two edges or inherit orientation. Preserve this evidence for a narrow
-normal/tangent guide or alignment operation after the insertion path; do not turn it into a
-speculative whole-body/physical rig. Verbose directional edits and root-only scope overlays also
-remain observed limits. Keep the full VLM creation/skill objective and continue while additional taste feedback
-is absent. GPU pause and the untouched portrait baseline remain in force.
+The checkpoint is an actual original connected illustration with observed successive corrections,
+not merely a new guide/test. A modest person-with-prop scene can exercise the hand/sleeve chain;
+choose its pose/composition from intent and compare the actual result at drawing and thumbnail
+scales. Improve component contour/material choices where that image reveals weakness, preserve
+failed proposals and seek a fresh operational/image review on the resulting scope. Main agent owns
+implementation/art correction; fresh actors/reviewers own their separate observations. Estimate the
+next substantive work unit for this checkpoint, not an art deadline. Broader pose/style transfer,
+more refined anime work and full VLM creation remain open goals; no baseline promotion or sealed
+brief release is authorized by these small icon studies. GPU pause remains in force.
 
 ## History and resources
 

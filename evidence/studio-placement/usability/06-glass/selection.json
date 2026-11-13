@@ -1,0 +1,47 @@
+{
+  "base": "4f3113dcde2cc45a8574af8ace55276d4c69e4602a3ff9f6592eddd12033edbd",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "object": "lens-glass",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    302.40000000000003,
+    220.8,
+    388.8,
+    307.2
+  ],
+  "object_bounds": [
+    302.40000000000003,
+    220.8,
+    388.8,
+    307.2
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      345.6,
+      264.0
+    ],
+    "top": [
+      345.6,
+      220.8
+    ],
+    "right": [
+      388.8,
+      264.0
+    ],
+    "bottom": [
+      345.6,
+      307.2
+    ],
+    "left": [
+      302.40000000000003,
+      264.0
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "insertion": {
+    "object": "lens-glass"
+  }
+}

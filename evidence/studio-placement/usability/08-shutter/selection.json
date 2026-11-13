@@ -1,0 +1,47 @@
+{
+  "base": "f3524e61e887f7402545e3110df039c59cc6a5309519c60b548c274b56897af4",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "object": "shutter",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    202.4,
+    143.76,
+    245.6,
+    165.36
+  ],
+  "object_bounds": [
+    202.4,
+    143.76,
+    245.6,
+    165.36
+  ],
+  "controls": [],
+  "focus": null,
+  "locks": {
+    "center": [
+      224.0,
+      154.56
+    ],
+    "top": [
+      224.0,
+      143.76
+    ],
+    "right": [
+      245.6,
+      154.56
+    ],
+    "bottom": [
+      224.0,
+      165.36
+    ],
+    "left": [
+      202.4,
+      154.56
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "insertion": {
+    "object": "shutter"
+  }
+}

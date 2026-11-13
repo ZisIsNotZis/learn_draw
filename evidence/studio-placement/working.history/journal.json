@@ -1,0 +1,13 @@
+[
+  {
+    "base": "f9145ad2d443b4cdf30fe1165aa9a610fcf91951fb9933ddc50793f17cb12845",
+    "result": "7e968fcabce3bae53b1c0b68aa703f4687266acb15a8b4c0ac15b11207339c29",
+    "operation": {
+      "action": "place",
+      "object": "sun-badge",
+      "kind": "sun",
+      "reason": "Center the observed disc on the actual banner so it follows the flag",
+      "revised_from": "c7b3778e4323ed881c745e95fed2cad5330033b37ec17d20b4d9eae5c59d20ea"
+    }
+  }
+]

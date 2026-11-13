@@ -1,0 +1,9 @@
+{
+  "format": "learn-draw/studio-1",
+  "canvas": [
+    640,
+    480
+  ],
+  "background": "#f3ead8",
+  "nodes": []
+}

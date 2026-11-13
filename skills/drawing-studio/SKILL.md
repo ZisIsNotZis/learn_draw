@@ -39,6 +39,27 @@ Only a successfully rendered ready candidate can be accepted. A failed render su
 Lock-edge pushes protect root and tip with an interior influence interval. A crossing/collapse refusal asks for
 a smaller move or a better gesture, not manually corrected generated vertices.
 
+## Place a component before committing paint
+
+Use `place scene.json --kind shape --id NAME --reason "..." --outdir TRY` when composing.
+It renders one pending component with orange boundary and labeled mounts; the working scene and
+history are unchanged. Optional `--change NAME=VALUE` uses the preset's object controls, or
+`--feature FEATURE` for that part. Initial `--at center|upper_center|upper_left|upper_right`
+and `--offset X Y` use semantic canvas anchors and width/height fractions. Defaults need neither.
+Read TRY/artwork.png and alignment.png before choosing a correction.
+
+To correct the same pending shape, use `place scene.json --revise TRY/candidate.json --move left
+--amount .05 --reason "..." --outdir TRY2` (one shell line). Its controls, placement and name are
+retained. Screen moves use the shorter canvas dimension. Add optional --change controls to the
+same proposal; use a different output directory from the candidate being read. Nothing has landed.
+To connect it after observing its own mounts, separately inspect the working target's anchors, then
+revise with --attach TARGET/selection.json, --self-anchor NAME and --target-anchor NAME. Existing
+point-attachment limits and exact positioned-anchor inspection rules apply; orientation stays explicit.
+Accept with `accept scene.json TRY2/candidate.json` only after reading the resulting image; undo
+removes the entire insertion. Discarding a proposal requires no scene mutation. Reinspect after acceptance.
+A stale/failed candidate cannot be revised or accepted. `add` is the older immediate convenience
+for scripted replays; use `place` for this observe-before-insertion workflow.
+
 ## Choose the right operation
 
 - `new hand.json --kind hand` creates a front-view open palm. Inspect index, middle, ring, little
@@ -68,8 +89,8 @@ a smaller move or a better gesture, not manually corrected generated vertices.
   The report's dimensions_canvas gives wrist_width and handle_thickness in shorter-canvas units;
   these can set a matching sleeve/pole thickness. Observe continuity rather than relying on names.
 
-- For a landscape, `new scene.json --kind landscape`, then `add scene.json --kind moon` or sun.
-  Insertion is undoable. Inspect the named object before revising it. Try `--set fullness --value .28`
+- For a landscape, `new scene.json --kind landscape`, then `place scene.json --kind moon --reason "One quiet focal moon" --outdir TRY` or sun.
+  Observe and accept the proposal; insertion is undoable. Inspect the named object before revising it. Try `--set fullness --value .28`
   for a slimmer crescent, `--set style --value day` on sky, or horizon/relief on hills. Inspect lists
   the controls of the actual selected object; exact fields are in the interface document.
 - To place an entire head, hand, lock, moon or sun, inspect `--feature object` and use `--move`.
@@ -129,7 +150,7 @@ surface. Never infer a model or rendering failure solely from a contradictory di
 
 ## Create a subject outside the preset catalog
 
-Use new scene.json --kind shape --id tower for a generic rounded colour mass; add more named shapes
+Use new scene.json --kind shape --id tower for a generic rounded colour mass; place more named shapes
 with explicit intents. Inspect object to change length (height / shorter canvas dimension), width
 (width / height), profile block|oval, rounding (0 sharper, 1 ellipse), taper (-.98 narrower bottom,
 +.98 narrower top), stroke (width / height, 0 flat fill), fill_color and ink_color. Block uses a
@@ -189,7 +210,7 @@ implementation change: inspect both again. Cycles and missing/unknown mounts are
 ## Paint a rounded or curved gesture
 
 new line.json --kind stroke creates a clean round mark without path coordinates. For a composed
-scene add --kind stroke --id NAME. Inspect object for a coherent --change group: length is the
+scene place --kind stroke --id NAME with --reason/--outdir, then observe and accept. Inspect object for a coherent --change group: length is the
 root-to-tip chord / shorter canvas dimension (.005..2, default .4); thickness is independent
 canvas fraction (.001..1, default .045). Angle points root to tip: 0 down, 90 right, 180 up, -90 left.
 Bend (-1..1, default 0) bows the middle sideways while preserving terminals. Start_width/end_width
@@ -226,7 +247,7 @@ use object/feature inspections. A local edit that changes a pinned point or its 
 
 ## Replace obsolete parts without rebuilding the scene
 
-Start with new scene.json --kind blank for an empty paper, then add named parts. Inspecting blank
+Start with new scene.json --kind blank for an empty paper, then place, observe and accept named parts. Inspecting blank
 paper without an object shows the canvas; add an object before selecting a feature.
 
 To remove a part, inspect --object ID --feature object and read its actual outline and descendants
@@ -237,8 +258,8 @@ you intend to remove the whole descendant chain. Read clean artwork and alignmen
 labels are removed old paint; blue labels are retained children released in place. Neither guide
 is part of the clean image. Accept or discard; undo restores the full prior scene and relations.
 
-For a replacement, remove the old part with the appropriate child policy, add a new named preset,
-then inspect/shape/place it and inspect both mounts before reconnecting retained parts. The steps
+For a replacement, remove the old part with the appropriate child policy, preview a new named preset with place,
+then refine/accept it and inspect both mounts before reconnecting retained parts. The steps
 are separate recoverable edits, not one atomic replace transaction. Removing the last part leaves
 valid blank paper; add/undo still work. An eyes/edge/anchor selection cannot delete a whole object.
 

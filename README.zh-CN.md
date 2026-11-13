@@ -33,6 +33,11 @@ PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安
 新增 `--kind stroke` 默认为圆头笔画，可调弯曲、渐细，也能在可见中线或端点上修正，无须写 SVG 坐标。
 头部下巴、手腕和明确检查过的色块边缘点可用于连接组件；[笔画与人物试作](evidence/studio-stroke/README.md)
 保存了实际修正过程，以及手臂形态等尚未解决的限制。
+组合新画面时，用 `place scene.json --kind shape --id NAME --reason "..." --outdir TRY`
+先预览新组件；看过位置、轮廓和挂点后，可继续修正同一提案，再接受或丢弃。
+[实际放置与独立相机创作](evidence/studio-placement/README.md)保留操作记录；
+[相机可编辑场景](examples/studio/camera.json)由七个通用色块组成。
+
 也可用 `new scene.json --kind blank` 从空白纸开始。检查整个对象后，用 `preview --remove`
 预览删除；默认让直接子部件留在原位，`--cascade` 则连同后代一起删除。
 [实际替换与撤销记录](evidence/studio-removal/README.md)保存了影响视图和连接保留的验证。

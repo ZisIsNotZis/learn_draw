@@ -1,0 +1,856 @@
+{
+  "revision": "c7b3778e4323ed881c745e95fed2cad5330033b37ec17d20b4d9eae5c59d20ea",
+  "engine": "6f3b918e9ee6dca625e031b8522eb0102e05f81354da8de902eee7d65a321ef4",
+  "status": "ready",
+  "renderer": "resvg-py-0.5.0-cpu",
+  "images": [
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\02-badge-quiet\\artwork.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\02-badge-quiet\\alignment.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\02-badge-quiet\\object-closeup.png",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\02-badge-quiet\\edit-closeup.png"
+  ],
+  "image_sha256": {
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\02-badge-quiet\\artwork.png": "0ad2d1af870196a306fd429ef9222b680fbdd943b44467c790a43ecbf0bd60d5",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\02-badge-quiet\\alignment.png": "27836ff8f7a125150160e83f8a1e7a333fcdaa276ff666ba697116c04ecaa1df",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\02-badge-quiet\\object-closeup.png": "765b435190759d48314a6c85c733f38325240491847ad787fb2d3f6707c2defd",
+    "D:\\vibe\\learn_draw_studio\\evidence\\studio-placement\\02-badge-quiet\\edit-closeup.png": "b17c91739ea7a38913bcd1404465fe0d481aa48c8191359dae567ba57135621d"
+  },
+  "nodes": {
+    "carrying-grip": {
+      "kind": "grip",
+      "intent": "a raised closed hand gripping the flagpole through its owned handle",
+      "bounds": [
+        193.50588235294117,
+        261.6470588235294,
+        347.1058823529412,
+        544.7529411764706
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            193.50588235294117,
+            261.6470588235294,
+            347.1058823529412,
+            544.7529411764706
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "depth",
+            "depth_slope",
+            "thumb_side",
+            "fold_length",
+            "thumb_reach",
+            "thumb_thickness",
+            "handle_span",
+            "handle_thickness",
+            "skin_color",
+            "ink_color",
+            "handle_color",
+            "handle_ink_color"
+          ]
+        },
+        "thumb": {
+          "bounds": [
+            221.8663020917925,
+            315.5617620518738,
+            310.9521451096517,
+            389.3453017999301
+          ],
+          "controls": [
+            "thumb_reach",
+            "thumb_thickness",
+            "skin_color",
+            "ink_color"
+          ]
+        },
+        "fingers": {
+          "bounds": [
+            193.50588235294117,
+            336.94117647058823,
+            265.7882352941176,
+            469.45882352941175
+          ],
+          "controls": [
+            "fold_length",
+            "skin_color",
+            "ink_color"
+          ]
+        },
+        "palm": {
+          "bounds": [
+            223.6235294117647,
+            332.42352941176466,
+            347.1058823529412,
+            473.9764705882353
+          ],
+          "controls": [
+            "width",
+            "skin_color",
+            "ink_color"
+          ]
+        },
+        "handle": {
+          "bounds": [
+            225.12941176470588,
+            261.6470588235294,
+            237.1764705882353,
+            544.7529411764706
+          ],
+          "controls": [
+            "handle_span",
+            "handle_thickness",
+            "handle_color",
+            "handle_ink_color"
+          ]
+        }
+      },
+      "dimensions_pixels": {
+        "wrist_width": 66.25882352941177,
+        "handle_thickness": 12.047058823529412,
+        "nominal_hand_height": 153.6
+      },
+      "dimensions_canvas": {
+        "wrist_width": 0.1035294117647059,
+        "handle_thickness": 0.018823529411764704,
+        "nominal_hand_height": 0.24
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            268.8,
+            403.2
+          ],
+          "normal": null
+        },
+        "wrist": {
+          "point": [
+            347.1058823529412,
+            403.2
+          ],
+          "normal": null
+        },
+        "grip": {
+          "point": [
+            231.1529411764706,
+            403.2
+          ],
+          "normal": null
+        },
+        "handle_left": {
+          "point": [
+            231.1529411764706,
+            538.7294117647059
+          ],
+          "normal": null
+        },
+        "handle_right": {
+          "point": [
+            231.15294117647062,
+            267.6705882352941
+          ],
+          "normal": null
+        },
+        "handle_top": {
+          "point": [
+            225.12941176470588,
+            403.2
+          ],
+          "normal": [
+            -1.0,
+            -6.123233995736766e-17
+          ]
+        },
+        "handle_bottom": {
+          "point": [
+            237.1764705882353,
+            403.2
+          ],
+          "normal": [
+            1.0,
+            6.123233995736766e-17
+          ]
+        }
+      },
+      "attached_children": [
+        "upper-pole",
+        "lower-pole",
+        "sleeve"
+      ]
+    },
+    "upper-pole": {
+      "kind": "stroke",
+      "intent": "the upper flagpole continues the included gripped segment",
+      "bounds": [
+        225.1294117647059,
+        82.44705882352935,
+        237.17647058823536,
+        273.69411764705876
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            225.1294117647059,
+            82.44705882352935,
+            237.17647058823536,
+            273.69411764705876
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            231.15294117647062,
+            88.47058823529406,
+            231.15294117647065,
+            267.6705882352941
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            219.15294117647062,
+            255.67058823529408,
+            243.15294117647062,
+            279.6705882352941
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            219.15294117647065,
+            76.47058823529406,
+            243.15294117647065,
+            100.47058823529406
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            231.15294117647062,
+            178.07058823529405
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            231.15294117647062,
+            267.6705882352941
+          ],
+          "normal": null
+        },
+        "tip": {
+          "point": [
+            231.15294117647065,
+            88.47058823529406
+          ],
+          "normal": null
+        }
+      },
+      "attached_children": [
+        "flag"
+      ],
+      "attachment": {
+        "to": "carrying-grip",
+        "self": "root",
+        "target": "handle_right"
+      }
+    },
+    "lower-pole": {
+      "kind": "stroke",
+      "intent": "the lower flagpole continues below the gripping hand",
+      "bounds": [
+        225.1294117647059,
+        532.7058823529412,
+        237.17647058823533,
+        595.9529411764706
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            225.1294117647059,
+            532.7058823529412,
+            237.17647058823533,
+            595.9529411764706
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            231.15294117647062,
+            538.7294117647059,
+            231.15294117647062,
+            589.929411764706
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            219.15294117647062,
+            526.7294117647059,
+            243.15294117647062,
+            550.7294117647059
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            219.15294117647062,
+            577.929411764706,
+            243.15294117647062,
+            601.929411764706
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            231.15294117647062,
+            564.3294117647059
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            231.15294117647062,
+            538.7294117647059
+          ],
+          "normal": null
+        },
+        "tip": {
+          "point": [
+            231.15294117647062,
+            589.929411764706
+          ],
+          "normal": null
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "carrying-grip",
+        "self": "root",
+        "target": "handle_left"
+      }
+    },
+    "sleeve": {
+      "kind": "stroke",
+      "intent": "a blue forearm enters the raised wrist",
+      "bounds": [
+        347.1058823529412,
+        370.0705882352941,
+        551.9058823529413,
+        436.32941176470587
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            347.1058823529412,
+            370.0705882352941,
+            551.9058823529413,
+            436.32941176470587
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "spine": {
+          "bounds": [
+            347.1058823529412,
+            403.2,
+            551.9058823529413,
+            403.2
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "root": {
+          "bounds": [
+            313.9764705882353,
+            370.0705882352941,
+            380.2352941176471,
+            436.32941176470587
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        },
+        "tip": {
+          "bounds": [
+            518.7764705882354,
+            370.0705882352941,
+            585.0352941176471,
+            436.32941176470587
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "thickness",
+            "angle",
+            "bend",
+            "start_width",
+            "end_width",
+            "start_cap",
+            "end_cap",
+            "shade",
+            "ink_width",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "shade_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            449.50588235294117,
+            403.2
+          ],
+          "normal": null
+        },
+        "root": {
+          "point": [
+            347.1058823529412,
+            403.2
+          ],
+          "normal": null
+        },
+        "tip": {
+          "point": [
+            551.9058823529413,
+            403.2
+          ],
+          "normal": null
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "carrying-grip",
+        "self": "root",
+        "target": "wrist"
+      }
+    },
+    "flag": {
+      "kind": "shape",
+      "intent": "a bright coral rectangular banner extends right from the pole",
+      "bounds": [
+        231.15294117647062,
+        82.07058823529401,
+        450.0329411764706,
+        203.67058823529402
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            231.15294117647062,
+            82.07058823529401,
+            450.0329411764706,
+            203.67058823529402
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "top": {
+          "bounds": [
+            234.26848553662,
+            82.07058823529401,
+            446.91739681632123,
+            83.80144621315478
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "right": {
+          "bounds": [
+            446.91739681632123,
+            83.80144621315478,
+            450.0329411764706,
+            201.93973025743324
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "bottom": {
+          "bounds": [
+            234.26848553662,
+            201.93973025743324,
+            446.91739681632123,
+            203.67058823529402
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        },
+        "left": {
+          "bounds": [
+            231.15294117647062,
+            83.80144621315478,
+            234.26848553662,
+            201.93973025743324
+          ],
+          "controls": [
+            "intent",
+            "length",
+            "width",
+            "angle",
+            "profile",
+            "rounding",
+            "taper",
+            "stroke",
+            "depth",
+            "depth_slope",
+            "fill_color",
+            "ink_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            340.5929411764706,
+            142.870588235294
+          ],
+          "normal": null
+        },
+        "top": {
+          "point": [
+            340.5929411764706,
+            82.07058823529401
+          ],
+          "normal": [
+            0.0,
+            -1.0
+          ]
+        },
+        "right": {
+          "point": [
+            450.0329411764706,
+            142.870588235294
+          ],
+          "normal": [
+            1.0,
+            -0.0
+          ]
+        },
+        "bottom": {
+          "point": [
+            340.5929411764706,
+            203.67058823529402
+          ],
+          "normal": [
+            0.0,
+            1.0
+          ]
+        },
+        "left": {
+          "point": [
+            231.15294117647062,
+            142.87058823529404
+          ],
+          "normal": [
+            -1.0,
+            -0.0
+          ]
+        }
+      },
+      "attached_children": [],
+      "attachment": {
+        "to": "upper-pole",
+        "self": "left",
+        "target": "tip",
+        "offset": [
+          0,
+          0.085
+        ]
+      }
+    },
+    "sun-badge": {
+      "kind": "sun",
+      "intent": "A warm sun emblem centered on the signal banner",
+      "bounds": [
+        308.80000000000007,
+        110.4,
+        369.6,
+        171.20000000000002
+      ],
+      "features": {
+        "object": {
+          "bounds": [
+            308.80000000000007,
+            110.4,
+            369.6,
+            171.20000000000002
+          ],
+          "controls": [
+            "intent",
+            "depth",
+            "depth_slope",
+            "length",
+            "angle",
+            "rays",
+            "fill_color",
+            "rays_color"
+          ]
+        }
+      },
+      "anchors": {
+        "center": {
+          "point": [
+            339.20000000000005,
+            140.8
+          ],
+          "normal": null
+        }
+      },
+      "attached_children": []
+    }
+  },
+  "scope": "editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips with an owned handle segment, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
+  "removal": null,
+  "insertion": {
+    "object": "sun-badge"
+  },
+  "alignment_legend": {
+    "red dashed": "removed previous paint; removal only",
+    "blue": "pinned stroke endpoints / inspected target; removal: retained affected children",
+    "orange": "selected current boundary",
+    "pink dashed": "previous boundary",
+    "green rings": "named mount points or protected endpoints/knuckle",
+    "white target": "local edge/spine, terminal, digit-tip or exact-mount focus"
+  },
+  "move_units": "object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span"
+}
