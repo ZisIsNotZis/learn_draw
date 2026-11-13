@@ -1,0 +1,10 @@
+{
+  "stage": "initial structured authoring before any render",
+  "error": "shape.width must be between .001 and 6",
+  "attempt": {
+    "object": "table-front",
+    "length": 0.225,
+    "width": 6.5
+  },
+  "correction": "Use a .25-high, width-6 front panel; derive its top from the actual table-top center minus half its thickness. No engine range expanded."
+}

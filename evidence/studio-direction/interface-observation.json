@@ -1,0 +1,18 @@
+{
+  "observation": "Inspection stdout serializes metadata for the whole scene, even when one part is selected. Complete data remains useful in report.json; default CLI output should focus on selected controls and image/report handles.",
+  "runs": [
+    {
+      "folder": "usability",
+      "terminal_outputs": 17,
+      "max_output_characters": 35593,
+      "total_output_characters": 391113
+    },
+    {
+      "folder": "current-guide-review",
+      "terminal_outputs": 1,
+      "max_output_characters": 35577,
+      "total_output_characters": 35577
+    }
+  ],
+  "scope": "Interface cost observation, not an art metric."
+}

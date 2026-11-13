@@ -17,6 +17,8 @@ def anchors(node,canvas):
     result.update(getattr(data,'mounts',{}))
     if node['kind']=='stroke':
         result={name:dict(point=p,normal=None) for name,p in [('center',data.rows[len(data.rows)//2].spine),('root',data.rows[0].spine),('tip',data.rows[-1].spine)]}
+        result['root']['direction']=tuple(-v for v in data.tangents[0])
+        result['tip']['direction']=data.tangents[-1]
     if node['kind']=='shape':
         from .shape import SIDES
         result.update({side:_shape_anchor(node,canvas,side,.5) for side in SIDES})
@@ -58,6 +60,15 @@ def get_anchor(node,canvas,name):
         except ValueError: raise ValueError('mount position requires a fraction 0..1') from None
         return _shape_anchor(node,canvas,side,at)
     raise ValueError(node['id']+': unavailable mount '+str(name)+'; choose '+', '.join(available))
+
+
+def anchor_direction(info):
+    """Outward join direction; distinct from the normal used to inset a surface pin."""
+    direction=info.get('direction') or info.get('normal')
+    if direction is None:return None
+    size=math.hypot(*direction)
+    if size<1e-12:raise ValueError('mount has no stable direction')
+    return tuple(v/size for v in direction)
 
 
 def mount_scale(node,canvas):

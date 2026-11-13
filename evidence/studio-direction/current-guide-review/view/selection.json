@@ -1,0 +1,32 @@
+{
+  "base": "6a316c63c2f32796ce990a43c4c573bd3d5f5f558493fdfa515e07b88edf515d",
+  "engine": "46b8907650f18e1fb2b2f20e68bff94f3426bcf8781908d2f52d57519224eda2",
+  "object": "flower-hand",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    456.75740310416717,
+    285.41565153231375,
+    488.75740310416717,
+    317.41565153231375
+  ],
+  "object_bounds": [
+    461.68062878197986,
+    205.38534108010077,
+    567.5309772155003,
+    319.80730167728984
+  ],
+  "controls": [],
+  "focus": [
+    472.75740310416717,
+    301.41565153231375
+  ],
+  "locks": {
+    "wrist": [
+      472.75740310416717,
+      301.41565153231375
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "wrist"
+}

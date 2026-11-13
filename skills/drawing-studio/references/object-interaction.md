@@ -92,3 +92,12 @@ A two-pinned stream still needs a deliberate curve and taper: align its start ta
 nozzle and inspect the soil landing. A can-opening oval was discarded because the arm hid it
 into two stray patches. Inspect actual visibility before adding explanatory detail. These are
 observed drawing corrections, not automatic contact, orientation-fit or fluid solvers.
+
+## Distinguish a readable join from a useful body primitive
+
+The person-with-flower study uses public --aim to seat the cuff, then re-aims after changing a
+connected shoulder. It confirms the fitting tool but still has a tube-like elbow and schematic
+torso. A direction-correct stroke is not automatically a convincing arm; use the actual silhouette
+and anatomy to judge the representation. The far sleeve was first pinned at left@.23, which is
+lower left under the documented clockwise convention; inspecting left@.77 exposed the shoulder
+and corrected the hanging sleeve. Prefer an actual exact-anchor view to remembered fractions.

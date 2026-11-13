@@ -1,0 +1,49 @@
+{
+  "initial_copied_unchanged_canonical": true,
+  "first_fit_changed_nodes": [
+    "reaching-sleeve"
+  ],
+  "first_fit_sleeve_changed_fields": [
+    "bend"
+  ],
+  "first_fit_terminal_points_exact": {
+    "root": true,
+    "tip": true
+  },
+  "first_fit_directions": {
+    "sleeve": [
+      0.7660444431189779,
+      -0.6427876096865395
+    ],
+    "wrist": [
+      -0.766044443118978,
+      0.6427876096865394
+    ]
+  },
+  "refit_terminal_points_exact": {
+    "root": true,
+    "tip": true
+  },
+  "refit_directions": {
+    "sleeve": [
+      0.7660444431189781,
+      -0.6427876096865394
+    ],
+    "wrist": [
+      -0.766044443118978,
+      0.6427876096865394
+    ]
+  },
+  "raise_changed_nodes": [
+    "flower-hand"
+  ],
+  "undo_exact_canonical_scene": true,
+  "reaccept_exact_scene_bytes": true,
+  "undo_exact_png": true,
+  "reaccept_exact_png": true,
+  "first_fit_scene": "7701c6e824d70de69f7b9fa23f9a9ee62e5ca2dacfec5bf30db623a0610faec6",
+  "raised_scene": "67abb5a72d10f3b304feabaa64c76db7948a50641a4efa5afc254383cb559b7b",
+  "final_scene": "6a316c63c2f32796ce990a43c4c573bd3d5f5f558493fdfa515e07b88edf515d",
+  "engine": "10fe6d92b45bb1401ddc5f5c76cd9d2d175fa0e983422a3e682d5de2cb1c49b8",
+  "final_image": "499a44b516e1458ae2dee23ec0f76b6b20190b95dadae5995ac0b55a22967944"
+}

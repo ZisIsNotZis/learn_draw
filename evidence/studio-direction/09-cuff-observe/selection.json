@@ -1,0 +1,58 @@
+{
+  "base": "77bc5df69db75465ca34992e6ebb7f5fd0d85dc579093f5817012385ccd1b1b3",
+  "engine": "10fe6d92b45bb1401ddc5f5c76cd9d2d175fa0e983422a3e682d5de2cb1c49b8",
+  "object": "reaching-sleeve",
+  "kind": "feature",
+  "feature": "tip",
+  "bounds": [
+    446.0123050649515,
+    300.270553493098,
+    499.50250114338286,
+    353.7607495715294
+  ],
+  "object_bounds": [
+    306.72169292050967,
+    300.55299756010305,
+    485.2419859721562,
+    382.10479365385123
+  ],
+  "controls": [
+    "intent",
+    "thickness",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "screen terminal movement as fraction of shorter canvas dimension; opposite terminal fixed",
+  "interaction": "stroke-terminal",
+  "locks": {
+    "root": [
+      334.22418138407966,
+      328.05548602367304
+    ]
+  },
+  "focus": [
+    472.75740310416717,
+    327.0156515323137
+  ],
+  "endpoint_bindings": {
+    "root": {
+      "to": "shirt",
+      "target": "right@.27",
+      "inset": 0.03
+    },
+    "tip": {
+      "to": "flower-hand",
+      "target": "wrist"
+    }
+  }
+}

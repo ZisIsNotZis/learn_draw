@@ -13,7 +13,7 @@ from scripts.vector_visibility import visible_regions
 from .geometry import xml_comment,bounds, lock_rows, mix, outline, resolve_root, path
 from .model import canonical, engine_fingerprint, fingerprint, node_by_id, select, exposed_controls, validate, write
 from .components import component_data, support, component_outline as node_outline, depth_bounds
-from .attachment import resolve_scene,anchors,get_anchor,anchor_view,endpoint_relations,dependencies
+from .attachment import resolve_scene,anchors,get_anchor,anchor_view,endpoint_relations,dependencies,anchor_direction
 
 
 PALETTE = dict(fill="#517f9b", shade="#426781", light="#729eaf", ink="#2e475a")
@@ -127,28 +127,46 @@ def tone_region(rows, start, end, a, b):
     return left + list(reversed(right))
 
 
-def mount_labels(node,canvas,names=None):
-    """Callouts keep names readable even on thin or rotated mounted shapes."""
-    box=bounds(node_outline(node,canvas));cx=(box[0]+box[2])/2;cy=(box[1]+box[3])/2
+def direction_guide(info,name,scale=1,color='#287c7e',prefix='mount-direction'):
+    """An outward join arrow is inspection ink, never an artwork mark."""
+    direction=anchor_direction(info)
+    if direction is None:return []
+    x,y=info['point'];dx,dy=direction;ex,ey=x+dx*24*scale,y+dy*24*scale
+    left=(ex-dx*6*scale-dy*3*scale,ey-dy*6*scale+dx*3*scale)
+    right=(ex-dx*6*scale+dy*3*scale,ey-dy*6*scale-dx*3*scale)
+    d=f'M {x} {y} L {ex} {ey} M {ex} {ey} L {left[0]} {left[1]} L {right[0]} {right[1]} Z'
+    return [xml_comment(prefix+'-'+name+': outward direction at the actual inspected mount'),
+            f'<path id="{prefix}-{name}-halo" d="{d}" fill="none" stroke="#fffaf0" stroke-width="{4.4*scale}" stroke-linejoin="round"/>',
+            f'<path id="{prefix}-{name}" d="{d}" fill="{color}" stroke="{color}" stroke-width="{1.4*scale}" stroke-linejoin="round"/>']
+
+
+def mount_labels(node,canvas,names=None,scale=1):
+    """Screen-sized callouts with minimum rails keep tiny-part guides apart."""
+    actual=bounds(node_outline(node,canvas));cx=(actual[0]+actual[2])/2;cy=(actual[1]+actual[3])/2
+    half_w=max((actual[2]-actual[0])/2,70*scale);half_h=max((actual[3]-actual[1])/2,45*scale)
+    box=[cx-half_w,cy-half_h,cx+half_w,cy+half_h]
     buckets={name:[] for name in ('left','right','top','bottom')}
     chosen={name:get_anchor(node,canvas,name) for name in names} if names is not None else anchors(node,canvas)
-    for name,info in chosen.items():
-        x,y=info['point'];normal=info['normal']
-        dx,dy=normal if normal else (x-cx,y-cy)
-        side=('right' if dx>=0 else 'left') if abs(dx)>=abs(dy) else ('bottom' if dy>=0 else 'top')
-        buckets[side].append((y if side in ('left','right') else x,name,(x,y)))
     out=[]
+    for name,info in chosen.items():
+        x,y=info['point'];direction=anchor_direction(info)
+        dx,dy=direction if direction else (x-cx,y-cy)
+        side=('right' if dx>=0 else 'left') if abs(dx)>=abs(dy) else ('bottom' if dy>=0 else 'top')
+        extent=24*scale if side in ('left','right') else (max(36,len(name)*7)+12)*scale
+        buckets[side].append((y if side in ('left','right') else x,name,(x,y),extent))
+        out.extend(direction_guide(info,name,scale))
     for side,items in buckets.items():
-        items.sort();gap=24 if side in ('left','right') else 68;positions=[]
-        for desired,_name,_p in items: positions.append(max(desired,positions[-1]+gap) if positions else desired)
-        if positions:
-            shift=sum(p-i[0] for p,i in zip(positions,items))/len(positions)
-        for along,(_desired,name,p) in zip(positions,items):
+        items.sort();positions=[]
+        for i,(desired,_name,_p,extent) in enumerate(items):
+            gap=(extent+items[i-1][3])/2 if i else 0
+            positions.append(max(desired,positions[-1]+gap) if positions else desired)
+        shift=sum(p-i[0] for p,i in zip(positions,items))/len(positions) if positions else 0
+        for along,(_desired,name,p,_extent) in zip(positions,items):
             along-=shift
-            x,y,align=(box[0]-14,along+4,'end') if side=='left' else ((box[2]+14,along+4,'start') if side=='right' else ((along,box[1]-14,'middle') if side=='top' else (along,box[3]+25,'middle')))
+            x,y,align=(box[0]-14*scale,along+4*scale,'end') if side=='left' else ((box[2]+14*scale,along+4*scale,'start') if side=='right' else ((along,box[1]-14*scale,'middle') if side=='top' else (along,box[3]+25*scale,'middle')))
             out.append(xml_comment(f'mount-callout-{name}: connect this name to its actual geometric mount'))
-            out.append(f'<path id="mount-callout-{name}" d="M {p[0]} {p[1]} L {x} {y-4}" fill="none" stroke="#506655" stroke-width=".8"/>')
-            out.append(f'<text x="{x}" y="{y}" text-anchor="{align}" font-family="sans-serif" font-size="13" fill="#304f44" stroke="#fffaf0" stroke-width="3" paint-order="stroke">{html.escape(name)}</text>')
+            out.append(f'<path id="mount-callout-{name}" d="M {p[0]} {p[1]} L {x} {y-4*scale}" fill="none" stroke="#506655" stroke-width="{.8*scale}"/>')
+            out.append(f'<text x="{x}" y="{y}" text-anchor="{align}" font-family="sans-serif" font-size="{13*scale}" fill="#304f44" stroke="#fffaf0" stroke-width="{3*scale}" paint-order="stroke">{html.escape(name)}</text>')
     return out
 
 
@@ -172,6 +190,7 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
     authored=scene;scene=resolve_scene(scene)
     width, height = scene.get("canvas", [640, 640])
     vb = viewbox or [0, 0, width, height]
+    guide_scale=max(vb[2]/width,vb[3]/height)
     out = [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="{" ".join(map(str, vb))}">',
            '<title>Drawing studio</title>',
            '<desc>Authored gesture and local edits; visibility from support depth. Selection aids are separate from artwork.</desc>']
@@ -219,30 +238,34 @@ def drawing(scene, selection=None, previous=None, viewbox=None):
             if previous and not selection.get('insertion'):
                 old_paths,_,_=selection_paths(previous,selection)
                 for i,guide in enumerate(old_paths):
-                    out.append(f'<path id="edit-before-{i}" d="{guide["d"]}" transform="{guide["transform"]}" fill="none" stroke="#ba6884" stroke-width="2" stroke-dasharray="5 4"/>')
+                    out.append(f'<path id="edit-before-{i}" d="{guide["d"]}" transform="{guide["transform"]}" fill="none" stroke="#ba6884" stroke-width="{2*guide_scale}" stroke-dasharray="{5*guide_scale} {4*guide_scale}"/>')
             for i,guide in enumerate(paths):
                 ident='selected-edge' if i==0 else f'selected-edge-{i}'
-                out.append(f'<path id="{ident}" d="{guide["d"]}" transform="{guide["transform"]}" fill="none" stroke="#e27d39" stroke-width="3"/>')
+                out.append(f'<path id="{ident}" d="{guide["d"]}" transform="{guide["transform"]}" fill="none" stroke="#e27d39" stroke-width="{3*guide_scale}"/>')
             if focus:
                 x,y=focus
-                out.append(f'<circle id="edit-focus" cx="{x}" cy="{y}" r="5" fill="#fffaf0" stroke="#bc5128" stroke-width="2"/>')
+                out.append(f'<circle id="edit-focus" cx="{x}" cy="{y}" r="{5*guide_scale}" fill="#fffaf0" stroke="#bc5128" stroke-width="{2*guide_scale}"/>')
             for name,p in locks.items():
-                out.append(f'<circle id="locked-{name}" cx="{p[0]}" cy="{p[1]}" r="4" fill="#fffaf0" stroke="#506655" stroke-width="2"/>')
+                out.append(f'<circle id="locked-{name}" cx="{p[0]}" cy="{p[1]}" r="{4*guide_scale}" fill="#fffaf0" stroke="#506655" stroke-width="{2*guide_scale}"/>')
             for end,relation in endpoint_relations(node_by_id(authored,selection['object'])).items():
                 p=get_anchor(node_by_id(scene,selection['object']),[width,height],end)['point']
-                out.append(f'<circle id="pinned-{end}" cx="{p[0]}" cy="{p[1]}" r="8" fill="none" stroke="#3983b9" stroke-width="2"/>')
+                out.append(f'<circle id="pinned-{end}" cx="{p[0]}" cy="{p[1]}" r="{8*guide_scale}" fill="none" stroke="#3983b9" stroke-width="{2*guide_scale}"/>')
             if selection.get('feature')=='anchors':
-                out.extend(mount_labels(node_by_id(scene,selection['object']),[width,height],locks))
+                out.extend(mount_labels(node_by_id(scene,selection['object']),[width,height],locks,guide_scale))
+            elif selection.get('interaction')=='stroke-terminal':
+                out.extend(mount_labels(node_by_id(scene,selection['object']),[width,height],[selection['feature']],guide_scale))
             if selection.get('attachment_target'):
                 target=selection['attachment_target']
-                point=get_anchor(node_by_id(scene,target['object']),[width,height],target['anchor'])['point']
+                target_mount=get_anchor(node_by_id(scene,target['object']),[width,height],target['anchor'])
+                point=target_mount['point']
+                out.extend(direction_guide(target_mount,target['anchor'],guide_scale,'#3983b9','target-direction'))
                 label=html.escape(target['object']+'.'+target['anchor'])
                 box=bounds(node_outline(node_by_id(scene,selection['object']),[width,height]))
-                lx,ly=box[2]+20,max(box[3]+50,point[1]+45)
-                out.append(f'<circle id="mount-target" cx="{point[0]}" cy="{point[1]}" r="7" fill="none" stroke="#3983b9" stroke-width="3"/>')
+                lx,ly=box[2]+20*guide_scale,max(box[3]+50*guide_scale,point[1]+45*guide_scale)
+                out.append(f'<circle id="mount-target" cx="{point[0]}" cy="{point[1]}" r="{7*guide_scale}" fill="none" stroke="#3983b9" stroke-width="{3*guide_scale}"/>')
                 out.append('<!-- mount-target-callout: identify the inspected target mount -->')
-                out.append(f'<path id="mount-target-callout" d="M {point[0]} {point[1]} L {lx} {ly-4}" fill="none" stroke="#3983b9" stroke-width="1"/>')
-                out.append(f'<text x="{lx}" y="{ly}" font-family="sans-serif" font-size="13" fill="#286d9e" stroke="#fffaf0" stroke-width="3" paint-order="stroke">{label}</text>')
+                out.append(f'<path id="mount-target-callout" d="M {point[0]} {point[1]} L {lx} {ly-4*guide_scale}" fill="none" stroke="#3983b9" stroke-width="{guide_scale}"/>')
+                out.append(f'<text x="{lx}" y="{ly}" font-family="sans-serif" font-size="{13*guide_scale}" fill="#286d9e" stroke="#fffaf0" stroke-width="{3*guide_scale}" paint-order="stroke">{label}</text>')
     return "\n".join(out + ['</svg>'])
 
 
@@ -336,8 +359,9 @@ def bundle(scene, directory, selection=None, previous=None, png=True):
                   scope="editable gesture strokes and colour masses, flat cartoon heads, front-view open hands, compact illustrative grips with an owned handle segment, planar locks and scenic recipes; no full 3D head/hand rig or whole-artwork acceptance claim",
                   removal=selection.get('removal') if selection else None,
                   insertion=selection.get('insertion') if selection else None,
+                  direction_fit=selection.get('direction_fit') if selection else None,
                   alignment_legend={'red dashed':'removed previous paint; removal only','blue':'pinned stroke endpoints / inspected target; removal: retained affected children','orange':'selected current boundary','pink dashed':'previous boundary',
-                                    'green rings':'named mount points or protected endpoints/knuckle','white target':'local edge/spine, terminal, digit-tip or exact-mount focus'},
+                                    'teal arrows':'outward join direction where defined; center mounts can be directionless','green rings':'named mount points or protected endpoints/knuckle','white target':'local edge/spine, terminal, digit-tip or exact-mount focus'},
                   move_units='object: shorter canvas dimension; local edge: nominal lock width; shape contour: nominal shorter extent; stroke spine: thickness; stroke terminal: shorter canvas; digit tip: nominal digit span')
     write(directory / "report.json", report)
     (directory / "report.txt").write_text("\n".join(images) + "\n", encoding="utf-8")

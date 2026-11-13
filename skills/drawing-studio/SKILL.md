@@ -279,3 +279,24 @@ inspect that root/tip and preview --unbind-end. Releasing one/both pins preserve
 the affected link in place, retaining the other pin; cascade follows both dependencies. Cycles and
 collapsed/invalid derived gestures are refused. These are projected constraints with independent
 depth, not a fluid simulation or a general grip/physics solver.
+
+## Aim an observed connected stroke into its join
+
+Inspect the source stroke with --feature root or tip. Separately inspect the target with
+--feature anchors --anchor NAME and read both images. Teal arrows show outward join direction
+where it exists: a surface edge normal, stroke terminal tangent or hand/grip wrist direction.
+Centers and handle-end mounts may be directionless; the report keeps direction separate from
+surface normal, so a directional wrist is still not an inset surface.
+
+Use `preview scene.json --selection END/selection.json --aim TARGET/selection.json --reason
+"Let the cuff enter along the wrist" --outdir TRY` (one shell line). The two parts must already
+share this exact endpoint/mount relation, in either dependency direction. The operation opposes
+the outward arrows by changing only bend, preserving both stroke endpoints, widths and existing
+connections. Read clean and magnified images before accept/undo. A center or unreachable angle
+is refused: reposition a target or choose another gesture rather than moving the locked ends.
+
+This fits the current picture once. It does not add a persistent orientation constraint, fit
+cuff widths, align both end tangents independently or establish anatomical/physical contact.
+If moving/resizing a connected target changes the chord/direction, inspect again and re-aim.
+Existing endpoint pins continue to follow their positions. Small-part mount labels use separate
+rails and screen-sized guides in closeups; the clean artwork never contains these aids.

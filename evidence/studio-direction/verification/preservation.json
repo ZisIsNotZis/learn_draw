@@ -1,0 +1,45 @@
+{
+  "engine": "10fe6d92b45bb1401ddc5f5c76cd9d2d175fa0e983422a3e682d5de2cb1c49b8",
+  "results": {
+    "head": {
+      "png_sha256": "23ad96c4ac624d9dd75b3187d0e56bdb0da4635d774727c4c7022bdbdb8bc48a",
+      "prior_png_preserved": true
+    },
+    "hand": {
+      "png_sha256": "2caeba8d69a6d36074b802b87ad83d9d5421d1a031fac9da1db143d85867bb2c",
+      "prior_png_preserved": true
+    },
+    "shape": {
+      "png_sha256": "6993732e6a9662ba209a2c2d0f5a3b51887688f7c1ea1880c427703bba85d855",
+      "prior_png_preserved": true
+    },
+    "lamp": {
+      "png_sha256": "0103f189278697c4bc2f48964f276781a860d1e1a3fc6feaa74bd3ddb9cfbb2b",
+      "prior_png_preserved": true
+    },
+    "rocket": {
+      "png_sha256": "e0e8e63fbbead611b7ea19e3388894fc48045f2ceeb8d8ecd688e949db0c2ada",
+      "prior_png_preserved": true
+    },
+    "cactus": {
+      "png_sha256": "13635f3bef95cbd48c5c5cad096ecbc5e255115cc9d5e1e96a550eb8cab13e74",
+      "prior_png_preserved": true
+    },
+    "pinwheel": {
+      "png_sha256": "5620b08f50ec6b493134435aa54bfc66dba8c89c1888f354799f439ac5723ae0",
+      "prior_png_preserved": true
+    },
+    "flag": {
+      "png_sha256": "e8e195a8998113074e973f14bd249bdee9b5e152d75dcf0ebb247abd97548cee",
+      "prior_png_preserved": true
+    },
+    "watering": {
+      "png_sha256": "05830e421a4f967708953a3f4b463bad48b5fadf77d2b34396349950086cc30a",
+      "prior_png_preserved": true
+    },
+    "grip": {
+      "png_sha256": "823240384f7835b89a85161c9ceca9055655eee71d5a1dc0cfd30453d7f0e8d4",
+      "prior_png_preserved": true
+    }
+  }
+}

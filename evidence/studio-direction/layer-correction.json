@@ -1,0 +1,14 @@
+{
+  "before": "6c77885c6a8eb063a6c122766a8791da31ad5db524bd43f36e9bf5bf969f85e1",
+  "after": "46e333bb19607955a9d28c7b2244f549ff4c4e57a2c4030790aa2035c640a1f0",
+  "reason": "Overlapping petals are separate sheets. Author a clockwise back-to-front order below the flower heart; no visibility cuts or image metrics.",
+  "canceled_render": "01-sleeve-observe",
+  "terminal_observed": true,
+  "layers": {
+    "petal-1": 9.0,
+    "petal-2": 9.05,
+    "petal-3": 9.1,
+    "petal-4": 9.15,
+    "petal-5": 9.2
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "prior_engine": "10fe6d92b45bb1401ddc5f5c76cd9d2d175fa0e983422a3e682d5de2cb1c49b8",
+  "current_engine": "46b8907650f18e1fb2b2f20e68bff94f3426bcf8781908d2f52d57519224eda2",
+  "exact_reconstructed_prior_engine": true,
+  "only_changed_module": "studio/render.py",
+  "change": "white underlay behind inspection direction arrows; clean artwork and alignment/model logic unchanged",
+  "reconstructed_source": "source-history/render-v1-reconstructed.py"
+}

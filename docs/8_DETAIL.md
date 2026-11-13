@@ -272,3 +272,18 @@ mount attachment. Revision validates readiness, engine/base/result and an exact 
 after removing the added id. The final anchor impact view is bound to the working base for rendering
 and acceptance. It has no old contour because that object is absent from the working base; compare
 separate pending previews to inspect successive corrections. Rendering completion precedes ready.
+
+## One-shot stroke terminal direction fit
+
+In a chord frame, let c be the unit root-to-tip vector, r=(c.y,-c.x), L its length and b bend.
+The centerline is L*t*c + 4*L*b*t*(1-t)*r. Root derivative is L*(c+4*b*r), tip derivative
+is L*(c-4*b*r). For desired forward tangent v, root b=(v·r)/(4*v·c); tip takes its negative.
+Source outward root is negative forward tangent; source outward tip is forward tangent. Aim
+opposes the target outward direction, refuses v·c<=0 or |b|>1, validates paint, recompiles both
+objects and verifies actual opposed directions plus preserved terminal centers. Existing direct
+joins are recognized in either graph direction; no new cyclic dependency is added.
+
+Anchor/edit inspection guides use scale=max(viewBox.width/canvas.width, viewBox.height/canvas.height)
+to keep rings, text and arrows at screen size under SVG meet scaling. Label rails have minimum
+span and name-length spacing; arrow halos maintain contrast. Full tiny-object guide clusters still
+need exact-anchor or magnified views. This overlay does not change clean geometry or art ink.

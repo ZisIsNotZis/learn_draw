@@ -1,0 +1,43 @@
+{
+  "base": "87bb2a2cd7294e05f66aee48b8f408bd5e7f5f2f7311199052c9259da5e2da1a",
+  "engine": "10fe6d92b45bb1401ddc5f5c76cd9d2d175fa0e983422a3e682d5de2cb1c49b8",
+  "object": "resting-arm",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    143.51315234456453,
+    418.1115442911108,
+    175.51315234456453,
+    450.1115442911108
+  ],
+  "object_bounds": [
+    98.17061076060511,
+    406.13762304242033,
+    187.487073593255,
+    653.2083034166366
+  ],
+  "controls": [],
+  "focus": [
+    159.51315234456453,
+    434.1115442911108
+  ],
+  "locks": {
+    "root": [
+      159.51315234456453,
+      434.1115442911108
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "root",
+  "endpoint_bindings": {
+    "root": {
+      "to": "shirt",
+      "target": "left@.23",
+      "inset": 0.08
+    }
+  },
+  "attachment_target": {
+    "object": "shirt",
+    "anchor": "left@.77"
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "before": "    return [xml_comment(prefix+'-'+name+': outward direction at the actual inspected mount'),\n            f'<path id=\"{prefix}-{name}\" d=\"M {x} {y} L {ex} {ey} M {ex} {ey} L {left[0]} {left[1]} L {right[0]} {right[1]} Z\" fill=\"{color}\" stroke=\"{color}\" stroke-width=\"{1.4*scale}\" stroke-linejoin=\"round\"/>']",
+  "after": "    d=f'M {x} {y} L {ex} {ey} M {ex} {ey} L {left[0]} {left[1]} L {right[0]} {right[1]} Z'\n    return [xml_comment(prefix+'-'+name+': outward direction at the actual inspected mount'),\n            f'<path id=\"{prefix}-{name}-halo\" d=\"{d}\" fill=\"none\" stroke=\"#fffaf0\" stroke-width=\"{4.4*scale}\" stroke-linejoin=\"round\"/>',\n            f'<path id=\"{prefix}-{name}\" d=\"{d}\" fill=\"{color}\" stroke=\"{color}\" stroke-width=\"{1.4*scale}\" stroke-linejoin=\"round\"/>']"
+}

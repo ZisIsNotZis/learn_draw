@@ -1,0 +1,64 @@
+﻿DIRECTION OPERATION: INDEPENDENT BOUNDED USABILITY REVIEW
+Date: 2026-11-13. Operator: fresh-context direction_usability agent.
+Disposition: PASS for the bounded requested operation; no execution/usability blocker.
+This is not a whole-artwork gate or anatomical/grasp-quality acceptance.
+
+Input scope: read only frozen usability-inputs/SKILL.md, 7_INTERFACE.md,
+object-interaction.md, initial.json; public CLI help; own outputs. No production
+source, tests, examples, roadmap or other evidence read. No production edits,
+direct scene-node edits, SVG authoring, GPU inference/training/benchmark or generation.
+The configured initial illustration was copied unchanged to working.json before CLI use.
+
+Observed sequence:
+01/02: Read clean whole scene and sleeve-tip/wrist magnified guides. Initial sleeve
+approached horizontally although the actual wrist edge was diagonal; the lower
+corner projected awkwardly behind the hand. Named wrist plus its outward arrow
+made the intended connection clear without guessed coordinates.
+03: Public --aim changed only reaching-sleeve bend. Read clean, alignment and
+edit-closeup before accept. The sleeve now curves under the forearm and the cuff
+cut agrees with the wrist diagonal. Both terminal centers remain exactly fixed;
+all other authored nodes remain exactly fixed. Accepted this bounded improvement.
+04/05: Inspected hand object, proposed up .04 of shorter canvas (25.6px). Read
+whole clean, alignment and closeup. The blossom, stem and leaf followed the hand;
+the sleeve stayed attached and changed its chord. The higher flower makes the
+pose lighter and closer to eye level. Accepted. Its cuff now has a small visible
+wedge/slant mismatch, demonstrating that endpoint pins do not retain direction fit.
+06: Deliberately reused original stale selection; command returned 2 with
+'stale selection: inspect the current scene again'. Preserved refusal outputs.
+07/08/09: Fresh sleeve-tip and wrist inspections expose changed sleeve direction.
+Public --aim refits the raised cuff. Read full clean, alignment and magnified
+image before acceptance. Small wedge disappears; both endpoints remain exact.
+10/11/12: Accepted, inspected, actually undid, inspected, then reaccepted the same
+ready candidate and inspected. Read undo/reaccepted clean images. Exact canonical
+scene recovery on undo; exact accepted scene bytes on reaccept; artwork PNGs are
+byte-identical to their respective pre-undo states. verification.json records it.
+No art proposal was discarded: both visible changes served their stated issue.
+The intentional stale request is the only failure, preserved as 06-stale-refused.
+
+Guide usefulness/limits:
+Teal arrows distinguish outward direction from an inset normal; source/target
+arrows oppose after fitting. The tiny full-scene arrow is only a locator; the
+magnified view is needed for cuff inspection. Screen-sized labels/rings remain
+legible rather than swallowing the enlarged art. Labels for exact wrist and tip
+are understandable and did not obscure the seam. Current/previous centerlines
+and fixed endpoint rings help separate direction correction from position drift.
+The clean picture remains necessary: an arrow match alone says nothing about
+cuff width, grip anatomy, volume or a pleasing elbow. The single quadratic bend
+also changes the whole sleeve curve, including its shoulder departure; this is
+visible and acceptable here, not an independent local cuff tangent control.
+
+One-shot fit:
+Clear in frozen skill and actual behavior. --aim makes one current bend, while
+moving its target keeps positions connected but can spoil direction. Fresh
+inspection plus re-aim is a short understandable repair. Optional refinement:
+report direction mismatch after later chord changes, but do not imply a retained
+orientation constraint. No blocker warrants implementation changes from this run.
+
+Evidence/process:
+commands.jsonl keeps every CLI launch intent, spawned PID and terminal outcome.
+Long observation yields were re-polled to actual completion, never treated as
+termination or used to restart a command. Process audit in process-audit.json
+requires every spawn to have a matching terminal result. All owned CLI processes
+finished; no owned live processes remain. No commit or push performed.
+See verification.json for engine, canonical scenes, final PNG digest and exact
+recovery checks; artifact-sha256.json binds all files in this bounded run.

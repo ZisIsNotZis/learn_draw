@@ -1,0 +1,15 @@
+﻿{
+    "processes":  [
+                      {
+                          "ProcessId":  48720,
+                          "ParentProcessId":  15064,
+                          "CommandLine":  "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe -m scripts.studio inspect D:\\vibe\\learn_draw_studio\\evidence\\studio-direction\\working.json --object reaching-sleeve --feature tip --outdir D:\\vibe\\learn_draw_studio\\evidence\\studio-direction\\01-sleeve-observe"
+                      },
+                      {
+                          "ProcessId":  49932,
+                          "ParentProcessId":  48720,
+                          "CommandLine":  "D:\\vibe\\learn_draw_studio\\.venv\\Scripts\\python.exe -m scripts.studio inspect D:\\vibe\\learn_draw_studio\\evidence\\studio-direction\\working.json --object reaching-sleeve --feature tip --outdir D:\\vibe\\learn_draw_studio\\evidence\\studio-direction\\01-sleeve-observe"
+                      }
+                  ],
+    "reason":  "Ten coplanar overlapping petal pairs have no authored front/back order. Cancel this candidate and author the petal order explicitly before another render."
+}

@@ -38,6 +38,10 @@ PNG 优先使用原生 CPU resvg，另可使用 CairoSVG 或禁用 GPU 的已安
 [实际放置与独立相机创作](evidence/studio-placement/README.md)保留操作记录；
 [相机可编辑场景](examples/studio/camera.json)由七个通用色块组成。
 
+连接好的笔画端点也能用 `preview --aim TARGET/selection.json` 按已观察的方向接顺，保持两端位置。
+[实际袖口／姿态修正与限制](evidence/studio-direction/README.md)同时记录了尚未解决的身体、手臂造型问题；
+一次方向拟合不等于自动姿态或自然人体原语。
+
 也可用 `new scene.json --kind blank` 从空白纸开始。检查整个对象后，用 `preview --remove`
 预览删除；默认让直接子部件留在原位，`--cascade` 则连同后代一起删除。
 [实际替换与撤销记录](evidence/studio-removal/README.md)保存了影响视图和连接保留的验证。

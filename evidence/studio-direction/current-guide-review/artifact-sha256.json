@@ -1,0 +1,22 @@
+{
+  "command.jsonl": "b761eb441917e17897b995d4c78f69916f3f468937e52c92a49138e8e3847520",
+  "finalize.py": "20390238e61406ade45304d1d59f5f6ab3a7e588f68841683949df5423fde83f",
+  "REPORT.txt": "f26a7be9914bee078d1102551bbe53b5db04f4eff2df14bf9e42256b35f5d51b",
+  "run.py": "11bacd7a0f652509e23b6e1a6b78064a008da148cc1196600535d9e113943a99",
+  "view/alignment.png": "4d5ade9a785c827e8f1930973cb47bd6a5c9129443828d57f5da72daebbdcbba",
+  "view/alignment.svg": "b7bf51acfb436a308ebc90bc8a5750be19eddcfabcee99fb488ef33f41916e21",
+  "view/artwork.png": "499a44b516e1458ae2dee23ec0f76b6b20190b95dadae5995ac0b55a22967944",
+  "view/artwork.svg": "ef3059edf377cd895cd8d0ddbdbb669f9455a1f72448a277c70457379b9847d2",
+  "view/edit-closeup.png": "473523647bf9de7b019849b1f2298ebe8d99aed3c58d3b77801051d6a2bb3363",
+  "view/edit-closeup.svg": "fc4f797becf39294049f582d83bc0a5ec540efbd625914d60acf6c6c5ed97cb1",
+  "view/object-closeup.png": "78d039e65196526b127a136695d8b7df200bb9f24787a13688c940f063d85564",
+  "view/object-closeup.svg": "8201502bbbf1d21ae0d974d682520003e24053ba666f76dcd87389f478133fd0",
+  "view/report.json": "34a8161aef4fccba73aa28b080386c085173b2a0305e7055c3a5f1d8aee5eda5",
+  "view/report.txt": "381cbd1fe18185477e2df85fb6ee1453a3e2ab75da590f6d29aae9da20ad9ab2",
+  "view/scene.json": "3a9a2f60c50350b2db53ef24035b968f468af15ad101564060c77ce3596ce146",
+  "view/selection.json": "fdf6dbd2115bacc26201d93071fe643ee1f3881ccccee7f6a31de7fdea720cea",
+  "observed_external_inputs": {
+    "alignment.png": "3a31dfaaeac0209a8e4e108d707293401eb86027fedf0ad3b36830f0750f9a0e",
+    "object-closeup.png": "079396712214c8f777e17c4b3823a87e9f0c74c522f900b45537ce6a43e39a79"
+  }
+}

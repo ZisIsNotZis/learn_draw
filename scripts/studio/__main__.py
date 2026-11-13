@@ -117,6 +117,7 @@ def main():
             operation.add_argument("--move", choices=("left", "right", "up", "down"))
             operation.add_argument('--set',dest='parameter',help='a semantic control exposed by inspect')
             operation.add_argument('--change',action='append',metavar='NAME=VALUE',help='repeat for one coherent multi-control preview; accept/undo as one edit')
+            operation.add_argument('--aim',metavar='TARGET_SELECTION',help='fit an inspected connected stroke terminal direction while keeping both endpoints')
             operation.add_argument('--attach',metavar='TARGET_SELECTION',help='pin to a target inspected with --feature anchors')
             operation.add_argument('--detach',action='store_true',help='release an inspected mount while preserving current placement')
             operation.add_argument('--bind-end',metavar='TARGET_SELECTION',help='bind the inspected stroke root/tip to a separately inspected target mount')
@@ -147,6 +148,7 @@ def main():
                 inputs.append(Path(args.selection))
                 if args.attach: inputs.append(Path(args.attach))
                 if args.bind_end: inputs.append(Path(args.bind_end))
+                if args.aim: inputs.append(Path(args.aim))
             if args.command=='place':
                 if args.revise: inputs.append(Path(args.revise))
                 if args.attach: inputs.append(Path(args.attach))
@@ -219,13 +221,18 @@ def main():
             write(Path(args.outdir)/'report.json',dict(status='preparing',revision=fingerprint(scene),engine=engine_fingerprint(),images=[]))
             (Path(args.outdir)/'report.txt').write_text('',encoding='utf-8')
             selection=read(args.selection)
-            if not args.attach and not args.bind_end and (args.self_anchor is not None or args.target_anchor is not None or args.inset!=0):
-                raise ValueError('mount flags are used with --attach or --bind-end')
+            if not args.attach and not args.bind_end and not args.aim and (args.self_anchor is not None or args.target_anchor is not None or args.inset!=0):
+                raise ValueError('mount flags are used with --attach, --bind-end or --aim')
             if args.bind_end and args.self_anchor is not None:
                 raise ValueError('--bind-end uses the inspected root/tip, not --self-anchor')
             if args.cascade and not args.remove:
                 raise ValueError('--cascade is used with --remove')
-            if args.bind_end or args.unbind_end:
+            if args.aim:
+                from .alignment import aim_preview
+                if args.self_anchor is not None or args.inset!=0 or args.value is not None:
+                    raise ValueError('--aim uses the inspected endpoint and its existing connection; no --self-anchor/--inset/--value')
+                candidate=aim_preview(scene,selection,read(args.aim),args.target_anchor,args.reason)
+            elif args.bind_end or args.unbind_end:
                 if args.value is not None: raise ValueError('--value is used with --set')
                 candidate=(bind_endpoint_preview(scene,selection,read(args.bind_end),args.target_anchor,args.inset,args.reason)
                            if args.bind_end else unbind_endpoint_preview(scene,selection,args.reason))

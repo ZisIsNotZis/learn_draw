@@ -33,6 +33,9 @@ uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation ski
 - Inspect/preview/accept/undo provides actual alignment and magnified views, protected local edits,
   grouped semantic parameters, revision/implementation binding, stale/invalid refusal and ready-
   render acceptance. Source, selection and target inputs cannot be overwritten by output aliases.
+- Outward mount arrows and magnified callouts expose geometry before fitting. A connected stroke
+  terminal can aim into an inspected direction by changing bend while protecting both endpoints.
+  This is one-shot; later pose edits can require another fit, and directionless centers refuse.
 - Named whole-object pins preserve projected connections. Stroke root/tip constraints can instead
   depend on two independently inspected targets: the compiler derives length/angle, while width,
   bend and protected spine edits remain authored. Releasing a pin preserves current paint. Target
@@ -49,14 +52,14 @@ uncommitted work. Commands/environment are in 9_IMPLEMENTATION.md; operation ski
   receiving surface and palm/handle/thumb overlap. These are bounded visual outcomes, not a
   general anatomy or physical-fold capability.
 
-The current placement advance passes 110 studio-family tests, including seven focused placement
-tests; ten earlier/default PNGs remain exact. A fresh frozen-guide-only operator creates an original
-seven-part camera from blank paper, corrects its pending body, discards an obstructive strap and
-verifies exact blank-state/PNG undo recovery. Parent verification rechecks 155 actor artifact hashes,
-the shipped camera PNG, actual badge insertion/undo/reaccept and unchanged existing geometry/paint
-outside that badge. Two blind reviewers recognize the camera while retaining schematic-depth/detail
-limits. These mechanical, operational and visual observations establish separate bounded claims;
-none is whole-artwork or human acceptance. Older counts remain historical evidence.
+The current direction advance passes 118 studio-family tests, including eight direction/guide
+tests; ten earlier/default PNGs remain exact. A fresh operator repairs a cuff, raises the
+hand/flower assembly, observes a new cuff mismatch, re-aims and verifies exact undo/reaccept.
+Its 152-file operation evidence binds the pre-halo source; a verified inspection-only transition,
+16-file current-guide supplement plus two external guide-image digests and a fresh current aim
+proposal preserve the version boundary. Existing component defaults/clean artwork remain unchanged.
+Current mechanical/artifact checks are indexed at ../evidence/studio-direction/README.md. These
+are scoped operational claims, not acceptance of the new figure as a finished artwork.
 
 Current endpoint evidence is indexed at ../evidence/studio-endpoints/README.md. A fresh skill/help-
 only operator binds both water ends, independently moves person and pot without correcting the
@@ -72,7 +75,9 @@ Exact schema/algorithms are owned by 7_INTERFACE.md/8_DETAIL.md.
 
 ## What is still weak or unverified
 
-The older mass/thumb/fold and mesh routes remain ambiguous. The compact graphic grip now works
+The new figure study still has a tube-like elbow, assembled shoulder boundary, flat neckline,
+unengaged face, detail imbalance and ambiguous grip. Its initial generic-body/arm representation
+is not adopted as a polished body vocabulary. The older mass/thumb/fold and mesh routes remain ambiguous. The compact graphic grip now works
 for one independent symbolic flag composition without reconstruction, but it retains schematic
 pads/thumb and a small crease-end tick. Watering still crowds those fingers at its smaller scale.
 Neither the symbolic use result nor contact equality establishes natural anatomy or weight. The original watering pictures also retain stiff
@@ -93,32 +98,35 @@ count or attractive interface alone cannot establish the desired capability.
 
 ## Next action and checkpoint
 
-The pre-insertion observation gap is closed for one public component workflow. Actual parent
-badge proposals remain uncommitted until viewed, refined and connected; an extra emblem is visibly
-discarded. The fresh actor independently creates the camera rather than replaying that subject.
-Evidence, frozen inputs, raw commands and claim limits are in ../evidence/studio-placement/.
-The operator's equal nested timeouts lost one bezel callback; retrying before confirming termination
-was an execution error. Its historical termination stays unknown, current targeted processes are
-absent, and docs/4_USECASE.md now explicitly carries observation rules in independent-task dispatch.
-This does not recast the interrupted attempt as successful.
+Current endpoint-direction tooling is usable for its bounded claim. The original person-with-flower
+study and independent operation show visible cuff fitting and exact recovery. An initial same-plane
+petal construction was diagnosed and deliberately canceled before authoring its layer order; the
+failed candidate and actual terminal result remain recorded. A wrong lower-left sleeve address
+was corrected through exact-anchor inspection. Follow-up critics recognize that hanging sleeve and
+find arrow contrast resolved, while full tiny-part marker clusters still require a closeup.
 
-Next, return to connected drawing quality rather than enlarging the preset catalog. A point pin
-still does not aim a sleeve into the wrist or a stream out of a nozzle: both parent and previous
-independent use needed manual orientation/tangent corrections. Inspect existing port normals and
-stroke tangents, expose a clear visible direction guide, and test a narrow recoverable alignment
-operation only where geometry determines it. Preserve independent depth and explicit free choices;
-ambiguous center mounts must not invent a direction. Small-component label crowding is another
-observed guide defect; correct it without cluttering clean artwork.
+The picture points back to component design. A generic torso and a single quadratic gesture do not
+supply useful shoulders, collar, upper arm, elbow and forearm by themselves. Fitting its end direction
+bows the entire sleeve; correct contact does not give it an elbow. Next compare a simple semantic
+upper-body/arm representation against this actual image. Investigate existing local joint/contour
+implementations before adding another mechanism. Test a small default with recognizable shoulder,
+elbow and wrist; optional local controls should refine it without reconstructing it from generic
+masses or a list of vertices. Provide meaningful body ports so a shoulder is not a remembered edge
+fraction. Keep line art distinct from material/depth and retain general strokes for flow/gesture.
+Do not repeat the failed detailed mesh route merely because it supplies more anatomy data.
 
-The checkpoint is an actual original connected illustration with observed successive corrections,
-not merely a new guide/test. A modest person-with-prop scene can exercise the hand/sleeve chain;
-choose its pose/composition from intent and compare the actual result at drawing and thumbnail
-scales. Improve component contour/material choices where that image reveals weakness, preserve
-failed proposals and seek a fresh operational/image review on the resulting scope. Main agent owns
-implementation/art correction; fresh actors/reviewers own their separate observations. Estimate the
-next substantive work unit for this checkpoint, not an art deadline. Broader pose/style transfer,
-more refined anime work and full VLM creation remain open goals; no baseline promotion or sealed
-brief release is authorized by these small icon studies. GPU pause remains in force.
+Use an early actual component sample plus this connected composition to decide the representation,
+then demonstrate another modest pose/intent and observed local correction. The next checkpoint is
+that useful body/arm slice and real artwork comparison in the next substantive unit, not an engine
+or documentation milestone. Main agent owns implementation/art; fresh operation/image review checks
+its own scope. Broader natural pose, refined anime style and full VLM creation remain open.
+
+There is also a concrete interface cost: the independent run's selected-part inspection returned up
+to 35,593 characters by serializing all 17 scene nodes. Keep full report files, but make ordinary CLI
+responses focus on the selected part, actual controls and image/report handles before multiplying
+body-edit operations. Use disclosed skill branches where they reduce irrelevant context. This is
+VLM authoring experience, not another drawing metric to optimize. The evidence owns raw counts.
+Keep sealed brief and portrait baseline unchanged; GPU pause remains in force.
 
 ## History and resources
 

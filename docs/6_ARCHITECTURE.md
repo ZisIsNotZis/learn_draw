@@ -142,3 +142,10 @@ controls, attachment resolution and the renderer; an impact selection distinguis
 from an old object being edited. Revision checks preserve all existing authored inputs before
 rebinding an inspected target to the staged scene. Acceptance/undo use the existing transaction
 store. Initial authoring convenience remains replaceable; no target image or pixel optimizer enters it.
+
+Join direction is independent of inset surface normal. A stroke terminal supplies its outward
+centerline direction; a wrist supplies its transformed outward axis. Current aim fits one existing
+join by editing bend only and reuses normal validation/preview/undo. It introduces no dependency
+edge or orientation state. This keeps a directionless center honest and leaves depth independent.
+The real person-with-flower study exposes the next representation gap: one quadratic gesture
+cannot provide both a localized elbow and independently controlled cuff direction.

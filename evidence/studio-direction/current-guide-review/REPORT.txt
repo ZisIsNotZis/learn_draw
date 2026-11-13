@@ -1,0 +1,36 @@
+﻿CURRENT GUIDE FOLLOW-UP - 2026-11-13
+Disposition: PASS for current wrist-guide readability; no blocker observed.
+Scope: one fresh public CLI inspection of the unchanged original usability
+working scene, plus visual observation of the two expressly permitted
+00b-small-guides-contrast alignment/object-closeup PNGs. No source/tests read,
+scene edits, production edits, pose replay, new generation, commit or push.
+Original usability/ run and its 152-artifact manifest were not altered.
+
+Observed actual current view/artwork.png, alignment.png and edit-closeup.png.
+The wrist's outward down-left arrow is now immediately separable from the blue
+sleeve at whole-scene size; its white halo keeps the teal shaft/head readable
+in the magnified view. Exact wrist label and leader remain legible. The halo
+does not obscure the cuff seam enough to impede checking the contact. Clean
+artwork contains no guides and retains the original run's exact artwork digest.
+The two permitted small-camera images show the same benefit: side arrows remain
+visible on dark lens fill. Full-image callouts necessarily cluster around the
+tiny center, while the magnified side labels, rings and arrowheads separate
+clearly. Full view locates the part; closeup resolves its direction. This is a
+guide legibility observation, not a whole-artwork or universal tiny-object gate.
+
+Current binding: ready; scene
+6a316c63c2f32796ce990a43c4c573bd3d5f5f558493fdfa515e07b88edf515d
+engine
+46b8907650f18e1fb2b2f20e68bff94f3426bcf8781908d2f52d57519224eda2
+artwork PNG
+499a44b516e1458ae2dee23ec0f76b6b20190b95dadae5995ac0b55a22967944
+alignment PNG
+4d5ade9a785c827e8f1930973cb47bd6a5c9129443828d57f5da72daebbdcbba
+edit-closeup PNG
+473523647bf9de7b019849b1f2298ebe8d99aed3c58d3b77801051d6a2bb3363
+All four report image hashes are retained in view/report.json.
+
+command.jsonl records launch intent, spawned PID, actual terminal return 0 and
+full CLI output. The tool completed normally; no timeout restart, no owned live
+process remains. This current-engine guide check supplements the original
+v1 operational run; it does not relabel its original engine or repeat its claims.

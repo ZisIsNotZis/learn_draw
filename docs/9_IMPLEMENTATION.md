@@ -393,3 +393,16 @@ python -m scripts.studio accept working.json TRY2/candidate.json
 Inspect actual clean/alignment images between these commands. Existing scripts using immediate
 add remain replays of their earlier behavior. Current insertion evidence is evidence/studio-placement/,
 with original frozen operator inputs; its test/preservation records own this revision's counts.
+
+## Observed direction workflow and current checks
+
+Inspect a source stroke root/tip and an exact target anchor on the same scene revision, read their
+actual images, then preview --aim TARGET/selection.json with a drawing reason. Read the result
+before accept. The drawing skill owns the recipe and 7_INTERFACE.md owns its one-shot limits.
+
+The current direction study in evidence/studio-direction/ records 118 studio tests and ten exact
+prior/default PNGs on current source. Its initial independent operation run binds the pre-halo
+engine; a verified guide-only source transition, current guide supplement and fresh current aim
+proposal keep that scope explicit. verify_delivery.py checks actual recovery and the shipped
+person_flower.json study. Earlier records remain unmodified. The live renderer/fingerprint is
+reported by each new bundle; do not accept old-engine candidates after code changes.

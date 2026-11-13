@@ -1,0 +1,45 @@
+{
+  "base": "8abd161147cfd30728a753f50a0286f067e78e88bef8cb3adf8976802add4b9f",
+  "engine": "10fe6d92b45bb1401ddc5f5c76cd9d2d175fa0e983422a3e682d5de2cb1c49b8",
+  "object": "resting-arm",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    80.67812259789497,
+    291.4406225296496,
+    169.99458543054484,
+    538.5113029038658
+  ],
+  "object_bounds": [
+    80.67812259789497,
+    291.4406225296496,
+    169.99458543054484,
+    538.5113029038658
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "thickness",
+    "angle",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension",
+  "endpoint_bindings": {
+    "root": {
+      "to": "shirt",
+      "target": "left@.77",
+      "inset": 0.06
+    }
+  }
+}

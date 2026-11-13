@@ -621,3 +621,18 @@ A discarded proposal changes no working state. One acceptance inserts the config
 and one undo removes it exactly. The public path closes the JSON/model-only insertion gap observed
 in the previous flag and can-opening studies. Real operation/recovery evidence is in
 ../evidence/studio-placement/; general atomic replacement and automatic edge/orientation fit remain open.
+
+## Adopted observed endpoint direction fitting
+
+Connected stroke terminals can now fit an observed surface, terminal or wrist direction without
+manual trigonometry. Aiming changes bend only, preserves both terminal centers and existing links,
+and uses ordinary visible previews, readiness, acceptance and undo. It is one-shot: moving a hand
+can retain its positional pins while requiring another aim. Directionless centers and unsupported
+angles refuse instead of inventing a pose. Anchor arrows/closeups expose the actual direction.
+Evidence is in ../evidence/studio-direction/, including independent pose correction and exact recovery.
+
+The original figure study improves its cuff and silhouette but remains an unaccepted artwork.
+The single-curve sleeve still reads as a tube and the generic torso lacks shoulder/neckline structure.
+These are missing useful body/arm primitives, not proof that more connection controls will yield
+a natural figure. Preserve existing general strokes for gestures/flow; next compare a high-level
+elbow/shoulder/wrist representation with simple defaults and optional local refinement.

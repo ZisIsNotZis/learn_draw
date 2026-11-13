@@ -32,6 +32,10 @@ a new component before insertion. Read clean/alignment, revise the pending candi
 or discard it. [Actual placement and independent camera creation](evidence/studio-placement/README.md)
 show the operation; [camera.json](examples/studio/camera.json) is the editable seven-part example.
 
+Connected stroke ends can also preview `--aim TARGET/selection.json`: fit an observed wrist or
+terminal direction while keeping both ends fixed. [Actual cuff/pose corrections and limits](evidence/studio-direction/README.md)
+separate this one-shot tool from the still-unfinished body/arm drawing quality.
+
 Start on empty paper with `new scene.json --kind blank`. Inspect a whole object before
 `preview --remove`: direct children stay in place; `--cascade` removes its descendant assembly.
 [Actual replacement and undo studies](evidence/studio-removal/README.md) retain the impact views.

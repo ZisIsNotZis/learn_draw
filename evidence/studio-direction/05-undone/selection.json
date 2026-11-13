@@ -1,0 +1,47 @@
+{
+  "base": "46e333bb19607955a9d28c7b2244f549ff4c4e57a2c4030790aa2035c640a1f0",
+  "engine": "10fe6d92b45bb1401ddc5f5c76cd9d2d175fa0e983422a3e682d5de2cb1c49b8",
+  "object": "reaching-sleeve",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    292.74866530186955,
+    293.6416165270081,
+    474.21818322140973,
+    349.01715019595076
+  ],
+  "object_bounds": [
+    292.74866530186955,
+    293.6416165270081,
+    474.21818322140973,
+    349.01715019595076
+  ],
+  "controls": [
+    "intent",
+    "thickness",
+    "bend",
+    "start_width",
+    "end_width",
+    "start_cap",
+    "end_cap",
+    "shade",
+    "ink_width",
+    "depth",
+    "depth_slope",
+    "fill_color",
+    "shade_color",
+    "ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension",
+  "endpoint_bindings": {
+    "root": {
+      "to": "shirt",
+      "target": "right@.27",
+      "inset": 0.03
+    },
+    "tip": {
+      "to": "flower-hand",
+      "target": "wrist"
+    }
+  }
+}

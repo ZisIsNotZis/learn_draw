@@ -1,0 +1,38 @@
+{
+  "base": "8abd161147cfd30728a753f50a0286f067e78e88bef8cb3adf8976802add4b9f",
+  "engine": "46b8907650f18e1fb2b2f20e68bff94f3426bcf8781908d2f52d57519224eda2",
+  "object": "flower-hand",
+  "kind": "feature",
+  "feature": "object",
+  "bounds": [
+    461.68062878197986,
+    230.98534108010074,
+    567.5309772155003,
+    345.4073016772898
+  ],
+  "object_bounds": [
+    461.68062878197986,
+    230.98534108010074,
+    567.5309772155003,
+    345.4073016772898
+  ],
+  "controls": [
+    "intent",
+    "length",
+    "width",
+    "angle",
+    "depth",
+    "depth_slope",
+    "thumb_side",
+    "fold_length",
+    "thumb_reach",
+    "thumb_thickness",
+    "handle_span",
+    "handle_thickness",
+    "skin_color",
+    "ink_color",
+    "handle_color",
+    "handle_ink_color"
+  ],
+  "units": "semantic values; object move amount is a fraction of the shorter canvas dimension"
+}

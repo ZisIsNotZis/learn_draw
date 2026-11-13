@@ -1,0 +1,61 @@
+[
+  {
+    "base": "46e333bb19607955a9d28c7b2244f549ff4c4e57a2c4030790aa2035c640a1f0",
+    "result": "7701c6e824d70de69f7b9fa23f9a9ee62e5ca2dacfec5bf30db623a0610faec6",
+    "operation": {
+      "action": "aim",
+      "object": "reaching-sleeve",
+      "endpoint": "tip",
+      "target": {
+        "object": "flower-hand",
+        "anchor": "wrist"
+      },
+      "bend": -0.22665947695947722,
+      "reason": "Let the flat cuff enter along the actual wrist while both endpoints remain fixed"
+    }
+  },
+  {
+    "base": "7701c6e824d70de69f7b9fa23f9a9ee62e5ca2dacfec5bf30db623a0610faec6",
+    "result": "77bc5df69db75465ca34992e6ebb7f5fd0d85dc579093f5817012385ccd1b1b3",
+    "operation": {
+      "object": "shirt",
+      "feature": "object",
+      "parameters": {
+        "rounding": 0.92,
+        "width": 0.9,
+        "taper": -0.25
+      },
+      "reason": "Replace the rigid shirt slab with sloped softer shoulders and a narrower lower torso"
+    }
+  },
+  {
+    "base": "77bc5df69db75465ca34992e6ebb7f5fd0d85dc579093f5817012385ccd1b1b3",
+    "result": "87bb2a2cd7294e05f66aee48b8f408bd5e7f5f2f7311199052c9259da5e2da1a",
+    "operation": {
+      "action": "aim",
+      "object": "reaching-sleeve",
+      "endpoint": "tip",
+      "target": {
+        "object": "flower-hand",
+        "anchor": "wrist"
+      },
+      "bend": -0.20659718786099243,
+      "reason": "Recheck the cuff direction after reshaping the connected shoulder"
+    }
+  },
+  {
+    "base": "87bb2a2cd7294e05f66aee48b8f408bd5e7f5f2f7311199052c9259da5e2da1a",
+    "result": "8abd161147cfd30728a753f50a0286f067e78e88bef8cb3adf8976802add4b9f",
+    "operation": {
+      "action": "attach",
+      "object": "resting-arm",
+      "attachment": {
+        "to": "shirt",
+        "self": "root",
+        "target": "left@.77",
+        "inset": 0.06
+      },
+      "reason": "The far sleeve belongs at the upper left shoulder, not the lower left torso"
+    }
+  }
+]

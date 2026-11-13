@@ -1,0 +1,44 @@
+[
+  {
+    "base": "46e333bb19607955a9d28c7b2244f549ff4c4e57a2c4030790aa2035c640a1f0",
+    "result": "7701c6e824d70de69f7b9fa23f9a9ee62e5ca2dacfec5bf30db623a0610faec6",
+    "operation": {
+      "action": "aim",
+      "object": "reaching-sleeve",
+      "endpoint": "tip",
+      "target": {
+        "object": "flower-hand",
+        "anchor": "wrist"
+      },
+      "bend": -0.22665947695947722,
+      "reason": "Let the cuff enter along the diagonal wrist while preserving shoulder and wrist positions"
+    }
+  },
+  {
+    "base": "7701c6e824d70de69f7b9fa23f9a9ee62e5ca2dacfec5bf30db623a0610faec6",
+    "result": "67abb5a72d10f3b304feabaa64c76db7948a50641a4efa5afc254383cb559b7b",
+    "operation": {
+      "object": "flower-hand",
+      "feature": "object",
+      "direction": "up",
+      "amount": 0.04,
+      "units": "shorter canvas dimension",
+      "reason": "Raise the flower hand slightly to make the gesture lighter and bring the flower closer to eye level"
+    }
+  },
+  {
+    "base": "67abb5a72d10f3b304feabaa64c76db7948a50641a4efa5afc254383cb559b7b",
+    "result": "6a316c63c2f32796ce990a43c4c573bd3d5f5f558493fdfa515e07b88edf515d",
+    "operation": {
+      "action": "aim",
+      "object": "reaching-sleeve",
+      "endpoint": "tip",
+      "target": {
+        "object": "flower-hand",
+        "anchor": "wrist"
+      },
+      "bend": -0.16000220584239086,
+      "reason": "Re-fit the raised cuff to the wrist diagonal because moving the hand changed the chord"
+    }
+  }
+]

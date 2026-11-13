@@ -489,3 +489,27 @@ The output may not alias working scene, source candidate or target selection, in
 Only a ready rendered candidate is emitted by the CLI; accept uses the normal engine/base/result
 checks, history and exact undo. Discard is leaving the candidate unaccepted. The older immediate
 add command remains for existing scripted replays; it is not the observe-before-insertion route.
+
+## Observed endpoint direction fit
+
+Anchor reports may include direction, an outward join vector independent of the surface normal
+used for inset. Stroke root direction is negative initial centerline tangent; tip direction is
+its final tangent. Hand/grip wrist direction is the transformed outward wrist axis. Shape edges
+use their computed surface normal. A center/other directionless mount invents no direction.
+
+preview --aim TARGET_SELECTION takes an inspected stroke root/tip and a separately inspected
+exact target anchor. They must have a direct existing join, either source terminal pinned to
+target or target anchor pinned to that source terminal. It changes only bend to make the source
+outward direction oppose the target direction while preserving both terminal centers. Both
+selections are engine/revision bound; positioned anchors must be explicitly inspected. Output
+uses the normal ready-render candidate, alias refusal, acceptance and undo contract.
+
+The quadratic gesture has one bend parameter. Chord-backward, excessive bend, directionless
+target and invalid resulting paint refuse rather than moving endpoints. The resulting direction
+is verified against the recompiled target, including reverse graph relations. It is a one-shot
+fit; later target/chord edits can require a fresh aim. No persistent orientation relation or
+independent two-end tangent fit is introduced. Existing endpoints/attachment/depth remain intact.
+
+Inspection arrows show actual outward directions. Anchor callouts, rings and local edit guides
+retain screen size under viewBox magnification, and minimum label rails separate small-component callouts. These are
+inspection-only geometry; clean artwork and its layering are unchanged by guides.

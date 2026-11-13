@@ -1,0 +1,32 @@
+{
+  "base": "87bb2a2cd7294e05f66aee48b8f408bd5e7f5f2f7311199052c9259da5e2da1a",
+  "engine": "10fe6d92b45bb1401ddc5f5c76cd9d2d175fa0e983422a3e682d5de2cb1c49b8",
+  "object": "shirt",
+  "kind": "feature",
+  "feature": "anchors",
+  "bounds": [
+    102.60772633194443,
+    293.97535002163613,
+    153.7872419482809,
+    345.15486563797253
+  ],
+  "object_bounds": [
+    128.17915183869502,
+    249.0385218264308,
+    341.42713357343024,
+    506.5745215984512
+  ],
+  "controls": [],
+  "focus": [
+    128.19748414011266,
+    319.56510782980433
+  ],
+  "locks": {
+    "left@.77": [
+      128.19748414011266,
+      319.56510782980433
+    ]
+  },
+  "units": "named geometry mounts; attachment pins one point and keeps the child angle in screen space",
+  "anchor": "left@.77"
+}

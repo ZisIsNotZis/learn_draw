@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-13",
+  "method": "Parent summaries of actual fresh image-only reviews and later targeted follow-ups. Image hashes are parent bindings; no independently printed formal rubric/commit bindings. No whole-artwork pass.",
+  "reviews": [
+    {
+      "reviewer": "direction_images_a",
+      "phase": "fresh checkpoint",
+      "image_sha256": {
+        "check-initial/draft-fullres.png": "48d26ec20682adb836d12074e7d6b02bbef7d4c8d7ab7e74cc5607fb5731d947",
+        "check-initial/draft.png": "a22d78c4a85ed93f905fb96c7d115cab2dbddeddb419653295542c46c979ec63",
+        "check-current/draft-fullres.png": "eb730619b5ff2e902a372613e64a4b1508225d6da278de3bffcdf7268225262d",
+        "check-current/draft.png": "d8d9dc2fc2fd96e115831ce097e78369077629ef2550114904b5eb514be9e967",
+        "00-small-guides/alignment.png": "dabb982295cf9f0ffa6d1f0028c8de046d132157ff3339aa7507415095b176fd",
+        "00-small-guides/object-closeup.png": "6c93a397527c9a45d40aa2aec3561a7ea9eaa27ab1b75b676683a3c881d38b7f"
+      },
+      "observations": "Initial slab torso/plank arm and unclear wrist. Rounded body/curved sleeve improve gesture and wrist, but elbow remains tubular, fingers overlap ambiguously and lower-left triangle unclear. Full tiny markers/leader lines crowd; magnification separates labels but arrows have low contrast."
+    },
+    {
+      "reviewer": "direction_images_b",
+      "phase": "fresh checkpoint",
+      "image_sha256": {
+        "check-initial/draft-fullres.png": "48d26ec20682adb836d12074e7d6b02bbef7d4c8d7ab7e74cc5607fb5731d947",
+        "check-initial/draft.png": "a22d78c4a85ed93f905fb96c7d115cab2dbddeddb419653295542c46c979ec63",
+        "check-current/draft-fullres.png": "eb730619b5ff2e902a372613e64a4b1508225d6da278de3bffcdf7268225262d",
+        "check-current/draft.png": "d8d9dc2fc2fd96e115831ce097e78369077629ef2550114904b5eb514be9e967",
+        "00-small-guides/alignment.png": "dabb982295cf9f0ffa6d1f0028c8de046d132157ff3339aa7507415095b176fd",
+        "00-small-guides/object-closeup.png": "6c93a397527c9a45d40aa2aec3561a7ea9eaa27ab1b75b676683a3c881d38b7f"
+      },
+      "observations": "Rounded silhouette/gesture improve. Remaining oversized ambiguous hand, tube elbow, body edge dividing shoulder, flat neckline, unexplained lower-left wedge, front-facing attention, uneven detail and empty space. Full marker cluster weak; closeup clear except low-contrast arrows and unexplained rotated-local names."
+    },
+    {
+      "reviewer": "direction_images_a",
+      "phase": "targeted follow-up",
+      "image_sha256": {
+        "check-revised/draft-fullres.png": "c9c1fcc9d0fde9b80f741d41fcec9f4c767fc3c4c5eab99239b07a25f835d5a1",
+        "check-revised/draft.png": "56c3c67e9c7f16d2402795eec4afbbd561418096da3c583a2aef5f1abe674fde",
+        "00b-small-guides-contrast/alignment.png": "3a31dfaaeac0209a8e4e108d707293401eb86027fedf0ad3b36830f0750f9a0e",
+        "00b-small-guides-contrast/object-closeup.png": "079396712214c8f777e17c4b3823a87e9f0c74c522f900b45537ce6a43e39a79"
+      },
+      "observations": "Lower-left shape now reads as hanging sleeve; previous triangle ambiguity resolved. Tube elbow, abrupt wrist and ambiguous grip remain. White halos resolve closeup contrast; full-frame tiny marker/leader cluster remains."
+    },
+    {
+      "reviewer": "direction_images_b",
+      "phase": "targeted follow-up",
+      "image_sha256": {
+        "check-revised/draft-fullres.png": "c9c1fcc9d0fde9b80f741d41fcec9f4c767fc3c4c5eab99239b07a25f835d5a1",
+        "check-revised/draft.png": "56c3c67e9c7f16d2402795eec4afbbd561418096da3c583a2aef5f1abe674fde",
+        "00b-small-guides-contrast/alignment.png": "3a31dfaaeac0209a8e4e108d707293401eb86027fedf0ad3b36830f0750f9a0e",
+        "00b-small-guides-contrast/object-closeup.png": "079396712214c8f777e17c4b3823a87e9f0c74c522f900b45537ce6a43e39a79"
+      },
+      "observations": "Hanging sleeve now understood at both sizes. Other anatomical/style/attention/assembled shoulder limits remain. All closeup arrowheads visible with halo; full tiny cluster and local-axis explanation still require decoding. Targeted improvements only, not whole-artwork acceptance."
+    }
+  ],
+  "whole_artwork_pass": false
+}

@@ -205,7 +205,8 @@ def _hand_data(encoded,canvas):
                             focus=project(digit['points'][-1]),locks={'knuckle':project(digit['points'][0])},
                             nominal_span=math.dist(project(nominal[0]),project(nominal[-1])),
                             units="tip move amount = fraction of this digit's nominal span; directions are screen directions")
-    return HandData('\n'.join(svg),outer,features,center,node.get('angle',0),digits,{'wrist':dict(point=project((0,WRIST_BASE)),normal=None)})
+    angle=math.radians(node.get('angle',0))
+    return HandData('\n'.join(svg),outer,features,center,node.get('angle',0),digits,{'wrist':dict(point=project((0,WRIST_BASE)),normal=None,direction=(math.sin(angle),math.cos(angle)))})
 
 
 def move_tip(node,canvas,name,direction,amount):
